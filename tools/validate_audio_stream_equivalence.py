@@ -3,6 +3,7 @@ import ctypes as c,hashlib,json,os,random,struct,subprocess
 from pathlib import Path
 from validate_native_audio_reader import MODULES,Output
 from validate_native_audio_prefix import Work
+from validate_native_audio_sequence import Output as ChannelOutput
 ROOT=Path(__file__).resolve().parents[1]
 BASELINE='8f8e451'
 class Status(c.Structure):_fields_=[('count',c.c_uint16),('error',c.c_uint16),('track',c.c_uint8)]
@@ -16,11 +17,13 @@ def main():
   for p in list((ROOT/'megadrive/src').glob('*.h'))+[(ROOT/'megadrive/src'/f'{n}.c') for n in MODULES]:
    if tag=='baseline' and p.name not in baseline_files:continue
    raw=subprocess.check_output(['git','show',BASELINE+':megadrive/src/'+p.name],cwd=ROOT) if tag=='baseline' else p.read_bytes();(src/p.name).write_bytes(raw)
-  subprocess.run(['C:/msys64/ucrt64/bin/gcc.exe','-O3','-shared','-Wall','-Wextra','-Werror','-I',str(sdk/'inc'),'-I',str(src),*[str(src/f'{n}.c') for n in MODULES if (src/f'{n}.c').exists() and (tag!='baseline' or n+'.c' in baseline_files)],'-o',str(src/'reader.dll')],env=env,check=True)
+  subprocess.run(['C:/msys64/ucrt64/bin/gcc.exe','-std=c99','-O3','-shared','-Wall','-Wextra','-Werror','-I',str(sdk/'inc'),'-I',str(src),*[str(src/f'{n}.c') for n in MODULES if (src/f'{n}.c').exists() and (tag!='baseline' or n+'.c' in baseline_files)],'-o',str(src/'reader.dll')],env=env,check=True)
   dll=c.CDLL(str(src/'reader.dll'));args=[c.POINTER(c.c_uint8),c.POINTER(c.c_uint8),c.c_uint16,c.POINTER(c.c_uint8),c.POINTER(c.c_uint16),c.POINTER(Work)]
   dll.reader=getattr(dll,'source_audio_reader_fast' if tag=='current' else 'source_audio_reader');dll.stream=getattr(dll,'source_audio_reader_stream_fast' if tag=='current' else 'source_audio_reader_stream')
   dll.reader.argtypes=args+[c.POINTER(Output)];dll.reader.restype=c.c_uint8
   dll.stream.argtypes=args+[c.POINTER(Status),SINK,c.c_void_p];dll.stream.restype=c.c_uint8;libs.append(dll)
+  if tag=='current':
+   dll.workspace=dll.source_audio_reader_stream_fast_work;dll.workspace.argtypes=dll.stream.argtypes+[c.POINTER(ChannelOutput)];dll.workspace.restype=c.c_uint8
  bank=(c.c_uint8*16384).from_buffer_copy((ROOT/'input/original.sms').read_bytes()[0x18000:0x1c000]);digest=hashlib.sha256();valid=0;rejected=0;streamed=0
  def call(dll,low,before,de_in,stream):
   state=(c.c_uint8*400).from_buffer_copy(before);de=c.c_uint16(de_in);work=Work();writes=[]
@@ -28,13 +31,19 @@ def main():
    status=Status()
    @SINK
    def sink(context,p,n):writes.extend(p[i] for i in range(n))
-   ok=dll.stream(state,low,32768,bank,c.byref(de),c.byref(work),c.byref(status),sink,None);count,error,track=status.count,status.error,status.track
+   if stream=='workspace':
+    storage=c.create_string_buffer(b'\xa5'*(c.sizeof(ChannelOutput)+32));channel=c.cast(c.byref(storage,16),c.POINTER(ChannelOutput))
+    ok=dll.workspace(state,low,32768,bank,c.byref(de),c.byref(work),c.byref(status),sink,None,channel)
+    assert storage.raw[:16]==b'\xa5'*16 and storage.raw[16+c.sizeof(ChannelOutput):16+c.sizeof(ChannelOutput)+16]==b'\xa5'*16,'Workspace guard changed'
+   else:ok=dll.stream(state,low,32768,bank,c.byref(de),c.byref(work),c.byref(status),sink,None)
+   count,error,track=status.count,status.error,status.track
   else:
    out=Output();ok=dll.reader(state,low,32768,bank,c.byref(de),c.byref(work),c.byref(out));count,error,track=out.count,out.error,out.track;writes=list(out.writes[:count])
   return ok,bytes(state),de.value,work.tstates,work.fetches,count,error,track,bytes(writes)
  def check(low,before,de_in,label):
   nonlocal valid,rejected,streamed
   a,b=[call(dll,low,before,de_in,False) for dll in libs];assert a==b,(label,'transactional state/work/DE/PSG/error')
+  assert call(libs[1],low,before,de_in,True)==call(libs[1],low,before,de_in,'workspace'),(label,'caller workspace state/work/DE/PSG/error')
   if a[0]:
    valid+=1;x,y=[call(dll,low,before,de_in,True) for dll in libs];assert x==y and y==a,(label,'streamed state/work/DE/PSG');streamed+=1
   else:
@@ -52,7 +61,8 @@ def main():
  assert valid and rejected and streamed
  report=dict(md_sha256=hashlib.sha256((ROOT/'gaw-megadrive.bin').read_bytes()).hexdigest(),baseline_commit=BASELINE,source_vector_cases=sum(len(s['cases']) for s in suites),mutated_cases=3000,accepted=valid,rejected=rejected,streamed_successes=streamed,all_400_bytes_work_DE_PSG_status_exact=True,transactional_rejection_restores_state_and_DE=True,result_digest=digest.hexdigest(),module_sha256={n:hashlib.sha256((ROOT/'megadrive/src'/f'{n}.c').read_bytes()).hexdigest() for n in MODULES},limits=['Host differential test. Valid states additionally have retained source and compiled68000 checks. Rejected streaming-state mutations deliberately have no rollback contract; the public transactional reader retains full rollback. No analogue waveform or full-game claim.'])
  report['fast_api_composition_checked']=True
- report['production_fast_audio_wired']='source_audio_reader_stream_fast(' in (ROOT/'megadrive/src/sound.inc').read_text()
+ report['production_fast_audio_wired']=any(n in (ROOT/'megadrive/src/sound.inc').read_text() for n in ['source_audio_reader_stream_fast(','source_audio_reader_stream_fast_work('])
+ report['caller_workspace_cases']=valid+rejected;report['caller_workspace_guard_bytes']=32
  (ROOT/'validation/audio_stream_equivalence_report.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps({k:v for k,v in report.items() if k!='module_sha256'},indent=2))
 
 if __name__=='__main__':main()

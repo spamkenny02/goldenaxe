@@ -5,6 +5,7 @@
 #define GAW_AUDIO_STREAM_CHANNELS
 #define source_audio_reader source_audio_reader_fast
 #define source_audio_reader_stream source_audio_reader_stream_fast
+#define source_audio_reader_stream_work source_audio_reader_stream_fast_work
 #define source_audio_tone source_audio_tone_fast
 #define source_audio_noise source_audio_noise_fast
 #define source_audio_sequence source_audio_sequence_fast

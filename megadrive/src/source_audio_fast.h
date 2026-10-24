@@ -10,4 +10,7 @@ u8 source_audio_reader_fast(u8 *state,const u8 *low,u16 low_bytes,const u8 *bank
 u8 source_audio_reader_stream_fast(u8 *state,const u8 *low,u16 low_bytes,const u8 *bank6,
                                    u16 *de,SourceClockWork *work,SourceAudioReaderStatus *status,
                                    SourceAudioReaderSink sink,void *context);
+u8 source_audio_reader_stream_fast_work(u8 *state,const u8 *low,u16 low_bytes,const u8 *bank6,
+                                        u16 *de,SourceClockWork *work,SourceAudioReaderStatus *status,
+                                        SourceAudioReaderSink sink,void *context,SourceAudioSequenceOutput *channel);
 #endif

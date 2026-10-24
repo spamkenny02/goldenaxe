@@ -1,0 +1,119 @@
+{
+  "md_sha256": "4c861aee8ba1af511dd11b384d00a692a69d04731d8e5a5baa492df926372e20",
+  "reference_sha256": "71b56c3cf045e55dc176c5009b88c091c60ad231937748102661d53f4847e01c",
+  "passed": true,
+  "cases": [
+    {
+      "region": "auto",
+      "case": "hero_only",
+      "identical_physical_sprite_frames": 9,
+      "sprite_pixels_compared": 442368,
+      "previous_timing_samples": 9,
+      "current_timing_samples": 9,
+      "previous_median_elapsed_master_cycles": 87528,
+      "current_median_elapsed_master_cycles": 6636,
+      "reduction_percent": 92.42
+    },
+    {
+      "region": "auto",
+      "case": "overlap",
+      "identical_physical_sprite_frames": 9,
+      "sprite_pixels_compared": 442368,
+      "previous_timing_samples": 3,
+      "current_timing_samples": 4,
+      "previous_median_elapsed_master_cycles": 897988,
+      "current_median_elapsed_master_cycles": 697238.5,
+      "reduction_percent": 22.36
+    },
+    {
+      "region": "auto",
+      "case": "top_clip",
+      "identical_physical_sprite_frames": 9,
+      "sprite_pixels_compared": 442368,
+      "previous_timing_samples": 9,
+      "current_timing_samples": 9,
+      "previous_median_elapsed_master_cycles": 185290,
+      "current_median_elapsed_master_cycles": 87724,
+      "reduction_percent": 52.66
+    },
+    {
+      "region": "auto",
+      "case": "bottom_clip",
+      "identical_physical_sprite_frames": 9,
+      "sprite_pixels_compared": 442368,
+      "previous_timing_samples": 9,
+      "current_timing_samples": 9,
+      "previous_median_elapsed_master_cycles": 177156,
+      "current_median_elapsed_master_cycles": 82138,
+      "reduction_percent": 53.64
+    },
+    {
+      "region": "auto",
+      "case": "terminator",
+      "identical_physical_sprite_frames": 9,
+      "sprite_pixels_compared": 442368,
+      "previous_timing_samples": 9,
+      "current_timing_samples": 9,
+      "previous_median_elapsed_master_cycles": 82460,
+      "current_median_elapsed_master_cycles": 4928,
+      "reduction_percent": 94.02
+    },
+    {
+      "region": "pal",
+      "case": "hero_only",
+      "identical_physical_sprite_frames": 9,
+      "sprite_pixels_compared": 442368,
+      "previous_timing_samples": 9,
+      "current_timing_samples": 9,
+      "previous_median_elapsed_master_cycles": 87514,
+      "current_median_elapsed_master_cycles": 6636,
+      "reduction_percent": 92.42
+    },
+    {
+      "region": "pal",
+      "case": "overlap",
+      "identical_physical_sprite_frames": 9,
+      "sprite_pixels_compared": 442368,
+      "previous_timing_samples": 4,
+      "current_timing_samples": 4,
+      "previous_median_elapsed_master_cycles": 894771.5,
+      "current_median_elapsed_master_cycles": 697987.5,
+      "reduction_percent": 21.99
+    },
+    {
+      "region": "pal",
+      "case": "top_clip",
+      "identical_physical_sprite_frames": 9,
+      "sprite_pixels_compared": 442368,
+      "previous_timing_samples": 9,
+      "current_timing_samples": 9,
+      "previous_median_elapsed_master_cycles": 185290,
+      "current_median_elapsed_master_cycles": 87724,
+      "reduction_percent": 52.66
+    },
+    {
+      "region": "pal",
+      "case": "bottom_clip",
+      "identical_physical_sprite_frames": 9,
+      "sprite_pixels_compared": 442368,
+      "previous_timing_samples": 9,
+      "current_timing_samples": 9,
+      "previous_median_elapsed_master_cycles": 177156,
+      "current_median_elapsed_master_cycles": 82096,
+      "reduction_percent": 53.66
+    },
+    {
+      "region": "pal",
+      "case": "terminator",
+      "identical_physical_sprite_frames": 9,
+      "sprite_pixels_compared": 442368,
+      "previous_timing_samples": 9,
+      "current_timing_samples": 9,
+      "previous_median_elapsed_master_cycles": 82446,
+      "current_median_elapsed_master_cycles": 4914,
+      "reduction_percent": 94.04
+    }
+  ],
+  "timing_stage": "mask_entry_to_return",
+  "scope": "Actual old/new playable ROMs, same controlled frozen actor/hero setup after normal boot. Physical masked sprite pixels match in NTSC/PAL including clipping and terminator. Timings use the declared stage instruction boundaries and elapsed master cycles, potentially including interrupt work; not a global FPS percentage or a whole-game deadline proof."
+}

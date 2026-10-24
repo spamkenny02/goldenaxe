@@ -4,6 +4,11 @@ Chaque binaire est conserve sans ecrasement. Les controles cibles ne prouvent pa
 
 | Version | ROM | Validation | Changements | SHA-256 |
 | --- | --- | --- | --- | --- |
+| v0285 | [Telecharger](v0285-9961a313/gaw-megadrive-v0285.bin) | targeted_checks_passed | Pile/DMA et publication VBlank des dialogues corrigees ; premier donjon et fee sans deces, controles cibles passes. Campagne complete non validee. | `9961a313f9387dea5e088a475ae5734a230a7bb22c2992143e3ebe9904eca023` |
+| v0284 | [Telecharger](v0284-f2b53757/gaw-megadrive-v0284.bin) | build_only | Compilation ; validation en attente. | `f2b537579af1459b5221ff62f516502865a7642792086f5dfb7848544540e0e8` |
+| v0283 | [Telecharger](v0283-4c861aee/gaw-megadrive-v0283.bin) | build_only | Compilation ; validation en attente. | `4c861aee8ba1af511dd11b384d00a692a69d04731d8e5a5baa492df926372e20` |
+| v0282 | [Telecharger](v0282-572836e7/gaw-megadrive-v0282.bin) | build_only | Compilation ; validation en attente. | `572836e74b4ec07473b5791033b6c7c66b210b79bad0bd270811c8a26ce944c8` |
+| v0281 | [Telecharger](v0281-c93806b9/gaw-megadrive-v0281.bin) | build_only | Compilation ; validation en attente. | `c93806b9a95c0b31f8153de88244d79bfda83c4d85fd557b62630a8428c53b95` |
 | v0280 | [Telecharger](v0280-b87f2bd3/gaw-megadrive-v0280.bin) | targeted_checks_passed | Cartes rapides et inventaire au VBlank ; titre PAL/NTSC vérifié. Premier donjon et fée C9 rejoués naturellement, capacité40 sur SMS/MD. Deuxième cristal, campagne complète et horloge globale encore ouverts. | `b87f2bd33baab5539503caf9f02441ca761a40938f4ecca8fc73e8a7e76d8bb8` |
 | v0279 | [Telecharger](v0279-36968918/gaw-megadrive-v0279.bin) | build_only | Compilation intermédiaire ; remplacée par v0280 après réglage de la publication de l’inventaire. | `36968918e0073ce29bcb63d4cd8271cba8f5cc4f044b5860b10c8b75734d507e` |
 | v0278 | [Telecharger](v0278-a43ee1a4/gaw-megadrive-v0278.bin) | build_only | Compilation intermédiaire ; remplacée par v0280 après réglage de la publication de l’inventaire. | `a43ee1a460ec577e213e9eaa824635f01cc48b7ff914c6fc64d7595543b25901` |

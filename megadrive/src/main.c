@@ -47,7 +47,7 @@ extern const u8 world_room_metadata[],world_dungeon_metadata[];
 #define TITLE_TILE_COUNT 449
 
 static u8 sms_vram[0x4000] __attribute__((aligned(2)));
-static u8 scratch[0x1000];
+static u8 scratch[0x1000] __attribute__((aligned(2)));
 static u8 title_map[0x600], animation_map[0x600];
 static u32 md_patterns[512*8];
 static u16 md_map[32*24];
@@ -557,7 +557,7 @@ static u16 dialog_glyph(u8 value,bool small)
     return index;
 }
 
-static void upload_dialog_bitmap(void)
+static void upload_dialog_bitmap_with_map(bool publish_map)
 {
     #include "dialogue_packed_pixels.inc"
     const u8 *source=scratch;
@@ -577,7 +577,7 @@ static void upload_dialog_bitmap(void)
          * simulation is blocked throughout a service/dialogue, so it cannot
          * reuse this pattern atlas while publication is pending. */
         __asm__ volatile ("" ::: "memory");
-        dialogue_video_pending=1;
+        dialogue_video_pending=publish_map?3:1;
         while(dialogue_video_pending) __asm__ volatile ("nop");
         __asm__ volatile ("" ::: "memory");
         SYS_doVBlankProcessEx(IMMEDIATELY);input=JOY_readJoypad(JOY_1);
@@ -589,6 +589,8 @@ static void upload_dialog_bitmap(void)
 }
 
 /* 068A..06B6: publish each of the four original bitmap scroll poses. */
+static void upload_dialog_bitmap(void) { upload_dialog_bitmap_with_map(FALSE); }
+
 static void scroll_dialog_bitmap(void)
 {
     static const u8 steps[4]={2,3,3,2};
@@ -1043,14 +1045,14 @@ static void world_clone_upload(const u32 *source,u16 tile,u16 index)
  * Clone only rows suppressed by overflow; read the currently resident tile,
  * unless that same IRQ owns a queued pattern update for the tile.
  * Tiles1024..1087 and1152..1216 are reserved here, beyond the512 source tiles. */
-static void mask_world_sms_sprite_rows(u16 count)
+static void mask_world_sms_sprite_rows(u16 count,u8 *used)
 {
     static u16 clone_base;
-    u8 used[192];u16 n,row,word,raw,tile,pattern_jobs=world_tile_job_count;u8 mask;s16 top,line;
+    u16 n,row,word,raw,tile,pattern_jobs=world_tile_job_count;u8 mask;s16 top,line;
     u32 clone[8];bool blank_loaded=FALSE;volatile u16 *data=(volatile u16*)VDP_DATA_PORT;
     /* Never overwrite tiles still referenced by the preceding SAT. */
     clone_base=clone_base==1024?1152:1024;
-    memset(used,0,sizeof(used));VDP_setAutoInc(2);
+    memset(used,0,192);VDP_setAutoInc(2);
     for(n=0;n<count && n<64;n++)
     {
         raw=(vdpSpriteCache[n].y-145)&255;if(raw==208) break;
@@ -1165,7 +1167,9 @@ static void prepare_world_sms_sprite_overflow(u16 count)
     }
     /* Clipping outside the SMS192-line viewport is independent of SOVR.
      * Keep those invisible rows out of the MD's top/bottom matte areas. */
-    if(world_video_next_overflow || clipped) mask_world_sms_sprite_rows(count);
+    /* The edge scan is complete; reuse its 193 bytes for line occupancy.
+     * Keeping both arrays live would needlessly deepen the IRQ stack. */
+    if(world_video_next_overflow || clipped) mask_world_sms_sprite_rows(count,(u8 *)edges);
     if(!world_video_preparing) world_sms_sprite_prepared_overflow=world_video_next_overflow;
 }
 
@@ -1289,6 +1293,9 @@ static void world_vint(void)
     }
     if(dialogue_video_pending)
     {
+        /* Overlay rows 13..19 become visible with their complete bitmap. */
+        if(dialogue_video_pending&2)
+            VDP_setTileMapDataRect(BG_A,md_map+13*32,0,15,32,7,32,DMA);
         VDP_loadTileData(md_patterns+256*8,16+256,130,DMA);
         __asm__ volatile ("" ::: "memory");
         dialogue_video_pending=0;
@@ -2980,11 +2987,15 @@ static void publish_dialog_word(void)
 }
 static void render_dialogue_text(const u8 *source,bool overlay)
 {
-    u8 expanded[512];
-    u8 substitution_end[512]={0};
+    /* Dialogue owns the unused tail of the existing room scratch buffer.
+     * Bitmap 000..40F and room cells 800..89F remain separate. These
+     * buffers survive wait_frame IRQs without occupying 1024 stack bytes. */
+    u8 *expanded=scratch+0x900;
+    u8 *substitution_end=scratch+0xb00;
     const u8 *cursor;
     u16 n,out=0,x=0,y=0,line=0;
     bool small=TRUE;
+    memset(substitution_end,0,512);
     if(!overlay) VDP_setEnable(FALSE);
     if(!overlay)
     {
@@ -3009,7 +3020,13 @@ static void render_dialogue_text(const u8 *source,bool overlay)
             sms_vram[address]=word; sms_vram[address+1]=word>>8;
         }
     memset(scratch,0,0x410);
-    upload_dialog_bitmap(); draw_map(); if(!overlay) VDP_setEnable(TRUE);
+    if(house_dialogue_active)
+    {
+        source_class0_video_map(sms_vram+map_origin,md_map,32*24);
+        upload_dialog_bitmap_with_map(TRUE);
+    }
+    else { upload_dialog_bitmap();draw_map(); }
+    if(!overlay) VDP_setEnable(TRUE);
     while(*source)
     {
         if(*source=='%')

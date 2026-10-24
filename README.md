@@ -5,17 +5,30 @@ puis porter sa logique Z80 en code natif 68000 avec SGDK. La fidélité à la
 Master System passe avant les améliorations.
 
 <!-- ROM-RELEASE:START -->
-**Version courante : v0280 — 2048 Kio.**
+**Version courante : v0285 — 2048 Kio.**
 
-[Télécharger la ROM v0280](versions/v0280-b87f2bd3/gaw-megadrive-v0280.bin) · [Toutes les versions](versions/README.md)
+[Télécharger la ROM v0285](versions/v0285-9961a313/gaw-megadrive-v0285.bin) · [Toutes les versions](versions/README.md)
 
 Contrôles ciblés réussis ; portage complet encore non validé.
 
-SHA-256 : `b87f2bd33baab5539503caf9f02441ca761a40938f4ecca8fc73e8a7e76d8bb8`
-Checksum Mega Drive : `025D`
+SHA-256 : `9961a313f9387dea5e088a475ae5734a230a7bb22c2992143e3ebe9904eca023`
+Checksum Mega Drive : `3524`
 <!-- ROM-RELEASE:END -->
 
 ## État du portage
+
+La **v0285** corrige un débordement de pile confirmé dans la zone DMA et
+une déchirure d’une frame à l’ouverture des dialogues. Les buffers de dialogue
+et de sortie audio utilisent désormais des zones distinctes du buffer de
+travail existant. Sur le parcours mesuré jusqu’à la fée C9, la pile conserve
+412 octets de marge et le tas reste intact.
+
+Le premier donjon et la visite de la fée passent sans décès : hache équipée,
+premier cristal et capacité/vie à 40. Une relecture froide reproduit toute
+la RAM et l’image finales. Les contrôles ciblés de dialogue, d’inventaire,
+d’audio et de titre passent ; la campagne complète reste à valider.
+Voir les [preuves et limites de la v0285](analysis/stack_release_v0285.md).
+Les v0281 à v0284 restent conservées comme compilations intermédiaires.
 
 La **v0280** raccorde la conversion rapide des attributs de carte au jeu
 jouable, y compris les copies du titre. La préparation de 768 mots utilise

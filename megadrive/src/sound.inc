@@ -3,6 +3,7 @@
 #include "source_audio_prefix.h"
 #include "source_audio_memory.h"
 #include "source_audio_reader.h"
+#include "source_audio_fast.h"
 extern const u8 intro_bank6[],sound_low_rom[];
 static u8 sound_ram[0x190];
 static volatile u16 sound_unhandled_command;
@@ -41,9 +42,14 @@ static void sound_tick(void)
     if(intro_timer) intro_timer--;
     if(sound_request) { sound_ram[6]=sound_request;sound_request=0; }
     if(sound_effect_request) { sound_ram[8]=sound_effect_request;sound_effect_request=0; }
-    accepted=source_audio_reader_stream(sound_ram,sound_low_rom,0x8000,intro_bank6,
+    /* IRQ-only workspace D00..F05 is above dialogue buffers 900..CFF.
+     * Foreground RLE/map data stay below 900; full clears do not retain
+     * data here across an IRQ. No workspace bytes are used after return. */
+    /* Valid source channels need no nested rollback snapshots in the IRQ.
+     * The diagnostic transactional API retains its rejection contract. */
+    accepted=source_audio_reader_stream_fast_work(sound_ram,sound_low_rom,0x8000,intro_bank6,
                                         &sound_source_de,&work,&sound_reader_status,
-                                        sound_reader_emit,0);
+                                        sound_reader_emit,0,(SourceAudioSequenceOutput *)(scratch+0xd00));
     sound_source_work.tstates=work.tstates;sound_source_work.fetches=work.fetches;
     if(!accepted) {sound_unhandled_command=sound_reader_status.error;return;}
     if(sound_reader_status.track) sound_current_track=sound_reader_status.track;

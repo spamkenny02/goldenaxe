@@ -1,6 +1,7 @@
 #ifndef GAW_SOURCE_AUDIO_READER_H
 #define GAW_SOURCE_AUDIO_READER_H
 #include "source_clock.h"
+#include "source_audio_sequence.h"
 /* Seven bounded channel lists plus prefix mute/dispatch/priority effects. */
 #define SOURCE_AUDIO_READER_WRITES (7*512+32)
 typedef struct {
@@ -14,6 +15,11 @@ typedef void (*SourceAudioReaderSink)(void *context,const u8 *writes,u16 count);
 u8 source_audio_reader_stream(u8 *state,const u8 *low,u16 low_bytes,const u8 *bank6,
                               u16 *de,SourceClockWork *work,SourceAudioReaderStatus *status,
                               SourceAudioReaderSink sink,void *context);
+/* Same stream contract, with caller-owned aligned channel workspace.
+ * It must not overlap state or source data, and remain exclusive until return. */
+u8 source_audio_reader_stream_work(u8 *state,const u8 *low,u16 low_bytes,const u8 *bank6,
+                                   u16 *de,SourceClockWork *work,SourceAudioReaderStatus *status,
+                                   SourceAudioReaderSink sink,void *context,SourceAudioSequenceOutput *channel);
 /* Original8000, including gate, all prefixes, compensation and seven slots.
  * Work excludes the calling CALL instruction. Unsupported paths roll back
  * all400 bytes and DE. This capture API retains writes for the caller; the

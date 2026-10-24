@@ -1522,3 +1522,25 @@ puzzle record151 redraw coordinate360 = pilot point(184,40), stage0. Current
 pilot fights before triggering it. Next prioritize that puzzle when an enemy
 has no reachable attack position, then continue source D2 and MD boss combat.
 No new ROM for controller-only work. Full campaign/PAL/globalR/IRQ/audio open.
+
+
+2026-10-25 / v0285 stack and dialogue publication correction.
+Confirmed v0280 SP minimum FFEF2C inside allocated DMA storage. Heap metadata
+also corrupt. Every-instruction read-only GX observer plus allocator checks.
+Fast streaming audio, explicit caller channel workspace D00..F05 in scratch;
+dialogue buffers900..CFF. Sprite occupancy reuses completed edge scan array.
+RLE scratch maximum912 bytes, room metatiles/cells below900.
+Current cold NTSC first dungeon/axe/crystal/exit/fairy route18020frames:
+minimumSP FFF79C,412bytes above stack boundary, heap valid. Whole RAM and PNG
+match official core and fixed cold replay. No deaths/audio errors; life40.
+Source SMS fairy flags256 and map1280bytes match. Host audio25644source
+vectors plus3000mutations; workspace guard and exact state/DE/work/PSG pass.
+v0284 negative dialogue test reveals initial one-frame NTSC window tear.
+v0285 commits its seven rows in VBlank with bitmap; PAL/NTSC coherence passes.
+Six inventory routes and40 title normalized images/cadences pass.
+v0281..284 are intermediate build-only ROMs, all immutable and retained.
+D2 room151 source puzzle fallback now passes SMS/MDv0280 to room152 and an
+actual new key (entry baseline1,final2). Fixed cold RAM/PNG replays pass.
+Secondary emulator boss planning remains experimental and unsuccessful.
+No second crystal/full campaign/PAL campaign/globalR/IRQ/waveform/hardware
+completion claim. Continue D2 from current ROM, then source-clock integration.

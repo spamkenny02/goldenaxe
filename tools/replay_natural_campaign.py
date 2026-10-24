@@ -4,9 +4,9 @@ from run_core import ROOT,run
 from archive_lossless_evidence import sha
 
 def main():
- p=argparse.ArgumentParser();p.add_argument('--trace',required=True);a=p.parse_args();folder=(ROOT/'validation'/a.trace).resolve();assert folder.is_relative_to(ROOT/'validation')
+ p=argparse.ArgumentParser();p.add_argument('--trace',required=True);p.add_argument('--rom',help='Explicit historical numbered ROM; SHA must match the recording');a=p.parse_args();folder=(ROOT/'validation'/a.trace).resolve();assert folder.is_relative_to(ROOT/'validation')
  capture=json.loads((folder/'capture.json').read_bytes());controls=json.loads((folder/'controls.json').read_bytes());end=capture['frames'];assert not capture['test_ram_writes'] and capture['sram_input'] is None
- rom=ROOT/'input/original.sms' if folder.name.startswith('sms') else ROOT/'gaw-megadrive.bin';assert sha(rom.read_bytes())==capture['rom_sha256']
+ rom=ROOT/a.rom if a.rom else ROOT/'input/original.sms' if folder.name.startswith('sms') else ROOT/'gaw-megadrive.bin';assert sha(rom.read_bytes())==capture['rom_sha256']
  presses=list(map(tuple,capture['presses']))
  for i,row in enumerate(controls):
   stop=controls[i+1]['frame']-1 if i+1<len(controls) else end

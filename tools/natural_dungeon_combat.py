@@ -32,7 +32,7 @@ def attack_position(p,e,reach=24,align=8):
     return abs(dx)<=align and reach-12<=abs(dy)<=reach or abs(dy)<=align and reach-12<=abs(dx)<=reach
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--sms',action='store_true');parser.add_argument('--pal',action='store_true');parser.add_argument('--trial',required=True);parser.add_argument('--frames',type=int,default=14000);parser.add_argument('--target-room',type=lambda x:int(x,0),default=0x1d4);parser.add_argument('--reach',type=int,default=24);parser.add_argument('--align',type=int,default=8);parser.add_argument('--rooms',help='Comma-separated adjacent room IDs');parser.add_argument('--collect-key',action='store_true');parser.add_argument('--collect-item',type=int);parser.add_argument('--collect-gem',action='store_true');parser.add_argument('--exit-dungeon',action='store_true');parser.add_argument('--max-deaths',type=int,default=3,help='Maximum normal Continue retries');parser.add_argument('--rush-rooms',default='',help='Pass through these rooms while avoiding live actors');parser.add_argument('--early-boss-side',action='store_true',help='Experimental63/64 side placement and volley evasions');parser.add_argument('--settle-attacks',action='store_true',help='Wait until a walking step ends before starting an attack');parser.add_argument('--collision-aim',action='store_true',help='Aim from original descriptor hit rectangles');parser.add_argument('--equip-axe',action='store_true',help='Equip owned axe via normal inventory buttons');parser.add_argument('--prefix',help='Recorded natural route directory for this ROM');parser.add_argument('--continuation',help='Replay a completed combat trial from boot before extending its route');args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('--sms',action='store_true');parser.add_argument('--pal',action='store_true');parser.add_argument('--trial',required=True);parser.add_argument('--frames',type=int,default=14000);parser.add_argument('--target-room',type=lambda x:int(x,0),default=0x1d4);parser.add_argument('--reach',type=int,default=24);parser.add_argument('--align',type=int,default=8);parser.add_argument('--rooms',help='Comma-separated adjacent room IDs');parser.add_argument('--collect-key',action='store_true');parser.add_argument('--collect-item',type=int);parser.add_argument('--collect-gem',action='store_true');parser.add_argument('--exit-dungeon',action='store_true');parser.add_argument('--max-deaths',type=int,default=3,help='Maximum normal Continue retries');parser.add_argument('--rush-rooms',default='',help='Pass through these rooms while avoiding live actors');parser.add_argument('--puzzle-first-when-blocked',action='store_true',help='Try a pending source puzzle when no enemy attack position is reachable');parser.add_argument('--early-boss-side',action='store_true',help='Experimental63/64 side placement and volley evasions');parser.add_argument('--settle-attacks',action='store_true',help='Wait until a walking step ends before starting an attack');parser.add_argument('--collision-aim',action='store_true',help='Aim from original descriptor hit rectangles');parser.add_argument('--equip-axe',action='store_true',help='Equip owned axe via normal inventory buttons');parser.add_argument('--prefix',help='Recorded natural route directory for this ROM');parser.add_argument('--continuation',help='Replay a completed combat trial from boot before extending its route');args=parser.parse_args()
     assert args.collect_item is None or 0<=args.collect_item<17
     itinerary=[int(x,0) for x in args.rooms.split(',')] if args.rooms else list(range(0x1e4,args.target_room-1,-16))
     # Entry is checked against actual replay RAM at prefix_end; support later dungeons.
@@ -57,6 +57,8 @@ def main():
     tag='sms' if args.sms else 'md';folder=ROOT/f'validation/natural-dungeon-combat/{tag}-{region}-{args.trial}';assert not folder.exists(),folder
     state={};actors=[];loot=[];tilemap=b'';events=[];samples=[];controls=[];captures=set();observed=0;cached=-1;buttons=[];last_direction=0;seen_room=False;seen_enemies=False;cleared=None;failure=None;menu_since=None;deaths=0;last_key=None
     if args.continuation:controls=list(recorded)
+    puzzle_goal=None;pilot_decisions=[]
+    target_entry_keys=None
     gem_picked_at=None
     exit_reset_seen=False
     boss_dodge_until=0;boss_dodge_x=0;boss_last_shot=-1000
@@ -65,7 +67,7 @@ def main():
     assert item_reference['source_sha256']==sha((ROOT/'input/original.sms').read_bytes())
     rewards={r['room']:r for r in item_reference['records']}
     def observe(f,r):
-        nonlocal actors,loot,tilemap,observed,seen_room,seen_enemies,cleared,failure,menu_since,deaths,last_key,itinerary_index,gem_picked_at,exit_reset_seen,item_picked_at,pilot_progress_key,pilot_progress_frame,exit_dungeon_number,exit_max_health
+        nonlocal actors,loot,tilemap,observed,seen_room,seen_enemies,cleared,target_entry_keys,failure,menu_since,deaths,last_key,itinerary_index,gem_picked_at,exit_reset_seen,item_picked_at,pilot_progress_key,pilot_progress_frame,exit_dungeon_number,exit_max_health
         observed=f
         if args.sms:
             data=lambda a,n:bytes(r[a:a+n]);state.update(room=int.from_bytes(r[0xb9:0xbb],'little'),game=r[0x1d],hero=r[0x301],counter=r[0x304],x=int.from_bytes(r[0x312:0x314],'little')>>8,y=int.from_bytes(r[0x310:0x312],'little')>>8,health=r[0x318],keys=r[0xde],audio_error=0)
@@ -99,12 +101,13 @@ def main():
             previous_index=itinerary_index;itinerary_index=min(candidates,key=lambda n:abs(n-previous_index))
             events.append(dict(frame=f,reason='recover_after_room_displacement',previous_itinerary_index=previous_index,itinerary_index=itinerary_index,**state))
         if state['room']==args.target_room:
+            if target_entry_keys is None:target_entry_keys=state['keys']
             seen_room=True
             if state['hero']==0:exit_reset_seen=True
             if any(e['type']>=0x20 for e in actors):seen_enemies=True
             gem_done=not args.collect_gem or state['progress']==128 and state['max_health']>=32 and state['health']==state['max_health'] and state['magic']==state['max_magic'] and not state['reward_active']
             item_done=args.collect_item is None or item_picked_at is not None and f-item_picked_at>=300 and state['item_value'] and not state['reward_active']
-            if seen_enemies and state['health'] and state['game']==12 and not any(e['slot']<8 for e in actors) and (not args.collect_key or state['keys']>0) and gem_done and item_done and cleared is None:cleared=f;captures.add(f+1)
+            if seen_enemies and state['health'] and state['game']==12 and not any(e['slot']<8 for e in actors) and (not args.collect_key or state['keys']>target_entry_keys) and gem_done and item_done and cleared is None:cleared=f;captures.add(f+1)
             if args.exit_dungeon and exit_reset_seen and state.get('completed_dungeon_progress')==128 and state['max_health']==exit_max_health and state['health'] and state['game']==12 and state['hero']==1 and not state.get('resume_phase',0) and not state.get('door_loading',0) and cleared is None:cleared=f;captures.add(f+1)
         if state['game']==20:
             if menu_since is None:menu_since=f;deaths+=1
@@ -121,7 +124,7 @@ def main():
         if f%10==0:samples.append(row)
         if cleared is not None and f==cleared+149:captures.add(f+1)
     def choose(f):
-        nonlocal cached,buttons,last_direction,boss_dodge_until,boss_dodge_x,boss_last_shot
+        nonlocal cached,buttons,last_direction,boss_dodge_until,boss_dodge_x,boss_last_shot,puzzle_goal
         if f==cached:return buttons
         cached=f;buttons=[]
         if f<=prefix_end:buttons=list(prefix_inputs[f]);return buttons
@@ -205,7 +208,14 @@ def main():
         if state['counter']:buttons=[4+last_direction];return buttons
         keys=[e for e in loot if e['type']==14]
         gems=[e for e in actors if e['type']==15]
-        if seeking_loot:goal=lambda q:any(abs(q[0]-e['x'])<8 and abs(q[1]-e['y'])<8 for e in helpful)
+        if puzzle_goal and (puzzle_goal[0]!=state['room'] or state['room_flags']&4):
+            pilot_decisions.append(dict(frame=f,reason='puzzle_goal_released',room=state['room'],flags=state['room_flags']))
+            puzzle_goal=None
+        if puzzle_goal:
+            point=puzzle_goal[1]
+            if p==point:buttons=[4];return buttons
+            goal=lambda q:q==point
+        elif seeking_loot:goal=lambda q:any(abs(q[0]-e['x'])<8 and abs(q[1]-e['y'])<8 for e in helpful)
         elif enemies:goal=lambda q:any(can_attack(q,e) for e in enemies)
         elif keys:goal=lambda q:any(abs(q[0]-e['x'])<8 and abs(q[1]-e['y'])<8 for e in keys)
         elif gems:goal=lambda q:any(abs(q[0]-e['x'])<=8 and abs(q[1]-e['y'])<=16 for e in gems)
@@ -225,6 +235,15 @@ def main():
             goal=lambda q:q==[(128,8),(128,168),(8,88),(248,88)][direction]
         else:goal=lambda q:q==((128,168) if args.exit_dungeon else (128,96))
         route=walk(tilemap,p,goal,enemies+hazards,geometry=args.collision_aim)
+        if route is None and args.puzzle_first_when_blocked and enemies and state['room'] in puzzles and not state['room_flags']&4:
+            coordinate=puzzles[state['room']]['coordinate']
+            point=next((x,y) for y in range(8,169,8) for x in range(8,249,8) if (((y-12)&248)<<3)+(((x-12)&255)>>2&62)+126==coordinate)
+            alternate=walk(tilemap,p,lambda q:q==point,enemies+hazards,geometry=args.collision_aim)
+            if alternate is not None:
+                if not puzzle_goal:pilot_decisions.append(dict(frame=f,reason='blocked_attack_try_source_puzzle',room=state['room'],point=point,enemies=[e['type'] for e in enemies]))
+                puzzle_goal=state['room'],point
+                if p==point:buttons=[4];return buttons
+                route=alternate
         if route is None and not enemies and itinerary_index+1<len(itinerary) and state['keys']:
             delta=itinerary[itinerary_index+1]-state['room'];direction={-16:0,16:1,-1:2,1:3}[delta]
             probe=[(128,40),(128,144),(32,88),(224,88)][direction]
@@ -241,9 +260,9 @@ def main():
         return value
     def stop():return bool(failure) or cleared is not None and observed-cleared>=150
     with contextlib.redirect_stdout(io.StringIO()):run(rom,args.frames,folder,captures,presses,ram_observer=observe,input_provider=controller,stop_when=stop,core_options={'genesis_plus_gx_region_detect':region})
-    for name,data in [('events',events),('samples',samples),('controls',controls),('boss_frames',boss_frames)]: (folder/(name+'.json')).write_text(json.dumps(data,indent=2)+'\n')
+    for name,data in [('events',events),('samples',samples),('controls',controls),('boss_frames',boss_frames),('pilot_decisions',pilot_decisions)]: (folder/(name+'.json')).write_text(json.dumps(data,indent=2)+'\n')
     if cleared is None and failure is None:failure='frame_limit'
-    result=dict(rom_sha256=sha(rom.read_bytes()),region=region,recorded_new_game_prefix=prefix_name,prefix_end=prefix_end,itinerary=itinerary,attack_reach=args.reach,attack_alignment=args.align,collision_aim_requested=args.collision_aim,settle_attacks_requested=args.settle_attacks,early_boss_side_requested=args.early_boss_side,driver_sha256=sha(Path(__file__).read_bytes()),aim_sha256=sha((ROOT/'tools/natural_combat_aim.py').read_bytes()) if args.collision_aim else None,equip_axe_requested=args.equip_axe,rush_rooms=sorted(rush_rooms),collect_key_requested=args.collect_key,collect_gem_requested=args.collect_gem,collect_item_requested=args.collect_item,exit_dungeon_requested=args.exit_dungeon,target_room=args.target_room,entered_room=seen_room,seen_target_enemies=seen_enemies,room_cleared=cleared is not None,clear_frame=cleared,deaths=deaths,failure=failure,last_state=state,last_actors=actors,ram_injections=False,rom_modifications=False,sram_checkpoint_injection=False,full_dungeon_cleared=bool(args.exit_dungeon and cleared is not None))
+    result=dict(rom_sha256=sha(rom.read_bytes()),region=region,recorded_new_game_prefix=prefix_name,prefix_end=prefix_end,itinerary=itinerary,attack_reach=args.reach,attack_alignment=args.align,collision_aim_requested=args.collision_aim,settle_attacks_requested=args.settle_attacks,early_boss_side_requested=args.early_boss_side,puzzle_first_when_blocked_requested=args.puzzle_first_when_blocked,driver_sha256=sha(Path(__file__).read_bytes()),aim_sha256=sha((ROOT/'tools/natural_combat_aim.py').read_bytes()) if args.collision_aim else None,equip_axe_requested=args.equip_axe,rush_rooms=sorted(rush_rooms),collect_key_requested=args.collect_key,target_entry_keys=target_entry_keys,new_key_verified=bool(args.collect_key and target_entry_keys is not None and cleared is not None and state['keys']>target_entry_keys),collect_gem_requested=args.collect_gem,collect_item_requested=args.collect_item,exit_dungeon_requested=args.exit_dungeon,target_room=args.target_room,entered_room=seen_room,seen_target_enemies=seen_enemies,room_cleared=cleared is not None,clear_frame=cleared,deaths=deaths,failure=failure,last_state=state,last_actors=actors,ram_injections=False,rom_modifications=False,sram_checkpoint_injection=False,full_dungeon_cleared=bool(args.exit_dungeon and cleared is not None))
     (folder/'report.json').write_text(json.dumps(result,indent=2)+'\n');print(result)
 
 if __name__=='__main__':main()

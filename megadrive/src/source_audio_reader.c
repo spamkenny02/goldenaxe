@@ -23,12 +23,12 @@ static void emit(SourceAudioReaderStatus *status,SourceAudioReaderSink sink,void
     if(count) {sink(context,writes,count);status->count+=count;}
 }
 
-u8 source_audio_reader_stream(u8 *state,const u8 *low,u16 low_bytes,const u8 *bank,
+u8 source_audio_reader_stream_work(u8 *state,const u8 *low,u16 low_bytes,const u8 *bank,
                               u16 *de,SourceClockWork *work,SourceAudioReaderStatus *output,
-                              SourceAudioReaderSink sink,void *context)
+                              SourceAudioReaderSink sink,void *context,SourceAudioSequenceOutput *channel)
 {
     u8 gate=state[10],fade_stopping,phase;u16 offset;
-    SourceClockWork sub;SourceAudioDispatchOutput dispatch;SourceAudioSequenceOutput channel;
+    SourceClockWork sub;SourceAudioDispatchOutput dispatch;
     output->count=output->error=output->track=0;
     if(source_audio_gate(state,work))
     {if(gate&128) emit(output,sink,context,bank+0x412,10);return 1;}
@@ -65,18 +65,26 @@ u8 source_audio_reader_stream(u8 *state,const u8 *low,u16 low_bytes,const u8 *ba
         ADD(17,1);
         if(offset==0xd0)
         {
-            if(!source_audio_noise(state,offset,low,low_bytes,bank,de,&sub,&channel))
-            {output->error=0x600|channel.error;goto reject;}
+            if(!source_audio_noise(state,offset,low,low_bytes,bank,de,&sub,channel))
+            {output->error=0x600|channel->error;goto reject;}
         }
-        else if(!source_audio_tone(state,offset,low,low_bytes,bank,de,&sub,&channel))
-        {output->error=0x700|channel.error;goto reject;}
+        else if(!source_audio_tone(state,offset,low,low_bytes,bank,de,&sub,channel))
+        {output->error=0x700|channel->error;goto reject;}
         ADD(sub.tstates,sub.fetches);
-        emit(output,sink,context,channel.writes,channel.count);
-        if(channel.unwind==2) return 1;
+        emit(output,sink,context,channel->writes,channel->count);
+        if(channel->unwind==2) return 1;
     }
     ADD(10,1);return 1;
 reject:
     work->tstates=work->fetches=0;return 0;
+}
+
+u8 source_audio_reader_stream(u8 *state,const u8 *low,u16 low_bytes,const u8 *bank,
+                              u16 *de,SourceClockWork *work,SourceAudioReaderStatus *output,
+                              SourceAudioReaderSink sink,void *context)
+{
+    SourceAudioSequenceOutput channel;
+    return source_audio_reader_stream_work(state,low,low_bytes,bank,de,work,output,sink,context,&channel);
 }
 
 static void capture(void *context,const u8 *writes,u16 count)
