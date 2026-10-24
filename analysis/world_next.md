@@ -1506,3 +1506,19 @@ collision-aim defaults use current trap rectangles, settlement optional.
 Next: preserve more health/get supplies on the natural D2 route, then finish
 second boss/crystal/exit on both systems. Campaign/global R/IRQ/audio remain
 open. No new ROM for controller-only evidence; v0280 remains current.
+
+
+2026-10-24: natural C9 life-fairy visit now passes on original SMS and MDv0280:
+AF dialogue,reward,capacity32->40,full40HP and ordinary exit atC9(104,96).
+256persistent flags and1280outside map bytes exact. Each cold fixed replay
+reproduces whole8192/65536RAM and finalPNG. Game code/binary unchanged.
+New house/service prefixes allow normal route through NPCs. Second dungeon
+entry now32HP MD/26SMS, no route deaths, versus prior MD14HP.
+Extra D2 attempts still fail; best MD side-placement bossHP14. Optional
+volley/side policies are experimental, not validated combat strategies;
+all driver variants/captures preserved. No second crystal claim.
+Source room151 can stall with one5F enemy unreachable across terrain. Source
+puzzle record151 redraw coordinate360 = pilot point(184,40), stage0. Current
+pilot fights before triggering it. Next prioritize that puzzle when an enemy
+has no reachable attack position, then continue source D2 and MD boss combat.
+No new ROM for controller-only work. Full campaign/PAL/globalR/IRQ/audio open.

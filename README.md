@@ -36,6 +36,14 @@ fixes reproduit toute la RAM finale et l'image ; les 256 indicateurs et les
 donjon restent des échecs du pilote, avec un boss atteint mais aucun deuxième
 cristal validé. Voir [le parcours v0280](analysis/natural_campaign_v0280.md).
 
+La visite naturelle de la fée C9 est également vérifiée sur SMS et MD :
+capacité et vie à 40, sortie normale, indicateurs et carte identiques.
+Les commandes fixes reproduisent toute la RAM et l'image finales sur chaque
+machine. Ce détour permet d'atteindre la deuxième entrée MD avec 32 points de
+vie ; le deuxième cristal reste non acquis par le pilote. Voir
+[le ravitaillement et ses limites](analysis/fairy_campaign_v0280.md).
+
+
 
 
 Pour les six destinations extérieures testées, la chaîne native couvre le

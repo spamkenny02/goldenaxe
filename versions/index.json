@@ -7783,7 +7783,7 @@
     "bytes": 2097152,
     "archived_utc": "2026-10-24T09:20:48.271911+00:00",
     "rom": "v0280-b87f2bd3/gaw-megadrive-v0280.bin",
-    "notes": "Conversion rapide des cartes intégrée ; inventaire au VBlank et titre PAL/NTSC vérifiés. Parcours hache/premier boss/cristal/sortie sans décès, relecture fixe exacte. Deuxième cristal, campagne complète et horloge globale encore ouverts.",
+    "notes": "Cartes rapides et inventaire au VBlank ; titre PAL/NTSC vérifié. Premier donjon et fée C9 rejoués naturellement, capacité40 sur SMS/MD. Deuxième cristal, campagne complète et horloge globale encore ouverts.",
     "validation": "targeted_checks_passed",
     "reports": [
       {
@@ -7805,6 +7805,10 @@
       {
         "file": "natural_campaign_v0280_report.json",
         "sha256": "08ca5e21cc7ea029a2100f0ecef77b1ed06e80c5db1947c498107d5c253c019f"
+      },
+      {
+        "file": "fairy_campaign_v0280_report.json",
+        "sha256": "dd0de08a2693ee66f9a16c5781d520ec3627972ce41a24ae4edca5a7fe922298"
       }
     ]
   }

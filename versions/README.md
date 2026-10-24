@@ -4,7 +4,7 @@ Chaque binaire est conserve sans ecrasement. Les controles cibles ne prouvent pa
 
 | Version | ROM | Validation | Changements | SHA-256 |
 | --- | --- | --- | --- | --- |
-| v0280 | [Telecharger](v0280-b87f2bd3/gaw-megadrive-v0280.bin) | targeted_checks_passed | Conversion rapide des cartes intégrée ; inventaire au VBlank et titre PAL/NTSC vérifiés. Parcours hache/premier boss/cristal/sortie sans décès, relecture fixe exacte. Deuxième cristal, campagne complète et horloge globale encore ouverts. | `b87f2bd33baab5539503caf9f02441ca761a40938f4ecca8fc73e8a7e76d8bb8` |
+| v0280 | [Telecharger](v0280-b87f2bd3/gaw-megadrive-v0280.bin) | targeted_checks_passed | Cartes rapides et inventaire au VBlank ; titre PAL/NTSC vérifié. Premier donjon et fée C9 rejoués naturellement, capacité40 sur SMS/MD. Deuxième cristal, campagne complète et horloge globale encore ouverts. | `b87f2bd33baab5539503caf9f02441ca761a40938f4ecca8fc73e8a7e76d8bb8` |
 | v0279 | [Telecharger](v0279-36968918/gaw-megadrive-v0279.bin) | build_only | Compilation intermédiaire ; remplacée par v0280 après réglage de la publication de l’inventaire. | `36968918e0073ce29bcb63d4cd8271cba8f5cc4f044b5860b10c8b75734d507e` |
 | v0278 | [Telecharger](v0278-a43ee1a4/gaw-megadrive-v0278.bin) | build_only | Compilation intermédiaire ; remplacée par v0280 après réglage de la publication de l’inventaire. | `a43ee1a460ec577e213e9eaa824635f01cc48b7ff914c6fc64d7595543b25901` |
 | v0277 | [Telecharger](v0277-afe617fc/gaw-megadrive-v0277.bin) | build_only | Compilation intermédiaire ; remplacée par v0280 après réglage de la publication de l’inventaire. | `afe617fc785869818d210509536e5c5d28aaaefc996418314d2da3e18515832c` |
