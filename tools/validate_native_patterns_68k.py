@@ -35,7 +35,7 @@ int main(bool hard_reset)
   {
    SourceClockWork work;const u8 *end;u32 hash=2166136261UL;
    for(n=0;n<sizeof(output);n++) output[n]=0xa7;
-   end=source_pattern_decode(packed+cases[row][0],output,cases[row][2],mode?&work:0);
+   end=source_pattern_unpack(packed+cases[row][0],output,cases[row][2],mode?&work:0);
    if(end!=packed+cases[row][0]+cases[row][1]) gaw_pattern_failures++;
    for(n=0;n<sizeof(output);n++) hash=(hash^output[n])*16777619UL;
    if(hash!=cases[row][5]) gaw_pattern_failures++;

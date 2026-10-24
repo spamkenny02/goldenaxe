@@ -1,6 +1,7 @@
 #include <genesis.h>
 #include "source_pattern.h"
 #include "pattern_convert.h"
+#include "source_class0_video.h"
 #include "actors.h"
 #include "source_room_history.h"
 #include "key_redraw_cost.inc"
@@ -76,6 +77,8 @@ static s16 hero_dy,hero_dx;
 static u16 house_animation_scan,house_animation_patterns_pending,house_talk_latch;
 static volatile u16 house_dialogue_active,house_dialogue_index;
 static volatile u16 dialogue_video_pending;
+static volatile u16 inventory_map_pending;
+static volatile u32 inventory_map_deadline;
 static volatile u16 save_service_phase;
 /* Dialogue and foreground world rendering are mutually exclusive. Reuse
  * the existing workspace rather than consuming the DMA heap with a second
@@ -170,7 +173,7 @@ static const u8 *decode_planes(const u8 *src, u8 *dst, u16 stride)
     u16 plane;
     /* Production renders into the SMS VRAM mirror. Source work is available
        separately; a live source clock still needs its loader entry context. */
-    if(stride==4) return source_pattern_decode(src,dst,0,0);
+    if(stride==4) return source_pattern_unpack(src,dst,0,0);
     for (plane=0; plane<stride; plane++)
     {
         u8 *write=dst+plane;
@@ -270,16 +273,9 @@ static void convert_patterns(u16 count) { convert_patterns_range(0,count); }
 
 static void draw_map(void)
 {
-    u16 n;
-    /* SMS R9=$20: visible row zero starts at VRAM $3900 (name table row 4).
-     * Place the 192-line image in the middle of MD's 224-line display. */
-    for (n=0;n<32*24;n++)
-    {
-        const u8 *entry=sms_vram+map_origin+n*2;
-        u16 sms=entry[0]|((u16)entry[1]<<8);
-        md_map[n]=TILE_ATTR_FULL((sms>>11)&1,(sms>>12)&1,
-                                (sms>>10)&1,(sms>>9)&1,16+(sms&511));
-    }
+    /* The same source attributes apply to every room/menu class. Keep the
+     * transfer and its scheduling unchanged; only prepare the words faster. */
+    source_class0_video_map(sms_vram+map_origin,md_map,32*24);
     VDP_setTileMapDataRect(BG_A,md_map,0,2,32,24,32,map_queue?DMA_QUEUE:CPU);
 }
 
@@ -377,17 +373,11 @@ static void fade_title_palette(bool initial)
 
 static void copy_rows(const u8 *source,u16 address,u16 rows,u16 width)
 {
-    u16 column;
     while(rows--)
     {
         u16 offset=(address-map_origin)/2;
         memcpy(sms_vram+address,source,width);
-        for(column=0;column<width/2;column++)
-        {
-            u16 sms=source[column*2]|((u16)source[column*2+1]<<8);
-            md_map[offset+column]=TILE_ATTR_FULL((sms>>11)&1,(sms>>12)&1,
-                                  (sms>>10)&1,(sms>>9)&1,16+(sms&511));
-        }
+        source_class0_video_map(sms_vram+address,md_map+offset,width/2);
         VDP_setTileMapDataRect(BG_A,md_map+offset,offset%32,2+offset/32,width/2,1,width/2,DMA_QUEUE);
         address+=64;
         source+=width;
@@ -1290,6 +1280,12 @@ static void world_vint(void)
         VDP_setTileMapDataRect(BG_A,md_map,0,2,32,20,32,DMA);
         VDP_updateSprites(screen_spell_sprite_count,DMA);set_world_palette();
         screen_spell_video_pending=0;
+    }
+    if(inventory_map_pending && (s32)(vtimer-inventory_map_deadline)>=0)
+    {
+        VDP_setTileMapDataRect(BG_A,md_map,0,2,32,24,32,DMA);
+        __asm__ volatile ("" ::: "memory");
+        inventory_map_pending=0;
     }
     if(dialogue_video_pending)
     {
@@ -2672,10 +2668,14 @@ static void show_inventory(void)
      * with initial ownership; 20DA adds the first blank upload frame. Native
      * conversion/upload frames already spent count toward this budget. */
     frames=(537891UL+budget-1)/budget+2;
-    while(vtimer-menu_started<frames-2) wait_frame();
-    /* Publish the map two frames before the budget endpoint in both regions.
-     * PAL otherwise retains one extra black frame; final resume stays below. */
-    draw_map();inventory_sprites();
+    source_class0_video_map(sms_vram+map_origin,md_map,32*24);
+    /* Conversion finishes before the source publication deadline. Queue the
+     * complete map for VBlank: faster CPU preparation must not shorten the
+     * source black window or expose partially copied rows. */
+    inventory_map_deadline=menu_started+frames;
+    __asm__ volatile ("" ::: "memory");inventory_map_pending=1;
+    while(inventory_map_pending) wait_frame();
+    inventory_sprites();
     while(TRUE)
     {
         u16 pressed,column,row_index,cursor;
@@ -2726,8 +2726,11 @@ static void show_inventory(void)
      * verify the actual blank frames in both regions. */
     work=(world_graphics_class==2?693284UL:world_graphics_class==1?664703UL:995861UL)+290000UL;
     frames=(work+budget-1)/budget+1;
-    while(vtimer-menu_started<frames-2) wait_frame();
-    draw_map();update_hero_sprites();
+    source_class0_video_map(sms_vram+map_origin,md_map,32*24);
+    inventory_map_deadline=menu_started+frames;
+    __asm__ volatile ("" ::: "memory");inventory_map_pending=1;
+    while(inventory_map_pending) wait_frame();
+    update_hero_sprites();
     /* 722A icon/remap and hero upload finish after the map becomes visible. */
     frames+=SYS_isPAL()?2:3;
     while(vtimer-menu_started<frames) wait_frame();

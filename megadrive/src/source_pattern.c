@@ -1,6 +1,6 @@
 #include "source_pattern.h"
 
-const u8 *source_pattern_decode(const u8 *source,u8 *destination,u16 address,
+const u8 *source_pattern_unpack(const u8 *source,u8 *destination,u16 address,
                                 SourceClockWork *work)
 {
     u16 plane,last=address;

@@ -25,8 +25,8 @@ try {
     # Launch by name inside MSYS so old GNU make can restart after updating deps.
     & "$sdkPath/bin/sh.exe" -c 'export PATH="$3/bin:$PATH"; make -f "$1/makefile.gen" "GDK=$1" "JAVA=$2" -j2' build $sdkPath $Java $sdkUnix
     if ($LASTEXITCODE -ne 0) { throw 'SGDK build failed' }
-    # Native code and assets now require a 1 MiB cartridge image.
-    & $Java -jar "$sdkPath/bin/sizebnd.jar" 'out/release/rom.bin' '-sizealign' '1048576'
+    # Native code and conversion tables now require a 2 MiB cartridge image.
+    & $Java -jar "$sdkPath/bin/sizebnd.jar" 'out/release/rom.bin' '-sizealign' '2097152'
     if ($LASTEXITCODE -ne 0) { throw 'ROM padding/checksum failed' }
     # Mega Drive checksum: additive big-endian words from 0x200 to ROM end.
     & python "$PSScriptRoot/tools/finalize_md_rom.py" 'out/release/rom.bin'

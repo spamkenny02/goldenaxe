@@ -7736,5 +7736,72 @@
         "sha256": "7586864742115b785af2fabc6984daabf9f67cf4c70c1b1b0d649d217406550c"
       }
     ]
+  },
+  {
+    "version": 276,
+    "sha256": "24852c80059b4613d1f69c6984ba9ca5a459f72de2cfe9493b0f69a6f6815e53",
+    "bytes": 2097152,
+    "archived_utc": "2026-10-24T09:08:35.742520+00:00",
+    "rom": "v0276-24852c80/gaw-megadrive-v0276.bin",
+    "notes": "Compilation intermédiaire ; remplacée par v0280 après réglage de la publication de l’inventaire.",
+    "validation": "build_only",
+    "reports": []
+  },
+  {
+    "version": 277,
+    "sha256": "afe617fc785869818d210509536e5c5d28aaaefc996418314d2da3e18515832c",
+    "bytes": 2097152,
+    "archived_utc": "2026-10-24T09:15:08.270155+00:00",
+    "rom": "v0277-afe617fc/gaw-megadrive-v0277.bin",
+    "notes": "Compilation intermédiaire ; remplacée par v0280 après réglage de la publication de l’inventaire.",
+    "validation": "build_only",
+    "reports": []
+  },
+  {
+    "version": 278,
+    "sha256": "a43ee1a460ec577e213e9eaa824635f01cc48b7ff914c6fc64d7595543b25901",
+    "bytes": 2097152,
+    "archived_utc": "2026-10-24T09:17:25.471777+00:00",
+    "rom": "v0278-a43ee1a4/gaw-megadrive-v0278.bin",
+    "notes": "Compilation intermédiaire ; remplacée par v0280 après réglage de la publication de l’inventaire.",
+    "validation": "build_only",
+    "reports": []
+  },
+  {
+    "version": 279,
+    "sha256": "36968918e0073ce29bcb63d4cd8271cba8f5cc4f044b5860b10c8b75734d507e",
+    "bytes": 2097152,
+    "archived_utc": "2026-10-24T09:19:41.524132+00:00",
+    "rom": "v0279-36968918/gaw-megadrive-v0279.bin",
+    "notes": "Compilation intermédiaire ; remplacée par v0280 après réglage de la publication de l’inventaire.",
+    "validation": "build_only",
+    "reports": []
+  },
+  {
+    "version": 280,
+    "sha256": "b87f2bd33baab5539503caf9f02441ca761a40938f4ecca8fc73e8a7e76d8bb8",
+    "bytes": 2097152,
+    "archived_utc": "2026-10-24T09:20:48.271911+00:00",
+    "rom": "v0280-b87f2bd3/gaw-megadrive-v0280.bin",
+    "notes": "Conversion rapide des cartes intégrée ; inventaire publié au VBlank ; cadence du titre et six parcours inventaire comparés à la SMS. Campagne complète et horloge globale encore ouvertes.",
+    "validation": "targeted_checks_passed",
+    "reports": [
+      {
+        "file": "playable_map_conversion_v0280_report.json",
+        "sha256": "f0b92acd97e7966601a6128a8fbab6af6adb08aadc5e6ce99a8ebe67ae6e90cb"
+      },
+      {
+        "file": "inventory_publication_v0280_report.json",
+        "sha256": "8f59dd92eb2844c3f010ab7a09cfc72f504e9ae55769cf3fd2ed9ad1a790c5e7"
+      },
+      {
+        "file": "title_cadence_v0280_report.json",
+        "sha256": "1ce5d0b9ee8cda47f8a164d93212b78fe7fc4009cf287f56306aabc96fffcec5"
+      },
+      {
+        "file": "title_cadence_v0280_pal_report.json",
+        "sha256": "c3950d57bf196e5912bd29981adbc15b39a4a9843fa34761a6f04d1ca83d3970"
+      }
+    ]
   }
 ]

@@ -5,17 +5,31 @@ puis porter sa logique Z80 en code natif 68000 avec SGDK. La fidélité à la
 Master System passe avant les améliorations.
 
 <!-- ROM-RELEASE:START -->
-**Version courante : v0275 — 1024 Kio.**
+**Version courante : v0280 — 2048 Kio.**
 
-[Télécharger la ROM v0275](versions/v0275-02b597b3/gaw-megadrive-v0275.bin) · [Toutes les versions](versions/README.md)
+[Télécharger la ROM v0280](versions/v0280-b87f2bd3/gaw-megadrive-v0280.bin) · [Toutes les versions](versions/README.md)
 
 Contrôles ciblés réussis ; portage complet encore non validé.
 
-SHA-256 : `02b597b346e3518670f93e1cfc5281a9db6a6cfbfbe2a70139ef18b11f05a5c5`
-Checksum Mega Drive : `8042`
+SHA-256 : `b87f2bd33baab5539503caf9f02441ca761a40938f4ecca8fc73e8a7e76d8bb8`
+Checksum Mega Drive : `025D`
 <!-- ROM-RELEASE:END -->
 
 ## État du portage
+
+La **v0280** raccorde la conversion rapide des attributs de carte au jeu
+jouable, y compris les copies du titre. La préparation de 768 mots utilise
+86–87 % de temps CPU en moins dans les parcours mesurés. Ce chiffre concerne
+cette conversion, pas la vitesse globale du jeu. La ROM passe à **2 Mio**.
+
+L'inventaire prépare sa carte en avance et la publie au VBlank à une échéance
+explicite. Les six parcours naturels extérieur/deux premières maisons en
+PAL/NTSC retrouvent les mêmes fenêtres noires et la même reprise que la SMS,
+avec le HUD conservé et sans bruitage de fermeture. Le titre conserve les
+33 poses de cape à six frames, les rampes et les huit lignes du logo à une
+frame par ligne ; 40 comparaisons d'images normalisées passent en PAL/NTSC.
+Voir les [changements et limites de la v0280](analysis/map_conversion_v0280.md).
+
 
 Pour les six destinations extérieures testées, la chaîne native couvre le
 chargement, le héros, les scripts, la musique, le rallumage, le fondu et les
@@ -29,14 +43,14 @@ ne rechargent aucune tuile, aucun mot de carte ni aucun clone. Le suivi partagé
 par les IRQ et les contours passe aussi ses contrôles source et 68000.
 
 Ces comparaisons valident les données et les images maintenues, sans encore
-prouver les échéances de balayage. La cadence physique et l’intégration naturelle
-restent à raccorder au jeu. La ROM jouable reste **v0275**, avec le hasard SGDK
-provisoire.
+prouver les échéances de balayage. La cadence physique et l’intégration naturelle de ce rendu complet
+restent à raccorder au jeu. La v0280 utilise sa conversion des attributs de
+carte, mais pas encore ce rendu complet ; le hasard SGDK reste provisoire.
 Voir [le rendu incrémental et sa démonstration](analysis/md_source_room_delta.md),
 [la chaîne complète avec contours](analysis/native_room_contours.md) et
 [le premier rendu SGDK](analysis/md_source_room_frame.md).
 
-État au **23 octobre 2026** : la ROM jouable recommandée est **v0275**.
+La **v0275** avait corrigé le domaine des tirages de direction des ennemis.
 Les choix de direction des ennemis 47/48/49 et du boss 65 utilisent désormais
 la plage 0–127 des lectures directes de R dans le démarrage SMS de référence.
 Le port fournissait parfois 128–255, ce qui changeait la branche du sélecteur

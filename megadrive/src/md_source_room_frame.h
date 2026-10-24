@@ -7,7 +7,8 @@
 typedef struct {
  SourceSmsSprite8 sprites;
  u32 patterns[64];u16 foreground[32],background[32],palette[64];u8 sat[192];
- u16 error,ready,uploaded_patterns,uploaded_words,uploaded_clones;u8 regs[4];
+ u8 background_palette[96],pattern_valid[64],background_metadata[8];
+ u16 error,ready,uploaded_patterns,uploaded_words,uploaded_clones,uploaded_background;u8 regs[4];
 } MdSourceRoomFrame;
 enum {MD_SOURCE_ROOM_OK,MD_SOURCE_ROOM_INVALID};
 /* Static room presentation: source name table3800, SAT3F00/3F80,8x8 sprites,

@@ -61,7 +61,7 @@ def main():
         '-I',str(sdk/'inc'),str(ROOT/'megadrive/src/source_pattern.c'),'-o',str(folder/'patterns.dll')],
         env=env,capture_output=True,text=True)
     assert built.returncode==0,built.stderr
-    dll=c.CDLL(str(folder/'patterns.dll'));fn=dll.source_pattern_decode
+    dll=c.CDLL(str(folder/'patterns.dll'));fn=dll.source_pattern_unpack
     fn.argtypes=[c.POINTER(c.c_uint8),c.POINTER(c.c_uint8),c.c_uint16,c.POINTER(Work)]
     fn.restype=c.c_void_p;cases=[]
     for stream,address in vectors():

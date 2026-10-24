@@ -1470,3 +1470,22 @@ IRQ dirty coverage:288 original source cases plus576 compiled68000 cases,
 including flags. Marked contours64 Z80/C cases and full24 source/48 compiled
 68000 chains pass with accumulated flags. Physical scanline deadlines and
 natural playable integration remain open. Still v0275,275 ROMs preserved.
+
+
+2026-10-24: PLAYABLE v0280, not just diagnostic kernels.
+Integrated existing source_class0_video_map into draw_map and title copy_rows.
+Attribute conversion CPU preparation is 86-87 percent shorter, not global FPS.
+2MiB cartridge/header/build aligned. Legacy source_pattern_decode renamed
+source_pattern_unpack to avoid the live clock decoder symbol collision.
+Inventory map preparation is separate from publication: owned IRQ DMA at
+an explicit deadline, before PSG. Six natural SMS/MD menu routes pass exact
+black windows, HUD retention, silent close and resume in NTSC/PAL. Title
+cape/fades/logo cadence and40 normalized image checks pass in both regions.
+Eight old/new natural gameplay routes preserve selected gameplay/progression
+state and music command order; diagnostic VRAM/image/audio phase differences
+are retained, not claimed equal. Campaign/global clock/RNG remain open.
+Incremental room renderer optimized separately:268 held images pass,376
+persistent sprite-cache cases plus701 independent sprite cases pass. Real
+scroll3051 remains about437/431 lines; it is NOT safe to replace main as-is.
+Next: continue integration with explicit source publication deadlines; then
+validate natural campaign beyond the second boss. Do not mark goal complete.
