@@ -29,6 +29,13 @@ avec le HUD conservé et sans bruitage de fermeture. Le titre conserve les
 33 poses de cape à six frames, les rampes et les huit lignes du logo à une
 frame par ligne ; 40 comparaisons d'images normalisées passent en PAL/NTSC.
 Voir les [changements et limites de la v0280](analysis/map_conversion_v0280.md).
+Le parcours naturel de cette version récupère la hache, l'équipe, termine le
+premier boss, prend le cristal et ressort sans décès. La relecture à commandes
+fixes reproduit toute la RAM finale et l'image ; les 256 indicateurs et les
+1 280 octets de carte correspondent à la référence SMS. Les essais du deuxième
+donjon restent des échecs du pilote, avec un boss atteint mais aucun deuxième
+cristal validé. Voir [le parcours v0280](analysis/natural_campaign_v0280.md).
+
 
 
 Pour les six destinations extérieures testées, la chaîne native couvre le

@@ -1489,3 +1489,20 @@ persistent sprite-cache cases plus701 independent sprite cases pass. Real
 scroll3051 remains about437/431 lines; it is NOT safe to replace main as-is.
 Next: continue integration with explicit source publication deadlines; then
 validate natural campaign beyond the second boss. Do not mark goal complete.
+
+
+2026-10-24: current v0280 natural campaign refreshed after old v0274 full
+controls diverged before axe. Replayed first entrance4258 successfully;
+regenerated axe9006,first boss/crystal13775,first exit16003 without deaths.
+Fixed cold replay through16153 reproduces all65536RAM bytes and final PNG.
+256persistent flags and1280map bytes equal archived original SMS first exit.
+New source-driven pilot reads original descriptor attack rectangles, optional
+walking settlement and trap geometry; game binary/code unchanged at b87f2bd3.
+Seven D2 trials (MD/SMS) did NOT collect second crystal. Best current MD reaches
+boss63 in144 but with1HP, minimum observed bossHP28. No port bug inferred.
+Conservative8-frame prediction/settled attacks worsened the route; preserve
+successful pilot baseline and experiments in immutable evidence. Current
+collision-aim defaults use current trap rectangles, settlement optional.
+Next: preserve more health/get supplies on the natural D2 route, then finish
+second boss/crystal/exit on both systems. Campaign/global R/IRQ/audio remain
+open. No new ROM for controller-only evidence; v0280 remains current.
