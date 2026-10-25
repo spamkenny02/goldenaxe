@@ -18,13 +18,13 @@ from assisted_prefix import prefix_writes, recording, episodes, EPISODE_KEYS
 def main():
     parser = argparse.ArgumentParser(add_help=False)
     parser.add_argument('--boss-room', type=lambda value: int(value, 0), required=True)
-    parser.add_argument('--planner', choices=['beam', 'navigation', 'ordinary', 'side', 'escape'], default='beam')
+    parser.add_argument('--planner', choices=['beam', 'navigation', 'ordinary', 'side', 'escape', 'cautious'], default='beam')
     parser.add_argument('--boss-frames', type=int, help='Bound this diagnostic after normal combat starts')
     parser.add_argument('--world-route', action='store_true', help='Apply the same guard to an exterior route')
     parser.add_argument('--new-assistance-episode', action='store_true', help='Start the next approach after a verified dungeon exit')
     args, remaining = parser.parse_known_args()
     sms = '--sms' in remaining
-    assert not sms or args.planner in ('ordinary', 'beam', 'navigation'), 'Side/escape wrappers currently write MD report paths'
+    assert not sms or args.planner in ('ordinary', 'beam', 'navigation', 'cautious'), 'Side/escape wrappers currently write MD report paths'
     assert '--lookahead-rooms' not in remaining, 'Planning is restricted to the unassisted boss'
     assert args.boss_frames is None or args.boss_frames > 0
     if args.world_route:
@@ -151,6 +151,9 @@ def main():
         elif args.planner == 'side':
             import natural_boss_side_planner
             natural_boss_side_planner.main()
+        elif args.planner == 'cautious':
+            import natural_boss_cautious_planner
+            natural_boss_cautious_planner.main()
         elif args.planner == 'navigation':
             import natural_combat_navigation
             natural_combat_navigation.main()

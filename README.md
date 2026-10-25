@@ -17,6 +17,18 @@ Checksum Mega Drive : `DD1D`
 
 ## État du portage
 
+Le **deuxième donjon passe aussi sur la v0287** : approche invincible autorisée,
+puis boss sans aide et sans perte de PV, deuxième cristal et sortie à 48/48 PV.
+Les relectures reproduisent toute la RAM et l'image finales ; les indicateurs,
+la carte et les objets possédés correspondent à la référence SMS. La marge
+observée de pile reste de 412 octets sur ce parcours de 35 662 frames.
+La SMS originale termine aussi son troisième donjon et déploie réellement
+la corde sur une falaise ; cette utilisation en parcours MD reste à vérifier.
+Voir le [nouveau jalon de campagne](analysis/campaign_v0287_progress.md).
+Le binaire v0287 est inchangé : ces preuves supplémentaires ne créent pas de
+nouveau numéro de ROM.
+
+
 La **v0287** ajoute l'utilisation de la **corde magique**, jusqu'ici récupérable
 mais sans effet dans le portage. Elle se déploie progressivement par rangées de
 huit pixels, avec les conditions et les transformations de terrain du Z80.
