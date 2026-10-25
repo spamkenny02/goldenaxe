@@ -55,7 +55,8 @@ essais bornés a été corrigée.
 Le profil v0285 a relevé sept intervalles de deux frames entre étapes de
 simulation sur 443 frames de ce combat. L’optimisation v0286 réduit un coût
 de préparation, mais la disparition de ces sept intervalles reste à vérifier
-sur un nouveau combat v0286. Aucun deuxième cristal n’est encore validé.
+sur un nouveau combat v0286. La validation initiale ne couvrait pas encore le deuxième cristal ; le
+[parcours complémentaire](d2_campaign_v0286.md) le vérifie désormais.
 
 Preuves : [rapport v0286](hero_pattern_v0286_report.json),
 [mesure des poses](../tools/validate_hero_pattern_fast.py),

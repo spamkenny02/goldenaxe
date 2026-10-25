@@ -23,8 +23,16 @@ et NTSC. Le premier donjon est rejoué sans décès : hache équipée, boss,
 cristal et sortie. La RAM et l’image finales sont reproduites, les
 indicateurs et la carte correspondent à la SMS, et la marge de pile
 observée reste de 412 octets. Ce gain concerne la préparation du héros,
-pas les FPS globaux. Le deuxième boss et la campagne restent à terminer.
+pas les FPS globaux. La campagne complète reste à terminer.
 Voir les [preuves et limites de la v0286](analysis/hero_pattern_v0286.md).
+
+Le deuxième donjon est maintenant terminé sur la **v0286 et la SMS originale**
+dans les essais à approche invincible autorisée. Cette aide est coupée avant
+le boss : combat, deuxième cristal et sortie passent ensuite avec les règles
+normales. La capacité atteint 48 PV. Les relectures reproduisent toute la RAM
+et l’image sur chaque machine ; les 256 indicateurs et les 1 280 octets de
+carte correspondent entre SMS et MD. Voir le
+[parcours et ses limites](analysis/d2_campaign_v0286.md).
 
 La **v0285** corrige un débordement de pile confirmé dans la zone DMA et
 une déchirure d’une frame à l’ouverture des dialogues. Les buffers de dialogue

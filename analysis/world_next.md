@@ -1577,3 +1577,27 @@ D2 historical v285 escape07 preserves32HP for1800bossframes,boss30->16.
 No second crystal. Baseline v285 has7 two-frame tick gaps over443bossframes;
 no claim v286 removes them all. Continue fresh v286 campaign and D2 fight.
 Full game/sourceRNG/IRQ/waveform/hardware remain unfinished.
+
+
+2026-10-25 / D2 campaign on unchanged v0286 (611e3db4).
+Fresh fairy dialogue/reward/exit completes naturally,40HP. User-authorized
+approach guard then preserves40HP throughD2 key1->2 and boss entry.
+Guard writes only hurt counter; lastMD write27924,first combat27981,hurt0.
+Navigation pilot wins boss63,collects crystal,48maxHP; exitsD6 at32419
+with45HP. No deaths,no writes after boss entry,no health injections.
+Original SMS also completes same route,boss/crystal/exit,48HP outsideD6.
+Official cold fixed-button/logged-approach replays match65536/8192RAM and
+PNG respectively. Cross-system256persistent flags/1280map bytes exact.
+D1/D2 crystal bytes80/80. This is assisted approach evidence,not a natural
+full campaign. Both models predict every RAM byte across74MD/75SMS windows.
+Every-instruction MD observer through32419 retainsFFF79C minSP,412margin;
+heap valid and finalRAM/PNG exact. Replays logged approach explicitly.
+Boss v286 profile still3 two-frame gaps over559frames; not old/newFPS proof.
+New prefix protocol requires explicit flag and SHA-bound full cold proof.
+Ordinary paths reject assisted captures. SMS guard is C305 byte. Fix SMS
+planner facing field C302->C30A after historical successful trace; preserve
+old drivers. Side trial failed; redundant escape trial stopped after win.
+Next: third dungeon and quest prerequisites; new boss assistance episode
+needs separate explicit context (current helper rejects changing boss ID
+in an inherited episode). Native source clock/RNG/IRQ and full campaign
+PAL/audio waveform/hardware remain unfinished. No new ROM for tools only.

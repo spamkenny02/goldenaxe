@@ -20,7 +20,7 @@ class BeamPlanner(generic.CombatPlanner):
  def fields(self,r):
   v=super().fields(r)
   if self.sms:
-   v.update(hero=r[0x301],direction=r[0x302],counter=r[0x304],hurt=r[0x305],projectiles=generic.base.sha(r[0x780:0x900]))
+   v.update(hero=r[0x301],direction=r[0x30a],counter=r[0x304],hurt=r[0x305],projectiles=generic.base.sha(r[0x780:0x900]))
   else:
    word=lambda n:int.from_bytes(bytes(r[(self.sy[n]+i)^1] for i in range(2)),'big')
    v.update(hero=word('hero_state'),direction=word('hero_direction'),counter=word('hero_counter'),hurt=word('hero_hurt'),projectiles=generic.base.sha(bytes(r[(self.sy['world_actor_state']+384+i)^1] for i in range(384))))

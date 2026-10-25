@@ -7,10 +7,11 @@ import argparse, contextlib, ctypes as c, io, json, re, subprocess
 from run_core import ROOT, run
 from archive_lossless_evidence import sha
 from rebase_natural_campaign import evidence
+from assisted_prefix import prefix_writes
 
 
 def main():
- p=argparse.ArgumentParser();p.add_argument('--tag',required=True);p.add_argument('--trace',required=True);p.add_argument('--frames',type=int);p.add_argument('--build-dir');p.add_argument('--all-instructions',action='store_true');a=p.parse_args()
+ p=argparse.ArgumentParser();p.add_argument('--tag',required=True);p.add_argument('--trace',required=True);p.add_argument('--frames',type=int);p.add_argument('--build-dir');p.add_argument('--all-instructions',action='store_true');p.add_argument('--logged-assistance',action='store_true',help='Replay only verified,logged approach assistance');a=p.parse_args()
  folder=ROOT/'validation'/a.tag;assert not folder.exists();folder.mkdir(parents=True)
  build=ROOT/a.build_dir if a.build_dir else ROOT/'megadrive/out/release';rom=build/'rom.bin'
  for name in ['rom.bin','rom.out','symbol.txt']:(folder/name).write_bytes((build/name).read_bytes())
@@ -30,7 +31,7 @@ def main():
   dll.gaw_stack_sp.restype=c.c_uint;dll.gaw_stack_at.restype=c.c_uint;dll.gaw_stack_reset()
  dll.gaw_md_config.argtypes=[c.c_uint,c.POINTER(c.c_uint)];dll.gaw_md_event_count.restype=c.c_uint;dll.gaw_md_event_data.restype=c.POINTER(c.c_uint)
  pcs=(c.c_uint*len(watched))(*watched);dll.gaw_md_config(len(watched),pcs)
- source=ROOT/'validation'/a.trace;capture=json.loads(evidence(source/'capture.json'));controls=json.loads(evidence(source/'controls.json'));end=a.frames or capture['frames']
+ source=ROOT/'validation'/a.trace;capture=json.loads(evidence(source/'capture.json'));controls=json.loads(evidence(source/'controls.json'));end=a.frames or capture['frames'];writes=prefix_writes(source,capture,a.logged_assistance)
  presses=[(x,min(y,end),b) for x,y,b in capture['presses'] if x<=end]
  for i,row in enumerate(controls):
   stop=min(end,controls[i+1]['frame']-1 if i+1<len(controls) else end)
@@ -68,8 +69,8 @@ def main():
   if signature!=previous_heap:
    heap_changes.append(dict(frame=f,end=heapend,valid=valid,chain=chain));previous_heap=signature
   if f>200 and not valid and len(error)<8:error.append(dict(frame=f,end=heapend,chain=chain))
- with contextlib.redirect_stdout(io.StringIO()):run(rom,end,folder,{end},presses,skip_intro=False,core=core,ram_observer=observe,core_options=capture['core_options'])
- result=dict(md_sha256=sha(rom.read_bytes()),rom_sha256=sha(rom.read_bytes()),core_sha256=sha(core.read_bytes()),trace=a.trace,frames=end,observed_entries=observed,minimum_sp=min(v['sp'] for v in minima.values()),minima=minima,all_instructions=a.all_instructions,instruction_minima=instruction_minima,heap_changes=heap_changes,invalid_heap_examples=error,gameplay_milestones=milestones,read_only=True,limits=['Selected entries bound depth only; when all_instructions is true the additional observer records SP before each normal m68k_run instruction, starting at frame14 after hardware initialization. Scope is this recorded route, not every campaign path. Heap validity uses the SGDK block chain, not arbitrary free-byte equality. All inputs replay from cold boot.'])
+ with contextlib.redirect_stdout(io.StringIO()):run(rom,end,folder,{end},presses,skip_intro=False,core=core,ram_writes=writes,ram_observer=observe,core_options=capture['core_options'])
+ result=dict(md_sha256=sha(rom.read_bytes()),rom_sha256=sha(rom.read_bytes()),core_sha256=sha(core.read_bytes()),trace=a.trace,frames=end,observed_entries=observed,minimum_sp=min(v['sp'] for v in minima.values()),minima=minima,all_instructions=a.all_instructions,instruction_minima=instruction_minima,heap_changes=heap_changes,invalid_heap_examples=error,gameplay_milestones=milestones,read_only=True,ram_injections=bool(writes),logged_assistance_replayed=bool(writes),limits=['Selected entries bound depth only; when all_instructions is true the additional observer records SP before each normal m68k_run instruction, starting at frame14 after hardware initialization. Scope is this recorded route, not every campaign path. Heap validity uses the SGDK block chain, not arbitrary free-byte equality. All inputs replay from cold boot.'])
  (folder/'stack_report.json').write_bytes((json.dumps(result,indent=2)+'\n').encode());print(json.dumps({k:v for k,v in result.items() if k!='heap_changes'},indent=2))
 
 
