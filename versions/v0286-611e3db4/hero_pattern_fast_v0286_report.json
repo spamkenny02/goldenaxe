@@ -1,0 +1,33 @@
+{
+  "passed": true,
+  "md_sha256": "611e3db48f20f3317faef9b5145160dd944589b99e0e3b9790fd4ec1b625fd4a",
+  "baseline_sha256": "9961a313f9387dea5e088a475ae5734a230a7bb22c2992143e3ebe9904eca023",
+  "cases": [
+    {
+      "region": "auto",
+      "frames": 561,
+      "hero_pose_and_packed_pixels_exact": true,
+      "old_median_master_cycles": 148176.0,
+      "new_median_master_cycles": 123060.0,
+      "reduction_percent": 16.95,
+      "old_spans": 48,
+      "new_spans": 48
+    },
+    {
+      "region": "pal",
+      "frames": 561,
+      "hero_pose_and_packed_pixels_exact": true,
+      "old_median_master_cycles": 148176.0,
+      "new_median_master_cycles": 123060.0,
+      "reduction_percent": 16.95,
+      "old_spans": 48,
+      "new_spans": 48
+    }
+  ],
+  "read_only": true,
+  "full_game_validated": false,
+  "limits": [
+    "Function spans exclude overlapping IRQs and unchanged-pose calls. This is hero preparation CPU cost, not global FPS or complete source-clock parity.",
+    "Natural scripted hero/three-scroll sequence only; long campaign recordings may diverge and must be regenerated."
+  ]
+}

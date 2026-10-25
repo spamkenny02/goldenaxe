@@ -14,6 +14,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--trace', required=True)
     parser.add_argument('--end-frame', type=int)
+    parser.add_argument('--rom', help='Explicit numbered historical ROM; SHA must match the trace')
     args = parser.parse_args()
     folder = (ROOT / 'validation' / args.trace).resolve()
     assert folder.is_relative_to(ROOT / 'validation')
@@ -34,7 +35,7 @@ def main():
               for row in assistance['writes'] if row['frame'] <= end]
     assert all(frame <= release for frame, _, _ in writes)
     assert capture['test_ram_writes'] == [dict(frame=f, address=a, byte_count=len(data)) for f, a, data in writes]
-    rom = ROOT / 'gaw-megadrive.bin'
+    rom = ROOT / args.rom if args.rom else ROOT / 'gaw-megadrive.bin'
     assert sha(rom.read_bytes()) == capture['rom_sha256']
     controls = [row for row in controls if row['frame'] <= end]
     presses = [(a, min(b, end), key) for a, b, key in capture['presses'] if a <= end]

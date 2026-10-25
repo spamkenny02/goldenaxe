@@ -1560,3 +1560,20 @@ Pilot dies later; boss remains30HP, no second crystal.
 Research clone restores omitted GX refresh phase on secondary core only;
 primary getters only before assisted approach. No ROM patch/new release.
 Continue actual boss/source-clock work; full campaign remains unfinished.
+
+
+2026-10-25 / v0286 playable hero pattern preparation.
+Paired converter now used only by prepare_hero_patterns; frame publication
+and pending flags remain VBlank-owned. Full helper median148176->123060
+master cycles,16.95percent on48 changed poses/region.1122 pose/pixel frames
+match v0285. Six source timing sequences and deterministic enemies pass,
+six menus pass,308 controlled boss actor frames matchSMS.
+Regenerated ordinary D1 axe/boss/crystal/exit passes without deaths/injection.
+At16802:28/32HP,axe equipped,first crystal. Official cold fullRAM/PNG exact;
+SMS256flags/1280map exact. Every-instructionSP FFF79C,heap valid,412margin;
+observer fullRAM/PNG exact. Old v285 long fixed controls diverge: retained.
+D2 historical v285 escape07 preserves32HP for1800bossframes,boss30->16.
+225 model windows allRAM exact; official fixedRAM/PNG at32751 exact.
+No second crystal. Baseline v285 has7 two-frame tick gaps over443bossframes;
+no claim v286 removes them all. Continue fresh v286 campaign and D2 fight.
+Full game/sourceRNG/IRQ/waveform/hardware remain unfinished.

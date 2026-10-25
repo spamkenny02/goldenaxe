@@ -4,6 +4,7 @@ Chaque binaire est conserve sans ecrasement. Les controles cibles ne prouvent pa
 
 | Version | ROM | Validation | Changements | SHA-256 |
 | --- | --- | --- | --- | --- |
+| v0286 | [Telecharger](v0286-611e3db4/gaw-megadrive-v0286.bin) | targeted_checks_passed | Preparation graphique du heros: CPU median -16.95%; poses/pixels PAL/NTSC et premier donjon rejoue sans deces. Campagne incomplete. | `611e3db48f20f3317faef9b5145160dd944589b99e0e3b9790fd4ec1b625fd4a` |
 | v0285 | [Telecharger](v0285-9961a313/gaw-megadrive-v0285.bin) | targeted_checks_passed | Pile/DMA et publication VBlank des dialogues corrigees ; premier donjon et fee sans deces, controles cibles passes. Campagne complete non validee. | `9961a313f9387dea5e088a475ae5734a230a7bb22c2992143e3ebe9904eca023` |
 | v0284 | [Telecharger](v0284-f2b53757/gaw-megadrive-v0284.bin) | build_only | Compilation ; validation en attente. | `f2b537579af1459b5221ff62f516502865a7642792086f5dfb7848544540e0e8` |
 | v0283 | [Telecharger](v0283-4c861aee/gaw-megadrive-v0283.bin) | build_only | Compilation ; validation en attente. | `4c861aee8ba1af511dd11b384d00a692a69d04731d8e5a5baa492df926372e20` |

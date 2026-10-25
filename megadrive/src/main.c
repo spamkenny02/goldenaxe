@@ -1016,7 +1016,8 @@ static void prepare_hero_patterns(void)
             memcpy(sms_vram+0x3e00+n*4,source,3);source+=3;
             sms_vram[0x3e03+n*4]=0;
         }
-        convert_patterns_range(496,hero_pattern_tiles);hero_patterns_pending=TRUE;hero_loaded_pose=pose;
+        /* The following frame remains owned by wait_world_video/VBlank. */
+        convert_patterns_range_fast(496,hero_pattern_tiles);hero_patterns_pending=TRUE;hero_loaded_pose=pose;
     }
 }
 

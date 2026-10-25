@@ -5,17 +5,26 @@ puis porter sa logique Z80 en code natif 68000 avec SGDK. La fidélité à la
 Master System passe avant les améliorations.
 
 <!-- ROM-RELEASE:START -->
-**Version courante : v0285 — 2048 Kio.**
+**Version courante : v0286 — 2048 Kio.**
 
-[Télécharger la ROM v0285](versions/v0285-9961a313/gaw-megadrive-v0285.bin) · [Toutes les versions](versions/README.md)
+[Télécharger la ROM v0286](versions/v0286-611e3db4/gaw-megadrive-v0286.bin) · [Toutes les versions](versions/README.md)
 
 Contrôles ciblés réussis ; portage complet encore non validé.
 
-SHA-256 : `9961a313f9387dea5e088a475ae5734a230a7bb22c2992143e3ebe9904eca023`
-Checksum Mega Drive : `3524`
+SHA-256 : `611e3db48f20f3317faef9b5145160dd944589b99e0e3b9790fd4ec1b625fd4a`
+Checksum Mega Drive : `4D3F`
 <!-- ROM-RELEASE:END -->
 
 ## État du portage
+
+La **v0286** réduit de 16,95 % le coût CPU médian de préparation des poses
+du héros sur les séquences mesurées, avec les mêmes pixels et poses en PAL
+et NTSC. Le premier donjon est rejoué sans décès : hache équipée, boss,
+cristal et sortie. La RAM et l’image finales sont reproduites, les
+indicateurs et la carte correspondent à la SMS, et la marge de pile
+observée reste de 412 octets. Ce gain concerne la préparation du héros,
+pas les FPS globaux. Le deuxième boss et la campagne restent à terminer.
+Voir les [preuves et limites de la v0286](analysis/hero_pattern_v0286.md).
 
 La **v0285** corrige un débordement de pile confirmé dans la zone DMA et
 une déchirure d’une frame à l’ouverture des dialogues. Les buffers de dialogue
