@@ -4,6 +4,7 @@
 #include "source_class0_video.h"
 #include "actors.h"
 #include "source_room_history.h"
+#include "source_magic_rope.h"
 #include "key_redraw_cost.inc"
 #include "room_clear.inc"
 #include "room_contact.inc"
@@ -110,6 +111,7 @@ static u16 screen_spell_sprite_count;
 static volatile u16 screen_spell_pacing_error,screen_spell_model_gap,screen_spell_late_publications;
 static u16 screen_spell_clock;
 static u16 screen_spell_level; /* C090: level1/2 full-screen magic. */
+static u8 magic_rope_work[4]; /* C098..C09B, temporary room animation. */
 static u16 ice_bell_state; /* C0AC: cleared with the room's transient objects. */
 static bool return_feather_requested;
 static volatile u8 world_boss_state; /* C0AE, cleared by gem appearance. */
@@ -763,6 +765,7 @@ static void move_hero(void)
                 cache[row*4+column]=high;
             }
             apply_water_collision_cache(cache);
+            source_magic_rope_try(n,world_graphics_class,hero_items[13],hero_x>>8,hero_y>>8,scratch+0x800,magic_rope_work);
             accepted=collision_direction(n,cache);
             if(accepted>=0)
             {
@@ -1947,6 +1950,7 @@ static u8 room_history_draw(void *context)
 
 static void load_current_world_actors(u16 number)
 {
+    memset(magic_rope_work,0,sizeof(magic_rope_work));
     screen_spell_level=0;ice_bell_state=0; /* 24C5 clears C090..C0AF before object initialization. */
     boss_death_music_hold=FALSE;
     source_room_history(number,world_recent_rooms,game_save_state+0x150,room_history_draw,0);
@@ -2399,11 +2403,36 @@ static void prepare_hero_armor_palette(void)
     if(game_save_state[15] && !(world_clock()&2)) { sms_palette[22]=0x16;sms_palette[23]=1; }
 }
 
+/* 699C calls C098 animation after screen magic, before room animations.
+ * Cells change immediately at 38AC/38F6; visual rows arrive eight pixels
+ * per game tick. Publish a complete stable row for the following IRQ. */
+static void animate_magic_rope(void)
+{
+    u16 offset,row,col,n;u8 bytes[4];
+    if(!source_magic_rope_tick(scratch+0x800,scratch,magic_rope_work,&offset,bytes)) return;
+    if(offset>sizeof(sms_vram)-0x3800-4) return;
+    for(n=0;n<4;n++) sms_vram[0x3800+offset+n]=bytes[n];
+    row=offset/64;col=(offset&63)/2;
+    if(row>=20 || col>=31) return;
+    for(n=0;n<2;n++)
+    {
+        u16 word=bytes[n*2]|((u16)bytes[n*2+1]<<8),p=row*32+col+n;
+        md_map[p]=world_new_md[p]=TILE_ATTR_FULL((word>>11)&1,(word>>12)&1,(word>>10)&1,(word>>9)&1,16+(word&511));
+    }
+    world_cell_write_active=1;
+    __asm__ volatile ("" ::: "memory");
+    memcpy(world_cell_rows+row*32,world_new_md+row*32,32*sizeof(u16));
+    world_cell_rows_pending|=1UL<<row;
+    __asm__ volatile ("" ::: "memory");
+    world_cell_write_active=0;
+}
+
 /* 699C -> bank 5 BD9B, 1DF6: palette animation in normal exteriors. */
 static void animate_world_palette(void)
 {
     u16 n;
     if(screen_spell_level) run_screen_spell();
+    animate_magic_rope();
     if(world_graphics_class==1) animate_house_room();
     if(world_graphics_class==2 && !world_dungeon_dark && !(world_clock()&3))
     {

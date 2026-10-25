@@ -39,7 +39,10 @@ def main():
     # Entry is checked against actual replay RAM at prefix_end; support later dungeons.
     assert itinerary and 256<=itinerary[0]<512
     assert (256<=itinerary[-1]<512 and args.target_room<256 if args.exit_dungeon else itinerary[-1]==args.target_room)
-    assert all(abs(a-b) in [1,16] for a,b in zip(itinerary,itinerary[1:]))
+    portal_reference=json.loads((ROOT/'analysis/contact_script_reference.json').read_bytes())
+    assert portal_reference['source_sha256']==sha((ROOT/'input/original.sms').read_bytes())
+    portals={(row['room'],row['destination_room']):row for row in portal_reference['records'] if row['kind']=='moving_aligned_portal'}
+    assert all(abs(a-b) in [1,16] or (a,b) in portals for a,b in zip(itinerary,itinerary[1:]))
     rush_rooms={int(x,0) for x in args.rush_rooms.split(',') if x}
     itinerary_index=0
     puzzle_reference=json.loads((ROOT/'analysis/room_puzzles_reference.json').read_bytes())
@@ -232,6 +235,12 @@ def main():
             point=next((x,y) for y in range(8,169,8) for x in range(8,249,8) if (((y-12)&248)<<3)+(((x-12)&255)>>2&62)+126==coordinate)
             if p==point:buttons=[4];return buttons
             goal=lambda q:q==point
+        elif itinerary_index+1<len(itinerary) and (state['room'],itinerary[itinerary_index+1]) in portals:
+            portal=portals[state['room'],itinerary[itinerary_index+1]]
+            coordinate=portal['coordinate']
+            point=next((x,y) for y in range(8,169,8) for x in range(8,249,8) if (((y-12)&248)<<3)+(((x-12)&255)>>2&62)+126==coordinate)
+            if p==point:last_direction=1;buttons=[5];return buttons # leave/re-enter the moving-contact point
+            goal=lambda q:q==point
         elif itinerary_index+1<len(itinerary):
             delta=itinerary[itinerary_index+1]-state['room'];direction={-16:0,16:1,-1:2,1:3}[delta]
             goal=lambda q:q==[(128,8),(128,168),(8,88),(248,88)][direction]
@@ -246,7 +255,7 @@ def main():
                 puzzle_goal=state['room'],point
                 if p==point:buttons=[4];return buttons
                 route=alternate
-        if route is None and not enemies and itinerary_index+1<len(itinerary) and state['keys']:
+        if route is None and not enemies and itinerary_index+1<len(itinerary) and state['keys'] and (state['room'],itinerary[itinerary_index+1]) not in portals:
             delta=itinerary[itinerary_index+1]-state['room'];direction={-16:0,16:1,-1:2,1:3}[delta]
             probe=[(128,40),(128,144),(32,88),(224,88)][direction]
             aligned=lambda q: q[0]==probe[0] and abs(q[1]-probe[1])<=7 if direction<2 else q[1]==probe[1] and abs(q[0]-probe[0])<=7

@@ -7,7 +7,7 @@ from validate_playable_sprite_limit import symbols
 def evidence(path):
  if path.exists():return path.read_bytes()
  name=path.relative_to(ROOT).as_posix()
- for folder in ['fairy-campaign-v0280','natural-campaign-v0280','stack-release-v0285','d2-progress-v0285','hero-pattern-v0286','d2-campaign-v0286']:
+ for folder in ['fairy-campaign-v0280','natural-campaign-v0280','stack-release-v0285','d2-progress-v0285','hero-pattern-v0286','d2-campaign-v0286','magic-rope-v0287']:
   archive=ROOT/'analysis'/folder
   if not (archive/'manifest.json').exists():continue
   manifest=json.loads((archive/'manifest.json').read_bytes())

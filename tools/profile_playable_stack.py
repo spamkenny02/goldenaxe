@@ -32,6 +32,7 @@ def main():
  dll.gaw_md_config.argtypes=[c.c_uint,c.POINTER(c.c_uint)];dll.gaw_md_event_count.restype=c.c_uint;dll.gaw_md_event_data.restype=c.POINTER(c.c_uint)
  pcs=(c.c_uint*len(watched))(*watched);dll.gaw_md_config(len(watched),pcs)
  source=ROOT/'validation'/a.trace;capture=json.loads(evidence(source/'capture.json'));controls=json.loads(evidence(source/'controls.json'));end=a.frames or capture['frames'];writes=prefix_writes(source,capture,a.logged_assistance)
+ if writes:assert sha(rom.read_bytes())==capture['rom_sha256'],'Logged assistance uses build-specific RAM addresses and requires the exact recorded ROM'
  presses=[(x,min(y,end),b) for x,y,b in capture['presses'] if x<=end]
  for i,row in enumerate(controls):
   stop=min(end,controls[i+1]['frame']-1 if i+1<len(controls) else end)

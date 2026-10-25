@@ -1,0 +1,494 @@
+{
+  "passed": true,
+  "md_sha256": "58068350382a19ddc73a62eb747e42d978c36a1daf3c87f819e921f391b0065d",
+  "version": 287,
+  "source_rules": {
+    "passed": true,
+    "cases": 2176,
+    "tries": 1536,
+    "animation_rows": 640,
+    "source_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+    "module_sha256": "ae6a85a73f7d9d6c0094725306068963eee1285299d3e582be524d3b7615ae1f",
+    "unchanged_source": [
+      "38AC..3939",
+      "6D2C..6D53",
+      "6DA6..6DE9",
+      "232F cell lookup"
+    ],
+    "checked": [
+      "all256 cells",
+      "all4 work bytes",
+      "entire1280-byte software map on drawing"
+    ],
+    "limits": [
+      "Controlled RAM inputs and boot wrapper, not a natural campaign proof.",
+      "Native VBlank publication and actual game rope use require integrated tests."
+    ]
+  },
+  "production_rope": [
+    {
+      "region": "ntsc",
+      "direction": 0,
+      "rows": [
+        {
+          "frame": 3101,
+          "offset": 732,
+          "bytes": "be00bf00"
+        },
+        {
+          "frame": 3102,
+          "offset": 668,
+          "bytes": "ba00bb00"
+        },
+        {
+          "frame": 3103,
+          "offset": 604,
+          "bytes": "bc00bd00"
+        },
+        {
+          "frame": 3104,
+          "offset": 540,
+          "bytes": "ba00bb00"
+        },
+        {
+          "frame": 3105,
+          "offset": 476,
+          "bytes": "bc00bd00"
+        },
+        {
+          "frame": 3106,
+          "offset": 412,
+          "bytes": "ba00bb00"
+        }
+      ],
+      "animation_completed": true,
+      "cells_exact": true,
+      "work_exact": true,
+      "next_vblank_rows_exact": 6
+    },
+    {
+      "region": "ntsc",
+      "direction": 1,
+      "rows": [
+        {
+          "frame": 3101,
+          "offset": 284,
+          "bytes": "ba00bb00"
+        },
+        {
+          "frame": 3102,
+          "offset": 348,
+          "bytes": "bc00bd00"
+        },
+        {
+          "frame": 3103,
+          "offset": 412,
+          "bytes": "ba00bb00"
+        },
+        {
+          "frame": 3104,
+          "offset": 476,
+          "bytes": "bc00bd00"
+        },
+        {
+          "frame": 3105,
+          "offset": 540,
+          "bytes": "ba00bb00"
+        },
+        {
+          "frame": 3106,
+          "offset": 604,
+          "bytes": "be00bf00"
+        }
+      ],
+      "animation_completed": true,
+      "cells_exact": true,
+      "work_exact": true,
+      "next_vblank_rows_exact": 6
+    },
+    {
+      "region": "pal",
+      "direction": 0,
+      "rows": [
+        {
+          "frame": 3101,
+          "offset": 732,
+          "bytes": "be00bf00"
+        },
+        {
+          "frame": 3102,
+          "offset": 668,
+          "bytes": "ba00bb00"
+        },
+        {
+          "frame": 3103,
+          "offset": 604,
+          "bytes": "bc00bd00"
+        },
+        {
+          "frame": 3104,
+          "offset": 540,
+          "bytes": "ba00bb00"
+        },
+        {
+          "frame": 3105,
+          "offset": 476,
+          "bytes": "bc00bd00"
+        },
+        {
+          "frame": 3106,
+          "offset": 412,
+          "bytes": "ba00bb00"
+        }
+      ],
+      "animation_completed": true,
+      "cells_exact": true,
+      "work_exact": true,
+      "next_vblank_rows_exact": 6
+    },
+    {
+      "region": "pal",
+      "direction": 1,
+      "rows": [
+        {
+          "frame": 3101,
+          "offset": 284,
+          "bytes": "ba00bb00"
+        },
+        {
+          "frame": 3102,
+          "offset": 348,
+          "bytes": "bc00bd00"
+        },
+        {
+          "frame": 3103,
+          "offset": 412,
+          "bytes": "ba00bb00"
+        },
+        {
+          "frame": 3104,
+          "offset": 476,
+          "bytes": "bc00bd00"
+        },
+        {
+          "frame": 3105,
+          "offset": 540,
+          "bytes": "ba00bb00"
+        },
+        {
+          "frame": 3106,
+          "offset": 604,
+          "bytes": "be00bf00"
+        }
+      ],
+      "animation_completed": true,
+      "cells_exact": true,
+      "work_exact": true,
+      "next_vblank_rows_exact": 6
+    }
+  ],
+  "natural_d1": [
+    {
+      "trace": "validation/natural-dungeon-route/md-v0287-d1-entry01",
+      "frames": 4243,
+      "state": {
+        "room": 484,
+        "game_state": 12,
+        "hero_state": 1,
+        "counter": 0,
+        "x": 128,
+        "y": 144,
+        "health": 8,
+        "gold": 0,
+        "maze": 0,
+        "reveal_phase": 0,
+        "door_loading": 0
+      },
+      "full_ram_png_cold_replay": true
+    },
+    {
+      "trace": "validation/natural-dungeon-combat/md-auto-v0287-axe01",
+      "frames": 9724,
+      "state": {
+        "room": 438,
+        "game": 12,
+        "hero": 1,
+        "counter": 0,
+        "x": 168,
+        "y": 72,
+        "health": 24,
+        "keys": 1,
+        "audio_error": 0,
+        "room_flags": 84,
+        "dungeon": 1,
+        "progress": 0,
+        "max_health": 24,
+        "magic": 24,
+        "max_magic": 24,
+        "reward_active": 0,
+        "resume_phase": 0,
+        "door_loading": 0,
+        "first_gem": 0,
+        "weapon": 1,
+        "selected": 0,
+        "item_value": 1,
+        "inventory_slot": 0
+      },
+      "full_ram_png_cold_replay": true
+    },
+    {
+      "trace": "validation/natural-dungeon-combat/md-auto-v0287-d1-boss01",
+      "frames": 14367,
+      "state": {
+        "room": 373,
+        "game": 12,
+        "hero": 1,
+        "counter": 0,
+        "x": 128,
+        "y": 40,
+        "health": 32,
+        "keys": 0,
+        "audio_error": 0,
+        "room_flags": 20,
+        "dungeon": 1,
+        "progress": 128,
+        "max_health": 32,
+        "magic": 24,
+        "max_magic": 24,
+        "reward_active": 0,
+        "resume_phase": 0,
+        "door_loading": 0,
+        "first_gem": 128,
+        "weapon": 1,
+        "selected": 1,
+        "item_value": 0,
+        "inventory_slot": 1
+      },
+      "full_ram_png_cold_replay": true
+    },
+    {
+      "trace": "validation/natural-dungeon-combat/md-auto-v0287-d1-exit01",
+      "frames": 16129,
+      "state": {
+        "room": 185,
+        "game": 12,
+        "hero": 1,
+        "counter": 0,
+        "x": 136,
+        "y": 80,
+        "health": 32,
+        "keys": 0,
+        "audio_error": 0,
+        "room_flags": 0,
+        "dungeon": 0,
+        "progress": 0,
+        "max_health": 32,
+        "magic": 24,
+        "max_magic": 24,
+        "reward_active": 0,
+        "resume_phase": 0,
+        "door_loading": 0,
+        "first_gem": 128,
+        "weapon": 1,
+        "selected": 1,
+        "item_value": 0,
+        "inventory_slot": 1,
+        "completed_dungeon_progress": 128
+      },
+      "full_ram_png_cold_replay": true
+    }
+  ],
+  "stack": {
+    "minimum_sp": 63388,
+    "heap_boundary": 62976,
+    "observed_margin_bytes": 412,
+    "heap_valid": true,
+    "frames": 16129
+  },
+  "historical_v286_d3_rope": [
+    {
+      "trace": "validation/natural-dungeon-combat/md-auto-v0286-d3-rope01",
+      "rom_sha256": "611e3db48f20f3317faef9b5145160dd944589b99e0e3b9790fd4ec1b625fd4a",
+      "state": {
+        "room": 500,
+        "game": 12,
+        "hero": 1,
+        "counter": 0,
+        "x": 208,
+        "y": 104,
+        "health": 48,
+        "keys": 0,
+        "audio_error": 0,
+        "room_flags": 84,
+        "dungeon": 3,
+        "progress": 0,
+        "max_health": 48,
+        "magic": 24,
+        "max_magic": 24,
+        "reward_active": 0,
+        "resume_phase": 0,
+        "door_loading": 0,
+        "first_gem": 128,
+        "weapon": 1,
+        "selected": 1,
+        "item_value": 1,
+        "inventory_slot": 1
+      },
+      "approach_assisted": true,
+      "full_ram_png_cold_replay": true
+    },
+    {
+      "trace": "validation/natural-dungeon-combat/sms-auto-v0286-d3-rope01",
+      "rom_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+      "state": {
+        "room": 500,
+        "game": 12,
+        "hero": 1,
+        "counter": 0,
+        "x": 216,
+        "y": 104,
+        "health": 48,
+        "keys": 0,
+        "audio_error": 0,
+        "room_flags": 84,
+        "dungeon": 3,
+        "progress": 0,
+        "first_gem": 128,
+        "max_health": 48,
+        "magic": 24,
+        "max_magic": 24,
+        "reward_active": 0,
+        "weapon": 1,
+        "selected": 1,
+        "item_value": 1,
+        "inventory_slot": 0
+      },
+      "approach_assisted": true,
+      "full_ram_png_cold_replay": true
+    }
+  ],
+  "historical_v286_d3_cross_system": {
+    "flags_exact_bytes": 256,
+    "map_exact_bytes": 1280,
+    "inventory_exact_bytes": 17
+  },
+  "historical_v286_d3_native_failed_boss_trials": [
+    {
+      "trace": "validation/natural-dungeon-combat/md-auto-v0286-d3-boss03",
+      "failure": "continuation_route_died",
+      "state": {
+        "room": 451,
+        "game": 20,
+        "hero": 9,
+        "counter": 0,
+        "x": 216,
+        "y": 40,
+        "health": 0,
+        "keys": 0,
+        "audio_error": 0,
+        "room_flags": 16,
+        "dungeon": 3,
+        "progress": 0,
+        "max_health": 48,
+        "magic": 24,
+        "max_magic": 24,
+        "reward_active": 0,
+        "resume_phase": 0,
+        "door_loading": 0,
+        "first_gem": 128,
+        "weapon": 1,
+        "selected": 1,
+        "item_value": 0,
+        "inventory_slot": 1
+      },
+      "release_frame": 44361,
+      "first_boss_combat": {
+        "frame": 44396,
+        "health": 48,
+        "hurt": 0
+      },
+      "cold_replay_verified": false
+    },
+    {
+      "trace": "validation/natural-dungeon-combat/md-auto-v0286-d3-boss04",
+      "failure": "continuation_route_died",
+      "state": {
+        "room": 451,
+        "game": 20,
+        "hero": 9,
+        "counter": 0,
+        "x": 56,
+        "y": 40,
+        "health": 0,
+        "keys": 0,
+        "audio_error": 0,
+        "room_flags": 16,
+        "dungeon": 3,
+        "progress": 0,
+        "max_health": 48,
+        "magic": 24,
+        "max_magic": 24,
+        "reward_active": 0,
+        "resume_phase": 0,
+        "door_loading": 0,
+        "first_gem": 128,
+        "weapon": 1,
+        "selected": 1,
+        "item_value": 0,
+        "inventory_slot": 1
+      },
+      "release_frame": 44361,
+      "first_boss_combat": {
+        "frame": 44396,
+        "health": 48,
+        "hurt": 0
+      },
+      "cold_replay_verified": false
+    }
+  ],
+  "full_game_validated": false,
+  "evidence": {
+    "analysis/magic_rope_rules_report.json": "70de1ffe507e398bcc7aa0b9c4b6bef997511626c40ddb6b3cd3e719f7ab26f1",
+    "analysis/magic_rope_game_report.json": "9df106580f58ea7d7c9300d6fd6099b795918f7d0b0490344b5343a89642d3d4",
+    "megadrive/src/source_magic_rope.c": "ae6a85a73f7d9d6c0094725306068963eee1285299d3e582be524d3b7615ae1f",
+    "validation/natural-dungeon-route/md-v0287-d1-entry01/route_report.json": "c3fea109078d883637b8e778e353db927ad90ebfa569c0e0018b4125ab8b8f1e",
+    "validation/natural-dungeon-route/md-v0287-d1-entry01/capture.json": "e47d4ad0324565da5451b19064100826926b78560b01809db96d2a13cda04777",
+    "validation/natural-dungeon-route/md-v0287-d1-entry01-fixed-replay/replay_report.json": "ccaf29bf537f90ab70672bae7ef4e79b7cae5acaf43a47ee2393bb5afbf5fa64",
+    "validation/natural-dungeon-combat/md-auto-v0287-axe01/report.json": "5afd1ad8ddcda7de0a377f85d644c84019c9801d3ed558e8325e9b0feef73762",
+    "validation/natural-dungeon-combat/md-auto-v0287-axe01/capture.json": "35956cde8002d17c3f980e76b167f39143daf200b6680b636364d987adad05c7",
+    "validation/natural-dungeon-combat/md-auto-v0287-axe01-fixed-replay/replay_report.json": "56482b38abe9821b9d084f66058bd1e83de42d994d2275c5d0fc324f1e49bbfb",
+    "validation/natural-dungeon-combat/md-auto-v0287-d1-boss01/report.json": "61c2450b846452fd024445e3264525224c2124b8520b56ea6d183541e331ab48",
+    "validation/natural-dungeon-combat/md-auto-v0287-d1-boss01/capture.json": "d4f770ee4e115cbfff3af7fad9dc552f2e60c0c7b6310088fd8db7d9c893b0b0",
+    "validation/natural-dungeon-combat/md-auto-v0287-d1-boss01-fixed-replay/replay_report.json": "80fef80cf25126dc1d5fdf10b2ca18f28ee81ea905e61582f3b619ec19ed83e8",
+    "validation/natural-dungeon-combat/md-auto-v0287-d1-exit01/report.json": "cf6389366f92d04ee24176cd8472acaa417e663889362a2bb8ee7e41a95254a0",
+    "validation/natural-dungeon-combat/md-auto-v0287-d1-exit01/capture.json": "77365c96e3792d0e10ae291b28bae0ea427d5ce58a7cbdd72c8a418ad010f6b2",
+    "validation/natural-dungeon-combat/md-auto-v0287-d1-exit01-fixed-replay/replay_report.json": "bb9bcc2df99157d7fc310595ba518c714695173233213fc333b563d66fc493a2",
+    "validation/stack-v0287-d1-natural-all/stack_report.json": "bae15ef9fda9b85ce15c00bfab4041c73220c03267ab30b63806772d0e05c6cf",
+    "validation/natural-dungeon-combat/md-auto-v0286-d3-rope01/report.json": "339c27ba1cf418c20ea1b1d928687ac59de3dacbe0a326d00e21b6e402d7baf2",
+    "validation/natural-dungeon-combat/md-auto-v0286-d3-rope01/capture.json": "7926ae3addc5e4bc2f6d10252817497f422d605084dcbef8c17c4a273447d51b",
+    "validation/natural-dungeon-combat/md-auto-v0286-d3-rope01-assisted-fixed-replay-41270/replay_report.json": "059f190da1c9642271a74d4d8d94a66455d8a37da49618015372fb18256b173c",
+    "validation/natural-dungeon-combat/md-auto-v0286-d3-rope01/assistance.json": "a51dc878d964735aca79aab3225193d7627a1467832e8fc60b5bf220add50aed",
+    "validation/natural-dungeon-combat/md-auto-v0286-d3-rope01/controls.json": "a73ef2183ea6958c314cae9a687c7049bacbe85f90d5f566ab9cf2842880df50",
+    "validation/natural-dungeon-combat/md-auto-v0286-d3-rope01/ram_41270.bin": "f677fdcc318c8ee125f087d4db5e4b85ef385c0fa5eaacaacc90d3a696efec6f",
+    "validation/natural-dungeon-combat/sms-auto-v0286-d3-rope01/report.json": "9a883b186aa1c982209639b8e283a3bca398b4605667becd096763269600eb40",
+    "validation/natural-dungeon-combat/sms-auto-v0286-d3-rope01/capture.json": "a61106f0183af61c023a736afac2502022a77a0a6886b7133926a54eeba69338",
+    "validation/natural-dungeon-combat/sms-auto-v0286-d3-rope01-assisted-fixed-replay-62281/replay_report.json": "5519bcd30d8684e83c35293423263ee2a221eddc12b5e5a8737cf3c34c0184f4",
+    "validation/natural-dungeon-combat/sms-auto-v0286-d3-rope01/assistance.json": "98b4c1876619c0c46619d0f3b85f39db9a88db26342ad7f6d694dfcb0770bf72",
+    "validation/natural-dungeon-combat/sms-auto-v0286-d3-rope01/controls.json": "245ae0464e96abe290d23d5e87310afdaf7501f0aaedd936593ec9abd9fa0119",
+    "validation/natural-dungeon-combat/sms-auto-v0286-d3-rope01/ram_62281.bin": "c97283e30b2b215bba1e6b3c5a7d67fad2eba37e187c5916e4a7f546d8c1fbf0",
+    "validation/natural-dungeon-combat/sms-auto-v0286-d3-boss03/report.json": "8cc2d55f75b6ad6e83c6153c7d0d35d6e125ee061a9dc6abfa691f4ed97566ad",
+    "validation/natural-dungeon-combat/sms-auto-v0286-d3-boss03/capture.json": "11ebfea0bdc957627aad9f2445a1cbeed8396dbb2ec63dea0050e9680670da6a",
+    "validation/natural-dungeon-combat/sms-auto-v0286-d3-boss03-assisted-fixed-replay-66886/replay_report.json": "1872760b2763ce7fc7f3b5d6efad8cf12180527458071700575aada60a0092bd",
+    "validation/natural-dungeon-combat/md-auto-v0286-d3-boss03/report.json": "d63deb38a0cab368213feb00e1325a3c8520b5ae882613e5c7afd1d4e3b00679",
+    "validation/natural-dungeon-combat/md-auto-v0286-d3-boss03/assistance.json": "677e2d5e9dbb51271053d35e1d7c63060d3a172a974b45ab1dd4a4502d2ac9bc",
+    "validation/natural-dungeon-combat/md-auto-v0286-d3-boss04/report.json": "f5520d567c9c07121d787c823151b15ec3dcfaed2687e007cbd28618b2a89dc5",
+    "validation/natural-dungeon-combat/md-auto-v0286-d3-boss04/assistance.json": "488f98f220dababb2bc1a01c887af388d19a79c0b984ca1bea1f743f3f5ecd05"
+  },
+  "limits": [
+    "Controlled rope fixtures validate original terrain logic, byte state and next-VBlank tile publication in PAL/NTSC; natural rope deployment and hardware remain unvalidated.",
+    "D1 passed naturally on v287; D2 and D3 rope progression cited here belong to historical v286, not v287.",
+    "D3 source boss victory passed fixed replay; native v286 boss trials died. No D3 native boss victory is claimed and no source/port AI bug is inferred solely from different fights.",
+    "The obsolete v286 fixed D1 controls failed to reach the target on v287; new adaptive ordinary controls were recorded and independently replayed.",
+    "Full campaign, source RNG/R/IRQ integration, global timing, waveform and hardware parity remain incomplete."
+  ]
+}

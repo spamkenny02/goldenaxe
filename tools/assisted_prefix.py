@@ -4,6 +4,17 @@ from pathlib import Path
 from run_core import ROOT
 from archive_lossless_evidence import sha
 
+EPISODE_KEYS = ['activation_after_frame', 'boss_room', 'first_boss_entry',
+                'release_write_frame', 'first_boss_combat', 'first_boss_damage']
+
+
+def episodes(assist, capture):
+    if 'episodes' in assist:
+        result = assist['episodes']
+        assert result and all(result[-1][key] == assist[key] for key in EPISODE_KEYS)
+        return result
+    return [dict(**{key: assist[key] for key in EPISODE_KEYS}, end_frame=capture['frames'] + 1)]
+
 
 def recording(folder, capture):
     folder = folder.resolve()
@@ -21,13 +32,23 @@ def recording(folder, capture):
     assert all(0 < frame <= capture['frames'] + 1 for frame, _, _ in writes)
     assert writes == sorted(writes)
     assert capture['test_ram_writes'] == [dict(frame=f, address=a, byte_count=len(data)) for f, a, data in writes]
-    release = assist['release_write_frame']
-    if release is not None:
-        assert writes[-1][0] == release and writes[-1][2] == zero
-        assert all(frame <= release for frame, _, _ in writes)
-    if assist['first_boss_combat'] is not None:
-        assert release < assist['first_boss_combat']['frame']
-        assert assist['first_boss_combat']['hurt'] == 0
+    previous_end = 0
+    covered = 0
+    for episode in episodes(assist, capture):
+        begin, end = episode['activation_after_frame'], episode['end_frame']
+        assert previous_end <= begin < end <= capture['frames'] + 1
+        local = [(f, a, data) for f, a, data in writes if begin < f <= end]
+        assert local
+        release = episode['release_write_frame']
+        if release is not None:
+            assert local[-1][0] == release and local[-1][2] == zero
+            assert all(frame <= release for frame, _, _ in local)
+        if episode['first_boss_combat'] is not None:
+            assert begin < release < episode['first_boss_combat']['frame'] <= end
+            assert episode['first_boss_combat']['hurt'] == 0
+        covered += len(local)
+        previous_end = end
+    assert covered == len(writes), 'All writes must belong to a declared approach episode'
     return assist, [(f, a, data) for f, a, data in writes if f <= capture['frames']]
 
 

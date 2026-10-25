@@ -5,17 +5,37 @@ puis porter sa logique Z80 en code natif 68000 avec SGDK. La fidélité à la
 Master System passe avant les améliorations.
 
 <!-- ROM-RELEASE:START -->
-**Version courante : v0286 — 2048 Kio.**
+**Version courante : v0287 — 2048 Kio.**
 
-[Télécharger la ROM v0286](versions/v0286-611e3db4/gaw-megadrive-v0286.bin) · [Toutes les versions](versions/README.md)
+[Télécharger la ROM v0287](versions/v0287-58068350/gaw-megadrive-v0287.bin) · [Toutes les versions](versions/README.md)
 
 Contrôles ciblés réussis ; portage complet encore non validé.
 
-SHA-256 : `611e3db48f20f3317faef9b5145160dd944589b99e0e3b9790fd4ec1b625fd4a`
-Checksum Mega Drive : `4D3F`
+SHA-256 : `58068350382a19ddc73a62eb747e42d978c36a1daf3c87f819e921f391b0065d`
+Checksum Mega Drive : `DD1D`
 <!-- ROM-RELEASE:END -->
 
 ## État du portage
+
+La **v0287** ajoute l'utilisation de la **corde magique**, jusqu'ici récupérable
+mais sans effet dans le portage. Elle se déploie progressivement par rangées de
+huit pixels, avec les conditions et les transformations de terrain du Z80.
+Les 2 176 cas comparés au code SMS original passent ; l'intégration et les
+24 publications de rangée au VBlank sont vérifiées en PAL/NTSC, dans les deux
+sens. Ces essais de corde utilisent des situations contrôlées.
+
+Le premier donjon passe sur cette ROM sans aide ni décès : hache équipée,
+boss, cristal et sortie à 32 PV. Les nouvelles commandes se rejouent depuis
+le démarrage avec toute la RAM et l'image finales identiques. La marge de
+pile observée reste de 412 octets sur ce parcours.
+
+Sur la **v0286 historique**, le troisième donjon atteint le portail et la
+corde sur les deux systèmes, avec approche invincible autorisée. Le boss
+SMS est vaincu ; les deux essais de combat MD sont perdus après retrait de
+l'aide. Aucun troisième boss MD réussi n'est encore annoncé. Ces parcours
+historiques ne valident pas les donjons 2 et 3 sur la v0287.
+Voir les [preuves et limites de la v0287](analysis/magic_rope_v0287.md).
+
 
 La **v0286** réduit de 16,95 % le coût CPU médian de préparation des poses
 du héros sur les séquences mesurées, avec les mêmes pixels et poses en PAL

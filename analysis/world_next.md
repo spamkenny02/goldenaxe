@@ -1601,3 +1601,6 @@ Next: third dungeon and quest prerequisites; new boss assistance episode
 needs separate explicit context (current helper rejects changing boss ID
 in an inherited episode). Native source clock/RNG/IRQ and full campaign
 PAL/audio waveform/hardware remain unfinished. No new ROM for tools only.
+
+
+2026-10-25 v0287: native magic rope 38AC/38F6 + 6D2C/6D40/6DA6; 2176 unchanged-source oracle cases, PAL/NTSC production row publication verified. D1 axe, boss, crystal and exit pass new ordinary inputs + independent cold full-RAM/PNG replays. Stack margin observed412 bytes. Historical v286 D3 portal and rope pickup pass both systems; source D3 boss won, native attempts died (no native D3 victory claim). Old fixed v286 controls diverged on v287; retained failure. See analysis/magic_rope_v0287.md and report; full campaign remains incomplete.

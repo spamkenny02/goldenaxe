@@ -12,7 +12,7 @@ import natural_combat_beam as beam
 from run_core import ROOT
 from validate_playable_sprite_limit import symbols
 from archive_lossless_evidence import sha
-from assisted_prefix import prefix_writes, recording
+from assisted_prefix import prefix_writes, recording, episodes, EPISODE_KEYS
 
 
 def main():
@@ -21,6 +21,7 @@ def main():
     parser.add_argument('--planner', choices=['beam', 'navigation', 'ordinary', 'side', 'escape'], default='beam')
     parser.add_argument('--boss-frames', type=int, help='Bound this diagnostic after normal combat starts')
     parser.add_argument('--world-route', action='store_true', help='Apply the same guard to an exterior route')
+    parser.add_argument('--new-assistance-episode', action='store_true', help='Start the next approach after a verified dungeon exit')
     args, remaining = parser.parse_known_args()
     sms = '--sms' in remaining
     assert not sms or args.planner in ('ordinary', 'beam', 'navigation'), 'Side/escape wrappers currently write MD report paths'
@@ -37,8 +38,19 @@ def main():
     prefix = json.loads((prefix_folder / 'capture.json').read_bytes())
     writes = list(prefix_writes(prefix_folder, prefix, '--assisted-prefix' in remaining))
     inherited = recording(prefix_folder, prefix)[0] if prefix['test_ram_writes'] else None
-    assert not inherited or inherited['boss_room'] == args.boss_room, 'A new boss requires a separate assistance episode'
     start = prefix['frames']
+    closed = []
+    if args.new_assistance_episode:
+        assert inherited and inherited['first_boss_combat'] and inherited['release_write_frame'] < start
+        assert inherited['boss_room'] != args.boss_room
+        prior = json.loads((prefix_folder / 'report.json').read_bytes())
+        assert prior['full_dungeon_cleared'] and prior['failure'] is None and not prior['deaths']
+        assert prior['last_state']['dungeon'] == 0 and prior['last_state']['game'] == 12 and prior['last_state']['health']
+        closed = json.loads(json.dumps(episodes(inherited, prefix)))
+        closed[-1]['end_frame'] = start
+    elif inherited:
+        assert inherited['boss_room'] == args.boss_room, 'A new boss requires --new-assistance-episode after its predecessor exits'
+        closed = json.loads(json.dumps(episodes(inherited, prefix)[:-1]))
     sy = None if sms else symbols(ROOT / 'megadrive/out/release/symbol.txt')
     hurt_address = 0x305 if sms else sy['hero_hurt']
     zero, guard = (b'\x00', b'\x81') if sms else (b'\x00\x00', b'\x00\x81')
@@ -58,10 +70,11 @@ def main():
     result.update(prefix_trace=prefix_folder.relative_to(ROOT / 'validation').as_posix(),
                   prefix_capture_sha256=sha((prefix_folder / 'capture.json').read_bytes()),
                   stage_activation_after_frame=start)
-    if inherited:
+    if inherited and not args.new_assistance_episode:
         for key in ['activation_after_frame', 'first_boss_entry', 'release_write_frame', 'first_boss_combat', 'first_boss_damage']:
             result[key] = inherited[key]
     previous_health = None
+    last_frame = 0
     folder = None
     driver = Path(__file__).read_bytes()
 
@@ -75,7 +88,8 @@ def main():
         budget_deadline = None
 
         def observe(frame, ram):
-            nonlocal previous_health, approach_active, boss_budget_done, budget_deadline
+            nonlocal previous_health, approach_active, boss_budget_done, budget_deadline, last_frame
+            last_frame = frame
             if sms:
                 fields = dict(room_id=int.from_bytes(ram[0xb9:0xbb], 'little'), game_state=ram[0x1d],
                               hero_health=ram[0x318], hero_hurt=ram[0x305])
@@ -151,10 +165,11 @@ def main():
         if folder is not None:
             result.update(driver_sha256=sha(driver), planner=args.planner,
                           writes=[dict(frame=f, address=a, data_hex=data.hex()) for f, a, data in writes])
+            result['episodes'] = closed + [dict(**{key: result[key] for key in EPISODE_KEYS}, end_frame=last_frame + 1)]
             (folder / 'assisted_route_driver.py').write_bytes(driver)
-            if result['release_write_frame'] is not None:
-                assert all(f <= result['release_write_frame'] for f, _, _ in writes)
             (folder / 'assistance.json').write_text(json.dumps(result, indent=2) + '\n')
+            if (folder / 'capture.json').exists():
+                recording(folder, json.loads((folder / 'capture.json').read_bytes()))
             path = folder / ('route_report.json' if args.world_route else 'report.json')
             if path.exists():
                 report = json.loads(path.read_bytes())
