@@ -30,6 +30,7 @@ extern const u8 world_hud_rle[],world_hud_font_rle[],world_hud_patterns_rle[];
 extern const u8 world_item_icon[],world_icon_remap[],world_hud_icon_words[];
 extern const u8 world_hero_bitmap[],world_hero_frame[];
 extern const u8 world_hero_bitmaps[],world_hero_frames[],world_walk_table[],world_fast_ground_walk[];
+extern const u8 world_walk_tables[204];
 extern const u8 world_hero_collisions[];
 extern const u8 world_combat_bitmap_index[],world_combat_bitmaps[],world_combat_frame_index[],world_combat_frames[];
 extern const u8 world_combat_collisions[],world_attack_sequences[],world_attack_strength[];
@@ -740,8 +741,8 @@ static void apply_water_collision_cache(u8 *cache)
 static void move_hero(void)
 {
     u16 n;
-    const u8 *walk=hero_terrain_context==3?world_water_walk+(hero_attack_speed?17:0):
-        hero_terrain_context==0 && hero_attack_speed?world_fast_ground_walk:world_walk_table;
+    /* 32DE..32F6 selects every terrain row, including the slower rope. */
+    const u8 *walk=world_walk_tables+(hero_attack_speed?102:0)+hero_terrain_context*17;
     if(!hero_counter)
     {
         u16 previous=hero_direction,buttons=input&15,requested;

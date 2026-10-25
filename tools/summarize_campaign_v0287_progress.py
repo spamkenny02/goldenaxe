@@ -8,7 +8,7 @@ from validate_playable_sprite_limit import symbols
 def main():
  refs={}
  def read(name):
-  b=evidence(ROOT/name);refs[name]=sha(b);return b
+  b=(ROOT/'analysis/campaign-v0287-progress'/name).read_bytes() if name=='tools/natural_rope_route.py' else evidence(ROOT/name);refs[name]=sha(b);return b
  def load(name):return json.loads(read(name))
  digest=sha((ROOT/'gaw-megadrive.bin').read_bytes());stages=[]
  for name in ['key01','escape01','escape02','exit01']:

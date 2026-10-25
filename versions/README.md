@@ -4,7 +4,8 @@ Chaque binaire est conserve sans ecrasement. Les controles cibles ne prouvent pa
 
 | Version | ROM | Validation | Changements | SHA-256 |
 | --- | --- | --- | --- | --- |
-| v0287 | [Telecharger](v0287-58068350/gaw-megadrive-v0287.bin) | targeted_checks_passed | Corde magique native ; cas SMS et VBlank PAL/NTSC. D1 sans aide ; D2 approche autorisee puis boss sans degat, cristal et sortie48/48, RAM/PNG exacts. Campagne incomplete. | `58068350382a19ddc73a62eb747e42d978c36a1daf3c87f819e921f391b0065d` |
+| v0288 | [Telecharger](v0288-5c2b91e5/gaw-megadrive-v0288.bin) | targeted_checks_passed | Vitesses originales des six terrains, normales et bottes ; corde ralentie correctement. 96 cas PAL/NTSC,64 frames corde exacts ; D1 sans aide, RAM/PNG exacts. | `5c2b91e5aab65403cd1213eb4e25b9ea5fbc1c41529e34e0a944144675817e2f` |
+| v0287 | [Telecharger](v0287-58068350/gaw-megadrive-v0287.bin) | targeted_checks_passed | Historique : trois donjons et corde acquise verifies ; vitesse sur corde trop rapide, corrigee ensuite en v0288. Campagne incomplete. | `58068350382a19ddc73a62eb747e42d978c36a1daf3c87f819e921f391b0065d` |
 | v0286 | [Telecharger](v0286-611e3db4/gaw-megadrive-v0286.bin) | targeted_checks_passed | Heros: preparation CPU -16.95%; D1 naturel et D2 a approche assistee verifies sur MD/SMS, boss/cristal/sortie avec regles normales. Campagne incomplete. | `611e3db48f20f3317faef9b5145160dd944589b99e0e3b9790fd4ec1b625fd4a` |
 | v0285 | [Telecharger](v0285-9961a313/gaw-megadrive-v0285.bin) | targeted_checks_passed | Pile/DMA et publication VBlank des dialogues corrigees ; premier donjon et fee sans deces, controles cibles passes. Campagne complete non validee. | `9961a313f9387dea5e088a475ae5734a230a7bb22c2992143e3ebe9904eca023` |
 | v0284 | [Telecharger](v0284-f2b53757/gaw-megadrive-v0284.bin) | build_only | Compilation ; validation en attente. | `f2b537579af1459b5221ff62f516502865a7642792086f5dfb7848544540e0e8` |

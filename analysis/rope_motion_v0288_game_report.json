@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "md_sha256": "5c2b91e5aab65403cd1213eb4e25b9ea5fbc1c41529e34e0a944144675817e2f",
+  "source_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+  "cases": [
+    {
+      "region": "auto",
+      "frames": 32,
+      "hero_motion_and_counter_exact": true,
+      "terrain_context_exact": true,
+      "rope_work_and_column_exact": true,
+      "ten_progressive_software_rows_exact": true,
+      "rope_step_ticks": 12
+    },
+    {
+      "region": "pal",
+      "frames": 32,
+      "hero_motion_and_counter_exact": true,
+      "terrain_context_exact": true,
+      "rope_work_and_column_exact": true,
+      "ten_progressive_software_rows_exact": true,
+      "rope_step_ticks": 12
+    }
+  ],
+  "controlled_fixture": true,
+  "limits": [
+    "Common map, hero, ownership and actor fixtures. Actual movement, terrain classification and rope deployment/animation execute in both game loops.",
+    "No natural campaign or complete framebuffer/audio/global timing claim."
+  ]
+}

@@ -1,0 +1,274 @@
+{
+  "passed": true,
+  "md_sha256": "5c2b91e5aab65403cd1213eb4e25b9ea5fbc1c41529e34e0a944144675817e2f",
+  "source_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+  "tiles": {
+    "0": 0,
+    "1": 47,
+    "2": 160,
+    "3": 17,
+    "4": 127,
+    "5": 186
+  },
+  "cases": [
+    [
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      1
+    ],
+    [
+      0,
+      0,
+      2
+    ],
+    [
+      0,
+      0,
+      3
+    ],
+    [
+      0,
+      1,
+      0
+    ],
+    [
+      0,
+      1,
+      1
+    ],
+    [
+      0,
+      1,
+      2
+    ],
+    [
+      0,
+      1,
+      3
+    ],
+    [
+      0,
+      2,
+      0
+    ],
+    [
+      0,
+      2,
+      1
+    ],
+    [
+      0,
+      2,
+      2
+    ],
+    [
+      0,
+      2,
+      3
+    ],
+    [
+      0,
+      3,
+      0
+    ],
+    [
+      0,
+      3,
+      1
+    ],
+    [
+      0,
+      3,
+      2
+    ],
+    [
+      0,
+      3,
+      3
+    ],
+    [
+      0,
+      4,
+      0
+    ],
+    [
+      0,
+      4,
+      1
+    ],
+    [
+      0,
+      4,
+      2
+    ],
+    [
+      0,
+      4,
+      3
+    ],
+    [
+      0,
+      5,
+      0
+    ],
+    [
+      0,
+      5,
+      1
+    ],
+    [
+      0,
+      5,
+      2
+    ],
+    [
+      0,
+      5,
+      3
+    ],
+    [
+      1,
+      0,
+      0
+    ],
+    [
+      1,
+      0,
+      1
+    ],
+    [
+      1,
+      0,
+      2
+    ],
+    [
+      1,
+      0,
+      3
+    ],
+    [
+      1,
+      1,
+      0
+    ],
+    [
+      1,
+      1,
+      1
+    ],
+    [
+      1,
+      1,
+      2
+    ],
+    [
+      1,
+      1,
+      3
+    ],
+    [
+      1,
+      2,
+      0
+    ],
+    [
+      1,
+      2,
+      1
+    ],
+    [
+      1,
+      2,
+      2
+    ],
+    [
+      1,
+      2,
+      3
+    ],
+    [
+      1,
+      3,
+      0
+    ],
+    [
+      1,
+      3,
+      1
+    ],
+    [
+      1,
+      3,
+      2
+    ],
+    [
+      1,
+      3,
+      3
+    ],
+    [
+      1,
+      4,
+      0
+    ],
+    [
+      1,
+      4,
+      1
+    ],
+    [
+      1,
+      4,
+      2
+    ],
+    [
+      1,
+      4,
+      3
+    ],
+    [
+      1,
+      5,
+      0
+    ],
+    [
+      1,
+      5,
+      1
+    ],
+    [
+      1,
+      5,
+      2
+    ],
+    [
+      1,
+      5,
+      3
+    ]
+  ],
+  "results": [
+    {
+      "region": "auto",
+      "cases": 48,
+      "frames": 1536,
+      "differences": []
+    },
+    {
+      "region": "pal",
+      "cases": 48,
+      "frames": 1536,
+      "differences": []
+    }
+  ],
+  "controlled_fixture": true,
+  "limits": [
+    "Constant software-map terrain, boots ownership/speed and hero/actor fixtures are injected before each case. Actual terrain detection, table choice, movement integration, animation counter and ordinary directional input execute in both game loops.",
+    "HP is reset per case; accumulation of environment damage across cases is excluded from this movement-table check. No hazard-damage parity, natural campaign, full graphics/audio, transition or global clock claim."
+  ]
+}

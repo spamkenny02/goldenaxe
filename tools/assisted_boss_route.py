@@ -18,9 +18,10 @@ from assisted_prefix import prefix_writes, recording, episodes, EPISODE_KEYS
 def main():
     parser = argparse.ArgumentParser(add_help=False)
     parser.add_argument('--boss-room', type=lambda value: int(value, 0), required=True)
-    parser.add_argument('--planner', choices=['beam', 'navigation', 'ordinary', 'side', 'escape', 'cautious'], default='beam')
+    parser.add_argument('--planner', choices=['beam', 'navigation', 'ordinary', 'side', 'escape', 'cautious', 'evasive', 'exit'], default='beam')
     parser.add_argument('--boss-frames', type=int, help='Bound this diagnostic after normal combat starts')
     parser.add_argument('--world-route', action='store_true', help='Apply the same guard to an exterior route')
+    parser.add_argument('--unassisted-plan-rooms', help='Plan ordinary input in these rooms after the inherited boss guard has ended')
     parser.add_argument('--new-assistance-episode', action='store_true', help='Start the next approach after a verified dungeon exit')
     args, remaining = parser.parse_known_args()
     sms = '--sms' in remaining
@@ -37,6 +38,7 @@ def main():
     prefix_folder = ROOT / 'validation' / family / name
     prefix = json.loads((prefix_folder / 'capture.json').read_bytes())
     writes = list(prefix_writes(prefix_folder, prefix, '--assisted-prefix' in remaining))
+    inherited_writes = writes[:]
     inherited = recording(prefix_folder, prefix)[0] if prefix['test_ram_writes'] else None
     start = prefix['frames']
     closed = []
@@ -51,6 +53,11 @@ def main():
     elif inherited:
         assert inherited['boss_room'] == args.boss_room, 'A new boss requires --new-assistance-episode after its predecessor exits'
         closed = json.loads(json.dumps(episodes(inherited, prefix)[:-1]))
+    plan_rooms = [int(room,0) for room in args.unassisted_plan_rooms.split(',')] if args.unassisted_plan_rooms else [args.boss_room]
+    if args.unassisted_plan_rooms:
+        assert not args.world_route and not args.new_assistance_episode
+        assert inherited and inherited['first_boss_combat'] and inherited['release_write_frame'] < start
+        assert all(256 <= room < 512 for room in plan_rooms)
     sy = None if sms else symbols(ROOT / 'megadrive/out/release/symbol.txt')
     hurt_address = 0x305 if sms else sy['hero_hurt']
     zero, guard = (b'\x00', b'\x81') if sms else (b'\x00\x00', b'\x00\x81')
@@ -141,7 +148,7 @@ def main():
     if original_walk is not None:
         game.walk = walk
     sys.argv = [sys.argv[0]] + ([] if args.world_route or args.planner == 'ordinary' else
-                               ['--lookahead-rooms', hex(args.boss_room)]) + remaining
+                               ['--lookahead-rooms', ','.join(hex(room) for room in plan_rooms)]) + remaining
     try:
         if args.world_route:
             game.main()
@@ -151,6 +158,12 @@ def main():
         elif args.planner == 'side':
             import natural_boss_side_planner
             natural_boss_side_planner.main()
+        elif args.planner == 'exit':
+            import natural_exit_planner
+            natural_exit_planner.main()
+        elif args.planner == 'evasive':
+            import natural_boss_evasive_planner
+            natural_boss_evasive_planner.main()
         elif args.planner == 'cautious':
             import natural_boss_cautious_planner
             natural_boss_cautious_planner.main()
@@ -166,6 +179,9 @@ def main():
         if original_walk is not None:
             game.walk = original_walk
         if folder is not None:
+            if args.unassisted_plan_rooms:
+                assert writes == inherited_writes, 'Post-boss planning cannot add any assistance writes'
+                result.update(unassisted_extension=True, extension_planning_rooms=plan_rooms, new_assistance_writes=0)
             result.update(driver_sha256=sha(driver), planner=args.planner,
                           writes=[dict(frame=f, address=a, data_hex=data.hex()) for f, a, data in writes])
             result['episodes'] = closed + [dict(**{key: result[key] for key in EPISODE_KEYS}, end_frame=last_frame + 1)]

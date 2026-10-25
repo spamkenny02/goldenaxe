@@ -7900,7 +7900,7 @@
     "bytes": 2097152,
     "archived_utc": "2026-10-25T15:39:38.625048+00:00",
     "rom": "v0287-58068350/gaw-megadrive-v0287.bin",
-    "notes": "Corde magique native ; cas SMS et VBlank PAL/NTSC. D1 sans aide ; D2 approche autorisee puis boss sans degat, cristal et sortie48/48, RAM/PNG exacts. Campagne incomplete.",
+    "notes": "Historique : trois donjons et corde acquise verifies ; vitesse sur corde trop rapide, corrigee ensuite en v0288. Campagne incomplete.",
     "validation": "targeted_checks_passed",
     "reports": [
       {
@@ -7910,6 +7910,25 @@
       {
         "file": "campaign_v0287_progress_report.json",
         "sha256": "8d95258cf948ba627ed4b6a3229c518f07a4ffd1e9f1801fee24fcdb50aaa3fe"
+      },
+      {
+        "file": "d3_rope_v0287_report.json",
+        "sha256": "355e04c4fe4b7487c7d2da7d0251d737acb32035d68ca4595ad7fe46baaaeaa6"
+      }
+    ]
+  },
+  {
+    "version": 288,
+    "sha256": "5c2b91e5aab65403cd1213eb4e25b9ea5fbc1c41529e34e0a944144675817e2f",
+    "bytes": 2097152,
+    "archived_utc": "2026-10-25T17:07:48.229769+00:00",
+    "rom": "v0288-5c2b91e5/gaw-megadrive-v0288.bin",
+    "notes": "Vitesses originales des six terrains, normales et bottes ; corde ralentie correctement. 96 cas PAL/NTSC,64 frames corde exacts ; D1 sans aide, RAM/PNG exacts.",
+    "validation": "targeted_checks_passed",
+    "reports": [
+      {
+        "file": "terrain_walk_v0288_report.json",
+        "sha256": "008799d5b7ddec50d7b7d406c87b3985aa6a77d5211d9978448abce05fb4f4ce"
       }
     ]
   }

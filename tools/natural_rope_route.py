@@ -24,6 +24,7 @@ def main():
  def observe(f,r):
   nonlocal before,expected,expected_work,activated,done,failure,observed,previous
   observed=f
+  if f<start:return
   if a.sms:
    cells=bytes(r[0x1c00:0x1d00]);work=bytes(r[0x98:0x9c]);tilemap=bytes(r[0x1600:0x1b00]);meta=bytes(r[0x900:0x1100]);owned=r[0xed]
    state.update(room=int.from_bytes(r[0xb9:0xbb],'little'),game=r[0x1d],hero=r[0x301],counter=r[0x304],x=r[0x313],y=r[0x311],health=r[0x318],maze=r[0x6c])

@@ -5,17 +5,34 @@ puis porter sa logique Z80 en code natif 68000 avec SGDK. La fidélité à la
 Master System passe avant les améliorations.
 
 <!-- ROM-RELEASE:START -->
-**Version courante : v0287 — 2048 Kio.**
+**Version courante : v0288 — 2048 Kio.**
 
-[Télécharger la ROM v0287](versions/v0287-58068350/gaw-megadrive-v0287.bin) · [Toutes les versions](versions/README.md)
+[Télécharger la ROM v0288](versions/v0288-5c2b91e5/gaw-megadrive-v0288.bin) · [Toutes les versions](versions/README.md)
 
 Contrôles ciblés réussis ; portage complet encore non validé.
 
-SHA-256 : `58068350382a19ddc73a62eb747e42d978c36a1daf3c87f819e921f391b0065d`
-Checksum Mega Drive : `DD1D`
+SHA-256 : `5c2b91e5aab65403cd1213eb4e25b9ea5fbc1c41529e34e0a944144675817e2f`
+Checksum Mega Drive : `A476`
 <!-- ROM-RELEASE:END -->
 
 ## État du portage
+
+La **v0288 corrige les vitesses de déplacement selon le terrain**, y compris
+la corde, qui était parcourue trop vite. Le jeu sélectionne maintenant les
+six tables d'origine, avec et sans bottes. Les 96 situations contrôlées en
+PAL/NTSC correspondent à la SMS pour les positions, vitesses et compteurs ;
+64 frames de déplacement et de déploiement de corde correspondent aussi.
+Le premier donjon est terminé sans aide ni décès sur cette ROM, avec des
+relectures identiques de toute la RAM et de l'image finales.
+Voir les [preuves et limites de la v0288](analysis/terrain_walk_v0288.md).
+
+Sur la **v0287 historique**, le troisième boss est vaincu sans perte de PV,
+puis le cristal, la sortie à 56/56 et la corde réellement acquise sont
+validés. Les dix rangées de corde correspondent à la SMS, mais l'enquête
+sur le déplacement a révélé la vitesse erronée corrigée en v0288.
+Ces parcours des donjons 2 et 3 restent à prolonger sur la nouvelle ROM.
+Voir le [jalon du troisième donjon](analysis/d3_rope_v0287.md).
+
 
 Le **deuxième donjon passe aussi sur la v0287** : approche invincible autorisée,
 puis boss sans aide et sans perte de PV, deuxième cristal et sortie à 48/48 PV.

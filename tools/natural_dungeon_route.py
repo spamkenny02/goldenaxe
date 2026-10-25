@@ -9,15 +9,19 @@ from validate_actor_tick import PRESSES
 from validate_playable_sprite_limit import symbols
 from archive_lossless_evidence import sha
 from assisted_prefix import prefix_writes
+from rebase_natural_campaign import evidence
 
 class World:
     def __init__(self,door_index=1,house_outside=None,house_target=0xaf):
+        self.live_room=None;self.live_map=None
         self.rom=(ROOT/'input/original.sms').read_bytes();_,self.meta,_,self.initial_map,self.arrays,_=initial_room(self.rom)
         doors=json.loads((ROOT/'analysis/doors_reference.json').read_bytes());self.doors=doors
         self.goal=next(d for d in doors['direct_unconditional_dungeon_doors'] if d['index']==door_index) if house_outside is None else next(d for d in doors['direct_unconditional_doors'] if d['room']==house_outside and d['target']==house_target)
         self.house_mouths={(d['room'],d['x'],d['y']+8) for d in doors['direct_unconditional_doors']}
-    @lru_cache(None)
     def tilemap(self,room):
+        return self.live_map if room==self.live_room else self.base_tilemap(room)
+    @lru_cache(None)
+    def base_tilemap(self,room):
         index=self.arrays['world_room_index'];p=int.from_bytes(index[room*2:room*2+2],'little')
         if p==65535:return None
         cells=bytearray(160);rle_planes(self.arrays['world_room_streams'],p,cells,0,1);out=bytearray(self.initial_map)
@@ -61,12 +65,13 @@ class World:
         return list(reversed(path)),len(parents)
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--plan',action='store_true');parser.add_argument('--sms',action='store_true');parser.add_argument('--pal',action='store_true');parser.add_argument('--frames',type=int,default=12000);parser.add_argument('--trial',default='01');parser.add_argument('--door-index',type=int,default=1);parser.add_argument('--retry-deaths',type=int,default=0,help='Use normal Continue after death, at most this many times');parser.add_argument('--house-outside',type=lambda x:int(x,0),help='Route to a source unconditional house door in this exterior room');parser.add_argument('--house-target',type=lambda x:int(x,0),default=0xaf);parser.add_argument('--prefix-replay',help='Validated cold rebase trace, relative to validation/');parser.add_argument('--prefix-service',help='Completed natural NPC service trace');parser.add_argument('--prefix-combat',help='Natural completed combat trace, replayed from cold boot');parser.add_argument('--assisted-prefix',action='store_true',help='Explicitly continue a verified assisted recording');args=parser.parse_args()
-    world=World(args.door_index,args.house_outside,args.house_target);start=(0x95,136,112);prefix_end=0;prefix_inputs=[];prefix_presses=[];inherited_writes=[]
-    assert sum(bool(v) for v in [args.prefix_combat,args.prefix_service,args.prefix_replay])<=1
-    has_prefix=bool(args.prefix_combat or args.prefix_service or args.prefix_replay)
+    parser=argparse.ArgumentParser();parser.add_argument('--plan',action='store_true');parser.add_argument('--sms',action='store_true');parser.add_argument('--pal',action='store_true');parser.add_argument('--frames',type=int,default=12000);parser.add_argument('--trial',default='01');parser.add_argument('--door-index',type=int,default=1);parser.add_argument('--retry-deaths',type=int,default=0,help='Use normal Continue after death, at most this many times');parser.add_argument('--house-outside',type=lambda x:int(x,0),help='Route to a source unconditional house door in this exterior room');parser.add_argument('--house-target',type=lambda x:int(x,0),default=0xaf);parser.add_argument('--prefix-replay',help='Validated cold rebase trace, relative to validation/');parser.add_argument('--prefix-service',help='Completed natural NPC service trace');parser.add_argument('--prefix-combat',help='Natural completed combat trace, replayed from cold boot');parser.add_argument('--prefix-rope',help='Verified acquired-rope route in natural-rope-route/');parser.add_argument('--live-prefix-terrain',action='store_true',help='Use the verified current room map until leaving it');parser.add_argument('--assisted-prefix',action='store_true',help='Explicitly continue a verified assisted recording');args=parser.parse_args()
+    world=World(args.door_index,args.house_outside,args.house_target);start=(0x95,136,112);prefix_end=0;prefix_inputs=[];prefix_presses=[];inherited_writes=[];prefix_ram=None;live_initial_room=None
+    assert sum(bool(v) for v in [args.prefix_combat,args.prefix_service,args.prefix_replay,args.prefix_rope])<=1
+    has_prefix=bool(args.prefix_combat or args.prefix_service or args.prefix_replay or args.prefix_rope)
+    assert not args.live_prefix_terrain or has_prefix
     if has_prefix:
-        prefix=(ROOT/'validation'/args.prefix_replay).resolve() if args.prefix_replay else ROOT/'validation'/('natural-service-route' if args.prefix_service else 'natural-dungeon-combat')/(args.prefix_service or args.prefix_combat)
+        prefix=(ROOT/'validation/natural-rope-route'/args.prefix_rope).resolve() if args.prefix_rope else (ROOT/'validation'/args.prefix_replay).resolve() if args.prefix_replay else ROOT/'validation'/('natural-service-route' if args.prefix_service else 'natural-dungeon-combat')/(args.prefix_service or args.prefix_combat)
         assert prefix.resolve().is_relative_to(ROOT/'validation')
         prior=json.loads((prefix/('rebase_report.json' if args.prefix_replay else 'report.json')).read_bytes());capture=json.loads((prefix/'capture.json').read_bytes());recorded=json.loads((prefix/'controls.json').read_bytes())
         if args.prefix_replay:
@@ -74,6 +79,7 @@ def main():
             assert prior['passed'] and proof['passed'] and proof['rom_sha256']==capture['rom_sha256'] and not proof['ram_injections']
             st=prior['states'][-1];assert st['game_state']==12 and st['hero_health']>0
             prior['last_state']=dict(room=st['room_id'],x=st['hero_x']>>8,y=st['hero_y']>>8)
+        elif args.prefix_rope:assert prior['passed'] and prior['failure'] is None and prior['new_assistance_writes']==0
         else:assert prior['failure'] is None and (prior['passed'] if args.prefix_service else prior['room_cleared'])
         assert capture['sram_input'] is None
         inherited_writes=prefix_writes(prefix,capture,args.assisted_prefix)
@@ -84,6 +90,14 @@ def main():
             end=recorded[i+1]['frame']-1 if i+1<len(recorded) else prefix_end
             prefix_inputs[row['frame']:end+1]=[tuple(row['buttons'])]*(end-row['frame']+1)
             prefix_presses.extend((row['frame'],end,b) for b in row['buttons'])
+    if args.live_prefix_terrain:
+        prefix_ram=evidence(prefix/f"ram_{prefix_end:05d}.bin")
+        if args.sms:live_map=prefix_ram[0x1600:0x1c00]
+        else:
+            address=symbols(ROOT/'megadrive/out/release/symbol.txt')['sms_vram']+0x3800
+            live_map=bytes(prefix_ram[(address+i)^1] for i in range(1536))
+        assert len(live_map)==1536
+        live_initial_room=world.live_room=start[0];world.live_map=live_map
     route_start=max(2500,prefix_end+1)
     path,visited=world.route(start);assert path is not None,('No base-map walking route',visited)
     rooms=list(dict.fromkeys([a[0] for a,d,b in path]+[path[-1][2][0]]))
@@ -101,7 +115,9 @@ def main():
         else:
             word=lambda n:int.from_bytes(bytes(r[(sy[n]+i)^1] for i in range(2)),'big')
             state.update(room=word('room_id'),game_state=word('game_state'),hero_state=word('hero_state'),counter=word('hero_counter'),x=word('hero_x')>>8,y=word('hero_y')>>8,health=word('hero_health'),gold=word('hero_gold'),maze=r[sy['forest_maze_progress']^1],reveal_phase=word('resume_phase'),door_loading=r[sy['door_transition_loading']^1])
+        if f==prefix_end and prefix_ram is not None:assert r==prefix_ram,'Live terrain prefix must replay exactly before extending it'
         if f<route_start:return
+        if world.live_room is not None and state['room']!=world.live_room:world.live_room=None;world.live_map=None
         row=dict(frame=f,waypoint=cursor,**state)
         if f%5==0:samples.append(row)
         key=state['room'],state['game_state'],state['health']
@@ -160,13 +176,14 @@ def main():
     directory=folder/(tag+('-pal' if args.pal else '')+'-'+args.trial)
     assert not directory.exists(),('Keep existing trial evidence; choose a new --trial',directory)
     with contextlib.redirect_stdout(io.StringIO()):run(rom,args.frames,directory,captures,(prefix_presses if has_prefix else ([(200,220,0)] if args.sms else [])+PRESSES[:8]),ram_writes=inherited_writes,ram_observer=observe,input_provider=controller,stop_when=stop,core_options={'genesis_plus_gx_region_detect':'pal' if args.pal else 'auto'})
+    if inherited_writes:(directory/'assistance.json').write_bytes((prefix/'assistance.json').read_bytes())
     (directory/'events.json').write_text(json.dumps(events,indent=2)+'\n');(directory/'samples.json').write_text(json.dumps(samples,indent=2)+'\n');(directory/'controls.json').write_text(json.dumps(controls,indent=2)+'\n')
     from PIL import Image
     visible=False
     if ready_at is not None:
         final=Image.open(directory/f'frame_{ready_at+60:05d}.png').convert('RGB');visible=final.getbbox() is not None and final.crop((0,160 if args.sms else 176,256,192 if args.sms else 208)).getbbox() is not None
     probe=bool(probe_before and probe_after and probe_before['room']==probe_after['room']==world.goal['target'] and probe_before['x']==probe_after['x']==128 and probe_before['y']==152 and probe_after['y']==144)
-    report=dict(normal_continues=deaths,retry_deaths=args.retry_deaths,door_index=args.door_index,house_outside=args.house_outside,house_target=args.house_target if args.house_outside is not None else None,recorded_replay_prefix=args.prefix_replay,recorded_combat_prefix=args.prefix_combat,recorded_service_prefix=args.prefix_service,prefix_end=prefix_end,region='pal' if args.pal else 'auto',directional_probe_succeeded=probe,probe_before=probe_before,probe_after=probe_after,rendered_final_frame_nonblack=visible,rom_sha256=sha(rom.read_bytes()),reference_sha256=sha(world.rom),reached_entrance=ready_at is not None,first_published_target_room_frame=room_entry_at,first_target_state12_frame=reached_at,first_controllable_frame=ready_at,door_transition_frames=None if ready_at is None else ready_at-room_entry_at,failure=failure,waypoints_reached=cursor,waypoints_planned=len(path),last_state=state,ram_injections=bool(inherited_writes),sram_checkpoint_injection=False,scope='Read-only state-driven directional controller along ROM-derived static path, normal boot/name/opening. No combat strategy or whole-dungeon claim.')
+    report=dict(normal_continues=deaths,retry_deaths=args.retry_deaths,door_index=args.door_index,house_outside=args.house_outside,house_target=args.house_target if args.house_outside is not None else None,recorded_replay_prefix=args.prefix_replay,recorded_combat_prefix=args.prefix_combat,recorded_service_prefix=args.prefix_service,recorded_rope_prefix=args.prefix_rope,live_prefix_terrain=args.live_prefix_terrain,live_initial_room=live_initial_room,prefix_end=prefix_end,region='pal' if args.pal else 'auto',directional_probe_succeeded=probe,probe_before=probe_before,probe_after=probe_after,rendered_final_frame_nonblack=visible,rom_sha256=sha(rom.read_bytes()),reference_sha256=sha(world.rom),reached_entrance=ready_at is not None,first_published_target_room_frame=room_entry_at,first_target_state12_frame=reached_at,first_controllable_frame=ready_at,door_transition_frames=None if ready_at is None else ready_at-room_entry_at,failure=failure,waypoints_reached=cursor,waypoints_planned=len(path),last_state=state,ram_injections=bool(inherited_writes),sram_checkpoint_injection=False,scope='Read-only state-driven directional controller along ROM-derived static path, normal boot/name/opening. No combat strategy or whole-dungeon claim.')
     (directory/'route_report.json').write_text(json.dumps(report,indent=2)+'\n');print(report)
 
 if __name__=='__main__':main()
