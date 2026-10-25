@@ -30,6 +30,14 @@ d’audio et de titre passent ; la campagne complète reste à valider.
 Voir les [preuves et limites de la v0285](analysis/stack_release_v0285.md).
 Les v0281 à v0284 restent conservées comme compilations intermédiaires.
 
+Sur la v0285, le deuxième donjon atteint aussi une nouvelle clé (1 → 2),
+avec 32 points de vie et sans décès. La RAM et l’image sont reproduites
+par commandes fixes ; les indicateurs persistants et la carte correspondent
+à la SMS. Pour les essais suivants, l’invincibilité est autorisée sur le
+trajet et coupée avant le boss. Cet essai assisté confirme le retour des
+dégâts normaux, mais aucun deuxième cristal n’est encore validé.
+Voir le [point sur le deuxième donjon](analysis/d2_progress_v0285.md).
+
 La **v0280** raccorde la conversion rapide des attributs de carte au jeu
 jouable, y compris les copies du titre. La préparation de 768 mots utilise
 86–87 % de temps CPU en moins dans les parcours mesurés. Ce chiffre concerne

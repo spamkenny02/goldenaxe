@@ -73,7 +73,7 @@ class Planner:
    self.persistent_bytes=heap_end+2;assert 0<self.persistent_bytes<=len(r)
   if f==self.verify_at:
    same=sha(r)==self.expected
-   if not same and self.diagnostics and self.stack_only<2:
+   if not same and self.diagnostics and (self.stack_only<2 or r[:self.persistent_bytes]!=self.expected_ram[:self.persistent_bytes]):
     (self.diagnostics/f'prediction-{f}-expected.bin').write_bytes(self.expected_ram);(self.diagnostics/f'prediction-{f}-actual.bin').write_bytes(r)
    assert r[:self.persistent_bytes]==self.expected_ram[:self.persistent_bytes],('Secondary persistent RAM prediction differs',f,self.persistent_bytes)
    if same:self.full_ram_matches+=1
@@ -108,9 +108,9 @@ class Planner:
   self.decisions.append(dict(frame=f,action=best['name'],buttons=self.schedule,score=best['score'],primary=dict(self.current)))
   return list(self.schedule[0])
 
-def main():
- official=ROOT.parents[1]/'work/libretro/genesis_plus_gx_libretro.dll';folder=ROOT/'validation/boss-lookahead-core';folder.mkdir(exist_ok=True)
- clone=folder/'planning.dll'
+def main(core_override=None):
+ official=Path(core_override) if core_override else ROOT.parents[1]/'work/libretro/genesis_plus_gx_libretro.dll';folder=ROOT/'validation/boss-lookahead-core';folder.mkdir(exist_ok=True)
+ clone=folder/('planning-'+sha(official.read_bytes())[:12]+'.dll')
  if not clone.exists():shutil.copyfile(official,clone)
  assert sha(clone.read_bytes())==sha(official.read_bytes())
  original=game.run;result={};actual=[];planner=None;secondary=None
@@ -130,7 +130,7 @@ def main():
    cached.update(frame=f,buttons=buttons)
    if not actual or actual[-1]['buttons']!=buttons:actual.append(dict(frame=f,buttons=list(buttons)))
    return buttons
-  kwargs['ram_observer']=observe;kwargs['input_provider']=choose
+  kwargs['ram_observer']=observe;kwargs['input_provider']=choose;kwargs['core']=official
   return original(*args,**kwargs)
  game.run=wrapped
  try:game.main()

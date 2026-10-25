@@ -1544,3 +1544,19 @@ actual new key (entry baseline1,final2). Fixed cold RAM/PNG replays pass.
 Secondary emulator boss planning remains experimental and unsuccessful.
 No second crystal/full campaign/PAL campaign/globalR/IRQ/waveform/hardware
 completion claim. Continue D2 from current ROM, then source-clock integration.
+
+
+D2 progress v0285, 2026-10-25. ROM unchanged at9961a313.
+Cold ordinary-button D2 route clears151, then152,new key1->2,32/40HP,
+no deaths. Official fixed replay full65536RAM/PNG exact through25280;
+SMS persistent256flags/1280map exact. Every-instruction stack replay
+retainsFFF79C minimum and fullRAM/PNG equality at25280.
+User authorizes invincibility on approach, disabled before boss battle.
+Assisted03 reachesD2 boss room144 at31649, release write31650,
+normal battle31707 with32HP/hurt0; first boss damage31884 drops32->16.
+Official fixed replay through31885 matches allRAM/PNG with logged
+approach writes only. This is assisted evidence, not a natural campaign.
+Pilot dies later; boss remains30HP, no second crystal.
+Research clone restores omitted GX refresh phase on secondary core only;
+primary getters only before assisted approach. No ROM patch/new release.
+Continue actual boss/source-clock work; full campaign remains unfinished.

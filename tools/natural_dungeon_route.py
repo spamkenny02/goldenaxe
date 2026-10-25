@@ -60,14 +60,21 @@ class World:
         return list(reversed(path)),len(parents)
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--plan',action='store_true');parser.add_argument('--sms',action='store_true');parser.add_argument('--pal',action='store_true');parser.add_argument('--frames',type=int,default=12000);parser.add_argument('--trial',default='01');parser.add_argument('--door-index',type=int,default=1);parser.add_argument('--retry-deaths',type=int,default=0,help='Use normal Continue after death, at most this many times');parser.add_argument('--house-outside',type=lambda x:int(x,0),help='Route to a source unconditional house door in this exterior room');parser.add_argument('--house-target',type=lambda x:int(x,0),default=0xaf);parser.add_argument('--prefix-service',help='Completed natural NPC service trace');parser.add_argument('--prefix-combat',help='Natural completed combat trace, replayed from cold boot');args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('--plan',action='store_true');parser.add_argument('--sms',action='store_true');parser.add_argument('--pal',action='store_true');parser.add_argument('--frames',type=int,default=12000);parser.add_argument('--trial',default='01');parser.add_argument('--door-index',type=int,default=1);parser.add_argument('--retry-deaths',type=int,default=0,help='Use normal Continue after death, at most this many times');parser.add_argument('--house-outside',type=lambda x:int(x,0),help='Route to a source unconditional house door in this exterior room');parser.add_argument('--house-target',type=lambda x:int(x,0),default=0xaf);parser.add_argument('--prefix-replay',help='Validated cold rebase trace, relative to validation/');parser.add_argument('--prefix-service',help='Completed natural NPC service trace');parser.add_argument('--prefix-combat',help='Natural completed combat trace, replayed from cold boot');args=parser.parse_args()
     world=World(args.door_index,args.house_outside,args.house_target);start=(0x95,136,112);prefix_end=0;prefix_inputs=[];prefix_presses=[]
-    assert not(args.prefix_combat and args.prefix_service)
-    has_prefix=bool(args.prefix_combat or args.prefix_service)
+    assert sum(bool(v) for v in [args.prefix_combat,args.prefix_service,args.prefix_replay])<=1
+    has_prefix=bool(args.prefix_combat or args.prefix_service or args.prefix_replay)
     if has_prefix:
-        prefix=ROOT/'validation'/('natural-service-route' if args.prefix_service else 'natural-dungeon-combat')/(args.prefix_service or args.prefix_combat)
-        prior=json.loads((prefix/'report.json').read_bytes());capture=json.loads((prefix/'capture.json').read_bytes());recorded=json.loads((prefix/'controls.json').read_bytes())
-        assert prior['failure'] is None and (prior['passed'] if args.prefix_service else prior['room_cleared']) and not capture['test_ram_writes'] and capture['sram_input'] is None
+        prefix=(ROOT/'validation'/args.prefix_replay).resolve() if args.prefix_replay else ROOT/'validation'/('natural-service-route' if args.prefix_service else 'natural-dungeon-combat')/(args.prefix_service or args.prefix_combat)
+        assert prefix.resolve().is_relative_to(ROOT/'validation')
+        prior=json.loads((prefix/('rebase_report.json' if args.prefix_replay else 'report.json')).read_bytes());capture=json.loads((prefix/'capture.json').read_bytes());recorded=json.loads((prefix/'controls.json').read_bytes())
+        if args.prefix_replay:
+            proof=json.loads((prefix.with_name(prefix.name+'-fixed-replay')/'replay_report.json').read_bytes())
+            assert prior['passed'] and proof['passed'] and proof['rom_sha256']==capture['rom_sha256'] and not proof['ram_injections']
+            st=prior['states'][-1];assert st['game_state']==12 and st['hero_health']>0
+            prior['last_state']=dict(room=st['room_id'],x=st['hero_x']>>8,y=st['hero_y']>>8)
+        else:assert prior['failure'] is None and (prior['passed'] if args.prefix_service else prior['room_cleared'])
+        assert not capture['test_ram_writes'] and capture['sram_input'] is None
         assert capture['rom_sha256']==sha((ROOT/('input/original.sms' if args.sms else 'gaw-megadrive.bin')).read_bytes())
         st=prior['last_state'];start=(st['room'],st['x'],st['y']);assert start[0]<256
         prefix_end=capture['frames'];prefix_presses=list(map(tuple,capture['presses']));prefix_inputs=[()]*(prefix_end+1)
@@ -157,7 +164,7 @@ def main():
     if ready_at is not None:
         final=Image.open(directory/f'frame_{ready_at+60:05d}.png').convert('RGB');visible=final.getbbox() is not None and final.crop((0,160 if args.sms else 176,256,192 if args.sms else 208)).getbbox() is not None
     probe=bool(probe_before and probe_after and probe_before['room']==probe_after['room']==world.goal['target'] and probe_before['x']==probe_after['x']==128 and probe_before['y']==152 and probe_after['y']==144)
-    report=dict(normal_continues=deaths,retry_deaths=args.retry_deaths,door_index=args.door_index,house_outside=args.house_outside,house_target=args.house_target if args.house_outside is not None else None,recorded_combat_prefix=args.prefix_combat,recorded_service_prefix=args.prefix_service,prefix_end=prefix_end,region='pal' if args.pal else 'auto',directional_probe_succeeded=probe,probe_before=probe_before,probe_after=probe_after,rendered_final_frame_nonblack=visible,rom_sha256=sha(rom.read_bytes()),reference_sha256=sha(world.rom),reached_entrance=ready_at is not None,first_published_target_room_frame=room_entry_at,first_target_state12_frame=reached_at,first_controllable_frame=ready_at,door_transition_frames=None if ready_at is None else ready_at-room_entry_at,failure=failure,waypoints_reached=cursor,waypoints_planned=len(path),last_state=state,ram_injections=False,sram_checkpoint_injection=False,scope='Read-only state-driven directional controller along ROM-derived static path, normal boot/name/opening. No combat strategy or whole-dungeon claim.')
+    report=dict(normal_continues=deaths,retry_deaths=args.retry_deaths,door_index=args.door_index,house_outside=args.house_outside,house_target=args.house_target if args.house_outside is not None else None,recorded_replay_prefix=args.prefix_replay,recorded_combat_prefix=args.prefix_combat,recorded_service_prefix=args.prefix_service,prefix_end=prefix_end,region='pal' if args.pal else 'auto',directional_probe_succeeded=probe,probe_before=probe_before,probe_after=probe_after,rendered_final_frame_nonblack=visible,rom_sha256=sha(rom.read_bytes()),reference_sha256=sha(world.rom),reached_entrance=ready_at is not None,first_published_target_room_frame=room_entry_at,first_target_state12_frame=reached_at,first_controllable_frame=ready_at,door_transition_frames=None if ready_at is None else ready_at-room_entry_at,failure=failure,waypoints_reached=cursor,waypoints_planned=len(path),last_state=state,ram_injections=False,sram_checkpoint_injection=False,scope='Read-only state-driven directional controller along ROM-derived static path, normal boot/name/opening. No combat strategy or whole-dungeon claim.')
     (directory/'route_report.json').write_text(json.dumps(report,indent=2)+'\n');print(report)
 
 if __name__=='__main__':main()

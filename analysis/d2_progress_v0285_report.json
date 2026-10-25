@@ -1,0 +1,98 @@
+{
+  "passed": true,
+  "version": 285,
+  "rom_sha256": "9961a313f9387dea5e088a475ae5734a230a7bb22c2992143e3ebe9904eca023",
+  "frames": 25280,
+  "new_key_verified": true,
+  "keys_before": 1,
+  "keys_after": 2,
+  "health": 32,
+  "deaths": 0,
+  "natural_key_route": true,
+  "whole_ram_and_png_replayed": true,
+  "source_flags_exact_bytes": 256,
+  "source_map_exact_bytes": 1280,
+  "stack_frames": 25280,
+  "minimum_sp": 63388,
+  "stack_replay_whole_ram_and_png_exact": true,
+  "second_crystal_verified": false,
+  "full_game_validated": false,
+  "assisted_boss": {
+    "replay": {
+      "passed": true,
+      "assisted_route": true,
+      "natural_campaign_proof": false,
+      "rom_sha256": "9961a313f9387dea5e088a475ae5734a230a7bb22c2992143e3ebe9904eca023",
+      "trace": "natural-dungeon-combat/md-auto-v0285-d2-assisted-boss03",
+      "frames": 31885,
+      "ram_injections": true,
+      "injection_count": 6370,
+      "last_injection_frame": 31650,
+      "first_boss_combat": {
+        "frame": 31707,
+        "health": 32,
+        "hurt": 0
+      },
+      "first_boss_damage": {
+        "frame": 31884,
+        "before": 32,
+        "after": 16,
+        "hurt": 47
+      },
+      "boss_assistance": false,
+      "feedback_reads": false,
+      "primary_state_imports": 0,
+      "whole_ram_bytes": 65536,
+      "final_png_exact": true,
+      "evidence": {
+        "capture.json": "8e168aacda127688d1e2be8a8a9b6cc407df4064d3b4ed243472d27b1a068b5a",
+        "controls.json": "ec0c5f5386353824b9bd3be62f40076b5cea05391bbd4319cb55c621950a96f3",
+        "assistance.json": "01022f8c9c10e0df22721c831f93aa1f4e0677507719500ec5f6fa710cb3849f"
+      }
+    },
+    "assistance": {
+      "assisted_route": true,
+      "ram_injections": true,
+      "rom_modifications": false,
+      "invulnerability_value": 129,
+      "health_refills": 0,
+      "activation_after_frame": 25280,
+      "boss_room": 324,
+      "first_boss_entry": {
+        "frame": 31649,
+        "game": 10,
+        "health": 32,
+        "hurt": 0
+      },
+      "release_write_frame": 31650,
+      "first_boss_combat": {
+        "frame": 31707,
+        "health": 32,
+        "hurt": 0
+      },
+      "first_boss_damage": {
+        "frame": 31884,
+        "before": 32,
+        "after": 16,
+        "hurt": 47
+      },
+      "primary_state_imports": 0,
+      "boss_assistance": false,
+      "driver_sha256": "47dfd8f95335b7513c02e396abd2b9202154d09de5c3b3ac5f9bd34132dbe786"
+    }
+  },
+  "evidence": {
+    "validation/natural-dungeon-combat/md-auto-v0285-d2-plan05/report.json": "e55c0fbd5543d92467b4a507fc2b0c354d9f699b6a9b632b42a7c007fea53bf5",
+    "validation/natural-dungeon-combat/md-auto-v0285-d2-plan05-fixed-replay/replay_report.json": "c2739eb8955ad5d6bcd0c60218f32a65999c9b19a84625d5c4979df67fe09394",
+    "validation/natural-dungeon-combat/md-auto-v0285-d2-plan05/capture.json": "d533307d485a5eacfc58d9101368f16db5c40fc702965d534dfab5966e30d3a7",
+    "validation/natural-dungeon-combat/md-auto-v0285-d2-plan05/ram_25280.bin": "1e7cb457b0758c5eda331d0fed65ec60ba785fe2f30499d9ce4812cf7d910fb1",
+    "validation/stack-v0285-d2-keys-all/stack_report.json": "bd9d12cab3e23e60e1d1522e7c416dcdf65e6557bb62183babb1c8c8dd7af668",
+    "validation/stack-v0285-d2-keys-all/ram_25280.bin": "1e7cb457b0758c5eda331d0fed65ec60ba785fe2f30499d9ce4812cf7d910fb1",
+    "validation/stack-v0285-d2-keys-all/frame_25280.png": "bd8d6106aa525a8bd1ad5fae26e7c19b137cb8ac1236a911ba862fc2531d664c",
+    "validation/natural-dungeon-combat/md-auto-v0285-d2-plan05/frame_25280.png": "bd8d6106aa525a8bd1ad5fae26e7c19b137cb8ac1236a911ba862fc2531d664c",
+    "validation/natural-dungeon-combat/sms-auto-v0280-d2-bridge02/capture.json": "951943f0c778f52b68821b606841aaa481c6b6056abdabe8776c8cf8085fd440",
+    "validation/natural-dungeon-combat/sms-auto-v0280-d2-bridge02/ram_44345.bin": "bdf905203e8c4a451579e8694a3fc023c74ed66140f60b6b0dbf9bc7b2430a0b",
+    "validation/natural-dungeon-combat/md-auto-v0285-d2-assisted-boss03/assistance.json": "01022f8c9c10e0df22721c831f93aa1f4e0677507719500ec5f6fa710cb3849f",
+    "validation/natural-dungeon-combat/md-auto-v0285-d2-assisted-boss03-assisted-fixed-replay-31885/replay_report.json": "f3f86ad3e4ba4da1e435f9a34f44afd65dfb3a9524112a35d7f9f164966b62de"
+  }
+}
