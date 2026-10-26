@@ -1400,6 +1400,7 @@ static void prepare_room_cells(u16 number)
     if(*record) memcpy(room_metadata,record+1,3);
     else { room_metadata[0]=255;room_metadata[1]=255;room_metadata[2]=0; }
     if(game_save_state[0x50+(flag_room&255)]&(1<<world_graphics_class)) prepare_room_transformation();
+    source_magic_rope_arrive(number>>8,hero_terrain_context,hero_direction,hero_x>>8,scratch+0x800); /* 19C6 */
     apply_ice_bell_metatiles(number); /* 190B ->1A02/1A30 */
 }
 

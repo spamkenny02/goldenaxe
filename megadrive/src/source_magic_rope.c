@@ -51,3 +51,20 @@ u8 source_magic_rope_tick(const u8 *cells,const u8 *metatiles,u8 *work,u16 *offs
     if(!--work[1]) work[0]=0;
     return 1;
 }
+
+void source_magic_rope_arrive(u8 room_high,u8 old_terrain,u8 direction,u8 x,u8 *cells)
+{
+    s16 index;
+    if(room_high || old_terrain!=5) return;
+    if(!direction)
+    {
+        index=144+(x>>4);
+        while(index>=0 && cells[index]==12) { cells[index]=0x6c;index-=16; }
+    }
+    else
+    {
+        index=x>>4;
+        while(index<256 && cells[index]==12) { cells[index]=0x6c;index+=16; }
+        if(index<256) cells[index]=0x6d;
+    }
+}

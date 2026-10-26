@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "md_sha256": "6eeb56086a81c230c75b154f51cafab72167a1eec42c691aed9bf317fd19dd82",
+  "cases": [
+    {
+      "region": "auto",
+      "direction": 0,
+      "hardware_map_words": 40,
+      "referenced_tiles": 12
+    },
+    {
+      "region": "auto",
+      "direction": 1,
+      "hardware_map_words": 40,
+      "referenced_tiles": 5
+    },
+    {
+      "region": "pal",
+      "direction": 0,
+      "hardware_map_words": 40,
+      "referenced_tiles": 12
+    },
+    {
+      "region": "pal",
+      "direction": 1,
+      "hardware_map_words": 40,
+      "referenced_tiles": 5
+    }
+  ],
+  "scope": "Final destination climbing column: software map, actual VDP map words and referenced tile color indices. Intermediate scroll/DMA phase, sprites, audio and complete framebuffer are not asserted."
+}

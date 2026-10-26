@@ -1,0 +1,160 @@
+{
+  "passed": true,
+  "version": 292,
+  "md_sha256": "6eeb56086a81c230c75b154f51cafab72167a1eec42c691aed9bf317fd19dd82",
+  "bytes": 2097152,
+  "checksum": "2BF8",
+  "original_cell_cases": 5456,
+  "game_cases": 4,
+  "hardware_map_words": 160,
+  "natural_d1": {
+    "frames": 16569,
+    "final_state": {
+      "frame": 16569,
+      "room_id": 185,
+      "game_state": 12,
+      "hero_state": 1,
+      "hero_health": 32,
+      "hero_max_health": 32,
+      "hero_weapon_level": 1,
+      "hero_selected_item": 1,
+      "world_dungeon_number": 0,
+      "hero_keys": 0,
+      "hero_x": 34816,
+      "hero_y": 20480,
+      "sound_unhandled_command": 0,
+      "first_crystal": 128
+    },
+    "whole_ram_png_replay": true
+  },
+  "stack": {
+    "minimum_sp": 63384,
+    "heap_boundary": 62976,
+    "observed_margin_bytes": 408,
+    "heap_valid": true
+  },
+  "source_earth_stages": [
+    {
+      "trace": "validation/natural-dungeon-route/sms-v0292-source-earth-entry01",
+      "frames": 72407,
+      "last_state": {
+        "room": 191,
+        "game_state": 12,
+        "hero_state": 1,
+        "counter": 0,
+        "x": 136,
+        "y": 144,
+        "health": 16,
+        "gold": 60,
+        "maze": 0,
+        "selected": 1,
+        "weapon": 1
+      },
+      "last_injection_frame": 64994,
+      "whole_ram_png_replay": true,
+      "assisted_history": true
+    },
+    {
+      "trace": "validation/natural-service-route/sms-v0292-source-earth-learn01",
+      "frames": 73556,
+      "last_state": {
+        "room": 163,
+        "game": 12,
+        "hero": 1,
+        "counter": 0,
+        "x": 136,
+        "y": 80,
+        "health": 16,
+        "gold": 10,
+        "magic": 48,
+        "max_magic": 48,
+        "outside_flags": 1,
+        "level": 1,
+        "intro": 0,
+        "modal": false,
+        "audio_error": 0
+      },
+      "last_injection_frame": 64994,
+      "whole_ram_png_replay": true,
+      "assisted_history": true
+    }
+  ],
+  "historical_v0291_d2_stages": [
+    {
+      "trace": "validation/natural-dungeon-combat/md-v0291-d2-rebase-boss01",
+      "rom_sha256": "e6d968e1983b59d3a6e2856af114a7caeeb21fa32130aa5adb68b268a9453391",
+      "frames": 28266,
+      "whole_ram_png_replay": true
+    },
+    {
+      "trace": "validation/natural-dungeon-combat/md-auto-v0291-d2-live-boss01",
+      "rom_sha256": "e6d968e1983b59d3a6e2856af114a7caeeb21fa32130aa5adb68b268a9453391",
+      "frames": 32266,
+      "whole_ram_png_replay": true
+    },
+    {
+      "trace": "validation/natural-dungeon-combat/md-auto-v0291-d2-crystal01",
+      "rom_sha256": "e6d968e1983b59d3a6e2856af114a7caeeb21fa32130aa5adb68b268a9453391",
+      "frames": 32665,
+      "whole_ram_png_replay": true
+    },
+    {
+      "trace": "validation/natural-dungeon-combat/md-auto-v0291-d2-exit01",
+      "rom_sha256": "e6d968e1983b59d3a6e2856af114a7caeeb21fa32130aa5adb68b268a9453391",
+      "frames": 36083,
+      "whole_ram_png_replay": true
+    }
+  ],
+  "full_game_validated": false,
+  "evidence": {
+    "gaw-megadrive.bin": "6eeb56086a81c230c75b154f51cafab72167a1eec42c691aed9bf317fd19dd82",
+    "analysis/rope_arrival_v0292_unit_report.json": "64f419e8ede43dd78f1e9f7499dcf78e6b8af961eefe98633894fe9af7725ba8",
+    "analysis/rope_arrival_game_v0292-01_report.json": "f0a25f97e823c5e0996e70a7ce1e57dfe7d81b01340e62bfedec96841841f6e5",
+    "analysis/rope_arrival_game_v0291-baseline01_report.json": "018a0163d36fa133dddf594f2b6aedab18f6003532d9a8868ea318f8b66f9eec",
+    "analysis/rope_arrival_v0292_publication_report.json": "648c8d6ea60a1dab9c189deb57b683fd023a88469953b08d1d3378b84467a1a3",
+    "megadrive/src/source_magic_rope.c": "b2ad2f48f336855e58e5f131a717ededd61c9ce2a0006d8e71591062c937b9da",
+    "versions/v0291-e6d968e1/gaw-megadrive-v0291.bin": "e6d968e1983b59d3a6e2856af114a7caeeb21fa32130aa5adb68b268a9453391",
+    "validation/natural-dungeon-route/md-v0292-d1-exit02/rebase_report.json": "20e1f76b68dd731392aa13d608fc88e15c0f32b7f11681f1417d60ff4648391f",
+    "validation/natural-dungeon-route/md-v0292-d1-exit02-fixed-replay/replay_report.json": "dd3959fddfa5824a70b3797f4be78b7932eaf56c33f87f990fc3428459575cad",
+    "validation/natural-dungeon-route/md-v0292-d1-exit02/capture.json": "1373ed478c3b1856f05c5bb0e35d001e817f7a15ec11ff75a33b6e2f811109b0",
+    "validation/stack-v0292-d1-all/stack_report.json": "9f1358c34d438b14450751eea4f8587c01cb7f031274a3f33c105b1d0c997647",
+    "validation/stack-v0292-d1-all/ram_16569.bin": "096ffce11a1b375e85698e0b4ebbb63f079afb4c3fc28804e841f9086fc3334b",
+    "validation/natural-dungeon-route/md-v0292-d1-exit02/ram_16569.bin": "096ffce11a1b375e85698e0b4ebbb63f079afb4c3fc28804e841f9086fc3334b",
+    "validation/stack-v0292-d1-all/frame_16569.png": "fd69992e0c97f8f07ad79aa9a20e8627a36550a722957005e4816c8b9d381dac",
+    "validation/natural-dungeon-route/md-v0292-d1-exit02/frame_16569.png": "fd69992e0c97f8f07ad79aa9a20e8627a36550a722957005e4816c8b9d381dac",
+    "validation/natural-dungeon-route/sms-v0292-source-earth-entry01/route_report.json": "dfe9e6bb814444a89d59f396fedf45751f3847032914348dd8cf57d14eccc39a",
+    "validation/natural-dungeon-route/sms-v0292-source-earth-entry01/capture.json": "f7fac4d10561cd4b695bd1e7413c3d8f6f99244355e23269ba88f46fcdbbc73c",
+    "validation/natural-dungeon-route/sms-v0292-source-earth-entry01-assisted-fixed-replay-72407/replay_report.json": "1d13b60cd63dd9289257beac229424a5a44ab7be451521f73e478064c2fb13b0",
+    "validation/natural-dungeon-route/sms-v0292-source-earth-entry01/assistance.json": "70d3c078b2278357a715801d820b2994193fb953e380d1610dfa21bcde3f5598",
+    "input/original.sms": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+    "validation/natural-service-route/sms-v0292-source-earth-learn01/report.json": "e2d9a8d68498678e7f15653a2be0819bcc7a41cecc6540d67f654b689e0bceab",
+    "validation/natural-service-route/sms-v0292-source-earth-learn01/capture.json": "c54bc1c2af01de3a26cbf144dcb21cd9ae1c1aeba73fce8aedcb7034506daf45",
+    "validation/natural-service-route/sms-v0292-source-earth-learn01-assisted-fixed-replay-73556/replay_report.json": "8506792d8a69dc45424eecdd0bd147218c23fde61482ffa845ee363acf12f62c",
+    "validation/natural-service-route/sms-v0292-source-earth-learn01/assistance.json": "70d3c078b2278357a715801d820b2994193fb953e380d1610dfa21bcde3f5598",
+    "validation/natural-dungeon-combat/md-v0291-d2-rebase-boss01/report.json": "df698d198d21e582c41601b70c3d28d354581f882454834bfd01f3d2e4109c2f",
+    "validation/natural-dungeon-combat/md-v0291-d2-rebase-boss01/capture.json": "be8cb3b3d697ea6b741b149c68691b31a2ddc976a361012fd6bf3136e26885ed",
+    "validation/natural-dungeon-combat/md-v0291-d2-rebase-boss01-assisted-fixed-replay-28266/replay_report.json": "e57cef7fab709ccb0ea69527c8247e2d9edd95bee2f823360688c5712d34ffa5",
+    "validation/natural-dungeon-combat/md-auto-v0291-d2-live-boss01/report.json": "a74ac22a6f0246a2fa5b901bf2bf14296b2ca61f2b47dc3ca220266cf61c4a6a",
+    "validation/natural-dungeon-combat/md-auto-v0291-d2-live-boss01/capture.json": "bad36c504e339a90cf8a03e92d271d83b4c7d8b14beb18dfdd1f37f22bde2d03",
+    "validation/natural-dungeon-combat/md-auto-v0291-d2-live-boss01-assisted-fixed-replay-32266/replay_report.json": "39c25f894d0d64b997a0319ca24e92689ba25543bd5e3d6bf2adc57b078c4fa1",
+    "validation/natural-dungeon-combat/md-auto-v0291-d2-crystal01/report.json": "597ee9e90c8d74a89d073c0c31461f8ce4a81e68a5a4016a432bc443992ff2e4",
+    "validation/natural-dungeon-combat/md-auto-v0291-d2-crystal01/capture.json": "1747617eb03e42bbe979ffd5cd5baed38729c58d35752ceaf855e16a6ef81c94",
+    "validation/natural-dungeon-combat/md-auto-v0291-d2-crystal01-assisted-fixed-replay-32665/replay_report.json": "6d249724cf66ba71a5cd7fa2e9362b29b2b586b4a131e991a91860ba1d243f29",
+    "validation/natural-dungeon-combat/md-auto-v0291-d2-exit01/report.json": "bb3e68b9dfc4897330b544c44b60c769d9d3ecbc3d2d3a8bd8223f86e378bd8c",
+    "validation/natural-dungeon-combat/md-auto-v0291-d2-exit01/capture.json": "d869bf332d9441a9874f4ee944b89b159958479b0102d5e6968370b6f29b6694",
+    "validation/natural-dungeon-combat/md-auto-v0291-d2-exit01-assisted-fixed-replay-36083/replay_report.json": "2267e4bf49db28db48032961a3d1e6a9adf260b096996290ac8fab141ba425f1",
+    "megadrive/src/main.c": "bd55e17434ec0e2d5d11779c695adbe134e047031a18956d8452b0523bdbe118",
+    "megadrive/src/source_magic_rope.h": "64b0a742ebfd794f3a9945834321054459c8086dcb37b68b09b2054a6b07d632",
+    "tools/natural_dungeon_route.py": "a63df3d306622ea544901e1e849669494e9cdc7cbf77481622f4b70c8a84fcf1",
+    "tools/natural_house_service.py": "7160a48083b0ce1956ad5c4c85b3b3db3eaf3386dae5d1db25e36388cd6d4618",
+    "tools/rebase_assisted_campaign.py": "a7c2c41c2bb6f5d6bc282acfc678b073e050ed33daee176875987e45ab119df3",
+    "tools/natural_dungeon_combat.py": "6dfce2e647ca2b92e47bafc21f75b42bdd25edbc101b6c839cd0458fc6a1ef74"
+  },
+  "limits": [
+    "Original19AB guards and19C6..1A01 execute in5456 isolated cases, compared over256 map alias bytes. Unusual source accesses outside that alias and DD00 queue timing are not asserted.",
+    "Four controlled real-loop cases deploy rope and cross B2/A2 up/down in PAL/NTSC. Arrival cells,map,integer position andterrain match. Final actual VDP climbing columns and referenced tile color indices match; intermediate transfer phase,audio,sprites and full framebuffer are not asserted.",
+    "Current v292 D1 is cold-replayed without assistance. Current native natural acquired-rope,Earth acquisition,D4/canoe and complete campaign remain unproven.",
+    "Source Earth acquisition follows an assisted historical D3 approach, with no new assistance after the prefix and no boss help. It is source-reference evidence, not v292 native campaign proof.",
+    "The v291 D2 boss/crystal/exit proofs are historical and not promoted to v292. A first D1 diagnostic used the wrong expected exterior95; actualB9 and32HP matched the prior recording. Corrected exit02 is canonical."
+  ]
+}

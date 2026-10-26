@@ -13,7 +13,7 @@ from rebase_natural_campaign import evidence
 
 class World:
     def __init__(self,door_index=1,house_outside=None,house_target=0xaf):
-        self.live_room=None;self.live_map=None;self.axe_terrain=False;self.remote_unlocked=set()
+        self.live_room=None;self.live_map=None;self.axe_terrain=False;self.rope_terrain=False;self.remote_unlocked=set()
         self.rom=(ROOT/'input/original.sms').read_bytes();_,self.meta,_,self.initial_map,self.arrays,_=initial_room(self.rom)
         doors=json.loads((ROOT/'analysis/doors_reference.json').read_bytes());self.doors=doors
         self.goal=next(d for d in doors['direct_unconditional_dungeon_doors'] if d['index']==door_index) if house_outside is None else next(d for d in doors['direct_unconditional_doors'] if d['room']==house_outside and d['target']==house_target)
@@ -46,10 +46,10 @@ class World:
             for x in range(32):
                 a=cells[(y//2)*16+x//2]*8+(y&1)*4+(x&1)*2;off=(y*32+x)*2;out[off:off+2]=meta[a:a+2]
         return bytes(out)
-    def edge(self,node,d):
+    def edge(self,node,d,tilemap=None):
         room,x,y,phase=node
         if d==0 and node[:3] in self.house_mouths:return None
-        cache=collision_cache(self.tilemap(room),Hero(x=x<<8,y=y<<8))
+        cache=collision_cache(self.tilemap(room) if tilemap is None else tilemap,Hero(x=x<<8,y=y<<8))
         if choose_collision_direction(d,cache)!=d:return None
         x+=[0,0,-8,8][d];y+=[-8,8,0,0][d]
         if x<16:room=(room&240)|((room-1)&15);x=240
@@ -65,6 +65,46 @@ class World:
                 if not correct:phase=0
                 if not(correct and phase==5):room=0x77
         return room,x,y,phase
+    def rope_paths(self,node):
+        if not self.rope_terrain:return []
+        room,x,y,phase=node;alignment=((x&8)>>3)|((y&8)>>2)
+        if (x|y)&7:return []
+        pointer=int.from_bytes(self.arrays['world_room_index'][room*2:room*2+2],'little');original=bytearray(160)
+        if pointer==65535:return []
+        rle_planes(self.arrays['world_room_streams'],pointer,original,0,1);paths=[]
+        for direction in [0,1]:
+            cells=bytearray(original)
+            if direction==0:
+                if alignment!=3:continue
+                index=((y-16)&240)|(x>>4)
+                if index>=160 or cells[index]!=2:continue
+                cells[index]=0x6d
+                while index>=16 and cells[index-16]==12:index-=16;cells[index]=0x6c
+            else:
+                if alignment!=1:continue
+                index=(y&240)|(x>>4)
+                if index>=160 or cells[index]!=12:continue
+                while index<160:
+                    old=cells[index];cells[index]=0x6c
+                    if old==2:cells[index]=0x6d;break
+                    index+=16
+            tilemap=self.render_cells(room,cells);point=node;segment=[]
+            for _ in range(48):
+                nxt=self.edge(point,direction,tilemap)
+                if nxt is None:break
+                previous_room=point[0];segment.append((point,direction,nxt));point=nxt
+                # The macro is only a proposed vertical climb. It introduces
+                # no horizontal motion or room edit into the running game.
+                if point[0]!=previous_room:
+                    pointer=int.from_bytes(self.arrays['world_room_index'][point[0]*2:point[0]*2+2],'little')
+                    cells=bytearray(160);rle_planes(self.arrays['world_room_streams'],pointer,cells,0,1)
+                    index=(144 if direction==0 else 0)+(point[1]>>4)
+                    while 0<=index<160 and cells[index]==12:
+                        cells[index]=0x6c;index+=-16 if direction==0 else 16
+                    if direction and index<160:cells[index]=0x6d
+                    tilemap=self.render_cells(point[0],cells)
+                if any(self.edge(point,d) is not None for d in range(4)):paths.append((point,list(segment)))
+        return paths
     def route(self,start):
         if len(start)==3:start=(*start,0)
         goal=self.goal['room'],self.goal['x'],self.goal['y']+8
@@ -72,18 +112,22 @@ class World:
         while queue:
             here=queue.popleft()
             if here[:3]==goal:found=here;break
+            neighbors=[]
             for d in [0,1,2,3]:
                 nxt=self.edge(here,d)
-                if nxt is not None and nxt not in parents:parents[nxt]=(here,d);queue.append(nxt)
+                if nxt is not None:neighbors.append((nxt,[(here,d,nxt)]))
+            neighbors.extend(self.rope_paths(here))
+            for nxt,segment in neighbors:
+                if nxt not in parents:parents[nxt]=(here,segment);queue.append(nxt)
         if found is None:return None,len(parents)
-        path=[]
+        segments=[]
         while parents[found] is not None:
-            previous,d=parents[found];path.append((previous,d,found));found=previous
-        return list(reversed(path)),len(parents)
+            previous,segment=parents[found];segments.append(segment);found=previous
+        return [step for segment in reversed(segments) for step in segment],len(parents)
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--plan',action='store_true');parser.add_argument('--required-chop',help='ROOM:cell prerequisite to cut before routing to the final house');parser.add_argument('--axe-terrain',action='store_true',help='Plan destructible exterior cells and cut them using an already owned/equipped axe');parser.add_argument('--sms',action='store_true');parser.add_argument('--pal',action='store_true');parser.add_argument('--frames',type=int,default=12000);parser.add_argument('--trial',default='01');parser.add_argument('--door-index',type=int,default=1);parser.add_argument('--retry-deaths',type=int,default=0,help='Use normal Continue after death, at most this many times');parser.add_argument('--house-outside',type=lambda x:int(x,0),help='Route to a source unconditional house door in this exterior room');parser.add_argument('--house-target',type=lambda x:int(x,0),default=0xaf);parser.add_argument('--prefix-replay',help='Validated cold rebase trace, relative to validation/');parser.add_argument('--prefix-service',help='Completed natural NPC service trace');parser.add_argument('--prefix-combat',help='Natural completed combat trace, replayed from cold boot');parser.add_argument('--prefix-rope',help='Verified acquired-rope route in natural-rope-route/');parser.add_argument('--live-prefix-terrain',action='store_true',help='Use the verified current room map until leaving it');parser.add_argument('--assisted-prefix',action='store_true',help='Explicitly continue a verified assisted recording');args=parser.parse_args()
-    world=World(args.door_index,args.house_outside,args.house_target);world.axe_terrain=args.axe_terrain;start=(0x95,136,112);prefix_end=0;prefix_inputs=[];prefix_presses=[];inherited_writes=[];prefix_ram=None;live_initial_room=None
+    parser=argparse.ArgumentParser();parser.add_argument('--plan',action='store_true');parser.add_argument('--rope-terrain',action='store_true',help='Propose vertical source-like climbs using the already acquired rope');parser.add_argument('--required-chop',help='ROOM:cell prerequisite to cut before routing to the final house');parser.add_argument('--axe-terrain',action='store_true',help='Plan destructible exterior cells and cut them using an already owned/equipped axe');parser.add_argument('--sms',action='store_true');parser.add_argument('--pal',action='store_true');parser.add_argument('--frames',type=int,default=12000);parser.add_argument('--trial',default='01');parser.add_argument('--door-index',type=int,default=1);parser.add_argument('--retry-deaths',type=int,default=0,help='Use normal Continue after death, at most this many times');parser.add_argument('--house-outside',type=lambda x:int(x,0),help='Route to a source unconditional house door in this exterior room');parser.add_argument('--house-target',type=lambda x:int(x,0),default=0xaf);parser.add_argument('--prefix-replay',help='Validated cold rebase trace, relative to validation/');parser.add_argument('--prefix-service',help='Completed natural NPC service trace');parser.add_argument('--prefix-combat',help='Natural completed combat trace, replayed from cold boot');parser.add_argument('--prefix-rope',help='Verified acquired-rope route in natural-rope-route/');parser.add_argument('--live-prefix-terrain',action='store_true',help='Use the verified current room map until leaving it');parser.add_argument('--assisted-prefix',action='store_true',help='Explicitly continue a verified assisted recording');args=parser.parse_args()
+    world=World(args.door_index,args.house_outside,args.house_target);world.axe_terrain=args.axe_terrain;world.rope_terrain=args.rope_terrain;start=(0x95,136,112);prefix_end=0;prefix_inputs=[];prefix_presses=[];inherited_writes=[];prefix_ram=None;live_initial_room=None
     assert sum(bool(v) for v in [args.prefix_combat,args.prefix_service,args.prefix_replay,args.prefix_rope])<=1
     has_prefix=bool(args.prefix_combat or args.prefix_service or args.prefix_replay or args.prefix_rope)
     assert not args.live_prefix_terrain or has_prefix
@@ -107,6 +151,11 @@ def main():
             end=recorded[i+1]['frame']-1 if i+1<len(recorded) else prefix_end
             prefix_inputs[row['frame']:end+1]=[tuple(row['buttons'])]*(end-row['frame']+1)
             prefix_presses.extend((row['frame'],end,b) for b in row['buttons'])
+    if args.rope_terrain:
+        assert has_prefix,'An acquired-rope prefix is required'
+        raw=evidence(prefix/f"ram_{prefix_end:05d}.bin")
+        address=0xed if args.sms else symbols(ROOT/'megadrive/out/release/symbol.txt')['hero_items']+13
+        assert raw[address if args.sms else address^1], 'The rope must be acquired in the real prefix'
     if args.axe_terrain and has_prefix:
         raw=evidence(prefix/f"ram_{prefix_end:05d}.bin")
         if args.sms:flags=raw[0x100:0x200]
@@ -249,7 +298,7 @@ def main():
         final=Image.open(directory/f'frame_{ready_at+60:05d}.png').convert('RGB');visible=final.getbbox() is not None and final.crop((0,160 if args.sms else 176,256,192 if args.sms else 208)).getbbox() is not None
     probe=bool(probe_before and probe_after and probe_before['room']==probe_after['room']==world.goal['target'] and probe_before['x']==probe_after['x']==(136 if args.house_outside is not None else 128) and probe_before['y']==152 and probe_after['y']==144)
     (directory/'axe_chops.json').write_text(json.dumps(chops,indent=2)+'\n')
-    report=dict(required_chop=required_chop,required_chop_verified=chop_done,axe_terrain_requested=args.axe_terrain,axe_chop_decisions=len(chops),normal_continues=deaths,retry_deaths=args.retry_deaths,door_index=args.door_index,house_outside=args.house_outside,house_target=args.house_target if args.house_outside is not None else None,recorded_replay_prefix=args.prefix_replay,recorded_combat_prefix=args.prefix_combat,recorded_service_prefix=args.prefix_service,recorded_rope_prefix=args.prefix_rope,live_prefix_terrain=args.live_prefix_terrain,live_initial_room=live_initial_room,prefix_end=prefix_end,region='pal' if args.pal else 'auto',directional_probe_succeeded=probe,probe_before=probe_before,probe_after=probe_after,rendered_final_frame_nonblack=visible,rom_sha256=sha(rom.read_bytes()),reference_sha256=sha(world.rom),reached_entrance=ready_at is not None,first_published_target_room_frame=room_entry_at,first_target_state12_frame=reached_at,first_controllable_frame=ready_at,door_transition_frames=None if ready_at is None else ready_at-room_entry_at,failure=failure,waypoints_reached=cursor,waypoints_planned=len(path),last_state=state,ram_injections=bool(inherited_writes),sram_checkpoint_injection=False,scope='Read-only state-driven directional controller along ROM-derived static path, normal boot/name/opening. No combat strategy or whole-dungeon claim.')
+    report=dict(rope_terrain_requested=args.rope_terrain,required_chop=required_chop,required_chop_verified=chop_done,axe_terrain_requested=args.axe_terrain,axe_chop_decisions=len(chops),normal_continues=deaths,retry_deaths=args.retry_deaths,door_index=args.door_index,house_outside=args.house_outside,house_target=args.house_target if args.house_outside is not None else None,recorded_replay_prefix=args.prefix_replay,recorded_combat_prefix=args.prefix_combat,recorded_service_prefix=args.prefix_service,recorded_rope_prefix=args.prefix_rope,live_prefix_terrain=args.live_prefix_terrain,live_initial_room=live_initial_room,prefix_end=prefix_end,region='pal' if args.pal else 'auto',directional_probe_succeeded=probe,probe_before=probe_before,probe_after=probe_after,rendered_final_frame_nonblack=visible,rom_sha256=sha(rom.read_bytes()),reference_sha256=sha(world.rom),reached_entrance=ready_at is not None,first_published_target_room_frame=room_entry_at,first_target_state12_frame=reached_at,first_controllable_frame=ready_at,door_transition_frames=None if ready_at is None else ready_at-room_entry_at,failure=failure,waypoints_reached=cursor,waypoints_planned=len(path),last_state=state,ram_injections=bool(inherited_writes),sram_checkpoint_injection=False,scope='Read-only state-driven directional controller along ROM-derived static path, normal boot/name/opening. No combat strategy or whole-dungeon claim.')
     (directory/'route_report.json').write_text(json.dumps(report,indent=2)+'\n');print(report)
 
 if __name__=='__main__':main()

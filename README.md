@@ -5,17 +5,28 @@ puis porter sa logique Z80 en code natif 68000 avec SGDK. La fidélité à la
 Master System passe avant les améliorations.
 
 <!-- ROM-RELEASE:START -->
-**Version courante : v0291 — 2048 Kio.**
+**Version courante : v0292 — 2048 Kio.**
 
-[Télécharger la ROM v0291](versions/v0291-e6d968e1/gaw-megadrive-v0291.bin) · [Toutes les versions](versions/README.md)
+[Télécharger la ROM v0292](versions/v0292-6eeb5608/gaw-megadrive-v0292.bin) · [Toutes les versions](versions/README.md)
 
 Contrôles ciblés réussis ; portage complet encore non validé.
 
-SHA-256 : `e6d968e1983b59d3a6e2856af114a7caeeb21fa32130aa5adb68b268a9453391`
-Checksum Mega Drive : `6ADA`
+SHA-256 : `6eeb56086a81c230c75b154f51cafab72167a1eec42c691aed9bf317fd19dd82`
+Checksum Mega Drive : `2BF8`
 <!-- ROM-RELEASE:END -->
 
 ## État du portage
+
+La **v0292 prolonge la corde dans la carte d'arrivée** lors d'un
+changement d'écran. Cette routine Z80 manquait : le héros pouvait rester
+bloqué au bord de la falaise suivante. Les 5 456 cas de cellules passent ;
+les montées et descentes B2/A2 correspondent à la SMS en PAL/NTSC pour les
+cases, la carte, la position et le terrain à l'arrivée. Les colonnes de
+corde publiées par le VDP et leurs tuiles correspondent aussi.
+Le premier donjon passe sans aide à 32/32 PV, avec relecture RAM/image exacte.
+La route SMS de référence apprend maintenant la Terre contre 50 cornes,
+après une ancienne approche assistée ; ce parcours reste à établir sur MD.
+Voir les [preuves et limites de la v0292](analysis/rope_arrival_v0292.md).
 
 La **v0291 rétablit la destruction des arbres à la hache**, absente du
 portage. La septième phase du coup transforme les cases, leur support et

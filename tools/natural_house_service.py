@@ -3,10 +3,12 @@ import argparse,contextlib,io,json
 from run_core import ROOT,run
 from validate_playable_sprite_limit import symbols
 from archive_lossless_evidence import sha
+from assisted_prefix import prefix_writes,recording
 
 def main():
- p=argparse.ArgumentParser();p.add_argument('--sms',action='store_true');p.add_argument('--prefix',required=True);p.add_argument('--trial',required=True);p.add_argument('--outside',type=lambda s:int(s,0),required=True);p.add_argument('--kind',choices=['gold','teacher'],required=True);p.add_argument('--teacher',type=int,default=0);p.add_argument('--expected-level',type=int,default=0);p.add_argument('--gold-gain',type=int,default=50);a=p.parse_args()
- source=ROOT/'validation/natural-dungeon-route'/a.prefix;c=json.loads((source/'capture.json').read_bytes());prior=json.loads((source/'route_report.json').read_bytes());recorded=json.loads((source/'controls.json').read_bytes());rom=ROOT/'input/original.sms' if a.sms else ROOT/'gaw-megadrive.bin';digest=sha(rom.read_bytes());assert c['rom_sha256']==digest and prior['reached_entrance'] and not prior['failure'] and not c['test_ram_writes'] and c['sram_input'] is None
+ p=argparse.ArgumentParser();p.add_argument('--assisted-prefix',action='store_true');p.add_argument('--sms',action='store_true');p.add_argument('--prefix',required=True);p.add_argument('--trial',required=True);p.add_argument('--outside',type=lambda s:int(s,0),required=True);p.add_argument('--kind',choices=['gold','teacher'],required=True);p.add_argument('--teacher',type=int,default=0);p.add_argument('--expected-level',type=int,default=0);p.add_argument('--gold-gain',type=int,default=50);a=p.parse_args()
+ source=ROOT/'validation/natural-dungeon-route'/a.prefix;c=json.loads((source/'capture.json').read_bytes());prior=json.loads((source/'route_report.json').read_bytes());recorded=json.loads((source/'controls.json').read_bytes());rom=ROOT/'input/original.sms' if a.sms else ROOT/'gaw-megadrive.bin';digest=sha(rom.read_bytes());assert c['rom_sha256']==digest and prior['reached_entrance'] and not prior['failure'] and c['sram_input'] is None
+ writes=prefix_writes(source,c,a.assisted_prefix)
  start=c['frames'];timeline=[()]*(start+1)
  for i,row in enumerate(recorded):
   end=recorded[i+1]['frame']-1 if i+1<len(recorded) else start;timeline[row['frame']:end+1]=[tuple(row['buttons'])]*(end-row['frame']+1)
@@ -44,8 +46,10 @@ def main():
   buttons=choose(f)
   if f>start and (not controls or controls[-1]['buttons']!=buttons):controls.append(dict(frame=f,buttons=buttons))
   return buttons
- with contextlib.redirect_stdout(io.StringIO()):run(rom,start+5000,folder,captures,c['presses'],skip_intro=False,input_provider=controller,ram_observer=observe,stop_when=lambda:bool(failure) or done is not None and observed>=done+150,core_options=c['core_options'])
- result=dict(passed=done is not None and not failure,rom_sha256=digest,source_prefix=a.prefix,kind=a.kind,teacher=a.teacher if a.kind=='teacher' else None,expected_level=a.expected_level if a.kind=='teacher' else None,complete_frame=done,failure=failure or (None if done else 'frame_limit'),first_state=first,last_state=state,ram_injections=False,sram_checkpoint_injection=False,scope='Cold boot and recorded ordinary buttons, real house interaction and normal exterior exit. No actor removal, ownership, currency or progression fixture.')
+ with contextlib.redirect_stdout(io.StringIO()):run(rom,start+5000,folder,captures,c['presses'],skip_intro=False,input_provider=controller,ram_observer=observe,stop_when=lambda:bool(failure) or done is not None and observed>=done+150,core_options=c['core_options'],ram_writes=writes)
+ result=dict(passed=done is not None and not failure,rom_sha256=digest,source_prefix=a.prefix,kind=a.kind,teacher=a.teacher if a.kind=='teacher' else None,expected_level=a.expected_level if a.kind=='teacher' else None,complete_frame=done,failure=failure or (None if done else 'frame_limit'),first_state=first,last_state=state,ram_injections=bool(writes),assisted_route=bool(writes),new_assistance_writes=0,sram_checkpoint_injection=False,scope='Cold boot and recorded ordinary buttons with explicitly inherited approach assistance if present, real house interaction and normal exterior exit. No actor removal, ownership, currency or progression fixture.')
  for name,value in [('report',result),('events',events),('controls',controls)]:(folder/(name+'.json')).write_bytes((json.dumps(value,indent=2)+'\n').encode())
+ if writes:
+  (folder/'assistance.json').write_bytes((source/'assistance.json').read_bytes());recording(folder,json.loads((folder/'capture.json').read_bytes()))
  print(result)
 if __name__=='__main__':main()

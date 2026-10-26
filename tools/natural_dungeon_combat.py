@@ -94,6 +94,9 @@ def main():
         if f==prefix_end and args.exit_dungeon:exit_dungeon_number=state['dungeon'];exit_max_health=state['max_health']
         if exit_dungeon_number is not None:state['completed_dungeon_progress']=r[0xce+exit_dungeon_number] if args.sms else data(sy['game_save_state']+0x1e+exit_dungeon_number,1)[0]
         if f==prefix_end and not(state['room']==itinerary[0] and state['game']==12 and state['health']):failure='recorded_prefix_did_not_reach_expected_room'
+        # A continuation can start during the reward after the boss died.
+        # Observe actual prefix actors, rather than discarding that history.
+        if state['room']==args.target_room and any(e['type']>=0x20 for e in actors):seen_enemies=True
         if f<=prefix_end:return
         if args.collect_item is not None and state['item_value'] and item_picked_at is None:item_picked_at=f;captures.update([f+1,f+150])
         if actors and actors[0]['slot']==0 and actors[0]['type']==7:
