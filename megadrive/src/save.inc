@@ -191,6 +191,7 @@ static void service_finish(void)
 
 static void show_merchant_service(void);
 static void show_healer_service(void);
+static void show_spell_teacher_service(void);
 
 static void show_save_service(void)
 {
@@ -238,6 +239,7 @@ static void check_house_service(u16 old_x,u16 old_y)
     if(world_graphics_class==1 && !hero_direction && x==old_x && y==old_y &&
        !((x|y)&7) && (input&BUTTON_UP) && !house_talk_latch)
     {
+        if(room_id==0xbf && x==136 && y==56) { show_spell_teacher_service();return; }
         for(n=0;n<healer_nodes_count;n++)
             if(room_id==healer_nodes[n][0] && x==healer_nodes[n][1] && y==healer_nodes[n][2])
                 for(p=0;p<healer_prices_count;p++)

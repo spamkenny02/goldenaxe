@@ -5,17 +5,33 @@ puis porter sa logique Z80 en code natif 68000 avec SGDK. La fidélité à la
 Master System passe avant les améliorations.
 
 <!-- ROM-RELEASE:START -->
-**Version courante : v0289 — 2048 Kio.**
+**Version courante : v0290 — 2048 Kio.**
 
-[Télécharger la ROM v0289](versions/v0289-1abcdb47/gaw-megadrive-v0289.bin) · [Toutes les versions](versions/README.md)
+[Télécharger la ROM v0290](versions/v0290-63cb9dcc/gaw-megadrive-v0290.bin) · [Toutes les versions](versions/README.md)
 
 Contrôles ciblés réussis ; portage complet encore non validé.
 
-SHA-256 : `1abcdb4735d8edaee1c6723522f8f5e2fbb77b044aba6c8e6c47761b0775a5f4`
-Checksum Mega Drive : `AC68`
+SHA-256 : `63cb9dcc37b965291c5b54ba85420ad22edebfcc02b6fa24f1bd112ade83ab61`
+Checksum Mega Drive : `F1B7`
 <!-- ROM-RELEASE:END -->
 
 ## État du portage
+
+La **v0290 raccorde les quatre maîtres de magie**, jusqu'ici absents du
+service natif : Foudre, Terre, Feu et Eau. Leurs portraits et dialogues
+proviennent de la ROM SMS. Les conditions, paiements, refus, niveaux et
+capacités correspondent au Z80 sur 3 081 cas ; 26 interactions contrôlées
+passent en PAL/NTSC et les tuiles des portraits correspondent à la SMS.
+Le premier donjon passe sur cette ROM sans aide, avec une relecture exacte
+de toute la RAM et de l'image finales. L'acquisition naturelle des sorts et
+leur utilisation pour progresser dans la campagne restent à établir.
+Voir les [preuves et limites de la v0290](analysis/spell_teacher_v0290.md).
+
+La **v0289 historique termine aussi le deuxième donjon** : protection pendant
+l'approche, retirée avant le boss ; combat sans perte de PV, cristal et
+sortie à 48/48 PV, avec relectures RAM/image exactes. Cette preuve appartient
+à la v0289 et ne valide pas encore ce parcours sur la v0290.
+Voir le [rapport de campagne v0289](analysis/d2_campaign_v0289_report.json).
 
 La **v0289 corrige les dégâts des sols dangereux** : quatre PV perdus,
 sans recul, avec le délai de protection original. Les contacts avec un

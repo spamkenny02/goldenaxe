@@ -7938,12 +7938,31 @@
     "bytes": 2097152,
     "archived_utc": "2026-10-25T17:33:08.840720+00:00",
     "rom": "v0289-1abcdb47/gaw-megadrive-v0289.bin",
-    "notes": "Degats des sols dangereux retablis : 140 cas SMS/MD PAL/NTSC, contacts et bouclier actifs ; regressions marche/corde ; premier donjon sans aide, relectures RAM/image exactes. Campagne complete non validee.",
+    "notes": "Sols dangereux corriges ; premier donjon sans aide ; deuxieme donjon, boss sans aide apres approche protegee, cristal et sortie48/48 ; relectures RAM/image exactes. Campagne incomplete.",
     "validation": "targeted_checks_passed",
     "reports": [
       {
         "file": "floor_damage_v0289_report.json",
         "sha256": "313c2d82b4e8de5fae9cf6ae78a1ebb4d0cb12cefc37d5646053b5ce6d51bb9b"
+      },
+      {
+        "file": "d2_campaign_v0289_report.json",
+        "sha256": "bb6277225e29a966366208a0c36e301dbc0d3c4aa5add08c2d388b8efbaa520d"
+      }
+    ]
+  },
+  {
+    "version": 290,
+    "sha256": "63cb9dcc37b965291c5b54ba85420ad22edebfcc02b6fa24f1bd112ade83ab61",
+    "bytes": 2097152,
+    "archived_utc": "2026-10-26T09:52:30.218836+00:00",
+    "rom": "v0290-63cb9dcc/gaw-megadrive-v0290.bin",
+    "notes": "Quatre maitres de magie raccordes : portraits/textes originaux,3081 cas de decisions et26 interactions PAL/NTSC ; premier donjon et relecture RAM/image exacts. Acquisition naturelle et campagne complete a poursuivre.",
+    "validation": "targeted_checks_passed",
+    "reports": [
+      {
+        "file": "spell_teacher_v0290_report.json",
+        "sha256": "e7f78b8eef3ca6e0ff5a92a615e46da2a62f81e0e619ba7ef723ebbc4a2b5a68"
       }
     ]
   }

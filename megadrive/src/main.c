@@ -3155,6 +3155,7 @@ static void show_dialogue_text(const u8 *source,bool overlay)
 #include "return_feather.inc"
 #include "merchant.inc"
 #include "healer.inc"
+#include "spell_teacher.inc"
 
 /* 0AD1/0B92: prepared opening colors become visible on the next IRQ. */
 static void fade_opening_palette(const u16 *target,bool fade_in)

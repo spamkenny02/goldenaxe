@@ -4,6 +4,8 @@ $ErrorActionPreference = 'Stop'
 if ($LASTEXITCODE -ne 0) { throw 'Hero walk table generation failed' }
 & python "$PSScriptRoot/tools/generate_screen_spell.py"
 if ($LASTEXITCODE -ne 0) { throw 'Screen spell resource generation failed' }
+& python "$PSScriptRoot/tools/extract_spell_teacher.py"
+if ($LASTEXITCODE -ne 0) { throw 'Spell teacher resource generation failed' }
 & python "$PSScriptRoot/tools/generate_ice_bell.py"
 if ($LASTEXITCODE -ne 0) { throw 'Ice bell resource generation failed' }
 & python "$PSScriptRoot/tools/generate_world_overview.py"
