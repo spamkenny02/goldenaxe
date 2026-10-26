@@ -1,5 +1,5 @@
 """Compare rope deployment and the first32 movement frames in real SMS/MD loops."""
-import contextlib,io,json
+import argparse,contextlib,io,json
 from run_core import ROOT,run
 from validate_playable_sprite_limit import symbols
 from validate_actor_tick import PRESSES
@@ -7,11 +7,12 @@ from validate_key_door_gameplay import maps
 from archive_lossless_evidence import sha
 
 def main():
+ p=argparse.ArgumentParser();p.add_argument('--version',type=int,default=288);args=p.parse_args()
  sy=symbols(ROOT/'megadrive/out/release/symbol.txt');results=[]
  for region in ['auto','pal']:
   traces={}
   for tag in ['sms','md']:
-   pending=[];rows=[];folder=ROOT/f'validation/rope-motion-v0288/{region}-{tag}';assert not folder.exists()
+   pending=[];rows=[];folder=ROOT/f'validation/rope-motion-v{args.version:04d}/{region}-{tag}';assert not folder.exists()
    def observe(f,b):
     if f==3100:
      if tag=='sms':meta=b[0x900:0x1100]
@@ -35,5 +36,5 @@ def main():
   assert len(traces['md'])==32 and traces['md'][10]['state'][2]==11
   results.append(dict(region=region,frames=32,hero_motion_and_counter_exact=True,terrain_context_exact=True,rope_work_and_column_exact=True,ten_progressive_software_rows_exact=True,rope_step_ticks=12));print(region,'32 movement/rope frames exact',flush=True)
  report=dict(passed=True,md_sha256=sha((ROOT/'gaw-megadrive.bin').read_bytes()),source_sha256=sha((ROOT/'input/original.sms').read_bytes()),cases=results,controlled_fixture=True,limits=['Common map, hero, ownership and actor fixtures. Actual movement, terrain classification and rope deployment/animation execute in both game loops.','No natural campaign or complete framebuffer/audio/global timing claim.'])
- (ROOT/'analysis/rope_motion_v0288_game_report.json').write_text(json.dumps(report,indent=2)+'\n')
+ (ROOT/f'analysis/rope_motion_v{args.version:04d}_game_report.json').write_text(json.dumps(report,indent=2)+'\n')
 if __name__=='__main__':main()

@@ -2781,6 +2781,7 @@ static void show_inventory(void)
 static bool tick_world_simulation(void)
 {
     bool bell_action=FALSE;
+    u16 terrain_damage=0;
     world_object_tick_count=1; /* 26B6 counts the hero before spell/loot/actor visits. */
     if(!boss_death_music_hold) update_world_music();
     s16 contact=-1,damage=0;
@@ -2841,19 +2842,25 @@ static bool tick_world_simulation(void)
         }
         if(!hero_health) hero_state=8;
     }
+    /* 2EB6: floor damage is added after reflection, before the common tail.
+     * Unlike contact damage it causes no knockback and ignores armor. */
+    if(hero_terrain_context==4 && !hero_hurt && hero_state!=9 && hero_health) terrain_damage=4;
     if(contact>=0 && damage && !(hero_state==1 && reflect_world_actor(contact,hero_direction,hero_shield_level)))
     {
         u8 *entity=world_actor_state+contact*0x30;
         u16 is_projectile=entity[3]&16;
-        hurt_hero(contact,cache,damage);
+        hurt_hero(contact,cache,damage+terrain_damage);terrain_damage=0;
         if(is_projectile) memset(entity,0,0x30);
     }
+    if(terrain_damage) { hero_hurt=48;sound_effect_main(0x91); }
     integrate_hero();
     if(hero_hurt && hero_hurt<=128)
     {
         hero_hurt--;hero_flags|=1;
         if(hero_hurt&2) hero_flags&=254;
     }
+    /* 2753/27CF applies the pending damage after movement/flash counters. */
+    if(terrain_damage) hero_health=terrain_damage>=hero_health?0:hero_health-terrain_damage;
     tick_world_spell(sms_vram+0x3800,world_spell_state[0]==5?hero_basic_level:world_spell_state[0]==4?hero_items[5]:hero_items[4]);
     tick_world_loot(hero_state,&hero_gold,&hero_health,hero_max_health,&hero_magic,hero_max_magic,&hero_keys);
     prepare_hero_health_bar(FALSE);prepare_hero_magic_bar();

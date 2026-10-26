@@ -5,17 +5,27 @@ puis porter sa logique Z80 en code natif 68000 avec SGDK. La fidélité à la
 Master System passe avant les améliorations.
 
 <!-- ROM-RELEASE:START -->
-**Version courante : v0288 — 2048 Kio.**
+**Version courante : v0289 — 2048 Kio.**
 
-[Télécharger la ROM v0288](versions/v0288-5c2b91e5/gaw-megadrive-v0288.bin) · [Toutes les versions](versions/README.md)
+[Télécharger la ROM v0289](versions/v0289-1abcdb47/gaw-megadrive-v0289.bin) · [Toutes les versions](versions/README.md)
 
 Contrôles ciblés réussis ; portage complet encore non validé.
 
-SHA-256 : `5c2b91e5aab65403cd1213eb4e25b9ea5fbc1c41529e34e0a944144675817e2f`
-Checksum Mega Drive : `A476`
+SHA-256 : `1abcdb4735d8edaee1c6723522f8f5e2fbb77b044aba6c8e6c47761b0775a5f4`
+Checksum Mega Drive : `AC68`
 <!-- ROM-RELEASE:END -->
 
 ## État du portage
+
+La **v0289 corrige les dégâts des sols dangereux** : quatre PV perdus,
+sans recul, avec le délai de protection original. Les contacts avec un
+ennemi et les projectiles renvoyés par le bouclier restent pris en compte.
+Les 140 situations contrôlées PAL/NTSC correspondent à la SMS sur
+12 892 frames. Les contrôles de déplacement et de corde passent aussi.
+Le premier donjon est terminé sans aide ni décès, avec hache, cristal et
+sortie à 32/32 PV ; les relectures reproduisent toute la RAM et l'image
+finales. La campagne complète reste à prolonger sur cette version.
+Voir les [preuves et limites de la v0289](analysis/floor_damage_v0289.md).
 
 La **v0288 corrige les vitesses de déplacement selon le terrain**, y compris
 la corde, qui était parcourue trop vite. Le jeu sélectionne maintenant les

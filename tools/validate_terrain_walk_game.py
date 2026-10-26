@@ -10,7 +10,7 @@ from validate_actor_tick import PRESSES
 from archive_lossless_evidence import sha
 
 def main():
- parser=argparse.ArgumentParser();parser.add_argument('--trial',default='02');args=parser.parse_args()
+ parser=argparse.ArgumentParser();parser.add_argument('--trial',default='02');parser.add_argument('--version',type=int,default=288);args=parser.parse_args()
  rom=(ROOT/'input/original.sms').read_bytes();groups=[]
  for n in range(5):
   p=0x2544+n*4;address=int.from_bytes(rom[p:p+2],'little');groups.append((rom[p+3],rom[address:address+rom[p+2]]))
@@ -20,7 +20,7 @@ def main():
  for region in ['auto','pal']:
   traces={}
   for tag in ['sms','md']:
-   pending=[];samples={};folder=ROOT/f'validation/terrain-walk-v0288-{args.trial}/{region}-{tag}';assert not folder.exists()
+   pending=[];samples={};folder=ROOT/f'validation/terrain-walk-v{args.version:04d}-{args.trial}/{region}-{tag}';assert not folder.exists()
    def prepare(index,frame):
     boots,terrain,direction=cases[index];tilemap=bytes([tiles[terrain],0])*768
     if tag=='sms':
@@ -49,5 +49,5 @@ def main():
   differences=[dict(case=i,setup=cases[i],offset=j,sms=traces['sms'][i,j],md=traces['md'][i,j]) for i,j in traces['sms'] if traces['sms'][i,j]!=traces['md'][i,j]]
   results.append(dict(region=region,cases=len(cases),frames=len(cases)*32,differences=differences));print(region,len(differences),'differences',differences[:2],flush=True)
  report=dict(passed=all(not r['differences'] for r in results),md_sha256=sha((ROOT/'gaw-megadrive.bin').read_bytes()),source_sha256=sha(rom),tiles=tiles,cases=cases,results=results,controlled_fixture=True,limits=['Constant software-map terrain, boots ownership/speed and hero/actor fixtures are injected before each case. Actual terrain detection, table choice, movement integration, animation counter and ordinary directional input execute in both game loops.','HP is reset per case; accumulation of environment damage across cases is excluded from this movement-table check. No hazard-damage parity, natural campaign, full graphics/audio, transition or global clock claim.'])
- (ROOT/'analysis/terrain_walk_v0288_game_report.json').write_text(json.dumps(report,indent=2)+'\n');assert report['passed']
+ (ROOT/f'analysis/terrain_walk_v{args.version:04d}_game_report.json').write_text(json.dumps(report,indent=2)+'\n');assert report['passed']
 if __name__=='__main__':main()
