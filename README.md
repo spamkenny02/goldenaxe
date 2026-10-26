@@ -36,11 +36,24 @@ marge au-dessus du tas, sans corruption de ses en-têtes.
 Le cinquième donjon est atteint au canoë ; une clé, le passage de Terre
 et les bottes de course sont acquis par commandes ordinaires, avec aide
 sur l'approche. Ces quatre étapes ont leurs relectures RAM/image exactes.
-Le héros termine ce jalon à 30/64 PV ; le cinquième boss et la vitesse
-des bottes comparée à la SMS restent à valider.
-La même ROM v0292 est utilisée pour ces nouveaux parcours. Le combat source
-contre le quatrième boss n'a pas de preuve de victoire ; les six donjons
-suivants et la campagne complète restent à vérifier.
+Une sortie pour ravitaillement, quatre dons de cornes et l'achat de deux
+clés sont maintenant rejoués avec RAM/image finales exactes. Le soin gratuit
+ramène le héros de 30 à 64 PV par dialogue ordinaire. Le retour ouvre
+le téléporteur de Terre en 153 et le passage commandé en 162. Ces
+14 nouvelles étapes constituent le jalon avant le cinquième boss.
+Les bottes passent 96 situations contrôlées PAL/NTSC face à la SMS :
+3 072 frames de positions, vitesses et compteurs identiques. Cela ne valide
+pas encore le rythme global du jeu. Voir le [ravitaillement et les bottes](analysis/d5_supplies_v0292.md).
+Le cinquième boss est maintenant vaincu sans perte de PV, avec aide retirée
+26 frames avant le combat. Le cristal et le soin sont terminés à 72/72 PV.
+Le retour utilise le mécanisme de 173 et le téléporteur de 174 ; le héros
+ressort à 72/72 PV avec les cinq cristaux. Combat, passage de retour et sortie
+ont leurs trois relectures RAM/image exactes, sans nouvelle assistance après
+le boss. La pile conserve 408 octets de marge observée jusqu’au cristal.
+Voir les [preuves du cinquième donjon](analysis/d5_campaign_v0292.md).
+La même ROM v0292 est utilisée pour ces nouveaux parcours. La victoire
+source contre les boss4/5 n’est pas validée ; les donjons6–10, la fin et
+la fidélité globale restent à vérifier.
 Voir les [preuves du quatrième donjon](analysis/d4_campaign_v0292.md),
 le [rapport du canoë](analysis/canoe_campaign_v0292_report.json) et le
 [précédent jalon de progression](analysis/campaign_v0292_progress.md).

@@ -1,6 +1,6 @@
 """Ordinary recorded route, house gold gift or teacher visit, then normal exit."""
 import argparse,contextlib,io,json
-from run_core import ROOT,run
+from run_core import ROOT,run,FrameWrites
 from validate_playable_sprite_limit import symbols
 from archive_lossless_evidence import sha
 from assisted_prefix import prefix_writes,recording
@@ -46,7 +46,7 @@ def main():
   buttons=choose(f)
   if f>start and (not controls or controls[-1]['buttons']!=buttons):controls.append(dict(frame=f,buttons=buttons))
   return buttons
- with contextlib.redirect_stdout(io.StringIO()):run(rom,start+5000,folder,captures,c['presses'],skip_intro=False,input_provider=controller,ram_observer=observe,stop_when=lambda:bool(failure) or done is not None and observed>=done+150,core_options=c['core_options'],ram_writes=writes)
+ with contextlib.redirect_stdout(io.StringIO()):run(rom,start+5000,folder,captures,c['presses'],skip_intro=False,input_provider=controller,ram_observer=observe,stop_when=lambda:bool(failure) or done is not None and observed>=done+150,core_options=c['core_options'],ram_writes=FrameWrites(writes))
  result=dict(passed=done is not None and not failure,rom_sha256=digest,source_prefix=a.prefix,kind=a.kind,teacher=a.teacher if a.kind=='teacher' else None,expected_level=a.expected_level if a.kind=='teacher' else None,complete_frame=done,failure=failure or (None if done else 'frame_limit'),first_state=first,last_state=state,ram_injections=bool(writes),assisted_route=bool(writes),new_assistance_writes=0,sram_checkpoint_injection=False,scope='Cold boot and recorded ordinary buttons with explicitly inherited approach assistance if present, real house interaction and normal exterior exit. No actor removal, ownership, currency or progression fixture.')
  for name,value in [('report',result),('events',events),('controls',controls)]:(folder/(name+'.json')).write_bytes((json.dumps(value,indent=2)+'\n').encode())
  if writes:

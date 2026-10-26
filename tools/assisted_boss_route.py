@@ -19,7 +19,7 @@ from assisted_prefix import prefix_writes, recording, episodes, EPISODE_KEYS
 def main():
     parser = argparse.ArgumentParser(add_help=False)
     parser.add_argument('--boss-room', type=lambda value: int(value, 0), required=True)
-    parser.add_argument('--planner', choices=['beam', 'navigation', 'ordinary', 'side', 'escape', 'cautious', 'evasive', 'exit', 'earth'], default='beam')
+    parser.add_argument('--planner', choices=['beam', 'navigation', 'ordinary', 'side', 'escape', 'cautious', 'evasive', 'exit', 'earth', 'contact'], default='beam')
     parser.add_argument('--boss-frames', type=int, help='Bound this diagnostic after normal combat starts')
     parser.add_argument('--world-route', action='store_true', help='Apply the same guard to an exterior route')
     parser.add_argument('--unassisted-plan-rooms', help='Plan ordinary input in these rooms after the inherited boss guard has ended')
@@ -28,7 +28,7 @@ def main():
     args, remaining = parser.parse_known_args()
     assert not args.completed_exit_proof or args.new_assistance_episode
     sms = '--sms' in remaining
-    assert not sms or args.planner in ('ordinary', 'beam', 'navigation', 'cautious', 'earth', 'side', 'escape', 'evasive'), 'The selected wrapper does not support SMS report paths'
+    assert not sms or args.planner in ('ordinary', 'beam', 'navigation', 'cautious', 'earth', 'side', 'escape', 'evasive', 'contact'), 'The selected wrapper does not support SMS report paths'
     assert '--lookahead-rooms' not in remaining, 'Planning is restricted to the unassisted boss'
     assert args.boss_frames is None or args.boss_frames > 0
     if args.world_route:
@@ -173,7 +173,7 @@ def main():
         return original_walk(tilemap, start, goal, () if approach_active else enemies, geometry)
     if original_walk is not None:
         game.walk = walk
-    sys.argv = [sys.argv[0]] + ([] if args.world_route or args.planner in ('ordinary','earth') else
+    sys.argv = [sys.argv[0]] + ([] if args.world_route or args.planner in ('ordinary','earth','contact') else
                                ['--lookahead-rooms', ','.join(hex(room) for room in plan_rooms)]) + remaining
     try:
         if args.world_route:
@@ -196,6 +196,9 @@ def main():
         elif args.planner == 'navigation':
             import natural_combat_navigation
             natural_combat_navigation.main()
+        elif args.planner == 'contact':
+            import natural_contact_passage
+            natural_contact_passage.main()
         elif args.planner == 'earth':
             import natural_earth_passage
             natural_earth_passage.main()

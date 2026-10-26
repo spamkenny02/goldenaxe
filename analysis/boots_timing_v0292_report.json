@@ -1,0 +1,41 @@
+{
+  "passed": true,
+  "version": 292,
+  "md_sha256": "6eeb56086a81c230c75b154f51cafab72167a1eec42c691aed9bf317fd19dd82",
+  "acquired_boots_inventory_slot": 14,
+  "actual_acquired_speed_selector": 1,
+  "controlled_fixture": true,
+  "regions": [
+    "auto",
+    "pal"
+  ],
+  "cases": 96,
+  "frames_compared": 3072,
+  "fields": [
+    "y_fixed8_8",
+    "x_fixed8_8",
+    "direction",
+    "animation",
+    "walking_counter",
+    "dy_fixed8_8",
+    "dx_fixed8_8",
+    "terrain_context"
+  ],
+  "differences": 0,
+  "global_timing_validated": false,
+  "world_transition_timing_validated": false,
+  "evidence": {
+    "gaw-megadrive.bin": "6eeb56086a81c230c75b154f51cafab72167a1eec42c691aed9bf317fd19dd82",
+    "analysis/terrain_walk_v0292_game_report.json": "3b33cdafa36507994e192b015acc85913e76a0eb4fabf5f48ff099c750d54ec1",
+    "input/original.sms": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+    "validation/natural-dungeon-combat/md-auto-v0292-d5-boots03/capture.json": "2d754ed6e50425abc1b9d31b93600b4e3a24b3163fae5929e30ee32f2f6db9a8",
+    "validation/natural-dungeon-combat/md-auto-v0292-d5-boots03/report.json": "28263889623f5325ae47b104a6d6d6068a13c43af5f5c14ebb6c00a5c4683ab2",
+    "validation/natural-dungeon-combat/md-auto-v0292-d5-boots03-assisted-fixed-replay-92303/replay_report.json": "c92c6df3755496ceed2099f7d812567a84038248bf6d9c70689dc29ba668379c",
+    "validation/natural-dungeon-combat/md-auto-v0292-d5-boots03/ram_92303.bin": "0e9907e5614b74653c2db561735f05eb51816962e255e53a2be6c8aaebf35da6",
+    "tools/validate_terrain_walk_game.py": "2ffea889912680aca171f90b6674b43c542a889c57a48ddfdff3a30b6f0681aa"
+  },
+  "limits": [
+    "Constant software-map terrain, boots ownership/speed and hero/actor fixtures are injected before each case. Actual terrain detection, table choice, movement integration, animation counter and ordinary directional input execute in both game loops.",
+    "HP is reset per case; accumulation of environment damage across cases is excluded from this movement-table check. No hazard-damage parity, natural campaign, full graphics/audio, transition or global clock claim."
+  ]
+}

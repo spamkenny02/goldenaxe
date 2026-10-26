@@ -11,7 +11,7 @@ from archive_lossless_evidence import sha
 from validate_playable_sprite_limit import symbols
 
 def main():
- p=argparse.ArgumentParser(add_help=False);p.add_argument('--passage-destination',type=lambda v:int(v,0),default=0x1d1);p.add_argument('--earth-cell',type=lambda v:int(v,0),default=0x58);p.add_argument('--earth-room',type=lambda v:int(v,0),default=0x1e1);a,remaining=p.parse_known_args();sys.argv=[sys.argv[0]]+remaining
+ p=argparse.ArgumentParser(add_help=False);p.add_argument('--earth-during-combat',action='store_true',help='Use real Earth input before clearing the room');p.add_argument('--passage-destination',type=lambda v:int(v,0),default=0x1d1);p.add_argument('--earth-cell',type=lambda v:int(v,0),default=0x58);p.add_argument('--earth-room',type=lambda v:int(v,0),default=0x1e1);a,remaining=p.parse_known_args();sys.argv=[sys.argv[0]]+remaining
  assert 0<=a.earth_cell<160
  cast_x=(a.earth_cell&15)*16+8;cast_y=(a.earth_cell&240)+32
  sms='--sms' in remaining;flag='--continuation' if '--continuation' in remaining else '--prefix';name=remaining[remaining.index(flag)+1];family='natural-dungeon-combat' if flag=='--continuation' else 'natural-dungeon-route';prefix=json.loads((ROOT/'validation'/family/name/'capture.json').read_bytes());start=prefix['frames'];sy=None if sms else symbols(ROOT/'megadrive/out/release/symbol.txt')
@@ -38,7 +38,7 @@ def main():
   def choose(f):
    nonlocal last_direction,approached
    if cached.get('frame')==f:return cached['buttons']
-   active=f>start and state.get('room')==a.earth_room and not state['enemies'] and (not state['flags']&4 or state['selected']!=1 or state['game']==16)
+   active=f>start and state.get('room')==a.earth_room and (a.earth_during_combat or not state['enemies']) and (not state['flags']&4 or state['selected']!=1 or state['game']==16)
    if done is not None:value=[]
    elif not active:value=controller(f)
    elif state['selected']!=(1 if state['flags']&4 else 5) or state['game']==16:
@@ -69,6 +69,6 @@ def main():
  finally:game.run=original
  folder=result['folder'];(folder/'controls.json').write_text(json.dumps(actual,indent=2)+'\n');(folder/'earth_events.json').write_text(json.dumps(events,indent=2)+'\n');report=json.loads((folder/'report.json').read_bytes());opened=next((r for r in events if r['flags']&4 and r['cell']!=0x0b),None)
  if done is not None:report.update(passed=True,failure=None,stop_reason='earth_passage_traversed',destination_combat_cleared=report['room_cleared'])
- report.update(earth_route_passed=done is not None,earth_route_complete_frame=done,earth_passage_room=a.earth_room,earth_cell=a.earth_cell,earth_passage_opened=bool(opened),earth_before=before,earth_opened=opened,earth_controller_sha256=sha(driver),earth_state_writes=0);(folder/'report.json').write_text(json.dumps(report,indent=2)+'\n')
+ report.update(earth_during_combat_requested=a.earth_during_combat,earth_route_passed=done is not None,earth_route_complete_frame=done,earth_passage_room=a.earth_room,earth_cell=a.earth_cell,earth_passage_opened=bool(opened),earth_before=before,earth_opened=opened,earth_controller_sha256=sha(driver),earth_state_writes=0);(folder/'report.json').write_text(json.dumps(report,indent=2)+'\n')
  print('Earth passage opened:',bool(opened))
 if __name__=='__main__':main()

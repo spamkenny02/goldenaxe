@@ -7987,7 +7987,7 @@
     "bytes": 2097152,
     "archived_utc": "2026-10-26T14:07:55.987758+00:00",
     "rom": "v0292-6eeb5608/gaw-megadrive-v0292.bin",
-    "notes": "Corde,canoe et D4 natif valides. D5: approche,cle,passage deTerre et bottes acquis;relecturesRAM/image exactes. BossD5,D6-D10 et fideliteglobale ouverts.",
+    "notes": "Corde corrigee; D1-D5 natifs termines, approches D2-D5 assistees et boss sans aide; cinq cristaux, sortie D5 a72/72; bottes96 cas PAL/NTSC exacts; jeu complet non valide.",
     "validation": "targeted_checks_passed",
     "reports": [
       {
@@ -8013,6 +8013,22 @@
       {
         "file": "d5_progress_v0292_report.json",
         "sha256": "68163a1fe3dd0b4f349d612e6c020437a8edafc98554ce13a005d3f0dd087b71"
+      },
+      {
+        "file": "boots_timing_v0292_report.json",
+        "sha256": "d82063e7b96ae35a07b09c3c633c395d09b78c34ebf4715f8ee2b7a8240da2ce"
+      },
+      {
+        "file": "terrain_walk_v0292_game_report.json",
+        "sha256": "3b33cdafa36507994e192b015acc85913e76a0eb4fabf5f48ff099c750d54ec1"
+      },
+      {
+        "file": "d5_supplies_v0292_report.json",
+        "sha256": "3e387142fc620346cebf61b3d433eb021b5a7d6211ec573ae96f3073b323d1bb"
+      },
+      {
+        "file": "d5_campaign_v0292_report.json",
+        "sha256": "02de48a2b429ccb12da723a7ee813153db7eecd638817919c95ef78df8d64c4c"
       }
     ]
   }
