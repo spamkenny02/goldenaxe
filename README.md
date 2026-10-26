@@ -24,14 +24,21 @@ les montées et descentes B2/A2 correspondent à la SMS en PAL/NTSC pour les
 cases, la carte, la position et le terrain à l'arrivée. Les colonnes de
 corde publiées par le VDP et leurs tuiles correspondent aussi.
 Le premier donjon passe sans aide à 32/32 PV, avec relecture RAM/image exacte.
-La campagne native termine maintenant les deuxième et troisième donjons,
-avec aide pendant leurs approches, retirée avant chaque boss. Elle acquiert
-la corde, reçoit les 50 cornes de F4 et apprend réellement la Terre pour 50
-cornes. Le passage de Terre du quatrième donjon est franchi : les cinq cases
-modifiées, la carte, l'inventaire, le drapeau et les tuiles VDP correspondent
-à la SMS. Quinze segments natifs/de référence ont leurs relectures RAM/image
-exactes. Le canoë, le quatrième boss et la campagne complète restent à établir.
-Voir le [rapport de progression v0292](analysis/campaign_v0292_progress.md).
+La campagne native termine maintenant les deuxième, troisième et quatrième
+donjons, avec aide pendant leurs approches, retirée avant chaque boss. Elle
+acquiert la corde, la magie de Terre et le canoë. Le coffre, le passage de
+Terre et le téléporteur sont comparés à la SMS ; la marche effective dans
+l'eau peu profonde est observée après acquisition du canoë sur les deux jeux.
+Le quatrième boss est vaincu à la hache, son cristal récupéré et le héros
+ressort vivant à 62/64 PV. Le combat et le retour ont leurs relectures RAM/image
+exactes. Le contrôle de pile jusqu'au cristal observe encore 408 octets de
+marge au-dessus du tas, sans corruption de ses en-têtes.
+La même ROM v0292 est utilisée pour ces nouveaux parcours. Le combat source
+contre le quatrième boss n'a pas de preuve de victoire ; les six donjons
+suivants et la campagne complète restent à vérifier.
+Voir les [preuves du quatrième donjon](analysis/d4_campaign_v0292.md),
+le [rapport du canoë](analysis/canoe_campaign_v0292_report.json) et le
+[précédent jalon de progression](analysis/campaign_v0292_progress.md).
 Voir les [preuves et limites de la v0292](analysis/rope_arrival_v0292.md).
 
 La **v0291 rétablit la destruction des arbres à la hache**, absente du

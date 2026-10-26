@@ -28,7 +28,7 @@ def main():
     args, remaining = parser.parse_known_args()
     assert not args.completed_exit_proof or args.new_assistance_episode
     sms = '--sms' in remaining
-    assert not sms or args.planner in ('ordinary', 'beam', 'navigation', 'cautious', 'earth'), 'Side/escape wrappers currently write MD report paths'
+    assert not sms or args.planner in ('ordinary', 'beam', 'navigation', 'cautious', 'earth', 'side', 'escape', 'evasive'), 'The selected wrapper does not support SMS report paths'
     assert '--lookahead-rooms' not in remaining, 'Planning is restricted to the unassisted boss'
     assert args.boss_frames is None or args.boss_frames > 0
     if args.world_route:

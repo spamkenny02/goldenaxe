@@ -11,7 +11,9 @@ from archive_lossless_evidence import sha
 from validate_playable_sprite_limit import symbols
 
 def main():
- p=argparse.ArgumentParser(add_help=False);p.add_argument('--passage-destination',type=lambda v:int(v,0),default=0x1d1);p.add_argument('--earth-room',type=lambda v:int(v,0),default=0x1e1);a,remaining=p.parse_known_args();sys.argv=[sys.argv[0]]+remaining
+ p=argparse.ArgumentParser(add_help=False);p.add_argument('--passage-destination',type=lambda v:int(v,0),default=0x1d1);p.add_argument('--earth-cell',type=lambda v:int(v,0),default=0x58);p.add_argument('--earth-room',type=lambda v:int(v,0),default=0x1e1);a,remaining=p.parse_known_args();sys.argv=[sys.argv[0]]+remaining
+ assert 0<=a.earth_cell<160
+ cast_x=(a.earth_cell&15)*16+8;cast_y=(a.earth_cell&240)+32
  sms='--sms' in remaining;flag='--continuation' if '--continuation' in remaining else '--prefix';name=remaining[remaining.index(flag)+1];family='natural-dungeon-combat' if flag=='--continuation' else 'natural-dungeon-route';prefix=json.loads((ROOT/'validation'/family/name/'capture.json').read_bytes());start=prefix['frames'];sy=None if sms else symbols(ROOT/'megadrive/out/release/symbol.txt')
  original=game.run;result={};actual=[];state={};events=[];before=None;last_direction=0;approached=False;done=None;cached={};driver=Path(__file__).read_bytes()
  def wrapped(*args,**kwargs):
@@ -22,10 +24,10 @@ def main():
    observer(f,r);last_frame[0]=f
    if f<=start:return
    if sms:
-    state.update(room=int.from_bytes(r[0xb9:0xbb],'little'),game=r[0x1d],hero=r[0x301],counter=r[0x304],x=r[0x313],y=r[0x311],direction=r[0x30a],selected=r[0xdf],slot=r[0xa0],level=r[0xe5],magic=r[0xdb],flags=r[0x100+(a.earth_room&255)],cell=r[0x1c58],spell=r[0x330],tilemap=bytes(r[0x1600:0x1c00]),enemies=any(r[0x600+i*48]>=0x20 and r[0x600+i*48+0x18] and r[0x600+i*48+3]&2 for i in range(8)))
+    state.update(room=int.from_bytes(r[0xb9:0xbb],'little'),game=r[0x1d],hero=r[0x301],counter=r[0x304],x=r[0x313],y=r[0x311],direction=r[0x30a],selected=r[0xdf],slot=r[0xa0],level=r[0xe5],magic=r[0xdb],flags=r[0x100+(a.earth_room&255)],cell=r[0x1c00+a.earth_cell],spell=r[0x330],tilemap=bytes(r[0x1600:0x1c00]),enemies=any(r[0x600+i*48]>=0x20 and r[0x600+i*48+0x18] and r[0x600+i*48+3]&2 for i in range(8)))
    else:
     data=lambda n,k:bytes(r[(sy[n]+i)^1] for i in range(k));word=lambda n:int.from_bytes(data(n,2),'big');actors=data('world_actor_state',768)
-    state.update(room=word('room_id'),game=word('game_state'),hero=word('hero_state'),counter=word('hero_counter'),x=word('hero_x')>>8,y=word('hero_y')>>8,direction=word('hero_direction'),selected=word('hero_selected_item'),slot=word('inventory_slot'),level=data('hero_items',17)[5],magic=word('hero_magic'),flags=data('game_save_state',592)[0x50+(a.earth_room&255)],cell=data('scratch',4096)[0x858],spell=data('world_spell_state',48)[0],tilemap=data('sms_vram',16384)[0x3800:0x3e00],enemies=any(actors[i*48]>=0x20 and actors[i*48+0x18] and actors[i*48+3]&2 for i in range(8)))
+    state.update(room=word('room_id'),game=word('game_state'),hero=word('hero_state'),counter=word('hero_counter'),x=word('hero_x')>>8,y=word('hero_y')>>8,direction=word('hero_direction'),selected=word('hero_selected_item'),slot=word('inventory_slot'),level=data('hero_items',17)[5],magic=word('hero_magic'),flags=data('game_save_state',592)[0x50+(a.earth_room&255)],cell=data('scratch',4096)[0x800+a.earth_cell],spell=data('world_spell_state',48)[0],tilemap=data('sms_vram',16384)[0x3800:0x3e00],enemies=any(actors[i*48]>=0x20 and actors[i*48+0x18] and actors[i*48+3]&2 for i in range(8)))
    if done is None and events and any(e['flags']&4 and e['cell']!=0x0b for e in events) and state['room']==a.passage_destination and state['game']==12 and state['hero']==1 and state['selected']==1:
     done=f;args[3].add(f+100)
    if state['room']==a.earth_room and state['game']==12:
@@ -49,12 +51,13 @@ def main():
       elif state['slot']%4!=wanted%4:value=[7 if state['slot']%4<wanted%4 else 6]
       else:value=[8]
    elif state['game']!=12 or state['hero'] not in [0,1]:value=[]
-   elif state['counter']:value=[4+last_direction]
    elif state['spell']:value=[]
-   elif (state['x'],state['y'])==(136,112) and state['direction']==0:last_direction=0;value=[4,8] if f%3 else [4]
+   elif (state['x'],state['y'])==(cast_x,cast_y) and state['direction']==0:
+    last_direction=0;value=[] if state['counter'] or f%3==0 else [8]
+   elif state['counter']:value=[4+last_direction]
    else:
-    if (state['x'],state['y'])==(136,120):approached=True
-    target=(136,112) if approached else (136,120)
+    if (state['x'],state['y'])==(cast_x,cast_y+8):approached=True
+    target=(cast_x,cast_y) if approached else (cast_x,cast_y+8)
     route=game.walk(state['tilemap'],(state['x'],state['y']),lambda q:q==target);value=[]
     if route:last_direction=route[0];value=[4+last_direction]
    cached.update(frame=f,buttons=value)
@@ -66,6 +69,6 @@ def main():
  finally:game.run=original
  folder=result['folder'];(folder/'controls.json').write_text(json.dumps(actual,indent=2)+'\n');(folder/'earth_events.json').write_text(json.dumps(events,indent=2)+'\n');report=json.loads((folder/'report.json').read_bytes());opened=next((r for r in events if r['flags']&4 and r['cell']!=0x0b),None)
  if done is not None:report.update(passed=True,failure=None,stop_reason='earth_passage_traversed',destination_combat_cleared=report['room_cleared'])
- report.update(earth_route_passed=done is not None,earth_route_complete_frame=done,earth_passage_room=a.earth_room,earth_passage_opened=bool(opened),earth_before=before,earth_opened=opened,earth_controller_sha256=sha(driver),earth_state_writes=0);(folder/'report.json').write_text(json.dumps(report,indent=2)+'\n')
+ report.update(earth_route_passed=done is not None,earth_route_complete_frame=done,earth_passage_room=a.earth_room,earth_cell=a.earth_cell,earth_passage_opened=bool(opened),earth_before=before,earth_opened=opened,earth_controller_sha256=sha(driver),earth_state_writes=0);(folder/'report.json').write_text(json.dumps(report,indent=2)+'\n')
  print('Earth passage opened:',bool(opened))
 if __name__=='__main__':main()

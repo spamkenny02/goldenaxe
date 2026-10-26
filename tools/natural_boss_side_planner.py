@@ -47,7 +47,8 @@ def main():
     nav.beam.main()
     trial = remaining[remaining.index('--trial') + 1]
     region = 'pal' if '--pal' in remaining else 'auto'
-    path = ROOT / f'validation/natural-dungeon-combat/md-{region}-{trial}/report.json'
+    tag='sms' if '--sms' in remaining else 'md'
+    path = ROOT / f'validation/natural-dungeon-combat/{tag}-{region}-{trial}/report.json'
     report = json.loads(path.read_bytes())
     report.update(planning_method='96-frame beam,width3,left-side source axe stances,health preservation',
                   side_driver_sha256=nav.beam.generic.base.sha(Path(__file__).read_bytes()))

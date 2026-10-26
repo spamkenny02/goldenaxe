@@ -14,7 +14,8 @@ class EvasivePlanner(escape.EscapePlanner):
 def main():
     remaining=list(sys.argv[1:]);escape.side.SidePlanner=EvasivePlanner;escape.side.main()
     trial=remaining[remaining.index('--trial')+1];region='pal' if '--pal' in remaining else 'auto'
-    path=ROOT/f'validation/natural-dungeon-combat/md-{region}-{trial}/report.json';report=json.loads(path.read_bytes())
+    tag='sms' if '--sms' in remaining else 'md'
+    path=ROOT/f'validation/natural-dungeon-combat/{tag}-{region}-{trial}/report.json';report=json.loads(path.read_bytes())
     report.update(planning_method='96-frame beam,width3,eleven retained evasion paths,90 points per hero HP against moving bosses',evasive_driver_sha256=escape.side.nav.beam.generic.base.sha(Path(__file__).read_bytes()))
     path.write_text(json.dumps(report,indent=2)+'\n')
 if __name__=='__main__':main()

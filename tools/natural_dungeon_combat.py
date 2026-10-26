@@ -8,15 +8,20 @@ from validate_playable_sprite_limit import symbols
 from archive_lossless_evidence import sha
 from assisted_prefix import prefix_writes
 
+CANOE_OWNED=False
+AVOID_PORTAL_COORDINATES=set()
+
 def walk(tilemap,start,goal,enemies=(),geometry=False):
     queue=collections.deque([start]);parent={start:None};finish=None
     while queue:
         p=queue.popleft()
         if goal(p):finish=p;break
-        cache=collision_cache(tilemap,Hero(x=p[0]<<8,y=p[1]<<8))
+        cache=collision_cache(tilemap,Hero(x=p[0]<<8,y=p[1]<<8),canoe=CANOE_OWNED)
         for d,(dx,dy) in enumerate([(0,-8),(0,8),(-8,0),(8,0)]):
             nxt=p[0]+dx,p[1]+dy
             if nxt in parent or not(8<=nxt[0]<=248 and 8<=nxt[1]<=168):continue
+            coordinate=(((nxt[1]-12)&248)<<3)+((((nxt[0]-12)&255)>>2)&62)+126
+            if coordinate in AVOID_PORTAL_COORDINATES:continue
             if geometry:
                 from natural_combat_aim import contact
                 if any(contact(nxt,e,0) if not e.get('hp') else abs(nxt[0]-e['x'])<12 and abs(nxt[1]-e['y'])<12 for e in enemies):continue
@@ -33,7 +38,7 @@ def attack_position(p,e,reach=24,align=8):
     return abs(dx)<=align and reach-12<=abs(dy)<=reach or abs(dy)<=align and reach-12<=abs(dx)<=reach
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--sms',action='store_true');parser.add_argument('--pal',action='store_true');parser.add_argument('--trial',required=True);parser.add_argument('--frames',type=int,default=14000);parser.add_argument('--target-room',type=lambda x:int(x,0),default=0x1d4);parser.add_argument('--reach',type=int,default=24);parser.add_argument('--align',type=int,default=8);parser.add_argument('--rooms',help='Comma-separated adjacent room IDs');parser.add_argument('--collect-key',action='store_true');parser.add_argument('--collect-item',type=int);parser.add_argument('--collect-gem',action='store_true');parser.add_argument('--exit-dungeon',action='store_true');parser.add_argument('--max-deaths',type=int,default=3,help='Maximum normal Continue retries');parser.add_argument('--defer-puzzles-rooms',default='',help='Walk past optional puzzles in these rooms while following the requested itinerary');parser.add_argument('--doorway-ranges',action='store_true',help='Accept the source doorway span and actual screen boundary,including off-grid approach positions');parser.add_argument('--ignore-inactive-actors',action='store_true',help='Continue walking around actors whose source active/contact bit is clear');parser.add_argument('--rush-rooms',default='',help='Pass through these rooms while avoiding live actors');parser.add_argument('--puzzle-first-when-blocked',action='store_true',help='Try a pending source puzzle when no enemy attack position is reachable');parser.add_argument('--early-boss-side',action='store_true',help='Experimental63/64 side placement and volley evasions');parser.add_argument('--settle-attacks',action='store_true',help='Wait until a walking step ends before starting an attack');parser.add_argument('--collision-aim',action='store_true',help='Aim from original descriptor hit rectangles');parser.add_argument('--equip-axe',action='store_true',help='Equip owned axe via normal inventory buttons');parser.add_argument('--prefix',help='Recorded natural route directory for this ROM');parser.add_argument('--continuation',help='Replay a completed combat trial from boot before extending its route');parser.add_argument('--assisted-prefix',action='store_true',help='Explicitly continue a verified assisted recording');args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('--sms',action='store_true');parser.add_argument('--pal',action='store_true');parser.add_argument('--trial',required=True);parser.add_argument('--frames',type=int,default=14000);parser.add_argument('--target-room',type=lambda x:int(x,0),default=0x1d4);parser.add_argument('--reach',type=int,default=24);parser.add_argument('--align',type=int,default=8);parser.add_argument('--rooms',help='Comma-separated adjacent room IDs');parser.add_argument('--collect-key',action='store_true');parser.add_argument('--item-first-when-blocked',action='store_true',help='Seek the real reward when enemies cannot yet be reached');parser.add_argument('--collect-item',type=int);parser.add_argument('--collect-gem',action='store_true');parser.add_argument('--exit-dungeon',action='store_true');parser.add_argument('--max-deaths',type=int,default=3,help='Maximum normal Continue retries');parser.add_argument('--avoid-portal-rooms',default='',help='Avoid stepping back onto return portals while fighting/navigating these rooms');parser.add_argument('--defer-puzzles-rooms',default='',help='Walk past optional puzzles in these rooms while following the requested itinerary');parser.add_argument('--doorway-ranges',action='store_true',help='Accept the source doorway span and actual screen boundary,including off-grid approach positions');parser.add_argument('--ignore-inactive-actors',action='store_true',help='Continue walking around actors whose source active/contact bit is clear');parser.add_argument('--rush-rooms',default='',help='Pass through these rooms while avoiding live actors');parser.add_argument('--puzzle-first-when-blocked',action='store_true',help='Try a pending source puzzle when no enemy attack position is reachable');parser.add_argument('--early-boss-side',action='store_true',help='Experimental63/64 side placement and volley evasions');parser.add_argument('--settle-attacks',action='store_true',help='Wait until a walking step ends before starting an attack');parser.add_argument('--collision-aim',action='store_true',help='Aim from original descriptor hit rectangles');parser.add_argument('--equip-axe',action='store_true',help='Equip owned axe via normal inventory buttons');parser.add_argument('--prefix',help='Recorded natural route directory for this ROM');parser.add_argument('--continuation',help='Replay a completed combat trial from boot before extending its route');parser.add_argument('--assisted-prefix',action='store_true',help='Explicitly continue a verified assisted recording');args=parser.parse_args()
     assert args.collect_item is None or 0<=args.collect_item<17
     itinerary=[int(x,0) for x in args.rooms.split(',')] if args.rooms else list(range(0x1e4,args.target_room-1,-16))
     # Entry is checked against actual replay RAM at prefix_end; support later dungeons.
@@ -47,6 +52,7 @@ def main():
     itinerary_index=0
     puzzle_reference=json.loads((ROOT/'analysis/room_puzzles_reference.json').read_bytes())
     assert puzzle_reference['source_sha256']==sha((ROOT/'input/original.sms').read_bytes())
+    avoided_portal_rooms={int(v,0) for v in args.avoid_portal_rooms.split(',') if v}
     deferred_puzzles={int(v,0) for v in args.defer_puzzles_rooms.split(',') if v}
     puzzles={r['room']:r for r in puzzle_reference['records'] if r['room'] not in deferred_puzzles}
     region='pal' if args.pal else 'auto';prefix_name=args.continuation or args.prefix or next(a if args.sms else b for r,a,b in CASES if r==region);prefix=ROOT/('validation/natural-dungeon-combat' if args.continuation else 'validation/natural-dungeon-route')/prefix_name
@@ -73,6 +79,7 @@ def main():
     assert item_reference['source_sha256']==sha((ROOT/'input/original.sms').read_bytes())
     rewards={r['room']:r for r in item_reference['records']}
     def observe(f,r):
+        global CANOE_OWNED,AVOID_PORTAL_COORDINATES
         nonlocal actors,loot,tilemap,observed,seen_room,seen_enemies,cleared,target_entry_keys,failure,menu_since,deaths,last_key,itinerary_index,gem_picked_at,exit_reset_seen,item_picked_at,pilot_progress_key,pilot_progress_frame,exit_dungeon_number,exit_max_health
         observed=f
         if args.sms:
@@ -92,6 +99,10 @@ def main():
         actors=[dict(slot=n,type=raw[n*48],state=raw[n*48+1],counter=raw[n*48+4],flags=raw[n*48+3],hp=raw[n*48+0x18],hurt=raw[n*48+5],hit_box=raw[n*48+0x1b],contact_box=raw[n*48+0x1c],vx=int.from_bytes(raw[n*48+0x16:n*48+0x18],'little',signed=True)/256,vy=int.from_bytes(raw[n*48+0x14:n*48+0x16],'little',signed=True)/256,x=raw[n*48+0x13],y=raw[n*48+0x11]) for n in range(16) if raw[n*48]]
         loot=[dict(slot=n,type=loot_raw[n*48],x=loot_raw[n*48+0x13],y=loot_raw[n*48+0x11]) for n in range(7) if loot_raw[n*48]]
         state['inventory_slot']=r[0xa0] if args.sms else word('inventory_slot')
+        state['canoe']=r[0xec] if args.sms else data(sy['hero_items']+12,1)[0]
+        state['terrain']=r[0x41] if args.sms else word('hero_terrain_context')
+        CANOE_OWNED=bool(state['canoe'])
+        AVOID_PORTAL_COORDINATES={p['coordinate'] for p in portals.values() if p['room']==state['room']} if state['room'] in avoided_portal_rooms else set()
         if f==prefix_end and args.exit_dungeon:exit_dungeon_number=state['dungeon'];exit_max_health=state['max_health']
         if exit_dungeon_number is not None:state['completed_dungeon_progress']=r[0xce+exit_dungeon_number] if args.sms else data(sy['game_save_state']+0x1e+exit_dungeon_number,1)[0]
         if f==prefix_end and not(state['room']==itinerary[0] and state['game']==12 and state['health']):failure='recorded_prefix_did_not_reach_expected_room'
@@ -156,6 +167,8 @@ def main():
                 else:buttons=[8]
             return buttons
         if state.get('game')!=12 or not state.get('health'):return buttons
+        # A3BF/2F0D: six fresh direction edges release a thief's grab.
+        if state['hero']==12:buttons=[[4],[5],[6],[7]][f%4];return buttons
         if state['hero'] not in [0,1,2,3,4,5]:return buttons
         p=state['x'],state['y']
         if state['room'] not in itinerary:return buttons
@@ -252,6 +265,14 @@ def main():
                 goal=lambda q: (q[1]<=15 if direction==0 else q[1]>=161) and 128<=q[0]<=143 if direction<2 else (q[0]<=15 if direction==2 else q[0]>=241) and 80<=q[1]<=88
         else:goal=lambda q:q==((128,168) if args.exit_dungeon else (128,96))
         route=walk(tilemap,p,goal,enemies+hazards,geometry=args.collision_aim)
+        if route is None and args.item_first_when_blocked and enemies and args.collect_item is not None and state['room'] in rewards and not state['item_value']:
+            coordinate=rewards[state['room']]['coordinate']
+            point=next((x,y) for y in range(8,169,8) for x in range(8,249,8) if (((y-12)&248)<<3)+(((x-12)&255)>>2&62)+126==coordinate)
+            alternate=walk(tilemap,p,lambda q:q==point,enemies+hazards,geometry=args.collision_aim)
+            if alternate is not None:
+                if not pilot_decisions or pilot_decisions[-1].get('reason')!='blocked_attack_try_real_reward':pilot_decisions.append(dict(frame=f,reason='blocked_attack_try_real_reward',room=state['room'],point=point))
+                if p==point:buttons=[4];return buttons
+                route=alternate
         if route is None and args.puzzle_first_when_blocked and enemies and state['room'] in puzzles and not state['room_flags']&4:
             coordinate=puzzles[state['room']]['coordinate']
             point=next((x,y) for y in range(8,169,8) for x in range(8,249,8) if (((y-12)&248)<<3)+(((x-12)&255)>>2&62)+126==coordinate)
@@ -279,7 +300,7 @@ def main():
     with contextlib.redirect_stdout(io.StringIO()):run(rom,args.frames,folder,captures,presses,ram_writes=inherited_writes,ram_observer=observe,input_provider=controller,stop_when=stop,core_options={'genesis_plus_gx_region_detect':region})
     for name,data in [('events',events),('samples',samples),('controls',controls),('boss_frames',boss_frames),('pilot_decisions',pilot_decisions)]: (folder/(name+'.json')).write_text(json.dumps(data,indent=2)+'\n')
     if cleared is None and failure is None:failure='frame_limit'
-    result=dict(deferred_puzzles=sorted(deferred_puzzles),doorway_ranges_requested=args.doorway_ranges,ignore_inactive_actors_requested=args.ignore_inactive_actors,rom_sha256=sha(rom.read_bytes()),region=region,recorded_new_game_prefix=prefix_name,prefix_end=prefix_end,itinerary=itinerary,attack_reach=args.reach,attack_alignment=args.align,collision_aim_requested=args.collision_aim,settle_attacks_requested=args.settle_attacks,early_boss_side_requested=args.early_boss_side,puzzle_first_when_blocked_requested=args.puzzle_first_when_blocked,driver_sha256=sha(Path(__file__).read_bytes()),aim_sha256=sha((ROOT/'tools/natural_combat_aim.py').read_bytes()) if args.collision_aim else None,equip_axe_requested=args.equip_axe,rush_rooms=sorted(rush_rooms),collect_key_requested=args.collect_key,target_entry_keys=target_entry_keys,new_key_verified=bool(args.collect_key and target_entry_keys is not None and cleared is not None and state['keys']>target_entry_keys),collect_gem_requested=args.collect_gem,collect_item_requested=args.collect_item,exit_dungeon_requested=args.exit_dungeon,target_room=args.target_room,entered_room=seen_room,seen_target_enemies=seen_enemies,room_cleared=cleared is not None,clear_frame=cleared,deaths=deaths,failure=failure,last_state=state,last_actors=actors,ram_injections=bool(inherited_writes),rom_modifications=False,sram_checkpoint_injection=False,full_dungeon_cleared=bool(args.exit_dungeon and cleared is not None))
+    result=dict(avoided_portal_rooms=sorted(avoided_portal_rooms),item_first_when_blocked_requested=args.item_first_when_blocked,deferred_puzzles=sorted(deferred_puzzles),doorway_ranges_requested=args.doorway_ranges,ignore_inactive_actors_requested=args.ignore_inactive_actors,rom_sha256=sha(rom.read_bytes()),region=region,recorded_new_game_prefix=prefix_name,prefix_end=prefix_end,itinerary=itinerary,attack_reach=args.reach,attack_alignment=args.align,collision_aim_requested=args.collision_aim,settle_attacks_requested=args.settle_attacks,early_boss_side_requested=args.early_boss_side,puzzle_first_when_blocked_requested=args.puzzle_first_when_blocked,driver_sha256=sha(Path(__file__).read_bytes()),aim_sha256=sha((ROOT/'tools/natural_combat_aim.py').read_bytes()) if args.collision_aim else None,equip_axe_requested=args.equip_axe,rush_rooms=sorted(rush_rooms),collect_key_requested=args.collect_key,target_entry_keys=target_entry_keys,new_key_verified=bool(args.collect_key and target_entry_keys is not None and cleared is not None and state['keys']>target_entry_keys),collect_gem_requested=args.collect_gem,collect_item_requested=args.collect_item,exit_dungeon_requested=args.exit_dungeon,target_room=args.target_room,entered_room=seen_room,seen_target_enemies=seen_enemies,room_cleared=cleared is not None,clear_frame=cleared,deaths=deaths,failure=failure,last_state=state,last_actors=actors,ram_injections=bool(inherited_writes),rom_modifications=False,sram_checkpoint_injection=False,full_dungeon_cleared=bool(args.exit_dungeon and cleared is not None))
     (folder/'report.json').write_text(json.dumps(result,indent=2)+'\n');print(result)
 
 if __name__=='__main__':main()

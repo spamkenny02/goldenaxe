@@ -19,7 +19,7 @@ class Hero:
     dx:int=0
     pending:int=0
 
-def collision_cache(tilemap,hero):
+def collision_cache(tilemap,hero,canoe=False):
     # 230E followed by 2CD4: 4 columns x 3 rows around position-12.
     y=((hero.y>>8)-12)&255;x=((hero.x>>8)-12)&255
     offset=(y&248)*8+((x>>2)&62)
@@ -28,7 +28,7 @@ def collision_cache(tilemap,hero):
         for column in range(4):
             p=offset+row*64+column*2
             high=tilemap[p+1] if p+1<len(tilemap) else 128
-            if high&32:high|=128 # 2D01: no water-crossing equipment initially
+            if not canoe and high&32:high|=128 # 2D01: acquired canoe allows shallow water
             values.append(high)
     return values
 

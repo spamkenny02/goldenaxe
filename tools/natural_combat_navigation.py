@@ -13,7 +13,7 @@ from natural_combat_aim import directions
 
 class NavigationPlanner(beam.BeamPlanner):
  def __init__(self,*args,**kwargs):
-  super().__init__(*args,**kwargs);self.graphs={};self.navdist={};self.tilemap=b'';self.variant=2
+  super().__init__(*args,**kwargs);self.graphs={};self.navdist={};self.tilemap=b'';self.variant=2;self.canoe=False
  def fields(self,r):
   v=super().fields(r)
   for e in v['foes']:
@@ -24,6 +24,9 @@ class NavigationPlanner(beam.BeamPlanner):
  def observe(self,f,r):
   super().observe(f,r)
   if self.active:
+   canoe=bool(r[0xec]) if self.sms else bool(r[(self.sy['hero_items']+12)^1])
+   if canoe!=self.canoe:self.graphs.clear()
+   self.canoe=canoe
    if self.sms:self.tilemap=r[0x1600:0x1c00];self.variant=r[0xe1]+1 if r[0xdf]==1 else 0
    else:
     self.tilemap=bytes(r[(self.sy['sms_vram']+0x3800+i)^1] for i in range(1536))
@@ -33,7 +36,7 @@ class NavigationPlanner(beam.BeamPlanner):
   if self.tilemap not in self.graphs:
    reverse={(x,y):[] for y in range(8,169,8) for x in range(8,249,8)}
    for point in reverse:
-    cache=collision_cache(self.tilemap,Hero(x=point[0]<<8,y=point[1]<<8))
+    cache=collision_cache(self.tilemap,Hero(x=point[0]<<8,y=point[1]<<8),canoe=self.canoe)
     for direction,(dx,dy) in enumerate([(0,-8),(0,8),(-8,0),(8,0)]):
      nxt=point[0]+dx,point[1]+dy
      if nxt in reverse and choose_collision_direction(direction,cache)==direction:reverse[nxt].append(point)
