@@ -33,6 +33,11 @@ Le quatrième boss est vaincu à la hache, son cristal récupéré et le héros
 ressort vivant à 62/64 PV. Le combat et le retour ont leurs relectures RAM/image
 exactes. Le contrôle de pile jusqu'au cristal observe encore 408 octets de
 marge au-dessus du tas, sans corruption de ses en-têtes.
+Le cinquième donjon est atteint au canoë ; une clé, le passage de Terre
+et les bottes de course sont acquis par commandes ordinaires, avec aide
+sur l'approche. Ces quatre étapes ont leurs relectures RAM/image exactes.
+Le héros termine ce jalon à 30/64 PV ; le cinquième boss et la vitesse
+des bottes comparée à la SMS restent à valider.
 La même ROM v0292 est utilisée pour ces nouveaux parcours. Le combat source
 contre le quatrième boss n'a pas de preuve de victoire ; les six donjons
 suivants et la campagne complète restent à vérifier.
