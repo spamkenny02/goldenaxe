@@ -5,17 +5,29 @@ puis porter sa logique Z80 en code natif 68000 avec SGDK. La fidélité à la
 Master System passe avant les améliorations.
 
 <!-- ROM-RELEASE:START -->
-**Version courante : v0290 — 2048 Kio.**
+**Version courante : v0291 — 2048 Kio.**
 
-[Télécharger la ROM v0290](versions/v0290-63cb9dcc/gaw-megadrive-v0290.bin) · [Toutes les versions](versions/README.md)
+[Télécharger la ROM v0291](versions/v0291-e6d968e1/gaw-megadrive-v0291.bin) · [Toutes les versions](versions/README.md)
 
 Contrôles ciblés réussis ; portage complet encore non validé.
 
-SHA-256 : `63cb9dcc37b965291c5b54ba85420ad22edebfcc02b6fa24f1bd112ade83ab61`
-Checksum Mega Drive : `F1B7`
+SHA-256 : `e6d968e1983b59d3a6e2856af114a7caeeb21fa32130aa5adb68b268a9453391`
+Checksum Mega Drive : `6ADA`
 <!-- ROM-RELEASE:END -->
 
 ## État du portage
+
+La **v0291 rétablit la destruction des arbres à la hache**, absente du
+portage. La septième phase du coup transforme les cases, leur support et
+les éventuelles portes ou passages persistants comme dans le Z80.
+Les 4 356 cas de ciblage et 128 situations contrôlées PAL/NTSC passent ;
+122 cas vérifient aussi les tuiles réellement publiées par le VDP.
+Le parcours normal termine le premier donjon, ouvre le passage E6, visite
+le maître de la Foudre et récupère les 50 cornes de F4, sans aide ni décès.
+Les relectures RAM/image sont exactes ; la carte et l'inventaire E6
+correspondent à la SMS. La Foudre n'est pas encore apprise : cette première
+visite enregistre sa demande. L'acquisition de la Terre reste à poursuivre.
+Voir les [preuves et limites de la v0291](analysis/axe_terrain_v0291.md).
 
 La **v0290 raccorde les quatre maîtres de magie**, jusqu'ici absents du
 service natif : Foudre, Terre, Feu et Eau. Leurs portraits et dialogues

@@ -990,6 +990,9 @@ static void activate_hero_item(void)
     else if(hero_selected_item==11 && !world_graphics_class) show_world_overview();
 }
 
+#include "source_axe_terrain.h"
+static void cut_axe_terrain(void);
+
 static void attack_hero(void)
 {
     u16 buttons=input&15,offset;
@@ -1002,6 +1005,7 @@ static void attack_hero(void)
     hero_attack_phase=(hero_attack_phase+1)&255;
     hero_animation=world_attack_sequences[offset+hero_attack_phase];
     if(!hero_animation) { hero_state=0;hero_attack_phase=0; }
+    if(hero_state==5) cut_axe_terrain(); /* 34D3 after the ordinary axe pose. */
 }
 
 static void prepare_hero_patterns(void)
@@ -1633,6 +1637,23 @@ static void write_spell_terrain_cell(u16 index,u8 value)
     memcpy(before,scratch+0x800,160);prepare_room_cells(room_id);
     for(n=0;n<160;n++) if(before[n]!=scratch[0x800+n])
         replace_world_actor_cell((n&15)*16,n&240,scratch[0x800+n]);
+}
+
+extern const u8 world_axe_terrain[];
+/* 34D3..35B4: only the seventh exterior axe phase cuts terrain. */
+static void cut_axe_terrain(void)
+{
+    u8 indices[2];u16 n,count=source_axe_terrain_probes(world_graphics_class,hero_attack_phase,hero_direction,hero_x>>8,hero_y>>8,indices);
+    for(n=0;n<count;n++)
+    {
+        u16 index=indices[n];const u8 *record=world_axe_terrain;
+        if(index>=160) continue;
+        while(*record && *record!=scratch[0x800+index]) record+=4;
+        if(!*record) continue;
+        write_spell_terrain_cell(index,record[1]);
+        index+=16;
+        if(index<160 && scratch[0x800+index]==record[2]) write_spell_terrain_cell(index,record[3]);
+    }
 }
 
 /* 3A9A/3591: both probes run even when the first has changed terrain. */

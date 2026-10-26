@@ -4,6 +4,7 @@ Chaque binaire est conserve sans ecrasement. Les controles cibles ne prouvent pa
 
 | Version | ROM | Validation | Changements | SHA-256 |
 | --- | --- | --- | --- | --- |
+| v0291 | [Telecharger](v0291-e6d968e1/gaw-megadrive-v0291.bin) | targeted_checks_passed | Coupe des arbres a la hache retablie :4356 cas de ciblage,128 cas PAL/NTSC et122 controles VDP ; parcours naturel premier maitre et don50 cornes, relectures RAM/image exactes. Campagne incomplete. | `e6d968e1983b59d3a6e2856af114a7caeeb21fa32130aa5adb68b268a9453391` |
 | v0290 | [Telecharger](v0290-63cb9dcc/gaw-megadrive-v0290.bin) | targeted_checks_passed | Quatre maitres de magie raccordes : portraits/textes originaux,3081 cas de decisions et26 interactions PAL/NTSC ; premier donjon et relecture RAM/image exacts. Acquisition naturelle et campagne complete a poursuivre. | `63cb9dcc37b965291c5b54ba85420ad22edebfcc02b6fa24f1bd112ade83ab61` |
 | v0289 | [Telecharger](v0289-1abcdb47/gaw-megadrive-v0289.bin) | targeted_checks_passed | Sols dangereux corriges ; premier donjon sans aide ; deuxieme donjon, boss sans aide apres approche protegee, cristal et sortie48/48 ; relectures RAM/image exactes. Campagne incomplete. | `1abcdb4735d8edaee1c6723522f8f5e2fbb77b044aba6c8e6c47761b0775a5f4` |
 | v0288 | [Telecharger](v0288-5c2b91e5/gaw-megadrive-v0288.bin) | targeted_checks_passed | Vitesses originales des six terrains, normales et bottes ; corde ralentie correctement. 96 cas PAL/NTSC,64 frames corde exacts ; D1 sans aide, RAM/PNG exacts. | `5c2b91e5aab65403cd1213eb4e25b9ea5fbc1c41529e34e0a944144675817e2f` |

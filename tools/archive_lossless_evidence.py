@@ -26,7 +26,7 @@ def freeze(root,out,paths,metadata,cleanup_roots,cleanup=False):
             dest=out/name;dest.parent.mkdir(parents=True,exist_ok=True);dest.write_bytes(raw);files[name]=digest
         if any(path.is_relative_to(p) for p in cleanup_roots) and (
             path.suffix in ['.bin','.out','.o','.s','.d','.dll'] or path.name.endswith(('-events.json','-clock.json')) or
-            path.name in ['expected.h','psg.h']):candidates.append(path)
+            path.name in ['expected.h','psg.h'] or path.name=='observations.json' and len(raw)>1048576):candidates.append(path)
     manifest=dict(metadata,files=files,compressed=compressed,removed_verified_generated=[])
     target=out/'manifest.json';target.write_text(json.dumps(manifest,indent=2)+'\n')
     for name,digest in files.items():assert sha((out/name).read_bytes())==digest
@@ -64,7 +64,7 @@ def resume_verified_cleanup(root,out,cleanup_roots):
         encoded=stored.read_bytes();assert sha(encoded)==item['stored_sha256']
         raw=gzip.decompress(encoded);assert sha(raw)==item['raw_sha256'] and len(raw)==item['raw_bytes']
         p=(root/name).resolve();assert p.is_relative_to(root)
-        generated=(p.suffix in ['.bin','.out','.o','.s','.d','.dll'] or p.name.endswith(('-events.json','-clock.json')) or p.name in ['expected.h','psg.h'])
+        generated=(p.suffix in ['.bin','.out','.o','.s','.d','.dll'] or p.name.endswith(('-events.json','-clock.json')) or p.name in ['expected.h','psg.h'] or p.name=='observations.json' and item['raw_bytes']>1048576)
         if generated and any(p.is_relative_to(folder) for folder in roots):
             assert name not in tracked
             if p.exists():assert sha(p.read_bytes())==item['raw_sha256']
