@@ -24,8 +24,14 @@ les montées et descentes B2/A2 correspondent à la SMS en PAL/NTSC pour les
 cases, la carte, la position et le terrain à l'arrivée. Les colonnes de
 corde publiées par le VDP et leurs tuiles correspondent aussi.
 Le premier donjon passe sans aide à 32/32 PV, avec relecture RAM/image exacte.
-La route SMS de référence apprend maintenant la Terre contre 50 cornes,
-après une ancienne approche assistée ; ce parcours reste à établir sur MD.
+La campagne native termine maintenant les deuxième et troisième donjons,
+avec aide pendant leurs approches, retirée avant chaque boss. Elle acquiert
+la corde, reçoit les 50 cornes de F4 et apprend réellement la Terre pour 50
+cornes. Le passage de Terre du quatrième donjon est franchi : les cinq cases
+modifiées, la carte, l'inventaire, le drapeau et les tuiles VDP correspondent
+à la SMS. Quinze segments natifs/de référence ont leurs relectures RAM/image
+exactes. Le canoë, le quatrième boss et la campagne complète restent à établir.
+Voir le [rapport de progression v0292](analysis/campaign_v0292_progress.md).
 Voir les [preuves et limites de la v0292](analysis/rope_arrival_v0292.md).
 
 La **v0291 rétablit la destruction des arbres à la hache**, absente du

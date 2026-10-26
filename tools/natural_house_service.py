@@ -50,6 +50,6 @@ def main():
  result=dict(passed=done is not None and not failure,rom_sha256=digest,source_prefix=a.prefix,kind=a.kind,teacher=a.teacher if a.kind=='teacher' else None,expected_level=a.expected_level if a.kind=='teacher' else None,complete_frame=done,failure=failure or (None if done else 'frame_limit'),first_state=first,last_state=state,ram_injections=bool(writes),assisted_route=bool(writes),new_assistance_writes=0,sram_checkpoint_injection=False,scope='Cold boot and recorded ordinary buttons with explicitly inherited approach assistance if present, real house interaction and normal exterior exit. No actor removal, ownership, currency or progression fixture.')
  for name,value in [('report',result),('events',events),('controls',controls)]:(folder/(name+'.json')).write_bytes((json.dumps(value,indent=2)+'\n').encode())
  if writes:
-  (folder/'assistance.json').write_bytes((source/'assistance.json').read_bytes());recording(folder,json.loads((folder/'capture.json').read_bytes()))
+  assist=json.loads((source/'assistance.json').read_bytes());assist['writes']=[dict(frame=f,address=addr,data_hex=data.hex()) for f,addr,data in writes];(folder/'assistance.json').write_bytes((json.dumps(assist,indent=2)+'\n').encode());recording(folder,json.loads((folder/'capture.json').read_bytes()))
  print(result)
 if __name__=='__main__':main()

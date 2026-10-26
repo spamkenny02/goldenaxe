@@ -18,6 +18,7 @@ class World:
         doors=json.loads((ROOT/'analysis/doors_reference.json').read_bytes());self.doors=doors
         self.goal=next(d for d in doors['direct_unconditional_dungeon_doors'] if d['index']==door_index) if house_outside is None else next(d for d in doors['direct_unconditional_doors'] if d['room']==house_outside and d['target']==house_target)
         self.house_mouths={(d['room'],d['x'],d['y']+8) for d in doors['direct_unconditional_doors']}
+        self.door_cells={(d['room'],d['x'],d['y']) for d in doors['direct_unconditional_doors']+doors['direct_unconditional_dungeon_doors']}
     def tilemap(self,room):
         return self.live_map if room==self.live_room else self.base_tilemap(room)
     @lru_cache(None)
@@ -52,6 +53,9 @@ class World:
         cache=collision_cache(self.tilemap(room) if tilemap is None else tilemap,Hero(x=x<<8,y=y<<8))
         if choose_collision_direction(d,cache)!=d:return None
         x+=[0,0,-8,8][d];y+=[-8,8,0,0][d]
+        # Door contact also triggers while entering from a side or from above.
+        # Stop proposals outside all mouths; final entry uses ordinary input.
+        if (room,x,y) in self.door_cells:return None
         if x<16:room=(room&240)|((room-1)&15);x=240
         elif x>=241:room=(room&240)|((room+1)&15);x=16
         elif y<16:room=(room-16)&255;y=160
@@ -282,7 +286,7 @@ def main():
             failure='no_waypoint_progress';events.append(dict(frame=f,failure=failure,waypoint=cursor,**state));return []
         return cached_buttons
     def controller(f):
-        buttons=choose(f)
+        buttons=list(choose(f))
         if not controls or controls[-1]['buttons']!=buttons:controls.append(dict(frame=f,buttons=list(buttons)))
         return buttons
     def stop():return bool(failure) or ready_at is not None and observed_frame-ready_at>=100

@@ -1,7 +1,7 @@
 """Explicit, verified approach-assistance prefixes; never a natural-route proof."""
 import json
 from pathlib import Path
-from run_core import ROOT
+from run_core import ROOT, FrameWrites
 from archive_lossless_evidence import sha
 
 EPISODE_KEYS = ['activation_after_frame', 'boss_room', 'first_boss_entry',
@@ -66,4 +66,4 @@ def prefix_writes(folder, capture, enabled=False):
     assert proof['whole_ram_bytes'] == expected and proof['final_png_exact'] and not proof['feedback_reads']
     for name in ['capture.json', 'controls.json', 'assistance.json']:
         assert proof['evidence'][name] == sha((folder / name).read_bytes())
-    return writes
+    return FrameWrites(writes)

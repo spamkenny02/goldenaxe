@@ -4,7 +4,7 @@ No historical RAM or snapshots are imported. Boss release is detected from
 actual current transitions, never copied blindly from historical timing.
 """
 import argparse,contextlib,io,json
-from run_core import ROOT,run
+from run_core import ROOT,run,FrameWrites
 from rebase_natural_campaign import evidence
 from assisted_prefix import prefix_writes,episodes,EPISODE_KEYS,recording
 from validate_playable_sprite_limit import symbols
@@ -16,7 +16,7 @@ def main():
  sy=symbols(ROOT/'megadrive/out/release/symbol.txt');rom=ROOT/'gaw-megadrive.bin';digest=sha(rom.read_bytes());folder=ROOT/'validation/natural-dungeon-combat'/a.trial;assert not folder.exists();end=capture['frames'];presses=[tuple(row) for row in capture['presses']]
  for i,row in enumerate(controls):
   stop=controls[i+1]['frame']-1 if i+1<len(controls) else end;presses.extend((row['frame'],min(stop,end),button) for button in row['buttons'] if row['frame']<=end)
- writes=[];new_episodes=[];active=None;next_episode=0;state={};previous=None;failure=None;fail_frame=None;diagnostic_end=None;observed=0;captures={end};events=[];samples=[]
+ writes=FrameWrites();new_episodes=[];active=None;next_episode=0;state={};previous=None;failure=None;fail_frame=None;diagnostic_end=None;observed=0;captures={end};events=[];samples=[]
  def observe(f,r):
   nonlocal active,next_episode,previous,failure,fail_frame,diagnostic_end,observed
   observed=f;data=lambda n,k:bytes(r[(sy[n]+i)^1] for i in range(k));word=lambda n:int.from_bytes(data(n,2),'big')

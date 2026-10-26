@@ -1622,3 +1622,5 @@ PAL/audio waveform/hardware remain unfinished. No new ROM for tools only.
 
 
 2026-10-26 v0292: original19C6 rope arrival continuation;5456 source/C cell cases;4 PAL/NTSC B2/A2 cross-screen fixtures and160 VDP column words pass. D1 cold replay32HP and stack margin408bytes. Source Earth learned50gold, no new help after historical D3 approach; native acquired-rope/Earth/D4 campaign remains unproven. See rope_arrival_v0292.md and report.
+
+2026-10-26 v0292 campaign: D2 exit11/48;D3 rope,boss/crystal56HP andexit50/56,guards released before bosses. Real F4 gift+50,Earth teacher-50gold/level1/magic48. Native andsource D4 key andEarth passage toD1 executed;5 cells36..39+58,map1280,cells160,items17,flag54,20VDP words+tile indices exact.15 canonical cold RAM/PNG replays. Test write/input scheduling indexed+compacted,2000 interval cases and old58752-frame RAM/PNG exact. Latest canoe proposals reachB2 with0keys onboth;validate intermediate key detours/triggers next,then canoe/warp/boss4. Fullgoal notcomplete;ROM unchanged,no v293. See campaign_v0292_progress.md/report.

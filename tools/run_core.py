@@ -12,6 +12,51 @@ INPUT=c.CFUNCTYPE(c.c_int16,c.c_uint,c.c_uint,c.c_uint,c.c_uint)
 class Variable(c.Structure): _fields_=[('key',c.c_char_p),('value',c.c_char_p)]
 class Game(c.Structure): _fields_=[('path',c.c_char_p),('data',c.c_void_p),('size',c.c_size_t),('meta',c.c_char_p)]
 
+
+class FrameWrites(list):
+    """Append-only test writes, indexed without changing order within a frame.
+
+    Plain mutable fixture lists retain the original scanning behavior.
+    """
+    def __init__(self,rows=()):
+        super().__init__();self.by_frame={};self.extend(rows)
+    def append(self,row):
+        super().append(row);self.by_frame.setdefault(row[0],[]).append(row)
+    def extend(self,rows):
+        for row in rows:self.append(row)
+    def for_frame(self,frame):return self.by_frame.get(frame,())
+    def __iadd__(self,rows):self.extend(rows);return self
+    def _immutable(self,*args,**kwargs):raise TypeError('FrameWrites is append-only; use an ordinary list for replaceable fixtures')
+    __setitem__=__delitem__=insert=pop=remove=clear=reverse=sort=__imul__=_immutable
+
+
+def compile_fixed_inputs(presses,frames):
+    events={}
+    for start,end,button in presses:
+        lo,hi=max(0,start),min(frames,end)
+        if button<0 or lo>hi:continue
+        for tick,delta in [(lo,1),(hi+1,-1)]:
+            row=events.setdefault(tick,{});row[button]=row.get(button,0)+delta
+    result=[0]*(frames+1);counts={};mask=0
+    for tick in range(frames+1):
+        for button,delta in events.get(tick,{}).items():
+            count=counts.get(button,0)+delta;assert count>=0;counts[button]=count
+            if count:mask|=1<<button
+            else:mask&=~(1<<button)
+        result[tick]=mask
+    return result
+
+def compact_fixed_inputs(masks,end):
+    starts={};result=[];previous=0
+    for tick in range(end+2):
+        current=masks[tick] if tick<=end else 0;changed=current^previous
+        while changed:
+            bit=changed&-changed;button=bit.bit_length()-1;changed^=bit
+            if current&bit:starts[button]=tick
+            else:result.append((starts.pop(button),tick-1,button))
+        previous=current
+    return sorted(result)
+
 def run(rom,frames,out,captures,presses,core=None,ram_writes=(),skip_intro=True,ram_observer=None,psg_observer=None,audio_out=None,sram_in=None,sram_out=None,core_options=None,vram_observer=None,input_provider=None,stop_when=None,save_states=False):
     # Gameplay regressions explicitly skip the now-ported intro with normal input.
     # Set skip_intro=False to observe the complete boot story without inputs.
@@ -20,11 +65,7 @@ def run(rom,frames,out,captures,presses,core=None,ram_writes=(),skip_intro=True,
         presses.insert(0,(200,220,0))
     # Compile fixed intervals once; long cold-boot campaign replays can carry
     # thousands of intervals. Keep inclusive endpoints and overlapping holds.
-    fixed_inputs=[0]*(frames+1)
-    for start,end,button in presses:
-        if button<0:continue
-        mask=1<<button
-        for tick in range(max(0,start),min(frames,end)+1):fixed_inputs[tick]|=mask
+    fixed_inputs=compile_fixed_inputs(presses,frames)
     out=Path(out); out.mkdir(parents=True,exist_ok=True)
     dll=c.CDLL(str(Path(core).resolve() if core else ROOT.parents[1]/'work/libretro/genesis_plus_gx_libretro.dll'))
     system_dir=str(ROOT.parents[1]/'work/libretro').encode()
@@ -102,7 +143,7 @@ def run(rom,frames,out,captures,presses,core=None,ram_writes=(),skip_intro=True,
         dll.gaw_psg_regs.restype=c.POINTER(c.c_int)
     for frame in range(1,frames+1):
         # Test-only injection of CPU-order bytes; never part of normal runs.
-        for write_frame,address,data in ram_writes:
+        for write_frame,address,data in (ram_writes.for_frame(frame) if isinstance(ram_writes,FrameWrites) else ram_writes):
             if write_frame!=frame:continue
             n=dll.retro_get_memory_size(2);ptr=dll.retro_get_memory_data(2)
             assert ptr and 0<=address and address+len(data)<=n
@@ -153,7 +194,7 @@ def run(rom,frames,out,captures,presses,core=None,ram_writes=(),skip_intro=True,
     dll.retro_unload_game(); dll.retro_deinit()
     (out/'capture.json').write_text(json.dumps({'rom':str(Path(rom).resolve()),'rom_sha256':hashlib.sha256(raw).hexdigest(),
         'core':str(Path(core).resolve()) if core else 'official downloaded GX core',
-        'frames':frame if stop_when is not None else frames,'captures':captured,'presses':presses,
+        'frames':frame if stop_when is not None else frames,'captures':captured,'presses':compact_fixed_inputs(fixed_inputs,frame if stop_when is not None else frames),
         'fps':av.timing.fps,'sample_rate':av.timing.sample_rate,'core_options':core_options or {},
         'sram_input':str(sram_in) if sram_in else None,'sram_output':str(sram_out) if sram_out else None,'save_states':save_states,
         'test_ram_writes':[{'frame':f,'address':a,'byte_count':len(d)} for f,a,d in ram_writes]},indent=2))

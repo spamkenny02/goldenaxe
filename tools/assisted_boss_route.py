@@ -9,23 +9,26 @@ import sys
 from pathlib import Path
 
 import natural_combat_beam as beam
-from run_core import ROOT
+from run_core import ROOT, FrameWrites
 from validate_playable_sprite_limit import symbols
 from archive_lossless_evidence import sha
+from rebase_natural_campaign import evidence
 from assisted_prefix import prefix_writes, recording, episodes, EPISODE_KEYS
 
 
 def main():
     parser = argparse.ArgumentParser(add_help=False)
     parser.add_argument('--boss-room', type=lambda value: int(value, 0), required=True)
-    parser.add_argument('--planner', choices=['beam', 'navigation', 'ordinary', 'side', 'escape', 'cautious', 'evasive', 'exit'], default='beam')
+    parser.add_argument('--planner', choices=['beam', 'navigation', 'ordinary', 'side', 'escape', 'cautious', 'evasive', 'exit', 'earth'], default='beam')
     parser.add_argument('--boss-frames', type=int, help='Bound this diagnostic after normal combat starts')
     parser.add_argument('--world-route', action='store_true', help='Apply the same guard to an exterior route')
     parser.add_argument('--unassisted-plan-rooms', help='Plan ordinary input in these rooms after the inherited boss guard has ended')
     parser.add_argument('--new-assistance-episode', action='store_true', help='Start the next approach after a verified dungeon exit')
+    parser.add_argument('--completed-exit-proof', help='Verified same-ROM exit before intervening service visits; no new assistance may have been added')
     args, remaining = parser.parse_known_args()
+    assert not args.completed_exit_proof or args.new_assistance_episode
     sms = '--sms' in remaining
-    assert not sms or args.planner in ('ordinary', 'beam', 'navigation', 'cautious'), 'Side/escape wrappers currently write MD report paths'
+    assert not sms or args.planner in ('ordinary', 'beam', 'navigation', 'cautious', 'earth'), 'Side/escape wrappers currently write MD report paths'
     assert '--lookahead-rooms' not in remaining, 'Planning is restricted to the unassisted boss'
     assert args.boss_frames is None or args.boss_frames > 0
     if args.world_route:
@@ -37,17 +40,39 @@ def main():
     name = remaining[remaining.index(flag) + 1]
     prefix_folder = ROOT / 'validation' / family / name
     prefix = json.loads((prefix_folder / 'capture.json').read_bytes())
-    writes = list(prefix_writes(prefix_folder, prefix, '--assisted-prefix' in remaining))
+    writes = FrameWrites(prefix_writes(prefix_folder, prefix, '--assisted-prefix' in remaining))
     inherited_writes = writes[:]
     inherited = recording(prefix_folder, prefix)[0] if prefix['test_ram_writes'] else None
     start = prefix['frames']
     closed = []
+    sy = None if sms else symbols(ROOT / 'megadrive/out/release/symbol.txt')
     if args.new_assistance_episode:
         assert inherited and inherited['first_boss_combat'] and inherited['release_write_frame'] < start
         assert inherited['boss_room'] != args.boss_room
         prior = json.loads((prefix_folder / 'report.json').read_bytes())
-        assert prior['full_dungeon_cleared'] and prior['failure'] is None and not prior['deaths']
-        assert prior['last_state']['dungeon'] == 0 and prior['last_state']['game'] == 12 and prior['last_state']['health']
+        if args.completed_exit_proof:
+            assert prior['passed'] and prior['failure'] is None
+            exit_folder=(ROOT/'validation'/args.completed_exit_proof).resolve()
+            assert exit_folder.is_relative_to(ROOT/'validation')
+            ec=json.loads((exit_folder/'capture.json').read_bytes())
+            er=json.loads((exit_folder/'report.json').read_bytes())
+            assert er['full_dungeon_cleared'] and er['failure'] is None and not er['deaths']
+            assert ec['rom_sha256']==prefix['rom_sha256'] and ec['frames']<start
+            assert prefix_writes(exit_folder,ec,True)==inherited_writes
+            raw=evidence(prefix_folder/f'ram_{start:05d}.bin')
+            old_raw=evidence(exit_folder/f'ram_{ec["frames"]:05d}.bin')
+            if sms:
+                assert raw[0x1d]==12 and raw[0xba]==0 and raw[0x318]>0 and raw[0x37]==0
+                assert raw[0xcf:0xd8]==old_raw[0xcf:0xd8] and raw[0xda]>=er['last_state']['max_health']
+            else:
+                data=lambda r,n,k:bytes(r[(sy[n]+i)^1] for i in range(k))
+                word=lambda n:int.from_bytes(data(raw,n,2),'big')
+                assert word('game_state')==12 and word('room_id')<256 and word('hero_health')>0 and word('world_dungeon_number')==0
+                assert data(raw,'game_save_state',592)[0x1f:0x28]==data(old_raw,'game_save_state',592)[0x1f:0x28]
+                assert word('hero_max_health')>=er['last_state']['max_health']
+        else:
+            assert prior['full_dungeon_cleared'] and prior['failure'] is None and not prior['deaths']
+            assert prior['last_state']['dungeon'] == 0 and prior['last_state']['game'] == 12 and prior['last_state']['health']
         closed = json.loads(json.dumps(episodes(inherited, prefix)))
         closed[-1]['end_frame'] = start
     elif inherited:
@@ -74,7 +99,8 @@ def main():
                   first_boss_entry=None, release_write_frame=None,
                   first_boss_combat=None, first_boss_damage=None,
                   primary_state_imports=0, boss_assistance=False)
-    result.update(prefix_trace=prefix_folder.relative_to(ROOT / 'validation').as_posix(),
+    result.update(completed_exit_proof=args.completed_exit_proof,
+                  prefix_trace=prefix_folder.relative_to(ROOT / 'validation').as_posix(),
                   prefix_capture_sha256=sha((prefix_folder / 'capture.json').read_bytes()),
                   stage_activation_after_frame=start)
     if inherited and not args.new_assistance_episode:
@@ -147,7 +173,7 @@ def main():
         return original_walk(tilemap, start, goal, () if approach_active else enemies, geometry)
     if original_walk is not None:
         game.walk = walk
-    sys.argv = [sys.argv[0]] + ([] if args.world_route or args.planner == 'ordinary' else
+    sys.argv = [sys.argv[0]] + ([] if args.world_route or args.planner in ('ordinary','earth') else
                                ['--lookahead-rooms', ','.join(hex(room) for room in plan_rooms)]) + remaining
     try:
         if args.world_route:
@@ -170,6 +196,9 @@ def main():
         elif args.planner == 'navigation':
             import natural_combat_navigation
             natural_combat_navigation.main()
+        elif args.planner == 'earth':
+            import natural_earth_passage
+            natural_earth_passage.main()
         elif args.planner == 'ordinary':
             game.main()
         else:
