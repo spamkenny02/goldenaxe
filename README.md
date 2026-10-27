@@ -28,14 +28,21 @@ adaptative valide maintenant le premier cristal et le retour en B9 à
 28/32 PV, avec aide d'approche retirée 71 images avant le boss. Les deux
 relectures froides ont RAM/image finales exactes. La pile conserve
 408 octets de marge observée jusqu'à cette sortie. La suite de la
-campagne reste à revalider ; les preuves de six cristaux ci-dessous
+campagne est reprise sur cette compilation ; les preuves de six cristaux ci-dessous
 concernent la v0293.
 Voir le [premier donjon revalidé sur v0294](analysis/d1_campaign_v0294.md).
 La branche de la hache et la fée de vie de C9 sont également rejouées :
 le héros atteint le deuxième donjon en salle171 à 40/40 PV, hache équipée.
 Ces sept étapes ont RAM/image finales exactes après relecture froide.
-L'aide de la deuxième approche est consignée ; son boss n'est pas encore entré.
+L'aide de la deuxième approche est consignée.
 Voir la [préparation du deuxième donjon](analysis/d2_approach_v0294.md).
+Le deuxième boss est maintenant vaincu et son cristal acquis : retour en D6
+à 31/48 PV, avec une clé et la hache équipée. Combat et sortie ont leurs
+relectures RAM/image exactes, sans aide pendant le boss ni le retour.
+La marge de pile observée reste de 408 octets jusqu'à cette sortie.
+Voir le [deuxième donjon revalidé](analysis/d2_campaign_v0294.md).
+Une variante7C en salle11E reste à raccorder à sa routine SMS54D3 ;
+les donjons suivants et la fin ne sont pas encore validés sur cette compilation.
 Voir les [preuves et limites de la v0294](analysis/first_boss_variants_v0294.md).
 
 La **v0293 rétablit le pont vers le second continent** après le cinquième

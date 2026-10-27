@@ -190,6 +190,8 @@ def main():
         boss=next((e for e in actors if e['type'] in [0x63,0x64] and e['hp']),None)
         if args.early_boss_side and boss and state['selected']==1:
             from natural_combat_aim import directions
+            # Advance inside before sidestepping out of the bottom doorway.
+            if p[1]>=144 and state['hero'] in [0,1]:last_direction=0;buttons=[4];return buttons
             if state['hero'] in [2,3,4,5]:buttons=[7,8];return buttons
             if state['counter']:buttons=[4+last_direction];return buttons
             if boss['x']!=128 or not boss['hit_box']:return buttons

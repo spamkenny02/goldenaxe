@@ -1,0 +1,21 @@
+{
+  "status": "pending_native_fix",
+  "source_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+  "production_source_sha256": "8259214be648099b6c6d37238f78167506e9948b46459307bcffc374599352aa",
+  "type": 124,
+  "rooms": [
+    286
+  ],
+  "dispatch_table": 11107,
+  "source_target": 21715,
+  "source_stub_hex": "2140abc3604c",
+  "stats_hex": "3c180620",
+  "native_omission": "Only6A/6B dispatch to burst_boss_behavior;7C is also absent from post-tick collision publication.",
+  "required_validation": [
+    "Original Z80/shared routine cases including7C",
+    "PAL/NTSC production dispatch and collision comparison",
+    "Numbered ROM with immutable prior versions",
+    "Current campaign validation on resulting build"
+  ],
+  "completion_claim": false
+}

@@ -7,7 +7,7 @@ from validate_playable_sprite_limit import symbols
 def evidence(path):
  if path.exists():return path.read_bytes()
  name=path.relative_to(ROOT).as_posix()
- for folder in ['fairy-campaign-v0280','natural-campaign-v0280','natural-axe-campaign-v0274','stack-release-v0285','d2-progress-v0285','hero-pattern-v0286','d2-campaign-v0286','magic-rope-v0287','campaign-v0287-progress','terrain-walk-v0288','floor-damage-v0289','spell-teacher-v0290','axe-terrain-v0291','rope-arrival-v0292','campaign-v0292-progress','canoe-campaign-v0292','d5-progress-v0292','d5-campaign-v0292','crystal-bridge-v0293','d6-progress-v0293','d6-campaign-v0293','first-boss-variants-v0294']:
+ for folder in ['fairy-campaign-v0280','natural-campaign-v0280','natural-axe-campaign-v0274','stack-release-v0285','d2-progress-v0285','hero-pattern-v0286','d2-campaign-v0286','magic-rope-v0287','campaign-v0287-progress','terrain-walk-v0288','floor-damage-v0289','spell-teacher-v0290','axe-terrain-v0291','rope-arrival-v0292','campaign-v0292-progress','canoe-campaign-v0292','d5-progress-v0292','d5-campaign-v0292','crystal-bridge-v0293','d6-progress-v0293','d6-campaign-v0293','first-boss-variants-v0294','d2-campaign-v0294']:
   archive=ROOT/'analysis'/folder
   if not (archive/'manifest.json').exists():continue
   manifest=json.loads((archive/'manifest.json').read_bytes())
