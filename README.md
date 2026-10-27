@@ -5,17 +5,29 @@ puis porter sa logique Z80 en code natif 68000 avec SGDK. La fidélité à la
 Master System passe avant les améliorations.
 
 <!-- ROM-RELEASE:START -->
-**Version courante : v0292 — 2048 Kio.**
+**Version courante : v0293 — 2048 Kio.**
 
-[Télécharger la ROM v0292](versions/v0292-6eeb5608/gaw-megadrive-v0292.bin) · [Toutes les versions](versions/README.md)
+[Télécharger la ROM v0293](versions/v0293-878a7f44/gaw-megadrive-v0293.bin) · [Toutes les versions](versions/README.md)
 
 Contrôles ciblés réussis ; portage complet encore non validé.
 
-SHA-256 : `6eeb56086a81c230c75b154f51cafab72167a1eec42c691aed9bf317fd19dd82`
-Checksum Mega Drive : `2BF8`
+SHA-256 : `878a7f44afb53997dfeeb25351b5c34370944cf98836ae2c687180c8a33ec735`
+Checksum Mega Drive : `3549`
 <!-- ROM-RELEASE:END -->
 
 ## État du portage
+
+La **v0293 rétablit le pont vers le second continent** après le cinquième
+cristal. Le script SMS 698B manquait alors que sa transformation de carte
+était déjà présente. Les 5 120 cas de décision correspondent au Z80 ;
+12 situations dans les vrais jeux passent en PAL/NTSC, ainsi que les cases
+et pixels des tuiles du pont publiées par les VDP. Le premier donjon passe
+sans aide. La campagne native retrouve les cinq cristaux et sort à 72/72 PV ;
+elle traverse ensuite le pont et atteint le sixième donjon en salle187.
+Les trois parcours ont leurs relectures RAM/image finales exactes. L’aide
+reste limitée aux approches ; le sixième boss n’est pas encore atteint.
+La pile garde 408 octets de marge observée jusqu’à la sortie du cinquième.
+Voir les [preuves et limites de la v0293](analysis/crystal_bridge_v0293.md).
 
 La **v0292 prolonge la corde dans la carte d'arrivée** lors d'un
 changement d'écran. Cette routine Z80 manquait : le héros pouvait rester

@@ -1,4 +1,5 @@
 #include <genesis.h>
+#include "source_crystal_bridge.h"
 #include "source_pattern.h"
 #include "pattern_convert.h"
 #include "source_class0_video.h"
@@ -1564,6 +1565,15 @@ static void check_room_shutter(u8 flags)
     sound_effect(0xa5);redraw_current_room(started);
 }
 
+/* AF4A: dungeon5 door, then original 698B bridge script. */
+static void check_crystal_bridge(void)
+{
+    u32 started;
+    if(world_graphics_class || room_id!=0x49) return;
+    if(!source_crystal_bridge(hero_state,game_save_state[0x23],game_save_state+0x99)) return;
+    started=vtimer;sound_effect_main(0xa8);redraw_current_room(started);
+}
+
 /* 5D4C/5EB1/5E75/5E9C/5FB1: C0A2 zero fires once after final particles.
  * 80 means consumed or empty on arrival. Persist reward before the redraw. */
 static void check_dungeon_room_clear(void)
@@ -2897,7 +2907,7 @@ static bool tick_world_simulation(void)
         if(check_dungeon_portal(script_flags,0,vtimer!=script_started)) return TRUE;
         check_dungeon_room_clear();check_room_puzzle(script_flags,1);
         if(check_dungeon_portal(script_flags,1,vtimer!=script_started)) return TRUE;
-        check_village_door(old_x,old_y);check_house_service(old_x,old_y);check_house_talk(old_x,old_y,script_flags);begin_room_transition();
+        check_village_door(old_x,old_y);check_crystal_bridge();check_house_service(old_x,old_y);check_house_talk(old_x,old_y,script_flags);begin_room_transition();
     }
     animate_dungeon_bitmaps();animate_dungeon_cells();animate_world_palette();
     if(game_state==12 && hero_health && (input&~world_previous_input&BUTTON_B)) game_state=16;
