@@ -1639,3 +1639,8 @@ v0293 restores missing AF4A->698B fifth-crystal bridge script on exterior49. Ori
 
 
 D6 v0293 pre-boss milestone:15 official cold fixed replays match full65536 RAM and final PNG. Ice Bell acquired in112,mimic46 activated by source<29 proximity and defeated. Five keys gained/five spent,one remains;seven Earth casts56magic,ordinary mana loot+32,final24magic/72HP. Gate125 rock7B cleared downward,top17/18 open;checkpoint145022 before boss. Correct actual pending boss115/type64,not provisional196/type6B;retarget cold audit through142999 forbids prior entry into either boss and passes. Current independent fight boss02 follows this checkpoint with guard release before115 simulation;not yet claimed victorious. Source SMS campaign,D6 victory/crystal/exit,D7-D10,ending and global fidelity remain open. Controller-only changes:skip unused prefix decoding with historical target scan preserved;before/after warp controls/writes/fullRAM/PNG exact;mana12 priority,proximity mimic46,UP spawn waits/puzzle modes,directional/preparatory Earth;old drivers retained bySHA. No new ROM afterv293.
+
+
+## 2026-10-27: v0293 sixth boss and crystal
+
+Native boss64 room115 defeated by ordinary controller input. Historical approach hurt guard last write145093; combat starts145124 with hurt0. Actual ordinary damage72->58 at149386. Crystal reward completes at80/80HP and48magic. Boss02 and boss05 independent fixed cold replays match65536RAM bytes and finalPNG. Navigation continuation has102/102 fullRAM predictions,no new assistance or primary state imports. Production ROM unchanged; exit still in progress. Reports: analysis/d6_boss_v0293_report.json and analysis/d6_boss_v0293.md. Later dungeons,ending,source full campaign and global fidelity remain unfinished.

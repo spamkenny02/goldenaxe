@@ -28,7 +28,12 @@ Quinze étapes supplémentaires sont maintenant rejouées avec RAM/image
 finales exactes : cloche de glace acquise, cinq clés récupérées, passages
 de Terre et mécanismes ouverts jusqu’à la porte du boss. Ce jalon finit
 à 72/72 PV, avec une clé et 24 points de magie. L’aide reste limitée
-aux approches ; le combat du sixième boss est en cours de validation.
+aux approches. Le sixième boss est maintenant vaincu et son cristal acquis,
+avec soin de récompense terminé à 80/80 PV. Les deux segments de combat
+ont leurs relectures froides RAM/image exactes ; le héros subit des dégâts
+ordinaires et le garde est retiré 31 frames avant le combat. La sortie
+du sixième donjon reste à vérifier.
+Voir le [combat et le sixième cristal](analysis/d6_boss_v0293.md).
 Voir le [parcours du sixième donjon](analysis/d6_progress_v0293.md).
 La pile garde 408 octets de marge observée jusqu’à la sortie du cinquième.
 Voir les [preuves et limites de la v0293](analysis/crystal_bridge_v0293.md).
