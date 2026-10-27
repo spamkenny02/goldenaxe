@@ -31,11 +31,18 @@ de Terre et mécanismes ouverts jusqu’à la porte du boss. Ce jalon finit
 aux approches. Le sixième boss est maintenant vaincu et son cristal acquis,
 avec soin de récompense terminé à 80/80 PV. Les deux segments de combat
 ont leurs relectures froides RAM/image exactes ; le héros subit des dégâts
-ordinaires et le garde est retiré 31 frames avant le combat. La sortie
-du sixième donjon reste à vérifier.
+ordinaires et le garde est retiré 31 frames avant le combat. Le retour
+par les deux portails est également rejoué avec RAM/image finales exactes :
+le héros ressort en 8B à 74/80 PV avec les six cristaux. La sortie ajoute
+zéro écriture d'aide ; la campagne conserve les aides historiques d'approche.
+Voir le [sixième donjon terminé](analysis/d6_campaign_v0293.md).
 Voir le [combat et le sixième cristal](analysis/d6_boss_v0293.md).
 Voir le [parcours du sixième donjon](analysis/d6_progress_v0293.md).
-La pile garde 408 octets de marge observée jusqu’à la sortie du cinquième.
+La pile garde 408 octets de marge observée jusqu’à la sortie du sixième,
+avec contrôle avant chaque instruction normale du 68000 et tas valide.
+Le septième donjon est atteint en salle1DB à 16/80 PV, sans nouvelle aide
+sur le trajet extérieur ; sa relecture RAM/image finale est exacte.
+Voir le [rapport de pile et d'entrée du septième](analysis/d7_entry_v0293_report.json).
 Voir les [preuves et limites de la v0293](analysis/crystal_bridge_v0293.md).
 
 La **v0292 prolonge la corde dans la carte d'arrivée** lors d'un

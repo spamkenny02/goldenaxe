@@ -1644,3 +1644,8 @@ D6 v0293 pre-boss milestone:15 official cold fixed replays match full65536 RAM a
 ## 2026-10-27: v0293 sixth boss and crystal
 
 Native boss64 room115 defeated by ordinary controller input. Historical approach hurt guard last write145093; combat starts145124 with hurt0. Actual ordinary damage72->58 at149386. Crystal reward completes at80/80HP and48magic. Boss02 and boss05 independent fixed cold replays match65536RAM bytes and finalPNG. Navigation continuation has102/102 fullRAM predictions,no new assistance or primary state imports. Production ROM unchanged; exit still in progress. Reports: analysis/d6_boss_v0293_report.json and analysis/d6_boss_v0293.md. Later dungeons,ending,source full campaign and global fidelity remain unfinished.
+
+
+## 2026-10-27: v0293 D6 completed and D7 entrance
+
+D6 ordinary return115,125,124,123,113,114,138,169,168,178,177,187,outside8B. Exit151825,end151975,74/80HP,six crystals,IceBell,one key,48magic. No new assistance after145093.92/92 fullRAM predictions; independent cold65536RAM and PNG exact. Exit controller now leaves/re-enters moving portal contact on arrival; no game change. All-instruction stack through151975 remainsF798 vs heapF600,408bytes observed,heap valid,finalRAMPNG exact. Ordinary exterior route reaches D7 entrance1DB at154337 with16/80HP,no new writes or Continue; independent coldRAMPNG exact. Later D7-D10,ending,original full campaign and global fidelity remain unproven. Reports d6_campaign_v0293 and d7_entry_v0293.

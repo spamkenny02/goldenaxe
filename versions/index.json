@@ -8038,7 +8038,7 @@
     "bytes": 2097152,
     "archived_utc": "2026-10-27T08:51:54.714490+00:00",
     "rom": "v0293-878a7f44/gaw-megadrive-v0293.bin",
-    "notes": "Pont du second continent restaure ; cinq cristaux et quinze etapes D6 rejoues ; sixieme boss et cristal confirmes a80/80PV sans aide au combat,relectures RAM/image exactes ; sortie D6 encore a verifier. ROM inchangee.",
+    "notes": "Sixieme donjon termine,cristal et sortie8B a74/80PV,relectures RAM/image exactes ; pile408octets observes jusqu a151975 ; septieme donjon atteint a16/80PV sans nouvelle aide exterieure. ROM inchangee,fin non validee.",
     "validation": "targeted_checks_passed",
     "reports": [
       {
@@ -8064,6 +8064,14 @@
       {
         "file": "d6_boss_v0293_report.json",
         "sha256": "ccc7ed7fe7e51f5f126c3f2156ee6754f0572e60f5fb3a51a70a7f61382c6cee"
+      },
+      {
+        "file": "d6_campaign_v0293_report.json",
+        "sha256": "e98bcefba64bee370eca64c774518f0fd57f34d888eae04b8ed44c74ffdc8124"
+      },
+      {
+        "file": "d7_entry_v0293_report.json",
+        "sha256": "1a83262225f624f9a5fa9e7727a8f1aab2b648968c2b015d9c5975deb7d0a790"
       }
     ]
   }

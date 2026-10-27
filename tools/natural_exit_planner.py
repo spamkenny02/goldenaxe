@@ -6,6 +6,20 @@ from run_core import ROOT
 WAYPOINTS={}
 
 class ExitPlanner(escape.EscapePlanner):
+    def choose(self, frame, fallback):
+        current=getattr(self,'current',None)
+        goal=WAYPOINTS.get(current['room']) if current else None
+        # A portal arrival can place the hero on another portal's contact
+        # coordinate. Source flags30 require leaving and re-entering it.
+        if frame>=self.until and self.active and self.state is not None and goal and goal['moving_contact'] and (self.current['x'],self.current['y'])==goal['point']:
+            self.secondary.restore(self.state)
+            self.schedule=[(5,)]*self.step
+            for buttons in self.schedule:self.secondary.advance(buttons,1)
+            self.expected_ram=self.secondary.ram();self.expected=escape.side.nav.beam.generic.base.sha(self.expected_ram)
+            self.start=frame;self.until=frame+self.step;self.verify_at=self.until-1
+            self.decisions.append(dict(frame=frame,action='leave-portal-contact-down',buttons=self.schedule,score=self.score(self.expected_ram),primary=dict(self.current)))
+            return list(self.schedule[0])
+        return super().choose(frame,fallback)
     def prepare_navigation(self):
         super().prepare_navigation()
         if self.current['room'] not in WAYPOINTS:return
@@ -47,7 +61,7 @@ def main():
                 direction={-16:0,16:1,-1:2,1:3}[next_room-room]
                 point=[(128,8),(128,168),(8,88),(248,88)][direction]
         assert room not in WAYPOINTS,'Use a non-repeating exit itinerary'
-        WAYPOINTS[room]=dict(point=point,next_room=next_room)
+        WAYPOINTS[room]=dict(point=point,next_room=next_room,moving_contact=(room,next_room) in portals)
     remaining=list(sys.argv[1:]);escape.side.SidePlanner=ExitPlanner;escape.side.main()
     trial=remaining[remaining.index('--trial')+1];region='pal' if '--pal' in remaining else 'auto';path=ROOT/f'validation/natural-dungeon-combat/md-{region}-{trial}/report.json';report=json.loads(path.read_bytes())
     report.update(planning_method='96-frame beam with eleven retained evasion paths,ROM doorway/portal distance and ordinary room-change reward',exit_waypoints=WAYPOINTS,exit_driver_sha256=escape.side.nav.beam.generic.base.sha(Path(__file__).read_bytes()))
