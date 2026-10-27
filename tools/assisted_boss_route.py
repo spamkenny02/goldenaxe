@@ -25,6 +25,7 @@ def main():
     parser.add_argument('--world-route', action='store_true', help='Apply the same guard to an exterior route')
     parser.add_argument('--unassisted-plan-rooms', help='Plan ordinary input in these rooms after the inherited boss guard has ended')
     parser.add_argument('--new-assistance-episode', action='store_true', help='Start the next approach after a verified dungeon exit')
+    parser.add_argument('--preserve-floor-hurt', action='store_true', help='Release only a held test guard; preserve ordinary floor-damage cooldown when no enemies are active')
     parser.add_argument('--completed-exit-proof', help='Verified same-ROM exit before intervening service visits; no new assistance may have been added')
     args, remaining = parser.parse_known_args()
     assert not args.completed_exit_proof or args.new_assistance_episode
@@ -105,6 +106,7 @@ def main():
                   first_boss_combat=None, first_boss_damage=None,
                   primary_state_imports=0, boss_assistance=False)
     result.update(completed_exit_proof=args.completed_exit_proof,
+                  preserve_floor_hurt_requested=args.preserve_floor_hurt,
                   prefix_trace=prefix_folder.relative_to(ROOT / 'validation').as_posix(),
                   prefix_capture_sha256=sha((prefix_folder / 'capture.json').read_bytes()),
                   stage_activation_after_frame=start)
@@ -162,7 +164,11 @@ def main():
                     actor = (lambda slot, offset: ram[0x600 + slot * 48 + offset]) if sms else (
                         lambda slot, offset: ram[(sy['world_actor_state'] + slot * 48 + offset) ^ 1])
                     danger = any(actor(slot, 0) >= 0x10 and actor(slot, 3) & 2 for slot in range(16))
-                    writes.append((frame + 1, hurt_address, guard if danger else zero))
+                    # Repeated zero writes also erase the game's ordinary
+                    # terrain-hit cooldown. In this mode only remove our
+                    # held129 guard; leave natural0..128 counters untouched.
+                    if danger or not args.preserve_floor_hurt or hurt > 128:
+                        writes.append((frame + 1, hurt_address, guard if danger else zero))
                 approach_active = result['first_boss_entry'] is None
                 if room == args.boss_room and state == 12:
                     assert result['release_write_frame'] < frame

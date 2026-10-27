@@ -1649,3 +1649,8 @@ Native boss64 room115 defeated by ordinary controller input. Historical approach
 ## 2026-10-27: v0293 D6 completed and D7 entrance
 
 D6 ordinary return115,125,124,123,113,114,138,169,168,178,177,187,outside8B. Exit151825,end151975,74/80HP,six crystals,IceBell,one key,48magic. No new assistance after145093.92/92 fullRAM predictions; independent cold65536RAM and PNG exact. Exit controller now leaves/re-enters moving portal contact on arrival; no game change. All-instruction stack through151975 remainsF798 vs heapF600,408bytes observed,heap valid,finalRAMPNG exact. Ordinary exterior route reaches D7 entrance1DB at154337 with16/80HP,no new writes or Continue; independent coldRAMPNG exact. Later D7-D10,ending,original full campaign and global fidelity remain unproven. Reports d6_campaign_v0293 and d7_entry_v0293.
+
+
+## 2026-10-27: D7 approach cooldown and first key
+
+Test guard opt-in preserve-floor-hurt releases held129 only,retaining ordinary0..128 floor cooldown. Old/new D7 approaches have identical controls,initial presses,end154329 and129 write schedules.867 executed redundant zero writes removed; an868th old zero was queued after the end,not executed. Old arrival2HP,new58HP. Both independently cold replay65536RAM/PNG exact. Room1CB cleared,key acquired58/80HP,one remainingkey after spending first door; independent coldreplay exact through155770. Source topology proposal identifies boss179/type67 and ship item20/inventory16 in1D5,without claiming live reachability. Later key03 reaches1B9 with2keys and74HP from ordinary loot; its cold replay and next branch are pending. No production change or new ROM. Reports d7_approach_v0293 and d7_source_route_proposal.

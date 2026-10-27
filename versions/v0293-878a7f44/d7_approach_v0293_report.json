@@ -1,0 +1,82 @@
+{
+  "passed": true,
+  "version": 293,
+  "md_sha256": "878a7f44afb53997dfeeb25351b5c34370944cf98836ae2c687180c8a33ec735",
+  "production_rom_unchanged": true,
+  "stages": [
+    {
+      "trace": "validation/natural-dungeon-route/md-v0293-d7-route02",
+      "frames": 154329,
+      "health": 2,
+      "room": 475,
+      "whole_ram_bytes": 65536,
+      "final_png_exact": true
+    },
+    {
+      "trace": "validation/natural-dungeon-route/md-v0293-d7-route03",
+      "frames": 154329,
+      "health": 58,
+      "room": 475,
+      "whole_ram_bytes": 65536,
+      "final_png_exact": true
+    },
+    {
+      "trace": "validation/natural-dungeon-combat/md-auto-v0293-d7-key02",
+      "frames": 155770,
+      "health": 58,
+      "room": 459,
+      "whole_ram_bytes": 65536,
+      "final_png_exact": true
+    }
+  ],
+  "approach_controls_exact": true,
+  "guard129_schedule_exact": true,
+  "redundant_executed_zero_writes_removed": 867,
+  "first_d7_key_obtained": true,
+  "health": 58,
+  "max_health": 80,
+  "boss_entered": false,
+  "dungeon7_completed": false,
+  "health_refills": 0,
+  "primary_state_imports": 0,
+  "source_campaign_compared": false,
+  "full_game_validated": false,
+  "evidence": {
+    "gaw-megadrive.bin": "878a7f44afb53997dfeeb25351b5c34370944cf98836ae2c687180c8a33ec735",
+    "analysis/d7_entry_v0293_report.json": "1a83262225f624f9a5fa9e7727a8f1aab2b648968c2b015d9c5975deb7d0a790",
+    "validation/natural-dungeon-route/md-v0293-d7-route02/capture.json": "0a09260cfd66700289a11d6d36c2dfac6d36186e8e35fe49cbe806825947c678",
+    "validation/natural-dungeon-route/md-v0293-d7-route02/route_report.json": "a202b4586adad77baa00abd10e986869d0b960476990a0d2114d85cf73afb4bb",
+    "validation/natural-dungeon-route/md-v0293-d7-route02-assisted-fixed-replay-154329/replay_report.json": "fb787612936000556d51d8e1cf03d70220357c23f6fede70293a1aead31295dd",
+    "validation/natural-dungeon-route/md-v0293-d7-route02/assistance.json": "b932ce665813b673e83d8cd9098cb9461dc09c6ef07071a00a23a93443291af2",
+    "validation/natural-dungeon-route/md-v0293-d7-route02/controls.json": "77da0fe741c4f33808a18e51d55f4b33c9069b82b98fd7268b4d2b448df94431",
+    "validation/natural-dungeon-route/md-v0293-d7-route02/assisted_route_driver.py": "8ab623c7019c9eb30453ca81a5eee68ec972f3e0969a39177d42b43f9003913c",
+    "validation/natural-dungeon-route/md-v0293-d7-route02/ram_154329.bin": "dbef8260dc317e3fa9e583968f808b80809cea44125e5849b5428ce7746f2157",
+    "validation/natural-dungeon-route/md-v0293-d7-route02/frame_154329.png": "65dab420615dcd225af826bd63a6b063a4997e5637e38a8b7add1767cffabc09",
+    "validation/natural-dungeon-route/md-v0293-d7-route03/capture.json": "321050ce17b806c3fee5799d407a163948775dc757401098c1222ef4f9cb6944",
+    "validation/natural-dungeon-route/md-v0293-d7-route03/route_report.json": "aaf1d1b5b00668152d515721a25de9300902fd2d9214fe43c54e151a5acc79fb",
+    "validation/natural-dungeon-route/md-v0293-d7-route03-assisted-fixed-replay-154329/replay_report.json": "8cc0c9bb5187a0f9384385966f1bbff1bf190beb68b348bb9bc380389beabdfd",
+    "validation/natural-dungeon-route/md-v0293-d7-route03/assistance.json": "b092cc4e68477a753199323f1d2b7e5ff1aa95552446bacd000294ee2e888e76",
+    "validation/natural-dungeon-route/md-v0293-d7-route03/controls.json": "77da0fe741c4f33808a18e51d55f4b33c9069b82b98fd7268b4d2b448df94431",
+    "validation/natural-dungeon-route/md-v0293-d7-route03/assisted_route_driver.py": "1de30f906bf8f9c678bbfab2092f1c05c90953c4ed69702400b02d3107ad4d8e",
+    "tools/assisted_boss_route.py": "1de30f906bf8f9c678bbfab2092f1c05c90953c4ed69702400b02d3107ad4d8e",
+    "validation/natural-dungeon-route/md-v0293-d7-route03/ram_154329.bin": "27f25051071cbe326345f1185e46d66056fa69e090fa1e5edc713838981f10f3",
+    "validation/natural-dungeon-route/md-v0293-d7-route03/frame_154329.png": "a0ac9e374d6c67a7a4e9dae5d94cf47a9f36eeef9d7ab7771fa9e7f5fa0eace1",
+    "validation/natural-dungeon-combat/md-auto-v0293-d7-key02/capture.json": "82a4cdd80b9d4744445aad2af5a87320d043fc6e6ac5876301670734886c08f8",
+    "validation/natural-dungeon-combat/md-auto-v0293-d7-key02/report.json": "72bf466e211e4181dd7ae228c91b1d657282081f0968fe7d27608576d5425d1b",
+    "validation/natural-dungeon-combat/md-auto-v0293-d7-key02-assisted-fixed-replay-155770/replay_report.json": "3ede3ad98e618c4ebe8c35397dd784d604a0c790fb0098339962ed0866831c77",
+    "validation/natural-dungeon-combat/md-auto-v0293-d7-key02/assistance.json": "2345c2bb05e01915ba125cbf5c1ef5945e71a1157bf28c043dd4a2794fb59977",
+    "validation/natural-dungeon-combat/md-auto-v0293-d7-key02/controls.json": "5bc6363cb29300061f7177bdd23587284d66b9209a4ff399f5315e6dcd702f7e",
+    "validation/natural-dungeon-combat/md-auto-v0293-d7-key02/assisted_route_driver.py": "1de30f906bf8f9c678bbfab2092f1c05c90953c4ed69702400b02d3107ad4d8e",
+    "validation/natural-dungeon-combat/md-auto-v0293-d7-key02/ram_155770.bin": "4274197242c3ef051cb460522e66358f6a74fee235b594ab9b34a58d2666d4ec",
+    "validation/natural-dungeon-combat/md-auto-v0293-d7-key02/frame_155770.png": "000a3b33f6f0b693a1bc15b4026460a91cc1fe281df778322297a8cdbc28ea48",
+    "tools/summarize_d7_approach_v0293.py": "95ce15b58c6169f9e051fb8c7fa109033b8f1b1e37281144a66f779a6bdad745",
+    "tools/plan_d7_source_route.py": "63d686fa6037ea4fb91438783ddd3390d978776120ca15ff76fa2cf701d46c4a",
+    "analysis/d7_source_route_proposal.json": "f5cd474abb347b41a8548c10cc5abb8e0e17d85d3097068e2618e01dda72375a",
+    "input/original.sms": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9"
+  },
+  "limits": [
+    "Approach assistance is test-only and explicitly logged. Ordinary terrain damage remains; no health,inventory or currency is injected. The ROM is unchanged.",
+    "Identical controls and129 guard schedule isolate the removal of867 executed zero writes. One additional old zero write was queued after the final frame and was not executed. This is a controller correction,not a source-ROM speed or fidelity comparison.",
+    "Only the first key is confirmed in D7. Source topology is a proposal; ship,boss,crystal,exit,later dungeons,ending and global fidelity remain unverified."
+  ]
+}

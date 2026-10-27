@@ -43,6 +43,12 @@ avec contrôle avant chaque instruction normale du 68000 et tas valide.
 Le septième donjon est atteint en salle1DB à 16/80 PV, sans nouvelle aide
 sur le trajet extérieur ; sa relecture RAM/image finale est exacte.
 Voir le [rapport de pile et d'entrée du septième](analysis/d7_entry_v0293_report.json).
+Une approche assistée distincte atteint ensuite l'entrée à 58/80 PV et
+obtient la première clé en 1CB, avec relectures RAM/image exactes. Le garde
+de test préserve maintenant le délai normal des dégâts de sol : il ne
+remet plus ce compteur à zéro à chaque image sans ennemis. Aucun soin
+ni objet n'est injecté ; cette correction concerne l'outil de test.
+Voir l'[approche et la première clé du septième](analysis/d7_approach_v0293.md).
 Voir les [preuves et limites de la v0293](analysis/crystal_bridge_v0293.md).
 
 La **v0292 prolonge la corde dans la carte d'arrivée** lors d'un
