@@ -8089,7 +8089,7 @@
     "bytes": 2097152,
     "archived_utc": "2026-10-27T22:25:56.955591+00:00",
     "rom": "v0294-508642dc/gaw-megadrive-v0294.bin",
-    "notes": "Corrige les variantes78/79 inertes : comportement SMS506B et collisions.1824 cas Z80/68000 et1232 images de donnees d entites PAL/NTSC exacts. Ancienne campagne fixe arretee en D1 ; parcours complet a revalider.",
+    "notes": "Variantes78/79 corrigees ;1824 cas et1232 images d entites exacts. D1 cristal/sortie revalides,pile408octets observes. Hache et fee de vie acquises,D2 atteint a40/40PV,sept relectures RAM/image exactes. Suite en cours.",
     "validation": "targeted_checks_passed",
     "reports": [
       {
@@ -8103,6 +8103,14 @@
       {
         "file": "first_boss_variants_v0294_report.json",
         "sha256": "bff055d987b1b589b07bafaf45dfa8faa676e4dfed60c136c26d447e04a370c3"
+      },
+      {
+        "file": "d1_campaign_v0294_report.json",
+        "sha256": "d058692b4a07bb4659b0575a745b863ee56de5b2d4d0533eec2c2600eb89b348"
+      },
+      {
+        "file": "d2_approach_v0294_report.json",
+        "sha256": "a1269a1bb48771ea2821d6ddaf3fecebd007209e1edcc2d9dbc502ad1d4d5fd1"
       }
     ]
   }

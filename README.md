@@ -22,10 +22,20 @@ avec les types63/64. L'entité78 restait inerte en salle1B8 et empêchait
 l'ouverture du passage. La simulation et ses boîtes de collision sont
 maintenant actives. Les 1 824 cas Z80/68000 et 1 232 images de données
 d'entités dans les boucles PAL/NTSC correspondent.
-La campagne de cette compilation reste à revalider : les anciennes
-commandes fixes s'arrêtent dans le premier donjon. La cause de cette
-divergence n'est pas encore identifiée. Les preuves de six cristaux
-ci-dessous concernent la v0293.
+Les anciennes commandes fixes s'arrêtent dans le premier donjon ; la cause
+de cette divergence n'est pas encore identifiée. Une nouvelle conduite
+adaptative valide maintenant le premier cristal et le retour en B9 à
+28/32 PV, avec aide d'approche retirée 71 images avant le boss. Les deux
+relectures froides ont RAM/image finales exactes. La pile conserve
+408 octets de marge observée jusqu'à cette sortie. La suite de la
+campagne reste à revalider ; les preuves de six cristaux ci-dessous
+concernent la v0293.
+Voir le [premier donjon revalidé sur v0294](analysis/d1_campaign_v0294.md).
+La branche de la hache et la fée de vie de C9 sont également rejouées :
+le héros atteint le deuxième donjon en salle171 à 40/40 PV, hache équipée.
+Ces sept étapes ont RAM/image finales exactes après relecture froide.
+L'aide de la deuxième approche est consignée ; son boss n'est pas encore entré.
+Voir la [préparation du deuxième donjon](analysis/d2_approach_v0294.md).
 Voir les [preuves et limites de la v0294](analysis/first_boss_variants_v0294.md).
 
 La **v0293 rétablit le pont vers le second continent** après le cinquième
