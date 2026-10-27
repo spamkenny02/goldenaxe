@@ -1,0 +1,19 @@
+# v0293 : cloche de glace et porte du sixieme boss
+
+La ROM reste v0293, SHA-256 `878a7f44afb53997dfeeb25351b5c34370944cf98836ae2c687180c8a33ec735`. Ce jalon ajoute des commandes de parcours et leurs preuves, sans modification du code du jeu.
+
+Depuis l'entree187, les salles177/178 sont nettoyees, puis168 donne une cle. Terre ouvre le rocher6C de169 et permet le portail vers138. Une cle est recuperee en148. Le mecanisme139 ouvre les passages de138 ; les salles137/147 conduisent a la cle146. Le mecanisme117 est actionne depuis son compartiment interieur pendant que des ennemis restent dans l'autre partie. Le heros revient par127/137/138, puis traverse128/118/117 jusqu'a116. Il obtient encore une cle et ouvre les passages de Terre126,135 et134. La cle113 permet les deux portes vers la salle112, ou la cloche de glace est acquise et le coffre-monstre46 est reveille puis vaincu. Enfin le bloc7B de125 est detruit par un tir vers le bas, ouvrant le passage nord vers115.
+
+Le checkpoint finit a145022, dans125, avant d'entrer dans le boss :72/72 PV, une cle,24 points de magie, cinq cristaux et cloche de glace presente. Cinq nouvelles cles ont ete obtenues et cinq portes verrouillees ouvertes. Sept tirs de Terre ont coute56 points de magie ; les potions ramassees normalement en ont rendu32. L'acquisition de mana est observee dans les changements de reserves et les objets au sol, sans fixture de ressources.
+
+Quinze etapes ont chacune leur relecture froide independante par commandes fixes. Les65536 octets de RAM et le PNG final sont identiques au controleur. L'aide de test ne touche que le compteur de blessures pendant l'approche. Les manifestes consignent toutes ses ecritures ; aucune vie,cle,monnaie,magie ou possession n'est injectee, et aucun etat n'est importe dans le coeur principal. Cette campagne n'est pas une campagne complete sans aide.
+
+La cible provisoire du garde etait196. Le chemin du sixieme donjon mene en fait au boss64 de115. Avant de corriger cette cible, le controleur rejoue a froid toutes les images du prefixe et interdit une entree anterieure dans l'une ou l'autre salle. L'audit est positif jusqu'a142999. Au checkpoint145022, le heros n'est pas encore entre chez le boss ; le combat suivant doit retirer le garde des la transition vers115. Les preuves de victoire,cristal et sortie du sixieme donjon ne font pas partie de ce rapport.
+
+Deux ameliorations de l'outil sont conservees. Le prefixe ne decode plus a chaque image les cartes et objets inutilises, mais conserve la detection historique des ennemis de la salle cible. Une comparaison avant/apres jusqu'a121939 retrouve les memes commandes,ecritures,RAM entiere et PNG. Les nouveaux parcours attendent l'activation des ennemis avant les mecanismes, reconnaissent la proximite qui reveille le coffre-monstre dormant et recherchent les potions de mana lorsque la reserve est basse. Terre accepte des tirs directionnels et une action preparatoire explicite : le premier tir135 degage57/58 sans pretendre ouvrir la sortie ; les tirs vers la gauche degagent ensuite44/43.
+
+Les essais bloques restent des diagnostics : porte187 a droite fermee, depart premature du controleur de139, mauvais trajet direct de117 vers118, tir vertical inaccessible vers43 et coffre-monstre non reveille. Ils ne sont pas presentes comme des defauts du jeu ni comme des etapes achevees.
+
+[Rapport consolide](d6_progress_v0293_report.json), [comparaison du controleur](d6_prefix_optimization_v0293_report.json). Reconstitution locale : `tools/summarize_d6_prefix_optimization_v0293.py` puis `tools/summarize_d6_progress_v0293.py`, a partir des captures ou des archives locales verifiees.
+
+Limites : progression native NTSC en detection automatique. La campagne SMS equivalente, toutes les images intermediaires, le rythme physique, les ondes audio et le materiel reel ne sont pas compares ici. Le sixieme boss,les derniers donjons,la fin du jeu et la fidelite complete restent a verifier.

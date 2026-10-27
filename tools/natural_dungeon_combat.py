@@ -83,6 +83,13 @@ def main():
         global CANOE_OWNED,AVOID_PORTAL_COORDINATES
         nonlocal actors,loot,tilemap,observed,seen_room,seen_enemies,cleared,target_entry_keys,failure,menu_since,deaths,last_key,itinerary_index,gem_picked_at,exit_reset_seen,item_picked_at,pilot_progress_key,pilot_progress_frame,exit_dungeon_number,exit_max_health
         observed=f
+        if f<prefix_end:
+            # Prefix inputs are fixed. Preserve historical target-enemy
+            # detection without decoding unused maps/loot on every frame.
+            room=int.from_bytes(r[0xb9:0xbb],'little') if args.sms else (r[sy['room_id']^1]<<8)|r[(sy['room_id']+1)^1]
+            if room==args.target_room:
+                if any((r[0x600+n*48] if args.sms else r[(sy['world_actor_state']+n*48)^1])>=0x20 for n in range(16)):seen_enemies=True
+            return
         if args.sms:
             data=lambda a,n:bytes(r[a:a+n]);state.update(room=int.from_bytes(r[0xb9:0xbb],'little'),game=r[0x1d],hero=r[0x301],counter=r[0x304],x=int.from_bytes(r[0x312:0x314],'little')>>8,y=int.from_bytes(r[0x310:0x312],'little')>>8,health=r[0x318],keys=r[0xde],audio_error=0)
             raw=data(0x600,768);loot_raw=data(0x4b0,336);tilemap=data(0x1600,1536)
@@ -178,7 +185,7 @@ def main():
         rushing=state['room'] in rush_rooms
         if rushing:
             enemies=[];hazards=[e for e in actors if e['type']>=0x10 and e['flags']&2]
-        helpful=[e for e in loot if (e['type'] in (10,11) and state['health']<state['max_health']) or (e['type']==13 and enemies)]
+        helpful=[e for e in loot if (e['type'] in (10,11) and state['health']<state['max_health']) or (e['type']==12 and state['magic']<state['max_magic']) or (e['type']==13 and enemies)]
         seeking_loot=bool(helpful and (not enemies or min(abs(e['x']-p[0])+abs(e['y']-p[1]) for e in helpful)<=64))
         boss=next((e for e in actors if e['type'] in [0x63,0x64] and e['hp']),None)
         if args.early_boss_side and boss and state['selected']==1:
@@ -219,6 +226,10 @@ def main():
             from natural_combat_aim import directions
             return directions(q,e,variant)
         def can_attack(q,e):
+            # Original98FF wakes a dormant46 when both distances are<29.
+            # Its attack box is intentionally zero until that proximity event.
+            if e['type']==0x46 and e['state']==2 and not e['hit_box']:
+                return abs(q[0]-e['x'])<=24 and abs(q[1]-e['y'])<=24
             return bool(aim(q,e)) if args.collision_aim else attack_position(q,e,args.reach,args.align)
         if state['hero'] in [2,3,4,5] or (not args.settle_attacks or not state['counter']) and near and (not seeking_loot and can_attack(p,near[0]) or abs(near[0]['x']-p[0])+abs(near[0]['y']-p[1])<16):
             if near:

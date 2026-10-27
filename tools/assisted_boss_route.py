@@ -21,6 +21,7 @@ def main():
     parser.add_argument('--boss-room', type=lambda value: int(value, 0), required=True)
     parser.add_argument('--planner', choices=['beam', 'navigation', 'ordinary', 'side', 'escape', 'cautious', 'evasive', 'exit', 'earth', 'contact'], default='beam')
     parser.add_argument('--boss-frames', type=int, help='Bound this diagnostic after normal combat starts')
+    parser.add_argument('--retarget-pending-boss', action='store_true', help='Correct an unreached approach target; cold-prefix audit forbids either boss having been entered')
     parser.add_argument('--world-route', action='store_true', help='Apply the same guard to an exterior route')
     parser.add_argument('--unassisted-plan-rooms', help='Plan ordinary input in these rooms after the inherited boss guard has ended')
     parser.add_argument('--new-assistance-episode', action='store_true', help='Start the next approach after a verified dungeon exit')
@@ -43,6 +44,10 @@ def main():
     writes = FrameWrites(prefix_writes(prefix_folder, prefix, '--assisted-prefix' in remaining))
     inherited_writes = writes[:]
     inherited = recording(prefix_folder, prefix)[0] if prefix['test_ram_writes'] else None
+    if args.retarget_pending_boss:
+        assert inherited and not args.new_assistance_episode and not args.world_route and not args.unassisted_plan_rooms
+        assert inherited['boss_room'] != args.boss_room
+        assert all(inherited[k] is None for k in ['first_boss_entry','release_write_frame','first_boss_combat','first_boss_damage'])
     start = prefix['frames']
     closed = []
     sy = None if sms else symbols(ROOT / 'megadrive/out/release/symbol.txt')
@@ -76,7 +81,7 @@ def main():
         closed = json.loads(json.dumps(episodes(inherited, prefix)))
         closed[-1]['end_frame'] = start
     elif inherited:
-        assert inherited['boss_room'] == args.boss_room, 'A new boss requires --new-assistance-episode after its predecessor exits'
+        assert inherited['boss_room'] == args.boss_room or args.retarget_pending_boss, 'A new boss requires --new-assistance-episode after its predecessor exits'
         closed = json.loads(json.dumps(episodes(inherited, prefix)[:-1]))
     plan_rooms = [int(room,0) for room in args.unassisted_plan_rooms.split(',')] if args.unassisted_plan_rooms else [args.boss_room]
     if args.unassisted_plan_rooms:
@@ -106,6 +111,15 @@ def main():
     if inherited and not args.new_assistance_episode:
         for key in ['activation_after_frame', 'first_boss_entry', 'release_write_frame', 'first_boss_combat', 'first_boss_damage']:
             result[key] = inherited[key]
+    result['retarget_audit'] = inherited.get('retarget_audit') if inherited and not args.new_assistance_episode else None
+    if args.retarget_pending_boss:
+        source = (ROOT/'input/original.sms').read_bytes()
+        kinds = [kind for kind in source[0x3234e+args.boss_room*8:0x32356+args.boss_room*8]
+                 if kind >= 0x20 and source[0x320ea+(kind-0x20)*4+3]&0x40]
+        assert kinds, 'The new target must contain an original boss record'
+        result['retarget_audit'] = dict(from_room=inherited['boss_room'],to_room=args.boss_room,
+                                       checked_prefix_frame=start,source_boss_kinds=kinds,
+                                       prefix_verified=False,no_prior_entry=False)
     previous_health = None
     last_frame = 0
     folder = None
@@ -131,6 +145,10 @@ def main():
                 word = lambda name: int.from_bytes(bytes(ram[(sy[name] + i) ^ 1] for i in range(2)), 'big')
             room, state, health, hurt = (word(name) for name in
                                        ['room_id', 'game_state', 'hero_health', 'hero_hurt'])
+            if args.retarget_pending_boss and result['activation_after_frame'] < frame <= start:
+                assert room not in [inherited['boss_room'],args.boss_room], ('A retarget cannot conceal prior boss assistance',frame,room)
+                if frame == start:
+                    result['retarget_audit'].update(prefix_verified=True,no_prior_entry=True)
             if frame >= start:
                 if room == args.boss_room and result['first_boss_entry'] is None:
                     # Room changes during scrolling, before normal boss simulation.

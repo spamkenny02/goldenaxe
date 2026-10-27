@@ -24,8 +24,12 @@ cristal. Le script SMS 698B manquait alors que sa transformation de carte
 et pixels des tuiles du pont publiées par les VDP. Le premier donjon passe
 sans aide. La campagne native retrouve les cinq cristaux et sort à 72/72 PV ;
 elle traverse ensuite le pont et atteint le sixième donjon en salle187.
-Les trois parcours ont leurs relectures RAM/image finales exactes. L’aide
-reste limitée aux approches ; le sixième boss n’est pas encore atteint.
+Quinze étapes supplémentaires sont maintenant rejouées avec RAM/image
+finales exactes : cloche de glace acquise, cinq clés récupérées, passages
+de Terre et mécanismes ouverts jusqu’à la porte du boss. Ce jalon finit
+à 72/72 PV, avec une clé et 24 points de magie. L’aide reste limitée
+aux approches ; le combat du sixième boss est en cours de validation.
+Voir le [parcours du sixième donjon](analysis/d6_progress_v0293.md).
 La pile garde 408 octets de marge observée jusqu’à la sortie du cinquième.
 Voir les [preuves et limites de la v0293](analysis/crystal_bridge_v0293.md).
 
