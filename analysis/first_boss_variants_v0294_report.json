@@ -1,0 +1,62 @@
+{
+  "passed": true,
+  "version": 294,
+  "md_sha256": "508642dc6a7f27883746b1bbb5b208045205644205be325a3d3a317ecca87098",
+  "bytes": 2097152,
+  "checksum": "7F10",
+  "source_dispatch": 20587,
+  "variant_locations": [
+    {
+      "room": 440,
+      "types": [
+        120
+      ]
+    },
+    {
+      "room": 446,
+      "types": [
+        121
+      ]
+    }
+  ],
+  "production_scope": "78/79 behavior dispatch and collision publication in actors.c only",
+  "isolated_original_native_cases": 1824,
+  "production_loop_cases": 24,
+  "production_actor_frames": 1232,
+  "full_768_actor_bytes_exact": true,
+  "regions": [
+    "auto",
+    "pal"
+  ],
+  "natural_d7_correction_validated": false,
+  "historical_cold_replay_completed": false,
+  "historical_replay_failure": "hero_died",
+  "historical_replay_stop_frame": 13489,
+  "full_game_validated": false,
+  "source_campaign_compared": false,
+  "evidence": {
+    "gaw-megadrive.bin": "508642dc6a7f27883746b1bbb5b208045205644205be325a3d3a317ecca87098",
+    "gaw-title-megadrive.bin": "508642dc6a7f27883746b1bbb5b208045205644205be325a3d3a317ecca87098",
+    "versions/v0294-508642dc/gaw-megadrive-v0294.bin": "508642dc6a7f27883746b1bbb5b208045205644205be325a3d3a317ecca87098",
+    "input/original.sms": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+    "megadrive/src/actors.c": "8259214be648099b6c6d37238f78167506e9948b46459307bcffc374599352aa",
+    "analysis/first_boss_alias_v0294_report.json": "9efd7a580ef86768ef34a4079ee95093f1c9ba489f1e59f0e103b39c74edb684",
+    "analysis/first_boss_alias_game_v0294_report.json": "8f4793b785f84dbe006f239d521b1665d0cbd3293f0b1567bca902e094ac5602",
+    "validation/natural-dungeon-combat/md-auto-v0293-d7-key05/report.json": "0d9260459f67ed833a8068621c78046c54eeed38c01422049d81898ecea8d413",
+    "validation/natural-dungeon-combat/md-auto-v0294-d7-rebase01/report.json": "40b052733257f13d3fe0b3f52a010c87bbb89215a15d6d66d13cc9da8d936f59",
+    "tools/validate_first_boss.py": "1b5f0ea75d4d3df03506fdfb8299a6ace2ad3a6dfe8e8d8c0a4d455a2e0ef43b",
+    "tools/validate_first_boss_gameplay.py": "1263e1f267274ca8c2ceb3d90d3d568254f40e142a32a37a959f1d88f9b7380e",
+    "tools/first_boss_harness.c": "a593860f30d6ae9b00c447fa1960ebd971440199a48d6b36c4ecc2e2ea24eb55",
+    "tools/first_boss_cases.inc": "b08930d928397d993c4adcd91b776fb20b8740afe1ae3a7a2c015d7bbb9fa84b",
+    "tools/summarize_first_boss_variants_v0294.py": "6d43bf028fddad2ba3c1169f3578d8d713b0e2775ab108df1b88ae77e6cdb969",
+    "tools/natural_dungeon_combat.py": "a1b8d22c83e455a67df8bfaeba6888d3fda3214d1298046dc9fa0f161f439765",
+    "tools/natural_earth_passage.py": "f3bc14e7f415f614ad455f7140ecd6d746cb1db3de66e1eb90eb9ed15b85d67f",
+    "tools/rebase_assisted_campaign.py": "1567cda89cdd8f88861d8481452131ff510e2d892ca8bf42bca69194f2104212"
+  },
+  "limits": [
+    "Original dispatch aliases and narrow source diff establish the missing78/79 behavior. Unit fixtures execute original instructions with two explicit refresh bytes; full original RNG stream is not reproduced.",
+    "PAL/NTSC production segments inject an actor record and hero position in an exterior room. All768 actor bytes match,including collision boxes; actual D7 room graphics,all framebuffer/audio and a natural victory are not proven.",
+    "The historical v293 fixed controls die in D1 on the new build. This does not validate the current full campaign or identify the cause of trajectory divergence. Earlier D6/D7 campaign proofs remain scoped to v293.",
+    "A new adaptive current-ROM campaign,remaining dungeons,ending and global fidelity remain required."
+  ]
+}

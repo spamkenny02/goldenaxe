@@ -2512,7 +2512,8 @@ void tick_world_actors(const u8 *tilemap,const u8 *cells,u16 hero_x,u16 hero_y,u
             else if(entity[0]==0x1f) bouncing_projectile_behavior(entity,hero_x,hero_y);
             else if((entity[0]>=0x10 && entity[0]<=0x18) || entity[0]==0x19 || entity[0]==0x1a || entity[0]==0x1b || entity[0]==0x1e || entity[0]==0x70 || entity[0]==0x71 || entity[0]==0x72 || entity[0]==0x73)
                 projectile_behavior(entity,tilemap,hero_x,hero_y,frame,slot);
-            else if(entity[0]==0x63 || entity[0]==0x64)
+            /* Source2B63 also maps the ordinary variants78/79 to506B. */
+            else if(entity[0]==0x63 || entity[0]==0x64 || entity[0]==0x78 || entity[0]==0x79)
             {
                 u8 gate=255,choice=255;
                 if(entity[1]==6 && !entity[4]) { gate=random();if(entity[0]==0x64 && (gate&15)<4) choice=random(); }
@@ -2581,7 +2582,7 @@ void tick_world_actors(const u8 *tilemap,const u8 *cells,u16 hero_x,u16 hero_y,u
         hurt_world_actor(entity,tilemap);
         /* 0940 follows 26B6: publish these actors' collision boxes from the
          * current behavior/flash state even before their delayed SAT. */
-        if((entity[0]==0x0f || entity[0]==0x14 || entity[0]==0x17 || entity[0]==0x18 || entity[0]==0x71 || entity[0]==0x77 || (entity[0]>=0x46 && entity[0]<=0x49) || (entity[0]>=0x63 && entity[0]<=0x6d) || (entity[0]>=0x72 && entity[0]<=0x76) || entity[0]==0x7a || entity[0]==0x7b) && (entity[3]&1))
+        if((entity[0]==0x0f || entity[0]==0x14 || entity[0]==0x17 || entity[0]==0x18 || entity[0]==0x71 || entity[0]==0x77 || (entity[0]>=0x46 && entity[0]<=0x49) || (entity[0]>=0x63 && entity[0]<=0x6d) || (entity[0]>=0x72 && entity[0]<=0x76) || entity[0]==0x78 || entity[0]==0x79 || entity[0]==0x7a || entity[0]==0x7b) && (entity[3]&1))
         {
             u16 table=descriptor_word((entity[8]|((u16)entity[9]<<8))+entity[10]*2);
             const u8 *frame=descriptor_frame(descriptor_word(table+entity[11]*2));

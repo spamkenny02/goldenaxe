@@ -9,6 +9,10 @@ ROWS += [(s,d,0,0,0,0,free,0) for s,d,free in itertools.product([8,10],[0,1],[1,
 ROWS += [(0,0,1,x,y,slot,0,1) for x,y,slot in itertools.product([32,128,224],[16,96,144],range(8,16))]
 ROWS += [(0,d,1,128,96,8,0,2) for d in range(5)]
 ROWS += [(2,1,t,x,y,8,cls,kind) for t,x,y,cls,kind in itertools.product([0,1],[7,31,32,223,224,247,248],[7,31,32,135,136,151,152],[0,1],[1,2])]
+if '--aliases' in sys.argv:
+ ROWS=[(s,d,t,p,g,c,8,typ) for typ,s,d,t,p,g,c in itertools.product([0x63,0x64,0x78,0x79],[0,2,4,6,8,10],[0,1],[0,1],range(3),[0,4,15],[0,13])]
+ ROWS += [(s,d,0,0,0,0,free,typ) for typ,s,d,free in itertools.product([0x63,0x64,0x78,0x79],[8,10],[0,1],[1,2,3,4,5,7])]
+
 def sha(b):return hashlib.sha256(b).hexdigest()
 def generate():
  rom=(ROOT/'input/original.sms').read_bytes();image=bytearray(rom);code=bytearray();labels={};fix=[];base=0x3000
@@ -21,8 +25,9 @@ def generate():
  label('case');store(0,0xc002);store(15,0xffff)
  emit('2100c61101c601ff0236a7edb0dd2a06c0')
  for i in range(8):emit(f'dd7e{i:02x}32{0x10+i:02x}c0')
- emit('dd2100c63a10c0dd77013a11c0dd770a3a12c0dd7704dd361160dd3613803a17c0b7');jp('c2','shot')
- emit('dd3600643a13c08721')
+ emit('dd2100c63a10c0dd77013a11c0dd770a3a12c0dd7704dd361160dd3613803a17c0fe63');jp('d2','boss');emit('b7');jp('ca','boss');jp('c3','shot')
+ label('boss');emit('3a17c0b7');jp('c2','boss_type');emit('3e64')
+ label('boss_type');emit('dd77003a13c08721')
  pair_addr_pos=len(code);emit('0000856f3001247edd7720237edd7721')
  # Mark the final free slots empty; preceding occupied records retain A7 bytes.
  emit('3e083a16c0473e0890472180c711300078b7');jp('ca','free')
@@ -46,7 +51,7 @@ def generate():
  image[0x3c000:0x3c000+len(ROWS)*8]=bytes(v for row in ROWS for v in row)
  assert image[0xa7b9:0xa7bb]==b'\xed\x5f' and image[0xa7cb:0xa7cd]==b'\xed\x5f'
  image[0xa7b9:0xa7bb]=b'\x78\x00';image[0xa7cb:0xa7cd]=b'\x79\x00'
- folder=ROOT/'validation/first-boss';folder.mkdir(exist_ok=True);(folder/'source.sms').write_bytes(image)
+ folder=ROOT/('validation/first-boss-alias-v0294' if '--aliases' in sys.argv else 'validation/first-boss');folder.mkdir(exist_ok=True);(folder/'source.sms').write_bytes(image)
  (ROOT/'tools/first_boss_cases.inc').write_text('static const u8 first_boss_cases[][8]={\n'+''.join('{'+','.join(map(str,row))+'},\n' for row in ROWS)+'};\n')
  return rom,image,folder
 def main():
@@ -76,6 +81,6 @@ def main():
   checked.add(case)
  with contextlib.redirect_stdout(io.StringIO()):run(harness/'out/release/rom.bin',frames,folder/'md',set(),[],skip_intro=False,ram_observer=md)
  assert done and len(checked)==len(ROWS),(len(checked),len(ROWS))
- result=dict(md_sha256=sha((ROOT/'gaw-megadrive.bin').read_bytes()),source_sha256=sha(rom),fixture_sha256=sha(image),harness_sha256=sha((harness/'out/release/rom.bin').read_bytes()),cases=len(ROWS),boss_cases=sum(row[7]==0 for row in ROWS),projectile_cases=sum(row[7]!=0 for row in ROWS),all_768_actor_bytes_exact=True,full_game_ported=False,limits=['Only two LD A,R instructions are replaced with explicit B/C byte inputs, preserving all other first-boss instructions and callees. Original random/refresh sequence is not reproduced.','Direct state tests: six boss states, both directions, three timers, three counters, gate/choice boundaries, eight free slots and partially occupied pools.','Projectile tests execute original 43D2/442B, initialization, octants, absolute slots 8..15, five fan directions, exterior/dungeon bounds and lifetime.','Already-full fan pool inherited IY side effects, full frame integration, natural boss fight, exact graphics/audio and hardware timing are not proved.'])
- (ROOT/'validation/first_boss_unit_report.json').write_text(json.dumps(result,indent=2)+'\n');print(len(checked),'native boss/projectile cases exact')
+ result=dict(md_sha256=sha((ROOT/'gaw-megadrive.bin').read_bytes()),source_sha256=sha(rom),fixture_sha256=sha(image),harness_sha256=sha((harness/'out/release/rom.bin').read_bytes()),cases=len(ROWS),boss_cases=sum(row[7]==0 or row[7]>=0x63 for row in ROWS),projectile_cases=sum(0<row[7]<0x63 for row in ROWS),alias_types=[0x63,0x64,0x78,0x79] if '--aliases' in sys.argv else [],all_768_actor_bytes_exact=True,full_game_ported=False,limits=['Only two LD A,R instructions are replaced with explicit B/C byte inputs, preserving all other first-boss instructions and callees. Original random/refresh sequence is not reproduced.','Direct state tests: six boss states, both directions, three timers, three counters, gate/choice boundaries, eight free slots and partially occupied pools.','Projectile tests execute original 43D2/442B, initialization, octants, absolute slots 8..15, five fan directions, exterior/dungeon bounds and lifetime.','Already-full fan pool inherited IY side effects, full frame integration, natural boss fight, exact graphics/audio and hardware timing are not proved.'])
+ (ROOT/('analysis/first_boss_alias_v0294_report.json' if '--aliases' in sys.argv else 'validation/first_boss_unit_report.json')).write_text(json.dumps(result,indent=2)+'\n');print(len(checked),'native boss/projectile cases exact')
 if __name__=='__main__':main()

@@ -5,17 +5,28 @@ puis porter sa logique Z80 en code natif 68000 avec SGDK. La fidélité à la
 Master System passe avant les améliorations.
 
 <!-- ROM-RELEASE:START -->
-**Version courante : v0293 — 2048 Kio.**
+**Version courante : v0294 — 2048 Kio.**
 
-[Télécharger la ROM v0293](versions/v0293-878a7f44/gaw-megadrive-v0293.bin) · [Toutes les versions](versions/README.md)
+[Télécharger la ROM v0294](versions/v0294-508642dc/gaw-megadrive-v0294.bin) · [Toutes les versions](versions/README.md)
 
 Contrôles ciblés réussis ; portage complet encore non validé.
 
-SHA-256 : `878a7f44afb53997dfeeb25351b5c34370944cf98836ae2c687180c8a33ec735`
-Checksum Mega Drive : `3549`
+SHA-256 : `508642dc6a7f27883746b1bbb5b208045205644205be325a3d3a317ecca87098`
+Checksum Mega Drive : `7F10`
 <!-- ROM-RELEASE:END -->
 
 ## État du portage
+
+La **v0294 raccorde les ennemis78/79 à leur comportement SMS**, partagé
+avec les types63/64. L'entité78 restait inerte en salle1B8 et empêchait
+l'ouverture du passage. La simulation et ses boîtes de collision sont
+maintenant actives. Les 1 824 cas Z80/68000 et 1 232 images de données
+d'entités dans les boucles PAL/NTSC correspondent.
+La campagne de cette compilation reste à revalider : les anciennes
+commandes fixes s'arrêtent dans le premier donjon. La cause de cette
+divergence n'est pas encore identifiée. Les preuves de six cristaux
+ci-dessous concernent la v0293.
+Voir les [preuves et limites de la v0294](analysis/first_boss_variants_v0294.md).
 
 La **v0293 rétablit le pont vers le second continent** après le cinquième
 cristal. Le script SMS 698B manquait alors que sa transformation de carte

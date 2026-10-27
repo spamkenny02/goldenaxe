@@ -1,0 +1,23 @@
+{
+  "md_sha256": "508642dc6a7f27883746b1bbb5b208045205644205be325a3d3a317ecca87098",
+  "source_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+  "fixture_sha256": "581b12cb7a386c33343fdd0ebdf29de2121e30d610bc7758c1f188dd566c82e7",
+  "harness_sha256": "9f7e3307e4316013efd9391b1a87d0c4b032faa3dfd3eaa233ba58c640383a5e",
+  "cases": 1824,
+  "boss_cases": 1824,
+  "projectile_cases": 0,
+  "alias_types": [
+    99,
+    100,
+    120,
+    121
+  ],
+  "all_768_actor_bytes_exact": true,
+  "full_game_ported": false,
+  "limits": [
+    "Only two LD A,R instructions are replaced with explicit B/C byte inputs, preserving all other first-boss instructions and callees. Original random/refresh sequence is not reproduced.",
+    "Direct state tests: six boss states, both directions, three timers, three counters, gate/choice boundaries, eight free slots and partially occupied pools.",
+    "Projectile tests execute original 43D2/442B, initialization, octants, absolute slots 8..15, five fan directions, exterior/dungeon bounds and lifetime.",
+    "Already-full fan pool inherited IY side effects, full frame integration, natural boss fight, exact graphics/audio and hardware timing are not proved."
+  ]
+}
