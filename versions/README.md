@@ -4,7 +4,7 @@ Chaque binaire est conserve sans ecrasement. Les controles cibles ne prouvent pa
 
 | Version | ROM | Validation | Changements | SHA-256 |
 | --- | --- | --- | --- | --- |
-| v0304 | [Telecharger](v0304-b7b4e150/gaw-megadrive-v0304.bin) | targeted_checks_passed | Salve controlee PAL/NTSC sans image de simulation sautee;1512 images acteurs exactes. Premier cristal et sortie rejoues;campagne complete encore a valider. | `b7b4e15008a6f0a913c9ad43f15386abcdfbb719e5a575873d92712ba52503a8` |
+| v0304 | [Telecharger](v0304-b7b4e150/gaw-megadrive-v0304.bin) | targeted_checks_passed | Cadence des salves corrigee;deux cristaux et sorties,entree D3 et corde rejoues. Suite et fin encore a valider. | `b7b4e15008a6f0a913c9ad43f15386abcdfbb719e5a575873d92712ba52503a8` |
 | v0303 | [Telecharger](v0303-bc4e6c9c/gaw-megadrive-v0303.bin) | intermediate_build | Etape de mesure intermediaire; remplacee par v0304. | `bc4e6c9c1401842b8291322a1c61432a4fe1c97f29e9203e934f917190da5dae` |
 | v0302 | [Telecharger](v0302-ce8313cc/gaw-megadrive-v0302.bin) | intermediate_build | Etape de mesure intermediaire; remplacee par v0304. | `ce8313ccf0487891d576bbff624d1f27efaa8722478865ca0a354f1a26b52255` |
 | v0301 | [Telecharger](v0301-921cdd33/gaw-megadrive-v0301.bin) | intermediate_build | Etape de mesure intermediaire; remplacee par v0304. | `921cdd334277a2ef79d0b1a283494d2d8aaafc54aa624b3321235cb7581f40f4` |

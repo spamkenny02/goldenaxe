@@ -1,79 +1,86 @@
-# v0304 : cadence des salves et premier donjon revalidé
+# v0304 : cadence des salves et premier donjon revalidÃ©
 
-La ROM de 2 Mio `b7b4e150` réduit le travail du rendu tout en gardant
-les huit sprites SMS par ligne. Le calcul de débordement utilise les mêmes
-compteurs que le masquage, sans reconstruire une deuxième carte de lignes.
-Les compteurs sont codés en disponibilité unaire ; huit séquences ADD/ADDX
-68000 produisent le masque et mettent à jour les huit lignes. Les clones
-sont écrits directement dans leur tampon final et transférés en un bloc
-dans la banque absente de la liste actuellement affichée. La tuile vide
-reste séparée. Le rendu manuel réécrit tous ses sprites actifs et ferme
-leur chaîne ; il ne réinitialise plus l'allocateur SGDK inutilisé par image.
+La ROM de 2 Mio `b7b4e150` rÃ©duit le travail du rendu tout en gardant
+les huit sprites SMS par ligne. Le calcul de dÃ©bordement utilise les mÃªmes
+compteurs que le masquage, sans reconstruire une deuxiÃ¨me carte de lignes.
+Les compteurs sont codÃ©s en disponibilitÃ© unaire ; huit sÃ©quences ADD/ADDX
+68000 produisent le masque et mettent Ã  jour les huit lignes. Les clones
+sont Ã©crits directement dans leur tampon final et transfÃ©rÃ©s en un bloc
+dans la banque absente de la liste actuellement affichÃ©e. La tuile vide
+reste sÃ©parÃ©e. Le rendu manuel rÃ©Ã©crit tous ses sprites actifs et ferme
+leur chaÃ®ne ; il ne rÃ©initialise plus l'allocateur SGDK inutilisÃ© par image.
 
 ## Mesures et limites
 
-Le segment contrôlé de la variante 7C ne saute plus d'images de simulation,
-dans les deux régions. Les écarts constatés pendant cette recherche :
+Le segment contrÃ´lÃ© de la variante 7C ne saute plus d'images de simulation,
+dans les deux rÃ©gions. Les Ã©carts constatÃ©s pendant cette recherche :
 
-| ROM | Écarts NTSC | Écarts PAL | Statut |
+| ROM | Ã‰carts NTSC | Ã‰carts PAL | Statut |
 | --- | ---: | ---: | --- |
-| v296 | 36 | 36 | Référence précédente |
-| v297 | 36 | 36 | Compteurs groupés, essai écarté |
-| v298 | 36 | 36 | Lectures VRAM sélectives, essai écarté |
-| v299 | 36 | 36 | Saturation scalaire, intermédiaire |
-| v300 | 36 | 30 | Routine unaire 68000, intermédiaire |
-| v301 | 34 | 0 | Comptage partagé, intermédiaire |
-| v302 | 4 | 0 | Passe unique et transferts regroupés, intermédiaire |
-| v303 | 1 | 0 | Construction directe et lectures longues, intermédiaire |
+| v296 | 36 | 36 | RÃ©fÃ©rence prÃ©cÃ©dente |
+| v297 | 36 | 36 | Compteurs groupÃ©s, essai Ã©cartÃ© |
+| v298 | 36 | 36 | Lectures VRAM sÃ©lectives, essai Ã©cartÃ© |
+| v299 | 36 | 36 | Saturation scalaire, intermÃ©diaire |
+| v300 | 36 | 30 | Routine unaire 68000, intermÃ©diaire |
+| v301 | 34 | 0 | Comptage partagÃ©, intermÃ©diaire |
+| v302 | 4 | 0 | Passe unique et transferts regroupÃ©s, intermÃ©diaire |
+| v303 | 1 | 0 | Construction directe et lectures longues, intermÃ©diaire |
 | v304 | 0 | 0 | Version retenue |
 
-Ces écarts sont des intervalles de deux images entre entrées de simulation
-sur le segment 2880..3052 de ce test. Ce tableau ne mesure pas le débit
-de l'ensemble du jeu. Les durées du masque incluent interruptions et
-contention VDP ; une comparaison de ces durées ne constitue pas une
-accélération intrinsèque de toutes les instructions ou de tout le jeu.
+Ces Ã©carts sont des intervalles de deux images entre entrÃ©es de simulation
+sur le segment 2880..3052 de ce test. Ce tableau ne mesure pas le dÃ©bit
+de l'ensemble du jeu. Les durÃ©es du masque incluent interruptions et
+contention VDP ; une comparaison de ces durÃ©es ne constitue pas une
+accÃ©lÃ©ration intrinsÃ¨que de toutes les instructions ou de tout le jeu.
 
 Les six comparaisons de production 6A/6B/7C, PAL/NTSC, retrouvent exactement
-les 768 octets d'acteurs à chacune des 252 images du premier cycle :
+les 768 octets d'acteurs Ã  chacune des 252 images du premier cycle :
 apparition, huit projectiles, branche de variante, disparition et nettoyage.
-Le héros et le boss sont placés dans un extérieur, avec statistiques SMS et
-horloge initiale alignée. Les choix de déplacement aléatoires suivants et
-la phase naturelle entre démarrage et combat ne sont pas prouvés ici.
+Le hÃ©ros et le boss sont placÃ©s dans un extÃ©rieur, avec statistiques SMS et
+horloge initiale alignÃ©e. Les choix de dÃ©placement alÃ©atoires suivants et
+la phase naturelle entre dÃ©marrage et combat ne sont pas prouvÃ©s ici.
 
-Le test hôte compare 133 120 cas et les pixels/statuts de masquage avec
+Le test hÃ´te compare 133 120 cas et les pixels/statuts de masquage avec
 la v295. Son port VRAM renvoie une constante, tandis que les motifs en
-attente de transfert varient. La routine assemblée dispose d'un test natif
-séparé : 8 192 cas par région, incluant les 256 combinaisons de disponibilité,
-les états unaires, toutes les valeurs d'octet et les deux alignements.
-Des sentinelles vérifient l'absence d'écriture hors des huit lignes.
-Les 108 images de sprites physiques et douze images naturelles composées
-indépendamment depuis VRAM/CRAM passent également.
+attente de transfert varient. La routine assemblÃ©e dispose d'un test natif
+sÃ©parÃ© : 8 192 cas par rÃ©gion, incluant les 256 combinaisons de disponibilitÃ©,
+les Ã©tats unaires, toutes les valeurs d'octet et les deux alignements.
+Des sentinelles vÃ©rifient l'absence d'Ã©criture hors des huit lignes.
+Les 108 images de sprites physiques et douze images naturelles composÃ©es
+indÃ©pendamment depuis VRAM/CRAM passent Ã©galement.
 
 ## Campagne sur cette compilation
 
-Les anciennes commandes ne rejoignent pas le premier donjon au même moment :
-la première relecture s'arrête proprement avant d'activer une aide dans une
-mauvaise situation. Un nouveau parcours adaptatif atteint le donjon à
-14 PV, obtient la première clé, puis termine le boss 68 et prend son cristal.
-La protection d'approche est retirée à l'image 11893 ; le premier combat
-ordinaire commence à 11965, à 20 PV et compteur de protection nul.
-Un coup réel est enregistré à 12049 : 20 vers 16 PV.
+Les anciennes commandes ne rejoignent pas le premier donjon au mÃªme moment :
+la premiÃ¨re relecture s'arrÃªte proprement avant d'activer une aide dans une
+mauvaise situation. Un nouveau parcours adaptatif atteint le donjon Ã 
+14 PV, obtient la premiÃ¨re clÃ©, puis termine le boss 68 et prend son cristal.
+La protection d'approche est retirÃ©e Ã  l'image 11893 ; le premier combat
+ordinaire commence Ã  11965, Ã  20 PV et compteur de protection nul.
+Un coup rÃ©el est enregistrÃ© Ã  12049 : 20 vers 16 PV.
 
-Le cristal est confirmé à 32/32 PV en 12867 images. Le retour extérieur B9
-se termine en 14583 images à 28/32 PV, sans nouvelle aide. Les deux
-relectures indépendantes retrouvent toute la RAM de 65 536 octets et
-le PNG final. Aucun soin, objet ou état de jeu capturé n'est importé dans
-le parcours. La recherche secondaire du retour vérifie ses 36 fenêtres de
-prédiction ; elle n'injecte aucun état dans le jeu principal.
-La pile observée à chaque instruction normale depuis l'image 14 atteint
+Le cristal est confirmÃ© Ã  32/32 PV en 12867 images. Le retour extÃ©rieur B9
+se termine en 14583 images Ã  28/32 PV, sans nouvelle aide. Les deux
+relectures indÃ©pendantes retrouvent toute la RAM de 65 536 octets et
+le PNG final. Aucun soin, objet ou Ã©tat de jeu capturÃ© n'est importÃ© dans
+le parcours. La recherche secondaire du retour vÃ©rifie ses 36 fenÃªtres de
+prÃ©diction ; elle n'injecte aucun Ã©tat dans le jeu principal.
+La pile observÃ©e Ã  chaque instruction normale depuis l'image 14 atteint
 F7F0, pour une limite de tas F600 : 496 octets de marge sur ce parcours.
 
-Les donjons suivants, la fin et les sauvegardes restent à revalider sur304.
-Les preuves antérieures de deux cristaux/corde et de six cristaux restent
-respectivement liées aux v296 et v293. Le portage complet et la fidélité
-globale du rythme, de la vidéo et de l'audio ne sont pas déclarés acquis.
+Les donjons suivants, la fin et les sauvegardes restent Ã  revalider sur304.
+Les preuves antÃ©rieures de deux cristaux/corde et de six cristaux restent
+respectivement liÃ©es aux v296 et v293. Le portage complet et la fidÃ©litÃ©
+globale du rythme, de la vidÃ©o et de l'audio ne sont pas dÃ©clarÃ©s acquis.
 
 [Rapport et empreintes](burst_cadence_v0304_report.json),
 [comparaison des variantes](burst_variant_7c_v0304_gameplay_report.json),
 [profil de cadence](burst_render_cost_cost-v0304_report.json),
-[variantes de compilation conservées](burst_cadence_v0304_candidates.json).
+[variantes de compilation conservÃ©es](burst_cadence_v0304_candidates.json).
+
+## Suite de la campagne sur la mÃªme ROM
+
+Depuis ce bilan de cadence, le deuxiÃ¨me cristal et son retour Ã  31/48 PV
+ont Ã©tÃ© rejouÃ©s sur v304, ainsi que l'entrÃ©e du troisiÃ¨me donjon et la corde.
+Voir le [nouveau bilan de campagne](d2_campaign_v0304.md). Le rapport de cadence
+initial conserve son pÃ©rimÃ¨tre historique ; la nouvelle preuve est distincte.

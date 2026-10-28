@@ -1680,3 +1680,6 @@ v0296: per-pass masked tile reuse;133120 host cases and108 native sprite frames 
 
 
 v0304: controlled6A/6B/7C cycles1512 actor frames exact; physical7C gaps36->0 inNTSC/PAL. Unary68000 rows,single Y scan,clone DMA batching,direct buffers,long VDP reads,no per-frame SGDK allocator reset. Fresh D1 crystal/exit cold replay exact,28/32HP inB9;guard released72 frames before boss. Stack margin496 observed.297/298 rejected;299..303 intermediate. Later campaign remains to revalidate.
+
+
+v0304 D2 campaign:axe/fairy40HP,three keys,second crystal and exit D6 at31/48HP verified by14 cold whole-RAM/PNG replays incl.D3 entry/rope. Guard33162,boss33219,first damage33485. Boss02 cautious wins;boss01 side attempt lost.78+16 prediction windows exact;stack496-byte observed margin through37005. ROM unchanged. D3boss attempt still pending outside this report.
