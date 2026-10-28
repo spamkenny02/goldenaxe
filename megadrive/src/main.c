@@ -1059,7 +1059,8 @@ static void mask_world_sms_sprite_rows(u16 count,u8 *used)
 {
     static u16 clone_base;
     u16 n,row,word,raw,tile,pattern_jobs=world_tile_job_count;u8 mask;s16 top,line;
-    u32 clone[8];bool blank_loaded=FALSE;volatile u16 *data=(volatile u16*)VDP_DATA_PORT;
+    u32 clone[8],cached_key[8];u16 cached_tile[8];u8 cached_valid=0;
+    bool blank_loaded=FALSE;volatile u16 *data=(volatile u16*)VDP_DATA_PORT;
     /* Never overwrite tiles still referenced by the preceding SAT. */
     clone_base=clone_base==1024?1152:1024;
     memset(used,0,192);VDP_setAutoInc(2);
@@ -1097,6 +1098,15 @@ static void mask_world_sms_sprite_rows(u16 count,u8 *used)
             VDP_setSpriteTile(n,1216);continue;
         }
         tile=vdpSpriteCache[n].attribut&2047;
+        {
+            /* Repeated projectile parts can share the same source tile and
+             * suppressed rows. Reuse only within this immutable preparation
+             * pass; later frames may upload new source patterns. */
+            u16 cache_slot=(tile^mask)&7;u32 key=((u32)tile<<8)|mask;
+            if((cached_valid&(1<<cache_slot)) && cached_key[cache_slot]==key)
+            { VDP_setSpriteTile(n,cached_tile[cache_slot]);continue; }
+            cached_valid|=1<<cache_slot;cached_key[cache_slot]=key;cached_tile[cache_slot]=clone_base+n;
+        }
         {
             const u32 *queued=0;u16 j;
             /* Later jobs are the clones produced by this pass, at tile

@@ -4,6 +4,7 @@ Chaque binaire est conserve sans ecrasement. Les controles cibles ne prouvent pa
 
 | Version | ROM | Validation | Changements | SHA-256 |
 | --- | --- | --- | --- | --- |
+| v0296 | [Telecharger](v0296-3446f41f/gaw-megadrive-v0296.bin) | targeted_checks_passed | Reutilisation des tuiles masquees;133120 cas et108 images de sprites exacts. D1/D2 et corde D3 rejoues. Ralentissement et boss3 encore ouverts. | `3446f41fb7cfef0437de168a206ba6ebf4cca62ad423e76808512386c7fc9ab8` |
 | v0295 | [Telecharger](v0295-b71a6bc6/gaw-megadrive-v0295.bin) | targeted_checks_passed | Variante7C activee;795 cas controles exacts;D1/D2 et entree D3 rejoues. Ralentissement apres salve encore ouvert. | `b71a6bc6b8d812dec3c3a872561bc283c87417e5447468d45b72e435f1e5c201` |
 | v0294 | [Telecharger](v0294-508642dc/gaw-megadrive-v0294.bin) | targeted_checks_passed | Variantes78/79 corrigees ;1824 cas et1232 images d entites exacts. D1 et D2 revalides : deux cristaux,sortieD6 a31/48PV,hache equipee,aucune aide au combat, relectures RAM/image exactes,pile408octets observes. Variante7C encore a porter. | `508642dc6a7f27883746b1bbb5b208045205644205be325a3d3a317ecca87098` |
 | v0293 | [Telecharger](v0293-878a7f44/gaw-megadrive-v0293.bin) | targeted_checks_passed | Six cristaux et progression D7 verifies ; deux cles,Terre36/2B,mecanisme1B9 et entree1B8 a74PV. Blocage par variante78 inerte identifie ensuite ; corrige dans v0294. | `878a7f44afb53997dfeeb25351b5c34370944cf98836ae2c687180c8a33ec735` |

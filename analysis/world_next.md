@@ -1674,3 +1674,6 @@ D2 v0294 cleanup: full archive analysis/d2-campaign-v0294 verified;227931736 gen
 
 
 v0295: native7C dispatch/collision fixed;795 controlled cases exact. D1/D2 crystals/exits cold replay exact,31/48HP inD6; D3 entrance1F8 exact. Burst production diverges2909,also2946A/6B; physical2-frame simulation gaps remain. No complete campaign/timing claim.
+
+
+v0296: per-pass masked tile reuse;133120 host cases and108 native sprite frames exact. Controlled first burst saves2 uploads but36 simulation gaps remain. D1/D2 and D3 rope cold replay exact;two D3boss69 attempts lost. Stack margin356 bytes observed through D2 exit. Full campaign incomplete.

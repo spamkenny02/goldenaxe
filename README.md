@@ -5,17 +5,32 @@ puis porter sa logique Z80 en code natif 68000 avec SGDK. La fidélité à la
 Master System passe avant les améliorations.
 
 <!-- ROM-RELEASE:START -->
-**Version courante : v0295 — 2048 Kio.**
+**Version courante : v0296 — 2048 Kio.**
 
-[Télécharger la ROM v0295](versions/v0295-b71a6bc6/gaw-megadrive-v0295.bin) · [Toutes les versions](versions/README.md)
+[Télécharger la ROM v0296](versions/v0296-3446f41f/gaw-megadrive-v0296.bin) · [Toutes les versions](versions/README.md)
 
 Contrôles ciblés réussis ; portage complet encore non validé.
 
-SHA-256 : `b71a6bc6b8d812dec3c3a872561bc283c87417e5447468d45b72e435f1e5c201`
-Checksum Mega Drive : `2B62`
+SHA-256 : `3446f41fb7cfef0437de168a206ba6ebf4cca62ad423e76808512386c7fc9ab8`
+Checksum Mega Drive : `46DE`
 <!-- ROM-RELEASE:END -->
 
 ## État du portage
+
+La **v0296 réutilise les tuiles masquées identiques pendant une même image**.
+Les 133 120 cas compilés et 108 images de sprites dans les ROMs natives
+conservent les mêmes pixels. La première salve contrôlée utilise deux
+transferts de tuiles de moins. **Le ralentissement n'est pas résolu** :
+la simulation saute encore des images après cette salve.
+La campagne est rejouée jusqu'aux deux premiers cristaux, puis à la corde
+du troisième donjon en salle 1F4. Chaque étape a sa relecture froide avec
+RAM de 64 Kio et image finales exactes. Les deux essais contre le troisième
+boss se soldent par une défaite ; le troisième cristal reste à valider.
+La marge de pile observée jusqu'à la sortie du deuxième donjon est de
+356 octets sur cette version.
+Voir le [bilan v0296](analysis/sprite_cache_v0296.md).
+
+Historique des versions précédentes :
 
 La **v0295 active la variante7C de la salle11E**, raccordee comme sur SMS
 aux routines54D3/AB40 et a la publication des collisions. Les795 cas controles
