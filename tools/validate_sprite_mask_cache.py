@@ -1,4 +1,5 @@
 """Compile old/current production masking and compare final sprite pixels."""
+import argparse
 import ctypes as c
 import json
 import os
@@ -9,17 +10,21 @@ from archive_lossless_evidence import sha
 
 def body(text, prefix):
     begin=text.index('static void mask_world_sms_sprite_rows(u16 count,u8 *used)')
+    if 'static inline __attribute__((always_inline)) u8 count_world_sprite_rows' in text:
+        begin=text.index('static inline __attribute__((always_inline)) u8 count_world_sprite_rows')
     end=text.index('\nstatic u16 dungeon_bitmap_pending;',begin)
     text=text[begin:end]
-    for name in ['mask_world_sms_sprite_rows','terminate_world_sprite_list','prepare_world_sms_sprite_overflow']:
+    for name in ['count_world_sprite_rows','mask_world_sms_sprite_rows','terminate_world_sprite_list','prepare_world_sms_sprite_overflow']:
         text=text.replace(name,prefix+name)
     return text
 
 
 def main():
+    p=argparse.ArgumentParser();p.add_argument('--label',default='v0296');p.add_argument('--unbuilt',action='store_true');a=p.parse_args()
+    assert a.label and all(c.isalnum() or c=='-' for c in a.label)
     old=subprocess.check_output(['git','show','ff1d245:megadrive/src/main.c'],cwd=ROOT).decode().replace('\r\n','\n')
     new=(ROOT/'megadrive/src/main.c').read_text()
-    folder=ROOT/'validation/sprite-mask-cache-host-v0296';folder.mkdir(exist_ok=True)
+    folder=ROOT/f'validation/sprite-mask-cache-host-{a.label}';folder.mkdir(exist_ok=True)
     code=r'''
 #include <stdint.h>
 #include <string.h>
@@ -31,12 +36,16 @@ typedef struct {const u32 *source;u16 tile,count;} WorldTileJob;
 static Sprite vdpSpriteCache[64];static WorldTileJob world_tile_jobs[68];
 static u32 world_clone_tiles[65][8],patterns[512*8],vram[2048][8];
 static u16 world_tile_job_count,world_video_next_overflow,world_sms_sprite_prepared_overflow,upload_count;
-static u8 world_video_preparing;static volatile u32 control;static volatile u16 port_data=0xa55a;
+static u8 world_video_preparing;static volatile u32 control;static volatile u32 port_data=0xa55aa55a;
 #define VDP_DATA_PORT (&port_data)
 #define VDP_CTRL_PORT (&control)
 #define VDP_READ_VRAM_ADDR(x) (x)
 static void VDP_setAutoInc(u16 n) {(void)n;}
 static void VDP_setSpriteTile(u16 n,u16 tile) {vdpSpriteCache[n].attribut=(vdpSpriteCache[n].attribut&0xf800)|tile;}
+static void world_tile_upload(const u32 *source,u16 tile,u16 count) {
+ WorldTileJob *j=world_tile_jobs+world_tile_job_count++;j->source=source;j->tile=tile;j->count=count;upload_count++;
+ memcpy(vram[tile],source,count*32);
+}
 static void world_clone_upload(const u32 *source,u16 tile,u16 index) {
  upload_count++;memcpy(vram[tile],source,32);
  if(world_video_preparing) {WorldTileJob *j=world_tile_jobs+world_tile_job_count++;memcpy(world_clone_tiles[index],source,32);j->source=world_clone_tiles[index];j->tile=tile;j->count=1;}
@@ -85,13 +94,13 @@ unsigned check(void) {
     result=subprocess.run(['C:/msys64/ucrt64/bin/gcc.exe','-std=c99','-O2','-Wall','-Wextra','-Werror','-shared',str(source),'-o',str(folder/'mask.dll')],env=env,capture_output=True,text=True)
     (folder/'compile.log').write_text(result.stdout+result.stderr);assert result.returncode==0,result.stderr
     dll=c.CDLL(str(folder/'mask.dll'));cases=dll.check();assert cases==65*256*4*2,c.c_uint.in_dll(dll,'failure').value
-    report=dict(passed=True,md_sha256=sha((ROOT/'gaw-megadrive.bin').read_bytes()),compiled_c_cases=cases,reused_cases=c.c_uint.in_dll(dll,'reused_cases').value,
+    report=dict(passed=True,md_sha256=None if a.unbuilt else sha((ROOT/'gaw-megadrive.bin').read_bytes()),compiled_c_cases=cases,reused_cases=c.c_uint.in_dll(dll,'reused_cases').value,
                 saved_uploads=c.c_uint.in_dll(dll,'saved_uploads').value,reference_commit='ff1d245',
                 production_source_sha256=sha((ROOT/'megadrive/src/main.c').read_bytes()),
                 limits=['Actual production masking/overflow bodies compiled with SDK IO stubs. Final sprite metadata,all eight tile rows and overflow status match. SAT tile identities and DMA counts may differ because identical masked tiles are reused.',
                         'VRAM port reads return a constant word; queued source tiles vary by row. All0..64 counts,256 Y values,four layouts,two preparation modes and0..4 base jobs are checked. Native VDP integration and cadence require separate evidence.'])
     assert report['reused_cases']>0
-    (ROOT/'analysis/sprite_mask_cache_host_v0296_report.json').write_text(json.dumps(report,indent=2)+'\n');print(report)
+    (ROOT/f'analysis/sprite_mask_cache_host_{a.label}_report.json').write_text(json.dumps(report,indent=2)+'\n');print(report)
 
 
 if __name__=='__main__':main()

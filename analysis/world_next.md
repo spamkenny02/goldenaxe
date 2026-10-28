@@ -1677,3 +1677,6 @@ v0295: native7C dispatch/collision fixed;795 controlled cases exact. D1/D2 cryst
 
 
 v0296: per-pass masked tile reuse;133120 host cases and108 native sprite frames exact. Controlled first burst saves2 uploads but36 simulation gaps remain. D1/D2 and D3 rope cold replay exact;two D3boss69 attempts lost. Stack margin356 bytes observed through D2 exit. Full campaign incomplete.
+
+
+v0304: controlled6A/6B/7C cycles1512 actor frames exact; physical7C gaps36->0 inNTSC/PAL. Unary68000 rows,single Y scan,clone DMA batching,direct buffers,long VDP reads,no per-frame SGDK allocator reset. Fresh D1 crystal/exit cold replay exact,28/32HP inB9;guard released72 frames before boss. Stack margin496 observed.297/298 rejected;299..303 intermediate. Later campaign remains to revalidate.

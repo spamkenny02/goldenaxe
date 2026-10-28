@@ -8,9 +8,13 @@ def main():
  version=next(row['version'] for row in json.loads((ROOT/'versions/index.json').read_bytes()) if row['sha256']==digest)
  label=sys.argv[sys.argv.index('--label')+1] if '--label' in sys.argv else f'v{version:04d}'
  assert label and all(c.isalnum() or c=='-' for c in label)
- baseline='--baseline-v0294' in sys.argv
- md_rom=ROOT/('versions/v0294-508642dc/gaw-megadrive-v0294.bin' if baseline else 'gaw-megadrive.bin')
- symbol_file=ROOT/('validation/stack-v0294-d2-all/symbol.txt' if baseline else 'megadrive/out/release/symbol.txt')
+ baseline_version=294 if '--baseline-v0294' in sys.argv else (296 if '--baseline-v0296' in sys.argv else None)
+ baseline=baseline_version is not None
+ baseline_stem=f'v{baseline_version:04d}' if baseline else ''
+ roms={294:'versions/v0294-508642dc/gaw-megadrive-v0294.bin',296:'versions/v0296-3446f41f/gaw-megadrive-v0296.bin'}
+ symbols_by_version={294:'validation/stack-v0294-d2-all/symbol.txt',296:'validation/stack-v0296-d2-all02/symbol.txt'}
+ md_rom=ROOT/(roms[baseline_version] if baseline else 'gaw-megadrive.bin')
+ symbol_file=ROOT/(symbols_by_version[baseline_version] if baseline else 'megadrive/out/release/symbol.txt')
  sy={m[2].split('.lto_priv.')[0]:int(m[1],16)&65535 for l in symbol_file.read_text().splitlines() if (m:=re.match(r'([0-9a-fA-F]+)\s+\w\s+(\S+)',l))}
  source=(ROOT/'input/original.sms').read_bytes();cases=[]
  for region in ['auto','pal']:
@@ -35,9 +39,9 @@ def main():
      if not 2800<=f<3052:return
      clocks[tag][f]=r[0x2f] if tag=='sms' else ((int.from_bytes(bytes(r[(sy['vtimer']+i)^1] for i in range(4)),'big')-int.from_bytes(bytes(r[(sy['world_clock_shift']+i)^1] for i in range(4)),'big'))&255)
      rows[f]=bytes(r[0x600:0x900]) if tag=='sms' else bytes(r[(sy['world_actor_state']+i)^1] for i in range(768))
-    with contextlib.redirect_stdout(io.StringIO()):run(rom,3052,ROOT/f'validation/{"v0294-baseline-" if baseline else (label+"-" if "--variant7c" in sys.argv else "")}burst-boss-gameplay-{typ:02x}-{region}-{tag}',{2848,2915,2945,3000},([(200,220,0)] if tag=='sms' else [])+PRESSES[:8],ram_writes=writes,ram_observer=observe,core_options={'genesis_plus_gx_region_detect':region})
+    with contextlib.redirect_stdout(io.StringIO()):run(rom,3052,ROOT/f'validation/{baseline_stem+"-baseline-" if baseline else (label+"-" if "--variant7c" in sys.argv else "")}burst-boss-gameplay-{typ:02x}-{region}-{tag}',{2848,2915,2945,3000},([(200,220,0)] if tag=='sms' else [])+PRESSES[:8],ram_writes=writes,ram_observer=observe,core_options={'genesis_plus_gx_region_detect':region})
     traces[tag]=rows
-   (ROOT/f'validation/{"v0294-baseline" if baseline else label}-burst-clocks-{typ:02x}-{region}.json').write_text(json.dumps(dict(clocks=clocks,states={tag:{str(f):list(r[:16]) for f,r in rows.items()} for tag,rows in traces.items()}),indent=2)+'\n')
+   (ROOT/f'validation/{baseline_stem+"-baseline" if baseline else label}-burst-clocks-{typ:02x}-{region}.json').write_text(json.dumps(dict(clocks=clocks,states={tag:{str(f):list(r[:16]) for f,r in rows.items()} for tag,rows in traces.items()}),indent=2)+'\n')
    mismatches=[dict(frame=f,differences=[(j,x,y) for j,(x,y) in enumerate(zip(traces['sms'][f],traces['md'][f])) if x!=y]) for f in traces['sms'] if traces['sms'][f]!=traces['md'][f]]
    if '--diagnose' in sys.argv:
     cases.append(dict(region=region,type=typ,frames=252,exact_frames=252-len(mismatches),first_mismatch=mismatches[0] if mismatches else None,all_768_actor_bytes_exact=not mismatches,clock_adjustments=clock_adjustments))
@@ -51,8 +55,8 @@ def main():
    else:assert any(r[2944][n*48+1]==6 for n in range(8,16))
    cases.append(dict(region=region,type=typ,frames=252,all_768_actor_bytes_exact=True,clock_adjustments=clock_adjustments,first_eight_shot_burst_and_variant_branch_and_clear_verified=True))
    print(region,hex(typ),'252 frames: first burst, variant and disappearance exact',flush=True)
- report=dict(md_sha256=hashlib.sha256(md_rom.read_bytes()).hexdigest(),source_sha256=hashlib.sha256(source).hexdigest(),cases=cases,full_game_ported=False,limits=['Controlled boss/hero records injected in exterior, initial stats from original; MD world clock explicitly aligned to source at fixture start. Production actor loop, animation-period-zero behavior, eight allocations, projectile flight/pause/variant branch, flash/cull and boss disappearance execute unchanged.','Without clock alignment NTSC type6B diverges at2977: MD projectile contact/removal is one frame earlier than SMS2978. This actual global-phase difference remains unresolved; this check isolates actor logic and does not prove absolute combat timing.','Stops before relocation random choices; natural dungeon fight, global clock/RNG, complete sprite/framebuffer/audio and hardware timing remain unproved.'])
- report.update(diagnostic='--diagnose' in sys.argv,all_cases_exact=all(case['all_768_actor_bytes_exact'] for case in cases),baseline_v0294=baseline)
- output=(f'analysis/burst_variant_7c_{"v0294_baseline" if baseline else label}_diagnostic.json' if '--diagnose' in sys.argv else ('analysis/burst_variant_7c_v0295_gameplay_report.json' if '--variant7c' in sys.argv else 'validation/burst_boss_gameplay_report.json'))
+ report=dict(md_sha256=hashlib.sha256(md_rom.read_bytes()).hexdigest(),source_sha256=hashlib.sha256(source).hexdigest(),cases=cases,full_game_ported=False,limits=['Controlled boss/hero records injected in exterior, initial stats from original; MD world clock explicitly aligned to source at fixture start. Production actor loop, animation-period-zero behavior, eight allocations, projectile flight/pause/variant branch, flash/cull and boss disappearance execute unchanged.','The initial world clock is explicitly aligned. Historical unaligned-clock diagnostics from older ROMs do not establish the current global phase; this controlled check does not prove natural dungeon boot-to-combat timing.','Stops before relocation random choices; natural dungeon fight, global clock/RNG, complete sprite/framebuffer/audio and hardware timing remain unproved.'])
+ report.update(diagnostic='--diagnose' in sys.argv,all_cases_exact=all(case['all_768_actor_bytes_exact'] for case in cases),baseline_v0294=baseline_version==294,baseline_version=baseline_version)
+ output=(f'analysis/burst_variant_7c_{baseline_stem+"_baseline" if baseline else label}_diagnostic.json' if '--diagnose' in sys.argv else (f'analysis/burst_variant_7c_{label}_gameplay_report.json' if '--variant7c' in sys.argv else 'validation/burst_boss_gameplay_report.json'))
  (ROOT/output).write_text(json.dumps(report,indent=2)+'\n')
 if __name__=='__main__':main()

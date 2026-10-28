@@ -1,0 +1,1201 @@
+# Historique du README jusqu a v0296
+
+## État du portage
+
+La **v0296 réutilise les tuiles masquées identiques pendant une même image**.
+Les 133 120 cas compilés et 108 images de sprites dans les ROMs natives
+conservent les mêmes pixels. La première salve contrôlée utilise deux
+transferts de tuiles de moins. **Le ralentissement n'est pas résolu** :
+la simulation saute encore des images après cette salve.
+La campagne est rejouée jusqu'aux deux premiers cristaux, puis à la corde
+du troisième donjon en salle 1F4. Chaque étape a sa relecture froide avec
+RAM de 64 Kio et image finales exactes. Les deux essais contre le troisième
+boss se soldent par une défaite ; le troisième cristal reste à valider.
+La marge de pile observée jusqu'à la sortie du deuxième donjon est de
+356 octets sur cette version.
+Voir le [bilan v0296](analysis/sprite_cache_v0296.md).
+
+Historique des versions précédentes :
+
+La **v0295 active la variante7C de la salle11E**, raccordee comme sur SMS
+aux routines54D3/AB40 et a la publication des collisions. Les795 cas controles
+Z80/68000 correspondent. Dans les boucles de production, les109 premieres
+images correspondent pour6A/6B/7C, avec horloge initiale alignee.
+**Le test complet de cadence ne passe pas** : apres la salve de huit projectiles,
+la simulation MD saute des images physiques. Le meme ecart existe sur v0294
+pour6A/6B. Cette limitation reste ouverte.
+Les deux premiers cristaux et leurs sorties sont rejoues sur v0295,
+avec retour en D6 a31/48PV, hache equipee. Le troisieme donjon est atteint
+en1F8. Les deux relectures independantes ont RAM64K/image finales exactes.
+L'aide de test reste limitee aux approches ; aucun secours pendant les deux
+boss ni leurs retours. La pile garde408 octets de marge observee jusqu'a
+la sortie du deuxieme donjon. La suite et la fin restent a valider.
+Voir le [bilan v0295 et ses limites](analysis/variant_7c_v0295.md).
+
+Les paragraphes suivants decrivent les validations historiques :
+
+La **v0294 raccorde les ennemis78/79 à leur comportement SMS**, partagé
+avec les types63/64. L'entité78 restait inerte en salle1B8 et empêchait
+l'ouverture du passage. La simulation et ses boîtes de collision sont
+maintenant actives. Les 1 824 cas Z80/68000 et 1 232 images de données
+d'entités dans les boucles PAL/NTSC correspondent.
+Les anciennes commandes fixes s'arrêtent dans le premier donjon ; la cause
+de cette divergence n'est pas encore identifiée. Une nouvelle conduite
+adaptative valide maintenant le premier cristal et le retour en B9 à
+28/32 PV, avec aide d'approche retirée 71 images avant le boss. Les deux
+relectures froides ont RAM/image finales exactes. La pile conserve
+408 octets de marge observée jusqu'à cette sortie. La suite de la
+campagne est reprise sur cette compilation ; les preuves de six cristaux ci-dessous
+concernent la v0293.
+Voir le [premier donjon revalidé sur v0294](analysis/d1_campaign_v0294.md).
+La branche de la hache et la fée de vie de C9 sont également rejouées :
+le héros atteint le deuxième donjon en salle171 à 40/40 PV, hache équipée.
+Ces sept étapes ont RAM/image finales exactes après relecture froide.
+L'aide de la deuxième approche est consignée.
+Voir la [préparation du deuxième donjon](analysis/d2_approach_v0294.md).
+Le deuxième boss est maintenant vaincu et son cristal acquis : retour en D6
+à 31/48 PV, avec une clé et la hache équipée. Combat et sortie ont leurs
+relectures RAM/image exactes, sans aide pendant le boss ni le retour.
+La marge de pile observée reste de 408 octets jusqu'à cette sortie.
+Voir le [deuxième donjon revalidé](analysis/d2_campaign_v0294.md).
+Une variante7C en salle11E reste à raccorder à sa routine SMS54D3 ;
+les donjons suivants et la fin ne sont pas encore validés sur cette compilation.
+Voir les [preuves et limites de la v0294](analysis/first_boss_variants_v0294.md).
+
+La **v0293 rétablit le pont vers le second continent** après le cinquième
+cristal. Le script SMS 698B manquait alors que sa transformation de carte
+était déjà présente. Les 5 120 cas de décision correspondent au Z80 ;
+12 situations dans les vrais jeux passent en PAL/NTSC, ainsi que les cases
+et pixels des tuiles du pont publiées par les VDP. Le premier donjon passe
+sans aide. La campagne native retrouve les cinq cristaux et sort à 72/72 PV ;
+elle traverse ensuite le pont et atteint le sixième donjon en salle187.
+Quinze étapes supplémentaires sont maintenant rejouées avec RAM/image
+finales exactes : cloche de glace acquise, cinq clés récupérées, passages
+de Terre et mécanismes ouverts jusqu’à la porte du boss. Ce jalon finit
+à 72/72 PV, avec une clé et 24 points de magie. L’aide reste limitée
+aux approches. Le sixième boss est maintenant vaincu et son cristal acquis,
+avec soin de récompense terminé à 80/80 PV. Les deux segments de combat
+ont leurs relectures froides RAM/image exactes ; le héros subit des dégâts
+ordinaires et le garde est retiré 31 frames avant le combat. Le retour
+par les deux portails est également rejoué avec RAM/image finales exactes :
+le héros ressort en 8B à 74/80 PV avec les six cristaux. La sortie ajoute
+zéro écriture d'aide ; la campagne conserve les aides historiques d'approche.
+Voir le [sixième donjon terminé](analysis/d6_campaign_v0293.md).
+Voir le [combat et le sixième cristal](analysis/d6_boss_v0293.md).
+Voir le [parcours du sixième donjon](analysis/d6_progress_v0293.md).
+La pile garde 408 octets de marge observée jusqu’à la sortie du sixième,
+avec contrôle avant chaque instruction normale du 68000 et tas valide.
+Le septième donjon est atteint en salle1DB à 16/80 PV, sans nouvelle aide
+sur le trajet extérieur ; sa relecture RAM/image finale est exacte.
+Voir le [rapport de pile et d'entrée du septième](analysis/d7_entry_v0293_report.json).
+Une approche assistée distincte atteint ensuite l'entrée à 58/80 PV et
+obtient la première clé en 1CB, avec relectures RAM/image exactes. Le garde
+de test préserve maintenant le délai normal des dégâts de sol : il ne
+remet plus ce compteur à zéro à chaque image sans ennemis. Aucun soin
+ni objet n'est injecté ; cette correction concerne l'outil de test.
+Voir l'[approche et la première clé du septième](analysis/d7_approach_v0293.md).
+Voir les [preuves et limites de la v0293](analysis/crystal_bridge_v0293.md).
+
+La **v0292 prolonge la corde dans la carte d'arrivée** lors d'un
+changement d'écran. Cette routine Z80 manquait : le héros pouvait rester
+bloqué au bord de la falaise suivante. Les 5 456 cas de cellules passent ;
+les montées et descentes B2/A2 correspondent à la SMS en PAL/NTSC pour les
+cases, la carte, la position et le terrain à l'arrivée. Les colonnes de
+corde publiées par le VDP et leurs tuiles correspondent aussi.
+Le premier donjon passe sans aide à 32/32 PV, avec relecture RAM/image exacte.
+La campagne native termine maintenant les deuxième, troisième et quatrième
+donjons, avec aide pendant leurs approches, retirée avant chaque boss. Elle
+acquiert la corde, la magie de Terre et le canoë. Le coffre, le passage de
+Terre et le téléporteur sont comparés à la SMS ; la marche effective dans
+l'eau peu profonde est observée après acquisition du canoë sur les deux jeux.
+Le quatrième boss est vaincu à la hache, son cristal récupéré et le héros
+ressort vivant à 62/64 PV. Le combat et le retour ont leurs relectures RAM/image
+exactes. Le contrôle de pile jusqu'au cristal observe encore 408 octets de
+marge au-dessus du tas, sans corruption de ses en-têtes.
+Le cinquième donjon est atteint au canoë ; une clé, le passage de Terre
+et les bottes de course sont acquis par commandes ordinaires, avec aide
+sur l'approche. Ces quatre étapes ont leurs relectures RAM/image exactes.
+Une sortie pour ravitaillement, quatre dons de cornes et l'achat de deux
+clés sont maintenant rejoués avec RAM/image finales exactes. Le soin gratuit
+ramène le héros de 30 à 64 PV par dialogue ordinaire. Le retour ouvre
+le téléporteur de Terre en 153 et le passage commandé en 162. Ces
+14 nouvelles étapes constituent le jalon avant le cinquième boss.
+Les bottes passent 96 situations contrôlées PAL/NTSC face à la SMS :
+3 072 frames de positions, vitesses et compteurs identiques. Cela ne valide
+pas encore le rythme global du jeu. Voir le [ravitaillement et les bottes](analysis/d5_supplies_v0292.md).
+Le cinquième boss est maintenant vaincu sans perte de PV, avec aide retirée
+26 frames avant le combat. Le cristal et le soin sont terminés à 72/72 PV.
+Le retour utilise le mécanisme de 173 et le téléporteur de 174 ; le héros
+ressort à 72/72 PV avec les cinq cristaux. Combat, passage de retour et sortie
+ont leurs trois relectures RAM/image exactes, sans nouvelle assistance après
+le boss. La pile conserve 408 octets de marge observée jusqu’au cristal.
+Voir les [preuves du cinquième donjon](analysis/d5_campaign_v0292.md).
+La même ROM v0292 est utilisée pour ces nouveaux parcours. La victoire
+source contre les boss4/5 n’est pas validée ; les donjons6–10, la fin et
+la fidélité globale restent à vérifier.
+Voir les [preuves du quatrième donjon](analysis/d4_campaign_v0292.md),
+le [rapport du canoë](analysis/canoe_campaign_v0292_report.json) et le
+[précédent jalon de progression](analysis/campaign_v0292_progress.md).
+Voir les [preuves et limites de la v0292](analysis/rope_arrival_v0292.md).
+
+La **v0291 rétablit la destruction des arbres à la hache**, absente du
+portage. La septième phase du coup transforme les cases, leur support et
+les éventuelles portes ou passages persistants comme dans le Z80.
+Les 4 356 cas de ciblage et 128 situations contrôlées PAL/NTSC passent ;
+122 cas vérifient aussi les tuiles réellement publiées par le VDP.
+Le parcours normal termine le premier donjon, ouvre le passage E6, visite
+le maître de la Foudre et récupère les 50 cornes de F4, sans aide ni décès.
+Les relectures RAM/image sont exactes ; la carte et l'inventaire E6
+correspondent à la SMS. La Foudre n'est pas encore apprise : cette première
+visite enregistre sa demande. L'acquisition de la Terre reste à poursuivre.
+Voir les [preuves et limites de la v0291](analysis/axe_terrain_v0291.md).
+
+La **v0290 raccorde les quatre maîtres de magie**, jusqu'ici absents du
+service natif : Foudre, Terre, Feu et Eau. Leurs portraits et dialogues
+proviennent de la ROM SMS. Les conditions, paiements, refus, niveaux et
+capacités correspondent au Z80 sur 3 081 cas ; 26 interactions contrôlées
+passent en PAL/NTSC et les tuiles des portraits correspondent à la SMS.
+Le premier donjon passe sur cette ROM sans aide, avec une relecture exacte
+de toute la RAM et de l'image finales. L'acquisition naturelle des sorts et
+leur utilisation pour progresser dans la campagne restent à établir.
+Voir les [preuves et limites de la v0290](analysis/spell_teacher_v0290.md).
+
+La **v0289 historique termine aussi le deuxième donjon** : protection pendant
+l'approche, retirée avant le boss ; combat sans perte de PV, cristal et
+sortie à 48/48 PV, avec relectures RAM/image exactes. Cette preuve appartient
+à la v0289 et ne valide pas encore ce parcours sur la v0290.
+Voir le [rapport de campagne v0289](analysis/d2_campaign_v0289_report.json).
+
+La **v0289 corrige les dégâts des sols dangereux** : quatre PV perdus,
+sans recul, avec le délai de protection original. Les contacts avec un
+ennemi et les projectiles renvoyés par le bouclier restent pris en compte.
+Les 140 situations contrôlées PAL/NTSC correspondent à la SMS sur
+12 892 frames. Les contrôles de déplacement et de corde passent aussi.
+Le premier donjon est terminé sans aide ni décès, avec hache, cristal et
+sortie à 32/32 PV ; les relectures reproduisent toute la RAM et l'image
+finales. La campagne complète reste à prolonger sur cette version.
+Voir les [preuves et limites de la v0289](analysis/floor_damage_v0289.md).
+
+La **v0288 corrige les vitesses de déplacement selon le terrain**, y compris
+la corde, qui était parcourue trop vite. Le jeu sélectionne maintenant les
+six tables d'origine, avec et sans bottes. Les 96 situations contrôlées en
+PAL/NTSC correspondent à la SMS pour les positions, vitesses et compteurs ;
+64 frames de déplacement et de déploiement de corde correspondent aussi.
+Le premier donjon est terminé sans aide ni décès sur cette ROM, avec des
+relectures identiques de toute la RAM et de l'image finales.
+Voir les [preuves et limites de la v0288](analysis/terrain_walk_v0288.md).
+
+Sur la **v0287 historique**, le troisième boss est vaincu sans perte de PV,
+puis le cristal, la sortie à 56/56 et la corde réellement acquise sont
+validés. Les dix rangées de corde correspondent à la SMS, mais l'enquête
+sur le déplacement a révélé la vitesse erronée corrigée en v0288.
+Ces parcours des donjons 2 et 3 restent à prolonger sur la nouvelle ROM.
+Voir le [jalon du troisième donjon](analysis/d3_rope_v0287.md).
+
+
+Le **deuxième donjon passe aussi sur la v0287** : approche invincible autorisée,
+puis boss sans aide et sans perte de PV, deuxième cristal et sortie à 48/48 PV.
+Les relectures reproduisent toute la RAM et l'image finales ; les indicateurs,
+la carte et les objets possédés correspondent à la référence SMS. La marge
+observée de pile reste de 412 octets sur ce parcours de 35 662 frames.
+La SMS originale termine aussi son troisième donjon et déploie réellement
+la corde sur une falaise ; cette utilisation en parcours MD reste à vérifier.
+Voir le [nouveau jalon de campagne](analysis/campaign_v0287_progress.md).
+Le binaire v0287 est inchangé : ces preuves supplémentaires ne créent pas de
+nouveau numéro de ROM.
+
+
+La **v0287** ajoute l'utilisation de la **corde magique**, jusqu'ici récupérable
+mais sans effet dans le portage. Elle se déploie progressivement par rangées de
+huit pixels, avec les conditions et les transformations de terrain du Z80.
+Les 2 176 cas comparés au code SMS original passent ; l'intégration et les
+24 publications de rangée au VBlank sont vérifiées en PAL/NTSC, dans les deux
+sens. Ces essais de corde utilisent des situations contrôlées.
+
+Le premier donjon passe sur cette ROM sans aide ni décès : hache équipée,
+boss, cristal et sortie à 32 PV. Les nouvelles commandes se rejouent depuis
+le démarrage avec toute la RAM et l'image finales identiques. La marge de
+pile observée reste de 412 octets sur ce parcours.
+
+Sur la **v0286 historique**, le troisième donjon atteint le portail et la
+corde sur les deux systèmes, avec approche invincible autorisée. Le boss
+SMS est vaincu ; les deux essais de combat MD sont perdus après retrait de
+l'aide. Aucun troisième boss MD réussi n'est encore annoncé. Ces parcours
+historiques ne valident pas les donjons 2 et 3 sur la v0287.
+Voir les [preuves et limites de la v0287](analysis/magic_rope_v0287.md).
+
+
+La **v0286** réduit de 16,95 % le coût CPU médian de préparation des poses
+du héros sur les séquences mesurées, avec les mêmes pixels et poses en PAL
+et NTSC. Le premier donjon est rejoué sans décès : hache équipée, boss,
+cristal et sortie. La RAM et l’image finales sont reproduites, les
+indicateurs et la carte correspondent à la SMS, et la marge de pile
+observée reste de 412 octets. Ce gain concerne la préparation du héros,
+pas les FPS globaux. La campagne complète reste à terminer.
+Voir les [preuves et limites de la v0286](analysis/hero_pattern_v0286.md).
+
+Le deuxième donjon est maintenant terminé sur la **v0286 et la SMS originale**
+dans les essais à approche invincible autorisée. Cette aide est coupée avant
+le boss : combat, deuxième cristal et sortie passent ensuite avec les règles
+normales. La capacité atteint 48 PV. Les relectures reproduisent toute la RAM
+et l’image sur chaque machine ; les 256 indicateurs et les 1 280 octets de
+carte correspondent entre SMS et MD. Voir le
+[parcours et ses limites](analysis/d2_campaign_v0286.md).
+
+La **v0285** corrige un débordement de pile confirmé dans la zone DMA et
+une déchirure d’une frame à l’ouverture des dialogues. Les buffers de dialogue
+et de sortie audio utilisent désormais des zones distinctes du buffer de
+travail existant. Sur le parcours mesuré jusqu’à la fée C9, la pile conserve
+412 octets de marge et le tas reste intact.
+
+Le premier donjon et la visite de la fée passent sans décès : hache équipée,
+premier cristal et capacité/vie à 40. Une relecture froide reproduit toute
+la RAM et l’image finales. Les contrôles ciblés de dialogue, d’inventaire,
+d’audio et de titre passent ; la campagne complète reste à valider.
+Voir les [preuves et limites de la v0285](analysis/stack_release_v0285.md).
+Les v0281 à v0284 restent conservées comme compilations intermédiaires.
+
+Sur la v0285, le deuxième donjon atteint aussi une nouvelle clé (1 → 2),
+avec 32 points de vie et sans décès. La RAM et l’image sont reproduites
+par commandes fixes ; les indicateurs persistants et la carte correspondent
+à la SMS. Pour les essais suivants, l’invincibilité est autorisée sur le
+trajet et coupée avant le boss. Cet essai assisté confirme le retour des
+dégâts normaux, mais aucun deuxième cristal n’est encore validé.
+Voir le [point sur le deuxième donjon](analysis/d2_progress_v0285.md).
+
+La **v0280** raccorde la conversion rapide des attributs de carte au jeu
+jouable, y compris les copies du titre. La préparation de 768 mots utilise
+86–87 % de temps CPU en moins dans les parcours mesurés. Ce chiffre concerne
+cette conversion, pas la vitesse globale du jeu. La ROM passe à **2 Mio**.
+
+L'inventaire prépare sa carte en avance et la publie au VBlank à une échéance
+explicite. Les six parcours naturels extérieur/deux premières maisons en
+PAL/NTSC retrouvent les mêmes fenêtres noires et la même reprise que la SMS,
+avec le HUD conservé et sans bruitage de fermeture. Le titre conserve les
+33 poses de cape à six frames, les rampes et les huit lignes du logo à une
+frame par ligne ; 40 comparaisons d'images normalisées passent en PAL/NTSC.
+Voir les [changements et limites de la v0280](analysis/map_conversion_v0280.md).
+Le parcours naturel de cette version récupère la hache, l'équipe, termine le
+premier boss, prend le cristal et ressort sans décès. La relecture à commandes
+fixes reproduit toute la RAM finale et l'image ; les 256 indicateurs et les
+1 280 octets de carte correspondent à la référence SMS. Les essais du deuxième
+donjon restent des échecs du pilote, avec un boss atteint mais aucun deuxième
+cristal validé. Voir [le parcours v0280](analysis/natural_campaign_v0280.md).
+
+La visite naturelle de la fée C9 est également vérifiée sur SMS et MD :
+capacité et vie à 40, sortie normale, indicateurs et carte identiques.
+Les commandes fixes reproduisent toute la RAM et l'image finales sur chaque
+machine. Ce détour permet d'atteindre la deuxième entrée MD avec 32 points de
+vie ; le deuxième cristal reste non acquis par le pilote. Voir
+[le ravitaillement et ses limites](analysis/fairy_campaign_v0280.md).
+
+
+
+
+Pour les six destinations extérieures testées, la chaîne native couvre le
+chargement, le héros, les scripts, la musique, le rallumage, le fondu et les
+16 contours avec une seule horloge. Elle passe 24 parcours SMS, 2 592 points
+de contrôle et 48 exécutions en 68000 jusqu’à la fin du dévoilement.
+
+Le rendu SGDK met à jour les tuiles, les mots de carte, les palettes et les
+clones de sprites modifiés. Les 260 images PAL/NTSC concordent avec l’oracle
+planaire, dont les 20 étapes du passage vertical SMS. Les cas sans changement
+ne rechargent aucune tuile, aucun mot de carte ni aucun clone. Le suivi partagé
+par les IRQ et les contours passe aussi ses contrôles source et 68000.
+
+Ces comparaisons valident les données et les images maintenues, sans encore
+prouver les échéances de balayage. La cadence physique et l’intégration naturelle de ce rendu complet
+restent à raccorder au jeu. La v0280 utilise sa conversion des attributs de
+carte, mais pas encore ce rendu complet ; le hasard SGDK reste provisoire.
+Voir [le rendu incrémental et sa démonstration](analysis/md_source_room_delta.md),
+[la chaîne complète avec contours](analysis/native_room_contours.md) et
+[le premier rendu SGDK](analysis/md_source_room_frame.md).
+
+La **v0275** avait corrigé le domaine des tirages de direction des ennemis.
+Les choix de direction des ennemis 47/48/49 et du boss 65 utilisent désormais
+la plage 0–127 des lectures directes de R dans le démarrage SMS de référence.
+Le port fournissait parfois 128–255, ce qui changeait la branche du sélecteur
+4EBE. Les tirages 04E1 restent sur huit bits. Les 36 864 cas contrôlés Z80/C
+et 26 cas de la ROM jouable en NTSC/PAL passent, avec vérification des vecteurs,
+des branches et du nombre/ordre des tirages. Le flux aléatoire exact dépendant
+de l'horloge et des IRQ reste à intégrer. Voir les
+[changements et limites de la v0275](analysis/refresh_domain_v0275.md).
+
+La **v0274** avait ajouté l'historique des salles et leur réapparition.
+Le portage inclut désormais la routine SMS de réapparition des ennemis :
+à chaque entrée de salle, trois tentatives à l'extérieur ou cinq en donjon
+peuvent réinitialiser une salle entièrement vidée. L'historique protège les
+16 dernières salles à l'extérieur et les quatre premières entrées en donjon ;
+les six exceptions des donjons et les masques partiellement vidés sont préservés.
+L'historique partagé est remis à zéro pour une nouvelle partie et reste hors SRAM.
+Le chargement temporaire de la salle 95 pendant une reprise ne le modifie pas.
+Les règles correspondent à la routine Z80 inchangée sur 6 656 cas à tirages
+contrôlés. Deux parcours du binaire jouable, NTSC et PAL, vérifient l'historique
+et la réinitialisation de masques avec une préparation contrôlée des salles.
+Le générateur SGDK reste provisoire : les salles tirées ne suivent pas encore
+le flux aléatoire exact de la SMS. Les reprises et la campagne complète restent
+à vérifier. Voir les [changements de la v0274](analysis/room_history_v0274.md).
+
+Le parcours naturel de la v0274 termine maintenant le premier donjon sans
+décès (boss, cristal, vie maximale 32, sortie), puis atteint le deuxième
+donjon et y obtient une première clé. À ces deux étapes, les 256 indicateurs
+de progression et les 1 280 octets de carte correspondent à la SMS.
+Les parcours jusqu'à la clé sont rejoués depuis le démarrage avec des commandes
+fixes : RAM finale complète et image finale identiques pour chaque machine.
+La hache est désormais récupérée puis équipée par les commandes normales sur
+les deux machines. Le parcours hache/premier boss/cristal/sortie passe sans décès
+et se rejoue exactement. Le deuxième boss est atteint sur MD, mais son combat
+et le deuxième cristal restent à valider. Voir le
+[parcours avec la hache](analysis/natural_axe_campaign_v0274.md).
+Voir le [parcours et ses limites](analysis/natural_campaign_v0274.md).
+Aucun nouveau binaire n'est créé pour ces seuls changements d'outils.
+
+La **v0273** corrige le compteur logique de la carte du monde : il reste figé
+pendant la construction et avance avec les attentes de la routine SMS, sans
+réécriture après le dessin. Le NTSC ordinaire est à la même phase physique ;
+le PAL ordinaire reste une image en avance.
+Voir les [changements et limites de la v0273](analysis/overview_clock_v0273.md).
+
+La **v0271** avait rapproché la durée de génération de la carte du monde.
+La génération de la carte du monde suit maintenant le travail des routines SMS :
+décodage des 225 salles, transformations de quête/gel et projection des cellules.
+Elle finit à la même image que la SMS en NTSC et une image avant en PAL dans
+les cas ordinaires, contre 94 et 80 images d'avance en v0240. Les autres cas
+extérieurs testés finissent aussi entre zéro et une image avant la SMS.
+Le modèle est recoupé avec 1 125 chargements et 45 000 projections de la ROM
+SMS inchangée. Les 22 scénarios couvrent les marqueurs, les quêtes, le gel,
+les boutons de fermeture, les retours au jeu et les gardes intérieures.
+La publication pixel par pixel, l'horloge logique complète de la modale et
+la cadence générale restent à terminer.
+Voir les [changements et limites de la v0271](analysis/world_overview_pacing_v0271.md).
+
+La **v0270** avait allégé le rendu des objets au sol.
+Le clignotement et la disparition des objets au sol ne prennent plus de retard
+dans les scènes chargées testées. Sept objets présents simultanément pouvaient
+faire manquer deux pas de simulation à la MD. Le contrôle des sprites par bandes,
+la préparation de la table de sprites et la conversion des animations de décor
+réduisent ce coût sans modifier les règles de durée de vie ou de ramassage.
+Quatorze cas PAL/NTSC comparent 5 614 images d'état et 504 captures normalisées ;
+sept ramassages comparent 280 états et 266 captures, dont la limite de 99 clés.
+Les v0268/v0269 sont des essais intermédiaires ; utiliser la v0270.
+Voir les [changements et limites de la v0270](analysis/loot_render_v0270.md).
+
+La **v0267** avait réduit le coût audio et corrigé les attentes du sort.
+Le ralentissement du sort de niveau 2 avec plusieurs ennemis en NTSC est
+corrigé dans le cas testé : fin à la même image que sur SMS, contre 18 images
+de retard en v0264. Le lecteur musical copie seulement le canal de 48 octets
+entre deux étapes de séquence ; il conserve la sauvegarde complète lorsque
+la séquence peut modifier les autres canaux. Les commandes PSG et les retours
+d'erreur restent identiques aux routines précédentes dans les comparaisons.
+L'attente intermédiaire du sort suit directement son compteur d'images,
+pour éviter une attente SGDK supplémentaire autour du début de VBlank.
+Douze scénarios vérifient 626 états de carte/sprites et neuf retours sans
+différence de pixels normalisés. Les autres cas finissent encore 1 à 3 images
+avant la SMS : la synchronisation physique complète reste à terminer.
+Les v0265/v0266 sont des essais intermédiaires ; utiliser la v0267.
+Voir les [changements et limites de la v0267](analysis/audio_channel_snapshot_v0267.md).
+
+La v0264 avait ajouté les coûts des routines SMS au rythme du sort et
+la table de sprites source. Les v0252 à v0263 sont intermédiaires ; les
+v0261/v0262 ont des cartes partielles et ne doivent pas être utilisées.
+Voir les [changements de la v0264](analysis/screen_spell_pacing_v0264.md).
+
+Le sort plein écran de la sixième case est utilisable dans ses deux niveaux :
+animations d'origine, particules, coût en magie, dégâts et retour à la salle.
+Neuf scénarios ciblés passent ; 436 états de carte affichés correspondent
+à la SMS dans le même ordre, ainsi que 552 tuiles graphiques comparées.
+Dans les mesures de la v0249, le niveau 1 finit 20 images trop tôt en NTSC,
+83 en PAL dans la scène contrôlée. Deux retours intérieurs conservent de
+petits écarts de pixels. Les v0244 à v0248 sont des compilations intermédiaires.
+Voir les [changements et limites de la v0249](analysis/screen_spell_v0249.md).
+
+Le soin respecte maintenant le bonus du terrain : 32 points dans le contexte
+prévu par la SMS, 16 ailleurs, avec plafonnement et coût de 24 points de magie.
+Douze cas contrôlés PAL/NTSC couvrent aussi le manque de magie, le maintien du
+bouton, la répétition et la vie déjà pleine ; 624 images d'état correspondent.
+Voir les [changements et limites de la v0243](analysis/heal_terrain_v0243.md).
+
+La cloche de glace gèle maintenant l'eau en huit étapes, traite les ennemis
+présents et active les passages prévus par le jeu d'origine. Les motifs de
+l'eau extérieure sont aussi animés, en plus de leur palette.
+Huit cas contrôlés passent ; seize images normalisées correspondent à la SMS.
+Les huit étapes de gel apparaissent aux mêmes images dans la scène PAL/NTSC testée.
+L'acquisition naturelle de la cloche et la campagne complète restent à vérifier.
+La v0241 est une compilation intermédiaire ; utiliser la v0242.
+Voir les [changements et limites de la v0242](analysis/ice_bell_v0242.md).
+
+La carte du monde est maintenant utilisable : aperçu des 225 écrans extérieurs,
+transformations de quête, marqueurs de position/trésor et retour au jeu.
+Seize cas contrôlés PAL/NTSC vérifient l’affichage, les commandes et la restauration.
+Dans la v0240, la génération finissait environ 94 images trop tôt en NTSC,
+80 en PAL ; la v0271 corrige cette avance dans les cas testés.
+Les v0236 à v0239 sont les compilations intermédiaires de cette fonctionnalité.
+Voir les [changements et limites de la v0240](analysis/world_overview_v0240.md).
+
+La plume magique permet maintenant de revenir au dernier point de sauvegarde,
+avec consommation de l’objet et conservation des ressources du héros.
+Douze cas contrôlés PAL/NTSC couvrent aussi le mouvement et la blessure en cours.
+Un parcours avec achat, sortie à pied et sélection dans l’inventaire passe sur
+SMS et MD ; seul l’or initial est fourni. La durée de la transition reste à
+aligner (MD en avance de 4 à 5 images dans les cas mesurés).
+Les compilations intermédiaires v0233/v0234 ont été remplacées par la v0235.
+Voir les [changements et limites de la v0235](analysis/return_feather_v0235.md).
+
+La v0232 permet d’utiliser la lanterne dans les salles sombres des donjons :
+effet lumineux, fondu vers la salle éclairée et retour à l’arme de base.
+L’éclairage est conservé après un passage par l’inventaire. Le drapeau de
+palette du boss reste actif pendant sa disparition, jusqu’au cristal.
+Six cas contrôlés comparent 58 images de palette chacun à la SMS : salle
+normale, boss présent et disparition du boss, en PAL/NTSC. La salle, la
+possession et la phase initiale sont contrôlées. Le parcours normal jusqu’au
+premier donjon et les sélections d’inventaire passent dans les deux régions.
+Les compilations intermédiaires v0230/v0231 ont été remplacées par la v0232.
+Voir les [changements et limites de la v0232](analysis/lantern_v0232.md).
+
+La v0229 rétablit le bruitage de refus sur une case vide et les restrictions
+des deux objets réservés à l’extérieur dans les maisons et donjons.
+Huit cas contrôlés passent en PAL/NTSC. Un parcours normal vérifie aussi
+la récupération de la hache, son équipement et une attaque après fermeture
+du menu. Voir les [changements de la v0229](analysis/inventory_v0229.md).
+
+La v0228 lit directement les descriptions graphiques dans un format adapté
+au 68000. Sur la même scène à douze acteurs, la préparation est environ 5 %
+plus courte qu’en v0226, avec des pixels identiques en PAL/NTSC. Ce gain
+ne représente pas une hausse globale des FPS. La cartouche reste à 1 Mio.
+Voir les [mesures et limites de la v0228](analysis/actor_descriptors_v0228.md).
+
+Le parcours premier boss → cristal → sortie est de nouveau vérifié depuis
+une nouvelle partie, cette fois sans mort sur v0228. Dans ce passage, les
+182 états/compteurs de disparition du boss correspondent à la SMS sans
+image répétée. La cadence globale, le hasard et le reste de la campagne
+restent à terminer. La v0227 est une compilation intermédiaire à écarter.
+
+La v0226 allège le calcul des masques de sprites tout en conservant la limite
+SMS de huit sprites par ligne. Les pixels des scènes contrôlées restent identiques
+en PAL/NTSC. Les dépassements de frame ne sont pas tous résolus.
+Voir les [mesures et limites de la v0226](analysis/sprite_mask_v0226.md).
+
+La validation de la v0226 couvrait déjà le premier boss, son cristal et le retour à l’extérieur
+depuis une nouvelle partie, sans injection RAM : treize salles parcourues, deux
+clés obtenues et utilisées, vie maximale de 24 à 32 et drapeau du cristal conservé.
+La SMS finit sans mort ; le parcours v0226 utilise un Continue normal. Les flux
+de boutons se rejouent intégralement, avec RAM et image finales identiques à
+leur propre exécution. Les salles annexes, leurs objets et la suite de la campagne
+restent à explorer. Le hasard et la cadence complète restent à aligner.
+
+La v0225 publie les changements ponctuels du terrain au VBlank suivant,
+comme la file graphique SMS, au lieu de les transférer depuis la simulation.
+Le décalage corrigé est vérifié en PAL/NTSC. Les interrupteurs et sorts
+concernés passent leurs contrôles. Voir les [preuves et limites](analysis/terrain_publication_v0225.md).
+
+Un parcours naturel NTSC couvre maintenant neuf salles de combat : deux clés
+obtenues, une porte ouverte avec une clé et l’interrupteur de la salle 194.
+La SMS et la v0225 terminent sans mort, avec les mêmes drapeaux persistants
+et la même carte finale ; les combats, les PV et le hasard diffèrent encore.
+Les boutons se rejouent avec RAM et image finales identiques à leur propre parcours.
+Ce contrôle de la v0225 s’arrêtait avant le boss ; la preuve v0226 ci-dessus va jusqu’au cristal et à la sortie.
+
+La v0224 remplace la recherche des caractères par une table directe.
+Le premier dialogue mesuré gagne trois images en NTSC ; le PAL reste inchangé.
+Les glyphes, les 26 fixtures de texte et le défilement conservent leur rendu.
+Voir les [changements et limites de la v0224](analysis/dialogue_lookup_v0224.md).
+
+La v0223 corrige l’attente entre deux pages : remise à zéro du compteur,
+clignotement sur son bit 3, validation par un bouton et reprise à FF puis 00.
+Les messages finaux d’auberge, de sauvegarde et du marchand utilisent leur
+attente finale, avec un marqueur fixe et validation possible par une direction.
+Voir les [changements et limites](analysis/dialogue_waits_v0223.md).
+
+Un [parcours naturel jusqu’au premier donjon](analysis/natural_dungeon_route_v0223.md)
+est maintenant vérifié sur cette même v0223 en PAL/NTSC : nouvelle partie,
+neuf écrans extérieurs, entrée, révélation et déplacement dans la première salle,
+sans injection RAM ni sauvegarde préparée. Les commandes se rejouent à l’identique.
+Les PV d’arrivée diffèrent de la SMS ; les combats et le hasard ne sont pas validés
+par ce parcours. Ce contrôle historique ne couvrait pas les combats du donjon ni son boss.
+
+Le dessin accéléré de la v0222 et les corrections de publication/défilement
+précédentes sont conservés. La cadence complète reste à aligner : la première
+page du récit mesurée en v0224 commence son attente sept images après la SMS en NTSC et
+dix-huit en PAL. L’horloge globale, les IRQ et le hasard Z80 restent ouverts.
+
+La v0219 a corrigé les sprites débordant dans les bandes noires.
+Ce correctif est conservé. Voir les [preuves de la v0219](analysis/playable_sprite_viewport_v0219.md).
+
+La v0218 a introduit la publication des sprites au VBlank et corrigé la
+cadence des scrollings verticaux testés. Ces changements sont conservés.
+Voir les [preuves de la v0218](analysis/world_publication_v0218.md).
+Le portage complet, les parcours non couverts et le flux aléatoire Z80
+restent à valider ou à terminer.
+
+Les jalons suivants conservent leur ROM témoin de l’époque ; leurs mentions
+v0203 ou v0210 ne remplacent pas la version recommandée ci-dessus.
+
+La **v0210** applique dans le jeu la limite SMS de huit sprites par ligne.
+Les parties excédentaires sont masquées, y compris lors de chevauchements
+partiels ; deux zones de tuiles évitent de modifier les sprites encore affichés.
+Le test de douze acteurs et les six parcours d’inventaire passent en PAL/NTSC.
+Les captures naturelles testées restent identiques, sauf une ligne de sprite PAL
+corrigée par cette limite. Voir les [changements et limites](analysis/playable_sprite_limit_v0210.md).
+Les v0208/v0209 sont des compilations intermédiaires conservées ; utiliser v0210.
+
+La **v0203** corrige le flash d’une image de l’ancienne carte à la fin du
+scrolling horizontal. Les parcours depuis la clairière et le retour du village
+sont vérifiés en PAL/NTSC, avec des contrôles verticaux complémentaires.
+Sur 3 004 images comparées à la v0202, seules les trois images du défaut
+reproduit changent ; les états et la cadence des transitions restent identiques.
+Voir les [preuves et limites de la v0203](analysis/scroll_publish_v0203.md).
+Les v0204 à v0207 sont des diagnostics de scrolling/audio conservés pour recherche ;
+ces diagnostics sont remplacés par la ROM jouable v0210.
+
+La v0202 accélère la conversion des motifs de l’intro, du titre et de
+l’inventaire : environ **39 % de coût CPU en moins pour cette routine**,
+avec les mêmes pixels. La ROM reste à 1 Mio. Les noirs de l’inventaire PAL
+et le premier palier du fondu du guerrier sont corrigés. Les six parcours
+naturels d’inventaire, les bruitages, les 65 lignes/scènes de l’intro et
+quatre variantes de cadence du titre passent en PAL/NTSC.
+Voir les [preuves et limites de la v0202](analysis/pattern_pairs_milestone.md).
+Les v0199–v0201 sont conservées comme versions intermédiaires de diagnostic.
+Le portage complet et la cadence absolue depuis le boot restent à valider.
+
+La [publication des sprites issus de l’interruption](analysis/md_game_sprite_frame_milestone.md)
+alimente maintenant la VRAM Mega Drive : 133 cas PAL/NTSC concordent pixel par
+pixel avec la référence SMS, avec effacement des anciennes entrées. La copie
+reste intacte pendant les attentes de transfert. Le banc garde l’écran coupé ;
+la publication et le son doivent encore être réunis aux échéances du jeu.
+
+Le [raccordement sprites / attente / interruption / son](analysis/game_sprite_frame_milestone.md)
+passe sur 133 cas par région, sur hôte et sur 68000. Les 217 interruptions,
+les 25 536 octets de sprites et les 592 octets PSG concordent en valeurs et en dates.
+Le statut vidéo SMS reste fourni à chaque interruption. Le banc de publication
+ci-dessus raccorde les sprites au rendu ; la prédiction du statut reste à intégrer.
+Ce jalon historique concerne un banc de diagnostic ; utiliser la version courante indiquée en tête du README.
+
+La [construction des sprites suit maintenant les frontières des instructions SMS](analysis/sprite_scene_timed_milestone.md).
+Les cycles, le raster, le registre de rafraîchissement et les écritures RAM
+concordent avec le Z80 original sur 133 cas par région, également exécutés
+sur 68000. Les interruptions contrôlées observent les mêmes tables partielles.
+Le banc de raccordement ci-dessus prolonge ce travail avec l’interruption du jeu.
+
+La [production native de la table de sprites](analysis/source_sprite_scene_milestone.md)
+reproduit désormais le tri et les descripteurs du Z80 : 133 cas concordent
+sur Master System et sur 68000, dans les deux régions. Le banc raccordé
+au rendu construit ses sprites depuis les acteurs, avec les mêmes pixels finaux.
+Le placement de cette publication dans le cycle complet du jeu reste à terminer.
+
+Le [nouveau rendu des sprites SMS 8x8](analysis/md_sms_sprite8_milestone.md)
+reproduit la limite de huit sprites par ligne, les bords et le masquage par le HUD.
+Les six variantes PAL/NTSC concordent pixel par pixel sur les captures de test ;
+le raccordement au cycle complet du jeu reste à faire.
+Ce jalon historique précède les intégrations des versions jouables suivantes.
+
+La [préparation native des commandes PSG](analysis/md_psg_native_prep_milestone.md)
+utilise désormais la multiplication 16 bits du 68000 et quatre copies longues.
+Les bancs PAL/NTSC conservent données et états, avec un retard sonore maximal
+réduit de 54 % / 48 % dans le banc de référence allégé. Cette optimisation est
+sélectionnée dans les sources natives ; la ROM jouable reste v0203.
+
+L'[admission DMA avec autorisation récente](analysis/md_class0_admission_milestone.md)
+réduit les refus de transfert et le délai de réaffichage dans les bancs PAL/NTSC.
+Les données et les états concordent, mais certains retards sonores augmentent :
+ce chemin reste expérimental et la ROM jouable demeure v0203.
+
+La [comparaison des politiques de service vidéo](analysis/md_class0_scheduling_milestone.md)
+mesure aussi le délai total de réaffichage et les retards sonores. Les cinq essais
+ne sont pas retenus : davantage de transferts pendant le chargement ne suffit pas
+à améliorer la cadence. Les options restent désactivées par défaut.
+
+Le [chargement class0 avec affichage coupé](analysis/md_class0_hidden_milestone.md)
+utilise maintenant les lignes hors VBlank sans changer le mode H32. Les trois bancs
+passent en PAL/NTSC avec les mêmes motifs, carte et couleurs. Le délai de publication
+reste à réduire et à comparer à la SMS avant intégration au jeu ; la ROM reste v0203.
+
+Le [nouveau flux du fond class0](analysis/md_class0_scene_milestone.md)
+transfère les vrais motifs ROM, les lignes de carte MD et les palettes, en conservant le HUD résident.
+Les données et l'horloge passent les contrôles PAL/NTSC. Les sprites, la cadence et l'intégration
+au jeu restent à terminer ; la ROM jouable demeure la v0203.
+
+Le [service aux phases réelles du chargeur](analysis/md_z80_source_phases_milestone.md)
+effectue désormais des transferts pendant le chargement natif, en PAL/NTSC.
+Les états source, les données vidéo et l'horloge passent les contrôles ciblés.
+Le recouvrement reste faible ; les bancs class0 suivants utilisent maintenant la vraie scène.
+
+La [comparaison des reprises DMA](analysis/md_z80_grant_backoff_milestone.md)
+réduit les tentatives, mais révèle des gains NTSC et des régressions PAL selon la charge.
+L'attente du renouvellement reste optionnelle ; aucun gain général de cadence du jeu n'est établi.
+
+Le [dernier essai de coexistence vidéo/son](analysis/md_z80_refresh_grants_milestone.md)
+valide des autorisations de transfert datées et des blocs adaptatifs de 128/256 octets.
+Les captures PAL/NTSC vérifient le blanking, les mots vidéo et l'horloge sonore.
+Le débit reste insuffisant et ce chemin expérimental n'est pas intégré à la ROM jouable.
+
+Les jalons ci-dessous concernent la chaîne expérimentale avec horloge,
+qui reste distincte du chargement de la ROM jouable.
+
+Le dernier banc associe le **vrai chargement 68000 au service PSG Z80** pendant
+son exécution. Publier chaque paquet dès sa production ramène le retard maximal
+mesuré d'environ 26 à **6,6 ms** sans les grosses copies de diagnostic.
+Les états source et les 5 952 octets concordent en PAL/NTSC. Un défaut d'émission
+anticipée révélé par ce nouveau contexte est corrigé par comparaison des lignes
+absolues. La cadence reste insuffisante pour l'intégration ; le budget de
+publication et l'attente du bus sont maintenant mesurables.
+Voir le [chargement et le son simultanés](analysis/md_z80_psg_live_milestone.md).
+La séparation des fenêtres de transfert et de copie ramène ensuite le maximum
+du chargement allégé à environ **3,2 ms**, contre 6,6 ms précédemment. Les
+contrôles d'état source et les régressions PAL/NTSC passent ; ce travail reste
+expérimental. Voir les [fenêtres de transfert séparées](analysis/md_z80_psg_grants_milestone.md).
+
+L'[attribution des retards](analysis/md_z80_psg_publication_latency.md) décompose
+les 5 952 octets capturés : le pire paquet arrive au callback avec déjà environ
+1,8 ms de retard, puis préparation, transfert et restitution ajoutent 1,4 ms.
+La publication synchrone des premiers paquets consomme la marge initiale ;
+le coût natif par paquet et la copie locale restent à réduire avant intégration.
+
+Cinq [essais de publication](analysis/md_z80_psg_publication_trials.md)
+conservent les états et octets source, mais aucun n'améliore le pire retard.
+Le report des transferts exige notamment un service plus régulier pendant
+les silences et les calculs. La référence expérimentale huit/vingt est conservée.
+
+Une [lecture groupée de la FIFO](analysis/md_psg_bulk_milestone.md) réduit
+ensuite le maximum mesuré d'environ 2 %, à environ **3,1 ms**, avec le même
+pilote Z80. Les états intermédiaires et octets source concordent en PAL/NTSC ;
+la nouvelle API passe aussi les comparaisons de file sur PC et sur 68000.
+Elle reste au stade du banc et ne change pas la ROM jouable v0203.
+
+La [préparation unique pendant les attentes de bus](analysis/md_z80_polled_milestone.md)
+réduit encore le maximum du banc à environ **3,0 ms**, contre 3,1 ms avec
+la seule lecture groupée. Les états source et les rejeux de bouclage passent
+en PAL/NTSC. Cette entrée synchrone bornée reste expérimentale, sans intégration
+dans la ROM jouable.
+
+Le [banc avec affichage actif](analysis/md_z80_video_milestone.md) conserve
+les états et octets source en PAL/NTSC. Ajouter des écritures VRAM CPU fait
+cependant monter le pire retard à environ **9 ms** dans cette fixture : les
+3 ms précédents ne valent donc pas encore avec cette charge vidéo. L'arrêt
+Z80 du chemin DMA SGDK est identifié dans le code compilé ; sa coordination
+avec le pilote reste à tester. La fixture visuelle est synthétique, distincte
+du rendu du jeu.
+
+Une [première primitive DMA coordonnée](analysis/md_z80_dma_window_milestone.md)
+passe les contrôles source et d'horloge en PAL/NTSC : les transferts de 32 octets
+restent en VBlank et hors des rafales PSG. Le débit reste insuffisant : presque
+tous les travaux vidéo sont encore vidés après le chargement. Le retard audio
+d'environ 5 ms dans ce banc ne représente donc pas un gain à charge vidéo
+exécutée équivalente. Le service régulier et les échéances du rendu restent
+à réaliser ; la ROM jouable est inchangée.
+
+Les [essais de points de service vidéo](analysis/md_z80_video_service_milestone.md)
+montrent que les appels dans les fonctions d'horloge coûtent trop cher, ou
+servent encore trop peu de travaux. Préparer le motif diagnostique une seule
+fois réduit le retard audio de la fixture vers 3,4 ms, mais ne résout pas le
+débit vidéo. Ces essais restent hors de la ROM jouable ; la suite porte sur
+le coût des tentatives et les frontières de service du chargement/rendu.
+
+Le [transfert vidéo préparé](analysis/md_z80_prepared_video_milestone.md)
+réduit ensuite le pire vidage après chargement de 122 à 37 images NTSC et
+de 68 à 19 images PAL sur cette même fixture. Les contrôles source, audio
+et VRAM passent. Presque tous les transferts restent après le chargement :
+les échéances du vrai rendu restent à établir. Ce jalon expérimental ne
+modifie pas la v0203.
+
+Le [banc des vraies données graphiques](analysis/md_z80_source_video_milestone.md)
+transfère maintenant les 512 tuiles issues du miroir SMS de chaque chargement.
+Les quatre exécutions PAL/NTSC vérifient 98 304 transferts et relisent chaque
+mot dans le VDP, sans différence. Les états source et l'audio passent aussi.
+L'affichage reste un atlas de contrôle et les envois suivent la livraison audio :
+scène complète, regroupement des travaux et cadence du rendu restent à intégrer.
+
+Les [transferts contigus de une à quatre tuiles](analysis/md_z80_video_spans_milestone.md)
+divisent ensuite par quatre le nombre de commandes pour les mêmes données.
+Les contrôles PAL/NTSC passent, y compris les blocs partiels et quelques
+transferts de 128 octets avant la fin d'un flux audio actif. Le débit reste
+insuffisant pour conclure sur le rendu du jeu ; ce jalon ne modifie pas la v0203.
+
+Le **lecteur audio complet du prototype** produit désormais les horodatages
+PSG : **25 644 appels et 89 200 écritures par région** concordent avec la SMS,
+puis passent en 68000 PAL/NTSC avec la file native. Les commandes globales,
+priorités, mises en sourdine et sept canaux sont composés. Il reste à réaliser
+le raccordement à l'horloge physique du jeu ; la v0203
+reste inchangée.
+Voir le [jalon du lecteur audio horodaté](analysis/reader_timing_milestone.md).
+
+L'adaptateur d'interruption du prototype convertit aussi ces dates vers
+l'horloge source : les **1 488 écritures des 24 chargements** concordent avec
+la SMS. Le lecteur optimisé passe les mêmes 25 644 appels par région en 68000.
+Les **24 chargements testés rentrent désormais dans leur budget**, avec une
+marge minimale de 2,76 images NTSC et 3,73 images PAL. Les 1 488 événements
+PSG sont aussi disponibles avant leurs échéances relatives. Il reste à
+programmer les sorties physiques et à établir la phase globale depuis le boot.
+Voir les [mesures, preuves et limites actuelles](analysis/native_copy_pointers_milestone.md).
+
+Le profil instruction par instruction a permis d'optimiser deux copies de
+buffers : le pire chargement du prototype passe de 22,98 à 19,95 images NTSC,
+avec les mêmes états, pixels et dates PSG. Voir le
+[jalon des copies natives](analysis/native_copy_pointers_milestone.md).
+Le [jalon précédent des divisions natives](analysis/native_divu_loading_milestone.md)
+conserve aussi les vérifications arithmétiques. La ROM jouable reste la v0203 ;
+ces gains concernent la chaîne avec horloge encore en cours d'intégration.
+
+Le lecteur horodaté alimente maintenant une **file bornée**, avec attente
+quand elle est pleine et publication des paquets entiers. Les 24 entrées de
+chargement passent dans quatre modes de file/compteurs, en conservant les
+états SMS et les 1 488 écritures de référence. La mesure avec enfilage et
+lecture garde au moins 2,28 images de marge NTSC et 3,24 en PAL. Le test émet
+encore après le calcul ; le cadencement physique reste à raccorder.
+Voir le [jalon du producteur audio avec file](analysis/queued_audio_milestone.md).
+
+L'horloge vidéo native concorde maintenant avec **16 384 lectures physiques**
+du compteur PAL/NTSC. Des rafales assembleur de diagnostic conservent aussi
+les espacements audio rapprochés à 14 ticks maître près, relativement au premier
+octet. Voir les [mesures et limites de l'horloge physique](analysis/md_io_clock_milestone.md).
+
+Un premier chemin assembleur attend maintenant la position vidéo avant
+d'émettre les octets préchargés depuis la file : **47 880 écritures** vérifiées
+sur toutes les positions d'une ligne en PAL/NTSC, sans octet perdu ni image
+sautée. Le retard maximal mesuré du premier octet est de 804 ticks maître ;
+la précision et le raccordement au lecteur complet restent à finaliser.
+Voir le [jalon de l'attente matérielle PSG](analysis/md_psg_wait_milestone.md).
+
+Le lecteur des **24 chargements natifs** alimente maintenant un rejeu continu
+vers les ports PSG : **5 952 écritures source** concordent en PAL/NTSC, avec
+rebouclage 32 bits. Le producteur termine avant ce rejeu bloquant ; il reste
+à réduire la latence et à faire fonctionner calculs et sorties simultanément.
+Un test synthétique révèle aussi un retard entre deux rafales contiguës.
+Voir les [mesures et limites du rejeu continu](analysis/md_psg_replay_milestone.md).
+
+Le prototype prépare désormais les rafales et leur position vidéo avant
+l'attente finale. Le retard maximal des chargements testés passe de 3 145 à
+**2 249 ticks maître**, et la pause entre deux moitiés d'une rafale de huit
+octets est corrigée. **171 000 écritures** supplémentaires vérifient toutes
+les positions d'une ligne en PAL/NTSC. Le fonctionnement simultané avec les
+calculs et les transferts graphiques reste à intégrer et à mesurer.
+Voir le [jalon des rafales et échéances préparées](analysis/md_psg_prepared_milestone.md).
+
+Une horloge auxiliaire sur le Z80 matériel permet maintenant au 68000 de
+retrouver l'heure après plusieurs images de calcul, sans demander le bus Z80.
+Les **2 400 lectures natives PAL/NTSC** concordent avec les dates physiques ;
+le surcoût du banc de calcul descend à **3,86 %**. La logique du jeu, le
+lecteur musical et les sorties PSG restent en 68000.
+Le premier raccordement pendant les chargements conserve les **5 952 octets
+PSG** et les états SMS, mais son attente bloquante provoque encore des retards
+de plusieurs images. Il reste expérimental ; la ROM jouable reste la v0203.
+Voir les [mesures et limites de l'horloge et du raccordement audio](analysis/md_service_clock_milestone.md).
+
+La conversion des dates audio en positions vidéo utilise maintenant les
+divisions matérielles du 68000 lorsque leurs bornes sont prouvées. **16 950 cas
+par plateforme** vérifient le même résultat, et le rejeu des 24 chargements
+reste valide. Les essais de service audio coopératif restent trop tardifs et
+ont été retirés du code courant. La v0203 reste inchangée.
+Voir les [preuves et les essais écartés](analysis/md_beam_divu_milestone.md).
+
+Un premier service de **sorties PSG sur le Z80 matériel** fonctionne maintenant
+avec les octets calculés par le lecteur 68000. Les 5 952 octets de chargement,
+la cadence interne des rafales et les rebouclages de la file sont vérifiés en
+PAL/NTSC. La réduction des publications et la copie déroulée des métadonnées
+abaissent le retard maximal mesuré de 3,4 à environ 1,6 ms. Un second pilote
+prépare maintenant jusqu'à quinze commandes suivantes dans seize tampons locaux :
+le retard maximal du banc descend à environ 0,63 ms. L'alignement des tampons
+et un passage direct entre commandes déjà prêtes l'abaissent à 0,4 ms.
+La préparation des registres avant la ligne cible et une marge de copie accrue
+ramènent le maximum mesuré à environ **0,31 ms**, y compris un décalage de
+restitution de 3 419 ticks près d'une frontière de ligne.
+Un compteur actualisé à partir de la ligne effectivement reconnue et une entrée
+plus tôt dans l'attente abaissent le maximum à environ **0,29 ms**. En phase
+nominale, 1 204 des 5 952 écritures source passent sous une ligne de retard ;
+la marge d'horloge de certains cas reste étroite.
+Le lancement
+des rafales reste trop tardif ;
+ce backend reste expérimental et la v0203 est inchangée.
+Voir les [preuves du service PSG](analysis/md_z80_psg_milestone.md) et la
+[réduction de latence et ses limites](analysis/md_z80_psg_latency_milestone.md).
+Le [jalon de préparation anticipée](analysis/md_z80_psg_prefetch_milestone.md)
+détaille les nouveaux tests et ce qui reste à raccorder au jeu.
+Voir aussi le [passage direct et ses limites d'horloge](analysis/md_z80_psg_handoff_milestone.md).
+Le [jalon de préparation des registres](analysis/md_z80_psg_shadow_milestone.md)
+précise la marge d'horloge gagnée et les limites d'intégration.
+Le [jalon du compteur de ligne reconnue](analysis/md_z80_psg_counter_milestone.md)
+documente les contrôles indépendants et les essais non retenus.
+Une [variante de relevé au passage éloigné](analysis/md_z80_psg_margin_milestone.md)
+passe trois phases en PAL/NTSC et réduit un intervalle d'horloge critique. Ses
+retards sonores sont parfois plus élevés. Cette ancienne variante est conservée
+en recherche après la découverte du défaut de comparaison verticale au chargement réel.
+
+Une conversion fusionnée des dates a aussi été validée contre la SMS, puis
+écartée pour l'intégration car elle ralentit les chargements. Les essais de
+contrôle d'horloge sont également revenus au code précédent après mesure.
+Le [compte rendu des essais](analysis/master_reader_research.md) conserve les
+résultats et les pistes déjà écartées ; la v0203 reste la ROM recommandée.
+
+Les canaux mélodiques ont aussi leurs événements PSG datés : **20 852 cas
+et 37 260 écritures par région** concordent avec la SMS sur les six emplacements
+de canal, puis passent en 68000 PAL/NTSC. Les deux octets de fréquence, les
+volumes et les enveloppes sont inclus. Les commandes globales et le lecteur
+complet restent à composer, puis à relier à la cadence physique du jeu.
+Voir le [jalon des canaux mélodiques horodatés](analysis/tone_channel_timing_milestone.md).
+
+Le canal bruit complet produit ses écritures PSG horodatées : **30 670 cas
+et 23 759 écritures par région** concordent avec la SMS et passent en 68000
+PAL/NTSC, avec les commandes, enveloppes et fins de bruitage. Les fréquences,
+les commandes globales et le lecteur complet restent à composer et intégrer.
+Voir le [jalon du canal bruit horodaté](analysis/noise_channel_timing_milestone.md).
+
+Les séquences de notes et commandes produisent maintenant des horodatages
+par octet PSG : **85 760 cas et 5 888 écritures par région** concordent avec
+la SMS, puis passent en 68000 PAL/NTSC avec publication dans la file native.
+Les contrôles F1/F2/F3 et la restauration d'un bruitage sont inclus. Le canal
+bruit, les fréquences et le lecteur complet restent à composer et intégrer.
+Voir le [jalon des séquences horodatées](analysis/sequence_timing_milestone.md).
+
+Les enveloppes audio disposent aussi d'événements PSG datés : 40 192 cas ADSR
+et 13 400 cas de tables par région concordent avec les écritures SMS originales.
+Les 53 600 cas natifs, comprenant les rejets, passent en 68000 PAL/NTSC ;
+2 028 événements par région traversent la file avec la bonne échéance logique.
+La cadence physique et le lecteur complet restent à raccorder au jeu.
+Voir le [jalon des enveloppes horodatées](analysis/envelope_timing_milestone.md).
+
+La première routine audio native horodatée est vérifiée : la sélection du
+bruit (SMS8679), sur **9 216 cas par région**, produit le même état et le même
+instant d'écriture PSG que l'original. Les 4 608 événements émis passent aussi
+par la file native en 68000 PAL/NTSC, avec vérification de l'attente et de la
+libération à l'échéance. Le lecteur audio complet reste à horodater et intégrer.
+Voir le [jalon des horodatages du bruit](analysis/noise_note_timing_milestone.md).
+
+Une file native de commandes PSG datées est prête pour séparer calcul audio
+et publication : 119 273 commandes passent sur PC et en 68000 PAL/NTSC,
+puis 12 000 commandes par région sont consommées par une interruption vidéo
+pendant que la boucle principale les produit. Les horodatages calculés depuis
+les instructions SMS et la sortie à la cadence exacte restent à raccorder.
+Voir le [jalon de la file audio](analysis/psg_queue_milestone.md).
+
+La préparation audio du prototype est maintenant comparée aux échéances
+de chaque octet PSG du lecteur SMS original : **1 488 octets**, aucun calcul
+en retard sur les 24 contextes retenus. La marge minimale est de 3,58 lignes
+NTSC et 13,76 lignes PAL, avant le coût du futur mécanisme de publication.
+La mise en attente, l'émission au bon instant et la phase globale restent
+à intégrer ; la v0203 est inchangée.
+Voir les [mesures audio et leurs limites](analysis/loading_psg_deadlines_milestone.md).
+
+Le prototype effectue maintenant les transferts vidéo réels : 193 tuiles,
+768 mots de carte et 32 couleurs sont vérifiés sur 24 contextes, avec des
+écritures PSG effectives. Le total mesuré atteint 21,56–22,704 images NTSC
+pour 22,710 côté SMS. La marge minimale n’est que de 1,64 ligne vidéo :
+la cadence de publication reste à vérifier, avec les autres composants
+d’affichage. La ROM jouable reste inchangée.
+Voir le [jalon vidéo physique et ses limites](analysis/class0_video_milestone.md).
+
+Le préfixe de chargement des graphismes couvre les trois classes de pièces :
+56 cas source et 56 cas en 68000 pour chaque région passent. Il reste hors
+du jeu actif ; voir le [jalon des trois classes](analysis/graphics_classes_prefix_milestone.md).
+
+La composition audio du moteur avec calendrier évite désormais les copies
+de sécurité imbriquées. Les 25 644 cas source passent en 68000 PAL/NTSC,
+et 28 644 comparaisons vérifient aussi les commandes PSG et les rejets.
+Au jalon audio précédent, le calcul seul passait de 22,34–23,51 à 20,87–22,04
+images NTSC, pour 22,71 côté SMS. Cette mesure exclut les transferts vidéo
+réels et ne prouve pas la cadence du jeu. Le binaire jouable reste exactement
+la v0203. Voir le [jalon audio et ses limites](analysis/audio_stream_fast_milestone.md).
+
+Avant cette optimisation audio, la chaîne native traitait déjà les commandes RLE et lignes
+vidéo entières avant les interruptions. Les 16 points SMS restent conformes ;
+7 040 cas d’horloge passent aussi en 68000 PAL/NTSC. Le calcul seul demandait alors
+23–24 images NTSC sans compteurs internes, pour un budget SMS de 22,71.
+Ce jalon de recherche utilisait la v0198. Le calcul direct de l’attente vidéo est vérifié
+sur 3 933 000 positions/seuils ; les 32 693 cas IRQ passent en 68000 PAL/NTSC.
+Le décodeur regroupe plusieurs commandes entre deux interruptions :
+1 460 cas comparés et 16 cas longs supplémentaires en 68000 passent.
+Une voie précalculée depuis la ROM valide aussi les 566 commandes et les
+6 176 octets de motifs : elle demandait alors 22–24 images NTSC, encore sans marge
+prouvée pour l’affichage. Les 24 parcours à 16 points SMS passent avec les
+deux voies en 68000 PAL/NTSC. La construction régénère ces assets.
+Voir les [mesures et limites actuelles](analysis/native_pattern_plan_milestone.md).
+
+La chaîne native couvre désormais graphismes, cartes, HUD, attente,
+transfert et préparation de palette jusqu’à 24BF, avec une seule horloge.
+Les 24 contextes retrouvent 16 points SMS et passent en 68000 PAL/NTSC ;
+les données VRAM/palette sont aussi comparées directement. Les 2 048 cas
+de palette et 640 cas de regroupement sans IRQ passent dans les deux régions.
+Le raccordement au jeu, les autres branches et le budget temps réel restent
+à traiter. La ROM utilisée pour ces preuves était exactement v0198.
+Voir les [preuves et limites](analysis/native_room_finish_milestone.md).
+
+La conversion complète des cartes et la préparation du HUD sont traduites
+avec l’horloge native jusqu’à 1DE8. Les 24 contextes retrouvent onze points
+SMS, ainsi que les 1 536 octets de carte/HUD, et passent en 68000 PAL/NTSC.
+Les 9 021 cas de jauges, or et gemmes concordent aussi avec la SMS sur les
+octets et cycles, puis passent en 68000 dans les deux régions. L’attente, le transfert et la palette sont désormais couverts par le jalon
+suivant ; le raccordement global et le budget réel restent à traiter. La ROM utilisée pour ces preuves était v0198.
+Voir les [preuves et limites](analysis/native_room_hud_milestone.md).
+
+La préparation native des cartes 190B est enchaînée au chargement graphique,
+sur une seule horloge jusqu’à 24BC. Les 24 contextes retrouvent neuf points
+SMS et passent en 68000 PAL/NTSC. Des captures indépendantes confirment les
+cases et attributs modifiés, y compris les écritures de la coordonnée FF
+dans la file vidéo. La conversion complète et le HUD sont désormais couverts par le jalon
+suivant ; le raccordement global reste à faire. La ROM utilisée pour ces preuves était v0198.
+Voir les [preuves et limites](analysis/native_world_map_milestone.md).
+
+Le chargement graphique natif couvre désormais 16D0..24B9 avec une seule
+horloge et des interruptions audio dynamiques. Les 24 parcours retrouvent
+les six points de contrôle SMS et passent en 68000 PAL/NTSC. De nouvelles
+captures confirment aussi les données graphiques, le terrain et les octets
+copiés en SRAM. La ROM utilisée pour ces preuves était v0198 : le raccordement global,
+les autres classes et la suite du chargement restent à réaliser.
+Voir les [preuves et limites](analysis/native_graphics_load_milestone.md).
+
+Le premier chargement graphique 16D0..1706 dispose maintenant d’une
+traduction native avec horloge et interruptions audio dynamiques. Les
+24 contextes SMS retrouvent phase, R, M1, RAM/audio et instants d’interruption ;
+ils passent aussi en 68000 PAL/NTSC. L’audit corrige cinq lectures M1 manquantes
+dans le compteur du décodeur précédent. La ROM utilisée pour ces preuves était exactement v0198 ;
+la suite du chargement et le raccordement global restent à faire.
+Voir les [preuves et limites](analysis/native_graphics_prefix_milestone.md).
+
+La v0198 partage le décodeur natif des graphismes à quatre plans entre
+le jeu et les contrôles : 515 vecteurs passent en C et en 68000 PAL/NTSC,
+y compris les coûts Z80 T/M1. Elle corrige le début du noir à la fermeture
+de l’inventaire en NTSC. Les bruitages du menu passent dans les deux régions.
+Trois parcours NTSC concordent avec les fenêtres noires et la reprise SMS ;
+en PAL, les images restent identiques à v0194, avec un écart d’une image
+face à la SMS aux fins de chargement. Le contrôle strict PAL reste ouvert.
+Le raccordement du chargement à l’horloge reste à réaliser.
+Voir les [preuves et limites](analysis/native_patterns_milestone.md).
+
+L'attente native couvre désormais 0B95..0BC5 et le retour réel au caller,
+avec l'horloge, le lecteur audio et les interruptions dynamiques. Les
+38 349 cas et 816 chaînes de deux attentes passent en 68000 PAL/NTSC :
+phase, R, cycles, mémoire audio et instants d'interruption concordent avec
+la SMS dans les contextes testés. Cela inclut les interruptions pendant
+la restauration. Le raccordement au chargement et à la boucle du jeu
+reste à faire ; la ROM jouable reste v0194.
+Voir les [preuves et limites](analysis/native_wait_return_milestone.md).
+
+Le travail sur l'horloge dispose maintenant d'une traduction native de
+l'enveloppe d'interruption SMS 0137..0226 : état RAM, compteurs et coûts
+vidéo/audio, avec attente de palette calculée depuis la phase raster.
+Les contrôles de ce composant sont séparés de la ROM jouable ; son
+raccordement à l'horloge du jeu reste à faire. La ROM courante reste v0194.
+Voir les [preuves et limites](analysis/native_source_irq_milestone.md).
+
+La v0194 raccorde le lecteur audio complet 8000 au code natif vérifié,
+avec les coûts Z80/M1 conservés à chaque interruption. Les 25 644 vecteurs
+passent en 68000 PAL/NTSC ; 33 788 états de la ROM jouable correspondent
+à la SMS pour les 400 octets du lecteur et ses coûts d'exécution.
+Le compteur de compensation suit désormais le débordement sur huit bits
+du Z80, y compris hors de sa plage habituelle. Les régressions audio,
+menus et inventaire passent. La v0193, défaillante au démarrage, reste
+archivée et identifiée comme telle. L'horloge complète du jeu reste à intégrer.
+Voir les [preuves et limites](analysis/native_audio_reader_milestone.md).
+
+La v0192 raccorde la composition tonale 84C7 au code natif vérifié :
+enchaînement des notes, relâchement, modulation et enveloppes, avec leurs
+coûts Z80/M1. Les 20 852 vecteurs passent en 68000 PAL/NTSC ; 252 scénarios
+de la ROM jouable concordent avec la SMS sur trois interruptions chacun,
+y compris les registres PSG audibles. Les régressions audio, menus et
+inventaire passent. L'horloge complète du jeu reste à intégrer.
+Voir les [preuves et limites](analysis/native_audio_tone_milestone.md).
+
+La v0191 raccorde le canal de bruit 864F/8679 au code natif vérifié.
+Elle corrige aussi une sortie du lecteur audio : certains arrêts du canal
+de bruit faisaient avancer le bruitage suivant une interruption trop tôt.
+Les 39 886 cas de composant passent en 68000 PAL/NTSC, ainsi que 120
+scénarios de mélange dans la ROM jouable. Les bruitages du curseur et de
+validation de Nouveau jeu/Continue sont présents, audibles et déclenchés
+aux mêmes images que sur SMS dans les quatre parcours testés.
+Voir les [preuves et limites](analysis/native_audio_noise_milestone.md).
+
+La v0190 raccorde les séquences tonales 8357 au lecteur natif : notes,
+durées, commandes, boucles, appels et restauration. EA est prise en charge,
+et les limites d'appels/boucles suivent désormais les accès RAM de la SMS.
+Les 85 760 cas passent en 68000 PAL/NTSC ; 50 scénarios de la ROM jouable
+correspondent à la SMS sur deux interruptions chacun. Les régressions audio,
+menus et retour d'inventaire passent aussi.
+Voir les [preuves et limites](analysis/native_audio_sequence_milestone.md).
+
+La v0189 raccorde les hauteurs et modulations audio natives, avec les cycles
+et lectures M1 d'origine. Les 59 852 cas passent sur hôte et 68000 PAL/NTSC.
+Les miroirs de RAM audio sont désormais lus correctement ; 116 cas de
+hauteur et 60 cas d'enveloppe correspondent à la SMS exécutée, en plus des
+régressions audio et menus. La ROM reste à 1 Mio.
+Voir les [preuves et limites](analysis/native_audio_pitch_milestone.md).
+
+La v0188 raccorde les enveloppes ADSR et les 16 tables de volume au lecteur
+natif vérifié. Le registre audio DE est conservé entre les canaux, notamment
+pour la lecture de la commande `$83`. Les 53 600 cas de composant passent
+sur hôte et en 68000 PAL/NTSC ; 22 400 retours audio et 48 cas limites
+de la ROM jouable correspondent à la SMS dans les contextes testés.
+Voir les [preuves et limites](analysis/native_audio_envelope_milestone.md).
+
+La v0187 ajoute la file des effets prioritaires et la restauration des
+canaux après un bruitage. Les routines SMS 81F8/8211 sont raccordées au
+lecteur natif : 21 975 cas de composant passent sur hôte et en 68000,
+puis 40 600 états de la ROM jouable correspondent à la SMS en PAL/NTSC
+(399 octets hors routage GG et registres PSG audibles).
+Voir les [preuves et limites](analysis/native_audio_priority_milestone.md).
+
+La v0186 raccorde le dispatch audio natif vérifié (musique, bruitages et
+commandes de contrôle). Les 2 304 cas de composant passent sur hôte et
+en code 68000 PAL/NTSC ; 34 états contrôlés de la ROM jouable correspondent
+aux 400 octets du lecteur SMS. Les coûts Z80/M1 sont désormais disponibles
+pour cette routine, mais ne pilotent pas encore l'horloge du jeu.
+Voir le [détail et les limites](analysis/native_audio_dispatch_milestone.md).
+
+La v0185 rétablit les bruitages du menu Nouveau jeu/Continue : `$95` quand
+le curseur change de ligne et `$AB` à la validation. Les parcours avec les
+deux choix passent en PAL et en NTSC, avec des déclenchements aux mêmes
+images que sur SMS et un canal d'effet audible. Appuyer vers le choix déjà
+sélectionné reste silencieux. Ces contrôles ne remplacent pas une partie
+complète ni une comparaison des formes d'onde audio.
+
+Le portage est jouable mais reste incomplet. Les sources natives couvrent
+l’intro avant le titre, le titre, les menus et dialogues, l’exploration,
+les transitions, les combats, de nombreuses familles d’ennemis et boss,
+les objets et sorts, les marchands, les récompenses, les sauvegardes et
+la fin du jeu. Ces éléments ont des validations ciblées ; une partie
+complète en progression naturelle reste à vérifier.
+
+Les treize pistes musicales PSG et les bruitages ont un lecteur natif.
+Leur synchronisation dans toutes les situations de jeu reste à contrôler.
+Le binaire Mega Drive ne contient pas d’interpréteur Z80.
+
+### Dernières corrections intégrées
+
+- v0177 : conservation des récompenses et de la transformation des pièces,
+  avec contrôles des retours dans les maisons et de la sauvegarde/reprise.
+- v0178 : fondu musical B0 pendant les sorties de passages payants,
+  puis lancement de la musique de destination avant la révélation.
+- v0179 : fondus et révélation progressive des portes de maisons et de donjons,
+  chargement masqué et restauration des couleurs des sprites.
+- v0180 : attente explicite de la prochaine interruption vidéo avant la
+  révélation, même lorsque l’affichage est désactivé. Les huit transitions
+  de portes contrôlées ont un fondu d’entrée de 18 images, comme la SMS.
+- v0181 : lecture des durées de notes au format brut 16 bits alignée sur la
+  SMS, y compris lorsque le bit haut de la durée est positionné. Les 1 080
+  cas ciblés, les 13 musiques et les 29 bruitages passent leurs contrôles.
+- v0182 : arrêt conditionnel de séquence F3 lorsque le canal emprunté est
+  actif, conforme à la SMS. Les 400 cas ciblés et les contrôles audio passent.
+
+- v0183 : un silence du canal de bruit emprunté conserve la sortie PSG,
+  comme sur SMS. Les 18 432 cas ciblés et les contrôles audio passent.
+
+### Travail en cours
+
+Rapprocher les durées de chargement et les animations de la SMS, en calculant
+le travail original et les interruptions audio. Les routines de tempo,
+fondu, arbitrage et traitement des commandes musicales/sonores ont des
+modèles de coût vérifiés. Les enveloppes de volume ADSR et sur tables sont
+également vérifiées. Les calculs de hauteur et de vibrato passent les tests
+isolés ; le parcours observé en jeu utilise seulement le mode sans modulation.
+Les notes, durées, silences, boucles, appels et retours de séquence ont
+maintenant des coûts vérifiés en PAL et NTSC. Les arrêts F1/F2 sans restitution
+8211 sont aussi contrôlés. Vingt commandes déterministes supplémentaires
+et le partage F3 sont vérifiés sur des contextes isolés. Les commandes
+utilisant le registre R et certaines restitutions restent à couvrir
+avant une validation générale. La sélection
+des notes de bruit (8679) dispose maintenant d’un modèle de coût vérifié ;
+les notes, enveloppes et boucles F6/F7 du canal de bruit (864F) passent
+39 360 cas isolés et les 1 102 appels d’un parcours en jeu. Les autres
+commandes du bruit restent à couvrir. La composition des canaux de tonalité
+(84C7) passe 20 680 cas isolés et les 3 372 appels du parcours observé,
+qui utilise uniquement le vibrato sans modulation (mode 0). Le lecteur
+complet correspond maintenant aux 1 202 appels du parcours contrôlé,
+y compris ses deux sites de retour d’interruption. Les priorités passent
+33 480 cas isolés et les conditions de pause/compensation passent 10 752 cas.
+Les commandes utilisant R, certaines restitutions et les combinaisons
+non couvertes restent à vérifier avant l’intégration aux chargements.
+Le budget hors interruptions du chargement est désormais complet sur
+24 scénarios de passages payants, avec 13 725 attentes VBlank et
+14 424 appels audio contrôlés. Le travail des interruptions complètes
+passe aussi 13 749 appels en jeu et 2 880 cas isolés. Le budget total
+correspond aux 24 chargements contrôlés, avec les boucles et entrées
+observées comme données. Les boucles de palette sont désormais prédites
+depuis la phase d’entrée des 13 749 interruptions ; le compteur vidéo passe
+149 500 positions isolées. Les 13 725 attentes VBlank sont maintenant
+prédites depuis leur état d’entrée, avec 6 156 cas synthétiques supplémentaires.
+La séquence de révélation est désormais prédite depuis un seul état
+d’entrée : effacement, préparation, attente VBlank et réactivation de
+l’affichage correspondent sur les 24 parcours et 7 220 cas isolés.
+La routine graphique complète est également prédite depuis un seul état
+sur les 24 parcours : motifs, métatuiles, terrain et copie SRAM, avec
+six points de contrôle. Cela inclut les interruptions audio, la demande
+de fondu musical B0 et la suspension des interruptions pendant la copie.
+Le chargement de la carte est maintenant enchaîné à cette routine sans
+état intermédiaire mesuré : les 24 parcours passent neuf points de
+contrôle, avec les correctifs persistants et la file de tuiles.
+Le HUD, son attente VBlank, le transfert vidéo et la restauration de
+palette sont également enchaînés depuis l’état initial : les 24 parcours
+passent maintenant 16 points de contrôle, avec les compteurs du HUD
+fournis à l’entrée et les interruptions complètes calculées.
+La suite du chargement (acteurs, historique) et les entrées de hasard
+restent à prédire avant l’intégration aux timings natifs. Ces recherches
+ne modifient pas encore la ROM v0183. Les lectures d’opcodes et le registre R
+des interruptions vidéo passent désormais les 13 749 appels et 2 880 cas
+isolés, sur leurs neuf étapes. Les files graphiques, motifs, HUD et lecteur
+audio sont composés. Le premier trajet hors interruptions, du début du
+chargement à la fin des motifs (16D0–1706), prédit maintenant R sur les
+24 scénarios, avec 122 703 lectures d’opcodes et les interruptions audio
+calculées. Ce calcul s’étend désormais jusqu’au retour de la routine
+graphique complète (24B9) : six points de contrôle passent sur chacun
+des 24 scénarios, soit 137 614 lectures hors interruptions, terrain et
+copie SRAM compris. Le calcul atteint maintenant aussi le retour du
+chargement de carte (24BC), avec neuf points par scénario : correctifs
+persistants et file de tuiles sont inclus. HUD, attentes VBlank, acteurs
+et historique restent à traiter. Les attentes VBlank calculent désormais
+aussi R et les lectures des interruptions : 13 725 appels en jeu et
+6 156 cas synthétiques correspondent. Le HUD est maintenant raccordé
+depuis l’entrée du chargement jusqu’au retour 24BF : 384 comparaisons
+sur les 24 scénarios, transfert et palette compris. Les jauges passent
+aussi 18 042 cas isolés. L’historique est maintenant raccordé jusqu’à
+l’entrée des acteurs : les 72 tirages aléatoires, leurs graines et R sont
+prédits depuis l’état initial, avec 720 comparaisons sur les 24 parcours.
+L’initialisation des acteurs atteint maintenant 1853 : types, statistiques,
+persistance et compte actif correspondent sur les 24 parcours et les
+1 536 combinaisons salle/masque. Le calcul couvre désormais aussi leurs
+motifs, allocations partagées et conversions de palette jusqu’au retour
+18E1 : R, timings, état des acteurs et motifs VRAM écrits correspondent.
+Les routines du héros calculent maintenant R et la phase depuis leur
+propre état d’entrée : 24 parcours et 13 150 cas isolés correspondent,
+avec 475 octets d’état vérifiés. Ce raccordement est maintenant fait
+depuis la RAM initiale du chargement : carte de collision et entrée du
+héros sont reconstruites, avec 1 080 comparaisons jusqu’au retour 24E7.
+Les scripts, la demande musicale et la préparation de révélation sont
+maintenant raccordés jusqu’à la réactivation de l’affichage (0ACE), avec
+1 320 comparaisons sur les 24 parcours. Le fondu/contours suivants, les
+autres contextes et l’intégration native restent à vérifier. La récurrence
+aléatoire et la progression de R sont maintenant traduites en C 68000 :
+65 536 graines, 196 608 sorties et 66 816 progressions passent sur hôte
+et dans une cartouche SGDK de test PAL/NTSC. Ces helpers attendent encore
+le suivi natif de R. Le mécanisme d’horloge est maintenant aussi traduit
+en C 68000 : 7 664 scénarios correspondent et cinq cas invalides sont
+rejetés sur hôte et cartouche SGDK PAL/NTSC. Le callback audio dynamique
+et le branchement au jeu restent à faire ; le hasard SGDK et les budgets
+fixes sont encore utilisés en production.
+
+La routine aléatoire originale est désormais vérifiée jusqu’à l’octet
+produit à partir du registre R : 135 168 cas isolés et les 72 appels
+d’historique des parcours contrôlés passent. La valeur de R à l’entrée
+de la routine reste fournie ; son évolution depuis le début du chargement
+et dans les interruptions reste à calculer avant de remplacer le hasard SGDK.
+Le comptage des lectures d’opcodes du tempo, du fondu, de l’arrêt musical
+et de l’arbitrage passe maintenant 66 530 cas isolés, avec contrôle de R,
+des durées et de l’état audio. Le dispatch et la file des bruitages
+prioritaires passent aussi 81 480 cas, avec les restitutions de canaux
+prises en charge. Les enveloppes ADSR et sur tables passent maintenant
+107 184 cas, avec contrôle de l’accumulateur, de DE et du dépilage des appels.
+Les hauteurs et le vibrato passent aussi 118 832 cas, dont 32 dépilages
+d’appel exercés avec des contextes synthétiques. Les notes et commandes
+de séquence prises en charge passent 167 552 cas, dont 816 dépilages.
+La composition des canaux de tonalité passe 20 680 cas isolés et les
+3 372 appels d’un parcours en jeu, dont les anciennes captures restent
+identiques. Le canal de bruit passe aussi 39 360 cas isolés et 1 102 appels
+en jeu. Le lecteur complet compose maintenant ces comptes : 10 752 cas
+de pause/compensation et 14 424 appels sur les 24 parcours passent, avec
+les anciennes captures inchangées. Les commandes utilisant R, certaines
+restitutions et les instructions du chargement restent à couvrir pour
+calculer R depuis l’entrée. Le code des interruptions audio seules passe
+15 360 cas isolés et 675 interruptions en jeu ; le vecteur et le lecteur
+sont aussi vérifiés sur les 14 424 appels des parcours. Le corps des
+interruptions vidéo complètes reste à composer pour ce comptage.
+
+Restent aussi la fidélité du hasard au registre Z80 R, les différences de
+combat et d’affichage encore ouvertes, la progression naturelle complète
+et la vérification sur matériel Mega Drive.
+

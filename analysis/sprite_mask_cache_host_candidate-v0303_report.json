@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "md_sha256": null,
+  "compiled_c_cases": 133120,
+  "reused_cases": 30118,
+  "saved_uploads": 203559,
+  "reference_commit": "ff1d245",
+  "production_source_sha256": "b1ab3050268a5967d756d75bc3d65620d17797735bc32ee0c27144ae4e4b067e",
+  "limits": [
+    "Actual production masking/overflow bodies compiled with SDK IO stubs. Final sprite metadata,all eight tile rows and overflow status match. SAT tile identities and DMA counts may differ because identical masked tiles are reused.",
+    "VRAM port reads return a constant word; queued source tiles vary by row. All0..64 counts,256 Y values,four layouts,two preparation modes and0..4 base jobs are checked. Native VDP integration and cadence require separate evidence."
+  ]
+}

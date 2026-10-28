@@ -1,0 +1,359 @@
+{
+  "passed": true,
+  "md_sha256": "bc4e6c9c1401842b8291322a1c61432a4fe1c97f29e9203e934f917190da5dae",
+  "baseline_sha256": "b71a6bc6b8d812dec3c3a872561bc283c87417e5447468d45b72e435f1e5c201",
+  "cases": [
+    {
+      "region": "auto",
+      "case": "empty",
+      "physical_sprite_frames": 9,
+      "sprite_pixels_per_frame": 49152,
+      "all_pixels_exact": true,
+      "observed_jobs": {
+        "old": {
+          "3134": 1,
+          "3135": 1,
+          "3136": 1,
+          "3137": 1,
+          "3138": 1,
+          "3139": 1,
+          "3140": 1,
+          "3141": 1
+        },
+        "new": {
+          "3134": 1,
+          "3135": 1,
+          "3136": 1,
+          "3137": 1,
+          "3138": 1,
+          "3139": 1,
+          "3140": 1,
+          "3141": 1
+        }
+      }
+    },
+    {
+      "region": "auto",
+      "case": "overlap",
+      "physical_sprite_frames": 9,
+      "sprite_pixels_per_frame": 49152,
+      "all_pixels_exact": true,
+      "observed_jobs": {
+        "old": {
+          "3134": 16,
+          "3135": 1,
+          "3136": 16,
+          "3137": 1,
+          "3138": 16,
+          "3139": 1,
+          "3140": 16,
+          "3141": 1
+        },
+        "new": {
+          "3134": 2,
+          "3135": 3,
+          "3136": 2,
+          "3137": 3,
+          "3138": 3,
+          "3139": 3,
+          "3140": 3,
+          "3141": 3
+        }
+      }
+    },
+    {
+      "region": "auto",
+      "case": "full_pool",
+      "physical_sprite_frames": 9,
+      "sprite_pixels_per_frame": 49152,
+      "all_pixels_exact": true,
+      "observed_jobs": {
+        "old": {
+          "3134": 16,
+          "3135": 1,
+          "3136": 16,
+          "3137": 1,
+          "3138": 16,
+          "3139": 1,
+          "3140": 16,
+          "3141": 1
+        },
+        "new": {
+          "3134": 3,
+          "3135": 2,
+          "3136": 3,
+          "3137": 2,
+          "3138": 3,
+          "3139": 2,
+          "3140": 3,
+          "3141": 2
+        }
+      }
+    },
+    {
+      "region": "auto",
+      "case": "top_clip",
+      "physical_sprite_frames": 9,
+      "sprite_pixels_per_frame": 49152,
+      "all_pixels_exact": true,
+      "observed_jobs": {
+        "old": {
+          "3134": 18,
+          "3135": 1,
+          "3136": 18,
+          "3137": 1,
+          "3138": 18,
+          "3139": 1,
+          "3140": 18,
+          "3141": 1
+        },
+        "new": {
+          "3134": 3,
+          "3135": 2,
+          "3136": 3,
+          "3137": 2,
+          "3138": 3,
+          "3139": 2,
+          "3140": 3,
+          "3141": 2
+        }
+      }
+    },
+    {
+      "region": "auto",
+      "case": "bottom_clip",
+      "physical_sprite_frames": 9,
+      "sprite_pixels_per_frame": 49152,
+      "all_pixels_exact": true,
+      "observed_jobs": {
+        "old": {
+          "3134": 18,
+          "3135": 1,
+          "3136": 18,
+          "3137": 1,
+          "3138": 18,
+          "3139": 1,
+          "3140": 18,
+          "3141": 1
+        },
+        "new": {
+          "3134": 3,
+          "3135": 2,
+          "3136": 3,
+          "3137": 2,
+          "3138": 3,
+          "3139": 2,
+          "3140": 3,
+          "3141": 2
+        }
+      }
+    },
+    {
+      "region": "auto",
+      "case": "terminator",
+      "physical_sprite_frames": 9,
+      "sprite_pixels_per_frame": 49152,
+      "all_pixels_exact": true,
+      "observed_jobs": {
+        "old": {
+          "3134": 1,
+          "3135": 1,
+          "3136": 1,
+          "3137": 1,
+          "3138": 1,
+          "3139": 1,
+          "3140": 1,
+          "3141": 1
+        },
+        "new": {
+          "3134": 1,
+          "3135": 1,
+          "3136": 1,
+          "3137": 1,
+          "3138": 1,
+          "3139": 1,
+          "3140": 1,
+          "3141": 1
+        }
+      }
+    },
+    {
+      "region": "pal",
+      "case": "empty",
+      "physical_sprite_frames": 9,
+      "sprite_pixels_per_frame": 49152,
+      "all_pixels_exact": true,
+      "observed_jobs": {
+        "old": {
+          "3134": 1,
+          "3135": 1,
+          "3136": 1,
+          "3137": 1,
+          "3138": 1,
+          "3139": 1,
+          "3140": 1,
+          "3141": 1
+        },
+        "new": {
+          "3134": 1,
+          "3135": 1,
+          "3136": 1,
+          "3137": 1,
+          "3138": 1,
+          "3139": 1,
+          "3140": 1,
+          "3141": 1
+        }
+      }
+    },
+    {
+      "region": "pal",
+      "case": "overlap",
+      "physical_sprite_frames": 9,
+      "sprite_pixels_per_frame": 49152,
+      "all_pixels_exact": true,
+      "observed_jobs": {
+        "old": {
+          "3134": 16,
+          "3135": 4,
+          "3136": 16,
+          "3137": 2,
+          "3138": 16,
+          "3139": 4,
+          "3140": 16,
+          "3141": 4
+        },
+        "new": {
+          "3134": 3,
+          "3135": 3,
+          "3136": 3,
+          "3137": 3,
+          "3138": 3,
+          "3139": 3,
+          "3140": 3,
+          "3141": 3
+        }
+      }
+    },
+    {
+      "region": "pal",
+      "case": "full_pool",
+      "physical_sprite_frames": 9,
+      "sprite_pixels_per_frame": 49152,
+      "all_pixels_exact": true,
+      "observed_jobs": {
+        "old": {
+          "3134": 16,
+          "3135": 1,
+          "3136": 16,
+          "3137": 1,
+          "3138": 16,
+          "3139": 1,
+          "3140": 16,
+          "3141": 1
+        },
+        "new": {
+          "3134": 3,
+          "3135": 3,
+          "3136": 3,
+          "3137": 3,
+          "3138": 3,
+          "3139": 3,
+          "3140": 3,
+          "3141": 3
+        }
+      }
+    },
+    {
+      "region": "pal",
+      "case": "top_clip",
+      "physical_sprite_frames": 9,
+      "sprite_pixels_per_frame": 49152,
+      "all_pixels_exact": true,
+      "observed_jobs": {
+        "old": {
+          "3134": 18,
+          "3135": 8,
+          "3136": 18,
+          "3137": 6,
+          "3138": 18,
+          "3139": 8,
+          "3140": 18,
+          "3141": 8
+        },
+        "new": {
+          "3134": 3,
+          "3135": 3,
+          "3136": 3,
+          "3137": 3,
+          "3138": 3,
+          "3139": 3,
+          "3140": 3,
+          "3141": 3
+        }
+      }
+    },
+    {
+      "region": "pal",
+      "case": "bottom_clip",
+      "physical_sprite_frames": 9,
+      "sprite_pixels_per_frame": 49152,
+      "all_pixels_exact": true,
+      "observed_jobs": {
+        "old": {
+          "3134": 18,
+          "3135": 2,
+          "3136": 18,
+          "3137": 1,
+          "3138": 18,
+          "3139": 2,
+          "3140": 18,
+          "3141": 2
+        },
+        "new": {
+          "3134": 3,
+          "3135": 3,
+          "3136": 3,
+          "3137": 3,
+          "3138": 3,
+          "3139": 3,
+          "3140": 3,
+          "3141": 3
+        }
+      }
+    },
+    {
+      "region": "pal",
+      "case": "terminator",
+      "physical_sprite_frames": 9,
+      "sprite_pixels_per_frame": 49152,
+      "all_pixels_exact": true,
+      "observed_jobs": {
+        "old": {
+          "3134": 1,
+          "3135": 1,
+          "3136": 1,
+          "3137": 1,
+          "3138": 1,
+          "3139": 1,
+          "3140": 1,
+          "3141": 1
+        },
+        "new": {
+          "3134": 1,
+          "3135": 1,
+          "3136": 1,
+          "3137": 1,
+          "3138": 1,
+          "3139": 1,
+          "3140": 1,
+          "3141": 1
+        }
+      }
+    }
+  ],
+  "limits": [
+    "Real native ROMs after cold boot,with controlled actor/hero records refreshed each frame and explicit zero clock phase. Compare decoded physical VRAM sprite output after masking,not clone tile identities.",
+    "Six selected overlap/clipping/list cases per region. This does not prove complete framebuffer,audio,natural fight timing or every actor pattern combination."
+  ]
+}

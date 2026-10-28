@@ -8159,5 +8159,106 @@
         "sha256": "d288dbec1e3f3ebdb1de31a7e6b91b4072aa81a50dbb5f8547a4e8ec16fca419"
       }
     ]
+  },
+  {
+    "version": 297,
+    "sha256": "73cba0207f80ca228c3478a78a84c8dd8e94e4ffef5d6f5a0fb7007d615573bb",
+    "bytes": 2097152,
+    "archived_utc": "2026-10-28T07:59:00.047561+00:00",
+    "rom": "v0297-73cba020/gaw-megadrive-v0297.bin",
+    "notes": "Essai de performance ecarte; conserver v0304 comme version courante.",
+    "validation": "experimental_rejected",
+    "reports": []
+  },
+  {
+    "version": 298,
+    "sha256": "57ed3c5736022f5b93d93461ab9afe98ab6b4e147fe153d0b50270bab2b9beff",
+    "bytes": 2097152,
+    "archived_utc": "2026-10-28T08:02:06.762198+00:00",
+    "rom": "v0298-57ed3c57/gaw-megadrive-v0298.bin",
+    "notes": "Essai de performance ecarte; conserver v0304 comme version courante.",
+    "validation": "experimental_rejected",
+    "reports": []
+  },
+  {
+    "version": 299,
+    "sha256": "21c6f1b0cd4194da70c0b2f565be5c77ac7a1bdf1c5ac99ba8f4ede3198835c0",
+    "bytes": 2097152,
+    "archived_utc": "2026-10-28T08:07:01.146320+00:00",
+    "rom": "v0299-21c6f1b0/gaw-megadrive-v0299.bin",
+    "notes": "Etape de mesure intermediaire; remplacee par v0304.",
+    "validation": "intermediate_build",
+    "reports": []
+  },
+  {
+    "version": 300,
+    "sha256": "b21f0d043788e148ff8eee99188dd0c80e3878fd801cb6f84197cdff49feb7f2",
+    "bytes": 2097152,
+    "archived_utc": "2026-10-28T08:12:43.948183+00:00",
+    "rom": "v0300-b21f0d04/gaw-megadrive-v0300.bin",
+    "notes": "Etape de mesure intermediaire; remplacee par v0304.",
+    "validation": "intermediate_build",
+    "reports": []
+  },
+  {
+    "version": 301,
+    "sha256": "921cdd334277a2ef79d0b1a283494d2d8aaafc54aa624b3321235cb7581f40f4",
+    "bytes": 2097152,
+    "archived_utc": "2026-10-28T10:00:18.348687+00:00",
+    "rom": "v0301-921cdd33/gaw-megadrive-v0301.bin",
+    "notes": "Etape de mesure intermediaire; remplacee par v0304.",
+    "validation": "intermediate_build",
+    "reports": []
+  },
+  {
+    "version": 302,
+    "sha256": "ce8313ccf0487891d576bbff624d1f27efaa8722478865ca0a354f1a26b52255",
+    "bytes": 2097152,
+    "archived_utc": "2026-10-28T10:04:55.960733+00:00",
+    "rom": "v0302-ce8313cc/gaw-megadrive-v0302.bin",
+    "notes": "Etape de mesure intermediaire; remplacee par v0304.",
+    "validation": "intermediate_build",
+    "reports": []
+  },
+  {
+    "version": 303,
+    "sha256": "bc4e6c9c1401842b8291322a1c61432a4fe1c97f29e9203e934f917190da5dae",
+    "bytes": 2097152,
+    "archived_utc": "2026-10-28T10:10:08.813012+00:00",
+    "rom": "v0303-bc4e6c9c/gaw-megadrive-v0303.bin",
+    "notes": "Etape de mesure intermediaire; remplacee par v0304.",
+    "validation": "intermediate_build",
+    "reports": []
+  },
+  {
+    "version": 304,
+    "sha256": "b7b4e15008a6f0a913c9ad43f15386abcdfbb719e5a575873d92712ba52503a8",
+    "bytes": 2097152,
+    "archived_utc": "2026-10-28T10:13:07.577196+00:00",
+    "rom": "v0304-b7b4e150/gaw-megadrive-v0304.bin",
+    "notes": "Salve controlee PAL/NTSC sans image de simulation sautee;1512 images acteurs exactes. Premier cristal et sortie rejoues;campagne complete encore a valider.",
+    "validation": "targeted_checks_passed",
+    "reports": [
+      {
+        "file": "burst_cadence_v0304_report.json",
+        "sha256": "e0d4ed45fa66d05f164279a9ebced344e62fcdc72fbc2a5ff9375a97a91174d5"
+      },
+      {
+        "file": "burst_variant_7c_v0304_gameplay_report.json",
+        "sha256": "6a27b2dddda49f328bf4679d151bc8745080b0c30a4cb38a247253eb63c065ee"
+      },
+      {
+        "file": "sprite_mask_cache_host_v0304_report.json",
+        "sha256": "5d9eb3f01f60ba323b2e1cbb6dbb891fc9be3cc50f8a9b77c0185dc208b1ea32"
+      },
+      {
+        "file": "sprite_rows_native_v0304_report.json",
+        "sha256": "0458126f4cddb71563a3611a74afa6fe0828ae280b6649f1f32dab2fdd6fdffa"
+      },
+      {
+        "file": "sprite_mask_cache_gameplay_v0304_report.json",
+        "sha256": "0582105324ceb2281eaf07d0f1bf78919b5bc83dced1f3520fea0123b536dd17"
+      }
+    ]
   }
 ]

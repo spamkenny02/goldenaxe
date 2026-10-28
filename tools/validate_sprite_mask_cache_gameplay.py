@@ -1,4 +1,5 @@
 """Compare native physical sprite pixels for old/current masked tile reuse."""
+import argparse
 import contextlib
 import io
 import json
@@ -9,10 +10,12 @@ from validate_playable_sprite_limit import symbols,reference
 
 
 def main():
+    parser=argparse.ArgumentParser();parser.add_argument('--label',required=True);a=parser.parse_args()
+    assert a.label and all(c.isalnum() or c=='-' for c in a.label)
     source=(ROOT/'validation/sms-vertical-check/ram_03120.bin').read_bytes()[0x600:0x630]
     baseline=ROOT/'versions/v0295-b71a6bc6/gaw-megadrive-v0295.bin'
     current=ROOT/'gaw-megadrive.bin';results=[]
-    root=ROOT/'validation/sprite-mask-cache-gameplay-v0296';assert not root.exists()
+    root=ROOT/f'validation/sprite-mask-cache-gameplay-{a.label}';assert not root.exists()
     for region in ['auto','pal']:
         for name,count,y in [('empty',0,64),('overlap',12,64),('full_pool',16,64),
                              ('top_clip',12,1),('bottom_clip',12,188),('terminator',1,225)]:
@@ -49,7 +52,7 @@ def main():
     report=dict(passed=True,md_sha256=sha(current.read_bytes()),baseline_sha256=sha(baseline.read_bytes()),
                 cases=results,limits=['Real native ROMs after cold boot,with controlled actor/hero records refreshed each frame and explicit zero clock phase. Compare decoded physical VRAM sprite output after masking,not clone tile identities.',
                                      'Six selected overlap/clipping/list cases per region. This does not prove complete framebuffer,audio,natural fight timing or every actor pattern combination.'])
-    (ROOT/'analysis/sprite_mask_cache_gameplay_v0296_report.json').write_text(json.dumps(report,indent=2)+'\n')
+    (ROOT/f'analysis/sprite_mask_cache_gameplay_{a.label}_report.json').write_text(json.dumps(report,indent=2)+'\n')
 
 
 if __name__=='__main__':main()

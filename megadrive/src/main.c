@@ -1055,32 +1055,48 @@ static void world_clone_upload(const u32 *source,u16 tile,u16 index)
  * Clone only rows suppressed by overflow; read the currently resident tile,
  * unless that same IRQ owns a queued pattern update for the tile.
  * Tiles1024..1087 and1152..1216 are reserved here, beyond the512 source tiles. */
+/* Eight unary availability counters: FF,FE,FC,...,80,00. ADD doubles
+ * each byte and exposes its old high bit in X; ADDX packs that availability
+ * into the result. Reverse row order gives bit0 for the top sprite row. */
+static inline __attribute__((always_inline)) u8 count_world_sprite_rows(u8 *lines)
+{
+#if defined(__m68k__)
+    u16 result,temp;u8 *cursor=lines+8;
+    __asm__ volatile (
+        "moveq #0,%0\n\t"
+        ".rept 8\n\t"
+        "move.b -(%2),%1\n\t"
+        "add.b %1,(%2)\n\t"
+        "addx.b %0,%0\n\t"
+        ".endr"
+        : "=&d"(result),"=&d"(temp),"+a"(cursor) : : "cc","memory");
+    return result;
+#else
+    u8 mask=0;u16 n;
+    for(n=0;n<8;n++) { if(lines[n]&128) mask|=1<<n;lines[n]+=lines[n]; }
+    return mask;
+#endif
+}
+
+static __attribute__((noinline,cold)) void terminate_world_sprite_list(u16 count);
+
 static void mask_world_sms_sprite_rows(u16 count,u8 *used)
 {
     static u16 clone_base;
-    u16 n,row,word,raw,tile,pattern_jobs=world_tile_job_count;u8 mask;s16 top,line;
+    u16 n,row,raw,tile,pattern_jobs=world_tile_job_count,first_clone=64,last_clone=0;u8 mask;s16 top,line;
     u32 clone[8],cached_key[8];u16 cached_tile[8];u8 cached_valid=0;
-    bool blank_loaded=FALSE;volatile u16 *data=(volatile u16*)VDP_DATA_PORT;
-    /* Never overwrite tiles still referenced by the preceding SAT. */
-    clone_base=clone_base==1024?1152:1024;
-    memset(used,0,192);VDP_setAutoInc(2);
+    bool blank_loaded=FALSE,clone_started=FALSE;volatile u32 *data=(volatile u32*)VDP_DATA_PORT;
+    /* Flip clone banks only if this pass actually changes a sprite. */
+    memset(used,255,192);VDP_setAutoInc(2);
     for(n=0;n<count && n<64;n++)
     {
-        raw=(vdpSpriteCache[n].y-145)&255;if(raw==208) break;
+        raw=(vdpSpriteCache[n].y-145)&255;
+        if(raw==208) { terminate_world_sprite_list(n);break; }
         top=raw<208?(s16)raw+1:(s16)raw-255;mask=0;
         if(top>=0 && top<=184)
         {
-            /* Most sprites are wholly inside the SMS viewport. Constant
-             * row bits avoid per-pixel clipping tests and variable shifts. */
-            u8 *lines=used+top;
-            if(lines[0]++<8) mask|=1;
-            if(lines[1]++<8) mask|=2;
-            if(lines[2]++<8) mask|=4;
-            if(lines[3]++<8) mask|=8;
-            if(lines[4]++<8) mask|=16;
-            if(lines[5]++<8) mask|=32;
-            if(lines[6]++<8) mask|=64;
-            if(lines[7]++<8) mask|=128;
+            mask=count_world_sprite_rows(used+top);
+            if(mask!=255) world_video_next_overflow=1;
         }
         else
         {
@@ -1088,10 +1104,12 @@ static void mask_world_sms_sprite_rows(u16 count,u8 *used)
             for(row=0;row<8;row++,bit+=bit)
             {
                 line=top+row;
-                if(line>=0 && line<192 && used[line]++<8) mask|=bit;
+                if(line>=0 && line<192) { if(used[line]&128) mask|=bit;else world_video_next_overflow=1;used[line]+=used[line]; }
             }
         }
         if(mask==255) continue;
+        /* Never overwrite tiles still referenced by the preceding SAT. */
+        if(!clone_started) { clone_base=clone_base==1024?1152:1024;clone_started=TRUE; }
         if(!mask)
         {
             if(!blank_loaded) { memset(clone,0,sizeof(clone));world_clone_upload(clone,1216,64);blank_loaded=TRUE; }
@@ -1109,6 +1127,7 @@ static void mask_world_sms_sprite_rows(u16 count,u8 *used)
         }
         {
             const u32 *queued=0;u16 j;
+            u32 *pixels=world_video_preparing?world_clone_tiles[n]:clone;
             /* Later jobs are the clones produced by this pass, at tile
              *1024 or above; unmasked game sprites only reference16..527. */
             if(world_video_preparing) for(j=0;j<pattern_jobs;j++)
@@ -1121,13 +1140,26 @@ static void mask_world_sms_sprite_rows(u16 count,u8 *used)
             u16 bit=1;
             for(row=0;row<8;row++,bit+=bit)
             {
-                if(queued) clone[row]=queued[row];
-                else { word=*data;clone[row]=(u32)word<<16;clone[row]|=*data; }
-                if(!(mask&bit)) clone[row]=0;
+                /* A68000 long read consumes the two mirrored VDP data
+                 * words in order. Build queued clones at their final RAM
+                 * address instead of copying another32-byte buffer. */
+                pixels[row]=queued?queued[row]:*data;
+                if(!(mask&bit)) pixels[row]=0;
             }
         }
-        world_clone_upload(clone,clone_base+n,n);VDP_setSpriteTile(n,clone_base+n);
+        if(world_video_preparing)
+        {
+            if(first_clone>n) first_clone=n;
+            last_clone=n;
+        }
+        else world_clone_upload(clone,clone_base+n,n);
+        VDP_setSpriteTile(n,clone_base+n);
     }
+    /* The other clone bank is absent from the displayed SAT. Its unused
+     * gaps can be transferred too: one contiguous DMA replaces many tiny
+     * jobs without changing any tile referenced by either sprite list. */
+    if(world_video_preparing && first_clone<64)
+        world_tile_upload(world_clone_tiles[first_clone],clone_base+first_clone,last_clone-first_clone+1);
 }
 
 /* The rare terminator path stays outside the normal frame's hot loop. */
@@ -1143,53 +1175,23 @@ static __attribute__((noinline,cold)) void terminate_world_sprite_list(u16 count
 
 static void prepare_world_sms_sprite_overflow(u16 count)
 {
-    s8 edges[193];u8 bands[12]={0};
-    s16 used=0,top,bottom;
-    u16 n,raw;bool clipped=FALSE,crowded=FALSE;
-    for(n=0;n<count && n<64;n++)
-    {
-        raw=(vdpSpriteCache[n].y-145)&255;
-        if(raw==208) { terminate_world_sprite_list(n);count=n;break; }
-        top=raw<208?(s16)raw+1:(s16)raw-255;
-        bottom=top+8;
-        if(top<0) { top=0;clipped=TRUE; }
-        if(bottom>192) { bottom=192;clipped=TRUE; }
-        if(top>=bottom) continue;
-        /* Each intersected16-line band counts this entry once. No band
-         * above8 proves that no individual line can exceed8. X and pattern
-         * transparency deliberately do not affect the SMS Y scan. */
-        if(count>8 && !crowded)
-        {
-            u16 first=top>>4,last=(bottom-1)>>4;
-            if(++bands[first]>8) crowded=TRUE;
-            if(last!=first && ++bands[last]>8) crowded=TRUE;
-        }
-    }
+    u8 availability[192];bool clipped=FALSE;
+    u16 n,raw; s16 top;
     world_video_next_overflow=0;
-    /* A crowded band is only a possible overflow: resolve exact scanlines. */
-    if(count>8 && crowded)
+    if(count>8) mask_world_sms_sprite_rows(count,availability);
+    else
     {
-        memset(edges,0,sizeof(edges));
+        /* Eight entries cannot overflow, but clipping and a source Y
+         * terminator still need to be applied to the physical MD SAT. */
         for(n=0;n<count && n<64;n++)
         {
             raw=(vdpSpriteCache[n].y-145)&255;
-            top=raw<208?(s16)raw+1:(s16)raw-255;bottom=top+8;
-            if(top<0) top=0;
-            if(bottom>192) bottom=192;
-            if(top>=bottom) continue;
-            edges[top]++;edges[bottom]--;
+            if(raw==208) { terminate_world_sprite_list(n);count=n;break; }
+            top=raw<208?(s16)raw+1:(s16)raw-255;
+            if(top<0 || top>184) clipped=TRUE;
         }
-        for(n=0;n<192;n++)
-        {
-            used+=edges[n];
-            if(used>8) { world_video_next_overflow=1;break; }
-        }
+        if(clipped) mask_world_sms_sprite_rows(count,availability);
     }
-    /* Clipping outside the SMS192-line viewport is independent of SOVR.
-     * Keep those invisible rows out of the MD's top/bottom matte areas. */
-    /* The edge scan is complete; reuse its 193 bytes for line occupancy.
-     * Keeping both arrays live would needlessly deepen the IRQ stack. */
-    if(world_video_next_overflow || clipped) mask_world_sms_sprite_rows(count,(u8 *)edges);
     if(!world_video_preparing) world_sms_sprite_prepared_overflow=world_video_next_overflow;
 }
 
@@ -1252,7 +1254,9 @@ static void update_hero_sprites_for_frame(u16 order_phase,bool order_overflow)
         VDP_setTileMapDataRect(BG_A,md_map+21*32+15,15,23,hero_max_health>>3,1,hero_max_health>>3,world_video_preparing?DMA_QUEUE:CPU);
         hero_health_pending=FALSE;
     }
-    VDP_resetSprites();
+    /* This renderer owns and overwrites every live SAT entry, then closes
+     * its link chain below. It never allocates SGDK sprites, so rebuilding
+     * the80-entry allocation stack every frame serves no live state. */
     count=add_world_sprite_scene(order_phase,order_overflow,ending_hero_descriptor==0x8495?ending_held_frame:ending_hero_descriptor==0x84e1?ending_axe_frame:hero_casting?world_cast_frames+hero_direction*13:world_combat_frames+frame_offset,(hero_x>>8)+hero_scroll_x,(hero_y>>8)+hero_scroll_y,hero_flags&1,game_state!=10);
     prepare_world_sms_sprite_overflow(count);
     if(count && count<=64) VDP_setSpriteLink(count-1,0);

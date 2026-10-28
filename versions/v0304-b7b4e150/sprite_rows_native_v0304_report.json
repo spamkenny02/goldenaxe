@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "md_sha256": "b7b4e15008a6f0a913c9ad43f15386abcdfbb719e5a575873d92712ba52503a8",
+  "production_source_sha256": "969cdda649f64b57ed30a0dcb00b571a46f83e5033b27869a5c1ef1bf35c1efe",
+  "helper_sha256": "bf70c3b15990dd7f5580d63118ea45ac09f5acdaa3411c8d00b489268172abcf",
+  "harness_sha256": "1b65df8b3e7fbfaee6ba018d4ffbc0ccec878e202feb0bdc789ece1674b1f518",
+  "results": [
+    {
+      "region": "auto",
+      "frame": 143,
+      "done": 1,
+      "failed": 0,
+      "cases": 8192
+    },
+    {
+      "region": "pal",
+      "frame": 120,
+      "done": 1,
+      "failed": 0,
+      "cases": 8192
+    }
+  ],
+  "limits": [
+    "Exact production inline68000 ADD/ADDX helper,with reference mask and byte shifts computed separately in the harness. All256 availability patterns with eight legal unary phases,all256 byte values in each position,and two byte alignments. Guard bytes detect outside writes.",
+    "This isolates the row helper. Whole sprite masking,pixels and actual game cadence require separate tests."
+  ]
+}

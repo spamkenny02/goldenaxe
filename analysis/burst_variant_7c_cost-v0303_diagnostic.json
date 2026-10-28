@@ -1,0 +1,277 @@
+{
+  "md_sha256": "bc4e6c9c1401842b8291322a1c61432a4fe1c97f29e9203e934f917190da5dae",
+  "source_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+  "cases": [
+    {
+      "region": "auto",
+      "type": 124,
+      "frames": 252,
+      "exact_frames": 113,
+      "first_mismatch": {
+        "frame": 2913,
+        "differences": [
+          [
+            4,
+            26,
+            27
+          ],
+          [
+            11,
+            1,
+            0
+          ],
+          [
+            14,
+            0,
+            1
+          ],
+          [
+            388,
+            6,
+            7
+          ],
+          [
+            395,
+            1,
+            0
+          ],
+          [
+            398,
+            0,
+            1
+          ],
+          [
+            400,
+            180,
+            150
+          ],
+          [
+            401,
+            44,
+            42
+          ],
+          [
+            402,
+            76,
+            106
+          ],
+          [
+            403,
+            115,
+            117
+          ],
+          [
+            436,
+            6,
+            7
+          ],
+          [
+            443,
+            1,
+            0
+          ],
+          [
+            446,
+            0,
+            1
+          ],
+          [
+            448,
+            180,
+            150
+          ],
+          [
+            449,
+            44,
+            42
+          ],
+          [
+            450,
+            180,
+            150
+          ],
+          [
+            451,
+            140,
+            138
+          ],
+          [
+            484,
+            6,
+            7
+          ],
+          [
+            491,
+            1,
+            0
+          ],
+          [
+            494,
+            0,
+            1
+          ],
+          [
+            496,
+            76,
+            106
+          ],
+          [
+            497,
+            19,
+            21
+          ],
+          [
+            498,
+            180,
+            150
+          ],
+          [
+            499,
+            140,
+            138
+          ],
+          [
+            532,
+            6,
+            7
+          ],
+          [
+            539,
+            1,
+            0
+          ],
+          [
+            542,
+            0,
+            1
+          ],
+          [
+            544,
+            76,
+            106
+          ],
+          [
+            545,
+            19,
+            21
+          ],
+          [
+            546,
+            76,
+            106
+          ],
+          [
+            547,
+            115,
+            117
+          ],
+          [
+            580,
+            6,
+            7
+          ],
+          [
+            587,
+            1,
+            0
+          ],
+          [
+            590,
+            0,
+            1
+          ],
+          [
+            595,
+            146,
+            143
+          ],
+          [
+            628,
+            6,
+            7
+          ],
+          [
+            635,
+            1,
+            0
+          ],
+          [
+            638,
+            0,
+            1
+          ],
+          [
+            643,
+            110,
+            113
+          ],
+          [
+            676,
+            6,
+            7
+          ],
+          [
+            683,
+            1,
+            0
+          ],
+          [
+            686,
+            0,
+            1
+          ],
+          [
+            689,
+            50,
+            47
+          ],
+          [
+            724,
+            6,
+            7
+          ],
+          [
+            731,
+            1,
+            0
+          ],
+          [
+            734,
+            0,
+            1
+          ],
+          [
+            737,
+            14,
+            17
+          ]
+        ]
+      },
+      "all_768_actor_bytes_exact": false,
+      "clock_adjustments": [
+        183
+      ]
+    },
+    {
+      "region": "pal",
+      "type": 124,
+      "frames": 252,
+      "exact_frames": 252,
+      "first_mismatch": null,
+      "all_768_actor_bytes_exact": true,
+      "clock_adjustments": [
+        174
+      ]
+    }
+  ],
+  "full_game_ported": false,
+  "limits": [
+    "Controlled boss/hero records injected in exterior, initial stats from original; MD world clock explicitly aligned to source at fixture start. Production actor loop, animation-period-zero behavior, eight allocations, projectile flight/pause/variant branch, flash/cull and boss disappearance execute unchanged.",
+    "Without clock alignment NTSC type6B diverges at2977: MD projectile contact/removal is one frame earlier than SMS2978. This actual global-phase difference remains unresolved; this check isolates actor logic and does not prove absolute combat timing.",
+    "Stops before relocation random choices; natural dungeon fight, global clock/RNG, complete sprite/framebuffer/audio and hardware timing remain unproved."
+  ],
+  "diagnostic": true,
+  "all_cases_exact": false,
+  "baseline_v0294": false,
+  "baseline_version": null
+}
