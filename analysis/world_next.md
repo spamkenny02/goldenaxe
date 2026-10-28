@@ -1686,3 +1686,6 @@ v0304 D2 campaign:axe/fairy40HP,three keys,second crystal and exit D6 at31/48HP 
 
 
 v0304 D3:bounded1800-frame segment50610 ends alive39HP/boss18HP;independent cold replay exact. Continuation wins third crystal at52469,56/56HP. Real damage51735:39->31. Guard48776,battle48810. Exterior62 exit53755 at46/56HP;no new help.149+31 whole-RAM prediction windows exact. All three traces cold RAM/PNG exact;stack496-byte observed margin. ROM unchanged;D4 onward still pending.
+
+
+2026-10-28 v0304 D4 Earth checkpoint: seven cold RAM/PNG replays passed from D3 exterior62 through gold50, acquired rope, Earth teacher, D4 first key and Earth E1->D1 passage, end67098 at54/56HP. ROM unchanged. Later A1 trial76000 not cleared: frame71822 thief capture coincides with lethal pending damage, hero12 orphaned. Original SMS5043+2768 reproduce the state in an isolated fixture; no natural SMS reproduction claimed. Resume from md-auto-v0304-d4-earth01 with different ordinary combat inputs. See d4_earth_v0304_report.json and d4_earth_v0304.md.

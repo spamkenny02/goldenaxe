@@ -45,6 +45,12 @@ Les commandes historiques divergent avant le premier donjon ; les trois
 premiers donjons ont été repris avec une conduite adaptative sur v304.
 Les six cristaux validés sur v293 restent une preuve propre à cette version.
 
+La suite atteint le quatrième donjon : don de 50 cornes, Terre apprise,
+première clé et passage du rocher vérifiés par sept relectures indépendantes.
+Un essai ultérieur en A1 rencontre une capture simultanée avec un coup mortel ;
+les routines SMS reproduisent aussi cet état dans un cas isolé. Le canoë et
+le quatrième cristal restent à valider. Voir le [point Terre/D4](analysis/d4_earth_v0304.md).
+
 Voir le [bilan v0304](analysis/burst_cadence_v0304.md),
 les [trois cristaux vérifiés](analysis/d3_campaign_v0304_report.json) et
 l'[historique conservé du README](analysis/readme_history_through_v0296.md).
