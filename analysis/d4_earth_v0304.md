@@ -47,3 +47,5 @@ Le canoë, le quatrième cristal, la fin, les sauvegardes et la fidélité compl
 vidéo/audio ne sont pas validés par cette étape. La marge de pile de 496 octets
 publiée auparavant couvre seulement le parcours jusqu'au retour du troisième
 donjon ; aucune extension de sa portée n'est revendiquée ici.
+
+Suite validée : [quatrième cristal et retour sur v304](d4_campaign_v0304.md).

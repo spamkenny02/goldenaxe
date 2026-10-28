@@ -41,3 +41,5 @@ les approches.
 Ce jalon ne valide pas le quatrième boss, son cristal ni le retour. Ces étapes
 requièrent leur propre preuve, ainsi que la fin, les sauvegardes et la fidélité
 complète vidéo/audio.
+
+Suite validée : [quatrième cristal et retour sur v304](d4_campaign_v0304.md).

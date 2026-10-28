@@ -32,16 +32,16 @@ Contrôles de cette ROM :
 - 133 120 cas de masquage comparés sur hôte ; 8 192 cas de la routine 68000
   dans chaque région ; 108 images de sprites physiques sans écart.
 - Douze images de jeu naturel dont le rendu indépendant VRAM/CRAM est cohérent.
-- Trois premiers cristaux et sorties rejoués depuis le démarrage. Le dernier
-  retour se termine à l'extérieur en 62, à 46/56 PV, avec la hache et la corde.
+- Quatre premiers cristaux et sorties rejoués depuis le démarrage. Le dernier
+  retour se termine à l'extérieur en 10, à 62/64 PV, avec hache, corde et canoë.
   RAM de 64 Kio et PNG final identiques aux relectures. La protection de test
   est retirée avant chacun des boss et ne reprend pas pendant leurs retours.
-  Marge de pile observée jusqu'à la troisième sortie : 496 octets.
+  Marge de pile observée jusqu'à la quatrième sortie : 496 octets.
 
 Ces tests ne prouvent pas encore la cadence de tous les combats, le hasard
 ou la phase globale. La suite de campagne, la fin, les sauvegardes et la
 fidélité complète vidéo/audio restent à vérifier sur la v304.
-Les commandes historiques divergent avant le premier donjon ; les trois
+Les commandes historiques divergent avant le premier donjon ; les quatre
 premiers donjons ont été repris avec une conduite adaptative sur v304.
 Les six cristaux validés sur v293 restent une preuve propre à cette version.
 
@@ -50,11 +50,14 @@ première clé et passage du rocher vérifiés par sept relectures indépendante
 Une autre séquence de commandes passe ensuite la salle des voleurs : canoë
 acquis, téléporteur utilisé et clé de la seconde partie obtenue. Les données
 du coffre et du téléporteur concordent avec les captures SMS sur le périmètre
-mesuré. Le quatrième cristal reste à valider. Voir les points
-[Terre/D4](analysis/d4_earth_v0304.md) et [canoë/D4](analysis/d4_canoe_v0304.md).
+mesuré. Le quatrième boss est vaincu et le retour sans nouvelle protection
+est vérifié. Trois relectures RAM/PNG exactes couvrent le combat partiel,
+la victoire et la sortie ; la marge de pile observée reste de 496 octets.
+Voir les points [Terre/D4](analysis/d4_earth_v0304.md),
+[canoë/D4](analysis/d4_canoe_v0304.md) et [quatrième cristal](analysis/d4_campaign_v0304.md).
 
 Voir le [bilan v0304](analysis/burst_cadence_v0304.md),
-les [trois cristaux vérifiés](analysis/d3_campaign_v0304_report.json) et
+les [quatre cristaux vérifiés](analysis/d4_campaign_v0304_report.json) et
 l'[historique conservé du README](analysis/readme_history_through_v0296.md).
 Les v297/v298 sont des essais écartés ; v299 à v303 sont des étapes
 intermédiaires conservées. La version courante à tester est **v304**.
