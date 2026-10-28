@@ -32,23 +32,21 @@ Contrôles de cette ROM :
 - 133 120 cas de masquage comparés sur hôte ; 8 192 cas de la routine 68000
   dans chaque région ; 108 images de sprites physiques sans écart.
 - Douze images de jeu naturel dont le rendu indépendant VRAM/CRAM est cohérent.
-- Deux premiers cristaux et sorties rejoués depuis le démarrage : retour du
-  deuxième donjon en D6 à 31/48 PV, hache équipée et une clé restante.
+- Trois premiers cristaux et sorties rejoués depuis le démarrage. Le dernier
+  retour se termine à l'extérieur en 62, à 46/56 PV, avec la hache et la corde.
   RAM de 64 Kio et PNG final identiques aux relectures. La protection de test
-  est retirée 72 et 57 images avant les boss ; aucun secours pendant leurs
-  retours. Marge de pile observée jusqu'à la sortie du deuxième : 496 octets.
-- Entrée du troisième donjon et corde acquise en 1F4, à 31/48 PV, également
-  rejouées. Le troisième cristal reste à valider.
+  est retirée avant chacun des boss et ne reprend pas pendant leurs retours.
+  Marge de pile observée jusqu'à la troisième sortie : 496 octets.
 
 Ces tests ne prouvent pas encore la cadence de tous les combats, le hasard
 ou la phase globale. La suite de campagne, la fin, les sauvegardes et la
 fidélité complète vidéo/audio restent à vérifier sur la v304.
-Les commandes historiques divergent avant le premier donjon ; les deux
+Les commandes historiques divergent avant le premier donjon ; les trois
 premiers donjons ont été repris avec une conduite adaptative sur v304.
 Les six cristaux validés sur v293 restent une preuve propre à cette version.
 
 Voir le [bilan v0304](analysis/burst_cadence_v0304.md),
-les [preuves de campagne v304](analysis/d2_campaign_v0304_report.json) et
+les [trois cristaux vérifiés](analysis/d3_campaign_v0304_report.json) et
 l'[historique conservé du README](analysis/readme_history_through_v0296.md).
 Les v297/v298 sont des essais écartés ; v299 à v303 sont des étapes
 intermédiaires conservées. La version courante à tester est **v304**.

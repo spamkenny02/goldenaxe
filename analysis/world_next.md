@@ -1683,3 +1683,6 @@ v0304: controlled6A/6B/7C cycles1512 actor frames exact; physical7C gaps36->0 in
 
 
 v0304 D2 campaign:axe/fairy40HP,three keys,second crystal and exit D6 at31/48HP verified by14 cold whole-RAM/PNG replays incl.D3 entry/rope. Guard33162,boss33219,first damage33485. Boss02 cautious wins;boss01 side attempt lost.78+16 prediction windows exact;stack496-byte observed margin through37005. ROM unchanged. D3boss attempt still pending outside this report.
+
+
+v0304 D3:bounded1800-frame segment50610 ends alive39HP/boss18HP;independent cold replay exact. Continuation wins third crystal at52469,56/56HP. Real damage51735:39->31. Guard48776,battle48810. Exterior62 exit53755 at46/56HP;no new help.149+31 whole-RAM prediction windows exact. All three traces cold RAM/PNG exact;stack496-byte observed margin. ROM unchanged;D4 onward still pending.

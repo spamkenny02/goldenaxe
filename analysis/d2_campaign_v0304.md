@@ -39,3 +39,9 @@ un parcours entièrement sans assistance. La suite, la fin, la comparaison
 de campagne SMS complète et la fidélité globale vidéo/audio restent à prouver.
 
 [Rapport et empreintes](d2_campaign_v0304_report.json).
+
+## Suite sur la même ROM
+
+Le troisième cristal et sa sortie à 46/56 PV ont ensuite été confirmés.
+Voir le [bilan du troisième donjon](d3_campaign_v0304.md), distinct de cette
+preuve des étapes précédentes.
