@@ -5,17 +5,34 @@ puis porter sa logique Z80 en code natif 68000 avec SGDK. La fidélité à la
 Master System passe avant les améliorations.
 
 <!-- ROM-RELEASE:START -->
-**Version courante : v0294 — 2048 Kio.**
+**Version courante : v0295 — 2048 Kio.**
 
-[Télécharger la ROM v0294](versions/v0294-508642dc/gaw-megadrive-v0294.bin) · [Toutes les versions](versions/README.md)
+[Télécharger la ROM v0295](versions/v0295-b71a6bc6/gaw-megadrive-v0295.bin) · [Toutes les versions](versions/README.md)
 
 Contrôles ciblés réussis ; portage complet encore non validé.
 
-SHA-256 : `508642dc6a7f27883746b1bbb5b208045205644205be325a3d3a317ecca87098`
-Checksum Mega Drive : `7F10`
+SHA-256 : `b71a6bc6b8d812dec3c3a872561bc283c87417e5447468d45b72e435f1e5c201`
+Checksum Mega Drive : `2B62`
 <!-- ROM-RELEASE:END -->
 
 ## État du portage
+
+La **v0295 active la variante7C de la salle11E**, raccordee comme sur SMS
+aux routines54D3/AB40 et a la publication des collisions. Les795 cas controles
+Z80/68000 correspondent. Dans les boucles de production, les109 premieres
+images correspondent pour6A/6B/7C, avec horloge initiale alignee.
+**Le test complet de cadence ne passe pas** : apres la salve de huit projectiles,
+la simulation MD saute des images physiques. Le meme ecart existe sur v0294
+pour6A/6B. Cette limitation reste ouverte.
+Les deux premiers cristaux et leurs sorties sont rejoues sur v0295,
+avec retour en D6 a31/48PV, hache equipee. Le troisieme donjon est atteint
+en1F8. Les deux relectures independantes ont RAM64K/image finales exactes.
+L'aide de test reste limitee aux approches ; aucun secours pendant les deux
+boss ni leurs retours. La pile garde408 octets de marge observee jusqu'a
+la sortie du deuxieme donjon. La suite et la fin restent a valider.
+Voir le [bilan v0295 et ses limites](analysis/variant_7c_v0295.md).
+
+Les paragraphes suivants decrivent les validations historiques :
 
 La **v0294 raccorde les ennemis78/79 à leur comportement SMS**, partagé
 avec les types63/64. L'entité78 restait inerte en salle1B8 et empêchait

@@ -12,6 +12,11 @@ ROWS += [(0,0x6a,14,0,0,1,0,1,f,slot,128,56,224,144,0,7) for f,slot in itertools
 ROWS += [(1,typ,0,0,0,0,0,d,0,8,128,96,224,144,0,0) for typ,d in itertools.product([0x6a,0x6b],range(8))]
 ROWS += [(1,typ,s,t,0,0,c,1,0,8,128,96,224,144,0,0) for typ,s,t,c in itertools.product([0x6a,0x6b],range(0,12,2),[0,1,12],[0,1,24,32,56])]
 ROWS += [(1,0x6b,6,t,0,0,0,1,0,8,x,y,224,144,cls,0) for t,x,y,cls in itertools.product([0,1],[7,31,32,223,224,247,248],[7,31,32,135,136,151,152],[0,1])]
+if '--variant7c' in sys.argv:
+ ROWS=[tuple(0x7c if i==1 else v for i,v in enumerate(row)) for row in ROWS if row[1]==0x6b]
+ ROWS += [(0,0x7c,14,0,0,3,0,1,0,0,128,56,224,144,terrain,r) for terrain,r in itertools.product([0,2],range(128))]
+ ROWS += [(0,0x7c,14,0,0,1,0,1,f,slot,128,56,224,144,0,7) for f,slot in itertools.product(range(8),range(8))]
+
 def sha(b):return hashlib.sha256(b).hexdigest()
 def generate():
  rom=(ROOT/'input/original.sms').read_bytes();image=bytearray(rom);code=bytearray();labels={};fix=[];base=0x3000
@@ -44,7 +49,7 @@ def generate():
  image[0x30:0x33]=bytes.fromhex('c3003a');handler=bytes.fromhex('e5d5210400395e23561a13722b732120c0856f7ed1e1c9');image[0x3a00:0x3a00+len(handler)]=handler
  for pos,index in [(0x5806,0),(0x585a,1)]:
   assert image[pos:pos+2]==b'\xed\x5f';image[pos:pos+2]=bytes([0xf7,index])
- folder=ROOT/'validation/burst-boss';folder.mkdir(exist_ok=True);(folder/'source.sms').write_bytes(image)
+ folder=ROOT/('validation/burst-variant-7c-v0295' if '--variant7c' in sys.argv else 'validation/burst-boss');folder.mkdir(exist_ok=True);(folder/'source.sms').write_bytes(image)
  (ROOT/'tools/burst_boss_cases.inc').write_text('static const u8 burst_boss_cases[][16]={\n'+''.join('{'+','.join(map(str,row))+'},\n' for row in ROWS)+'};\n')
  return rom,image,folder
 def main():
@@ -75,5 +80,5 @@ def main():
  with contextlib.redirect_stdout(io.StringIO()):run(harness/'out/release/rom.bin',frames,folder/'md',set(),[],skip_intro=False,ram_observer=md)
  assert done and len(checked)==len(ROWS),(len(checked),len(ROWS))
  report=dict(md_sha256=sha((ROOT/'gaw-megadrive.bin').read_bytes()),source_sha256=sha(rom),fixture_sha256=sha(image),harness_sha256=sha((harness/'out/release/rom.bin').read_bytes()),cases=len(ROWS),boss_cases=sum(not row[0] for row in ROWS),projectile_cases=sum(row[0] for row in ROWS),all_768_actor_bytes_exact=True,full_game_ported=False,limits=['Two57F8 LD A,R sites replaced by register-preserving explicit input shim. Other original54D3/AB40/57F8/4457/3DAF/3DFA and allocator instructions execute.','Selected eight boss/six projectile states, parent variants, waits/animation, all128 placement candidates with accepted/rejected terrain plus proximity/phase cases, partial/full pools. Full pools supply ROM-resident IY8000; writes ignored as on source. Inherited RAM IY for an already-full pool is not reproduced.','Original RNG/refresh and global placement clock phase, natural fights, complete video/audio and hardware timing remain unproved.'])
- (ROOT/'validation/burst_boss_unit_report.json').write_text(json.dumps(report,indent=2)+'\n');print(len(checked),'native burst/placement/projectile cases exact')
+ (ROOT/('analysis/burst_variant_7c_v0295_policy_report.json' if '--variant7c' in sys.argv else 'validation/burst_boss_unit_report.json')).write_text(json.dumps(report,indent=2)+'\n');print(len(checked),'native burst/placement/projectile cases exact')
 if __name__=='__main__':main()
