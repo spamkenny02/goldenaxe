@@ -1689,3 +1689,6 @@ v0304 D3:bounded1800-frame segment50610 ends alive39HP/boss18HP;independent cold
 
 
 2026-10-28 v0304 D4 Earth checkpoint: seven cold RAM/PNG replays passed from D3 exterior62 through gold50, acquired rope, Earth teacher, D4 first key and Earth E1->D1 passage, end67098 at54/56HP. ROM unchanged. Later A1 trial76000 not cleared: frame71822 thief capture coincides with lethal pending damage, hero12 orphaned. Original SMS5043+2768 reproduce the state in an isolated fixture; no natural SMS reproduction claimed. Resume from md-auto-v0304-d4-earth01 with different ordinary combat inputs. See d4_earth_v0304_report.json and d4_earth_v0304.md.
+
+
+2026-10-28 v0304 D4 canoe checkpoint: stationary axe starts avoid the previously recorded lethal thief capture without changing production. Four independent cold RAM/PNG stages: a1-key02 end71684 keys2, canoe01 end74012 item12=1, warp01 end75052 room192 magic40, boss-key01 end76662 room182 key1;all56/56HP. Canoe fixed replay observes62 actual moving frames on shallow water. Natural unchanged SMS chest/warp160 cells,1280 map bytes,17 inventory bytes and4 translated VDP map words each match; static chest tile indices exact. Not a complete image/audio/timing comparison. Boss attempt md-auto-v0304-d4-boss01 was dispatched separately and remains outside this checkpoint. See d4_canoe_v0304_report.json.

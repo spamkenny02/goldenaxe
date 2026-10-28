@@ -47,9 +47,11 @@ Les six cristaux validés sur v293 restent une preuve propre à cette version.
 
 La suite atteint le quatrième donjon : don de 50 cornes, Terre apprise,
 première clé et passage du rocher vérifiés par sept relectures indépendantes.
-Un essai ultérieur en A1 rencontre une capture simultanée avec un coup mortel ;
-les routines SMS reproduisent aussi cet état dans un cas isolé. Le canoë et
-le quatrième cristal restent à valider. Voir le [point Terre/D4](analysis/d4_earth_v0304.md).
+Une autre séquence de commandes passe ensuite la salle des voleurs : canoë
+acquis, téléporteur utilisé et clé de la seconde partie obtenue. Les données
+du coffre et du téléporteur concordent avec les captures SMS sur le périmètre
+mesuré. Le quatrième cristal reste à valider. Voir les points
+[Terre/D4](analysis/d4_earth_v0304.md) et [canoë/D4](analysis/d4_canoe_v0304.md).
 
 Voir le [bilan v0304](analysis/burst_cadence_v0304.md),
 les [trois cristaux vérifiés](analysis/d3_campaign_v0304_report.json) et
