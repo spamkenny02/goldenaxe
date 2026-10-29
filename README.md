@@ -63,6 +63,12 @@ boss reste à affronter. Le déplacement avec/sans bottes concorde avec la SMS
 dans 96 cas contrôlés (3 072 frames), en mode automatique et PAL.
 Voir la [progression D5 et les bottes](analysis/d5_progress_v0304.md).
 
+Le ravitaillement D5 est ensuite vérifié : deux dons de 30 cornes, une clé
+achetée à 60 et le soin gratuit. Neuf relectures exactes conduisent jusqu’en
+172, avant le boss, à 64/64 PV, une clé et 32 de magie. Un recalcul prématuré
+dans le contrôleur de parcours est corrigée ; le programme de la ROM ne change
+pas. Voir le [ravitaillement et les mécanismes D5](analysis/d5_supplies_v0304.md).
+
 Voir le [bilan v0304](analysis/burst_cadence_v0304.md),
 les [quatre cristaux vérifiés](analysis/d4_campaign_v0304_report.json) et
 l'[historique conservé du README](analysis/readme_history_through_v0296.md).
