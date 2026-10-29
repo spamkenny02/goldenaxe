@@ -56,6 +56,13 @@ la victoire et la sortie ; la marge de pile observée reste de 496 octets.
 Voir les points [Terre/D4](analysis/d4_earth_v0304.md),
 [canoë/D4](analysis/d4_canoe_v0304.md) et [quatrième cristal](analysis/d4_campaign_v0304.md).
 
+La progression du cinquième donjon atteint les bottes, obtenues dans leur
+coffre. Cinq nouvelles relectures RAM/PNG sont exactes jusqu’à une sortie
+de ravitaillement en 49, à 50/64 PV, 22 cornes et zéro clé. Le cinquième
+boss reste à affronter. Le déplacement avec/sans bottes concorde avec la SMS
+dans 96 cas contrôlés (3 072 frames), en mode automatique et PAL.
+Voir la [progression D5 et les bottes](analysis/d5_progress_v0304.md).
+
 Voir le [bilan v0304](analysis/burst_cadence_v0304.md),
 les [quatre cristaux vérifiés](analysis/d4_campaign_v0304_report.json) et
 l'[historique conservé du README](analysis/readme_history_through_v0296.md).
