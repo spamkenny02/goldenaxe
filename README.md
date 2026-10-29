@@ -32,16 +32,16 @@ Contrôles de cette ROM :
 - 133 120 cas de masquage comparés sur hôte ; 8 192 cas de la routine 68000
   dans chaque région ; 108 images de sprites physiques sans écart.
 - Douze images de jeu naturel dont le rendu indépendant VRAM/CRAM est cohérent.
-- Quatre premiers cristaux et sorties rejoués depuis le démarrage. Le dernier
-  retour se termine à l'extérieur en 10, à 62/64 PV, avec hache, corde et canoë.
+- Cinq premiers cristaux et sorties rejoués depuis le démarrage. Le dernier
+  retour se termine à l'extérieur en 49, à 72/72 PV, avec bottes, corde et canoë.
   RAM de 64 Kio et PNG final identiques aux relectures. La protection de test
   est retirée avant chacun des boss et ne reprend pas pendant leurs retours.
-  Marge de pile observée jusqu'à la quatrième sortie : 496 octets.
+  Marge de pile observée jusqu'à la cinquième sortie : 496 octets.
 
 Ces tests ne prouvent pas encore la cadence de tous les combats, le hasard
 ou la phase globale. La suite de campagne, la fin, les sauvegardes et la
 fidélité complète vidéo/audio restent à vérifier sur la v304.
-Les commandes historiques divergent avant le premier donjon ; les quatre
+Les commandes historiques divergent avant le premier donjon ; les cinq
 premiers donjons ont été repris avec une conduite adaptative sur v304.
 Les six cristaux validés sur v293 restent une preuve propre à cette version.
 
@@ -59,18 +59,25 @@ Voir les points [Terre/D4](analysis/d4_earth_v0304.md),
 La progression du cinquième donjon atteint les bottes, obtenues dans leur
 coffre. Cinq nouvelles relectures RAM/PNG sont exactes jusqu’à une sortie
 de ravitaillement en 49, à 50/64 PV, 22 cornes et zéro clé. Le cinquième
-boss reste à affronter. Le déplacement avec/sans bottes concorde avec la SMS
+boss est désormais vaincu et sa sortie validée. Le déplacement avec/sans bottes concorde avec la SMS
 dans 96 cas contrôlés (3 072 frames), en mode automatique et PAL.
 Voir la [progression D5 et les bottes](analysis/d5_progress_v0304.md).
 
 Le ravitaillement D5 est ensuite vérifié : deux dons de 30 cornes, une clé
 achetée à 60 et le soin gratuit. Neuf relectures exactes conduisent jusqu’en
 172, avant le boss, à 64/64 PV, une clé et 32 de magie. Un recalcul prématuré
-dans le contrôleur de parcours est corrigée ; le programme de la ROM ne change
+dans le contrôleur de parcours est corrigé ; le programme de la ROM ne change
 pas. Voir le [ravitaillement et les mécanismes D5](analysis/d5_supplies_v0304.md).
 
+Le cinquième boss et son cristal sont obtenus, puis le héros ressort en 49
+à 72/72 PV. Quatre relectures RAM/PNG couvrent le combat partiel, la victoire,
+le mécanisme de sortie et le retour ; aucune nouvelle protection ne reprend
+après le boss. Le contrôleur cible aussi ses satellites attaquables ;
+les règles du jeu restent identiques. La marge de pile observée jusqu’à
+cette sortie reste de 496 octets. Voir le [cinquième cristal](analysis/d5_campaign_v0304.md).
+
 Voir le [bilan v0304](analysis/burst_cadence_v0304.md),
-les [quatre cristaux vérifiés](analysis/d4_campaign_v0304_report.json) et
+les [cinq cristaux vérifiés](analysis/d5_campaign_v0304_report.json) et
 l'[historique conservé du README](analysis/readme_history_through_v0296.md).
 Les v297/v298 sont des essais écartés ; v299 à v303 sont des étapes
 intermédiaires conservées. La version courante à tester est **v304**.

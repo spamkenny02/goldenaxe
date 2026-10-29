@@ -46,3 +46,5 @@ Le [rapport reproductible](d5_supplies_v0304_report.json) lie les neuf
 relectures, les contrôles, les sources figées et les essais de diagnostic.
 Le cinquième boss, son cristal et son retour ne sont pas validés par ce
 jalon. La fin, les sauvegardes et la fidélité globale restent ouvertes.
+
+Suite validée : [cinquième cristal et retour sur v304](d5_campaign_v0304.md).
