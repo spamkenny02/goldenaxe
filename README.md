@@ -45,6 +45,9 @@ correspondaient aux points instrumentés ; le minimum avant chaque instruction
 donne 478 octets sur les parcours D1 à D6. Voir
 l’[erratum de mesure](analysis/stack_minimum_v0304_erratum.md).
 
+Les routines d’acteurs utilisent encore le générateur SGDK ; le raccordement
+complet du hasard SMS reste à faire.
+
 Ces tests ne prouvent pas encore la cadence de tous les combats, le hasard
 ou la phase globale. La suite de campagne, la fin, les sauvegardes et la
 fidélité complète vidéo/audio restent à vérifier sur la v304.
@@ -133,6 +136,11 @@ mécanismes distants : transformation de 1C8, puis ouverture de la sortie
 ouest de 1EB. Trois autres relectures sont exactes ; le héros revient en
 1EB à 40/88 PV et deux clés. Le combat intermédiaire contre le type 7A
 reste une approche assistée. Voir les [passages de D8](analysis/d8_passages_v0304.md).
+
+La clé des voleurs de D8 est obtenue après Terre et le téléporteur de 1E8.
+Le mécanisme de 19A ouvre ensuite la route vers le boss. Quatre relectures
+exactes conduisent en 1A6, salle nettoyée, à 64/88 PV, trois clés et la hache
+équipée. Le huitième boss reste à valider. Voir la [clé des voleurs et l’approche D8](analysis/d8_progress_v0304.md).
 
 Voir le [bilan v0304](analysis/burst_cadence_v0304.md),
 les [sept cristaux vérifiés](analysis/d7_campaign_v0304_report.json) et
