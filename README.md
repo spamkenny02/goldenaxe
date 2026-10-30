@@ -122,6 +122,12 @@ l’extérieur à 36/88 PV et deux clés. Quatre nouvelles relectures sont exact
 et la mesure de pile avant chaque instruction conserve 478 octets de marge.
 Voir le [septième cristal et le retour](analysis/d7_campaign_v0304.md).
 
+L’entrée du huitième donjon est atteinte : escalier dégagé à la hache en
+3C, passage payé dix cornes vers la côte de 1A, puis traversée en navire
+jusqu’à 1EA. Trois relectures RAM/PNG exactes conservent les sept cristaux,
+le navire et deux clés. Le contrôleur sait entrer dans cet escalier depuis
+le haut. Le huitième boss reste à atteindre ; voir l’[entrée D8](analysis/d8_entry_v0304.md).
+
 Voir le [bilan v0304](analysis/burst_cadence_v0304.md),
 les [sept cristaux vérifiés](analysis/d7_campaign_v0304_report.json) et
 l'[historique conservé du README](analysis/readme_history_through_v0296.md).
