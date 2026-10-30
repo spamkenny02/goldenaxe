@@ -32,12 +32,13 @@ Contrôles de cette ROM :
 - 133 120 cas de masquage comparés sur hôte ; 8 192 cas de la routine 68000
   dans chaque région ; 108 images de sprites physiques sans écart.
 - Douze images de jeu naturel dont le rendu indépendant VRAM/CRAM est cohérent.
-- Six premiers cristaux et sorties rejoués depuis le démarrage. Le dernier
-  retour se termine à l’extérieur en 8B, à 80/80 PV, avec cloche de glace,
-  bottes, corde et canoë. RAM de 64 Kio et PNG final identiques aux relectures.
-  La protection de test est retirée avant chacun des boss et ne reprend pas
-  pendant leurs retours. Marge de pile observée jusqu’à la sixième sortie :
-  478 octets.
+- Sept premiers cristaux et sorties rejoués depuis le démarrage. Le dernier
+  retour se termine à l’extérieur en 1B, à 36/88 PV, avec navire, cloche de
+  glace, bottes, corde et canoë. RAM de 64 Kio et PNG final identiques aux
+  relectures. La protection de test est retirée avant chaque boss principal
+  et ne reprend pas pendant son retour. Le dragon intermédiaire de D7 a été
+  affronté pendant l’approche assistée. Marge de pile observée jusqu’à la
+  septième sortie : 478 octets.
 
 La mesure de pile a été corrigée : les 496 octets des anciennes synthèses
 correspondaient aux points instrumentés ; le minimum avant chaque instruction
@@ -47,7 +48,7 @@ l’[erratum de mesure](analysis/stack_minimum_v0304_erratum.md).
 Ces tests ne prouvent pas encore la cadence de tous les combats, le hasard
 ou la phase globale. La suite de campagne, la fin, les sauvegardes et la
 fidélité complète vidéo/audio restent à vérifier sur la v304.
-Les commandes historiques divergent avant le premier donjon ; les six
+Les commandes historiques divergent avant le premier donjon ; les sept
 premiers donjons ont été repris avec une conduite adaptative sur v304.
 Les six cristaux validés sur v293 restent une preuve propre à cette version.
 
@@ -98,7 +99,7 @@ Voir le [sixième cristal et le retour](analysis/d6_campaign_v0304.md).
 Le septième donjon est engagé après ravitaillement : deux dons de 30 cornes,
 une clé achetée à 60, porte d’entrée ouverte et première clé du donjon
 obtenue. Huit relectures RAM/PNG exactes conduisent en 1CB à 60/80 PV et
-une clé. Le septième boss reste à atteindre. Voir le
+une clé à ce point de reprise. Voir le
 [ravitaillement D7](analysis/d7_supplies_v0304.md).
 
 Le navire de D7 est maintenant obtenu, à 80/80 PV et trois clés. Sept
@@ -106,17 +107,23 @@ nouvelles relectures exactes couvrent la seconde clé, Terre, le dragon
 intermédiaire pendant l’approche assistée et la commande de 1E6 qui ouvre
 la porte distante de 1D6. Quatre pièges et un ennemi restent présents
 après la prise du navire ; le contrôleur valide l’objet, sans déclarer la
-salle nettoyée. Le boss principal de D7 reste à affronter. Voir le
+salle nettoyée. Voir le
 [navire et les passages D7](analysis/d7_progress_v0304.md).
 
 Le contrôleur tient désormais compte du navire : 8 192 cas de collision
 comparés à l’exécution Z80. Trois relectures exactes reprennent la route
 vers le boss, avec le bloc de Terre en 1A8 et l’approche des ennemis cachés.
-Le point de reprise en 189 conserve 80/80 PV et deux clés ; le combat
-principal reste à valider. Voir l’[approche D7](analysis/d7_navigation_v0304.md).
+Le point de reprise en 189 conserve 80/80 PV et deux clés. Voir l’[approche D7](analysis/d7_navigation_v0304.md).
+
+Le septième boss est ensuite vaincu avec les dégâts ordinaires : le héros
+descend à 42 PV avant que le cristal ne porte sa capacité et sa vie à 88.
+Le retour utilise Terre pour dégager le téléporteur de 1B7, puis atteint
+l’extérieur à 36/88 PV et deux clés. Quatre nouvelles relectures sont exactes,
+et la mesure de pile avant chaque instruction conserve 478 octets de marge.
+Voir le [septième cristal et le retour](analysis/d7_campaign_v0304.md).
 
 Voir le [bilan v0304](analysis/burst_cadence_v0304.md),
-les [six cristaux vérifiés](analysis/d6_campaign_v0304_report.json) et
+les [sept cristaux vérifiés](analysis/d7_campaign_v0304_report.json) et
 l'[historique conservé du README](analysis/readme_history_through_v0296.md).
 Les v297/v298 sont des essais écartés ; v299 à v303 sont des étapes
 intermédiaires conservées. La version courante à tester est **v304**.

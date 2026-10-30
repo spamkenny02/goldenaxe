@@ -1724,3 +1724,7 @@ Next D7 work: retreat from ship1D5 and reach main boss179,with release before it
 
 
 2026-10-30 v304 D7 navigation verified: source2D41 ship cache8192 cases/196608 bytes exact;controllers observe item16 and invalidate secondary graphs on equipment change. North-return02 ends176702 HP80 keys3;Earth1A8 block34 opens warp198 end177706 MP40;approach03 wakes dormant58 via normal proximity and ends181983 room189 HP80 keys2 MP48,six crystals. Three cold RAM/PNG replays exact. Failed north-return01/approach01/approach02 remain diagnostics. Main boss179 not entered in this checkpoint;test boss01 continues separately with guard release required. No native ROM change. See analysis/d7_navigation_v0304_report.json.
+
+
+## v0304 D7 main boss and unassisted exterior return
+Boss179/type67 defeated;guard ends182050,combat182077,first damage182232. Boss01 partial185677 -> ordinary boss03 victory187841 -> return-earth01 at188942 -> exit02 at189330,outside1B,36/88HP,seven crystals,two keys,40MP,ship owned. Four cold fixed-input replays match full65536RAM and finalPNG;no primary state imports or post-release help. Intermediate type78 remains an assisted approach,not an unassisted fight proof. Separate boss02 partial and blocked exit01 are excluded from the successful chain. Earth clears block57 in1B7 with real8MP. Instruction SP63454,heap boundary62976,margin478;sampled SP63472. ROM unchanged. See analysis/d7_campaign_v0304_report.json. D8 onward,ending,saves,global RNG/phase and full SMS video/audio/hardware fidelity remain unproved.
