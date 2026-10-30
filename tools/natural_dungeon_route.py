@@ -13,7 +13,7 @@ from rebase_natural_campaign import evidence
 
 class World:
     def __init__(self,door_index=1,house_outside=None,house_target=0xaf):
-        self.boots_owned=False;self.canoe_owned=False;self.live_room=None;self.live_map=None;self.axe_terrain=False;self.rope_terrain=False;self.remote_unlocked=set()
+        self.boots_owned=False;self.canoe_owned=False;self.ship_owned=False;self.live_room=None;self.live_map=None;self.axe_terrain=False;self.rope_terrain=False;self.remote_unlocked=set()
         self.rom=(ROOT/'input/original.sms').read_bytes();_,self.meta,_,self.initial_map,self.arrays,_=initial_room(self.rom)
         doors=json.loads((ROOT/'analysis/doors_reference.json').read_bytes());self.doors=doors
         self.goal=next(d for d in doors['direct_unconditional_dungeon_doors'] if d['index']==door_index) if house_outside is None else next(d for d in doors['direct_unconditional_doors'] if d['room']==house_outside and d['target']==house_target)
@@ -50,7 +50,7 @@ class World:
     def edge(self,node,d,tilemap=None):
         room,x,y,phase=node
         if d==0 and node[:3] in self.house_mouths:return None
-        cache=collision_cache(self.tilemap(room) if tilemap is None else tilemap,Hero(x=x<<8,y=y<<8),canoe=self.canoe_owned)
+        cache=collision_cache(self.tilemap(room) if tilemap is None else tilemap,Hero(x=x<<8,y=y<<8),canoe=self.canoe_owned,ship=self.ship_owned)
         if choose_collision_direction(d,cache)!=d:return None
         x+=[0,0,-8,8][d];y+=[-8,8,0,0][d]
         # Door contact also triggers while entering from a side or from above.
@@ -159,6 +159,8 @@ def main():
         raw=evidence(prefix/f"ram_{prefix_end:05d}.bin");prefix_ram=raw
         address=0xec if args.sms else symbols(ROOT/'megadrive/out/release/symbol.txt')['hero_items']+12
         world.canoe_owned=bool(raw[address if args.sms else address^1])
+        address=0xf0 if args.sms else symbols(ROOT/'megadrive/out/release/symbol.txt')['hero_items']+16
+        world.ship_owned=bool(raw[address if args.sms else address^1])
         address=0xee if args.sms else symbols(ROOT/'megadrive/out/release/symbol.txt')['hero_items']+14
         world.boots_owned=bool(raw[address if args.sms else address^1])
     if args.rope_terrain:
@@ -194,7 +196,7 @@ def main():
     route_start=max(2500,prefix_end+1)
     path,visited=world.route(start);assert path is not None,('No base-map walking route',visited)
     rooms=list(dict.fromkeys([a[0] for a,d,b in path]+[path[-1][2][0]]))
-    result=dict(canoe_acquired_in_prefix=world.canoe_owned,source_sha256=sha(world.rom),goal=world.goal,waypoints=len(path),visited_nodes=visited,rooms=[f'{r:02x}' for r in rooms],route=path,scope='Static base-ROM walking proposal with original collision/sliding rules. Does not include actors, quest edits, terrain-dependent speed or prove a playable route.')
+    result=dict(ship_acquired_in_prefix=world.ship_owned,canoe_acquired_in_prefix=world.canoe_owned,source_sha256=sha(world.rom),goal=world.goal,waypoints=len(path),visited_nodes=visited,rooms=[f'{r:02x}' for r in rooms],route=path,scope='Static base-ROM walking proposal with original collision/sliding rules. Does not include actors, quest edits, terrain-dependent speed or prove a playable route.')
     folder=ROOT/'validation/natural-dungeon-route';folder.mkdir(exist_ok=True);(folder/f'plan-door{args.door_index}-{args.trial}.json').write_text(json.dumps(result,indent=2)+'\n');print({k:v for k,v in result.items() if k!='route'})
     if args.plan:return
     tag='sms' if args.sms else 'md';rom=ROOT/'input/original.sms' if args.sms else ROOT/'gaw-megadrive.bin';sy=None if args.sms else symbols(ROOT/'megadrive/out/release/symbol.txt')
@@ -265,7 +267,7 @@ def main():
         if cursor==len(path):
             cut=required_chop and not chop_done
             if args.axe_terrain and state['hero_state']==1 and not state['counter']:
-                cache=collision_cache(live_tilemap,Hero(x=point[1]<<8,y=point[2]<<8),canoe=world.canoe_owned)
+                cache=collision_cache(live_tilemap,Hero(x=point[1]<<8,y=point[2]<<8),canoe=world.canoe_owned,ship=world.ship_owned)
                 nearby=any(0x80<=cell<=0x84 and abs((n&15)*16+8-point[1])<=24 and abs((n>>4)*16+8-point[2])<=40 for n,cell in enumerate(live_cells))
                 cut=cut or (nearby and choose_collision_direction(0,cache)!=0)
             cached_buttons=([4,8] if f%3 else []) if cut else [4]
@@ -282,7 +284,7 @@ def main():
                     else:
                         failure='unexpected_position';events.append(dict(frame=f,failure=failure,expected=previous,actual=point,waypoint=cursor));return []
             if args.axe_terrain and not state['counter'] and state['hero_state']==1:
-                cache=collision_cache(live_tilemap,Hero(x=point[1]<<8,y=point[2]<<8),canoe=world.canoe_owned)
+                cache=collision_cache(live_tilemap,Hero(x=point[1]<<8,y=point[2]<<8),canoe=world.canoe_owned,ship=world.ship_owned)
                 if choose_collision_direction(d,cache)!=d:
                     # A blocked step is solved by a real ordinary axe swing.
                     # The source/native game itself chooses the affected cells.
@@ -312,7 +314,7 @@ def main():
         final=Image.open(directory/f'frame_{ready_at+60:05d}.png').convert('RGB');visible=final.getbbox() is not None and final.crop((0,160 if args.sms else 176,256,192 if args.sms else 208)).getbbox() is not None
     probe=bool(probe_before and probe_after and probe_before['room']==probe_after['room']==world.goal['target'] and probe_before['x']==probe_after['x']==(136 if args.house_outside is not None else 128) and probe_before['y']==152 and probe_after['y']==152-(16 if world.boots_owned else 8))
     (directory/'axe_chops.json').write_text(json.dumps(chops,indent=2)+'\n')
-    report=dict(route_driver_sha256=sha((ROOT/'tools/natural_dungeon_route.py').read_bytes()),required_chop_waits_for_settled_position=True,probe_expected_y_displacement=16 if world.boots_owned else 8,boots_acquired_in_prefix=world.boots_owned,canoe_acquired_in_prefix=world.canoe_owned,rope_terrain_requested=args.rope_terrain,required_chop=required_chop,required_chop_verified=chop_done,axe_terrain_requested=args.axe_terrain,axe_chop_decisions=len(chops),normal_continues=deaths,retry_deaths=args.retry_deaths,door_index=args.door_index,house_outside=args.house_outside,house_target=args.house_target if args.house_outside is not None else None,recorded_replay_prefix=args.prefix_replay,recorded_combat_prefix=args.prefix_combat,recorded_service_prefix=args.prefix_service,recorded_rope_prefix=args.prefix_rope,live_prefix_terrain=args.live_prefix_terrain,live_initial_room=live_initial_room,prefix_end=prefix_end,region='pal' if args.pal else 'auto',directional_probe_succeeded=probe,probe_before=probe_before,probe_after=probe_after,rendered_final_frame_nonblack=visible,rom_sha256=sha(rom.read_bytes()),reference_sha256=sha(world.rom),reached_entrance=ready_at is not None,first_published_target_room_frame=room_entry_at,first_target_state12_frame=reached_at,first_controllable_frame=ready_at,door_transition_frames=None if ready_at is None else ready_at-room_entry_at,failure=failure,waypoints_reached=cursor,waypoints_planned=len(path),last_state=state,ram_injections=bool(inherited_writes),sram_checkpoint_injection=False,scope='Read-only state-driven directional controller along ROM-derived static path, normal boot/name/opening. No combat strategy or whole-dungeon claim.')
+    report=dict(route_driver_sha256=sha((ROOT/'tools/natural_dungeon_route.py').read_bytes()),required_chop_waits_for_settled_position=True,probe_expected_y_displacement=16 if world.boots_owned else 8,boots_acquired_in_prefix=world.boots_owned,ship_acquired_in_prefix=world.ship_owned,canoe_acquired_in_prefix=world.canoe_owned,rope_terrain_requested=args.rope_terrain,required_chop=required_chop,required_chop_verified=chop_done,axe_terrain_requested=args.axe_terrain,axe_chop_decisions=len(chops),normal_continues=deaths,retry_deaths=args.retry_deaths,door_index=args.door_index,house_outside=args.house_outside,house_target=args.house_target if args.house_outside is not None else None,recorded_replay_prefix=args.prefix_replay,recorded_combat_prefix=args.prefix_combat,recorded_service_prefix=args.prefix_service,recorded_rope_prefix=args.prefix_rope,live_prefix_terrain=args.live_prefix_terrain,live_initial_room=live_initial_room,prefix_end=prefix_end,region='pal' if args.pal else 'auto',directional_probe_succeeded=probe,probe_before=probe_before,probe_after=probe_after,rendered_final_frame_nonblack=visible,rom_sha256=sha(rom.read_bytes()),reference_sha256=sha(world.rom),reached_entrance=ready_at is not None,first_published_target_room_frame=room_entry_at,first_target_state12_frame=reached_at,first_controllable_frame=ready_at,door_transition_frames=None if ready_at is None else ready_at-room_entry_at,failure=failure,waypoints_reached=cursor,waypoints_planned=len(path),last_state=state,ram_injections=bool(inherited_writes),sram_checkpoint_injection=False,scope='Read-only state-driven directional controller along ROM-derived static path, normal boot/name/opening. No combat strategy or whole-dungeon claim.')
     (directory/'route_report.json').write_text(json.dumps(report,indent=2)+'\n');print(report)
 
 if __name__=='__main__':main()

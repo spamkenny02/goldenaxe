@@ -37,3 +37,6 @@ comparaison de campagne SMS et la fidélité globale vidéo/audio restent
 à valider.
 
 [Rapport et empreintes](d3_campaign_v0304_report.json).
+
+
+Erratum2026-10-30 : la marge de496 octets citee ci-dessus concerne les points instrumentes. Le minimum avant chaque instruction est478 octets sur les parcours D1-D6. Voir la [correction de mesure](stack_minimum_v0304_erratum.md).

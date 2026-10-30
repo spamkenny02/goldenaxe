@@ -1,0 +1,82 @@
+{
+  "passed": true,
+  "version": 304,
+  "historical_profiles_unchanged": true,
+  "production_rom_unchanged": true,
+  "corrected_margin_bytes": 478,
+  "previously_published_sampled_margin_bytes": 496,
+  "discrepancy_bytes": 18,
+  "profiles": [
+    {
+      "dungeon": 1,
+      "frames": 14583,
+      "profile": "validation/stack-v0304-d1-all/stack_report.json",
+      "profile_sha256": "628c684ef1ee483774acceb39b73ff355e3f040058e39123e992f7e3e9d80bca",
+      "sampled_minimum_sp": 63472,
+      "instruction_minimum_sp": 63454,
+      "heap_boundary": 62976,
+      "sampled_margin_bytes": 496,
+      "corrected_instruction_margin_bytes": 478
+    },
+    {
+      "dungeon": 2,
+      "frames": 37005,
+      "profile": "validation/stack-v0304-d2-all/stack_report.json",
+      "profile_sha256": "827384fa0dadba5dd752129935bceb9b24ad876ed99e7c7506ed7b8c9dbfed8e",
+      "sampled_minimum_sp": 63472,
+      "instruction_minimum_sp": 63454,
+      "heap_boundary": 62976,
+      "sampled_margin_bytes": 496,
+      "corrected_instruction_margin_bytes": 478
+    },
+    {
+      "dungeon": 3,
+      "frames": 53755,
+      "profile": "validation/stack-v0304-d3-all/stack_report.json",
+      "profile_sha256": "67c186c3ab764de5a37c3b4368de39b6776cba35056d1d6c4d4fb6c9df650a7e",
+      "sampled_minimum_sp": 63472,
+      "instruction_minimum_sp": 63454,
+      "heap_boundary": 62976,
+      "sampled_margin_bytes": 496,
+      "corrected_instruction_margin_bytes": 478
+    },
+    {
+      "dungeon": 4,
+      "frames": 86158,
+      "profile": "validation/stack-v0304-d4-all/stack_report.json",
+      "profile_sha256": "4bbb1b33ca9814687aa55c51bcb35fadab6969850327ead9b1dbd970e994dd6f",
+      "sampled_minimum_sp": 63472,
+      "instruction_minimum_sp": 63454,
+      "heap_boundary": 62976,
+      "sampled_margin_bytes": 496,
+      "corrected_instruction_margin_bytes": 478
+    },
+    {
+      "dungeon": 5,
+      "frames": 121051,
+      "profile": "validation/stack-v0304-d5-all/stack_report.json",
+      "profile_sha256": "ae5c6e110f078b2cc1b4bbb05387cd562cfa9a9828e17af43f5637b75509d200",
+      "sampled_minimum_sp": 63472,
+      "instruction_minimum_sp": 63454,
+      "heap_boundary": 62976,
+      "sampled_margin_bytes": 496,
+      "corrected_instruction_margin_bytes": 478
+    },
+    {
+      "dungeon": 6,
+      "frames": 153868,
+      "profile": "validation/stack-v0304-d6-all/stack_report.json",
+      "profile_sha256": "2904984bc6d54be047713c60bb8c02657e94b52c297bc70e8312bd8a5f3aad8c",
+      "sampled_minimum_sp": 63472,
+      "instruction_minimum_sp": 63454,
+      "heap_boundary": 62976,
+      "sampled_margin_bytes": 496,
+      "corrected_instruction_margin_bytes": 478
+    }
+  ],
+  "validator_sha256": "3dc65a71a3de2dd74b574db8fc8888b4b74fc616184cd4b29c5dcd5c54a051e8",
+  "limits": [
+    "Observed on the six recorded v304 routes,starting normal-instruction SP observations at frame14.",
+    "Positive observed margin and valid heap headers do not bound future paths or every possible input sequence."
+  ]
+}

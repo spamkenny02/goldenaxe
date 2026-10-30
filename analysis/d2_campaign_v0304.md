@@ -45,3 +45,6 @@ de campagne SMS complète et la fidélité globale vidéo/audio restent à prouv
 Le troisième cristal et sa sortie à 46/56 PV ont ensuite été confirmés.
 Voir le [bilan du troisième donjon](d3_campaign_v0304.md), distinct de cette
 preuve des étapes précédentes.
+
+
+Erratum2026-10-30 : la marge de496 octets citee ci-dessus concerne les points instrumentes. Le minimum avant chaque instruction est478 octets sur les parcours D1-D6. Voir la [correction de mesure](stack_minimum_v0304_erratum.md).

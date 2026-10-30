@@ -47,3 +47,6 @@ Le canoë, le quatrième cristal, la fin, les sauvegardes et la fidélité compl
 vidéo/audio ne sont pas validés par cette étape. La marge de pile de 496 octets
 publiée auparavant couvre seulement le parcours jusqu'au retour du troisième
 donjon ; aucune extension de sa portée n'est revendiquée ici.
+
+
+Erratum2026-10-30 : la marge de496 octets citee ci-dessus concerne les points instrumentes. Le minimum avant chaque instruction est478 octets sur les parcours D1-D6. Voir la [correction de mesure](stack_minimum_v0304_erratum.md).

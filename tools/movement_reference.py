@@ -19,7 +19,7 @@ class Hero:
     dx:int=0
     pending:int=0
 
-def collision_cache(tilemap,hero,canoe=False):
+def collision_cache(tilemap,hero,canoe=False,ship=False):
     # 230E followed by 2CD4: 4 columns x 3 rows around position-12.
     y=((hero.y>>8)-12)&255;x=((hero.x>>8)-12)&255
     offset=(y&248)*8+((x>>2)&62)
@@ -30,6 +30,12 @@ def collision_cache(tilemap,hero,canoe=False):
             high=tilemap[p+1] if p+1<len(tilemap) else 128
             if not canoe and high&32:high|=128 # 2D01: acquired canoe allows shallow water
             values.append(high)
+    # Original2D41: both feet must share water bit6 before ship collision changes.
+    flags=values[5]&values[6]&0xc0
+    if ship and flags&0x40:
+        for i,value in enumerate(values):
+            if value&0x40:values[i]=value&127
+            elif flags&0x80:values[i]=value|128
     return values
 
 def choose_collision_direction(direction,cache):

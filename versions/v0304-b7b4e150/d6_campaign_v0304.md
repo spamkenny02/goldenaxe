@@ -51,3 +51,6 @@ boss n'a pas encore ete compare.
 
 Marge de pile observee sur ce parcours : **496 octets**, jusqu'a la frame
 153 868. Aucun en-tete de tas invalide observe.
+
+
+Erratum2026-10-30 : la marge de496 octets citee ci-dessus concerne les points instrumentes. Le minimum avant chaque instruction est478 octets sur les parcours D1-D6. Voir la [correction de mesure](stack_minimum_v0304_erratum.md).

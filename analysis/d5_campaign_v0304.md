@@ -54,3 +54,6 @@ de pile. Cinq cristaux et leurs retours sont maintenant vérifiés sur v304.
 Les donjons suivants, la fin, les sauvegardes, le hasard global et la
 fidélité complète vidéo/audio/matériel restent ouverts. Aucune campagne
 SMS équivalente contre ce boss n'est revendiquée ici.
+
+
+Erratum2026-10-30 : la marge de496 octets citee ci-dessus concerne les points instrumentes. Le minimum avant chaque instruction est478 octets sur les parcours D1-D6. Voir la [correction de mesure](stack_minimum_v0304_erratum.md).

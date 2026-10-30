@@ -84,3 +84,6 @@ Depuis ce bilan de cadence, le deuxième cristal et son retour à 31/48 PV
 ont été rejoués sur v304, ainsi que l'entrée du troisième donjon et la corde.
 Voir le [nouveau bilan de campagne](d2_campaign_v0304.md). Le rapport de cadence
 initial conserve son périmètre historique ; la nouvelle preuve est distincte.
+
+
+Erratum2026-10-30 : la marge de496 octets citee ci-dessus concerne les points instrumentes. Le minimum avant chaque instruction est478 octets sur les parcours D1-D6. Voir la [correction de mesure](stack_minimum_v0304_erratum.md).

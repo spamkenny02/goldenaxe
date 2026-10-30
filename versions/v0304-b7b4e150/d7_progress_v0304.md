@@ -23,3 +23,6 @@ Le navire est acquis dans son coffre : emplacement16 a1, recompense fermee, jeu 
 Sept nouvelles relectures independantes depuis le demarrage reproduisent les65536 octets de RAM et le PNG final. Le [rapport reproductible](d7_progress_v0304_report.json) lie ces preuves, les commandes, les aides, les tables originales et les sources conservees des controleurs. La protection d'approche ne touche que hero_hurt ; les soins et recharges observes dans les salles proviennent du jeu.
 
 Six cristaux sont conserves. Le boss principal179 n'est pas encore entre ; sa protection doit etre retiree avant le combat. Le septieme cristal, les donjons suivants, la fin, les sauvegardes et la fidelite globale restent a verifier. La marge de pile de496 octets precedente s'arrete au retour D6 et ne constitue pas une mesure de ce nouveau parcours. Aucune nouvelle ROM numerotee pour ces changements d'outils de test.
+
+
+Erratum2026-10-30 : la marge de496 octets citee ci-dessus concerne les points instrumentes. Le minimum avant chaque instruction est478 octets sur les parcours D1-D6. Voir la [correction de mesure](stack_minimum_v0304_erratum.md).

@@ -37,7 +37,12 @@ Contrôles de cette ROM :
   bottes, corde et canoë. RAM de 64 Kio et PNG final identiques aux relectures.
   La protection de test est retirée avant chacun des boss et ne reprend pas
   pendant leurs retours. Marge de pile observée jusqu’à la sixième sortie :
-  496 octets.
+  478 octets.
+
+La mesure de pile a été corrigée : les 496 octets des anciennes synthèses
+correspondaient aux points instrumentés ; le minimum avant chaque instruction
+donne 478 octets sur les parcours D1 à D6. Voir
+l’[erratum de mesure](analysis/stack_minimum_v0304_erratum.md).
 
 Ces tests ne prouvent pas encore la cadence de tous les combats, le hasard
 ou la phase globale. La suite de campagne, la fin, les sauvegardes et la
@@ -53,7 +58,7 @@ acquis, téléporteur utilisé et clé de la seconde partie obtenue. Les donnée
 du coffre et du téléporteur concordent avec les captures SMS sur le périmètre
 mesuré. Le quatrième boss est vaincu et le retour sans nouvelle protection
 est vérifié. Trois relectures RAM/PNG exactes couvrent le combat partiel,
-la victoire et la sortie ; la marge de pile observée reste de 496 octets.
+la victoire et la sortie ; la marge de pile observée reste de 478 octets.
 Voir les points [Terre/D4](analysis/d4_earth_v0304.md),
 [canoë/D4](analysis/d4_canoe_v0304.md) et [quatrième cristal](analysis/d4_campaign_v0304.md).
 
@@ -75,7 +80,7 @@ Le cinquième boss et son cristal sont obtenus, puis le héros ressort en 49
 le mécanisme de sortie et le retour ; aucune nouvelle protection ne reprend
 après le boss. Le contrôleur cible aussi ses satellites attaquables ;
 les règles du jeu restent identiques. La marge de pile observée jusqu’à
-cette sortie reste de 496 octets. Voir le [cinquième cristal](analysis/d5_campaign_v0304.md).
+cette sortie reste de 478 octets. Voir le [cinquième cristal](analysis/d5_campaign_v0304.md).
 
 Le sixième donjon est parcouru jusqu’à la cloche de glace et au dernier
 rocher avant le boss : seize étapes rejouées exactement, 72/72 PV et cinq
@@ -103,6 +108,12 @@ la porte distante de 1D6. Quatre pièges et un ennemi restent présents
 après la prise du navire ; le contrôleur valide l’objet, sans déclarer la
 salle nettoyée. Le boss principal de D7 reste à affronter. Voir le
 [navire et les passages D7](analysis/d7_progress_v0304.md).
+
+Le contrôleur tient désormais compte du navire : 8 192 cas de collision
+comparés à l’exécution Z80. Trois relectures exactes reprennent la route
+vers le boss, avec le bloc de Terre en 1A8 et l’approche des ennemis cachés.
+Le point de reprise en 189 conserve 80/80 PV et deux clés ; le combat
+principal reste à valider. Voir l’[approche D7](analysis/d7_navigation_v0304.md).
 
 Voir le [bilan v0304](analysis/burst_cadence_v0304.md),
 les [six cristaux vérifiés](analysis/d6_campaign_v0304_report.json) et
