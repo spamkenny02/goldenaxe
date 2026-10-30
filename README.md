@@ -90,6 +90,12 @@ La branche gagnante repart du segment vérifié ; l’essai perdu reste un
 diagnostic distinct. Aucune aide ne reprend après le début du combat.
 Voir le [sixième cristal et le retour](analysis/d6_campaign_v0304.md).
 
+Le septième donjon est engagé après ravitaillement : deux dons de 30 cornes,
+une clé achetée à 60, porte d’entrée ouverte et première clé du donjon
+obtenue. Huit relectures RAM/PNG exactes conduisent en 1CB à 60/80 PV et
+une clé. Le septième boss reste à atteindre. Voir le
+[ravitaillement D7](analysis/d7_supplies_v0304.md).
+
 Voir le [bilan v0304](analysis/burst_cadence_v0304.md),
 les [six cristaux vérifiés](analysis/d6_campaign_v0304_report.json) et
 l'[historique conservé du README](analysis/readme_history_through_v0296.md).

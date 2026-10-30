@@ -1710,3 +1710,6 @@ v0304 D3:bounded1800-frame segment50610 ends alive39HP/boss18HP;independent cold
 
 
 2026-10-30 v304 D6 crystal and exterior8B return verified: boss01 partial150596 -> cautious boss03 win152143 -> exit153868 HP80/80 MP48 keys0. Defeated boss02 is excluded from the successful chain. Guard ends146965,first combat146996 hurt0,normal damage150687 72->58. Three cold fixed-input replays match full65536 RAM and final PNG;450/104/82 whole-RAM prediction windows. All-instruction stack through153868:496-byte observed margin,valid heap,exact final RAM/PNG. No production-ROM change;D7+,ending,saves,global fidelity remain open. See analysis/d6_campaign_v0304_report.json.
+
+
+2026-10-30 v304 D7 resupply verified: initial entry156221 has zero keys and stalls at locked1DB upper door. Successful branch starts from D6 exit153868: gift7D+30,giftAC+30 after actual axe cut1C,merchant2E key60,return1DB with one key159361. Entry lock spends key159409;room1CB cleared and new key obtained160556,HP60/80,keys1,gold29,six crystals retained. Eight independent cold fixed-input RAM/PNG replays passed. Episode7 only approach hurt guards;boss179 not entered. No production-ROM change. See analysis/d7_supplies_v0304_report.json.
