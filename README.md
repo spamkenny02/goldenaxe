@@ -128,6 +128,12 @@ jusqu’à 1EA. Trois relectures RAM/PNG exactes conservent les sept cristaux,
 le navire et deux clés. Le contrôleur sait entrer dans cet escalier depuis
 le haut. Le huitième boss reste à atteindre ; voir l’[entrée D8](analysis/d8_entry_v0304.md).
 
+Le parcours de D8 atteint ensuite sa partie ouest et active les deux
+mécanismes distants : transformation de 1C8, puis ouverture de la sortie
+ouest de 1EB. Trois autres relectures sont exactes ; le héros revient en
+1EB à 40/88 PV et deux clés. Le combat intermédiaire contre le type 7A
+reste une approche assistée. Voir les [passages de D8](analysis/d8_passages_v0304.md).
+
 Voir le [bilan v0304](analysis/burst_cadence_v0304.md),
 les [sept cristaux vérifiés](analysis/d7_campaign_v0304_report.json) et
 l'[historique conservé du README](analysis/readme_history_through_v0296.md).

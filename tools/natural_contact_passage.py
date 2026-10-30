@@ -11,7 +11,8 @@ def main():
  ref=json.loads((ROOT/'analysis/contact_script_reference.json').read_bytes());assert ref['source_sha256']==sha((ROOT/'input/original.sms').read_bytes())
  row=next((r for r in ref['records'] if r['room']==a.contact_room and r['kind'] in ['stationary_up_passages','stationary_up_cell']),None);mechanism_source='contact_script_reference'
  if row is None:
-  puzzles=json.loads((ROOT/'analysis/room_puzzles_reference.json').read_bytes());assert puzzles['source_sha256']==ref['source_sha256'];row=next(r for r in puzzles['records'] if r['room']==a.contact_room and r['kind']=='open_blocked_passages');mechanism_source='room_puzzles_reference'
+  puzzles=json.loads((ROOT/'analysis/room_puzzles_reference.json').read_bytes());assert puzzles['source_sha256']==ref['source_sha256'];row=next(r for r in puzzles['records'] if r['room']==a.contact_room and r['kind'] in ['open_blocked_passages','redraw_remote_flag']);mechanism_source='room_puzzles_reference'
+ remote_room=(0x100|row['explicit_registers']['e']) if row['kind']=='redraw_remote_flag' else None
  coordinate=row.get('coordinate',0x168)
  point=next((x,y) for y in range(8,169,8) for x in range(8,249,8) if (((y-12)&248)<<3)+(((x-12)&255)>>2&62)+126==coordinate)
  sms='--sms' in remaining;flag='--continuation' if '--continuation' in remaining else '--prefix';name=remaining[remaining.index(flag)+1];family='natural-dungeon-combat' if flag=='--continuation' else 'natural-dungeon-route';prefix=json.loads((ROOT/'validation'/family/name/'capture.json').read_bytes());start=prefix['frames'];sy=None if sms else symbols(ROOT/'megadrive/out/release/symbol.txt')
@@ -27,11 +28,12 @@ def main():
    else:
     data=lambda n,k:bytes(r[(sy[n]+i)^1] for i in range(k));word=lambda n:int.from_bytes(data(n,2),'big');actors=data('world_actor_state',768)
     state.update(room=word('room_id'),game=word('game_state'),hero=word('hero_state'),counter=word('hero_counter'),x=word('hero_x')>>8,y=word('hero_y')>>8,flags=data('game_save_state',592)[0x50+(a.contact_room&255)],marker=r[(sy['scratch']+0x81b)^1],tilemap=data('sms_vram',16384)[0x3800:0x3e00],enemies=any(actors[i*48]>=0x20 and actors[i*48+0x18] for i in range(8)),active_enemies=any(actors[i*48]>=0x20 and actors[i*48+0x18] and actors[i*48+3]&2 for i in range(8)))
+   state['remote_flags']=(r[0x100+(remote_room&255)] if sms else data('game_save_state',592)[0x50+(remote_room&255)]) if remote_room is not None else 0
    if state['room']==a.contact_room and state['game']==12:
     value={k:v for k,v in state.items() if k not in ['tilemap','enemies']}
     if before is None:before=dict(frame=f,**value)
-    if not events or any(value[k]!=events[-1][k] for k in ['flags','marker']):events.append(dict(frame=f,**value));args[3].add(f+1)
-    if opened is None and (state['marker']==0x4d if row['kind']=='stationary_up_cell' else state['flags']&4):opened=dict(frame=f,**value)
+    if not events or any(value[k]!=events[-1][k] for k in ['flags','marker','remote_flags']):events.append(dict(frame=f,**value));args[3].add(f+1)
+    if opened is None and (state['remote_flags']&4 if remote_room is not None else state['marker']==0x4d if row['kind']=='stationary_up_cell' else state['flags']&4):opened=dict(frame=f,**value)
    if done is None and opened and state['room']==a.contact_destination and state['game']==12 and state['hero']==1:done=f;args[3].add(f+100)
   def choose(f):
    nonlocal last_direction
@@ -55,6 +57,6 @@ def main():
  finally:game.run=original
  folder=result['folder'];(folder/'controls.json').write_text(json.dumps(actual,indent=2)+'\n');(folder/'contact_events.json').write_text(json.dumps(events,indent=2)+'\n');r=json.loads((folder/'report.json').read_bytes())
  if done is not None:r.update(passed=True,failure=None,stop_reason='source_contact_passage_traversed',destination_combat_cleared=r['room_cleared'])
- r.update(mechanism_during_combat_requested=a.mechanism_during_combat,mechanism_source=mechanism_source,contact_route_passed=done is not None,contact_route_complete_frame=done,contact_room=a.contact_room,contact_destination=a.contact_destination,contact_coordinate=coordinate,contact_before=before,contact_opened=opened,contact_controller_sha256=sha(driver),contact_state_writes=0);(folder/'report.json').write_text(json.dumps(r,indent=2)+'\n');print('Contact passage traversed:',done is not None)
+ r.update(mechanism_during_combat_requested=a.mechanism_during_combat,mechanism_source=mechanism_source,contact_route_passed=done is not None,contact_route_complete_frame=done,contact_remote_room=remote_room,contact_room=a.contact_room,contact_destination=a.contact_destination,contact_coordinate=coordinate,contact_before=before,contact_opened=opened,contact_controller_sha256=sha(driver),contact_state_writes=0);(folder/'report.json').write_text(json.dumps(r,indent=2)+'\n');print('Contact passage traversed:',done is not None)
 
 if __name__=='__main__':main()
