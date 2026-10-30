@@ -19,7 +19,7 @@ from assisted_prefix import prefix_writes, recording, episodes, EPISODE_KEYS
 def main():
     parser = argparse.ArgumentParser(add_help=False)
     parser.add_argument('--boss-room', type=lambda value: int(value, 0), required=True)
-    parser.add_argument('--planner', choices=['beam', 'navigation', 'ordinary', 'side', 'escape', 'cautious', 'evasive', 'exit', 'earth', 'contact'], default='beam')
+    parser.add_argument('--planner', choices=['beam', 'navigation', 'ordinary', 'side', 'escape', 'cautious', 'evasive', 'exit', 'earth', 'contact', 'item'], default='beam')
     parser.add_argument('--boss-frames', type=int, help='Bound this diagnostic after normal combat starts')
     parser.add_argument('--retarget-pending-boss', action='store_true', help='Correct an unreached approach target; cold-prefix audit forbids either boss having been entered')
     parser.add_argument('--world-route', action='store_true', help='Apply the same guard to an exterior route')
@@ -197,7 +197,7 @@ def main():
         return original_walk(tilemap, start, goal, () if approach_active else enemies, geometry)
     if original_walk is not None:
         game.walk = walk
-    sys.argv = [sys.argv[0]] + ([] if args.world_route or args.planner in ('ordinary','earth','contact') else
+    sys.argv = [sys.argv[0]] + ([] if args.world_route or args.planner in ('ordinary','earth','contact','item') else
                                ['--lookahead-rooms', ','.join(hex(room) for room in plan_rooms)]) + remaining
     try:
         if args.world_route:
@@ -226,6 +226,9 @@ def main():
         elif args.planner == 'earth':
             import natural_earth_passage
             natural_earth_passage.main()
+        elif args.planner == 'item':
+            import natural_item_acquisition
+            natural_item_acquisition.main()
         elif args.planner == 'ordinary':
             game.main()
         else:

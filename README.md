@@ -96,6 +96,14 @@ obtenue. Huit relectures RAM/PNG exactes conduisent en 1CB à 60/80 PV et
 une clé. Le septième boss reste à atteindre. Voir le
 [ravitaillement D7](analysis/d7_supplies_v0304.md).
 
+Le navire de D7 est maintenant obtenu, à 80/80 PV et trois clés. Sept
+nouvelles relectures exactes couvrent la seconde clé, Terre, le dragon
+intermédiaire pendant l’approche assistée et la commande de 1E6 qui ouvre
+la porte distante de 1D6. Quatre pièges et un ennemi restent présents
+après la prise du navire ; le contrôleur valide l’objet, sans déclarer la
+salle nettoyée. Le boss principal de D7 reste à affronter. Voir le
+[navire et les passages D7](analysis/d7_progress_v0304.md).
+
 Voir le [bilan v0304](analysis/burst_cadence_v0304.md),
 les [six cristaux vérifiés](analysis/d6_campaign_v0304_report.json) et
 l'[historique conservé du README](analysis/readme_history_through_v0296.md).
