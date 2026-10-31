@@ -4,6 +4,7 @@ Chaque binaire est conserve sans ecrasement. Les controles cibles ne prouvent pa
 
 | Version | ROM | Validation | Changements | SHA-256 |
 | --- | --- | --- | --- | --- |
+| v0305 | [Telecharger](v0305-83dfaf69/gaw-megadrive-v0305.bin) | targeted_checks_passed | Escaliers interieurs1F/0F et huile de C7 :comparaison SMS en PAL/NTSC,parcours naturel et relectures exactes.Campagne complete encore non validee. | `83dfaf697521ce97597af259835eccae70bde055e70f321176caad34f93a23c7` |
 | v0304 | [Telecharger](v0304-b7b4e150/gaw-megadrive-v0304.bin) | targeted_checks_passed | Salves corrigees;trois premiers cristaux et sorties rejoues,dernier retour46/56PV avec corde. D4 et suite encore a valider. | `b7b4e15008a6f0a913c9ad43f15386abcdfbb719e5a575873d92712ba52503a8` |
 | v0303 | [Telecharger](v0303-bc4e6c9c/gaw-megadrive-v0303.bin) | intermediate_build | Etape de mesure intermediaire; remplacee par v0304. | `bc4e6c9c1401842b8291322a1c61432a4fe1c97f29e9203e934f917190da5dae` |
 | v0302 | [Telecharger](v0302-ce8313cc/gaw-megadrive-v0302.bin) | intermediate_build | Etape de mesure intermediaire; remplacee par v0304. | `ce8313ccf0487891d576bbff624d1f27efaa8722478865ca0a354f1a26b52255` |

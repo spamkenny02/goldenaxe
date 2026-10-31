@@ -2051,7 +2051,7 @@ static void begin_room_transition(void)
     else if((hero_y>>8)<16) direction=0;
     else if((hero_y>>8)>=161) direction=1;
     else return;
-    if(world_graphics_class==1) return;
+    /* 2051..21C5 also scrolls connected interior rooms, e.g.1F <->0F. */
     number=neighboring_room(direction);
     if(!world_graphics_class && (number<16 || (number&15)==15)) return;
     if(world_room_index[number*2]==255 && world_room_index[number*2+1]==255) return;

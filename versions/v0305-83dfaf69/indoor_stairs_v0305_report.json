@@ -1,0 +1,116 @@
+{
+  "passed": true,
+  "version": 305,
+  "md_sha256": "83dfaf697521ce97597af259835eccae70bde055e70f321176caad34f93a23c7",
+  "source_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+  "bytes": 2097152,
+  "checksum": "C3B8",
+  "changed_production_sources": [
+    "megadrive/src/main.c"
+  ],
+  "old_numbered_roms_preserved": 304,
+  "baseline_block_reproduced": true,
+  "controlled_source_comparisons": [
+    {
+      "region": "auto",
+      "room_sequence": [
+        31,
+        15,
+        31,
+        199
+      ],
+      "semantic_inventory_bytes_exact": 17,
+      "final_cells_exact": 160,
+      "oil_owned": 1,
+      "outside_flag": 2
+    },
+    {
+      "region": "pal",
+      "room_sequence": [
+        31,
+        15,
+        31,
+        199
+      ],
+      "semantic_inventory_bytes_exact": 17,
+      "final_cells_exact": 160,
+      "oil_owned": 1,
+      "outside_flag": 2
+    }
+  ],
+  "natural_stages": [
+    {
+      "trace": "validation/natural-dungeon-route/md-v0305-oil-route01",
+      "frames": 3965,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/natural-service-route/md-v0305-oil-stairs02",
+      "frames": 4677,
+      "whole_ram_png_exact": true
+    }
+  ],
+  "natural_oil_and_exterior_return": true,
+  "natural_health": 8,
+  "natural_ram_injections": false,
+  "natural_sram_checkpoint_injection": false,
+  "instruction_stack_margin_bytes": 666,
+  "stack_frames": 4677,
+  "historical_full_campaign_promoted": false,
+  "full_game_validated": false,
+  "evidence": {
+    "versions/v0305-83dfaf69/gaw-megadrive-v0305.bin": "83dfaf697521ce97597af259835eccae70bde055e70f321176caad34f93a23c7",
+    "gaw-megadrive.bin": "83dfaf697521ce97597af259835eccae70bde055e70f321176caad34f93a23c7",
+    "gaw-title-megadrive.bin": "83dfaf697521ce97597af259835eccae70bde055e70f321176caad34f93a23c7",
+    "input/original.sms": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+    "validation/v0304-before-indoor-fix/before.json": "439acedef9694e2dbdab970e3f830191520aa71c0369d66e03c3dba58233e7be",
+    "validation/v0305-indoor-sources/after.json": "4f74b5d026254417e3b1ac9786a071cd7f905f60ad99957a61800331485c5f4c",
+    "validation/v0304-before-indoor-fix/main.c": "969cdda649f64b57ed30a0dcb00b571a46f83e5033b27869a5c1ef1bf35c1efe",
+    "validation/v0305-indoor-sources/main.c": "ebef2763b7c3b51b19627ed341e155572b8f830dd604d8201bf27c75a5553e9e",
+    "validation/v0305-indoor-sources/symbol.txt": "bf0369c0f8efa1e441513127d6f1450924ac7b4db8da0081e1bfa24c2871424c",
+    "validation/indoor-stairs-v0304-baseline02/report.json": "f1ca66ef9d921ddb2a5a64690bc96a8d8549c4d7bc4e91ad31853af3e102b63c",
+    "validation/indoor-stairs-v0305-fix01/report.json": "df28285f381796491a91cec4e36bd1e0b25e4ac1e75f63d1c4babfb4546e0801",
+    "validation/indoor-stairs-v0305-fix01/sms/capture.json": "160e597588a96405a3f43f7f471959529da630279db7d71416c46796ed8d4e95",
+    "validation/indoor-stairs-v0305-fix01/sms/ram_04148.bin": "371718e73ac66e11e11256eb277fd8a7404b2964f3c5931bf29a5ebd13fed6c2",
+    "validation/indoor-stairs-v0305-fix01/md/capture.json": "cde426e0189fcc6b3554cbceaafd04cc6e00d6bbbd4f600846c992c3b1c350e5",
+    "validation/indoor-stairs-v0305-fix01/md/ram_04053.bin": "751b5321fabd4fd9031d4f0781e51b5ad753249e0bae8e521a7b2c76496c8a77",
+    "validation/indoor-stairs-v0305-fix01-pal/report.json": "d4fe5e2f93ac697efee2a77975f478ac25c5285b892c54460400afef35de7abd",
+    "validation/indoor-stairs-v0305-fix01-pal/sms/capture.json": "468285d81db4170d17ec47eba8917b5bdf34cd309f0a1ade3e4469e00c77aa4d",
+    "validation/indoor-stairs-v0305-fix01-pal/sms/ram_04139.bin": "b36616a9a56bddfce9891ac37d83996959991f946895fe78cbe6a041bf4a7b85",
+    "validation/indoor-stairs-v0305-fix01-pal/md/capture.json": "37205bd85134b66807e74dd38c0d92ba8c7af1bd9265cf7edf693bd83c9a134a",
+    "validation/indoor-stairs-v0305-fix01-pal/md/ram_04048.bin": "46c430c3ec6d4c4798fbc3dce10f71e0a2e30305b8d4b7814af26539cea522bb",
+    "validation/natural-dungeon-route/md-v0305-oil-route01/capture.json": "a62258ad92b4ced175c529f55591ab1770b447551fb2a5f3f213f235703b11e5",
+    "validation/natural-dungeon-route/md-v0305-oil-route01/route_report.json": "d0d242b4acfa557f9e8229efc94048683643ab254cf06fcfd907863b2818780a",
+    "validation/natural-dungeon-route/md-v0305-oil-route01-fixed-replay/replay_report.json": "e093bf63a7142393af3af70c1c292a21e97b0efc7c859decdd059dcc5cc34d14",
+    "validation/natural-dungeon-route/md-v0305-oil-route01/controls.json": "6db7b6bdbbb072f851e17e6ee48404cb9d08e9d389abb5466be3fc063955de40",
+    "validation/natural-dungeon-route/md-v0305-oil-route01/ram_03965.bin": "1399d776bfb87670d2176f67c6f3e14d1c5e74a396551d5e1a24d17688bdbb15",
+    "validation/natural-dungeon-route/md-v0305-oil-route01-fixed-replay/ram_03965.bin": "1399d776bfb87670d2176f67c6f3e14d1c5e74a396551d5e1a24d17688bdbb15",
+    "validation/natural-dungeon-route/md-v0305-oil-route01/frame_03965.png": "201cbaaecdbba7905ec4739156facfb7a6fbd3f27802637a141316d5e78d1149",
+    "validation/natural-dungeon-route/md-v0305-oil-route01-fixed-replay/frame_03965.png": "201cbaaecdbba7905ec4739156facfb7a6fbd3f27802637a141316d5e78d1149",
+    "validation/v0305-indoor-sources/natural_dungeon_route.py": "0efb66ae89ec6e92627442502afa3770f96c795cd8c79b90d91e2f10fc412ad6",
+    "validation/natural-service-route/md-v0305-oil-stairs02/capture.json": "88158613980fb6cdb553a0e297d1e392fbd7afbe45ed514ce4895045094f8ddb",
+    "validation/natural-service-route/md-v0305-oil-stairs02/report.json": "509238a03a30668147896fe53aa4ff8c2e50b67ae07a504729de23fc853ebd5a",
+    "validation/natural-service-route/md-v0305-oil-stairs02-fixed-replay/replay_report.json": "3acc9ddc78696a9310d03f4ce52ce7709e988451483a6705bcce88adf3053f19",
+    "validation/natural-service-route/md-v0305-oil-stairs02/controls.json": "738d6933a9b2f1fbafb2ce89ef196b9908c800e05c0de051c9c7424b2eed9eca",
+    "validation/natural-service-route/md-v0305-oil-stairs02/ram_04677.bin": "795540d8437bced22010c075ae4199ef0bcaf67c3340432e1ed04a3b11e522d0",
+    "validation/natural-service-route/md-v0305-oil-stairs02-fixed-replay/ram_04677.bin": "795540d8437bced22010c075ae4199ef0bcaf67c3340432e1ed04a3b11e522d0",
+    "validation/natural-service-route/md-v0305-oil-stairs02/frame_04677.png": "415cb91231c4bbab7946f17d7b7f0f0c5181355f3ae9882dbf3c4c2cb4716b79",
+    "validation/natural-service-route/md-v0305-oil-stairs02-fixed-replay/frame_04677.png": "415cb91231c4bbab7946f17d7b7f0f0c5181355f3ae9882dbf3c4c2cb4716b79",
+    "validation/natural-service-route/md-v0305-oil-stairs02/oil_stairs_driver.py": "b6c5f29e7091676cfdab48624745320c8e215fa6c8204cada6178815cefd87cc",
+    "validation/natural-service-route/md-v0305-oil-stairs02/events.json": "f78e20d2817a30dde52ecba3930f4e655fb79724ffc0beea328c127dde6094fe",
+    "validation/stack-v0305-oil-all/stack_report.json": "06d31a72d53e5bb8775f09ba864f34e833d0243aef3a290d9b74d26d1ccde957",
+    "validation/stack-v0305-oil-all/ram_04677.bin": "795540d8437bced22010c075ae4199ef0bcaf67c3340432e1ed04a3b11e522d0",
+    "validation/stack-v0305-oil-all/frame_04677.png": "415cb91231c4bbab7946f17d7b7f0f0c5181355f3ae9882dbf3c4c2cb4716b79",
+    "validation/natural-dungeon-combat/md-auto-v0305-d8-rebase-dynamic01/report.json": "796ddee89dfba6de0e4ffde33371a218aec92b3fd36392f3fe008b314a0f61a8",
+    "tools/validate_indoor_stairs.py": "889f15ba5130cf178577cfcf969273ccbd83051137ddab34e831cffd031b6306",
+    "tools/natural_oil_stairs.py": "b6c5f29e7091676cfdab48624745320c8e215fa6c8204cada6178815cefd87cc",
+    "tools/summarize_indoor_stairs_v0305.py": "0b371fe0a5704c770dd57b71af6f275393c7b898c1c538230a61beec789fa651"
+  },
+  "limits": [
+    "Original2051..21C5 permits interior borders. The v304 graphics_class1 early return blocked1F->0F. The sole production edit removes it;normal exterior/dungeon gates remain.",
+    "Controlled actual C7 door plus one interior pose fixture compare both regions,Oil ownership,seventeen semantic inventory values and160 final cells. Dedicated native primary/axe level fields normalize the source inventory entries0/1.",
+    "Natural new-game route and Oil/stairs/return replay with all65536RAM and finalPNG exact,without any RAM/SRAM fixtures. The read-only instruction-stack profile covers4677 frames of this path,not the entire campaign.",
+    "Historical v304 commands are not promoted:the v305 adaptive-guard replay reaches four crystals then dies inD5. This is retained as a failed fixed-input regression;the full v305 campaign requires further work.",
+    "The v304 seventh crystal/thief-key evidence remains version-specific. Later bosses,ending,saves,source RNG/global phase and complete SMS video/audio/hardware fidelity remain unproved."
+  ]
+}
