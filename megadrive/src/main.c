@@ -1440,19 +1440,34 @@ static void decode_room_map(u16 number,u8 *destination,u16 *native_map)
     prepare_room_cells(number);build_room_map(destination,native_map);
 }
 
+/* 1EB5..1EDB: nine owned-crystal markers at the original 1EDC HUD offsets. */
+static void prepare_hero_crystal_hud(void)
+{
+    static const u8 marks[18]={0x85,0x82,0x83,0x8e,0x87,0x86,0x89,0x8a,0x82,0x44,0x88,0x4c,0x86,0x06,0x84,0x0a,0x8a,0x48};
+    u16 n;
+    for(n=0;n<9;n++) if(game_save_state[0x1f+n]&0x80)
+    {
+        u16 address=0x3d00+marks[n*2+1];
+        sms_vram[address]=marks[n*2];sms_vram[address+1]=0x59;
+    }
+}
+
 /* 5C40/5C18/5BF0: shared passage opening after the empty-cell guard. */
 static void redraw_current_room(u32 redraw_started)
 {
     u32 budget;
     prepare_room_cells(room_id);build_room_map(sms_vram+0x3800,world_new_md);
     memcpy(md_map,world_new_md,sizeof(world_new_md));
+    prepare_hero_crystal_hud();
+    source_class0_video_map(sms_vram+0x3d00,md_map+20*32,32*4);
     /* 1976/2279/1E4E run in the foreground while IRQ audio/video continues.
      * Account for native work already spent, then retain the 0B95 VBlank
      * barrier before the map upload. HUD/IRQ phase remains approximate. */
     budget=(SYS_isPAL()?71364UL:59736UL)-3072;
     while(vtimer-redraw_started<WORLD_REDRAW_PREPARE_TSTATES/budget) wait_frame();
     wait_frame();
-    VDP_setTileMapDataRect(BG_A,world_new_md,0,2,32,20,32,CPU);
+    /* 1DE2 also restores all four HUD rows after the acquisition window. */
+    VDP_setTileMapDataRect(BG_A,md_map,0,2,32,24,32,CPU);
 }
 
 #include "ice_bell.inc"
@@ -2985,6 +3000,7 @@ reload_world:
     memcpy(sms_vram+0x3d58,world_hud_icon_words,4);
     memcpy(sms_vram+0x3d98,world_hud_icon_words+4,4);
     for(n=0x3d01;n<0x3e00;n+=2) sms_vram[n]|=0x40;
+    prepare_hero_crystal_hud();
     for(n=0;n<(hero_max_health>>3);n++)
     { sms_vram[0x3d5e + n*2]=n<3?0x8b:0x8f;sms_vram[0x3d5f+n*2]=0x19; }
     for(n=0;n<(hero_max_magic>>3);n++)

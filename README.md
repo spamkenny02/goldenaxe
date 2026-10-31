@@ -5,17 +5,29 @@ puis portage de sa logique Z80 en code natif 68000 avec SGDK.
 La fidélité à la Master System passe avant les améliorations.
 
 <!-- ROM-RELEASE:START -->
-**Version courante : v0305 — 2048 Kio.**
+**Version courante : v0306 — 2048 Kio.**
 
-[Télécharger la ROM v0305](versions/v0305-83dfaf69/gaw-megadrive-v0305.bin) · [Toutes les versions](versions/README.md)
+[Télécharger la ROM v0306](versions/v0306-3a12380b/gaw-megadrive-v0306.bin) · [Toutes les versions](versions/README.md)
 
 Contrôles ciblés réussis ; portage complet encore non validé.
 
-SHA-256 : `83dfaf697521ce97597af259835eccae70bde055e70f321176caad34f93a23c7`
-Checksum Mega Drive : `C3B8`
+SHA-256 : `3a12380b86c193148d1cbd29d68a880901860cfb1c276aa96d61d2da16ac2c01`
+Checksum Mega Drive : `343B`
 <!-- ROM-RELEASE:END -->
 
 ## État du portage
+
+La **v0306 restaure le HUD après les fenêtres d’objet et de cristal** et
+affiche les neuf indicateurs de cristal selon la table SMS. Les comparaisons
+PAL/NTSC couvrent 22 scénarios, 44 images après fermeture et les fenêtres
+avant fermeture : carte physique du HUD et tuiles utilisées conformes.
+
+Le parcours jusqu’aux **quatre premiers cristaux et au retour dehors en 10**
+est aussi rejoué sur v0306, à 50/64 PV, avec Terre, canoë, corde, hache et
+huile. La relecture froide indépendante reproduit toute la RAM et le PNG
+final ; les protections d’approche sont retirées avant chaque boss principal.
+Le profil de pile jusqu’à 86 364 images observe 442 octets de marge.
+Voir le [rapport de la v0306](analysis/reward_hud_v0306.md).
 
 La **v0305 corrige le blocage des escaliers entre pièces intérieures**.
 Chez les marchands de C7, il est maintenant possible de monter de la pièce
@@ -70,9 +82,8 @@ téléporteur. Quatorze relectures RAM/PNG sont exactes ; la protection cesse
 avant le boss et ne reprend pas au retour. Voir le
 [rapport du quatrième donjon](analysis/d4_campaign_v0305.md).
 
-**Défaut visuel identifié sur v0305 :** le HUD physique reste partiellement
-remplacé par la fenêtre d’acquisition après les objets ou cristaux. Ces
-preuves de progression ne valident pas ce rendu ; sa correction est en cours.
+Le défaut visuel du HUD documenté sur v0305 est corrigé dans la v0306.
+Les rapports v0305 ci-dessus conservent leur périmètre historique.
 
 ## Campagne et travail restant
 

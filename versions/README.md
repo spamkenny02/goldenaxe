@@ -4,6 +4,7 @@ Chaque binaire est conserve sans ecrasement. Les controles cibles ne prouvent pa
 
 | Version | ROM | Validation | Changements | SHA-256 |
 | --- | --- | --- | --- | --- |
+| v0306 | [Telecharger](v0306-3a12380b/gaw-megadrive-v0306.bin) | targeted_checks_passed | HUD restaure apres objets/cristaux ; neuf marqueurs SMS exacts PAL/NTSC ; quatre cristaux/retour rejoues sur v306. Portage complet non valide. | `3a12380b86c193148d1cbd29d68a880901860cfb1c276aa96d61d2da16ac2c01` |
 | v0305 | [Telecharger](v0305-83dfaf69/gaw-megadrive-v0305.bin) | targeted_checks_passed | Quatre cristaux/retours,Terre et canoe verifies ; defaut de restauration du HUD identifie,correction en cours. Portage complet non valide. | `83dfaf697521ce97597af259835eccae70bde055e70f321176caad34f93a23c7` |
 | v0304 | [Telecharger](v0304-b7b4e150/gaw-megadrive-v0304.bin) | targeted_checks_passed | Salves corrigees;trois premiers cristaux et sorties rejoues,dernier retour46/56PV avec corde. D4 et suite encore a valider. | `b7b4e15008a6f0a913c9ad43f15386abcdfbb719e5a575873d92712ba52503a8` |
 | v0303 | [Telecharger](v0303-bc4e6c9c/gaw-megadrive-v0303.bin) | intermediate_build | Etape de mesure intermediaire; remplacee par v0304. | `bc4e6c9c1401842b8291322a1c61432a4fe1c97f29e9203e934f917190da5dae` |
