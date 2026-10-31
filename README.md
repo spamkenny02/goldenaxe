@@ -22,23 +22,25 @@ affiche les neuf indicateurs de cristal selon la table SMS. Les comparaisons
 PAL/NTSC couvrent 22 scénarios, 44 images après fermeture et les fenêtres
 avant fermeture : carte physique du HUD et tuiles utilisées conformes.
 
-Le parcours courant valide les **cinq premiers cristaux et le retour dehors
-en 49**, à 40/72 PV, avec Feu, Terre, canoë, corde, bottes et épée longue.
-L’huile a été obtenue en C7 puis échangée contre le Feu ; les dons, l’achat
-de la clé à 60 pièces et le soin du marchand sont effectués dans le jeu.
-L’épée longue est sélectionnée ; l’armure reste au niveau 1.
+Le parcours courant valide les **six premiers cristaux et le retour dehors
+en 8B**, à **80/80 PV et 72/72 PM**, avec Feu, Terre, canoë, corde, bottes,
+cloche de glace et épée longue. La hache de niveau 1 est sélectionnée ;
+l’armure reste au niveau 1. Les objets, les clés, l’argent et les soins sont
+obtenus par les actions du jeu.
 
-Les 16 étapes du cinquième donjon, ravitaillement et retour compris, ont
-chacune une relecture froide indépendante identique sur les 65 536 octets
-de RAM et le PNG final. Les protections d’approche sont retirées avant les
-boss principaux et ne sont pas réactivées pendant le retour.
-Le pont du cinquième cristal est débloqué ; les 128 mots du HUD final et
-les cinq indicateurs de cristal sont vérifiés.
+Les **21 étapes validées du sixième donjon** comprennent la sélection de la
+hache par le menu, les clés, les mécanismes, sept lancers de Terre, la cloche,
+le combat et le retour. Chaque étape possède une relecture froide indépendante
+identique sur les 65 536 octets de RAM et le PNG final.
+Les protections d’approche sont retirées avant les boss principaux et ne sont
+pas réactivées pendant le retour. Aucun PV ni objet n’est injecté.
+Les 128 mots du HUD final et les six indicateurs de cristal sont vérifiés.
 
-Le profil de chaque instruction normale jusqu’à **125 472 images** observe
+Le profil de chaque instruction normale jusqu’à **162 574 images** observe
 **442 octets de marge de pile**, sans corruption du tas. Le portage complet,
 la fin et la fidélité audiovisuelle globale restent à valider.
-Voir le [parcours du cinquième cristal](analysis/d5_campaign_v0306.md),
+Voir le [sixième cristal](analysis/d6_campaign_v0306.md),
+le [cinquième cristal](analysis/d5_campaign_v0306.md),
 le [parcours Feu et épée](analysis/fire_sword_v0306.md) et le
 [correctif du HUD v0306](analysis/reward_hud_v0306.md).
 
