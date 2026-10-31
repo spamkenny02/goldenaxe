@@ -22,7 +22,7 @@ affiche les neuf indicateurs de cristal selon la table SMS. Les comparaisons
 PAL/NTSC couvrent 22 scénarios, 44 images après fermeture et les fenêtres
 avant fermeture : carte physique du HUD et tuiles utilisées conformes.
 
-Le parcours courant valide les **six premiers cristaux et le retour dehors
+Le parcours courant a validé les **six premiers cristaux et le retour dehors
 en 8B**, à **80/80 PV et 72/72 PM**, avec Feu, Terre, canoë, corde, bottes,
 cloche de glace et épée longue. La hache de niveau 1 est sélectionnée ;
 l’armure reste au niveau 1. Les objets, les clés, l’argent et les soins sont
@@ -43,6 +43,14 @@ Voir le [sixième cristal](analysis/d6_campaign_v0306.md),
 le [cinquième cristal](analysis/d5_campaign_v0306.md),
 le [parcours Feu et épée](analysis/fire_sword_v0306.md) et le
 [correctif du HUD v0306](analysis/reward_hud_v0306.md).
+
+L'approvisionnement du **septième donjon est aussi validé** : deux dons de
+30 pièces, achat réel d'une clé pour 60, ouverture de la porte et première clé
+récupérée en 1CB. Huit relectures indépendantes reproduisent la RAM et l'image
+finales. Le point courant conserve les six cristaux et atteint **72/80 PV**.
+Une première branche de test qui effaçait le délai des dégâts de terrain est
+exclue ; le trajet retenu préserve ce délai. Aucun changement de ROM.
+Voir [l'entrée du septième donjon](analysis/d7_supplies_v0306.md).
 
 La **v0305 corrige le blocage des escaliers entre pièces intérieures**.
 Chez les marchands de C7, il est maintenant possible de monter de la pièce
