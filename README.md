@@ -55,6 +55,14 @@ combat du deuxième boss et ne reprend pas au retour. Le profil de pile
 jusqu’à 40 562 images observe 450 octets de marge. Voir le
 [rapport du deuxième donjon](analysis/d2_campaign_v0305.md).
 
+Le **troisième cristal et le retour en extérieur 62** sont maintenant
+vérifiés sur v0305, à 56/56 PV, avec la corde obtenue dans son donjon.
+Le mécanisme original de la salle 1E3 ouvre le passage avant le boss ; cette
+salle est traversée avec ses ennemis encore présents. Quatre relectures
+RAM/PNG sont exactes, et aucune protection ne reprend après le début du
+combat. Le profil de pile jusqu’à 55 110 images observe 450 octets de marge.
+Voir le [rapport du troisième donjon](analysis/d3_campaign_v0305.md).
+
 ## Campagne et travail restant
 
 Les sept premiers cristaux et leurs sorties ont été validés sur **v0304**.
