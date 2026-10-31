@@ -63,6 +63,17 @@ RAM/PNG sont exactes, et aucune protection ne reprend après le début du
 combat. Le profil de pile jusqu’à 55 110 images observe 450 octets de marge.
 Voir le [rapport du troisième donjon](analysis/d3_campaign_v0305.md).
 
+Le **quatrième cristal et le retour en extérieur 10** sont également
+vérifiés sur v0305, à 50/64 PV. Le parcours obtient normalement 50 cornes,
+achète Terre, dégage deux passages, récupère le canoë et utilise le
+téléporteur. Quatorze relectures RAM/PNG sont exactes ; la protection cesse
+avant le boss et ne reprend pas au retour. Voir le
+[rapport du quatrième donjon](analysis/d4_campaign_v0305.md).
+
+**Défaut visuel identifié sur v0305 :** le HUD physique reste partiellement
+remplacé par la fenêtre d’acquisition après les objets ou cristaux. Ces
+preuves de progression ne valident pas ce rendu ; sa correction est en cours.
+
 ## Campagne et travail restant
 
 Les sept premiers cristaux et leurs sorties ont été validés sur **v0304**.
