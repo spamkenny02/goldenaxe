@@ -47,6 +47,14 @@ et le PNG final. Le profil de pile de cette branche, jusqu’à 17 482 images,
 observe 466 octets de marge. Voir le [rapport du premier donjon](analysis/d1_oil_v0305.md).
 Cette vérification ne valide pas encore les donjons suivants sur v0305.
 
+La **hache, la première fée de vie, le deuxième cristal et sa sortie** sont
+également vérifiés sur v0305. Le retour finit en D6 à 31/48 PV, avec une clé,
+la hache équipée et l’huile conservée. Douze étapes disposent de relectures
+RAM/PNG exactes. La protection d’approche se termine 57 images avant le
+combat du deuxième boss et ne reprend pas au retour. Le profil de pile
+jusqu’à 40 562 images observe 450 octets de marge. Voir le
+[rapport du deuxième donjon](analysis/d2_campaign_v0305.md).
+
 ## Campagne et travail restant
 
 Les sept premiers cristaux et leurs sorties ont été validés sur **v0304**.
