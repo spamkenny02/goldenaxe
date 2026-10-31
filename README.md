@@ -29,6 +29,15 @@ final ; les protections d’approche sont retirées avant chaque boss principal.
 Le profil de pile jusqu’à 86 364 images observe 442 octets de marge.
 Voir le [rapport de la v0306](analysis/reward_hud_v0306.md).
 
+La suite du parcours sur cette même ROM valide maintenant l’échange de
+l’huile contre le **Feu**, la magie maximale de 48 à 72, le don de
+l’**épée longue** et l’entrée du **cinquième donjon** à 50/64 PV.
+Sept étapes sont relues indépendamment avec toute la RAM et le PNG final
+identiques. Les quatre cristaux restent acquis ; le cinquième n’est pas
+encore validé. L’armure reste au niveau 1 et la hache reste sélectionnée.
+La pile est vérifiée jusqu’au don de l’épée, avec 442 octets de marge.
+Voir le [parcours Feu et épée sur v0306](analysis/fire_sword_v0306.md).
+
 La **v0305 corrige le blocage des escaliers entre pièces intérieures**.
 Chez les marchands de C7, il est maintenant possible de monter de la pièce
 1F vers la pièce 0F, de récupérer l’huile, de redescendre et de ressortir.
