@@ -39,6 +39,14 @@ Validation de cette correction :
 Détails et limites : [rapport de la v0305](analysis/indoor_stairs_v0305.md)
 et [résultats vérifiables](analysis/indoor_stairs_v0305_report.json).
 
+La suite sur v0305 confirme maintenant le **premier cristal et le retour
+à l’extérieur en B9, à 28/32 PV**, avec l’huile conservée. La protection
+d’approche est retirée 72 images avant le premier combat du boss et ne reprend
+pas pendant le retour. Quatre relectures froides reproduisent toute la RAM
+et le PNG final. Le profil de pile de cette branche, jusqu’à 17 482 images,
+observe 466 octets de marge. Voir le [rapport du premier donjon](analysis/d1_oil_v0305.md).
+Cette vérification ne valide pas encore les donjons suivants sur v0305.
+
 ## Campagne et travail restant
 
 Les sept premiers cristaux et leurs sorties ont été validés sur **v0304**.
