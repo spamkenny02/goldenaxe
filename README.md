@@ -22,21 +22,25 @@ affiche les neuf indicateurs de cristal selon la table SMS. Les comparaisons
 PAL/NTSC couvrent 22 scénarios, 44 images après fermeture et les fenêtres
 avant fermeture : carte physique du HUD et tuiles utilisées conformes.
 
-Le parcours jusqu’aux **quatre premiers cristaux et au retour dehors en 10**
-est aussi rejoué sur v0306, à 50/64 PV, avec Terre, canoë, corde, hache et
-huile. La relecture froide indépendante reproduit toute la RAM et le PNG
-final ; les protections d’approche sont retirées avant chaque boss principal.
-Le profil de pile jusqu’à 86 364 images observe 442 octets de marge.
-Voir le [rapport de la v0306](analysis/reward_hud_v0306.md).
+Le parcours courant valide les **cinq premiers cristaux et le retour dehors
+en 49**, à 40/72 PV, avec Feu, Terre, canoë, corde, bottes et épée longue.
+L’huile a été obtenue en C7 puis échangée contre le Feu ; les dons, l’achat
+de la clé à 60 pièces et le soin du marchand sont effectués dans le jeu.
+L’épée longue est sélectionnée ; l’armure reste au niveau 1.
 
-La suite du parcours sur cette même ROM valide maintenant l’échange de
-l’huile contre le **Feu**, la magie maximale de 48 à 72, le don de
-l’**épée longue** et l’entrée du **cinquième donjon** à 50/64 PV.
-Sept étapes sont relues indépendamment avec toute la RAM et le PNG final
-identiques. Les quatre cristaux restent acquis ; le cinquième n’est pas
-encore validé. L’armure reste au niveau 1 et la hache reste sélectionnée.
-La pile est vérifiée jusqu’au don de l’épée, avec 442 octets de marge.
-Voir le [parcours Feu et épée sur v0306](analysis/fire_sword_v0306.md).
+Les 16 étapes du cinquième donjon, ravitaillement et retour compris, ont
+chacune une relecture froide indépendante identique sur les 65 536 octets
+de RAM et le PNG final. Les protections d’approche sont retirées avant les
+boss principaux et ne sont pas réactivées pendant le retour.
+Le pont du cinquième cristal est débloqué ; les 128 mots du HUD final et
+les cinq indicateurs de cristal sont vérifiés.
+
+Le profil de chaque instruction normale jusqu’à **125 472 images** observe
+**442 octets de marge de pile**, sans corruption du tas. Le portage complet,
+la fin et la fidélité audiovisuelle globale restent à valider.
+Voir le [parcours du cinquième cristal](analysis/d5_campaign_v0306.md),
+le [parcours Feu et épée](analysis/fire_sword_v0306.md) et le
+[correctif du HUD v0306](analysis/reward_hud_v0306.md).
 
 La **v0305 corrige le blocage des escaliers entre pièces intérieures**.
 Chez les marchands de C7, il est maintenant possible de monter de la pièce
