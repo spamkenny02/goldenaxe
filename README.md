@@ -47,10 +47,20 @@ le [parcours Feu et épée](analysis/fire_sword_v0306.md) et le
 L'approvisionnement du **septième donjon est aussi validé** : deux dons de
 30 pièces, achat réel d'une clé pour 60, ouverture de la porte et première clé
 récupérée en 1CB. Huit relectures indépendantes reproduisent la RAM et l'image
-finales. Le point courant conserve les six cristaux et atteint **72/80 PV**.
+finales. Cette étape conserve les six cristaux et s'achève à **72/80 PV**.
 Une première branche de test qui effaçait le délai des dégâts de terrain est
 exclue ; le trajet retenu préserve ce délai. Aucun changement de ROM.
 Voir [l'entrée du septième donjon](analysis/d7_supplies_v0306.md).
+
+La suite valide le **combat intermédiaire du septième donjon sans protection**,
+vaincu avec **80/80 PV**, puis la **récupération du bateau**. Le point courant
+est en 1D5, à **80/80 PV, 72/72 PM et deux clés**, avec six cristaux. Dix nouveaux
+checkpoints reproduisent toute la RAM et l'image finale. Les 128 mots du HUD
+après la fenêtre du bateau et les six indicateurs de cristal sont vérifiés.
+La protection d'approche reprend après le combat intermédiaire ; elle devra
+être retirée avant le boss principal. L'essai sud sans protection mort en 1B7
+est conservé séparément. Le boss principal et le septième cristal restent
+à valider. Voir [le combat intermédiaire et le bateau](analysis/d7_progress_v0306.md).
 
 La **v0305 corrige le blocage des escaliers entre pièces intérieures**.
 Chez les marchands de C7, il est maintenant possible de monter de la pièce
