@@ -122,6 +122,7 @@ static u8 room_metadata[3]; /* C06E..C070 */
 static u16 room_id,game_state,transition_direction,transition_stage,transition_step;
 static bool transition_pose_prepared;
 static volatile u16 world_video_pending;
+static volatile u16 palace_gate_video_pending;
 /* Source1B0E/49EA queue terrain writes for the next IRQ. Stage complete
  * rows independently of dialogue storage and mutable world-map buffers. */
 static u16 world_cell_rows[20*32];
@@ -1303,6 +1304,16 @@ static void world_vint(void)
         __asm__ volatile ("" ::: "memory");
         world_video_pending=0;
     }
+    if(palace_gate_video_pending)
+    {
+        /* The SMS plane wraps after 32 columns; mirror its hidden half. */
+        if(palace_gate_video_pending&2)
+            VDP_setTileMapDataRect(BG_A,md_map,32,2,32,20,32,DMA);
+        VDP_setHorizontalScrollLine(BG_A,0,world_hscroll,224,DMA);
+        VDP_updateSprites(world_video_sat_count,DMA);
+        __asm__ volatile ("" ::: "memory");
+        palace_gate_video_pending=0;
+    }
     if(screen_spell_video_pending)
     {
         VDP_setTileMapDataRect(BG_A,md_map,0,2,32,20,32,DMA);
@@ -2320,6 +2331,39 @@ static void portal_wait_frame(void)
     do { wait_frame(); } while(vtimer==before);
 }
 
+/* 6911..698A: the nine crystals open the western palace approach once.
+ * Freeze the rendered sprite scene, as the source shifts its saved SAT
+ * rather than running actors during the nine 32-frame shake stages.
+ * The dialogue/video workspace is idle after the completed world frame. */
+static void check_palace_gate(void)
+{
+    u16 n,amplitude,frame;
+    VDPSprite *saved=(VDPSprite *)house_dialogue_backup;
+    if(world_graphics_class || room_id!=0x8b || !hero_state || game_save_state[0x48]) return;
+    for(n=0;n<9;n++) if(!(game_save_state[0x1f+n]&0x80)) return;
+    game_save_state[0x50+0x8b]|=1;game_save_state[0x48]=1;
+    memcpy(saved,vdpSpriteCache,world_video_sat_count*sizeof(VDPSprite));
+    memset(world_hscroll,0,sizeof(world_hscroll));
+    palace_gate_video_pending=2;portal_wait_frame();
+    for(amplitude=9;amplitude--;) for(frame=0;frame<32;frame++)
+    {
+        u8 clock=world_clock();
+        s16 displacement=(clock&2)?-(s16)amplitude:(s16)amplitude;
+        if(!(clock&3)) sound_effect(0x9e);
+        for(n=16;n<176;n++) world_hscroll[n]=displacement;
+        for(n=0;n<world_video_sat_count;n++)
+            vdpSpriteCache[n].x=128+(u8)(saved[n].x-128+displacement);
+        __asm__ volatile ("" ::: "memory");
+        palace_gate_video_pending=1;
+        while(palace_gate_video_pending) __asm__ volatile ("nop");
+        SYS_doVBlankProcessEx(IMMEDIATELY);input=JOY_readJoypad(JOY_1);
+    }
+    memcpy(vdpSpriteCache,saved,world_video_sat_count*sizeof(VDPSprite));
+    memset(world_hscroll,0,sizeof(world_hscroll));
+    palace_gate_video_pending=1;
+    sound_effect_main(0xa8);redraw_current_room(vtimer);
+}
+
 /* 5CFB..5D4B: a successful portal skips the remaining room script.
  * Stage preserves whether the original clear handler precedes this call. */
 static bool check_dungeon_portal(u8 flags,u16 stage,bool prefix_redraw)
@@ -2936,7 +2980,7 @@ static bool tick_world_simulation(void)
         if(check_dungeon_portal(script_flags,0,vtimer!=script_started)) return TRUE;
         check_dungeon_room_clear();check_room_puzzle(script_flags,1);
         if(check_dungeon_portal(script_flags,1,vtimer!=script_started)) return TRUE;
-        check_village_door(old_x,old_y);check_crystal_bridge();check_house_service(old_x,old_y);check_house_talk(old_x,old_y,script_flags);begin_room_transition();
+        check_village_door(old_x,old_y);check_palace_gate();check_crystal_bridge();check_house_service(old_x,old_y);check_house_talk(old_x,old_y,script_flags);begin_room_transition();
     }
     animate_dungeon_bitmaps();animate_dungeon_cells();animate_world_palette();
     if(game_state==12 && hero_health && (input&~world_previous_input&BUTTON_B)) game_state=16;

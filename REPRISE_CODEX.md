@@ -2,9 +2,20 @@
 
 Etat de cette note : 1 novembre 2026. Lire aussi README.md et les rapports plus recents eventuellement ajoutes depuis cette note. Le changement de compte ne termine pas l'objectif du portage.
 
-## Point de reprise courant : neuf cristaux
+## Correctif courant : v0308, passage du palais
 
-Le jalon `analysis/d9_campaign_v0306_report.json` valide la victoire6C et le retour dehors enEB :270242 images,104/104PV,72/72PM,1cle,37pieces,neuf cristaux. Le checkpoint est `validation/natural-dungeon-combat/md-auto-v0306-d9-exit01`, avec sa relecture froide complete. La ROM est toujoursv0306. Aucun processus de validation ne reste actif a la livraison de ce jalon.
+La ROM courante est v0308. Le correctif porte6911-698A : apres les neuf cristaux,
+la salle8B ouvre le passage ouest vers8A puis89. Quatre tests controles SMS/MD
+valident le garde huit/neuf cristaux,les289 images et chaque decalage horizontal.
+Voir analysis/palace_gate_v0308.md et analysis/palace_gate_v0308_report.json.
+Ce ne sont pas des preuves naturelles : le checkpoint campagne ci-dessous reste
+sur v0306 et doit etre rejoue sur v0308 avant extension. La v0307 intermediaire
+est conservee ; v0308 corrige le choix de file sonore9E (DE06).
+La suite est le trajet EB vers8B,puis la porte finale89 et la hache doree11D.
+
+## Point de reprise campagne : neuf cristaux
+
+Le jalon `analysis/d9_campaign_v0306_report.json` valide la victoire6C et le retour dehors enEB :270242 images,104/104PV,72/72PM,1cle,37pieces,neuf cristaux. Le checkpoint est `validation/natural-dungeon-combat/md-auto-v0306-d9-exit01`, avec sa relecture froide complete. Ce checkpoint utilise v0306. Aucun processus de validation ne reste actif a la livraison de ce jalon.
 
 Voir `analysis/d9_campaign_v0306.md` pour les mecanismes regroupes,les200 predictions exactes et les six nouveaux checkpoints froids. L'archive locale est `analysis/d9-campaign-v0306`. Le profil de pile reste celui du huitieme donjon ; ne pas attribuer les402octets a toute cette nouvelle partie.
 
@@ -28,7 +39,7 @@ ATTENTION : `.gitignore` exclut notamment `validation/`, `megadrive/out/` et les
 Commit de reference pour l'acces : `b0f743f007b7b06240bd48286d59ebf49a8720d4`. Pour le dernier commit publie, consulter git log et origin/main.
 Depot actuellement redirige vers `https://github.com/spamkenny02/goldenaxe.git` ; l'ancien origin spamkenny02-commits fonctionne par redirection. Apres un futur transfert GitHub, mettre origin a jour avec l'URL du nouveau proprietaire.
 
-ROM courante : v0306, 2048 Kio.
+ROM du checkpoint de campagne : v0306, 2048 Kio.
 SHA-256 : `3a12380b86c193148d1cbd29d68a880901860cfb1c276aa96d61d2da16ac2c01`.
 Checksum Mega Drive : `343B`.
 306 ROMs numerotees ; les deux fichiers racine ont les memes octets que v0306.

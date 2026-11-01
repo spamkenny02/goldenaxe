@@ -4,6 +4,8 @@ Chaque binaire est conserve sans ecrasement. Les controles cibles ne prouvent pa
 
 | Version | ROM | Validation | Changements | SHA-256 |
 | --- | --- | --- | --- | --- |
+| v0308 | [Telecharger](v0308-e0d9c183/gaw-megadrive-v0308.bin) | targeted_checks_passed | Passage du palais apres neuf cristaux : secousse 289 images et garde huit cristaux conformes SMS en scenario controle ; parcours reel a rejouer. | `e0d9c1834dd79fffd084303d458af5e2a12dfa876a34e6c87aa13e1e40d90b9b` |
+| v0307 | [Telecharger](v0307-fc063015/gaw-megadrive-v0307.bin) | build_only | Compilation ; validation en attente. | `fc0630152635c259f45511a74d1bcf70358dd7666799f1eedeefa32d61277c67` |
 | v0306 | [Telecharger](v0306-3a12380b/gaw-megadrive-v0306.bin) | targeted_checks_passed | HUD restaure apres objets/cristaux ; neuf marqueurs SMS exacts PAL/NTSC ; quatre cristaux/retour rejoues sur v306. Portage complet non valide. | `3a12380b86c193148d1cbd29d68a880901860cfb1c276aa96d61d2da16ac2c01` |
 | v0305 | [Telecharger](v0305-83dfaf69/gaw-megadrive-v0305.bin) | targeted_checks_passed | Quatre cristaux/retours,Terre et canoe verifies ; defaut de restauration du HUD identifie,correction en cours. Portage complet non valide. | `83dfaf697521ce97597af259835eccae70bde055e70f321176caad34f93a23c7` |
 | v0304 | [Telecharger](v0304-b7b4e150/gaw-megadrive-v0304.bin) | targeted_checks_passed | Salves corrigees;trois premiers cristaux et sorties rejoues,dernier retour46/56PV avec corde. D4 et suite encore a valider. | `b7b4e15008a6f0a913c9ad43f15386abcdfbb719e5a575873d92712ba52503a8` |

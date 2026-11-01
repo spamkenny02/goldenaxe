@@ -5,17 +5,23 @@ puis portage de sa logique Z80 en code natif 68000 avec SGDK.
 La fidélité à la Master System passe avant les améliorations.
 
 <!-- ROM-RELEASE:START -->
-**Version courante : v0306 — 2048 Kio.**
+**Version courante : v0308 — 2048 Kio.**
 
-[Télécharger la ROM v0306](versions/v0306-3a12380b/gaw-megadrive-v0306.bin) · [Toutes les versions](versions/README.md)
+[Télécharger la ROM v0308](versions/v0308-e0d9c183/gaw-megadrive-v0308.bin) · [Toutes les versions](versions/README.md)
 
 Contrôles ciblés réussis ; portage complet encore non validé.
 
-SHA-256 : `3a12380b86c193148d1cbd29d68a880901860cfb1c276aa96d61d2da16ac2c01`
-Checksum Mega Drive : `343B`
+SHA-256 : `e0d9c1834dd79fffd084303d458af5e2a12dfa876a34e6c87aa13e1e40d90b9b`
+Checksum Mega Drive : `3C5B`
 <!-- ROM-RELEASE:END -->
 
 ## État du portage
+
+La **v0308 restaure l'ouverture du passage vers le palais apres les neuf
+cristaux**. Le test controle SMS/MD reproduit les289 images,les neuf amplitudes
+de secousse et chaque changement de decalage. Avec huit cristaux,le passage
+reste ferme. Voir [le correctif du palais](analysis/palace_gate_v0308.md).
+Ce controle utilise un scenario isole ; le parcours complet sur v0308 reste a rejouer.
 
 La **v0306 restaure le HUD après les fenêtres d’objet et de cristal** et
 affiche les neuf indicateurs de cristal selon la table SMS. Les comparaisons
