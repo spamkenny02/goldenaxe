@@ -22,12 +22,11 @@ affiche les neuf indicateurs de cristal selon la table SMS. Les comparaisons
 PAL/NTSC couvrent 22 scénarios, 44 images après fermeture et les fenêtres
 avant fermeture : carte physique du HUD et tuiles utilisées conformes.
 
-Le parcours courant conserve les **sept premiers cristaux** et valide le
-**combat intermédiaire du huitième donjon sans protection**. Le point courant
-est en **1C9**, à **46/88 PV et 64/72 PM**, avec Feu, Terre, canoë, corde,
-bottes, cloche de glace, bateau et épée longue. L’épée longue de niveau 2 est
-sélectionnée ; la hache et l’armure restent au niveau 1. Les objets, les clés, l’argent et les soins sont
-obtenus par les actions du jeu.
+Le parcours courant valide les **huit premiers cristaux et le retour dehors
+en 29**, à **84/96 PV et 72/72 PM**, avec la clé des voleurs, Feu, Terre,
+canoë, corde, bottes, cloche de glace, bateau et épée longue. La hache1 est
+sélectionnée ; l’épée longue reste2 et l’armure1. Les objets, les clés,
+l’argent et les soins sont obtenus par les actions du jeu.
 
 Les **21 étapes validées du sixième donjon** comprennent la sélection de la
 hache par le menu, les clés, les mécanismes, sept lancers de Terre, la cloche,
@@ -37,10 +36,11 @@ Les protections d’approche sont retirées avant les boss principaux et ne sont
 pas réactivées pendant le retour. Aucun PV ni objet n’est injecté.
 Les 128 mots du HUD final et les six indicateurs de cristal sont vérifiés.
 
-Le dernier profil, sur le parcours du septième donjon jusqu’à **196 280 images**, observe
-**442 octets de marge de pile**, sans corruption du tas. Le portage complet,
+Le dernier profil, jusqu’à la sortie du huitième donjon à **235 211 images**, observe
+**402 octets de marge de pile**, sans corruption du tas. Le portage complet,
 la fin et la fidélité audiovisuelle globale restent à valider.
-Voir le [septième cristal](analysis/d7_campaign_v0306.md),
+Voir le [huitième cristal](analysis/d8_campaign_v0306.md),
+le [septième cristal](analysis/d7_campaign_v0306.md),
 le [sixième cristal](analysis/d6_campaign_v0306.md),
 le [cinquième cristal](analysis/d5_campaign_v0306.md),
 le [parcours Feu et épée](analysis/fire_sword_v0306.md) et le
@@ -77,8 +77,17 @@ de résoudre un ennemi hors de portée sur l’approche. La protection est retir
 avant l’entrée en 1C9. L’ennemi de 50 PV est vaincu à l’épée longue, avec un seul
 coup encaissé. Six checkpoints reproduisent toute la RAM et l’image finale ;
 215 séquences de combat sont vérifiées. Le boss principal et le huitième
-cristal restent à valider. Voir [l’entrée et le combat intermédiaire du huitième
+cristal sont validés dans la phase suivante. Voir [l’entrée et le combat intermédiaire du huitième
 donjon](analysis/d8_progress_v0306.md).
+
+La **clé des voleurs, le huitième cristal et la sortie sont validés**. Les
+mécanismes et le passage avec Terre sont actionnés par les boutons du jeu.
+Le boss principal est vaincu à l’épée longue sans coup encaissé. Le garde
+est retiré31 images avant le combat et reste désactivé pendant le retour.
+Onze nouveaux checkpoints reproduisent toute la RAM et l’image finale ;
+425 séquences prédites sont vérifiées. Les 128 mots du HUD et les huit
+indicateurs de cristal sont contrôlés. Le neuvième donjon, la fin et la fidélité
+globale restent à valider. Voir [le huitième cristal et la sortie](analysis/d8_campaign_v0306.md).
 
 La **v0305 corrige le blocage des escaliers entre pièces intérieures**.
 Chez les marchands de C7, il est maintenant possible de monter de la pièce
