@@ -122,7 +122,6 @@ static u8 room_metadata[3]; /* C06E..C070 */
 static u16 room_id,game_state,transition_direction,transition_stage,transition_step;
 static bool transition_pose_prepared;
 static volatile u16 world_video_pending;
-static volatile u16 palace_gate_video_pending;
 /* Source1B0E/49EA queue terrain writes for the next IRQ. Stage complete
  * rows independently of dialogue storage and mutable world-map buffers. */
 static u16 world_cell_rows[20*32];
@@ -1291,28 +1290,29 @@ static void world_vint(void)
     }
     if(world_video_pending)
     {
-        Z80_enableBusProtection();DMA_flushQueue();Z80_disableBusProtection();
-        u16 n;
-        for(n=0;n<world_tile_job_count;n++)
+        if(world_video_pending&2)
         {
-            const WorldTileJob *job=world_tile_jobs+n;
-            VDP_loadTileData(job->source,job->tile,job->count,DMA);
+            /* Source 32-column wrap, only on the palace gate's first IRQ. */
+            if(world_video_pending&4)
+                VDP_setTileMapDataRect(BG_A,md_map,32,2,32,20,32,DMA);
+            VDP_setHorizontalScrollLine(BG_A,0,world_hscroll,224,DMA);
+            VDP_updateSprites(world_video_sat_count,DMA);
         }
-        VDP_updateSprites(world_video_sat_count,DMA);
-        if(world_video_palette) set_world_palette();
-        world_sms_sprite_prepared_overflow=world_video_next_overflow;
+        else
+        {
+            Z80_enableBusProtection();DMA_flushQueue();Z80_disableBusProtection();
+            u16 n;
+            for(n=0;n<world_tile_job_count;n++)
+            {
+                const WorldTileJob *job=world_tile_jobs+n;
+                VDP_loadTileData(job->source,job->tile,job->count,DMA);
+            }
+            VDP_updateSprites(world_video_sat_count,DMA);
+            if(world_video_palette) set_world_palette();
+            world_sms_sprite_prepared_overflow=world_video_next_overflow;
+        }
         __asm__ volatile ("" ::: "memory");
         world_video_pending=0;
-    }
-    if(palace_gate_video_pending)
-    {
-        /* The SMS plane wraps after 32 columns; mirror its hidden half. */
-        if(palace_gate_video_pending&2)
-            VDP_setTileMapDataRect(BG_A,md_map,32,2,32,20,32,DMA);
-        VDP_setHorizontalScrollLine(BG_A,0,world_hscroll,224,DMA);
-        VDP_updateSprites(world_video_sat_count,DMA);
-        __asm__ volatile ("" ::: "memory");
-        palace_gate_video_pending=0;
     }
     if(screen_spell_video_pending)
     {
@@ -2344,7 +2344,7 @@ static void check_palace_gate(void)
     game_save_state[0x50+0x8b]|=1;game_save_state[0x48]=1;
     memcpy(saved,vdpSpriteCache,world_video_sat_count*sizeof(VDPSprite));
     memset(world_hscroll,0,sizeof(world_hscroll));
-    palace_gate_video_pending=2;portal_wait_frame();
+    world_video_pending=6;portal_wait_frame();
     for(amplitude=9;amplitude--;) for(frame=0;frame<32;frame++)
     {
         u8 clock=world_clock();
@@ -2354,13 +2354,13 @@ static void check_palace_gate(void)
         for(n=0;n<world_video_sat_count;n++)
             vdpSpriteCache[n].x=128+(u8)(saved[n].x-128+displacement);
         __asm__ volatile ("" ::: "memory");
-        palace_gate_video_pending=1;
-        while(palace_gate_video_pending) __asm__ volatile ("nop");
+        world_video_pending=2;
+        while(world_video_pending) __asm__ volatile ("nop");
         SYS_doVBlankProcessEx(IMMEDIATELY);input=JOY_readJoypad(JOY_1);
     }
     memcpy(vdpSpriteCache,saved,world_video_sat_count*sizeof(VDPSprite));
     memset(world_hscroll,0,sizeof(world_hscroll));
-    palace_gate_video_pending=1;
+    world_video_pending=2;
     sound_effect_main(0xa8);redraw_current_room(vtimer);
 }
 
@@ -2980,7 +2980,7 @@ static bool tick_world_simulation(void)
         if(check_dungeon_portal(script_flags,0,vtimer!=script_started)) return TRUE;
         check_dungeon_room_clear();check_room_puzzle(script_flags,1);
         if(check_dungeon_portal(script_flags,1,vtimer!=script_started)) return TRUE;
-        check_village_door(old_x,old_y);check_palace_gate();check_crystal_bridge();check_house_service(old_x,old_y);check_house_talk(old_x,old_y,script_flags);begin_room_transition();
+        check_village_door(old_x,old_y);if(!world_graphics_class && room_id==0x8b) check_palace_gate();check_crystal_bridge();check_house_service(old_x,old_y);check_house_talk(old_x,old_y,script_flags);begin_room_transition();
     }
     animate_dungeon_bitmaps();animate_dungeon_cells();animate_world_palette();
     if(game_state==12 && hero_health && (input&~world_previous_input&BUTTON_B)) game_state=16;

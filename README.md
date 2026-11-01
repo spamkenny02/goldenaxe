@@ -1,32 +1,40 @@
-# Golden Axe Warrior — portage Mega Drive
+# Golden Axe Warrior â€” portage Mega Drive
 
 Reconstruction de Golden Axe Warrior depuis la ROM Master System fournie,
 puis portage de sa logique Z80 en code natif 68000 avec SGDK.
-La fidélité à la Master System passe avant les améliorations.
+La fidÃ©litÃ© Ã  la Master System passe avant les amÃ©liorations.
 
 <!-- ROM-RELEASE:START -->
-**Version courante : v0308 — 2048 Kio.**
+**Version courante : v0309 â€” 2048 Kio.**
 
-[Télécharger la ROM v0308](versions/v0308-e0d9c183/gaw-megadrive-v0308.bin) · [Toutes les versions](versions/README.md)
+[TÃ©lÃ©charger la ROM v0309](versions/v0309-7270576d/gaw-megadrive-v0309.bin) Â· [Toutes les versions](versions/README.md)
 
-Contrôles ciblés réussis ; portage complet encore non validé.
+ContrÃ´les ciblÃ©s rÃ©ussis ; portage complet encore non validÃ©.
 
-SHA-256 : `e0d9c1834dd79fffd084303d458af5e2a12dfa876a34e6c87aa13e1e40d90b9b`
-Checksum Mega Drive : `3C5B`
+SHA-256 : `7270576d6eeb2aee641776a3e364f2f3f320711d70bb91a566d7578161261049`
+Checksum Mega Drive : `4080`
 <!-- ROM-RELEASE:END -->
 
-## État du portage
+## Ã‰tat du portage
+
+La **v0309 regroupe les transferts du palais dans la file VBlank existante**.
+Le test SMS/MD conserve les289 images et tous les decalages de la secousse.
+La reprise froide v0309 valide le premier cristal,hache,huile,fee et les
+trois cles du deuxieme donjon,avec40/40PV. Les quatre relectures independantes
+reproduisent toute la RAM et l'image. L'ancienne suite de touches diverge apres cette entree ; la suite
+utilise un controleur adapte. Les neuf cristaux ci-dessous restent une preuve
+v0306. Voir [le point de reprise v0309](analysis/palace_rebase_v0309_report.json).
 
 La **v0308 restaure l'ouverture du passage vers le palais apres les neuf
 cristaux**. Le test controle SMS/MD reproduit les289 images,les neuf amplitudes
 de secousse et chaque changement de decalage. Avec huit cristaux,le passage
 reste ferme. Voir [le correctif du palais](analysis/palace_gate_v0308.md).
-Ce controle utilise un scenario isole ; le parcours complet sur v0308 reste a rejouer.
+Ce controle utilise un scenario isole ; le parcours complet sur la version courante reste a valider.
 
-La **v0306 restaure le HUD après les fenêtres d’objet et de cristal** et
+La **v0306 restaure le HUD aprÃ¨s les fenÃªtres dâ€™objet et de cristal** et
 affiche les neuf indicateurs de cristal selon la table SMS. Les comparaisons
-PAL/NTSC couvrent 22 scénarios, 44 images après fermeture et les fenêtres
-avant fermeture : carte physique du HUD et tuiles utilisées conformes.
+PAL/NTSC couvrent 22 scÃ©narios, 44 images aprÃ¨s fermeture et les fenÃªtres
+avant fermeture : carte physique du HUD et tuiles utilisÃ©es conformes.
 
 Le parcours courant valide les **neuf cristaux et le retour dehors en EB**,
 a **104/104 PV et72/72 PM**, avec une cle,37 pieces,la cle des voleurs,
@@ -44,155 +52,155 @@ indicateurs sont verifies. Voir [le neuvieme cristal](analysis/d9_campaign_v0306
 La fin,les sauvegardes et la fidelite globale restent a valider.
 La note [REPRISE_CODEX.md](REPRISE_CODEX.md) contient le point de reprise courant.
 
-Les **21 étapes validées du sixième donjon** comprennent la sélection de la
-hache par le menu, les clés, les mécanismes, sept lancers de Terre, la cloche,
-le combat et le retour. Chaque étape possède une relecture froide indépendante
+Les **21 Ã©tapes validÃ©es du sixiÃ¨me donjon** comprennent la sÃ©lection de la
+hache par le menu, les clÃ©s, les mÃ©canismes, sept lancers de Terre, la cloche,
+le combat et le retour. Chaque Ã©tape possÃ¨de une relecture froide indÃ©pendante
 identique sur les 65 536 octets de RAM et le PNG final.
-Les protections d’approche sont retirées avant les boss principaux et ne sont
-pas réactivées pendant le retour. Aucun PV ni objet n’est injecté.
-Les 128 mots du HUD final et les six indicateurs de cristal sont vérifiés.
+Les protections dâ€™approche sont retirÃ©es avant les boss principaux et ne sont
+pas rÃ©activÃ©es pendant le retour. Aucun PV ni objet nâ€™est injectÃ©.
+Les 128 mots du HUD final et les six indicateurs de cristal sont vÃ©rifiÃ©s.
 
-Le dernier profil, jusqu’à la sortie du huitième donjon à **235 211 images**, observe
+Le dernier profil, jusquâ€™Ã  la sortie du huitiÃ¨me donjon Ã  **235 211 images**, observe
 **402 octets de marge de pile**, sans corruption du tas. Le portage complet,
-la fin et la fidélité audiovisuelle globale restent à valider.
-Voir le [huitième cristal](analysis/d8_campaign_v0306.md),
-le [septième cristal](analysis/d7_campaign_v0306.md),
-le [sixième cristal](analysis/d6_campaign_v0306.md),
-le [cinquième cristal](analysis/d5_campaign_v0306.md),
-le [parcours Feu et épée](analysis/fire_sword_v0306.md) et le
+la fin et la fidÃ©litÃ© audiovisuelle globale restent Ã  valider.
+Voir le [huitiÃ¨me cristal](analysis/d8_campaign_v0306.md),
+le [septiÃ¨me cristal](analysis/d7_campaign_v0306.md),
+le [sixiÃ¨me cristal](analysis/d6_campaign_v0306.md),
+le [cinquiÃ¨me cristal](analysis/d5_campaign_v0306.md),
+le [parcours Feu et Ã©pÃ©e](analysis/fire_sword_v0306.md) et le
 [correctif du HUD v0306](analysis/reward_hud_v0306.md).
 
-L'approvisionnement du **septième donjon est aussi validé** : deux dons de
-30 pièces, achat réel d'une clé pour 60, ouverture de la porte et première clé
-récupérée en 1CB. Huit relectures indépendantes reproduisent la RAM et l'image
-finales. Cette étape conserve les six cristaux et s'achève à **72/80 PV**.
-Une première branche de test qui effaçait le délai des dégâts de terrain est
-exclue ; le trajet retenu préserve ce délai. Aucun changement de ROM.
-Voir [l'entrée du septième donjon](analysis/d7_supplies_v0306.md).
+L'approvisionnement du **septiÃ¨me donjon est aussi validÃ©** : deux dons de
+30 piÃ¨ces, achat rÃ©el d'une clÃ© pour 60, ouverture de la porte et premiÃ¨re clÃ©
+rÃ©cupÃ©rÃ©e en 1CB. Huit relectures indÃ©pendantes reproduisent la RAM et l'image
+finales. Cette Ã©tape conserve les six cristaux et s'achÃ¨ve Ã  **72/80 PV**.
+Une premiÃ¨re branche de test qui effaÃ§ait le dÃ©lai des dÃ©gÃ¢ts de terrain est
+exclue ; le trajet retenu prÃ©serve ce dÃ©lai. Aucun changement de ROM.
+Voir [l'entrÃ©e du septiÃ¨me donjon](analysis/d7_supplies_v0306.md).
 
-La suite valide le **combat intermédiaire du septième donjon sans protection**,
-vaincu avec **80/80 PV**, puis la **récupération du bateau**. Ce jalon
-s’achève en 1D5, à **80/80 PV, 72/72 PM et deux clés**, avec six cristaux. Dix nouveaux
+La suite valide le **combat intermÃ©diaire du septiÃ¨me donjon sans protection**,
+vaincu avec **80/80 PV**, puis la **rÃ©cupÃ©ration du bateau**. Ce jalon
+sâ€™achÃ¨ve en 1D5, Ã  **80/80 PV, 72/72 PM et deux clÃ©s**, avec six cristaux. Dix nouveaux
 checkpoints reproduisent toute la RAM et l'image finale. Les 128 mots du HUD
-après la fenêtre du bateau et les six indicateurs de cristal sont vérifiés.
-La protection d'approche avait repris après le combat intermédiaire ; son
-retrait avant le boss principal est vérifié dans la phase suivante. L'essai
-sud sans protection mort en 1B7 est conservé séparément. Voir [le combat intermédiaire et le bateau](analysis/d7_progress_v0306.md).
+aprÃ¨s la fenÃªtre du bateau et les six indicateurs de cristal sont vÃ©rifiÃ©s.
+La protection d'approche avait repris aprÃ¨s le combat intermÃ©diaire ; son
+retrait avant le boss principal est vÃ©rifiÃ© dans la phase suivante. L'essai
+sud sans protection mort en 1B7 est conservÃ© sÃ©parÃ©ment. Voir [le combat intermÃ©diaire et le bateau](analysis/d7_progress_v0306.md).
 
-Le **septième cristal et le retour extérieur sont validés**. Le boss principal
-est vaincu à l'épée longue sans perte de PV pendant le combat. La protection
-est retirée 28 images avant son début et reste désactivée pendant le retour.
+Le **septiÃ¨me cristal et le retour extÃ©rieur sont validÃ©s**. Le boss principal
+est vaincu Ã  l'Ã©pÃ©e longue sans perte de PV pendant le combat. La protection
+est retirÃ©e 28 images avant son dÃ©but et reste dÃ©sactivÃ©e pendant le retour.
 Sept nouveaux checkpoints reproduisent toute la RAM et l'image finale ;
-157 séquences prédites sont vérifiées. Le HUD final affiche les sept indicateurs
-de cristal. Les deux derniers donjons, la fin et la fidélité globale restent
-à valider. Voir [le septième cristal et la sortie](analysis/d7_campaign_v0306.md).
+157 sÃ©quences prÃ©dites sont vÃ©rifiÃ©es. Le HUD final affiche les sept indicateurs
+de cristal. Les deux derniers donjons, la fin et la fidÃ©litÃ© globale restent
+Ã  valider. Voir [le septiÃ¨me cristal et la sortie](analysis/d7_campaign_v0306.md).
 
-L’**entrée du huitième donjon et son combat intermédiaire sont validés**.
-Le passeur prélève réellement 10 pièces ; une sortie/rentrée ordinaire permet
-de résoudre un ennemi hors de portée sur l’approche. La protection est retirée
-avant l’entrée en 1C9. L’ennemi de 50 PV est vaincu à l’épée longue, avec un seul
-coup encaissé. Six checkpoints reproduisent toute la RAM et l’image finale ;
-215 séquences de combat sont vérifiées. Le boss principal et le huitième
-cristal sont validés dans la phase suivante. Voir [l’entrée et le combat intermédiaire du huitième
+Lâ€™**entrÃ©e du huitiÃ¨me donjon et son combat intermÃ©diaire sont validÃ©s**.
+Le passeur prÃ©lÃ¨ve rÃ©ellement 10 piÃ¨ces ; une sortie/rentrÃ©e ordinaire permet
+de rÃ©soudre un ennemi hors de portÃ©e sur lâ€™approche. La protection est retirÃ©e
+avant lâ€™entrÃ©e en 1C9. Lâ€™ennemi de 50 PV est vaincu Ã  lâ€™Ã©pÃ©e longue, avec un seul
+coup encaissÃ©. Six checkpoints reproduisent toute la RAM et lâ€™image finale ;
+215 sÃ©quences de combat sont vÃ©rifiÃ©es. Le boss principal et le huitiÃ¨me
+cristal sont validÃ©s dans la phase suivante. Voir [lâ€™entrÃ©e et le combat intermÃ©diaire du huitiÃ¨me
 donjon](analysis/d8_progress_v0306.md).
 
-La **clé des voleurs, le huitième cristal et la sortie sont validés**. Les
-mécanismes et le passage avec Terre sont actionnés par les boutons du jeu.
-Le boss principal est vaincu à l’épée longue sans coup encaissé. Le garde
-est retiré31 images avant le combat et reste désactivé pendant le retour.
-Onze nouveaux checkpoints reproduisent toute la RAM et l’image finale ;
-425 séquences prédites sont vérifiées. Les 128 mots du HUD et les huit
-indicateurs de cristal sont contrôlés. Le neuvième donjon, la fin et la fidélité
-globale restent à valider. Voir [le huitième cristal et la sortie](analysis/d8_campaign_v0306.md).
+La **clÃ© des voleurs, le huitiÃ¨me cristal et la sortie sont validÃ©s**. Les
+mÃ©canismes et le passage avec Terre sont actionnÃ©s par les boutons du jeu.
+Le boss principal est vaincu Ã  lâ€™Ã©pÃ©e longue sans coup encaissÃ©. Le garde
+est retirÃ©31 images avant le combat et reste dÃ©sactivÃ© pendant le retour.
+Onze nouveaux checkpoints reproduisent toute la RAM et lâ€™image finale ;
+425 sÃ©quences prÃ©dites sont vÃ©rifiÃ©es. Les 128 mots du HUD et les huit
+indicateurs de cristal sont contrÃ´lÃ©s. Le neuviÃ¨me donjon, la fin et la fidÃ©litÃ©
+globale restent Ã  valider. Voir [le huitiÃ¨me cristal et la sortie](analysis/d8_campaign_v0306.md).
 
-La **v0305 corrige le blocage des escaliers entre pièces intérieures**.
-Chez les marchands de C7, il est maintenant possible de monter de la pièce
-1F vers la pièce 0F, de récupérer l’huile, de redescendre et de ressortir.
-Une exclusion du défilement de toutes les pièces intérieures bloquait ce
+La **v0305 corrige le blocage des escaliers entre piÃ¨ces intÃ©rieures**.
+Chez les marchands de C7, il est maintenant possible de monter de la piÃ¨ce
+1F vers la piÃ¨ce 0F, de rÃ©cupÃ©rer lâ€™huile, de redescendre et de ressortir.
+Une exclusion du dÃ©filement de toutes les piÃ¨ces intÃ©rieures bloquait ce
 passage ; le gestionnaire de bordure SMS ne comporte pas cette exclusion.
 
 Validation de cette correction :
 
 - Le blocage est reproduit sur v0304 et absent sur v0305. Les comparaisons
-  SMS/MD en PAL et NTSC retrouvent le parcours 1F → 0F → 1F → C7,
-  l’huile, 17 valeurs sémantiques d’inventaire et les 160 cellules finales.
-  Ces comparaisons utilisent une position intérieure de test explicite.
-- Un parcours séparé depuis une nouvelle partie récupère l’huile et revient
-  dehors sans modification de RAM ni import de sauvegarde. Les deux étapes
-  sont rejouées : les 64 Kio de RAM et le PNG final sont identiques.
+  SMS/MD en PAL et NTSC retrouvent le parcours 1F â†’ 0F â†’ 1F â†’ C7,
+  lâ€™huile, 17 valeurs sÃ©mantiques dâ€™inventaire et les 160 cellules finales.
+  Ces comparaisons utilisent une position intÃ©rieure de test explicite.
+- Un parcours sÃ©parÃ© depuis une nouvelle partie rÃ©cupÃ¨re lâ€™huile et revient
+  dehors sans modification de RAM ni import de sauvegarde. Les deux Ã©tapes
+  sont rejouÃ©es : les 64 Kio de RAM et le PNG final sont identiques.
 - Le profil de pile avant chaque instruction couvre les 4 677 images de ce
-  parcours. La marge observée est de 666 octets ; cette mesure ne couvre pas
-  encore la campagne entière sur v0305.
+  parcours. La marge observÃ©e est de 666 octets ; cette mesure ne couvre pas
+  encore la campagne entiÃ¨re sur v0305.
 
-Détails et limites : [rapport de la v0305](analysis/indoor_stairs_v0305.md)
-et [résultats vérifiables](analysis/indoor_stairs_v0305_report.json).
+DÃ©tails et limites : [rapport de la v0305](analysis/indoor_stairs_v0305.md)
+et [rÃ©sultats vÃ©rifiables](analysis/indoor_stairs_v0305_report.json).
 
 La suite sur v0305 confirme maintenant le **premier cristal et le retour
-à l’extérieur en B9, à 28/32 PV**, avec l’huile conservée. La protection
-d’approche est retirée 72 images avant le premier combat du boss et ne reprend
+Ã  lâ€™extÃ©rieur en B9, Ã  28/32 PV**, avec lâ€™huile conservÃ©e. La protection
+dâ€™approche est retirÃ©e 72 images avant le premier combat du boss et ne reprend
 pas pendant le retour. Quatre relectures froides reproduisent toute la RAM
-et le PNG final. Le profil de pile de cette branche, jusqu’à 17 482 images,
+et le PNG final. Le profil de pile de cette branche, jusquâ€™Ã  17 482 images,
 observe 466 octets de marge. Voir le [rapport du premier donjon](analysis/d1_oil_v0305.md).
-Cette vérification ne valide pas encore les donjons suivants sur v0305.
+Cette vÃ©rification ne valide pas encore les donjons suivants sur v0305.
 
-La **hache, la première fée de vie, le deuxième cristal et sa sortie** sont
-également vérifiés sur v0305. Le retour finit en D6 à 31/48 PV, avec une clé,
-la hache équipée et l’huile conservée. Douze étapes disposent de relectures
-RAM/PNG exactes. La protection d’approche se termine 57 images avant le
-combat du deuxième boss et ne reprend pas au retour. Le profil de pile
-jusqu’à 40 562 images observe 450 octets de marge. Voir le
-[rapport du deuxième donjon](analysis/d2_campaign_v0305.md).
+La **hache, la premiÃ¨re fÃ©e de vie, le deuxiÃ¨me cristal et sa sortie** sont
+Ã©galement vÃ©rifiÃ©s sur v0305. Le retour finit en D6 Ã  31/48 PV, avec une clÃ©,
+la hache Ã©quipÃ©e et lâ€™huile conservÃ©e. Douze Ã©tapes disposent de relectures
+RAM/PNG exactes. La protection dâ€™approche se termine 57 images avant le
+combat du deuxiÃ¨me boss et ne reprend pas au retour. Le profil de pile
+jusquâ€™Ã  40 562 images observe 450 octets de marge. Voir le
+[rapport du deuxiÃ¨me donjon](analysis/d2_campaign_v0305.md).
 
-Le **troisième cristal et le retour en extérieur 62** sont maintenant
-vérifiés sur v0305, à 56/56 PV, avec la corde obtenue dans son donjon.
-Le mécanisme original de la salle 1E3 ouvre le passage avant le boss ; cette
-salle est traversée avec ses ennemis encore présents. Quatre relectures
-RAM/PNG sont exactes, et aucune protection ne reprend après le début du
-combat. Le profil de pile jusqu’à 55 110 images observe 450 octets de marge.
-Voir le [rapport du troisième donjon](analysis/d3_campaign_v0305.md).
+Le **troisiÃ¨me cristal et le retour en extÃ©rieur 62** sont maintenant
+vÃ©rifiÃ©s sur v0305, Ã  56/56 PV, avec la corde obtenue dans son donjon.
+Le mÃ©canisme original de la salle 1E3 ouvre le passage avant le boss ; cette
+salle est traversÃ©e avec ses ennemis encore prÃ©sents. Quatre relectures
+RAM/PNG sont exactes, et aucune protection ne reprend aprÃ¨s le dÃ©but du
+combat. Le profil de pile jusquâ€™Ã  55 110 images observe 450 octets de marge.
+Voir le [rapport du troisiÃ¨me donjon](analysis/d3_campaign_v0305.md).
 
-Le **quatrième cristal et le retour en extérieur 10** sont également
-vérifiés sur v0305, à 50/64 PV. Le parcours obtient normalement 50 cornes,
-achète Terre, dégage deux passages, récupère le canoë et utilise le
-téléporteur. Quatorze relectures RAM/PNG sont exactes ; la protection cesse
+Le **quatriÃ¨me cristal et le retour en extÃ©rieur 10** sont Ã©galement
+vÃ©rifiÃ©s sur v0305, Ã  50/64 PV. Le parcours obtient normalement 50 cornes,
+achÃ¨te Terre, dÃ©gage deux passages, rÃ©cupÃ¨re le canoÃ« et utilise le
+tÃ©lÃ©porteur. Quatorze relectures RAM/PNG sont exactes ; la protection cesse
 avant le boss et ne reprend pas au retour. Voir le
-[rapport du quatrième donjon](analysis/d4_campaign_v0305.md).
+[rapport du quatriÃ¨me donjon](analysis/d4_campaign_v0305.md).
 
-Le défaut visuel du HUD documenté sur v0305 est corrigé dans la v0306.
-Les rapports v0305 ci-dessus conservent leur périmètre historique.
+Le dÃ©faut visuel du HUD documentÃ© sur v0305 est corrigÃ© dans la v0306.
+Les rapports v0305 ci-dessus conservent leur pÃ©rimÃ¨tre historique.
 
 ## Campagne et travail restant
 
-Les sept premiers cristaux et leurs sorties ont été validés sur **v0304**.
-Dans le huitième donjon, la clé des voleurs et le chemin vers le boss sont
-atteints. Les approches comportent une protection de test déclarée, retirée
-avant chaque boss principal ; les adversaires intermédiaires de D7 et D8
-ont été abordés avec cette protection. Le premier essai du huitième boss
-se termine par une défaite : sa victoire reste à valider.
+Les sept premiers cristaux et leurs sorties ont Ã©tÃ© validÃ©s sur **v0304**.
+Dans le huitiÃ¨me donjon, la clÃ© des voleurs et le chemin vers le boss sont
+atteints. Les approches comportent une protection de test dÃ©clarÃ©e, retirÃ©e
+avant chaque boss principal ; les adversaires intermÃ©diaires de D7 et D8
+ont Ã©tÃ© abordÃ©s avec cette protection. Le premier essai du huitiÃ¨me boss
+se termine par une dÃ©faite : sa victoire reste Ã  valider.
 
-Ces résultats restent propres à v0304. La relecture de ses commandes sur
-v0305 diverge et se termine par une mort au cinquième boss ; elle ne valide
-pas la campagne sur la nouvelle ROM. Les parcours doivent être poursuivis
-et adaptés sur cette version.
+Ces rÃ©sultats restent propres Ã  v0304. La relecture de ses commandes sur
+v0305 diverge et se termine par une mort au cinquiÃ¨me boss ; elle ne valide
+pas la campagne sur la nouvelle ROM. Les parcours doivent Ãªtre poursuivis
+et adaptÃ©s sur cette version.
 
-Les routines d’acteurs utilisent encore le générateur aléatoire SGDK.
-Le raccordement au hasard SMS et à sa phase globale reste à faire.
-La suite des boss, le dernier donjon, la fin, les sauvegardes et la fidélité
-complète vidéo/audio/matériel ne sont pas encore validés.
+Les routines dâ€™acteurs utilisent encore le gÃ©nÃ©rateur alÃ©atoire SGDK.
+Le raccordement au hasard SMS et Ã  sa phase globale reste Ã  faire.
+La suite des boss, le dernier donjon, la fin, les sauvegardes et la fidÃ©litÃ©
+complÃ¨te vidÃ©o/audio/matÃ©riel ne sont pas encore validÃ©s.
 
-L’[historique du README jusqu’à v0304](analysis/readme_history_through_v0304.md)
-conserve les étapes et leurs liens de preuve. Le [journal de recherche](analysis/world_next.md)
-conserve les observations détaillées ; certaines entrées anciennes sont
-supplantées par les rapports de versions plus récentes.
+Lâ€™[historique du README jusquâ€™Ã  v0304](analysis/readme_history_through_v0304.md)
+conserve les Ã©tapes et leurs liens de preuve. Le [journal de recherche](analysis/world_next.md)
+conserve les observations dÃ©taillÃ©es ; certaines entrÃ©es anciennes sont
+supplantÃ©es par les rapports de versions plus rÃ©centes.
 
 ## ROMs et compilation
 
-Chaque ROM différente conserve son numéro et son SHA-256 dans
-[l’index des versions](versions/index.json). Les fichiers racine
-`gaw-megadrive.bin` et `gaw-title-megadrive.bin` pointent sur les mêmes octets
-que la version courante. Les anciennes ROMs numérotées sont conservées.
+Chaque ROM diffÃ©rente conserve son numÃ©ro et son SHA-256 dans
+[lâ€™index des versions](versions/index.json). Les fichiers racine
+`gaw-megadrive.bin` et `gaw-title-megadrive.bin` pointent sur les mÃªmes octets
+que la version courante. Les anciennes ROMs numÃ©rotÃ©es sont conservÃ©es.
 
-Depuis ce répertoire, avec SGDK, Java et Python disponibles :
+Depuis ce rÃ©pertoire, avec SGDK, Java et Python disponibles :
 
 ```powershell
 .\build.ps1
@@ -204,10 +212,10 @@ un processus et les rechargent si leur signature de fichier change. Les hashes
 et la decompression restent controles a chaque lecture. Les trois auditsD9
 produisent des rapports strictement identiques : voir [le controle du cache](analysis/evidence_manifest_cache_v0306_report.json).
 
-`build.ps1` accepte `-Sgdk` et `-Java` pour sélectionner leurs emplacements.
-Le vérificateur compare les ROMs locales avec les objets du dernier commit
-Git : il s’exécute après l’enregistrement de la livraison.
+`build.ps1` accepte `-Sgdk` et `-Java` pour sÃ©lectionner leurs emplacements.
+Le vÃ©rificateur compare les ROMs locales avec les objets du dernier commit
+Git : il sâ€™exÃ©cute aprÃ¨s lâ€™enregistrement de la livraison.
 
 Code natif : [boucle et transitions](megadrive/src/main.c),
-[acteurs](megadrive/src/actors.c). Les preuves volumineuses sont archivées
-sans perte et vérifiées avant le nettoyage des fichiers générés.
+[acteurs](megadrive/src/actors.c). Les preuves volumineuses sont archivÃ©es
+sans perte et vÃ©rifiÃ©es avant le nettoyage des fichiers gÃ©nÃ©rÃ©s.

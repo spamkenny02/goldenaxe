@@ -2,9 +2,45 @@
 
 Etat de cette note : 1 novembre 2026. Lire aussi README.md et les rapports plus recents eventuellement ajoutes depuis cette note. Le changement de compte ne termine pas l'objectif du portage.
 
-## Correctif courant : v0308, passage du palais
+## Etat courant : v0309
 
-La ROM courante est v0308. Le correctif porte6911-698A : apres les neuf cristaux,
+ROM v0309,7270576d6eeb2aee641776a3e364f2f3f320711d70bb91a566d7578161261049,
+checksum4080. Les transferts du palais utilisent les bits2/4 du travail VBlank
+existant ; pas de nouveau test IRQ quand aucune video n'est en attente.
+Le controle SMS/MD du palais reste exact sur289 images et chaque decalage.
+
+Le parcours froid v0309 est valide a28213 en171,40/40PV,24PM,2pieces,0cle,
+premier cristal,hache,huile et fee. Prefixe :
+validation/natural-dungeon-combat/md-auto-v0309-d2-entry02.
+Sa relecture canonique compare65536octets RAM et le PNG exactement.
+Voir analysis/palace_rebase_v0309_report.json. Ce prefixe contient l'approche
+D2 encore ouverte. La campagne neuf cristaux reste prouvee sur v0306.
+La suite de touches historique diverge a cause de phases natives ; les essais
+de retiming sont exclus. Ne pas les traiter comme des victoires ou importer
+la RAM finale v0306 dans v0309. La premiere cle D2 est validee a29373 en160,40PV,1cle :
+validation/natural-dungeon-combat/md-auto-v0309-d2-key01,avec relecture
+canonique RAM/PNG exacte. Les essais regroupes et key02 sont exclus : le
+pilote tentait de tuer un fantome5F inaccessible en151. key03 est aussi exclu : le passage exige de vider151. La limite des retours
+ordinaires du pilote est maintenant configurable (defaut3 conserve).
+key04 avec limite12 reussit apres5 retours :31665 en152,40PV,2cles.
+key05 reussit sans retour :35199 en131,40PV,2cles. Les deux ont leur
+relecture canonique RAM/PNG exacte. Le checkpoint courant valide v0309 est
+validation/natural-dungeon-combat/md-auto-v0309-d2-key05.
+Le test boss03 (coarse16,evasive) est encore actif a cette mise a jour ; son
+handle exec est18844. Poller ce handle avant toute relance. Il a atteint144,
+protection retiree ; a39578,boss22PV et heros40PV. Sa limite est6500 images
+apres le premier combat. Le candidat boss04 ordinaire est mort,non valide.
+Si le budget boss03 se termine avec le heros vivant,son RAM/PNG terminal
+est capture par le wrapper : relecture froide avant de prolonger ce combat,
+sans reactiver la protection. Ne pas compter une victoire sans cristal ferme. Les prototypes rejetes sont archives localement sous
+analysis/palace-rebase-research-v0309 ; leur manifeste est versionne.
+Attention : le core ne vide pas toute la RAM inactive entre deux ROMs dans
+un meme processus. Executer les references historiques dans un sous-processus
+neuf,comme tools/rebase_fixed_assisted_campaign.py,pour comparer la RAM complete.
+
+## Correctif precedent : v0308, passage du palais
+
+Le correctif a ete publie en v0308. Le correctif porte6911-698A : apres les neuf cristaux,
 la salle8B ouvre le passage ouest vers8A puis89. Quatre tests controles SMS/MD
 valident le garde huit/neuf cristaux,les289 images et chaque decalage horizontal.
 Voir analysis/palace_gate_v0308.md et analysis/palace_gate_v0308_report.json.
