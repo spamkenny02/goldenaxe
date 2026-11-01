@@ -32,8 +32,16 @@ L'**acces au neuvieme donjon est valide** en1FC : huit cristaux conserves,
 84/96 PV,72/72 PM,une cle et21 pieces. Le transport1A vers3C coute10 pieces ;
 la cloche de glace ouvre normalement la pierre tombale deCB, puis la hache
 est re-selectionnee. Trois relectures froides reproduisent toute la RAM et
-l'image finale. Les boss du neuvieme donjon restent a combattre sans protection.
+l'image finale. Le boss principal du neuvieme donjon reste a combattre sans protection.
 Voir [l'acces au neuvieme donjon](analysis/d9_entry_v0306.md). Aucun changement de ROM.
+
+Le **premier boss intermediaire du neuvieme donjon est vaincu sans protection**.
+Apres les deux mecanismes en Terre et la torche, le retrait est verifie avant
+la rencontre1BE/type79. L'epee longue2 est choisie par le menu ; le heros termine
+a48/96 PV,72/72 PM,une cle et27 pieces, avec huit cristaux. Cinq nouvelles
+relectures froides reproduisent toute la RAM et l'image finale ;164 fenetres
+de prediction sont identiques. Voir [le premier combat intermediaire du neuvieme donjon](analysis/d9_midboss_v0306.md).
+La note [REPRISE_CODEX.md](REPRISE_CODEX.md) contient le point de reprise pour un autre compte.
 
 Les **21 étapes validées du sixième donjon** comprennent la sélection de la
 hache par le menu, les clés, les mécanismes, sept lancers de Terre, la cloche,

@@ -17,9 +17,9 @@ Sur le meme PC, ouvrir ce dossier dans Codex avec le nouveau compte. Le contenu 
 
 ATTENTION : `.gitignore` exclut notamment `validation/`, `megadrive/out/` et les objets volumineux des archives `analysis/*/objects/`. Les manifestes sont sur Git, mais leurs objets compresses restent locaux. Un clone Git seul conserve le code et les ROMs versionnees, pas toutes les preuves ni les points de reprise necessaires aux outils. Copier le dossier complet pour poursuivre le parcours actuel.
 
-## Dernier jalon publie a la creation de cette note
+## Jalons de reference
 
-Main : `b0f743f007b7b06240bd48286d59ebf49a8720d4` (acces au neuvieme donjon).
+Commit de reference pour l'acces : `b0f743f007b7b06240bd48286d59ebf49a8720d4`. Pour le dernier commit publie, consulter git log et origin/main.
 Depot actuellement redirige vers `https://github.com/spamkenny02/goldenaxe.git` ; l'ancien origin spamkenny02-commits fonctionne par redirection. Apres un futur transfert GitHub, mettre origin a jour avec l'URL du nouveau proprietaire.
 
 ROM courante : v0306, 2048 Kio.
@@ -29,24 +29,26 @@ Checksum Mega Drive : `343B`.
 
 Le parcours publie valide huit cristaux et l'entree du neuvieme donjon en1FC :239841 images,84/96PV,72/72PM,1cle,21pieces. L'acces utilise le vrai transport1A->3C puis la cloche enCB. Voir `analysis/d9_entry_v0306.md` et `analysis/d9_entry_v0306_report.json`.
 
-## Travail en cours au moment de cette note
+## Premier boss intermediaire du neuvieme donjon valide
 
-Des fichiers non encore livres preparent le premier boss intermediaire du neuvieme donjon :
+Le jalon est decrit dans analysis/d9_midboss_v0306.md et analysis/d9_midboss_v0306_report.json. Il comprend :
 
 - `md-auto-v0306-d9-switch1de-02` :246418, Terre casse le bloc34 en1DE, puis UP actionne la torche pour rejoindre1CE ;84PV,64PM.
 - `md-auto-v0306-d9-earth1ce-01` :246742, Terre casse56 en1CE ;84PV,56PM.
 - `md-auto-v0306-d9-mini-ready01` :250495, salle1CE vide ;84PV,72PM. Les ramassages normaux ont restaure les PM.
 - `md-auto-v0306-d9-guard-release01` :250496, protection retiree dans1CE avant le boss1BE/type79. Relecture froide complete reussie.
 
-Ces quatre checkpoints disposent de leur relecture `-assisted-fixed-replay-FRAMES`, identique sur65536 octets de RAM et PNG final. Les repertoires sont sous `validation/natural-dungeon-combat/`.
+- `md-auto-v0306-d9-midboss01` :252171, boss79 vaincu en1BE sans protection ;48/96PV,72/72PM,1cle,27pieces,huit cristaux. Epee longue2 selectionnee.
 
-Le pipeline `validation/v0306-d9-first-mini-sources/prep_pipeline.py` etait encore actif lors de la redaction. Il lance le combat `md-auto-v0306-d9-midboss01`, puis sa relecture. Ne pas deduire sa victoire de cette note. Lire `validation/v0306-d9-first-mini-pipeline.log`, le report.json du combat et la preuve froide avant toute continuation. Verifier le processus reellement vivant ; un fichier de log ne prouve pas qu'il tourne. Ne pas relancer un essai dans un repertoire existant.
+Ces cinq checkpoints disposent de leur relecture `-assisted-fixed-replay-FRAMES`, identique sur65536 octets de RAM et PNG final. Les repertoires sont sous `validation/natural-dungeon-combat/`.
 
-Le test01 vers la torche1DE s'est arrete parce que le controleur n'avait pas encore casse le bloc. Il est negatif, sans preuve terminale, et exclu des jalons positifs. Le controleur combine `tools/natural_earth_then_contact.py` traite cette action normalement. Le futur audit `tools/summarize_d9_midboss_v0306.py` et l'archive associee sont encore en preparation : ne pas les annoncer valides avant leur execution reussie.
+Le pipeline et sa relecture sont termines avec succes. Le combat comporte164 fenetres de prediction identiques sur toute la RAM. Le retrait250496 precede le premier combat250692 (84PV,hurt0,boss60PV). Deux pertes de PV sont observees :84->64 et64->48. Aucune protection ne reprend pendant ce combat. Verifier les derniers rapports avant toute continuation et ne pas relancer un essai dans un repertoire existant.
+
+Le test01 vers la torche1DE s'est arrete parce que le controleur n'avait pas encore casse le bloc. Il est negatif, sans preuve terminale, et exclu des jalons positifs. Le controleur combine `tools/natural_earth_then_contact.py` traite cette action normalement. L'audit tools/summarize_d9_midboss_v0306.py est reussi. L'archive locale analysis/d9-midboss-v0306 conserve les preuves ; ses objets restent ignores par Git. Les RAM du retrait et de la victoire restent disponibles pour la reprise.
 
 ## Prochaines etapes du jeu
 
-Verifier la victoire sans assistance contre1BE/type79 (stats originales60PV,20degats,4armure). Reprendre ensuite le trajet selon les mecanismes originaux. Le boss intermediaire19C/type7B et le boss principal1AC/type6C ne sont pas encore valides dans ce parcours. Le dernier cristal, la Hache d'or, Death Adder, la fin et les sauvegardes restent a verifier.
+La victoire1BE/type79 est verifiee. Reprendre le trajet selon les mecanismes originaux. Pour un nouvel episode d'approche, utiliser resume_after_intermediate.py avec ce checkpoint et le boss principal1AC ; ce helper revalide le combat avant de reprendre la protection. Le boss intermediaire19C/type7B et le boss principal1AC/type6C ne sont pas encore valides dans ce parcours. Le dernier cristal, la Hache d'or, Death Adder, la fin et les sauvegardes restent a verifier.
 
 Le boss final6D n'accepte que la hache2 selectionnee. La table originale place la Hache d'or en11D : index inventaire1,valeur2,objet5. Sa collecte devra verifier1->2 ; le simple test booleen de possession d'une hache ne suffit pas.
 
@@ -66,4 +68,4 @@ Nettoyage : uniquement apres compression sans perte, relecture et verification d
 
 ## Message a donner au nouveau chat
 
-> Lis REPRISE_CODEX.md, README.md, git status et les derniers rapports de validation. Reprends l'objectif complet : portage Mega Drive natif et fidele de Golden Axe Warrior. Verifie d'abord l'etat reel du test du premier boss du neuvieme donjon et ses preuves froides. Conserve les changements en cours, les ROMs numerotees et les archives locales ; ne declare pas le jeu termine avec les seuls huit cristaux ou avec une preuve de determinisme MD.
+> Lis REPRISE_CODEX.md, README.md, git status et les derniers rapports de validation. Reprends l'objectif complet : portage Mega Drive natif et fidele de Golden Axe Warrior. Verifie d'abord les derniers rapports et le checkpoint du premier boss intermediaire du neuvieme donjon avant de poursuivre. Conserve les changements en cours, les ROMs numerotees et les archives locales ; ne declare pas le jeu termine avec les seuls huit cristaux ou avec une preuve de determinisme MD.
