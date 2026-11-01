@@ -22,26 +22,21 @@ affiche les neuf indicateurs de cristal selon la table SMS. Les comparaisons
 PAL/NTSC couvrent 22 scénarios, 44 images après fermeture et les fenêtres
 avant fermeture : carte physique du HUD et tuiles utilisées conformes.
 
-Le parcours courant valide les **huit premiers cristaux et le retour dehors
-en 29**, à **84/96 PV et 72/72 PM**, avec la clé des voleurs, Feu, Terre,
-canoë, corde, bottes, cloche de glace, bateau et épée longue. La hache1 est
-sélectionnée ; l’épée longue reste2 et l’armure1. Les objets, les clés,
-l’argent et les soins sont obtenus par les actions du jeu.
+Le parcours courant valide les **neuf cristaux et le retour dehors en EB**,
+a **104/104 PV et72/72 PM**, avec une cle,37 pieces,la cle des voleurs,
+Feu,Terre,canoe,corde,bottes,cloche de glace,bateau et epee longue.
+La hache1 est selectionnee ; l'epee longue reste2 et l'armure1.
+Les objets,les cles,l'argent et les soins proviennent des actions du jeu.
 
-L'**acces au neuvieme donjon est valide** en1FC : huit cristaux conserves,
-84/96 PV,72/72 PM,une cle et21 pieces. Le transport1A vers3C coute10 pieces ;
-la cloche de glace ouvre normalement la pierre tombale deCB, puis la hache
-est re-selectionnee. Trois relectures froides reproduisent toute la RAM et
-l'image finale. Le boss principal du neuvieme donjon reste a combattre sans protection.
-Voir [l'acces au neuvieme donjon](analysis/d9_entry_v0306.md). Aucun changement de ROM.
-
-Le **premier boss intermediaire du neuvieme donjon est vaincu sans protection**.
-Apres les deux mecanismes en Terre et la torche, le retrait est verifie avant
-la rencontre1BE/type79. L'epee longue2 est choisie par le menu ; le heros termine
-a48/96 PV,72/72 PM,une cle et27 pieces, avec huit cristaux. Cinq nouvelles
-relectures froides reproduisent toute la RAM et l'image finale ;164 fenetres
-de prediction sont identiques. Voir [le premier combat intermediaire du neuvieme donjon](analysis/d9_midboss_v0306.md).
-La note [REPRISE_CODEX.md](REPRISE_CODEX.md) contient le point de reprise pour un autre compte.
+Le **neuvieme boss et le retour sont valides sans protection**. Le trajet
+regroupe le portail et les deux mecanismes avant le principal6C. L'epee longue2
+est choisie par le menu ; une entree UP ordinaire corrige le controleur de test.
+Six nouveaux checkpoints reproduisent toute la RAM et l'image finale ;200
+fenetres de prediction sont identiques. Les128 mots du HUD et les neuf
+indicateurs sont verifies. Voir [le neuvieme cristal](analysis/d9_campaign_v0306.md),
+[l'acces au donjon](analysis/d9_entry_v0306.md) et [son premier boss intermediaire](analysis/d9_midboss_v0306.md).
+La fin,les sauvegardes et la fidelite globale restent a valider.
+La note [REPRISE_CODEX.md](REPRISE_CODEX.md) contient le point de reprise courant.
 
 Les **21 étapes validées du sixième donjon** comprennent la sélection de la
 hache par le menu, les clés, les mécanismes, sept lancers de Terre, la cloche,
@@ -197,6 +192,11 @@ Depuis ce répertoire, avec SGDK, Java et Python disponibles :
 .\build.ps1
 python tools/verify_git_roms.py
 ```
+
+Les outils de validation mettent en cache les manifestes d'archives pendant
+un processus et les rechargent si leur signature de fichier change. Les hashes
+et la decompression restent controles a chaque lecture. Les trois auditsD9
+produisent des rapports strictement identiques : voir [le controle du cache](analysis/evidence_manifest_cache_v0306_report.json).
 
 `build.ps1` accepte `-Sgdk` et `-Java` pour sélectionner leurs emplacements.
 Le vérificateur compare les ROMs locales avec les objets du dernier commit

@@ -4,13 +4,23 @@ from run_core import ROOT,run
 from archive_lossless_evidence import sha
 from validate_playable_sprite_limit import symbols
 
+_manifest_cache={}
+
+def _archive_manifest(path):
+ # Immutable archives recur across hundreds of reads; reload changed manifests.
+ stat=path.stat();stamp=(stat.st_mtime_ns,stat.st_ctime_ns,stat.st_size,stat.st_ino)
+ cached=_manifest_cache.get(path)
+ if cached is None or cached[0]!=stamp:
+  cached=(stamp,json.loads(path.read_bytes()));_manifest_cache[path]=cached
+ return cached[1]
+
 def evidence(path):
  if path.exists():return path.read_bytes()
  name=path.relative_to(ROOT).as_posix()
- for folder in ['fairy-campaign-v0280','natural-campaign-v0280','natural-axe-campaign-v0274','stack-release-v0285','d2-progress-v0285','hero-pattern-v0286','d2-campaign-v0286','magic-rope-v0287','campaign-v0287-progress','terrain-walk-v0288','floor-damage-v0289','spell-teacher-v0290','axe-terrain-v0291','rope-arrival-v0292','campaign-v0292-progress','canoe-campaign-v0292','d5-progress-v0292','d5-campaign-v0292','crystal-bridge-v0293','d6-progress-v0293','d6-campaign-v0293','first-boss-variants-v0294','d2-campaign-v0294','variant-7c-v0295','sprite-cache-v0296','burst-cadence-v0304','d2-campaign-v0304','d3-campaign-v0304','d4-earth-v0304','d4-canoe-v0304','d4-campaign-v0304','d5-progress-v0304','d5-supplies-v0304','d5-campaign-v0304','d6-progress-v0304','d6-campaign-v0304','d7-supplies-v0304','d7-progress-v0304','d7-navigation-v0304','d7-campaign-v0304','d8-entry-v0304','d8-passages-v0304','d8-progress-v0304','indoor-stairs-v0305','d1-oil-v0305','d2-campaign-v0305','d3-campaign-v0305','d4-campaign-v0305','reward-hud-v0306','fire-sword-v0306','d5-campaign-v0306','d6-campaign-v0306','d7-supplies-v0306','d7-progress-v0306','d7-campaign-v0306','d8-progress-v0306','d8-campaign-v0306','d9-entry-v0306','d9-midboss-v0306']:
+ for folder in ['fairy-campaign-v0280','natural-campaign-v0280','natural-axe-campaign-v0274','stack-release-v0285','d2-progress-v0285','hero-pattern-v0286','d2-campaign-v0286','magic-rope-v0287','campaign-v0287-progress','terrain-walk-v0288','floor-damage-v0289','spell-teacher-v0290','axe-terrain-v0291','rope-arrival-v0292','campaign-v0292-progress','canoe-campaign-v0292','d5-progress-v0292','d5-campaign-v0292','crystal-bridge-v0293','d6-progress-v0293','d6-campaign-v0293','first-boss-variants-v0294','d2-campaign-v0294','variant-7c-v0295','sprite-cache-v0296','burst-cadence-v0304','d2-campaign-v0304','d3-campaign-v0304','d4-earth-v0304','d4-canoe-v0304','d4-campaign-v0304','d5-progress-v0304','d5-supplies-v0304','d5-campaign-v0304','d6-progress-v0304','d6-campaign-v0304','d7-supplies-v0304','d7-progress-v0304','d7-navigation-v0304','d7-campaign-v0304','d8-entry-v0304','d8-passages-v0304','d8-progress-v0304','indoor-stairs-v0305','d1-oil-v0305','d2-campaign-v0305','d3-campaign-v0305','d4-campaign-v0305','reward-hud-v0306','fire-sword-v0306','d5-campaign-v0306','d6-campaign-v0306','d7-supplies-v0306','d7-progress-v0306','d7-campaign-v0306','d8-progress-v0306','d8-campaign-v0306','d9-entry-v0306','d9-midboss-v0306','d9-campaign-v0306']:
   archive=ROOT/'analysis'/folder
   if not (archive/'manifest.json').exists():continue
-  manifest=json.loads((archive/'manifest.json').read_bytes())
+  manifest=_archive_manifest(archive/'manifest.json')
   if name in manifest['files']:
    raw=(archive/name).read_bytes();assert sha(raw)==manifest['files'][name];return raw
   if name in manifest['compressed']:

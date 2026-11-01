@@ -2,6 +2,12 @@
 
 Etat de cette note : 1 novembre 2026. Lire aussi README.md et les rapports plus recents eventuellement ajoutes depuis cette note. Le changement de compte ne termine pas l'objectif du portage.
 
+## Point de reprise courant : neuf cristaux
+
+Le jalon `analysis/d9_campaign_v0306_report.json` valide la victoire6C et le retour dehors enEB :270242 images,104/104PV,72/72PM,1cle,37pieces,neuf cristaux. Le checkpoint est `validation/natural-dungeon-combat/md-auto-v0306-d9-exit01`, avec sa relecture froide complete. La ROM est toujoursv0306. Aucun processus de validation ne reste actif a la livraison de ce jalon.
+
+Voir `analysis/d9_campaign_v0306.md` pour les mecanismes regroupes,les200 predictions exactes et les six nouveaux checkpoints froids. L'archive locale est `analysis/d9-campaign-v0306`. Le profil de pile reste celui du huitieme donjon ; ne pas attribuer les402octets a toute cette nouvelle partie.
+
 ## Objectif et regles du projet
 
 Decompiler la ROM Master System fournie et porter Golden Axe Warrior en code natif 68000 sur Mega Drive, avec SGDK si utile. Obtenir d'abord une version fidele ; les ameliorations viennent ensuite. Le portage complet reste non valide.
@@ -48,11 +54,15 @@ Le test01 vers la torche1DE s'est arrete parce que le controleur n'avait pas enc
 
 ## Prochaines etapes du jeu
 
-La victoire1BE/type79 est verifiee. Reprendre le trajet selon les mecanismes originaux. Pour un nouvel episode d'approche, utiliser resume_after_intermediate.py avec ce checkpoint et le boss principal1AC ; ce helper revalide le combat avant de reprendre la protection. Le boss intermediaire19C/type7B et le boss principal1AC/type6C ne sont pas encore valides dans ce parcours. Le dernier cristal, la Hache d'or, Death Adder, la fin et les sauvegardes restent a verifier.
+Les neuf cristaux et la sortieD9 sont verifies. Poursuivre l'acces a la derniere partie,la Hache d'or,Death Adder,la fin et les sauvegardes. Le geant optionnel19C/7B et le ballon restent non valides dans ce parcours ; ne pas les oublier dans le bilan final.
 
-Le boss final6D n'accepte que la hache2 selectionnee. La table originale place la Hache d'or en11D : index inventaire1,valeur2,objet5. Sa collecte devra verifier1->2 ; le simple test booleen de possession d'une hache ne suffit pas.
+Piste de route a confirmer contre le SMS : le guide Any% Quarbit indique la cinematique en L8 (8B,ancienne entreeD6),puis le donjon final en J8 (89). La marche statique directe vers89 n'est pas trouvee,mais cela n'est pas une preuve de bug du jeu. Tracer l'evenement original en8B avec les neuf cristaux avant toute correction native. Source : https://www.speedrun.com/golden_axe_warrior/guides/yfxxr
 
-Les relectures deterministes MD ne prouvent pas toute la fidelite SMS. Le hasard SGDK global reste provisoire ; timings/audiovisuel globaux et materiel restent a valider. Le dernier profil de pile couvre la sortie du huitieme donjon jusqu'a235211 images :402octets de marge observee, pas une borne pour tous les chemins suivants.
+Le boss final6D n'accepte que la hache2 selectionnee. La table originale place la Hache d'or en11D : index inventaire1,valeur2,objet5. Sa collecte devra verifier1->2 ; un test booleen de possession d'une hache ne suffit pas.
+
+Le controleur `tools/entered_boss_route.py` finit l'entree par UP avant la recherche. Il a permis d'eviter les sorties involontaires au seuil du6C ; la ROM n'est pas modifiee. Les prochaines routes doivent regrouper les salles et mecanismes ordinaires,avec une relecture complete par jalon,et conserver les retraits verifies avant les boss. Le lecteur evidence met aussi les manifestes d'archives en cache par processus,avec invalidation sur changement du fichier ; les hashes des preuves restent verifies. Les trois auditsD9 donnent des rapports identiques avec ce cache.
+
+Les relectures deterministes MD ne prouvent pas toute la fidelite SMS. Le hasard SGDK global reste provisoire ; les timings/audiovisuel globaux restent a valider. Le dernier profil de pile couvreD8 jusqu'a235211 images :402octets observes,pas une borne pour tous les chemins suivants. Le materiel reel n'a pas ete teste.
 
 ## Outils et precautions de reprise
 
@@ -68,4 +78,4 @@ Nettoyage : uniquement apres compression sans perte, relecture et verification d
 
 ## Message a donner au nouveau chat
 
-> Lis REPRISE_CODEX.md, README.md, git status et les derniers rapports de validation. Reprends l'objectif complet : portage Mega Drive natif et fidele de Golden Axe Warrior. Verifie d'abord les derniers rapports et le checkpoint du premier boss intermediaire du neuvieme donjon avant de poursuivre. Conserve les changements en cours, les ROMs numerotees et les archives locales ; ne declare pas le jeu termine avec les seuls huit cristaux ou avec une preuve de determinisme MD.
+> Lis REPRISE_CODEX.md, README.md, git status et les derniers rapports de validation. Reprends l'objectif complet : portage Mega Drive natif et fidele de Golden Axe Warrior. Verifie d'abord les derniers rapports et le checkpoint du retour avec neuf cristaux avant de poursuivre. Conserve les changements en cours, les ROMs numerotees et les archives locales ; ne declare pas le jeu termine avec les seuls neuf cristaux ou avec une preuve de determinisme MD.
