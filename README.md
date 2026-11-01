@@ -22,10 +22,11 @@ affiche les neuf indicateurs de cristal selon la table SMS. Les comparaisons
 PAL/NTSC couvrent 22 scénarios, 44 images après fermeture et les fenêtres
 avant fermeture : carte physique du HUD et tuiles utilisées conformes.
 
-Le parcours courant valide les **sept premiers cristaux et le retour dehors
-en 1B**, à **84/88 PV et 64/72 PM**, avec Feu, Terre, canoë, corde, bottes,
-cloche de glace, bateau et épée longue. La hache de niveau 1 est sélectionnée ;
-l’armure reste au niveau 1. Les objets, les clés, l’argent et les soins sont
+Le parcours courant conserve les **sept premiers cristaux** et valide le
+**combat intermédiaire du huitième donjon sans protection**. Le point courant
+est en **1C9**, à **46/88 PV et 64/72 PM**, avec Feu, Terre, canoë, corde,
+bottes, cloche de glace, bateau et épée longue. L’épée longue de niveau 2 est
+sélectionnée ; la hache et l’armure restent au niveau 1. Les objets, les clés, l’argent et les soins sont
 obtenus par les actions du jeu.
 
 Les **21 étapes validées du sixième donjon** comprennent la sélection de la
@@ -36,7 +37,7 @@ Les protections d’approche sont retirées avant les boss principaux et ne sont
 pas réactivées pendant le retour. Aucun PV ni objet n’est injecté.
 Les 128 mots du HUD final et les six indicateurs de cristal sont vérifiés.
 
-Le profil de chaque instruction normale jusqu’à **196 280 images** observe
+Le dernier profil, sur le parcours du septième donjon jusqu’à **196 280 images**, observe
 **442 octets de marge de pile**, sans corruption du tas. Le portage complet,
 la fin et la fidélité audiovisuelle globale restent à valider.
 Voir le [septième cristal](analysis/d7_campaign_v0306.md),
@@ -69,6 +70,15 @@ Sept nouveaux checkpoints reproduisent toute la RAM et l'image finale ;
 157 séquences prédites sont vérifiées. Le HUD final affiche les sept indicateurs
 de cristal. Les deux derniers donjons, la fin et la fidélité globale restent
 à valider. Voir [le septième cristal et la sortie](analysis/d7_campaign_v0306.md).
+
+L’**entrée du huitième donjon et son combat intermédiaire sont validés**.
+Le passeur prélève réellement 10 pièces ; une sortie/rentrée ordinaire permet
+de résoudre un ennemi hors de portée sur l’approche. La protection est retirée
+avant l’entrée en 1C9. L’ennemi de 50 PV est vaincu à l’épée longue, avec un seul
+coup encaissé. Six checkpoints reproduisent toute la RAM et l’image finale ;
+215 séquences de combat sont vérifiées. Le boss principal et le huitième
+cristal restent à valider. Voir [l’entrée et le combat intermédiaire du huitième
+donjon](analysis/d8_progress_v0306.md).
 
 La **v0305 corrige le blocage des escaliers entre pièces intérieures**.
 Chez les marchands de C7, il est maintenant possible de monter de la pièce
