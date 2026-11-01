@@ -22,9 +22,9 @@ affiche les neuf indicateurs de cristal selon la table SMS. Les comparaisons
 PAL/NTSC couvrent 22 scénarios, 44 images après fermeture et les fenêtres
 avant fermeture : carte physique du HUD et tuiles utilisées conformes.
 
-Le parcours courant a validé les **six premiers cristaux et le retour dehors
-en 8B**, à **80/80 PV et 72/72 PM**, avec Feu, Terre, canoë, corde, bottes,
-cloche de glace et épée longue. La hache de niveau 1 est sélectionnée ;
+Le parcours courant valide les **sept premiers cristaux et le retour dehors
+en 1B**, à **84/88 PV et 64/72 PM**, avec Feu, Terre, canoë, corde, bottes,
+cloche de glace, bateau et épée longue. La hache de niveau 1 est sélectionnée ;
 l’armure reste au niveau 1. Les objets, les clés, l’argent et les soins sont
 obtenus par les actions du jeu.
 
@@ -36,10 +36,11 @@ Les protections d’approche sont retirées avant les boss principaux et ne sont
 pas réactivées pendant le retour. Aucun PV ni objet n’est injecté.
 Les 128 mots du HUD final et les six indicateurs de cristal sont vérifiés.
 
-Le profil de chaque instruction normale jusqu’à **162 574 images** observe
+Le profil de chaque instruction normale jusqu’à **196 280 images** observe
 **442 octets de marge de pile**, sans corruption du tas. Le portage complet,
 la fin et la fidélité audiovisuelle globale restent à valider.
-Voir le [sixième cristal](analysis/d6_campaign_v0306.md),
+Voir le [septième cristal](analysis/d7_campaign_v0306.md),
+le [sixième cristal](analysis/d6_campaign_v0306.md),
 le [cinquième cristal](analysis/d5_campaign_v0306.md),
 le [parcours Feu et épée](analysis/fire_sword_v0306.md) et le
 [correctif du HUD v0306](analysis/reward_hud_v0306.md).
@@ -53,14 +54,21 @@ exclue ; le trajet retenu préserve ce délai. Aucun changement de ROM.
 Voir [l'entrée du septième donjon](analysis/d7_supplies_v0306.md).
 
 La suite valide le **combat intermédiaire du septième donjon sans protection**,
-vaincu avec **80/80 PV**, puis la **récupération du bateau**. Le point courant
-est en 1D5, à **80/80 PV, 72/72 PM et deux clés**, avec six cristaux. Dix nouveaux
+vaincu avec **80/80 PV**, puis la **récupération du bateau**. Ce jalon
+s’achève en 1D5, à **80/80 PV, 72/72 PM et deux clés**, avec six cristaux. Dix nouveaux
 checkpoints reproduisent toute la RAM et l'image finale. Les 128 mots du HUD
 après la fenêtre du bateau et les six indicateurs de cristal sont vérifiés.
-La protection d'approche reprend après le combat intermédiaire ; elle devra
-être retirée avant le boss principal. L'essai sud sans protection mort en 1B7
-est conservé séparément. Le boss principal et le septième cristal restent
-à valider. Voir [le combat intermédiaire et le bateau](analysis/d7_progress_v0306.md).
+La protection d'approche avait repris après le combat intermédiaire ; son
+retrait avant le boss principal est vérifié dans la phase suivante. L'essai
+sud sans protection mort en 1B7 est conservé séparément. Voir [le combat intermédiaire et le bateau](analysis/d7_progress_v0306.md).
+
+Le **septième cristal et le retour extérieur sont validés**. Le boss principal
+est vaincu à l'épée longue sans perte de PV pendant le combat. La protection
+est retirée 28 images avant son début et reste désactivée pendant le retour.
+Sept nouveaux checkpoints reproduisent toute la RAM et l'image finale ;
+157 séquences prédites sont vérifiées. Le HUD final affiche les sept indicateurs
+de cristal. Les deux derniers donjons, la fin et la fidélité globale restent
+à valider. Voir [le septième cristal et la sortie](analysis/d7_campaign_v0306.md).
 
 La **v0305 corrige le blocage des escaliers entre pièces intérieures**.
 Chez les marchands de C7, il est maintenant possible de monter de la pièce
