@@ -28,6 +28,13 @@ canoë, corde, bottes, cloche de glace, bateau et épée longue. La hache1 est
 sélectionnée ; l’épée longue reste2 et l’armure1. Les objets, les clés,
 l’argent et les soins sont obtenus par les actions du jeu.
 
+L'**acces au neuvieme donjon est valide** en1FC : huit cristaux conserves,
+84/96 PV,72/72 PM,une cle et21 pieces. Le transport1A vers3C coute10 pieces ;
+la cloche de glace ouvre normalement la pierre tombale deCB, puis la hache
+est re-selectionnee. Trois relectures froides reproduisent toute la RAM et
+l'image finale. Les boss du neuvieme donjon restent a combattre sans protection.
+Voir [l'acces au neuvieme donjon](analysis/d9_entry_v0306.md). Aucun changement de ROM.
+
 Les **21 étapes validées du sixième donjon** comprennent la sélection de la
 hache par le menu, les clés, les mécanismes, sept lancers de Terre, la cloche,
 le combat et le retour. Chaque étape possède une relecture froide indépendante
