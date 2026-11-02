@@ -29,7 +29,11 @@ dérivée du parcours neuf cristaux v0306, valide l'entrée,les premiers
 mécanismes,le géant sans protection et deux portails. Ses quinze relectures
 RAM/PNG sont exactes. Il est suivi séparément du parcours depuis Nouveau Jeu.
 Voir [le palais,phase contrôlée1](analysis/controlled_palace_phase1_v0309.md).
-La hache dorée,le dernier boss,la fin et la validation globale restent ouverts.
+La [phase contrôlée2](analysis/controlled_palace_phase2_v0309.md) valide aussi
+le gardien 7C sans protection, puis la vraie récompense de la hache dorée
+(niveau 1 vers 2). Neuf relectures RAM/PNG sont exactes. Ce scénario reste
+séparé de la campagne depuis Nouveau Jeu. Le dernier boss,la fin et la
+validation globale restent ouverts.
 
 La **v0308 restaure l'ouverture du passage vers le palais apres les neuf
 cristaux**. Le test controle SMS/MD reproduit les289 images,les neuf amplitudes

@@ -33,20 +33,44 @@ Checkpoint de fin de phase1 :
 validation/natural-dungeon-combat/md-auto-controlled-v0309-palace-switch12902,
 48495. Les neuf cristaux naturels restent prouves sur v0306 uniquement.
 
-Le contournement12C->11C->11B->12B->12C->12D->12E a reussi.
-pre-guardian03 termine a76952 en12E,104PV/72PM ; relecture canonique exacte.
-Guard retire a76953 dans guardian-release01 ; relecture canonique exacte.
-Le combat guardian01 sans protection est actif (exec4313) : poller ce handle
-avant toute relance. Journal validation/controlled-v0309-palace-guardian01.log.
-Ne pas compter une victoire avant rapport terminal et relecture canonique.
-Pour reprendre apres ce gardien,utiliser resume_after_intermediate avec
---boss-room0x11e --next-boss-room0x14c ; le prochain boss doit etre absent de
-tout le prefixe. Ce nouveau cas doit encore etre exerce sur une vraie victoire.
+La phase2 est figee dans analysis/controlled_palace_phase2_v0309_report.json :
+contournement12C->11C->11B->12B->12C->12D->12E termine a76952 ; guard retire
+76953,combat7C11E commence77054 HP104/hurt0. guardian01 atteint90000 avec8PV
+au gardien et80PV au heros,404 fenetres fullRAM exactes. Ce checkpoint est
+incomplet. guardian02 finit via controleur ordinaire : salle vide90564,
+checkpoint90715 HP56/PM72. Aucune ecriture d'assistance depuis76953.
+Neuf relectures RAM65536/PNG de phase2 exactes.
 
-Suite prevue : finir11E (gardien7C) sans protection,
-puis11D pour la vraie amelioration de hache1->2. Le controleur d'objet accepte
---collect-item1 --collect-item-value2 ; ce nouveau cas reste a valider en jeu.
-Le boss final6D est en14C et exige hache2 selectionnee. La fin reste a valider.
+final-approach01 reprend la protection seulement a90716 apres victoire
+verifiee. resume_after_intermediate --boss-room0x11e --next-boss-room0x14c
+verifie que14C n'apparait jamais dans tout le prefixe. Cas maintenant exerce.
+goldenaxe01 obtient la recompense11D normalement : objet1 passe1->2,texte
+ferme,hache2 selectionnee. Checkpoint93233 HP80/PM72/2cles,relecture exacte.
+Aucun PV,objet,monstre ou flag injecte apres l'import SRAM initial.
+
+Suite : rejoindre les derniers interrupteurs et14C. switch17c01 a essaye
+11D->11E->12E->13E ; la sortie sud12E est un mur. Stop controller_stalled95983,
+HP76,relecture exacte,mais aucun interrupteur17C atteint. Ne pas le compter
+comme passage reussi. switch17c02 termine a110000 en12D : trois dangers62
+persistants,76PV. La descente12D->13D ne permet pas le passage propose ; ce
+checkpoint vivant est relu exactement,mais ne prouve aucun mecanisme17C.
+switch17c03 (exec68372) est actif : poller avant toute relance. Depart du vrai
+checkpoint110000,puis12D->12C->11C(portail)->12A->11A->119(portail)->14E->13E
+(portail)->16A->17A->18A->18B->17B->17C. Les portails sont confirmes dans la ROM,
+les acces entre salles restent a observer. Objectif : bouton17C qui met
+flag4 de17B. Eviter les portails de retour12A/14E/16A/17B.
+Guide GameFAQs2914 : apres T2,descendre,aller aT5,presser la flamme a droite,
+revenir aT5 par le long chemin,puis mecanismeT6. Verifier les salles natives.
+La deuxieme image du guide Quarbit n'est plus accessible ; ne pas insister.
+
+close_assisted_approach accepte aussi les vrais types de boss63..6D pour
+retirer le guard avant14C. Filtrer par type : les bits20/40 de descripteur
+seuls ne distinguent PAS les boss des ennemis ordinaires.
+unassisted_dungeon_continuation --stop-on-ending est prepare pour capturer
+la victoire6D reelle et le passage game14 : exige combat6D observe,PV>0 et
+flag fin donjon10=1. Ce nouveau mode n'est PAS encore exerce. Une continuation
+separee jusqu'au generique et au retour titre reste a realiser,sans ecriture.
+Le boss6D exige hero_selected_item1 et hero_weapon_level2,actuellement acquis.
 Le guide Quarbit est une aide de route ; les tables ROM et le jeu font preuve.
 
 Les outils controles conservent un cooldown naturel<=128 lors d'un premier

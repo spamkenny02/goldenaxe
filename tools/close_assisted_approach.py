@@ -1,4 +1,4 @@
-"""End a test guard before an intermediate fight; never import game state."""
+"""End a test guard before a source boss fight; never import game state."""
 import argparse,contextlib,io,json
 from pathlib import Path
 from run_core import ROOT,run,FrameWrites
@@ -14,8 +14,8 @@ def main():
  initial_sram=controlled_sram_input(source,c,a.controlled_sram_prefix);inherited=prefix_writes(source,c,True,controlled=a.controlled_sram_prefix);assist,_=recording(source,c)
  assert all(assist[k] is None for k in ['first_boss_entry','release_write_frame','first_boss_combat','first_boss_damage'])
  rom=ROOT/'gaw-megadrive.bin';assert sha(rom.read_bytes())==c['rom_sha256']
- original=(ROOT/'input/original.sms').read_bytes();kinds=[k for k in original[0x3234e+a.before_room*8:0x32356+a.before_room*8] if k in (0x78,0x79,0x7a,0x7b,0x7c)]
- assert kinds and all(original[0x320ea+(k-0x20)*4+3]&0x20 for k in kinds)
+ original=(ROOT/'input/original.sms').read_bytes();kinds=[k for k in original[0x3234e+a.before_room*8:0x32356+a.before_room*8] if 0x63<=k<=0x6d or 0x78<=k<=0x7c]
+ assert kinds and all(original[0x320ea+(k-0x20)*4+3]&0x60 for k in kinds),'Require an original boss record'
  sy=symbols(ROOT/'megadrive/out/release/symbol.txt');start=c['frames'];end=start+1
  expected=evidence(source/f'ram_{start:05d}.bin')
  controls=json.loads((source/'controls.json').read_bytes());timeline=[()]*(start+1)

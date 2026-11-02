@@ -9,19 +9,20 @@ from validate_playable_sprite_limit import symbols
 from archive_lossless_evidence import sha
 
 def main():
- p=argparse.ArgumentParser(add_help=False);p.add_argument('--planner',choices=['ordinary','contact','earth','item','evasive','cautious','exit'],default='ordinary');p.add_argument('--planning-step',type=int,choices=[8,16,24,32],default=8);p.add_argument('--entry-boss-kind',type=lambda v:int(v,0),help='Walk UP inside this boss room before predictive sidesteps');a,args=p.parse_known_args()
+ p=argparse.ArgumentParser(add_help=False);p.add_argument('--planner',choices=['ordinary','contact','earth','item','evasive','cautious','exit'],default='ordinary');p.add_argument('--planning-step',type=int,choices=[8,16,24,32],default=8);p.add_argument('--entry-boss-kind',type=lambda v:int(v,0),help='Walk UP inside this boss room before predictive sidesteps');p.add_argument('--stop-on-ending',action='store_true',help='Capture the real final-boss handoff before a separate ordinary-input ending continuation');a,args=p.parse_known_args()
  assert '--assisted-prefix' in args and '--continuation' in args
  name=args[args.index('--continuation')+1];source=ROOT/'validation/natural-dungeon-combat'/name;c=json.loads((source/'capture.json').read_bytes());assist,writes=recording(source,c)
  assert assist.get('approach_closed_early') and assist['release_write_frame']<=c['frames']
  assert writes[-1][0]==assist['release_write_frame'] and writes[-1][2]==b'\x00\x00'
  assert prefix_writes(source,c,True,controlled='--controlled-sram-prefix' in args)==writes
- expected=evidence(source/f"ram_{c['frames']:05d}.bin");sy=symbols(ROOT/'megadrive/out/release/symbol.txt');start=c['frames'];original=game.run;folder=None;first_combat=None;first_damage=None;previous=None;observed=0
+ expected=evidence(source/f"ram_{c['frames']:05d}.bin");sy=symbols(ROOT/'megadrive/out/release/symbol.txt');start=c['frames'];original=game.run;folder=None;first_combat=None;first_damage=None;previous=None;observed=0;ending_handoff=None
+ if a.stop_on_ending:assert assist['closed_before_room']==0x14c
  def wrapped(*values,**kwargs):
   nonlocal folder
   folder=Path(values[2]);assert list(kwargs.get('ram_writes',()))==writes
   observer=kwargs['ram_observer'];stop=kwargs.get('stop_when');terminal=[None]
   def observe(frame,raw):
-   nonlocal first_combat,first_damage,previous,observed
+   nonlocal first_combat,first_damage,previous,observed,ending_handoff
    observed=frame
    if frame==start:assert raw==expected,'Verified full RAM must replay before extension'
    if frame>=start:
@@ -33,7 +34,12 @@ def main():
     if frame>start and previous is not None and state['health']<previous['health'] and first_damage is None:first_damage=dict(**state,before=previous['health'])
     previous=state
    observer(frame,raw)
-   if terminal[0] is None and stop and stop():
+   if a.stop_on_ending and frame>start and state['game']==14 and ending_handoff is None:
+    assert state['room']==0x14c and state['health']>0
+    assert first_combat and any(e['kind']==0x6d and e['hp'] for e in first_combat['actors'])
+    assert data('game_save_state',592)[0x28]==1,'Require the real final-dungeon defeat flag'
+    ending_handoff=dict(**state,ending_stage=word('ending_stage'),final_dungeon_defeated=True)
+   if terminal[0] is None and (ending_handoff is not None or stop and stop()):
     terminal[0]=frame+1;values[3].add(frame+1)
   # Video runs before the observer: request the next frame, then stop there.
   values[3].add(values[1])
@@ -73,5 +79,6 @@ def main():
    nc=json.loads((folder/'capture.json').read_bytes());assert nc['test_ram_writes']==c['test_ram_writes']
    (folder/'assistance.json').write_bytes((source/'assistance.json').read_bytes());recording(folder,nc)
    report=json.loads((folder/'report.json').read_bytes());report.update(primary_state_imports=int(bool(c['sram_input'])),unassisted_extension=True,new_assistance_writes=0,guard_release_frame=assist['release_write_frame'],closed_before_room=assist['closed_before_room'],first_intermediate_combat=first_combat,first_extension_damage=first_damage,unassisted_controller_sha256=sha(Path(__file__).read_bytes()),planning_step=a.planning_step if a.planner=='evasive' else None,entry_boss_kind=a.entry_boss_kind,assisted_route=True,natural_campaign_proof=False,extension_guard_checks_through_frame=observed)
+   if ending_handoff is not None:report.update(passed=True,failure=None,ending_handoff_passed=True,ending_handoff=ending_handoff,stop_reason='real_final_boss_ending_handoff',ending_complete=False)
    (folder/'report.json').write_bytes((json.dumps(report,indent=2)+'\n').encode())
 if __name__=='__main__':main()
