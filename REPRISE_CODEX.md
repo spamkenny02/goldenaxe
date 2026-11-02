@@ -2,8 +2,8 @@
 
 Etat de cette note : 2 novembre 2026. Lire aussi README.md et les rapports plus recents eventuellement ajoutes depuis cette note. Le changement de compte ne termine pas l'objectif du portage.
 
-## Etat courant : HUIT cristaux v309 verifies depuis Nouveau Jeu,sortieD8
-261634 exterieur29 HP94/96 MP64 gold40 key1. Bateau et cle des voleurs acquis.
+## Etat courant : NEUF cristaux v309 verifies depuis Nouveau Jeu,sortieD9
+302306 exterieurEB HP102/104 MP64 gold32 keys2. Ballon,navire,cle des voleurs acquis.
 Ravitaillement :dons27->57->87 en7D/AC,chopAC1C,cle60 chez2E laisse27,
 entree1DB187840 HP50,premierecle1CB188960 HP58. Le detour vers94 n a pas
 ete trouve par le planificateur (base et cartecourante) :aucune trace jeu
@@ -81,17 +81,35 @@ HP36/96 MP72 gold32 keys2 ;coup normal19B28910240->36,fenetre fermee,hache1.
 Deux apercus d audit avant completion manquaient seulement des fichiers futurs ;
 rapport consolide maintenant passe. Ne relancer aucune etape terminee.
 Sources v0309-d9-balloon-sources ;16 pointsD9 couverts,8cristaux. Episodes13.
-Watcher ACTIF8858 : validation/run_d9_finish_after_balloon.ps1 a attendu parent25200,
-audit balloon passe puis run_d9_main01.py EN COURS :depuis19B via19C/19D/19E
-portail1CC,puzzleBC/contactBD,stop1BC avantmain,release1AC,entreeUP6C,
-planning16,9e cristal et sortieEB sans nouvelle aide,puis audit d9_campaign.
-Poll8858 avant relance,29490 terminal ;ne pas lancer en double. Aucun9e cristal
-encore valide. Nouveau audit campaign pycompile,NON execute encore.
-Ballon11 ouvre WORLD OVERVIEW,pas transport. Usage uniquement exterieur,
-world_overview_active1/2/3->0,selection0 au retour. Apres sortie9 envisager
-activation/fermeture/restauration naturelles ;tests controles distincts existent.
-Source activate_hero_item traite d abord terrain3 (projectile eau) et5 (interdit),
-choisir terrain normal avant usage. Ne pas inferer usage depuis acquisition.
+Watcher8858 terminal success ;audit d9_campaign_v0309 PASSE4 endpoints finaux.
+Approche295159 en1BC HP36/96 MP72 gold32 keys2,BC/BD ouverts,canonique.
+Release295160 avant1AC,premier6C90HP295276 hero36/hurt0,coup29738336->16,
+victoire/recompense300396 HP104/104 MP72. 270 predictions fullRAM.
+Retour SANS AIDE,coup3017431EE HP104->102 MP72->64,sortieEB302306 ;15 predictions.
+4 relectures RAM65536/PNG exactes,HUD128mots/9marqueurs apres cristal et sortie.
+20 pointsD9 couverts avec entree/gardiens/ballon. Neuf cristaux surv309 courant,
+sans import SRAM ni ressources. Episode13 ferme devant1AC,native inchangee.
+Tests apres D9 :
+- ACTIF39874 : validation/run_owned_overview_after_d9.ps1,apres attente parent46832
+  et audit9 positif,execute natural_owned_overview.py depuis sortieEB302306.
+  Selection11 par menu,activation,fermeture C,restauration du fond/cellules,
+  selection0 de retour puis re-selectionhache1,aucune nouvelle ecriture.
+  Puis relecture fixe et summarize_owned_overview_v0309.py (768mots physiques
+  carte+HUD et9marqueurs). Helper/summary pycompiles,NON valides encore.
+  Preconditions terrain normal (pas3/5),exterieur,ballon acquis9cristaux.
+- ACTIF19691 : validation/run_cold_palace_after_overview.ps1 attend parent26056
+  (watcher overview),exige audit overview positif,puis run_cold_palace_entry01.py.
+  Monde depuis nouveau checkpoint overview,porte10 vers18D,gate9cristaux reel,
+  nouvelle approche vers boss FINAL14C (pas15E) via completed-exit-proof D9.
+  Stop a entree18D et relecture. Ne pas entrer15E avant retrait explicite du garde.
+Poll39874 ET19691 ;8858 terminal,29490 terminal. Ne pas dupliquer.
+Ballon est WORLD OVERVIEW,pas transport ;world_overview_active1/2/3->0,
+selection0 au retour. Source protege donnees avec union house_dialogue_backup,
+source panne eventuelle peut etre precondition/helper,inspecter preuve avant
+changer la ROM. Aucune carte overview/entree palais froide encore validee.
+Apres entree palais,rejouer trajet controle comme proposition seule,retirer
+garde avant15E/7B,11E/7C et14C/6D ;collecter vraie hache2 en11D avantfinal.
+Ne pas fusionner les anciennes preuves SRAM synthetiques avec campagnecourante.
 Le parcours historique v306 evitait19C/7B et ballon ;ils sont maintenant couverts surv309.
 Le detour valide utilise reach-room19D24/88 avec4pieges62HP0 conserves et
 retire le garde avant19C. Cette preuve specifique couvre le geant et la collecte

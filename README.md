@@ -19,32 +19,22 @@ Checksum Mega Drive : `4080`
 
 La **v0309 regroupe les transferts du palais dans la file VBlank existante**.
 Le test SMS/MD conserve les 289 images et tous les décalages de la secousse.
-Le parcours v0309 depuis Nouveau Jeu valide maintenant **huit cristaux et
-le retour du huitième donjon**, à 94/96 PV et 64 PM en extérieur 29.
-La clé des voleurs et le bateau sont acquis normalement. Les combats
-intermédiaire et principal D8 sont gagnés sans protection pendant les
-affrontements ; le boss principal ne blesse pas le héros. Aucune aide ne
-reprend pendant le retour. Les 17 points de contrôle D8 ont des relectures
-exactes sur toute la RAM et le PNG final. Le HUD physique et les huit
-marqueurs sont vérifiés après le cristal et la sortie.
-Voir [le huitième cristal et le retour](analysis/d8_campaign_v0309.md),
-[la clé des voleurs](analysis/d8_thief_v0309.md),
-[le gardien intermédiaire](analysis/d8_midboss_v0309.md),
-[l'entrée et le paiement côtier](analysis/d8_entry_v0309.md)
-et [le septième donjon](analysis/d7_campaign_v0309.md).
+Le parcours v0309 depuis Nouveau Jeu valide maintenant **les neuf cristaux et
+le retour du neuvième donjon**, à 102/104 PV et 64 PM en extérieur EB.
+Le géant optionnel et le ballon sont aussi couverts. Les trois gardiens D9
+sont vaincus sans protection pendant les combats ; aucune aide ne reprend
+pendant le retour du boss principal. Les 20 points de contrôle D9 ont des
+relectures exactes sur toute la RAM et le PNG final. Le HUD physique et les
+neuf marqueurs sont vérifiés après le dernier cristal et la sortie.
+Voir [le neuvième cristal et le retour](analysis/d9_campaign_v0309.md),
+[le géant et le ballon](analysis/d9_balloon_v0309.md),
+[le premier gardien](analysis/d9_midboss_v0309.md),
+[l'entrée avec la cloche](analysis/d9_entry_v0309.md)
+et [le huitième donjon](analysis/d8_campaign_v0309.md).
 
-L'[entrée du neuvième donjon](analysis/d9_entry_v0309.md) est également validée :
-paiement normal du passage de dix pièces, ouverture réelle en CB avec la cloche
-possédée et arrivée en 1FC à 94/96 PV. Trois relectures RAM/image exactes ;
-le [premier gardien 1BE](analysis/d9_midboss_v0309.md) est aussi vaincu sans
-protection pendant le combat, à 78/96 PV. Les cinq étapes Terre/antichambre/
-combat ont des relectures exactes, avec 184 fenêtres de prédiction vérifiées.
-Le [géant optionnel et le ballon](analysis/d9_balloon_v0309.md) sont maintenant
-vérifiés : quatre pièges persistants traversés sans les supprimer, géant vaincu
-sans protection à 16/96 PV, puis ballon réellement acquis en 19B. Huit nouveaux
-points RAM/image exacts et 440 fenêtres de prédiction ; HUD et huit marqueurs
-finaux vérifiés. Le héros termine ce détour à 36/96 PV après des événements
-normaux de jeu. L'activation du ballon et le neuvième cristal restent à vérifier.
+Le test d'activation du ballon, de fermeture de la carte générale et de
+restauration de l'écran depuis cette partie est en cours. Le palais et la fin
+restent à rejouer dans cette campagne ; leurs preuves contrôlées sont séparées.
 
 La progression ne prouve pas toute la fidélité SMS : le [relevé des sources](analysis/native_remaining_v0309.md)
 distingue les appels aléatoires SGDK encore provisoires, les estimations de
