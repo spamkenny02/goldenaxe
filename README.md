@@ -19,28 +19,19 @@ Checksum Mega Drive : `4080`
 
 La **v0309 regroupe les transferts du palais dans la file VBlank existante**.
 Le test SMS/MD conserve les 289 images et tous les décalages de la secousse.
-Le parcours v0309 depuis Nouveau Jeu valide maintenant **sept cristaux et
-le retour du septième donjon**, à 76/88 PV et 64 PM en extérieur 1B.
-Le bateau est acquis, avec la cloche de glace, Feu, Terre, épée longue,
-bottes, canoë et corde. Les combats intermédiaire et principal D7 sont gagnés
-sans protection pendant les affrontements. Le boss principal ne blesse pas
-le héros ; le retour occasionne un coup normal et continue sans aide.
-Les 25 points de contrôle D7 ont des relectures exactes sur toute la RAM et
-le PNG final. Le HUD physique et les sept marqueurs sont vérifiés après
-le cristal et la sortie.
-Voir [le septième cristal et le retour](analysis/d7_campaign_v0309.md),
-[le ravitaillement](analysis/d7_supplies_v0309.md),
-[le combat intermédiaire](analysis/d7_midboss_v0309.md),
-[le bateau](analysis/d7_ship_v0309.md), [l'accès au boss](analysis/d7_navigation_v0309.md)
-et [le sixième donjon](analysis/d6_campaign_v0309.md).
-
-L'[entrée du huitième donjon](analysis/d8_entry_v0309.md) est aussi validée :
-trajet vers le passage côtier, paiement normal de dix pièces et arrivée en
-1EA, avec 64/88 PV, 64 PM et une clé. Les trois relectures RAM/image sont
-exactes. Le [gardien intermédiaire 1C9](analysis/d8_midboss_v0309.md) est
-également vaincu sans protection pendant le combat : deux coups reçus,
-28/88 PV à la fin, 267 fenêtres de prédiction et trois relectures RAM/image
-exactes. La quête de la clé des voleurs et le huitième cristal restent en cours.
+Le parcours v0309 depuis Nouveau Jeu valide maintenant **huit cristaux et
+le retour du huitième donjon**, à 94/96 PV et 64 PM en extérieur 29.
+La clé des voleurs et le bateau sont acquis normalement. Les combats
+intermédiaire et principal D8 sont gagnés sans protection pendant les
+affrontements ; le boss principal ne blesse pas le héros. Aucune aide ne
+reprend pendant le retour. Les 17 points de contrôle D8 ont des relectures
+exactes sur toute la RAM et le PNG final. Le HUD physique et les huit
+marqueurs sont vérifiés après le cristal et la sortie.
+Voir [le huitième cristal et le retour](analysis/d8_campaign_v0309.md),
+[la clé des voleurs](analysis/d8_thief_v0309.md),
+[le gardien intermédiaire](analysis/d8_midboss_v0309.md),
+[l'entrée et le paiement côtier](analysis/d8_entry_v0309.md)
+et [le septième donjon](analysis/d7_campaign_v0309.md).
 
 La progression ne prouve pas toute la fidélité SMS : le [relevé des sources](analysis/native_remaining_v0309.md)
 distingue les appels aléatoires SGDK encore provisoires, les estimations de

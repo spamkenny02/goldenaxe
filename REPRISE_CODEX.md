@@ -2,8 +2,8 @@
 
 Etat de cette note : 2 novembre 2026. Lire aussi README.md et les rapports plus recents eventuellement ajoutes depuis cette note. Le changement de compte ne termine pas l'objectif du portage.
 
-## Etat courant : SEPT cristaux v309 verifies depuis Nouveau Jeu,sortieD7
-222579 exterieur1B HP76/88 MP64 gold32 key1. Bateau acquis normalement.
+## Etat courant : HUIT cristaux v309 verifies depuis Nouveau Jeu,sortieD8
+261634 exterieur29 HP94/96 MP64 gold40 key1. Bateau et cle des voleurs acquis.
 Ravitaillement :dons27->57->87 en7D/AC,chopAC1C,cle60 chez2E laisse27,
 entree1DB187840 HP50,premierecle1CB188960 HP58. Le detour vers94 n a pas
 ete trouve par le planificateur (base et cartecourante) :aucune trace jeu
@@ -47,12 +47,22 @@ Pipeline47886 terminal success :ready02 en1CA229029 HP64 gold33 MP64 key1,
 hero64/hurt0 vs50HP. Victoire231568 HP28 ;degats23121464->46 puis23134846->28,
 2x18 source. 267 predictions fullRAM et3 relectures RAM65536/PNG exactes,
 audit d8_midboss_v0309 passe. Aucune ecriture apres release pendant combat.
-Pipeline ACTIF17957 : validation/run_d8_thief01.py. Reprise du garde uniquement
-apres victoire canonique,post-mini1C8,switch1EB,switch1EC,Terre1E8,cle15 en1A9,
-switch19A,approche1A6 et relecture a chaque etape. Poll avant relance.
-Sources validation/v0309-d8-thief-sources et recettes executees figees.
-Audit tools/summarize_d8_thief_v0309.py prepare,non execute.
-Le boss196/type6B80HP n est pas encore entre,8e cristal non valide.
+Pipeline17957 terminal success :resume231569,postmini233542 HP52,
+switch1EB234368,switch1EC237269 HP84,Terre1E8->1AA242150 MP56,
+cle15 en1A9250470 HP88,switch19A253098 gold40,approche1A6256794 HP88 MP64.
+8 relectures exactes ;audit d8_thief_v0309 passe. 7A ne reapparait pas vivant.
+Watcher18661 terminal exit1 uniquement a l audit final (hash copie d7->d8
+avait altere2 caracteres hexadecimaux) ;quete et pipeline main termines.
+Empreinte corrigee,audit d8_campaign_v0309 passe sans relance du jeu.
+Release256795 avant196,combat256980 hero88/hurt0 vs6B80HP,victoire260756
+HP96/96 MP72,sans degat. 396 predictions fullRAM,sortie9 predictions.
+Retour sans aide,coup261240 en1A7 HP96->94 MP72->64,exterieur29261634.
+3 relectures RAM65536/PNG exactes,HUD128mots/8marqueurs deux fois ;17pointsD8.
+Sources d8-thief-sources et d8-main-sources ;nativev309 inchange.
+Pipeline ACTIF74658 : validation/run_d9_entry01.py,coast1A->9F,paiement10
+vers3C,puis routeBell CB et entree9 en1FC,relectures entre etapes.
+Poll avant relance. Audit summarize_d9_entry_v0309.py prepare,non execute.
+Le 9e donjon exige retrait du garde avant1BE/79,19C/7B et1AC/6C.
 Pipelines10831 terminal exit1 (plan94),60451,99237,78712 et19015 terminaux
 success. 21 checkpoints D7 verifies avant le combat principal.
 
