@@ -34,6 +34,11 @@ le gardien 7C sans protection, puis la vraie récompense de la hache dorée
 (niveau 1 vers 2). Neuf relectures RAM/PNG sont exactes. Ce scénario reste
 séparé de la campagne depuis Nouveau Jeu. Le dernier boss,la fin et la
 validation globale restent ouverts.
+La [phase contrôlée3](analysis/controlled_palace_phase3_v0309.md) franchit les
+derniers portails et mécanismes jusqu'à l'antichambre du boss final :
+100/104 PV,72 PM et hache dorée équipée. La protection est retirée avant
+l'entrée en14C ; quinze relectures RAM/PNG sont exactes. Le combat final et
+la fin ne sont pas encore validés.
 
 La **v0308 restaure l'ouverture du passage vers le palais apres les neuf
 cristaux**. Le test controle SMS/MD reproduit les289 images,les neuf amplitudes

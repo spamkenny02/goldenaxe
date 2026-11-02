@@ -4,7 +4,7 @@ Chaque binaire est conserve sans ecrasement. Les controles cibles ne prouvent pa
 
 | Version | ROM | Validation | Changements | SHA-256 |
 | --- | --- | --- | --- | --- |
-| v0309 | [Telecharger](v0309-7270576d/gaw-megadrive-v0309.bin) | targeted_checks_passed | File VBlank du palais; deux cristaux en parcours froid; gardien7C et hache doree valides dans le scenario SRAM synthetique controle. Portage complet non valide. | `7270576d6eeb2aee641776a3e364f2f3f320711d70bb91a566d7578161261049` |
+| v0309 | [Telecharger](v0309-7270576d/gaw-megadrive-v0309.bin) | targeted_checks_passed | File VBlank du palais; deux cristaux en parcours froid; scenario SRAM synthetique controle valide jusqua la porte finale,hache doree et guard retire. Combat final et portage complet non valides. | `7270576d6eeb2aee641776a3e364f2f3f320711d70bb91a566d7578161261049` |
 | v0308 | [Telecharger](v0308-e0d9c183/gaw-megadrive-v0308.bin) | targeted_checks_passed | Passage du palais apres neuf cristaux : secousse 289 images et garde huit cristaux conformes SMS en scenario controle ; parcours reel a rejouer. | `e0d9c1834dd79fffd084303d458af5e2a12dfa876a34e6c87aa13e1e40d90b9b` |
 | v0307 | [Telecharger](v0307-fc063015/gaw-megadrive-v0307.bin) | build_only | Compilation ; validation en attente. | `fc0630152635c259f45511a74d1bcf70358dd7666799f1eedeefa32d61277c67` |
 | v0306 | [Telecharger](v0306-3a12380b/gaw-megadrive-v0306.bin) | targeted_checks_passed | HUD restaure apres objets/cristaux ; neuf marqueurs SMS exacts PAL/NTSC ; quatre cristaux/retour rejoues sur v306. Portage complet non valide. | `3a12380b86c193148d1cbd29d68a880901860cfb1c276aa96d61d2da16ac2c01` |

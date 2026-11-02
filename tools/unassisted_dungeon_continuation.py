@@ -25,11 +25,13 @@ def main():
    nonlocal first_combat,first_damage,previous,observed,ending_handoff
    observed=frame
    if frame==start:assert raw==expected,'Verified full RAM must replay before extension'
-   if frame>=start:
+   # Re-observe the complete fight after this episode's release, including
+   # inherited inputs. A continuation may begin during the death animation.
+   if frame>=start or frame>assist['release_write_frame']:
     data=lambda n,k:bytes(raw[(sy[n]+i)^1] for i in range(k));word=lambda n:int.from_bytes(data(n,2),'big')
     state=dict(frame=frame,room=word('room_id'),game=word('game_state'),health=word('hero_health'),hurt=word('hero_hurt'))
     assert state['hurt']<=128,'No held test guard may exist after early release'
-    if frame>start and state['room']==assist['closed_before_room'] and state['game']==12 and first_combat is None:
+    if frame>assist['release_write_frame'] and state['room']==assist['closed_before_room'] and state['game']==12 and first_combat is None:
      actors=data('world_actor_state',768);first_combat=dict(**state,actors=[dict(slot=i,kind=actors[i*48],hp=actors[i*48+24]) for i in range(8) if actors[i*48]>=0x20 and actors[i*48+24]])
     if frame>start and previous is not None and state['health']<previous['health'] and first_damage is None:first_damage=dict(**state,before=previous['health'])
     previous=state
@@ -38,7 +40,7 @@ def main():
     assert state['room']==0x14c and state['health']>0
     assert first_combat and any(e['kind']==0x6d and e['hp'] for e in first_combat['actors'])
     assert data('game_save_state',592)[0x28]==1,'Require the real final-dungeon defeat flag'
-    ending_handoff=dict(**state,ending_stage=word('ending_stage'),final_dungeon_defeated=True)
+    ending_handoff=dict(**state,final_dungeon_defeated=True)
    if terminal[0] is None and (ending_handoff is not None or stop and stop()):
     terminal[0]=frame+1;values[3].add(frame+1)
   # Video runs before the observer: request the next frame, then stop there.

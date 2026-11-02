@@ -48,29 +48,47 @@ goldenaxe01 obtient la recompense11D normalement : objet1 passe1->2,texte
 ferme,hache2 selectionnee. Checkpoint93233 HP80/PM72/2cles,relecture exacte.
 Aucun PV,objet,monstre ou flag injecte apres l'import SRAM initial.
 
-Suite : rejoindre les derniers interrupteurs et14C. switch17c01 a essaye
-11D->11E->12E->13E ; la sortie sud12E est un mur. Stop controller_stalled95983,
-HP76,relecture exacte,mais aucun interrupteur17C atteint. Ne pas le compter
-comme passage reussi. switch17c02 termine a110000 en12D : trois dangers62
-persistants,76PV. La descente12D->13D ne permet pas le passage propose ; ce
-checkpoint vivant est relu exactement,mais ne prouve aucun mecanisme17C.
-switch17c03 (exec68372) est actif : poller avant toute relance. Depart du vrai
-checkpoint110000,puis12D->12C->11C(portail)->12A->11A->119(portail)->14E->13E
-(portail)->16A->17A->18A->18B->17B->17C. Les portails sont confirmes dans la ROM,
-les acces entre salles restent a observer. Objectif : bouton17C qui met
-flag4 de17B. Eviter les portails de retour12A/14E/16A/17B.
-Guide GameFAQs2914 : apres T2,descendre,aller aT5,presser la flamme a droite,
-revenir aT5 par le long chemin,puis mecanismeT6. Verifier les salles natives.
-La deuxieme image du guide Quarbit n'est plus accessible ; ne pas insister.
+La phase3 est maintenant verifiee : quinze relectures RAM65536/PNG exactes.
+Voir analysis/controlled_palace_phase3_v0309_report.json et son document.
+Vrai chemin : retour12C->12B->11B->11C(portail)->12A->11A->119(portail)->14E,
+13E Terre3A(portail)->16A,combat16A libere la barriere,17A->18A->18B->17B->17C.
+Bouton17C met flag4 de17B ; revenir17B->18B->18A->17A->17B(portail)->13C.
+13B->14B flamme droite ; boucle13B->13A->14A->14B(portail)->15A.
+15B Terre48 depuis136,88 dirige UP ;16B->16C bouton nord72,40 ->15C.
+Les sentinelles58 de15C sont reveillees et vaincues normalement.
+L'ENTREE FINALE EST15C->14C PAR LE NORD, PAS14D. Les anciennes hypotheses
+via14D ne sont pas des chemins verifies et ne doivent pas etre reutilisees.
 
-close_assisted_approach accepte aussi les vrais types de boss63..6D pour
-retirer le guard avant14C. Filtrer par type : les bits20/40 de descripteur
-seuls ne distinguent PAS les boss des ennemis ordinaires.
-unassisted_dungeon_continuation --stop-on-ending est prepare pour capturer
-la victoire6D reelle et le passage game14 : exige combat6D observe,PV>0 et
-flag fin donjon10=1. Ce nouveau mode n'est PAS encore exerce. Une continuation
-separee jusqu'au generique et au retour titre reste a realiser,sans ecriture.
-Le boss6D exige hero_selected_item1 et hero_weapon_level2,actuellement acquis.
+pre-final03 termine151244,15C vide,100PV/72PM/2cles,hache2 selectionnee.
+final-release01 retire le guard151245 ; relecture canonique exacte.
+Le pipeline exec81287 a passe ces controles puis lance finalboss01 :
+unassisted_dungeon_continuation --planner evasive --planning-step32
+--entry-boss-kind0x6d --stop-on-ending --rooms0x15c,0x14c --equip-axe,
+limite absolue166000. POLLER81287 avant toute relance. Journal :
+validation/controlled-v0309-palace-finalboss01.log. Le combat n'est PAS encore
+valide. Aucun guard ni PV ni objet ne doit etre ajoute apres151245.
+Consulter aussi validation/current_palace_handoff.json si plus recent.
+
+L'inspecteur read-only tools/inspect_recorded_dungeon_room.py lit le vrai RAM
+capture,les sorties accessibles,les portails et les scripts source. Il ne
+prouve pas un deplacement reel. Il permet d'eviter les mauvais compartiments.
+16A cellule76=10 : clear-kind5 apres ennemis,pas Terre. Un essai Earth16A01
+s'arrete avant toute nouvelle action sur l'assertion du type de bloc.
+13E cellule3A=11 et15B cellule48=11 : vrais lancements Terre verifies.
+Les essais incomplets de route restent explicitement etiquetes dans phase3.
+
+close_assisted_approach accepte63..6D et78..7C ; le cas6D est maintenant exerce.
+Les bits20/40 seuls ne distinguent PAS les boss des ennemis ordinaires.
+unassisted_dungeon_continuation --stop-on-ending doit capturer la victoire6D
+reelle : combat6D observe depuis le retrait du guard,y compris les touches
+heritees,PV>0 et flag donjon10=1. Ce mode n'est pas encore termine en jeu.
+Le marqueur natif ending_stage est optimise et absent des symboles : ne pas
+le lire. Le helper utilise le vrai game14 et le flag de defaite.
+Apres victoire : relecture canonique,puis tools/continue_recorded_ending.py
+--trace natural-dungeon-combat/TRACE --trial NOM --controlled-sram-prefix.
+Ce nouveau helper attend les9gemmes,le generique termine et une vraie toucheC,
+puis le retour au flux titre,sans nouvelle ecriture. Il reste a exercer.
+La fidelite globale et la campagne froide courante complete restent ouvertes.
 Le guide Quarbit est une aide de route ; les tables ROM et le jeu font preuve.
 
 Les outils controles conservent un cooldown naturel<=128 lors d'un premier
