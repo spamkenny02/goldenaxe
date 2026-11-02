@@ -64,12 +64,24 @@ RAM65536/PNG exactes. Coast1A->9F262214 HP94 gold40,paiement10 ->3C262569
 gold30,clocheCB ouvre265080 cellule86 2F->39 et flag1,normale sans ecriture
 terrain/ressource,entree1FC266242 HP94/96 MP64 key1 gold30,hache reequipee.
 Sources validation/v0309-d9-entry-sources. Aucun9e cristal encore valide.
-Watcher ACTIF5834 : validation/run_d9_finish_entry_midboss.ps1 a termine
-l attente PID23920 puis audit entree positif ;run_d9_midboss01.py maintenant
-en cours,Terre1DE34 + contact ->1CE,Terre1CE56,nettoyage,release avant1BE,
-combat79/60HP basic2 step8,relectures et audit midboss.
-Poll5834 avant toute relance ;ne pas dupliquer le pipeline. Session74658 fermee.
-Audit summarize_d9_midboss_v0309.py prepare et pycompile,non execute.
+Watcher5834 terminal success ;audit d9_midboss_v0309 passe,5 relectures
+RAM65536/PNG exactes. Terre/contact272518 HP94 MP64 ;Terre1CE272862 MP56 ;
+ready276463 HP94 MP72 gold32 keys2 (ramassages naturels),release276464.
+Premier79/60HP276636 hero94/hurt0 ;coup27802394->78,victoire278275 HP78,
+MP72 gold32 keys2. 184 predictions fullRAM. Aucune ecriture apres release
+pendant combat. Source validation/v0309-d9-first-mini-sources,ROM inchangee.
+Watcher ACTIF29490 : validation/run_d9_balloon_after_midboss.ps1 a termine
+son attente du parent41708 ;run_d9_balloon01.py en cours,car first-mini audit
+passe. Reprise du garde seulement apres victoire canonique,switch1AD,19E,
+reach-room19D24/88 avec4pieges62HP0 conserves,release avant19C,geant7B60HP
+basic2 step8,canonique,reprise apres victoire,objet11 ballon en19B via
+source stationary item15/inventory_offset11/value1. Aucune preuve geant/ballon
+encore. Poll29490 avant relance ;5834 terminal,ne pas dupliquer.
+Audit tools/summarize_d9_balloon_v0309.py prepare et pycompile,NON execute.
+Le watcher29490 ne l appelle pas encore :executer apres fin positive du
+pipeline et verifier les huit endpoints sans promouvoir une branche echouee.
+Si optionnel reussi les episodes passent12->13 avant main1AC ;adapter route
+et audits au parcours actuel. Keys2 maintenant,ne pas forcer historique1.
 Le parcours historique v306 evitait19C/7B et ballon,encore non couverts.
 Etudier le passage19E->19D (quatre62HP0,pieges persistants,ne pas demander
 leur mort) puis19C,avec arrivee reach-room si adaptee et garde retire avant

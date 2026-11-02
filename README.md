@@ -36,7 +36,10 @@ et [le septième donjon](analysis/d7_campaign_v0309.md).
 L'[entrée du neuvième donjon](analysis/d9_entry_v0309.md) est également validée :
 paiement normal du passage de dix pièces, ouverture réelle en CB avec la cloche
 possédée et arrivée en 1FC à 94/96 PV. Trois relectures RAM/image exactes ;
-les gardiens et le neuvième cristal restent à vérifier.
+le [premier gardien 1BE](analysis/d9_midboss_v0309.md) est aussi vaincu sans
+protection pendant le combat, à 78/96 PV. Les cinq étapes Terre/antichambre/
+combat ont des relectures exactes, avec 184 fenêtres de prédiction vérifiées.
+Le géant optionnel, le ballon et le neuvième cristal restent à vérifier.
 
 La progression ne prouve pas toute la fidélité SMS : le [relevé des sources](analysis/native_remaining_v0309.md)
 distingue les appels aléatoires SGDK encore provisoires, les estimations de
