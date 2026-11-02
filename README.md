@@ -30,6 +30,14 @@ Voir [le sixième donjon v0309](analysis/d6_campaign_v0309.md),
 [sa préparation](analysis/d6_progress_v0309.md) et
 [le cinquième donjon](analysis/d5_campaign_v0309.md).
 
+La progression D7 valide le ravitaillement, le **combat intermédiaire 1B8
+sans protection**, le bateau et l'accès à l'antichambre du boss principal.
+Les 21 points de contrôle ont des relectures RAM/image exactes. Le héros a
+retrouvé 80/80 PV par les ramassages normaux après le combat intermédiaire.
+Le septième cristal reste en cours de test. Voir [le ravitaillement D7](analysis/d7_supplies_v0309.md),
+[le combat intermédiaire](analysis/d7_midboss_v0309.md),
+[le bateau](analysis/d7_ship_v0309.md) et [l'accès au boss](analysis/d7_navigation_v0309.md).
+
 La progression ne prouve pas toute la fidélité SMS : le [relevé des sources](analysis/native_remaining_v0309.md)
 distingue les appels aléatoires SGDK encore provisoires, les estimations de
 phase et les anciens commentaires devenus obsolètes.
@@ -245,3 +253,5 @@ Git : il s’exécute après l’enregistrement de la livraison.
 Code natif : [boucle et transitions](megadrive/src/main.c),
 [acteurs](megadrive/src/actors.c). Les preuves volumineuses sont archivées
 sans perte et vérifiées avant le nettoyage des fichiers générés.
+
+Le boss principal du septieme donjon a aussi ete vaincu sans protection pendant le combat : cristal obtenu a l image 220976, 88/88 PV, relecture fixe exacte sur toute la RAM et le PNG final. Le retour exterieur reste en cours de verification ; il n est pas inclus dans les 21 checkpoints precedents.

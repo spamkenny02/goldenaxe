@@ -2,43 +2,50 @@
 
 Etat de cette note : 2 novembre 2026. Lire aussi README.md et les rapports plus recents eventuellement ajoutes depuis cette note. Le changement de compte ne termine pas l'objectif du portage.
 
-## Etat courant : SIX cristaux depuis Nouveau Jeu,sortieD6 image182351,
-exterieur8B HP70/80 MP72,gold27,key0. Cloche10=1,Feu/Terre1,bottes/canoe/
-corde1,huile0,epee longue2 possedee,hache1 selectionnee,armure1.
-Checkpoint validation/natural-dungeon-combat/md-auto-v0309-d6-exit01.
-Rapports analysis/d6_progress_v0309_report.json et d6_campaign_v0309_report.json.
+## Etat courant : SIX cristaux v309 verifies depuis Nouveau Jeu,sortieD6
+182351 exterieur8B HP70/80 MP72. D7 en cours,bateau acquis normalement.
+Ravitaillement :dons27->57->87 en7D/AC,chopAC1C,cle60 chez2E laisse27,
+entree1DB187840 HP50,premierecle1CB188960 HP58. Le detour vers94 n a pas
+ete trouve par le planificateur (base et cartecourante) :aucune trace jeu
+n est creee pour ces propositions. Le marchand2E remplace ce detour,sans soin.
+8 endpoints canoniques,audit d7_supplies_v0309_report.json passe.
 
-PreparationD6 :5 acquisitions de cle,6 ouvertures Terre/7 vrais lancers8PM,
-cloche169528,dernier rocher125:7B171342. Les17 endpoints sont canoniques.
-Release171343 avant main64/115,premier combat171445 hero72/hurt0 boss60.
-Boss02 gagne sans degat,cristal et soin termines179816 HP80/80 MP72.
-Retour normal :premier degat181376 en169 HP80->70,sortie8B182351.
-Aucune ecriture apres171343,aucun argent/potion/HP/MP/objet/acteur/progression/
-SRAM importe. 3 endpoints finaux canoniques,969 predictions8frames combat,
-42 predictions32frames retour,HUD128mots/6marqueurs apres cristal/sortie exact.
+Intermediaire78/30HP :cle03 et deux Terre1B9:36/2B verifies,release198523,
+premier combat198708 hero66/hurt0,degat19989866->54,victoire200066 HP54.
+136 predictions fullRAM,6 endpoints canoniques,audit d7_midboss_v0309 passe.
+Aucune ecriture apres release pendant ce combat. Reprise du garde200067
+uniquement apres victoire canonique ;episode ferme retargete vers1B8,puis
+nouvel episode8 pendingmain179. Source resume conserve PV/objets/ressources.
+Sud205966 HP80,remote1E6 au72,40 a207552,bateau208659 HP80 MP72 keys2 gold32.
+4pieges5E0HP et44/10HPslot4 conserves,salle non declaree nettoyee. HUD128mots/
+6marqueurs apres bateau exact ;4 endpoints canoniques,audit ship passe.
+Retour nord210300,Terre1A8:34->198211386 MP64,approche189215847 HP80,key1.
+3 endpoints canoniques,audit navigation passe. Sources figees dans
+validation/v0309-d7-sources,midboss-sources,ship-sources,navigation-sources.
 
-Boss01 step32 a ete arrete volontairement car inefficace :287 predictions
-verifiees,60->58PV seulement,hero72. Diagnostic conserve dans
-validation/v0309-d6-coarse32-diagnostic ; pas de prefixe accepte boss01.
-Boss02 repart du meme release verifie,step8,entree UP ordinaire. Sources
-figees validation/v0309-d6-sources et v0309-d6-boss-sources.
-Pipelines15790 et77498 termines ;36794 termine exit1 apres arret volontaire
-de son seul enfant23088,parent29632 verifie. Aucun job actif.
-Suite : D7 depuis cette sortie verifiee ;nouvel episode approche7 autorise
-uniquement apres la sortie. Retirer la protection avant chaque intermediaire
-comme avant le boss principal. Ne pas importer la SRAM synthetique du palais.
+Pipeline72068 termine : release215848, premier boss67/60HP216012 hero80/hurt0,
+victoire et cristal220976 hero88/88,272 predictions fullRAM exactes,relecture
+canonique RAM65536+PNG passee. Aucun degat pendant combat,aucune ecriture
+apres release. Le retour-earth01 echoue controller_stalled apres destruction
+effective de57 a222007 : la recette attendait a tort un flag de passage et
+a recaste jusqu a epuisement PM. Branche exclue du parcours valide.
+Pipeline ACTIF82262 : validation/run_d7_return02.py reprend le boss canonique,
+Terre action-only comme la recette historique,puis sortie et relectures.
+Poll avant relance. Septieme cristal obtenu,retour exterieur pas encore valide.
+Audit summarize_d7_campaign_v0309.py attend return-earth02/exit01.
+Pipelines10831 terminal exit1 (plan94),60451,99237,78712 et19015 terminaux
+success. 21 checkpoints D7 verifies avant le combat principal.
 
-Autorisation utilisateur : argent de test infini pour acheter des potions
-normalement si utile,comme alternative a l invincibilite. Toute utilisation
-sera indiquee dans les rapports et distincte des preuves sans injection de
-ressources. Non utilise dans le parcours D6 ;ROM distribuee inchangee.
-
-Inventaire source analysis/native_remaining_v0309.md et JSON associe :66
-sites random SGDK provisoires,5 commentaires de phase approximative. Les
-anciens TODO14ED et4C7E sont obsoletes :start_menu et clone_hurt_actor sont
-implementes/appeles. Ne pas compter ces commentaires comme fonctions absentes.
-Native v309 reste7270576d,checksum4080 ;objectif complet encore ouvert.
-Lire validation/current_palace_handoff.json pour le dernier etat.
+Autorisation utilisateur :argent de test infini pour acheter des potions
+normalement si utile,alternative a l invincibilite. Toute utilisation sera
+indiquee dans les rapports et distincte des preuves sans injection de
+ressources. Non utilise actuellement ;aucun argent/objet/PV/MP/acteur/
+progression/SRAM importe. La protection est retiree avant chaque boss,
+y compris les intermediaires. ROM distribuee inchangee v3097270576d.
+Inventaire source native_remaining_v0309 :66 sites random SGDK provisoires,
+5 commentaires de phase approximative ;TODO14ED/4C7E obsoletes,fonctions presentes.
+Objectif complet encore ouvert. Lire validation/current_palace_handoff.json
+pour l etat le plus recent. Copier tout le workspace pour les preuves ignorees.
 
 Historique D3 :
 Le parcours froid v0309 valide maintenant trois cristaux et la sortieD3 :
