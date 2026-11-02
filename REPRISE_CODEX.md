@@ -17,7 +17,20 @@ Dernier write91328,aucune aide au combat ni au retour. Quinze relectures
 RAM65536/PNG exactes ; HUD physique apres canoe,cristal et sortie exact.
 Rapport analysis/d4_campaign_v0309_report.json et .md. Sources pilotes figees
 validation/v0309-d4-sources. Pipeline82695 termine ; aucun job actif.
-Suite : D5 depuis cette sortie ; ne pas reutiliser de SRAM synthetique.
+La preparationD5 ci-dessous prolonge cette sortie ; ne pas reutiliser de SRAM synthetique.
+
+PreparationD5 terminee : Feu appris contre huile108195,magie72 ; epee longue2
+obtenue111709,entree186 a116210. Cle176117326,Terre176:4A->166 a117777,
+bottes157 a120893. Sortie de ravitaillement49 a121571,60/64PV,64PM,16cornes,
+0cle,bottes1 et hero_attack_speed1,hache selectionnee. BossD5 jamais entre,
+episode5 pending163,protection d'approche toujours declaree. Aucun importSRAM.
+Checkpoint validation/natural-dungeon-combat/md-auto-v0309-d5-supply-exit01.
+Rapports analysis/fire_sword_v0309_report.json et d5_progress_v0309_report.json.
+Onze relectures RAM65536/PNG exactes,HUD physique apres Feu,epee,bottes,sortie.
+Pipelines75907,83445 et14467 termines ; aucun job actif. Suite : dons30 A1/B4,
+cle60 et soin chez94,puis retourD5,Terre153:44->162 et contact162->172.
+Ce sont des propositions historiques v0306 a revalider. Ne pas reactiver un
+nouvel episode : l'episode5 existe deja et attend toujours le boss163.
 
 Historique D3 :
 Le parcours froid v0309 valide maintenant trois cristaux et la sortieD3 :

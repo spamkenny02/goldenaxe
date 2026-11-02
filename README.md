@@ -28,6 +28,14 @@ Voir [le quatrième donjon v0309](analysis/d4_campaign_v0309.md),
 [le troisième](analysis/d3_campaign_v0309.md) et
 [le deuxième](analysis/d2_campaign_v0309.md).
 
+La préparation du cinquième donjon valide aussi **Feu, l'épée longue et les
+bottes**, puis une sortie de ravitaillement en 49 à 60/64 PV et 64 PM.
+L'huile est échangée normalement contre Feu ; les bottes proviennent du coffre.
+Onze nouvelles relectures reproduisent toute la RAM et le PNG final ; le HUD
+physique est vérifié après les récompenses et la sortie. Le cinquième boss
+n'est pas encore abordé. Voir [Feu et l'épée](analysis/fire_sword_v0309.md)
+et [les bottes et le ravitaillement](analysis/d5_progress_v0309.md).
+
 Le **scénario contrôlé du palais atteint maintenant la fin du jeu** :
 géant et gardien sans protection,hache dorée,Death Adder,générique complet
 et retour au flux titre. Le combat final commence à100PV contre90PV pour
