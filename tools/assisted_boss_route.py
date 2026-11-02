@@ -13,7 +13,7 @@ from run_core import ROOT, FrameWrites
 from validate_playable_sprite_limit import symbols
 from archive_lossless_evidence import sha
 from rebase_natural_campaign import evidence
-from assisted_prefix import prefix_writes, recording, episodes, EPISODE_KEYS
+from assisted_prefix import prefix_writes, recording, episodes, EPISODE_KEYS,controlled_sram_input
 
 
 def main():
@@ -42,7 +42,8 @@ def main():
     name = remaining[remaining.index(flag) + 1]
     prefix_folder = ROOT / 'validation' / family / name
     prefix = json.loads((prefix_folder / 'capture.json').read_bytes())
-    writes = FrameWrites(prefix_writes(prefix_folder, prefix, '--assisted-prefix' in remaining))
+    initial_sram=controlled_sram_input(prefix_folder,prefix,'--controlled-sram-prefix' in remaining)
+    writes = FrameWrites(prefix_writes(prefix_folder, prefix, '--assisted-prefix' in remaining,controlled='--controlled-sram-prefix' in remaining))
     inherited_writes = writes[:]
     inherited = recording(prefix_folder, prefix)[0] if prefix['test_ram_writes'] else None
     if args.retarget_pending_boss:
@@ -105,6 +106,7 @@ def main():
                   first_boss_entry=None, release_write_frame=None,
                   first_boss_combat=None, first_boss_damage=None,
                   primary_state_imports=0, boss_assistance=False)
+    if initial_sram:result.update(controlled_sram_fixture=True,sram_initialization_import=True,sram_sha256=sha(initial_sram.read_bytes()),primary_state_imports=1,game_written_save=False)
     result.update(completed_exit_proof=args.completed_exit_proof,
                   preserve_floor_hurt_requested=args.preserve_floor_hurt,
                   prefix_trace=prefix_folder.relative_to(ROOT / 'validation').as_posix(),
@@ -251,7 +253,7 @@ def main():
             path = folder / ('route_report.json' if args.world_route else 'report.json')
             if path.exists():
                 report = json.loads(path.read_bytes())
-                report.update(assisted_route=True, ram_injections=True, boss_assistance=False,
+                report.update(assisted_route=True, ram_injections=True, boss_assistance=False,primary_state_imports=int(bool(initial_sram)),
                               primary_extra_state_writes=len(writes),
                               assistance_manifest='assistance.json', natural_campaign_proof=False)
                 path.write_text(json.dumps(report, indent=2) + '\n')

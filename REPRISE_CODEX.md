@@ -1,6 +1,6 @@
 # Reprise du portage dans un autre compte Codex
 
-Etat de cette note : 1 novembre 2026. Lire aussi README.md et les rapports plus recents eventuellement ajoutes depuis cette note. Le changement de compte ne termine pas l'objectif du portage.
+Etat de cette note : 2 novembre 2026. Lire aussi README.md et les rapports plus recents eventuellement ajoutes depuis cette note. Le changement de compte ne termine pas l'objectif du portage.
 
 ## Etat courant : v0309
 
@@ -9,34 +9,73 @@ checksum4080. Les transferts du palais utilisent les bits2/4 du travail VBlank
 existant ; pas de nouveau test IRQ quand aucune video n'est en attente.
 Le controle SMS/MD du palais reste exact sur289 images et chaque decalage.
 
-Le parcours froid v0309 est valide a28213 en171,40/40PV,24PM,2pieces,0cle,
-premier cristal,hache,huile et fee. Prefixe :
-validation/natural-dungeon-combat/md-auto-v0309-d2-entry02.
-Sa relecture canonique compare65536octets RAM et le PNG exactement.
-Voir analysis/palace_rebase_v0309_report.json. Ce prefixe contient l'approche
-D2 encore ouverte. La campagne neuf cristaux reste prouvee sur v0306.
-La suite de touches historique diverge a cause de phases natives ; les essais
-de retiming sont exclus. Ne pas les traiter comme des victoires ou importer
-la RAM finale v0306 dans v0309. La premiere cle D2 est validee a29373 en160,40PV,1cle :
-validation/natural-dungeon-combat/md-auto-v0309-d2-key01,avec relecture
-canonique RAM/PNG exacte. Les essais regroupes et key02 sont exclus : le
-pilote tentait de tuer un fantome5F inaccessible en151. key03 est aussi exclu : le passage exige de vider151. La limite des retours
-ordinaires du pilote est maintenant configurable (defaut3 conserve).
-key04 avec limite12 reussit apres5 retours :31665 en152,40PV,2cles.
-key05 reussit sans retour :35199 en131,40PV,2cles. Les deux ont leur
-relecture canonique RAM/PNG exacte. Le checkpoint courant valide v0309 est
-validation/natural-dungeon-combat/md-auto-v0309-d2-key05.
-Le test boss03 (coarse16,evasive) est encore actif a cette mise a jour ; son
-handle exec est18844. Poller ce handle avant toute relance. Il a atteint144,
-protection retiree ; a39578,boss22PV et heros40PV. Sa limite est6500 images
-apres le premier combat. Le candidat boss04 ordinaire est mort,non valide.
-Si le budget boss03 se termine avec le heros vivant,son RAM/PNG terminal
-est capture par le wrapper : relecture froide avant de prolonger ce combat,
-sans reactiver la protection. Ne pas compter une victoire sans cristal ferme. Les prototypes rejetes sont archives localement sous
-analysis/palace-rebase-research-v0309 ; leur manifeste est versionne.
+Le parcours froid v0309 valide le deuxieme cristal et le retourD6 :47255,
+33/48PV,24PM,1cle. Checkpoint :
+validation/natural-dungeon-combat/md-auto-v0309-d2-exit01.
+Sept relectures RAM65536/PNG exactes. Voir analysis/d2_campaign_v0309.md et son
+rapport. Boss03 est un checkpoint vivant incomplet poursuivi par boss05,
+qui gagne le cristal. L'extension et la sortie ne recoivent aucune protection.
+Les anciens handles18844 et17093 sont termines ; ne pas les relancer.
+
+## Priorite : finir le palais en scenario controle,puis validation globale
+
+La fixture validation/palace-save-fixture-v0309-02/controlled-derived.srm est
+SYNTHETIQUE,derivee du vrai RAM v0306 neuf cristaux. Ce n'est pas une sauvegarde
+produite par le jeu. Ne jamais compter ce scenario comme campagne v0309 depuis
+Nouveau Jeu. Le mode --controlled-sram-prefix est obligatoire ; le mode strict
+refuse ces enregistrements. Les rapports declarent primary_state_imports=1,
+controlled_sram_fixture=true,natural_campaign_proof=false.
+
+La phase1 est figee dans analysis/controlled_palace_phase1_v0309_report.json :
+entree18D,interrupteurs16D/16E,geant7B15E sans protection,deux portails,Terre14E
+et11A,interrupteur129 et retour12A. Quinze relectures RAM/PNG exactes.
+Checkpoint de fin de phase1 :
+validation/natural-dungeon-combat/md-auto-controlled-v0309-palace-switch12902,
+48495. Les neuf cristaux naturels restent prouves sur v0306 uniquement.
+
+Le contournement12C->11C->11B->12B->12C->12D->12E a reussi.
+pre-guardian03 termine a76952 en12E,104PV/72PM ; relecture canonique exacte.
+Guard retire a76953 dans guardian-release01 ; relecture canonique exacte.
+Le combat guardian01 sans protection est actif (exec4313) : poller ce handle
+avant toute relance. Journal validation/controlled-v0309-palace-guardian01.log.
+Ne pas compter une victoire avant rapport terminal et relecture canonique.
+Pour reprendre apres ce gardien,utiliser resume_after_intermediate avec
+--boss-room0x11e --next-boss-room0x14c ; le prochain boss doit etre absent de
+tout le prefixe. Ce nouveau cas doit encore etre exerce sur une vraie victoire.
+
+Suite prevue : finir11E (gardien7C) sans protection,
+puis11D pour la vraie amelioration de hache1->2. Le controleur d'objet accepte
+--collect-item1 --collect-item-value2 ; ce nouveau cas reste a valider en jeu.
+Le boss final6D est en14C et exige hache2 selectionnee. La fin reste a valider.
+Le guide Quarbit est une aide de route ; les tables ROM et le jeu font preuve.
+
+Les outils controles conservent un cooldown naturel<=128 lors d'un premier
+combat seulement avec marqueur natural_cooldown_observed,apres verification
+du prefixe sans129. Le geant commence a102PV/hurt18 (danger61 avant la salle),
+gagne a104PV via les ramassages. Ne pas confondre cela avec le guard129.
+La recherche evasive du helper unassisted choisit maintenant par defaut la
+salle closed_before_room ; un premier essai sans cette salle etait reste sur
+le pilote ordinaire et est mort,donc exclu.
+
+Les slots8..15 peuvent contenir des enfants ennemis4C vivants : le critere
+room_cleared a ete renforce. clear14e01 verifie les seize slots vides. Les
+acteurs61/62 a0PV sont des dangers persistants,avec objectifs de mecanisme.
+Le helper Terre restaure le type d'arme demande (--equip-basic ou axe),ce qui
+evite un conflit de pilotes dans l'inventaire. Les echecs capturent desormais
+leur derniere image,et les budgets captures incluent le maximum demande.
+
+Le premier probe controle01 etait demarre trop tard,apres la mort du heros.
+Il est invalide. Son processus a ete arrete,puis toutes ses captures ont ete
+archivees avec hashes avant suppression ;1,79Go nets liberes. Le catalogue
+analysis/controlled-palace-discarded-v0309/manifest.json et ses objets restent
+LOCAUX,volumineux et exclus de Git. Les312originaux/ROMs/alias sont inchanges.
+La fixture02 attend le reset hero0->1 apres le chargeur avant de lancer le
+trajet. Ne jamais reutiliser le rapport fixture01 comme preuve.
+
 Attention : le core ne vide pas toute la RAM inactive entre deux ROMs dans
-un meme processus. Executer les references historiques dans un sous-processus
-neuf,comme tools/rebase_fixed_assisted_campaign.py,pour comparer la RAM complete.
+un meme processus. Executer les references dans des sous-processus neufs.
+Le README a aussi ete repare d'un double encodage CP1252/UTF-8. Lire/ecrire
+explicitement en UTF-8 : Python3.13 utilise CP1252 par defaut ici.
 
 ## Correctif precedent : v0308, passage du palais
 
@@ -45,7 +84,7 @@ la salle8B ouvre le passage ouest vers8A puis89. Quatre tests controles SMS/MD
 valident le garde huit/neuf cristaux,les289 images et chaque decalage horizontal.
 Voir analysis/palace_gate_v0308.md et analysis/palace_gate_v0308_report.json.
 Ce ne sont pas des preuves naturelles : le checkpoint campagne ci-dessous reste
-sur v0306 et doit etre rejoue sur v0308 avant extension. La v0307 intermediaire
+sur v0306 ; le parcours froid v0309 et les scenes controlees sont suivis ci-dessus. La v0307 intermediaire
 est conservee ; v0308 corrige le choix de file sonore9E (DE06).
 La suite est le trajet EB vers8B,puis la porte finale89 et la hache doree11D.
 

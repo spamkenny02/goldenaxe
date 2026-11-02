@@ -11,7 +11,7 @@ def main():
  ref=json.loads((ROOT/'analysis/contact_script_reference.json').read_bytes());assert ref['source_sha256']==sha((ROOT/'input/original.sms').read_bytes())
  row=next((r for r in ref['records'] if r['room']==a.contact_room and r['kind'] in ['stationary_up_passages','stationary_up_cell']),None);mechanism_source='contact_script_reference'
  if row is None:
-  puzzles=json.loads((ROOT/'analysis/room_puzzles_reference.json').read_bytes());assert puzzles['source_sha256']==ref['source_sha256'];row=next(r for r in puzzles['records'] if r['room']==a.contact_room and r['kind'] in ['open_blocked_passages','redraw_remote_flag']);mechanism_source='room_puzzles_reference'
+  puzzles=json.loads((ROOT/'analysis/room_puzzles_reference.json').read_bytes());assert puzzles['source_sha256']==ref['source_sha256'];row=next(r for r in puzzles['records'] if r['room']==a.contact_room and r['kind'] in ['open_blocked_passages','redraw_remote_flag','redraw_passage']);mechanism_source='room_puzzles_reference'
  remote_room=(0x100|row['explicit_registers']['e']) if row['kind']=='redraw_remote_flag' else None
  coordinate=row.get('coordinate',0x168)
  point=next((x,y) for y in range(8,169,8) for x in range(8,249,8) if (((y-12)&248)<<3)+(((x-12)&255)>>2&62)+126==coordinate)

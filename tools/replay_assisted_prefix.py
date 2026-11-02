@@ -6,13 +6,14 @@ import time
 import json
 from run_core import ROOT, run, FrameWrites
 from archive_lossless_evidence import sha
-from assisted_prefix import recording
+from assisted_prefix import recording,controlled_sram_input
 from validate_playable_sprite_limit import symbols
 
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--trace', required=True)
+    parser.add_argument('--controlled-sram-prefix',action='store_true',help='Explicit synthetic-SRAM component proof; never a cold campaign proof')
     parser.add_argument('--trial', help='Additional independent replay suffix; canonical proof remains unchanged')
     parser.add_argument('--observe-water',action='store_true',help='Read canoe ownership,water terrain and ordinary movement during the fixed replay')
     parser.add_argument('--observe-grabs',action='store_true',help='Read actual thief attachment and live release during fixed replay')
@@ -24,7 +25,8 @@ def main():
     assist, writes = recording(folder, capture)
     sms = folder.name.startswith('sms')
     rom = ROOT / 'input/original.sms' if sms else ROOT / 'gaw-megadrive.bin'
-    assert capture['rom_sha256'] == sha(rom.read_bytes()) and capture['sram_input'] is None
+    assert capture['rom_sha256'] == sha(rom.read_bytes())
+    initial=controlled_sram_input(folder,capture,args.controlled_sram_prefix)
     sy=None if sms else symbols(ROOT/'megadrive/out/release/symbol.txt')
     allowed_address = 0x305 if sms else sy['hero_hurt']
     assert all(address == allowed_address for _, address, _ in writes)
@@ -61,7 +63,7 @@ def main():
             if flags:water.append(dict(frame=frame,room=room,owned=owned,terrain=terrain,water_flag=flags,hero=hero,x=x,y=y))
     started=time.perf_counter()
     with contextlib.redirect_stdout(io.StringIO()):
-        run(rom, end, out, {end}, presses, ram_writes=FrameWrites(writes), skip_intro=False, core_options=capture['core_options'],ram_observer=observe_water if args.observe_water or args.observe_grabs else None)
+        run(rom, end, out, {end}, presses, ram_writes=FrameWrites(writes), skip_intro=False, core_options=capture['core_options'],sram_in=initial,ram_observer=observe_water if args.observe_water or args.observe_grabs else None)
     for stem, ext in [('ram', 'bin'), ('frame', 'png')]:
         filename = f'{stem}_{end:05d}.{ext}'
         assert (folder / filename).read_bytes() == (out / filename).read_bytes(), filename
@@ -74,6 +76,7 @@ def main():
                   whole_ram_bytes=8192 if sms else 65536, final_png_exact=True,
                   evidence={name: sha((folder / name).read_bytes()) for name in
                             ['capture.json', 'controls.json', 'assistance.json']})
+    if initial:report.update(controlled_sram_fixture=True,sram_sha256=sha(initial.read_bytes()),game_written_save=False,primary_state_imports=1)
     if args.observe_water:
         moving=[b for a,b in zip(water,water[1:]) if b['frame']==a['frame']+1 and a['room']==b['room'] and a['hero']==b['hero']==1 and (a['x'],a['y'])!=(b['x'],b['y']) and max(abs(a['x']-b['x']),abs(a['y']-b['y']))<=1024]
         assert moving,'No actual canoe-water walking observed'

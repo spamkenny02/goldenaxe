@@ -8346,12 +8346,20 @@
     "bytes": 2097152,
     "archived_utc": "2026-11-01T20:56:21.166674+00:00",
     "rom": "v0309-7270576d/gaw-megadrive-v0309.bin",
-    "notes": "Transferts du palais integres a la file VBlank existante ; garde huit/neuf cristaux et 289 images conformes SMS en test controle.",
+    "notes": "File VBlank du palais; deux cristaux en parcours froid et phase1 du palais en SRAM synthetique controlee. Portage complet non valide.",
     "validation": "targeted_checks_passed",
     "reports": [
       {
         "file": "palace_gate_v0309_report.json",
         "sha256": "bf41abfc4260e12713163c5a4d6b522b9f59ef3483237020199dc2d9525339cf"
+      },
+      {
+        "file": "d2_campaign_v0309_report.json",
+        "sha256": "fc28a684da6417f4e311de3d57d170f6c58f7416c01fd8e3d42afddf3763b62d"
+      },
+      {
+        "file": "controlled_palace_phase1_v0309_report.json",
+        "sha256": "c6331e161030b991ba993cc245d815073256faa2b598df67c07625271b20fa51"
       }
     ]
   }

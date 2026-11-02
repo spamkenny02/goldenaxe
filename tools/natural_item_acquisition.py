@@ -17,7 +17,9 @@ from validate_playable_sprite_limit import symbols
 def main():
     parser = argparse.ArgumentParser(add_help=False)
     parser.add_argument('--collect-item', type=int, required=True)
+    parser.add_argument('--collect-item-value',type=int,choices=range(1,256),default=1)
     args, remaining = parser.parse_known_args()
+    finish_item=0 if '--equip-basic' in remaining else 1
     assert 0 <= args.collect_item < 17
     assert '--sms' not in remaining, 'Native recorded routes only'
     flag = '--continuation' if '--continuation' in remaining else '--prefix'
@@ -57,12 +59,12 @@ def main():
                                          for i in range(8) if actors[i*48] and not actors[i*48+24]])
             if first is None:
                 first = dict(frame=frame, **state)
-                assert not state['owned'], 'Require a real acquisition after the prefix'
-            if state['owned'] and acquired is None:
+                assert state['owned']<args.collect_item_value, 'Require a real acquisition or upgrade after the prefix'
+            if state['owned']>=args.collect_item_value and acquired is None:
                 acquired = frame
                 run_args[3].add(frame+1)
-            if (acquired is not None and frame-acquired >= 300 and state['owned'] and state['health']
-                    and state['game'] == 12 and state['hero'] == 1 and state['selected'] == 1
+            if (acquired is not None and frame-acquired >= 300 and state['owned']>=args.collect_item_value and state['health']
+                    and state['game'] == 12 and state['hero'] == 1 and state['selected'] == finish_item
                     and not state['reward_active'] and complete is None):
                 complete = frame
                 run_args[3].update([frame+1, frame+100])
@@ -72,7 +74,7 @@ def main():
         return original(*run_args, **kwargs)
 
     game.run = wrapped
-    sys.argv = [sys.argv[0]] + remaining + ['--collect-item', str(args.collect_item), '--continue-after-clear']
+    sys.argv = [sys.argv[0]] + remaining + ['--collect-item', str(args.collect_item), '--collect-item-value',str(args.collect_item_value), '--continue-after-clear']
     try:
         game.main()
     finally:
@@ -81,7 +83,7 @@ def main():
     report = json.loads((folder/'report.json').read_bytes())
     if complete is not None:
         report.update(passed=True, failure=None, stop_reason='actual_item_reward_finished')
-    report.update(item_acquisition_passed=complete is not None, item_acquired_frame=acquired,
+    report.update(item_target_value=args.collect_item_value,item_finish_selected=finish_item,item_acquisition_passed=complete is not None, item_acquired_frame=acquired,
                   item_reward_finished_frame=complete, item_acquisition_first=first,
                   item_acquisition_last=dict(state), item_acquisition_driver_sha256=sha(driver),
                   item_acquisition_state_writes=0, item_acquisition_room_clear_required=False)

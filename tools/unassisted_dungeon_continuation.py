@@ -3,18 +3,18 @@ import argparse,json,sys
 from pathlib import Path
 import natural_dungeon_combat as game
 from run_core import ROOT
-from assisted_prefix import prefix_writes,recording
+from assisted_prefix import prefix_writes,recording,controlled_sram_input
 from rebase_natural_campaign import evidence
 from validate_playable_sprite_limit import symbols
 from archive_lossless_evidence import sha
 
 def main():
- p=argparse.ArgumentParser(add_help=False);p.add_argument('--planner',choices=['ordinary','contact','earth','item','evasive','cautious','exit'],default='ordinary');p.add_argument('--planning-step',type=int,choices=[8,16,24,32],default=8);a,args=p.parse_known_args()
+ p=argparse.ArgumentParser(add_help=False);p.add_argument('--planner',choices=['ordinary','contact','earth','item','evasive','cautious','exit'],default='ordinary');p.add_argument('--planning-step',type=int,choices=[8,16,24,32],default=8);p.add_argument('--entry-boss-kind',type=lambda v:int(v,0),help='Walk UP inside this boss room before predictive sidesteps');a,args=p.parse_known_args()
  assert '--assisted-prefix' in args and '--continuation' in args
  name=args[args.index('--continuation')+1];source=ROOT/'validation/natural-dungeon-combat'/name;c=json.loads((source/'capture.json').read_bytes());assist,writes=recording(source,c)
  assert assist.get('approach_closed_early') and assist['release_write_frame']<=c['frames']
  assert writes[-1][0]==assist['release_write_frame'] and writes[-1][2]==b'\x00\x00'
- assert prefix_writes(source,c,True)==writes
+ assert prefix_writes(source,c,True,controlled='--controlled-sram-prefix' in args)==writes
  expected=evidence(source/f"ram_{c['frames']:05d}.bin");sy=symbols(ROOT/'megadrive/out/release/symbol.txt');start=c['frames'];original=game.run;folder=None;first_combat=None;first_damage=None;previous=None;observed=0
  def wrapped(*values,**kwargs):
   nonlocal folder
@@ -40,6 +40,7 @@ def main():
   kwargs['ram_observer']=observe
   kwargs['stop_when']=lambda:terminal[0] is not None and observed>=terminal[0]
   return original(*values,**kwargs)
+ if a.planner in ('evasive','cautious') and '--lookahead-rooms' not in args:args+=['--lookahead-rooms',hex(assist['closed_before_room'])]
  game.run=wrapped;sys.argv=[sys.argv[0]]+args
  try:
   if a.planner=='ordinary':game.main()
@@ -58,13 +59,19 @@ def main():
    base=planner.EvasivePlanner
    class Stepped(base):
     def __init__(self,*values,**options):
-     super().__init__(*values,**options);assert self.horizon==96 and self.horizon%a.planning_step==0;self.step=a.planning_step
+     super().__init__(*values,**options);assert self.horizon==96 and self.horizon%a.planning_step==0;self.step=a.planning_step;self.entry_ready=set()
+    def observe(self,frame,ram):
+     super().observe(frame,ram)
+     if self.active and self.current['kind']==a.entry_boss_kind and self.current['y']<=144:self.entry_ready.add(self.current['room'])
+    def choose(self,frame,fallback):
+     if a.entry_boss_kind is not None and frame>=self.until and self.active and self.current['kind']==a.entry_boss_kind and self.current['room'] not in self.entry_ready:return [4]
+     return super().choose(frame,fallback)
    planner.EvasivePlanner=Stepped;planner.main()
  finally:
   game.run=original
   if folder is not None and (folder/'capture.json').exists():
    nc=json.loads((folder/'capture.json').read_bytes());assert nc['test_ram_writes']==c['test_ram_writes']
    (folder/'assistance.json').write_bytes((source/'assistance.json').read_bytes());recording(folder,nc)
-   report=json.loads((folder/'report.json').read_bytes());report.update(unassisted_extension=True,new_assistance_writes=0,guard_release_frame=assist['release_write_frame'],closed_before_room=assist['closed_before_room'],first_intermediate_combat=first_combat,first_extension_damage=first_damage,unassisted_controller_sha256=sha(Path(__file__).read_bytes()),planning_step=a.planning_step if a.planner=='evasive' else None,assisted_route=True,natural_campaign_proof=False,extension_guard_checks_through_frame=observed)
+   report=json.loads((folder/'report.json').read_bytes());report.update(primary_state_imports=int(bool(c['sram_input'])),unassisted_extension=True,new_assistance_writes=0,guard_release_frame=assist['release_write_frame'],closed_before_room=assist['closed_before_room'],first_intermediate_combat=first_combat,first_extension_damage=first_damage,unassisted_controller_sha256=sha(Path(__file__).read_bytes()),planning_step=a.planning_step if a.planner=='evasive' else None,entry_boss_kind=a.entry_boss_kind,assisted_route=True,natural_campaign_proof=False,extension_guard_checks_through_frame=observed)
    (folder/'report.json').write_bytes((json.dumps(report,indent=2)+'\n').encode())
 if __name__=='__main__':main()

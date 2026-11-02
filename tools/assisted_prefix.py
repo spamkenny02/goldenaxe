@@ -21,7 +21,12 @@ def recording(folder, capture):
     assert folder.is_relative_to(ROOT / 'validation')
     assist = json.loads((folder / 'assistance.json').read_bytes())
     assert assist['assisted_route'] and assist['ram_injections']
-    assert not assist['rom_modifications'] and not assist['primary_state_imports']
+    assert not assist['rom_modifications']
+    assert assist['primary_state_imports']==int(bool(capture['sram_input']))
+    if capture['sram_input']:
+        assert assist.get('controlled_sram_fixture') and assist.get('sram_initialization_import')
+        initial=Path(capture['sram_input']).resolve();assert initial.is_relative_to(ROOT/'validation')
+        assert sha(initial.read_bytes())==assist['sram_sha256']
     assert assist['health_refills'] == 0 and assist['boss_assistance'] is False
     writes = [(row['frame'], row['address'], bytes.fromhex(row['data_hex'])) for row in assist['writes']]
     sms = Path(capture['rom']).suffix.lower() == '.sms'
@@ -45,15 +50,28 @@ def recording(folder, capture):
             assert all(frame <= release for frame, _, _ in local)
         if episode['first_boss_combat'] is not None:
             assert begin < release < episode['first_boss_combat']['frame'] <= end
-            assert episode['first_boss_combat']['hurt'] == 0
+            hurt=episode['first_boss_combat']['hurt']
+            assert hurt==0 or episode.get('natural_cooldown_observed') and 0<hurt<=128
         covered += len(local)
         previous_end = end
     assert covered == len(writes), 'All writes must belong to a declared approach episode'
     return assist, [(f, a, data) for f, a, data in writes if f <= capture['frames']]
 
 
-def prefix_writes(folder, capture, enabled=False):
-    assert capture['sram_input'] is None, 'Cold assisted-prefix proof does not import SRAM checkpoints'
+def controlled_sram_input(folder,capture,enabled=False):
+    if capture['sram_input'] is None:return None
+    assert enabled,'SRAM prefixes require explicit controlled fixture mode; they are not cold campaign proofs'
+    initial=Path(capture['sram_input']).resolve();assert initial.is_relative_to(ROOT/'validation')
+    report=json.loads((folder/'report.json').read_bytes())
+    assert report.get('controlled_sram_fixture') and not report.get('natural_campaign_proof',True)
+    assert report.get('game_written_save') is False
+    assert report.get('md_sha256',report.get('rom_sha256'))==capture['rom_sha256']
+    assert sha(initial.read_bytes())==report['sram_sha256']
+    return initial
+
+
+def prefix_writes(folder, capture, enabled=False,controlled=False):
+    initial=controlled_sram_input(folder,capture,controlled)
     if not capture['test_ram_writes']:
         return []
     assert enabled, 'Assisted recordings require explicit --assisted-prefix; they are not natural prefixes'
@@ -61,6 +79,8 @@ def prefix_writes(folder, capture, enabled=False):
     path = folder.with_name(folder.name + f"-assisted-fixed-replay-{capture['frames']}") / 'replay_report.json'
     proof = json.loads(path.read_bytes())
     assert proof['passed'] and proof['assisted_route'] and not proof['natural_campaign_proof']
+    assert bool(proof.get('controlled_sram_fixture'))==bool(initial)
+    if initial:assert proof['sram_sha256']==sha(initial.read_bytes())
     assert proof['frames'] == capture['frames'] and proof['rom_sha256'] == capture['rom_sha256']
     expected = 8192 if Path(capture['rom']).suffix.lower() == '.sms' else 65536
     assert proof['whole_ram_bytes'] == expected and proof['final_png_exact'] and not proof['feedback_reads']
