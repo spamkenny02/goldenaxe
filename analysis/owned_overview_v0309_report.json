@@ -1,0 +1,40 @@
+{
+  "passed": true,
+  "version": 309,
+  "md_sha256": "7270576d6eeb2aee641776a3e364f2f3f320711d70bb91a566d7578161261049",
+  "production_rom_unchanged": true,
+  "current_campaign_trace": "validation/natural-dungeon-combat/md-auto-v0309-owned-overview01",
+  "campaign_frames": 303247,
+  "natural_owned_overview_verified": true,
+  "overview_start": 302468,
+  "overview_ready": 302964,
+  "overview_return": 303055,
+  "physical_room_and_hud_words_exact": 768,
+  "source_crystal_markers_exact": 9,
+  "primary_state_imports": 0,
+  "new_assistance_writes": 0,
+  "whole_ram_png_exact": true,
+  "full_game_validated": false,
+  "evidence": {
+    "analysis/d9_campaign_v0309_report.json": "59a0778cc0a5999e9588c6a0900fde1535187e3e66c2c694eb57d93f53afcedb",
+    "validation/natural-dungeon-combat/md-auto-v0309-owned-overview01/report.json": "9b9a5cd112e449ca1169c4e79bd3412ba5275fc04783b4e979c524b087d25e6c",
+    "validation/natural-dungeon-combat/md-auto-v0309-owned-overview01/capture.json": "ced02fa48c27da950adcdbcc8fc262e8eda492b27cec13886d886d56cd33c754",
+    "validation/natural-dungeon-combat/md-auto-v0309-owned-overview01-assisted-fixed-replay-303247/replay_report.json": "f96114365589bb53e37565322cd022092ec7a98f34e33d1b8786c60af9917a25",
+    "validation/natural-dungeon-combat/md-auto-v0309-owned-overview01/controls.json": "277fc726aced3f38cbd76780b524aa022a48b8199d5ebf7f711b94d7e560f225",
+    "validation/natural-dungeon-combat/md-auto-v0309-owned-overview01/assistance.json": "28c9fd32009b8794c491cc6b84dfd6fdd98a76dd455125a9b5da3a6553b7b706",
+    "validation/natural-dungeon-combat/md-auto-v0309-owned-overview01/ram_303247.bin": "2056c610f2fa0c287dadb02733e58363c270e8689a469dc32c90fec5aa6a10db",
+    "validation/natural-dungeon-combat/md-auto-v0309-owned-overview01-assisted-fixed-replay-303247/ram_303247.bin": "2056c610f2fa0c287dadb02733e58363c270e8689a469dc32c90fec5aa6a10db",
+    "validation/natural-dungeon-combat/md-auto-v0309-owned-overview01/frame_303247.png": "12a21f400eea3cd830e6b364a1bbd96b87d4582a3832305f180bbd3365528b32",
+    "validation/natural-dungeon-combat/md-auto-v0309-owned-overview01-assisted-fixed-replay-303247/frame_303247.png": "12a21f400eea3cd830e6b364a1bbd96b87d4582a3832305f180bbd3365528b32",
+    "validation/natural-dungeon-combat/md-auto-v0309-owned-overview01/vram_303247.bin": "1c98ed9236e4a3f787da142ecea78818b4bbf69b4edcdb3e4c6502079c2c7573",
+    "validation/natural-dungeon-combat/md-auto-v0309-owned-overview01/vdp_regs_303247.bin": "8851878c394a149a1dbf5d672e5c334d02777aa55ef02fe29dae084adba6c9a9",
+    "input/original.sms": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+    "validation/natural-dungeon-combat/md-auto-v0309-owned-overview01/overview_driver.py": "c393d2f76dcc8b7668898e4a5b83de15a43d716da99c2278c0d998c78b4e5240",
+    "validation/natural-dungeon-combat/md-auto-v0309-owned-overview01/overview_rooms.json": "c3555024fa46bedcd110175308edabd38a2cde3a726fbbb41ee1be343438a4fe",
+    "validation/natural-dungeon-combat/md-auto-v0309-owned-overview01/events.json": "794185ec58734fd62401e8c7b33551246d6335488c534aaa90eeb1047af7bc46"
+  },
+  "limits": [
+    "Actual owned Balloon is selected,activated and closed using ordinary input after the ninth exterior return. No new guard,resource,actor,progression or SRAM writes.",
+    "Modal shadow background/cells/metadata and physical room/HUD restoration are checked. This is not whole-source timing,RNG,ending,save or hardware proof."
+  ]
+}

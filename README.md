@@ -32,9 +32,13 @@ Voir [le neuvième cristal et le retour](analysis/d9_campaign_v0309.md),
 [l'entrée avec la cloche](analysis/d9_entry_v0309.md)
 et [le huitième donjon](analysis/d8_campaign_v0309.md).
 
-Le test d'activation du ballon, de fermeture de la carte générale et de
-restauration de l'écran depuis cette partie est en cours. Le palais et la fin
-restent à rejouer dans cette campagne ; leurs preuves contrôlées sont séparées.
+L'[usage réel du ballon](analysis/owned_overview_v0309.md) est aussi vérifié :
+carte générale, fermeture, restauration de la salle et des 768 mots physiques
+carte/HUD, avec relecture RAM/image exacte et ressources conservées.
+L'[entrée du palais depuis cette partie](analysis/cold_palace_entry_v0309.md)
+est validée après l'ouverture réelle par les neuf cristaux, à 102/104 PV.
+Les gardiens du palais et la fin restent à rejouer dans cette campagne ;
+leurs preuves contrôlées sont séparées.
 
 La progression ne prouve pas toute la fidélité SMS : le [relevé des sources](analysis/native_remaining_v0309.md)
 distingue les appels aléatoires SGDK encore provisoires, les estimations de

@@ -89,27 +89,36 @@ Retour SANS AIDE,coup3017431EE HP104->102 MP72->64,sortieEB302306 ;15 prediction
 4 relectures RAM65536/PNG exactes,HUD128mots/9marqueurs apres cristal et sortie.
 20 pointsD9 couverts avec entree/gardiens/ballon. Neuf cristaux surv309 courant,
 sans import SRAM ni ressources. Episode13 ferme devant1AC,native inchangee.
-Tests apres D9 :
-- ACTIF39874 : validation/run_owned_overview_after_d9.ps1,apres attente parent46832
-  et audit9 positif,execute natural_owned_overview.py depuis sortieEB302306.
-  Selection11 par menu,activation,fermeture C,restauration du fond/cellules,
-  selection0 de retour puis re-selectionhache1,aucune nouvelle ecriture.
-  Puis relecture fixe et summarize_owned_overview_v0309.py (768mots physiques
-  carte+HUD et9marqueurs). Helper/summary pycompiles,NON valides encore.
-  Preconditions terrain normal (pas3/5),exterieur,ballon acquis9cristaux.
-- ACTIF19691 : validation/run_cold_palace_after_overview.ps1 attend parent26056
-  (watcher overview),exige audit overview positif,puis run_cold_palace_entry01.py.
-  Monde depuis nouveau checkpoint overview,porte10 vers18D,gate9cristaux reel,
-  nouvelle approche vers boss FINAL14C (pas15E) via completed-exit-proof D9.
-  Stop a entree18D et relecture. Ne pas entrer15E avant retrait explicite du garde.
-Poll39874 ET19691 ;8858 terminal,29490 terminal. Ne pas dupliquer.
-Ballon est WORLD OVERVIEW,pas transport ;world_overview_active1/2/3->0,
-selection0 au retour. Source protege donnees avec union house_dialogue_backup,
-source panne eventuelle peut etre precondition/helper,inspecter preuve avant
-changer la ROM. Aucune carte overview/entree palais froide encore validee.
-Apres entree palais,rejouer trajet controle comme proposition seule,retirer
-garde avant15E/7B,11E/7C et14C/6D ;collecter vraie hache2 en11D avantfinal.
-Ne pas fusionner les anciennes preuves SRAM synthetiques avec campagnecourante.
+APRES D9 :overview reel et entree palais froids maintenant VALIDES.
+Job39874 terminal success ;owned_overview_v0309 passe. Activation302468,
+carteprete302964,retour303055(selection0),hache1303147,checkpoint303247.
+HP102/104 MP64 gold32 keys2 inchanges,x136 y96 EB,Ballon1. Zero nouvelle
+RAMwrite/SRAMimport. Fond5120+map1280+cells160+metadata restaures ;768mots
+physiques carte/HUD et9marqueurs verifies,canonique RAM65536/PNG exact.
+Job19691 terminal exit1 :premier palais entry01 refuse avant emulation car
+ordinary overview n est pas une salle nettoyee. Aucune trace jeu creee.
+Correction pilote monde :--prefix-completed-action explicite,assiste et MD,
+prior.passed/no new writes/imports,canonique valide,position lue depuis RAM
+(rapport overview conserve x/y en8.8). Contrats historiques inchanges par defaut.
+Preconditions resserrees ensuite ;mode incompatible refuse avant emulation.
+Job88273 terminal success :entry02 palais18D306434 HP102/104 MP64 gold32 keys2.
+Gate8B cellules35/35/35 a305511 ->30/31/1F305800,289images observees.
+Audit cold_palace_entry_v0309 passe,canonique RAM65536/PNG exact,HUD128/9marqueurs.
+Sources v0309-cold-palace-entry02-sources gardent le pilote execute17fdc...,
+independamment des seules preconditions ajoutees apres mesure. Ne pas editer
+les preuves pour forcer egalite avec le helper courant ;anciens audits liant
+helper courant et ancien snapshot peuvent exiger revision Git historique.
+NativeROM v309 inchangee,toutes les nouvelles ecritures restent hero_hurt0/129
+pour l approche autorisee. Nouvel episode14 pending FINAL14C (pas15E).
+ACTIF32757 : validation/run_cold_palace_giant01.py,panel16D depuis18D/17D,
+switch16D,contour18D/18E/17E->16E/switchNord,retrait avant15E,puis7B60HP
+basic2,entreeUP si besoin,planning32,relecture a chaque etape. Aucune preuve
+combat geant froid encore. Poll32757,ne dupliquer aucun travail terminal.
+Ancien chemin controle =proposition seulement ;aucun --controlled-sram-prefix
+ni fixture dans le nouveau pipeline. Garde doit aussi etre retire avant11E/7C
+et14C/6D ;vraie hache2 en11D encore a obtenir avant dernierboss.
+Ballon WORLD OVERVIEW,pas transport,usage seulement exterieur terrainnormal.
+La fin froide/globalRNG/phases/optionnels/sauvegardes/materiel restent ouverts.
 Le parcours historique v306 evitait19C/7B et ballon ;ils sont maintenant couverts surv309.
 Le detour valide utilise reach-room19D24/88 avec4pieges62HP0 conserves et
 retire le garde avant19C. Cette preuve specifique couvre le geant et la collecte

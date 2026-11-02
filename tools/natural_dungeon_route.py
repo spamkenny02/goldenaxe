@@ -130,10 +130,11 @@ class World:
         return [step for segment in reversed(segments) for step in segment],len(parents)
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--plan',action='store_true');parser.add_argument('--door-entry-direction',type=int,choices=range(4),default=0,help='Final ordinary door entry direction:0 up,1 down,2 left,3 right');parser.add_argument('--live-room-replan',action='store_true',help='Replan a blocked static waypoint from the observed current room map');parser.add_argument('--rope-terrain',action='store_true',help='Propose vertical source-like climbs using the already acquired rope');parser.add_argument('--required-chop',help='ROOM:cell prerequisite to cut before routing to the final house');parser.add_argument('--axe-terrain',action='store_true',help='Plan destructible exterior cells and cut them using an already owned/equipped axe');parser.add_argument('--sms',action='store_true');parser.add_argument('--pal',action='store_true');parser.add_argument('--frames',type=int,default=12000);parser.add_argument('--trial',default='01');parser.add_argument('--door-index',type=int,default=1);parser.add_argument('--retry-deaths',type=int,default=0,help='Use normal Continue after death, at most this many times');parser.add_argument('--house-outside',type=lambda x:int(x,0),help='Route to a source unconditional house door in this exterior room');parser.add_argument('--house-target',type=lambda x:int(x,0),default=0xaf);parser.add_argument('--prefix-replay',help='Validated cold rebase trace, relative to validation/');parser.add_argument('--prefix-service',help='Completed natural NPC service trace');parser.add_argument('--prefix-combat',help='Natural completed combat trace, replayed from cold boot');parser.add_argument('--prefix-rope',help='Verified acquired-rope route in natural-rope-route/');parser.add_argument('--live-prefix-terrain',action='store_true',help='Use the verified current room map until leaving it');parser.add_argument('--assisted-prefix',action='store_true',help='Explicitly continue a verified assisted recording');args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('--plan',action='store_true');parser.add_argument('--door-entry-direction',type=int,choices=range(4),default=0,help='Final ordinary door entry direction:0 up,1 down,2 left,3 right');parser.add_argument('--live-room-replan',action='store_true',help='Replan a blocked static waypoint from the observed current room map');parser.add_argument('--rope-terrain',action='store_true',help='Propose vertical source-like climbs using the already acquired rope');parser.add_argument('--required-chop',help='ROOM:cell prerequisite to cut before routing to the final house');parser.add_argument('--axe-terrain',action='store_true',help='Plan destructible exterior cells and cut them using an already owned/equipped axe');parser.add_argument('--sms',action='store_true');parser.add_argument('--pal',action='store_true');parser.add_argument('--frames',type=int,default=12000);parser.add_argument('--trial',default='01');parser.add_argument('--door-index',type=int,default=1);parser.add_argument('--retry-deaths',type=int,default=0,help='Use normal Continue after death, at most this many times');parser.add_argument('--house-outside',type=lambda x:int(x,0),help='Route to a source unconditional house door in this exterior room');parser.add_argument('--house-target',type=lambda x:int(x,0),default=0xaf);parser.add_argument('--prefix-replay',help='Validated cold rebase trace, relative to validation/');parser.add_argument('--prefix-service',help='Completed natural NPC service trace');parser.add_argument('--prefix-combat',help='Natural completed combat trace, replayed from cold boot');parser.add_argument('--prefix-rope',help='Verified acquired-rope route in natural-rope-route/');parser.add_argument('--live-prefix-terrain',action='store_true',help='Use the verified current room map until leaving it');parser.add_argument('--prefix-completed-action',action='store_true',help='Explicitly continue a cold-verified assisted ordinary action; decode its exterior position from captured RAM');parser.add_argument('--assisted-prefix',action='store_true',help='Explicitly continue a verified assisted recording');args=parser.parse_args()
     assert not args.live_room_replan or args.axe_terrain, 'Live replanning requires the existing tilemap observer'
     world=World(args.door_index,args.house_outside,args.house_target);world.axe_terrain=args.axe_terrain;world.rope_terrain=args.rope_terrain;start=(0x95,136,112);prefix_end=0;prefix_inputs=[];prefix_presses=[];inherited_writes=[];prefix_ram=None;live_initial_room=None
     assert sum(bool(v) for v in [args.prefix_combat,args.prefix_service,args.prefix_replay,args.prefix_rope])<=1
+    assert not args.prefix_completed_action or (args.prefix_combat and not args.sms and args.assisted_prefix), 'Completed action requires an assisted MD combat-family recording'
     has_prefix=bool(args.prefix_combat or args.prefix_service or args.prefix_replay or args.prefix_rope)
     assert not args.live_prefix_terrain or has_prefix
     if has_prefix:
@@ -146,11 +147,22 @@ def main():
             st=prior['states'][-1];assert st['game_state']==12 and st['hero_health']>0
             prior['last_state']=dict(room=st['room_id'],x=st['hero_x']>>8,y=st['hero_y']>>8)
         elif args.prefix_rope:assert prior['passed'] and prior['failure'] is None and prior['new_assistance_writes']==0
+        elif args.prefix_completed_action:
+            assert args.assisted_prefix and capture['test_ram_writes'], 'Completed action requires the canonical assisted replay'
+            assert args.prefix_combat and not args.prefix_service and prior['passed'] and prior['failure'] is None
+            assert prior['new_assistance_writes']==0 and prior['primary_state_imports']==0 and not prior['sram_checkpoint_injection']
         else:assert prior['failure'] is None and (prior['passed'] if args.prefix_service else prior['room_cleared'])
         assert capture['sram_input'] is None
         inherited_writes=prefix_writes(prefix,capture,args.assisted_prefix)
         assert capture['rom_sha256']==sha((ROOT/('input/original.sms' if args.sms else 'gaw-megadrive.bin')).read_bytes())
-        st=prior['last_state'];start=(st['room'],st['x'],st['y']);assert start[0]<256
+        if args.prefix_completed_action:
+            action_raw=evidence(prefix/f"ram_{capture['frames']:05d}.bin");action_sy=symbols(ROOT/'megadrive/out/release/symbol.txt')
+            action_word=lambda n:int.from_bytes(bytes(action_raw[(action_sy[n]+i)^1] for i in range(2)),'big')
+            assert action_word('game_state')==12 and action_word('hero_health')>0 and action_word('world_graphics_class')==0
+            start=(action_word('room_id'),action_word('hero_x')>>8,action_word('hero_y')>>8)
+        else:
+            st=prior['last_state'];start=(st['room'],st['x'],st['y'])
+        assert start[0]<256
         prefix_end=capture['frames'];prefix_presses=list(map(tuple,capture['presses']));prefix_inputs=[()]*(prefix_end+1)
         for i,row in enumerate(recorded):
             end=recorded[i+1]['frame']-1 if i+1<len(recorded) else prefix_end
