@@ -70,22 +70,32 @@ ready276463 HP94 MP72 gold32 keys2 (ramassages naturels),release276464.
 Premier79/60HP276636 hero94/hurt0 ;coup27802394->78,victoire278275 HP78,
 MP72 gold32 keys2. 184 predictions fullRAM. Aucune ecriture apres release
 pendant combat. Source validation/v0309-d9-first-mini-sources,ROM inchangee.
-Watcher ACTIF29490 : validation/run_d9_balloon_after_midboss.ps1 a termine
-son attente du parent41708 ;run_d9_balloon01.py en cours,car first-mini audit
-passe. Reprise du garde seulement apres victoire canonique,switch1AD,19E,
-reach-room19D24/88 avec4pieges62HP0 conserves,release avant19C,geant7B60HP
-basic2 step8,canonique,reprise apres victoire,objet11 ballon en19B via
-source stationary item15/inventory_offset11/value1. Aucune preuve geant/ballon
-encore. Poll29490 avant relance ;5834 terminal,ne pas dupliquer.
-Audit tools/summarize_d9_balloon_v0309.py prepare et pycompile,NON execute.
-Le watcher29490 ne l appelle pas encore :executer apres fin positive du
-pipeline et verifier les huit endpoints sans promouvoir une branche echouee.
-Si optionnel reussi les episodes passent12->13 avant main1AC ;adapter route
-et audits au parcours actuel. Keys2 maintenant,ne pas forcer historique1.
-Le parcours historique v306 evitait19C/7B et ballon,encore non couverts.
-Etudier le passage19E->19D (quatre62HP0,pieges persistants,ne pas demander
-leur mort) puis19C,avec arrivee reach-room si adaptee et garde retire avant
-le geant. Ne pas compter ces contenus optionnels comme valides par9 cristaux.
+Job29490 terminal success ;audit d9_balloon_v0309 PASSE8 endpoints canoniques.
+Reprise278276,contact1AD282557 HP96,19E283730,pieges19D283935 au24,88 HP96
+4acteurs62HP0 conserves,salle NON nettoyee ;release283936 avant19C.
+Premier7B60HP283988 hero96/hurt0,victoire287675 HP16,4coups20 a284303/
+284513/284561/285205 ;440 predictions fullRAM,no later writes during fight.
+Reprise apres victoire287676,ramassage28777116->40,ballon11 reel19B289111
+HP36/96 MP72 gold32 keys2 ;coup normal19B28910240->36,fenetre fermee,hache1.
+8 relectures RAM65536/PNG exactes,HUD128mots/8marqueurs finaux verifies.
+Deux apercus d audit avant completion manquaient seulement des fichiers futurs ;
+rapport consolide maintenant passe. Ne relancer aucune etape terminee.
+Sources v0309-d9-balloon-sources ;16 pointsD9 couverts,8cristaux. Episodes13.
+Watcher ACTIF8858 : validation/run_d9_finish_after_balloon.ps1 a attendu parent25200,
+audit balloon passe puis run_d9_main01.py EN COURS :depuis19B via19C/19D/19E
+portail1CC,puzzleBC/contactBD,stop1BC avantmain,release1AC,entreeUP6C,
+planning16,9e cristal et sortieEB sans nouvelle aide,puis audit d9_campaign.
+Poll8858 avant relance,29490 terminal ;ne pas lancer en double. Aucun9e cristal
+encore valide. Nouveau audit campaign pycompile,NON execute encore.
+Ballon11 ouvre WORLD OVERVIEW,pas transport. Usage uniquement exterieur,
+world_overview_active1/2/3->0,selection0 au retour. Apres sortie9 envisager
+activation/fermeture/restauration naturelles ;tests controles distincts existent.
+Source activate_hero_item traite d abord terrain3 (projectile eau) et5 (interdit),
+choisir terrain normal avant usage. Ne pas inferer usage depuis acquisition.
+Le parcours historique v306 evitait19C/7B et ballon ;ils sont maintenant couverts surv309.
+Le detour valide utilise reach-room19D24/88 avec4pieges62HP0 conserves et
+retire le garde avant19C. Cette preuve specifique couvre le geant et la collecte
+du ballon ;ne pas inferer les autres contenus optionnels depuis9 cristaux.
 Le 9e donjon exige retrait du garde avant1BE/79,19C/7B et1AC/6C.
 Pipelines10831 terminal exit1 (plan94),60451,99237,78712 et19015 terminaux
 success. 21 checkpoints D7 verifies avant le combat principal.
