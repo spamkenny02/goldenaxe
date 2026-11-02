@@ -1,0 +1,139 @@
+{
+  "passed": true,
+  "version": 309,
+  "md_sha256": "7270576d6eeb2aee641776a3e364f2f3f320711d70bb91a566d7578161261049",
+  "controlled_sram_fixture": true,
+  "game_written_save": false,
+  "natural_campaign_proof": false,
+  "full_game_validated": false,
+  "primary_state_imports": 1,
+  "new_health_inventory_progression_writes": 0,
+  "final_boss_assistance": false,
+  "guard_release_frame": 151245,
+  "first_final_combat": {
+    "frame": 151328,
+    "room": 332,
+    "game": 12,
+    "health": 100,
+    "hurt": 0,
+    "actors": [
+      {
+        "slot": 0,
+        "kind": 109,
+        "hp": 90
+      }
+    ]
+  },
+  "final_victory": {
+    "frame": 155151,
+    "room": 332,
+    "game": 14,
+    "health": 48,
+    "hurt": 0,
+    "final_dungeon_defeated": true
+  },
+  "prediction_windows_exact": 114,
+  "ending_complete": true,
+  "nine_gems_visible_frame": 155477,
+  "credits_started_frame": 156170,
+  "credits_finished_frame": 163593,
+  "title_flow_return_frame": 163623,
+  "music_requests": [
+    {
+      "frame": 155433,
+      "command": 141
+    },
+    {
+      "frame": 155838,
+      "command": 136
+    },
+    {
+      "frame": 163631,
+      "command": 133
+    }
+  ],
+  "stages": [
+    {
+      "trace": "validation/natural-dungeon-combat/md-auto-controlled-v0309-palace-finalboss01",
+      "frames": 155152,
+      "state": {
+        "room": 332,
+        "game": 14,
+        "hero": 12,
+        "counter": 0,
+        "x": 40,
+        "y": 96,
+        "health": 48,
+        "keys": 2,
+        "audio_error": 0,
+        "room_flags": 16,
+        "dungeon": 10,
+        "progress": 1,
+        "max_health": 104,
+        "magic": 72,
+        "max_magic": 72,
+        "reward_active": 0,
+        "resume_phase": 0,
+        "door_loading": 0,
+        "first_gem": 128,
+        "weapon": 2,
+        "selected": 1,
+        "item_value": 0,
+        "inventory_slot": 1,
+        "canoe": 1,
+        "terrain": 0,
+        "ship": 1
+      },
+      "whole_ram_png_exact": true,
+      "extra_state_writes": 0
+    },
+    {
+      "trace": "validation/natural-dungeon-combat/md-auto-controlled-v0309-palace-ending02",
+      "frames": 163723,
+      "state": {
+        "frame": 163723,
+        "room": 332,
+        "game": 0,
+        "health": 48,
+        "hurt": 0,
+        "descriptor": 0,
+        "credits_done": true,
+        "credit_row": 30912,
+        "credit_text": 1281,
+        "credit_state_hex": "ff01700078c0050130",
+        "visible_gems": 9
+      },
+      "whole_ram_png_exact": true,
+      "extra_state_writes": 0
+    }
+  ],
+  "evidence": {
+    "validation/natural-dungeon-combat/md-auto-controlled-v0309-palace-finalboss01/capture.json": "d1b72a6934545ff1f99ecf447a1760a1ed5f71b0ec680809d7fb9de7f83435e2",
+    "validation/natural-dungeon-combat/md-auto-controlled-v0309-palace-finalboss01/controls.json": "9071b8999775f3777e007e75b8c4152925cc3c384ec3e114c58ff06beedf0728",
+    "validation/natural-dungeon-combat/md-auto-controlled-v0309-palace-finalboss01/assistance.json": "cf97bc459390708e502cf2959d7a4ce639c22ef5deb76633aeed91c866cb2f73",
+    "validation/natural-dungeon-combat/md-auto-controlled-v0309-palace-finalboss01/report.json": "18eabb6b59773778a87d99152cab3ccf54b60a65a3894fb3af806d7b57e0a5ef",
+    "validation/natural-dungeon-combat/md-auto-controlled-v0309-palace-finalboss01/ram_155152.bin": "c629b345a7e688dd1203330099321f7639e14d7af785a5dcc620c62da81914ca",
+    "validation/natural-dungeon-combat/md-auto-controlled-v0309-palace-finalboss01/frame_155152.png": "49977b67838f75a2010f2787c2f9f7abe17406af7a8ae252af87862d3ab316ad",
+    "validation/natural-dungeon-combat/md-auto-controlled-v0309-palace-finalboss01-assisted-fixed-replay-155152/replay_report.json": "2e5d62a64aa3880cd29eedde841eb429ea48d50660d170c3188578b74d38e443",
+    "validation/natural-dungeon-combat/md-auto-controlled-v0309-palace-ending02/capture.json": "3e1a6b95ff838bb96fcb5e1511ca24ae47967b6bc8533ab7858f94fd84516b4b",
+    "validation/natural-dungeon-combat/md-auto-controlled-v0309-palace-ending02/controls.json": "31d7752903d11e9e7b7d2136db46426655e076b236cb3988a156f303481d192c",
+    "validation/natural-dungeon-combat/md-auto-controlled-v0309-palace-ending02/assistance.json": "cf97bc459390708e502cf2959d7a4ce639c22ef5deb76633aeed91c866cb2f73",
+    "validation/natural-dungeon-combat/md-auto-controlled-v0309-palace-ending02/report.json": "97c52f724fa8e14b8a0d9cda0a1f9f24a41fff43ae1fe6cf9aeffe8596b0b15b",
+    "validation/natural-dungeon-combat/md-auto-controlled-v0309-palace-ending02/ram_163723.bin": "0e444015e4f40e2b6b4d9f22c01fdb0c330b865932c7e94a0d3fbdc6f159d8e2",
+    "validation/natural-dungeon-combat/md-auto-controlled-v0309-palace-ending02/frame_163723.png": "537b838f2a057be15e9d9468a0276010bae6c03619ebb400792a7da3dcde44bf",
+    "validation/natural-dungeon-combat/md-auto-controlled-v0309-palace-ending02-assisted-fixed-replay-163723/replay_report.json": "f7302db9456bd1153182c04f0405cd93d744f1146ad6db66f43c0fd070616dfc",
+    "tools/summarize_controlled_palace_ending_v0309.py": "1571d7011ef39533161f789f0cbc3b6ce6b40b1842288e3f456d148d584f28ca",
+    "tools/continue_recorded_ending.py": "b3c24d42122d847645253109ba8a34d01d3c8ca2178ab3d9b6ce9063ecc4cd30",
+    "analysis/controlled_palace_phase3_v0309_report.json": "dc1c76732e5d31fe8d1f586b03bfb4b788a4826a11c15e5e706cd2bca01ab473",
+    "megadrive/src/main.c": "5488e9792684beea5edb3d3b5885abf200a399a3ead19e9f684b3aedec9e6f49",
+    "megadrive/src/ending.inc": "e2a0ae080b50bc748518633b2a90025808dcd0e7bf5fe3417f4b9977a21c69df",
+    "megadrive/src/ending_credits.inc": "994f8b93142c69792cd48a872cb3e02b1ab65cfa4607ee6337b5d84410825b22"
+  },
+  "limits": [
+    "One synthetic Continue SRAM record derived from actual v306 nine-crystal RAM; not a current-ROM campaign from New Game.",
+    "All palace combat and mechanisms after that initialization execute in the game. Approach hurt guards are explicitly logged and removed before both intermediates and final boss.",
+    "No RAM/state writes after151245. The full recorded final fight and ending replay from boot with exact final65536RAM and PNG.",
+    "Ending completion and return to title flow are proven here, not global SMS framebuffer/audio/timing equivalence or hardware compatibility.",
+    "Current cold campaign beyond its two crystals,optional content and global source fidelity remain open."
+  ]
+}

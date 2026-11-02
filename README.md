@@ -24,21 +24,19 @@ retour du deuxième donjon**, à 33/48 PV. Le boss et le retour sont sans
 protection ; sept relectures reproduisent toute la RAM et l'image.
 Voir [le parcours v0309](analysis/d2_campaign_v0309.md).
 
-Un **scénario contrôlé du palais**, initialisé par une SRAM synthétique
-dérivée du parcours neuf cristaux v0306, valide l'entrée,les premiers
-mécanismes,le géant sans protection et deux portails. Ses quinze relectures
-RAM/PNG sont exactes. Il est suivi séparément du parcours depuis Nouveau Jeu.
-Voir [le palais,phase contrôlée1](analysis/controlled_palace_phase1_v0309.md).
-La [phase contrôlée2](analysis/controlled_palace_phase2_v0309.md) valide aussi
-le gardien 7C sans protection, puis la vraie récompense de la hache dorée
-(niveau 1 vers 2). Neuf relectures RAM/PNG sont exactes. Ce scénario reste
-séparé de la campagne depuis Nouveau Jeu. Le dernier boss,la fin et la
-validation globale restent ouverts.
-La [phase contrôlée3](analysis/controlled_palace_phase3_v0309.md) franchit les
-derniers portails et mécanismes jusqu'à l'antichambre du boss final :
-100/104 PV,72 PM et hache dorée équipée. La protection est retirée avant
-l'entrée en14C ; quinze relectures RAM/PNG sont exactes. Le combat final et
-la fin ne sont pas encore validés.
+Le **scénario contrôlé du palais atteint maintenant la fin du jeu** :
+géant et gardien sans protection,hache dorée,Death Adder,générique complet
+et retour au flux titre. Le combat final commence à100PV contre90PV pour
+le boss ; le héros gagne à48PV. Aucune écriture de test après le retrait de
+l'invincibilité avant le boss. Les relectures du combat et de la fin
+reproduisent les65536 octets de RAM et le PNG final.
+Voir [Death Adder et la fin](analysis/controlled_palace_ending_v0309.md),
+ainsi que les [mécanismes du palais](analysis/controlled_palace_phase3_v0309.md).
+
+Ce scénario démarre avec **une SRAM synthétique dérivée du parcours neuf
+cristaux v0306**. Il reste séparé de la campagne depuis Nouveau Jeu. La
+campagne froide complète sur la version courante,les contenus optionnels,
+la fidélité globale SMS et les essais matériels restent ouverts.
 
 La **v0308 restaure l'ouverture du passage vers le palais apres les neuf
 cristaux**. Le test controle SMS/MD reproduit les289 images,les neuf amplitudes
@@ -64,7 +62,8 @@ Six nouveaux checkpoints reproduisent toute la RAM et l'image finale ;200
 fenetres de prediction sont identiques. Les128 mots du HUD et les neuf
 indicateurs sont verifies. Voir [le neuvieme cristal](analysis/d9_campaign_v0306.md),
 [l'acces au donjon](analysis/d9_entry_v0306.md) et [son premier boss intermediaire](analysis/d9_midboss_v0306.md).
-La fin,les sauvegardes et la fidelite globale restent a valider.
+La fin est validee separement dans le scenario controle v0309 decrit plus haut.
+Les sauvegardes et la fidelite globale restent a valider.
 La note [REPRISE_CODEX.md](REPRISE_CODEX.md) contient le point de reprise courant.
 
 Les **21 étapes validées du sixième donjon** comprennent la sélection de la
@@ -76,8 +75,9 @@ pas réactivées pendant le retour. Aucun PV ni objet n’est injecté.
 Les 128 mots du HUD final et les six indicateurs de cristal sont vérifiés.
 
 Le dernier profil, jusqu’à la sortie du huitième donjon à **235 211 images**, observe
-**402 octets de marge de pile**, sans corruption du tas. Le portage complet,
-la fin et la fidélité audiovisuelle globale restent à valider.
+**402 octets de marge de pile**, sans corruption du tas. Cette mesure concerne
+ce parcours v0306 ; elle ne couvre pas tout le palais v0309. Le portage complet
+et la fidélité audiovisuelle globale restent à valider.
 Voir le [huitième cristal](analysis/d8_campaign_v0306.md),
 le [septième cristal](analysis/d7_campaign_v0306.md),
 le [sixième cristal](analysis/d6_campaign_v0306.md),
@@ -200,8 +200,9 @@ et adaptés sur cette version.
 
 Les routines d’acteurs utilisent encore le générateur aléatoire SGDK.
 Le raccordement au hasard SMS et à sa phase globale reste à faire.
-La suite des boss, le dernier donjon, la fin, les sauvegardes et la fidélité
-complète vidéo/audio/matériel ne sont pas encore validés.
+Ces limites concernaient le parcours v0304 décrit ci-dessus. Le scénario
+contrôlé v0309 valide désormais le palais et la fin ; les sauvegardes,la
+campagne froide courante complète et la fidélité vidéo/audio/matériel restent ouvertes.
 
 L’[historique du README jusqu’à v0304](analysis/readme_history_through_v0304.md)
 conserve les étapes et leurs liens de preuve. Le [journal de recherche](analysis/world_next.md)

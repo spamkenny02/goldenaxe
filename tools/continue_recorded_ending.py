@@ -20,6 +20,8 @@ def main():
     source=(ROOT/'validation'/a.trace).resolve()
     assert source.is_relative_to(ROOT/'validation')
     cap=json.loads((source/'capture.json').read_bytes())
+    rom=ROOT/'gaw-megadrive.bin'
+    assert sha(rom.read_bytes())==cap['rom_sha256']
     old=json.loads((source/'report.json').read_bytes())
     assert old['ending_handoff_passed'] and old['unassisted_extension'] and old['new_assistance_writes']==0
     assist,writes=recording(source,cap)
@@ -75,13 +77,16 @@ def main():
     def controller(frame):
         nonlocal ack
         if frame<=start:return timeline[frame]
-        if completed is not None and ack is None:ack=frame
+        # The final credits tick still waits once before the source records
+        # previous=input for its acknowledgement loop. Supply a fresh edge
+        # after that loop is waiting, rather than holding C across entry.
+        if completed is not None and frame>=completed+30 and ack is None:ack=frame
         value=[8] if ack is not None and ack<=frame<ack+3 else []
         if not controls or controls[-1]['buttons']!=value:controls.append(dict(frame=frame,buttons=value))
         return value
 
     with contextlib.redirect_stdout(io.StringIO()):
-        run(ROOT/'gaw-megadrive.bin',end,folder,captures,cap['presses'],
+        run(rom,end,folder,captures,cap['presses'],
             ram_writes=FrameWrites(writes),ram_observer=observe,input_provider=controller,
             core_options=cap['core_options'],sram_in=initial,
             stop_when=lambda:returned is not None and observed>=returned+100)

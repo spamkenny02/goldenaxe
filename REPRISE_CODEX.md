@@ -17,7 +17,7 @@ rapport. Boss03 est un checkpoint vivant incomplet poursuivi par boss05,
 qui gagne le cristal. L'extension et la sortie ne recoivent aucune protection.
 Les anciens handles18844 et17093 sont termines ; ne pas les relancer.
 
-## Priorite : finir le palais en scenario controle,puis validation globale
+## Priorite : campagne froide courante complete et fidelite globale
 
 La fixture validation/palace-save-fixture-v0309-02/controlled-derived.srm est
 SYNTHETIQUE,derivee du vrai RAM v0306 neuf cristaux. Ce n'est pas une sauvegarde
@@ -61,13 +61,34 @@ via14D ne sont pas des chemins verifies et ne doivent pas etre reutilisees.
 
 pre-final03 termine151244,15C vide,100PV/72PM/2cles,hache2 selectionnee.
 final-release01 retire le guard151245 ; relecture canonique exacte.
-Le pipeline exec81287 a passe ces controles puis lance finalboss01 :
-unassisted_dungeon_continuation --planner evasive --planning-step32
---entry-boss-kind0x6d --stop-on-ending --rooms0x15c,0x14c --equip-axe,
-limite absolue166000. POLLER81287 avant toute relance. Journal :
-validation/controlled-v0309-palace-finalboss01.log. Le combat n'est PAS encore
-valide. Aucun guard ni PV ni objet ne doit etre ajoute apres151245.
-Consulter aussi validation/current_palace_handoff.json si plus recent.
+Le combat final et la fin sont maintenant VERIFIES dans le scenario controle.
+Voir analysis/controlled_palace_ending_v0309_report.json et son document.
+finalboss01 : premier6D151328 HP100/hurt0,boss90PV ;114 predictions fullRAM
+exactes. Victoire155151,game14,flag donjon10=1,heros48PV. Checkpoint155152
+canonique exact. Aucun write apres le dernier zero151245.
+ending02 :9gemmes155477,generique156170->163593,nouvelle toucheC163623,
+retour game0 et nouvelle intro ; checkpoint163723 canonique exact.
+Requetes musicales8D155433 et88155838 observees. Images gemmes/credits vues.
+Les pipelines81287,18772 (negatif),24561 sont termines ; ne pas les relancer.
+
+ending01 avait donneC trop tot,pendant le dernier tick de credits : generique
+fini mais aucune nouvelle pression pour quitter. Ce n'est pas un bug natif.
+Le helper attend maintenant30 images avant la vraie nouvelle touche.
+--stop-on-ending et continue_recorded_ending sont maintenant exerces en jeu.
+Le champ ending_stage est optimise et absent : ne pas le lire. L'audit lit
+les vrais descripteurs8495/84E1,les9gemmes,ending_credits.done,game0 et
+intro_running non nul (ou title_phase vrai). Le titre repasse par son intro.
+
+PROCHAINE PRIORITE : reprendre la vraie campagne froide v0309 a
+validation/natural-dungeon-combat/md-auto-v0309-d2-exit01,47255,exterieurD6,
+33/48PV,24PM,1cle,deux cristaux. Construire les vraies approchesD3 et suivantes
+avec les anciens itineraires comme propositions,le jeu courant comme preuve.
+AUCUNE SRAM ni RAM de la fixture palais ne doit entrer dans cette campagne.
+Les neuf cristaux froids sont toujours prouves seulement sur v0306.
+Le palais courant complet est maintenant un scenario controle independant.
+Ne pas confondre ces deux preuves et ne pas marquer l'objectif complet.
+Revoir aussi la pile avec le vrai parcours final,les contenus optionnels et
+les limites de fidelite/RNG/horloge signalees dans README et rapports.
 
 L'inspecteur read-only tools/inspect_recorded_dungeon_room.py lit le vrai RAM
 capture,les sorties accessibles,les portails et les scripts source. Il ne
@@ -77,18 +98,11 @@ s'arrete avant toute nouvelle action sur l'assertion du type de bloc.
 13E cellule3A=11 et15B cellule48=11 : vrais lancements Terre verifies.
 Les essais incomplets de route restent explicitement etiquetes dans phase3.
 
-close_assisted_approach accepte63..6D et78..7C ; le cas6D est maintenant exerce.
+close_assisted_approach accepte63..6D et78..7C ; le cas6D est exerce.
 Les bits20/40 seuls ne distinguent PAS les boss des ennemis ordinaires.
-unassisted_dungeon_continuation --stop-on-ending doit capturer la victoire6D
-reelle : combat6D observe depuis le retrait du guard,y compris les touches
-heritees,PV>0 et flag donjon10=1. Ce mode n'est pas encore termine en jeu.
-Le marqueur natif ending_stage est optimise et absent des symboles : ne pas
-le lire. Le helper utilise le vrai game14 et le flag de defaite.
-Apres victoire : relecture canonique,puis tools/continue_recorded_ending.py
---trace natural-dungeon-combat/TRACE --trial NOM --controlled-sram-prefix.
-Ce nouveau helper attend les9gemmes,le generique termine et une vraie toucheC,
-puis le retour au flux titre,sans nouvelle ecriture. Il reste a exercer.
-La fidelite globale et la campagne froide courante complete restent ouvertes.
+L'audit de continuation reobserve tout le combat apres le dernier retrait du
+guard,y compris les touches heritees,afin de supporter un prefixe pendant
+la mort du boss. Aucun helper ne doit ajouter d'assistance apres le retrait.
 Le guide Quarbit est une aide de route ; les tables ROM et le jeu font preuve.
 
 Les outils controles conservent un cooldown naturel<=128 lors d'un premier
@@ -128,7 +142,8 @@ Voir analysis/palace_gate_v0308.md et analysis/palace_gate_v0308_report.json.
 Ce ne sont pas des preuves naturelles : le checkpoint campagne ci-dessous reste
 sur v0306 ; le parcours froid v0309 et les scenes controlees sont suivis ci-dessus. La v0307 intermediaire
 est conservee ; v0308 corrige le choix de file sonore9E (DE06).
-La suite est le trajet EB vers8B,puis la porte finale89 et la hache doree11D.
+Cette suite est maintenant executee dans le scenario controle v0309 decrit plus haut.
+Elle ne remplace pas la campagne froide courante.
 
 ## Point de reprise campagne : neuf cristaux
 
@@ -180,13 +195,13 @@ Le pipeline et sa relecture sont termines avec succes. Le combat comporte164 fen
 
 Le test01 vers la torche1DE s'est arrete parce que le controleur n'avait pas encore casse le bloc. Il est negatif, sans preuve terminale, et exclu des jalons positifs. Le controleur combine `tools/natural_earth_then_contact.py` traite cette action normalement. L'audit tools/summarize_d9_midboss_v0306.py est reussi. L'archive locale analysis/d9-midboss-v0306 conserve les preuves ; ses objets restent ignores par Git. Les RAM du retrait et de la victoire restent disponibles pour la reprise.
 
-## Prochaines etapes du jeu
+## Anciennes pistes apres D9 v0306
 
-Les neuf cristaux et la sortieD9 sont verifies. Poursuivre l'acces a la derniere partie,la Hache d'or,Death Adder,la fin et les sauvegardes. Le geant optionnel19C/7B et le ballon restent non valides dans ce parcours ; ne pas les oublier dans le bilan final.
+Les neuf cristaux et la sortieD9 sont verifies sur v0306. Le palais,la Hache d'or,Death Adder et la fin sont maintenant verifies separement dans le scenario controle v0309. Reprendre la campagne froide courante selon la priorite en tete de ce document ; les sauvegardes restent ouvertes. Le geant optionnel19C/7B et le ballon restent non valides dans ce parcours ; ne pas les oublier dans le bilan final.
 
-Piste de route a confirmer contre le SMS : le guide Any% Quarbit indique la cinematique en L8 (8B,ancienne entreeD6),puis le donjon final en J8 (89). La marche statique directe vers89 n'est pas trouvee,mais cela n'est pas une preuve de bug du jeu. Tracer l'evenement original en8B avec les neuf cristaux avant toute correction native. Source : https://www.speedrun.com/golden_axe_warrior/guides/yfxxr
+Piste de route a confirmer contre le SMS : le guide Any% Quarbit indique la cinematique en L8 (8B,ancienne entreeD6),puis le donjon final en J8 (89). La marche statique directe vers89 n'est pas trouvee,mais cela n'est pas une preuve de bug du jeu. Ce controle original est maintenant realise et le correctif v0308/v0309 est verifie ; voir les rapports palais. Source : https://www.speedrun.com/golden_axe_warrior/guides/yfxxr
 
-Le boss final6D n'accepte que la hache2 selectionnee. La table originale place la Hache d'or en11D : index inventaire1,valeur2,objet5. Sa collecte devra verifier1->2 ; un test booleen de possession d'une hache ne suffit pas.
+Le boss final6D n'accepte que la hache2 selectionnee. La table originale place la Hache d'or en11D : index inventaire1,valeur2,objet5. Sa collecte1->2 est maintenant verifiee dans goldenaxe01 ; un test booleen de possession d'une hache ne suffit pas.
 
 Le controleur `tools/entered_boss_route.py` finit l'entree par UP avant la recherche. Il a permis d'eviter les sorties involontaires au seuil du6C ; la ROM n'est pas modifiee. Les prochaines routes doivent regrouper les salles et mecanismes ordinaires,avec une relecture complete par jalon,et conserver les retraits verifies avant les boss. Le lecteur evidence met aussi les manifestes d'archives en cache par processus,avec invalidation sur changement du fichier ; les hashes des preuves restent verifies. Les trois auditsD9 donnent des rapports identiques avec ce cache.
 
