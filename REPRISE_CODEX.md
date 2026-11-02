@@ -2,35 +2,27 @@
 
 Etat de cette note : 2 novembre 2026. Lire aussi README.md et les rapports plus recents eventuellement ajoutes depuis cette note. Le changement de compte ne termine pas l'objectif du portage.
 
-## Etat courant : v0309
+## Etat courant : cinq cristaux depuis Nouveau Jeu,sortieD5 image146657,
+exterieur49,72/72PV,72PM,0cle,Feu/Terre1,bottes/canoe/corde1,huile0.
+Epee longue2 selectionnee (selected0),hache1 possedee,armure1.
+Checkpoint validation/natural-dungeon-combat/md-auto-v0309-d5-exit01.
+Rapports analysis/d5_supplies_v0309_report.json et d5_campaign_v0309_report.json.
 
-ROM v0309,7270576d6eeb2aee641776a3e364f2f3f320711d70bb91a566d7578161261049,
-checksum4080. Les transferts du palais utilisent les bits2/4 du travail VBlank
-existant ; pas de nouveau test IRQ quand aucune video n'est en attente.
-Le controle SMS/MD du palais reste exact sur289 images et chaque decalage.
-
-Etat courant : quatre cristaux depuis Nouveau Jeu, sortie D4 image101777,
-exterieur10,62/64PV,48PM,0cle,Terre1 et canoe acquis ; corde et huile conservees.
-Checkpoint validation/natural-dungeon-combat/md-auto-v0309-d4-exit01.
-Boss6A commence91391,hero56PV/hurt0 contre30PV ; victoire sans degat subi.
-Dernier write91328,aucune aide au combat ni au retour. Quinze relectures
-RAM65536/PNG exactes ; HUD physique apres canoe,cristal et sortie exact.
-Rapport analysis/d4_campaign_v0309_report.json et .md. Sources pilotes figees
-validation/v0309-d4-sources. Pipeline82695 termine ; aucun job actif.
-La preparationD5 ci-dessous prolonge cette sortie ; ne pas reutiliser de SRAM synthetique.
-
-PreparationD5 terminee : Feu appris contre huile108195,magie72 ; epee longue2
-obtenue111709,entree186 a116210. Cle176117326,Terre176:4A->166 a117777,
-bottes157 a120893. Sortie de ravitaillement49 a121571,60/64PV,64PM,16cornes,
-0cle,bottes1 et hero_attack_speed1,hache selectionnee. BossD5 jamais entre,
-episode5 pending163,protection d'approche toujours declaree. Aucun importSRAM.
-Checkpoint validation/natural-dungeon-combat/md-auto-v0309-d5-supply-exit01.
-Rapports analysis/fire_sword_v0309_report.json et d5_progress_v0309_report.json.
-Onze relectures RAM65536/PNG exactes,HUD physique apres Feu,epee,bottes,sortie.
-Pipelines75907,83445 et14467 termines ; aucun job actif. Suite : dons30 A1/B4,
-cle60 et soin chez94,puis retourD5,Terre153:44->162 et contact162->172.
-Ce sont des propositions historiques v0306 a revalider. Ne pas reactiver un
-nouvel episode : l'episode5 existe deja et attend toujours le boss163.
+Ravitaillement reel : dons16->46->76,puis cle60 laisse16,soin60->64PV.
+Terre153:44->162 et mecanisme162->172 verifies. Ante173 nettoyee a138502,
+retrait de protection138503,combat65 a138593 HP64/hurt0 contre72PV.
+Huit satellites66 detruits,premier degat noyau observe144016. Premier degat
+heros139882 HP64->54. Cristal et soin termines145576 HP72. Retour173->174
+mecanisme145917 puis portail155 et sortie49 a146657,sans degat au retour.
+Aucune ecriture apres138503,pas de SRAM/ressources/acteurs/progression importes.
+Cinq relectures finales RAM65536/PNG exactes,198+3 predictions fullRAM,
+HUD physique128mots/5marqueurs apres cristal et sortie exact. Les13 etapes
+jusqu au mecanisme172 ont aussi chacune une relecture froide exacte.
+Sources figees validation/v0309-d5-sources/supplies_source_index.json et
+validation/v0309-d5-boss-sources. L index original de preparation reste intact.
+Pipelines81567,16695,33998 termines ; aucun job actif. Suite : D6 depuis la
+sortie49,avec nouvel episode d approche seulement apres cette sortie verifiee.
+Voir validation/current_palace_handoff.json pour le dernier etat.
 
 Historique D3 :
 Le parcours froid v0309 valide maintenant trois cristaux et la sortieD3 :

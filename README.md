@@ -19,22 +19,17 @@ Checksum Mega Drive : `4080`
 
 La **v0309 regroupe les transferts du palais dans la file VBlank existante**.
 Le test SMS/MD conserve les 289 images et tous les décalages de la secousse.
-Le parcours v0309 depuis Nouveau Jeu valide maintenant **quatre cristaux et
-le retour du quatrième donjon**, à 62/64 PV, avec Terre et le canoë acquis.
-Le quatrième boss est vaincu sans protection et sans dégât subi ; aucune
-protection ne reprend au retour. Quinze relectures D4 reproduisent toute la
-RAM et le PNG. Le HUD physique est vérifié après le canoë, le cristal et la sortie.
-Voir [le quatrième donjon v0309](analysis/d4_campaign_v0309.md),
-[le troisième](analysis/d3_campaign_v0309.md) et
-[le deuxième](analysis/d2_campaign_v0309.md).
-
-La préparation du cinquième donjon valide aussi **Feu, l'épée longue et les
-bottes**, puis une sortie de ravitaillement en 49 à 60/64 PV et 64 PM.
-L'huile est échangée normalement contre Feu ; les bottes proviennent du coffre.
-Onze nouvelles relectures reproduisent toute la RAM et le PNG final ; le HUD
-physique est vérifié après les récompenses et la sortie. Le cinquième boss
-n'est pas encore abordé. Voir [Feu et l'épée](analysis/fire_sword_v0309.md)
-et [les bottes et le ravitaillement](analysis/d5_progress_v0309.md).
+Le parcours v0309 depuis Nouveau Jeu valide maintenant **cinq cristaux et
+le retour du cinquième donjon**, à 72/72 PV et 72 PM en extérieur 49.
+Feu, Terre, épée longue, bottes, canoë et corde sont acquis par le jeu.
+Le cinquième boss est vaincu sans protection, après destruction de ses huit
+satellites ; aucune aide ne reprend pendant le retour. Cinq nouvelles
+relectures reproduisent toute la RAM et le PNG, et le HUD physique ainsi
+que les cinq marqueurs sont vérifiés après le cristal et la sortie.
+Voir [le cinquième donjon v0309](analysis/d5_campaign_v0309.md),
+[son ravitaillement](analysis/d5_supplies_v0309.md),
+[Feu et l'épée](analysis/fire_sword_v0309.md), ainsi que
+[le quatrième donjon](analysis/d4_campaign_v0309.md).
 
 Le **scénario contrôlé du palais atteint maintenant la fin du jeu** :
 géant et gardien sans protection,hache dorée,Death Adder,générique complet
