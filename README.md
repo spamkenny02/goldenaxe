@@ -19,24 +19,20 @@ Checksum Mega Drive : `4080`
 
 La **v0309 regroupe les transferts du palais dans la file VBlank existante**.
 Le test SMS/MD conserve les 289 images et tous les décalages de la secousse.
-Le parcours v0309 depuis Nouveau Jeu valide maintenant **six cristaux et
-le retour du sixième donjon**, à 70/80 PV et 72 PM en extérieur 8B.
-La cloche de glace est acquise, avec Feu, Terre, épée longue, bottes, canoë
-et corde. Le sixième boss est vaincu sans dégât reçu, sans protection ni
-potions ; aucune aide ne reprend pendant le retour. Les vingt points de
-contrôle D6 ont des relectures exactes sur toute la RAM et le PNG final.
-Le HUD physique et les six marqueurs sont vérifiés après le cristal et la sortie.
-Voir [le sixième donjon v0309](analysis/d6_campaign_v0309.md),
-[sa préparation](analysis/d6_progress_v0309.md) et
-[le cinquième donjon](analysis/d5_campaign_v0309.md).
-
-La progression D7 valide le ravitaillement, le **combat intermédiaire 1B8
-sans protection**, le bateau et l'accès à l'antichambre du boss principal.
-Les 21 points de contrôle ont des relectures RAM/image exactes. Le héros a
-retrouvé 80/80 PV par les ramassages normaux après le combat intermédiaire.
-Le septième cristal reste en cours de test. Voir [le ravitaillement D7](analysis/d7_supplies_v0309.md),
+Le parcours v0309 depuis Nouveau Jeu valide maintenant **sept cristaux et
+le retour du septième donjon**, à 76/88 PV et 64 PM en extérieur 1B.
+Le bateau est acquis, avec la cloche de glace, Feu, Terre, épée longue,
+bottes, canoë et corde. Les combats intermédiaire et principal D7 sont gagnés
+sans protection pendant les affrontements. Le boss principal ne blesse pas
+le héros ; le retour occasionne un coup normal et continue sans aide.
+Les 25 points de contrôle D7 ont des relectures exactes sur toute la RAM et
+le PNG final. Le HUD physique et les sept marqueurs sont vérifiés après
+le cristal et la sortie.
+Voir [le septième cristal et le retour](analysis/d7_campaign_v0309.md),
+[le ravitaillement](analysis/d7_supplies_v0309.md),
 [le combat intermédiaire](analysis/d7_midboss_v0309.md),
-[le bateau](analysis/d7_ship_v0309.md) et [l'accès au boss](analysis/d7_navigation_v0309.md).
+[le bateau](analysis/d7_ship_v0309.md), [l'accès au boss](analysis/d7_navigation_v0309.md)
+et [le sixième donjon](analysis/d6_campaign_v0309.md).
 
 La progression ne prouve pas toute la fidélité SMS : le [relevé des sources](analysis/native_remaining_v0309.md)
 distingue les appels aléatoires SGDK encore provisoires, les estimations de
@@ -253,5 +249,3 @@ Git : il s’exécute après l’enregistrement de la livraison.
 Code natif : [boucle et transitions](megadrive/src/main.c),
 [acteurs](megadrive/src/actors.c). Les preuves volumineuses sont archivées
 sans perte et vérifiées avant le nettoyage des fichiers générés.
-
-Le boss principal du septieme donjon a aussi ete vaincu sans protection pendant le combat : cristal obtenu a l image 220976, 88/88 PV, relecture fixe exacte sur toute la RAM et le PNG final. Le retour exterieur reste en cours de verification ; il n est pas inclus dans les 21 checkpoints precedents.

@@ -2,8 +2,8 @@
 
 Etat de cette note : 2 novembre 2026. Lire aussi README.md et les rapports plus recents eventuellement ajoutes depuis cette note. Le changement de compte ne termine pas l'objectif du portage.
 
-## Etat courant : SIX cristaux v309 verifies depuis Nouveau Jeu,sortieD6
-182351 exterieur8B HP70/80 MP72. D7 en cours,bateau acquis normalement.
+## Etat courant : SEPT cristaux v309 verifies depuis Nouveau Jeu,sortieD7
+222579 exterieur1B HP76/88 MP64 gold32 key1. Bateau acquis normalement.
 Ravitaillement :dons27->57->87 en7D/AC,chopAC1C,cle60 chez2E laisse27,
 entree1DB187840 HP50,premierecle1CB188960 HP58. Le detour vers94 n a pas
 ete trouve par le planificateur (base et cartecourante) :aucune trace jeu
@@ -29,10 +29,17 @@ canonique RAM65536+PNG passee. Aucun degat pendant combat,aucune ecriture
 apres release. Le retour-earth01 echoue controller_stalled apres destruction
 effective de57 a222007 : la recette attendait a tort un flag de passage et
 a recaste jusqu a epuisement PM. Branche exclue du parcours valide.
-Pipeline ACTIF82262 : validation/run_d7_return02.py reprend le boss canonique,
-Terre action-only comme la recette historique,puis sortie et relectures.
-Poll avant relance. Septieme cristal obtenu,retour exterieur pas encore valide.
-Audit summarize_d7_campaign_v0309.py attend return-earth02/exit01.
+Pipeline82262 terminal success. Terre action-only cellule57 detruite222007,
+8PM,re-equipe hache,checkpoint222203 ;sortie222579 exterieur1B HP76/88 MP64.
+Retour sans aide,un degat normal221546 en198 88->76. Les4 endpoints finaux
+ont leurs relectures RAM65536/PNG exactes. Audit d7_campaign_v0309 passe,
+HUD128mots/7marqueurs apres cristal et sortie ;25 checkpointsD7 au total.
+Pipeline ACTIF39725 : validation/run_d8_entry02.py,route3C->maison9F,
+paiement10 vers1A,entree8 en1EA et relectures. Poll avant relance.
+Premier script entry01 terminal exit1 avant capture (budget16000 absolu
+inferieur au prefix222579),aucune trace jeu ;entry02 corrige budget238579.
+Sources D8 figees dans validation/v0309-d8-entry-sources.
+Audit summarize_d8_entry_v0309.py prepare,pas encore passe.
 Pipelines10831 terminal exit1 (plan94),60451,99237,78712 et19015 terminaux
 success. 21 checkpoints D7 verifies avant le combat principal.
 
