@@ -59,9 +59,21 @@ HP96/96 MP72,sans degat. 396 predictions fullRAM,sortie9 predictions.
 Retour sans aide,coup261240 en1A7 HP96->94 MP72->64,exterieur29261634.
 3 relectures RAM65536/PNG exactes,HUD128mots/8marqueurs deux fois ;17pointsD8.
 Sources d8-thief-sources et d8-main-sources ;nativev309 inchange.
-Pipeline ACTIF74658 : validation/run_d9_entry01.py,coast1A->9F,paiement10
-vers3C,puis routeBell CB et entree9 en1FC,relectures entre etapes.
-Poll avant relance. Audit summarize_d9_entry_v0309.py prepare,non execute.
+Pipeline74658 terminal success ;audit d9_entry_v0309 passe,3 relectures
+RAM65536/PNG exactes. Coast1A->9F262214 HP94 gold40,paiement10 ->3C262569
+gold30,clocheCB ouvre265080 cellule86 2F->39 et flag1,normale sans ecriture
+terrain/ressource,entree1FC266242 HP94/96 MP64 key1 gold30,hache reequipee.
+Sources validation/v0309-d9-entry-sources. Aucun9e cristal encore valide.
+Watcher ACTIF5834 : validation/run_d9_finish_entry_midboss.ps1 a termine
+l attente PID23920 puis audit entree positif ;run_d9_midboss01.py maintenant
+en cours,Terre1DE34 + contact ->1CE,Terre1CE56,nettoyage,release avant1BE,
+combat79/60HP basic2 step8,relectures et audit midboss.
+Poll5834 avant toute relance ;ne pas dupliquer le pipeline. Session74658 fermee.
+Audit summarize_d9_midboss_v0309.py prepare et pycompile,non execute.
+Le parcours historique v306 evitait19C/7B et ballon,encore non couverts.
+Etudier le passage19E->19D (quatre62HP0,pieges persistants,ne pas demander
+leur mort) puis19C,avec arrivee reach-room si adaptee et garde retire avant
+le geant. Ne pas compter ces contenus optionnels comme valides par9 cristaux.
 Le 9e donjon exige retrait du garde avant1BE/79,19C/7B et1AC/6C.
 Pipelines10831 terminal exit1 (plan94),60451,99237,78712 et19015 terminaux
 success. 21 checkpoints D7 verifies avant le combat principal.
