@@ -40,10 +40,19 @@ Audit d8_entry_v0309 passe,3 relectures RAM65536/PNG exactes.
 Premier script entry01 terminal exit1 avant capture (budget16000 absolu
 inferieur au prefix222579),aucune trace jeu ;entry02 corrige budget238579.
 Sources D8 figees dans validation/v0309-d8-entry-sources.
-Pipeline ACTIF93653 : validation/run_d8_midboss01.py,approche1EA,1DA,1CA
-avec retry-isolated-foes,release avant1C9,combat7A/50HP epee2 step8,
-puis relecture. Poll avant relance. Aucun huitieme cristal encore valide.
-Audit tools/summarize_d8_midboss_v0309.py prepare,non execute.
+Pipeline93653 terminal exit1 :ready01 bloque en1CA devant2sentinelles58
+endormies HP30 flags40,option wake-sentinels omise. Branche exclue.
+Pipeline47886 terminal success :ready02 en1CA229029 HP64 gold33 MP64 key1,
+2 retours ordinaires,sentinelles reveillees,release229030 ;premier7A229267
+hero64/hurt0 vs50HP. Victoire231568 HP28 ;degats23121464->46 puis23134846->28,
+2x18 source. 267 predictions fullRAM et3 relectures RAM65536/PNG exactes,
+audit d8_midboss_v0309 passe. Aucune ecriture apres release pendant combat.
+Pipeline ACTIF17957 : validation/run_d8_thief01.py. Reprise du garde uniquement
+apres victoire canonique,post-mini1C8,switch1EB,switch1EC,Terre1E8,cle15 en1A9,
+switch19A,approche1A6 et relecture a chaque etape. Poll avant relance.
+Sources validation/v0309-d8-thief-sources et recettes executees figees.
+Audit tools/summarize_d8_thief_v0309.py prepare,non execute.
+Le boss196/type6B80HP n est pas encore entre,8e cristal non valide.
 Pipelines10831 terminal exit1 (plan94),60451,99237,78712 et19015 terminaux
 success. 21 checkpoints D7 verifies avant le combat principal.
 

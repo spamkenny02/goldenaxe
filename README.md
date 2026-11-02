@@ -37,7 +37,10 @@ et [le sixième donjon](analysis/d6_campaign_v0309.md).
 L'[entrée du huitième donjon](analysis/d8_entry_v0309.md) est aussi validée :
 trajet vers le passage côtier, paiement normal de dix pièces et arrivée en
 1EA, avec 64/88 PV, 64 PM et une clé. Les trois relectures RAM/image sont
-exactes. Le combat intermédiaire et le huitième cristal restent à vérifier.
+exactes. Le [gardien intermédiaire 1C9](analysis/d8_midboss_v0309.md) est
+également vaincu sans protection pendant le combat : deux coups reçus,
+28/88 PV à la fin, 267 fenêtres de prédiction et trois relectures RAM/image
+exactes. La quête de la clé des voleurs et le huitième cristal restent en cours.
 
 La progression ne prouve pas toute la fidélité SMS : le [relevé des sources](analysis/native_remaining_v0309.md)
 distingue les appels aléatoires SGDK encore provisoires, les estimations de
