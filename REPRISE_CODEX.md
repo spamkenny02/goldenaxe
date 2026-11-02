@@ -9,6 +9,17 @@ checksum4080. Les transferts du palais utilisent les bits2/4 du travail VBlank
 existant ; pas de nouveau test IRQ quand aucune video n'est en attente.
 Le controle SMS/MD du palais reste exact sur289 images et chaque decalage.
 
+Etat courant : quatre cristaux depuis Nouveau Jeu, sortie D4 image101777,
+exterieur10,62/64PV,48PM,0cle,Terre1 et canoe acquis ; corde et huile conservees.
+Checkpoint validation/natural-dungeon-combat/md-auto-v0309-d4-exit01.
+Boss6A commence91391,hero56PV/hurt0 contre30PV ; victoire sans degat subi.
+Dernier write91328,aucune aide au combat ni au retour. Quinze relectures
+RAM65536/PNG exactes ; HUD physique apres canoe,cristal et sortie exact.
+Rapport analysis/d4_campaign_v0309_report.json et .md. Sources pilotes figees
+validation/v0309-d4-sources. Pipeline82695 termine ; aucun job actif.
+Suite : D5 depuis cette sortie ; ne pas reutiliser de SRAM synthetique.
+
+Historique D3 :
 Le parcours froid v0309 valide maintenant trois cristaux et la sortieD3 :
 64422,exterieur62,48/56PV,24PM,0cle,corde13=1 et huile8=1,hache1 selectionnee.
 Checkpoint validation/natural-dungeon-combat/md-auto-v0309-d3-exit02.
@@ -36,8 +47,8 @@ reussit la coupe A3:4A et entreBF a69783 ; earth-learn01 paye50cornes,apprend
 Terre1 et augmente/refait la magie a48PM,sortieA3 a70796. Les relectures
 canoniques de ces quatre etapes passent. d4-entry01 atteint1F0,48PV/48PM,
 12cornes,corde et huile conservees. Pipeline32346 termine,ne pas le relancer.
-La suite est la vraie cle1F1,puis Terre1E1 et les passagesD4. Lire le dernier
-validation/current_palace_handoff.json pour le handle de test courant.
+Ces passages D4 sont maintenant termines ; voir le bilan D4 en tete de note.
+Lire validation/current_palace_handoff.json pour le dernier checkpoint.
 Le nouvel episode D4 commence64422 APRES le vrai retourD3,boss suivant180.
 Aucune SRAM n'est importee. Ne jamais relancer dans un dossier deja cree.
 
