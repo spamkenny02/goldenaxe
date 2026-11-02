@@ -34,6 +34,11 @@ Voir [le septième cristal et le retour](analysis/d7_campaign_v0309.md),
 [le bateau](analysis/d7_ship_v0309.md), [l'accès au boss](analysis/d7_navigation_v0309.md)
 et [le sixième donjon](analysis/d6_campaign_v0309.md).
 
+L'[entrée du huitième donjon](analysis/d8_entry_v0309.md) est aussi validée :
+trajet vers le passage côtier, paiement normal de dix pièces et arrivée en
+1EA, avec 64/88 PV, 64 PM et une clé. Les trois relectures RAM/image sont
+exactes. Le combat intermédiaire et le huitième cristal restent à vérifier.
+
 La progression ne prouve pas toute la fidélité SMS : le [relevé des sources](analysis/native_remaining_v0309.md)
 distingue les appels aléatoires SGDK encore provisoires, les estimations de
 phase et les anciens commentaires devenus obsolètes.

@@ -34,12 +34,16 @@ Pipeline82262 terminal success. Terre action-only cellule57 detruite222007,
 Retour sans aide,un degat normal221546 en198 88->76. Les4 endpoints finaux
 ont leurs relectures RAM65536/PNG exactes. Audit d7_campaign_v0309 passe,
 HUD128mots/7marqueurs apres cristal et sortie ;25 checkpointsD7 au total.
-Pipeline ACTIF39725 : validation/run_d8_entry02.py,route3C->maison9F,
-paiement10 vers1A,entree8 en1EA et relectures. Poll avant relance.
+Pipeline39725 terminal success :3 checkpoints D8 verifies,route3C->9F224027
+HP64/88 gold38,paiement10->1A224409 gold28,entree1EA224999 HP64 MP64 key1.
+Audit d8_entry_v0309 passe,3 relectures RAM65536/PNG exactes.
 Premier script entry01 terminal exit1 avant capture (budget16000 absolu
 inferieur au prefix222579),aucune trace jeu ;entry02 corrige budget238579.
 Sources D8 figees dans validation/v0309-d8-entry-sources.
-Audit summarize_d8_entry_v0309.py prepare,pas encore passe.
+Pipeline ACTIF93653 : validation/run_d8_midboss01.py,approche1EA,1DA,1CA
+avec retry-isolated-foes,release avant1C9,combat7A/50HP epee2 step8,
+puis relecture. Poll avant relance. Aucun huitieme cristal encore valide.
+Audit tools/summarize_d8_midboss_v0309.py prepare,non execute.
 Pipelines10831 terminal exit1 (plan94),60451,99237,78712 et19015 terminaux
 success. 21 checkpoints D7 verifies avant le combat principal.
 
