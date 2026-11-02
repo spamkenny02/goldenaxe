@@ -19,10 +19,13 @@ Checksum Mega Drive : `4080`
 
 La **v0309 regroupe les transferts du palais dans la file VBlank existante**.
 Le test SMS/MD conserve les 289 images et tous les décalages de la secousse.
-Le parcours v0309 depuis Nouveau Jeu valide maintenant **deux cristaux et le
-retour du deuxième donjon**, à 33/48 PV. Le boss et le retour sont sans
-protection ; sept relectures reproduisent toute la RAM et l'image.
-Voir [le parcours v0309](analysis/d2_campaign_v0309.md).
+Le parcours v0309 depuis Nouveau Jeu valide maintenant **trois cristaux et
+le retour du troisième donjon**, à48/56PV,avec la corde et l'huile conservées.
+Le boss et le retour sont sans protection. Huit relectures D3 reproduisent
+toute la RAM et le PNG ; le HUD physique et les trois marqueurs de cristal
+sont vérifiés après la récompense et la sortie.
+Voir [le troisième donjon v0309](analysis/d3_campaign_v0309.md) et
+[le deuxième donjon](analysis/d2_campaign_v0309.md).
 
 Le **scénario contrôlé du palais atteint maintenant la fin du jeu** :
 géant et gardien sans protection,hache dorée,Death Adder,générique complet

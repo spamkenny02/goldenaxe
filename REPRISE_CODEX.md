@@ -9,13 +9,37 @@ checksum4080. Les transferts du palais utilisent les bits2/4 du travail VBlank
 existant ; pas de nouveau test IRQ quand aucune video n'est en attente.
 Le controle SMS/MD du palais reste exact sur289 images et chaque decalage.
 
-Le parcours froid v0309 valide le deuxieme cristal et le retourD6 :47255,
-33/48PV,24PM,1cle. Checkpoint :
-validation/natural-dungeon-combat/md-auto-v0309-d2-exit01.
-Sept relectures RAM65536/PNG exactes. Voir analysis/d2_campaign_v0309.md et son
-rapport. Boss03 est un checkpoint vivant incomplet poursuivi par boss05,
-qui gagne le cristal. L'extension et la sortie ne recoivent aucune protection.
-Les anciens handles18844 et17093 sont termines ; ne pas les relancer.
+Le parcours froid v0309 valide maintenant trois cristaux et la sortieD3 :
+64422,exterieur62,48/56PV,24PM,0cle,corde13=1 et huile8=1,hache1 selectionnee.
+Checkpoint validation/natural-dungeon-combat/md-auto-v0309-d3-exit02.
+Huit relectures RAM65536/PNG exactes et HUD physique128mots/3marqueurs verifies
+apres cristal et sortie. Voir analysis/d3_campaign_v0309_report.json et .md.
+Le premier1E3 ouvre normalement le mecanisme pendant que des ennemis restent.
+Le premier trajet avait saute la vraie cle1D2 : approche01/release01/boss01
+sont exclus de la branche gagnante. key01 collecte la cle,reprise approche02.
+Guard retire57767,premier combat69 a57859 HP48/hurt0/boss32.139 predictions
+fullRAM exactes ; coup62251 HP48->40,puis vrai cristal avec soin56/56.
+Aucun write apres57767,ni pendant le retour. exit01 n'avait pas de planning
+sur les salles D3 ; exit02 utilise les vraies sorties et9 fenetres step32.
+
+Le helper unassisted complete maintenant les metadonnees du boss principal
+par relecture de son entree et combat depuis le retrait,etend end_frame,mais
+ne change aucune ecriture. Cela permet --new-assistance-episode APRES la
+sortie,sans protection du retour. Les intermediaires gardent leur prochain
+boss principal distinct. Sources exactes des deux versions du helper :
+validation/v0309-d3-pre-episode-finalization-sources et
+validation/v0309-d3-exit02-sources ; hashes compares aux vrais rapports.
+
+La preparationD4 est maintenant franchie : gold-entry01 atteint3F a67608,
+gold50-01 recoit normalement50cornes (12->62),retourF4 a68044. earth-entry01
+reussit la coupe A3:4A et entreBF a69783 ; earth-learn01 paye50cornes,apprend
+Terre1 et augmente/refait la magie a48PM,sortieA3 a70796. Les relectures
+canoniques de ces quatre etapes passent. d4-entry01 atteint1F0,48PV/48PM,
+12cornes,corde et huile conservees. Pipeline32346 termine,ne pas le relancer.
+La suite est la vraie cle1F1,puis Terre1E1 et les passagesD4. Lire le dernier
+validation/current_palace_handoff.json pour le handle de test courant.
+Le nouvel episode D4 commence64422 APRES le vrai retourD3,boss suivant180.
+Aucune SRAM n'est importee. Ne jamais relancer dans un dossier deja cree.
 
 ## Priorite : campagne froide courante complete et fidelite globale
 
@@ -79,13 +103,11 @@ Le champ ending_stage est optimise et absent : ne pas le lire. L'audit lit
 les vrais descripteurs8495/84E1,les9gemmes,ending_credits.done,game0 et
 intro_running non nul (ou title_phase vrai). Le titre repasse par son intro.
 
-PROCHAINE PRIORITE : reprendre la vraie campagne froide v0309 a
-validation/natural-dungeon-combat/md-auto-v0309-d2-exit01,47255,exterieurD6,
-33/48PV,24PM,1cle,deux cristaux. Construire les vraies approchesD3 et suivantes
-avec les anciens itineraires comme propositions,le jeu courant comme preuve.
-AUCUNE SRAM ni RAM de la fixture palais ne doit entrer dans cette campagne.
-Les neuf cristaux froids sont toujours prouves seulement sur v0306.
-Le palais courant complet est maintenant un scenario controle independant.
+PROCHAINE PRIORITE : poursuivre la vraie campagne froide v0309 D4 et suivants,
+selon le dernier checkpoint ci-dessus. L'ancien D2 exit47255,D6,33/48PV,est
+maintenant un jalon anterieur. AUCUNE SRAM ni RAM de la fixture palais ne doit
+entrer dans cette campagne. Les neuf cristaux froids restent prouves seulement
+sur v0306. Le palais courant complet est un scenario controle independant.
 Ne pas confondre ces deux preuves et ne pas marquer l'objectif complet.
 Revoir aussi la pile avec le vrai parcours final,les contenus optionnels et
 les limites de fidelite/RNG/horloge signalees dans README et rapports.
