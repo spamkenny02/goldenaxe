@@ -2,33 +2,43 @@
 
 Etat de cette note : 2 novembre 2026. Lire aussi README.md et les rapports plus recents eventuellement ajoutes depuis cette note. Le changement de compte ne termine pas l'objectif du portage.
 
-## Etat courant : cinq cristaux depuis Nouveau Jeu,sortieD5 verifiee146657,
-exterieur49 HP72/72 MP72. D6 prepare depuis cette sortie : hache choisie
-normalement146847,pont49 reel,entree187148350,cinq acquisitions de cle,
-mecanismes,six ouvertures Terre/sept vrais lancers8PM,cloche de glace169528.
-Dernier rocher125:7B degage171342 HP72/72 MP32,gold27,key0,cloche1.
-Les17 endpoints ont chacun une relecture RAM65536/PNG exacte ; HUD128mots
-apres cloche exact. analysis/d6_progress_v0309_report.json et .md.
+## Etat courant : SIX cristaux depuis Nouveau Jeu,sortieD6 image182351,
+exterieur8B HP70/80 MP72,gold27,key0. Cloche10=1,Feu/Terre1,bottes/canoe/
+corde1,huile0,epee longue2 possedee,hache1 selectionnee,armure1.
+Checkpoint validation/natural-dungeon-combat/md-auto-v0309-d6-exit01.
+Rapports analysis/d6_progress_v0309_report.json et d6_campaign_v0309_report.json.
 
-Dernier checkpoint de reprise verifie :
-validation/natural-dungeon-combat/md-auto-v0309-d6-release01 a171343,
-protection retiree dans125 avant main64 en115. Source main HP60.
-Aucune ecriture ne doit etre ajoutee pendant le combat ni le retour.
-Pipeline15790 prepare termine. Premier essai boss01 step32 arrete volontairement
-car inefficace :287 predictions verifiees,60->58PV seulement,heros72.
-Diagnostic validation/v0309-d6-coarse32-diagnostic ; aucun checkpoint valide
-boss01,ne pas le reprendre comme prefixe. Pipeline36794 termine exit1 apres
-arret de son seul enfant23088,parent29632 verifie.
+PreparationD6 :5 acquisitions de cle,6 ouvertures Terre/7 vrais lancers8PM,
+cloche169528,dernier rocher125:7B171342. Les17 endpoints sont canoniques.
+Release171343 avant main64/115,premier combat171445 hero72/hurt0 boss60.
+Boss02 gagne sans degat,cristal et soin termines179816 HP80/80 MP72.
+Retour normal :premier degat181376 en169 HP80->70,sortie8B182351.
+Aucune ecriture apres171343,aucun argent/potion/HP/MP/objet/acteur/progression/
+SRAM importe. 3 endpoints finaux canoniques,969 predictions8frames combat,
+42 predictions32frames retour,HUD128mots/6marqueurs apres cristal/sortie exact.
 
-Pipeline ACTIF77498 : validation/run_d6_boss_return02.py. Poll avant toute
-relance. Boss02 step8 depuis le meme release verifie,avec UP ordinaire pour
-entrer ; puis canonical boss02,exit8B step32 et canonical exit01 si victoire.
-Observation173302 : heros72,boss48. Pas de fixture ni RAM/SRAM importee.
-Sources exactes validation/v0309-d6-sources et v0309-d6-boss-sources.
-Audit tools/summarize_d6_campaign_v0309.py prepare,mais rapport final D6
-pas encore cree. Lire validation/current_palace_handoff.json pour l etat
-le plus recent. Native v309 inchangee ; ne pas annoncer six cristaux avant
-victoire/recompense/retour verifies. Objectif complet toujours ouvert.
+Boss01 step32 a ete arrete volontairement car inefficace :287 predictions
+verifiees,60->58PV seulement,hero72. Diagnostic conserve dans
+validation/v0309-d6-coarse32-diagnostic ; pas de prefixe accepte boss01.
+Boss02 repart du meme release verifie,step8,entree UP ordinaire. Sources
+figees validation/v0309-d6-sources et v0309-d6-boss-sources.
+Pipelines15790 et77498 termines ;36794 termine exit1 apres arret volontaire
+de son seul enfant23088,parent29632 verifie. Aucun job actif.
+Suite : D7 depuis cette sortie verifiee ;nouvel episode approche7 autorise
+uniquement apres la sortie. Retirer la protection avant chaque intermediaire
+comme avant le boss principal. Ne pas importer la SRAM synthetique du palais.
+
+Autorisation utilisateur : argent de test infini pour acheter des potions
+normalement si utile,comme alternative a l invincibilite. Toute utilisation
+sera indiquee dans les rapports et distincte des preuves sans injection de
+ressources. Non utilise dans le parcours D6 ;ROM distribuee inchangee.
+
+Inventaire source analysis/native_remaining_v0309.md et JSON associe :66
+sites random SGDK provisoires,5 commentaires de phase approximative. Les
+anciens TODO14ED et4C7E sont obsoletes :start_menu et clone_hurt_actor sont
+implementes/appeles. Ne pas compter ces commentaires comme fonctions absentes.
+Native v309 reste7270576d,checksum4080 ;objectif complet encore ouvert.
+Lire validation/current_palace_handoff.json pour le dernier etat.
 
 Historique D3 :
 Le parcours froid v0309 valide maintenant trois cristaux et la sortieD3 :

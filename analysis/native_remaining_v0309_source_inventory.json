@@ -1,0 +1,134 @@
+{
+  "version": 309,
+  "md_sha256": "7270576d6eeb2aee641776a3e364f2f3f320711d70bb91a566d7578161261049",
+  "source_sha256": {
+    "megadrive/src/main.c": "5488e9792684beea5edb3d3b5885abf200a399a3ead19e9f684b3aedec9e6f49",
+    "megadrive/src/actors.c": "d3a07e62e8086359bc402fce978c615220e01c60b52615f2014cdc991a8ba1e0",
+    "megadrive/src/source_rng.c": "5c64cd42ca0c18d69f8cfb1a185f282268b5dfd45a4b77f355323c6df802919f",
+    "megadrive/src/source_rng_timed.c": "722647a01b3ed17acc38f13c0daf72b3cff165e362b230ed7864b617b0f51a04"
+  },
+  "read_only_source_inventory": true,
+  "production_rng": "SGDK xorshift16; reconstructed SMS04E1 helpers are not called by main.c/actors.c",
+  "direct_sgdk_random_call_sites": {
+    "megadrive/src/main.c": {
+      "count": 3,
+      "lines": [
+        1907,
+        1909,
+        2021
+      ]
+    },
+    "megadrive/src/actors.c": {
+      "count": 63,
+      "lines": [
+        169,
+        179,
+        200,
+        214,
+        240,
+        248,
+        429,
+        430,
+        445,
+        456,
+        468,
+        484,
+        496,
+        527,
+        540,
+        559,
+        574,
+        596,
+        608,
+        629,
+        644,
+        656,
+        665,
+        687,
+        700,
+        714,
+        747,
+        757,
+        759,
+        777,
+        790,
+        823,
+        896,
+        901,
+        930,
+        942,
+        950,
+        964,
+        994,
+        1005,
+        1020,
+        1046,
+        1047,
+        1088,
+        1093,
+        1727,
+        1768,
+        1805,
+        1838,
+        1853,
+        1882,
+        2359,
+        2519,
+        2519,
+        2528,
+        2528,
+        2530,
+        2530,
+        2537,
+        2538,
+        2539,
+        2541,
+        2541
+      ]
+    }
+  },
+  "timing_estimate_comments": [
+    {
+      "file": "megadrive/src/main.c",
+      "line": 1476,
+      "text": "* barrier before the map upload. HUD/IRQ phase remains approximate. */"
+    },
+    {
+      "file": "megadrive/src/main.c",
+      "line": 2202,
+      "text": "* PSG/VDP contention model is still approximate outside tested paths. */"
+    },
+    {
+      "file": "megadrive/src/main.c",
+      "line": 2382,
+      "text": "* This phase allowance remains approximate outside measured fixtures. */"
+    },
+    {
+      "file": "megadrive/src/main.c",
+      "line": 2411,
+      "text": "* preparation/IRQ allowance is approximate; no per-room frame table. */"
+    },
+    {
+      "file": "megadrive/src/main.c",
+      "line": 2868,
+      "text": "* reconstruction reserve is approximate; natural village/exterior routes"
+    }
+  ],
+  "obsolete_missing_feature_comments": [
+    {
+      "file": "megadrive/src/main.c",
+      "line": 454,
+      "comment": "14ED not ported",
+      "current_implementation": "start_menu at3452,called from main after title input",
+      "implementation_definition_line": 3452
+    },
+    {
+      "file": "megadrive/src/actors.c",
+      "line": 162,
+      "comment": "4C7E damage/cloning pending",
+      "current_implementation": "clone_hurt_actor at2300,called by world actor update",
+      "implementation_definition_line": 2300
+    }
+  ],
+  "full_game_or_global_fidelity_proven": false
+}

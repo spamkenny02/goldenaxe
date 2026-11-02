@@ -19,23 +19,20 @@ Checksum Mega Drive : `4080`
 
 La **v0309 regroupe les transferts du palais dans la file VBlank existante**.
 Le test SMS/MD conserve les 289 images et tous les décalages de la secousse.
-Le parcours v0309 depuis Nouveau Jeu valide maintenant **cinq cristaux et
-le retour du cinquième donjon**, à 72/72 PV et 72 PM en extérieur 49.
-Feu, Terre, épée longue, bottes, canoë et corde sont acquis par le jeu.
-Le cinquième boss est vaincu sans protection, après destruction de ses huit
-satellites ; aucune aide ne reprend pendant le retour. Cinq nouvelles
-relectures reproduisent toute la RAM et le PNG, et le HUD physique ainsi
-que les cinq marqueurs sont vérifiés après le cristal et la sortie.
-Voir [le cinquième donjon v0309](analysis/d5_campaign_v0309.md),
-[son ravitaillement](analysis/d5_supplies_v0309.md),
-[Feu et l'épée](analysis/fire_sword_v0309.md), ainsi que
-[le quatrième donjon](analysis/d4_campaign_v0309.md).
+Le parcours v0309 depuis Nouveau Jeu valide maintenant **six cristaux et
+le retour du sixième donjon**, à 70/80 PV et 72 PM en extérieur 8B.
+La cloche de glace est acquise, avec Feu, Terre, épée longue, bottes, canoë
+et corde. Le sixième boss est vaincu sans dégât reçu, sans protection ni
+potions ; aucune aide ne reprend pendant le retour. Les vingt points de
+contrôle D6 ont des relectures exactes sur toute la RAM et le PNG final.
+Le HUD physique et les six marqueurs sont vérifiés après le cristal et la sortie.
+Voir [le sixième donjon v0309](analysis/d6_campaign_v0309.md),
+[sa préparation](analysis/d6_progress_v0309.md) et
+[le cinquième donjon](analysis/d5_campaign_v0309.md).
 
-La préparation D6 valide **cinq clés, les mécanismes, six ouvertures Terre
-et la cloche de glace**, jusqu'au dernier rocher avant le boss. Les dix-sept
-étapes ont des relectures RAM/image exactes ; le HUD est vérifié après la cloche.
-Le sixième boss est en cours de test, sans protection : sa victoire n'est
-pas encore validée. Voir [la préparation D6](analysis/d6_progress_v0309.md).
+La progression ne prouve pas toute la fidélité SMS : le [relevé des sources](analysis/native_remaining_v0309.md)
+distingue les appels aléatoires SGDK encore provisoires, les estimations de
+phase et les anciens commentaires devenus obsolètes.
 
 Le **scénario contrôlé du palais atteint maintenant la fin du jeu** :
 géant et gardien sans protection,hache dorée,Death Adder,générique complet
