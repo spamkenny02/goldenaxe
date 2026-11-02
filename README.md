@@ -31,6 +31,12 @@ Voir [le cinquième donjon v0309](analysis/d5_campaign_v0309.md),
 [Feu et l'épée](analysis/fire_sword_v0309.md), ainsi que
 [le quatrième donjon](analysis/d4_campaign_v0309.md).
 
+La préparation D6 valide **cinq clés, les mécanismes, six ouvertures Terre
+et la cloche de glace**, jusqu'au dernier rocher avant le boss. Les dix-sept
+étapes ont des relectures RAM/image exactes ; le HUD est vérifié après la cloche.
+Le sixième boss est en cours de test, sans protection : sa victoire n'est
+pas encore validée. Voir [la préparation D6](analysis/d6_progress_v0309.md).
+
 Le **scénario contrôlé du palais atteint maintenant la fin du jeu** :
 géant et gardien sans protection,hache dorée,Death Adder,générique complet
 et retour au flux titre. Le combat final commence à100PV contre90PV pour

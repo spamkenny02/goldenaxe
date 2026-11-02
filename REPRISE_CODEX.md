@@ -2,27 +2,33 @@
 
 Etat de cette note : 2 novembre 2026. Lire aussi README.md et les rapports plus recents eventuellement ajoutes depuis cette note. Le changement de compte ne termine pas l'objectif du portage.
 
-## Etat courant : cinq cristaux depuis Nouveau Jeu,sortieD5 image146657,
-exterieur49,72/72PV,72PM,0cle,Feu/Terre1,bottes/canoe/corde1,huile0.
-Epee longue2 selectionnee (selected0),hache1 possedee,armure1.
-Checkpoint validation/natural-dungeon-combat/md-auto-v0309-d5-exit01.
-Rapports analysis/d5_supplies_v0309_report.json et d5_campaign_v0309_report.json.
+## Etat courant : cinq cristaux depuis Nouveau Jeu,sortieD5 verifiee146657,
+exterieur49 HP72/72 MP72. D6 prepare depuis cette sortie : hache choisie
+normalement146847,pont49 reel,entree187148350,cinq acquisitions de cle,
+mecanismes,six ouvertures Terre/sept vrais lancers8PM,cloche de glace169528.
+Dernier rocher125:7B degage171342 HP72/72 MP32,gold27,key0,cloche1.
+Les17 endpoints ont chacun une relecture RAM65536/PNG exacte ; HUD128mots
+apres cloche exact. analysis/d6_progress_v0309_report.json et .md.
 
-Ravitaillement reel : dons16->46->76,puis cle60 laisse16,soin60->64PV.
-Terre153:44->162 et mecanisme162->172 verifies. Ante173 nettoyee a138502,
-retrait de protection138503,combat65 a138593 HP64/hurt0 contre72PV.
-Huit satellites66 detruits,premier degat noyau observe144016. Premier degat
-heros139882 HP64->54. Cristal et soin termines145576 HP72. Retour173->174
-mecanisme145917 puis portail155 et sortie49 a146657,sans degat au retour.
-Aucune ecriture apres138503,pas de SRAM/ressources/acteurs/progression importes.
-Cinq relectures finales RAM65536/PNG exactes,198+3 predictions fullRAM,
-HUD physique128mots/5marqueurs apres cristal et sortie exact. Les13 etapes
-jusqu au mecanisme172 ont aussi chacune une relecture froide exacte.
-Sources figees validation/v0309-d5-sources/supplies_source_index.json et
-validation/v0309-d5-boss-sources. L index original de preparation reste intact.
-Pipelines81567,16695,33998 termines ; aucun job actif. Suite : D6 depuis la
-sortie49,avec nouvel episode d approche seulement apres cette sortie verifiee.
-Voir validation/current_palace_handoff.json pour le dernier etat.
+Dernier checkpoint de reprise verifie :
+validation/natural-dungeon-combat/md-auto-v0309-d6-release01 a171343,
+protection retiree dans125 avant main64 en115. Source main HP60.
+Aucune ecriture ne doit etre ajoutee pendant le combat ni le retour.
+Pipeline15790 prepare termine. Premier essai boss01 step32 arrete volontairement
+car inefficace :287 predictions verifiees,60->58PV seulement,heros72.
+Diagnostic validation/v0309-d6-coarse32-diagnostic ; aucun checkpoint valide
+boss01,ne pas le reprendre comme prefixe. Pipeline36794 termine exit1 apres
+arret de son seul enfant23088,parent29632 verifie.
+
+Pipeline ACTIF77498 : validation/run_d6_boss_return02.py. Poll avant toute
+relance. Boss02 step8 depuis le meme release verifie,avec UP ordinaire pour
+entrer ; puis canonical boss02,exit8B step32 et canonical exit01 si victoire.
+Observation173302 : heros72,boss48. Pas de fixture ni RAM/SRAM importee.
+Sources exactes validation/v0309-d6-sources et v0309-d6-boss-sources.
+Audit tools/summarize_d6_campaign_v0309.py prepare,mais rapport final D6
+pas encore cree. Lire validation/current_palace_handoff.json pour l etat
+le plus recent. Native v309 inchangee ; ne pas annoncer six cristaux avant
+victoire/recompense/retour verifies. Objectif complet toujours ouvert.
 
 Historique D3 :
 Le parcours froid v0309 valide maintenant trois cristaux et la sortieD3 :
