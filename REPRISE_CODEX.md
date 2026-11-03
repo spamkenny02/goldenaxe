@@ -2,6 +2,20 @@
 
 Etat de cette note : 3 novembre 2026. Lire aussi README.md et les rapports plus recents eventuellement ajoutes depuis cette note. Le changement de compte ne termine pas l'objectif du portage.
 
+## Dernier controle : dispatch boss65 + RNG v310
+
+Pipeline19733 terminal0. tools/validate_second_boss_rng_v0310.py :732cas
+NTSC et732PAL passent,tous768octetsacteurs/graineterminale/nombrelectures.
+Fragment e0==65 extrait EXACT actors.c (hors contact/tail) compile avec
+vrai runtime.inc etpureboss. SMS anciengenerateur prive controle3LDAR+04E1,
+resteinstructionsoriginales. Toutes256sortiesgate,pauses,retourstimers,
+20segments,directions,pool couverts. A921=04E1,A935=R confirme,nepasmasquergate.
+Aucunbugnatif trouve,ROMinchangee. Sources figes validation/v0310-second-boss-rng-sources.
+Premieressai01 stopavantcompilation:parentfixture/validation absent;02corrige.
+Lire analysis/second_boss_rng_v0310.md/report. Limites :pascomplettick,
+pasnaturalfight/naturalRphase/pixels/audio/hardware. Prochainepriorite reste
+lefluxglobalR/IRQ et autres routines dont appels04E1 charges/butin ont change.
+
 ## Dernier controle : mini-jeu v310 compare SMS/MD
 
 Pipeline43586 termine0. Douze cas (6scenarios x2regions),24traces6600images.

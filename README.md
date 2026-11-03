@@ -31,6 +31,10 @@ douze cas SMS/MD en PAL/NTSC, cartes, paiements, récompenses, nouvelle partie,
 refus et retour depuis l'inventaire. Les tirages sont contrôlés pour ce test ;
 les probabilités et la phase naturelle du hasard restent à vérifier.
 
+La [branche de production du boss à satellites](analysis/second_boss_rng_v0310.md)
+passe aussi 732 cas par région : état des acteurs, graine finale et nombre de
+tirages correspondent aux instructions SMS avec des entrées contrôlées.
+
 La [campagne v0309 depuis Nouveau Jeu atteint la fin](analysis/cold_palace_final_v0309.md) :
 neuf cristaux, palais, Hache d’or, Death Adder, générique complet et retour
 au cycle intro/titre. Les approches utilisent les protections de test
