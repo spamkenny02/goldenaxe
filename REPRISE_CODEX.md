@@ -2,7 +2,33 @@
 
 Etat de cette note : 2 novembre 2026. Lire aussi README.md et les rapports plus recents eventuellement ajoutes depuis cette note. Le changement de compte ne termine pas l'objectif du portage.
 
-## Priorite actuelle : gardien froid et vraie Hache d'or verifies
+## Priorite actuelle : campagne froide v309 terminee,save reelle en cours
+
+Audit analysis/cold_palace_final_v0309_report.json passe. Onze endpoints
+canoniques RAM65536+PNG ;dernier ending01 401556,jeu0/intro suivante.
+Release386942 en15C a104PV ;perte386950104->100 avant boss. Combat387036
+hero100/hurt0 vs6D90PV ;victoire392966 a100PV,180 predictions fullRAM.
+Aucune ecriture apres release,aucun degat pendant combat. Neuf cristaux
+393310,credits394003..401426,retourintro401456. Pipeline88543 terminal0.
+BUT COMPLET TOUJOURS OUVERT :RNG SGDK/phase SMS,saves,optionnels,materiel.
+
+Pipeline76613 terminal1 :route01 arretee devant arbre83 FA:5D,pas de save ecrite.
+Retry93021 actif :validation/run_game_written_save_v0309_02.py ;coupe normale
+avec hache1 (--axe-terrain,--required-chop0xfa:0x5d) avant porte.
+Branche SEPAREE depuis le vrai d9-exit01 (302306 EB,neuf cristaux,ballon),
+route statique EB/FB/FA39waypoints vers porteFA216,96 maison6F,saveNPC136,72.
+GameWrittenSavePlan :validation/game_written_save_plan_v0309_02.json.
+Helpers prepares tools/natural_save_service.py et validate_game_written_save.py,
+non encore valides :transaction normale Oui/slot0,export SRAM reel,comparaison
+592octets serializees,relecture froide RAM+PNG+SRAM,puis NOUVEAU core avec
+cette SRAM ecrite par le jeu et Continuer normal,aucune suppression d'acteurs.
+Le reload importe necessairement la SRAM reelle et NE DOIT PAS etre appele
+campagne froide Nouveau Jeu. Ne pas confondre avec l'ancienne fixture palais.
+D9exit a save_last_slot0 lu dans son vrai RAM canonique. Sources v0309-game-written-save02-sources.
+Attendre le resultat du pipeline puis auditer,inspecter et publier ;ne pas
+relancer sur simple timeout. Pas de v310 sans changement effectif de ROM.
+
+## Jalon precedent : gardien froid et vraie Hache d'or verifies
 
 Audit analysis/cold_palace_guardian_v0309_report.json passe. Six endpoints
 canoniques RAM65536+PNG :switch12c347516,pre-guardian354193,release354194,
@@ -11,11 +37,10 @@ hero104/hurt0,boss7C60PV ;339 predictions fullRAM,aucun degat ni ecriture
 apres release pendant le combat. Hache1->2 a366733,dialogue fini367033.
 Dernier trace natural-dungeon-combat/md-auto-v0309-cold-palace-goldenaxe01,
 room11D HP104 MP72 gold35 keys2,axe2 selectionnee. Pipeline38472 terminal.
-Pipeline88543 actif :validation/run_cold_palace_final01.py ;portal13C en cours.
+Pipeline88543 termine :validation/run_cold_palace_final01.py (voir priorite actuelle).
 Terre13E369442 (16A HP100 MP64) et levier17C376548 (HP104 MP72)
 ont chacun leur relecture canonique RAM65536+PNG passee.
-Audit tools/summarize_cold_palace_final_v0309.py prepare,non execute :
-attendre toutes les etapes jusqu au vrai boss final,credits et retour titre.
+Audit tools/summarize_cold_palace_final_v0309.py passe :boss,credits et retour intro/titre verifies.
 Proposition controlee source-bound dans cold_palace_final_route_proposal_v0309.json
 (UNEXECUTED pour les parties non encore jouees). Etapes :13E Terre3A->16A,
 levier17C,portal13C via17B/18B/18A/17A/17B,levier14B,portal15A via13B/13A/

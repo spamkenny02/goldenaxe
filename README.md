@@ -9,13 +9,23 @@ La fidélité à la Master System passe avant les améliorations.
 
 [Télécharger la ROM v0309](versions/v0309-7270576d/gaw-megadrive-v0309.bin) · [Toutes les versions](versions/README.md)
 
-Contrôles ciblés réussis ; portage complet encore non validé.
+Campagne jusqu’à la fin vérifiée ; fidélité globale encore en validation.
 
 SHA-256 : `7270576d6eeb2aee641776a3e364f2f3f320711d70bb91a566d7578161261049`
 Checksum Mega Drive : `4080`
 <!-- ROM-RELEASE:END -->
 
 ## État du portage
+
+La [campagne v0309 depuis Nouveau Jeu atteint la fin](analysis/cold_palace_final_v0309.md) :
+neuf cristaux, palais, Hache d’or, Death Adder, générique complet et retour
+au cycle intro/titre. Les approches utilisent les protections de test
+autorisées ; les combats de boss se déroulent sans protection. Aucun import
+SRAM/RAM ni écriture de ressources ou de progression. Le combat final se
+termine à 100 PV, avec 180 prédictions et une relecture RAM/image exactes.
+Les onze nouveaux points de contrôle du dernier palais sont vérifiés.
+La fidélité globale SMS, les sauvegardes, les contenus optionnels et les
+essais matériels restent ouverts.
 
 La **v0309 regroupe les transferts du palais dans la file VBlank existante**.
 Le test SMS/MD conserve les 289 images et tous les décalages de la secousse.
@@ -44,15 +54,15 @@ Les [passages Terre et le levier suivant](analysis/cold_palace_inner_v0309.md)
 sont aussi vérifiés : cinq relectures exactes, retour en 12A à 104 PV/64 PM.
 Le [gardien et la vraie Hache d’or](analysis/cold_palace_guardian_v0309.md)
 sont vérifiés : combat sans protection ni dégât reçu, six relectures exactes,
-hache acquise en 11D, héros à 104 PV/72 PM. La dernière portion du palais,
-Death Adder et la fin restent à rejouer dans cette campagne ; les preuves
-contrôlées antérieures sont séparées.
+hache acquise en 11D, héros à 104 PV/72 PM. La dernière portion du palais
+et la fin sont maintenant vérifiées dans le bilan lié ci-dessus. Les preuves
+contrôlées antérieures restent séparées.
 
 La progression ne prouve pas toute la fidélité SMS : le [relevé des sources](analysis/native_remaining_v0309.md)
 distingue les appels aléatoires SGDK encore provisoires, les estimations de
 phase et les anciens commentaires devenus obsolètes.
 
-Le **scénario contrôlé du palais atteint maintenant la fin du jeu** :
+Le **scénario contrôlé antérieur du palais atteint aussi la fin du jeu** :
 géant et gardien sans protection,hache dorée,Death Adder,générique complet
 et retour au flux titre. Le combat final commence à100PV contre90PV pour
 le boss ; le héros gagne à48PV. Aucune écriture de test après le retrait de
@@ -63,14 +73,14 @@ ainsi que les [mécanismes du palais](analysis/controlled_palace_phase3_v0309.md
 
 Ce scénario démarre avec **une SRAM synthétique dérivée du parcours neuf
 cristaux v0306**. Il reste séparé de la campagne depuis Nouveau Jeu. La
-campagne froide complète sur la version courante,les contenus optionnels,
-la fidélité globale SMS et les essais matériels restent ouverts.
+campagne froide complète sur v0309 est désormais vérifiée séparément ; les
+contenus optionnels, la fidélité globale SMS et les essais matériels restent ouverts.
 
 La **v0308 restaure l'ouverture du passage vers le palais apres les neuf
 cristaux**. Le test controle SMS/MD reproduit les289 images,les neuf amplitudes
 de secousse et chaque changement de decalage. Avec huit cristaux,le passage
 reste ferme. Voir [le correctif du palais](analysis/palace_gate_v0308.md).
-Ce controle utilise un scenario isole ; le parcours complet sur la version courante reste a valider.
+Ce controle utilise un scenario isole ; le parcours complet v0309 est maintenant verifie separement.
 
 La **v0306 restaure le HUD après les fenêtres d’objet et de cristal** et
 affiche les neuf indicateurs de cristal selon la table SMS. Les comparaisons

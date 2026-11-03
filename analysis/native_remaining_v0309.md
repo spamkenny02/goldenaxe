@@ -27,7 +27,8 @@ Le clonage 4C7E existe dans `clone_hurt_actor()` et est appelé lors de la mise
 à jour des ennemis concernés. Leur présence ne remplace toutefois pas les
 comparaisons de comportement et de rythme avec la ROM originale.
 
-Le parcours courant et ses rapports vérifient la progression sur v0309.
-Le palais et la fin disposent aussi de preuves contrôlées séparées. Ces
-résultats doivent rester distincts de la fidélité globale, de la couverture
-des contenus optionnels et des essais matériels encore à établir.
+Le parcours courant v0309 atteint désormais la fin depuis Nouveau Jeu :
+voir [la campagne et la fin](cold_palace_final_v0309.md). Les approches sont
+assistées et les boss combattus sans protection. Les anciennes preuves
+contrôlées du palais restent séparées. La fidélité globale, les sauvegardes
+normales, les contenus optionnels et les essais matériels restent à établir.
