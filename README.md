@@ -24,8 +24,12 @@ autorisées ; les combats de boss se déroulent sans protection. Aucun import
 SRAM/RAM ni écriture de ressources ou de progression. Le combat final se
 termine à 100 PV, avec 180 prédictions et une relecture RAM/image exactes.
 Les onze nouveaux points de contrôle du dernier palais sont vérifiés.
-La fidélité globale SMS, les sauvegardes, les contenus optionnels et les
-essais matériels restent ouverts.
+Le [cycle réel Sauvegarder/Continuer](analysis/game_written_save_v0309.md) est
+aussi vérifié : 592 octets sérialisés, relecture RAM/image/SRAM exacte,
+rechargement normal sans retrait d’ennemis, objets et neuf cristaux restaurés,
+arbre coupé persistant et déplacement possible. La fidélité globale SMS, les
+autres cas de sauvegarde, les contenus optionnels et les essais matériels
+restent ouverts.
 
 La **v0309 regroupe les transferts du palais dans la file VBlank existante**.
 Le test SMS/MD conserve les 289 images et tous les décalages de la secousse.

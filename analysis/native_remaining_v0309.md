@@ -30,5 +30,8 @@ comparaisons de comportement et de rythme avec la ROM originale.
 Le parcours courant v0309 atteint désormais la fin depuis Nouveau Jeu :
 voir [la campagne et la fin](cold_palace_final_v0309.md). Les approches sont
 assistées et les boss combattus sans protection. Les anciennes preuves
-contrôlées du palais restent séparées. La fidélité globale, les sauvegardes
-normales, les contenus optionnels et les essais matériels restent à établir.
+contrôlées du palais restent séparées. Un [cycle réel de sauvegarde et
+Continuer](game_written_save_v0309.md) est aussi vérifié, avec arbre coupé
+persistant et aucun retrait d’ennemis au chargement. La fidélité globale, les
+autres cas de sauvegarde, les contenus optionnels et les essais matériels
+restent à établir.

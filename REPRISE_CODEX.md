@@ -2,7 +2,40 @@
 
 Etat de cette note : 2 novembre 2026. Lire aussi README.md et les rapports plus recents eventuellement ajoutes depuis cette note. Le changement de compte ne termine pas l'objectif du portage.
 
-## Priorite actuelle : campagne froide v309 terminee,save reelle en cours
+## Priorite actuelle : fin et vraie sauvegarde/Continuer verifies,code fidelite
+
+Campagne Nouveau Jeu->FIN :cold_palace_final_v0309_report.json passe,
+401556 apres retourintro401456. Save reelle :game_written_save_v0309_report.json
+et game_written_save_audit_v0309_report.json passes. AUCUN changement ROM.
+Parent route02 canonique302751 viaFA,arbre83/5D coupe normalement ;maison6F.
+Save04 ecrit302961,UI fermee303022,checkpoint303172 HP82 MP64 gold32 keys2.
+Payload592 exact ;SRAM export3224octets,quatre FF logiques finaux omis,restes
+FF controles. Relecture independante v0309-04b exacte RAM65536+PNG+SRAM.
+Vrai Continuer dans nouveau coeur :SRAM ecrite par le jeu (UNE importation
+legitime,non fixture),aucune ecriture RAM ni suppression d'acteurs. Ready1321,
+mouvement1343,fin1443 roomFA HP82 MP64.17objets/neuf cristaux restores,
+HUD128mots/neuf marqueurs exacts ;arbreFA:5D restaure4 avec son flag.
+Snapshots sources04 et04b. Images save/reload inspectees. Pipeline2503 terminal0.
+
+Essais exclus :route01 sans coupe ;save02/03 rouvraient la fenetre a cause
+DU PILOTE (UP pendant restaurationhero0). Save04 corrige en attendant neutre.
+Pipeline49364 terminal1 seulement car validateur exigeait circulairement
+la preuve a produire ;04b valide d'abord le parent canonique puis cree sa
+preuve. Les gardes d'approche copies sont anciens,aucun nouveau apres D9.
+Ne pas transformer le reload SRAM reel en preuve de campagne froide.
+
+Prochaine action utile :traiter les ecarts NATIFS encore identifies,notamment
+les66appels SGDK random (3main,63actors),source_rng/source_rng_timed exacts
+mais non raccordes a la production. Lire native_remaining_v0309.md et son
+inventaire lie aux SHA main5488e979... et actorsd3a07e62... . Distinguer les
+sites04E1 de LD A,R avant toute substitution ;pas de faux R au compteur MD
+ni de remplacement aveugle uniforme. L'objectif reste le portage fidele,
+pas seulement un jeu terminable. La phase globale SMS,les autres saves,
+les contenus optionnels et les essais materiels restent a examiner.
+Ne pas relancer toute la campagne sur la meme ROM sans nouveau probleme.
+Pas de v310 avant changement reel du binaire. Aucune tache emulation active.
+
+## Jalon precedent : campagne froide v309 terminee
 
 Audit analysis/cold_palace_final_v0309_report.json passe. Onze endpoints
 canoniques RAM65536+PNG ;dernier ending01 401556,jeu0/intro suivante.
@@ -13,7 +46,7 @@ Aucune ecriture apres release,aucun degat pendant combat. Neuf cristaux
 BUT COMPLET TOUJOURS OUVERT :RNG SGDK/phase SMS,saves,optionnels,materiel.
 
 Pipeline76613 terminal1 :route01 arretee devant arbre83 FA:5D,pas de save ecrite.
-Retry93021 actif :validation/run_game_written_save_v0309_02.py ;coupe normale
+Retry93021 termine (voir priorite actuelle) :coupe normale
 avec hache1 (--axe-terrain,--required-chop0xfa:0x5d) avant porte.
 Branche SEPAREE depuis le vrai d9-exit01 (302306 EB,neuf cristaux,ballon),
 route statique EB/FB/FA39waypoints vers porteFA216,96 maison6F,saveNPC136,72.
