@@ -2,6 +2,31 @@
 
 Etat de cette note : 3 novembre 2026. Lire aussi README.md et les rapports plus recents eventuellement ajoutes depuis cette note. Le changement de compte ne termine pas l'objectif du portage.
 
+## Dernier jalon : hache,fee et D2 v310 termines
+
+analysis/d2_approach_v0310_report.json et d2_campaign_v0310_report.json passes.
+Suite memeNewGame D1 canonique :reentry02 fin16450,axe-key01 19585,
+axe01 21176,axe-exit01 22295,fee-route01 23350,fee-service01 23872,
+d2-entry01 26033. Sept replaysexacts RAM65536/PNG. Hacheacquise/equipee,
+3coupesfee+1versD2,coeur+soin reel32->40,flagC9=2. Pasd'importressources.
+Nouvelleepisodeaideapres16254 cible144 ;premiereepisodeD1 reste fermee.
+D2 key02 27110 en160, key03 28562 en152,key04 32362 en131 ;40PV.
+Boss01 fin42327 secondcristal48/48 ;exit01 fin44790 D6 31/48PV,1cle.
+Cinq replaysexacts. Dernierewrite33960,boss34017 hero40/hurt0.
+TYPE REEL D2=63/30PV (PAS65satellites). Coup41640 40->24,hurt47.
+Commentaireintermediaire "sansdegat" etait premature,rectifieavantbilan.
+479predictionsboss+15retour exactes. HUD128+2marqueurs verifies aux2endpoints.
+Aucuneaidependantboss/retour,aucunewritenouvelleauretour. 2cristauxsource.
+Bosscoarsestep16,horizon96,width3,evasion11. EnterUP/targetsatellites flags
+65 sans effet sur type63. Pipeline39888 terminal0,48602 terminal0,51544terminal0.
+D2key01 diagnostic exclu :mauvaisecible151 sanscle,controller_stalled sansmort.
+Retouraxe01 ferme ancienepisode,brancheconservee ;02 ouvre2eepuisemploiee.
+Sources figes v0310-d2-approach-sources et v0310-d2-campaign-sources.
+Aucunjobactif,ROMinchangee. Prochainepriorite:ecartsnatifsR/IRQ globaux,
+etvrai type65 lorsqu'atteint dans progression D3/suivante (verifiertables,
+nepasidentifierbossd'apresnumeroD). Toute aide retiree AVANTchaqueboss.
+Pasdefaussev311 pourdocs/preuves. Fullcampaignv309historique,310jusqueD2ici.
+
 ## Dernier jalon : campagne froide v310 D1 + retour
 
 analysis/d1_campaign_v0310_report.json passe. Quatre relecturesfroides exactes :

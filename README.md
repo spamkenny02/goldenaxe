@@ -31,6 +31,12 @@ et ressort avec le premier cristal à **28/32 PV**. Première clé sans aide,
 approche ensuite assistée, boss et retour sans protection. Les quatre étapes
 ont une relecture RAM/image exacte ; HUD et marqueur de cristal sont contrôlés.
 
+La suite récupère [la hache et le don de vie](analysis/d2_approach_v0310.md),
+puis [le deuxième cristal et ressort de D2](analysis/d2_campaign_v0310.md)
+à **31/48 PV**. Le boss type63 est combattu sans protection ; les cinq étapes
+D2 ont une relecture RAM/image exacte, avec les deux marqueurs vérifiés.
+La protection reste limitée aux approches et aucune ressource n'est injectée.
+
 Le [mini-jeu est aussi comparé sur v310](analysis/minigame_rng_v0310.md) :
 douze cas SMS/MD en PAL/NTSC, cartes, paiements, récompenses, nouvelle partie,
 refus et retour depuis l'inventaire. Les tirages sont contrôlés pour ce test ;
