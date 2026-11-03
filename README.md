@@ -42,8 +42,11 @@ vaincu sans protection pendant le combat, à 86/104 PV. Les cinq points de
 contrôle ont une relecture RAM/image exacte ; 185 prédictions sont vérifiées.
 Les [passages Terre et le levier suivant](analysis/cold_palace_inner_v0309.md)
 sont aussi vérifiés : cinq relectures exactes, retour en 12A à 104 PV/64 PM.
-Le gardien suivant, la Hache d’or et la fin restent à rejouer dans cette
-campagne ; leurs preuves contrôlées sont séparées.
+Le [gardien et la vraie Hache d’or](analysis/cold_palace_guardian_v0309.md)
+sont vérifiés : combat sans protection ni dégât reçu, six relectures exactes,
+hache acquise en 11D, héros à 104 PV/72 PM. La dernière portion du palais,
+Death Adder et la fin restent à rejouer dans cette campagne ; les preuves
+contrôlées antérieures sont séparées.
 
 La progression ne prouve pas toute la fidélité SMS : le [relevé des sources](analysis/native_remaining_v0309.md)
 distingue les appels aléatoires SGDK encore provisoires, les estimations de

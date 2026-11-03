@@ -2,19 +2,39 @@
 
 Etat de cette note : 2 novembre 2026. Lire aussi README.md et les rapports plus recents eventuellement ajoutes depuis cette note. Le changement de compte ne termine pas l'objectif du portage.
 
-## Priorite actuelle : mecanismes interieurs froids verifies
+## Priorite actuelle : gardien froid et vraie Hache d'or verifies
+
+Audit analysis/cold_palace_guardian_v0309_report.json passe. Six endpoints
+canoniques RAM65536+PNG :switch12c347516,pre-guardian354193,release354194,
+guardian365263,resume-final365264,goldenaxe367133. Premier combat354248
+hero104/hurt0,boss7C60PV ;339 predictions fullRAM,aucun degat ni ecriture
+apres release pendant le combat. Hache1->2 a366733,dialogue fini367033.
+Dernier trace natural-dungeon-combat/md-auto-v0309-cold-palace-goldenaxe01,
+room11D HP104 MP72 gold35 keys2,axe2 selectionnee. Pipeline38472 terminal.
+Pipeline88543 actif :validation/run_cold_palace_final01.py ;Terre13E en cours.
+Proposition controlee source-bound dans cold_palace_final_route_proposal_v0309.json
+(UNEXECUTED pour les parties non encore jouees). Etapes :13E Terre3A->16A,
+levier17C,portal13C via17B/18B/18A/17A/17B,levier14B,portal15A via13B/13A/
+14A/14B,Terre15B48->16B,levier16C,prefinal15C,release avant14C,6D puis fin.
+Le script refuse de partir sans audit guardian passe ;aucun prefix SRAM
+controle n'est utilise. Source snapshots final01-sources. Hache2 normale,
+protection a retirer avant Death Adder,aucune ecriture apres release.
+L'objectif complet du portage reste ouvert,notamment RNG/phase,sauvegardes,
+contenus optionnels et essais materiels. Pas de v310 sans changement ROM.
+
+## Jalon precedent : mecanismes interieurs froids verifies
 
 Audit analysis/cold_palace_inner_v0309_report.json passe :resume327639,
 portal14e03 336921,Terre14E337338,Terre11A342640,levier129344707.
 Cinq relectures canoniques RAM65536+PNG,HUD128/neuf marqueurs exacts.
 Dernier trace natural-dungeon-combat/md-auto-v0309-cold-palace-switch12901,
 room12A HP104 MP64 gold33 keys2. Pipeline93373 terminal success.
-Validation/run_cold_palace_guardian01.py lance,pipeline38472 en cours :
+Validation/run_cold_palace_guardian01.py lance,pipeline38472 termine :
 contact12C via12A/11C (--mechanism-during-combat),puis12C/11C/11B/12B/
 12C/12D/12E (--rush-rooms0x12c :salle separee,non declaree nettoyee).
 Release avant11E,7C60PV sans protection,budget20000 step32,puis reprise du
 garde APRES victoire canonique et acquisition reelle axe1->2 en11D.
-Audit tools/summarize_cold_palace_guardian_v0309.py prepare,non execute.
+Audit tools/summarize_cold_palace_guardian_v0309.py passe.
 Sources mesurees inner01-sources,guardian01-sources. Aucun argent de test.
 Toujours separer cette campagne froide des anciennes preuves SRAM controlees.
 
