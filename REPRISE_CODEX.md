@@ -13,10 +13,17 @@ Degats16E321506104->102 puis15E327380102->82 et32742882->62 ;
 coeur32749662->86. Aucune nouvelle ecriture apres release,aucun import.
 Le pilote patrouille pour spawn56/59/5A avec --wake-sentinels ;ROM inchangee.
 Pipeline29182 terminal success. Premier pre-giant01 echoue exclu.
-Suite lancee validation/run_cold_palace_inner01.py,pipeline74139 en cours :
-resume apres victoire canonique (episode15 pending14C),portal16C->14D->14E,
+Suite reprise validation/run_cold_palace_inner03.py,pipeline93373 en cours :
+resume327639 canonique (episode15 pending14C),15E->15D->16D->16C->14D->14E,
 Terre14E58->119,Terre11A35->12A,contact129->12A. Garder14D dans avoid-portal,
-mais PAS16C. Exiger14E nettoyee sur les16slots avant Terre. Puis11E, vraie
+mais PAS16C ; --defer-puzzles-rooms0x16c a ce passage.
+Pipeline74139 : portal14e01 echoue (sortie16E->16D inexistante).
+Pipeline88711 : portal14e02 arrete volontairement (oubli deferral16C).
+Ces branches ne sont pas des preuves reussies. Portal14e03 reussit a336921,
+room14E HP94 MP72 keys2 ;16slots vides,une reentree ordinaire16C.
+Relecture canonique65536RAM+PNG passee,image inspectee ;Terre14E en cours.
+Audit tools/summarize_cold_palace_inner_v0309.py prepare mais PAS encore
+execute : attendre les deux Terre et le contact129 avant de publier le bilan. Puis11E, vraie
 hache1->2 en11D et final14C. Aucune preuve SRAM controlee ne peut remplacer
 cette partie froide. L'objectif complet reste ouvert,notamment RNG/phase.
 
