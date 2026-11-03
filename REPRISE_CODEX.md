@@ -11,7 +11,11 @@ hero104/hurt0,boss7C60PV ;339 predictions fullRAM,aucun degat ni ecriture
 apres release pendant le combat. Hache1->2 a366733,dialogue fini367033.
 Dernier trace natural-dungeon-combat/md-auto-v0309-cold-palace-goldenaxe01,
 room11D HP104 MP72 gold35 keys2,axe2 selectionnee. Pipeline38472 terminal.
-Pipeline88543 actif :validation/run_cold_palace_final01.py ;Terre13E en cours.
+Pipeline88543 actif :validation/run_cold_palace_final01.py ;portal13C en cours.
+Terre13E369442 (16A HP100 MP64) et levier17C376548 (HP104 MP72)
+ont chacun leur relecture canonique RAM65536+PNG passee.
+Audit tools/summarize_cold_palace_final_v0309.py prepare,non execute :
+attendre toutes les etapes jusqu au vrai boss final,credits et retour titre.
 Proposition controlee source-bound dans cold_palace_final_route_proposal_v0309.json
 (UNEXECUTED pour les parties non encore jouees). Etapes :13E Terre3A->16A,
 levier17C,portal13C via17B/18B/18A/17A/17B,levier14B,portal15A via13B/13A/
