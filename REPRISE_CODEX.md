@@ -13,7 +13,7 @@ Degats16E321506104->102 puis15E327380102->82 et32742882->62 ;
 coeur32749662->86. Aucune nouvelle ecriture apres release,aucun import.
 Le pilote patrouille pour spawn56/59/5A avec --wake-sentinels ;ROM inchangee.
 Pipeline29182 terminal success. Premier pre-giant01 echoue exclu.
-Suite preparee validation/run_cold_palace_inner01.py,non encore lancee :
+Suite lancee validation/run_cold_palace_inner01.py,pipeline74139 en cours :
 resume apres victoire canonique (episode15 pending14C),portal16C->14D->14E,
 Terre14E58->119,Terre11A35->12A,contact129->12A. Garder14D dans avoid-portal,
 mais PAS16C. Exiger14E nettoyee sur les16slots avant Terre. Puis11E, vraie
