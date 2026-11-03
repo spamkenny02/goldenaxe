@@ -2,6 +2,28 @@
 
 Etat de cette note : 3 novembre 2026. Lire aussi README.md et les rapports plus recents eventuellement ajoutes depuis cette note. Le changement de compte ne termine pas l'objectif du portage.
 
+## Dernier jalon : huile tardive,corde et D3 v310 termines
+
+analysis/oil_service_v0310_report.json et d3_campaign_v0310_report.json passent.
+DepuisD2exit44790,nouvelleepisode3 cible1C3 via oil-route01 fin46346,
+oil-service01 fin47077 :1F->0F->1F->C7,gift6482 item8=1/flagC7=2.
+PV31/gold2/MP24 conserves,2cristaux. Aucunewritenouvelle dansservice.
+natural_oil_stairs accepte --assisted-prefix via prefix_writes canonique,
+FrameWrites reprenantseulementancienneswrites;manifeste transparent,rejoue.
+Sourceopcode6482 confirmegiftgratuit. Deux relecturesfroidesexactes,HUD128exact.
+D3 entry50064,rope54923,switch55410 (Haut120104,ennemisactifs),key56899,
+approach58420,release58421,boss65056,exit66413 en62 46/56PV.
+Huitrelectures RAM65536/PNGexactes. Huile+corde+3cristaux conserves.
+Boss reel69/32PV,first58573 hero39/hurt0;hit64349 39->31,hurt47.
+Dernierewrite58421,seulementanciennesaides depuisboss etretour.
+182predictionsboss+7retour exactes,passtackdifferences;HUD128+3markers aux2points.
+Planner32frames,horizon96,evasive;exit planifie TOUSles vraisrooms1C3/1D3/
+1E3/1E2/1E7/1F7/1F8. Boss1496terminal0,exit7044terminal0;aucunjobactif.
+Snapshots v0310-oil-service-sources et v0310-d3-campaign-sources. Imagesinspectees.
+Source tabletype65 trouveUNIQUEMENTen163 (pasbossD2niD3). Source1C3=69.
+Prochainepriorite:ecartsnatifsR/IRQ,etprogressionfuturevers163pourvraicombat65.
+ROMinchangee,pasv311pourdocs/pilote. Fullcampaignv309historique seulement.
+
 ## Dernier jalon : hache,fee et D2 v310 termines
 
 analysis/d2_approach_v0310_report.json et d2_campaign_v0310_report.json passes.

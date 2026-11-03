@@ -37,6 +37,11 @@ puis [le deuxième cristal et ressort de D2](analysis/d2_campaign_v0310.md)
 D2 ont une relecture RAM/image exacte, avec les deux marqueurs vérifiés.
 La protection reste limitée aux approches et aucune ressource n'est injectée.
 
+Le parcours v310 reçoit ensuite [l'huile par son dialogue et ses escaliers](analysis/oil_service_v0310.md),
+puis [la corde et le troisième cristal](analysis/d3_campaign_v0310.md).
+Retour en extérieur à **46/56 PV**, trois cristaux conservés. Les huit étapes
+D3 ont une relecture RAM/image exacte ; le boss type69 est combattu sans garde.
+
 Le [mini-jeu est aussi comparé sur v310](analysis/minigame_rng_v0310.md) :
 douze cas SMS/MD en PAL/NTSC, cartes, paiements, récompenses, nouvelle partie,
 refus et retour depuis l'inventaire. Les tirages sont contrôlés pour ce test ;

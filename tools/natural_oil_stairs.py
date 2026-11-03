@@ -4,20 +4,22 @@ import contextlib
 import io
 import json
 from pathlib import Path
-from run_core import ROOT, run
+from run_core import ROOT, run, FrameWrites
+from assisted_prefix import prefix_writes,recording
 from natural_dungeon_combat import walk
 from validate_playable_sprite_limit import symbols
 from archive_lossless_evidence import sha
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--prefix',required=True);p.add_argument('--trial',required=True)
+    p=argparse.ArgumentParser();p.add_argument('--prefix',required=True);p.add_argument('--trial',required=True);p.add_argument('--assisted-prefix',action='store_true')
     a=p.parse_args();source=ROOT/'validation/natural-dungeon-route'/a.prefix
     driver=Path(__file__).read_bytes()
     c=json.loads((source/'capture.json').read_bytes());prior=json.loads((source/'route_report.json').read_bytes())
     assert prior['reached_entrance'] and prior['failure'] is None and prior['house_outside']==0xc7 and prior['house_target']==0x1f
-    assert not c['test_ram_writes'] and c['sram_input'] is None
-    proof=source.with_name(source.name+'-fixed-replay')/'replay_report.json'
+    assert c['sram_input'] is None
+    writes=prefix_writes(source,c,a.assisted_prefix)
+    proof=source.with_name(source.name+(f"-assisted-fixed-replay-{c['frames']}" if writes else '-fixed-replay'))/'replay_report.json'
     assert json.loads(proof.read_bytes())['passed']
     rom=ROOT/'gaw-megadrive.bin';assert sha(rom.read_bytes())==c['rom_sha256']
     sy=symbols(ROOT/'megadrive/out/release/symbol.txt');start=c['frames']
@@ -78,16 +80,21 @@ def main():
 
     with contextlib.redirect_stdout(io.StringIO()):
         run(rom,start+5000,folder,captures,c['presses'],skip_intro=False,input_provider=controller,ram_observer=observe,
-            stop_when=lambda:bool(failure) or done is not None and observed>=done+100,core_options=c['core_options'])
+            stop_when=lambda:bool(failure) or done is not None and observed>=done+100,core_options=c['core_options'],ram_writes=FrameWrites(writes))
     visited=list(dict.fromkeys(e['room'] for e in events))
     passed=done is not None and not failure and 0xf in visited and state['gold']==first['gold'] and state['magic']==first['magic']
     result=dict(passed=passed,failure=failure or (None if passed else 'frame_limit'),rom_sha256=c['rom_sha256'],
                 source_prefix=a.prefix,first_state=first,last_state=state,visited=visited,complete_frame=done,
-                ram_injections=False,sram_checkpoint_injection=False,primary_state_imports=0,
+                ram_injections=bool(writes),assisted_route=bool(writes),new_assistance_writes=0,sram_checkpoint_injection=False,primary_state_imports=0,
                 source_route_replay_sha256=sha(proof.read_bytes()),driver_sha256=sha(driver),
-                scope='Normal boot and recorded approach,real C7 doorway,both indoor stairs,oil gift and exterior exit. No RAM/SRAM fixture or actor mutation.')
+                scope='Normal boot and recorded approach,real C7 doorway,both indoor stairs,oil gift and exterior exit. Inherited approach hurt writes,if explicitly enabled,are replayed unchanged;no new aid,resource writes,SRAM fixture or actor mutation.')
     for name,value in [('report',result),('events',events),('controls',controls)]:
         (folder/(name+'.json')).write_bytes((json.dumps(value,indent=2)+'\n').encode())
+    if writes:
+        assist=json.loads((source/'assistance.json').read_bytes())
+        assist['writes']=[dict(frame=f,address=address,data_hex=value.hex())for f,address,value in writes]
+        (folder/'assistance.json').write_bytes((json.dumps(assist,indent=2)+'\n').encode())
+        recording(folder,json.loads((folder/'capture.json').read_bytes()))
     (folder/'oil_stairs_driver.py').write_bytes(driver)
     print(result)
 

@@ -1,0 +1,68 @@
+{
+  "passed": true,
+  "md_sha256": "32fe75a653d7152f7cbf873a32f2ffef14234ea190885ae8a8235f2ccd10e071",
+  "stages": [
+    {
+      "trace": "validation/natural-dungeon-route/md-v0310-oil-route01",
+      "frames": 46346,
+      "room": 31,
+      "oil": 0,
+      "health": 31,
+      "whole_ram_bytes": 65536,
+      "final_png_exact": true
+    },
+    {
+      "trace": "validation/natural-service-route/md-v0310-oil-service01",
+      "frames": 47077,
+      "room": 199,
+      "oil": 1,
+      "health": 31,
+      "whole_ram_bytes": 65536,
+      "final_png_exact": true
+    }
+  ],
+  "real_oil_gift": true,
+  "stairs_and_return_rooms": [
+    31,
+    15,
+    31,
+    199
+  ],
+  "gold_unchanged": 2,
+  "magic_unchanged": 24,
+  "health_unchanged": 31,
+  "new_test_writes": 0,
+  "resource_writes": 0,
+  "primary_state_imports": 0,
+  "physical_hud_words_exact": 128,
+  "full_game_validated": false,
+  "evidence": {
+    "analysis/d2_campaign_v0310_report.json": "99c79f13a960accbcca96d8fa347c410dddcfb4f6fc3ec5bc1a39bba2e2c48ec",
+    "validation/natural-dungeon-route/md-v0310-oil-route01/capture.json": "b983cf0c6453ea65b91f212880474c9c6239c45092d16359120c491d9aabf96b",
+    "validation/natural-dungeon-route/md-v0310-oil-route01/route_report.json": "1e99d7f9eceb0b647be904dd078af00b67c511c1ba0e3a205620f7df16249a60",
+    "validation/natural-dungeon-route/md-v0310-oil-route01-assisted-fixed-replay-46346/replay_report.json": "6caa6e67b0945f69f1e35ad31416e8ed6421933c5e34712e3efecabbbb9a5296",
+    "validation/natural-dungeon-route/md-v0310-oil-route01/controls.json": "40a1e92c4b8f2d813b190256f04d99cefe813a9e4cac239e4543321384f62867",
+    "validation/natural-dungeon-route/md-v0310-oil-route01/assistance.json": "2a5de38b31d2f5d7772c43cbf6d5fe1aa5b8e30abc9c448789fdf1cd6e6321e3",
+    "validation/natural-dungeon-route/md-v0310-oil-route01/ram_46346.bin": "9115cbf0d674d7b9d6b8cce4a1f8d9a3ca8895528682e357db9566febc86129a",
+    "validation/natural-dungeon-route/md-v0310-oil-route01-assisted-fixed-replay-46346/ram_46346.bin": "9115cbf0d674d7b9d6b8cce4a1f8d9a3ca8895528682e357db9566febc86129a",
+    "validation/natural-dungeon-route/md-v0310-oil-route01/frame_46346.png": "4355bffe9a0b5c162331bf86dcbcec7771d99c9eef8356be0911886686cd921e",
+    "validation/natural-dungeon-route/md-v0310-oil-route01-assisted-fixed-replay-46346/frame_46346.png": "4355bffe9a0b5c162331bf86dcbcec7771d99c9eef8356be0911886686cd921e",
+    "validation/natural-service-route/md-v0310-oil-service01/capture.json": "13396b219de8a796c2ec5df2b599d2af3b07454da27851948d44a692af8fd49f",
+    "validation/natural-service-route/md-v0310-oil-service01/report.json": "f0e11c65227f108bb3cc9be1e854aa85f9b3948fa8f2a45a7e65eb89c4d43821",
+    "validation/natural-service-route/md-v0310-oil-service01-assisted-fixed-replay-47077/replay_report.json": "a0409f574ffc4d1d34b900feef6c0a98cb58706557b97a8f2ce5a7222ae6205e",
+    "validation/natural-service-route/md-v0310-oil-service01/controls.json": "15a5ff3c08e137faa3dfb7eb4d77a12dbf9aa5a0808a45501e08f595d21f31ec",
+    "validation/natural-service-route/md-v0310-oil-service01/assistance.json": "128899c294708bf898a12b54028d4cd5139ca57c0492b357f162d82e69bd2125",
+    "validation/natural-service-route/md-v0310-oil-service01/ram_47077.bin": "4188c4bd5a7de4e7118725eaabf051f258c8b842baa9983ffc418a1c46940b89",
+    "validation/natural-service-route/md-v0310-oil-service01-assisted-fixed-replay-47077/ram_47077.bin": "4188c4bd5a7de4e7118725eaabf051f258c8b842baa9983ffc418a1c46940b89",
+    "validation/natural-service-route/md-v0310-oil-service01/frame_47077.png": "b77ffa14c0e9fcd060989b3e3fa29a88316d2287e351af3b59ab4969eff4152b",
+    "validation/natural-service-route/md-v0310-oil-service01-assisted-fixed-replay-47077/frame_47077.png": "b77ffa14c0e9fcd060989b3e3fa29a88316d2287e351af3b59ab4969eff4152b",
+    "validation/natural-service-route/md-v0310-oil-service01/oil_stairs_driver.py": "9b493543ce03f8621e0a5b1d1d7ccebdf5435c20d0eb9d28c16a7be3f538b5ca",
+    "validation/natural-service-route/md-v0310-oil-service01/events.json": "ae964c5753ace36bed98b9782171301a54daf36fc3fc55146dcb9197d8df5ecc",
+    "validation/natural-service-route/md-v0310-oil-service01/vram_47077.bin": "b8add66a81341932ab5bf0ecc77f719d376a30071447ca90d333eead01df8062",
+    "validation/natural-service-route/md-v0310-oil-service01/vdp_regs_47077.bin": "a6dfc4d6ff9a91347a1f8275dec061944699f0bac3efc466799e4c2da9b44fc2"
+  },
+  "limits": [
+    "Late visit after two crystals,with the unchanged canonical approach-only hurt writes inherited. No resource/actor/progression writes,SRAM or primary snapshots.",
+    "One real gift and indoor stair roundtrip;source timing/global R/IRQ and whole-game fidelity are not established."
+  ]
+}
