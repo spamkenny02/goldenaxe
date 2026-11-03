@@ -26,6 +26,11 @@ et vraie sauvegarde v309 rechargeable avec objets, cristaux, arbre et HUD.
 La campagne complète ci-dessous est validée sur v309 ; elle n'a pas été
 rejouée intégralement sur v310.
 
+Un [nouveau parcours v310 termine le premier donjon](analysis/d1_campaign_v0310.md)
+et ressort avec le premier cristal à **28/32 PV**. Première clé sans aide,
+approche ensuite assistée, boss et retour sans protection. Les quatre étapes
+ont une relecture RAM/image exacte ; HUD et marqueur de cristal sont contrôlés.
+
 Le [mini-jeu est aussi comparé sur v310](analysis/minigame_rng_v0310.md) :
 douze cas SMS/MD en PAL/NTSC, cartes, paiements, récompenses, nouvelle partie,
 refus et retour depuis l'inventaire. Les tirages sont contrôlés pour ce test ;

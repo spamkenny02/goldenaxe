@@ -25,7 +25,7 @@ def main():
     parser.add_argument('--world-route', action='store_true', help='Apply the same guard to an exterior route')
     parser.add_argument('--unassisted-plan-rooms', help='Plan ordinary input in these rooms after the inherited boss guard has ended')
     parser.add_argument('--new-assistance-episode', action='store_true', help='Start the next approach after a verified dungeon exit')
-    parser.add_argument('--preserve-floor-hurt', action='store_true', help='Release only a held test guard; preserve ordinary floor-damage cooldown when no enemies are active')
+    parser.add_argument('--preserve-floor-hurt', action=argparse.BooleanOptionalAction, default=True, help='Preserve ordinary floor-damage cooldown when no enemies are active (default). Use --no-preserve-floor-hurt only to reproduce older diagnostics.')
     parser.add_argument('--completed-exit-proof', help='Verified same-ROM exit before intervening service visits; no new assistance may have been added')
     args, remaining = parser.parse_known_args()
     assert not args.completed_exit_proof or args.new_assistance_episode

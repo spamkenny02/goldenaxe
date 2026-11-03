@@ -2,6 +2,27 @@
 
 Etat de cette note : 3 novembre 2026. Lire aussi README.md et les rapports plus recents eventuellement ajoutes depuis cette note. Le changement de compte ne termine pas l'objectif du portage.
 
+## Dernier jalon : campagne froide v310 D1 + retour
+
+analysis/d1_campaign_v0310_report.json passe. Quatre relecturesfroides exactes :
+route md-v0310-d1-entry01 fin4237(14PV),cle md-auto-v0310-d1-key01 fin4989(14PV),
+gem03 fin14551 cristal32/32PV,exit01 fin16254 B9 28/32PV. PrefixeNewGame sansSRAM.
+Aideapproche apres4989 seulement,dernierewrite13546,boss13617 10PV/hurt0,
+degat13709 10->6. 32predictionscombat+16retour RAMexactes. AucunerefilleHP,
+ressources/progression/etat primaire injectes. Retour aucuneaide. HUD128+1marker
+exact apresgem etretour. Imagesfinalesinspectees. Sources validation/v0310-d1-campaign-sources.
+Handles62664 terminal0 gem01 echouepointes14->10->6->2->0 frames13481..84
+carpilotzeroeffacecooldown;57272 terminal0 gem02 mortbossHP4restants;
+77542 terminal0 gem03 reussi;cautious.9081 terminal0 exitreussi. Aucunjobactif.
+assisted_boss_route preserve-floor-hurt devient BooleanOptionalAction defaultTrue;
+--no-preserve-floor-hurt pourreproduireanciensdiagnostics. Parseurreel3modesverifie.
+Driversexecutescopiesdanschaquetrace,pasconfondreavecfichiercourantmodifie.
+ROMpublique inchangee. Prochaineetapeutile v310 :hache/queteD2 depuisexitcanonique,
+etecartsnatifsR/IRQ. Fullcampaignv309historique uniquement. Invincibiliteautorisee
+approche,retireeavantboss. Argentinf/potionsautorises maisnonutilisesici.
+LimiteIYfullpool :4965preserveancienIYsurfailure;A82Decritquandmeme;2346peut
+changerIYseloncontacts,ouretourprecoceleconserve. Nefixerspeculativementpas.
+
 ## Dernier controle : dispatch boss65 + RNG v310
 
 Pipeline19733 terminal0. tools/validate_second_boss_rng_v0310.py :732cas
