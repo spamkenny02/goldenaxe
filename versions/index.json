@@ -8385,7 +8385,7 @@
     "bytes": 2097152,
     "archived_utc": "2026-11-03T19:26:13.941068+00:00",
     "rom": "v0310-32fe75a6/gaw-megadrive-v0310.bin",
-    "notes": "Recurrence SMS 04E1 raccordee; lectures R separees. Tests PC/68000 PAL/NTSC, ouverture et compatibilite sauvegarde passes; phase R/IRQ encore provisoire.",
+    "notes": "Recurrence SMS 04E1 raccordee; lectures R separees. Tests PC/68000, ouverture, sauvegarde et12cas mini-jeu SMS/MD controles passes; phase R/IRQ provisoire.",
     "validation": "targeted_checks_passed",
     "reports": [
       {
@@ -8399,6 +8399,14 @@
       {
         "file": "save_compat_v0310_report.json",
         "sha256": "2bff61328d1fd3186a745bfe983c888fd77c216ce40d673cf7eb2151e7ca7ff9"
+      },
+      {
+        "file": "minigame_rng_v0310_report.json",
+        "sha256": "cde9dd0a54307ed5ae13445d680bec5de1f9723a3c5a954d041e794a9ee95cb0"
+      },
+      {
+        "file": "minigame_rng_v0310_audit_report.json",
+        "sha256": "6a9d84988aae500815e9f9d35d415fc5db6b521d0ed58c193abad505157d21be"
       }
     ]
   }

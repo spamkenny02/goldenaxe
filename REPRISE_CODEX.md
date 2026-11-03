@@ -2,6 +2,20 @@
 
 Etat de cette note : 3 novembre 2026. Lire aussi README.md et les rapports plus recents eventuellement ajoutes depuis cette note. Le changement de compte ne termine pas l'objectif du portage.
 
+## Dernier controle : mini-jeu v310 compare SMS/MD
+
+Pipeline43586 termine0. Douze cas (6scenarios x2regions),24traces6600images.
+analysis/minigame_rng_v0310_report.json et _audit_report.json passent :
+cartes ordinaires/chance/inversion,paiement/reward/replay,poor/entry-no,
+inventaireaprespremiertirage. 28samples game_rng_seed=733C prouventadaptateur.
+Pilote derivehistorique mais adapte XORseed,game_rng_seed reset0 etrandbase
+controles explicitement. Source SMSavec override04E1 etroutine relocalisee.
+FrameWrites garde le reglagedynamiqueworld_clock_shift (ancien sortedcopy
+ignorait lesappendsposterieurs). Les deux images MDreward/retour inspectees.
+Snapshots validation/v0310-minigame-rng-sources. ROMinchangee,aucunnumeroajoute.
+Ne pas appeler cette preuve une sequencealeatoire naturelle ou untrajetfroid.
+La priorite reste phaseglobale R/IRQ etvalidation des routinesmodifiees.
+
 ## Priorite actuelle : v310 compilee, recurrence SMS raccordee
 
 ROM v0310-32fe75a6,2MiB,AFC5. Voir analysis/rng_integration_v0310.md/report.

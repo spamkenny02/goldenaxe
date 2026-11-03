@@ -26,6 +26,11 @@ et vraie sauvegarde v309 rechargeable avec objets, cristaux, arbre et HUD.
 La campagne complète ci-dessous est validée sur v309 ; elle n'a pas été
 rejouée intégralement sur v310.
 
+Le [mini-jeu est aussi comparé sur v310](analysis/minigame_rng_v0310.md) :
+douze cas SMS/MD en PAL/NTSC, cartes, paiements, récompenses, nouvelle partie,
+refus et retour depuis l'inventaire. Les tirages sont contrôlés pour ce test ;
+les probabilités et la phase naturelle du hasard restent à vérifier.
+
 La [campagne v0309 depuis Nouveau Jeu atteint la fin](analysis/cold_palace_final_v0309.md) :
 neuf cristaux, palais, Hache d’or, Death Adder, générique complet et retour
 au cycle intro/titre. Les approches utilisent les protections de test
