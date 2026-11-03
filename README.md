@@ -40,6 +40,8 @@ est validée après l'ouverture réelle par les neuf cristaux, à 102/104 PV.
 Le [premier géant du palais](analysis/cold_palace_giant_v0309.md) est désormais
 vaincu sans protection pendant le combat, à 86/104 PV. Les cinq points de
 contrôle ont une relecture RAM/image exacte ; 185 prédictions sont vérifiées.
+Les [passages Terre et le levier suivant](analysis/cold_palace_inner_v0309.md)
+sont aussi vérifiés : cinq relectures exactes, retour en 12A à 104 PV/64 PM.
 Le gardien suivant, la Hache d’or et la fin restent à rejouer dans cette
 campagne ; leurs preuves contrôlées sont séparées.
 

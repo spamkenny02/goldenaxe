@@ -2,6 +2,22 @@
 
 Etat de cette note : 2 novembre 2026. Lire aussi README.md et les rapports plus recents eventuellement ajoutes depuis cette note. Le changement de compte ne termine pas l'objectif du portage.
 
+## Priorite actuelle : mecanismes interieurs froids verifies
+
+Audit analysis/cold_palace_inner_v0309_report.json passe :resume327639,
+portal14e03 336921,Terre14E337338,Terre11A342640,levier129344707.
+Cinq relectures canoniques RAM65536+PNG,HUD128/neuf marqueurs exacts.
+Dernier trace natural-dungeon-combat/md-auto-v0309-cold-palace-switch12901,
+room12A HP104 MP64 gold33 keys2. Pipeline93373 terminal success.
+Validation/run_cold_palace_guardian01.py lance,pipeline38472 en cours :
+contact12C via12A/11C (--mechanism-during-combat),puis12C/11C/11B/12B/
+12C/12D/12E (--rush-rooms0x12c :salle separee,non declaree nettoyee).
+Release avant11E,7C60PV sans protection,budget20000 step32,puis reprise du
+garde APRES victoire canonique et acquisition reelle axe1->2 en11D.
+Audit tools/summarize_cold_palace_guardian_v0309.py prepare,non execute.
+Sources mesurees inner01-sources,guardian01-sources. Aucun argent de test.
+Toujours separer cette campagne froide des anciennes preuves SRAM controlees.
+
 ## Priorite du 3 novembre : premier geant du palais froid valide
 
 Audit analysis/cold_palace_giant_v0309_report.json passe. Cinq checkpoints
@@ -13,7 +29,7 @@ Degats16E321506104->102 puis15E327380102->82 et32742882->62 ;
 coeur32749662->86. Aucune nouvelle ecriture apres release,aucun import.
 Le pilote patrouille pour spawn56/59/5A avec --wake-sentinels ;ROM inchangee.
 Pipeline29182 terminal success. Premier pre-giant01 echoue exclu.
-Suite reprise validation/run_cold_palace_inner03.py,pipeline93373 en cours :
+Suite reprise validation/run_cold_palace_inner03.py,pipeline93373 termine (voir priorite actuelle) :
 resume327639 canonique (episode15 pending14C),15E->15D->16D->16C->14D->14E,
 Terre14E58->119,Terre11A35->12A,contact129->12A. Garder14D dans avoid-portal,
 mais PAS16C ; --defer-puzzles-rooms0x16c a ce passage.
