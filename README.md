@@ -5,17 +5,26 @@ puis portage de sa logique Z80 en code natif 68000 avec SGDK.
 La fidélité à la Master System passe avant les améliorations.
 
 <!-- ROM-RELEASE:START -->
-**Version courante : v0309 — 2048 Kio.**
+**Version courante : v0310 — 2048 Kio.**
 
-[Télécharger la ROM v0309](versions/v0309-7270576d/gaw-megadrive-v0309.bin) · [Toutes les versions](versions/README.md)
+[Télécharger la ROM v0310](versions/v0310-32fe75a6/gaw-megadrive-v0310.bin) · [Toutes les versions](versions/README.md)
 
-Campagne jusqu’à la fin vérifiée ; fidélité globale encore en validation.
+Contrôles ciblés réussis ; portage complet encore non validé.
 
-SHA-256 : `7270576d6eeb2aee641776a3e364f2f3f320711d70bb91a566d7578161261049`
-Checksum Mega Drive : `4080`
+SHA-256 : `32fe75a653d7152f7cbf873a32f2ffef14234ea190885ae8a8235f2ccd10e071`
+Checksum Mega Drive : `AFC5`
 <!-- ROM-RELEASE:END -->
 
 ## État du portage
+
+La **[v0310 raccorde la récurrence du hasard SMS](analysis/rng_integration_v0310.md)**
+aux routines du jeu : ennemis, butin, historique des salles et mini-jeu.
+Les lectures directes de R sont séparées des appels 04E1. Le fournisseur de R
+reste provisoire ; sa phase exacte avec les interruptions reste à porter.
+Tests PC et 68000 PAL/NTSC réussis, démarrage/déplacement relus exactement,
+et vraie sauvegarde v309 rechargeable avec objets, cristaux, arbre et HUD.
+La campagne complète ci-dessous est validée sur v309 ; elle n'a pas été
+rejouée intégralement sur v310.
 
 La [campagne v0309 depuis Nouveau Jeu atteint la fin](analysis/cold_palace_final_v0309.md) :
 neuf cristaux, palais, Hache d’or, Death Adder, générique complet et retour

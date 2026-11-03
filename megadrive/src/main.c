@@ -1,4 +1,5 @@
 #include <genesis.h>
+#include "source_rng_runtime.h"
 #include "source_crystal_bridge.h"
 #include "source_pattern.h"
 #include "pattern_convert.h"
@@ -1903,10 +1904,10 @@ void tick_world_boss_death(u8 *entity)
     {
         if(!--entity[0x28]) { entity[1]=4;return; }
         /* The source uses LD A,R here and 04E1 for placement. As with other
-         * actors, SGDK random remains provisional until that stream is ported. */
-        if(random()&3) return;
+         * actors, refresh sampling remains provisional until that stream is ported. */
+        if(game_rng_read_refresh()&3) return;
         for(slot=8;slot<16;slot++) if(!world_actor_state[slot*0x30]) break;
-        if(slot<16) spawn_world_boss_particle(entity,(u8)random());
+        if(slot<16) spawn_world_boss_particle(entity,game_rng_seeded());
     }
     else if(entity[1]==4)
     {
@@ -2018,7 +2019,7 @@ static u8 saved_room_actor_mask(u16 number);
 /* Provisional draw service: exact source R/IRQ stream is not integrated. */
 static u8 room_history_draw(void *context)
 {
-    (void)context;return (u8)random();
+    (void)context;return game_rng_seeded();
 }
 
 static void load_current_world_actors(u16 number)
@@ -3524,7 +3525,7 @@ int main(bool hardReset)
     VDP_loadTileData(solid,1,1,CPU);
     PAL_setColor(33,green);
     VDP_fillTileMapRect(BG_B,TILE_ATTR_FULL(PAL2,0,0,0,1),0,2,32,24);
-    JOY_init();save_init();
+    JOY_init();game_rng_reset();save_init();
     sound_stop();sound_ram[3]=SYS_isPAL()?0:0x80;SYS_setVIntCallback(world_vint);
     while(TRUE)
     {

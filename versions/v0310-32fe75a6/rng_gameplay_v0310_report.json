@@ -1,0 +1,110 @@
+{
+  "passed": true,
+  "md_sha256": "32fe75a653d7152f7cbf873a32f2ffef14234ea190885ae8a8235f2ccd10e071",
+  "cases": [
+    {
+      "region": "auto",
+      "trace": "validation/rng-gameplay-v0310-02/auto",
+      "whole_ram_png_exact_frames": [
+        60,
+        300,
+        800,
+        1000,
+        1500,
+        2300,
+        2700,
+        3000,
+        3140
+      ],
+      "controllable_samples": 550,
+      "first": {
+        "frame": 2500,
+        "room": 149,
+        "x": 136,
+        "y": 112,
+        "health": 24
+      },
+      "last": {
+        "frame": 3140,
+        "room": 164,
+        "x": 120,
+        "y": 16,
+        "health": 24
+      },
+      "seed_changes": [
+        {
+          "frame": 2409,
+          "before": 0,
+          "after": 52465
+        },
+        {
+          "frame": 2812,
+          "before": 52465,
+          "after": 26509
+        },
+        {
+          "frame": 3070,
+          "before": 26509,
+          "after": 15464
+        }
+      ],
+      "audio_errors": 0,
+      "ram_writes": 0,
+      "sram_imports": 0
+    },
+    {
+      "region": "pal",
+      "trace": "validation/rng-gameplay-v0310-02/pal",
+      "whole_ram_png_exact_frames": [
+        60,
+        300,
+        800,
+        1000,
+        1500,
+        2300,
+        2700,
+        3000,
+        3140
+      ],
+      "controllable_samples": 557,
+      "first": {
+        "frame": 2500,
+        "room": 149,
+        "x": 136,
+        "y": 112,
+        "health": 24
+      },
+      "last": {
+        "frame": 3140,
+        "room": 164,
+        "x": 120,
+        "y": 16,
+        "health": 24
+      },
+      "seed_changes": [
+        {
+          "frame": 2407,
+          "before": 0,
+          "after": 52465
+        },
+        {
+          "frame": 2811,
+          "before": 52465,
+          "after": 26509
+        },
+        {
+          "frame": 3069,
+          "before": 26509,
+          "after": 15464
+        }
+      ],
+      "audio_errors": 0,
+      "ram_writes": 0,
+      "sram_imports": 0
+    }
+  ],
+  "limits": [
+    "3140-frame opening/initial-gameplay smoke in PAL/NTSC. Fixed replay proves reproducibility only, not SMS RNG phase equivalence.",
+    "No full campaign, optional-content or physical-hardware claim."
+  ]
+}

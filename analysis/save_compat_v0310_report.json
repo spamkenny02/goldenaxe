@@ -1,0 +1,49 @@
+{
+  "passed": true,
+  "md_sha256": "32fe75a653d7152f7cbf873a32f2ffef14234ea190885ae8a8235f2ccd10e071",
+  "source_rom_sha256": "7270576d6eeb2aee641776a3e364f2f3f320711d70bb91a566d7578161261049",
+  "source_sram_sha256": "13b2225df194d6d77a1ab50637ebe151c58a1edb56db4226b664e48e6e91a89e",
+  "source_save_trace": "validation/natural-service-route/md-v0309-game-written-save04",
+  "reload_trace": "validation/game-written-save-load/v0310-compat02",
+  "reload_ready_frame": 1321,
+  "movement_verified_frame": 1343,
+  "final_frame": 1443,
+  "restored_stats": {
+    "hero_health": 41,
+    "hero_max_health": 42,
+    "hero_magic": 43,
+    "hero_max_magic": 44,
+    "hero_gold": 45,
+    "hero_keys": 46,
+    "hero_selected_item": 47,
+    "hero_basic_level": 48,
+    "hero_weapon_level": 49,
+    "hero_armor_level": 65,
+    "hero_shield_level": 66
+  },
+  "restored_items": 17,
+  "restored_gems": 9,
+  "physical_hud_words_exact": 128,
+  "persistent_tree_restored": true,
+  "sram_imports": 1,
+  "ram_writes": 0,
+  "actors_cleared": false,
+  "last_state": {
+    "room": 250,
+    "game": 12,
+    "hero": 1,
+    "counter": 0,
+    "x": 136,
+    "y": 104,
+    "health": 82,
+    "hurt": 0,
+    "phase": 0,
+    "slot": 0,
+    "audio_error": 0
+  },
+  "driver_sha256": "95e0ee8c72d8c5c61231892b38f120a441963ff1741ceee7b6f41be7a3a940a8",
+  "limits": [
+    "Compatibility load of exact game-written v309 SRAM in v310. Not a new v310 write test or cold campaign.",
+    "Stats/items/nine gems checked at first controllable frame; persistent tree, HUD and normal movement checked after load. Global source RNG timing and whole-game fidelity are not proved."
+  ]
+}

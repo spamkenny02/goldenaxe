@@ -1,6 +1,33 @@
 # Reprise du portage dans un autre compte Codex
 
-Etat de cette note : 2 novembre 2026. Lire aussi README.md et les rapports plus recents eventuellement ajoutes depuis cette note. Le changement de compte ne termine pas l'objectif du portage.
+Etat de cette note : 3 novembre 2026. Lire aussi README.md et les rapports plus recents eventuellement ajoutes depuis cette note. Le changement de compte ne termine pas l'objectif du portage.
+
+## Priorite actuelle : v310 compilee, recurrence SMS raccordee
+
+ROM v0310-32fe75a6,2MiB,AFC5. Voir analysis/rng_integration_v0310.md/report.
+67 anciens appels SGDK (3main+63actors+1minigame),pas66 au total.
+source_rng_runtime gere la graine froide0,lecturesR7bit,resultat04E1 8bit.
+Sept expressions semees couvrent huit sites SMS actifs (historique commun
+aux deux PCs). CALL0503 utilitaire04FE separe. Boss65 gateA921=04E1,
+pauseA935=R ;ne surtout pas limiter le gate a7bits. Entrees fixtures intactes.
+Le fournisseur R reste SGDK-low7 PROVISOIRE ;phase globale non integree.
+Runtime PC65536 +68000 NTSC65536/PAL65536 passes. Gameplay froid3140
+parregion,18endpoints exacts RAM65536/PNG,semence executee,mouvement,sanswrites.
+Processus GX distincts pour relecture froide :meme processus conservait
+28octets de pile (essai01 conserve,non preuve exacte).
+Vraie SRAM v309 Save04 chargee normalement sur310 :compat02 ready1321,
+mouvement1343,fin1443 ;stats,17objets,9gemmes,HUD128+9,arbreFA5D=4 exacts.
+Une importation SRAM voulue,zeroRAMwrites/actorclear. Compat01 controles
+passes mais exportrapport plante sur variable Python masquee ;02 corrige.
+Snapshots validation/v0310-rng-before et v0310-rng-sources. Aucune tache active.
+La campagne complete appartient toujours a309 ;pas de claim campagne310.
+Prochaine action :poursuivre la fidelite R/IRQ globale depuis les modeles
+source_clock/source_rng_timed existants,puis validations natives ciblees
+des boss/butin/mini-jeu modifies. Pas de nouvelle ROM sans byteschanges.
+Argent infini autorise pour achats reels de potions dans tests seulement,
+non utilise ici. Aucune aide ajoutee a la ROM publique.
+
+## Etat precedent v309 (historique)
 
 ## Priorite actuelle : fin et vraie sauvegarde/Continuer verifies,code fidelite
 

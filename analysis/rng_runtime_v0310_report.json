@@ -1,0 +1,52 @@
+{
+  "passed": true,
+  "host_interleaved_cases": 65536,
+  "host_provider_calls": 196608,
+  "results_68000": [
+    {
+      "region": "auto",
+      "frame": 193,
+      "done": 1,
+      "cases": 65536,
+      "failures": 0,
+      "first_error": 0
+    },
+    {
+      "region": "pal",
+      "frame": 162,
+      "done": 1,
+      "cases": 65536,
+      "failures": 0,
+      "first_error": 0
+    }
+  ],
+  "seeded_call_pcs": [
+    "0x503",
+    "0x1c40",
+    "0x1c73",
+    "0x4b56",
+    "0x4c09",
+    "0x4db0",
+    "0x522f",
+    "0x671e",
+    "0xa921"
+  ],
+  "utility_04fe_site": "0x503",
+  "native_seeded_expressions": 7,
+  "original_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+  "source_sha256": {
+    "source_rng.c": "5c64cd42ca0c18d69f8cfb1a185f282268b5dfd45a4b77f355323c6df802919f",
+    "source_rng.h": "4c0336042fd9655f7ef59d0815917b5dda9cf04755ff03b729cd048cb1890a7f",
+    "source_rng_runtime.c": "4ac6192505bc23f28b28391b373692aa8e0544985d4669840c372221301cf753",
+    "source_rng_runtime.h": "2e73a5ed76555eac3543d0832cb97dc1a69a93bd368da3817788f95cff74e8f9",
+    "main.c": "e185b9680b488eaa9d5762b77e6f36e09041a3d91ac105cb995e6b695058201d",
+    "actors.c": "e528399aef190d15bb059894c1f3e9219072c8a0d00b3bad5dcddc5c3bfeba64",
+    "minigame.inc": "789596bc3e4c4624e1d0cccfc5d151e75d3e66e53d9da7ad2f9e7b847adfc0ad"
+  },
+  "test_rom_sha256": "8331156389dfc1f5b610509b354d93e1a9f2d75ded8b7d88de7f8ad87484f4c3",
+  "limits": [
+    "Controlled provider values exercise the production state adapter; source R/IRQ instruction phase is still provisional.",
+    "The 04FE utility call is inventoried separately; literal opcode audit is not a whole-ROM reachability proof.",
+    "Separate test cartridge; gameplay and hardware are not established by this test."
+  ]
+}

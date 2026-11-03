@@ -5,8 +5,9 @@ Il est lié à la ROM `7270576d6eeb2aee641776a3e364f2f3f320711d70bb91a566d757816
 et aux empreintes de sources du [relevé détaillé](native_remaining_v0309_source_inventory.json).
 Il ne constitue pas une validation globale du portage.
 
-Le code contient **66 sites d'appel direct au hasard SGDK** : trois dans
-`main.c`, soixante-trois dans `actors.c`, hors commentaires. La bibliothèque
+Le code contient **67 sites d'appel direct au hasard SGDK** : trois dans
+`main.c`, soixante-trois dans `actors.c`, un dans `minigame.inc`, hors commentaires.
+Le premier relevé limité à main/actors en comptait 66. La bibliothèque
 locale utilise un xorshift 16 bits. Le générateur SMS 04E1 est reconstruit
 dans `source_rng.c`, avec une version temporisée dans `source_rng_timed.c`,
 mais ces deux fichiers ne sont pas appelés par les routines de production
@@ -35,3 +36,7 @@ Continuer](game_written_save_v0309.md) est aussi vérifié, avec arbre coupé
 persistant et aucun retrait d’ennemis au chargement. La fidélité globale, les
 autres cas de sauvegarde, les contenus optionnels et les essais matériels
 restent à établir.
+
+Depuis la [v0310](rng_integration_v0310.md), la récurrence 04E1 est raccordée
+à la production et les lectures directes R sont distinguées. Le fournisseur
+de R reste provisoire : la phase globale R/IRQ n’est pas encore portée.

@@ -1,0 +1,46 @@
+{
+  "passed": true,
+  "version": 310,
+  "md_sha256": "32fe75a653d7152f7cbf873a32f2ffef14234ea190885ae8a8235f2ccd10e071",
+  "bytes": 2097152,
+  "checksum": "AFC5",
+  "production_seed_recurrence_integrated": true,
+  "refresh_domain_cold_7bit": true,
+  "source_refresh_phase_integrated": false,
+  "seeded_native_expressions": 7,
+  "original_literal_04e1_sites": 9,
+  "original_utility_04fe_site": "0x503",
+  "host_cases": 65536,
+  "executed_68000_cases": 131072,
+  "cold_gameplay_regions": [
+    "NTSC",
+    "PAL"
+  ],
+  "fixed_replay_full_ram_png_checkpoints": 18,
+  "compatible_game_written_v309_save": true,
+  "save_reload_ram_writes": 0,
+  "save_reload_sram_imports": 1,
+  "protected_numbered_roms_verified": 310,
+  "original_sms_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+  "reports": {
+    "analysis/rng_runtime_v0310_report.json": "296f8efd5f921538e421bf2af336a86f2e7ece928861d7b0b107b19481f350c6",
+    "analysis/rng_gameplay_v0310_report.json": "704bdc9c490cf7216186ee553f49b3a06bf22fc3564132b80c54ac4b856ee84c",
+    "analysis/save_compat_v0310_report.json": "2bff61328d1fd3186a745bfe983c888fd77c216ce40d673cf7eb2151e7ca7ff9"
+  },
+  "source_sha256": {
+    "source_rng.c": "5c64cd42ca0c18d69f8cfb1a185f282268b5dfd45a4b77f355323c6df802919f",
+    "source_rng.h": "4c0336042fd9655f7ef59d0815917b5dda9cf04755ff03b729cd048cb1890a7f",
+    "source_rng_runtime.c": "4ac6192505bc23f28b28391b373692aa8e0544985d4669840c372221301cf753",
+    "source_rng_runtime.h": "2e73a5ed76555eac3543d0832cb97dc1a69a93bd368da3817788f95cff74e8f9",
+    "main.c": "e185b9680b488eaa9d5762b77e6f36e09041a3d91ac105cb995e6b695058201d",
+    "actors.c": "e528399aef190d15bb059894c1f3e9219072c8a0d00b3bad5dcddc5c3bfeba64",
+    "minigame.inc": "789596bc3e4c4624e1d0cccfc5d151e75d3e66e53d9da7ad2f9e7b847adfc0ad"
+  },
+  "sources_snapshot": "validation/v0310-rng-sources",
+  "full_game_validated": false,
+  "limits": [
+    "SGDK remains the provisional refresh sampler. Correct SMS seed recurrence and direct-R domain do not establish the source R/IRQ instruction phase or exact global random sequence.",
+    "v309 completed campaign is historical evidence; v310 has targeted runtime, opening/gameplay and genuine-save compatibility tests only.",
+    "Hardware, optional content and wider save combinations remain open."
+  ]
+}

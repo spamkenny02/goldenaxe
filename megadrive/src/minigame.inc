@@ -96,8 +96,8 @@ static bool check_minigame(u16 old_x,u16 old_y,u8 flags)
     if(minigame_stage==1)
     {
         cell=minigame_select(coordinate,flags,cells);if(cell==65535) return TRUE;
-        /* Provisional engine RNG; mapping/rejection are original671E..6762. */
-        while(!minigame_draw(cells,cell,(u8)random()));
+        /* 04E1 seed recurrence; refresh input remains provisional. Mapping/rejection: 671E..6762. */
+        while(!minigame_draw(cells,cell,game_rng_seeded()));
         minigame_grid();if(cells[cell]>=0x38) minigame_message(cells[cell]==0x38?6:7);
         return TRUE;
     }

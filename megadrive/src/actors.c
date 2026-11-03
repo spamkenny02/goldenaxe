@@ -1,4 +1,5 @@
 #include "actors.h"
+#include "source_rng_runtime.h"
 extern void sound_effect(u16 command),sound_effect_main(u16 command);
 extern const u8 actor_room_types[],actor_stats[],actor_pattern_index[];
 extern const u8 actor_tile_counts[],actor_patterns[],actor_md_patterns[],actor_loading_costs[];
@@ -166,7 +167,7 @@ static bool spawn_world_actor(u8 *entity,const u8 *cells,u16 hero_x,u16 hero_y,
 {
         u16 cell,n; s16 distance;
         if((frame&7)!=(slot&7)) return FALSE;
-        cell=(random()&127)+16;
+        cell=(game_rng_read_refresh()&127)+16;
         if(((cell-1)&15)>=14) return FALSE;
         for(n=0;n<terrain_count;n++) if(cells[cell]==actor_spawn_terrain[terrain_start+n]) break;
         if(n==terrain_count) return FALSE;
@@ -176,7 +177,7 @@ static bool spawn_world_actor(u8 *entity,const u8 *cells,u16 hero_x,u16 hero_y,
         entity[0x11]=(cell&240)+16;
         distance=(s16)hero_y-entity[0x11];if(distance<0) distance=-distance;
         if(distance<16) return FALSE;
-        entity[10]=random()&3;entity[3]|=3;
+        entity[10]=game_rng_read_refresh()&3;entity[3]|=3;
         return TRUE;
 }
 static void ground_behavior(u8 *entity,const u8 *tilemap,const u8 *cells,
@@ -197,7 +198,7 @@ static void ground_behavior(u8 *entity,const u8 *tilemap,const u8 *cells,
     }
     if(state==4)
     {
-        u16 direction=random()&3;
+        u16 direction=game_rng_read_refresh()&3;
         if(ground_blocked(entity,tilemap,direction)) return;
         entity[10]=direction;state=6;
     }
@@ -211,7 +212,7 @@ static void ground_behavior(u8 *entity,const u8 *tilemap,const u8 *cells,
     if(state==8 && !entity[4])
     {
         if(entity[0x20]==1) { entity[0x20]=0;entity[1]=4; }
-        else if(ground_blocked(entity,tilemap,entity[10]) || !(random()&15)) entity[1]=4;
+        else if(ground_blocked(entity,tilemap,entity[10]) || !(game_rng_read_refresh()&15)) entity[1]=4;
         else entity[1]=6;
     }
 }
@@ -237,7 +238,7 @@ static bool burst_boss_place(u8 *e,const u8 *cells,u16 hero_x,u16 hero_y,u16 fra
 {
     u16 cell,n; s16 distance;
     if((frame&7)!=(slot&7)) return FALSE;
-    cell=((roll?roll[0]:random())&127)+16;
+    cell=((roll?roll[0]:game_rng_read_refresh())&127)+16;
     if(((cell-1)&15)>=14) return FALSE;
     for(n=0;n<4;n++) if(cells[cell]==actor_spawn_terrain[n]) break;
     if(n==4) return FALSE;
@@ -245,7 +246,7 @@ static bool burst_boss_place(u8 *e,const u8 *cells,u16 hero_x,u16 hero_y,u16 fra
     if(distance<16) return FALSE;
     e[0x11]=(cell&240)+16;distance=(s16)hero_y-e[0x11];if(distance<0) distance=-distance;
     if(distance<16) return FALSE;
-    e[10]=(roll?roll[1]:random())&3;e[3]|=3;return TRUE;
+    e[10]=(roll?roll[1]:game_rng_read_refresh())&3;e[3]|=3;return TRUE;
 }
 /* 54D3 -> AB40: appearance, eight shots, disappearance and relocation.
  * The duplicated write to animation period in AB7F leaves count unchanged. */
@@ -352,7 +353,7 @@ void composite_boss_behavior(u8 *e,u16 slot,const u8 *roll)
     if(e[0x1d] && e[0x18]>e[0x1d]) { e[3]|=1;e[1]=10; }
 }
 /* 506B -> bank2 A754. Random bytes are explicit inputs for source comparison.
- * Production supplies provisional random() values, not the SMS refresh stream. */
+ * Production samples a provisional refresh provider, not the SMS instruction stream. */
 void first_boss_behavior(u8 *e,u8 gate,u8 choice)
 {
     u16 state=e[1],n;u8 *last=NULL;
@@ -426,8 +427,8 @@ static void fixed_shooter_behavior(u8 *e,u16 room,u16 slot)
         e[3]&=254;e[4]=64;e[1]=2;return;
     }
     if(e[1]!=2 || e[4]) return;
-    if((random()&15)>=8) create_projectile_type(e,0x14);
-    e[4]=(random()&15)+113;
+    if((game_rng_read_refresh()&15)>=8) create_projectile_type(e,0x14);
+    e[4]=(game_rng_read_refresh()&15)+113;
 }
 extern void replace_world_actor_cell(u16 x,u16 y,u16 cell);
 static bool mobile_align_hero(u8 *entity,u16 hero_x,u16 hero_y);
@@ -442,7 +443,7 @@ static void burst_walker_behavior(u8 *e,const u8 *tilemap,u16 hero_x,u16 hero_y)
     }
     if(state==6)
     {
-        choice=random()&3;if(ground_blocked(e,tilemap,choice)) return;
+        choice=game_rng_read_refresh()&3;if(ground_blocked(e,tilemap,choice)) return;
         e[10]=choice;state=8;
     }
     if(state==8)
@@ -453,7 +454,7 @@ static void burst_walker_behavior(u8 *e,const u8 *tilemap,u16 hero_x,u16 hero_y)
         return;
     }
     if(state!=10 || e[4]) return;
-    choice=random()&(e[0]==0x36?15:7);
+    choice=game_rng_read_refresh()&(e[0]==0x36?15:7);
     if(!choice)
     {
         if(e[0]==0x37) create_guarded_projectile_type(e,0x1e);
@@ -465,7 +466,7 @@ static void burst_walker_behavior(u8 *e,const u8 *tilemap,u16 hero_x,u16 hero_y)
         }
     }
     if(ground_blocked(e,tilemap,e[10])) { e[1]=6;return; }
-    choice=random()&15;
+    choice=game_rng_read_refresh()&15;
     if(choice<2) e[1]=6;
     else if(choice<8 || !mobile_align_hero(e,hero_x,hero_y)) e[1]=8;
     else e[1]=6;
@@ -481,7 +482,7 @@ static void bouncing_shooter_behavior(u8 *e,const u8 *tilemap,u16 hero_x)
     }
     if(state==4)
     {
-        choice=random()&3;if(ground_blocked(e,tilemap,choice)) return;
+        choice=game_rng_read_refresh()&3;if(ground_blocked(e,tilemap,choice)) return;
         e[10]=choice;state=6;
     }
     if(state==6)
@@ -493,7 +494,7 @@ static void bouncing_shooter_behavior(u8 *e,const u8 *tilemap,u16 hero_x)
     {
         if(e[4]) return;
         if(ground_blocked(e,tilemap,e[10])) { e[1]=4;return; }
-        choice=random()&15;
+        choice=game_rng_read_refresh()&15;
         if(choice<4) { e[1]=4;return; }
         if(choice<14) { e[1]=6;return; }
         e[10]=hero_x<e[0x13]?2:3;memset(e+0x14,0,4);e[4]=16;e[1]=10;return;
@@ -524,7 +525,7 @@ static void charging_behavior(u8 *e,const u8 *tilemap,const u8 *cells,
     }
     if(state==4)
     {
-        choice=random()&3;if(ground_blocked(e,tilemap,choice)) return;
+        choice=game_rng_read_refresh()&3;if(ground_blocked(e,tilemap,choice)) return;
         e[10]=choice;state=6;
     }
     if(state==6 || state==10)
@@ -537,7 +538,7 @@ static void charging_behavior(u8 *e,const u8 *tilemap,const u8 *cells,
     {
         if(e[4]) return;
         if(ground_blocked(e,tilemap,e[10])) { e[1]=4;return; }
-        choice=random()&15;
+        choice=game_rng_read_refresh()&15;
         if(choice<4) { e[1]=4;return; }
         if(choice<10 || !mobile_align_hero(e,hero_x,hero_y)) { e[1]=6;return; }
         memset(e+0x14,0,4);e[8]=0xaf;e[9]=0x8b;e[13]=8;e[12]=2;e[0x2c]=32;e[1]=10;return;
@@ -556,7 +557,7 @@ static void ambusher_behavior(u8 *e,const u8 *cells,u16 hero_x,u16 hero_y,u16 fr
     {
         if(!spawn_world_actor(e,cells,hero_x,hero_y,frame,slot,6,1)) return;
         e[3]&=254;e[8]=0x30;e[9]=0x90;e[13]=4;e[12]=2;
-        e[4]=(random()&15)|0x70;e[1]=2;return;
+        e[4]=(game_rng_read_refresh()&15)|0x70;e[1]=2;return;
     }
     if(state==2)
     {
@@ -571,7 +572,7 @@ static void ambusher_behavior(u8 *e,const u8 *cells,u16 hero_x,u16 hero_y,u16 fr
             shot=create_projectile_type(e,0x1d);if(!shot) break;
             shot[10]=n-1;
         }
-        if(!n) e[4]=(random()&15)|0x70;
+        if(!n) e[4]=(game_rng_read_refresh()&15)|0x70;
         e[1]=0;
     }
 }
@@ -593,7 +594,7 @@ static void dashing_behavior(u8 *e,const u8 *tilemap,const u8 *cells,
     }
     if(state==4)
     {
-        choice=random()&3;if(ground_blocked(e,tilemap,choice)) return;
+        choice=game_rng_read_refresh()&3;if(ground_blocked(e,tilemap,choice)) return;
         e[10]=choice;state=6;
     }
     if(state==6)
@@ -605,7 +606,7 @@ static void dashing_behavior(u8 *e,const u8 *tilemap,const u8 *cells,
     {
         if(e[4]) return;
         if(ground_blocked(e,tilemap,e[10])) { e[1]=4;return; }
-        choice=random()&15;
+        choice=game_rng_read_refresh()&15;
         if(choice<2) { e[1]=4;return; }
         if(choice!=8) { e[1]=6;return; }
         memset(e+0x14,0,4);e[8]=0x67;e[9]=0x8c;e[11]=0;e[13]=32;e[12]=2;e[4]=8;e[1]=10;return;
@@ -626,7 +627,7 @@ static void dashing_behavior(u8 *e,const u8 *tilemap,const u8 *cells,
     }
     if(state==14 && (e[0x11]<8 || e[0x11]>=152 || e[0x13]<8 || e[0x13]>=248 || !e[4]))
     {
-        e[3]&=252;memset(e+0x14,0,4);e[4]=(random()&15)+113;e[1]=0;
+        e[3]&=252;memset(e+0x14,0,4);e[4]=(game_rng_read_refresh()&15)+113;e[1]=0;
     }
 }
 /* 9426..94A7: walkers3D/3E align, take one step towards the hero, then fire1A. */
@@ -641,7 +642,7 @@ static void pursuit_shooter_behavior(u8 *e,const u8 *tilemap,u16 hero_x,u16 hero
     }
     if(state==4)
     {
-        choice=random()&3;if(ground_blocked(e,tilemap,choice)) return;
+        choice=game_rng_read_refresh()&3;if(ground_blocked(e,tilemap,choice)) return;
         e[10]=choice;state=6;
     }
     if(state==6)
@@ -653,7 +654,7 @@ static void pursuit_shooter_behavior(u8 *e,const u8 *tilemap,u16 hero_x,u16 hero
     {
         if(e[4]) return;
         if(ground_blocked(e,tilemap,e[10])) { e[1]=4;return; }
-        choice=random()&15;
+        choice=game_rng_read_refresh()&15;
         if(choice<(e[0]==0x40?2:4)) { e[1]=4;return; }
         if(choice<(e[0]==0x40?8:10) || !mobile_align_hero(e,hero_x,hero_y)) { e[1]=6;return; }
         if(ground_blocked(e,tilemap,e[10])) { e[1]=4;return; }
@@ -662,7 +663,7 @@ static void pursuit_shooter_behavior(u8 *e,const u8 *tilemap,u16 hero_x,u16 hero
     }
     if(state==10 && !e[4])
     {
-        if(ground_blocked(e,tilemap,e[10]) || (e[0]!=0x40 && (random()&15)<4)) { e[1]=4;return; }
+        if(ground_blocked(e,tilemap,e[10]) || (e[0]!=0x40 && (game_rng_read_refresh()&15)<4)) { e[1]=4;return; }
         create_guarded_projectile_type(e,e[0]==0x40?0x1b:0x1a);e[1]=6;
     }
 }
@@ -684,7 +685,7 @@ static void dungeon_walker_behavior(u8 *e,const u8 *tilemap,const u8 *cells,
     }
     if(state==4)
     {
-        choice=random()&3;if(ground_blocked(e,tilemap,choice)) return;
+        choice=game_rng_read_refresh()&3;if(ground_blocked(e,tilemap,choice)) return;
         e[10]=choice;state=6;
     }
     if(state==6)
@@ -697,7 +698,7 @@ static void dungeon_walker_behavior(u8 *e,const u8 *tilemap,const u8 *cells,
         u16 dx,dy;
         if(e[4]) return;
         if(ground_blocked(e,tilemap,e[10])) { e[1]=4;return; }
-        if((random()&15)<4) { e[1]=6;return; }
+        if((game_rng_read_refresh()&15)<4) { e[1]=6;return; }
         dx=hero_x<e[0x13]?e[0x13]-hero_x:hero_x-e[0x13];
         dy=hero_y<e[0x11]?e[0x11]-hero_y:hero_y-e[0x11];
         if(dx!=dy)
@@ -711,7 +712,7 @@ static void dungeon_walker_behavior(u8 *e,const u8 *tilemap,const u8 *cells,
     }
     if(state==10 && !e[4])
     {
-        if(ground_blocked(e,tilemap,e[10]) || (random()&15)<10) { e[1]=4;return; }
+        if(ground_blocked(e,tilemap,e[10]) || (game_rng_read_refresh()&15)<10) { e[1]=4;return; }
         e[1]=6;
         if(e[0]>=0x44) create_guarded_projectile_type(e,0x70);
     }
@@ -744,7 +745,7 @@ static void trap_walker_behavior(u8 *e,const u8 *tilemap,u16 hero_x,u16 hero_y,u
     }
     if(state==6)
     {
-        choice=random()&3;if(ground_blocked(e,tilemap,choice)) return;
+        choice=game_rng_read_refresh()&3;if(ground_blocked(e,tilemap,choice)) return;
         e[10]=choice;state=8;
     }
     if(state==8)
@@ -754,9 +755,9 @@ static void trap_walker_behavior(u8 *e,const u8 *tilemap,u16 hero_x,u16 hero_y,u
     }
     if(state==10 && !e[4])
     {
-        if(!(random()&15)) create_guarded_projectile_type(e,0x16);
+        if(!(game_rng_read_refresh()&15)) create_guarded_projectile_type(e,0x16);
         if(ground_blocked(e,tilemap,e[10])) { e[1]=6;return; }
-        choice=random()&15;
+        choice=game_rng_read_refresh()&15;
         if(choice<2) e[1]=6;
         else if(choice<8 || !mobile_align_hero(e,hero_x,hero_y)) e[1]=8;
         else e[1]=6;
@@ -774,7 +775,7 @@ static void resting_behavior(u8 *e,const u8 *tilemap)
     }
     if(state==4)
     {
-        u16 direction=random()&3;
+        u16 direction=game_rng_read_refresh()&3;
         if(ground_blocked(e,tilemap,direction)) return;
         e[10]=direction;state=6;
     }
@@ -787,7 +788,7 @@ static void resting_behavior(u8 *e,const u8 *tilemap)
     {
         if(ground_blocked(e,tilemap,e[10])) { e[1]=4;return; }
         if(e[10]&2) { e[1]=6;return; }
-        choice=random()&15;
+        choice=game_rng_read_refresh()&15;
         if(choice<4) { e[1]=4;return; }
         if(choice<14) { e[1]=6;return; }
         e[8]=0xaa;e[9]=0x87;memset(e+0x14,0,4);e[4]=64;e[1]=10;return;
@@ -820,7 +821,7 @@ static void emerging_shooter_behavior(u8 *e,const u8 *cells,u16 hero_x,u16 hero_
         if(e[11]!=4) return;
         e[8]=0xd4;e[9]=0x87;e[11]=0;e[13]=8;e[12]=2;e[4]=32;e[1]=8;return;
     }
-    if(state==8 && !e[4]) { e[3]&=254;e[4]=(random()&31)|96;e[1]=0; }
+    if(state==8 && !e[4]) { e[3]&=254;e[4]=(game_rng_read_refresh()&31)|96;e[1]=0; }
 }
 
 extern const u8 actor_flying_sine[],actor_flying_acceleration[],actor_flying_facing[];
@@ -893,12 +894,12 @@ static void jumping_behavior(u8 *e,const u8 *tilemap,u16 slot)
     if(state==4) { reset_actor_jump(e);integrate_actor_jump(e);return; }
     if(state==6)
     {
-        if(!actor_word(e,0x2a)) e[1]=(random()&3)?4:8;
+        if(!actor_word(e,0x2a)) e[1]=(game_rng_read_refresh()&3)?4:8;
         integrate_actor_jump(e);return;
     }
     if(state==10 && actor_word(e,0x2a)) { integrate_actor_jump(e);return; }
     if(state!=8 && state!=10) return;
-    vector=actor_jumping_vectors+(e[0]==0x32?64:0)+(random()&7)*8;flags=vector[4];
+    vector=actor_jumping_vectors+(e[0]==0x32?64:0)+(game_rng_read_refresh()&7)*8;flags=vector[4];
     if((e[0x27]<49 && (flags&1)) || (e[0x27]>=128 && (flags&2)) ||
        (e[0x23]<41 && (flags&4)) || (e[0x23]>=216 && (flags&8)))
     { reset_actor_jump(e);integrate_actor_jump(e);return; }
@@ -927,7 +928,7 @@ static void hopping_behavior(u8 *e,const u8 *tilemap,const u8 *cells,
     }
     if(state==4)
     {
-        choice=random()&3;if(ground_blocked(e,tilemap,choice)) return;
+        choice=game_rng_read_refresh()&3;if(ground_blocked(e,tilemap,choice)) return;
         e[10]=choice;state=6;
     }
     if(state==6)
@@ -939,7 +940,7 @@ static void hopping_behavior(u8 *e,const u8 *tilemap,const u8 *cells,
     {
         if(e[4]) return;
         if(ground_blocked(e,tilemap,e[10])) { e[1]=4;return; }
-        choice=random()&15;
+        choice=game_rng_read_refresh()&15;
         if(choice<2) { e[1]=4;return; }
         if(choice!=8) { e[1]=6;return; }
         memset(e+0x14,0,4);e[4]=16;e[0x23]=e[0x13];e[0x27]=e[0x11];e[0x2c]=4;e[1]=10;return;
@@ -947,7 +948,7 @@ static void hopping_behavior(u8 *e,const u8 *tilemap,const u8 *cells,
     if(state==10)
     {
         if(e[4]) return;
-        vector=actor_jumping_vectors+(random()&7)*8;flags=vector[4];
+        vector=actor_jumping_vectors+(game_rng_read_refresh()&7)*8;flags=vector[4];
         if((e[0x27]<49 && (flags&1)) || (e[0x27]>=128 && (flags&2)) ||
            (e[0x23]<41 && (flags&4)) || (e[0x23]>=216 && (flags&8))) return;
         offset=(((e[0x11]+vector[5])&248)*8)+((((e[0x13]+vector[6])&255)>>2)&62);
@@ -961,7 +962,7 @@ static void hopping_behavior(u8 *e,const u8 *tilemap,const u8 *cells,
         if(--e[0x2c]) { e[1]=10;return; }
         memset(e+0x14,0,4);e[8]=0x6a;e[9]=0x8d;e[13]=6;e[12]=2;e[4]=48;e[1]=14;return;
     }
-    if(state==14 && !e[4]) { e[3]&=254;e[4]=(random()&15)|0x70;e[1]=0; }
+    if(state==14 && !e[4]) { e[3]&=254;e[4]=(game_rng_read_refresh()&15)|0x70;e[1]=0; }
 }
 /* 8AD1/8ADD: visible shadow follows ground coordinates of the preceding body. */
 static void shadow_behavior(u8 *e,u16 slot)
@@ -991,7 +992,7 @@ static void water_jump_behavior(u8 *e,const u8 *tilemap,const u8 *cells,
     }
     if(state==4)
     {
-        choice=random()&3;if(ground_blocked(e,tilemap,choice)) return;
+        choice=game_rng_read_refresh()&3;if(ground_blocked(e,tilemap,choice)) return;
         e[10]=choice;state=6;
     }
     if(state==6)
@@ -1002,7 +1003,7 @@ static void water_jump_behavior(u8 *e,const u8 *tilemap,const u8 *cells,
     {
         if(e[4]) return;
         if(ground_blocked(e,tilemap,e[10])) { e[1]=4;return; }
-        choice=random()&15;
+        choice=game_rng_read_refresh()&15;
         if(choice<2) { e[1]=4;return; }
         if(choice!=8 || (e[0x11]&15)) { e[1]=6;return; }
         if(!(e[0x13]&8)) { e[1]=4;return; }
@@ -1017,7 +1018,7 @@ static void water_jump_behavior(u8 *e,const u8 *tilemap,const u8 *cells,
             if(!spawn_world_actor(e,cells,hero_x,hero_y,frame,slot,5,1)) return;
             e[3]&=254;
         }
-        choice=random()&3;
+        choice=game_rng_read_refresh()&3;
         if(choice<2 && e[0x13]<72) choice|=2;
         else if(choice>=2 && e[0x13]>=200) choice&=1;
         e[0x2c]=choice;data=actor_water_jump_choices+choice*3;e[10]=data[0];
@@ -1043,8 +1044,8 @@ static void water_jump_behavior(u8 *e,const u8 *tilemap,const u8 *cells,
     }
     if(state==18 && e[11]==3)
     {
-        if(e[0]==0x33) { e[3]&=254;e[4]=(random()&15)|0x79;e[1]=10; }
-        else { e[10]=random()&3;e[1]=2; }
+        if(e[0]==0x33) { e[3]&=254;e[4]=(game_rng_read_refresh()&15)|0x79;e[1]=10; }
+        else { e[10]=game_rng_read_refresh()&3;e[1]=2; }
     }
 }
 /* 8642: the magnitude test is on the signed high byte, before the shift. */
@@ -1085,12 +1086,12 @@ static u16 second_boss_direction(u8 *e,u16 hero_x,u16 hero_y,u8 select,u8 turn)
     }
     return d;
 }
-static u8 dungeon_phase_roll(const u8 *roll,u16 n) { return roll?roll[n]:(u8)random(); }
+static u8 dungeon_phase_roll(const u8 *roll,u16 n) { return roll?roll[n]:(u8)game_rng_read_refresh(); }
 /* Provisional input for direct LD A,R sites. Cold reset clears R7 and this
  * ROM contains no LD R,A. Keep explicit fixture inputs unchanged; this is
  * a domain correction, not reconstruction of the source R/IRQ sequence. */
 static u8 dungeon_phase_refresh(const u8 *roll,u16 n)
-{ return roll?roll[n]:((u8)random()&127); }
+{ return roll?roll[n]:((u8)game_rng_read_refresh()&127); }
 /* 57F8 with BC=0001: only terrain00 is accepted, with retained partial writes. */
 static bool dungeon_phase_spawn(u8 *e,const u8 *cells,u16 hero_x,u16 hero_y,u16 frame,u16 slot,const u8 *roll)
 {
@@ -1162,7 +1163,8 @@ void dungeon_phase_behavior(u8 *e,const u8 *cells,u16 hero_x,u16 hero_y,u16 fram
     {
         if(e[4]) return;
         if(e[0x2e]) { e[0x2e]--;dungeon_phase_move(e,hero_x,hero_y,roll);return; }
-        if(dungeon_phase_roll(roll,4)>=8) { dungeon_phase_move(e,hero_x,hero_y,roll);return; }
+        /* 4DB0 calls 04E1; other phase inputs use LD A,R. */
+        if((roll?roll[4]:game_rng_seeded())>=8) { dungeon_phase_move(e,hero_x,hero_y,roll);return; }
         memset(e+0x14,0,4);e[0x2f]=16;e[1]=8;state=8;
     }
     if(state==8)
@@ -1724,7 +1726,7 @@ static void orbit_behavior(u8 *e,u16 hero_x)
         if(e[0x2b]!=56) e[0x2b]++;
         e[0x11]=e[0x28]+flying_offset(phase,e[0x2b]);e[0x29]++;
         e[10]=actor_orbit_facing[((e[0x29]-32)&192)>>6];
-        if((random()&127)!=127) return;
+        if((game_rng_read_refresh()&127)!=127) return;
         e[8]=0x7e;e[9]=0x8e;e[11]=0;e[13]=0;e[12]=0;
         e[10]=hero_x>=e[0x13]?3:e[0x13]-hero_x<48?0:2;e[1]=6;e[4]=24;return;
     }
@@ -1765,7 +1767,7 @@ extern const u8 actor_mobile_sequences[];
 extern void replace_world_actor_cell(u16 x,u16 y,u16 cell);
 static bool mobile_choose_direction(u8 *entity,const u8 *tilemap)
 {
-    u16 direction=random()&3;
+    u16 direction=game_rng_read_refresh()&3;
     if(ground_blocked(entity,tilemap,direction)) return FALSE;
     entity[10]=direction;return TRUE;
 }
@@ -1802,7 +1804,7 @@ static void mobile_behavior(u8 *entity,const u8 *tilemap,const u8 *cells,u16 her
     if(state==8 && !entity[4])
     {
         if(ground_blocked(entity,tilemap,entity[10])) { entity[1]=4;return; }
-        choice=random()&15;
+        choice=game_rng_read_refresh()&15;
         if(choice<(type==0x2b?4:2)) { entity[1]=4;return; }
         if(choice<(type==0x2b?14:8)) { entity[1]=6;return; }
         if(type==0x2b)
@@ -1835,7 +1837,7 @@ static void ranged_behavior(u8 *entity,const u8 *tilemap,u16 hero_x,u16 hero_y)
     }
     if(state==4)
     {
-        u16 direction=random()&3;
+        u16 direction=game_rng_read_refresh()&3;
         if(ground_blocked(entity,tilemap,direction)) return;
         entity[10]=direction;state=6;
     }
@@ -1850,7 +1852,7 @@ static void ranged_behavior(u8 *entity,const u8 *tilemap,u16 hero_x,u16 hero_y)
         u16 choice;
         if(entity[4]) return;
         if(ground_blocked(entity,tilemap,entity[10])) { entity[1]=4;return; }
-        choice=random()&15;
+        choice=game_rng_read_refresh()&15;
         if(choice<2) { entity[1]=4;return; }
         if(choice<8) { entity[1]=6;return; }
         if((entity[0x13]&240)==(hero_x&240)) entity[10]=hero_y<entity[0x11]?0:1;
@@ -1879,7 +1881,7 @@ static void aim_projectile(u8 *e,const u8 *data,u16 hero_x,u16 hero_y)
     aim_velocity(e,data+6,hero_x,hero_y);
 }
 extern const u8 charging_boss_walk[],charging_boss_vectors[],charging_boss_facing[],charging_boss_chase[];
-static u8 charging_boss_roll(const u8 *roll,u16 n) { return roll?roll[n]:(u8)random(); }
+static u8 charging_boss_roll(const u8 *roll,u16 n) { return roll?roll[n]:(u8)game_rng_read_refresh(); }
 /* 577F with BC=0: pursue on permitted axes, preserving the source lookup. */
 static s16 charging_boss_chase_direction(const u8 *e,u16 hero_x,u16 hero_y)
 {
@@ -1928,7 +1930,8 @@ void charging_boss_behavior(u8 *e,u16 hero_x,u16 hero_y,const u8 *roll,u8 inheri
     {
         if(e[4]) return;
 attack_choice:
-        e[1]=4;choice=charging_boss_roll(roll,3);if(choice>=32) return;
+        /* 522F calls 04E1. Explicit fixture inputs remain unchanged. */
+        e[1]=4;choice=roll?roll[3]:game_rng_seeded();if(choice>=32) return;
         memset(e+0x14,0,4);e[11]=0;
         if((e[0]==0x69 || e[0]==0x7b) && (choice&15)<6)
         { e[13]=e[12]=0;e[8]=0xae;e[9]=0x9c;e[4]=26;e[1]=14; }
@@ -2356,7 +2359,7 @@ static void death_particle_behavior(u8 *entity,u16 slot)
     chance=actor_room_class;
     for(n=0;n<actor_drop_exceptions[0];n++)
         if(actor_drop_exceptions[1+n]==entity[7]) { chance=actor_drop_exceptions[1+actor_drop_exceptions[0]+n];break; }
-    roll=(u8)random();n=((roll&0xe0)>>4)|(chance<<4);type=actor_drop_choices[n+1];
+    roll=game_rng_seeded();n=((roll&0xe0)>>4)|(chance<<4);type=actor_drop_choices[n+1];
     if((roll&31)<actor_drop_choices[n])
     {
         for(n=0;n<7;n++) if(!world_loot_state[n*0x30]) break;
@@ -2516,7 +2519,7 @@ void tick_world_actors(const u8 *tilemap,const u8 *cells,u16 hero_x,u16 hero_y,u
             else if(entity[0]==0x63 || entity[0]==0x64 || entity[0]==0x78 || entity[0]==0x79)
             {
                 u8 gate=255,choice=255;
-                if(entity[1]==6 && !entity[4]) { gate=random();if(entity[0]==0x64 && (gate&15)<4) choice=random(); }
+                if(entity[1]==6 && !entity[4]) { gate=game_rng_read_refresh();if(entity[0]==0x64 && (gate&15)<4) choice=game_rng_read_refresh(); }
                 first_boss_behavior(entity,gate,choice);
             }
             else if(entity[0]==0x65)
@@ -2525,20 +2528,20 @@ void tick_world_actors(const u8 *tilemap,const u8 *cells,u16 hero_x,u16 hero_y,u
                 if(entity[1]==6 && !entity[4])
                 {
                     if(entity[0x2e]) move=TRUE;
-                    else { gate=random();if(gate<8) pause=random()&127;else move=TRUE; }
+                    else { gate=game_rng_seeded();if(gate<8) pause=game_rng_read_refresh()&127;else move=TRUE; }
                 }
-                if(move) { select=random()&127;if(!(select&1)) turn=random()&127; }
+                if(move) { select=game_rng_read_refresh()&127;if(!(select&1)) turn=game_rng_read_refresh()&127; }
                 second_boss_behavior(entity,hero_x,hero_y,select,turn,gate,pause);
             }
             else if(entity[0]==0x66) second_boss_satellite_behavior(entity);
             else if(entity[0]==0x67)
             {
                 u8 roll[4]={0,0,0,255};
-                if(entity[1]==14 && !entity[0x20]) roll[0]=random();
-                if(entity[1]==6 && !entity[4]) roll[1]=random();
-                if(entity[1]==18 && !entity[4]) roll[2]=random();
+                if(entity[1]==14 && !entity[0x20]) roll[0]=game_rng_read_refresh();
+                if(entity[1]==6 && !entity[4]) roll[1]=game_rng_read_refresh();
+                if(entity[1]==18 && !entity[4]) roll[2]=game_rng_read_refresh();
                 if(entity[1]==20 && !entity[4] && world_actor_state[0]!=7 && world_actor_state[1]!=14)
-                { roll[3]=random();roll[2]=random(); }
+                { roll[3]=game_rng_read_refresh();roll[2]=game_rng_read_refresh(); }
                 composite_boss_behavior(entity,slot,roll);
             }
             else if(entity[0]==0x68 || entity[0]==0x69 || entity[0]==0x7a || entity[0]==0x7b)
