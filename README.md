@@ -37,8 +37,11 @@ carte générale, fermeture, restauration de la salle et des 768 mots physiques
 carte/HUD, avec relecture RAM/image exacte et ressources conservées.
 L'[entrée du palais depuis cette partie](analysis/cold_palace_entry_v0309.md)
 est validée après l'ouverture réelle par les neuf cristaux, à 102/104 PV.
-Les gardiens du palais et la fin restent à rejouer dans cette campagne ;
-leurs preuves contrôlées sont séparées.
+Le [premier géant du palais](analysis/cold_palace_giant_v0309.md) est désormais
+vaincu sans protection pendant le combat, à 86/104 PV. Les cinq points de
+contrôle ont une relecture RAM/image exacte ; 185 prédictions sont vérifiées.
+Le gardien suivant, la Hache d’or et la fin restent à rejouer dans cette
+campagne ; leurs preuves contrôlées sont séparées.
 
 La progression ne prouve pas toute la fidélité SMS : le [relevé des sources](analysis/native_remaining_v0309.md)
 distingue les appels aléatoires SGDK encore provisoires, les estimations de

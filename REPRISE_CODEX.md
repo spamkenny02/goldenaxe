@@ -2,6 +2,24 @@
 
 Etat de cette note : 2 novembre 2026. Lire aussi README.md et les rapports plus recents eventuellement ajoutes depuis cette note. Le changement de compte ne termine pas l'objectif du portage.
 
+## Priorite du 3 novembre : premier geant du palais froid valide
+
+Audit analysis/cold_palace_giant_v0309_report.json passe. Cinq checkpoints
+canoniques : panel16d01, switch16d01, pre-giant02, giant-release02, giant02.
+Dernier trace natural-dungeon-combat/md-auto-v0309-cold-palace-giant02,
+327638 room15E HP86/104 MP72 gold32 keys2. Release321494 avant15E ;
+combat321571 hero102/hurt18 naturel,7B60PV ;185 predictions fullRAM exactes.
+Degats16E321506104->102 puis15E327380102->82 et32742882->62 ;
+coeur32749662->86. Aucune nouvelle ecriture apres release,aucun import.
+Le pilote patrouille pour spawn56/59/5A avec --wake-sentinels ;ROM inchangee.
+Pipeline29182 terminal success. Premier pre-giant01 echoue exclu.
+Suite preparee validation/run_cold_palace_inner01.py,non encore lancee :
+resume apres victoire canonique (episode15 pending14C),portal16C->14D->14E,
+Terre14E58->119,Terre11A35->12A,contact129->12A. Garder14D dans avoid-portal,
+mais PAS16C. Exiger14E nettoyee sur les16slots avant Terre. Puis11E, vraie
+hache1->2 en11D et final14C. Aucune preuve SRAM controlee ne peut remplacer
+cette partie froide. L'objectif complet reste ouvert,notamment RNG/phase.
+
 ## Etat courant : NEUF cristaux v309 verifies depuis Nouveau Jeu,sortieD9
 302306 exterieurEB HP102/104 MP64 gold32 keys2. Ballon,navire,cle des voleurs acquis.
 Ravitaillement :dons27->57->87 en7D/AC,chopAC1C,cle60 chez2E laisse27,
