@@ -127,6 +127,11 @@ vaincu sans invincibilité et le héros conserve **44/96 PV, 72/72 PM et
 deux clés**. Le rejeu reproduit exactement la RAM et l’image finale.
 [Rapport du premier gardien de D9](analysis/d9_midboss_v0310_report.json)
 
+Le second gardien est vaincu sans invincibilité. Le ballon est récupéré dans
+le coffre et son acquisition est confirmée par un rejeu exact. Le héros
+conserve ses huit cristaux, **52/96 PV, 72/72 PM et deux clés**.
+[Rapport du second gardien et du ballon](analysis/d9_balloon_v0310_report.json)
+
 Les défilements des premières cartes ont été vérifiés en NTSC et PAL.
 Les pixels du décor restent stables dès l’affichage de la nouvelle carte,
 et les anciens monstres et objets disparaissent dans les quatre directions
