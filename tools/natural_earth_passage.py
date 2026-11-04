@@ -45,6 +45,9 @@ def main():
    terrain_done=bool(state and (state['flags']&4 or a.earth_action_only and state['cell']!=0x0b))
    active=f>start and state.get('room')==a.earth_room and (a.earth_during_combat or not state['enemies'] or sequence_start is not None) and (not terrain_done or state['selected']!=restore_item or state['game']==16)
    if done is not None:value=[]
+   # A3BF/2F0D: six fresh direction edges release a thief's grab.
+   # Keep sending ordinary escape input while Earth owns the inventory.
+   elif state.get('game')==12 and state.get('hero')==12:value=[[4],[5],[6],[7]][f%4]
    elif not active:value=controller(f)
    elif state['selected']!=(restore_item if terrain_done else 5) or state['game']==16:
     value=[];wanted=restore_item if terrain_done else 5

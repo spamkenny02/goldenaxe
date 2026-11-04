@@ -7,29 +7,34 @@ Etat de cette note : 4 novembre 2026. Lire aussi README.md et les rapports plus 
 Lire analysis/livraison_2026-11-06.md. User demande etatdeslieux et rappelle
 DEADLINE REPORTEE par utilisateur au6novembre au soir (message du4novembre). Priorite aux blocages/regressions/validation
 ROMlivree,finparcours310,paquetnumerote+README+main. Pasdegarantie100%sanspreuves.
-Ne pas confondre campagnev309complete et courante310jusqueD5.
-Pointcourant: md-auto-v0310-d5-exit01 fin147802, salle49,72/72PV etPM,
-5cristaux,Feu1,Terre1,bottes/canoe/corde1,epee longue2 selectionnee0,huile0.
-Fire/sword:7etapes exactes; D5supplies13etapes exactes; boss/retour5etapes exactes.
-Rapports fire_sword_v0310,d5_progress_v0310,d5_supplies_v0310,d5_campaign_v0310.
-D5boss65/72PV,first142904 hero64/hurt0,dernierewrite142821;aucun degat
-pendant combat/retour;8satellites66 observes,premier degat noyau145022.
-96predictionsboss+11retour fullRAM exactes,HUD128+5marqueurs aux2points.
-Dons19->49->79,cle60->19,soin reel56->64. Terre153:44 coute8PM,64->56.
-Contact162->172 actionHaut72,40 alorsennemisactifs. Antichambre142820.
-warp01 s'arrete:3retries insuffisants. warp02 limite12 utilise8 et passe.
-Sources v0310-d5-sources:initial/progress/supplies/supplies2 index preserves.
-Auditeur final supplies = tools/summarize_d5_supplies_v0310_r02.py.
-L'ancien auditeur non execute reste fige dans snapshot; original root retire.
-Sources boss v0310-d5-boss-sources; aucun changement natif ni nouveau numero.
-Tous jobs de ce jalon terminaux; dernier87462 terminal0,4515terminal0,
-36578terminal1 diagnosticwarp01,57581terminal0,29412terminal0.
-Prochaine action:D6 depuis exit01 canonique. Voir d6_progress_v0309.md et
-recettes v0309-d6-sources pour propositions seulement,jamaisRAM/SRAMimport.
-D'abord equiper hache parmenu puis nouvel episodeapproche cible115,door-index6;
-boss historique64/60PV,verifier table source avant nouveau combat.
-Objectif complet ouvert:R/IRQ global,temporisation/fidelite,contenus etsuite310.
-Deadline6novembre au soir; aucunegarantie100%sanspreuves.
+Ne pas confondre campagnev309complete et courante310jusqueD6.
+Pointcourant: md-auto-v0310-d6-exit01 fin190773 salle8B,HP2/80,MP72/72,
+keys2,gold30,6cristaux,cloche1,Feu1,Terre1,bottes/canoe/corde1,epee2,hache1
+selectionnee1. SOIN NORMAL PRIORITAIRE avant D7; aucun refill/inventaire/SRAM
+importe. Historiquement94inaccessible au planificateur depuis8B; ne pas compter
+ses propositions comme points joues. Voir d7_supplies_v0309.md,merchant2E.
+17 etapes preparation et3boss/retour ont relectureRAM65536/PNG exacte.
+Sources v0310-d6-sources: source_index initial/natif immuables, Earth_grab2,
+earth_grab_revision.json et executed_recipes_r02.json; auditeur progress_r02.
+Earth126-01 bloquait hero12 saisi par5B: pilote Earth n'envoyait pas directions.
+Correction seulement du pilote; Earth126-02 observegrab165300 puisouvre165317,
+source originale preservee, aucune modification ROM. Sept casts8PM sur6ouvertures.
+Une reentree ordinaire137 pendanttorch117; sortie137ouverte contournee.
+Gate125-02 fin175542 HP72 PM40 keys2,release175543 hurt0.
+BOSS01(step32) frame_limit193543 boss60; BOSS03(step16) frame_limit185543 boss24.
+Ne pas compter ces essais comme victoires. BOSS02(step8) gagne fin185904,
+first175645 hero72/hurt0 vs64/60HP; hit185239 72->58 puiscristal80/80.
+Retour sans nouvelleswrites fin190773 HP2/80 MP72,121predictions exactes,
+combat1202exactes. HUD128+6marqueurs aux2points, imagesinspectees.
+Rapports d6_progress_v0310 et d6_campaign_v0310 passent; auditeurs *_r02.py.
+Sources boss v0310-d6-boss-sources; selected_boss_trial.json lieboss02/reportSHA.
+Tous jobs de ce jalon terminaux:73010/70392/39812/76097=0;
+12079=1 diagnosticboss01;33963=1 diagnosticgrab;8327=0 Earthcorrige.
+Prochaine action: soin normal faisable depuis8B, puis D7 episode cible179,
+bossintermediaire1B8/type78 doit etre combattu sans protection aussi.
+References v309 = propositions seulement; aucun import d'ancien etat.
+ROM toujours310; objectif complet ouvert:R/IRQ global,temporisation/fidelite,
+contenus et suite310. Deadline6novembre au soir, aucune garantie100%sanspreuves.
 
 ## Dernier jalon : huile tardive,corde et D3 v310 termines
 

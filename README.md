@@ -61,6 +61,15 @@ sont validés à **72/72 PV et PM**. Le boss 65 et ses huit satellites sont vain
 sans protection, avec 96 fenêtres de prédiction exactes pour le combat et onze
 pour le retour. La campagne v310 n'est pas encore terminée.
 
+La [préparation de D6](analysis/d6_progress_v0310.md) valide ensuite les clés,
+sept lancers de Terre, les mécanismes et la cloche de glace. Ses dix-sept étapes
+sont relues exactement ; le dernier point avant le boss est à **72/72 PV et 40 PM**.
+
+Le [sixième cristal et le retour de D6](analysis/d6_campaign_v0310.md) sont aussi
+validés, avec 1 202 prédictions exactes pour le combat et 121 pour le retour.
+Le héros ressort vivant à **2/80 PV et 72 PM**, sans protection pendant le boss
+ou la sortie. La suite doit commencer par un soin normal avant D7.
+
 Le [mini-jeu est aussi comparé sur v310](analysis/minigame_rng_v0310.md) :
 douze cas SMS/MD en PAL/NTSC, cartes, paiements, récompenses, nouvelle partie,
 refus et retour depuis l'inventaire. Les tirages sont contrôlés pour ce test ;
