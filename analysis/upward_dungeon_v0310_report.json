@@ -1,0 +1,121 @@
+{
+  "md_sha256": "32fe75a653d7152f7cbf873a32f2ffef14234ea190885ae8a8235f2ccd10e071",
+  "source_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+  "origin": "1E4",
+  "destination": "1D4",
+  "direction": "up",
+  "held_left_from_frame": 3550,
+  "cases": {
+    "baseline_ntsc": {
+      "rom_sha256": "32fe75a653d7152f7cbf873a32f2ffef14234ea190885ae8a8235f2ccd10e071",
+      "raw_report_sha256": "95077b068423500eaf19fdfb7130f5ac22795a337b49673a4f7df19985e7ca19",
+      "timing": {
+        "sms": {
+          "first": 3520,
+          "last": 3571,
+          "resumed": 3572,
+          "first_clean_sat_frame": 3528,
+          "nonhero_sprite_errors": 0,
+          "first_input_motion": 3573,
+          "destination_y_frame": 3547
+        },
+        "md": {
+          "first": 3520,
+          "last": 3570,
+          "resumed": 3571,
+          "first_clean_sat_frame": 3520,
+          "nonhero_sprite_errors": 0,
+          "first_input_motion": 3572,
+          "destination_y_frame": 3546
+        }
+      },
+      "destination_state_source_exact": true,
+      "tilemap_bytes_exact": 1280,
+      "cell_bytes_exact": 160
+    },
+    "baseline_pal": {
+      "rom_sha256": "32fe75a653d7152f7cbf873a32f2ffef14234ea190885ae8a8235f2ccd10e071",
+      "raw_report_sha256": "68d56b98f786af798edf2edd12ff856285c981f1972a61a943747b45140dab1c",
+      "timing": {
+        "sms": {
+          "first": 3520,
+          "last": 3565,
+          "resumed": 3566,
+          "first_clean_sat_frame": 3526,
+          "nonhero_sprite_errors": 0,
+          "first_input_motion": 3567,
+          "destination_y_frame": 3545
+        },
+        "md": {
+          "first": 3520,
+          "last": 3565,
+          "resumed": 3566,
+          "first_clean_sat_frame": 3520,
+          "nonhero_sprite_errors": 0,
+          "first_input_motion": 3567,
+          "destination_y_frame": 3546
+        }
+      },
+      "destination_state_source_exact": true,
+      "tilemap_bytes_exact": 1280,
+      "cell_bytes_exact": 160
+    },
+    "candidate_ntsc": {
+      "rom_sha256": "47aac2157a96c46bc448e329321a1397a6482881dba7a1547fb499c5d62f8ad2",
+      "raw_report_sha256": "38a7fa518dd0745eb79e64834a391be7302f218df4cda2f5f60c5d2462abca24",
+      "timing": {
+        "sms": {
+          "first": 3520,
+          "last": 3571,
+          "resumed": 3572,
+          "first_clean_sat_frame": 3528,
+          "nonhero_sprite_errors": 0,
+          "first_input_motion": 3573,
+          "destination_y_frame": 3547
+        },
+        "md": {
+          "first": 3520,
+          "last": 3569,
+          "resumed": 3570,
+          "first_clean_sat_frame": 3520,
+          "nonhero_sprite_errors": 0,
+          "first_input_motion": 3571,
+          "destination_y_frame": 3546
+        }
+      },
+      "destination_state_source_exact": true,
+      "tilemap_bytes_exact": 1280,
+      "cell_bytes_exact": 160
+    },
+    "candidate_pal": {
+      "rom_sha256": "47aac2157a96c46bc448e329321a1397a6482881dba7a1547fb499c5d62f8ad2",
+      "raw_report_sha256": "0a58690e2d61b992c396dd534833e74b9a553a57f62d06ef6bc7492460bb9722",
+      "timing": {
+        "sms": {
+          "first": 3520,
+          "last": 3565,
+          "resumed": 3566,
+          "first_clean_sat_frame": 3526,
+          "nonhero_sprite_errors": 0,
+          "first_input_motion": 3567,
+          "destination_y_frame": 3545
+        },
+        "md": {
+          "first": 3520,
+          "last": 3565,
+          "resumed": 3566,
+          "first_clean_sat_frame": 3520,
+          "nonhero_sprite_errors": 0,
+          "first_input_motion": 3567,
+          "destination_y_frame": 3546
+        }
+      },
+      "destination_state_source_exact": true,
+      "tilemap_bytes_exact": 1280,
+      "cell_bytes_exact": 160
+    }
+  },
+  "test_driver_sha256": "bf0be55539c3fad2473bc998b47b651cbac7c6251cdd9164fa75d8f66353d480",
+  "scope": "Controlled exterior and edge positions, ordinary dungeon entry and scrolling, real held-input displacement on unchanged source ROM.",
+  "decision": "Keep v0310 as release reference. The deadline candidate widens the NTSC input-response gap from one frame to two on this route."
+}
