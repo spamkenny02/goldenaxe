@@ -117,6 +117,11 @@ finale. Le retour en extérieur est vérifié à l’image **273 836**. Le héro
 conserve ses huit cristaux, **96/96 PV, 72/72 PM et deux clés**.
 [Rapport du huitième donjon](analysis/d8_campaign_v0310_report.json)
 
+Vers D9, le passeur débite dix cornes et la cloche de glace ouvre le
+passage en CB. Le héros entre avec huit cristaux, **96/96 PV, 72/72 PM,
+deux clés et dix cornes**. Les trois étapes sont rejouées exactement.
+[Rapport de l’entrée de D9](analysis/d9_entry_v0310_report.json)
+
 Les défilements des premières cartes ont été vérifiés en NTSC et PAL.
 Les pixels du décor restent stables dès l’affichage de la nouvelle carte,
 et les anciens monstres et objets disparaissent dans les quatre directions
