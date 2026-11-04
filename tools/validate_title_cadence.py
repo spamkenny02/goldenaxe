@@ -1,12 +1,22 @@
 """Compare title fades, 33 cape poses and 8 logo rows against live SMS execution."""
-import contextlib,hashlib,io,json,re,sys
+import argparse,contextlib,hashlib,io,json,re
 from PIL import Image
 from run_core import ROOT,run
 from extract_title import rle_planes,map_decode
 
 def main():
- pal='--pal' in sys.argv;natural='--natural' in sys.argv
- suffix=('-pal' if pal else '')+('-natural' if natural else '')
+ parser=argparse.ArgumentParser(description=__doc__)
+ parser.add_argument('--pal',action='store_true')
+ parser.add_argument('--natural',action='store_true')
+ parser.add_argument('--trial',help='Separate output suffix for an additional comparison')
+ args=parser.parse_args()
+ if args.trial and not re.fullmatch(r'[A-Za-z0-9_-]+',args.trial):
+  parser.error('--trial accepts only letters, digits, hyphens and underscores')
+ pal=args.pal;natural=args.natural
+ suffix=('-pal' if pal else '')+('-natural' if natural else '')+('-'+args.trial if args.trial else '')
+ if args.trial:
+  for output in (f'sms-title-cadence{suffix}',f'md-title-cadence{suffix}',f'title_cadence{suffix}_report.json'):
+   if (ROOT/'validation'/output).exists():parser.error(f'trial output already exists: {output}')
  options={'genesis_plus_gx_region_detect':'pal'} if pal else {}
  symbols={m[2].split('.lto_priv.')[0]:int(m[1],16)&65535 for l in (ROOT/'megadrive/out/release/symbol.txt').read_text().splitlines() if (m:=re.match(r'([0-9a-fA-F]+)\s+\w\s+(\S+)',l))}
  bank=(ROOT/'input/original.sms').read_bytes()[0x1c000:0x20000]
