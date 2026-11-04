@@ -122,6 +122,11 @@ passage en CB. Le héros entre avec huit cristaux, **96/96 PV, 72/72 PM,
 deux clés et dix cornes**. Les trois étapes sont rejouées exactement.
 [Rapport de l’entrée de D9](analysis/d9_entry_v0310_report.json)
 
+Deux sorts Terre ouvrent le chemin vers le premier gardien de D9. Il est
+vaincu sans invincibilité et le héros conserve **44/96 PV, 72/72 PM et
+deux clés**. Le rejeu reproduit exactement la RAM et l’image finale.
+[Rapport du premier gardien de D9](analysis/d9_midboss_v0310_report.json)
+
 Les défilements des premières cartes ont été vérifiés en NTSC et PAL.
 Les pixels du décor restent stables dès l’affichage de la nouvelle carte,
 et les anciens monstres et objets disparaissent dans les quatre directions
