@@ -7,7 +7,7 @@ partielle en validation complète.
 État constaté :
 
 - ROM courante v310, 2 Mio, SHA32fe75a6… : récurrence SMS 04E1 raccordée.
-  Parcours froid jusqu'au sixième cristal et retour en extérieur vérifié.
+  Parcours à froid vérifié jusqu’au huitième cristal.
 - v309 : campagne depuis Nouveau Jeu jusqu'à la fin, générique, retour intro,
   et sauvegarde réelle/Continuer vérifiés. C'est une référence historique,
   pas une preuve de fin v310.
@@ -15,9 +15,11 @@ partielle en validation complète.
   Le héros franchit le pont du cinquième cristal et entre dans D7, puis
   récupère deux clés et ouvre deux obstacles avec Terre.
 - D7 terminé sur v310. Gardien et boss principal vaincus sans protection ni
-  dégât reçu, bateau et septième cristal conservés en extérieur. Point courant
-  230879, salle 1B, 88/88 PV, 64/72 PM, 23 cornes et deux clés. Le passage
-  côtier vers D8 est la prochaine vérification. Voir `d7_campaign_v0310_report.json`.
+  dégât reçu, bateau et septième cristal conservés en extérieur. Voir
+  `d7_campaign_v0310_report.json`.
+- D8. Gardien et boss principal vaincus sans invincibilité. Le huitième cristal
+  est récupéré à l’image 272 980 et le rejeu du combat est exact en RAM et
+  en image. Le retour en extérieur est en cours de vérification.
 
 Ordre de travail pour la livraison :
 
@@ -33,7 +35,7 @@ Ordre de travail pour la livraison :
    les seuls documents ou preuves. Ne pas annoncer une fin de campagne sur la
    version courante à partir des seules preuves v309.
 
-Risques matériels de planning : il reste la suite v310 après D7 et la fidélité
+Risques matériels de planning : il reste la suite v310 après le huitième cristal et la fidélité
 R/IRQ globale, ainsi que des vérifications audiovisuelles/optionnelles. La phase
 exacte du fournisseur R demeure provisoire. Ne pas garantir une version finale
 sans réserve le6 novembre tant que ces preuves manquent. La livraison doit

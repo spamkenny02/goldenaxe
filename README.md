@@ -103,13 +103,17 @@ démarrage avec la même RAM et la même image finale. [Rapport de D7](analysis/
 
 Le passage côtier vers D8 coûte dix cornes. Après l’entrée dans D8, le gardien
 de 1C9 est vaincu sans protection et le héros termine à **22/88 PV**. Les
-six étapes depuis la sortie de D7 ont une relecture exacte. Le huitième
-cristal reste à vérifier. [Rapport du gardien de D8](analysis/d8_midboss_v0310_report.json)
+six étapes depuis la sortie de D7 ont une relecture exacte. [Rapport du gardien de D8](analysis/d8_midboss_v0310_report.json)
 
 Après le gardien, les mécanismes de 1EB et 1EC, le passage de Terre et le
 coffre de la clé des voleurs ont été rejoués exactement. Le héros conserve
 sept cristaux et termine cette étape avec **62/88 PV et 72/72 PM**.
 [Rapport de la clé des voleurs](analysis/d8_thief_key_v0310_report.json)
+
+Le boss principal de D8 est vaincu sans invincibilité ni dégât reçu. Le
+huitième cristal est récupéré à l’image **272 980** avec **96/96 PV**.
+Un rejeu depuis le démarrage reproduit les 65 536 octets de RAM et l’image
+finale. La vérification du retour en extérieur est en cours.
 
 Les défilements des premières cartes ont été vérifiés en NTSC et PAL.
 Les pixels du décor restent stables dès l’affichage de la nouvelle carte,
