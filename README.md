@@ -113,7 +113,9 @@ sept cristaux et termine cette étape avec **62/88 PV et 72/72 PM**.
 Le boss principal de D8 est vaincu sans invincibilité ni dégât reçu. Le
 huitième cristal est récupéré à l’image **272 980** avec **96/96 PV**.
 Un rejeu depuis le démarrage reproduit les 65 536 octets de RAM et l’image
-finale. La vérification du retour en extérieur est en cours.
+finale. Le retour en extérieur est vérifié à l’image **273 836**. Le héros
+conserve ses huit cristaux, **96/96 PV, 72/72 PM et deux clés**.
+[Rapport du huitième donjon](analysis/d8_campaign_v0310_report.json)
 
 Les défilements des premières cartes ont été vérifiés en NTSC et PAL.
 Les pixels du décor restent stables dès l’affichage de la nouvelle carte,

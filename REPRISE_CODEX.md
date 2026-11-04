@@ -88,6 +88,8 @@ et HUD controle. Pipeline30149 poursuit levier19A, boss196 sans aide, sortie29.
 Pipeline36012 attend sortie D8 canonique avant passage1A et D9.
 Approche D8 terminee en1A6 fin270144 PV66 PM72 keys2; levier19A fin265714.
 Rapport d8_approach_v0310. Le pipeline30149 retire garde avant196 puis teste boss.
+D8 boss196 et sortie29 verifies, fin273836 PV96 PM72, deux cles, huit cristaux.
+Audit d8_campaign_v0310. Pipeline36012 a lance la route vers D9.
 Prototype marchand prefere validation/v0310-merchant/merchant-candidate02 :
 9 images noires et8 poses completes exactes NTSC/PAL; panneau exact NTSC,
 1 image tard PAL. 43 cas /23 villes et premier marchand valides.

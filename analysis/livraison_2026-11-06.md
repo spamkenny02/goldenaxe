@@ -19,7 +19,8 @@ partielle en validation complète.
   `d7_campaign_v0310_report.json`.
 - D8. Gardien et boss principal vaincus sans invincibilité. Le huitième cristal
   est récupéré à l’image 272 980 et le rejeu du combat est exact en RAM et
-  en image. Le retour en extérieur est en cours de vérification.
+  en image. Le retour en extérieur est vérifié à l’image 273 836 avec les
+  huit cristaux. Le parcours vers D9 a démarré.
 
 Ordre de travail pour la livraison :
 
