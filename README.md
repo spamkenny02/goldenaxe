@@ -74,7 +74,12 @@ La suite valide [une mort normale, Continuer et le soin gratuit de 94](analysis/
 Les six cristaux et l'inventaire sont conservés : reprise à 24 PV/PM, puis nuit
 restaurant **80/80 PV**, avec **24/72 PM, 21 cornes et deux clés**.
 Trois relectures RAM/image exactes ; aucune nouvelle écriture d'aide ni ressource
-injectée depuis le retour de D6. Le septième donjon reste à valider.
+injectée depuis le retour de D6.
+
+La campagne v310 franchit le pont du cinquième cristal puis entre dans D7 à
+**68/80 PV, 24/72 PM et deux clés**. Le pilote lit désormais l'état persistant
+qui ouvre ce pont. Le trajet est relu depuis le démarrage avec une RAM et une
+image finales identiques. [Rapport d'entrée D7](analysis/d7_entry_v0310_report.json)
 
 Le [mini-jeu est aussi comparé sur v310](analysis/minigame_rng_v0310.md) :
 douze cas SMS/MD en PAL/NTSC, cartes, paiements, récompenses, nouvelle partie,

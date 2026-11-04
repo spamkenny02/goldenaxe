@@ -14,6 +14,7 @@ from rebase_natural_campaign import evidence
 class World:
     def __init__(self,door_index=1,house_outside=None,house_target=0xaf):
         self.entry_direction=0;self.boots_owned=False;self.canoe_owned=False;self.ship_owned=False;self.live_room=None;self.live_map=None;self.axe_terrain=False;self.rope_terrain=False;self.remote_unlocked=set()
+        self.crystal_bridge_open = False
         self.rom=(ROOT/'input/original.sms').read_bytes();_,self.meta,_,self.initial_map,self.arrays,_=initial_room(self.rom)
         doors=json.loads((ROOT/'analysis/doors_reference.json').read_bytes());self.doors=doors
         self.goal=next(d for d in doors['direct_unconditional_dungeon_doors'] if d['index']==door_index) if house_outside is None else next(d for d in doors['direct_unconditional_doors'] if d['room']==house_outside and d['target']==house_target)
@@ -43,6 +44,9 @@ class World:
                     assert kind in [0,3,4],(room,index,kind)
                     cells[target]=kind
                     if target+16<160:cells[target+16]={0x27:1,0x28:3,0x29:0,0x39:0x3a}.get(cells[target+16],cells[target+16])
+        # The fifth crystal opens a persistent bridge in room 49 (SMS 698B/1A7C).
+        if room == 0x49 and self.crystal_bridge_open:
+            cells[0x4a], cells[0x5a] = 0x0a, 0x6b
         for y in range(20):
             for x in range(32):
                 a=cells[(y//2)*16+x//2]*8+(y&1)*4+(x&1)*2;off=(y*32+x)*2;out[off:off+2]=meta[a:a+2]
@@ -176,6 +180,8 @@ def main():
         world.ship_owned=bool(raw[address if args.sms else address^1])
         address=0xee if args.sms else symbols(ROOT/'megadrive/out/release/symbol.txt')['hero_items']+14
         world.boots_owned=bool(raw[address if args.sms else address^1])
+        bridge_flag = 0x149 if args.sms else symbols(ROOT/'megadrive/out/release/symbol.txt')['game_save_state'] + 0x99
+        world.crystal_bridge_open = bool(raw[bridge_flag if args.sms else bridge_flag ^ 1] & 1)
     if args.rope_terrain:
         assert has_prefix,'An acquired-rope prefix is required'
         raw=evidence(prefix/f"ram_{prefix_end:05d}.bin")

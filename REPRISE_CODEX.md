@@ -48,7 +48,13 @@ Sources v0310-d7-sources, revision continue_exposure_revision.json et healer_sou
 Jobs death_heal_finish termines, rapport passe. PasdeROMnouvelle pourpreuves.
 Branches exclues: gift7D+5EbloqueTerre2,pasachat;Continue01patrolframe_limit;
 healer-route01 gameplayreussi maisepisodeaidevide invalide;route02 sansaide valide.
-Priorite: routeD7 depuis94HP80MP24gold21keys2; planstatic ne trouvepasencorechemin.
+EntreeD7 verifiee depuis ce point: natural-dungeon-route/md-v0310-d7-healed-entry01,
+fin197049 en1DB a68/80PV,24PM,21cornes,deux cles. Relecture26674 terminal0.
+Le pilote lit desormais flag49 (SMS149, MD save+99) et applique les cellules
+4A=0A/5A=6B du pont. Passage reel49->4A, trois coupes,742 waypoints,aucun retry.
+Rapport d7_entry_v0310; source initiale preservee et revision dans v0310-d7-sources.
+Episode7 cible1B8. Pipeline93876 (healed_d7_prep.py) lance apres relecture,
+controle 2 cles puis Terre36 et2B. Poll le meme handle ou verifie le PID/journal.
 Bossintermediaire1B8/type78 etprincipal179/type67 sansprotection obligatoire.
 
 ## Dernier jalon : huile tardive,corde et D3 v310 termines

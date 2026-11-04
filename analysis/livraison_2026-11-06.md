@@ -15,7 +15,9 @@ partielle en validation complète.
   vérifiés par trois relectures exactes RAM65536/PNG. Point courant192089,
   extérieur94,80/80PV,24/72PM,21cornes,deux clés,six cristaux conservés.
   Aucun nouvel apport d'aide ni ressource injectée depuis la sortie de D6.
-  D7 reste à valider ; voir `death_heal_v0310.md`.
+  Le trajet suivant franchit le pont du cinquième cristal et atteint D7 en
+  1DB, image197049, avec 68/80 PV, 24/72 PM, 21 cornes et deux clés.
+  Relecture complète réussie. Voir `d7_entry_v0310_report.json`.
 
 Ordre de travail pour la livraison :
 
