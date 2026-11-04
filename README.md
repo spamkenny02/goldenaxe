@@ -50,6 +50,17 @@ La suite valide [le canoë, le quatrième cristal et la sortie de D4](analysis/d
 type6A est vaincu sans protection. Deux passages Terre et le déplacement sur
 l'eau avec le canoë sont vérifiés. Le mécanisme facultatif B0 reste hors parcours.
 
+Le même parcours [échange l'huile contre Feu et reçoit l'épée longue](analysis/fire_sword_v0310.md),
+puis entre dans D5 à **62/64 PV et 72/72 PM**. Sept relectures RAM/image exactes.
+La suite [récupère les bottes et ressort pour se ravitailler](analysis/d5_progress_v0310.md)
+à **56/64 PV**, avec quatre relectures exactes. Cette sortie précède le cinquième boss.
+
+Le [ravitaillement et le mécanisme de D5](analysis/d5_supplies_v0310.md) passent,
+puis le [cinquième cristal et le retour extérieur](analysis/d5_campaign_v0310.md)
+sont validés à **72/72 PV et PM**. Le boss 65 et ses huit satellites sont vaincus
+sans protection, avec 96 fenêtres de prédiction exactes pour le combat et onze
+pour le retour. La campagne v310 n'est pas encore terminée.
+
 Le [mini-jeu est aussi comparé sur v310](analysis/minigame_rng_v0310.md) :
 douze cas SMS/MD en PAL/NTSC, cartes, paiements, récompenses, nouvelle partie,
 refus et retour depuis l'inventaire. Les tirages sont contrôlés pour ce test ;

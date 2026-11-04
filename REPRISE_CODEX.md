@@ -7,18 +7,29 @@ Etat de cette note : 4 novembre 2026. Lire aussi README.md et les rapports plus 
 Lire analysis/livraison_2026-11-06.md. User demande etatdeslieux et rappelle
 DEADLINE REPORTEE par utilisateur au6novembre au soir (message du4novembre). Priorite aux blocages/regressions/validation
 ROMlivree,finparcours310,paquetnumerote+README+main. Pasdegarantie100%sanspreuves.
-Ne pas confondre campagnev309complete et courante310jusqueD4.
-Pointcourant: md-auto-v0310-d4-exit02 fin103398, salle10,62/64PV,4cristaux,
-canoe1,Terre1,MP48/48,huile+corde conserves. Boss6A/30PV sans protection,
-first93358 hero56/hurt0; aucun degat pendant combat; dernierewrite93294.
-Quinze relectures RAM65536/PNG exactes; 211predictionsboss et15retour exactes.
-33images mouvement eau observe. Deux passages Terre cout8PM chacun.
-analysis/d4_campaign_v0310_report.json passe. Sources v0310-d4-sources,
-auditor revision2 preserves original snapshot. exit01 stalls seeking optionalB0;
-exit02 --defer-puzzles-rooms0x1b0 passe. Aucun bug ROM etabli.
-Aucun processus actif. Prochaine action: poursuivre D5 depuis exit02 canonique,
-references historiques v309 pour itineraires seulement; aucun import SRAM/RAM.
-ROM inchangee v310. Deadline6novembre au soir, notes du4novembre.
+Ne pas confondre campagnev309complete et courante310jusqueD5.
+Pointcourant: md-auto-v0310-d5-exit01 fin147802, salle49,72/72PV etPM,
+5cristaux,Feu1,Terre1,bottes/canoe/corde1,epee longue2 selectionnee0,huile0.
+Fire/sword:7etapes exactes; D5supplies13etapes exactes; boss/retour5etapes exactes.
+Rapports fire_sword_v0310,d5_progress_v0310,d5_supplies_v0310,d5_campaign_v0310.
+D5boss65/72PV,first142904 hero64/hurt0,dernierewrite142821;aucun degat
+pendant combat/retour;8satellites66 observes,premier degat noyau145022.
+96predictionsboss+11retour fullRAM exactes,HUD128+5marqueurs aux2points.
+Dons19->49->79,cle60->19,soin reel56->64. Terre153:44 coute8PM,64->56.
+Contact162->172 actionHaut72,40 alorsennemisactifs. Antichambre142820.
+warp01 s'arrete:3retries insuffisants. warp02 limite12 utilise8 et passe.
+Sources v0310-d5-sources:initial/progress/supplies/supplies2 index preserves.
+Auditeur final supplies = tools/summarize_d5_supplies_v0310_r02.py.
+L'ancien auditeur non execute reste fige dans snapshot; original root retire.
+Sources boss v0310-d5-boss-sources; aucun changement natif ni nouveau numero.
+Tous jobs de ce jalon terminaux; dernier87462 terminal0,4515terminal0,
+36578terminal1 diagnosticwarp01,57581terminal0,29412terminal0.
+Prochaine action:D6 depuis exit01 canonique. Voir d6_progress_v0309.md et
+recettes v0309-d6-sources pour propositions seulement,jamaisRAM/SRAMimport.
+D'abord equiper hache parmenu puis nouvel episodeapproche cible115,door-index6;
+boss historique64/60PV,verifier table source avant nouveau combat.
+Objectif complet ouvert:R/IRQ global,temporisation/fidelite,contenus etsuite310.
+Deadline6novembre au soir; aucunegarantie100%sanspreuves.
 
 ## Dernier jalon : huile tardive,corde et D3 v310 termines
 
