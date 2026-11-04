@@ -86,9 +86,14 @@ Passages1EB fin245779 et1EC fin248768, Terre1E8->1AA fin258410. Cle des voleurs
 slot15 0->1 en1A9 fin263693, PV62 PM72 keys2, sept cristaux. Six relectures exactes
 et HUD controle. Pipeline30149 poursuit levier19A, boss196 sans aide, sortie29.
 Pipeline36012 attend sortie D8 canonique avant passage1A et D9.
-Prototype marchand separe validation/v0310-merchant/merchant-candidate01 :
-9 images noires exactes NTSC/PAL; panneau encore1/2 images tard. 43 cas /23 villes
-et premier marchand valides. Reste hors de la version testee en campagne.
+Approche D8 terminee en1A6 fin270144 PV66 PM72 keys2; levier19A fin265714.
+Rapport d8_approach_v0310. Le pipeline30149 retire garde avant196 puis teste boss.
+Prototype marchand prefere validation/v0310-merchant/merchant-candidate02 :
+9 images noires et8 poses completes exactes NTSC/PAL; panneau exact NTSC,
+1 image tard PAL. 43 cas /23 villes et premier marchand valides.
+Campagne fixe: D1 sortie exacte sur candidat; derive observee entre retourD1
+16450 et premiere cle hache19585, avant bossD2. Retenir v310 pour campagne.
+Details dans merchant_candidate02_timing.json et candidate02-d2-localize.
 Bossintermediaire1B8/type78 etprincipal179/type67 sansprotection obligatoire.
 
 ## Dernier jalon : huile tardive,corde et D3 v310 termines
