@@ -132,6 +132,11 @@ le coffre et son acquisition est confirmée par un rejeu exact. Le héros
 conserve ses huit cristaux, **52/96 PV, 72/72 PM et deux clés**.
 [Rapport du second gardien et du ballon](analysis/d9_balloon_v0310_report.json)
 
+Le boss principal de D9 est vaincu sans invincibilité et le neuvième cristal
+est récupéré. Le héros ressort à l’image **315 457** avec **102/104 PV,
+64/72 PM et deux clés**. Le rejeu de la sortie reproduit exactement la RAM
+et l’image finale. [Rapport du neuvième donjon](analysis/d9_campaign_v0310_report.json)
+
 Les défilements des premières cartes ont été vérifiés en NTSC et PAL.
 Les pixels du décor restent stables dès l’affichage de la nouvelle carte,
 et les anciens monstres et objets disparaissent dans les quatre directions
