@@ -148,6 +148,11 @@ sans invincibilité. Le héros termine avec **84/104 PV, 72/72 PM et deux clés*
 Cinq étapes sont reproduites exactement en RAM et en image.
 [Rapport du géant du palais](analysis/cold_palace_giant_v0310_report.json)
 
+Le portail intérieur, deux passages de Terre et le levier distant sont
+vérifiés par des rejeux exacts. Le héros termine cette étape avec
+**104/104 PV, 72/72 PM et deux clés**.
+[Rapport des mécanismes intérieurs](analysis/cold_palace_inner_v0310_report.json)
+
 Une sauvegarde écrite en jeu dans le premier emplacement a été rechargée
 après redémarrage via **Continuer**. Le jeu restaure le point de reprise,
 les statistiques, les objets et les neuf cristaux. Le HUD et le déplacement
