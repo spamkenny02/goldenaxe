@@ -69,6 +69,12 @@ Les commandes sont dans validation/v0310-d7-sources/healed_d7_prep_commands.json
 Poll les memes handles ou verifie processus et journal, ne pas dupliquer.
 resume_after_intermediate.py accepte le boss intermediaire cible directement
 quand ses preuves d'entree et de combat concordent avec la nouvelle relecture.
+Route sud1D6 fin212107 PV80 PM40 keys3. Levier1E6 (72,40) image213826,
+retour1D6 fin214003. Bateau slot16 0->1, dialogue ferme en1D5 fin215155,
+PV80 PM40 gold23 keys3, quatre pieges5E a0PV conserves. Relectures exactes.
+Audit tools/summarize_d7_campaign_v0310.py --through-ship et rapport d7_ship_v0310.
+Pipeline48065 poursuit nord1B8, Terre1A8, approche189. Toujours retirer la
+protection avant le boss179/type67. Pipeline41475 attend la sortie D7.
 Bossintermediaire1B8/type78 etprincipal179/type67 sansprotection obligatoire.
 
 ## Dernier jalon : huile tardive,corde et D3 v310 termines

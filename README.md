@@ -91,6 +91,11 @@ protection est retirée avant la salle. Le combat et sa relecture aboutissent
 avec la même RAM et la même image finale. Le septième cristal reste à valider.
 [Rapport du gardien de D7](analysis/d7_midboss_v0310_report.json)
 
+Le levier de 1E6 ouvre la salle du coffre de 1D5. Le bateau est récupéré par
+les commandes du jeu et la fenêtre de récompense se ferme. Le héros conserve
+**80/80 PV, 40/72 PM et trois clés**. Le HUD et les six marqueurs de cristal
+sont contrôlés après le coffre. [Rapport du bateau](analysis/d7_ship_v0310_report.json)
+
 Le [mini-jeu est aussi comparé sur v310](analysis/minigame_rng_v0310.md) :
 douze cas SMS/MD en PAL/NTSC, cartes, paiements, récompenses, nouvelle partie,
 refus et retour depuis l'inventaire. Les tirages sont contrôlés pour ce test ;
