@@ -11,12 +11,11 @@ partielle en validation complète.
 - v309 : campagne depuis Nouveau Jeu jusqu'à la fin, générique, retour intro,
   et sauvegarde réelle/Continuer vérifiés. C'est une référence historique,
   pas une preuve de fin v310.
-- Étape courante v310 : clés, Terre, cloche de glace et D6 terminé.
-  Dernier checkpoint `md-auto-v0310-d6-exit01`, image190773 dans
-  `natural-dungeon-combat`, salle8B,2/80PV et72PM. Vingt étapes depuis D5
-  relues avec RAM65536/PNG exacts. Boss64 sans protection ; 1202 prédictions
-  combat et121 retour exactes. Soin normal prioritaire avant la suite D7.
-  Aucun processus de validation actif sur ce jalon.
+- Étape courante v310 : après D6, mort normale/Continuer et soin gratuit94
+  vérifiés par trois relectures exactes RAM65536/PNG. Point courant192089,
+  extérieur94,80/80PV,24/72PM,21cornes,deux clés,six cristaux conservés.
+  Aucun nouvel apport d'aide ni ressource injectée depuis la sortie de D6.
+  D7 reste à valider ; voir `death_heal_v0310.md`.
 
 Ordre de travail pour la livraison :
 

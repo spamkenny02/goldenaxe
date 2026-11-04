@@ -36,6 +36,21 @@ References v309 = propositions seulement; aucun import d'ancien etat.
 ROM toujours310; objectif complet ouvert:R/IRQ global,temporisation/fidelite,
 contenus et suite310. Deadline6novembre au soir, aucune garantie100%sanspreuves.
 
+## Point courant : Continuer et soin gratuit verifies
+
+analysis/death_heal_v0310_report.json passe : trois etapes exactes RAM65536/PNG.
+Mort naturelle9B190909,menu191001,resume95 en191130 a24PV/24PM,gold30->21.
+Six cristaux et17items conserves,keys2. Route94 sans nouvelleswrites,
+soin gratuit24->80PV,MP24 conserve,sortie94 fin192089 x136,y64.
+Tracecourante natural-service-route/md-v0310-d7-healer94-service01.
+Aucune nouvelle aide depuisD6exit; six episodes historiques et81941writes.
+Sources v0310-d7-sources, revision continue_exposure_revision.json et healer_source_index.
+Jobs death_heal_finish termines, rapport passe. PasdeROMnouvelle pourpreuves.
+Branches exclues: gift7D+5EbloqueTerre2,pasachat;Continue01patrolframe_limit;
+healer-route01 gameplayreussi maisepisodeaidevide invalide;route02 sansaide valide.
+Priorite: routeD7 depuis94HP80MP24gold21keys2; planstatic ne trouvepasencorechemin.
+Bossintermediaire1B8/type78 etprincipal179/type67 sansprotection obligatoire.
+
 ## Dernier jalon : huile tardive,corde et D3 v310 termines
 
 analysis/oil_service_v0310_report.json et d3_campaign_v0310_report.json passent.

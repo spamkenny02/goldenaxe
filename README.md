@@ -68,7 +68,13 @@ sont relues exactement ; le dernier point avant le boss est à **72/72 PV et 40 
 Le [sixième cristal et le retour de D6](analysis/d6_campaign_v0310.md) sont aussi
 validés, avec 1 202 prédictions exactes pour le combat et 121 pour le retour.
 Le héros ressort vivant à **2/80 PV et 72 PM**, sans protection pendant le boss
-ou la sortie. La suite doit commencer par un soin normal avant D7.
+ou la sortie.
+
+La suite valide [une mort normale, Continuer et le soin gratuit de 94](analysis/death_heal_v0310.md).
+Les six cristaux et l'inventaire sont conservés : reprise à 24 PV/PM, puis nuit
+restaurant **80/80 PV**, avec **24/72 PM, 21 cornes et deux clés**.
+Trois relectures RAM/image exactes ; aucune nouvelle écriture d'aide ni ressource
+injectée depuis le retour de D6. Le septième donjon reste à valider.
 
 Le [mini-jeu est aussi comparé sur v310](analysis/minigame_rng_v0310.md) :
 douze cas SMS/MD en PAL/NTSC, cartes, paiements, récompenses, nouvelle partie,
