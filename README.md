@@ -143,6 +143,11 @@ reprend le contrôle dans le palais avec **102/104 PV et 64/72 PM**.
 [Rapport du ballon en extérieur](analysis/owned_overview_v0310_report.json)
 · [Rapport de l’entrée du palais](analysis/cold_palace_entry_v0310_report.json)
 
+Les deux premiers mécanismes du palais sont activés et le géant est vaincu
+sans invincibilité. Le héros termine avec **84/104 PV, 72/72 PM et deux clés**.
+Cinq étapes sont reproduites exactement en RAM et en image.
+[Rapport du géant du palais](analysis/cold_palace_giant_v0310_report.json)
+
 Une sauvegarde écrite en jeu dans le premier emplacement a été rechargée
 après redémarrage via **Continuer**. Le jeu restaure le point de reprise,
 les statistiques, les objets et les neuf cristaux. Le HUD et le déplacement
