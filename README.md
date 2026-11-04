@@ -81,6 +81,11 @@ La campagne v310 franchit le pont du cinquième cristal puis entre dans D7 à
 qui ouvre ce pont. Le trajet est relu depuis le démarrage avec une RAM et une
 image finales identiques. [Rapport d'entrée D7](analysis/d7_entry_v0310_report.json)
 
+Deux clés supplémentaires sont ramassées dans D7 et deux obstacles sont détruits
+avec Terre dans la salle 1B9. Le héros arrive avant le boss intermédiaire à
+**80/80 PV, 24/72 PM et trois clés**. Les quatre étapes ont une relecture
+exacte de la RAM et de l’image finale. [Rapport de préparation D7](analysis/d7_prep_v0310_report.json)
+
 Le [mini-jeu est aussi comparé sur v310](analysis/minigame_rng_v0310.md) :
 douze cas SMS/MD en PAL/NTSC, cartes, paiements, récompenses, nouvelle partie,
 refus et retour depuis l'inventaire. Les tirages sont contrôlés pour ce test ;
