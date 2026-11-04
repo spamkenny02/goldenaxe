@@ -111,6 +111,11 @@ Les pixels du décor restent stables dès l’affichage de la nouvelle carte,
 et les anciens monstres et objets disparaissent dans les quatre directions
 testées. [Rapport des défilements](analysis/scroll_v0310_report.json)
 
+La musique et les bruitages de Nouveau Jeu / Continuer sont vérifiés en NTSC
+et PAL. En jeu, les essais d’inventaire en extérieur et dans deux boutiques
+confirment la fermeture silencieuse, le HUD visible, la restauration du décor
+fixe et les mêmes durées d’écran noir que sur SMS. [Rapport des menus](analysis/menu_v0310_report.json)
+
 Le [mini-jeu est aussi comparé sur v310](analysis/minigame_rng_v0310.md) :
 douze cas SMS/MD en PAL/NTSC, cartes, paiements, récompenses, nouvelle partie,
 refus et retour depuis l'inventaire. Les tirages sont contrôlés pour ce test ;
