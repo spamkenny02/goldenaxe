@@ -45,6 +45,11 @@ D3 ont une relecture RAM/image exacte ; le boss type69 est combattu sans garde.
 La préparation D4 valide [le don de 50 cornes et l'achat de Terre](analysis/earth_learning_v0310.md) :
 argent 2→52→2, Terre niveau 1 et réserve de 48 PM, avec quatre relectures exactes.
 
+La suite valide [le canoë, le quatrième cristal et la sortie de D4](analysis/d4_campaign_v0310.md)
+à **62/64 PV**. Les quinze étapes ont une relecture RAM/image exacte ; le boss
+type6A est vaincu sans protection. Deux passages Terre et le déplacement sur
+l'eau avec le canoë sont vérifiés. Le mécanisme facultatif B0 reste hors parcours.
+
 Le [mini-jeu est aussi comparé sur v310](analysis/minigame_rng_v0310.md) :
 douze cas SMS/MD en PAL/NTSC, cartes, paiements, récompenses, nouvelle partie,
 refus et retour depuis l'inventaire. Les tirages sont contrôlés pour ce test ;

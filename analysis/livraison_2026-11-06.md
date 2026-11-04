@@ -7,14 +7,14 @@ partielle en validation complète.
 État constaté :
 
 - ROM courante v310, 2 Mio, SHA32fe75a6… : récurrence SMS 04E1 raccordée.
-  Parcours froid jusqu'au troisième cristal et retour en extérieur vérifié.
+  Parcours froid jusqu'au quatrième cristal et retour en extérieur vérifié.
 - v309 : campagne depuis Nouveau Jeu jusqu'à la fin, générique, retour intro,
   et sauvegarde réelle/Continuer vérifiés. C'est une référence historique,
   pas une preuve de fin v310.
-- Étape courante v310 : don normal d'argent2->52 puis achat de Terre50,
-  niveau1 et48PM. Dernier checkpoint `md-v0310-earth-learn01`,image72795
-  dans `natural-service-route`. Les quatre étapes de préparation ont leurs
-  relectures RAM65536/PNG exactes. Aucun processus actif à ce point.
+- Étape courante v310 : Terre, canoë, quatrième cristal et sortie de D4.
+  Dernier checkpoint `md-auto-v0310-d4-exit02`, image103398 dans
+  `natural-dungeon-combat`, salle10,62/64PV. Quinze étapes relues avec
+  RAM65536/PNG exacts. Boss6A sans protection ; aucun processus actif.
 
 Ordre de travail pour la livraison :
 
@@ -30,7 +30,7 @@ Ordre de travail pour la livraison :
    les seuls documents ou preuves. Ne pas annoncer une fin de campagne sur la
    version courante à partir des seules preuves v309.
 
-Risques matériels de planning : il reste la suite v310 après D3 et la fidélité
+Risques matériels de planning : il reste la suite v310 après D4 et la fidélité
 R/IRQ globale, ainsi que des vérifications audiovisuelles/optionnelles. La phase
 exacte du fournisseur R demeure provisoire. Ne pas garantir une version finale
 sans réserve le6 novembre tant que ces preuves manquent. La livraison doit

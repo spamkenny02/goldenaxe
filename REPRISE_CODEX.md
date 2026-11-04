@@ -7,21 +7,18 @@ Etat de cette note : 4 novembre 2026. Lire aussi README.md et les rapports plus 
 Lire analysis/livraison_2026-11-06.md. User demande etatdeslieux et rappelle
 DEADLINE REPORTEE par utilisateur au6novembre au soir (message du4novembre). Priorite aux blocages/regressions/validation
 ROMlivree,finparcours310,paquetnumerote+README+main. Pasdegarantie100%sanspreuves.
-Ne pas confondre campagnev309complete etcourante310jusqueD3.
-Pointcourant APRESD3 :gold-entry01 fin69600,gold50-01 fin70043 roomF4,
-Earth-entry02 fin71785,Earth-learn01 fin72795 roomA3,46/56PV,gold2,MP48/48,
-Terreitem5niveau1,huile+corde+3cristaux. Donreel2->52,achat50->2.
-Quatre coldreplays RAM65536/PNGexactes,HUD128exact pourles2services,imageinspectee.
-Episode4 approche cible180,aucunewritenouvelle dansservices,zeroresourcesimports.
-analysis/earth_learning_v0310_report.json passe; sources v0310-earth-learning-sources.
-Aucunjobactif. Prochaine action:assisted_boss_route --boss-room0x180 --world-route
---prefix-service md-v0310-earth-learn01 --assisted-prefix --door-index4
---axe-terrain --rope-terrain,trialv0310-d4-entry01,frames79000ouplus.
-Referencev309d4 pouritineraires seulement,jamaisRAMimport.
-SourceD4boss=6A/180,pas65.65originalensalle163 uniquement.
-RouteTerre01 arret AVANTemulation:no base-map route car --rope-terrain omis.
-02 a cordeacquise et --required-chop0xa3:0x4a valide. PasdebugROMetabli.
-ROMinchangee v310. Nouvelledeadline6novembre au soir,notesdatees4novembre.
+Ne pas confondre campagnev309complete et courante310jusqueD4.
+Pointcourant: md-auto-v0310-d4-exit02 fin103398, salle10,62/64PV,4cristaux,
+canoe1,Terre1,MP48/48,huile+corde conserves. Boss6A/30PV sans protection,
+first93358 hero56/hurt0; aucun degat pendant combat; dernierewrite93294.
+Quinze relectures RAM65536/PNG exactes; 211predictionsboss et15retour exactes.
+33images mouvement eau observe. Deux passages Terre cout8PM chacun.
+analysis/d4_campaign_v0310_report.json passe. Sources v0310-d4-sources,
+auditor revision2 preserves original snapshot. exit01 stalls seeking optionalB0;
+exit02 --defer-puzzles-rooms0x1b0 passe. Aucun bug ROM etabli.
+Aucun processus actif. Prochaine action: poursuivre D5 depuis exit02 canonique,
+references historiques v309 pour itineraires seulement; aucun import SRAM/RAM.
+ROM inchangee v310. Deadline6novembre au soir, notes du4novembre.
 
 ## Dernier jalon : huile tardive,corde et D3 v310 termines
 
