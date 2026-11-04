@@ -7,8 +7,8 @@ partielle en validation complète.
 État constaté :
 
 - ROM courante v310, 2 Mio, SHA32fe75a6… : récurrence SMS 04E1 raccordée.
-  Parcours depuis Nouveau Jeu vérifié jusqu’à la Hache d’or et au passage
-  de Terre en 13E, sur la route de Death Adder.
+  Parcours depuis Nouveau Jeu vérifié jusqu’à la victoire sur Death Adder,
+  au générique complet et au retour à l’intro.
 - v309 : campagne depuis Nouveau Jeu jusqu'à la fin, générique, retour intro,
   et sauvegarde réelle/Continuer vérifiés. C'est une référence historique,
   pas une preuve de fin v310.
@@ -27,7 +27,8 @@ partielle en validation complète.
   et le HUD à la fermeture.
 - Palais. La porte des neuf cristaux s’ouvre. Le géant et le gardien de la
   Hache d’or sont vaincus sans invincibilité. La hache est récupérée et
-  équipée. Le dernier tronçon du palais est en cours de validation.
+  équipée. Death Adder est vaincu sans invincibilité ni dégât reçu. Le rejeu
+  exact de la campagne et de la fin atteint l’image 415 125.
 - Sauvegarde v310. Un enregistrement écrit en jeu dans le premier emplacement
   restaure les objets, les neuf cristaux, le HUD et les déplacements après
   redémarrage via Continuer.
@@ -46,9 +47,8 @@ Ordre de travail pour la livraison :
    les seuls documents ou preuves. Ne pas annoncer une fin de campagne sur la
    version courante à partir des seules preuves v309.
 
-La validation v310 reste à poursuivre jusqu’à Death Adder, au générique et
-au retour à l’intro. La fidélité R/IRQ globale et les vérifications
-audiovisuelles et optionnelles restent ouvertes. La phase
+La fidélité R/IRQ globale et les vérifications audiovisuelles, optionnelles
+et sur console réelle restent ouvertes. La phase
 exacte du fournisseur R demeure provisoire. Ne pas garantir une version finale
 sans réserve le6 novembre tant que ces preuves manquent. La livraison doit
 indiquer clairement ce qui a été vérifié et ce qui reste ouvert.

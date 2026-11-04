@@ -23,8 +23,8 @@ Les lectures directes de R sont séparées des appels 04E1. Le fournisseur de R
 reste provisoire ; sa phase exacte avec les interruptions reste à porter.
 Tests PC et 68000 PAL/NTSC réussis, démarrage/déplacement relus exactement,
 et vraie sauvegarde v309 rechargeable avec objets, cristaux, arbre et HUD.
-La campagne complète ci-dessous est validée sur v309 ; elle n'a pas été
-rejouée intégralement sur v310.
+La campagne v310 est vérifiée depuis Nouveau Jeu jusqu’au générique et au
+retour à l’intro. [Rapport de la campagne](analysis/cold_palace_final_v0310_report.json)
 
 Un [nouveau parcours v310 termine le premier donjon](analysis/d1_campaign_v0310.md)
 et ressort avec le premier cristal à **28/32 PV**. Première clé sans aide,
@@ -59,7 +59,7 @@ Le [ravitaillement et le mécanisme de D5](analysis/d5_supplies_v0310.md) passen
 puis le [cinquième cristal et le retour extérieur](analysis/d5_campaign_v0310.md)
 sont validés à **72/72 PV et PM**. Le boss 65 et ses huit satellites sont vaincus
 sans protection, avec 96 fenêtres de prédiction exactes pour le combat et onze
-pour le retour. La campagne v310 n'est pas encore terminée.
+pour le retour.
 
 La [préparation de D6](analysis/d6_progress_v0310.md) valide ensuite les clés,
 sept lancers de Terre, les mécanismes et la cloche de glace. Ses dix-sept étapes
@@ -156,6 +156,13 @@ vérifiés par des rejeux exacts. Le héros termine cette étape avec
 Le gardien de la Hache d’or est vaincu sans invincibilité. La hache est
 récupérée dans le coffre et équipée avec **104/104 PV et 72/72 PM**.
 [Rapport du gardien et de la Hache d’or](analysis/cold_palace_guardian_v0310_report.json)
+
+**La campagne v310 est vérifiée depuis Nouveau Jeu jusqu’au générique.**
+Death Adder est vaincu avec la Hache d’or, sans invincibilité ni dégât reçu.
+La fin affiche les neuf cristaux, déroule le générique et revient à l’intro.
+Le rejeu depuis le démarrage atteint l’image **415 125** avec la même RAM et
+la même image finale. Les approches ont utilisé une protection de test
+retirée avant chaque boss. [Rapport de la campagne v310](analysis/cold_palace_final_v0310_report.json)
 
 Une sauvegarde écrite en jeu dans le premier emplacement a été rechargée
 après redémarrage via **Continuer**. Le jeu restaure le point de reprise,
