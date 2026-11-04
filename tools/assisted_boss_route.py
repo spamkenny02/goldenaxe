@@ -195,8 +195,8 @@ def main():
         return original(*run_args, **kwargs)
 
     game.run = wrapped
-    def walk(tilemap, start, goal, enemies=(), geometry=False):
-        return original_walk(tilemap, start, goal, () if approach_active else enemies, geometry)
+    def walk(tilemap, start, goal, enemies=(), geometry=False, **route_options):
+        return original_walk(tilemap, start, goal, () if approach_active else enemies, geometry, **route_options)
     if original_walk is not None:
         game.walk = walk
     sys.argv = [sys.argv[0]] + ([] if args.world_route or args.planner in ('ordinary','earth','contact','item') else

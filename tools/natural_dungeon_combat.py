@@ -18,7 +18,7 @@ def zero_pattern_floor(tilemap,point):
     x,y=point;offset=((y-12)&248)*8+(((x-12)>>2)&62)
     return any(offset+n<len(tilemap) and tilemap[offset+n]==0 for n in (66,68))
 
-def walk(tilemap,start,goal,enemies=(),geometry=False):
+def walk(tilemap,start,goal,enemies=(),geometry=False,allowed_portal=None):
     queue=collections.deque([start]);parent={start:None};finish=None
     while queue:
         p=queue.popleft()
@@ -28,7 +28,7 @@ def walk(tilemap,start,goal,enemies=(),geometry=False):
             nxt=p[0]+dx,p[1]+dy
             if nxt in parent or not(8<=nxt[0]<=248 and 8<=nxt[1]<=168):continue
             coordinate=(((nxt[1]-12)&248)<<3)+((((nxt[0]-12)&255)>>2)&62)+126
-            if coordinate in AVOID_PORTAL_COORDINATES:continue
+            if coordinate in AVOID_PORTAL_COORDINATES and coordinate!=allowed_portal:continue
             if geometry:
                 from natural_combat_aim import contact
                 if any(contact(nxt,e,0) if not e.get('hp') else abs(nxt[0]-e['x'])<12 and abs(nxt[1]-e['y'])<12 for e in enemies):continue
@@ -45,7 +45,7 @@ def attack_position(p,e,reach=24,align=8):
     return abs(dx)<=align and reach-12<=abs(dy)<=reach or abs(dy)<=align and reach-12<=abs(dx)<=reach
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--controlled-sram-prefix',action='store_true',help='Explicit controlled Continue fixture; never a cold campaign proof');parser.add_argument('--sms',action='store_true');parser.add_argument('--pal',action='store_true');parser.add_argument('--trial',required=True);parser.add_argument('--frames',type=int,default=14000);parser.add_argument('--target-room',type=lambda x:int(x,0),default=0x1d4);parser.add_argument('--reach',type=int,default=24);parser.add_argument('--align',type=int,default=8);parser.add_argument('--rooms',help='Comma-separated adjacent room IDs');parser.add_argument('--continue-after-clear',action='store_true',help='Let a scripted wrapper finish its action after room combat has cleared');parser.add_argument('--reach-room',action='store_true',help='Stop safely inside the target room without claiming persistent hazards were killed');parser.add_argument('--arrival-x',type=int,default=128);parser.add_argument('--arrival-y',type=int,default=96);parser.add_argument('--collect-key',action='store_true');parser.add_argument('--item-first-when-blocked',action='store_true',help='Seek the real reward when enemies cannot yet be reached');parser.add_argument('--collect-item',type=int);parser.add_argument('--collect-item-value',type=int,choices=range(1,256),default=1,help='Required owned value for a real item upgrade');parser.add_argument('--collect-gem',action='store_true');parser.add_argument('--exit-dungeon',action='store_true');parser.add_argument('--exit-before-crystal',action='store_true',help='Verify an ordinary supply-trip exit without claiming the dungeon crystal');parser.add_argument('--max-deaths',type=int,default=3,help='Maximum normal Continue retries');parser.add_argument('--avoid-portal-rooms',default='',help='Avoid stepping back onto return portals while fighting/navigating these rooms');parser.add_argument('--defer-puzzles-rooms',default='',help='Walk past optional puzzles in these rooms while following the requested itinerary');parser.add_argument('--doorway-ranges',action='store_true',help='Accept the source doorway span and actual screen boundary,including off-grid approach positions');parser.add_argument('--ignore-inactive-actors',action='store_true',help='Continue walking around actors whose source active/contact bit is clear');parser.add_argument('--rush-rooms',default='',help='Pass through these rooms while avoiding live actors');parser.add_argument('--puzzle-first-when-blocked',action='store_true',help='Try a pending source puzzle when no enemy attack position is reachable');parser.add_argument('--wake-sentinels',action='store_true',help='Reveal57/58 by proximity,52 by zero-pattern floor,and patrol while56/59/5A await a distant spawn');parser.add_argument('--early-boss-side',action='store_true',help='Experimental63/64 side placement and volley evasions');parser.add_argument('--settle-attacks',action='store_true',help='Wait until a walking step ends before starting an attack');parser.add_argument('--collision-aim',action='store_true',help='Aim from original descriptor hit rectangles');parser.add_argument('--equip-basic',action='store_true',help='Equip the owned basic sword via normal inventory buttons');parser.add_argument('--equip-axe',action='store_true',help='Equip owned axe via normal inventory buttons');parser.add_argument('--prefix',help='Recorded natural route directory for this ROM');parser.add_argument('--continuation',help='Replay a completed combat trial from boot before extending its route');parser.add_argument('--assisted-prefix',action='store_true',help='Explicitly continue a verified assisted recording');parser.add_argument('--isolated-retry-limit',type=int,choices=range(1,33),default=3,help='Bound ordinary leave/re-enter attempts for unreachable foes');parser.add_argument('--retry-isolated-foes',action='store_true',help='Leave through the previous room and return when no live foe has a reachable attack position,at most three times');args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('--controlled-sram-prefix',action='store_true',help='Explicit controlled Continue fixture; never a cold campaign proof');parser.add_argument('--sms',action='store_true');parser.add_argument('--pal',action='store_true');parser.add_argument('--trial',required=True);parser.add_argument('--frames',type=int,default=14000);parser.add_argument('--target-room',type=lambda x:int(x,0),default=0x1d4);parser.add_argument('--reach',type=int,default=24);parser.add_argument('--align',type=int,default=8);parser.add_argument('--rooms',help='Comma-separated adjacent room IDs');parser.add_argument('--continue-after-clear',action='store_true',help='Let a scripted wrapper finish its action after room combat has cleared');parser.add_argument('--reach-room',action='store_true',help='Stop safely inside the target room without claiming persistent hazards were killed');parser.add_argument('--arrival-x',type=int,default=128);parser.add_argument('--arrival-y',type=int,default=96);parser.add_argument('--collect-key',action='store_true');parser.add_argument('--item-first-when-blocked',action='store_true',help='Seek the real reward when enemies cannot yet be reached');parser.add_argument('--collect-item',type=int);parser.add_argument('--collect-item-value',type=int,choices=range(1,256),default=1,help='Required owned value for a real item upgrade');parser.add_argument('--collect-gem',action='store_true');parser.add_argument('--exit-dungeon',action='store_true');parser.add_argument('--exit-before-crystal',action='store_true',help='Verify an ordinary supply-trip exit without claiming the dungeon crystal');parser.add_argument('--max-deaths',type=int,default=3,help='Maximum normal Continue retries');parser.add_argument('--avoid-portal-rooms',default='',help='Avoid stepping back onto return portals while fighting/navigating these rooms');parser.add_argument('--defer-puzzles-rooms',default='',help='Walk past optional puzzles in these rooms while following the requested itinerary');parser.add_argument('--doorway-ranges',action='store_true',help='Accept the source doorway span and actual screen boundary,including off-grid approach positions');parser.add_argument('--ignore-inactive-actors',action='store_true',help='Continue walking around actors whose source active/contact bit is clear');parser.add_argument('--rush-rooms',default='',help='Pass through these rooms while avoiding live actors');parser.add_argument('--puzzle-first-when-blocked',action='store_true',help='Try a pending source puzzle when no enemy attack position is reachable');parser.add_argument('--wake-sentinels',action='store_true',help='Reveal57/58 by proximity,52 by zero-pattern floor,and patrol while56/59/5A await a distant spawn');parser.add_argument('--early-boss-side',action='store_true',help='Experimental63/64 side placement and volley evasions');parser.add_argument('--settle-attacks',action='store_true',help='Wait until a walking step ends before starting an attack');parser.add_argument('--collision-aim',action='store_true',help='Aim from original descriptor hit rectangles');parser.add_argument('--equip-basic',action='store_true',help='Equip the owned basic sword via normal inventory buttons');parser.add_argument('--equip-axe',action='store_true',help='Equip owned axe via normal inventory buttons');parser.add_argument('--prefix',help='Recorded natural route directory for this ROM');parser.add_argument('--continuation',help='Replay a completed combat trial from boot before extending its route');parser.add_argument('--assisted-prefix',action='store_true',help='Explicitly continue a verified assisted recording');parser.add_argument('--isolated-retry-limit',type=int,choices=range(1,33),default=3,help='Bound ordinary leave/re-enter attempts for unreachable foes');parser.add_argument('--retry-isolated-foes',action='store_true',help='Leave through the previous room and return when no live foe has a reachable attack position,at most three times');parser.add_argument('--approach-wait',type=int,choices=range(0,601),default=0,metavar='FRAMES',help='Wait with neutral input after the recorded prefix');parser.add_argument('--isolated-retry-portal',type=lambda x:int(x,0),help='Allow a round trip to this connected portal room for isolated foes');args=parser.parse_args()
     assert not (args.equip_basic and args.equip_axe), 'Choose one equipment target'
     assert args.collect_item is None or 0<=args.collect_item<17
     assert not args.exit_before_crystal or args.exit_dungeon
@@ -169,6 +169,7 @@ def main():
         if f==cached:return buttons
         cached=f;buttons=[]
         if f<=prefix_end:buttons=list(prefix_inputs[f]);return buttons
+        if f<=prefix_end+args.approach_wait:return buttons
         if failure or cleared is not None or arrived is not None:return buttons
         if args.collect_item is not None and item_picked_at is not None and f-item_picked_at<300:
             if f-item_picked_at>=200 and f%30==0:buttons=[8]
@@ -193,7 +194,7 @@ def main():
         if state['hero']==12:buttons=[[4],[5],[6],[7]][f%4];return buttons
         if state['hero'] not in [0,1,2,3,4,5]:return buttons
         p=state['x'],state['y']
-        if state['room'] not in itinerary:return buttons
+        if state['room'] not in itinerary and not isolated_reentry:return buttons
         if isolated_reentry:
             blocked,previous,returning=isolated_reentry
             if state['room']==previous:returning=True;isolated_reentry=(blocked,previous,True)
@@ -203,7 +204,15 @@ def main():
             else:
                 destination=blocked if returning else previous
                 delta=destination-state['room']
-                if delta in (-16,16,-1,1):
+                portal=portals.get((state['room'],destination))
+                if portal:
+                    coordinate=portal['coordinate']
+                    point=next((x,y) for y in range(8,169,8) for x in range(8,249,8) if (((y-12)&248)<<3)+(((x-12)&255)>>2&62)+126==coordinate)
+                    path=walk(tilemap,p,lambda q:q==point,allowed_portal=coordinate)
+                    if p==point or path:
+                        last_direction=1 if p==point else path[0]
+                        buttons=[4+last_direction]
+                elif delta in (-16,16,-1,1):
                     direction={-16:0,16:1,-1:2,1:3}[delta]
                     point=[(128,8),(128,168),(8,88),(248,88)][direction]
                     path=walk(tilemap,p,lambda q:q==point)
@@ -334,9 +343,13 @@ def main():
                 goal=lambda q: (q[1]<=15 if direction==0 else q[1]>=161) and 128<=q[0]<=143 if direction<2 else (q[0]<=15 if direction==2 else q[0]>=241) and 80<=q[1]<=88
         else:goal=lambda q:q==((128,168) if args.exit_dungeon else (args.arrival_x,args.arrival_y) if args.reach_room else (128,96))
         route=walk(tilemap,p,goal,enemies+hazards,geometry=args.collision_aim)
-        if route is None and enemies and all(e['hit_box'] for e in enemies) and args.retry_isolated_foes and isolated_retries<args.isolated_retry_limit and itinerary_index>0:
-            previous=itinerary[itinerary_index-1]
-            if abs(previous-state['room']) in (1,16):
+        if route is None and enemies and all(e['hit_box'] for e in enemies) and args.retry_isolated_foes and isolated_retries<args.isolated_retry_limit:
+            room=state['room']
+            previous=itinerary[itinerary_index-1] if itinerary_index else None
+            portal_room=args.isolated_retry_portal
+            round_trip=(room,portal_room) in portals and (portal_room,room) in portals
+            if round_trip:previous=portal_room
+            if previous is not None and (round_trip or abs(previous-room) in (1,16)):
                 isolated_retries+=1;isolated_reentry=(state['room'],previous,False)
                 pilot_decisions.append(dict(frame=f,reason='no_reachable_attack_reenter_room',room=state['room'],previous_room=previous,retry=isolated_retries,foes=[dict(e) for e in enemies]))
                 captures.add(f+1)
