@@ -11,13 +11,13 @@ partielle en validation complète.
 - v309 : campagne depuis Nouveau Jeu jusqu'à la fin, générique, retour intro,
   et sauvegarde réelle/Continuer vérifiés. C'est une référence historique,
   pas une preuve de fin v310.
-- Étape courante v310 : après D6, mort normale/Continuer et soin gratuit94
-  vérifiés par trois relectures exactes RAM65536/PNG. Point courant192089,
-  extérieur94,80/80PV,24/72PM,21cornes,deux clés,six cristaux conservés.
-  Aucun nouvel apport d'aide ni ressource injectée depuis la sortie de D6.
-  Le trajet suivant franchit le pont du cinquième cristal et atteint D7 en
-  1DB, image197049, avec 68/80 PV, 24/72 PM, 21 cornes et deux clés.
-  Relecture complète réussie. Voir `d7_entry_v0310_report.json`.
+- Sur v310, la reprise après une mort et le soin gratuit en 94 sont vérifiés.
+  Le héros franchit le pont du cinquième cristal et entre dans D7, puis
+  récupère deux clés et ouvre deux obstacles avec Terre.
+- Le gardien intermédiaire de D7 est vaincu sans protection ni dégât reçu.
+  La victoire est relue exactement jusqu'à l'image 206928. Le héros termine
+  avec 80/80 PV, 24/72 PM et trois clés. Le bateau et le septième cristal
+  restent à vérifier. Voir `d7_midboss_v0310_report.json`.
 
 Ordre de travail pour la livraison :
 

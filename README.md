@@ -86,6 +86,11 @@ avec Terre dans la salle 1B9. Le héros arrive avant le boss intermédiaire à
 **80/80 PV, 24/72 PM et trois clés**. Les quatre étapes ont une relecture
 exacte de la RAM et de l’image finale. [Rapport de préparation D7](analysis/d7_prep_v0310_report.json)
 
+Le gardien de D7, en 1B8, est vaincu à la hache avec **80/80 PV**. La
+protection est retirée avant la salle. Le combat et sa relecture aboutissent
+avec la même RAM et la même image finale. Le septième cristal reste à valider.
+[Rapport du gardien de D7](analysis/d7_midboss_v0310_report.json)
+
 Le [mini-jeu est aussi comparé sur v310](analysis/minigame_rng_v0310.md) :
 douze cas SMS/MD en PAL/NTSC, cartes, paiements, récompenses, nouvelle partie,
 refus et retour depuis l'inventaire. Les tirages sont contrôlés pour ce test ;

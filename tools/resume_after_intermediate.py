@@ -13,8 +13,12 @@ def main():
  c=json.loads((source/'capture.json').read_bytes());r=json.loads((source/'report.json').read_bytes());old,writes=recording(source,c)
  initial_sram=controlled_sram_input(source,c,a.controlled_sram_prefix)
  assert prefix_writes(source,c,True,controlled=a.controlled_sram_prefix)==writes and old.get('approach_closed_early') and r['room_cleared'] and r['failure'] is None and not r['deaths']
- assert old['boss_room']==a.boss_room and all(old[k] is None for k in ['first_boss_entry','first_boss_combat','first_boss_damage'])
+ assert old['boss_room']==a.boss_room
  intermediate=old['closed_before_room'];original=(ROOT/'input/original.sms').read_bytes();kinds=[k for k in original[0x3234e+intermediate*8:0x32356+intermediate*8] if k in (0x78,0x79,0x7a,0x7b,0x7c)];assert kinds
+ if old['boss_room']==intermediate:
+  assert old['first_boss_entry'] and old['first_boss_combat']
+ else:
+  assert all(old[k] is None for k in ['first_boss_entry','first_boss_combat','first_boss_damage'])
  next_boss=a.next_boss_room if a.next_boss_room is not None else a.boss_room
  assert next_boss!=intermediate,'The next approach must target a different fight'
  assert any(k>=0x20 and original[0x320ea+(k-0x20)*4+3]&0x60 for k in original[0x3234e+next_boss*8:0x32356+next_boss*8])
@@ -48,6 +52,11 @@ def main():
    state.update(gold=word('hero_gold'),keys=word('hero_keys'),magic=word('hero_magic'),items=list(data('hero_items',17)),crystals=list(data('game_save_state',592)[0x1f:0x28]));states.append(state)
  with contextlib.redirect_stdout(io.StringIO()):run(rom,end,folder,{start,end},c['presses'],ram_writes=new_writes,ram_observer=observe,input_provider=lambda f:timeline[f] if f<=start else [],core_options=c['core_options'],sram_in=initial_sram)
  assert entry and combat and entry['frame']<combat['frame'] and old['release_write_frame']<entry['frame']
+ if old['boss_room']==intermediate:
+  # A directly targeted intermediate fight already has completed metadata.
+  # Check it against this cold replay before starting the next episode.
+  assert entry==old['first_boss_entry']
+  assert all(combat[key]==old['first_boss_combat'][key] for key in ('frame','health','hurt'))
  assert states[-1]['hurt']==129 and all(states[0][k]==states[-1][k] for k in ['room','health','gold','keys','magic','items','crystals'])
  assist=json.loads(json.dumps(old));closed=assist['episodes'];closed[-1].update(boss_room=intermediate,first_boss_entry=entry,first_boss_combat=combat,first_boss_damage=damage,end_frame=start,natural_cooldown_observed=bool(combat['hurt']))
  fresh=dict(activation_after_frame=start,boss_room=next_boss,first_boss_entry=None,release_write_frame=None,first_boss_combat=None,first_boss_damage=None,end_frame=end+1);assist.update({k:fresh[k] for k in EPISODE_KEYS});assist['episodes']=closed+[fresh];assist['approach_closed_early']=False

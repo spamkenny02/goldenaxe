@@ -56,13 +56,19 @@ Rapport d7_entry_v0310; source initiale preservee et revision dans v0310-d7-sour
 Episode7 cible1B8. Pipeline93876 terminal0. Key01 fin198110 salle1CB PV68 PM24 keys2.
 Key03 fin204926 salle1B9 PV80 PM40 keys3. Terre36 fin205242 PM32, Terre2B fin205582
 PM24. Quatre relectures exactes. Voir analysis/d7_prep_v0310_report.json.
-Pipeline71575 (healed_d7_midboss.py) actif apres prep, release puis contact et combat.
-Pipeline48065 attend la fin de71575, puis exige le replay canonique de resume01
-avant de lancer healed_d7_finish.py (bateau, boss principal, retour D7).
+Gardien1B8 vaincu. Release205583, entree205710, premier combat205768 (80PV,
+hurt0, type78/30PV). Fin206928 avec80PV/24PM/3cles, aucune perte de PV,
+112 predictions RAM completes, aucun write apres release. Replay victoire exact.
+Reprise garde206929 apres victoire, cible179. Pipeline71575 termine par la
+relecture de resume01. Audit tools/summarize_d7_midboss_v0310.py.
+Pipeline48065 attend la fin de71575 puis exige le replay canonique de resume01
+pour lancer healed_d7_finish.py (bateau, boss principal, retour D7).
+Pipeline41475 attend 48065 puis exige sortie D7 canonique avec bateau avant
+le passage3C/9F, paiement10, entree D8 et gardien1C9 sans protection.
+Les commandes sont dans validation/v0310-d7-sources/healed_d7_prep_commands.jsonl.
 Poll les memes handles ou verifie processus et journal, ne pas dupliquer.
-Modification locale resume_after_intermediate.py : accepte le boss intermediaire
-cible directement quand sa preuve correspond a la nouvelle relecture.
-Ne publier cette modification qu'apres validation de resume01.
+resume_after_intermediate.py accepte le boss intermediaire cible directement
+quand ses preuves d'entree et de combat concordent avec la nouvelle relecture.
 Bossintermediaire1B8/type78 etprincipal179/type67 sansprotection obligatoire.
 
 ## Dernier jalon : huile tardive,corde et D3 v310 termines
