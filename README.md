@@ -137,6 +137,12 @@ est récupéré. Le héros ressort à l’image **315 457** avec **102/104 PV,
 64/72 PM et deux clés**. Le rejeu de la sortie reproduit exactement la RAM
 et l’image finale. [Rapport du neuvième donjon](analysis/d9_campaign_v0310_report.json)
 
+Le ballon affiche la vue d’ensemble et restaure la carte et le HUD à la
+fermeture. Les neuf cristaux ouvrent ensuite la porte du palais. Le héros
+reprend le contrôle dans le palais avec **102/104 PV et 64/72 PM**.
+[Rapport du ballon en extérieur](analysis/owned_overview_v0310_report.json)
+· [Rapport de l’entrée du palais](analysis/cold_palace_entry_v0310_report.json)
+
 Les défilements des premières cartes ont été vérifiés en NTSC et PAL.
 Les pixels du décor restent stables dès l’affichage de la nouvelle carte,
 et les anciens monstres et objets disparaissent dans les quatre directions
