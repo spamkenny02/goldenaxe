@@ -1,6 +1,6 @@
-# Livraison du 5 novembre 2026 au soir
+# Livraison du 6 novembre 2026 au soir
 
-Priorité confirmée par l'utilisateur le 4 novembre. L'objectif reste le portage
+Échéance reportée au vendredi 6 novembre au soir par l'utilisateur le 4 novembre. L'objectif reste le portage
 Mega Drive fidèle de Golden Axe Warrior ; la date ne transforme pas une preuve
 partielle en validation complète.
 
@@ -11,10 +11,10 @@ partielle en validation complète.
 - v309 : campagne depuis Nouveau Jeu jusqu'à la fin, générique, retour intro,
   et sauvegarde réelle/Continuer vérifiés. C'est une référence historique,
   pas une preuve de fin v310.
-- Étape courante v310 : don normal de50 cornes après D3, argent2->52,
-  zéro nouvelle écriture d'aide pendant le service. Approche et don ont
-  leur relecture RAM65536/PNG exacte. Dernier checkpoint md-v0310-gold50-01
-  dans natural-service-route, image70043. Aucun processus actif après ce point.
+- Étape courante v310 : don normal d'argent2->52 puis achat de Terre50,
+  niveau1 et48PM. Dernier checkpoint `md-v0310-earth-learn01`,image72795
+  dans `natural-service-route`. Les quatre étapes de préparation ont leurs
+  relectures RAM65536/PNG exactes. Aucun processus actif à ce point.
 
 Ordre de travail pour la livraison :
 
@@ -33,5 +33,5 @@ Ordre de travail pour la livraison :
 Risques matériels de planning : il reste la suite v310 après D3 et la fidélité
 R/IRQ globale, ainsi que des vérifications audiovisuelles/optionnelles. La phase
 exacte du fournisseur R demeure provisoire. Ne pas garantir une version finale
-sans réserve le5 novembre tant que ces preuves manquent. La livraison doit
+sans réserve le6 novembre tant que ces preuves manquent. La livraison doit
 indiquer clairement ce qui a été vérifié et ce qui reste ouvert.
