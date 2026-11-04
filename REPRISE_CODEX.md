@@ -75,6 +75,12 @@ PV80 PM40 gold23 keys3, quatre pieges5E a0PV conserves. Relectures exactes.
 Audit tools/summarize_d7_campaign_v0310.py --through-ship et rapport d7_ship_v0310.
 Pipeline48065 poursuit nord1B8, Terre1A8, approche189. Toujours retirer la
 protection avant le boss179/type67. Pipeline41475 attend la sortie D7.
+D7 termine : nord1B8 fin218853, Terre1A8->198 fin219826, approche189 fin225253.
+Retrait225254 hurt0, premier combat225393 PV80/type67 PV60. Boss et cristal
+fin229346 PV88 PM72,209 predictions RAM exactes, aucun degat, aucune aide.
+Terre retour1B7 fin230503 PM64; sortie1B fin230879 PV88 PM64 keys2 gold23,
+bateau et7 cristaux, aucune nouvelle ecriture apres225254. Audit d7_campaign_v0310.
+Prochain passage payant3C puis D8. Pipeline41475 attend le succes de48065.
 Bossintermediaire1B8/type78 etprincipal179/type67 sansprotection obligatoire.
 
 ## Dernier jalon : huile tardive,corde et D3 v310 termines

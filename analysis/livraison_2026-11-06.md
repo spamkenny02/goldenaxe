@@ -14,10 +14,10 @@ partielle en validation complète.
 - Sur v310, la reprise après une mort et le soin gratuit en 94 sont vérifiés.
   Le héros franchit le pont du cinquième cristal et entre dans D7, puis
   récupère deux clés et ouvre deux obstacles avec Terre.
-- Le gardien intermédiaire de D7 est vaincu sans protection ni dégât reçu.
-  La victoire est relue exactement jusqu'à l'image 206928. Le héros termine
-  avec 80/80 PV, 24/72 PM et trois clés. Le bateau et le septième cristal
-  restent à vérifier. Voir `d7_midboss_v0310_report.json`.
+- D7 terminé sur v310. Gardien et boss principal vaincus sans protection ni
+  dégât reçu, bateau et septième cristal conservés en extérieur. Point courant
+  230879, salle 1B, 88/88 PV, 64/72 PM, 23 cornes et deux clés. Le passage
+  côtier vers D8 est la prochaine vérification. Voir `d7_campaign_v0310_report.json`.
 
 Ordre de travail pour la livraison :
 
@@ -33,7 +33,7 @@ Ordre de travail pour la livraison :
    les seuls documents ou preuves. Ne pas annoncer une fin de campagne sur la
    version courante à partir des seules preuves v309.
 
-Risques matériels de planning : il reste la suite v310 après D6 et la fidélité
+Risques matériels de planning : il reste la suite v310 après D7 et la fidélité
 R/IRQ globale, ainsi que des vérifications audiovisuelles/optionnelles. La phase
 exacte du fournisseur R demeure provisoire. Ne pas garantir une version finale
 sans réserve le6 novembre tant que ces preuves manquent. La livraison doit

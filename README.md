@@ -88,13 +88,23 @@ exacte de la RAM et de l’image finale. [Rapport de préparation D7](analysis/d
 
 Le gardien de D7, en 1B8, est vaincu à la hache avec **80/80 PV**. La
 protection est retirée avant la salle. Le combat et sa relecture aboutissent
-avec la même RAM et la même image finale. Le septième cristal reste à valider.
+avec la même RAM et la même image finale.
 [Rapport du gardien de D7](analysis/d7_midboss_v0310_report.json)
 
 Le levier de 1E6 ouvre la salle du coffre de 1D5. Le bateau est récupéré par
 les commandes du jeu et la fenêtre de récompense se ferme. Le héros conserve
 **80/80 PV, 40/72 PM et trois clés**. Le HUD et les six marqueurs de cristal
 sont contrôlés après le coffre. [Rapport du bateau](analysis/d7_ship_v0310_report.json)
+
+Le boss principal de D7 est vaincu sans protection ni dégât reçu. Le septième
+cristal est obtenu et le héros ressort avec le bateau, **88/88 PV, 64/72 PM et
+deux clés**. La sortie et les étapes qui y mènent sont rejouées depuis le
+démarrage avec la même RAM et la même image finale. [Rapport de D7](analysis/d7_campaign_v0310_report.json)
+
+Les défilements des premières cartes ont été vérifiés en NTSC et PAL.
+Les pixels du décor restent stables dès l’affichage de la nouvelle carte,
+et les anciens monstres et objets disparaissent dans les quatre directions
+testées. [Rapport des défilements](analysis/scroll_v0310_report.json)
 
 Le [mini-jeu est aussi comparé sur v310](analysis/minigame_rng_v0310.md) :
 douze cas SMS/MD en PAL/NTSC, cartes, paiements, récompenses, nouvelle partie,
