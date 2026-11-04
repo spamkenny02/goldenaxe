@@ -116,6 +116,11 @@ et PAL. En jeu, les essais d’inventaire en extérieur et dans deux boutiques
 confirment la fermeture silencieuse, le HUD visible, la restauration du décor
 fixe et les mêmes durées d’écran noir que sur SMS. [Rapport des menus](analysis/menu_v0310_report.json)
 
+Chez le premier marchand, les écrans stabilisés, les achats et les refus
+comparés correspondent à la SMS. L’ouverture reste trop rapide. La zone de
+jeu reste noire 5 images en NTSC et 4 en PAL sur Mega Drive, contre 9 sur
+Master System dans les deux régions. Le HUD reste visible. [Rapport du marchand](analysis/merchant_v0310_report.json)
+
 Le [mini-jeu est aussi comparé sur v310](analysis/minigame_rng_v0310.md) :
 douze cas SMS/MD en PAL/NTSC, cartes, paiements, récompenses, nouvelle partie,
 refus et retour depuis l'inventaire. Les tirages sont contrôlés pour ce test ;

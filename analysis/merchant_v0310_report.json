@@ -1,0 +1,162 @@
+{
+  "passed": true,
+  "version": 310,
+  "md_sha256": "32fe75a653d7152f7cbf873a32f2ffef14234ea190885ae8a8235f2ccd10e071",
+  "sms_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+  "settled_transaction_cases": [
+    {
+      "name": "key",
+      "controlled_position_and_initial_stats": true,
+      "selection_by_normal_input": true,
+      "service_initial_pixels_exact": true,
+      "settled_transaction_fields_exact": 2,
+      "transaction_bitmap_vram_bytes_exact": 4160,
+      "entry_exit_visible_hud_frames": 222
+    },
+    {
+      "name": "feather",
+      "controlled_position_and_initial_stats": true,
+      "selection_by_normal_input": true,
+      "service_initial_pixels_exact": true,
+      "settled_transaction_fields_exact": 2,
+      "transaction_bitmap_vram_bytes_exact": 4160,
+      "entry_exit_visible_hud_frames": 222
+    },
+    {
+      "name": "oil",
+      "controlled_position_and_initial_stats": true,
+      "selection_by_normal_input": true,
+      "service_initial_pixels_exact": true,
+      "settled_transaction_fields_exact": 2,
+      "transaction_bitmap_vram_bytes_exact": 4160,
+      "entry_exit_visible_hud_frames": 222
+    },
+    {
+      "name": "poor",
+      "controlled_position_and_initial_stats": true,
+      "selection_by_normal_input": true,
+      "service_initial_pixels_exact": true,
+      "settled_transaction_fields_exact": 2,
+      "transaction_bitmap_vram_bytes_exact": 4160,
+      "entry_exit_visible_hud_frames": 222
+    },
+    {
+      "name": "keys_full",
+      "controlled_position_and_initial_stats": true,
+      "selection_by_normal_input": true,
+      "service_initial_pixels_exact": true,
+      "settled_transaction_fields_exact": 2,
+      "transaction_bitmap_vram_bytes_exact": 4160,
+      "entry_exit_visible_hud_frames": 222
+    },
+    {
+      "name": "feather_owned",
+      "controlled_position_and_initial_stats": true,
+      "selection_by_normal_input": true,
+      "service_initial_pixels_exact": true,
+      "settled_transaction_fields_exact": 2,
+      "transaction_bitmap_vram_bytes_exact": 4160,
+      "entry_exit_visible_hud_frames": 222
+    },
+    {
+      "name": "oil_owned",
+      "controlled_position_and_initial_stats": true,
+      "selection_by_normal_input": true,
+      "service_initial_pixels_exact": true,
+      "settled_transaction_fields_exact": 2,
+      "transaction_bitmap_vram_bytes_exact": 4160,
+      "entry_exit_visible_hud_frames": 222
+    }
+  ],
+  "natural_walk_refusal_exit": true,
+  "natural_reveal": [
+    {
+      "region": "auto",
+      "observations": {
+        "sms": {
+          "first_service_state": 3751,
+          "first_settled_panel": 3806,
+          "playfield_black_frames": [
+            3753,
+            3754,
+            3755,
+            3756,
+            3757,
+            3758,
+            3759,
+            3760,
+            3761
+          ],
+          "hud_empty_frames": [],
+          "display_disabled_frames": []
+        },
+        "md": {
+          "first_service_state": 3750,
+          "first_settled_panel": 3801,
+          "playfield_black_frames": [
+            3751,
+            3752,
+            3753,
+            3754,
+            3755
+          ],
+          "hud_empty_frames": [],
+          "display_disabled_frames": []
+        }
+      }
+    },
+    {
+      "region": "pal",
+      "observations": {
+        "sms": {
+          "first_service_state": 3751,
+          "first_settled_panel": 3801,
+          "playfield_black_frames": [
+            3752,
+            3753,
+            3754,
+            3755,
+            3756,
+            3757,
+            3758,
+            3759,
+            3760
+          ],
+          "hud_empty_frames": [],
+          "display_disabled_frames": []
+        },
+        "md": {
+          "first_service_state": 3750,
+          "first_settled_panel": 3797,
+          "playfield_black_frames": [
+            3751,
+            3752,
+            3753,
+            3754
+          ],
+          "hud_empty_frames": [],
+          "display_disabled_frames": []
+        }
+      }
+    }
+  ],
+  "absolute_reveal_timing_exact": false,
+  "evidence": {
+    "validation/v0310-merchant/natural-reveal/auto-sms/capture.json": "255dd381eaccacdc2723040500d1fe34ed84514cd1c917862e83f85245ea0322",
+    "validation/v0310-merchant/natural-reveal/auto-sms/frame_03806.png": "6a3fa0dd3bbef30e81da697714b1028189e85396fc546f2256d18f127a2beb4d",
+    "validation/v0310-merchant/natural-reveal/auto-sms/frame_03753.png": "c2b5ea8d3563383ea3f2ccf89894310f3e3f604e45d33314cc492405c49c6b7a",
+    "validation/v0310-merchant/natural-reveal/auto-md/capture.json": "f9fde54e3c33337f1c2ee8aa92a2c9de6aff2ea30f55f967e123060906ab458c",
+    "validation/v0310-merchant/natural-reveal/auto-md/frame_03801.png": "8efc10d4675d4dc3b387f0d6366ead0453ee247deb84ed36f5cde542cfab4869",
+    "validation/v0310-merchant/natural-reveal/auto-md/frame_03751.png": "94ab796b4c9fc646fd225674ef2e41a231bbf36abbf9bc381d3b27912f3b325b",
+    "validation/v0310-merchant/natural-reveal/pal-sms/capture.json": "5e6e0c91068707fb0a36936814ea809be606ae20a89fa6942dab14c29cdfd686",
+    "validation/v0310-merchant/natural-reveal/pal-sms/frame_03801.png": "6a3fa0dd3bbef30e81da697714b1028189e85396fc546f2256d18f127a2beb4d",
+    "validation/v0310-merchant/natural-reveal/pal-sms/frame_03752.png": "c2b5ea8d3563383ea3f2ccf89894310f3e3f604e45d33314cc492405c49c6b7a",
+    "validation/v0310-merchant/natural-reveal/pal-md/capture.json": "85ef3c6c1423de6fe424ca26cb40b027752c99178bcab74c14a91e61b2cb1fb9",
+    "validation/v0310-merchant/natural-reveal/pal-md/frame_03797.png": "8efc10d4675d4dc3b387f0d6366ead0453ee247deb84ed36f5cde542cfab4869",
+    "validation/v0310-merchant/natural-reveal/pal-md/frame_03751.png": "94ab796b4c9fc646fd225674ef2e41a231bbf36abbf9bc381d3b27912f3b325b",
+    "validation/v0310-merchant/merchant_report.json": "5e2b48bf22fa269ecf7f8606cf2967063455ae128b5fbf189a73c9f11ce604a2",
+    "validation/v0310-merchant/natural-reveal/reveal_report.json": "e23a7efc09e46a89f53bf2f42fd382d3fd8bf5f649916007200535ff306eff6b",
+    "validation/v0310-merchant/validate_merchant.py": "2136828129e0ec38c24b9c09e3d5e72ee4aca6a3772145834ac0eca2ef8df9f6",
+    "validation/v0310-merchant/measure_natural_reveal.py": "56f311cdab6757777c0bbb7281121bec61699dfc88e87f88776af9ce58bd72ee"
+  }
+}
