@@ -90,5 +90,12 @@ def main():
    tile,off=original[0x1edc+n*2:0x1ede+n*2];assert sms[0x3d00+off:0x3d02+off]==bytes([tile,0x59]);markers+=1
  for name,value in [('controls',inputs),('events',events)]:(reload/(name+'.json')).write_bytes((json.dumps(value,indent=2)+'\n').encode())
  result=dict(passed=True,rom_sha256=digest,game_written_save=True,synthetic_sram_fixture=False,source_trace=a.trace,source_sram_sha256=sha(raw_sram),serialized_payload_bytes=592,raw_sram_fixed_replay_exact=True,save_whole_ram_png_exact=True,fixed_replay_trace=fixed.relative_to(ROOT).as_posix(),reload_trace=reload.relative_to(ROOT).as_posix(),reload_primary_sram_imports=1,reload_ram_writes=0,reload_actor_records_cleared=False,reload_ready_frame=ready,restored_source_fields=fields,checkpoint_room=target,movement_verified_frame=moved,physical_hud_words_exact=128,source_crystal_markers_exact=markers,last_state={k:v for k,v in state.items()if k!='tilemap'},full_game_validated=False,driver_sha256=sha(Path(__file__).read_bytes()),limits=['Real game-written SRAM from a separate canonical New Game branch;no initial save fixture or test resource writes. Reload necessarily imports that exact game-written SRAM and is not labelled a cold New Game campaign.','This checks slot0 write/reload and actual control/HUD,not all slot/refusal combinations,global source timing or console hardware.'])
- (reload/'report.json').write_bytes((json.dumps(result,indent=2)+'\n').encode());(ROOT/'analysis/game_written_save_v0309_report.json').write_bytes((json.dumps(result,indent=2)+'\n').encode());print('Real save fixed replay,SRAM and normal Continue verified')
+ report_bytes=(json.dumps(result,indent=2)+'\n').encode()
+ (reload/'report.json').write_bytes(report_bytes)
+ versions=json.loads((ROOT/'versions/index.json').read_bytes())
+ version=next((entry['version'] for entry in versions if entry['sha256']==digest),None)
+ if version is not None:
+  release_report=dict(result,version=version,md_sha256=digest)
+  (ROOT/'analysis'/f'game_written_save_v{version:04d}_report.json').write_bytes((json.dumps(release_report,indent=2)+'\n').encode())
+ print('Real save fixed replay,SRAM and normal Continue verified')
 if __name__=='__main__':main()

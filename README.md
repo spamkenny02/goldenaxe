@@ -143,6 +143,12 @@ reprend le contrôle dans le palais avec **102/104 PV et 64/72 PM**.
 [Rapport du ballon en extérieur](analysis/owned_overview_v0310_report.json)
 · [Rapport de l’entrée du palais](analysis/cold_palace_entry_v0310_report.json)
 
+Une sauvegarde écrite en jeu dans le premier emplacement a été rechargée
+après redémarrage via **Continuer**. Le jeu restaure le point de reprise,
+les statistiques, les objets et les neuf cristaux. Le HUD et le déplacement
+ont été vérifiés après la reprise.
+[Rapport de la sauvegarde v310](analysis/game_written_save_v0310_report.json)
+
 Les défilements des premières cartes ont été vérifiés en NTSC et PAL.
 Les pixels du décor restent stables dès l’affichage de la nouvelle carte,
 et les anciens monstres et objets disparaissent dans les quatre directions
