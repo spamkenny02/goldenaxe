@@ -7,7 +7,8 @@ partielle en validation complète.
 État constaté :
 
 - ROM courante v310, 2 Mio, SHA32fe75a6… : récurrence SMS 04E1 raccordée.
-  Parcours à froid vérifié jusqu’au huitième cristal.
+  Parcours depuis Nouveau Jeu vérifié jusqu’à la Hache d’or et au passage
+  de Terre en 13E, sur la route de Death Adder.
 - v309 : campagne depuis Nouveau Jeu jusqu'à la fin, générique, retour intro,
   et sauvegarde réelle/Continuer vérifiés. C'est une référence historique,
   pas une preuve de fin v310.
@@ -20,7 +21,16 @@ partielle en validation complète.
 - D8. Gardien et boss principal vaincus sans invincibilité. Le huitième cristal
   est récupéré à l’image 272 980 et le rejeu du combat est exact en RAM et
   en image. Le retour en extérieur est vérifié à l’image 273 836 avec les
-  huit cristaux. Le parcours vers D9 a démarré.
+  huit cristaux.
+- D9. Deux gardiens et boss principal vaincus sans invincibilité. Sortie
+  vérifiée avec les neuf cristaux et le ballon. Le ballon restaure la carte
+  et le HUD à la fermeture.
+- Palais. La porte des neuf cristaux s’ouvre. Le géant et le gardien de la
+  Hache d’or sont vaincus sans invincibilité. La hache est récupérée et
+  équipée. Le dernier tronçon du palais est en cours de validation.
+- Sauvegarde v310. Un enregistrement écrit en jeu dans le premier emplacement
+  restaure les objets, les neuf cristaux, le HUD et les déplacements après
+  redémarrage via Continuer.
 
 Ordre de travail pour la livraison :
 
@@ -36,8 +46,9 @@ Ordre de travail pour la livraison :
    les seuls documents ou preuves. Ne pas annoncer une fin de campagne sur la
    version courante à partir des seules preuves v309.
 
-Risques matériels de planning : il reste la suite v310 après le huitième cristal et la fidélité
-R/IRQ globale, ainsi que des vérifications audiovisuelles/optionnelles. La phase
+La validation v310 reste à poursuivre jusqu’à Death Adder, au générique et
+au retour à l’intro. La fidélité R/IRQ globale et les vérifications
+audiovisuelles et optionnelles restent ouvertes. La phase
 exacte du fournisseur R demeure provisoire. Ne pas garantir une version finale
 sans réserve le6 novembre tant que ces preuves manquent. La livraison doit
 indiquer clairement ce qui a été vérifié et ce qui reste ouvert.
