@@ -153,6 +153,10 @@ vérifiés par des rejeux exacts. Le héros termine cette étape avec
 **104/104 PV, 72/72 PM et deux clés**.
 [Rapport des mécanismes intérieurs](analysis/cold_palace_inner_v0310_report.json)
 
+Le gardien de la Hache d’or est vaincu sans invincibilité. La hache est
+récupérée dans le coffre et équipée avec **104/104 PV et 72/72 PM**.
+[Rapport du gardien et de la Hache d’or](analysis/cold_palace_guardian_v0310_report.json)
+
 Une sauvegarde écrite en jeu dans le premier emplacement a été rechargée
 après redémarrage via **Continuer**. Le jeu restaure le point de reprise,
 les statistiques, les objets et les neuf cristaux. Le HUD et le déplacement
