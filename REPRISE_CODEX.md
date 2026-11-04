@@ -81,6 +81,14 @@ fin229346 PV88 PM72,209 predictions RAM exactes, aucun degat, aucune aide.
 Terre retour1B7 fin230503 PM64; sortie1B fin230879 PV88 PM64 keys2 gold23,
 bateau et7 cristaux, aucune nouvelle ecriture apres225254. Audit d7_campaign_v0310.
 Prochain passage payant3C puis D8. Pipeline41475 attend le succes de48065.
+D8 gardien1C9/type7A vaincu sans aide fin240758 avec22PV. Reprise garde240759.
+Passages1EB fin245779 et1EC fin248768, Terre1E8->1AA fin258410. Cle des voleurs
+slot15 0->1 en1A9 fin263693, PV62 PM72 keys2, sept cristaux. Six relectures exactes
+et HUD controle. Pipeline30149 poursuit levier19A, boss196 sans aide, sortie29.
+Pipeline36012 attend sortie D8 canonique avant passage1A et D9.
+Prototype marchand separe validation/v0310-merchant/merchant-candidate01 :
+9 images noires exactes NTSC/PAL; panneau encore1/2 images tard. 43 cas /23 villes
+et premier marchand valides. Reste hors de la version testee en campagne.
 Bossintermediaire1B8/type78 etprincipal179/type67 sansprotection obligatoire.
 
 ## Dernier jalon : huile tardive,corde et D3 v310 termines
