@@ -109,7 +109,9 @@ Le titre v310 a été comparé à la SMS après l’intro complète, en NTSC et 
 La cape garde ses poses de six images, le guerrier ses paliers de six images,
 et le logo avance d’une ligne par image. Les quarante images comparées sont
 identiques après normalisation des palettes. La séquence démarre 21 images
-plus tôt en NTSC et 22 en PAL. [Mesures du titre](analysis/title_cadence_v0310_report.json)
+plus tôt en NTSC et 22 en PAL. L’avance est déjà présente au premier
+dévoilement de l’intro. Les 65 lignes du récit correspondent dans les deux
+régions et leur décalage ne s’accumule pas. [Mesures de l’intro](analysis/intro_timing_v0310_report.json) · [Mesures du titre](analysis/title_cadence_v0310_report.json)
 
 La [campagne v0309 depuis Nouveau Jeu atteint la fin](analysis/cold_palace_final_v0309.md) :
 neuf cristaux, palais, Hache d’or, Death Adder, générique complet et retour

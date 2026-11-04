@@ -8385,7 +8385,7 @@
     "bytes": 2097152,
     "archived_utc": "2026-11-03T19:26:13.941068+00:00",
     "rom": "v0310-32fe75a6/gaw-megadrive-v0310.bin",
-    "notes": "v310: bateau D7 acquis. Titre NTSC/PAL compare a la SMS, cadence relative exacte, debut anticipe de 21/22 images apres intro.",
+    "notes": "v310: bateau D7 acquis. Intro et titre compares en PAL/NTSC, decalage mesure des le premier devoilement.",
     "validation": "targeted_checks_passed",
     "reports": [
       {
@@ -8487,6 +8487,10 @@
       {
         "file": "title_cadence_v0310_report.json",
         "sha256": "d2e33d042fe35e336fbe0adc783fa4ca535ca8ccdfd211063c13a05bbc3de6e8"
+      },
+      {
+        "file": "intro_timing_v0310_report.json",
+        "sha256": "c46dc7c554ae4feafb3374cafc42c92ead196cee19364f2f08ed148b99603d4a"
       }
     ]
   }
