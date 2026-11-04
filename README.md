@@ -101,6 +101,11 @@ cristal est obtenu et le héros ressort avec le bateau, **88/88 PV, 64/72 PM et
 deux clés**. La sortie et les étapes qui y mènent sont rejouées depuis le
 démarrage avec la même RAM et la même image finale. [Rapport de D7](analysis/d7_campaign_v0310_report.json)
 
+Le passage côtier vers D8 coûte dix cornes. Après l’entrée dans D8, le gardien
+de 1C9 est vaincu sans protection et le héros termine à **22/88 PV**. Les
+six étapes depuis la sortie de D7 ont une relecture exacte. Le huitième
+cristal reste à vérifier. [Rapport du gardien de D8](analysis/d8_midboss_v0310_report.json)
+
 Les défilements des premières cartes ont été vérifiés en NTSC et PAL.
 Les pixels du décor restent stables dès l’affichage de la nouvelle carte,
 et les anciens monstres et objets disparaissent dans les quatre directions
