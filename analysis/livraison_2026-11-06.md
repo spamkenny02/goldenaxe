@@ -63,6 +63,10 @@ partielle en validation complète.
   rejeu froid RAM/image exact ; HUD physique contrôlé après navire, cristal
   et sortie. Aucun soutien pendant les deux boss ou le retour ; les dégâts
   restent enregistrés. Parcours vers D8 lancé depuis cette sortie.
+- Entrée et gardien D8 v312 vérifiés : passage réellement payé 10 cornes
+  (12→2), puis victoire sur7A/50 PV sans protection ni dégât reçu, à56/88 PV.
+  Les six étapes ont un rejeu froid RAM/image exact ;124 prédictions complètes
+  sont vérifiées pendant le combat. Le huitième cristal reste à valider.
 - Menu Nouveau jeu / Continuer v312 : musique active et audible en PAL/NTSC,
   événements des bruitages de curseur et validation alignés SMS. Aucune
   comparaison globale des formes d'onde n'est déduite de ce contrôle.

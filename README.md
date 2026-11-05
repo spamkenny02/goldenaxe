@@ -118,6 +118,12 @@ avec sept cristaux, une clé et le navire.
 [Navire D7 v312](analysis/d7_ship_v0312_report.json)
 · [Septième cristal et sortie v312](analysis/d7_campaign_v0312_report.json)
 
+Le passage vers D8 coûte réellement dix cornes, **12→2**, puis le gardien
+intermédiaire est vaincu sans protection ni dégât reçu, à **56/88 PV**.
+Les six étapes depuis la sortie de D7 passent leur rejeu froid RAM/image exact.
+Le huitième cristal reste à vérifier.
+[Passage, entrée et gardien D8 v312](analysis/d8_midboss_v0312_report.json)
+
 La **v0311** ajoute une image au chargement lors des défilements de donjon
 vers le haut en NTSC. Sur trois trajets comparés à la Master System, la
 reprise du jeu s’aligne. Le premier déplacement s’aligne aussi dans les deux
@@ -539,7 +545,8 @@ Les rapports v0305 ci-dessus conservent leur périmètre historique.
 
 Sur la ROM courante **v0312**, sept cristaux et leurs sorties sont vérifiés.
 La Cloche de glace, le navire et les deux combats de D7 sont vérifiés ;
-le parcours vers D8 est lancé et la suite jusqu’à la fin reste à valider sur cette ROM.
+le gardien intermédiaire de D8 est vaincu. Le huitième cristal et la suite
+jusqu’à la fin restent à valider sur cette ROM.
 La protection de test est déclarée et limitée aux approches, puis retirée
 avant les combats de boss. Aucun objet, ressource ou progression n’est importé.
 
