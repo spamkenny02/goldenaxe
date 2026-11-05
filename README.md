@@ -5,17 +5,26 @@ puis portage de sa logique Z80 en code natif 68000 avec SGDK.
 La fidélité à la Master System passe avant les améliorations.
 
 <!-- ROM-RELEASE:START -->
-**Version courante : v0310 — 2048 Kio.**
+**Version courante : v0311 — 2048 Kio.**
 
-[Télécharger la ROM v0310](versions/v0310-32fe75a6/gaw-megadrive-v0310.bin) · [Toutes les versions](versions/README.md)
+[Télécharger la ROM v0311](versions/v0311-0972465d/gaw-megadrive-v0311.bin) · [Toutes les versions](versions/README.md)
 
 Contrôles ciblés réussis ; portage complet encore non validé.
 
-SHA-256 : `32fe75a653d7152f7cbf873a32f2ffef14234ea190885ae8a8235f2ccd10e071`
-Checksum Mega Drive : `AFC5`
+SHA-256 : `0972465d63447f5993324fd63693271f77bcb3f013a125c1d4ed575b2df9d2e2`
+Checksum Mega Drive : `86A4`
 <!-- ROM-RELEASE:END -->
 
 ## État du portage
+
+La **v0311** ajoute une image au chargement lors des défilements de donjon
+vers le haut en NTSC. Sur trois trajets comparés à la Master System, la
+reprise du jeu s’aligne. Le premier déplacement s’aligne aussi dans les deux
+salles où le bouton testé permet de bouger. Le premier donjon, son cristal
+et la sortie ont passé le rejeu sur cette ROM. La v0310 est la version
+vérifiée de Nouveau Jeu au générique.
+[Comparaison des défilements](analysis/upward_ntsc_candidate_report.json)
+· [Validation du premier donjon v311](analysis/upward_ntsc_d1_report.json)
 
 La **[v0310 raccorde la récurrence du hasard SMS](analysis/rng_integration_v0310.md)**
 aux routines du jeu : ennemis, butin, historique des salles et mini-jeu.

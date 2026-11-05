@@ -2203,6 +2203,7 @@ static void step_room_transition(void)
              * PSG/VDP contention model is still approximate outside tested paths. */
             u32 budget=(SYS_isPAL()?71364UL:59736UL)-3072;
             transition_loading_frames=(world_actor_load_tstates+20000+budget-1)/budget;
+            if(transition_direction==0 && !SYS_isPAL()) transition_loading_frames++;
             transition_stage=4;game_state=10;
         }
         if(transition_stage!=4)

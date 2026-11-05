@@ -4,6 +4,7 @@ Chaque binaire est conserve sans ecrasement. Les controles cibles ne prouvent pa
 
 | Version | ROM | Validation | Changements | SHA-256 |
 | --- | --- | --- | --- | --- |
+| v0311 | [Telecharger](v0311-0972465d/gaw-megadrive-v0311.bin) | targeted_checks_passed | Reprise des défilements de donjon vers le haut alignée en NTSC dans trois cas. Premier donjon, cristal et sortie vérifiés. | `0972465d63447f5993324fd63693271f77bcb3f013a125c1d4ed575b2df9d2e2` |
 | v0310 | [Telecharger](v0310-32fe75a6/gaw-megadrive-v0310.bin) | targeted_checks_passed | Campagne v310 vérifiée de Nouveau Jeu au générique et au retour à l’intro. Death Adder vaincu sans invincibilité. | `32fe75a653d7152f7cbf873a32f2ffef14234ea190885ae8a8235f2ccd10e071` |
 | v0309 | [Telecharger](v0309-7270576d/gaw-megadrive-v0309.bin) | targeted_checks_passed | Campagne froide v309 : trois cristaux,corde et retourD3 verifies. Palais controle separe avec SRAM synthetique : Death Adder et fin verifies. Fidelite globale non validee. | `7270576d6eeb2aee641776a3e364f2f3f320711d70bb91a566d7578161261049` |
 | v0308 | [Telecharger](v0308-e0d9c183/gaw-megadrive-v0308.bin) | targeted_checks_passed | Passage du palais apres neuf cristaux : secousse 289 images et garde huit cristaux conformes SMS en scenario controle ; parcours reel a rejouer. | `e0d9c1834dd79fffd084303d458af5e2a12dfa876a34e6c87aa13e1e40d90b9b` |
