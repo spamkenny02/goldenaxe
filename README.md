@@ -637,7 +637,14 @@ la suite du jeu reste à contrôler sur ses octets exacts.
 [Audio et titre du candidat](analysis/intro_audio_candidate11_v0313_report.json)
 · [Premier cristal du candidat](analysis/intro_audio_candidate11_game_v0313_report.json)
 · [Musique et bruitages du menu](analysis/start_menu_candidate11_v0313_report.json)
+· [Transitions du menu en jeu](analysis/inventory_candidate11_v0313_report.json)
+· [Compatibilité de la sauvegarde réelle](analysis/save_compatibility_candidate11_v0313_report.json)
 · [Nouveau parcours du prototype précédent](analysis/intro_audio_fresh_d1_v0313_report.json)
+
+Les captures binaires de ces six parcours sont archivées sans perte, puis
+supprimées après relecture et contrôle des empreintes : **81,7 Mio nets libérés**.
+Les ROMs numérotées, les sources, symboles et captures PNG sont conservés.
+[Manifeste du nettoyage](analysis/inventory_capture_cleanup_v0313_report.json)
 
 La correction du chargement initial est intégrée à la v313. Le binaire publié
 est identique au candidat vérifié jusqu’aux huit cristaux et à la sortie de D8.

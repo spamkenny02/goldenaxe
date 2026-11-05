@@ -1,0 +1,93 @@
+{
+  "passed": true,
+  "md_sha256": "c53381c459a1e6254a8c9f1cfad1b8cda482cc0614697ad566133b28335e07a7",
+  "candidate_promoted": false,
+  "cases": [
+    {
+      "passed": true,
+      "md_sha256": "c53381c459a1e6254a8c9f1cfad1b8cda482cc0614697ad566133b28335e07a7",
+      "donor_rom_sha256": "48fb6e924a520ff579d3fb4eabe4aac365e9a37eed3dc33ff0dabfdc232e1932",
+      "source_report": "analysis/game_written_save_v0313_report.json",
+      "source_report_sha256": "62082e34579c8e2bcc32548c53bc0d3ea22dfb519c3ee89543a1a97075343a6b",
+      "source_sram_sha256": "b24a001277728ad724e82c0cd5bb261e6b93ea4b8869ef4f75e2e38b279779e2",
+      "synthetic_sram_fixture": false,
+      "region": "ntsc",
+      "source_payload_bytes": 592,
+      "restored_source_fields": {
+        "hero_health": 41,
+        "hero_max_health": 42,
+        "hero_magic": 43,
+        "hero_max_magic": 44,
+        "hero_gold": 45,
+        "hero_keys": 46,
+        "hero_selected_item": 47,
+        "hero_basic_level": 48,
+        "hero_weapon_level": 49,
+        "hero_armor_level": 65,
+        "hero_shield_level": 66
+      },
+      "items_and_crystals_restored": true,
+      "normal_continue": true,
+      "initial_sram_imports": 1,
+      "ram_writes": 0,
+      "actors_cleared": false,
+      "ready_frame": 1321,
+      "movement_frame": 1343,
+      "checkpoint_room": 250,
+      "physical_hud_words_exact": 128,
+      "source_crystal_markers_exact": 9,
+      "core_sha256": "d17f2392115b3cd54258a1fa6c4195ddadc19b0805ebcca400db5162b1793516",
+      "driver_sha256": "87f9b2ee7517e0861cf446077fe02c4cc36782d0936b29bb4b2011867f8c6db5",
+      "full_game_validated": false,
+      "limits": [
+        "This is normal Continue from an actual earlier-build save, not a new-game campaign or proof of save writing on the receiving build.",
+        "Slot0 compatibility, restored fields, inventory, crystal markers, physical HUD and movement only; other slots and hardware remain outside this proof."
+      ]
+    },
+    {
+      "passed": true,
+      "md_sha256": "c53381c459a1e6254a8c9f1cfad1b8cda482cc0614697ad566133b28335e07a7",
+      "donor_rom_sha256": "48fb6e924a520ff579d3fb4eabe4aac365e9a37eed3dc33ff0dabfdc232e1932",
+      "source_report": "analysis/game_written_save_v0313_report.json",
+      "source_report_sha256": "62082e34579c8e2bcc32548c53bc0d3ea22dfb519c3ee89543a1a97075343a6b",
+      "source_sram_sha256": "b24a001277728ad724e82c0cd5bb261e6b93ea4b8869ef4f75e2e38b279779e2",
+      "synthetic_sram_fixture": false,
+      "region": "pal",
+      "source_payload_bytes": 592,
+      "restored_source_fields": {
+        "hero_health": 41,
+        "hero_max_health": 42,
+        "hero_magic": 43,
+        "hero_max_magic": 44,
+        "hero_gold": 45,
+        "hero_keys": 46,
+        "hero_selected_item": 47,
+        "hero_basic_level": 48,
+        "hero_weapon_level": 49,
+        "hero_armor_level": 65,
+        "hero_shield_level": 66
+      },
+      "items_and_crystals_restored": true,
+      "normal_continue": true,
+      "initial_sram_imports": 1,
+      "ram_writes": 0,
+      "actors_cleared": false,
+      "ready_frame": 1317,
+      "movement_frame": 1337,
+      "checkpoint_room": 250,
+      "physical_hud_words_exact": 128,
+      "source_crystal_markers_exact": 9,
+      "core_sha256": "d17f2392115b3cd54258a1fa6c4195ddadc19b0805ebcca400db5162b1793516",
+      "driver_sha256": "87f9b2ee7517e0861cf446077fe02c4cc36782d0936b29bb4b2011867f8c6db5",
+      "full_game_validated": false,
+      "limits": [
+        "This is normal Continue from an actual earlier-build save, not a new-game campaign or proof of save writing on the receiving build.",
+        "Slot0 compatibility, restored fields, inventory, crystal markers, physical HUD and movement only; other slots and hardware remain outside this proof."
+      ]
+    }
+  ],
+  "full_game_validated": false,
+  "limits": [
+    "Normal Continue of the actual v313 game-written slot0 save, on candidate11 in PAL/NTSC; no test RAM writes or actor removal. Receiving-ROM save writing and later play are not proved."
+  ]
+}

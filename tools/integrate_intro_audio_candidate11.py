@@ -16,10 +16,15 @@ def main():
     audio = report('intro_audio_candidate11_v0313_report.json')
     game = report('intro_audio_candidate11_game_v0313_report.json')
     menu = report('start_menu_candidate11_v0313_report.json')
-    for proof in (audio, game, menu): assert proof['passed'] and proof['md_sha256'] == CANDIDATE
+    inventory = report('inventory_candidate11_v0313_report.json')
+    save = report('save_compatibility_candidate11_v0313_report.json')
+    for proof in (audio, game, menu, inventory, save):
+        assert proof['passed'] and proof['md_sha256'] == CANDIDATE
     assert audio['targeted_intro_audio_title_checks_passed']
     assert game['first_crystal_and_exterior_return_verified']
     assert menu['cursor_and_confirm_event_frames_source_exact']
+    assert inventory['natural_inventory_transition_cases'] == 6 and inventory['inventory_close_silent']
+    assert len(save['cases']) == 2 and all(c['normal_continue'] and not c['ram_writes'] for c in save['cases'])
     assert sha((ROOT/'gaw-megadrive.bin').read_bytes()) == PUBLIC
     project = ROOT/'validation/intro-audio-v0313/candidate11'
     assert sha((project/'gaw-megadrive.bin').read_bytes()) == CANDIDATE
