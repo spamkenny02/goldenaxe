@@ -40,13 +40,15 @@ def main():
  for i,row in enumerate(controls):
   end=controls[i+1]['frame']if i+1<len(controls)else start+1
   timeline[row['frame']:end]=[tuple(row['buttons'])]*(end-row['frame'])
- sy=symbols(ROOT/'megadrive/out/release/symbol.txt');state={};events=[];captures={start};actors=[];loot=[];tilemap=b'';first=None;done=None;failure=None;observed=0;last=0;key=None;empty_since=None;no_path_since=None
+ sy=symbols(ROOT/'megadrive/out/release/symbol.txt');state={};events=[];captures={start};actors=[];loot=[];tilemap=b'';first=None;done=None;failure=None;observed=0;last=0;key=None;empty_since=None;no_path_since=None;visits={};visited_room=None
  def observe(f,r):
-  nonlocal actors,loot,tilemap,first,done,failure,observed,key,empty_since
+  nonlocal actors,loot,tilemap,first,done,failure,observed,key,empty_since,visited_room
   observed=f
   if f<start:return
   data=lambda n,k:bytes(r[(sy[n]+i)^1]for i in range(k));word=lambda n:int.from_bytes(data(n,2),'big')
   state.update(room=word('room_id'),game=word('game_state'),hero=word('hero_state'),counter=word('hero_counter'),direction=word('hero_direction'),x=word('hero_x')>>8,y=word('hero_y')>>8,health=word('hero_health'),max_health=word('hero_max_health'),gold=word('hero_gold'),selected=word('hero_selected_item'),inventory_slot=word('inventory_slot'),weapon=word('hero_weapon_level'),audio_error=word('sound_unhandled_command'))
+  if state['room']!=visited_room:
+   visits[state['room']]=visits.get(state['room'],0)+1;visited_room=state['room']
   raw=data('world_actor_state',768);lr=data('world_loot_state',336);tilemap=data('sms_vram',16384)[0x3800:0x3e00]
   actors=[dict(slot=i,type=raw[i*48],hp=raw[i*48+24],flags=raw[i*48+3],hit_box=raw[i*48+27],contact_box=raw[i*48+28],x=raw[i*48+19],y=raw[i*48+17])for i in range(16)if raw[i*48]]
   loot=[dict(type=lr[i*48],x=lr[i*48+19],y=lr[i*48+17])for i in range(7)if lr[i*48]]
@@ -87,7 +89,7 @@ def main():
   elif near:goal=lambda q:any(directions(q,e,variant,safe=False)for e in near)
   elif empty_since is not None and f-empty_since>120:
    edges={0:lambda q:q[1]<=16,1:lambda q:q[1]>=152,2:lambda q:q[0]<=16,3:lambda q:q[0]>=240}
-   for direction in ([2,1,3,0]if state['room']==0x29 else[3,1,2,0]):
+   for direction in sorted([2,1,3,0],key=lambda d:visits.get((state['room']+[-16,16,-1,1][d])&255,0)):
     route=outdoor_walk(tilemap,p,edges[direction])
     if route is None:continue
     if edges[direction](p):last=direction;return [4+last]
@@ -109,7 +111,7 @@ def main():
    # Some exterior spawns occupy terrain disconnected from the hero. Move
    # normally to a reachable neighboring screen instead of claiming a clear.
    edges={0:lambda q:q[1]<=16,1:lambda q:q[1]>=152,2:lambda q:q[0]<=16,3:lambda q:q[0]>=240}
-   for direction in [3,1,2,0]:
+   for direction in sorted([3,1,2,0],key=lambda d:visits.get((state['room']+[-16,16,-1,1][d])&255,0)):
     route=outdoor_walk(tilemap,p,edges[direction])
     if route is None:continue
     if edges[direction](p):last=direction;return [4+last]

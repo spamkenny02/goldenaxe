@@ -33,8 +33,12 @@
     {
       "trace": "validation/natural-service-route/md-v0314-d9-earned-toll08",
       "result": "frame_limit; gate correctly stopped D9 before payment. Optional near-coin guard release added and validated against two actual captures; no gold or production ROM writes."
+    },
+    {
+      "trace": "validation/natural-service-route/md-v0314-d9-earned-toll09",
+      "result": "frame_limit; visits alternated49/4A without coins. Prefer reachable exits leading to less-visited screens rather than repeat the same empty/isolated pair."
     }
   ],
-  "next_attempt": "validation/natural-service-route/md-v0314-d9-earned-toll09",
+  "next_attempt": "validation/natural-service-route/md-v0314-d9-earned-toll10",
   "production_rom_changed": false
 }

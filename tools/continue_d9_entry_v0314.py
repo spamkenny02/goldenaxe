@@ -42,7 +42,7 @@ def campaign():
     assert max(frame for frame,_,_ in writes)==last['release_write_frame']
     assert not cap['sram_input'] and assist['primary_state_imports']==0
     world=['--boss-room','0x1ac','--assisted-prefix','--world-route','--live-prefix-terrain','--live-room-replan','--axe-terrain','--rope-terrain','--preserve-floor-hurt']
-    gift='v0314-d9-earned-toll09'
+    gift='v0314-d9-earned-toll10'
     replay(SERVICE,'md-'+gift,lambda r:r['passed'] and r['last_state']['gold']>=10 and not r['currency_or_inventory_fixtures'])
     route='v0314-d9-paid1a-route01'
     run('assisted_boss_route.py',[*world,'--prefix-service','md-'+gift,'--house-outside','0x1a','--house-target','0x9f','--door-entry-direction','0','--frames',budget(SERVICE,'md-'+gift,16000),'--trial',route])
