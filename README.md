@@ -733,3 +733,8 @@ gratuit (66→80 PV),puis entrée,clés et deux mécanismes Terre. Neuf points
 RAM/image exacts ; état préparatoire à80/80 PV,56 PM et deux clés.
 Le gardien intermédiaire et le septième cristal restent à valider.
 [Préparation D7](analysis/d7_prep_v0314_report.json)
+
+Le gardien78 de D7 est vaincu sans protection ni dégât reçu :87 prédictions
+exactes,80 PV et56 PM conservés. L’approche ne reprend qu’après sa mort,
+vers le bateau et le boss principal179. Quatre points RAM/image exacts.
+[Gardien intermédiaire D7](analysis/d7_midboss_v0314_report.json)

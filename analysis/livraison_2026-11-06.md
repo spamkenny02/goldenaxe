@@ -222,3 +222,7 @@ Point préparatoire à80/80 PV,56 PM,deux clés. Le trajet direct vers A5
 n’avait pas nettoyé la carte avant son entrée cachée ; il est conservé
 et exclu. Aucun succès A5 ni septième cristal n’est revendiqué.
 Voir d7_prep_v0314_report.json. Gardien intermédiaire en cours.
+
+Gardien78 de D7 vaincu sans protection ni dégât :87 prédictions exactes,
+80 PV et56 PM. Quatre points jusqu’à192855 :retrait191703,contact,combat,
+reprise après mort vers179. Voir d7_midboss_v0314_report.json. Bateau en cours.
