@@ -6,7 +6,7 @@ import assisted_boss_route as guard
 from run_core import ROOT
 from assisted_prefix import recording
 coins.GUARDED=True
-coins.TRIAL='md-v0314-d9-earned-toll07'
+coins.TRIAL='md-v0314-d9-earned-toll08'
 coins.run=lambda *a,**k:world.run(*a,**k)
 world.main=coins.main
 if __name__=='__main__':

@@ -40,7 +40,7 @@ def main():
  for i,row in enumerate(controls):
   end=controls[i+1]['frame']if i+1<len(controls)else start+1
   timeline[row['frame']:end]=[tuple(row['buttons'])]*(end-row['frame'])
- sy=symbols(ROOT/'megadrive/out/release/symbol.txt');state={};events=[];captures={start};actors=[];loot=[];tilemap=b'';first=None;done=None;failure=None;observed=0;last=0;key=None;empty_since=None
+ sy=symbols(ROOT/'megadrive/out/release/symbol.txt');state={};events=[];captures={start};actors=[];loot=[];tilemap=b'';first=None;done=None;failure=None;observed=0;last=0;key=None;empty_since=None;no_path_since=None
  def observe(f,r):
   nonlocal actors,loot,tilemap,first,done,failure,observed,key,empty_since
   observed=f
@@ -61,7 +61,7 @@ def main():
   if any(e['hp']and e['type']>=0x20 for e in actors)or loot:empty_since=None
   elif empty_since is None:empty_since=f
  def choose(f):
-  nonlocal last
+  nonlocal last,no_path_since
   if f<=start:return list(timeline[f])
   if done or failure:return []
   if state.get('selected')!=0 or state.get('game')==16:
@@ -101,7 +101,18 @@ def main():
    # rather than idling forever at an unreachable melee stance.
    point=(48,72)if(f//128)&1 else(208,136)
    path=outdoor_walk(tilemap,p,lambda q:q==point)
-  if path:last=path[0];return [4+last]
+  if path:
+   no_path_since=None;last=path[0];return [4+last]
+  if no_path_since is None:no_path_since=f
+  if f-no_path_since>180:
+   # Some exterior spawns occupy terrain disconnected from the hero. Move
+   # normally to a reachable neighboring screen instead of claiming a clear.
+   edges={0:lambda q:q[1]<=16,1:lambda q:q[1]>=152,2:lambda q:q[0]<=16,3:lambda q:q[0]>=240}
+   for direction in [3,1,2,0]:
+    route=outdoor_walk(tilemap,p,edges[direction])
+    if route is None:continue
+    if edges[direction](p):last=direction;return [4+last]
+    if route:last=route[0];return [4+last]
   return []
  def controller(f):
   buttons=choose(f)
