@@ -21,7 +21,7 @@ Le quatrième cristal et le retour extérieur sont vérifiés :239 prédictions
 exactes,sans protection ni dégât pendant le boss. Canoë observé sur99 images
 de déplacement aquatique. Feu obtenu contre l’huile,deuxième épée reçue et
 entrée D5 vérifiée à62/64 PV et72 PM. Voir d4_campaign_v0314_report.json
-et fire_sword_v0314_report.json. La suite depuis D6 reste à vérifier.
+et fire_sword_v0314_report.json. La suite depuis D7 reste à vérifier.
 Accélération des contrôles :trois points d’un même rejeu froid continu sont
 identiques aux rejeux séparés en RAM complète et image,avec62 % d’images
 émulées en moins pour cette série. Aucun état de jeu importé ; le noyau reste
@@ -208,4 +208,10 @@ Voir d5_campaign_v0314_report.json. Préparation D6 en cours.
 Préparation D6 v314 terminée :17 étapes,cinq acquisitions de clés,six
 étapes Terre et sept consommations réelles de8 PM. Cloche de glace acquise,
 HUD physique128 mots exact. Point préparatoire en125 à159782,72/72 PV,
-32 PM,aucune clé. Voir d6_progress_v0314_report.json. Boss non encore validé.
+32 PM,aucune clé. Voir d6_progress_v0314_report.json. Boss et retour désormais validés (voir ci-dessous).
+
+Sixième cristal et retour8B vérifiés à172104 sur v314 :307 prédictions
+exactes pendant le boss,un coup normal de14 PV,puis guérison du cristal
+à80 PV. Un second coup de14 PV au retour donne66/80 PV et72 PM à la sortie.
+82 prédictions exactes au retour,six marqueurs et128 mots physiques du HUD.
+Voir d6_campaign_v0314_report.json. Préparation D7 en cours.

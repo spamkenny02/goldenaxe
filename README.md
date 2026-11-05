@@ -25,7 +25,7 @@ protégée contre les interruptions. La compilation de production reproduit
 exactement le binaire testé.
 [Correctif intégré et preuves v314](analysis/intro_audio_integration_v0314_report.json)
 
-Sur ce binaire, le parcours depuis Nouveau Jeu atteint **cinq cristaux**,
+Sur ce binaire, le parcours depuis Nouveau Jeu atteint **six cristaux**,
 avec la hache et la première fée de vie obtenues normalement. Le boss de D2
 est vaincu sans protection ni dégât :89 prédictions conformes, puis cristal
 et retour extérieur à **48/48 PV et24 PM**. Un dégât normal de4 PV sur le
@@ -55,7 +55,7 @@ Son rejeu reproduit les592 octets du contenu et le fichier SRAM, puis un
 redémarrage et **Continuer** restaurent les objets, le premier cristal,
 le HUD physique et le déplacement. Aucun état SRAM synthétique n’est utilisé.
 La sauvegarde à neuf cristaux écrite sur v313 reste également compatible avec
-v314 en PAL/NTSC. La suite à partir du sixième donjon reste à vérifier sur le nouveau binaire.
+v314 en PAL/NTSC. La suite à partir du septième donjon reste à vérifier sur le nouveau binaire.
 [Sauvegarde écrite et Continuer v314](analysis/game_written_save_v0314_report.json)
 · [Compatibilité de sauvegarde v313](analysis/save_compatibility_candidate11_v0313_report.json)
 
@@ -717,6 +717,13 @@ sur une réentrée est conservé et exclu ; le pilote corrigé termine le parcou
 Préparation D6 terminée :cinq acquisitions de clés,six étapes Terre,Cloche
 de glace et son HUD physique vérifiés en17 points. Les sept consommations
 de8 PM observées restent celles du jeu ; aucune ressource n’est ajoutée.
-Point préparatoire à72/72 PV et32 PM,devant le boss encore à valider.
+Point préparatoire à72/72 PV et32 PM,devant le boss.
 [Clés, Terre et Cloche de glace](analysis/d6_progress_v0314_report.json)
 [Preuve des bottes et de la sortie](analysis/d5_progress_v0314_report.json)
+
+D6 :boss vaincu sans protection,307 prédictions exactes et un coup normal
+de14 PV (72→58). Le cristal restaure80 PV,puis un autre coup de14 PV
+au retour laisse66/80 PV à la sortie,avec72 PM. Les82 prédictions du retour,
+les six marqueurs et les128 mots physiques du HUD concordent.
+[Sixième cristal et retour](analysis/d6_campaign_v0314_report.json)
+La suite depuis D7 reste à valider.
