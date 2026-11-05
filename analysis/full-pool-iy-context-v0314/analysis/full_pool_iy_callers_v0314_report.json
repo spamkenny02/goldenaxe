@@ -1,0 +1,124 @@
+{
+  "probe_passed": true,
+  "production_rom_sha256": "c53381c459a1e6254a8c9f1cfad1b8cda482cc0614697ad566133b28335e07a7",
+  "trace_core_sha256": "5d59445cb53e515fc9b964921279d9303b3d68f1cddd79f57b1195f16d8c819a",
+  "direct_core_check_full_ram_exact": true,
+  "direct_events": [
+    [
+      43055,
+      50688,
+      50928,
+      4,
+      100,
+      10,
+      0,
+      0
+    ],
+    [
+      43055,
+      50688,
+      50928,
+      3,
+      100,
+      10,
+      0,
+      0
+    ],
+    [
+      43055,
+      50688,
+      50928,
+      2,
+      100,
+      10,
+      0,
+      0
+    ],
+    [
+      43055,
+      50688,
+      50928,
+      1,
+      100,
+      10,
+      0,
+      0
+    ],
+    [
+      43055,
+      50688,
+      50928,
+      0,
+      100,
+      10,
+      0,
+      0
+    ]
+  ],
+  "source_before_fixture": {
+    "game": 12,
+    "room": 149,
+    "hero": 1
+  },
+  "source_game_loop_events": [
+    {
+      "frame": 2801,
+      "pc": 43055,
+      "ix": 50688,
+      "iy": 9560,
+      "value": 4,
+      "boss_type": 100,
+      "boss_state": 10,
+      "room_class": 0,
+      "actor_count": 9
+    },
+    {
+      "frame": 2801,
+      "pc": 43055,
+      "ix": 50688,
+      "iy": 9560,
+      "value": 3,
+      "boss_type": 100,
+      "boss_state": 10,
+      "room_class": 0,
+      "actor_count": 9
+    },
+    {
+      "frame": 2801,
+      "pc": 43055,
+      "ix": 50688,
+      "iy": 9560,
+      "value": 2,
+      "boss_type": 100,
+      "boss_state": 10,
+      "room_class": 0,
+      "actor_count": 9
+    },
+    {
+      "frame": 2801,
+      "pc": 43055,
+      "ix": 50688,
+      "iy": 9560,
+      "value": 1,
+      "boss_type": 100,
+      "boss_state": 10,
+      "room_class": 0,
+      "actor_count": 9
+    },
+    {
+      "frame": 2801,
+      "pc": 43055,
+      "ix": 50688,
+      "iy": 9560,
+      "value": 0,
+      "boss_type": 100,
+      "boss_state": 10,
+      "room_class": 0,
+      "actor_count": 9
+    }
+  ],
+  "incoming_iy_overridden": false,
+  "controlled_fixture": true,
+  "natural_gameplay_proof": false,
+  "scope": "Original source game loop receives one controlled boss, a full pool of valid73 projectiles and a distant hero. IY is not injected. Read-only observations identify the original caller value; this is not a naturally reached boss or proof that every real caller has that value."
+}

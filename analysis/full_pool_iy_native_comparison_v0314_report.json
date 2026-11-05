@@ -1,0 +1,54 @@
+{
+  "probe_passed": true,
+  "native_equivalence_passed": false,
+  "md_sha256": "c53381c459a1e6254a8c9f1cfad1b8cda482cc0614697ad566133b28335e07a7",
+  "native_fixture_sha256": "9873e3221b7205739503b48ec67fa0ed1d7e5c3eef78648bb9973b676c7c2a0b",
+  "native_matches_rom_iy_actor_bytes": 768,
+  "source_cases": [
+    {
+      "incoming_iy": 50928,
+      "actor_differences": [
+        {
+          "source_address": 50938,
+          "native_value": 167,
+          "sms_value": 0
+        }
+      ],
+      "native_after_pool": 90,
+      "sms_after_pool": 90
+    },
+    {
+      "incoming_iy": 51408,
+      "actor_differences": [
+        {
+          "source_address": 51418,
+          "native_value": 167,
+          "sms_value": 0
+        }
+      ],
+      "native_after_pool": 90,
+      "sms_after_pool": 90
+    },
+    {
+      "incoming_iy": 51456,
+      "actor_differences": [],
+      "native_after_pool": 90,
+      "sms_after_pool": 0
+    }
+  ],
+  "unchanged_production_bodies": {
+    "production_rom_sha256": "c53381c459a1e6254a8c9f1cfad1b8cda482cc0614697ad566133b28335e07a7",
+    "actors_sha256": "e528399aef190d15bb059894c1f3e9219072c8a0d00b3bad5dcddc5c3bfeba64",
+    "first_boss_data_sha256": "c826845475c75874bd9af8983d8a3a03b54f8932a0616676e369b38b15d4c8c6",
+    "unchanged_body_sha256": {
+      "allocator": "d41f42ea4b825635f8c895655d73443ee894e7caf1c7be7ec7c9ce7939d76446",
+      "boss": "9960b4c4f82c5aee99feaf06dff79e75db7895527d119d3d21b3771da969640d"
+    },
+    "fixture_source_sha256": "9e2b8b5c0dc81ed9bf10611af25c895db590271b8fdb9b92a035d001fc263b97",
+    "scope": "Controlled native routine fixture; no production source or ROM edits. Same full-pool actor input as the unmodified SMS routine fixture."
+  },
+  "production_fix_applied": false,
+  "natural_reachability_proven": false,
+  "natural_gameplay_proof": false,
+  "scope": "Controlled native M68K routine comparison. The full-pool allocator and boss bodies are copied unchanged from production. They match the original ROM-IY case, but do not reproduce the supplied inherited RAM-IY side effect. Actual caller register provenance remains to inspect before a production fix."
+}

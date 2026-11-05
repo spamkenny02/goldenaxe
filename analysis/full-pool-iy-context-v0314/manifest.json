@@ -1,0 +1,411 @@
+{
+  "version": 314,
+  "scope": "Native controlled comparison and original caller observation; artificial RAM-IY gap not attributed to natural gameplay",
+  "files": {
+    "analysis/full_pool_iy_callers_v0314_report.json": "f430b69b96b73b9eb1de99284142a1576b99591040548f3344da78a85ca5c009",
+    "analysis/full_pool_iy_native_comparison_v0314_report.json": "969759ec946e7d6b276d42f875331c520507335bb25592fe013b3bca5af9d904",
+    "tools/build_full_pool_iy_native_probe.py": "9fe971f27b75f72ca3b029a87984d241bf7b5e805f3887ef49b9c9869927faae",
+    "tools/build_iy_trace_core.py": "b1915d601da4711eb35f81090190fedfad224c00a4d8259adc57a3e07ee39b75",
+    "tools/compare_full_pool_iy_native_v0314.py": "80265282438bda861c78b2a8f7919a57854c858cae7a33735d9dd4d96d5088db",
+    "tools/probe_full_pool_iy_callers_v0314.py": "1cfe61e97d70627e3b9a534f6668a157965dc0c3491a7164210e95deafbb468e"
+  },
+  "compressed": {
+    "validation/full-pool-iy-callers-v0314-01/direct-core-check/capture.json": {
+      "stored": "objects/23a331b37f934cf16e1b682b6d66bd2566b2bd0162ecfddf5c1117777b1ab4e8.gz",
+      "raw_sha256": "23a331b37f934cf16e1b682b6d66bd2566b2bd0162ecfddf5c1117777b1ab4e8",
+      "raw_bytes": 703,
+      "stored_sha256": "54218450b79aa8df22aa6c2e4d3e8e6ad7ef2667697bf4cc87947acbaa8ce108"
+    },
+    "validation/full-pool-iy-callers-v0314-01/direct-core-check/cram_00020.bin": {
+      "stored": "objects/38723a2e5e8a17aa7950dc008209944e898f69a7bd10a23c839d341e935fd5ca.gz",
+      "raw_sha256": "38723a2e5e8a17aa7950dc008209944e898f69a7bd10a23c839d341e935fd5ca",
+      "raw_bytes": 128,
+      "stored_sha256": "57d7ccbdb80092bd7ef74e3c5dea88c5f199b5647483fc08cb4c218eecc5ce7d"
+    },
+    "validation/full-pool-iy-callers-v0314-01/direct-core-check/frame_00020.png": {
+      "stored": "objects/5203cd22e98be76a3fb269a501397c0e4d4e7f713b9799d1f32f0687d7b1cd54.gz",
+      "raw_sha256": "5203cd22e98be76a3fb269a501397c0e4d4e7f713b9799d1f32f0687d7b1cd54",
+      "raw_bytes": 223,
+      "stored_sha256": "d85500f3bc6bdbb52d83ca1e4dc7cb70bd4a60c52a30b1e0ad4ea3be4b45f341"
+    },
+    "validation/full-pool-iy-callers-v0314-01/direct-core-check/ram_00020.bin": {
+      "stored": "objects/4a29e1f032ced0a87190e6148ebd1a3796d8849e8f7724daab6de34fdf3e332b.gz",
+      "raw_sha256": "4a29e1f032ced0a87190e6148ebd1a3796d8849e8f7724daab6de34fdf3e332b",
+      "raw_bytes": 8192,
+      "stored_sha256": "3ceeb2fd19c2d6ae7823e977ae75c91e3ea4fe730c9a08fe2eba2ccbd6fb951e"
+    },
+    "validation/full-pool-iy-callers-v0314-01/direct-core-check/trace_counts.bin": {
+      "stored": "objects/cba572f632841cc433c9511e80f09af37b3637cfb5dce816431cdbce261110a0.gz",
+      "raw_sha256": "cba572f632841cc433c9511e80f09af37b3637cfb5dce816431cdbce261110a0",
+      "raw_bytes": 1048576,
+      "stored_sha256": "d68a4881ca7f6cba64471b18d8c02eba00c97ff8ca6f26a12fd0b5ae45e4cb0c"
+    },
+    "validation/full-pool-iy-callers-v0314-01/direct-core-check/trace_states.bin": {
+      "stored": "objects/5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef.gz",
+      "raw_sha256": "5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+      "raw_bytes": 1024,
+      "stored_sha256": "a1b1b81d3d1afdb8fe119b002318c12c20934713b9754a40f702adb18a2540b9"
+    },
+    "validation/full-pool-iy-callers-v0314-01/direct-core-check/trace_windows.bin": {
+      "stored": "objects/8a6d6c90648ec1b877ab53273f2ffbabd1509bc46f328d8ea2d8519fc4c22284.gz",
+      "raw_sha256": "8a6d6c90648ec1b877ab53273f2ffbabd1509bc46f328d8ea2d8519fc4c22284",
+      "raw_bytes": 262144,
+      "stored_sha256": "76ea329aa60580129f0c46842217f967938658c599814ff4bd83c521696bcf2a"
+    },
+    "validation/full-pool-iy-callers-v0314-01/direct-core-check/vdp_regs_00020.bin": {
+      "stored": "objects/a4fac2da686c32062cec574b2089c1e99613140f9c242dfc7919f97909a38625.gz",
+      "raw_sha256": "a4fac2da686c32062cec574b2089c1e99613140f9c242dfc7919f97909a38625",
+      "raw_bytes": 32,
+      "stored_sha256": "b6e931b5ecc12b35163fefcb5752ff37d1873b31b1e711fd70c275dd89286b0b"
+    },
+    "validation/full-pool-iy-callers-v0314-01/direct-core-check/vram_00020.bin": {
+      "stored": "objects/de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31.gz",
+      "raw_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+      "raw_bytes": 65536,
+      "stored_sha256": "1383b0d2cf036f0480b0feefe8db910658cfb60330dea6246e72586a689f8412"
+    },
+    "validation/full-pool-iy-callers-v0314-01/game-loop/capture.json": {
+      "stored": "objects/a4dff8dc47a6759c7fed3736be9d526d00bbe2b7cfa90c69f6b42abc5ecc89b1.gz",
+      "raw_sha256": "a4dff8dc47a6759c7fed3736be9d526d00bbe2b7cfa90c69f6b42abc5ecc89b1",
+      "raw_bytes": 1604,
+      "stored_sha256": "0d380559ce28e7fa8537257d21dc5d95a3a9cb2a81585499dde37517722c4637"
+    },
+    "validation/full-pool-iy-callers-v0314-01/game-loop/cram_02799.bin": {
+      "stored": "objects/62efdb673feddcc76525b64f523ce1b4e1de9b9aa562afda35bb43cb6436bb2a.gz",
+      "raw_sha256": "62efdb673feddcc76525b64f523ce1b4e1de9b9aa562afda35bb43cb6436bb2a",
+      "raw_bytes": 128,
+      "stored_sha256": "0fbf02aac7b48b169132ad65185f35caf3618f77cbf03ac7f3d83bf1aa52a491"
+    },
+    "validation/full-pool-iy-callers-v0314-01/game-loop/cram_02800.bin": {
+      "stored": "objects/62efdb673feddcc76525b64f523ce1b4e1de9b9aa562afda35bb43cb6436bb2a.gz",
+      "raw_sha256": "62efdb673feddcc76525b64f523ce1b4e1de9b9aa562afda35bb43cb6436bb2a",
+      "raw_bytes": 128,
+      "stored_sha256": "0fbf02aac7b48b169132ad65185f35caf3618f77cbf03ac7f3d83bf1aa52a491"
+    },
+    "validation/full-pool-iy-callers-v0314-01/game-loop/cram_02801.bin": {
+      "stored": "objects/224f4fa43194d22b814a6ed1e44987ea46e87b3add9eafe06e2dba47ef74034b.gz",
+      "raw_sha256": "224f4fa43194d22b814a6ed1e44987ea46e87b3add9eafe06e2dba47ef74034b",
+      "raw_bytes": 128,
+      "stored_sha256": "a5f7915c84f0cd4c29c6a8bd9f4d9fcda8cb5cb25289f2821f84ac7e2a40536c"
+    },
+    "validation/full-pool-iy-callers-v0314-01/game-loop/cram_02820.bin": {
+      "stored": "objects/813f75c97a1781fc499e9005c396e0550729409ce1966ccdb86fe339986426e1.gz",
+      "raw_sha256": "813f75c97a1781fc499e9005c396e0550729409ce1966ccdb86fe339986426e1",
+      "raw_bytes": 128,
+      "stored_sha256": "3a11c3f95570379c620271d9ad0095e3506f68c8dae71b3b12a400a5d34862ab"
+    },
+    "validation/full-pool-iy-callers-v0314-01/game-loop/frame_02799.png": {
+      "stored": "objects/836324bee9f4694dd7cfbca60951d80498b8ed1e68c7f6ecb5f420c09b8118b2.gz",
+      "raw_sha256": "836324bee9f4694dd7cfbca60951d80498b8ed1e68c7f6ecb5f420c09b8118b2",
+      "raw_bytes": 5263,
+      "stored_sha256": "ccfa97d3880d9432ed440a7b5133111e40150d8e2c54715fe8380c4bde193bb3"
+    },
+    "validation/full-pool-iy-callers-v0314-01/game-loop/frame_02800.png": {
+      "stored": "objects/836324bee9f4694dd7cfbca60951d80498b8ed1e68c7f6ecb5f420c09b8118b2.gz",
+      "raw_sha256": "836324bee9f4694dd7cfbca60951d80498b8ed1e68c7f6ecb5f420c09b8118b2",
+      "raw_bytes": 5263,
+      "stored_sha256": "ccfa97d3880d9432ed440a7b5133111e40150d8e2c54715fe8380c4bde193bb3"
+    },
+    "validation/full-pool-iy-callers-v0314-01/game-loop/frame_02801.png": {
+      "stored": "objects/75d2df2e0edcbc8151ceae364276c85abc33413b005c80d0dd7ab8fdace22f26.gz",
+      "raw_sha256": "75d2df2e0edcbc8151ceae364276c85abc33413b005c80d0dd7ab8fdace22f26",
+      "raw_bytes": 5623,
+      "stored_sha256": "5224febf875c74042133f791874d9f7e3b48dfa8c0d7be37dc252dd1baeb916e"
+    },
+    "validation/full-pool-iy-callers-v0314-01/game-loop/frame_02820.png": {
+      "stored": "objects/b3691cb8456b00ec01c624be574bbcc25a0596b595f13b4d5a152c10b3f781c8.gz",
+      "raw_sha256": "b3691cb8456b00ec01c624be574bbcc25a0596b595f13b4d5a152c10b3f781c8",
+      "raw_bytes": 5900,
+      "stored_sha256": "05e82cc71cf7d1cba180819d60c2c0527129d7e8f973df837c82a41bc220938d"
+    },
+    "validation/full-pool-iy-callers-v0314-01/game-loop/ram_02799.bin": {
+      "stored": "objects/a5ce982baa00fbf228ae7bcad7af0457b305492cfff3ac1e78fe3b0638268252.gz",
+      "raw_sha256": "a5ce982baa00fbf228ae7bcad7af0457b305492cfff3ac1e78fe3b0638268252",
+      "raw_bytes": 8192,
+      "stored_sha256": "1cb40e0bf1a3ec4b98ac9cf094d694f231e789ef3a210cf9dec4c6b9bb5683ff"
+    },
+    "validation/full-pool-iy-callers-v0314-01/game-loop/ram_02800.bin": {
+      "stored": "objects/26d4a0ab3da7b4dd9247b162c47ec5832de480ada0ff09769057cd625c65fa13.gz",
+      "raw_sha256": "26d4a0ab3da7b4dd9247b162c47ec5832de480ada0ff09769057cd625c65fa13",
+      "raw_bytes": 8192,
+      "stored_sha256": "c4748fbbed6b0c1d48686809cd6bcc7b970c3955ad887f407575226151c90c94"
+    },
+    "validation/full-pool-iy-callers-v0314-01/game-loop/ram_02801.bin": {
+      "stored": "objects/9d7f32c6add449797fdb3c46bf1378544e519650b615082390c83986a598252d.gz",
+      "raw_sha256": "9d7f32c6add449797fdb3c46bf1378544e519650b615082390c83986a598252d",
+      "raw_bytes": 8192,
+      "stored_sha256": "0e897e54437a915a0470f980a3286d199565682e1006c7ae98dced7194c20d9e"
+    },
+    "validation/full-pool-iy-callers-v0314-01/game-loop/ram_02820.bin": {
+      "stored": "objects/b9c5070c5ebbc523a8c28abd4ff13127fa113263508c71f41291b35a656e1e71.gz",
+      "raw_sha256": "b9c5070c5ebbc523a8c28abd4ff13127fa113263508c71f41291b35a656e1e71",
+      "raw_bytes": 8192,
+      "stored_sha256": "0da7b5c1afc8d2c1f930f711ee3b5ecbaaa2d9e46f2c8a1c1a887cbf3eecee82"
+    },
+    "validation/full-pool-iy-callers-v0314-01/game-loop/trace_counts.bin": {
+      "stored": "objects/09385df3f39baf36b092f40f80cc438c44c3466f2b71bb1a73a8bb85f8857ecc.gz",
+      "raw_sha256": "09385df3f39baf36b092f40f80cc438c44c3466f2b71bb1a73a8bb85f8857ecc",
+      "raw_bytes": 1048576,
+      "stored_sha256": "f884c8f90f3503e6e88f29ea06a6276f9930aa83493fb08f834a7d2227d1a00c"
+    },
+    "validation/full-pool-iy-callers-v0314-01/game-loop/trace_states.bin": {
+      "stored": "objects/118b921cb6fc9ed0263bc67cb2980b75ec6fc14b7f00ef015721866a6b0d5309.gz",
+      "raw_sha256": "118b921cb6fc9ed0263bc67cb2980b75ec6fc14b7f00ef015721866a6b0d5309",
+      "raw_bytes": 1024,
+      "stored_sha256": "d46400cdec81c5c309a726b2518ce70659b8265ebfe3d119daf5f4931ed719a4"
+    },
+    "validation/full-pool-iy-callers-v0314-01/game-loop/trace_windows.bin": {
+      "stored": "objects/a5ad82407a9f8911e187c03b9cb0cb4750a15dd272eba36807851278600e2d91.gz",
+      "raw_sha256": "a5ad82407a9f8911e187c03b9cb0cb4750a15dd272eba36807851278600e2d91",
+      "raw_bytes": 262144,
+      "stored_sha256": "8dfab91efb4b04364ad207410883adf20e6b1ff5f894229efdd3b7debe570325"
+    },
+    "validation/full-pool-iy-callers-v0314-01/game-loop/vdp_regs_02799.bin": {
+      "stored": "objects/7c4a4f398690b7fca7f5171edd885ae43078f363c618b4b858fc12d85198669e.gz",
+      "raw_sha256": "7c4a4f398690b7fca7f5171edd885ae43078f363c618b4b858fc12d85198669e",
+      "raw_bytes": 32,
+      "stored_sha256": "e1d366b23bedf6906fc640ccd2af2680749c1ad969a5e1a60fdc8dce9bc689d4"
+    },
+    "validation/full-pool-iy-callers-v0314-01/game-loop/vdp_regs_02800.bin": {
+      "stored": "objects/7c4a4f398690b7fca7f5171edd885ae43078f363c618b4b858fc12d85198669e.gz",
+      "raw_sha256": "7c4a4f398690b7fca7f5171edd885ae43078f363c618b4b858fc12d85198669e",
+      "raw_bytes": 32,
+      "stored_sha256": "e1d366b23bedf6906fc640ccd2af2680749c1ad969a5e1a60fdc8dce9bc689d4"
+    },
+    "validation/full-pool-iy-callers-v0314-01/game-loop/vdp_regs_02801.bin": {
+      "stored": "objects/7c4a4f398690b7fca7f5171edd885ae43078f363c618b4b858fc12d85198669e.gz",
+      "raw_sha256": "7c4a4f398690b7fca7f5171edd885ae43078f363c618b4b858fc12d85198669e",
+      "raw_bytes": 32,
+      "stored_sha256": "e1d366b23bedf6906fc640ccd2af2680749c1ad969a5e1a60fdc8dce9bc689d4"
+    },
+    "validation/full-pool-iy-callers-v0314-01/game-loop/vdp_regs_02820.bin": {
+      "stored": "objects/7c4a4f398690b7fca7f5171edd885ae43078f363c618b4b858fc12d85198669e.gz",
+      "raw_sha256": "7c4a4f398690b7fca7f5171edd885ae43078f363c618b4b858fc12d85198669e",
+      "raw_bytes": 32,
+      "stored_sha256": "e1d366b23bedf6906fc640ccd2af2680749c1ad969a5e1a60fdc8dce9bc689d4"
+    },
+    "validation/full-pool-iy-callers-v0314-01/game-loop/vram_02799.bin": {
+      "stored": "objects/b58c9297e22a8c7bf0902ea34e35f61fdce93475e4610a228d1ca8039e41f5cd.gz",
+      "raw_sha256": "b58c9297e22a8c7bf0902ea34e35f61fdce93475e4610a228d1ca8039e41f5cd",
+      "raw_bytes": 65536,
+      "stored_sha256": "8e6d12b69246673f4a84766519bc7cf8f6e3af3a1ef7299f81f85d6eb3f8789b"
+    },
+    "validation/full-pool-iy-callers-v0314-01/game-loop/vram_02800.bin": {
+      "stored": "objects/b58c9297e22a8c7bf0902ea34e35f61fdce93475e4610a228d1ca8039e41f5cd.gz",
+      "raw_sha256": "b58c9297e22a8c7bf0902ea34e35f61fdce93475e4610a228d1ca8039e41f5cd",
+      "raw_bytes": 65536,
+      "stored_sha256": "8e6d12b69246673f4a84766519bc7cf8f6e3af3a1ef7299f81f85d6eb3f8789b"
+    },
+    "validation/full-pool-iy-callers-v0314-01/game-loop/vram_02801.bin": {
+      "stored": "objects/d554527335ddc065290fdc8a315efb5e9e0461e73b651cde9d75a139aa377e34.gz",
+      "raw_sha256": "d554527335ddc065290fdc8a315efb5e9e0461e73b651cde9d75a139aa377e34",
+      "raw_bytes": 65536,
+      "stored_sha256": "d3ed74568acf912c63a59e95834ab3a55c86fb69ec9bc59942c2a3f473074db4"
+    },
+    "validation/full-pool-iy-callers-v0314-01/game-loop/vram_02820.bin": {
+      "stored": "objects/930aa495e11b294c845afef1a9a6899f245989b367b745c7859e2004b825f929.gz",
+      "raw_sha256": "930aa495e11b294c845afef1a9a6899f245989b367b745c7859e2004b825f929",
+      "raw_bytes": 65536,
+      "stored_sha256": "05c0cc8fd0bb117a36c9639a466ed49a11d326900b2239115a704d8676bfdc56"
+    },
+    "validation/full-pool-iy-v0314-native01/build_command.json": {
+      "stored": "objects/c85668bdfd4c82a814b5e121945474f83ac93da1b491c3692ba5d3f14c532514.gz",
+      "raw_sha256": "c85668bdfd4c82a814b5e121945474f83ac93da1b491c3692ba5d3f14c532514",
+      "raw_bytes": 266,
+      "stored_sha256": "dd20ffda0d314ea03410a519cc3c58e0b89b0ac957b88e020c04c6db2d61d4d2"
+    },
+    "validation/full-pool-iy-v0314-native01/capture/capture.json": {
+      "stored": "objects/5aa1796fccf5c57c3991f6dc7a82c12c3d1331b91ea2a8eaf97b3dbc387be616.gz",
+      "raw_sha256": "5aa1796fccf5c57c3991f6dc7a82c12c3d1331b91ea2a8eaf97b3dbc387be616",
+      "raw_bytes": 609,
+      "stored_sha256": "ca9138c276464f19321d6560233a1b8645193ac92ad4b2c84453adc1a9fd0d2a"
+    },
+    "validation/full-pool-iy-v0314-native01/capture/cram_00120.bin": {
+      "stored": "objects/d918bee1a1af132b66c1fa1f17cae3b107332f29c8f6ea9be45e5ad3bb79f4d2.gz",
+      "raw_sha256": "d918bee1a1af132b66c1fa1f17cae3b107332f29c8f6ea9be45e5ad3bb79f4d2",
+      "raw_bytes": 128,
+      "stored_sha256": "c153293e4c7ac29760fa1b08c6108030fd3d2e22b36616258174923aafc1d534"
+    },
+    "validation/full-pool-iy-v0314-native01/capture/frame_00120.png": {
+      "stored": "objects/2baeb79c2847b14cbc6864d64102fbaa891f54d9134da84c9c7b8a7e34fddcd6.gz",
+      "raw_sha256": "2baeb79c2847b14cbc6864d64102fbaa891f54d9134da84c9c7b8a7e34fddcd6",
+      "raw_bytes": 289,
+      "stored_sha256": "a84cdf0051a5acab4f9c774ab296249575962edb633bed189174436f06f4cd4a"
+    },
+    "validation/full-pool-iy-v0314-native01/capture/ram_00120.bin": {
+      "stored": "objects/d8750f2e410fa84b4d28b21fb3c0487aad7e0de3efc8c22255c97c71886d25ad.gz",
+      "raw_sha256": "d8750f2e410fa84b4d28b21fb3c0487aad7e0de3efc8c22255c97c71886d25ad",
+      "raw_bytes": 65536,
+      "stored_sha256": "f6816b91915aa670a6bc3565d59462cac113826e749a3d3585a3b7a0e10db78e"
+    },
+    "validation/full-pool-iy-v0314-native01/capture/vdp_regs_00120.bin": {
+      "stored": "objects/a8d5b5c93d63b15917ac3df2ced34fe2352049a5d21d0708d1d0c0eca36c118c.gz",
+      "raw_sha256": "a8d5b5c93d63b15917ac3df2ced34fe2352049a5d21d0708d1d0c0eca36c118c",
+      "raw_bytes": 32,
+      "stored_sha256": "30b9f161a90782d9b75be5dc53bf5ed25d6f253142d33eb74429895e4680deb5"
+    },
+    "validation/full-pool-iy-v0314-native01/capture/vram_00120.bin": {
+      "stored": "objects/215597ebc402d844a2ecb3c3ee7a5841e2bcc474a9ae66ee513700fe43297068.gz",
+      "raw_sha256": "215597ebc402d844a2ecb3c3ee7a5841e2bcc474a9ae66ee513700fe43297068",
+      "raw_bytes": 65536,
+      "stored_sha256": "6d78bd9288ec7bbe6654d27897f1b5772fe033dc06ffe5c60d014c3727432b38"
+    },
+    "validation/full-pool-iy-v0314-native01/megadrive/out/release/_deps/src/first_boss_data.d": {
+      "stored": "objects/d6b06719efcd617f67c0a19a9c81043d9285593abd0dd243e4c245dce1d4a898.gz",
+      "raw_sha256": "d6b06719efcd617f67c0a19a9c81043d9285593abd0dd243e4c245dce1d4a898",
+      "raw_bytes": 58,
+      "stored_sha256": "39d95fd3741ddde00e197ad96b6d0ffb58df632cc7bc11a73bd2c4a27b4a4470"
+    },
+    "validation/full-pool-iy-v0314-native01/megadrive/out/release/_deps/src/main.d": {
+      "stored": "objects/933220fab30590f2d99a85e1dbe9aae5e26a37e7803900c7f5669f089d895d1a.gz",
+      "raw_sha256": "933220fab30590f2d99a85e1dbe9aae5e26a37e7803900c7f5669f089d895d1a",
+      "raw_bytes": 36,
+      "stored_sha256": "a99227db6b1d37a27a350c178cf6b4e359d964c770881c318361e13407c9a45d"
+    },
+    "validation/full-pool-iy-v0314-native01/megadrive/out/release/rom.bin": {
+      "stored": "objects/9873e3221b7205739503b48ec67fa0ed1d7e5c3eef78648bb9973b676c7c2a0b.gz",
+      "raw_sha256": "9873e3221b7205739503b48ec67fa0ed1d7e5c3eef78648bb9973b676c7c2a0b",
+      "raw_bytes": 131072,
+      "stored_sha256": "8798991b5734bdb2c8cf7c4ab6fbcdc69c2fcfa92a4cc9a651f371dfad542ba1"
+    },
+    "validation/full-pool-iy-v0314-native01/megadrive/out/release/rom.out": {
+      "stored": "objects/4cd6aa330372216667c2996d1318076a81f6230040e31b7ef38981842462c6f0.gz",
+      "raw_sha256": "4cd6aa330372216667c2996d1318076a81f6230040e31b7ef38981842462c6f0",
+      "raw_bytes": 48904,
+      "stored_sha256": "1d267a0833232bc8309df7f2f012f45c27e7aa6c08a7f1581fcb185ccff996be"
+    },
+    "validation/full-pool-iy-v0314-native01/megadrive/out/release/rom_header.o": {
+      "stored": "objects/bbd4af6a74fd3c92e08b500a7f98ea075e6a2d1917adf1e9cf5587f4851150de.gz",
+      "raw_sha256": "bbd4af6a74fd3c92e08b500a7f98ea075e6a2d1917adf1e9cf5587f4851150de",
+      "raw_bytes": 932,
+      "stored_sha256": "f88fb6edd122925586858b13955aae4feb3560124852ce24f76034affa84c587"
+    },
+    "validation/full-pool-iy-v0314-native01/megadrive/out/release/sega.o": {
+      "stored": "objects/3cc038905b6b9ac0eee40d19320245a8b06fc02a4a712c73f20273b87d33362b.gz",
+      "raw_sha256": "3cc038905b6b9ac0eee40d19320245a8b06fc02a4a712c73f20273b87d33362b",
+      "raw_bytes": 4276,
+      "stored_sha256": "b7ffa9c336701fb16f0fbe181b11179d4230876fb26bb6f5927e7e414d69be2d"
+    },
+    "validation/full-pool-iy-v0314-native01/megadrive/out/release/sega.s": {
+      "stored": "objects/d7954a33a7b17ddf060dadf21305256b524a019678849cf9f6e0dde4ee8e211b.gz",
+      "raw_sha256": "d7954a33a7b17ddf060dadf21305256b524a019678849cf9f6e0dde4ee8e211b",
+      "raw_bytes": 10664,
+      "stored_sha256": "7ef9b01e1f0d289592e0dba0c5463fd3cfc956291c3e3090fcd3c8c1c1a29cfd"
+    },
+    "validation/full-pool-iy-v0314-native01/megadrive/out/release/src/first_boss_data.o": {
+      "stored": "objects/2fff43a728b06ff6a387142d253350107830dbdd26bb6311588b7a33180206f9.gz",
+      "raw_sha256": "2fff43a728b06ff6a387142d253350107830dbdd26bb6311588b7a33180206f9",
+      "raw_bytes": 3624,
+      "stored_sha256": "7da0930a7f472cf9d180e38315d2f01b9d14211c5a9f1d14d220c294a8f2b52c"
+    },
+    "validation/full-pool-iy-v0314-native01/megadrive/out/release/src/main.o": {
+      "stored": "objects/615a80345e368e07a8526d8d91eeb6edb6688a7307bfac3a4713fe4d79591b96.gz",
+      "raw_sha256": "615a80345e368e07a8526d8d91eeb6edb6688a7307bfac3a4713fe4d79591b96",
+      "raw_bytes": 13964,
+      "stored_sha256": "1b52f536f3c860fac905e2612f3632d3b32141866aa6de25a9ade6d556e93945"
+    },
+    "validation/full-pool-iy-v0314-native01/megadrive/out/release/symbol.txt": {
+      "stored": "objects/6879346d9615a9ac763dea6b9659a96ad1db5147714650f4bb78f0ecd8beb35a.gz",
+      "raw_sha256": "6879346d9615a9ac763dea6b9659a96ad1db5147714650f4bb78f0ecd8beb35a",
+      "raw_bytes": 14612,
+      "stored_sha256": "0c32c80787192d86b6cfd20f011a7d1ca7766c4fd1413680a584e45a685380a4"
+    },
+    "validation/full-pool-iy-v0314-native01/megadrive/out/rom.bin": {
+      "stored": "objects/9873e3221b7205739503b48ec67fa0ed1d7e5c3eef78648bb9973b676c7c2a0b.gz",
+      "raw_sha256": "9873e3221b7205739503b48ec67fa0ed1d7e5c3eef78648bb9973b676c7c2a0b",
+      "raw_bytes": 131072,
+      "stored_sha256": "8798991b5734bdb2c8cf7c4ab6fbcdc69c2fcfa92a4cc9a651f371dfad542ba1"
+    },
+    "validation/full-pool-iy-v0314-native01/megadrive/out/rom_header.bin": {
+      "stored": "objects/6fa50cf5287a5ea90ed5f186496649e235aa0bdc3553623665222d08ca80e88f.gz",
+      "raw_sha256": "6fa50cf5287a5ea90ed5f186496649e235aa0bdc3553623665222d08ca80e88f",
+      "raw_bytes": 256,
+      "stored_sha256": "098cf10e2a3e2f78086a55399bd6a7d940135182a611cf4fe609d2d74d619aae"
+    },
+    "validation/full-pool-iy-v0314-native01/megadrive/src/first_boss_data.c": {
+      "stored": "objects/c826845475c75874bd9af8983d8a3a03b54f8932a0616676e369b38b15d4c8c6.gz",
+      "raw_sha256": "c826845475c75874bd9af8983d8a3a03b54f8932a0616676e369b38b15d4c8c6",
+      "raw_bytes": 524,
+      "stored_sha256": "cfa8241e0e0969629141bd45c559db03a1b3f61f80de9e1ae0c43d04de8a98e0"
+    },
+    "validation/full-pool-iy-v0314-native01/megadrive/src/main.c": {
+      "stored": "objects/9e2b8b5c0dc81ed9bf10611af25c895db590271b8fdb9b92a035d001fc263b97.gz",
+      "raw_sha256": "9e2b8b5c0dc81ed9bf10611af25c895db590271b8fdb9b92a035d001fc263b97",
+      "raw_bytes": 2322,
+      "stored_sha256": "5bc1f87472eabceffa9e002ebab0dcd1d781e2027099dd5ebb585b2fc642371e"
+    },
+    "validation/full-pool-iy-v0314-native01/megadrive/src/rom_header.c": {
+      "stored": "objects/f2dd0e22186bdcc0e1a0e371e05143069b69b4e837b204296ef19bfaa7de8efe.gz",
+      "raw_sha256": "f2dd0e22186bdcc0e1a0e371e05143069b69b4e837b204296ef19bfaa7de8efe",
+      "raw_bytes": 790,
+      "stored_sha256": "5079bebbab60471cfe6a2fc21fd66d8c3b7eb92b5d4005f522583389d23ba933"
+    },
+    "validation/full-pool-iy-v0314-native01/source_index.json": {
+      "stored": "objects/963cc0ce6cdbfa82408013d7aff5237d7a434c74c250b3523a245e6b32d003ef.gz",
+      "raw_sha256": "963cc0ce6cdbfa82408013d7aff5237d7a434c74c250b3523a245e6b32d003ef",
+      "raw_bytes": 735,
+      "stored_sha256": "90046b3424f557d9f0703379ee4a65e7fbcdf054641ac96eceebc69782de4986"
+    },
+    "validation/full-pool-iy-v0314-source02/iy-8000/ram_00020.bin": {
+      "stored": "objects/25bcd8a2a062c55612a237272e931d462b5af5eefd326625ba73befb146d5256.gz",
+      "raw_sha256": "25bcd8a2a062c55612a237272e931d462b5af5eefd326625ba73befb146d5256",
+      "raw_bytes": 8192,
+      "stored_sha256": "f146e9c58aa6a4ee2b2d06966c71f25e2df266166804ea9dc284e4b0372cca9d"
+    },
+    "validation/full-pool-iy-v0314-source02/iy-c6f0/ram_00020.bin": {
+      "stored": "objects/4a29e1f032ced0a87190e6148ebd1a3796d8849e8f7724daab6de34fdf3e332b.gz",
+      "raw_sha256": "4a29e1f032ced0a87190e6148ebd1a3796d8849e8f7724daab6de34fdf3e332b",
+      "raw_bytes": 8192,
+      "stored_sha256": "3ceeb2fd19c2d6ae7823e977ae75c91e3ea4fe730c9a08fe2eba2ccbd6fb951e"
+    },
+    "validation/full-pool-iy-v0314-source02/iy-c8d0/ram_00020.bin": {
+      "stored": "objects/53b5d70522bb04efa7d2163db2e0cfba4e2ef50bb4f445cf973a7117f3fa3eb6.gz",
+      "raw_sha256": "53b5d70522bb04efa7d2163db2e0cfba4e2ef50bb4f445cf973a7117f3fa3eb6",
+      "raw_bytes": 8192,
+      "stored_sha256": "a5b9852976d770dd8d0a410bc8ce7bd0b56dfc575fd1d92d2ad9bc022c0b3eee"
+    },
+    "validation/full-pool-iy-v0314-source02/iy-c900/ram_00020.bin": {
+      "stored": "objects/4bb07be0dfdc02db1f8e795b7f91a1308aa84f50c01fe364659a93b1b45c71e3.gz",
+      "raw_sha256": "4bb07be0dfdc02db1f8e795b7f91a1308aa84f50c01fe364659a93b1b45c71e3",
+      "raw_bytes": 8192,
+      "stored_sha256": "181b34f95fe6681283dbad7cae24c988f86ce7e36033d4962712f9ee529ebf35"
+    },
+    "validation/iy-trace-core-v0314-02/build.log": {
+      "stored": "objects/48f6ebdee2c42ab9bdcd803b4e0401c340321476815a645a163a5a3d69a6dcb7.gz",
+      "raw_sha256": "48f6ebdee2c42ab9bdcd803b4e0401c340321476815a645a163a5a3d69a6dcb7",
+      "raw_bytes": 108,
+      "stored_sha256": "aaff163d14973596153318e9bfbad0563e804713f296804c37ab0de0727446d9"
+    },
+    "validation/iy-trace-core-v0314-02/compiler.log": {
+      "stored": "objects/45f717c3b49ee5fad07689472ddef6a92f2f9211dcfe10e0c1f8711380adf6e6.gz",
+      "raw_sha256": "45f717c3b49ee5fad07689472ddef6a92f2f9211dcfe10e0c1f8711380adf6e6",
+      "raw_bytes": 4860,
+      "stored_sha256": "2be7876701a1fdb8f54fb07b1703047435863560a66c24505a927bfe4b777a53"
+    },
+    "validation/iy-trace-core-v0314-02/genesis_plus_gx_iytrace_libretro.dll": {
+      "stored": "objects/5d59445cb53e515fc9b964921279d9303b3d68f1cddd79f57b1195f16d8c819a.gz",
+      "raw_sha256": "5d59445cb53e515fc9b964921279d9303b3d68f1cddd79f57b1195f16d8c819a",
+      "raw_bytes": 9286095,
+      "stored_sha256": "22a73f53d95aed7d0a7db32bdd57e2f7576d5dfd7683019957fea9d3621d52f7"
+    },
+    "validation/iy-trace-core-v0314-02/report.json": {
+      "stored": "objects/612b6773a7fd6768e11b1cb014c6653e7e160dc78363d8c788845cf9f69f808e.gz",
+      "raw_sha256": "612b6773a7fd6768e11b1cb014c6653e7e160dc78363d8c788845cf9f69f808e",
+      "raw_bytes": 488,
+      "stored_sha256": "c128096cbf25add0d40a9c81cde6f2bb2dabf15bd8ce9d1c58bc115185f547f1"
+    },
+    "validation/iy-trace-core-v0314-02/z80-before.c": {
+      "stored": "objects/9056bcf5abcd63f4ec062191e1955873320bd70f50519b4e8d8aac583e2ef63d.gz",
+      "raw_sha256": "9056bcf5abcd63f4ec062191e1955873320bd70f50519b4e8d8aac583e2ef63d",
+      "raw_bytes": 228477,
+      "stored_sha256": "05c9fa20d5dceb673ea30b72d6a35aaa239a978cf98b5ff944641f099b1a82ca"
+    },
+    "validation/iy-trace-core-v0314-02/z80-iy-trace.c": {
+      "stored": "objects/c852629583ce184f616cc229a195837af926c26b6d5c3e8868695d019d99ff6b.gz",
+      "raw_sha256": "c852629583ce184f616cc229a195837af926c26b6d5c3e8868695d019d99ff6b",
+      "raw_bytes": 229113,
+      "stored_sha256": "12ec8f980147da126b13c78fe511c6dbc34652906d8d4d1ad615539d978abf8d"
+    }
+  },
+  "removed_verified_generated": []
+}
