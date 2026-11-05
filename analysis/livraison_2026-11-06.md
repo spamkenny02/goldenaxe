@@ -23,6 +23,12 @@ partielle en validation complète.
   extérieur vérifiés à 62/64 PV. Combat et sortie relus exactement en RAM/image,
   quatre marqueurs et 128 mots physiques du HUD vérifiés. Déplacement réel en
   canoë observé pendant le rejeu ; préparation D5 en cours.
+- Préparation D5 v312 terminée : huile échangée contre Feu, épée longue
+  réellement reçue et entrée dans D5 à 62/64 PV, 72/72 PM. Sept étapes avec
+  rejeu RAM/image exact ; cinquième cristal encore hors de cette preuve.
+- Menu Nouveau jeu / Continuer v312 : musique active et audible en PAL/NTSC,
+  événements des bruitages de curseur et validation alignés SMS. Aucune
+  comparaison globale des formes d'onde n'est déduite de ce contrôle.
 - v311, 2 Mio, SHA0972465d… : correction d'une image du
   chargement vers le haut en NTSC. Premier donjon, hache, fontaine et clés du
   deuxième donjon vérifiés par rejeu exact. Deuxième cristal et retour extérieur

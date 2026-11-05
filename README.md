@@ -24,6 +24,11 @@ la sortie de D2 conserve les champs de jeu comparés à la v311 sur 35 782
 images, et son image finale. Le panneau complet reste une image tardif en PAL.
 [Correction marchande et restauration du menu v312](analysis/merchant_inventory_v0312_report.json)
 
+La musique et les bruitages du menu Nouveau jeu / Continuer sont contrôlés
+sur v312 en PAL/NTSC : musique active et audible, événements de sélection et
+de validation aux mêmes images que sur SMS, pression sur le choix déjà actif
+silencieuse. [Contrôle du menu de démarrage](analysis/start_menu_v0312_report.json)
+
 La campagne v312 reprend depuis le démarrage avec les deux premiers boss
 sans protection, puis récupère l’huile par le dialogue et les deux escaliers.
 Le héros ressort avec **48 PV, 24 PM et 8 cornes**, sans nouvelle écriture
@@ -50,6 +55,11 @@ ni dégât pendant le boss. Combat et sortie ont un rejeu RAM/image exact ; le
 déplacement en canoë et les quatre marqueurs du HUD sont contrôlés.
 [Progression D4 v312](analysis/d4_progress_v0312_report.json)
 · [Quatrième cristal et sortie](analysis/d4_campaign_v0312_report.json)
+
+La suite v312 échange l’huile contre Feu, reçoit l’épée longue et entre dans
+D5 à **62/64 PV et 72/72 PM**. Les sept étapes passent le rejeu RAM/image ;
+la hache reste équipée et les quatre cristaux sont conservés.
+[Feu, épée longue et entrée D5](analysis/fire_sword_v0312_report.json)
 
 La **v0311** ajoute une image au chargement lors des défilements de donjon
 vers le haut en NTSC. Sur trois trajets comparés à la Master System, la
