@@ -84,8 +84,11 @@ La préparation de D6 sur v312 vérifie cinq acquisitions de clés, les passages
 Terre et la Cloche de glace. Les 17 étapes ont un rejeu RAM/image exact ;
 le héros rejoint l’accès du boss à **72/72 PV et 64 PM**. L’aide reste limitée
 aux approches ; aucun objet ni ressource n’est injecté. Le sixième boss et
-son cristal restent à valider sur cette version.
+son cristal restent à valider sur cette version. Le retrait de l’aide avant
+la salle du boss est relu exactement à l’image 156803, sans modifier les
+ressources ni supprimer les ennemis ordinaires restants de l’antichambre.
 [Clés, Terre et Cloche de glace v312](analysis/d6_progress_v0312_report.json)
+· [Retrait de l’aide avant le boss](analysis/d6_guard_release_v0312_report.json)
 
 La **v0311** ajoute une image au chargement lors des défilements de donjon
 vers le haut en NTSC. Sur trois trajets comparés à la Master System, la

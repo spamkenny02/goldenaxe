@@ -42,6 +42,8 @@ partielle en validation complète.
   Préparation D6 terminée : cinq acquisitions de clés, passages Terre,
   Cloche de glace et accès du boss vérifiés par 17 rejeux RAM/image exacts.
   Point préparatoire à 72/72 PV et 64 PM, sans objet ni ressource injecté.
+  Le retrait de l'aide est relu exactement à l'image 156803, avant la salle
+  du sixième boss et en conservant les ennemis ordinaires de l'antichambre.
   Le sixième boss reste à valider sur la v312.
 - Menu Nouveau jeu / Continuer v312 : musique active et audible en PAL/NTSC,
   événements des bruitages de curseur et validation alignés SMS. Aucune
