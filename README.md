@@ -44,8 +44,12 @@ pour 50 : argent **18→68→18**, niveau **0→1**, magie **24→48**. Les quat
 
 Dans D4, la v312 récupère le canoë, franchit deux passages avec Terre et
 obtient la clé d’accès au boss. Les sept étapes passent leur rejeu RAM/image,
-avec **56 PV et 40 PM** au dernier point. Le quatrième cristal reste en cours
-de vérification. [Progression D4 v312](analysis/d4_progress_v0312_report.json)
+avec **56 PV et 40 PM** au dernier point avant le combat. Le quatrième
+cristal et le retour en extérieur sont vérifiés à **62/64 PV**, sans protection
+ni dégât pendant le boss. Combat et sortie ont un rejeu RAM/image exact ; le
+déplacement en canoë et les quatre marqueurs du HUD sont contrôlés.
+[Progression D4 v312](analysis/d4_progress_v0312_report.json)
+· [Quatrième cristal et sortie](analysis/d4_campaign_v0312_report.json)
 
 La **v0311** ajoute une image au chargement lors des défilements de donjon
 vers le haut en NTSC. Sur trois trajets comparés à la Master System, la

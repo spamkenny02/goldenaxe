@@ -19,7 +19,10 @@ partielle en validation complète.
 - Préparation D4 sur v312 : don de 50 cornes et achat réel de Terre pour 50,
   niveau 1 et capacité de 48 PM. Quatre points avec rejeu RAM/image exact.
   Entrée D4, clés, canoë et deux passages Terre vérifiés par sept relectures
-  RAM/image. Dernier point avant le boss à 56 PV et 40 PM ; combat en cours.
+  RAM/image. Boss vaincu sans protection ni dégât, quatrième cristal et retour
+  extérieur vérifiés à 62/64 PV. Combat et sortie relus exactement en RAM/image,
+  quatre marqueurs et 128 mots physiques du HUD vérifiés. Déplacement réel en
+  canoë observé pendant le rejeu ; préparation D5 en cours.
 - v311, 2 Mio, SHA0972465d… : correction d'une image du
   chargement vers le haut en NTSC. Premier donjon, hache, fontaine et clés du
   deuxième donjon vérifiés par rejeu exact. Deuxième cristal et retour extérieur
