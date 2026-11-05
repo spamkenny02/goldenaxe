@@ -44,7 +44,12 @@ partielle en validation complète.
   Point préparatoire à 72/72 PV et 64 PM, sans objet ni ressource injecté.
   Le retrait de l'aide est relu exactement à l'image 156803, avant la salle
   du sixième boss et en conservant les ennemis ordinaires de l'antichambre.
-  Le sixième boss reste à valider sur la v312.
+  Sixième boss et cristal vérifiés sans protection ni dégât reçu. Retour
+  extérieur à 80/80 PV et 72 PM ; combat et sortie ont un rejeu froid RAM/image
+  exact, avec six marqueurs et 128 mots physiques du HUD contrôlés.
+  Le premier pilote de retour reste immobile et atteint sa limite d'images ;
+  la variante à décisions de huit images réussit en 94 prédictions exactes,
+  sans nouvelle écriture d'aide. Ravitaillement pour D7 en cours.
 - Menu Nouveau jeu / Continuer v312 : musique active et audible en PAL/NTSC,
   événements des bruitages de curseur et validation alignés SMS. Aucune
   comparaison globale des formes d'onde n'est déduite de ce contrôle.
@@ -53,7 +58,8 @@ partielle en validation complète.
   et la phase processeur, avec un débit environ 38 % supérieur sur ce benchmark.
   Un retour D5 conserve ses sept prédictions RAM, son image finale et son rejeu
   froid officiel. Aucun changement de ROM ; ce n'est pas un gain global de 38 %
-  sur tous les tests. Le combat D6 déjà lancé poursuit son calcul initial.
+  sur tous les tests. Le combat D6 utilisait le calcul initial ; son retour
+  retenu emploie cette option avec les mêmes contrôles.
 - v311, 2 Mio, SHA0972465d… : correction d'une image du
   chargement vers le haut en NTSC. Premier donjon, hache, fontaine et clés du
   deuxième donjon vérifiés par rejeu exact. Deuxième cristal et retour extérieur

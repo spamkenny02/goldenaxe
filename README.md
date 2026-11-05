@@ -83,12 +83,18 @@ Le pilote de test cible désormais les satellites : sa recherche passe de
 La préparation de D6 sur v312 vérifie cinq acquisitions de clés, les passages
 Terre et la Cloche de glace. Les 17 étapes ont un rejeu RAM/image exact ;
 le héros rejoint l’accès du boss à **72/72 PV et 64 PM**. L’aide reste limitée
-aux approches ; aucun objet ni ressource n’est injecté. Le sixième boss et
-son cristal restent à valider sur cette version. Le retrait de l’aide avant
+aux approches ; aucun objet ni ressource n’est injecté. Le retrait de l’aide avant
 la salle du boss est relu exactement à l’image 156803, sans modifier les
 ressources ni supprimer les ennemis ordinaires restants de l’antichambre.
 [Clés, Terre et Cloche de glace v312](analysis/d6_progress_v0312_report.json)
 · [Retrait de l’aide avant le boss](analysis/d6_guard_release_v0312_report.json)
+
+Le sixième boss et son cristal sont ensuite vérifiés sur v312, sans protection
+ni dégât reçu. Le retour en extérieur conserve **80/80 PV et 72 PM**. Combat
+et sortie passent chacun leur rejeu froid RAM/image exact ; les six marqueurs
+et les 128 mots physiques du HUD sont contrôlés. Le retour utilise des décisions
+plus fines après l’immobilisation du premier pilote dans une salle, sans changer
+la ROM ni réactiver l’aide. [Sixième cristal et sortie v312](analysis/d6_campaign_v0312_report.json)
 
 La **v0311** ajoute une image au chargement lors des défilements de donjon
 vers le haut en NTSC. Sur trois trajets comparés à la Master System, la
@@ -509,9 +515,9 @@ Les rapports v0305 ci-dessus conservent leur périmètre historique.
 
 ## Campagne et travail restant
 
-Sur la ROM courante **v0312**, cinq cristaux et leurs sorties sont vérifiés.
-Les clés, passages Terre, Cloche de glace et accès du boss de D6 sont
-vérifiés ; le sixième combat et la suite restent à valider sur cette ROM.
+Sur la ROM courante **v0312**, six cristaux et leurs sorties sont vérifiés.
+La Cloche de glace est acquise et le ravitaillement pour D7 est en cours ;
+la suite jusqu’à la fin reste à valider sur cette ROM.
 La protection de test est déclarée et limitée aux approches, puis retirée
 avant les combats de boss. Aucun objet, ressource ou progression n’est importé.
 
