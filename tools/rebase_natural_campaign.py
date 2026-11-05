@@ -14,17 +14,38 @@ def _archive_manifest(path):
   cached=(stamp,json.loads(path.read_bytes()));_manifest_cache[path]=cached
  return cached[1]
 
+def _stored_evidence(archive,manifest,name):
+ if name in manifest.get('files',{}):
+  target=(archive/name).resolve();assert target.is_relative_to(archive.resolve())
+  raw=target.read_bytes();assert sha(raw)==manifest['files'][name];return raw
+ if name in manifest.get('compressed',{}):
+  item=manifest['compressed'][name];target=(archive/item['stored']).resolve()
+  assert target.is_relative_to(archive.resolve())
+  encoded=target.read_bytes();assert sha(encoded)==item['stored_sha256']
+  raw=gzip.decompress(encoded);assert sha(raw)==item['raw_sha256']
+  if 'raw_bytes' in item:assert len(raw)==item['raw_bytes']
+  return raw
+ return None
+
+
 def evidence(path):
  if path.exists():return path.read_bytes()
- name=path.relative_to(ROOT).as_posix()
+ name=path.relative_to(ROOT).as_posix();checked=set()
  for folder in ['fairy-campaign-v0280','natural-campaign-v0280','natural-axe-campaign-v0274','stack-release-v0285','d2-progress-v0285','hero-pattern-v0286','d2-campaign-v0286','magic-rope-v0287','campaign-v0287-progress','terrain-walk-v0288','floor-damage-v0289','spell-teacher-v0290','axe-terrain-v0291','rope-arrival-v0292','campaign-v0292-progress','canoe-campaign-v0292','d5-progress-v0292','d5-campaign-v0292','crystal-bridge-v0293','d6-progress-v0293','d6-campaign-v0293','first-boss-variants-v0294','d2-campaign-v0294','variant-7c-v0295','sprite-cache-v0296','burst-cadence-v0304','d2-campaign-v0304','d3-campaign-v0304','d4-earth-v0304','d4-canoe-v0304','d4-campaign-v0304','d5-progress-v0304','d5-supplies-v0304','d5-campaign-v0304','d6-progress-v0304','d6-campaign-v0304','d7-supplies-v0304','d7-progress-v0304','d7-navigation-v0304','d7-campaign-v0304','d8-entry-v0304','d8-passages-v0304','d8-progress-v0304','indoor-stairs-v0305','d1-oil-v0305','d2-campaign-v0305','d3-campaign-v0305','d4-campaign-v0305','reward-hud-v0306','fire-sword-v0306','d5-campaign-v0306','d6-campaign-v0306','d7-supplies-v0306','d7-progress-v0306','d7-campaign-v0306','d8-progress-v0306','d8-campaign-v0306','d9-entry-v0306','d9-midboss-v0306','d9-campaign-v0306']:
   archive=ROOT/'analysis'/folder
   if not (archive/'manifest.json').exists():continue
   manifest=_archive_manifest(archive/'manifest.json')
-  if name in manifest['files']:
-   raw=(archive/name).read_bytes();assert sha(raw)==manifest['files'][name];return raw
-  if name in manifest['compressed']:
-   item=manifest['compressed'][name];encoded=(archive/item['stored']).read_bytes();assert sha(encoded)==item['stored_sha256'];raw=gzip.decompress(encoded);assert sha(raw)==item['raw_sha256'];return raw
+  checked.add(archive/'manifest.json')
+  raw=_stored_evidence(archive,manifest,name)
+  if raw is not None:return raw
+ # New versioned stores use the same hash-checked immutable archive schema.
+ for target in sorted((ROOT/'analysis').glob('*/manifest.json')):
+  if target in checked:continue
+  if not target.parent.resolve().is_relative_to((ROOT/'analysis').resolve()):continue
+  manifest=_archive_manifest(target)
+  if not isinstance(manifest.get('files'),dict) or not isinstance(manifest.get('compressed'),dict):continue
+  raw=_stored_evidence(target.parent,manifest,name)
+  if raw is not None:return raw
  raise FileNotFoundError(path)
 
 def main():

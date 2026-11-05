@@ -244,3 +244,8 @@ Voir d8_approach_v0314_report.json. Combat principal6B en cours,sans protection.
 Huitième cristal v314 : boss6B/80 PV sans protection ni dégât,423 prédictions
 exactes ; retour extérieur à80/96 PV,72 PM,28 prédictions, RAM/image exactes.
 Voir d8_campaign_v0314_report.json.
+
+Nettoyage D1–D7 clos :18 064 captures intermédiaires archivées et relues,
+536 fichiers des points finaux conservés et hachages inchangés. Gain net
+442 077 835 octets, toutes les ROMs numérotées préservées.
+Voir closed_capture_cleanup_v0314_report.json.
