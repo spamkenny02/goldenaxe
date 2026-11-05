@@ -25,7 +25,7 @@ protégée contre les interruptions. La compilation de production reproduit
 exactement le binaire testé.
 [Correctif intégré et preuves v314](analysis/intro_audio_integration_v0314_report.json)
 
-Sur ce binaire, le parcours depuis Nouveau Jeu atteint **quatre cristaux**,
+Sur ce binaire, le parcours depuis Nouveau Jeu atteint **cinq cristaux**,
 avec la hache et la première fée de vie obtenues normalement. Le boss de D2
 est vaincu sans protection ni dégât :89 prédictions conformes, puis cristal
 et retour extérieur à **48/48 PV et24 PM**. Un dégât normal de4 PV sur le
@@ -55,7 +55,7 @@ Son rejeu reproduit les592 octets du contenu et le fichier SRAM, puis un
 redémarrage et **Continuer** restaurent les objets, le premier cristal,
 le HUD physique et le déplacement. Aucun état SRAM synthétique n’est utilisé.
 La sauvegarde à neuf cristaux écrite sur v313 reste également compatible avec
-v314 en PAL/NTSC. La suite à partir du cinquième donjon reste à vérifier sur le nouveau binaire.
+v314 en PAL/NTSC. La suite à partir du sixième donjon reste à vérifier sur le nouveau binaire.
 [Sauvegarde écrite et Continuer v314](analysis/game_written_save_v0314_report.json)
 · [Compatibilité de sauvegarde v313](analysis/save_compatibility_candidate11_v0313_report.json)
 
@@ -706,7 +706,13 @@ conservés. Les quatre points sont relus dans un même noyau démarré à froid,
 sans import d’état. Le ravitaillement est terminé :deux dons de30 cornes,clé achetée pour60,
 soin gratuit et retour par le second passage Terre puis le mécanisme. Treize
 points concordent en RAM complète et image dans un même rejeu froid continu.
-Le point préparatoire est à64/64 PV et56 PM,avec une clé.
+Le point préparatoire est à64/64 PV et64 PM,avec une clé.
 [Préparation complète de D5](analysis/d5_supplies_v0314_report.json)
-Le cinquième boss reste à valider.
+Le cinquième boss et ses huit satellites sont vaincus sans protection. Deux
+coups normaux coûtent20 PV,avant le cristal qui restaure72/72 PV et PM.
+Le retour extérieur est vérifié sans nouvelle aide :63 fenêtres de prédiction
+exactes pendant le boss,quatre pendant le retour. L’essai du pilote bloqué
+sur une réentrée est conservé et exclu ; le pilote corrigé termine le parcours.
+[Cinquième cristal et retour](analysis/d5_campaign_v0314_report.json)
+La suite à partir de D6 reste à valider.
 [Preuve des bottes et de la sortie](analysis/d5_progress_v0314_report.json)

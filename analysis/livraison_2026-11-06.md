@@ -21,7 +21,7 @@ Le quatrième cristal et le retour extérieur sont vérifiés :239 prédictions
 exactes,sans protection ni dégât pendant le boss. Canoë observé sur99 images
 de déplacement aquatique. Feu obtenu contre l’huile,deuxième épée reçue et
 entrée D5 vérifiée à62/64 PV et72 PM. Voir d4_campaign_v0314_report.json
-et fire_sword_v0314_report.json. La suite depuis D5 reste à vérifier.
+et fire_sword_v0314_report.json. La suite depuis D6 reste à vérifier.
 Accélération des contrôles :trois points d’un même rejeu froid continu sont
 identiques aux rejeux séparés en RAM complète et image,avec62 % d’images
 émulées en moins pour cette série. Aucun état de jeu importé ; le noyau reste
@@ -195,5 +195,12 @@ D5 v314 : clé, Terre, bottes et sortie de ravitaillement vérifiés ;58/64 PV,
 64 PM,quatre cristaux conservés. Voir d5_progress_v0314_report.json.
 
 Préparation D5 terminée :13 points RAM/image exacts,clé achetée pour60,
-soin gratuit et mécanisme d’accès. Point préparatoire à64/64 PV et56 PM,
-une clé. Voir d5_supplies_v0314_report.json. Combat en cours.
+soin gratuit et mécanisme d’accès. Point préparatoire à64/64 PV et64 PM,
+une clé. Voir d5_supplies_v0314_report.json. Combat D5 terminé.
+
+Cinquième cristal et sortie49 vérifiés sur v314 :protection retirée en173
+à128555,premier combat128686,63 prédictions exactes,deux coups normaux
+de10 PV. Fin à132527,72/72 PV et72 PM. Quatre prédictions au retour.
+L’essai de pilote bloqué à la réentrée reste archivé et exclu. Le correctif
+concerne les commandes de test ; aucun changement du binaire.
+Voir d5_campaign_v0314_report.json. Préparation D6 en cours.
