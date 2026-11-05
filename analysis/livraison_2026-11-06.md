@@ -21,7 +21,7 @@ Le quatrième cristal et le retour extérieur sont vérifiés :239 prédictions
 exactes,sans protection ni dégât pendant le boss. Canoë observé sur99 images
 de déplacement aquatique. Feu obtenu contre l’huile,deuxième épée reçue et
 entrée D5 vérifiée à62/64 PV et72 PM. Voir d4_campaign_v0314_report.json
-et fire_sword_v0314_report.json. La suite depuis D8 reste à vérifier.
+et fire_sword_v0314_report.json. D8 est terminé ; D9 et le palais final restent à vérifier sur ce binaire.
 Accélération des contrôles :trois points d’un même rejeu froid continu sont
 identiques aux rejeux séparés en RAM complète et image,avec62 % d’images
 émulées en moins pour cette série. Aucun état de jeu importé ; le noyau reste
@@ -240,3 +240,7 @@ Approche principale et clé du voleur en cours.
 Approche D8 et clé du voleur terminées :huit points froids RAM/image exacts,
 mécanismes distants et solC8 franchis,gardien7A absent après sa mort.
 Voir d8_approach_v0314_report.json. Combat principal6B en cours,sans protection.
+
+Huitième cristal v314 : boss6B/80 PV sans protection ni dégât,423 prédictions
+exactes ; retour extérieur à80/96 PV,72 PM,28 prédictions, RAM/image exactes.
+Voir d8_campaign_v0314_report.json.

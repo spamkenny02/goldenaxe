@@ -25,7 +25,15 @@ protégée contre les interruptions. La compilation de production reproduit
 exactement le binaire testé.
 [Correctif intégré et preuves v314](analysis/intro_audio_integration_v0314_report.json)
 
-Sur ce binaire, le parcours depuis Nouveau Jeu atteint **sept cristaux**,
+Le huitième cristal et le retour extérieur sont maintenant vérifiés sur la
+v314. Le boss6B/80 PV est vaincu sans protection et sans dégât pendant le
+combat, avec423 prédictions exactes. Le retour compte28 prédictions et un
+dégât normal de16 PV : sortie à **80/96 PV et72 PM**. Les trois points
+finaux reproduisent les65 536 octets de RAM et l’image finale lors du
+rejeu froid indépendant. La campagne complète reste à terminer.
+[Huitième cristal et retour v314](analysis/d8_campaign_v0314_report.json)
+
+Sur ce binaire, le parcours depuis Nouveau Jeu atteint **huit cristaux**,
 avec la hache et la première fée de vie obtenues normalement. Le boss de D2
 est vaincu sans protection ni dégât :89 prédictions conformes, puis cristal
 et retour extérieur à **48/48 PV et24 PM**. Un dégât normal de4 PV sur le
