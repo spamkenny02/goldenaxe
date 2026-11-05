@@ -714,5 +714,9 @@ Le retour extérieur est vérifié sans nouvelle aide :63 fenêtres de prédicti
 exactes pendant le boss,quatre pendant le retour. L’essai du pilote bloqué
 sur une réentrée est conservé et exclu ; le pilote corrigé termine le parcours.
 [Cinquième cristal et retour](analysis/d5_campaign_v0314_report.json)
-La suite à partir de D6 reste à valider.
+Préparation D6 terminée :cinq acquisitions de clés,six étapes Terre,Cloche
+de glace et son HUD physique vérifiés en17 points. Les sept consommations
+de8 PM observées restent celles du jeu ; aucune ressource n’est ajoutée.
+Point préparatoire à72/72 PV et32 PM,devant le boss encore à valider.
+[Clés, Terre et Cloche de glace](analysis/d6_progress_v0314_report.json)
 [Preuve des bottes et de la sortie](analysis/d5_progress_v0314_report.json)

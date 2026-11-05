@@ -204,3 +204,8 @@ de10 PV. Fin à132527,72/72 PV et72 PM. Quatre prédictions au retour.
 L’essai de pilote bloqué à la réentrée reste archivé et exclu. Le correctif
 concerne les commandes de test ; aucun changement du binaire.
 Voir d5_campaign_v0314_report.json. Préparation D6 en cours.
+
+Préparation D6 v314 terminée :17 étapes,cinq acquisitions de clés,six
+étapes Terre et sept consommations réelles de8 PM. Cloche de glace acquise,
+HUD physique128 mots exact. Point préparatoire en125 à159782,72/72 PV,
+32 PM,aucune clé. Voir d6_progress_v0314_report.json. Boss non encore validé.
