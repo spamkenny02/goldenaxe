@@ -34,6 +34,14 @@ rejeu froid exact en RAM et en image ; le héros entre avec **96 PV, 72 PM,
 et son cristal restent à vérifier.
 [Transport, Cloche de glace et entrée D9](analysis/d9_entry_v0313_report.json)
 
+Le **premier gardien de D9** est vaincu sans protection : deux coups normaux
+font passer le héros de 96 à **64 PV**, avec 72 PM. Les deux passages Terre,
+l’antichambre, le retrait de l’aide et le combat ont chacun un rejeu froid
+exact en RAM et en image. Les 174 prédictions du combat correspondent à la
+RAM réellement obtenue. Le second gardien, le ballon et le cristal restent
+à vérifier sur v313.
+[Premier gardien de D9](analysis/d9_midboss_v0313_report.json)
+
 Les étapes v312 ci-dessous documentent la préparation du parcours et les
 corrections précédentes.
 

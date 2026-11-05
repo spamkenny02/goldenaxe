@@ -1,0 +1,18 @@
+--- a/megadrive/src/intro.inc
++++ b/megadrive/src/intro.inc
+@@ -213,6 +213,7 @@
+ {
+     u16 n,destination;const u8 *text=intro_bank6+0x39ce,*patch=intro_address(0x10c3);
+     intro_scene=intro_abort=intro_timer=intro_counter=intro_line=0;intro_running=1;
++    sound_music(0x85); /* Source dispatch precedes the initial font upload. */
+     title_phase=FALSE;VDP_setEnable(FALSE);map_origin=0x3800;
+     memset(sms_vram,0,sizeof(sms_vram));
+     decode_planes(number_font_rle,sms_vram+0x2600,4);
+@@ -229,7 +230,6 @@
+     sms_palette[22]=0x2a;sms_palette[23]=0;sms_palette[31]=2;
+     convert_patterns_range_fast(0,512);VDP_loadTileData(md_patterns,16,512,CPU);
+     set_palette(sms_palette);draw_map();VDP_setEnable(TRUE);
+-    sound_music(0x85);
+     /* Reserve the source startup-resource interval before the first scene.
+      * These21 NTSC /22 PAL IRQs align the natural title epoch while keeping
+      * the existing interval from story completion to the title unchanged.

@@ -49,7 +49,7 @@ def main():
                 assert r['earth_passage_room']==r['contact_room']==0x1de and r['earth_cell']==0x34 and r['contact_coordinate']==332 and r['contact_destination']==0x1ce
                 assert r['earth_before']['cell']==0x0b and r['earth_opened']['cell']==0 and r['earth_opened']['flags']&4
                 assert r['earth_before']['magic']-r['earth_opened']['magic']==8 and r['earth_controller_sha256']==index['tools/natural_earth_then_contact.py']
-                assert r['contact_controller_sha256']==index['tools/natural_contact_passage.py'];read(root+'/earth_events.json');read(root+'/contact_events.json')
+                assert r['contact_controller_sha256']==sha(read('tools/natural_contact_passage.py'));read(root+'/earth_events.json');read(root+'/contact_events.json')
             elif kind=='earth':
                 assert r['passed'] and r['earth_action_only_requested'] and r['earth_route_passed'] and r['earth_passage_room']==0x1ce and r['earth_cell']==0x56
                 assert r['earth_before']['cell']==0x0b and r['earth_opened']['cell']!=0x0b and r['earth_state_writes']==0

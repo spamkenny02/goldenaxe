@@ -8714,7 +8714,7 @@
     "bytes": 2097152,
     "archived_utc": "2026-11-05T11:32:18.468876+00:00",
     "rom": "v0313-48fb6e92/gaw-megadrive-v0313.bin",
-    "notes": "Chargement initial corrige : titre PAL/NTSC aligne SMS ; huit cristaux et entree D9 via paiement et Cloche verifies. Gardiens D9, fin et sauvegarde restent a valider.",
+    "notes": "Chargement initial corrige, titre PAL/NTSC aligne SMS ; huit cristaux, entree D9 et premier gardien sans protection verifies. Suite D9, fin et sauvegarde a valider.",
     "validation": "targeted_checks_passed",
     "reports": [
       {
@@ -8732,6 +8732,10 @@
       {
         "file": "d9_entry_v0313_report.json",
         "sha256": "73dcd836b5515fc7860afa8685af1c2555f94fb48616aae39dacf1de15d37994"
+      },
+      {
+        "file": "d9_midboss_v0313_report.json",
+        "sha256": "e4ee06b992b1fa69c6ef2dc2cdc68ea8f4ff3dd707e7fd37d8af75e986367314"
       }
     ]
   }

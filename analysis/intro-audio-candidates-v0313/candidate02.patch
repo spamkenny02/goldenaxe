@@ -1,0 +1,45 @@
+--- a/megadrive/src/intro.inc
++++ b/megadrive/src/intro.inc
+@@ -3,6 +3,7 @@
+ extern const u8 intro_bank6[],intro_fixed[],intro_mono_font[],intro_symbols_rle[];
+ extern const u8 intro_fire_colors[],intro_lightning_colors[];
+ static u16 intro_scene,intro_counter,intro_abort;
++static bool intro_boot_music;
+ static volatile u16 intro_line,intro_running;
+ static u16 intro_actor_state[16],intro_actor_pose[16];
+ static const u8 *intro_actor_templates;
+@@ -213,6 +214,7 @@
+ {
+     u16 n,destination;const u8 *text=intro_bank6+0x39ce,*patch=intro_address(0x10c3);
+     intro_scene=intro_abort=intro_timer=intro_counter=intro_line=0;intro_running=1;
++    if(intro_boot_music) intro_boot_music=FALSE; else sound_music(0x85);
+     title_phase=FALSE;VDP_setEnable(FALSE);map_origin=0x3800;
+     memset(sms_vram,0,sizeof(sms_vram));
+     decode_planes(number_font_rle,sms_vram+0x2600,4);
+@@ -229,7 +231,6 @@
+     sms_palette[22]=0x2a;sms_palette[23]=0;sms_palette[31]=2;
+     convert_patterns_range_fast(0,512);VDP_loadTileData(md_patterns,16,512,CPU);
+     set_palette(sms_palette);draw_map();VDP_setEnable(TRUE);
+-    sound_music(0x85);
+     /* Reserve the source startup-resource interval before the first scene.
+      * These21 NTSC /22 PAL IRQs align the natural title epoch while keeping
+      * the existing interval from story completion to the title unchanged.
+--- a/megadrive/src/main.c
++++ b/megadrive/src/main.c
+@@ -3515,6 +3515,8 @@
+                   0x11111111,0x11111111,0x11111111,0x11111111};
+     const u16 green=0x06a6; /* SMS $19: R=1,G=2,B=1 => MD 3,5,3. */
+     (void)hardReset;
++    sound_stop();sound_ram[3]=SYS_isPAL()?0:0x80;SYS_setVIntCallback(world_vint);
++    sound_music(0x85);intro_boot_music=TRUE;
+     /* Only indoor 2x2 tile updates copy data into the DMA staging buffer.
+        2 KiB leaves room for the live dialogue snapshot in the 64 KiB RAM. */
+     DMA_setBufferSize(2048);
+@@ -3527,7 +3529,6 @@
+     PAL_setColor(33,green);
+     VDP_fillTileMapRect(BG_B,TILE_ATTR_FULL(PAL2,0,0,0,1),0,2,32,24);
+     JOY_init();game_rng_reset();save_init();
+-    sound_stop();sound_ram[3]=SYS_isPAL()?0:0x80;SYS_setVIntCallback(world_vint);
+     while(TRUE)
+     {
+         title_phase=TRUE; title_requested=FALSE;

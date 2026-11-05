@@ -14,7 +14,10 @@ D9, palais, fin et sauvegarde restent à valider sur cette ROM.
 Entrée D9 v313 vérifiée : paiement réel 23→13 cornes, tombe ouverte par la
 Cloche de glace, entrée à96 PV et72 PM avec huit cristaux. Trois étapes avec
 rejeu froid RAM/image exact. Rapport d9_entry_v0313_report.json. Les mécanismes
-Terre et le premier gardien sont en cours de vérification.
+Terre et le premier gardien sont vérifiés : cinq étapes avec rejeu RAM/image
+exact. Deux coups normaux, 96→64 PV ; 72 PM conservés. 174 fenêtres de
+prédiction sont exactes. Rapport d9_midboss_v0313_report.json. La suite
+vers le second gardien et le ballon est lancée.
 
 Historique des étapes précédentes (périmètres propres à chaque version) :
 

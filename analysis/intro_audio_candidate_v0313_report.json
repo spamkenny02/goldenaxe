@@ -1,0 +1,93 @@
+{
+  "measurements_verified": true,
+  "md_sha256": "48fb6e924a520ff579d3fb4eabe4aac365e9a37eed3dc33ff0dabfdc232e1932",
+  "candidate_promoted": false,
+  "absolute_audio_timing_exact": false,
+  "cases": [
+    {
+      "region": "ntsc",
+      "measurements": {
+        "sms": {
+          "first_active_channel_frame": 23,
+          "first_observed_music_request_frame": 22,
+          "rom_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9"
+        },
+        "v313": {
+          "first_active_channel_frame": 36,
+          "first_observed_music_request_frame": 35,
+          "rom_sha256": "48fb6e924a520ff579d3fb4eabe4aac365e9a37eed3dc33ff0dabfdc232e1932"
+        },
+        "candidate01": {
+          "first_active_channel_frame": 28,
+          "first_observed_music_request_frame": 27,
+          "rom_sha256": "8b3dedfe88d44ea3b3cacbdc60060e721742881756dad0083ce003fcebb183fe"
+        },
+        "candidate02": {
+          "first_active_channel_frame": 27,
+          "first_observed_music_request_frame": 26,
+          "rom_sha256": "397378af1de4734f20bc5576a3f7737707185604d64110e5665e5f6a28822e85"
+        }
+      },
+      "candidate01_late_frames": 5,
+      "candidate02_late_frames": 4
+    },
+    {
+      "region": "pal",
+      "measurements": {
+        "sms": {
+          "first_active_channel_frame": 20,
+          "first_observed_music_request_frame": 19,
+          "rom_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9"
+        },
+        "v313": {
+          "first_active_channel_frame": 31,
+          "first_observed_music_request_frame": 30,
+          "rom_sha256": "48fb6e924a520ff579d3fb4eabe4aac365e9a37eed3dc33ff0dabfdc232e1932"
+        },
+        "candidate01": {
+          "first_active_channel_frame": 24,
+          "first_observed_music_request_frame": 23,
+          "rom_sha256": "8b3dedfe88d44ea3b3cacbdc60060e721742881756dad0083ce003fcebb183fe"
+        },
+        "candidate02": {
+          "first_active_channel_frame": 24,
+          "first_observed_music_request_frame": 23,
+          "rom_sha256": "397378af1de4734f20bc5576a3f7737707185604d64110e5665e5f6a28822e85"
+        }
+      },
+      "candidate01_late_frames": 4,
+      "candidate02_late_frames": 4
+    }
+  ],
+  "evidence": {
+    "validation/intro-audio-v0313/candidate01/validation/sms-ntsc/observations.json": "7c1d7169e8b5b48c835a1842bdbadfe42af6ed87faf3cfb2ea5d23deee807f74",
+    "validation/intro-audio-v0313/candidate01/validation/baseline-ntsc/observations.json": "41a61a76a6c4a8d16e5bab773850e697aee9a85ef7b36b21fc6c13a72f34f369",
+    "validation/intro-audio-v0313/candidate01/validation/candidate-ntsc/observations.json": "b11d9c2ae8179a9f362d4feff5b96f8b947e9211f5817e69da8f1a220a9ab1ab",
+    "validation/intro-audio-v0313/candidate02/validation/candidate-ntsc/observations.json": "476a53029d9a738295e9f0a35633df692143f44fa96f4a081611e6d85d9dc5fc",
+    "validation/intro-audio-v0313/candidate01/validation/sms-pal/observations.json": "46fc26867e98d838bb942cca051f954bd1dac4a48c24eefb4f3453e4cc896ee7",
+    "validation/intro-audio-v0313/candidate01/validation/baseline-pal/observations.json": "18b2cb7e0200693898f92767ccbd90cf56e775e9c6c7713bbbf5785d0d10efe1",
+    "validation/intro-audio-v0313/candidate01/validation/candidate-pal/observations.json": "ea4b80dcc181bffebc8dad3920ea9c812e98a2b38eaef4c7276397724c2a9e39",
+    "validation/intro-audio-v0313/candidate02/validation/candidate-pal/observations.json": "0784ac3a31341e2d46d54f099399f6637bade0eeddeaa22a43d667df9d29fe86",
+    "validation/intro-audio-v0313/candidate01/build_report.json": "e784ad52c1d17428fe50977fe6a89b2faaae09c4ea6ceb537ef18e8d3dd12033",
+    "validation/intro-audio-v0313/candidate01/gaw-megadrive.bin": "8b3dedfe88d44ea3b3cacbdc60060e721742881756dad0083ce003fcebb183fe",
+    "validation/intro-audio-v0313/candidate02/build_report.json": "dad32e357fb4662dcc131be9a6d5af7331dbad98a4adf29983809743dc07bcc9",
+    "validation/intro-audio-v0313/candidate02/gaw-megadrive.bin": "397378af1de4734f20bc5576a3f7737707185604d64110e5665e5f6a28822e85",
+    "validation/build_intro_audio_candidate01.py": "30bb2a30054dca85f4f14141de21f347d2d9cfee5aa3766ce6d5f0656483d3f5",
+    "validation/build_intro_audio_candidate02.py": "bd492c318442d68930196aaab13ea309b46c2f5250972767befc6027a20a8f48",
+    "validation/probe_intro_audio_candidate01.py": "f2489e8a7109b1d7be665f27741f9bfedc0512f46456fb2c26a1e941b38636d8",
+    "validation/probe_intro_audio_candidate02.py": "686bbf35f868da77383d71c488f4a062bf98be702799ee634ed5cf921d7f6ca2",
+    "analysis/intro-audio-candidates-v0313/observations/candidate01/validation/sms-ntsc/observations.json": "7c1d7169e8b5b48c835a1842bdbadfe42af6ed87faf3cfb2ea5d23deee807f74",
+    "analysis/intro-audio-candidates-v0313/observations/candidate01/validation/baseline-ntsc/observations.json": "41a61a76a6c4a8d16e5bab773850e697aee9a85ef7b36b21fc6c13a72f34f369",
+    "analysis/intro-audio-candidates-v0313/observations/candidate01/validation/candidate-ntsc/observations.json": "b11d9c2ae8179a9f362d4feff5b96f8b947e9211f5817e69da8f1a220a9ab1ab",
+    "analysis/intro-audio-candidates-v0313/observations/candidate02/validation/candidate-ntsc/observations.json": "476a53029d9a738295e9f0a35633df692143f44fa96f4a081611e6d85d9dc5fc",
+    "analysis/intro-audio-candidates-v0313/observations/candidate01/validation/sms-pal/observations.json": "46fc26867e98d838bb942cca051f954bd1dac4a48c24eefb4f3453e4cc896ee7",
+    "analysis/intro-audio-candidates-v0313/observations/candidate01/validation/baseline-pal/observations.json": "18b2cb7e0200693898f92767ccbd90cf56e775e9c6c7713bbbf5785d0d10efe1",
+    "analysis/intro-audio-candidates-v0313/observations/candidate01/validation/candidate-pal/observations.json": "ea4b80dcc181bffebc8dad3920ea9c812e98a2b38eaef4c7276397724c2a9e39",
+    "analysis/intro-audio-candidates-v0313/observations/candidate02/validation/candidate-pal/observations.json": "0784ac3a31341e2d46d54f099399f6637bade0eeddeaa22a43d667df9d29fe86"
+  },
+  "limits": [
+    "Private measurements only. The channel-active bit excludes pre-track startup workspace, unlike the original candidate01 first_channel_activity convenience field.",
+    "Moving the request before font upload improves timing but leaves five/four frames. Earlier native main initialization leaves four/four frames. Neither candidate is a complete correction.",
+    "Complete PSG phase, waveforms, scene/sprite timing and campaign on these binaries are not validated. Public v313 is unchanged."
+  ]
+}
