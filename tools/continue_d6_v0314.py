@@ -5,7 +5,7 @@ from continue_after_d1_v0314 import ROM
 from continue_d8_entry_v0312 import ROOT,COMBAT,ROUTE,SERVICE,report,assert_canonical
 from archive_lossless_evidence import sha
 from cold_replay_stream import ReplayStream
-helper.EVIDENCE=ROOT/'validation/v0314-d6-sources'
+helper.EVIDENCE=ROOT/'validation/v0314-d6-sources02'
 def frame(f,n):return report(ROOT/'validation'/f/n,'capture.json')['frames']
 def main():
     prior=report(ROOT/'analysis','d5_campaign_v0314_report.json')
@@ -25,9 +25,10 @@ def main():
         assert r['failure'] is None and not r.get('deaths',0) and check(r),r
         stream.prove(family+'/'+current);assert_canonical(family,current)
     try:
-        helper.run('natural_weapon_selection.py',['--trace',family+'/'+current,'--slot','1','--assisted-prefix','--trial','v0314-d6-axe-equip01'])
-        current='md-v0314-d6-axe-equip01';family=SERVICE;finish(lambda r:r['passed'] and r['selected_slot']==1)
-        helper.run('assisted_boss_route.py',['--boss-room','0x115','--world-route','--preserve-floor-hurt','--assisted-prefix','--new-assistance-episode','--prefix-service',current,'--door-index','6','--axe-terrain','--rope-terrain','--live-prefix-terrain','--live-room-replan','--frames',str(frame(family,current)+18000),'--trial','v0314-d6-entry01'])
+        if not (ROOT/'validation'/SERVICE/'md-v0314-d6-axe-equip01/capture.json').exists():helper.run('natural_weapon_selection.py',['--trace',family+'/'+current,'--slot','1','--assisted-prefix','--trial','v0314-d6-axe-equip01'])
+        current='md-v0314-d6-axe-equip01';family=SERVICE;assert_canonical(family,current)
+        weapon=report(ROOT/'validation'/family/current,'report.json');assert weapon['passed'] and weapon['selected_slot']==1
+        helper.run('assisted_boss_route.py',['--boss-room','0x115','--world-route','--preserve-floor-hurt','--assisted-prefix','--new-assistance-episode','--completed-exit-proof',COMBAT+'/md-auto-v0314-d5-exit02','--prefix-service',current,'--door-index','6','--axe-terrain','--rope-terrain','--live-prefix-terrain','--live-room-replan','--frames',str(frame(family,current)+18000),'--trial','v0314-d6-entry01'])
         current='md-v0314-d6-entry01';family=ROUTE;finish(lambda r:r['reached_entrance'])
         for recipe in recipes:
             tool,*args=recipe['arguments'];assert tool=='tools/assisted_boss_route.py'
