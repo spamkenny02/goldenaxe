@@ -29,8 +29,12 @@ vérifiée de Nouveau Jeu au générique.
 La clé supplémentaire, le coffre et le retour en extérieur avec la hache équipée sont vérifiés sur v311.
 [Rapport du parcours de la hache](analysis/axe_route_v0311_report.json)
 
-La fée, l’entrée de D2 et ses trois clés ont passé le rejeu sur v311. Le boss reste en cours de vérification.
-[Rapport de l’approche de D2](analysis/d2_approach_v0311_report.json)
+La fée, l’entrée de D2 et ses trois clés ont passé le rejeu sur v311.
+Le deuxième cristal et le retour en extérieur sont vérifiés à **48/48 PV**,
+sans protection ni dégât pendant le boss. Combat et retour ont chacun une
+relecture froide RAM/image exacte.
+[Approche de D2](analysis/d2_approach_v0311_report.json)
+· [Boss, cristal et sortie](analysis/d2_campaign_v0311_report.json)
 
 Un candidat améliore la transition marchande : neuf images noires et huit
 étapes du portrait alignées sur SMS en PAL/NTSC, sept achats/refus vérifiés.
