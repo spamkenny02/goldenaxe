@@ -30,6 +30,13 @@ Le héros ressort avec **48 PV, 24 PM et 8 cornes**, sans nouvelle écriture
 d’aide pendant le service. Approche et visite ont chacune un rejeu RAM/image
 exact. [Rapport de l’huile v312](analysis/oil_service_v0312_report.json)
 
+La v312 récupère ensuite la corde, active le mécanisme avec les ennemis
+présents, obtient la clé et le troisième cristal, puis ressort à **56/56 PV**.
+Le boss type69 est vaincu sans protection ni dégât reçu. Combat et retour
+ont leur rejeu froid RAM/image exact, avec les trois marqueurs du HUD vérifiés.
+[Corde, mécanisme et clé](analysis/d3_progress_v0312_report.json)
+· [Troisième cristal et sortie](analysis/d3_campaign_v0312_report.json)
+
 La **v0311** ajoute une image au chargement lors des défilements de donjon
 vers le haut en NTSC. Sur trois trajets comparés à la Master System, la
 reprise du jeu s’aligne. Le premier déplacement s’aligne aussi dans les deux

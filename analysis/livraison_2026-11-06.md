@@ -11,6 +11,11 @@ partielle en validation complète.
   43 cas couvrant les 23 villes passent ; le parcours NTSC jusqu'à la sortie
   de D2 conserve les champs de jeu comparés et l'image finale de la v311.
   Le panneau complet reste une image tardif en PAL.
+- Campagne v312 : D2 rejoué depuis le démarrage, huile obtenue par le dialogue
+  et les escaliers, puis corde, mécanisme, clé et troisième cristal. Retour
+  extérieur vérifié à 56/56 PV, sans protection ni dégât pendant le boss D3.
+  Chaque point promu a un rejeu indépendant RAM/image exact ; trois marqueurs
+  et les 128 mots physiques du HUD sont vérifiés après le boss et la sortie.
 - v311, 2 Mio, SHA0972465d… : correction d'une image du
   chargement vers le haut en NTSC. Premier donjon, hache, fontaine et clés du
   deuxième donjon vérifiés par rejeu exact. Deuxième cristal et retour extérieur
