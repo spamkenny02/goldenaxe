@@ -699,3 +699,9 @@ Git : il s’exécute après l’enregistrement de la livraison.
 Code natif : [boucle et transitions](megadrive/src/main.c),
 [acteurs](megadrive/src/actors.c). Les preuves volumineuses sont archivées
 sans perte et vérifiées avant le nettoyage des fichiers générés.
+
+D5 v314 : première clé, passage Terre, bottes et sortie de ravitaillement
+vérifiés en RAM complète et image. Sortie à58/64 PV et64 PM ; quatre cristaux
+conservés. Les quatre points sont relus dans un même noyau démarré à froid,
+sans import d’état. Le cinquième boss reste à valider.
+[Preuve des bottes et de la sortie](analysis/d5_progress_v0314_report.json)

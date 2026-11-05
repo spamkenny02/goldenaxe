@@ -190,3 +190,6 @@ et sur console réelle restent ouvertes. La phase
 exacte du fournisseur R demeure provisoire. Ne pas garantir une version finale
 sans réserve le 6 novembre tant que ces preuves manquent. La livraison doit
 indiquer clairement ce qui a été vérifié et ce qui reste ouvert.
+
+D5 v314 : clé, Terre, bottes et sortie de ravitaillement vérifiés ;58/64 PV,
+64 PM,quatre cristaux conservés. Voir d5_progress_v0314_report.json.
