@@ -8603,7 +8603,7 @@
     "bytes": 2097152,
     "archived_utc": "2026-11-05T06:50:51.568925+00:00",
     "rom": "v0312-0b9aecb4/gaw-megadrive-v0312.bin",
-    "notes": "v312 : sept cristaux et sorties verifies ; gardien D8 vaincu sans protection, cle des voleurs et acces au boss principal verifies en huit points RAM/image. Aide retiree avant le boss ; huitieme cristal en cours.",
+    "notes": "v312 : huit cristaux et sorties verifies a 96 PV/72 PM ; correctif du demarrage en verification. Nettoyage lossless des objets de compilation des prototypes : 490 fichiers, 4079914 octets nets liberes, ROMs/sources/preuves preservees.",
     "validation": "targeted_checks_passed",
     "reports": [
       {
@@ -8697,6 +8697,37 @@
       {
         "file": "d8_approach_v0312_report.json",
         "sha256": "29bb9497ad1679d331d9bb5d0cd9510717f9693e853cf98f0106b391d450bd41"
+      },
+      {
+        "file": "d8_campaign_v0312_report.json",
+        "sha256": "9c29967d888a59ec2c1b175dc00711ce67f969dcd3b0952f39095c92085c172f"
+      },
+      {
+        "file": "title_build_cleanup_v0312_report.json",
+        "sha256": "456dbd8df0c362e4cffda483c18dc5db739039f067088343d6010d32bd70b43f"
+      }
+    ]
+  },
+  {
+    "version": 313,
+    "sha256": "48fb6e924a520ff579d3fb4eabe4aac365e9a37eed3dc33ff0dabfdc232e1932",
+    "bytes": 2097152,
+    "archived_utc": "2026-11-05T11:32:18.468876+00:00",
+    "rom": "v0313-48fb6e92/gaw-megadrive-v0313.bin",
+    "notes": "Chargement initial corrige : titre PAL/NTSC aligne SMS ; huit cristaux, dix entrees de boss et rejeu froid RAM/image verifies. D9, fin et sauvegarde restent a valider.",
+    "validation": "targeted_checks_passed",
+    "reports": [
+      {
+        "file": "startup_v0313_report.json",
+        "sha256": "e0260bb85e10ae9dbc33a27f22597c57df11def28e82e6b6cb8ff4b9af180b28"
+      },
+      {
+        "file": "title_boot_candidate_d8_report.json",
+        "sha256": "ed6647427fe3f362ae257cc88ac318a373aa7bb3cf457f55987d45449d1d660a"
+      },
+      {
+        "file": "title_boot_candidate_v0312_report.json",
+        "sha256": "f73a620342988bb63165fafebd3e77d3b9f4b80bff7da5b49e228bc8c0e3b19d"
       }
     ]
   }

@@ -4,7 +4,14 @@
 Mega Drive fidèle de Golden Axe Warrior ; la date ne transforme pas une preuve
 partielle en validation complète.
 
-État constaté :
+État courant : v313, 2 Mio, SHA48fb6e92…, checksum544B.
+Le titre s’aligne sur SMS en PAL/NTSC et les 130 comparaisons de lignes du
+récit passent. Le parcours froid atteint huit cristaux et dix entrées de boss
+sans protection, puis la sortie à96/96 PV et72 PM. Un rejeu indépendant
+reproduit les65536 octets de RAM et l’image finale. Voir startup_v0313_report.json.
+D9, palais, fin et sauvegarde restent à valider sur cette ROM.
+
+Historique des étapes précédentes (périmètres propres à chaque version) :
 
 - ROM courante v312, 2 Mio, SHA0b9aecb4… : transition marchande corrigée,
   neuf images noires et huit étapes du portrait alignées SMS PAL/NTSC.
@@ -115,22 +122,9 @@ partielle en validation complète.
 
 Ordre de travail pour la livraison :
 
-Correctif natif prêt en prototype privé : SHA48fb6e92… (2 Mio, checksum544B).
-Il réserve le travail initial avant le premier chargement de scène. Le titre
-publie cartes et palettes aux mêmes images que SMS en PAL/NTSC, avec 40 images
-normalisées vérifiées. Les 130 comparaisons de lignes du récit passent : écart
-[-1,0] en NTSC et [0,0] en PAL ; fin du récit aux mêmes images que SMS.
-L'intervalle récit→titre reste86/79 images. Les commandes froides jusqu'aux
-sept cristaux passent les huit points d'entrée des boss et conservent objets,
-ressources et PNG final ; le second rejeu reproduit les65536 octets de RAM.
-Les états des deux générateurs, vtimer, les768 octets d'acteurs et les16384
-octets de VRAM SMS correspondent aussi à la v312. La table de symboles de
-base est conservée dans le dossier du correctif pour la prochaine relecture.
-Voir `title_boot_candidate_v0312_report.json` et le patch associé. Réserver sa
-promotion au prochain point de sortie stable, puis relire le préfixe courant
-sur ce binaire avant la poursuite. La ROM publique reste v312 pendant le
-parcours D8 actif. Le prototype ne valide pas D8, la fin ou la sauvegarde ;
-les révélations complètes, l'audio, R/IRQ global et le matériel restent ouverts.
+Le correctif du chargement initial est intégré à la v313 ; le binaire public
+est identique au candidat testé jusqu’à la sortie du huitième donjon.
+La suite repart du préfixe froid md-auto-v0313-d8-cold01.
 
 1. Poursuivre la validation de la ROM courante et traiter les blocages ou régressions
    réellement rencontrés. Réutiliser les préfixes froids déjà vérifiés ; ne pas

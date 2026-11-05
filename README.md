@@ -5,17 +5,30 @@ puis portage de sa logique Z80 en code natif 68000 avec SGDK.
 La fidélité à la Master System passe avant les améliorations.
 
 <!-- ROM-RELEASE:START -->
-**Version courante : v0312 — 2048 Kio.**
+**Version courante : v0313 — 2048 Kio.**
 
-[Télécharger la ROM v0312](versions/v0312-0b9aecb4/gaw-megadrive-v0312.bin) · [Toutes les versions](versions/README.md)
+[Télécharger la ROM v0313](versions/v0313-48fb6e92/gaw-megadrive-v0313.bin) · [Toutes les versions](versions/README.md)
 
 Contrôles ciblés réussis ; portage complet encore non validé.
 
-SHA-256 : `0b9aecb48fc9bb82cfcebc9547684742134d60e0f82e60b1a070ab3be50b4d64`
-Checksum Mega Drive : `B827`
+SHA-256 : `48fb6e924a520ff579d3fb4eabe4aac365e9a37eed3dc33ff0dabfdc232e1932`
+Checksum Mega Drive : `544B`
 <!-- ROM-RELEASE:END -->
 
 ## État du portage
+
+La **v0313** intègre la correction du chargement initial : les publications
+du titre s’alignent sur SMS en PAL/NTSC, avec 40 images normalisées comparées.
+Les 65 lignes du récit sont vérifiées dans les deux régions, avec au plus une
+image d’écart en NTSC. Le parcours depuis le démarrage atteint **huit cristaux**
+et le retour en extérieur à **96/96 PV et 72 PM**. Dix entrées de boss sont
+contrôlées sans protection ; un second rejeu reproduit exactement les 65 536
+octets de RAM et l’image finale. D9, le palais, la fin et la sauvegarde restent
+à vérifier sur cette version.
+[Livraison v313 et périmètre vérifié](analysis/startup_v0313_report.json)
+
+Les étapes v312 ci-dessous documentent la préparation du parcours et les
+corrections précédentes.
 
 La **v0312** corrige la vitesse de la transition marchande : neuf images
 noires et les huit étapes du portrait s’alignent sur SMS en PAL et NTSC.
@@ -548,16 +561,15 @@ Les rapports v0305 ci-dessus conservent leur périmètre historique.
 
 ## Campagne et travail restant
 
-Sur la ROM courante **v0312**, sept cristaux et leurs sorties sont vérifiés.
-La Cloche de glace, le navire et les deux combats de D7 sont vérifiés ;
-le gardien intermédiaire de D8 est vaincu. Le huitième cristal et la suite
-jusqu’à la fin restent à valider sur cette ROM.
+Sur la ROM courante **v0313**, huit cristaux et le retour en extérieur sont
+vérifiés depuis le démarrage. Le navire et la clé des voleurs sont acquis
+en jeu. Le neuvième donjon, le palais, la fin et la sauvegarde restent à valider.
 La protection de test est déclarée et limitée aux approches, puis retirée
 avant les combats de boss. Aucun objet, ressource ou progression n’est importé.
 
 La **v0310** dispose d’un parcours froid de Nouveau jeu à la fin, ainsi que
 d’une sauvegarde écrite en jeu et rechargée par Continuer. Ces preuves restent
-propres à cette version ; elles ne valident pas la campagne entière de v312.
+propres à cette version ; elles ne valident pas la campagne entière de v313.
 [Parcours jusqu’à la fin v310](analysis/cold_palace_final_v0310_report.json)
 · [Sauvegarde et rechargement v310](analysis/game_written_save_v0310_report.json)
 
@@ -590,16 +602,10 @@ un processus et les rechargent si leur signature de fichier change. Les hashes
 et la decompression restent controles a chaque lecture. Les trois auditsD9
 produisent des rapports strictement identiques : voir [le controle du cache](analysis/evidence_manifest_cache_v0306_report.json).
 
-Un prototype de correction du chargement initial aligne les publications du
-titre en PAL/NTSC et les 65 lignes du récit, avec au plus une image d’écart en
-NTSC. Les commandes jusqu’aux sept cristaux conservent les huit entrées de boss,
-les champs de jeu finaux et l’image finale ; un rejeu indépendant reproduit
-la RAM complète du prototype. Les états aléatoires, le compteur d’images,
-les acteurs et la VRAM SMS correspondent aussi à la v312 au point de sortie D7.
-Le correctif est préparé pour une prochaine ROM,
-au prochain point de sortie stable du parcours courant.
-[Preuves du prototype](analysis/title_boot_candidate_v0312_report.json)
-· [Correctif préparé](analysis/title-boot-candidate-v0312/startup.patch)
+La correction du chargement initial est intégrée à la v313. Le binaire publié
+est identique au candidat vérifié jusqu’aux huit cristaux et à la sortie de D8.
+Les détails PAL/NTSC et les limites figurent dans le
+[rapport de livraison v313](analysis/startup_v0313_report.json).
 
 Une option supprime le rendu vidéo des seules simulations secondaires qui
 choisissent les commandes. Sur le petit benchmark D6, le débit augmente

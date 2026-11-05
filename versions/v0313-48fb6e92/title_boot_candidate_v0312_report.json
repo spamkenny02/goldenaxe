@@ -1,0 +1,100 @@
+{
+  "passed": true,
+  "md_sha256": "48fb6e924a520ff579d3fb4eabe4aac365e9a37eed3dc33ff0dabfdc232e1932",
+  "production_rom_sha256": "0b9aecb48fc9bb82cfcebc9547684742134d60e0f82e60b1a070ab3be50b4d64",
+  "candidate_private": true,
+  "production_rom_unchanged": true,
+  "production_source_unchanged": true,
+  "regions": [
+    {
+      "region": "ntsc",
+      "previous_title_offset": -21,
+      "candidate_title_offset": 0,
+      "story_start_offsets": [
+        -1,
+        0
+      ],
+      "story_completion_frame": 5959,
+      "story_to_title_interval_frames": 86,
+      "normalized_title_images_exact": 20
+    },
+    {
+      "region": "pal",
+      "previous_title_offset": -22,
+      "candidate_title_offset": 0,
+      "story_start_offsets": [
+        0,
+        0
+      ],
+      "story_completion_frame": 5952,
+      "story_to_title_interval_frames": 79,
+      "normalized_title_images_exact": 20
+    }
+  ],
+  "story_lines_checked": 130,
+  "normalized_title_images_checked": 40,
+  "current_seven_crystal_inputs_replayed": true,
+  "checked_boss_entries": 8,
+  "frames": 208506,
+  "terminal_gameplay_fields_match_v0312": true,
+  "terminal_png_matches_v0312": true,
+  "independent_candidate_replay_whole_ram_png_exact": true,
+  "primary_state_imports": 0,
+  "continuation_state_matches_v0312": {
+    "game_rng_seed": {
+      "bytes": 2,
+      "sha256": "3e1f914345d8fe1d9cc6741d36e69e9edeb284ea711e435220debd38430c7e3b"
+    },
+    "randbase": {
+      "bytes": 2,
+      "sha256": "b52cb2102847db12be2b4b3a4a1ef932dfb2642b9c3d2c8029b37d95d60c48f5"
+    },
+    "vtimer": {
+      "bytes": 4,
+      "sha256": "38908e81797a075d988914a83e57b1b96e1f8d1bcbee5aa74432ee5423c97467"
+    },
+    "world_actor_state": {
+      "bytes": 768,
+      "sha256": "6e891b31cde22fd72cfab0ebde39c81298972178a74cd9c9c70a655bfda678ed"
+    },
+    "sms_vram": {
+      "bytes": 16384,
+      "sha256": "b920c5a65e385b629ab333c55c1258376355ce36677da958188280318b4551c9"
+    }
+  },
+  "full_game_validated": false,
+  "evidence": {
+    "validation/title-boot-phase-v0312/candidate02/build_report.json": "62dcaf5581df91e50689732ace083b1e18b0e7dc053ea9eb8d6e03b9bd4fa680",
+    "validation/title-boot-phase-v0312/candidate02/gaw-megadrive.bin": "48fb6e924a520ff579d3fb4eabe4aac365e9a37eed3dc33ff0dabfdc232e1932",
+    "gaw-megadrive.bin": "0b9aecb48fc9bb82cfcebc9547684742134d60e0f82e60b1a070ab3be50b4d64",
+    "megadrive/src/intro.inc": "a3b7ee8bfb69b0bde8bb9efd04ee49cc8181ee490bb3de2d0b9fb18a7190c543",
+    "validation/title-boot-phase-v0312/candidate02/megadrive/src/intro.inc": "0efd95539a6b71df8f51c67e0c9381bf7d853550bbc443b8fdce158a7698271a",
+    "megadrive/src/main.c": "d5e14f94818122a3c13975ecda25d842355b9780814d9e79606ec9031afbfb7b",
+    "validation/title-boot-phase-v0312/candidate02/megadrive/src/main.c": "d5e14f94818122a3c13975ecda25d842355b9780814d9e79606ec9031afbfb7b",
+    "megadrive/out/release/symbol.txt": "811860a23eb67a7b0980ca97e799c42eac0d23fcea7c6f46426940939484b735",
+    "analysis/title-boot-candidate-v0312/base-symbols.txt": "811860a23eb67a7b0980ca97e799c42eac0d23fcea7c6f46426940939484b735",
+    "analysis/title-boot-candidate-v0312/startup.patch": "0271236b496bc7d6980587e1a746963158296a6878bf6747b887acb32f960912",
+    "validation/title_cadence-natural-v0312-baseline01_report.json": "12a981e6c97530d9561f9deff93291673e73e04b9b25bf2686cf87cf87f8b567",
+    "validation/title-boot-phase-v0312/candidate02/validation/title_cadence-natural-candidate02_report.json": "7c79e6dd8b19ff8446ead738af8d4a2a1affd3197bd8e05563a50b8e0665c194",
+    "validation/title-boot-phase-v0312/candidate02/validation/intro_report.json": "a9b1953b661c9be17215b8b717b1f87dc6f568d24b4d02ff52aa0e79943f66d4",
+    "validation/title_cadence-pal-natural-v0312-baseline01_report.json": "c69daa346552e05e4b74359fe4efe40b503db4ec065a4db572c606fb3aa76278",
+    "validation/title-boot-phase-v0312/candidate02/validation/title_cadence-pal-natural-candidate02_report.json": "c8d5301371c1646570abd4ab6bcdba49544c9631811566fa34cd3dc0f5624fd7",
+    "validation/title-boot-phase-v0312/candidate02/validation/intro-pal_report.json": "4c3b36acf6c8b2e40fb92cd0b5d41ae7cbff3af27e23b036c0d37963ba7046d6",
+    "validation/title-boot-phase-v0312/candidate02/validation/natural-dungeon-combat/md-auto-title-boot-candidate02-d7-replay01/report.json": "573adac8ce3cd3833d47fb4a0bb8484a6ef0ed5c48ce8e29a860e59fb900fee9",
+    "validation/title-boot-phase-v0312/candidate02/validation/natural-dungeon-combat/md-auto-title-boot-candidate02-d7-replay01/capture.json": "82d6f2e2fd4b3f969f27fc0450a5348b4c60e8ed0d19b2cfca8ff7dcde7a3a1a",
+    "validation/title-boot-phase-v0312/candidate02/validation/natural-dungeon-combat/md-auto-title-boot-candidate02-d7-replay01/assistance.json": "7604e62a5aa4ef4afbc925ce23eac76cf5d23e4bc2b595fb132f8fd140ee7ac0",
+    "validation/title-boot-phase-v0312/candidate02/validation/natural-dungeon-combat/md-auto-title-boot-candidate02-d7-replay01-assisted-fixed-replay-208506/replay_report.json": "ded0476c7d90eebc2f069d9e7e225ef7e50c539286a38f8bc21dfb1e5ef7e720",
+    "validation/title-boot-phase-v0312/candidate02/validation/natural-dungeon-combat/md-auto-title-boot-candidate02-d7-replay01/controls.json": "0bc09e39b49adcba937d343f88f2287f4dc2a176bd93e73994273585d9a6ae80",
+    "validation/title-boot-phase-v0312/candidate02/validation/natural-dungeon-combat/md-auto-title-boot-candidate02-d7-replay01/ram_208506.bin": "92adac7972148dd868f58d52e9c94339bbd1ee4b04699363ea5249591bfc278b",
+    "validation/title-boot-phase-v0312/candidate02/validation/natural-dungeon-combat/md-auto-title-boot-candidate02-d7-replay01-assisted-fixed-replay-208506/ram_208506.bin": "92adac7972148dd868f58d52e9c94339bbd1ee4b04699363ea5249591bfc278b",
+    "validation/title-boot-phase-v0312/candidate02/validation/natural-dungeon-combat/md-auto-title-boot-candidate02-d7-replay01/frame_208506.png": "530c9956be1ecc1406031dfb521144694a8fb731f872d4486d81a6ad1d4c4cad",
+    "validation/title-boot-phase-v0312/candidate02/validation/natural-dungeon-combat/md-auto-title-boot-candidate02-d7-replay01-assisted-fixed-replay-208506/frame_208506.png": "530c9956be1ecc1406031dfb521144694a8fb731f872d4486d81a6ad1d4c4cad",
+    "validation/natural-dungeon-combat/md-auto-v0312-d7-03-exit01/ram_208506.bin": "771375248b79d98e3b7bd8cb976f08831a0fd7c3c7f65ddd14c316fc5ef0a6ec"
+  },
+  "limits": [
+    "Candidate only. The public ROM remains v312 while the current campaign continues.",
+    "The delay reserves initial resource work before scene loading; it preserves the measured86/79-frame story-to-title interval.",
+    "Story text and title timing are covered; complete scene-reveal/sprite/audio timing, global R/IRQ and hardware remain open.",
+    "Seven crystals are replayed from boot with declared approach guards; D8 onward and saving are outside this candidate proof."
+  ]
+}

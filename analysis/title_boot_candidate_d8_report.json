@@ -1,0 +1,60 @@
+{
+  "passed": true,
+  "md_sha256": "48fb6e924a520ff579d3fb4eabe4aac365e9a37eed3dc33ff0dabfdc232e1932",
+  "source_rom_sha256": "0b9aecb48fc9bb82cfcebc9547684742134d60e0f82e60b1a070ab3be50b4d64",
+  "candidate_private": true,
+  "current_campaign_trace": "validation/title-boot-phase-v0312/candidate02/validation/natural-dungeon-combat/md-auto-title-boot-candidate02-d8-replay01",
+  "campaign_frames": 247431,
+  "eighth_crystal_and_exterior_return": true,
+  "checked_boss_entries": 10,
+  "terminal_gameplay_fields_match_v0312": true,
+  "terminal_png_matches_v0312": true,
+  "independent_whole_ram_png_replay_exact": true,
+  "continuation_state_matches_v0312": {
+    "game_rng_seed": {
+      "bytes": 2,
+      "sha256": "4cac9057c930d6ed07742be0ba32a33893455ef78a8b2ca0e172c76163bcc4ca"
+    },
+    "randbase": {
+      "bytes": 2,
+      "sha256": "f0f639189843668f480629df87f02cbef73dfc70d2e4e33b280ca7142827b314"
+    },
+    "vtimer": {
+      "bytes": 4,
+      "sha256": "e3c36fdcef96206153008d28f0e740ee2fab107f58ad7d9cfd39295fba17285e"
+    },
+    "world_actor_state": {
+      "bytes": 768,
+      "sha256": "e35004a531ea98fad2494e1670d32fdadc93471bb362c5014ddd1d641393e379"
+    },
+    "sms_vram": {
+      "bytes": 16384,
+      "sha256": "bc6e2a601614a4e9eb6894f192ab7b1f292279460d6f24d41db683e1c705a83b"
+    }
+  },
+  "changed_native_sources": [
+    "intro.inc"
+  ],
+  "native_source_files_checked": 225,
+  "primary_state_imports": 0,
+  "full_game_validated": false,
+  "evidence": {
+    "analysis/d8_campaign_v0312_report.json": "9c29967d888a59ec2c1b175dc00711ce67f969dcd3b0952f39095c92085c172f",
+    "analysis/title_boot_candidate_v0312_report.json": "f73a620342988bb63165fafebd3e77d3b9f4b80bff7da5b49e228bc8c0e3b19d",
+    "validation/title-boot-phase-v0312/candidate02/validation/natural-dungeon-combat/md-auto-title-boot-candidate02-d8-replay01/report.json": "b05ac0f5e7d29db392e797afe3b09b042b286cfd909f3f265b6c9c8290bac43f",
+    "validation/title-boot-phase-v0312/candidate02/validation/natural-dungeon-combat/md-auto-title-boot-candidate02-d8-replay01/capture.json": "a7b169fc5d47b9aa8fafbdc1563e922783368f4c02113936f6cae54c680aea9c",
+    "validation/title-boot-phase-v0312/candidate02/gaw-megadrive.bin": "48fb6e924a520ff579d3fb4eabe4aac365e9a37eed3dc33ff0dabfdc232e1932",
+    "validation/title-boot-phase-v0312/candidate02/validation/natural-dungeon-combat/md-auto-title-boot-candidate02-d8-replay01-assisted-fixed-replay-247431/replay_report.json": "87ad127d5400f1777c48c9bc03d08a80662530b76539fbefe6c3d341dad44fa2",
+    "validation/title-boot-phase-v0312/candidate02/validation/natural-dungeon-combat/md-auto-title-boot-candidate02-d8-replay01/controls.json": "fafa34f886dce96c5e2674a72dc05765883ddc048eab82191428ce3189ae92ef",
+    "validation/title-boot-phase-v0312/candidate02/validation/natural-dungeon-combat/md-auto-title-boot-candidate02-d8-replay01/assistance.json": "2056335ec0362c9925b67a58860560f6b95a03dc88063c48f5346013d2a14519",
+    "validation/title-boot-phase-v0312/candidate02/validation/natural-dungeon-combat/md-auto-title-boot-candidate02-d8-replay01/ram_247431.bin": "e8c14535849ca1ba60db5ace4281d489b899cadd2d122bfccdc475475df440d6",
+    "validation/title-boot-phase-v0312/candidate02/validation/natural-dungeon-combat/md-auto-title-boot-candidate02-d8-replay01-assisted-fixed-replay-247431/ram_247431.bin": "e8c14535849ca1ba60db5ace4281d489b899cadd2d122bfccdc475475df440d6",
+    "validation/title-boot-phase-v0312/candidate02/validation/natural-dungeon-combat/md-auto-title-boot-candidate02-d8-replay01/frame_247431.png": "933121ffab2e921059f852b7602345ab6ad0aa0aeb3a878e64050d53473e26e3",
+    "validation/title-boot-phase-v0312/candidate02/validation/natural-dungeon-combat/md-auto-title-boot-candidate02-d8-replay01-assisted-fixed-replay-247431/frame_247431.png": "933121ffab2e921059f852b7602345ab6ad0aa0aeb3a878e64050d53473e26e3",
+    "validation/natural-dungeon-combat/md-auto-v0312-d8-exit01/ram_247431.bin": "351803c8f70d543cbaf9a9410bce1ec2b32453aaefba6e80ab1a3267a47b2620"
+  },
+  "limits": [
+    "Eight-crystal candidate proof with declared approach guards; no state/resource/actor imports.",
+    "D9, palace, ending, saving, complete audiovisual/R/IRQ phase and hardware still require verification."
+  ]
+}

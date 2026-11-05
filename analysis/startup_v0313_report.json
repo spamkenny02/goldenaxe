@@ -1,0 +1,55 @@
+{
+  "passed": true,
+  "version": 313,
+  "md_sha256": "48fb6e924a520ff579d3fb4eabe4aac365e9a37eed3dc33ff0dabfdc232e1932",
+  "bytes": 2097152,
+  "md_checksum": "544B",
+  "production_matches_validated_candidate": true,
+  "native_sources_match_candidate": 225,
+  "natural_title_epoch_exact_pal_ntsc": true,
+  "story_lines_checked": 130,
+  "normalized_title_images_checked": 40,
+  "current_campaign_trace": "validation/natural-dungeon-combat/md-auto-v0313-d8-cold01",
+  "campaign_frames": 247431,
+  "stages": [
+    {
+      "trace": "validation/natural-dungeon-combat/md-auto-v0313-d8-cold01",
+      "frames": 247431,
+      "room": 41,
+      "health": 96,
+      "max_health": 96,
+      "magic": 72,
+      "gold": 23,
+      "keys": 1,
+      "crystals": 8,
+      "whole_ram_png_exact": true
+    }
+  ],
+  "eighth_crystal_and_exterior_return": true,
+  "checked_boss_entries": 10,
+  "candidate_cold_replay_whole_ram_png_exact": true,
+  "physical_hud_words_checked": 128,
+  "owned_crystal_markers": 8,
+  "primary_state_imports": 0,
+  "full_game_validated": false,
+  "evidence": {
+    "analysis/title_boot_candidate_v0312_report.json": "f73a620342988bb63165fafebd3e77d3b9f4b80bff7da5b49e228bc8c0e3b19d",
+    "analysis/title_boot_candidate_d8_report.json": "ed6647427fe3f362ae257cc88ac318a373aa7bb3cf457f55987d45449d1d660a",
+    "gaw-megadrive.bin": "48fb6e924a520ff579d3fb4eabe4aac365e9a37eed3dc33ff0dabfdc232e1932",
+    "gaw-title-megadrive.bin": "48fb6e924a520ff579d3fb4eabe4aac365e9a37eed3dc33ff0dabfdc232e1932",
+    "versions/index.json": "830b4b32060fd515a55566826e6cf8707564122b21e482457fce25d4f2ec49b2",
+    "versions/v0313-48fb6e92/gaw-megadrive-v0313.bin": "48fb6e924a520ff579d3fb4eabe4aac365e9a37eed3dc33ff0dabfdc232e1932",
+    "megadrive/src/intro.inc": "0efd95539a6b71df8f51c67e0c9381bf7d853550bbc443b8fdce158a7698271a",
+    "validation/natural-dungeon-combat/md-auto-v0313-d8-cold01/capture.json": "a7b169fc5d47b9aa8fafbdc1563e922783368f4c02113936f6cae54c680aea9c",
+    "validation/natural-dungeon-combat/md-auto-v0313-d8-cold01/report.json": "b05ac0f5e7d29db392e797afe3b09b042b286cfd909f3f265b6c9c8290bac43f",
+    "validation/natural-dungeon-combat/md-auto-v0313-d8-cold01/ram_247431.bin": "e8c14535849ca1ba60db5ace4281d489b899cadd2d122bfccdc475475df440d6",
+    "validation/natural-dungeon-combat/md-auto-v0313-d8-cold01/vram_247431.bin": "e0f9a1974c79ae4eb8ec058d35d5bfb1cfe88175f40b6934bd8b23a5b13994a0",
+    "validation/natural-dungeon-combat/md-auto-v0313-d8-cold01/vdp_regs_247431.bin": "b40a19e1adba69e3281f88a0222936fc280b9a2c66a8bdbcb48b83ef2de0786b",
+    "input/original.sms": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+    "analysis/startup_v0313_prefix_manifest.json": "aae77dbe298c233ab9921e7c5d48848ac8b50bab61a053a627b14f4d76d18d72"
+  },
+  "limits": [
+    "The public2MiB build is byte-identical to the validated candidate. Evidence transport copies files; no game state is imported.",
+    "Current cold campaign reaches eight crystals. D9,palace,ending,saving and complete audiovisual/R/IRQ/hardware fidelity remain open."
+  ]
+}
