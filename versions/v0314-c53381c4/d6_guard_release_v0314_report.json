@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "version": 314,
+  "md_sha256": "c53381c459a1e6254a8c9f1cfad1b8cda482cc0614697ad566133b28335e07a7",
+  "production_rom_unchanged": true,
+  "trace": "validation/natural-dungeon-combat/md-auto-v0314-d6-release01",
+  "frames": 159783,
+  "guard_release_before_room": 277,
+  "room": 293,
+  "live_ordinary_approach_actors": [],
+  "resources_unchanged": true,
+  "whole_ram_png_exact": true,
+  "sixth_boss_entered": false,
+  "sixth_crystal_validated": false,
+  "full_game_validated": false,
+  "evidence": {
+    "analysis/d6_progress_v0314_report.json": "149efe95d477595ac1fe09663787d72674b8123243238a9209438a54816b759c",
+    "gaw-megadrive.bin": "c53381c459a1e6254a8c9f1cfad1b8cda482cc0614697ad566133b28335e07a7",
+    "validation/natural-dungeon-combat/md-auto-v0314-d6-gate125-02/capture.json": "d59d278f694c3c6cf0f79a84add13999189613e0f042165612d667fe37b8b3b4",
+    "validation/natural-dungeon-combat/md-auto-v0314-d6-release01/capture.json": "1a6e742f0a9ebd1f0c1df2a4851283809909d2eba00ccdf39bb924c702310aaf",
+    "validation/natural-dungeon-combat/md-auto-v0314-d6-release01/report.json": "c008a25b5436e07466f0397a374e1337d184d64a01dd90dc2f493712ea0a6e68",
+    "validation/natural-dungeon-combat/md-auto-v0314-d6-release01/assistance.json": "e69baf51ad296df4bffce89e11560e7d07d6dfe1f71e83ce141dd6a99effacfc",
+    "validation/natural-dungeon-combat/md-auto-v0314-d6-release01/events.json": "94978e9e1d99179bfefa39cd8e8922ff99a440965075e10c9bf5391fef7a024b",
+    "validation/natural-dungeon-combat/md-auto-v0314-d6-release01-assisted-fixed-replay-159783/replay_report.json": "f3ec53c3544443c414c93f66f710e7014ad28319797caedad6f231e461a976dd",
+    "validation/natural-dungeon-combat/md-auto-v0314-d6-release01/controls.json": "e4e2ebbcabe5b4e346251a38b5782e371a6c55c3d8205f505118a6ab9b21e9a6",
+    "validation/natural-dungeon-combat/md-auto-v0314-d6-release01/ram_159783.bin": "b258bf326311af47f544828a479499a743b0ac41de8db790abcfe4ae0d7858b2",
+    "validation/natural-dungeon-combat/md-auto-v0314-d6-release01-assisted-fixed-replay-159783/ram_159783.bin": "b258bf326311af47f544828a479499a743b0ac41de8db790abcfe4ae0d7858b2",
+    "validation/natural-dungeon-combat/md-auto-v0314-d6-release01/frame_159783.png": "d5602bc0c78d8fda779240f4b25bd341a18c26f80aa26541eca114a79f99f63a",
+    "validation/natural-dungeon-combat/md-auto-v0314-d6-release01-assisted-fixed-replay-159783/frame_159783.png": "d5602bc0c78d8fda779240f4b25bd341a18c26f80aa26541eca114a79f99f63a",
+    "tools/close_assisted_approach.py": "4aca0af44f51c3ea02fff6b747a329c0c1b2d9221ee9bdc32fb0cb42475d6238"
+  },
+  "limits": [
+    "Release only: one neutral frame and the final zero write outside the boss room.",
+    "No actor is removed by the release helper; the actual residual list is recorded.",
+    "All boss and return inputs still require a separate unassisted execution and cold replay."
+  ]
+}
