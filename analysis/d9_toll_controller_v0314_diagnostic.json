@@ -1,0 +1,32 @@
+{
+  "passed": false,
+  "scope": "Controller diagnostics, not production ROM regressions",
+  "attempts": [
+    {
+      "trace": "validation/natural-service-route/md-v0314-d9-earned-toll01",
+      "result": "ordinary-damage controller died before earning toll"
+    },
+    {
+      "trace": "validation/natural-service-route/md-v0314-d9-earned-toll02",
+      "result": "guarded axe controller exceeded frame budget, no resource fixture"
+    },
+    {
+      "trace": "validation/natural-service-route/md-v0314-d9-earned-toll03",
+      "result": "guarded sword cleared initial room and collected normal HP drop, then fixed exit coordinate unreachable; stopped verified test PID39736"
+    },
+    {
+      "trace": "validation/natural-service-route/md-v0314-d9-earned-toll04",
+      "result": "frame_limit; actual gold8/9 drops were observed but dungeon-style intra-room paths traversed exterior borders before collection; room/border controller corrected, no ROM change"
+    },
+    {
+      "trace": "validation/natural-service-route/md-v0314-d9-earned-toll05",
+      "result": "stopped verified test PID45884; wrong fixed exit preference in29; source-map BFS found valid south/east/north exits"
+    },
+    {
+      "trace": "validation/natural-service-route/md-v0314-d9-earned-toll06",
+      "result": "frame_limit; no coins spawned before controller idled at a hidden source2F emerging shooter. Added ordinary patrol fallback, no ROM modification."
+    }
+  ],
+  "next_attempt": "validation/natural-service-route/md-v0314-d9-earned-toll07",
+  "production_rom_changed": false
+}
