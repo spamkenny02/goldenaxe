@@ -271,3 +271,8 @@ Premier gardien D9/79 vaincu à279232 :221 prédictions exactes, un seul
 dégât normal de20 PV,76/96 PV et72 PM à la fin. Cinq points supplémentaires
 relus en RAM complète/image, protection retirée avant le combat.
 Voir d9_midboss_v0314_report.json. Deuxième gardien/Ballon en cours.
+
+Deuxième gardien D9/7B vaincu sans protection :292 prédictions exactes,
+deux dégâts normaux de20 PV,56/96 PV à la fin. Ballon acquis normalement
+à290406 ; fin de l’étape76 PV/72 PM. Huit rejeux RAM/image exacts.
+Voir d9_balloon_v0314_report.json. Boss principal D9 encore ouvert.
