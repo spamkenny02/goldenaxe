@@ -281,3 +281,8 @@ Déplacement v314 comparé à la SMS :96 cas terrain/bottes/direction,
 3 072 états identiques en NTSC/PAL. Cadences des deux systèmes identiques
 pour chaque région ; contrôle préparé, sans revendication de charge combat.
 Voir terrain_walk_v0314_game_report.json.
+
+Les neuf cristaux v314 et le retour EB sont vérifiés à303753 : boss6C/90 PV
+sans protection,291 prédictions exactes,un dégât normal20 PV,cristal puis
+retour104/104 PV et72 PM avec67 prédictions. Quatre points RAM/image exacts.
+Voir d9_campaign_v0314_report.json. Le palais final est lancé.

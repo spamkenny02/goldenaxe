@@ -8,6 +8,9 @@ from validate_playable_sprite_limit import symbols
 from validate_reward_hud_restore import translated
 
 def main():
+ if not(ROOT/'analysis/owned_overview_v0314_report.json').exists():
+  from summarize_owned_overview_v0314 import main as verify_owned_overview
+  verify_owned_overview()
  refs={}
  def read(p):
   raw=evidence(p);refs[p.relative_to(ROOT).as_posix()]=sha(raw);return raw

@@ -40,8 +40,8 @@ pénalité de8 à6 cornes ; le soigneur restaure ensuite96/96 PV. Les trois
 points reproduisent toute la RAM et l’image finale, sans nouvelle écriture
 de test ni import de ressources. L’accès direct à D9 et le passage CB ouvert
 avec la Cloche sont maintenant vérifiés, à96 PV/24 PM. Le premier gardien est aussi vaincu ;
-le deuxième gardien et le Ballon sont aussi vérifiés. Le boss principal et
-le neuvième cristal restent à valider.
+le deuxième gardien et le Ballon sont aussi vérifiés. Le boss principal, le neuvième cristal
+et le retour extérieur sont désormais vérifiés. Le palais final reste à terminer.
 [Continuer et soin gratuit v314](analysis/d9_recovery_v0314_report.json)
 [Entrée D9 et passage de la Cloche v314](analysis/d9_entry_v0314_report.json)
 
@@ -66,7 +66,15 @@ la même cadence émulée dans chaque région. Ce contrôle utilise des cartes
 et des acteurs préparés ; il ne couvre pas la charge complète d’un combat.
 [Cadence de déplacement v314](analysis/terrain_walk_v0314_game_report.json)
 
-Sur ce binaire, le parcours depuis Nouveau Jeu atteint **huit cristaux**,
+Les **neuf cristaux et le retour extérieur de D9** sont maintenant vérifiés.
+Le boss6C/90 PV est vaincu sans protection : **291 prédictions exactes**, un
+seul dégât normal de20 PV avant le soin du cristal. Le retour compte67
+prédictions et se termine à **104/104 PV et72 PM**, enEB. Les quatre derniers
+points sont relus avec RAM complète et image exacte. Le test du palais
+final, de la Hache d’or et de la fin est lancé sur cette même ROM.
+[Neuvième cristal et retour v314](analysis/d9_campaign_v0314_report.json)
+
+Sur ce binaire, le parcours depuis Nouveau Jeu atteint **neuf cristaux**,
 avec la hache et la première fée de vie obtenues normalement. Le boss de D2
 est vaincu sans protection ni dégât :89 prédictions conformes, puis cristal
 et retour extérieur à **48/48 PV et24 PM**. Un dégât normal de4 PV sur le
