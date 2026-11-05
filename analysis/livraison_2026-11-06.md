@@ -276,3 +276,8 @@ Deuxième gardien D9/7B vaincu sans protection :292 prédictions exactes,
 deux dégâts normaux de20 PV,56/96 PV à la fin. Ballon acquis normalement
 à290406 ; fin de l’étape76 PV/72 PM. Huit rejeux RAM/image exacts.
 Voir d9_balloon_v0314_report.json. Boss principal D9 encore ouvert.
+
+Déplacement v314 comparé à la SMS :96 cas terrain/bottes/direction,
+3 072 états identiques en NTSC/PAL. Cadences des deux systèmes identiques
+pour chaque région ; contrôle préparé, sans revendication de charge combat.
+Voir terrain_walk_v0314_game_report.json.

@@ -58,6 +58,14 @@ le combat : **292 prédictions exactes**, deux dégâts normaux de20 PV, fin
 image exacte, avec les quatre dangers persistants62 conservés sur le trajet.
 [Deuxième gardien et Ballon v314](analysis/d9_balloon_v0314_report.json)
 
+Le déplacement du héros est aussi comparé directement à la SMS sur la v314 :
+**96 cas** couvrent six terrains, les bottes et les quatre directions en
+NTSC/PAL. **3 072 états de mouvement** sont identiques : positions, direction,
+animation, compteur, vitesses et contexte de terrain. Les deux systèmes ont
+la même cadence émulée dans chaque région. Ce contrôle utilise des cartes
+et des acteurs préparés ; il ne couvre pas la charge complète d’un combat.
+[Cadence de déplacement v314](analysis/terrain_walk_v0314_game_report.json)
+
 Sur ce binaire, le parcours depuis Nouveau Jeu atteint **huit cristaux**,
 avec la hache et la première fée de vie obtenues normalement. Le boss de D2
 est vaincu sans protection ni dégât :89 prédictions conformes, puis cristal
