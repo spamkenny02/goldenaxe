@@ -107,6 +107,20 @@ partielle en validation complète.
 
 Ordre de travail pour la livraison :
 
+Correctif natif prêt en prototype privé : SHA48fb6e92… (2 Mio, checksum544B).
+Il réserve le travail initial avant le premier chargement de scène. Le titre
+publie cartes et palettes aux mêmes images que SMS en PAL/NTSC, avec 40 images
+normalisées vérifiées. Les 130 comparaisons de lignes du récit passent : écart
+[-1,0] en NTSC et [0,0] en PAL ; fin du récit aux mêmes images que SMS.
+L'intervalle récit→titre reste86/79 images. Les commandes froides jusqu'aux
+sept cristaux passent les huit points d'entrée des boss et conservent objets,
+ressources et PNG final ; le second rejeu reproduit les65536 octets de RAM.
+Voir `title_boot_candidate_v0312_report.json` et le patch associé. Réserver sa
+promotion au prochain point de sortie stable, puis relire le préfixe courant
+sur ce binaire avant la poursuite. La ROM publique reste v312 pendant le
+parcours D8 actif. Le prototype ne valide pas D8, la fin ou la sauvegarde ;
+les révélations complètes, l'audio, R/IRQ global et le matériel restent ouverts.
+
 1. Poursuivre la validation de la ROM courante et traiter les blocages ou régressions
    réellement rencontrés. Réutiliser les préfixes froids déjà vérifiés ; ne pas
    recommencer les étapes acquises. Les protections restent sur les approches,

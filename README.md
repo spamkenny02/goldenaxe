@@ -578,6 +578,15 @@ un processus et les rechargent si leur signature de fichier change. Les hashes
 et la decompression restent controles a chaque lecture. Les trois auditsD9
 produisent des rapports strictement identiques : voir [le controle du cache](analysis/evidence_manifest_cache_v0306_report.json).
 
+Un prototype de correction du chargement initial aligne les publications du
+titre en PAL/NTSC et les 65 lignes du récit, avec au plus une image d’écart en
+NTSC. Les commandes jusqu’aux sept cristaux conservent les huit entrées de boss,
+les champs de jeu finaux et l’image finale ; un rejeu indépendant reproduit
+la RAM complète du prototype. Le correctif est préparé pour une prochaine ROM,
+au prochain point de sortie stable du parcours courant.
+[Preuves du prototype](analysis/title_boot_candidate_v0312_report.json)
+· [Correctif préparé](analysis/title-boot-candidate-v0312/startup.patch)
+
 Une option supprime le rendu vidéo des seules simulations secondaires qui
 choisissent les commandes. Sur le petit benchmark D6, le débit augmente
 d’environ 38 % ; le retour D5 conserve les sept prédictions RAM complètes,
