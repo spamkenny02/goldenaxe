@@ -20,3 +20,12 @@ Les scénarios contrôlés ne remplacent pas une rencontre atteinte naturellement.
 Voir [comparaison native](full_pool_iy_native_comparison_v0314_report.json)
 et [appelant SMS observé](full_pool_iy_callers_v0314_report.json).
 Le relevé aligné corrige le libellé actor5_direction du premier essai non aligné.
+
+Douze contextes contrôlés supplémentaires couvrent repos,épée,Feu et Terre
+à trois phases d’injection. Les sorts sont effectivement actifs dans les
+relevés. Huit contextes laissent IY=C4B0,le premier enregistrement de butin ;
+son octet+0A vaut zéro avant et après les cinq écritures. Le cas RAM observé
+n’a donc pas de différence nette dans ces mesures. L’invariant global reste
+à établir ; aucun changement de production n’a été appliqué.
+Voir [contextes](iy_action_contexts_v0314_report.json) et
+[cibles avant/après](iy_context_target_values_v0314_report.json).
