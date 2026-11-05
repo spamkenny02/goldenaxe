@@ -26,6 +26,9 @@ vérifiée de Nouveau Jeu au générique.
 [Comparaison des défilements](analysis/upward_ntsc_candidate_report.json)
 · [Validation du premier donjon v311](analysis/upward_ntsc_d1_report.json)
 
+La clé supplémentaire, le coffre et le retour en extérieur avec la hache équipée sont vérifiés sur v311.
+[Rapport du parcours de la hache](analysis/axe_route_v0311_report.json)
+
 La **[v0310 raccorde la récurrence du hasard SMS](analysis/rng_integration_v0310.md)**
 aux routines du jeu : ennemis, butin, historique des salles et mini-jeu.
 Les lectures directes de R sont séparées des appels 04E1. Le fournisseur de R
