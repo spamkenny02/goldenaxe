@@ -21,7 +21,7 @@ Le quatrième cristal et le retour extérieur sont vérifiés :239 prédictions
 exactes,sans protection ni dégât pendant le boss. Canoë observé sur99 images
 de déplacement aquatique. Feu obtenu contre l’huile,deuxième épée reçue et
 entrée D5 vérifiée à62/64 PV et72 PM. Voir d4_campaign_v0314_report.json
-et fire_sword_v0314_report.json. La suite depuis D7 reste à vérifier.
+et fire_sword_v0314_report.json. La suite depuis D8 reste à vérifier.
 Accélération des contrôles :trois points d’un même rejeu froid continu sont
 identiques aux rejeux séparés en RAM complète et image,avec62 % d’images
 émulées en moins pour cette série. Aucun état de jeu importé ; le noyau reste
@@ -226,3 +226,8 @@ Voir d7_prep_v0314_report.json. Gardien intermédiaire en cours.
 Gardien78 de D7 vaincu sans protection ni dégât :87 prédictions exactes,
 80 PV et56 PM. Quatre points jusqu’à192855 :retrait191703,contact,combat,
 reprise après mort vers179. Voir d7_midboss_v0314_report.json. Bateau en cours.
+
+D7 terminé jusqu’à212039 :bateau réel,boss67 sans protection ni dégât,
+154 prédictions exactes,septième cristal. Retour1B à88/88 PV,64 PM,
+une clé et11 cornes. Dix points RAM/image exacts. Voir d7_campaign_v0314_report.json.
+D8 :trajet vers le passage payant3C en cours ; paiement attendu10 cornes.

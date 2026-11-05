@@ -25,7 +25,7 @@ protégée contre les interruptions. La compilation de production reproduit
 exactement le binaire testé.
 [Correctif intégré et preuves v314](analysis/intro_audio_integration_v0314_report.json)
 
-Sur ce binaire, le parcours depuis Nouveau Jeu atteint **six cristaux**,
+Sur ce binaire, le parcours depuis Nouveau Jeu atteint **sept cristaux**,
 avec la hache et la première fée de vie obtenues normalement. Le boss de D2
 est vaincu sans protection ni dégât :89 prédictions conformes, puis cristal
 et retour extérieur à **48/48 PV et24 PM**. Un dégât normal de4 PV sur le
@@ -55,7 +55,7 @@ Son rejeu reproduit les592 octets du contenu et le fichier SRAM, puis un
 redémarrage et **Continuer** restaurent les objets, le premier cristal,
 le HUD physique et le déplacement. Aucun état SRAM synthétique n’est utilisé.
 La sauvegarde à neuf cristaux écrite sur v313 reste également compatible avec
-v314 en PAL/NTSC. La suite à partir du septième donjon reste à vérifier sur le nouveau binaire.
+v314 en PAL/NTSC. La suite à partir du huitième donjon reste à vérifier sur le nouveau binaire.
 [Sauvegarde écrite et Continuer v314](analysis/game_written_save_v0314_report.json)
 · [Compatibilité de sauvegarde v313](analysis/save_compatibility_candidate11_v0313_report.json)
 
@@ -726,15 +726,21 @@ de14 PV (72→58). Le cristal restaure80 PV,puis un autre coup de14 PV
 au retour laisse66/80 PV à la sortie,avec72 PM. Les82 prédictions du retour,
 les six marqueurs et les128 mots physiques du HUD concordent.
 [Sixième cristal et retour](analysis/d6_campaign_v0314_report.json)
-La suite depuis D7 reste à valider.
+La suite depuis D8 reste à valider.
 
 Préparation D7 :don réel de10 cornes (55→65),clé achetée pour60 et soin
 gratuit (66→80 PV),puis entrée,clés et deux mécanismes Terre. Neuf points
 RAM/image exacts ; état préparatoire à80/80 PV,56 PM et deux clés.
-Le gardien intermédiaire et le septième cristal restent à valider.
+Le gardien intermédiaire, le septième cristal et le retour sont désormais validés (voir ci-dessous).
 [Préparation D7](analysis/d7_prep_v0314_report.json)
 
 Le gardien78 de D7 est vaincu sans protection ni dégât reçu :87 prédictions
 exactes,80 PV et56 PM conservés. L’approche ne reprend qu’après sa mort,
 vers le bateau et le boss principal179. Quatre points RAM/image exacts.
 [Gardien intermédiaire D7](analysis/d7_midboss_v0314_report.json)
+
+D7 terminé :bateau obtenu normalement,boss67 vaincu sans protection ni
+dégât,154 prédictions exactes. Septième cristal et retour extérieur à
+88/88 PV et64 PM,une clé et11 cornes. Dix points relus en RAM complète
+et image ; le passage Terre du retour consomme ses8 PM normalement.
+[Septième cristal, bateau et retour](analysis/d7_campaign_v0314_report.json)
