@@ -5,17 +5,41 @@ puis portage de sa logique Z80 en code natif 68000 avec SGDK.
 La fidélité à la Master System passe avant les améliorations.
 
 <!-- ROM-RELEASE:START -->
-**Version courante : v0314 — 2048 Kio.**
+**Version courante : v0315 — 2048 Kio.**
 
-[Télécharger la ROM v0314](versions/v0314-c53381c4/gaw-megadrive-v0314.bin) · [Toutes les versions](versions/README.md)
+[Télécharger la ROM v0315](versions/v0315-004b593b/gaw-megadrive-v0315.bin) · [Toutes les versions](versions/README.md)
 
 Contrôles ciblés réussis ; portage complet encore non validé.
 
-SHA-256 : `c53381c459a1e6254a8c9f1cfad1b8cda482cc0614697ad566133b28335e07a7`
-Checksum Mega Drive : `241A`
+SHA-256 : `004b593b8c9869ebac9e01256eb677edd63a22d987dd6694d3591d57cc8e7c1b`
+Checksum Mega Drive : `DFA4`
 <!-- ROM-RELEASE:END -->
 
 ## État du portage
+
+La **v0315 corrige le dernier décalage du panneau marchand** : il apparaît
+à la même image que sur SMS en PAL et NTSC. Les huit étapes du portrait et la durée de la fenêtre noire
+sont conservées ;43 transactions dans23 villes
+et six retours d’inventaire passent. L’intro, ses flux audio et les images
+du titre contrôlées restent identiques à la v314.
+
+Le **parcours complet est également rejoué sur ce nouveau binaire** jusqu’au
+générique et au retour intro :401609 images de champs de jeu comparées à
+v314, sans différence, et image finale identique. Les protections de trajet
+sont retirées avant les boss ; aucun objet, santé ou progression n’est importé.
+La sauvegarde réelle v314 à neuf cristaux se charge normalement sur v315
+en PAL/NTSC, avec objets, HUD, marqueurs et déplacement restaurés.
+[Correctif marchand v315](analysis/merchant_panel_v0315_report.json)
+· [Parcours v315](analysis/campaign_v0315_report.json)
+· [Sauvegarde compatible](analysis/save_compatibility_v0315_report.json)
+Les essais clos ont été nettoyés après archivage et relecture :16607
+fichiers générés retirés, environ364 Mio nets d’artefacts libérés. Les315
+ROMs numérotées, les sources, symboles et captures PNG sont préservés.
+[Nettoyage des essais v315](analysis/merchant_experiment_cleanup_v0315_report.json)
+
+Ces contrôles établissent le parcours et les scènes décrites ; ils ne
+revendiquent pas une identité matérielle globale avec la SMS ni une
+validation sur console physique.
 
 La **campagne v0314 est terminée depuis Nouveau Jeu** : neuf cristaux,
 Ballon, Hache d’or, Death Adder, générique complet et retour à l’intro.

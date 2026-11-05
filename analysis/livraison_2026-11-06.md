@@ -326,3 +326,17 @@ Continuer restaure neuf marqueurs/HUD/objets et le déplacement à1343.
 Le premier essai de service ne joue pas :collision du dossier du test D1,
 reprise limitée au service/rechargement sous un nom neuf. Aucun bug ROM.
 Voir game_written_save_v0314_nine_crystals_report.json.
+
+ROM courante désormais v315,SHA004b593b…,checksumDFA4,2 Mio. Production
+identique au candidat03. Panneau marchand aligné PAL/NTSC,43 transactions,
+six retours d’inventaire,intro/audio conservés. Campagne complète rejouée
+sur315 :401609 états sémantiques identiques à314,image finale exacte.
+Sauvegarde réelle314 à neuf cristaux compatible315 PAL/NTSC.
+Voir merchant_panel_v0315_report.json,campaign_v0315_report.json
+et save_compatibility_v0315_report.json. Fidélité globale encore distincte.
+
+Nettoyage des essais marchands clos :16607 fichiers générés retirés après
+archive complète et relecture,gain net d’artefacts381213957 octets (~364 Mio).
+Les315 ROMs numérotées restent présentes ;sources,symboles et PNG préservés.
+Récupération des données supprimées testée depuis les archives,y compris
+le binaire candidat identique à la production315.

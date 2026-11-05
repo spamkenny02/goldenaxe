@@ -12,7 +12,7 @@ ROM : `c53381c459a1e6254a8c9f1cfad1b8cda482cc0614697ad566133b28335e07a7`.
 | Séquence avant le titre, guerrier, cape, logo | `intro_audio_integration_v0314_report.json`, `intro_audio_candidate11_v0313_report.json` ; candidat et production identiques | Comparaisons PAL/NTSC ciblées : 12 959 états audio IRQ, 40 images normalisées du titre. Ne prouve pas toutes les images transitoires ni le cycle matériel global. |
 | Musique Nouveau Jeu/Continuer, choix sonores | `start_menu_candidate11_v0313_report.json`, référencé par l'intégration v314 | Musique, curseur et confirmation comparés à la source dans les deux régions sur le même binaire. |
 | Entrée/sortie du menu et décor après retour chez les marchands | `inventory_candidate11_v0313_report.json`, référencé par l'intégration v314 | Six parcours naturels, extérieur et deux premières boutiques, PAL/NTSC. Fenêtres noires, restauration et fermeture silencieuse vérifiées ; ne couvre pas chaque pièce du jeu. |
-| Transition marchande fluide | `merchant_v0312_report.json`, code actuel `merchant.inc` | Portrait et fenêtre noire comparés ; le panneau complet avait encore une image de retard en PAL. Ce rapport reste lié à v312 : Mesure v314 actuelle : PAL+1 et NTSC−1. Le candidat03 corrige les deux, avec43 transactions et intro/audio conservés ; intégration après clôture des tests actifs. |
+| Transition marchande fluide | `merchant_v0312_report.json`, code actuel `merchant.inc` | Portrait et fenêtre noire comparés ; le panneau complet avait encore une image de retard en PAL. Ce rapport reste lié à v312 : Mesure v314 actuelle : PAL+1 et NTSC−1. Le candidat03 corrige les deux, avec43 transactions et intro/audio conservés ; intégré en v315 après clôture des tests actifs. La campagne315 est rejouée avec401609 états sémantiques identiques à314 et image finale exacte. |
 | Vitesse du héros | `terrain_walk_v0314_game_report.json` | 96 cas, 3 072 états source/MD identiques pour terrain, bottes et direction. Carte/acteurs préparés ; charge complète de combat exclue. |
 | Vitesse des monstres | Routines et validations individuelles des acteurs ; campagne courante | Le déplacement du héros ne prouve pas celui de tous les monstres. Consolider les comparaisons source par famille et distinguer logique de mouvement, calendrier des images et aléatoire. |
 | Anciens monstres/objets pendant le scrolling | `scroll_objects_v0314_report.json` | Huit cas direction/région, tables matérielles des sprites contrôlées, persistance et reprise conservées. La disparition est vérifiée ; la durée exacte du scrolling et chaque pixel du décor ne le sont pas par ce test. |
@@ -38,6 +38,7 @@ ROM : `c53381c459a1e6254a8c9f1cfad1b8cda482cc0614697ad566133b28335e07a7`.
   Master System pour le rendu, l'audio ou la cadence.
 - Les tests émulés ne constituent pas une validation sur Mega Drive physique.
 
-La victoire, le générique et la reprise de sauvegarde doivent être vérifiés sur
-la v314 avant de qualifier cette ROM de candidate complète. La fidélité finale
-demande aussi de résoudre ou de caractériser les écarts concrets ci-dessus.
+La victoire, le générique et la reprise de sauvegarde sont maintenant vérifiés
+sur v314. La v315 ajoute le correctif marchand, un parcours complet rejoué et
+la compatibilité de cette sauvegarde en PAL/NTSC. La fidélité finale demande
+encore de résoudre ou de caractériser les écarts concrets ci-dessus.
