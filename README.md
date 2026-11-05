@@ -27,6 +27,13 @@ octets de RAM et l’image finale. D9, le palais, la fin et la sauvegarde resten
 à vérifier sur cette version.
 [Livraison v313 et périmètre vérifié](analysis/startup_v0313_report.json)
 
+L’entrée de **D9 sur v313** est vérifiée après le paiement réel de 10 cornes
+et l’ouverture de la tombe avec la Cloche de glace. Les trois étapes ont un
+rejeu froid exact en RAM et en image ; le héros entre avec **96 PV, 72 PM,
+13 cornes et une clé**, en conservant les huit cristaux. Les gardiens de D9
+et son cristal restent à vérifier.
+[Transport, Cloche de glace et entrée D9](analysis/d9_entry_v0313_report.json)
+
 Les étapes v312 ci-dessous documentent la préparation du parcours et les
 corrections précédentes.
 

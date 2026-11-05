@@ -11,6 +11,11 @@ sans protection, puis la sortie à96/96 PV et72 PM. Un rejeu indépendant
 reproduit les65536 octets de RAM et l’image finale. Voir startup_v0313_report.json.
 D9, palais, fin et sauvegarde restent à valider sur cette ROM.
 
+Entrée D9 v313 vérifiée : paiement réel 23→13 cornes, tombe ouverte par la
+Cloche de glace, entrée à96 PV et72 PM avec huit cristaux. Trois étapes avec
+rejeu froid RAM/image exact. Rapport d9_entry_v0313_report.json. Les mécanismes
+Terre et le premier gardien sont en cours de vérification.
+
 Historique des étapes précédentes (périmètres propres à chaque version) :
 
 - ROM courante v312, 2 Mio, SHA0b9aecb4… : transition marchande corrigée,
