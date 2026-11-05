@@ -96,6 +96,13 @@ et les 128 mots physiques du HUD sont contrôlés. Le retour utilise des décisi
 plus fines après l’immobilisation du premier pilote dans une salle, sans changer
 la ROM ni réactiver l’aide. [Sixième cristal et sortie v312](analysis/d6_campaign_v0312_report.json)
 
+La préparation de D7 vérifie l’achat d’une clé pour 60 cornes, l’entrée du
+donjon, deux acquisitions de clés et deux ouvertures Terre coûtant 16 PM.
+Les sept étapes passent leur rejeu RAM/image exact. Le point préparatoire
+conserve six cristaux, **64 PV, 56 PM et deux clés**. Le combat intermédiaire
+et le septième cristal restent à valider.
+[Ravitaillement, clés et Terre D7 v312](analysis/d7_prep_v0312_report.json)
+
 La **v0311** ajoute une image au chargement lors des défilements de donjon
 vers le haut en NTSC. Sur trois trajets comparés à la Master System, la
 reprise du jeu s’aligne. Le premier déplacement s’aligne aussi dans les deux
@@ -516,8 +523,8 @@ Les rapports v0305 ci-dessus conservent leur périmètre historique.
 ## Campagne et travail restant
 
 Sur la ROM courante **v0312**, six cristaux et leurs sorties sont vérifiés.
-La Cloche de glace est acquise et le ravitaillement pour D7 est en cours ;
-la suite jusqu’à la fin reste à valider sur cette ROM.
+La Cloche de glace et la préparation de D7 sont vérifiées ; le combat
+intermédiaire de D7 et la suite jusqu’à la fin restent à valider sur cette ROM.
 La protection de test est déclarée et limitée aux approches, puis retirée
 avant les combats de boss. Aucun objet, ressource ou progression n’est importé.
 

@@ -49,7 +49,11 @@ partielle en validation complète.
   exact, avec six marqueurs et 128 mots physiques du HUD contrôlés.
   Le premier pilote de retour reste immobile et atteint sa limite d'images ;
   la variante à décisions de huit images réussit en 94 prédictions exactes,
-  sans nouvelle écriture d'aide. Ravitaillement pour D7 en cours.
+  sans nouvelle écriture d'aide.
+- D7 v312 préparé : achat réel d'une clé pour 60 cornes, entrée du donjon,
+  deux acquisitions de clés et deux ouvertures Terre pour 16 PM. Sept étapes
+  avec rejeu froid RAM/image exact ; six cristaux conservés, 64 PV, 56 PM et
+  deux clés au point préparatoire. Combat intermédiaire encore non validé.
 - Menu Nouveau jeu / Continuer v312 : musique active et audible en PAL/NTSC,
   événements des bruitages de curseur et validation alignés SMS. Aucune
   comparaison globale des formes d'onde n'est déduite de ce contrôle.
