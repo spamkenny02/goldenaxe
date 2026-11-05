@@ -57,7 +57,12 @@ partielle en validation complète.
 - Intermédiaire D7 v312 vaincu sans protection. Coup normal de 12 PV observé,
   reprise de l'approche après victoire à 52 PV et 56 PM. Quatre points avec
   rejeu froid RAM/image exact : retrait, passage, combat et reprise.
-  Le navire et le boss principal restent à valider.
+  Le navire et le boss principal sont validés par la suite ci-dessous.
+- D7 v312 terminé : navire, septième cristal et retour extérieur vérifiés à
+  68/88 PV et 64 PM, avec une clé. Dix étapes depuis la reprise passent leur
+  rejeu froid RAM/image exact ; HUD physique contrôlé après navire, cristal
+  et sortie. Aucun soutien pendant les deux boss ou le retour ; les dégâts
+  restent enregistrés. Parcours vers D8 lancé depuis cette sortie.
 - Menu Nouveau jeu / Continuer v312 : musique active et audible en PAL/NTSC,
   événements des bruitages de curseur et validation alignés SMS. Aucune
   comparaison globale des formes d'onde n'est déduite de ce contrôle.
