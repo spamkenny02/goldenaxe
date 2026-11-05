@@ -39,7 +39,10 @@ partielle en validation complète.
   et PM ; cinq étapes finales relues exactement en RAM/image et cinq marqueurs
   du HUD vérifiés. Le pilote ciblant les satellites réduit la recherche de
   415 à 60 décisions ; la partie retenue continue sur cette branche.
-  Préparation D6 en cours.
+  Préparation D6 terminée : cinq acquisitions de clés, passages Terre,
+  Cloche de glace et accès du boss vérifiés par 17 rejeux RAM/image exacts.
+  Point préparatoire à 72/72 PV et 64 PM, sans objet ni ressource injecté.
+  Le sixième boss reste à valider sur la v312.
 - Menu Nouveau jeu / Continuer v312 : musique active et audible en PAL/NTSC,
   événements des bruitages de curseur et validation alignés SMS. Aucune
   comparaison globale des formes d'onde n'est déduite de ce contrôle.

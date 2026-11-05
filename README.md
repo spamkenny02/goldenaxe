@@ -80,6 +80,13 @@ finales passent leur rejeu RAM/image, avec les cinq marqueurs du HUD vérifiés.
 Le pilote de test cible désormais les satellites : sa recherche passe de
 415 à 60 décisions sur ce combat. [Cinquième cristal et sortie v312](analysis/d5_campaign_v0312_report.json)
 
+La préparation de D6 sur v312 vérifie cinq acquisitions de clés, les passages
+Terre et la Cloche de glace. Les 17 étapes ont un rejeu RAM/image exact ;
+le héros rejoint l’accès du boss à **72/72 PV et 64 PM**. L’aide reste limitée
+aux approches ; aucun objet ni ressource n’est injecté. Le sixième boss et
+son cristal restent à valider sur cette version.
+[Clés, Terre et Cloche de glace v312](analysis/d6_progress_v0312_report.json)
+
 La **v0311** ajoute une image au chargement lors des défilements de donjon
 vers le haut en NTSC. Sur trois trajets comparés à la Master System, la
 reprise du jeu s’aligne. Le premier déplacement s’aligne aussi dans les deux
