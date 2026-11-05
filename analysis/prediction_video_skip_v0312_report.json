@@ -1,0 +1,40 @@
+{
+  "passed": true,
+  "version": 312,
+  "md_sha256": "0b9aecb48fc9bb82cfcebc9547684742134d60e0f82e60b1a070ab3be50b4d64",
+  "production_rom_unchanged": true,
+  "benchmark_cases": 60,
+  "benchmark_speedup": 1.3813352516714954,
+  "benchmark_secondary_refresh_fixture_zero": true,
+  "unassisted_exit_trace": "validation/natural-dungeon-combat/md-auto-v0312-d5-fast-exit-check02",
+  "frames": 131180,
+  "full_ram_prediction_windows": 7,
+  "normal_planner_endpoint_ram_png_exact": true,
+  "official_cold_replay_ram_png_exact": true,
+  "primary_state_imports": 0,
+  "new_assistance_writes": 0,
+  "evidence": {
+    "validation/prediction-video-skip-v0312-05/report.json": "f828e82790bee212615f91c6a68d8e75c9bb1f98dda4d9e01260e7b74731bbca",
+    "gaw-megadrive.bin": "0b9aecb48fc9bb82cfcebc9547684742134d60e0f82e60b1a070ab3be50b4d64",
+    "analysis/d5_campaign_v0312_report.json": "029da216d8781077f11d0d41c2c466a92f6701117ac8660a0f460fe54799215b",
+    "validation/natural-dungeon-combat/md-auto-v0312-d5-exit02/capture.json": "67b14fb046a659c5e4a2aafab891d566b9bbe6d27be9f252b0a4a11166510e81",
+    "validation/natural-dungeon-combat/md-auto-v0312-d5-fast-exit-check02/capture.json": "67b14fb046a659c5e4a2aafab891d566b9bbe6d27be9f252b0a4a11166510e81",
+    "validation/natural-dungeon-combat/md-auto-v0312-d5-fast-exit-check02/report.json": "e750382ef01248aef4f8a88339a43702bf082eb877b419779f9067e4d7512d0d",
+    "tools/unassisted_fast_prediction.py": "7094424ac8cd704a302b621034ad3a3f52012dc5910094d61b2638d5338c6989",
+    "tools/prediction_video_skip.py": "f5ef8d275328964d09da5b3c4eec75f9cc55bb90f68865036d60d80e57db2ae0",
+    "validation/natural-dungeon-combat/md-auto-v0312-d5-fast-exit-check02-assisted-fixed-replay-131180/replay_report.json": "53b7b93324b83cddce09070ef1d2f227f06d115ee6c405d62910897fcaff2872",
+    "validation/natural-dungeon-combat/md-auto-v0312-d5-fast-exit-check02/controls.json": "d52ad0ea45260caee6be067d0053289867e5a9413d9b700425f4b78aaad27f0f",
+    "validation/natural-dungeon-combat/md-auto-v0312-d5-fast-exit-check02/assistance.json": "3e0553f2904eac0a71828bd3559780506edc7dd123f4d694ecac1edf28ba3cad",
+    "validation/natural-dungeon-combat/md-auto-v0312-d5-exit02/ram_131180.bin": "cf34fffe69387d2bf3c4e97a3b8a6cb508cbf38a8566518a86ccc10e6385e0f6",
+    "validation/natural-dungeon-combat/md-auto-v0312-d5-fast-exit-check02/ram_131180.bin": "cf34fffe69387d2bf3c4e97a3b8a6cb508cbf38a8566518a86ccc10e6385e0f6",
+    "validation/natural-dungeon-combat/md-auto-v0312-d5-fast-exit-check02-assisted-fixed-replay-131180/ram_131180.bin": "cf34fffe69387d2bf3c4e97a3b8a6cb508cbf38a8566518a86ccc10e6385e0f6",
+    "validation/natural-dungeon-combat/md-auto-v0312-d5-exit02/frame_131180.png": "0e058dedb7ac7761290ceccdacb5a19eaf73a675fae63fe84b07b2eb45e21f77",
+    "validation/natural-dungeon-combat/md-auto-v0312-d5-fast-exit-check02/frame_131180.png": "0e058dedb7ac7761290ceccdacb5a19eaf73a675fae63fe84b07b2eb45e21f77",
+    "validation/natural-dungeon-combat/md-auto-v0312-d5-fast-exit-check02-assisted-fixed-replay-131180/frame_131180.png": "0e058dedb7ac7761290ceccdacb5a19eaf73a675fae63fe84b07b2eb45e21f77"
+  },
+  "limits": [
+    "The measured speedup covers secondary prediction work, not all tests or game speed.",
+    "Sixty secondary-only antichamber/boss cases and a real D5 exit are covered; no global emulator-equivalence claim.",
+    "Future uses retain per-window full-RAM verification and an official cold replay. Audio and the snapshot format remain enabled."
+  ]
+}

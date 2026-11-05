@@ -509,23 +509,22 @@ Les rapports v0305 ci-dessus conservent leur périmètre historique.
 
 ## Campagne et travail restant
 
-Les sept premiers cristaux et leurs sorties ont été validés sur **v0304**.
-Dans le huitième donjon, la clé des voleurs et le chemin vers le boss sont
-atteints. Les approches comportent une protection de test déclarée, retirée
-avant chaque boss principal ; les adversaires intermédiaires de D7 et D8
-ont été abordés avec cette protection. Le premier essai du huitième boss
-se termine par une défaite : sa victoire reste à valider.
+Sur la ROM courante **v0312**, cinq cristaux et leurs sorties sont vérifiés.
+Les clés, passages Terre, Cloche de glace et accès du boss de D6 sont
+vérifiés ; le sixième combat et la suite restent à valider sur cette ROM.
+La protection de test est déclarée et limitée aux approches, puis retirée
+avant les combats de boss. Aucun objet, ressource ou progression n’est importé.
 
-Ces résultats restent propres à v0304. La relecture de ses commandes sur
-v0305 diverge et se termine par une mort au cinquième boss ; elle ne valide
-pas la campagne sur la nouvelle ROM. Les parcours doivent être poursuivis
-et adaptés sur cette version.
+La **v0310** dispose d’un parcours froid de Nouveau jeu à la fin, ainsi que
+d’une sauvegarde écrite en jeu et rechargée par Continuer. Ces preuves restent
+propres à cette version ; elles ne valident pas la campagne entière de v312.
+[Parcours jusqu’à la fin v310](analysis/cold_palace_final_v0310_report.json)
+· [Sauvegarde et rechargement v310](analysis/game_written_save_v0310_report.json)
 
 Les routines d’acteurs utilisent encore le générateur aléatoire SGDK.
 Le raccordement au hasard SMS et à sa phase globale reste à faire.
-Ces limites concernaient le parcours v0304 décrit ci-dessus. Le scénario
-contrôlé v0309 valide désormais le palais et la fin ; les sauvegardes,la
-campagne froide courante complète et la fidélité vidéo/audio/matériel restent ouvertes.
+La campagne complète et la sauvegarde sur la ROM courante, ainsi que la
+fidélité globale vidéo/audio et les contrôles sur console réelle restent ouverts.
 
 L’[historique du README jusqu’à v0304](analysis/readme_history_through_v0304.md)
 conserve les étapes et leurs liens de preuve. Le [journal de recherche](analysis/world_next.md)
@@ -550,6 +549,13 @@ Les outils de validation mettent en cache les manifestes d'archives pendant
 un processus et les rechargent si leur signature de fichier change. Les hashes
 et la decompression restent controles a chaque lecture. Les trois auditsD9
 produisent des rapports strictement identiques : voir [le controle du cache](analysis/evidence_manifest_cache_v0306_report.json).
+
+Une option supprime le rendu vidéo des seules simulations secondaires qui
+choisissent les commandes. Sur le petit benchmark D6, le débit augmente
+d’environ 38 % ; le retour D5 conserve les sept prédictions RAM complètes,
+l’image finale et son rejeu froid officiel. Ce gain ne mesure ni la vitesse
+du jeu ni celle de l’ensemble des tests. Les vérifications RAM et le rejeu
+restent obligatoires. [Accélération des prédictions](analysis/prediction_video_skip_v0312_report.json)
 
 `build.ps1` accepte `-Sgdk` et `-Java` pour sélectionner leurs emplacements.
 Le vérificateur compare les ROMs locales avec les objets du dernier commit

@@ -4,7 +4,7 @@ Chaque binaire est conserve sans ecrasement. Les controles cibles ne prouvent pa
 
 | Version | ROM | Validation | Changements | SHA-256 |
 | --- | --- | --- | --- | --- |
-| v0312 | [Telecharger](v0312-0b9aecb4/gaw-megadrive-v0312.bin) | targeted_checks_passed | v312 : transition marchande et menu audio controles ; cinq cristaux et sorties verifies ; preparation D6 et Cloche de glace verifiees. Aide retiree avant le sixieme boss, combat en cours. | `0b9aecb48fc9bb82cfcebc9547684742134d60e0f82e60b1a070ab3be50b4d64` |
+| v0312 | [Telecharger](v0312-0b9aecb4/gaw-megadrive-v0312.bin) | targeted_checks_passed | v312 : cinq cristaux et sorties verifies ; preparation D6 et Cloche de glace verifiees, aide retiree avant le boss. Predictions secondaires accelerees : 60 cas et retour D5 avec RAM/image exacte et rejeu officiel. | `0b9aecb48fc9bb82cfcebc9547684742134d60e0f82e60b1a070ab3be50b4d64` |
 | v0311 | [Telecharger](v0311-0972465d/gaw-megadrive-v0311.bin) | targeted_checks_passed | Deuxieme cristal et retour exterieur a 48/48 PV ; boss sans protection, relectures RAM/image exactes. | `0972465d63447f5993324fd63693271f77bcb3f013a125c1d4ed575b2df9d2e2` |
 | v0310 | [Telecharger](v0310-32fe75a6/gaw-megadrive-v0310.bin) | targeted_checks_passed | Campagne v310 vérifiée de Nouveau Jeu au générique et au retour à l’intro. Death Adder vaincu sans invincibilité. | `32fe75a653d7152f7cbf873a32f2ffef14234ea190885ae8a8235f2ccd10e071` |
 | v0309 | [Telecharger](v0309-7270576d/gaw-megadrive-v0309.bin) | targeted_checks_passed | Campagne froide v309 : trois cristaux,corde et retourD3 verifies. Palais controle separe avec SRAM synthetique : Death Adder et fin verifies. Fidelite globale non validee. | `7270576d6eeb2aee641776a3e364f2f3f320711d70bb91a566d7578161261049` |

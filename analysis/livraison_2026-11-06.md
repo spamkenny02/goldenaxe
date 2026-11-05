@@ -48,6 +48,12 @@ partielle en validation complète.
 - Menu Nouveau jeu / Continuer v312 : musique active et audible en PAL/NTSC,
   événements des bruitages de curseur et validation alignés SMS. Aucune
   comparaison globale des formes d'onde n'est déduite de ce contrôle.
+- Accélération des simulations de commandes : rendu secondaire supprimé,
+  audio et format de sauvegarde conservés. Soixante cas D6 conservent la RAM
+  et la phase processeur, avec un débit environ 38 % supérieur sur ce benchmark.
+  Un retour D5 conserve ses sept prédictions RAM, son image finale et son rejeu
+  froid officiel. Aucun changement de ROM ; ce n'est pas un gain global de 38 %
+  sur tous les tests. Le combat D6 déjà lancé poursuit son calcul initial.
 - v311, 2 Mio, SHA0972465d… : correction d'une image du
   chargement vers le haut en NTSC. Premier donjon, hache, fontaine et clés du
   deuxième donjon vérifiés par rejeu exact. Deuxième cristal et retour extérieur
