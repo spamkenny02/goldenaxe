@@ -29,6 +29,11 @@ partielle en validation complète.
 - D5 v312 : première clé, passage Terre, bottes et sortie de ravitaillement
   vérifiés par quatre relectures RAM/image. Sortie à 58/64 PV, 64 PM ; gain
   de vitesse actif. Préparation du cinquième boss en cours.
+- Ravitaillement D5 v312 : dons de 30 + 30 cornes, achat d'une clé pour 60,
+  soin gratuit, retour, second passage Terre et mécanisme vérifiés. Treize
+  étapes depuis l'entrée avec rejeu RAM/image exact ; point préparatoire à
+  64/64 PV et 56 PM avec une clé. Protection retirée en 173 à l'image 127330,
+  avant l'entrée du boss 65 en 163 ; combat en cours.
 - Menu Nouveau jeu / Continuer v312 : musique active et audible en PAL/NTSC,
   événements des bruitages de curseur et validation alignés SMS. Aucune
   comparaison globale des formes d'onde n'est déduite de ce contrôle.

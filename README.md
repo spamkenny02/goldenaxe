@@ -67,6 +67,12 @@ bottes et ressort pour se ravitailler à **58/64 PV et 64 PM**. Les quatre
 quatre cristaux conservés. Ce ravitaillement précède le cinquième boss.
 [Bottes et sortie de ravitaillement v312](analysis/d5_progress_v0312_report.json)
 
+Le ravitaillement v312 vérifie deux dons de 30 cornes, l’achat d’une clé pour
+60 et le soin gratuit. Le héros revient dans D5, ouvre le second passage Terre
+et franchit le mécanisme à **64/64 PV et 56 PM**, avec une clé. Les treize
+étapes depuis l’entrée initiale ont un rejeu RAM/image exact.
+[Ravitaillement et mécanisme D5 v312](analysis/d5_supplies_v0312_report.json)
+
 La **v0311** ajoute une image au chargement lors des défilements de donjon
 vers le haut en NTSC. Sur trois trajets comparés à la Master System, la
 reprise du jeu s’aligne. Le premier déplacement s’aligne aussi dans les deux
