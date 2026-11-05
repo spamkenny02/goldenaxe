@@ -1,0 +1,79 @@
+{
+  "passed": true,
+  "version": 314,
+  "md_sha256": "c53381c459a1e6254a8c9f1cfad1b8cda482cc0614697ad566133b28335e07a7",
+  "original_sms_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+  "original_routine": 20587,
+  "original_instructions_changed": false,
+  "cases": [
+    {
+      "incoming_iy": 32768,
+      "fixture_sha256": "2f1daf80668cd4ac1092305c043f71cfb0805a43c99e6739e16cf5f96f4baf53",
+      "ram_sha256": "651360ab3728ea368155f8851e7c8f37239860f4ce4e9b6f45243eab23c844dd",
+      "actor5_direction": 167,
+      "after_pool_byte": 0,
+      "boss_state": 4,
+      "pool_types": [
+        167,
+        167,
+        167,
+        167,
+        167,
+        167,
+        167,
+        167
+      ]
+    },
+    {
+      "incoming_iy": 50944,
+      "fixture_sha256": "50e5bbc3242dc304704481109b866a0fbc89629128f79937ac1ea75789a20666",
+      "ram_sha256": "12301e283df838377d151a07400ae6277fe8f05f7818bd7044a9b3f88f70f0f2",
+      "actor5_direction": 0,
+      "after_pool_byte": 0,
+      "boss_state": 4,
+      "pool_types": [
+        167,
+        167,
+        167,
+        167,
+        167,
+        167,
+        167,
+        167
+      ]
+    },
+    {
+      "incoming_iy": 51456,
+      "fixture_sha256": "f350c618a1669170b22ccde9ba414f199b357d0ebafcf9151f2bd33746c827d1",
+      "ram_sha256": "651360ab3728ea368155f8851e7c8f37239860f4ce4e9b6f45243eab23c844dd",
+      "actor5_direction": 167,
+      "after_pool_byte": 0,
+      "boss_state": 4,
+      "pool_types": [
+        167,
+        167,
+        167,
+        167,
+        167,
+        167,
+        167,
+        167
+      ]
+    }
+  ],
+  "native_comparison_performed": false,
+  "natural_gameplay_proof": false,
+  "scope": "Controlled SMS unit fixture only. Program initializes RAM and calls the unmodified original routine with a full projectile pool. No campaign state is imported and the production MD ROM is unchanged.",
+  "source_effect_confirmed": true,
+  "only_ram_difference_rom_vs_ram_iy": [
+    {
+      "address": 50954,
+      "before": 167,
+      "after": 0
+    }
+  ],
+  "fixture_boot_program_inserted_at": 12288,
+  "native_reachability_or_comparison_proven": false,
+  "driver_sha256": "03d1215def733c45e6ef141f99f4eedf46e1dcc615f474673872e95ad6ee64a5",
+  "next_required_work": "Compare the native full-pool routine and determine incoming IY in actual source callers before changing production. No native fix or natural occurrence is claimed."
+}
