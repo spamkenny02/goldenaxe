@@ -231,3 +231,8 @@ D7 terminé jusqu’à212039 :bateau réel,boss67 sans protection ni dégât,
 154 prédictions exactes,septième cristal. Retour1B à88/88 PV,64 PM,
 une clé et11 cornes. Dix points RAM/image exacts. Voir d7_campaign_v0314_report.json.
 D8 :trajet vers le passage payant3C en cours ; paiement attendu10 cornes.
+
+D8 :paiement réel11→1,entrée,gardien7A50 PV vaincu sans protection.
+Un coup normal de18 PV (84→66),243 prédictions exactes ; six points
+RAM/image jusqu’à219770. Voir d8_midboss_v0314_report.json.
+Approche principale et clé du voleur en cours.

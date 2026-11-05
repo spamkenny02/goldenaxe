@@ -744,3 +744,9 @@ dégât,154 prédictions exactes. Septième cristal et retour extérieur à
 88/88 PV et64 PM,une clé et11 cornes. Dix points relus en RAM complète
 et image ; le passage Terre du retour consomme ses8 PM normalement.
 [Septième cristal, bateau et retour](analysis/d7_campaign_v0314_report.json)
+
+D8 :passage3C payé10 cornes (11→1),entrée et gardien7A vérifiés.
+La protection est retirée avant le combat ; un coup normal de18 PV
+(84→66) et243 prédictions exactes. Six points RAM/image exacts.
+Le huitième cristal reste à valider.
+[Entrée et gardien D8](analysis/d8_midboss_v0314_report.json)
