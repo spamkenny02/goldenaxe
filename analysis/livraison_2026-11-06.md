@@ -215,3 +215,10 @@ exactes pendant le boss,un coup normal de14 PV,puis guérison du cristal
 à80 PV. Un second coup de14 PV au retour donne66/80 PV et72 PM à la sortie.
 82 prédictions exactes au retour,six marqueurs et128 mots physiques du HUD.
 Voir d6_campaign_v0314_report.json. Préparation D7 en cours.
+
+D7 :neuf étapes préparatoires vérifiées jusqu’à191702. Don B5 réel de10,
+clé94 achetée pour60,soin gratuit66→80,entrée,clés et deux actions Terre.
+Point préparatoire à80/80 PV,56 PM,deux clés. Le trajet direct vers A5
+n’avait pas nettoyé la carte avant son entrée cachée ; il est conservé
+et exclu. Aucun succès A5 ni septième cristal n’est revendiqué.
+Voir d7_prep_v0314_report.json. Gardien intermédiaire en cours.

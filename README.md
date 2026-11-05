@@ -727,3 +727,9 @@ au retour laisse66/80 PV à la sortie,avec72 PM. Les82 prédictions du retour,
 les six marqueurs et les128 mots physiques du HUD concordent.
 [Sixième cristal et retour](analysis/d6_campaign_v0314_report.json)
 La suite depuis D7 reste à valider.
+
+Préparation D7 :don réel de10 cornes (55→65),clé achetée pour60 et soin
+gratuit (66→80 PV),puis entrée,clés et deux mécanismes Terre. Neuf points
+RAM/image exacts ; état préparatoire à80/80 PV,56 PM et deux clés.
+Le gardien intermédiaire et le septième cristal restent à valider.
+[Préparation D7](analysis/d7_prep_v0314_report.json)
