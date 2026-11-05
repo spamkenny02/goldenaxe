@@ -61,6 +61,12 @@ D5 à **62/64 PV et 72/72 PM**. Les sept étapes passent le rejeu RAM/image ;
 la hache reste équipée et les quatre cristaux sont conservés.
 [Feu, épée longue et entrée D5](analysis/fire_sword_v0312_report.json)
 
+Dans D5, la v312 obtient la première clé, ouvre le passage Terre, récupère les
+bottes et ressort pour se ravitailler à **58/64 PV et 64 PM**. Les quatre
+étapes ont un rejeu RAM/image exact, avec le gain de vitesse actif et les
+quatre cristaux conservés. Ce ravitaillement précède le cinquième boss.
+[Bottes et sortie de ravitaillement v312](analysis/d5_progress_v0312_report.json)
+
 La **v0311** ajoute une image au chargement lors des défilements de donjon
 vers le haut en NTSC. Sur trois trajets comparés à la Master System, la
 reprise du jeu s’aligne. Le premier déplacement s’aligne aussi dans les deux

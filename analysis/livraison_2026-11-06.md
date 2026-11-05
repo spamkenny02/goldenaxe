@@ -26,6 +26,9 @@ partielle en validation complète.
 - Préparation D5 v312 terminée : huile échangée contre Feu, épée longue
   réellement reçue et entrée dans D5 à 62/64 PV, 72/72 PM. Sept étapes avec
   rejeu RAM/image exact ; cinquième cristal encore hors de cette preuve.
+- D5 v312 : première clé, passage Terre, bottes et sortie de ravitaillement
+  vérifiés par quatre relectures RAM/image. Sortie à 58/64 PV, 64 PM ; gain
+  de vitesse actif. Préparation du cinquième boss en cours.
 - Menu Nouveau jeu / Continuer v312 : musique active et audible en PAL/NTSC,
   événements des bruitages de curseur et validation alignés SMS. Aucune
   comparaison globale des formes d'onde n'est déduite de ce contrôle.
