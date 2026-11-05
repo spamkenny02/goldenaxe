@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "md_sha256": "c53381c459a1e6254a8c9f1cfad1b8cda482cc0614697ad566133b28335e07a7",
+  "source_probe": "analysis/iy_item_contexts_corrected_v0314_report.json",
+  "cases": 33,
+  "actual_action_activations": 27,
+  "selection_only_contexts": 6,
+  "first_fan_full_pool_cases": 30,
+  "screen_spell_cases_without_fan": 3,
+  "ram_iy_cases": 16,
+  "ram_target": "C4BA",
+  "before_value": 0,
+  "after_value": 0,
+  "rom_iy_values": [
+    "2550",
+    "2558"
+  ],
+  "incoming_iy_injected": false,
+  "production_fix_applied": false,
+  "natural_gameplay_proof": false,
+  "limits": [
+    "Controlled source observations only. The second fixture corrects the curse flag address to C0BF and gives the screen spell enough magic; initial selected-only results are not action activation proof.",
+    "The screen spell is active but no fan runs within the observation window, so those three cases do not prove full-pool fan behavior. Lantern/Bell are selected in a non-specific exterior context; their contextual effects are not claimed.",
+    "No net target byte change is observed in the30 eligible source cases, including real Axe swings, healing/potion/remedy and water-context thrown axe. No universal IY invariant or source/native whole-game equivalence follows."
+  ]
+}

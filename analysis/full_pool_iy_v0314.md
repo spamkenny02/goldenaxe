@@ -1,31 +1,34 @@
 # Cas limite IY des tirs, v314
 
-Les corps de production du boss et de l’allocateur, compilés sans modification
-en68000 dans un projet isolé, reproduisent les768 octets du cas SMS avec IY
-en ROM. Avec IY imposé sur un enregistrement RAM,la SMS écrit aussi zéro dans
-IY+0A lorsque le réservoir de projectiles est plein ; ce cas supplémentaire
-n’est pas reproduit par l’API C actuelle.
+Le corps natif du boss et son allocateur reproduisent les768 octets du cas
+SMS contrÃ´lÃ© avec IY en ROM. Un IY arbitrairement imposÃ© sur une adresse RAM
+peut produire une Ã©criture supplÃ©mentaire dans la SMS ; cette possibilitÃ©
+ne constitue pas une preuve dâ€™un dÃ©faut accessible en jouant.
 
-Le cœur de trace lit le registre sans changer l’instruction ou son coût émulé.
-Son contrôle direct conserve les8192 octets SMS exactement. Dans la boucle du
-jeu original observée,avec un boss et huit projectiles73 contrôlés,IY n’est
-pas injecté :les cinq écritures utilisent2558,en ROM,et sont donc ignorées.
-Cette observation ne prouve pas l’invariant pour tous les appels réels.
+Le cÅ“ur de trace lit IY sans changer les instructions ni leurs cycles. Le
+contrÃ´le initial reproduit les8192 octets de RAM du cÅ“ur officiel. Les douze
+premiers contextes couvraient repos, Ã©pÃ©e, Feu et Terre. Les cibles RAM vues
+dans ces cas Ã©taient dÃ©jÃ  Ã  zÃ©ro avant et aprÃ¨s le tir.
 
-Aucun correctif de production n’est justifié par ces seules mesures. Il reste
-à examiner la provenance de IY dans d’autres contextes,notamment après les
-actions du héros,avant de déclarer un défaut accessible ou de modifier la ROM.
-Les scénarios contrôlés ne remplacent pas une rencontre atteinte naturellement.
+La sÃ©rie corrigÃ©e ajoute33 contextes : mouvements de hache aux deux niveaux,
+deuxiÃ¨me Ã©pÃ©e, remÃ¨de, soin, potion, sÃ©lection de lanterne/cloche, sort dâ€™Ã©cran
+et hache lancÃ©e sur lâ€™eau, Ã  trois phases.27 activations sont vÃ©rifiÃ©es ;
+les six sÃ©lections lanterne/cloche ne revendiquent pas leur effet contextuel.
+Le sort dâ€™Ã©cran est actif mais aucun tir nâ€™apparaÃ®t pendant ses trois fenÃªtres.
 
-Voir [comparaison native](full_pool_iy_native_comparison_v0314_report.json)
-et [appelant SMS observé](full_pool_iy_callers_v0314_report.json).
-Le relevé aligné corrige le libellé actor5_direction du premier essai non aligné.
+Dans les30 cas oÃ¹ un tir se produit avec les huit places occupÃ©es, IY vaut
+2550/2558 en ROM, ou C4B0. Les16 cas RAM Ã©crivent dans C4BA, dÃ©jÃ  nul et
+encore nul Ã  la fin du mÃªme cadre. Aucune diffÃ©rence nette sur cette cible
+ne justifie donc un changement de production dans les scÃ©narios mesurÃ©s.
+Cela ne dÃ©montre pas lâ€™invariant pour tous les appels ou une rencontre
+naturelle. La ROM publiÃ©e reste identique.
 
-Douze contextes contrôlés supplémentaires couvrent repos,épée,Feu et Terre
-à trois phases d’injection. Les sorts sont effectivement actifs dans les
-relevés. Huit contextes laissent IY=C4B0,le premier enregistrement de butin ;
-son octet+0A vaut zéro avant et après les cinq écritures. Le cas RAM observé
-n’a donc pas de différence nette dans ces mesures. L’invariant global reste
-à établir ; aucun changement de production n’a été appliqué.
-Voir [contextes](iy_action_contexts_v0314_report.json) et
-[cibles avant/après](iy_context_target_values_v0314_report.json).
+Le premier essai de cette sÃ©rie utilisait Ã  tort C08F pour le remÃ¨de et
+seulement24 PM pour le sort dâ€™Ã©cran, qui en demande32. La seconde sÃ©rie
+corrige C0BF et le budget magique ; les anciennes donnÃ©es restent archivÃ©es
+mais ne sont pas des preuves dâ€™activation de ces deux actions.
+
+Voir [comparaison native](full_pool_iy_native_comparison_v0314_report.json),
+[appelant original](full_pool_iy_callers_v0314_report.json),
+[mesures corrigÃ©es](iy_item_contexts_corrected_v0314_report.json) et
+[cibles avant/aprÃ¨s](iy_item_context_target_v0314_report.json).
