@@ -14,7 +14,16 @@ mots du HUD et déplacement réel. Voir game_written_save_v0313_report.json.
 Le ballon utilisé en jeu et la porte des neuf cristaux sont vérifiés.
 Premier géant du palais vaincu sans protection : cinq étapes avec rejeu
 RAM/image exact,245 prédictions conformes,82 PV et72 PM à la fin. Le parcours
-intérieur se poursuit vers la Hache d’or et Death Adder.
+intérieur et ses mécanismes sont vérifiés. Le gardien de la Hache d’or est
+vaincu sans protection, puis la hache est récupérée normalement et équipée,
+à104 PV et72 PM. Death Adder et le générique restent à vérifier sur v313.
+Voir cold_palace_inner_v0313_report.json et cold_palace_guardian_v0313_report.json.
+
+Le candidat audio privé à file atomique et chargement calé sur la musique passe
+12 959 comparaisons audio,40 images du titre et le premier cristal avec retour
+extérieur, rejeu RAM/image exact. Il ne remplace pas encore la ROM publique.
+Voir intro_audio_candidate11_v0313_report.json et
+intro_audio_candidate11_game_v0313_report.json.
 
 Entrée D9 v313 vérifiée : paiement réel 23→13 cornes, tombe ouverte par la
 Cloche de glace, entrée à96 PV et72 PM avec huit cristaux. Trois étapes avec

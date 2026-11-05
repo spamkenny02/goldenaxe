@@ -33,17 +33,21 @@ la nouvelle capacité de santé. Le retour reste sans protection.
 La sauvegarde réelle dans le premier emplacement et le rechargement par
 **Continuer** sont vérifiés : objets et neuf cristaux restaurés, HUD physique
 et déplacement contrôlés, sans écriture RAM de test ni suppression d’ennemis
-au rechargement. Le palais et la fin restent à valider.
+au rechargement. La fin du palais reste à valider.
 [Sauvegarde en jeu et Continuer v313](analysis/game_written_save_v0313_report.json)
 
 Le **ballon utilisé en jeu**, son retour à la carte et la porte des neuf
 cristaux du palais sont vérifiés. Le premier géant du palais est vaincu sans
 protection : cinq étapes avec rejeu RAM/image exact et 245 prédictions
-conformes. Le héros termine à **82 PV et 72 PM**. Le gardien de la Hache d’or
-et Death Adder restent à vérifier sur v313.
+conformes. Le héros termine à **82 PV et 72 PM**. Les mécanismes intérieurs
+sont franchis, puis le gardien de la Hache d’or est vaincu sans protection.
+La vraie Hache d’or est récupérée et équipée, à **104 PV et 72 PM**.
+Death Adder et le générique restent à vérifier sur v313.
 [Ballon et restauration](analysis/owned_overview_v0313_report.json)
 · [Entrée du palais](analysis/cold_palace_entry_v0313_report.json)
 · [Géant du palais](analysis/cold_palace_giant_v0313_report.json)
+· [Mécanismes intérieurs](analysis/cold_palace_inner_v0313_report.json)
+· [Gardien et Hache d’or](analysis/cold_palace_guardian_v0313_report.json)
 Les étapes v312/v313 ci-dessous conservent leurs périmètres historiques.
 
 Les étapes v312 ci-dessous documentent la préparation du parcours et les
@@ -624,10 +628,15 @@ produisent des rapports strictement identiques : voir [le controle du cache](ana
 
 Un correctif **privé** du démarrage et du fondu sonore de l’intro passe
 12 959 comparaisons de canaux, tempo et registres PSG, plus 40 images du titre
-en PAL/NTSC. L’ancien enregistrement de jeu échoue sur ce binaire et comporte
-une mort : il n’est pas accepté, et le correctif n’est pas publié. Une nouvelle
-validation de jeu est nécessaire avant intégration.
-[Preuves et limites du prototype audio](analysis/intro_audio_candidate08_v0313_report.json)
+en PAL/NTSC. Le dernier candidat sécurise la publication des commandes audio
+face aux interruptions et cale le chargement sur le démarrage réel de la musique.
+Le premier cristal et le retour extérieur passent sur ce binaire, avec rejeu
+froid exact de toute la RAM et de l’image finale. La protection d’approche est
+retirée avant le boss. Ce candidat n’est pas encore intégré à la ROM publique ;
+la suite du jeu reste à contrôler sur ses octets exacts.
+[Audio et titre du candidat](analysis/intro_audio_candidate11_v0313_report.json)
+· [Premier cristal du candidat](analysis/intro_audio_candidate11_game_v0313_report.json)
+· [Nouveau parcours du prototype précédent](analysis/intro_audio_fresh_d1_v0313_report.json)
 
 La correction du chargement initial est intégrée à la v313. Le binaire publié
 est identique au candidat vérifié jusqu’aux huit cristaux et à la sortie de D8.
