@@ -46,10 +46,13 @@ def pose_frames(folder, tag):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--experiment', type=Path, required=True)
+    parser.add_argument('--candidate-name', default='candidate01')
+    parser.add_argument('--scroll-label', default='up-matrix-candidate')
     parser.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
     experiment = args.experiment.resolve()
-    build = experiment / 'candidate01'
+    build = experiment / args.candidate_name
+    assert build.resolve().is_relative_to(experiment)
     rom = build / 'out/release/rom.bin'
     candidate_hash = sha(rom)
     baseline_path = ROOT / 'analysis/upward_ntsc_candidate_report.json'
@@ -82,7 +85,7 @@ def main():
     assert len(transactions['cases']) == 7 and transactions['natural_walk_refusal_exit_without_ram_injection']
     comparisons, raw_reports = [], {}
     for region, suffix in [('ntsc', ''), ('pal', '-pal')]:
-        path = experiment / f'upward-up-matrix-candidate{suffix}_report.json'
+        path = experiment / f'upward-{args.scroll_label}{suffix}_report.json'
         report = read(path)
         assert report['md_sha256'] == candidate_hash
         previous = {room['origin']: room for room in baseline['cases'][f'candidate_{region}']['rooms']}

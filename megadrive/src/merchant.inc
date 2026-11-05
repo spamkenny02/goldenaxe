@@ -7,6 +7,59 @@ extern const u8 * const merchant_labels[],* const merchant_group_prompts[];
 extern const u16 merchant_towns_count,merchant_potion_label;
 static volatile u16 merchant_selection,merchant_phase,merchant_mode;
 
+static __attribute__((noinline)) void merchant_begin(void)
+{
+    u16 n;u32 blank_published;const u16 black_frames=9;
+    /* Hide the room before reusing its tiles (77B7/7809); retain the HUD. */
+    for(n=0x3800;n<0x3d00;n+=2) { sms_vram[n]=0xff;sms_vram[n+1]=0x18; }
+    VDP_resetSprites();VDP_setSpriteFull(0,0,0,SPRITE_SIZE(1,1),0,0);
+    VDP_updateSprites(1,DMA_QUEUE);map_queue=TRUE;draw_map();wait_frame();map_queue=FALSE;
+    blank_published=vtimer;
+    decode_planes(merchant_portrait_rle,sms_vram,4);
+    decode_planes(save_font_rle,sms_vram+0x1400,4);
+    load_mono(0x1600,normal_font,256,3,TRUE);
+    load_mono(0x3e00,inventory_cursor_bitmap,40,3,FALSE);
+    draw_frame(0x3844,10,10);
+    for(n=0;n<64;n++)
+    {
+        u16 address=0x3886+(n/8)*64+(n%8)*2;
+        sms_vram[address]=merchant_portrait_map[n*2];sms_vram[address+1]=merchant_portrait_map[n*2+1];
+    }
+    for(n=0;n<8;n++) sms_palette[n]=save_colors[n];
+    /* 77F5: color plane 2 initially hides the 64 portrait tiles. */
+    for(n=2;n<0x800;n+=4) sms_vram[n]=255;
+    convert_patterns_range(0,64);convert_patterns_range(160,48);convert_patterns_range(496,5);
+    VDP_loadTileData(md_patterns,16,64,DMA_QUEUE);
+    VDP_loadTileData(md_patterns+160*8,176,48,DMA_QUEUE);
+    VDP_loadTileData(md_patterns+496*8,512,5,DMA_QUEUE);
+    /* The room is already hidden, so changing its unused palette is safe. */
+    while(black_frames && vtimer-blank_published<black_frames-1) wait_frame();
+    set_world_palette();map_queue=TRUE;draw_map();wait_frame();map_queue=FALSE;
+    /* 780C..782B: rotated plane masks 7F,3F,1F,0F,07,03,01,00. */
+    for(n=0x7f;;n>>=1)
+    {
+        u16 offset;u8 rotated=n;
+        const u32 pose_started=vtimer;
+        for(offset=2;offset<0x800;offset+=4)
+        {
+            sms_vram[offset]=rotated;
+            if(black_frames)
+                md_patterns[offset>>2]=(md_patterns[offset>>2]&0xbbbbbbbbUL)|(plane_spread[rotated]<<2);
+            rotated=(u8)((rotated>>2)|(rotated<<6));
+        }
+        if(!black_frames) convert_patterns_range(0,64);
+        else
+        {
+            /* 7812..7823 spans two frame boundaries per completed pose.
+             * PAL completes the first pose one frame after the portrait map. */
+            const u16 remaining=(n==0x7f && SYS_isPAL())?0:1;
+            while(vtimer-pose_started<remaining) wait_frame();
+        }
+        VDP_loadTileData(md_patterns,16,64,DMA_QUEUE);wait_frame();
+        if(!n) break;
+    }
+}
+
 static void merchant_number(u16 address,u16 number)
 {
     u16 n;
@@ -86,7 +139,9 @@ static void show_merchant_service(void)
     count=merchant_mode==1?1:3;
     prompt=merchant_mode==0?merchant_group_prompts[group]:merchant_mode==1?merchant_potion_prompt:merchant_magic_prompt;
     save_service_phase=6;merchant_phase=1;game_state=22;house_dialogue_active=1;
-    service_begin(merchant_portrait_rle,merchant_portrait_map);
+    /* 7452..77B7 still shows the room while the service is prepared. */
+    wait_frames(SYS_isPAL()?1:2);
+    merchant_begin();
     /* 78CE calls 779B before building the goods and displaying them at 7719. */
     render_dialogue_text(prompt,TRUE);
     for(n=0;n<count;n++)

@@ -1,0 +1,1636 @@
+{
+  "passed": true,
+  "version": 312,
+  "md_sha256": "0b9aecb48fc9bb82cfcebc9547684742134d60e0f82e60b1a070ab3be50b4d64",
+  "baseline_sha256": "0972465d63447f5993324fd63693271f77bcb3f013a125c1d4ed575b2df9d2e2",
+  "adopted": true,
+  "merchant_reveal": [
+    {
+      "region": "auto",
+      "complete_portrait_pose_frames": {
+        "sms": {
+          "127": 3764,
+          "63": 3766,
+          "31": 3768,
+          "15": 3770,
+          "7": 3772,
+          "3": 3774,
+          "1": 3776,
+          "0": 3778
+        },
+        "md": {
+          "127": 3764,
+          "63": 3766,
+          "31": 3768,
+          "15": 3770,
+          "7": 3772,
+          "3": 3774,
+          "1": 3776,
+          "0": 3778
+        }
+      },
+      "compared_plane_two_rows_per_pose": 512,
+      "other_portrait_planes_checked": false,
+      "observations": {
+        "sms": {
+          "first_service_state": 3751,
+          "first_settled_panel": 3806,
+          "playfield_black_frames": [
+            3753,
+            3754,
+            3755,
+            3756,
+            3757,
+            3758,
+            3759,
+            3760,
+            3761
+          ],
+          "hud_empty_frames": [],
+          "display_disabled_frames": []
+        },
+        "md": {
+          "first_service_state": 3750,
+          "first_settled_panel": 3806,
+          "playfield_black_frames": [
+            3753,
+            3754,
+            3755,
+            3756,
+            3757,
+            3758,
+            3759,
+            3760,
+            3761
+          ],
+          "hud_empty_frames": [],
+          "display_disabled_frames": []
+        }
+      },
+      "no_ram_writes": true,
+      "no_sram_input": true
+    },
+    {
+      "region": "pal",
+      "complete_portrait_pose_frames": {
+        "sms": {
+          "127": 3762,
+          "63": 3764,
+          "31": 3766,
+          "15": 3768,
+          "7": 3770,
+          "3": 3772,
+          "1": 3774,
+          "0": 3776
+        },
+        "md": {
+          "127": 3762,
+          "63": 3764,
+          "31": 3766,
+          "15": 3768,
+          "7": 3770,
+          "3": 3772,
+          "1": 3774,
+          "0": 3776
+        }
+      },
+      "compared_plane_two_rows_per_pose": 512,
+      "other_portrait_planes_checked": false,
+      "observations": {
+        "sms": {
+          "first_service_state": 3751,
+          "first_settled_panel": 3801,
+          "playfield_black_frames": [
+            3752,
+            3753,
+            3754,
+            3755,
+            3756,
+            3757,
+            3758,
+            3759,
+            3760
+          ],
+          "hud_empty_frames": [],
+          "display_disabled_frames": []
+        },
+        "md": {
+          "first_service_state": 3750,
+          "first_settled_panel": 3802,
+          "playfield_black_frames": [
+            3752,
+            3753,
+            3754,
+            3755,
+            3756,
+            3757,
+            3758,
+            3759,
+            3760
+          ],
+          "hud_empty_frames": [],
+          "display_disabled_frames": []
+        }
+      },
+      "no_ram_writes": true,
+      "no_sram_input": true
+    }
+  ],
+  "transactions": [
+    {
+      "name": "key",
+      "controlled_position_and_initial_stats": true,
+      "selection_by_normal_input": true,
+      "service_initial_pixels_exact": true,
+      "settled_transaction_fields_exact": 2,
+      "transaction_bitmap_vram_bytes_exact": 4160,
+      "entry_exit_visible_hud_frames": 222
+    },
+    {
+      "name": "feather",
+      "controlled_position_and_initial_stats": true,
+      "selection_by_normal_input": true,
+      "service_initial_pixels_exact": true,
+      "settled_transaction_fields_exact": 2,
+      "transaction_bitmap_vram_bytes_exact": 4160,
+      "entry_exit_visible_hud_frames": 222
+    },
+    {
+      "name": "oil",
+      "controlled_position_and_initial_stats": true,
+      "selection_by_normal_input": true,
+      "service_initial_pixels_exact": true,
+      "settled_transaction_fields_exact": 2,
+      "transaction_bitmap_vram_bytes_exact": 4160,
+      "entry_exit_visible_hud_frames": 222
+    },
+    {
+      "name": "poor",
+      "controlled_position_and_initial_stats": true,
+      "selection_by_normal_input": true,
+      "service_initial_pixels_exact": true,
+      "settled_transaction_fields_exact": 2,
+      "transaction_bitmap_vram_bytes_exact": 4160,
+      "entry_exit_visible_hud_frames": 222
+    },
+    {
+      "name": "keys_full",
+      "controlled_position_and_initial_stats": true,
+      "selection_by_normal_input": true,
+      "service_initial_pixels_exact": true,
+      "settled_transaction_fields_exact": 2,
+      "transaction_bitmap_vram_bytes_exact": 4160,
+      "entry_exit_visible_hud_frames": 222
+    },
+    {
+      "name": "feather_owned",
+      "controlled_position_and_initial_stats": true,
+      "selection_by_normal_input": true,
+      "service_initial_pixels_exact": true,
+      "settled_transaction_fields_exact": 2,
+      "transaction_bitmap_vram_bytes_exact": 4160,
+      "entry_exit_visible_hud_frames": 222
+    },
+    {
+      "name": "oil_owned",
+      "controlled_position_and_initial_stats": true,
+      "selection_by_normal_input": true,
+      "service_initial_pixels_exact": true,
+      "settled_transaction_fields_exact": 2,
+      "transaction_bitmap_vram_bytes_exact": 4160,
+      "entry_exit_visible_hud_frames": 222
+    }
+  ],
+  "all_merchants": [
+    {
+      "name": "town-2e",
+      "town": 46,
+      "house": 0,
+      "mode": 0,
+      "stats": {
+        "selection": 0,
+        "gold": 255,
+        "hp": 9,
+        "cap": 24,
+        "magic": 0,
+        "magic_cap": 80,
+        "keys": 0,
+        "shield": 1,
+        "oil": 0,
+        "feather": 0,
+        "potion": 0
+      },
+      "initial_panel_pixels_exact": true,
+      "prompt_bitmap_bytes_exact": 4160,
+      "settled_states_source_exact": 2,
+      "currency_decrements": 100,
+      "currency_intervals_source_exact": true,
+      "currency_intervals": [
+        2
+      ],
+      "controlled_interior_checkpoint_and_stats": true
+    },
+    {
+      "name": "town-4e",
+      "town": 78,
+      "house": 47,
+      "mode": 0,
+      "stats": {
+        "selection": 0,
+        "gold": 255,
+        "hp": 9,
+        "cap": 24,
+        "magic": 0,
+        "magic_cap": 80,
+        "keys": 0,
+        "shield": 1,
+        "oil": 0,
+        "feather": 0,
+        "potion": 0
+      },
+      "initial_panel_pixels_exact": true,
+      "prompt_bitmap_bytes_exact": 4160,
+      "settled_states_source_exact": 2,
+      "currency_decrements": 100,
+      "currency_intervals_source_exact": true,
+      "currency_intervals": [
+        2
+      ],
+      "controlled_interior_checkpoint_and_stats": true
+    },
+    {
+      "name": "town-53",
+      "town": 83,
+      "house": 47,
+      "mode": 0,
+      "stats": {
+        "selection": 0,
+        "gold": 255,
+        "hp": 9,
+        "cap": 24,
+        "magic": 0,
+        "magic_cap": 80,
+        "keys": 0,
+        "shield": 1,
+        "oil": 0,
+        "feather": 0,
+        "potion": 0
+      },
+      "initial_panel_pixels_exact": true,
+      "prompt_bitmap_bytes_exact": 4160,
+      "settled_states_source_exact": 2,
+      "currency_decrements": 20,
+      "currency_intervals_source_exact": true,
+      "currency_intervals": [
+        2
+      ],
+      "controlled_interior_checkpoint_and_stats": true
+    },
+    {
+      "name": "town-55",
+      "town": 85,
+      "house": 1,
+      "mode": 0,
+      "stats": {
+        "selection": 0,
+        "gold": 255,
+        "hp": 9,
+        "cap": 24,
+        "magic": 0,
+        "magic_cap": 80,
+        "keys": 0,
+        "shield": 1,
+        "oil": 0,
+        "feather": 0,
+        "potion": 0
+      },
+      "initial_panel_pixels_exact": true,
+      "prompt_bitmap_bytes_exact": 4160,
+      "settled_states_source_exact": 2,
+      "currency_decrements": 100,
+      "currency_intervals_source_exact": true,
+      "currency_intervals": [
+        2
+      ],
+      "controlled_interior_checkpoint_and_stats": true
+    },
+    {
+      "name": "town-57",
+      "town": 87,
+      "house": 1,
+      "mode": 0,
+      "stats": {
+        "selection": 0,
+        "gold": 255,
+        "hp": 9,
+        "cap": 24,
+        "magic": 0,
+        "magic_cap": 80,
+        "keys": 0,
+        "shield": 1,
+        "oil": 0,
+        "feather": 0,
+        "potion": 0
+      },
+      "initial_panel_pixels_exact": true,
+      "prompt_bitmap_bytes_exact": 4160,
+      "settled_states_source_exact": 2,
+      "currency_decrements": 100,
+      "currency_intervals_source_exact": true,
+      "currency_intervals": [
+        2
+      ],
+      "controlled_interior_checkpoint_and_stats": true
+    },
+    {
+      "name": "town-71",
+      "town": 113,
+      "house": 47,
+      "mode": 0,
+      "stats": {
+        "selection": 0,
+        "gold": 255,
+        "hp": 9,
+        "cap": 24,
+        "magic": 0,
+        "magic_cap": 80,
+        "keys": 0,
+        "shield": 1,
+        "oil": 0,
+        "feather": 0,
+        "potion": 0
+      },
+      "initial_panel_pixels_exact": true,
+      "prompt_bitmap_bytes_exact": 4160,
+      "settled_states_source_exact": 2,
+      "currency_decrements": 40,
+      "currency_intervals_source_exact": true,
+      "currency_intervals": [
+        2
+      ],
+      "controlled_interior_checkpoint_and_stats": true
+    },
+    {
+      "name": "town-8d",
+      "town": 141,
+      "house": 47,
+      "mode": 0,
+      "stats": {
+        "selection": 0,
+        "gold": 255,
+        "hp": 9,
+        "cap": 24,
+        "magic": 0,
+        "magic_cap": 80,
+        "keys": 0,
+        "shield": 1,
+        "oil": 0,
+        "feather": 0,
+        "potion": 0
+      },
+      "initial_panel_pixels_exact": true,
+      "prompt_bitmap_bytes_exact": 4160,
+      "settled_states_source_exact": 2,
+      "currency_decrements": 20,
+      "currency_intervals_source_exact": true,
+      "currency_intervals": [
+        2
+      ],
+      "controlled_interior_checkpoint_and_stats": true
+    },
+    {
+      "name": "town-94",
+      "town": 148,
+      "house": 0,
+      "mode": 0,
+      "stats": {
+        "selection": 0,
+        "gold": 255,
+        "hp": 9,
+        "cap": 24,
+        "magic": 0,
+        "magic_cap": 80,
+        "keys": 0,
+        "shield": 1,
+        "oil": 0,
+        "feather": 0,
+        "potion": 0
+      },
+      "initial_panel_pixels_exact": true,
+      "prompt_bitmap_bytes_exact": 4160,
+      "settled_states_source_exact": 2,
+      "currency_decrements": 60,
+      "currency_intervals_source_exact": true,
+      "currency_intervals": [
+        2
+      ],
+      "controlled_interior_checkpoint_and_stats": true
+    },
+    {
+      "name": "town-a5",
+      "town": 165,
+      "house": 47,
+      "mode": 0,
+      "stats": {
+        "selection": 0,
+        "gold": 255,
+        "hp": 9,
+        "cap": 24,
+        "magic": 0,
+        "magic_cap": 80,
+        "keys": 0,
+        "shield": 1,
+        "oil": 0,
+        "feather": 0,
+        "potion": 0
+      },
+      "initial_panel_pixels_exact": true,
+      "prompt_bitmap_bytes_exact": 4160,
+      "settled_states_source_exact": 2,
+      "currency_decrements": 40,
+      "currency_intervals_source_exact": true,
+      "currency_intervals": [
+        2
+      ],
+      "controlled_interior_checkpoint_and_stats": true
+    },
+    {
+      "name": "town-c7",
+      "town": 199,
+      "house": 1,
+      "mode": 0,
+      "stats": {
+        "selection": 0,
+        "gold": 255,
+        "hp": 9,
+        "cap": 24,
+        "magic": 0,
+        "magic_cap": 80,
+        "keys": 0,
+        "shield": 1,
+        "oil": 0,
+        "feather": 0,
+        "potion": 0
+      },
+      "initial_panel_pixels_exact": true,
+      "prompt_bitmap_bytes_exact": 4160,
+      "settled_states_source_exact": 2,
+      "currency_decrements": 60,
+      "currency_intervals_source_exact": true,
+      "currency_intervals": [
+        2
+      ],
+      "controlled_interior_checkpoint_and_stats": true
+    },
+    {
+      "name": "town-d7",
+      "town": 215,
+      "house": 47,
+      "mode": 0,
+      "stats": {
+        "selection": 0,
+        "gold": 255,
+        "hp": 9,
+        "cap": 24,
+        "magic": 0,
+        "magic_cap": 80,
+        "keys": 0,
+        "shield": 1,
+        "oil": 0,
+        "feather": 0,
+        "potion": 0
+      },
+      "initial_panel_pixels_exact": true,
+      "prompt_bitmap_bytes_exact": 4160,
+      "settled_states_source_exact": 2,
+      "currency_decrements": 40,
+      "currency_intervals_source_exact": true,
+      "currency_intervals": [
+        2
+      ],
+      "controlled_interior_checkpoint_and_stats": true
+    },
+    {
+      "name": "town-f2",
+      "town": 242,
+      "house": 47,
+      "mode": 0,
+      "stats": {
+        "selection": 0,
+        "gold": 255,
+        "hp": 9,
+        "cap": 24,
+        "magic": 0,
+        "magic_cap": 80,
+        "keys": 0,
+        "shield": 1,
+        "oil": 0,
+        "feather": 0,
+        "potion": 0
+      },
+      "initial_panel_pixels_exact": true,
+      "prompt_bitmap_bytes_exact": 4160,
+      "settled_states_source_exact": 2,
+      "currency_decrements": 20,
+      "currency_intervals_source_exact": true,
+      "currency_intervals": [
+        2
+      ],
+      "controlled_interior_checkpoint_and_stats": true
+    },
+    {
+      "name": "town-f9",
+      "town": 249,
+      "house": 47,
+      "mode": 0,
+      "stats": {
+        "selection": 0,
+        "gold": 255,
+        "hp": 9,
+        "cap": 24,
+        "magic": 0,
+        "magic_cap": 80,
+        "keys": 0,
+        "shield": 1,
+        "oil": 0,
+        "feather": 0,
+        "potion": 0
+      },
+      "initial_panel_pixels_exact": true,
+      "prompt_bitmap_bytes_exact": 4160,
+      "settled_states_source_exact": 2,
+      "currency_decrements": 250,
+      "currency_intervals_source_exact": true,
+      "currency_intervals": [
+        2
+      ],
+      "controlled_interior_checkpoint_and_stats": true
+    },
+    {
+      "name": "town-fe",
+      "town": 254,
+      "house": 0,
+      "mode": 0,
+      "stats": {
+        "selection": 0,
+        "gold": 255,
+        "hp": 9,
+        "cap": 24,
+        "magic": 0,
+        "magic_cap": 80,
+        "keys": 0,
+        "shield": 1,
+        "oil": 0,
+        "feather": 0,
+        "potion": 0
+      },
+      "initial_panel_pixels_exact": true,
+      "prompt_bitmap_bytes_exact": 4160,
+      "settled_states_source_exact": 2,
+      "currency_decrements": 100,
+      "currency_intervals_source_exact": true,
+      "currency_intervals": [
+        2
+      ],
+      "controlled_interior_checkpoint_and_stats": true
+    },
+    {
+      "name": "town-34",
+      "town": 52,
+      "house": 47,
+      "mode": 1,
+      "stats": {
+        "selection": 0,
+        "gold": 255,
+        "hp": 9,
+        "cap": 24,
+        "magic": 0,
+        "magic_cap": 80,
+        "keys": 0,
+        "shield": 1,
+        "oil": 0,
+        "feather": 0,
+        "potion": 0
+      },
+      "initial_panel_pixels_exact": true,
+      "prompt_bitmap_bytes_exact": 4160,
+      "settled_states_source_exact": 2,
+      "currency_decrements": 40,
+      "currency_intervals_source_exact": true,
+      "currency_intervals": [
+        2
+      ],
+      "controlled_interior_checkpoint_and_stats": true
+    },
+    {
+      "name": "town-5e",
+      "town": 94,
+      "house": 47,
+      "mode": 1,
+      "stats": {
+        "selection": 0,
+        "gold": 255,
+        "hp": 9,
+        "cap": 24,
+        "magic": 0,
+        "magic_cap": 80,
+        "keys": 0,
+        "shield": 1,
+        "oil": 0,
+        "feather": 0,
+        "potion": 0
+      },
+      "initial_panel_pixels_exact": true,
+      "prompt_bitmap_bytes_exact": 4160,
+      "settled_states_source_exact": 2,
+      "currency_decrements": 40,
+      "currency_intervals_source_exact": true,
+      "currency_intervals": [
+        2
+      ],
+      "controlled_interior_checkpoint_and_stats": true
+    },
+    {
+      "name": "town-72",
+      "town": 114,
+      "house": 47,
+      "mode": 1,
+      "stats": {
+        "selection": 0,
+        "gold": 255,
+        "hp": 9,
+        "cap": 24,
+        "magic": 0,
+        "magic_cap": 80,
+        "keys": 0,
+        "shield": 1,
+        "oil": 0,
+        "feather": 0,
+        "potion": 0
+      },
+      "initial_panel_pixels_exact": true,
+      "prompt_bitmap_bytes_exact": 4160,
+      "settled_states_source_exact": 2,
+      "currency_decrements": 40,
+      "currency_intervals_source_exact": true,
+      "currency_intervals": [
+        2
+      ],
+      "controlled_interior_checkpoint_and_stats": true
+    },
+    {
+      "name": "town-f0",
+      "town": 240,
+      "house": 47,
+      "mode": 1,
+      "stats": {
+        "selection": 0,
+        "gold": 255,
+        "hp": 9,
+        "cap": 24,
+        "magic": 0,
+        "magic_cap": 80,
+        "keys": 0,
+        "shield": 1,
+        "oil": 0,
+        "feather": 0,
+        "potion": 0
+      },
+      "initial_panel_pixels_exact": true,
+      "prompt_bitmap_bytes_exact": 4160,
+      "settled_states_source_exact": 2,
+      "currency_decrements": 40,
+      "currency_intervals_source_exact": true,
+      "currency_intervals": [
+        2
+      ],
+      "controlled_interior_checkpoint_and_stats": true
+    },
+    {
+      "name": "town-fc",
+      "town": 252,
+      "house": 47,
+      "mode": 1,
+      "stats": {
+        "selection": 0,
+        "gold": 255,
+        "hp": 9,
+        "cap": 24,
+        "magic": 0,
+        "magic_cap": 80,
+        "keys": 0,
+        "shield": 1,
+        "oil": 0,
+        "feather": 0,
+        "potion": 0
+      },
+      "initial_panel_pixels_exact": true,
+      "prompt_bitmap_bytes_exact": 4160,
+      "settled_states_source_exact": 2,
+      "currency_decrements": 40,
+      "currency_intervals_source_exact": true,
+      "currency_intervals": [
+        2
+      ],
+      "controlled_interior_checkpoint_and_stats": true
+    },
+    {
+      "name": "town-23",
+      "town": 35,
+      "house": 47,
+      "mode": 2,
+      "stats": {
+        "selection": 0,
+        "gold": 255,
+        "hp": 9,
+        "cap": 24,
+        "magic": 0,
+        "magic_cap": 80,
+        "keys": 0,
+        "shield": 1,
+        "oil": 0,
+        "feather": 0,
+        "potion": 0
+      },
+      "initial_panel_pixels_exact": true,
+      "prompt_bitmap_bytes_exact": 4160,
+      "settled_states_source_exact": 2,
+      "currency_decrements": 20,
+      "currency_intervals_source_exact": true,
+      "currency_intervals": [
+        2
+      ],
+      "controlled_interior_checkpoint_and_stats": true
+    },
+    {
+      "name": "town-7b",
+      "town": 123,
+      "house": 47,
+      "mode": 2,
+      "stats": {
+        "selection": 0,
+        "gold": 255,
+        "hp": 9,
+        "cap": 24,
+        "magic": 0,
+        "magic_cap": 80,
+        "keys": 0,
+        "shield": 1,
+        "oil": 0,
+        "feather": 0,
+        "potion": 0
+      },
+      "initial_panel_pixels_exact": true,
+      "prompt_bitmap_bytes_exact": 4160,
+      "settled_states_source_exact": 2,
+      "currency_decrements": 20,
+      "currency_intervals_source_exact": true,
+      "currency_intervals": [
+        2
+      ],
+      "controlled_interior_checkpoint_and_stats": true
+    },
+    {
+      "name": "town-c3",
+      "town": 195,
+      "house": 47,
+      "mode": 2,
+      "stats": {
+        "selection": 0,
+        "gold": 255,
+        "hp": 9,
+        "cap": 24,
+        "magic": 0,
+        "magic_cap": 80,
+        "keys": 0,
+        "shield": 1,
+        "oil": 0,
+        "feather": 0,
+        "potion": 0
+      },
+      "initial_panel_pixels_exact": true,
+      "prompt_bitmap_bytes_exact": 4160,
+      "settled_states_source_exact": 2,
+      "currency_decrements": 20,
+      "currency_intervals_source_exact": true,
+      "currency_intervals": [
+        2
+      ],
+      "controlled_interior_checkpoint_and_stats": true
+    },
+    {
+      "name": "town-dc",
+      "town": 220,
+      "house": 47,
+      "mode": 2,
+      "stats": {
+        "selection": 0,
+        "gold": 255,
+        "hp": 9,
+        "cap": 24,
+        "magic": 0,
+        "magic_cap": 80,
+        "keys": 0,
+        "shield": 1,
+        "oil": 0,
+        "feather": 0,
+        "potion": 0
+      },
+      "initial_panel_pixels_exact": true,
+      "prompt_bitmap_bytes_exact": 4160,
+      "settled_states_source_exact": 2,
+      "currency_decrements": 20,
+      "currency_intervals_source_exact": true,
+      "currency_intervals": [
+        2
+      ],
+      "controlled_interior_checkpoint_and_stats": true
+    },
+    {
+      "name": "feather",
+      "town": 113,
+      "house": 47,
+      "mode": 0,
+      "stats": {
+        "selection": 1,
+        "gold": 255,
+        "hp": 9,
+        "cap": 24,
+        "magic": 0,
+        "magic_cap": 80,
+        "keys": 0,
+        "shield": 1,
+        "oil": 0,
+        "feather": 0,
+        "potion": 0
+      },
+      "initial_panel_pixels_exact": true,
+      "prompt_bitmap_bytes_exact": 4160,
+      "settled_states_source_exact": 2,
+      "currency_decrements": 40,
+      "currency_intervals_source_exact": true,
+      "currency_intervals": [
+        2
+      ],
+      "controlled_interior_checkpoint_and_stats": true
+    },
+    {
+      "name": "oil",
+      "town": 85,
+      "house": 1,
+      "mode": 0,
+      "stats": {
+        "selection": 2,
+        "gold": 255,
+        "hp": 9,
+        "cap": 24,
+        "magic": 0,
+        "magic_cap": 80,
+        "keys": 0,
+        "shield": 1,
+        "oil": 0,
+        "feather": 0,
+        "potion": 0
+      },
+      "initial_panel_pixels_exact": true,
+      "prompt_bitmap_bytes_exact": 4160,
+      "settled_states_source_exact": 2,
+      "currency_decrements": 160,
+      "currency_intervals_source_exact": true,
+      "currency_intervals": [
+        2
+      ],
+      "controlled_interior_checkpoint_and_stats": true
+    },
+    {
+      "name": "heal30",
+      "town": 249,
+      "house": 47,
+      "mode": 0,
+      "stats": {
+        "selection": 1,
+        "gold": 255,
+        "hp": 9,
+        "cap": 24,
+        "magic": 0,
+        "magic_cap": 80,
+        "keys": 0,
+        "shield": 1,
+        "oil": 0,
+        "feather": 0,
+        "potion": 0
+      },
+      "initial_panel_pixels_exact": true,
+      "prompt_bitmap_bytes_exact": 4160,
+      "settled_states_source_exact": 2,
+      "currency_decrements": 30,
+      "currency_intervals_source_exact": true,
+      "currency_intervals": [
+        2
+      ],
+      "controlled_interior_checkpoint_and_stats": true
+    },
+    {
+      "name": "potion100-owned",
+      "town": 87,
+      "house": 1,
+      "mode": 0,
+      "stats": {
+        "selection": 0,
+        "gold": 255,
+        "hp": 9,
+        "cap": 24,
+        "magic": 0,
+        "magic_cap": 80,
+        "keys": 0,
+        "shield": 1,
+        "oil": 0,
+        "feather": 0,
+        "potion": 1
+      },
+      "initial_panel_pixels_exact": true,
+      "prompt_bitmap_bytes_exact": 4160,
+      "settled_states_source_exact": 2,
+      "currency_decrements": 0,
+      "currency_intervals_source_exact": true,
+      "currency_intervals": [],
+      "controlled_interior_checkpoint_and_stats": true
+    },
+    {
+      "name": "potion40-owned",
+      "town": 52,
+      "house": 47,
+      "mode": 1,
+      "stats": {
+        "selection": 0,
+        "gold": 255,
+        "hp": 9,
+        "cap": 24,
+        "magic": 0,
+        "magic_cap": 80,
+        "keys": 0,
+        "shield": 1,
+        "oil": 0,
+        "feather": 0,
+        "potion": 1
+      },
+      "initial_panel_pixels_exact": true,
+      "prompt_bitmap_bytes_exact": 4160,
+      "settled_states_source_exact": 2,
+      "currency_decrements": 0,
+      "currency_intervals_source_exact": true,
+      "currency_intervals": [],
+      "controlled_interior_checkpoint_and_stats": true
+    },
+    {
+      "name": "potion40-poor",
+      "town": 52,
+      "house": 47,
+      "mode": 1,
+      "stats": {
+        "selection": 0,
+        "gold": 39,
+        "hp": 9,
+        "cap": 24,
+        "magic": 0,
+        "magic_cap": 80,
+        "keys": 0,
+        "shield": 1,
+        "oil": 0,
+        "feather": 0,
+        "potion": 0
+      },
+      "initial_panel_pixels_exact": true,
+      "prompt_bitmap_bytes_exact": 4160,
+      "settled_states_source_exact": 2,
+      "currency_decrements": 0,
+      "currency_intervals_source_exact": true,
+      "currency_intervals": [],
+      "controlled_interior_checkpoint_and_stats": true
+    },
+    {
+      "name": "shield-owned",
+      "town": 249,
+      "house": 47,
+      "mode": 0,
+      "stats": {
+        "selection": 0,
+        "gold": 255,
+        "hp": 9,
+        "cap": 24,
+        "magic": 0,
+        "magic_cap": 80,
+        "keys": 0,
+        "shield": 2,
+        "oil": 0,
+        "feather": 0,
+        "potion": 0
+      },
+      "initial_panel_pixels_exact": true,
+      "prompt_bitmap_bytes_exact": 4160,
+      "settled_states_source_exact": 2,
+      "currency_decrements": 0,
+      "currency_intervals_source_exact": true,
+      "currency_intervals": [],
+      "controlled_interior_checkpoint_and_stats": true
+    },
+    {
+      "name": "shield-better",
+      "town": 249,
+      "house": 47,
+      "mode": 0,
+      "stats": {
+        "selection": 0,
+        "gold": 255,
+        "hp": 9,
+        "cap": 24,
+        "magic": 0,
+        "magic_cap": 80,
+        "keys": 0,
+        "shield": 3,
+        "oil": 0,
+        "feather": 0,
+        "potion": 0
+      },
+      "initial_panel_pixels_exact": true,
+      "prompt_bitmap_bytes_exact": 4160,
+      "settled_states_source_exact": 2,
+      "currency_decrements": 0,
+      "currency_intervals_source_exact": true,
+      "currency_intervals": [],
+      "controlled_interior_checkpoint_and_stats": true
+    },
+    {
+      "name": "heal-full",
+      "town": 83,
+      "house": 47,
+      "mode": 0,
+      "stats": {
+        "selection": 0,
+        "gold": 255,
+        "hp": 24,
+        "cap": 24,
+        "magic": 0,
+        "magic_cap": 80,
+        "keys": 0,
+        "shield": 1,
+        "oil": 0,
+        "feather": 0,
+        "potion": 0
+      },
+      "initial_panel_pixels_exact": true,
+      "prompt_bitmap_bytes_exact": 4160,
+      "settled_states_source_exact": 2,
+      "currency_decrements": 0,
+      "currency_intervals_source_exact": true,
+      "currency_intervals": [],
+      "controlled_interior_checkpoint_and_stats": true
+    },
+    {
+      "name": "keys-full",
+      "town": 113,
+      "house": 47,
+      "mode": 0,
+      "stats": {
+        "selection": 0,
+        "gold": 255,
+        "hp": 9,
+        "cap": 24,
+        "magic": 0,
+        "magic_cap": 80,
+        "keys": 99,
+        "shield": 1,
+        "oil": 0,
+        "feather": 0,
+        "potion": 0
+      },
+      "initial_panel_pixels_exact": true,
+      "prompt_bitmap_bytes_exact": 4160,
+      "settled_states_source_exact": 2,
+      "currency_decrements": 0,
+      "currency_intervals_source_exact": true,
+      "currency_intervals": [],
+      "controlled_interior_checkpoint_and_stats": true
+    },
+    {
+      "name": "feather-owned",
+      "town": 113,
+      "house": 47,
+      "mode": 0,
+      "stats": {
+        "selection": 1,
+        "gold": 255,
+        "hp": 9,
+        "cap": 24,
+        "magic": 0,
+        "magic_cap": 80,
+        "keys": 0,
+        "shield": 1,
+        "oil": 0,
+        "feather": 1,
+        "potion": 0
+      },
+      "initial_panel_pixels_exact": true,
+      "prompt_bitmap_bytes_exact": 4160,
+      "settled_states_source_exact": 2,
+      "currency_decrements": 0,
+      "currency_intervals_source_exact": true,
+      "currency_intervals": [],
+      "controlled_interior_checkpoint_and_stats": true
+    },
+    {
+      "name": "oil-owned",
+      "town": 85,
+      "house": 1,
+      "mode": 0,
+      "stats": {
+        "selection": 2,
+        "gold": 255,
+        "hp": 9,
+        "cap": 24,
+        "magic": 0,
+        "magic_cap": 80,
+        "keys": 0,
+        "shield": 1,
+        "oil": 1,
+        "feather": 0,
+        "potion": 0
+      },
+      "initial_panel_pixels_exact": true,
+      "prompt_bitmap_bytes_exact": 4160,
+      "settled_states_source_exact": 2,
+      "currency_decrements": 0,
+      "currency_intervals_source_exact": true,
+      "currency_intervals": [],
+      "controlled_interior_checkpoint_and_stats": true
+    },
+    {
+      "name": "normal-poor",
+      "town": 85,
+      "house": 1,
+      "mode": 0,
+      "stats": {
+        "selection": 0,
+        "gold": 99,
+        "hp": 9,
+        "cap": 24,
+        "magic": 0,
+        "magic_cap": 80,
+        "keys": 0,
+        "shield": 1,
+        "oil": 0,
+        "feather": 0,
+        "potion": 0
+      },
+      "initial_panel_pixels_exact": true,
+      "prompt_bitmap_bytes_exact": 4160,
+      "settled_states_source_exact": 2,
+      "currency_decrements": 0,
+      "currency_intervals_source_exact": true,
+      "currency_intervals": [],
+      "controlled_interior_checkpoint_and_stats": true
+    },
+    {
+      "name": "magic4",
+      "town": 35,
+      "house": 47,
+      "mode": 2,
+      "stats": {
+        "selection": 1,
+        "gold": 255,
+        "hp": 9,
+        "cap": 24,
+        "magic": 0,
+        "magic_cap": 80,
+        "keys": 0,
+        "shield": 1,
+        "oil": 0,
+        "feather": 0,
+        "potion": 0
+      },
+      "initial_panel_pixels_exact": true,
+      "prompt_bitmap_bytes_exact": 4160,
+      "settled_states_source_exact": 2,
+      "currency_decrements": 30,
+      "currency_intervals_source_exact": true,
+      "currency_intervals": [
+        2
+      ],
+      "controlled_interior_checkpoint_and_stats": true
+    },
+    {
+      "name": "magic8",
+      "town": 35,
+      "house": 47,
+      "mode": 2,
+      "stats": {
+        "selection": 2,
+        "gold": 255,
+        "hp": 9,
+        "cap": 24,
+        "magic": 0,
+        "magic_cap": 80,
+        "keys": 0,
+        "shield": 1,
+        "oil": 0,
+        "feather": 0,
+        "potion": 0
+      },
+      "initial_panel_pixels_exact": true,
+      "prompt_bitmap_bytes_exact": 4160,
+      "settled_states_source_exact": 2,
+      "currency_decrements": 50,
+      "currency_intervals_source_exact": true,
+      "currency_intervals": [
+        2
+      ],
+      "controlled_interior_checkpoint_and_stats": true
+    },
+    {
+      "name": "magic-clamp",
+      "town": 35,
+      "house": 47,
+      "mode": 2,
+      "stats": {
+        "selection": 2,
+        "gold": 255,
+        "hp": 9,
+        "cap": 24,
+        "magic": 17,
+        "magic_cap": 24,
+        "keys": 0,
+        "shield": 1,
+        "oil": 0,
+        "feather": 0,
+        "potion": 0
+      },
+      "initial_panel_pixels_exact": true,
+      "prompt_bitmap_bytes_exact": 4160,
+      "settled_states_source_exact": 2,
+      "currency_decrements": 50,
+      "currency_intervals_source_exact": true,
+      "currency_intervals": [
+        2
+      ],
+      "controlled_interior_checkpoint_and_stats": true
+    },
+    {
+      "name": "magic-overflow",
+      "town": 35,
+      "house": 47,
+      "mode": 2,
+      "stats": {
+        "selection": 2,
+        "gold": 255,
+        "hp": 9,
+        "cap": 24,
+        "magic": 240,
+        "magic_cap": 248,
+        "keys": 0,
+        "shield": 1,
+        "oil": 0,
+        "feather": 0,
+        "potion": 0
+      },
+      "initial_panel_pixels_exact": true,
+      "prompt_bitmap_bytes_exact": 4160,
+      "settled_states_source_exact": 2,
+      "currency_decrements": 50,
+      "currency_intervals_source_exact": true,
+      "currency_intervals": [
+        2
+      ],
+      "controlled_interior_checkpoint_and_stats": true
+    },
+    {
+      "name": "magic-full",
+      "town": 35,
+      "house": 47,
+      "mode": 2,
+      "stats": {
+        "selection": 0,
+        "gold": 255,
+        "hp": 9,
+        "cap": 24,
+        "magic": 24,
+        "magic_cap": 24,
+        "keys": 0,
+        "shield": 1,
+        "oil": 0,
+        "feather": 0,
+        "potion": 0
+      },
+      "initial_panel_pixels_exact": true,
+      "prompt_bitmap_bytes_exact": 4160,
+      "settled_states_source_exact": 2,
+      "currency_decrements": 0,
+      "currency_intervals_source_exact": true,
+      "currency_intervals": [],
+      "controlled_interior_checkpoint_and_stats": true
+    },
+    {
+      "name": "magic-poor",
+      "town": 35,
+      "house": 47,
+      "mode": 2,
+      "stats": {
+        "selection": 0,
+        "gold": 19,
+        "hp": 9,
+        "cap": 24,
+        "magic": 0,
+        "magic_cap": 80,
+        "keys": 0,
+        "shield": 1,
+        "oil": 0,
+        "feather": 0,
+        "potion": 0
+      },
+      "initial_panel_pixels_exact": true,
+      "prompt_bitmap_bytes_exact": 4160,
+      "settled_states_source_exact": 2,
+      "currency_decrements": 0,
+      "currency_intervals_source_exact": true,
+      "currency_intervals": [],
+      "controlled_interior_checkpoint_and_stats": true
+    },
+    {
+      "name": "confirm_cancel_priority",
+      "town": 148,
+      "house": 0,
+      "mode": 0,
+      "stats": {
+        "selection": 0,
+        "gold": 255,
+        "hp": 9,
+        "cap": 24,
+        "magic": 0,
+        "magic_cap": 80,
+        "keys": 0,
+        "shield": 1,
+        "oil": 0,
+        "feather": 0,
+        "potion": 0,
+        "both": true
+      },
+      "initial_panel_pixels_exact": true,
+      "prompt_bitmap_bytes_exact": 4160,
+      "settled_states_source_exact": 2,
+      "currency_decrements": 60,
+      "currency_intervals_source_exact": true,
+      "currency_intervals": [
+        2
+      ],
+      "controlled_interior_checkpoint_and_stats": true
+    }
+  ],
+  "scroll_comparisons": [
+    {
+      "region": "ntsc",
+      "origin": 496,
+      "target": 480,
+      "v311_resume_delta": 0,
+      "candidate_resume_delta": 0,
+      "regressed": false,
+      "timing": {
+        "sms": {
+          "first": 3520,
+          "last": 3552,
+          "resumed": 3553,
+          "first_clean_sat_frame": 3528,
+          "nonhero_sprite_errors": 0,
+          "first_input_motion": 3554,
+          "destination_y_frame": 3547
+        },
+        "md": {
+          "first": 3520,
+          "last": 3552,
+          "resumed": 3553,
+          "first_clean_sat_frame": 3520,
+          "nonhero_sprite_errors": 0,
+          "first_input_motion": 3554,
+          "destination_y_frame": 3546
+        }
+      }
+    },
+    {
+      "region": "ntsc",
+      "origin": 504,
+      "target": 488,
+      "v311_resume_delta": 0,
+      "candidate_resume_delta": 0,
+      "regressed": false,
+      "timing": {
+        "sms": {
+          "first": 3520,
+          "last": 3557,
+          "resumed": 3558,
+          "first_clean_sat_frame": 3528,
+          "nonhero_sprite_errors": 0,
+          "first_input_motion": null,
+          "destination_y_frame": 3547
+        },
+        "md": {
+          "first": 3520,
+          "last": 3557,
+          "resumed": 3558,
+          "first_clean_sat_frame": 3520,
+          "nonhero_sprite_errors": 0,
+          "first_input_motion": null,
+          "destination_y_frame": 3546
+        }
+      }
+    },
+    {
+      "region": "ntsc",
+      "origin": 484,
+      "target": 468,
+      "v311_resume_delta": 0,
+      "candidate_resume_delta": 0,
+      "regressed": false,
+      "timing": {
+        "sms": {
+          "first": 3520,
+          "last": 3571,
+          "resumed": 3572,
+          "first_clean_sat_frame": 3528,
+          "nonhero_sprite_errors": 0,
+          "first_input_motion": 3573,
+          "destination_y_frame": 3547
+        },
+        "md": {
+          "first": 3520,
+          "last": 3571,
+          "resumed": 3572,
+          "first_clean_sat_frame": 3520,
+          "nonhero_sprite_errors": 0,
+          "first_input_motion": 3573,
+          "destination_y_frame": 3546
+        }
+      }
+    },
+    {
+      "region": "pal",
+      "origin": 496,
+      "target": 480,
+      "v311_resume_delta": 1,
+      "candidate_resume_delta": 1,
+      "regressed": false,
+      "timing": {
+        "sms": {
+          "first": 3520,
+          "last": 3549,
+          "resumed": 3550,
+          "first_clean_sat_frame": 3526,
+          "nonhero_sprite_errors": 0,
+          "first_input_motion": 3551,
+          "destination_y_frame": 3545
+        },
+        "md": {
+          "first": 3520,
+          "last": 3550,
+          "resumed": 3551,
+          "first_clean_sat_frame": 3520,
+          "nonhero_sprite_errors": 0,
+          "first_input_motion": 3552,
+          "destination_y_frame": 3546
+        }
+      }
+    },
+    {
+      "region": "pal",
+      "origin": 504,
+      "target": 488,
+      "v311_resume_delta": 2,
+      "candidate_resume_delta": 2,
+      "regressed": false,
+      "timing": {
+        "sms": {
+          "first": 3520,
+          "last": 3553,
+          "resumed": 3554,
+          "first_clean_sat_frame": 3526,
+          "nonhero_sprite_errors": 0,
+          "first_input_motion": null,
+          "destination_y_frame": 3545
+        },
+        "md": {
+          "first": 3520,
+          "last": 3555,
+          "resumed": 3556,
+          "first_clean_sat_frame": 3520,
+          "nonhero_sprite_errors": 0,
+          "first_input_motion": null,
+          "destination_y_frame": 3546
+        }
+      }
+    },
+    {
+      "region": "pal",
+      "origin": 484,
+      "target": 468,
+      "v311_resume_delta": 0,
+      "candidate_resume_delta": 0,
+      "regressed": false,
+      "timing": {
+        "sms": {
+          "first": 3520,
+          "last": 3565,
+          "resumed": 3566,
+          "first_clean_sat_frame": 3526,
+          "nonhero_sprite_errors": 0,
+          "first_input_motion": 3567,
+          "destination_y_frame": 3545
+        },
+        "md": {
+          "first": 3520,
+          "last": 3565,
+          "resumed": 3566,
+          "first_clean_sat_frame": 3520,
+          "nonhero_sprite_errors": 0,
+          "first_input_motion": 3567,
+          "destination_y_frame": 3546
+        }
+      }
+    }
+  ],
+  "cold_ntsc_d2_comparison": {
+    "roms": [
+      {
+        "tag": "v311",
+        "rom_sha256": "0972465d63447f5993324fd63693271f77bcb3f013a125c1d4ed575b2df9d2e2",
+        "capture_sha256": "545167cddad85ce3283a5407a1ce6d385bea15104a2ee7342c7d820b6a332c81"
+      },
+      {
+        "tag": "candidate02",
+        "rom_sha256": "0b9aecb48fc9bb82cfcebc9547684742134d60e0f82e60b1a070ab3be50b4d64",
+        "capture_sha256": "ed59effa4213ffd9a806f0c7525728c4eed2f66b8ccb93b69d146b742d803b79"
+      }
+    ],
+    "frames": 38781,
+    "compared_frames": 35782,
+    "compared_fields": {
+      "room_id": 2,
+      "game_state": 2,
+      "hero_state": 2,
+      "hero_x": 2,
+      "hero_y": 2,
+      "hero_health": 2,
+      "hero_max_health": 2,
+      "hero_magic": 2,
+      "hero_max_magic": 2,
+      "hero_gold": 2,
+      "hero_keys": 2,
+      "hero_hurt": 2,
+      "hero_selected_item": 2,
+      "hero_weapon_level": 2,
+      "game_rng_seed": 2,
+      "randbase": 2,
+      "save_service_phase": 2,
+      "merchant_phase": 2,
+      "transition_stage": 2,
+      "transition_direction": 2,
+      "transition_step": 2,
+      "transition_loading_frames": 2,
+      "hero_pattern_wait_frames": 2,
+      "world_clock_shift": 4,
+      "world_actor_load_tstates": 4,
+      "vtimer": 4,
+      "world_actor_state": 768,
+      "game_save_state": 592,
+      "hero_items": 17,
+      "sms_vram": 16384
+    },
+    "first_differences": [],
+    "semantic_trace_exact": true,
+    "primary_state_imports": 0,
+    "source_controller_trace": "C:\\Users\\UniKennY\\Documents\\Codex\\2026-10-07\\hel\\outputs\\gaw-md-upward-ntsc01\\validation\\natural-dungeon-combat\\md-auto-up01-d2-exit",
+    "initial_sram": false,
+    "assistance_only": "Recorded approach hurt writes, address-remapped by symbols; no other writes. Boss guard removed at source release frame.",
+    "source_equivalence_claim": false
+  },
+  "final_png_same_as_v311": true,
+  "compared_semantic_state_exact": true,
+  "whole_ram_across_builds_compared": false,
+  "full_game_validated": false,
+  "full_source_audio_video_validated": false,
+  "source_global_r_irq_port_complete": false,
+  "hardware_validated": false,
+  "evidence": {
+    "validation\\v0311-merchant\\candidate02-audit-report.json": "2b7daa57bfe67dcf009f70f5cbbfcc8302b998c7b8aca555d53c3351dde76751",
+    "validation\\v0311-merchant\\candidate02\\all_merchants_report.json": "2180b4e6c185db8a1e327e30262be4ed28bbea580a693f9f43549df608dad729",
+    "validation\\v0311-merchant\\candidate02-cold-d2-report.json": "d3a85fab53181c7938b52e3bab036b4f22200405a400c02a0d227286fcbdfd06",
+    "validation\\v0311-merchant\\cold-d2-v311\\capture.json": "545167cddad85ce3283a5407a1ce6d385bea15104a2ee7342c7d820b6a332c81",
+    "validation\\v0311-merchant\\cold-d2-candidate02\\capture.json": "ed59effa4213ffd9a806f0c7525728c4eed2f66b8ccb93b69d146b742d803b79",
+    "validation\\v0311-merchant\\cold-d2-v311\\frame_38781.png": "71f847ac4bd078b5e172a1d0ea6330c7f4d506c5eead7ccdf053a10675a27910",
+    "validation\\v0311-merchant\\cold-d2-candidate02\\frame_38781.png": "71f847ac4bd078b5e172a1d0ea6330c7f4d506c5eead7ccdf053a10675a27910",
+    "validation\\v0311-merchant\\trace_candidate02.py": "22dab7d2d40f3e9bddaf86009e9d31f54bd80c03625dd42b17f776f510389c83"
+  },
+  "driver_sha256": "8cf129385e677012b1e30452bbd61b4d829cb36285673974bf8e356c08ed9ae9",
+  "limits": [
+    "Merchant portrait plane-2 publication and black-window timing match live SMS captures in PAL/NTSC. First settled panel remains one frame late in PAL.",
+    "43 controlled cases cover 23 towns; one natural first-village walk/refusal/exit uses no RAM writes or initial SRAM.",
+    "Cold v311 controls replay through D2 exit on v312. Named state fields match on 35782 frames; stack/layout bytes are excluded. Recorded approach-only hurt writes are address-remapped, with no resource or actor writes and no primary state imports.",
+    "This extends targeted v312 evidence. Complete campaign-to-credits proof remains v310; source global timing, optional coverage and hardware remain open."
+  ]
+}

@@ -5,17 +5,24 @@ puis portage de sa logique Z80 en code natif 68000 avec SGDK.
 La fidélité à la Master System passe avant les améliorations.
 
 <!-- ROM-RELEASE:START -->
-**Version courante : v0311 — 2048 Kio.**
+**Version courante : v0312 — 2048 Kio.**
 
-[Télécharger la ROM v0311](versions/v0311-0972465d/gaw-megadrive-v0311.bin) · [Toutes les versions](versions/README.md)
+[Télécharger la ROM v0312](versions/v0312-0b9aecb4/gaw-megadrive-v0312.bin) · [Toutes les versions](versions/README.md)
 
 Contrôles ciblés réussis ; portage complet encore non validé.
 
-SHA-256 : `0972465d63447f5993324fd63693271f77bcb3f013a125c1d4ed575b2df9d2e2`
-Checksum Mega Drive : `86A4`
+SHA-256 : `0b9aecb48fc9bb82cfcebc9547684742134d60e0f82e60b1a070ab3be50b4d64`
+Checksum Mega Drive : `B827`
 <!-- ROM-RELEASE:END -->
 
 ## État du portage
+
+La **v0312** corrige la vitesse de la transition marchande : neuf images
+noires et les huit étapes du portrait s’alignent sur SMS en PAL et NTSC.
+Les 43 cas contrôlés couvrant les 23 villes passent. Le parcours NTSC jusqu’à
+la sortie de D2 conserve les champs de jeu comparés à la v311 sur 35 782
+images, et son image finale. Le panneau complet reste une image tardif en PAL.
+[Correction marchande et restauration du menu v312](analysis/merchant_inventory_v0312_report.json)
 
 La **v0311** ajoute une image au chargement lors des défilements de donjon
 vers le haut en NTSC. Sur trois trajets comparés à la Master System, la
@@ -36,10 +43,9 @@ relecture froide RAM/image exacte.
 [Approche de D2](analysis/d2_approach_v0311_report.json)
 · [Boss, cristal et sortie](analysis/d2_campaign_v0311_report.json)
 
-Un candidat améliore la transition marchande : neuf images noires et huit
-étapes du portrait alignées sur SMS en PAL/NTSC, sept achats/refus vérifiés.
-Il reste en essai : un chargement vers le haut reprend une image trop tôt.
-[Rapport du candidat marchand](analysis/merchant_candidate_v0311_report.json)
+Le premier [candidat marchand](analysis/merchant_candidate_v0311_report.json)
+reste conservé comme diagnostic. La v312 utilise une routine marchande
+distincte et conserve les chargements PAL/NTSC contrôlés de la v311.
 
 La **[v0310 raccorde la récurrence du hasard SMS](analysis/rng_integration_v0310.md)**
 aux routines du jeu : ennemis, butin, historique des salles et mini-jeu.

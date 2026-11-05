@@ -6,10 +6,16 @@ partielle en validation complète.
 
 État constaté :
 
-- ROM courante v311, 2 Mio, SHA0972465d… : correction d'une image du
+- ROM courante v312, 2 Mio, SHA0b9aecb4… : transition marchande corrigée,
+  neuf images noires et huit étapes du portrait alignées SMS PAL/NTSC.
+  43 cas couvrant les 23 villes passent ; le parcours NTSC jusqu'à la sortie
+  de D2 conserve les champs de jeu comparés et l'image finale de la v311.
+  Le panneau complet reste une image tardif en PAL.
+- v311, 2 Mio, SHA0972465d… : correction d'une image du
   chargement vers le haut en NTSC. Premier donjon, hache, fontaine et clés du
-  deuxième donjon vérifiés par rejeu exact. Combat du deuxième donjon en cours
-  de validation ; la fin de campagne v310 ne vaut pas validation complète v311.
+  deuxième donjon vérifiés par rejeu exact. Deuxième cristal et retour extérieur
+  vérifiés à 48/48 PV, sans protection ni dégât pendant le boss. La fin de
+  campagne v310 ne vaut pas validation complète des versions suivantes.
 - ROM de référence v310, 2 Mio, SHA32fe75a6… : récurrence SMS 04E1 raccordée.
   Parcours depuis Nouveau Jeu vérifié jusqu’à la victoire sur Death Adder,
   au générique complet et au retour à l’intro.
@@ -39,7 +45,7 @@ partielle en validation complète.
 
 Ordre de travail pour la livraison :
 
-1. Poursuivre la validation du parcours v311 et traiter les blocages ou régressions
+1. Poursuivre la validation de la ROM courante et traiter les blocages ou régressions
    réellement rencontrés. Réutiliser les préfixes froids déjà vérifiés ; ne pas
    recommencer les étapes acquises. Les protections restent sur les approches,
    retirées avant chaque boss ; aucun état ou progression n'est importé.
