@@ -1,0 +1,127 @@
+{
+  "passed": true,
+  "version": 314,
+  "md_sha256": "c53381c459a1e6254a8c9f1cfad1b8cda482cc0614697ad566133b28335e07a7",
+  "original_sms_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+  "original_routine": 20587,
+  "original_instructions_changed": false,
+  "cases": [
+    {
+      "incoming_iy": 32768,
+      "fixture_sha256": "056d70851c26fb629473552a9b6cd766398b6f0f772029c319f5e1411d5b1656",
+      "ram_sha256": "25bcd8a2a062c55612a237272e931d462b5af5eefd326625ba73befb146d5256",
+      "actor5_direction": 167,
+      "last_projectile_direction": 167,
+      "after_pool_byte": 90,
+      "boss_state": 4,
+      "pool_types": [
+        167,
+        167,
+        167,
+        167,
+        167,
+        167,
+        167,
+        167
+      ]
+    },
+    {
+      "incoming_iy": 50928,
+      "fixture_sha256": "7ccdab158817b4b4d5f63817071e39cdb2f37bba9a2c435f032dbf46386b5866",
+      "ram_sha256": "4a29e1f032ced0a87190e6148ebd1a3796d8849e8f7724daab6de34fdf3e332b",
+      "actor5_direction": 0,
+      "last_projectile_direction": 167,
+      "after_pool_byte": 90,
+      "boss_state": 4,
+      "pool_types": [
+        167,
+        167,
+        167,
+        167,
+        167,
+        167,
+        167,
+        167
+      ]
+    },
+    {
+      "incoming_iy": 51408,
+      "fixture_sha256": "39903f1d075c95097ffe12929f37d207963180f4d6110c797b42df225d7c3f59",
+      "ram_sha256": "53b5d70522bb04efa7d2163db2e0cfba4e2ef50bb4f445cf973a7117f3fa3eb6",
+      "actor5_direction": 167,
+      "last_projectile_direction": 0,
+      "after_pool_byte": 90,
+      "boss_state": 4,
+      "pool_types": [
+        167,
+        167,
+        167,
+        167,
+        167,
+        167,
+        167,
+        167
+      ]
+    },
+    {
+      "incoming_iy": 51456,
+      "fixture_sha256": "d128901b2524ddc9c93ea03d7bf238069dcbde621b7d4a0d29874757f016a4f3",
+      "ram_sha256": "4bb07be0dfdc02db1f8e795b7f91a1308aa84f50c01fe364659a93b1b45c71e3",
+      "actor5_direction": 167,
+      "last_projectile_direction": 167,
+      "after_pool_byte": 0,
+      "boss_state": 4,
+      "pool_types": [
+        167,
+        167,
+        167,
+        167,
+        167,
+        167,
+        167,
+        167
+      ]
+    }
+  ],
+  "native_comparison_performed": false,
+  "natural_gameplay_proof": false,
+  "scope": "Controlled SMS unit fixture only. Program initializes RAM and calls the unmodified original routine with a full projectile pool. No campaign state is imported and the production MD ROM is unchanged.",
+  "source_effect_confirmed": true,
+  "aligned_pointer_cases": [
+    {
+      "incoming_iy": 50928,
+      "ram_differences": [
+        {
+          "address": 50938,
+          "before": 167,
+          "after": 0
+        }
+      ]
+    },
+    {
+      "incoming_iy": 51408,
+      "ram_differences": [
+        {
+          "address": 51418,
+          "before": 167,
+          "after": 0
+        }
+      ]
+    },
+    {
+      "incoming_iy": 51456,
+      "ram_differences": [
+        {
+          "address": 51466,
+          "before": 90,
+          "after": 0
+        }
+      ]
+    }
+  ],
+  "driver_sha256": "1d865f19c9496880513f8cd99a92fd30045ffba2a46cdf8884e9909c9b74acbf",
+  "native_reachability_or_comparison_proven": false,
+  "supersedes": "full_pool_iy_source_v0314_report.json",
+  "correction": "Probe01 used unaligned IY C700; its actor5_direction label was wrong. Its raw C70A difference remains valid. This probe uses actual actor/projectile record alignment and a distinct sentinel after the pool.",
+  "next_required_work": "Compare a native controlled case and inspect incoming IY in real source callers before changing production."
+}
