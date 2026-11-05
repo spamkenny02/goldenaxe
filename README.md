@@ -41,7 +41,7 @@ points reproduisent toute la RAM et l’image finale, sans nouvelle écriture
 de test ni import de ressources. L’accès direct à D9 et le passage CB ouvert
 avec la Cloche sont maintenant vérifiés, à96 PV/24 PM. Le premier gardien est aussi vaincu ;
 le deuxième gardien et le Ballon sont aussi vérifiés. Le boss principal, le neuvième cristal
-et le retour extérieur sont désormais vérifiés. L’entrée du palais final est validée ; ses gardiens et la fin restent à terminer.
+et le retour extérieur sont désormais vérifiés. L’entrée, le premier gardien et les mécanismes intérieurs du palais sont validés ; la suite et la fin restent à terminer.
 [Continuer et soin gratuit v314](analysis/d9_recovery_v0314_report.json)
 [Entrée D9 et passage de la Cloche v314](analysis/d9_entry_v0314_report.json)
 
@@ -90,6 +90,12 @@ un combat sans dégât. Le compte précis des pertes/récupérations est conserv
 [Premier gardien du palais v314](analysis/cold_palace_giant_v0314_report.json)
 · [Bilan des PV](analysis/palace_giant_health_v0314_report.json)
 
+Les portails, les deux passages Terre et le mécanisme intérieur du palais
+sont également vérifiés : cinq points reproduisent la RAM complète et
+l’image finale. Le parcours atteint339379 images depuis Nouveau Jeu ;
+le gardien suivant, la Hache d’or et la fin restent en test.
+[Mécanismes intérieurs v314](analysis/cold_palace_inner_v0314_report.json)
+
 Sur ce binaire, le parcours depuis Nouveau Jeu atteint **neuf cristaux**,
 avec la hache et la première fée de vie obtenues normalement. Le boss de D2
 est vaincu sans protection ni dégât :89 prédictions conformes, puis cristal
@@ -120,7 +126,7 @@ Son rejeu reproduit les592 octets du contenu et le fichier SRAM, puis un
 redémarrage et **Continuer** restaurent les objets, le premier cristal,
 le HUD physique et le déplacement. Aucun état SRAM synthétique n’est utilisé.
 La sauvegarde à neuf cristaux écrite sur v313 reste également compatible avec
-v314 en PAL/NTSC. La suite à partir du huitième donjon reste à vérifier sur le nouveau binaire.
+v314 en PAL/NTSC. Le palais final et la sauvegarde à neuf cristaux restent à terminer sur ce binaire.
 [Sauvegarde écrite et Continuer v314](analysis/game_written_save_v0314_report.json)
 · [Compatibilité de sauvegarde v313](analysis/save_compatibility_candidate11_v0313_report.json)
 
