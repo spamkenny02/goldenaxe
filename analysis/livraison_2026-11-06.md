@@ -16,6 +16,9 @@ partielle en validation complète.
   extérieur vérifié à 56/56 PV, sans protection ni dégât pendant le boss D3.
   Chaque point promu a un rejeu indépendant RAM/image exact ; trois marqueurs
   et les 128 mots physiques du HUD sont vérifiés après le boss et la sortie.
+- Préparation D4 sur v312 : don de 50 cornes et achat réel de Terre pour 50,
+  niveau 1 et capacité de 48 PM. Quatre points avec rejeu RAM/image exact.
+  Entrée D4, première clé et premier passage Terre vérifiés ; suite en cours.
 - v311, 2 Mio, SHA0972465d… : correction d'une image du
   chargement vers le haut en NTSC. Premier donjon, hache, fontaine et clés du
   deuxième donjon vérifiés par rejeu exact. Deuxième cristal et retour extérieur

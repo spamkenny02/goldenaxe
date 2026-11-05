@@ -37,6 +37,11 @@ ont leur rejeu froid RAM/image exact, avec les trois marqueurs du HUD vérifiés
 [Corde, mécanisme et clé](analysis/d3_progress_v0312_report.json)
 · [Troisième cristal et sortie](analysis/d3_campaign_v0312_report.json)
 
+La préparation de D4 sur v312 vérifie le don de 50 cornes et l’achat de Terre
+pour 50 : argent **18→68→18**, niveau **0→1**, magie **24→48**. Les quatre
+étapes passent leur rejeu RAM/image ; aucun objet ni argent n’est injecté.
+[Apprentissage de Terre v312](analysis/earth_learning_v0312_report.json)
+
 La **v0311** ajoute une image au chargement lors des défilements de donjon
 vers le haut en NTSC. Sur trois trajets comparés à la Master System, la
 reprise du jeu s’aligne. Le premier déplacement s’aligne aussi dans les deux
