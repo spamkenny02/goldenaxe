@@ -307,3 +307,8 @@ matérielles de sprites. Aucun ancien monstre/objet durant le scroll ;
 persistance et reprise préservées. Des écarts de fin d’état subsistent ;
 ce test ne conclut pas à une cadence ou à un décor identiques.
 Voir scroll_objects_v0314_report.json.
+
+Gardien11E/7C vaincu sans protection :405 prédictions exactes,trois coups
+de24 PV,fin32 PV. Hache d’or acquise en11D à363747,fin364147 à56 PV/72 PM.
+Six points RAM/image exacts. Dernière portion du palais lancée.
+Voir cold_palace_guardian_v0314_report.json et palace_guardian_health_v0314_report.json.

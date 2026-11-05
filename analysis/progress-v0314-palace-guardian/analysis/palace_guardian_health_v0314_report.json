@@ -1,0 +1,77 @@
+{
+  "passed": true,
+  "version": 314,
+  "md_sha256": "c53381c459a1e6254a8c9f1cfad1b8cda482cc0614697ad566133b28335e07a7",
+  "trace": "natural-dungeon-combat/md-auto-v0314-cold-palace-guardian01",
+  "frames": 362186,
+  "first_combat": {
+    "frame": 349065,
+    "room": 286,
+    "game": 12,
+    "health": 104,
+    "hurt": 0,
+    "actors": [
+      {
+        "slot": 0,
+        "kind": 124,
+        "hp": 60
+      }
+    ]
+  },
+  "observed_losses": [
+    {
+      "frame": 354610,
+      "room": 286,
+      "before": 104,
+      "after": 80,
+      "amount": 24
+    },
+    {
+      "frame": 359396,
+      "room": 286,
+      "before": 80,
+      "after": 56,
+      "amount": 24
+    },
+    {
+      "frame": 359700,
+      "room": 286,
+      "before": 56,
+      "after": 32,
+      "amount": 24
+    }
+  ],
+  "approach_losses": [],
+  "combat_room_losses": [
+    {
+      "frame": 354610,
+      "room": 286,
+      "before": 104,
+      "after": 80,
+      "amount": 24
+    },
+    {
+      "frame": 359396,
+      "room": 286,
+      "before": 80,
+      "after": 56,
+      "amount": 24
+    },
+    {
+      "frame": 359700,
+      "room": 286,
+      "before": 56,
+      "after": 32,
+      "amount": 24
+    }
+  ],
+  "observed_recoveries": [],
+  "observed_net_combat_room_hp_loss": 72,
+  "no_observed_hp_loss": false,
+  "final_health": 32,
+  "resource_fixture_writes": 0,
+  "whole_ram_png_exact": true,
+  "events_sha256": "fcdedcd493490a5767441544084aaed5b0b80abc20953a467a744f253ac8392b",
+  "source_report_sha256": "ebb7de68b7a87b5e324993cf73d58cf6b1dcabe0dad00643e2b7a5ef726b396c",
+  "scope": "Observed frame-end HP changes. Final HP does not establish a damage-free fight; recovery and pre-boss floor losses are separate. No per-instruction damage cancellation or unobserved intermediate-frame claim."
+}

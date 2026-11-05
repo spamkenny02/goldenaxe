@@ -10,13 +10,19 @@ def symbols(path):
  return {m[2].split('.lto_priv.')[0]:int(m[1],16)&65535 for l in path.read_text().splitlines() if(m:=re.match(r'([0-9a-fA-F]+)\s+\w\s+(\S+)',l))}
 
 def main():
- ap=argparse.ArgumentParser();ap.add_argument('--baseline',action='store_true');ap.add_argument('--reuse',action='store_true');args=ap.parse_args()
+ ap=argparse.ArgumentParser();ap.add_argument('--baseline',action='store_true');ap.add_argument('--reuse',action='store_true')
+ ap.add_argument('--tag',default='',help='Fresh recording suffix; retain older captures')
+ ap.add_argument('--no-legacy-comparison',action='store_true',help='Check current publication without comparing absolute frames to v202')
+ args=ap.parse_args()
+ assert not args.tag or re.fullmatch(r'[a-zA-Z0-9_-]+',args.tag)
+ tag='-'+args.tag if args.tag else ''
  rom=ROOT/('versions/v0202-f55643bb/gaw-megadrive-v0202.bin' if args.baseline else 'gaw-megadrive.bin')
  sy=symbols(ROOT/('analysis/pattern-pairs-v0202/megadrive/out/release/symbol.txt' if args.baseline else 'megadrive/out/release/symbol.txt'))
  rows=[];comparisons=[]
  for region in ['auto','pal']:
   for route,inputs in [('horizontal',PRESSES[:11]+[(3000,3100,7)]),('vertical',PRESSES[:11]+[(3000,3060,5),(3220,3360,4)])]:
-   folder=ROOT/f'validation/scroll-publish-{route}-{region}{"-baseline" if args.baseline else ""}'
+   folder=ROOT/f'validation/scroll-publish-{route}-{region}{"-baseline" if args.baseline else ""}{tag}'
+   if args.tag and not args.reuse:assert not folder.exists(),folder
    states={}
    def observe(f,r):
     if f>=2700:states[f]={n:int.from_bytes(bytes(r[(sy[n]+i)^1] for i in range(2)),'big') for n in ['game_state','room_id','transition_direction','transition_stage','transition_step']}
@@ -54,7 +60,7 @@ def main():
     held=all(early.getpixel(p)==previous.getpixel(p) for p in points) and any(early.getpixel(p)!=images[-1].getpixel(p) for p in points)
     rows.append(dict(region=region,route=route,direction=states[f]['transition_direction'],room=states[f]['room_id'],frames=frames,background_pixels_per_frame=len(points),different_pixels=differences,previous_pose_held_one_frame=held))
     print(region,route,rows[-1],flush=True)
-   if not args.baseline:
+   if not args.baseline and not args.no_legacy_comparison:
     old=ROOT/f'validation/scroll-publish-{route}-{region}-baseline'
     old_rom=ROOT/'versions/v0202-f55643bb/gaw-megadrive-v0202.bin'
     assert json.loads((old/'capture.json').read_text())['rom_sha256']==hashlib.sha256(old_rom.read_bytes()).hexdigest()
@@ -72,7 +78,8 @@ def main():
     comparisons.append(dict(region=region,route=route,frames=len(states),simulation_states_identical=True,changed_rendered_frames=changed,evidence=evidence))
  report=dict(md_sha256=hashlib.sha256(rom.read_bytes()).hexdigest(),baseline=args.baseline,cases=rows,passed=all(not any(r['different_pixels']) for r in rows),limits=['Natural initial exterior routes; horizontal final pose, origin reset and following frame; vertical stability after final publication. Hardware sprite rectangles excluded. Existing one-frame hold of the penultimate vertical pose in NTSC is reported separately, unchanged. No complete source timing or whole-game claim.'])
  if comparisons:report['baseline_comparisons']=comparisons
- path=ROOT/f'validation/scroll_publish{"_baseline" if args.baseline else ""}_report.json';path.write_text(json.dumps(report,indent=2)+'\n')
+ report['legacy_v202_comparison_performed']=bool(comparisons)
+ path=ROOT/f'validation/scroll_publish{"_baseline" if args.baseline else ""}{tag}_report.json';path.write_text(json.dumps(report,indent=2)+'\n')
  if not args.baseline:assert report['passed'],report
 
 if __name__=='__main__':main()

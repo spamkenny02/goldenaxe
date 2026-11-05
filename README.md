@@ -77,7 +77,7 @@ final, de la Hache d’or et de la fin est lancé sur cette même ROM.
 Le **Ballon est utilisé normalement**, puis la carte du monde se referme
 avec restitution du décor/HUD vérifiée sur768 mots physiques. La **porte
 aux neuf cristaux** s’ouvre réellement et l’entrée du palais18D est relue en
-RAM/image exacte, à104 PV/72 PM. Le premier gardien du palais est aussi vaincu. La Hache d’or,
+RAM/image exacte, à104 PV/72 PM. Les deux gardiens et la Hache d’or sont vérifiés.
 Death Adder, le générique et la sauvegarde à neuf cristaux restent en test.
 [Ballon et retour de carte v314](analysis/owned_overview_v0314_report.json)
 · [Porte et entrée du palais v314](analysis/cold_palace_entry_v0314_report.json)
@@ -101,6 +101,19 @@ carte extérieurs : quatre directions en PAL/NTSC, tables matérielles de
 sprites contrôlées, persistance et reprise du jeu conservées. Ce test préparé
 ne prouve pas chaque pixel du décor ni une durée identique de transition.
 [Objets pendant le scrolling v314](analysis/scroll_objects_v0314_report.json)
+Le contrôle du **flash d’ancienne carte** passe également sur dix fins de
+scroll naturelles : fond stable sur trois images après publication, en
+PAL/NTSC, hors rectangles des sprites. Aucune comparaison de cadence
+SMS globale n’est déduite de ce contrôle.
+[Publication du décor v314](analysis/scroll_publish_v0314_report.json)
+
+Le **gardien11E/7C** est vaincu sans protection : **405 prédictions exactes**,
+trois coups normaux de24 PV, fin à32 PV. La **Hache d’or est acquise réellement**
+en11D, avec une fin d’étape à56 PV/72 PM. Six points supplémentaires
+reproduisent RAM et image ; Death Adder, générique et sauvegarde finale
+restent en cours de vérification.
+[Gardien et Hache d’or v314](analysis/cold_palace_guardian_v0314_report.json)
+· [Bilan des PV](analysis/palace_guardian_health_v0314_report.json)
 
 Sur ce binaire, le parcours depuis Nouveau Jeu atteint **neuf cristaux**,
 avec la hache et la première fée de vie obtenues normalement. Le boss de D2

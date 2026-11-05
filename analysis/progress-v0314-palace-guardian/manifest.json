@@ -1,0 +1,652 @@
+{
+  "version": 314,
+  "md_sha256": "c53381c459a1e6254a8c9f1cfad1b8cda482cc0614697ad566133b28335e07a7",
+  "scope": "Palace guardian7C defeated without assistance:405 exact forecasts,three24HP hits,32HP final. GoldenAxe2 acquired normally; six full-RAM/final-PNG checkpoints. Final boss and ending pending.",
+  "files": {
+    "analysis/cold_palace_guardian_v0314_report.json": "58ce1594afb28851d2d09db8bfa5f5b897efe58773343a1506735e63ed1198b0",
+    "analysis/cold_palace_inner_v0314_report.json": "86c8ff903dc8480bf0319630040a4170261ca50516c870992507202abb68ac7b",
+    "analysis/item_rewards_reference.json": "2a9acd817081a09e4bd0714b53065754beaa0e795fe788e08985b8b2965630d5",
+    "analysis/palace_guardian_health_v0314_report.json": "317589bd431642dc5835dafe5e4e480f8bcf3ee11cbc6ff9046e1082d68f8f92",
+    "tools/summarize_battle_health_v0314.py": "f1238f80378383ec1c73c60b4f61f1a64b5e023900daf5613ba910b8987f5c08",
+    "tools/summarize_palace_guardian_v0314.py": "a0b78cb7f260d2ce249a8f423f041d6a3c285606c7337e4e0ceeb27b51179084"
+  },
+  "compressed": {
+    "input/original.sms": {
+      "stored": "objects/852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9.gz",
+      "raw_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+      "raw_bytes": 262144,
+      "stored_sha256": "31eb6a31db0115f7b4b54e7132671b665f95c254c4a2f83f5d8450887d8f4324"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-goldenaxe01/assistance.json": {
+      "stored": "objects/680e66705902593305a7858a33747ca4c85888d8474688f24a80de7fa0c171a4.gz",
+      "raw_sha256": "680e66705902593305a7858a33747ca4c85888d8474688f24a80de7fa0c171a4",
+      "raw_bytes": 15657486,
+      "stored_sha256": "9286a3df9a868b51e67c6ed86ac9543d19d3dbbd8a2044fcd92aa94d74f09e5c"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-goldenaxe01/boss_frames.json": {
+      "stored": "objects/a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f.gz",
+      "raw_sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+      "raw_bytes": 4,
+      "stored_sha256": "9ee5a88c8d7dd7955e0f870eb72b92a69d3c4b7d43837f5eca5ead2e24fef6e2"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-goldenaxe01/capture.json": {
+      "stored": "objects/05d40d848992ce318fb52536981f70d2eabee51c17994baa2b1c2d6f65d3a465.gz",
+      "raw_sha256": "05d40d848992ce318fb52536981f70d2eabee51c17994baa2b1c2d6f65d3a465",
+      "raw_bytes": 17792218,
+      "stored_sha256": "da127c0bdeab2c86462f380a89e582674d842eaecbd74bbceffc888358cbdf50"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-goldenaxe01/controls.json": {
+      "stored": "objects/16076151723e457aa7adf7288cb4206806390a6c2d43bfbc95fd37f333b600b5.gz",
+      "raw_sha256": "16076151723e457aa7adf7288cb4206806390a6c2d43bfbc95fd37f333b600b5",
+      "raw_bytes": 694620,
+      "stored_sha256": "cfb959cd7f20f8832d63bf27ec7acb0e4afb92f73ea234e0139b1971a479317c"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-goldenaxe01/events.json": {
+      "stored": "objects/66b9df9af1d7f383866c08c910e3ef0e29203b896af5c9f508516debce15fc0e.gz",
+      "raw_sha256": "66b9df9af1d7f383866c08c910e3ef0e29203b896af5c9f508516debce15fc0e",
+      "raw_bytes": 112667,
+      "stored_sha256": "bb3a5379bb3ae92ac42191012411623cfc4627413b0467f2ced3e2b393ca77fa"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-goldenaxe01/frame_364147.png": {
+      "stored": "objects/0150d5bc43f8bea2e428d2ea34c3a9e0026d8773d0d06ea420da233df17b3204.gz",
+      "raw_sha256": "0150d5bc43f8bea2e428d2ea34c3a9e0026d8773d0d06ea420da233df17b3204",
+      "raw_bytes": 5744,
+      "stored_sha256": "265dd2175a6bd5e7dc0bfa6d2de0c24c376d05066f46d3bd6b32b7454c1ab76b"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-goldenaxe01/pilot_decisions.json": {
+      "stored": "objects/a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f.gz",
+      "raw_sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+      "raw_bytes": 4,
+      "stored_sha256": "9ee5a88c8d7dd7955e0f870eb72b92a69d3c4b7d43837f5eca5ead2e24fef6e2"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-goldenaxe01/ram_364147.bin": {
+      "stored": "objects/4afcc9857f350891e5bfe923876132417484f0f79512ad1911a25e4f2ccd8dcd.gz",
+      "raw_sha256": "4afcc9857f350891e5bfe923876132417484f0f79512ad1911a25e4f2ccd8dcd",
+      "raw_bytes": 65536,
+      "stored_sha256": "881dcd80b31879588a57fd870830c5f899eb0e10f6c46027e9692618c270bb0c"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-goldenaxe01/report.json": {
+      "stored": "objects/dc1960ef9df4e580dea9a1074b498c2835d5e6bc0f4494226449bfe9ee8b337b.gz",
+      "raw_sha256": "dc1960ef9df4e580dea9a1074b498c2835d5e6bc0f4494226449bfe9ee8b337b",
+      "raw_bytes": 3364,
+      "stored_sha256": "c8a96f21f375b691b5adf690e6f752f6c29dc1bb4cfb952c91666624f907f665"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-goldenaxe01/samples.json": {
+      "stored": "objects/e8ff3dd35d9f695ced22d973f00b5993223da758ec7b4ff20911cd4dfc29a7f7.gz",
+      "raw_sha256": "e8ff3dd35d9f695ced22d973f00b5993223da758ec7b4ff20911cd4dfc29a7f7",
+      "raw_bytes": 315040,
+      "stored_sha256": "11687e2a7f8b9fd6aa8350adbabd3e1da9a0c3f57aec740ff7c58e73ba2fd3aa"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-goldenaxe01/vdp_regs_364147.bin": {
+      "stored": "objects/1c49de91fb297da4e43d2fa84f55c5e394814877557675410b671b05935c545f.gz",
+      "raw_sha256": "1c49de91fb297da4e43d2fa84f55c5e394814877557675410b671b05935c545f",
+      "raw_bytes": 32,
+      "stored_sha256": "11f861f97387582539d13092dd57d21e9860099ad1db82ae59fbd842c40bdce4"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-goldenaxe01/vram_364147.bin": {
+      "stored": "objects/6893aadeb01a7171b7c55d4565b8dd1e9f3b2cbd6a0e3a39b60d05fe7b2f37e3.gz",
+      "raw_sha256": "6893aadeb01a7171b7c55d4565b8dd1e9f3b2cbd6a0e3a39b60d05fe7b2f37e3",
+      "raw_bytes": 65536,
+      "stored_sha256": "f3fac94bb5919113275a14b2ccc78ad1b72034ef768975534dff38b4a2e44716"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-goldenaxe01-assisted-fixed-replay-364147/frame_364147.png": {
+      "stored": "objects/0150d5bc43f8bea2e428d2ea34c3a9e0026d8773d0d06ea420da233df17b3204.gz",
+      "raw_sha256": "0150d5bc43f8bea2e428d2ea34c3a9e0026d8773d0d06ea420da233df17b3204",
+      "raw_bytes": 5744,
+      "stored_sha256": "265dd2175a6bd5e7dc0bfa6d2de0c24c376d05066f46d3bd6b32b7454c1ab76b"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-goldenaxe01-assisted-fixed-replay-364147/ram_364147.bin": {
+      "stored": "objects/4afcc9857f350891e5bfe923876132417484f0f79512ad1911a25e4f2ccd8dcd.gz",
+      "raw_sha256": "4afcc9857f350891e5bfe923876132417484f0f79512ad1911a25e4f2ccd8dcd",
+      "raw_bytes": 65536,
+      "stored_sha256": "881dcd80b31879588a57fd870830c5f899eb0e10f6c46027e9692618c270bb0c"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-goldenaxe01-assisted-fixed-replay-364147/replay_report.json": {
+      "stored": "objects/6689b37e6ba04200613fc69137b15b25005b99356f6acd8a5716e9ae1c2f8e78.gz",
+      "raw_sha256": "6689b37e6ba04200613fc69137b15b25005b99356f6acd8a5716e9ae1c2f8e78",
+      "raw_bytes": 1462,
+      "stored_sha256": "1c3a0350e6e31168969f5805d69e12054fde3006f03c78baaed7f83e8b96f8cc"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-guardian-release01/assistance.json": {
+      "stored": "objects/79daab84a61faca912415d6282e065810c9f06eb6e9f171d2491c8d2bcf7ccdc.gz",
+      "raw_sha256": "79daab84a61faca912415d6282e065810c9f06eb6e9f171d2491c8d2bcf7ccdc",
+      "raw_bytes": 14675376,
+      "stored_sha256": "357dc16aab9e6787f0df8c0ad286914568d7096f03cf7362545356b2310db723"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-guardian-release01/capture.json": {
+      "stored": "objects/7af47114dbd3c3c1290bd1f156cf4c9554fca3d71bb3d58f57ea705f0363a8ae.gz",
+      "raw_sha256": "7af47114dbd3c3c1290bd1f156cf4c9554fca3d71bb3d58f57ea705f0363a8ae",
+      "raw_bytes": 17674855,
+      "stored_sha256": "7f2ef6560548fa29b10b90cc70e8cf65383884d9bfd04495e92d4f381e42593b"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-guardian-release01/controls.json": {
+      "stored": "objects/165fa1090fe978fb2af79584a6e6936dad464e5b014483a9c309798623f41a17.gz",
+      "raw_sha256": "165fa1090fe978fb2af79584a6e6936dad464e5b014483a9c309798623f41a17",
+      "raw_bytes": 496555,
+      "stored_sha256": "f242c29695e4f42804b174b0e1929bb6f5641bcce89d36fdd7463668ad5a56de"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-guardian-release01/events.json": {
+      "stored": "objects/76cd4d552d49d3c8a94a0bb2c56ae1f35d85daddef8eb42146b3bdd9f6a5a21e.gz",
+      "raw_sha256": "76cd4d552d49d3c8a94a0bb2c56ae1f35d85daddef8eb42146b3bdd9f6a5a21e",
+      "raw_bytes": 949,
+      "stored_sha256": "d26716bcc2d14d470826a2f72f03f15c76c9fa179529e26d6227d6d8114e9cbb"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-guardian-release01/frame_348955.png": {
+      "stored": "objects/eb25deb01a97c925d5e7a54f58d63b4a5695da9d4ae95bfb8a9921e4952c12c2.gz",
+      "raw_sha256": "eb25deb01a97c925d5e7a54f58d63b4a5695da9d4ae95bfb8a9921e4952c12c2",
+      "raw_bytes": 3892,
+      "stored_sha256": "6c24954851389eaea116d8d031aa0170038ab35dcbe971b878843989951214ad"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-guardian-release01/ram_348955.bin": {
+      "stored": "objects/769337c9e94d34127d1c6a466668891e52159aaf5989b8d099e445813e08d0d4.gz",
+      "raw_sha256": "769337c9e94d34127d1c6a466668891e52159aaf5989b8d099e445813e08d0d4",
+      "raw_bytes": 65536,
+      "stored_sha256": "6b63cdb97cc6b69a51adedf7ccdedd24713934ef65d99fc60f529011224aa01f"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-guardian-release01/report.json": {
+      "stored": "objects/f66a20e440482c15973d424101033b9128ce4e19cd730d233353485d8a17341e.gz",
+      "raw_sha256": "f66a20e440482c15973d424101033b9128ce4e19cd730d233353485d8a17341e",
+      "raw_bytes": 1304,
+      "stored_sha256": "c81c497e4d653b6fb00379a24b2ed9fc833d0310ddff85a9079ff80c0145a56a"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-guardian-release01/vdp_regs_348955.bin": {
+      "stored": "objects/1c49de91fb297da4e43d2fa84f55c5e394814877557675410b671b05935c545f.gz",
+      "raw_sha256": "1c49de91fb297da4e43d2fa84f55c5e394814877557675410b671b05935c545f",
+      "raw_bytes": 32,
+      "stored_sha256": "11f861f97387582539d13092dd57d21e9860099ad1db82ae59fbd842c40bdce4"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-guardian-release01/vram_348955.bin": {
+      "stored": "objects/e27d3d4492c9613e4fa56e7bef1398e055102e7b28527c035551b90d503763d9.gz",
+      "raw_sha256": "e27d3d4492c9613e4fa56e7bef1398e055102e7b28527c035551b90d503763d9",
+      "raw_bytes": 65536,
+      "stored_sha256": "ecd295b9e905f9319ece6f28d524b62aa8d884d16b873f7a938909c4469e64e8"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-guardian-release01-assisted-fixed-replay-348955/frame_348955.png": {
+      "stored": "objects/eb25deb01a97c925d5e7a54f58d63b4a5695da9d4ae95bfb8a9921e4952c12c2.gz",
+      "raw_sha256": "eb25deb01a97c925d5e7a54f58d63b4a5695da9d4ae95bfb8a9921e4952c12c2",
+      "raw_bytes": 3892,
+      "stored_sha256": "6c24954851389eaea116d8d031aa0170038ab35dcbe971b878843989951214ad"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-guardian-release01-assisted-fixed-replay-348955/ram_348955.bin": {
+      "stored": "objects/769337c9e94d34127d1c6a466668891e52159aaf5989b8d099e445813e08d0d4.gz",
+      "raw_sha256": "769337c9e94d34127d1c6a466668891e52159aaf5989b8d099e445813e08d0d4",
+      "raw_bytes": 65536,
+      "stored_sha256": "6b63cdb97cc6b69a51adedf7ccdedd24713934ef65d99fc60f529011224aa01f"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-guardian-release01-assisted-fixed-replay-348955/replay_report.json": {
+      "stored": "objects/61d16bf95d5d874c9df267192ca84cb1865d4b02fdba33dfacaea70643bc866e.gz",
+      "raw_sha256": "61d16bf95d5d874c9df267192ca84cb1865d4b02fdba33dfacaea70643bc866e",
+      "raw_bytes": 1462,
+      "stored_sha256": "23ebe8733c3c8bf256131a6dde8940247d0bbdea64f9287d518b11ee7cce035a"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-guardian01/assistance.json": {
+      "stored": "objects/79daab84a61faca912415d6282e065810c9f06eb6e9f171d2491c8d2bcf7ccdc.gz",
+      "raw_sha256": "79daab84a61faca912415d6282e065810c9f06eb6e9f171d2491c8d2bcf7ccdc",
+      "raw_bytes": 14675376,
+      "stored_sha256": "357dc16aab9e6787f0df8c0ad286914568d7096f03cf7362545356b2310db723"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-guardian01/boss_frames.json": {
+      "stored": "objects/a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f.gz",
+      "raw_sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+      "raw_bytes": 4,
+      "stored_sha256": "9ee5a88c8d7dd7955e0f870eb72b92a69d3c4b7d43837f5eca5ead2e24fef6e2"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-guardian01/capture.json": {
+      "stored": "objects/31d96cfc6c13d1fbaefa6abde4508e2e2e54cb1de4e412280b9aa7031349cc87.gz",
+      "raw_sha256": "31d96cfc6c13d1fbaefa6abde4508e2e2e54cb1de4e412280b9aa7031349cc87",
+      "raw_bytes": 17678337,
+      "stored_sha256": "ee4a9430cd20440a86401a201a9a5d79a035ab8f0d47d15c7e66f6aefd1bfe14"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-guardian01/controls.json": {
+      "stored": "objects/efe713508bc64fce71b6cd6e6aa10c220fbf80413532bd7bc20cfc38fb9f1b4e.gz",
+      "raw_sha256": "efe713508bc64fce71b6cd6e6aa10c220fbf80413532bd7bc20cfc38fb9f1b4e",
+      "raw_bytes": 598120,
+      "stored_sha256": "1ebb97dbb302650666ccf022ace7cfd52216b031493a120e778d9a5a47fdffeb"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-guardian01/events.json": {
+      "stored": "objects/fcdedcd493490a5767441544084aaed5b0b80abc20953a467a744f253ac8392b.gz",
+      "raw_sha256": "fcdedcd493490a5767441544084aaed5b0b80abc20953a467a744f253ac8392b",
+      "raw_bytes": 42558,
+      "stored_sha256": "30449cc0e20c8ea051b2dc09cd3316adb1233b4300157b189deb2fdc63d44918"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-guardian01/frame_362186.png": {
+      "stored": "objects/8f873a320705206fad4282f490b9690f446406cd0880860b5b08b7448f71c7b2.gz",
+      "raw_sha256": "8f873a320705206fad4282f490b9690f446406cd0880860b5b08b7448f71c7b2",
+      "raw_bytes": 5353,
+      "stored_sha256": "40c20044fe2307eb8b9a6b4b87887dc1ea5351db9689a9cb1074a501f2ac1d2e"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-guardian01/pilot_decisions.json": {
+      "stored": "objects/a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f.gz",
+      "raw_sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+      "raw_bytes": 4,
+      "stored_sha256": "9ee5a88c8d7dd7955e0f870eb72b92a69d3c4b7d43837f5eca5ead2e24fef6e2"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-guardian01/planning.json": {
+      "stored": "objects/76ecfa49273a6476f59a59d1ed14d830656baabbfd90aff6db7bdf98bc64bd79.gz",
+      "raw_sha256": "76ecfa49273a6476f59a59d1ed14d830656baabbfd90aff6db7bdf98bc64bd79",
+      "raw_bytes": 631487,
+      "stored_sha256": "1ac5e3c066ee6dc2785bb651d7c50be920c975c538881a2ad637b5d1cd989390"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-guardian01/planning_live.json": {
+      "stored": "objects/392ef2824bf0f213ff46b41635f38c123c94b145da83d7d71caac0dec1789729.gz",
+      "raw_sha256": "392ef2824bf0f213ff46b41635f38c123c94b145da83d7d71caac0dec1789729",
+      "raw_bytes": 776464,
+      "stored_sha256": "e86c8aeb343032560e14042bffaeab46848a45947391011db58172e9dbb7eef2"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-guardian01/planning_partial.json": {
+      "stored": "objects/877a40982e8c490a424a359b2c08b5ce1ecbc8ccb86309541ade574909d442bc.gz",
+      "raw_sha256": "877a40982e8c490a424a359b2c08b5ce1ecbc8ccb86309541ade574909d442bc",
+      "raw_bytes": 734798,
+      "stored_sha256": "4fbb308442f8242eb3c8f0c2df68db39d921773c0740f15ab5c319d654e0fd5e"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-guardian01/ram_362186.bin": {
+      "stored": "objects/aff73d88e2e9ffe6e08f77980e264f4d1ac7b616a0f0f292fc88f9d5abc7764f.gz",
+      "raw_sha256": "aff73d88e2e9ffe6e08f77980e264f4d1ac7b616a0f0f292fc88f9d5abc7764f",
+      "raw_bytes": 65536,
+      "stored_sha256": "64d0e39c70afbd849c8909dca1135a329011ff7e41fa1074872f8d4b8afc0d10"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-guardian01/report.json": {
+      "stored": "objects/ebb7de68b7a87b5e324993cf73d58cf6b1dcabe0dad00643e2b7a5ef726b396c.gz",
+      "raw_sha256": "ebb7de68b7a87b5e324993cf73d58cf6b1dcabe0dad00643e2b7a5ef726b396c",
+      "raw_bytes": 4584,
+      "stored_sha256": "d991652a8e6206d300eae973ca4f6275490ec8e96c8499993bf9c97d7131b79a"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-guardian01/samples.json": {
+      "stored": "objects/531197a1d69a6ef321c57fac4a5220ec1d2cfa674248a8f23b2e7aac04fde17f.gz",
+      "raw_sha256": "531197a1d69a6ef321c57fac4a5220ec1d2cfa674248a8f23b2e7aac04fde17f",
+      "raw_bytes": 1831219,
+      "stored_sha256": "9253361276f46027bc36711a34fb22527301df172a9dd982c10654d9ce7ade76"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-guardian01/vdp_regs_362186.bin": {
+      "stored": "objects/2952726dec98305b5f5694fab14fad42460638ac70c7074bba70488144de0840.gz",
+      "raw_sha256": "2952726dec98305b5f5694fab14fad42460638ac70c7074bba70488144de0840",
+      "raw_bytes": 32,
+      "stored_sha256": "13b75fa2740e2127b8ee0102ca5dd2e18fceb4972eeb1d2fd088d2376e6a21ba"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-guardian01/vram_362186.bin": {
+      "stored": "objects/fcf7e5e3ed084aba3bc58ad148e8612bf91f120594f8c6c44f13f5032ec8f9c5.gz",
+      "raw_sha256": "fcf7e5e3ed084aba3bc58ad148e8612bf91f120594f8c6c44f13f5032ec8f9c5",
+      "raw_bytes": 65536,
+      "stored_sha256": "03ff970033f9e94383b246375f1c857a0049af881ef7d9e9f9b6b3ee231c1ee8"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-guardian01-assisted-fixed-replay-362186/frame_362186.png": {
+      "stored": "objects/8f873a320705206fad4282f490b9690f446406cd0880860b5b08b7448f71c7b2.gz",
+      "raw_sha256": "8f873a320705206fad4282f490b9690f446406cd0880860b5b08b7448f71c7b2",
+      "raw_bytes": 5353,
+      "stored_sha256": "40c20044fe2307eb8b9a6b4b87887dc1ea5351db9689a9cb1074a501f2ac1d2e"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-guardian01-assisted-fixed-replay-362186/ram_362186.bin": {
+      "stored": "objects/aff73d88e2e9ffe6e08f77980e264f4d1ac7b616a0f0f292fc88f9d5abc7764f.gz",
+      "raw_sha256": "aff73d88e2e9ffe6e08f77980e264f4d1ac7b616a0f0f292fc88f9d5abc7764f",
+      "raw_bytes": 65536,
+      "stored_sha256": "64d0e39c70afbd849c8909dca1135a329011ff7e41fa1074872f8d4b8afc0d10"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-guardian01-assisted-fixed-replay-362186/replay_report.json": {
+      "stored": "objects/a41123e07c7ce034bc137d378ac77a47f3f04563cb66a4f91a93c411e31f1d12.gz",
+      "raw_sha256": "a41123e07c7ce034bc137d378ac77a47f3f04563cb66a4f91a93c411e31f1d12",
+      "raw_bytes": 1465,
+      "stored_sha256": "a05c35f181102425761fd3c3f4f0d3e55a81f2ea5e3bb5bf6b2dcd0b8d7f2e05"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-pre-guardian01/assistance.json": {
+      "stored": "objects/073c495560e6546ffd5e49daa7c99beb5ea0243d9b0341883d8fd5aea88c0cfc.gz",
+      "raw_sha256": "073c495560e6546ffd5e49daa7c99beb5ea0243d9b0341883d8fd5aea88c0cfc",
+      "raw_bytes": 15540899,
+      "stored_sha256": "e40aafadaacb003c9815ed31fa6b49222d41c7fc50002b3f39f2a559fd745928"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-pre-guardian01/boss_frames.json": {
+      "stored": "objects/a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f.gz",
+      "raw_sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+      "raw_bytes": 4,
+      "stored_sha256": "9ee5a88c8d7dd7955e0f870eb72b92a69d3c4b7d43837f5eca5ead2e24fef6e2"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-pre-guardian01/capture.json": {
+      "stored": "objects/88d9e9e0ae059dbffd0e9ff8a8e0812320cf2aa1b2d70bcd5b23f0d9087d091f.gz",
+      "raw_sha256": "88d9e9e0ae059dbffd0e9ff8a8e0812320cf2aa1b2d70bcd5b23f0d9087d091f",
+      "raw_bytes": 17686774,
+      "stored_sha256": "24823b3f21da713c0255dfb9b539d7df0444f54f63c5320ad4e6abd2c507b56b"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-pre-guardian01/controls.json": {
+      "stored": "objects/cd2459098041bdec1e9953ee1c548dab1b3974aabef773492ac125da0dbc8a4b.gz",
+      "raw_sha256": "cd2459098041bdec1e9953ee1c548dab1b3974aabef773492ac125da0dbc8a4b",
+      "raw_bytes": 543133,
+      "stored_sha256": "8b1b2d047525647893d974f9b84ea7bbcf740c7910b6b216ea4ceef2d0fd2816"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-pre-guardian01/events.json": {
+      "stored": "objects/7746d3505977cd2fa6fa1adf2bbedbfd304818de4982c576c713c60420e91ddc.gz",
+      "raw_sha256": "7746d3505977cd2fa6fa1adf2bbedbfd304818de4982c576c713c60420e91ddc",
+      "raw_bytes": 262381,
+      "stored_sha256": "9f40d92bf54c07a3d154f2160326b7f713342ba55f698b67c768b3b80f1484f7"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-pre-guardian01/frame_348954.png": {
+      "stored": "objects/828bc28194c3740c15bbfa094cd79532ecab59f7796c46f65bdf75c460cc4015.gz",
+      "raw_sha256": "828bc28194c3740c15bbfa094cd79532ecab59f7796c46f65bdf75c460cc4015",
+      "raw_bytes": 3877,
+      "stored_sha256": "f2b5225ce72bdd4d0ff8e2b9446fa60cc055cc74a60e772c0e5d59e8f5e2b291"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-pre-guardian01/pilot_decisions.json": {
+      "stored": "objects/81f1646e12fb983870516c34778c5f56689e6ed09181f068c813f07c7a02f841.gz",
+      "raw_sha256": "81f1646e12fb983870516c34778c5f56689e6ed09181f068c813f07c7a02f841",
+      "raw_bytes": 134,
+      "stored_sha256": "727cfda8fcbb7cc17356b9d35b29fd2ab4bfcdd95fdcaefd25234ce33690a48c"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-pre-guardian01/ram_348954.bin": {
+      "stored": "objects/0f330d59b44c8fd0cc118ea3a1c774cc902b4c49875863979b7401b0bf8080dc.gz",
+      "raw_sha256": "0f330d59b44c8fd0cc118ea3a1c774cc902b4c49875863979b7401b0bf8080dc",
+      "raw_bytes": 65536,
+      "stored_sha256": "94e67fc3f5f5c18c819ab654109d16a5a39363b241e6c37a92bc79eab0a44cc8"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-pre-guardian01/report.json": {
+      "stored": "objects/7c121580e3d6979b1c4521f3a198d855d2c8c84eca994c76582d25b125c7be9f.gz",
+      "raw_sha256": "7c121580e3d6979b1c4521f3a198d855d2c8c84eca994c76582d25b125c7be9f",
+      "raw_bytes": 2590,
+      "stored_sha256": "ec6b0d43c05cb4c248202391814fa389a96fe9a4ab061a2de4b3fb405daf30f1"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-pre-guardian01/samples.json": {
+      "stored": "objects/e5cda26f4f26dfd2cd744fcb15c22c7fdbba8c71a08c77348fd17853c8f81222.gz",
+      "raw_sha256": "e5cda26f4f26dfd2cd744fcb15c22c7fdbba8c71a08c77348fd17853c8f81222",
+      "raw_bytes": 988264,
+      "stored_sha256": "8fad09399dc4f62cb91a465da8bf8042084df1582278dca64c18300586cc5146"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-pre-guardian01/vdp_regs_348954.bin": {
+      "stored": "objects/1c49de91fb297da4e43d2fa84f55c5e394814877557675410b671b05935c545f.gz",
+      "raw_sha256": "1c49de91fb297da4e43d2fa84f55c5e394814877557675410b671b05935c545f",
+      "raw_bytes": 32,
+      "stored_sha256": "11f861f97387582539d13092dd57d21e9860099ad1db82ae59fbd842c40bdce4"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-pre-guardian01/vram_348954.bin": {
+      "stored": "objects/1ffa0386ce30b4ca8e6d81245571eab7a6b04836b4614bffaf89f03e41a98d85.gz",
+      "raw_sha256": "1ffa0386ce30b4ca8e6d81245571eab7a6b04836b4614bffaf89f03e41a98d85",
+      "raw_bytes": 65536,
+      "stored_sha256": "4c1a46db6d7beef2dd71c998cf3b71131756eaa199fbf86ef3ba35e403546d00"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-pre-guardian01-assisted-fixed-replay-348954/frame_348954.png": {
+      "stored": "objects/828bc28194c3740c15bbfa094cd79532ecab59f7796c46f65bdf75c460cc4015.gz",
+      "raw_sha256": "828bc28194c3740c15bbfa094cd79532ecab59f7796c46f65bdf75c460cc4015",
+      "raw_bytes": 3877,
+      "stored_sha256": "f2b5225ce72bdd4d0ff8e2b9446fa60cc055cc74a60e772c0e5d59e8f5e2b291"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-pre-guardian01-assisted-fixed-replay-348954/ram_348954.bin": {
+      "stored": "objects/0f330d59b44c8fd0cc118ea3a1c774cc902b4c49875863979b7401b0bf8080dc.gz",
+      "raw_sha256": "0f330d59b44c8fd0cc118ea3a1c774cc902b4c49875863979b7401b0bf8080dc",
+      "raw_bytes": 65536,
+      "stored_sha256": "94e67fc3f5f5c18c819ab654109d16a5a39363b241e6c37a92bc79eab0a44cc8"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-pre-guardian01-assisted-fixed-replay-348954/replay_report.json": {
+      "stored": "objects/f2d73ed6022e79155de01861bbe7fb83041284650ee655ecd6108a4279b734ae.gz",
+      "raw_sha256": "f2d73ed6022e79155de01861bbe7fb83041284650ee655ecd6108a4279b734ae",
+      "raw_bytes": 1463,
+      "stored_sha256": "f580b67bdf90710d8d775acdad29c09fee5b248c627312c184a4b3fffa507ab4"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-resume-final01/assistance.json": {
+      "stored": "objects/72a9bee415eb6b94ab5da97adfb6a099303be53122fff89ed0a68df7c75471c2.gz",
+      "raw_sha256": "72a9bee415eb6b94ab5da97adfb6a099303be53122fff89ed0a68df7c75471c2",
+      "raw_bytes": 14676527,
+      "stored_sha256": "c66cb768a9c7940ea10e547359ce4324ab1a8d0a989e34ffb79add69e330f460"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-resume-final01/capture.json": {
+      "stored": "objects/fe3a58f6a170b385815d74c1d15cd2ad66b19fc2f6eb31efc1fc9f6fe9899ebd.gz",
+      "raw_sha256": "fe3a58f6a170b385815d74c1d15cd2ad66b19fc2f6eb31efc1fc9f6fe9899ebd",
+      "raw_bytes": 17674942,
+      "stored_sha256": "41394ee51638d46f56f0ed3075733865ed846d6d2abd30cdfe95a98c5d39949d"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-resume-final01/controls.json": {
+      "stored": "objects/ad39823dc7d476c800ba44e2a2dac3f67a5aa9fbcfa5248a7adec8e1b883fe74.gz",
+      "raw_sha256": "ad39823dc7d476c800ba44e2a2dac3f67a5aa9fbcfa5248a7adec8e1b883fe74",
+      "raw_bytes": 598168,
+      "stored_sha256": "8487051c5b5150e9008c8d4a610f647a681efd584ee9167360d04aec870448d4"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-resume-final01/events.json": {
+      "stored": "objects/b0f961d2d4182697a792b5a375af9d4ebfe882cd464276e7e83aa2344d925e39.gz",
+      "raw_sha256": "b0f961d2d4182697a792b5a375af9d4ebfe882cd464276e7e83aa2344d925e39",
+      "raw_bytes": 885,
+      "stored_sha256": "ec9544e87b8e0dc4b4fcd5314b126c67c6b75bdd8601ef8a7eeb022c0e4f0fb8"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-resume-final01/frame_362187.png": {
+      "stored": "objects/8f873a320705206fad4282f490b9690f446406cd0880860b5b08b7448f71c7b2.gz",
+      "raw_sha256": "8f873a320705206fad4282f490b9690f446406cd0880860b5b08b7448f71c7b2",
+      "raw_bytes": 5353,
+      "stored_sha256": "40c20044fe2307eb8b9a6b4b87887dc1ea5351db9689a9cb1074a501f2ac1d2e"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-resume-final01/ram_362187.bin": {
+      "stored": "objects/0ba61e17f24a9c49436c9e96f8a305a4ce268bdb51f4765a086e186c61a5785f.gz",
+      "raw_sha256": "0ba61e17f24a9c49436c9e96f8a305a4ce268bdb51f4765a086e186c61a5785f",
+      "raw_bytes": 65536,
+      "stored_sha256": "c7edf46bb0b2442a06527e0d42c1113491027aa82aaef268d85061e2efa162df"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-resume-final01/report.json": {
+      "stored": "objects/43b576771493ff31f49e7d2a53786f59b0f3bdcb573d3d24d57a4b01ecac58ce.gz",
+      "raw_sha256": "43b576771493ff31f49e7d2a53786f59b0f3bdcb573d3d24d57a4b01ecac58ce",
+      "raw_bytes": 1621,
+      "stored_sha256": "b5c41507752411b0416b1c2de67fb2dc59e4855947293b13b6d96b253580682a"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-resume-final01/vdp_regs_362187.bin": {
+      "stored": "objects/2952726dec98305b5f5694fab14fad42460638ac70c7074bba70488144de0840.gz",
+      "raw_sha256": "2952726dec98305b5f5694fab14fad42460638ac70c7074bba70488144de0840",
+      "raw_bytes": 32,
+      "stored_sha256": "13b75fa2740e2127b8ee0102ca5dd2e18fceb4972eeb1d2fd088d2376e6a21ba"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-resume-final01/vram_362187.bin": {
+      "stored": "objects/fcf7e5e3ed084aba3bc58ad148e8612bf91f120594f8c6c44f13f5032ec8f9c5.gz",
+      "raw_sha256": "fcf7e5e3ed084aba3bc58ad148e8612bf91f120594f8c6c44f13f5032ec8f9c5",
+      "raw_bytes": 65536,
+      "stored_sha256": "03ff970033f9e94383b246375f1c857a0049af881ef7d9e9f9b6b3ee231c1ee8"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-resume-final01-assisted-fixed-replay-362187/frame_362187.png": {
+      "stored": "objects/8f873a320705206fad4282f490b9690f446406cd0880860b5b08b7448f71c7b2.gz",
+      "raw_sha256": "8f873a320705206fad4282f490b9690f446406cd0880860b5b08b7448f71c7b2",
+      "raw_bytes": 5353,
+      "stored_sha256": "40c20044fe2307eb8b9a6b4b87887dc1ea5351db9689a9cb1074a501f2ac1d2e"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-resume-final01-assisted-fixed-replay-362187/ram_362187.bin": {
+      "stored": "objects/0ba61e17f24a9c49436c9e96f8a305a4ce268bdb51f4765a086e186c61a5785f.gz",
+      "raw_sha256": "0ba61e17f24a9c49436c9e96f8a305a4ce268bdb51f4765a086e186c61a5785f",
+      "raw_bytes": 65536,
+      "stored_sha256": "c7edf46bb0b2442a06527e0d42c1113491027aa82aaef268d85061e2efa162df"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-resume-final01-assisted-fixed-replay-362187/replay_report.json": {
+      "stored": "objects/ef9640b5847b4630cb5ef246972436318bc18dd8d50ab03c6f7ab2f05f8473ff.gz",
+      "raw_sha256": "ef9640b5847b4630cb5ef246972436318bc18dd8d50ab03c6f7ab2f05f8473ff",
+      "raw_bytes": 1458,
+      "stored_sha256": "4fae28ab659ba45da475ceacc11be2d0777fb67eac52a1a4b0e64e2b80442c71"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-switch12901/capture.json": {
+      "stored": "objects/ebd701aeaef7cf29431b24060ff3c65bd98f35e846ac5c9dd93a28f55cb599c7.gz",
+      "raw_sha256": "ebd701aeaef7cf29431b24060ff3c65bd98f35e846ac5c9dd93a28f55cb599c7",
+      "raw_bytes": 17081602,
+      "stored_sha256": "c2b5c8eea8b1b3a8c898fe1f4ede977a2db935d71d38fe1542a57ecdeb5b3528"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-switch12c01/assistance.json": {
+      "stored": "objects/ec60b02c58356cf357c675ef092b16a5ee7a5cb16d268ffe88424c2fc51d2f2e.gz",
+      "raw_sha256": "ec60b02c58356cf357c675ef092b16a5ee7a5cb16d268ffe88424c2fc51d2f2e",
+      "raw_bytes": 15148318,
+      "stored_sha256": "57d5f7345915438e0a9742eb4aa7c013e8f3dca8b33cb248a8b9909bae904f18"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-switch12c01/boss_frames.json": {
+      "stored": "objects/a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f.gz",
+      "raw_sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+      "raw_bytes": 4,
+      "stored_sha256": "9ee5a88c8d7dd7955e0f870eb72b92a69d3c4b7d43837f5eca5ead2e24fef6e2"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-switch12c01/capture.json": {
+      "stored": "objects/16264488745ca734d90355859767630452c4dd1d206f4f4c26abd7cb1d29933a.gz",
+      "raw_sha256": "16264488745ca734d90355859767630452c4dd1d206f4f4c26abd7cb1d29933a",
+      "raw_bytes": 17298493,
+      "stored_sha256": "7ec07ae4425739bc8f897be87afd35fb0249b697132616627d8ca8bb8bd3ea61"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-switch12c01/contact_events.json": {
+      "stored": "objects/fee18086098ad7e296f30a6668db2bef75446bf038fb2e606d041bd60e4a9119.gz",
+      "raw_sha256": "fee18086098ad7e296f30a6668db2bef75446bf038fb2e606d041bd60e4a9119",
+      "raw_bytes": 670,
+      "stored_sha256": "e7a0ae77de66b5605bc076e1a501590293e24e3d0b3d3c33f5c32b89f6a0690d"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-switch12c01/controls.json": {
+      "stored": "objects/8d6b9dfe791cd540c074a870231a4890f5599e356ed923c745cb8bc10fa35bc5.gz",
+      "raw_sha256": "8d6b9dfe791cd540c074a870231a4890f5599e356ed923c745cb8bc10fa35bc5",
+      "raw_bytes": 439743,
+      "stored_sha256": "3f0fda9466acc9529c2e382f1042e86490289422ebad23a3e4942be04de27420"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-switch12c01/events.json": {
+      "stored": "objects/f9199e988e7cc72b4a8ee4cd89f02fbb415cfad3910bbc8d83d0c9d2374b446d.gz",
+      "raw_sha256": "f9199e988e7cc72b4a8ee4cd89f02fbb415cfad3910bbc8d83d0c9d2374b446d",
+      "raw_bytes": 74298,
+      "stored_sha256": "e249f9dae60aae823ab9a396a2dd858446502922c776cd85c042df19efd1feb1"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-switch12c01/frame_342648.png": {
+      "stored": "objects/7b8f9aa387609bf94e46fd09d69e21f198355af37290893f8b38ddd85c4dd5c0.gz",
+      "raw_sha256": "7b8f9aa387609bf94e46fd09d69e21f198355af37290893f8b38ddd85c4dd5c0",
+      "raw_bytes": 4453,
+      "stored_sha256": "3efbc5b6b1833cdd1bc82e553d8fc29aef82b2b7dd4ed090113e9105b493af7f"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-switch12c01/pilot_decisions.json": {
+      "stored": "objects/74854abf48629e8115b590036deda10413a2016288a7a2395b8d3baa370fd25c.gz",
+      "raw_sha256": "74854abf48629e8115b590036deda10413a2016288a7a2395b8d3baa370fd25c",
+      "raw_bytes": 164,
+      "stored_sha256": "9454e2082220f333e6b6c8c78dfd7305c8b37aa4e9beabfe55dd2dcd8854cae9"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-switch12c01/ram_342648.bin": {
+      "stored": "objects/6fe25fd7bc6bd2bd47537ea66e42f55147bcd7580546486323c2179c91b46eeb.gz",
+      "raw_sha256": "6fe25fd7bc6bd2bd47537ea66e42f55147bcd7580546486323c2179c91b46eeb",
+      "raw_bytes": 65536,
+      "stored_sha256": "1f93093087711999ad572f2ecdb2c237e9c7c719afdc49e31214fff2424e6be5"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-switch12c01/report.json": {
+      "stored": "objects/e6b70130181bc9a0b61a43d5dbe8386ed259c4dc8a75d4ab75bac0da50820090.gz",
+      "raw_sha256": "e6b70130181bc9a0b61a43d5dbe8386ed259c4dc8a75d4ab75bac0da50820090",
+      "raw_bytes": 5675,
+      "stored_sha256": "a51a7b9dee9d750bed5a3a4cf6cd25cff1830b2bbd836c27db911c6c9df46307"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-switch12c01/samples.json": {
+      "stored": "objects/46d61ee46924b89aa518501bfc62c9f1163e52ac33b904f2b834d15031c31a5b.gz",
+      "raw_sha256": "46d61ee46924b89aa518501bfc62c9f1163e52ac33b904f2b834d15031c31a5b",
+      "raw_bytes": 561636,
+      "stored_sha256": "92e8665e4cf364b4881065299573ae2bbcb51fbfcd58ae362ae0c7bc95fd9e97"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-switch12c01/vdp_regs_342648.bin": {
+      "stored": "objects/824d2f7d6b0572566ec723aedbdfcbc83d1fc596e51843dc61aa72dd77380e5e.gz",
+      "raw_sha256": "824d2f7d6b0572566ec723aedbdfcbc83d1fc596e51843dc61aa72dd77380e5e",
+      "raw_bytes": 32,
+      "stored_sha256": "0beeffa9af2d46a096687e8d370b7c5b8a2fdd91c965745a0f49dbb42ade6a86"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-switch12c01/vram_342648.bin": {
+      "stored": "objects/5165542a304f0cdbdcca0c7815937098641047052e8e9c5ffaaa1a36b7599c19.gz",
+      "raw_sha256": "5165542a304f0cdbdcca0c7815937098641047052e8e9c5ffaaa1a36b7599c19",
+      "raw_bytes": 65536,
+      "stored_sha256": "a23b5fe288c74864fb585f75c852bd481e0da71fe2dbc3ec98374f16bd6da24a"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-switch12c01-assisted-fixed-replay-342648/frame_342648.png": {
+      "stored": "objects/7b8f9aa387609bf94e46fd09d69e21f198355af37290893f8b38ddd85c4dd5c0.gz",
+      "raw_sha256": "7b8f9aa387609bf94e46fd09d69e21f198355af37290893f8b38ddd85c4dd5c0",
+      "raw_bytes": 4453,
+      "stored_sha256": "3efbc5b6b1833cdd1bc82e553d8fc29aef82b2b7dd4ed090113e9105b493af7f"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-switch12c01-assisted-fixed-replay-342648/ram_342648.bin": {
+      "stored": "objects/6fe25fd7bc6bd2bd47537ea66e42f55147bcd7580546486323c2179c91b46eeb.gz",
+      "raw_sha256": "6fe25fd7bc6bd2bd47537ea66e42f55147bcd7580546486323c2179c91b46eeb",
+      "raw_bytes": 65536,
+      "stored_sha256": "1f93093087711999ad572f2ecdb2c237e9c7c719afdc49e31214fff2424e6be5"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-cold-palace-switch12c01-assisted-fixed-replay-342648/replay_report.json": {
+      "stored": "objects/0e4056f02e886aa3d8434cdf754538571d2ccd5f0fc5ff25e87d6da36924c8fb.gz",
+      "raw_sha256": "0e4056f02e886aa3d8434cdf754538571d2ccd5f0fc5ff25e87d6da36924c8fb",
+      "raw_bytes": 1463,
+      "stored_sha256": "2394a75a80b296cb4e452c1e4bfe47d234c3cfe25325a787417c691f9abe2ea7"
+    },
+    "validation/v0314-palace-sources/guardian-tools/assisted_boss_route.py": {
+      "stored": "objects/2d26b22e732dff44a4e8f7557e72cb489d7b5b3a9f96bfdb737c869f4b2ddd8f.gz",
+      "raw_sha256": "2d26b22e732dff44a4e8f7557e72cb489d7b5b3a9f96bfdb737c869f4b2ddd8f",
+      "raw_bytes": 17757,
+      "stored_sha256": "caba9b0df8d89b632748091d60363845e1416b6ca2b290423ede1da442003de7"
+    },
+    "validation/v0314-palace-sources/guardian-tools/assisted_prefix.py": {
+      "stored": "objects/e2c4f531f372383610a5f0cfbb46000a0b88d46045b51e799efdd9792f164cc6.gz",
+      "raw_sha256": "e2c4f531f372383610a5f0cfbb46000a0b88d46045b51e799efdd9792f164cc6",
+      "raw_bytes": 5005,
+      "stored_sha256": "02d2f445fae62e333529e30d61f2b845420358ab49900e75933d62fed53c7ced"
+    },
+    "validation/v0314-palace-sources/guardian-tools/close_assisted_approach.py": {
+      "stored": "objects/4aca0af44f51c3ea02fff6b747a329c0c1b2d9221ee9bdc32fb0cb42475d6238.gz",
+      "raw_sha256": "4aca0af44f51c3ea02fff6b747a329c0c1b2d9221ee9bdc32fb0cb42475d6238",
+      "raw_bytes": 5416,
+      "stored_sha256": "8059ef6cdd4c0439a7aec09d739078be892e583ba86eeeab14ab2d7ded64c3ef"
+    },
+    "validation/v0314-palace-sources/guardian-tools/continue_d8_entry_v0314.py": {
+      "stored": "objects/927c4fd8a2ef103e016159b6747d2e6c8ff1b248bb899148adf24a80f61bc7d5.gz",
+      "raw_sha256": "927c4fd8a2ef103e016159b6747d2e6c8ff1b248bb899148adf24a80f61bc7d5",
+      "raw_bytes": 6359,
+      "stored_sha256": "67a99dab5f3dc16740ebc904c435b7a0fbe936ab9b82ff12571464695a0dd400"
+    },
+    "validation/v0314-palace-sources/guardian-tools/continue_palace_guardian_v0314.py": {
+      "stored": "objects/19a2bc55cbbe47f185301a4c6fc43275217df1769bb3cbd5b7710865e3cf9714.gz",
+      "raw_sha256": "19a2bc55cbbe47f185301a4c6fc43275217df1769bb3cbd5b7710865e3cf9714",
+      "raw_bytes": 4349,
+      "stored_sha256": "e98edecc29baf557416d47e1d7b84a51b2290696fcf23a225b4e96ee293f3882"
+    },
+    "validation/v0314-palace-sources/guardian-tools/natural_boss_evasive_planner.py": {
+      "stored": "objects/2d23735d0f4108dcdec2e050b1960934d2d1733199799b467e6d5e71f8ca1d1f.gz",
+      "raw_sha256": "2d23735d0f4108dcdec2e050b1960934d2d1733199799b467e6d5e71f8ca1d1f",
+      "raw_bytes": 1180,
+      "stored_sha256": "bbd285928a923c78733e38a329311ce79296d60bd9f414d794511394e96c26dc"
+    },
+    "validation/v0314-palace-sources/guardian-tools/natural_combat_beam.py": {
+      "stored": "objects/c555702da62ca4fe51f885777be440ac45ec9922827a110a7aa96cb43a57ef96.gz",
+      "raw_sha256": "c555702da62ca4fe51f885777be440ac45ec9922827a110a7aa96cb43a57ef96",
+      "raw_bytes": 3810,
+      "stored_sha256": "b3ecb4a7ac871a579f3459644c19187b3d8948e36003ae227044a9924c8d8f11"
+    },
+    "validation/v0314-palace-sources/guardian-tools/natural_contact_passage.py": {
+      "stored": "objects/1ee8a36cfa8faf9aa6f8276a143c9517362dddaa07de63e65e40f5ae64e3105a.gz",
+      "raw_sha256": "1ee8a36cfa8faf9aa6f8276a143c9517362dddaa07de63e65e40f5ae64e3105a",
+      "raw_bytes": 6580,
+      "stored_sha256": "46b7ce785c8736ce9627e3fa3910f5270b6ef5ebf594ce254d646470e35fd4ba"
+    },
+    "validation/v0314-palace-sources/guardian-tools/natural_dungeon_combat.py": {
+      "stored": "objects/6710825b5f41d4d19aebf0ed14e98ba0870482f87e4cec2c5d3df0dd51bfa8de.gz",
+      "raw_sha256": "6710825b5f41d4d19aebf0ed14e98ba0870482f87e4cec2c5d3df0dd51bfa8de",
+      "raw_bytes": 39355,
+      "stored_sha256": "8d3c16a703350191a198ec0ceb015a6959040475a989eb760ac910b010ac05db"
+    },
+    "validation/v0314-palace-sources/guardian-tools/natural_item_acquisition.py": {
+      "stored": "objects/447c0b60771441c1de447e478417edd6c21f2abe6de1c3ef0a500a8323e3d4be.gz",
+      "raw_sha256": "447c0b60771441c1de447e478417edd6c21f2abe6de1c3ef0a500a8323e3d4be",
+      "raw_bytes": 4656,
+      "stored_sha256": "d38757919370afd154dad91d69c7c2fe81c811ec55e627a26eb91ab13dc7c6ac"
+    },
+    "validation/v0314-palace-sources/guardian-tools/prediction_video_skip.py": {
+      "stored": "objects/f5ef8d275328964d09da5b3c4eec75f9cc55bb90f68865036d60d80e57db2ae0.gz",
+      "raw_sha256": "f5ef8d275328964d09da5b3c4eec75f9cc55bb90f68865036d60d80e57db2ae0",
+      "raw_bytes": 940,
+      "stored_sha256": "002d48c176486531abd0515819da129e2f8d4bf52c05dfcada672d67b4d77fdc"
+    },
+    "validation/v0314-palace-sources/guardian-tools/replay_assisted_prefix.py": {
+      "stored": "objects/3df2d644bef81cb79f5f6948763452ffab3ff6023b9e3b601bcff3bbd6b7df4f.gz",
+      "raw_sha256": "3df2d644bef81cb79f5f6948763452ffab3ff6023b9e3b601bcff3bbd6b7df4f",
+      "raw_bytes": 6845,
+      "stored_sha256": "676dfb2994dcd48601c2142f7a3741a482534e13b14ce9c0a309ebe6e173232d"
+    },
+    "validation/v0314-palace-sources/guardian-tools/resume_after_intermediate.py": {
+      "stored": "objects/9c8563ee46b19b6e0915673b2fad83a628278bc332d5c71c4e17f30da13644da.gz",
+      "raw_sha256": "9c8563ee46b19b6e0915673b2fad83a628278bc332d5c71c4e17f30da13644da",
+      "raw_bytes": 7638,
+      "stored_sha256": "9efac026910609e02d9e55646964abe137ef8d837da81c3bf39200409e415cff"
+    },
+    "validation/v0314-palace-sources/guardian-tools/source_index.json": {
+      "stored": "objects/c0818eb03c89fd75b38e67b281d1520fc4911cc154849f040c3bf44ed155721e.gz",
+      "raw_sha256": "c0818eb03c89fd75b38e67b281d1520fc4911cc154849f040c3bf44ed155721e",
+      "raw_bytes": 1616,
+      "stored_sha256": "b8ce067b27e04a1fe59d1c38f1efd55fb317664615751093f43d05666ced518b"
+    },
+    "validation/v0314-palace-sources/guardian-tools/unassisted_dungeon_continuation.py": {
+      "stored": "objects/a98fd8875c25859ef6523f155ed7a9f4277fa9dc70016b1340af57421892aeca.gz",
+      "raw_sha256": "a98fd8875c25859ef6523f155ed7a9f4277fa9dc70016b1340af57421892aeca",
+      "raw_bytes": 8666,
+      "stored_sha256": "0ea1668db06b47496359587668c5b669320a8f3984d7b3bcf2f15e3958e87933"
+    },
+    "validation/v0314-palace-sources/guardian-tools/unassisted_fast_prediction.py": {
+      "stored": "objects/9d566e76ba1875eebef4ccea787e729cc4c5fd1bef0ccc60449e95609d36cdd3.gz",
+      "raw_sha256": "9d566e76ba1875eebef4ccea787e729cc4c5fd1bef0ccc60449e95609d36cdd3",
+      "raw_bytes": 2406,
+      "stored_sha256": "1f28bb636e890eeb5c6e0504ca17b492bbbe77d0a9cacbff0edb7adfff7f1743"
+    }
+  },
+  "removed_verified_generated": []
+}
