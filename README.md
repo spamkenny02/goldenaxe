@@ -124,6 +124,11 @@ Les six étapes depuis la sortie de D7 passent leur rejeu froid RAM/image exact.
 Le huitième cristal reste à vérifier.
 [Passage, entrée et gardien D8 v312](analysis/d8_midboss_v0312_report.json)
 
+La clé des voleurs, les mécanismes distants et le passage Terre de D8 sont
+ensuite vérifiés par huit points avec rejeu RAM/image exact. L’accès au boss
+principal est atteint à **88/88 PV et 72 PM**, avec la clé spéciale et le navire.
+[Clé des voleurs et approche D8 v312](analysis/d8_approach_v0312_report.json)
+
 La **v0311** ajoute une image au chargement lors des défilements de donjon
 vers le haut en NTSC. Sur trois trajets comparés à la Master System, la
 reprise du jeu s’aligne. Le premier déplacement s’aligne aussi dans les deux
@@ -589,7 +594,9 @@ Un prototype de correction du chargement initial aligne les publications du
 titre en PAL/NTSC et les 65 lignes du récit, avec au plus une image d’écart en
 NTSC. Les commandes jusqu’aux sept cristaux conservent les huit entrées de boss,
 les champs de jeu finaux et l’image finale ; un rejeu indépendant reproduit
-la RAM complète du prototype. Le correctif est préparé pour une prochaine ROM,
+la RAM complète du prototype. Les états aléatoires, le compteur d’images,
+les acteurs et la VRAM SMS correspondent aussi à la v312 au point de sortie D7.
+Le correctif est préparé pour une prochaine ROM,
 au prochain point de sortie stable du parcours courant.
 [Preuves du prototype](analysis/title_boot_candidate_v0312_report.json)
 · [Correctif préparé](analysis/title-boot-candidate-v0312/startup.patch)

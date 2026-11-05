@@ -67,6 +67,10 @@ partielle en validation complète.
   (12→2), puis victoire sur7A/50 PV sans protection ni dégât reçu, à56/88 PV.
   Les six étapes ont un rejeu froid RAM/image exact ;124 prédictions complètes
   sont vérifiées pendant le combat. Le huitième cristal reste à valider.
+- Approche D8 v312 vérifiée : reprise après le gardien, mécanismes distants,
+  Terre et clé des voleurs, jusqu'à l'antichambre du boss principal. Huit points
+  ont leur rejeu froid RAM/image exact, à88/88 PV et72 PM au dernier point.
+  L'aide est retirée avant196 ; le combat principal est en cours.
 - Menu Nouveau jeu / Continuer v312 : musique active et audible en PAL/NTSC,
   événements des bruitages de curseur et validation alignés SMS. Aucune
   comparaison globale des formes d'onde n'est déduite de ce contrôle.
@@ -119,6 +123,9 @@ normalisées vérifiées. Les 130 comparaisons de lignes du récit passent : éc
 L'intervalle récit→titre reste86/79 images. Les commandes froides jusqu'aux
 sept cristaux passent les huit points d'entrée des boss et conservent objets,
 ressources et PNG final ; le second rejeu reproduit les65536 octets de RAM.
+Les états des deux générateurs, vtimer, les768 octets d'acteurs et les16384
+octets de VRAM SMS correspondent aussi à la v312. La table de symboles de
+base est conservée dans le dossier du correctif pour la prochaine relecture.
 Voir `title_boot_candidate_v0312_report.json` et le patch associé. Réserver sa
 promotion au prochain point de sortie stable, puis relire le préfixe courant
 sur ce binaire avant la poursuite. La ROM publique reste v312 pendant le

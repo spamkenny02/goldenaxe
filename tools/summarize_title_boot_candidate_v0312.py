@@ -34,6 +34,13 @@ def main():
                     fromfile='a/megadrive/src/intro.inc',tofile='b/megadrive/src/intro.inc'))
     folder=ROOT/'analysis/title-boot-candidate-v0312'
     folder.mkdir(exist_ok=True)
+    old_symbols=read('megadrive/out/release/symbol.txt')
+    frozen_symbols=folder/'base-symbols.txt'
+    if frozen_symbols.exists():
+        assert frozen_symbols.read_bytes() == old_symbols
+    else:
+        frozen_symbols.write_bytes(old_symbols)
+    read('analysis/title-boot-candidate-v0312/base-symbols.txt')
     (folder/'startup.patch').write_bytes(patch.encode())
     read('analysis/title-boot-candidate-v0312/startup.patch')
     regions=[]
@@ -80,12 +87,23 @@ def main():
     for stem,ext in [('ram','bin'),('frame','png')]:
         filename=f'/{stem}_{frame:05d}.{ext}'
         assert read(trace+filename) == read(proof_root+filename)
+    oldsy=symbols(frozen_symbols)
+    baseline=read('validation/'+report['source_trace']+f'/ram_{frame:05d}.bin')
+    current=read(trace+f'/ram_{frame:05d}.bin')
+    continuation_fields={}
+    for name,size in [('game_rng_seed',2),('randbase',2),('vtimer',4),
+                      ('world_actor_state',768),('sms_vram',16384)]:
+        previous=bytes(baseline[(oldsy[name]+i)^1] for i in range(size))
+        value=bytes(current[(sy[name]+i)^1] for i in range(size))
+        assert previous == value,(name,'continuation state drift')
+        continuation_fields[name]=dict(bytes=size,sha256=sha(value))
     result=dict(passed=True,md_sha256=candidate,production_rom_sha256=production,
                 candidate_private=True,production_rom_unchanged=True,production_source_unchanged=True,
                 regions=regions,story_lines_checked=130,normalized_title_images_checked=40,
                 current_seven_crystal_inputs_replayed=True,checked_boss_entries=8,frames=frame,
                 terminal_gameplay_fields_match_v0312=True,terminal_png_matches_v0312=True,
                 independent_candidate_replay_whole_ram_png_exact=True,primary_state_imports=0,
+                continuation_state_matches_v0312=continuation_fields,
                 full_game_validated=False,evidence=refs,
                 limits=['Candidate only. The public ROM remains v312 while the current campaign continues.',
                         'The delay reserves initial resource work before scene loading; it preserves the measured86/79-frame story-to-title interval.',
