@@ -1,0 +1,18 @@
+{
+  "diagnostic_only": true,
+  "md_sha256": "c53381c459a1e6254a8c9f1cfad1b8cda482cc0614697ad566133b28335e07a7",
+  "static_route_entry_passed": false,
+  "rom_bug_demonstrated": false,
+  "room": 184,
+  "source_script_offset": 45625,
+  "source_clear_handler": 24497,
+  "native_room_clear_kind": 7,
+  "observed_actor_counter": 6,
+  "observed_persistent_flags": 0,
+  "source_precondition": "Room-clear event runs only after the last actor/particle, then persists the exterior clear flag and redraws.",
+  "conclusion": "The static walking proposal did not clear the room; this is not an accepted save-entry proof.",
+  "successful_alternative": "validation/natural-dungeon-route/md-v0314-actual-save-route02",
+  "limits": [
+    "Source/native code and a captured pre-clear state inspected. The full B8 clear-and-save transaction has not been executed."
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "passed": true,
+  "md_sha256": "c53381c459a1e6254a8c9f1cfad1b8cda482cc0614697ad566133b28335e07a7",
+  "public_md_sha256": "48fb6e924a520ff579d3fb4eabe4aac365e9a37eed3dc33ff0dabfdc232e1932",
+  "candidate_promoted": false,
+  "first_crystal_and_exterior_return_verified": true,
+  "campaign_frames": 17447,
+  "guard_release_frame": 14615,
+  "first_boss_combat": {
+    "frame": 14826,
+    "health": 18,
+    "hurt": 0
+  },
+  "whole_ram_bytes": 65536,
+  "final_png_exact": true,
+  "primary_state_imports": 0,
+  "health_or_inventory_imports": 0,
+  "full_game_validated": false,
+  "archive_manifest": "analysis/intro-audio-deadline-game-v0313/manifest.json",
+  "evidence": {
+    "analysis/intro_audio_candidate11_v0313_report.json": "14321709535dc908a49f0824463720b28f7795d0347e6bec4f57c4155f727031",
+    "validation/intro-audio-v0313/candidate11/validation/natural-dungeon-combat/md-auto-audio11-fresh-d1-rebase01/capture.json": "76ca426fe5e7668f9e3868c37e60c3f94e1cc3ba09792d09bd9ae432b3142fdf",
+    "validation/intro-audio-v0313/candidate11/validation/natural-dungeon-combat/md-auto-audio11-fresh-d1-rebase01/report.json": "f97b983fac51906088a6bdfd625b0edbe2057ef45ca20641d94318f43eaa340e",
+    "validation/intro-audio-v0313/candidate11/gaw-megadrive.bin": "c53381c459a1e6254a8c9f1cfad1b8cda482cc0614697ad566133b28335e07a7",
+    "validation/intro-audio-v0313/candidate11/validation/natural-dungeon-combat/md-auto-audio11-fresh-d1-rebase01-assisted-fixed-replay-17447/replay_report.json": "33b537df700e6e52916c892d9957a4e33df2ba254e53d4506959acdc2530f8ed",
+    "validation/intro-audio-v0313/candidate11/validation/natural-dungeon-combat/md-auto-audio11-fresh-d1-rebase01/controls.json": "8a39228db8117a5f33c3b373cc580902e43b902423fadf96839587484d4f21f1",
+    "validation/intro-audio-v0313/candidate11/validation/natural-dungeon-combat/md-auto-audio11-fresh-d1-rebase01/assistance.json": "80138367a0419c55c444ac2984bf84402274550a1621068c84ab6bd64a204746",
+    "validation/intro-audio-v0313/candidate11/validation/natural-dungeon-combat/md-auto-audio11-fresh-d1-rebase01/ram_17447.bin": "81e0ef8986f2d3458c672e747fd2125ec0d47b743acb2c841b3735a4cfc51feb",
+    "validation/intro-audio-v0313/candidate11/validation/natural-dungeon-combat/md-auto-audio11-fresh-d1-rebase01-assisted-fixed-replay-17447/ram_17447.bin": "81e0ef8986f2d3458c672e747fd2125ec0d47b743acb2c841b3735a4cfc51feb",
+    "validation/intro-audio-v0313/candidate11/validation/natural-dungeon-combat/md-auto-audio11-fresh-d1-rebase01/frame_17447.png": "8feff6d60b32fd643ec4fcf9b1f77580fbc6c62a57a9c7115850172052c8f26c",
+    "validation/intro-audio-v0313/candidate11/validation/natural-dungeon-combat/md-auto-audio11-fresh-d1-rebase01-assisted-fixed-replay-17447/frame_17447.png": "8feff6d60b32fd643ec4fcf9b1f77580fbc6c62a57a9c7115850172052c8f26c",
+    "validation/intro-audio-v0313/candidate11/megadrive/out/release/symbol.txt": "ab340f2112763fbff4fc02595da59f068f13f97783b7c3dd8541aac011d2842e",
+    "validation/replay_intro_audio_candidate11_d1.py": "e5b32ef8eb2cc6895de575cbda0fbfd2e946974dffde2819ffb2a006c934904c",
+    "tools/summarize_intro_audio_candidate11_game_v0313.py": "8fdc754cf25414e3676c1e7c0d595b47623cb69fdebbcae68da9a84000e9a7f9"
+  },
+  "limits": [
+    "Fresh candidate08 controls replayed from boot on candidate11; exact final fields and normalized PNG. Independent same-ROM cold replay compares all RAM and final PNG.",
+    "Logged hurt guards only before the first boss; none during combat or return. Later campaign, save, whole-source RNG and hardware remain unverified on this candidate."
+  ]
+}

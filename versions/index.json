@@ -8785,12 +8785,32 @@
     "bytes": 2097152,
     "archived_utc": "2026-11-05T15:58:49.954777+00:00",
     "rom": "v0314-c53381c4/gaw-megadrive-v0314.bin",
-    "notes": "Intro: musique, fondu et titre alignes SMS PAL/NTSC; commandes audio atomiques. Premier cristal et retour, menu, six transitions inventaire et chargement sauvegarde reelle verifies. Suite de campagne et fidelite globale ouvertes.",
+    "notes": "Intro audio et titre alignes SMS PAL/NTSC. Campagne froide: hache, fee de vie, deux cristaux, huile et escaliers; sortie D2 a48/48PV, boss sans protection. Sauvegarde ecrite et Continuer verifies. Suite et fidelite globale ouvertes.",
     "validation": "targeted_checks_passed",
     "reports": [
       {
         "file": "intro_audio_integration_v0314_report.json",
         "sha256": "6b31a1dbbec4f6545214311fa5e849a0bc494c0875865cab6e94637b894e13cc"
+      },
+      {
+        "file": "d1_campaign_v0314_report.json",
+        "sha256": "3a53a1511693bb82f1af1bad74e34453d811d897794d53ec8deed5b1e1a7e5a4"
+      },
+      {
+        "file": "d2_approach_v0314_report.json",
+        "sha256": "28ad30e60f89e52d7d7723f47156b9d8c5608ad30df082761e121933d7a90b73"
+      },
+      {
+        "file": "d2_campaign_v0314_report.json",
+        "sha256": "7efc3decd9c3cf7ac6a8eaf11030bbd733fd07ce9aad958419516a0ee7e588f7"
+      },
+      {
+        "file": "game_written_save_v0314_report.json",
+        "sha256": "2d310daee39c1060f5b04d4446cd9febb22fb747c2639a9b7ea61b6a8f994ee9"
+      },
+      {
+        "file": "oil_service_v0314_report.json",
+        "sha256": "b6b48aa8f46cee77c0f83be7e47d6e6dd3812a863440f650e1868a3ae83a3594"
       }
     ]
   }

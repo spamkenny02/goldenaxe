@@ -25,22 +25,37 @@ protégée contre les interruptions. La compilation de production reproduit
 exactement le binaire testé.
 [Correctif intégré et preuves v314](analysis/intro_audio_integration_v0314_report.json)
 
-Sur ce binaire, le **premier cristal et le retour extérieur** passent avec
-rejeu froid exact de toute la RAM et de l’image finale : **28/32 PV et 24 PM**.
-La musique et les bruitages de Nouveau Jeu/Continuer sont vérifiés dans les
-deux régions. Six parcours d’ouverture/fermeture du menu, dont les deux
-premières boutiques, conservent les mêmes fenêtres noires et reprises de jeu
-que la SMS, le HUD et une fermeture silencieuse.
-[Premier cristal](analysis/intro_audio_candidate11_game_v0313_report.json)
-· [Menu de démarrage](analysis/start_menu_candidate11_v0313_report.json)
-· [Menu en jeu](analysis/inventory_candidate11_v0313_report.json)
+Sur ce binaire, le parcours depuis Nouveau Jeu atteint **deux cristaux**,
+avec la hache et la première fée de vie obtenues normalement. Le boss de D2
+est vaincu sans protection ni dégât :89 prédictions conformes, puis cristal
+et retour extérieur à **48/48 PV et24 PM**. Un dégât normal de4 PV sur le
+retour est compensé pendant le trajet. Les huit étapes retenues de D2 ont
+un rejeu indépendant exact de toute la RAM et de l’image finale ; les deux
+essais de contrôleur infructueux sont conservés et exclus de cette preuve.
+[Parcours D1 publié](analysis/d1_campaign_v0314_report.json)
+· [Hache et fée de vie](analysis/d2_approach_v0314_report.json)
+· [Deuxième cristal et retour](analysis/d2_campaign_v0314_report.json)
 
-La **sauvegarde réelle de la v313** se recharge normalement sur la v314 en
-PAL/NTSC : objets, neuf cristaux, 128 mots physiques du HUD et déplacement
-vérifiés, sans écriture RAM de test ni suppression d’ennemis. Cela vérifie
-la compatibilité du premier emplacement ; l’écriture de sauvegarde sur la
-v314 et ses étapes après le premier cristal restent à contrôler.
-[Compatibilité de sauvegarde](analysis/save_compatibility_candidate11_v0313_report.json)
+Le **don d’huile**, les deux escaliers de la maison C7 et le retour extérieur
+sont vérifiés, sans nouvelle écriture de test ni modification des ressources
+pendant le dialogue. Le parcours passe par1F→0F→1F→C7.
+[Huile et escaliers v314](analysis/oil_service_v0314_report.json)
+
+La v314 a **réellement écrit une sauvegarde** dans le premier emplacement.
+Son rejeu reproduit les592 octets du contenu et le fichier SRAM, puis un
+redémarrage et **Continuer** restaurent les objets, le premier cristal,
+le HUD physique et le déplacement. Aucun état SRAM synthétique n’est utilisé.
+La sauvegarde à neuf cristaux écrite sur v313 reste également compatible avec
+v314 en PAL/NTSC. La campagne après D2 reste à vérifier sur le nouveau binaire.
+[Sauvegarde écrite et Continuer v314](analysis/game_written_save_v0314_report.json)
+· [Compatibilité de sauvegarde v313](analysis/save_compatibility_candidate11_v0313_report.json)
+
+La musique et les bruitages de Nouveau Jeu/Continuer sont vérifiés dans les
+deux régions. Six parcours de menu, dont les deux premières boutiques,
+conservent les mêmes fenêtres noires et reprises de jeu que la SMS, le HUD
+et une fermeture silencieuse.
+[Menu de démarrage](analysis/start_menu_candidate11_v0313_report.json)
+· [Menu en jeu](analysis/inventory_candidate11_v0313_report.json)
 
 La **v0313** conserve la preuve d’une campagne complète depuis Nouveau Jeu :
 neuf cristaux, ballon, vraie Hache d’or, **Death Adder vaincu sans protection**,

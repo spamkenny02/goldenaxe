@@ -11,7 +11,11 @@ La production reproduit exactement le candidat testé. Premier cristal et
 retour extérieur vérifiés par rejeu RAM/image exact. Menu de démarrage,six
 transitions inventaire et compatibilité de la sauvegarde réelle v313 vérifiés
 dans les deux régions. Voir intro_audio_integration_v0314_report.json.
-L’écriture de sauvegarde et la campagne après D1 restent à vérifier sur v314.
+La v314 a aussi écrit une vraie sauvegarde dans le premier emplacement :
+rejeu exact des592 octets et du fichier SRAM,puis redémarrage,Continuer,
+restauration des objets/premier cristal/HUD et déplacement vérifiés.
+Voir game_written_save_v0314_report.json,d2_campaign_v0314_report.json
+et oil_service_v0314_report.json. La campagne après D2 reste à vérifier.
 
 La v313 conserve la campagne complète depuis Nouveau Jeu : neuf cristaux,
 ballon,Hache d’or,Death Adder sans protection,générique complet,retour intro.
@@ -154,8 +158,8 @@ Ordre de travail pour la livraison :
 
 Le correctif audio est intégré à la v314. Réutiliser ses preuves liées au
 binaire exact ; la campagne complète v313 conserve son périmètre historique.
-Poursuivre les contrôles de v314 depuis son premier cristal et sa sauvegarde
-réelle compatible, sans attribuer la fin de v313 au nouveau binaire.
+Poursuivre les contrôles de v314 depuis son deuxième cristal et le don d’huile
+vérifié, sans attribuer la fin de v313 au nouveau binaire.
 
 1. Poursuivre la validation de la ROM courante et traiter les blocages ou régressions
    réellement rencontrés. Réutiliser les préfixes froids déjà vérifiés ; ne pas
