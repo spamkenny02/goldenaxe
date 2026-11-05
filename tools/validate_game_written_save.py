@@ -9,7 +9,8 @@ from validate_reward_hud_restore import translated
 from natural_dungeon_combat import walk
 
 def main():
- p=argparse.ArgumentParser();p.add_argument('--trace',required=True);p.add_argument('--trial',required=True);a=p.parse_args()
+ p=argparse.ArgumentParser();p.add_argument('--trace',required=True);p.add_argument('--trial',required=True);p.add_argument('--release-report-name');a=p.parse_args()
+ if a.release_report_name:assert Path(a.release_report_name).name==a.release_report_name and a.release_report_name.endswith('.json')
  source=(ROOT/'validation'/a.trace).resolve();assert source.is_relative_to(ROOT/'validation')
  c=json.loads((source/'capture.json').read_bytes());r=json.loads((source/'report.json').read_bytes());assert r['passed'] and r['game_written_save'] and r['payload_source_ram_exact'] and not r['primary_state_imports'] and not r['new_assistance_writes'] and c['sram_input'] is None
  rom=ROOT/'gaw-megadrive.bin';digest=sha(rom.read_bytes());assert c['rom_sha256']==r['rom_sha256']==digest
@@ -96,6 +97,8 @@ def main():
  version=next((entry['version'] for entry in versions if entry['sha256']==digest),None)
  if version is not None:
   release_report=dict(result,version=version,md_sha256=digest)
-  (ROOT/'analysis'/f'game_written_save_v{version:04d}_report.json').write_bytes((json.dumps(release_report,indent=2)+'\n').encode())
+  release_path=ROOT/'analysis'/(a.release_report_name or f'game_written_save_v{version:04d}_report.json')
+  if a.release_report_name:assert not release_path.exists(),release_path
+  release_path.write_bytes((json.dumps(release_report,indent=2)+'\n').encode())
  print('Real save fixed replay,SRAM and normal Continue verified')
 if __name__=='__main__':main()

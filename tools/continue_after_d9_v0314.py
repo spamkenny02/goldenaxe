@@ -70,7 +70,8 @@ def save_and_reload():
     run('natural_save_service.py', ['--prefix', 'md-' + route, '--assisted-prefix',
         '--trial', trial])
     run('validate_game_written_save.py', ['--trace', f'{SERVICE}/md-{trial}',
-        '--trial', 'v0314-nine-crystals-01'])
+        '--trial', 'v0314-nine-crystals-01',
+        '--release-report-name', 'game_written_save_v0314_nine_crystals_report.json'])
     print('V0314 GAME-WRITTEN SAVE AND CONTINUE VERIFIED', flush=True)
 
 

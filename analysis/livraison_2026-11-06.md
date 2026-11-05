@@ -312,3 +312,11 @@ Gardien11E/7C vaincu sans protection :405 prédictions exactes,trois coups
 de24 PV,fin32 PV. Hache d’or acquise en11D à363747,fin364147 à56 PV/72 PM.
 Six points RAM/image exacts. Dernière portion du palais lancée.
 Voir cold_palace_guardian_v0314_report.json et palace_guardian_health_v0314_report.json.
+
+Campagne v314 terminée :Death Adder sans protection,100 prédictions exactes,
+trois pertes20+20+32 PV,fin20 PV. Victoire396040,générique397055→404478,
+retour intro404508,fin404608. Onze derniers points RAM/image exacts.
+Sauvegarde réelle à neuf cristaux en cours ; correctif marchand candidat03
+validé PAL/NTSC,43 transactions,six menus,intro/audio conservés,non intégré
+tant que les processus v314 restent actifs. Voir cold_palace_final_v0314_report.json
+et merchant_panel_candidate03_v0314_report.json.

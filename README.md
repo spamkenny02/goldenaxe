@@ -17,6 +17,17 @@ Checksum Mega Drive : `241A`
 
 ## État du portage
 
+La **campagne v0314 est terminée depuis Nouveau Jeu** : neuf cristaux,
+Ballon, Hache d’or, Death Adder, générique complet et retour à l’intro.
+Le dernier boss est vaincu sans protection avec100 prédictions exactes :
+dégâts normaux20+20+32 PV, fin à20 PV. Le générique dure7423 images ;
+le parcours se termine à404608. Chaque point retenu est reproduit en
+RAM complète/image exacte. Une mort normale puis Continuer fait partie du
+parcours ; les protections de trajet sont retirées avant chaque boss.
+La sauvegarde réelle à neuf cristaux et la fidélité globale restent distinctes.
+[Campagne et fin v314](analysis/cold_palace_final_v0314_report.json)
+· [PV du dernier combat](analysis/palace_final_health_v0314_report.json)
+
 La **v0314** corrige le démarrage et le fondu sonore de l’intro. La première
 musique, le fondu vers le titre et ses animations s’alignent sur la SMS en
 PAL/NTSC : **12 959 états audio IRQ** et **40 images normalisées du titre**
@@ -78,7 +89,7 @@ Le **Ballon est utilisé normalement**, puis la carte du monde se referme
 avec restitution du décor/HUD vérifiée sur768 mots physiques. La **porte
 aux neuf cristaux** s’ouvre réellement et l’entrée du palais18D est relue en
 RAM/image exacte, à104 PV/72 PM. Les deux gardiens et la Hache d’or sont vérifiés.
-Death Adder, le générique et la sauvegarde à neuf cristaux restent en test.
+Death Adder et le générique sont vérifiés ; la sauvegarde à neuf cristaux reste en test.
 [Ballon et retour de carte v314](analysis/owned_overview_v0314_report.json)
 · [Porte et entrée du palais v314](analysis/cold_palace_entry_v0314_report.json)
 
@@ -110,8 +121,8 @@ SMS globale n’est déduite de ce contrôle.
 Le **gardien11E/7C** est vaincu sans protection : **405 prédictions exactes**,
 trois coups normaux de24 PV, fin à32 PV. La **Hache d’or est acquise réellement**
 en11D, avec une fin d’étape à56 PV/72 PM. Six points supplémentaires
-reproduisent RAM et image ; Death Adder, générique et sauvegarde finale
-restent en cours de vérification.
+reproduisent RAM et image. Death Adder et le générique sont maintenant
+vérifiés ; la sauvegarde finale reste en cours de vérification.
 [Gardien et Hache d’or v314](analysis/cold_palace_guardian_v0314_report.json)
 · [Bilan des PV](analysis/palace_guardian_health_v0314_report.json)
 
@@ -146,7 +157,7 @@ redémarrage et **Continuer** restaurent les objets, le premier cristal,
 le HUD physique et le déplacement. Aucun état SRAM synthétique n’est utilisé.
 La sauvegarde à neuf cristaux écrite sur v313 reste également compatible avec
 v314 en PAL/NTSC. Le palais final et la sauvegarde à neuf cristaux restent à terminer sur ce binaire.
-[Sauvegarde écrite et Continuer v314](analysis/game_written_save_v0314_report.json)
+[Sauvegarde écrite et Continuer au premier cristal](analysis/game_written_save_v0314_first_crystal_report.json)
 · [Compatibilité de sauvegarde v313](analysis/save_compatibility_candidate11_v0313_report.json)
 
 La musique et les bruitages de Nouveau Jeu/Continuer sont vérifiés dans les
