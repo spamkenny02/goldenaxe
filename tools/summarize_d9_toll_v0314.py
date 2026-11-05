@@ -13,7 +13,7 @@ def main():
  def load(p):return json.loads(read(p))
  prior=load(ROOT/'analysis/d8_campaign_v0314_report.json');assert prior['passed']
  source=ROOT/prior['current_campaign_trace'];pc=load(source/'capture.json');pa,pw=recording(source,pc)
- root=ROOT/'validation/natural-service-route/md-v0314-d9-earned-toll08';c=load(root/'capture.json');r=load(root/'report.json');a,w=recording(root,c)
+ root=ROOT/'validation/natural-service-route/md-v0314-d9-earned-toll09';c=load(root/'capture.json');r=load(root/'report.json');a,w=recording(root,c)
  digest=sha((ROOT/'gaw-megadrive.bin').read_bytes());assert digest==prior['md_sha256']==c['rom_sha256']==r['rom_sha256']
  assert r['passed'] and not r['failure'] and r['source_prefix']==source.name and not c['sram_input']
  assert not r['currency_or_inventory_fixtures'] and not r['primary_state_imports'] and not r['rom_modifications']

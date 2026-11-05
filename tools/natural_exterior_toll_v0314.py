@@ -75,7 +75,8 @@ def main():
   if state.get('game')!=12:return []
   p=state['x'],state['y'];enemies=[e for e in actors if e['hp']and e['type']>=0x20 and e['flags']&2]
   near=sorted(enemies,key=lambda e:abs(e['x']-p[0])+abs(e['y']-p[1]))
-  useful=[e for e in loot if e['type']in(8,9)or e['type']in(10,11)and state['health']<state['max_health']]
+  cash=[e for e in loot if e['type']in(8,9)]
+  useful=cash or[e for e in loot if e['type']in(10,11)and state['health']<state['max_health']]
   variant=state['weapon']+1 if state['selected']==1 else 0
   if near and(state['hero']in(2,3,4,5)or directions(p,near[0],variant,safe=False)):
    ds=directions(p,near[0],variant,safe=False)

@@ -18,7 +18,7 @@ def main():
   while current:
    time.sleep(2);current=process()
   print('Toll process terminal; inspecting actual report',flush=True)
- toll=json.loads((ROOT/'validation/natural-service-route/md-v0314-d9-earned-toll08/report.json').read_bytes())
+ toll=json.loads((ROOT/'validation/natural-service-route/md-v0314-d9-earned-toll09/report.json').read_bytes())
  assert toll['passed']and not toll['failure']and toll['rom_sha256']==digest and toll['last_state']['gold']>=10
  assert not toll['currency_or_inventory_fixtures']and not toll['primary_state_imports']
  tools=['continue_d9_entry_v0314.py','summarize_d9_toll_v0314.py','summarize_d9_entry_v0314.py','summarize_d9_midboss_v0314.py','continue_d9_finish_v0314.py','summarize_d9_balloon_v0314.py','summarize_d9_campaign_v0314.py']

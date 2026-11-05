@@ -16,18 +16,32 @@ from rebase_natural_campaign import evidence
 from assisted_prefix import prefix_writes, recording, episodes, EPISODE_KEYS,controlled_sram_input
 
 
+def approach_coin_near(ram,sy=None,sms=False):
+    """Let ordinary pickup/damage run near a real dropped coin, never add gold."""
+    if sms:
+        x,y=ram[0x313],ram[0x311]
+        loot=ram[0x4b0:0x600]
+    else:
+        word=lambda name:int.from_bytes(bytes(ram[(sy[name]+i)^1]for i in range(2)),'big')
+        x,y=word('hero_x')>>8,word('hero_y')>>8
+        loot=bytes(ram[(sy['world_loot_state']+i)^1]for i in range(336))
+    return any(loot[n*48]in(8,9) and abs(x-loot[n*48+19])+abs(y-loot[n*48+17])<=128 for n in range(7))
+
+
 def main():
     parser = argparse.ArgumentParser(add_help=False)
     parser.add_argument('--boss-room', type=lambda value: int(value, 0), required=True)
     parser.add_argument('--planner', choices=['beam', 'navigation', 'ordinary', 'side', 'escape', 'cautious', 'evasive', 'exit', 'earth', 'contact', 'item'], default='beam')
     parser.add_argument('--boss-frames', type=int, help='Bound this diagnostic after normal combat starts')
     parser.add_argument('--retarget-pending-boss', action='store_true', help='Correct an unreached approach target; cold-prefix audit forbids either boss having been entered')
+    parser.add_argument('--release-near-coins', action='store_true', help='Exterior test approach only: release held protection near real dropped coins; no gold writes')
     parser.add_argument('--world-route', action='store_true', help='Apply the same guard to an exterior route')
     parser.add_argument('--unassisted-plan-rooms', help='Plan ordinary input in these rooms after the inherited boss guard has ended')
     parser.add_argument('--new-assistance-episode', action='store_true', help='Start the next approach after a verified dungeon exit')
     parser.add_argument('--preserve-floor-hurt', action=argparse.BooleanOptionalAction, default=True, help='Preserve ordinary floor-damage cooldown when no enemies are active (default). Use --no-preserve-floor-hurt only to reproduce older diagnostics.')
     parser.add_argument('--completed-exit-proof', help='Verified same-ROM exit before intervening service visits; no new assistance may have been added')
     args, remaining = parser.parse_known_args()
+    assert not args.release_near_coins or args.world_route
     assert not args.completed_exit_proof or args.new_assistance_episode
     sms = '--sms' in remaining
     assert not sms or args.planner in ('ordinary', 'beam', 'navigation', 'cautious', 'earth', 'side', 'escape', 'evasive', 'contact'), 'The selected wrapper does not support SMS report paths'
@@ -107,7 +121,7 @@ def main():
                   first_boss_combat=None, first_boss_damage=None,
                   primary_state_imports=0, boss_assistance=False)
     if initial_sram:result.update(controlled_sram_fixture=True,sram_initialization_import=True,sram_sha256=sha(initial_sram.read_bytes()),primary_state_imports=1,game_written_save=False)
-    result.update(completed_exit_proof=args.completed_exit_proof,
+    result.update(release_near_coins_requested=args.release_near_coins,completed_exit_proof=args.completed_exit_proof,
                   preserve_floor_hurt_requested=args.preserve_floor_hurt,
                   prefix_trace=prefix_folder.relative_to(ROOT / 'validation').as_posix(),
                   prefix_capture_sha256=sha((prefix_folder / 'capture.json').read_bytes()),
@@ -166,6 +180,7 @@ def main():
                     actor = (lambda slot, offset: ram[0x600 + slot * 48 + offset]) if sms else (
                         lambda slot, offset: ram[(sy['world_actor_state'] + slot * 48 + offset) ^ 1])
                     danger = any(actor(slot, 0) >= 0x10 and actor(slot, 3) & 2 for slot in range(16))
+                    if args.release_near_coins and approach_coin_near(ram,sy,sms): danger=False
                     # Repeated zero writes also erase the game's ordinary
                     # terrain-hit cooldown. In this mode only remove our
                     # held129 guard; leave natural0..128 counters untouched.

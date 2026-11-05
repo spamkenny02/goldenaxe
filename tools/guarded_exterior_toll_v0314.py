@@ -6,11 +6,11 @@ import assisted_boss_route as guard
 from run_core import ROOT
 from assisted_prefix import recording
 coins.GUARDED=True
-coins.TRIAL='md-v0314-d9-earned-toll08'
+coins.TRIAL='md-v0314-d9-earned-toll09'
 coins.run=lambda *a,**k:world.run(*a,**k)
 world.main=coins.main
 if __name__=='__main__':
- sys.argv=[sys.argv[0],'--boss-room','0x1ac','--world-route','--new-assistance-episode','--assisted-prefix','--prefix-combat','md-auto-v0314-d8-exit01']
+ sys.argv=[sys.argv[0],'--boss-room','0x1ac','--world-route','--release-near-coins','--new-assistance-episode','--assisted-prefix','--prefix-combat','md-auto-v0314-d8-exit01']
  guard.main()
  out=ROOT/'validation/natural-service-route'/coins.TRIAL
  r=json.loads((out/'route_report.json').read_bytes());cap=json.loads((out/'capture.json').read_bytes());a,w=recording(out,cap)

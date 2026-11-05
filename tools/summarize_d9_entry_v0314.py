@@ -21,7 +21,7 @@ def main():
  paid=load('analysis/paid_passage_reference.json');assert paid['source_sha256']==sha(original) and [0x1a,0x3c,144,24] in paid['routes'] and paid['prices'][paid['towns'].index(0x1a)]==10
  assert original[0x3234e+0x1ac*8:0x32356+0x1ac*8]==bytes([0x6c]+[0]*7)
  previous=prior['current_campaign_trace'];pc=load(previous+'/capture.json');pa,pw=recording(ROOT/previous,pc);stages=[]
- for family,name,kind,room in [('natural-service-route','md-v0314-d9-earned-toll08','earning',None),('natural-dungeon-route','md-v0314-d9-paid1a-route01','route',0x9f),('natural-service-route','md-v0314-d9-paid1a-service01','payment',0x3c),('natural-dungeon-route','md-v0314-d9-entry01','entry',0x1fc)]:
+ for family,name,kind,room in [('natural-service-route','md-v0314-d9-earned-toll09','earning',None),('natural-dungeon-route','md-v0314-d9-paid1a-route01','route',0x9f),('natural-service-route','md-v0314-d9-paid1a-service01','payment',0x3c),('natural-dungeon-route','md-v0314-d9-entry01','entry',0x1fc)]:
   root='validation/'+family+'/'+name;c=load(root+'/capture.json');r=load(root+('/report.json' if kind in ('payment','earning') else '/route_report.json'));f=c['frames'];proof=root+f'-assisted-fixed-replay-{f}';p=load(proof+'/replay_report.json')
   assert c['rom_sha256']==r['rom_sha256']==p['rom_sha256']==digest and c['sram_input'] is None and r['failure'] is None
   assert p['passed'] and p['whole_ram_bytes']==65536 and p['final_png_exact'] and not p['feedback_reads']
