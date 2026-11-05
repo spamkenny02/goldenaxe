@@ -1,4 +1,4 @@
-"""Audit current-ROM paid coastal passage and ninth-dungeon entry."""
+"""Audit the direct southern D9 approach, owned Bell passage and actual entry."""
 import json
 from run_core import ROOT
 from archive_lossless_evidence import sha

@@ -1,0 +1,111 @@
+{
+  "status": "unexecuted_proposal",
+  "md_sha256": "7270576d6eeb2aee641776a3e364f2f3f320711d70bb91a566d7578161261049",
+  "requires": "Passed actual cold guardian/GoldenAxe2 audit,canonical prefix. Never import the controlled SRAM or RAM. Each stage must be run and independently verified.",
+  "source_reports": {
+    "validation/natural-dungeon-combat/md-auto-controlled-v0309-palace-earth13e01/report.json": "d8dc62f7f86259c9cdf18e8b4c8c2d245449b474ce674c0fd4b0b36f5afb2b16",
+    "validation/natural-dungeon-combat/md-auto-controlled-v0309-palace-switch17c05/report.json": "c60b0bb6f9420b24f8bed67472dc9ef155075acd0d510b779c746408f855a287",
+    "validation/natural-dungeon-combat/md-auto-controlled-v0309-palace-portal13c02/report.json": "a2dab8c5d67e10ed079a4d767dba06080d83b4e2a66d2b53ba619e42b0660944",
+    "validation/natural-dungeon-combat/md-auto-controlled-v0309-palace-switch14b01/report.json": "f05e803b04cfccdb8f87eab230d5d076b0c494e2bec3bcf26f6e12ae37afb3d4",
+    "validation/natural-dungeon-combat/md-auto-controlled-v0309-palace-portal15a02/report.json": "14f6144f26eb8cbda3bfe97f78fba574137ccf8d8e24e4e72a3791d5342303d1",
+    "validation/natural-dungeon-combat/md-auto-controlled-v0309-palace-earth15b01/report.json": "367c2035aa47cbb33411bfd6352c3c4b1b8237e550ad03892cfec40a633a5c33",
+    "validation/natural-dungeon-combat/md-auto-controlled-v0309-palace-switch16c01/report.json": "0e62d79d6e88b3d49bca55fd838048045cce17bd2061cfe222ba562fc67a2de9",
+    "validation/natural-dungeon-combat/md-auto-controlled-v0309-palace-pre-final03/report.json": "8244a9207fb627d3d599f61048e9b2358b78fa04af074416d4d4fd6eb509b51f"
+  },
+  "weapon": "axe2 throughout; Earth helpers restore1 when equip-basic absent",
+  "stages": [
+    {
+      "name": "earth13e",
+      "planner": "earth",
+      "rooms": "0x11d,0x11e,0x12e,0x12d,0x12c,0x12b,0x11b,0x11c,0x12a,0x11a,0x119,0x14e,0x13e,0x16a",
+      "target": "0x16a",
+      "earth_room": "0x13e",
+      "earth_cell": "0x3a",
+      "cast": [
+        168,
+        80,
+        0
+      ],
+      "avoid": "0x12a,0x14e,0x16a"
+    },
+    {
+      "name": "switch17c",
+      "planner": "contact",
+      "rooms": "0x16a,0x17a,0x18a,0x18b,0x17b,0x17c",
+      "target": "0x17c",
+      "contact_room": "0x17c",
+      "contact_destination": "0x17c",
+      "avoid": "0x16a,0x17b"
+    },
+    {
+      "name": "portal13c",
+      "planner": "ordinary",
+      "rooms": "0x17c,0x17b,0x18b,0x18a,0x17a,0x17b,0x13c",
+      "target": "0x13c",
+      "avoid": "0x13c"
+    },
+    {
+      "name": "switch14b",
+      "planner": "contact",
+      "rooms": "0x13c,0x13b,0x14b",
+      "target": "0x14b",
+      "contact_room": "0x14b",
+      "contact_destination": "0x14b",
+      "avoid": "0x13c,0x14b"
+    },
+    {
+      "name": "portal15a",
+      "planner": "ordinary",
+      "rooms": "0x14b,0x13b,0x13a,0x14a,0x14b,0x15a",
+      "target": "0x15a",
+      "avoid": "0x15a"
+    },
+    {
+      "name": "earth15b",
+      "planner": "earth",
+      "rooms": "0x15a,0x15b,0x16b",
+      "target": "0x16b",
+      "earth_room": "0x15b",
+      "earth_cell": "0x48",
+      "cast": [
+        136,
+        88,
+        0
+      ],
+      "avoid": "0x15a"
+    },
+    {
+      "name": "switch16c",
+      "planner": "contact",
+      "rooms": "0x16b,0x16c",
+      "target": "0x16c",
+      "contact_room": "0x16c",
+      "contact_destination": "0x16c",
+      "avoid": "0x16c"
+    },
+    {
+      "name": "pre-final",
+      "planner": "ordinary",
+      "rooms": "0x16c,0x15c",
+      "target": "0x15c"
+    },
+    {
+      "name": "release",
+      "before_room": "0x14c"
+    },
+    {
+      "name": "final",
+      "planner": "unassisted-evasive",
+      "rooms": "0x15c,0x14c",
+      "target": "0x14c",
+      "entry_boss_kind": "0x6d",
+      "stop_on_ending": true
+    },
+    {
+      "name": "ending",
+      "planner": "continue-recorded-ending",
+      "return_to_intro": true
+    }
+  ],
+  "limits": "Combined itinerary is a proposal from old controlled source-bound trials,not evidence for the current campaign. Verify reachable geometry and all16slots where claiming room clear; preserve actual resources. Both intermediate fights and final14C require guard release before entry."
+}

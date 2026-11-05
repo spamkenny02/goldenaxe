@@ -255,3 +255,8 @@ rejeux RAM/image exacts. Huit cristaux et tous les objets conservés ;96/96 PV,
 24 PM,6 cornes. Aucun argent ni état injecté. Le trajet direct vers la Cloche
 et D9 est lancé ; ce donjon n’est pas encore validé.
 Voir d9_recovery_v0314_report.json.
+
+Entrée D9 atteinte et vérifiée à l’image264263 : passage CB ouvert avec la
+Cloche réelle,603 points de trajet et16 décisions de coupe normales,96 PV,
+24 PM,6 cornes. Rejeu RAM/image exact. Gardiens et neuvième cristal ouverts.
+Voir d9_entry_v0314_report.json.

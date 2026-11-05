@@ -38,9 +38,11 @@ puis Continuer et le soigneur gratuit**. Les huit cristaux et tous les objets
 sont conservés. Le jeu ramène le héros en95 à24 PV/24 PM et applique sa
 pénalité de8 à6 cornes ; le soigneur restaure ensuite96/96 PV. Les trois
 points reproduisent toute la RAM et l’image finale, sans nouvelle écriture
-de test ni import de ressources. L’accès direct à D9 via la Cloche est en
-cours ; aucun résultat de D9 n’est encore annoncé.
+de test ni import de ressources. L’accès direct à D9 et le passage CB ouvert
+avec la Cloche sont maintenant vérifiés, à96 PV/24 PM. Les gardiens et
+le neuvième cristal restent à valider.
 [Continuer et soin gratuit v314](analysis/d9_recovery_v0314_report.json)
+[Entrée D9 et passage de la Cloche v314](analysis/d9_entry_v0314_report.json)
 
 Sur ce binaire, le parcours depuis Nouveau Jeu atteint **huit cristaux**,
 avec la hache et la première fée de vie obtenues normalement. Le boss de D2
