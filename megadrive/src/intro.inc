@@ -3,6 +3,7 @@
 extern const u8 intro_bank6[],intro_fixed[],intro_mono_font[],intro_symbols_rle[];
 extern const u8 intro_fire_colors[],intro_lightning_colors[];
 static u16 intro_scene,intro_counter,intro_abort;
+static bool intro_boot_music;
 static volatile u16 intro_line,intro_running;
 static u16 intro_actor_state[16],intro_actor_pose[16];
 static const u8 *intro_actor_templates;
@@ -165,6 +166,13 @@ static void intro_load_scene(u16 scene)
     intro_upload_patterns();
     for(row=0;row<12;row++) memcpy(sms_vram+0x3808+row*64,title_map+row*48,48);
     draw_map();intro_wait(1);
+    if(scene==1)
+    {
+        /* First scene69/62 follows first music23/20. Queue the first
+         * reveal slice one IRQ before its source hardware publication. */
+        u16 ready=SYS_isPAL()?41:45;
+        while((u16)((u16)vtimer-sound_track_started_frame)<ready) wait_frame();
+    }
     if(scene==2) intro_init_actors(0x0f95);
     intro_scene=scene==3?0:scene;
     intro_reveal();
@@ -213,6 +221,7 @@ static void intro_sequence(void)
 {
     u16 n,destination;const u8 *text=intro_bank6+0x39ce,*patch=intro_address(0x10c3);
     intro_scene=intro_abort=intro_timer=intro_counter=intro_line=0;intro_running=1;
+    if(intro_boot_music) intro_boot_music=FALSE; else sound_music(0x85);
     title_phase=FALSE;VDP_setEnable(FALSE);map_origin=0x3800;
     memset(sms_vram,0,sizeof(sms_vram));
     decode_planes(number_font_rle,sms_vram+0x2600,4);
@@ -229,12 +238,6 @@ static void intro_sequence(void)
     sms_palette[22]=0x2a;sms_palette[23]=0;sms_palette[31]=2;
     convert_patterns_range_fast(0,512);VDP_loadTileData(md_patterns,16,512,CPU);
     set_palette(sms_palette);draw_map();VDP_setEnable(TRUE);
-    sound_music(0x85);
-    /* Reserve the source startup-resource interval before the first scene.
-     * These21 NTSC /22 PAL IRQs align the natural title epoch while keeping
-     * the existing interval from story completion to the title unchanged.
-     * Foreground loading does not poll for an intro abort; IRQ audio runs. */
-    { u16 loading=SYS_isPAL()?22:21;while(loading--) wait_frame(); }
     intro_load_scene(1);
     while(*text && !intro_abort)
     {

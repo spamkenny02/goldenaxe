@@ -54,10 +54,25 @@ def main():
     result = dict(passed=True, version=version['version'], md_sha256=CANDIDATE,
         previous_md_sha256=PUBLIC, production_build_matches_tested_candidate=True,
         actual_source_files_integrated=[*changed, 'gaw_sgdk_sys.c'],
+        native_source_sha256={name:sha((source/name).read_bytes()) for name in [*changed,'gaw_sgdk_sys.c']},
+        exact_audio_irq_states=audio['exact_audio_irq_states'],
+        normalized_title_images=audio['normalized_title_images'],
+        first_crystal_and_exterior_return_verified=True,
+        source_exact_cursor_and_confirmation_timing=True,
+        natural_inventory_transition_cases=inventory['natural_inventory_transition_cases'],
+        real_earlier_save_compatibility_regions=[c['region'] for c in save['cases']],
+        evidence={'analysis/'+name:sha((ROOT/'analysis'/name).read_bytes()) for name in (
+            'intro_audio_candidate11_v0313_report.json','intro_audio_candidate11_game_v0313_report.json',
+            'start_menu_candidate11_v0313_report.json','inventory_candidate11_v0313_report.json',
+            'save_compatibility_candidate11_v0313_report.json')},
         sgdk_license='megadrive/SGDK-license.txt', full_game_validated=False,
         limits=['The complete v313 campaign remains tied to its previous binary. This release has its own intro/title, start menu and first-crystal proof; its later campaign remains to verify.'])
     output = ROOT/'analysis'/f'intro_audio_integration_v{version["version"]:04d}_report.json'
     output.write_text(json.dumps(result, indent=2)+'\n', encoding='utf-8')
+    import sys
+    subprocess.run([sys.executable, str(ROOT/'tools/version_rom.py'), '--report', str(output),
+                    '--notes', 'Intro: musique, fondu et titre alignes SMS PAL/NTSC; commandes audio atomiques. Premier cristal et retour, menu, six transitions inventaire et chargement sauvegarde reelle verifies. Suite de campagne et fidelite globale ouvertes.'],
+                   cwd=ROOT, check=True)
     print('Integrated tested native audio candidate as version', version['version'])
 
 

@@ -397,6 +397,8 @@ static void title_sequence(void)
     const u8 *src=title_bank7+16;
     u16 n,k,loading_frames;
     u32 loading_started,budget;
+    /* Source0B48: twelve fade steps, one every four audio IRQs. */
+    sound_ram[12]=sound_ram[13]=4;sound_ram[11]=12;
     fade_before_title();
     if(title_requested) return;
     loading_started=vtimer;
@@ -429,7 +431,8 @@ static void title_sequence(void)
     VDP_setEnable(TRUE);
     fade_title_palette(TRUE);
     if(title_requested) return;
-    sound_music(0x81);
+    /* Source title audio starts one IRQ after the final palette hold. */
+    sound_music_delayed(0x81,1);
     /* 165C..167E: three cape poses, six IRQs each, eleven cycles. */
     for(n=0;n<11;n++)
         for(k=0;k<3;k++)
@@ -3515,6 +3518,9 @@ int main(bool hardReset)
                   0x11111111,0x11111111,0x11111111,0x11111111};
     const u16 green=0x06a6; /* SMS $19: R=1,G=2,B=1 => MD 3,5,3. */
     (void)hardReset;
+    sound_stop();sound_ram[3]=SYS_isPAL()?0:0x80;SYS_setVIntCallback(world_vint);
+    if(!SYS_isPAL()) { wait_frame();wait_frame();sound_ram[4]=3; } else wait_frame();
+    sound_music(0x85);intro_boot_music=TRUE;
     /* Only indoor 2x2 tile updates copy data into the DMA staging buffer.
        2 KiB leaves room for the live dialogue snapshot in the 64 KiB RAM. */
     DMA_setBufferSize(2048);
@@ -3527,7 +3533,6 @@ int main(bool hardReset)
     PAL_setColor(33,green);
     VDP_fillTileMapRect(BG_B,TILE_ATTR_FULL(PAL2,0,0,0,1),0,2,32,24);
     JOY_init();game_rng_reset();save_init();
-    sound_stop();sound_ram[3]=SYS_isPAL()?0:0x80;SYS_setVIntCallback(world_vint);
     while(TRUE)
     {
         title_phase=TRUE; title_requested=FALSE;

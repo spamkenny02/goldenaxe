@@ -5,49 +5,56 @@ puis portage de sa logique Z80 en code natif 68000 avec SGDK.
 La fidélité à la Master System passe avant les améliorations.
 
 <!-- ROM-RELEASE:START -->
-**Version courante : v0313 — 2048 Kio.**
+**Version courante : v0314 — 2048 Kio.**
 
-[Télécharger la ROM v0313](versions/v0313-48fb6e92/gaw-megadrive-v0313.bin) · [Toutes les versions](versions/README.md)
+[Télécharger la ROM v0314](versions/v0314-c53381c4/gaw-megadrive-v0314.bin) · [Toutes les versions](versions/README.md)
 
 Contrôles ciblés réussis ; portage complet encore non validé.
 
-SHA-256 : `48fb6e924a520ff579d3fb4eabe4aac365e9a37eed3dc33ff0dabfdc232e1932`
-Checksum Mega Drive : `544B`
+SHA-256 : `c53381c459a1e6254a8c9f1cfad1b8cda482cc0614697ad566133b28335e07a7`
+Checksum Mega Drive : `241A`
 <!-- ROM-RELEASE:END -->
 
 ## État du portage
 
-La **v0313** intègre la correction du chargement initial : les publications
-du titre s’alignent sur SMS en PAL/NTSC, avec 40 images normalisées comparées.
-Les 65 lignes du récit sont vérifiées dans les deux régions. Le parcours depuis
-le démarrage atteint **neuf cristaux** et le retour en extérieur à **104/104 PV
-et 72 PM**. Les treize combats de boss sont vérifiés sans protection. Les étapes
-retenues passent leurs rejeux froids exacts en RAM et en image.
-[Neuvième cristal et sortie D9](analysis/d9_campaign_v0313_report.json)
+La **v0314** corrige le démarrage et le fondu sonore de l’intro. La première
+musique, le fondu vers le titre et ses animations s’alignent sur la SMS en
+PAL/NTSC : **12 959 états audio IRQ** et **40 images normalisées du titre**
+comparés. Les commandes audio sont publiées ensemble pendant une section
+protégée contre les interruptions. La compilation de production reproduit
+exactement le binaire testé.
+[Correctif intégré et preuves v314](analysis/intro_audio_integration_v0314_report.json)
 
-Le navire, la clé des voleurs et le ballon sont obtenus en jeu. Le combat
-principal de D9 inflige un coup normal de 20 PV ; le cristal remplit ensuite
-la nouvelle capacité de santé. Le retour reste sans protection.
-[Second gardien et ballon](analysis/d9_balloon_v0313_report.json)
+Sur ce binaire, le **premier cristal et le retour extérieur** passent avec
+rejeu froid exact de toute la RAM et de l’image finale : **28/32 PV et 24 PM**.
+La musique et les bruitages de Nouveau Jeu/Continuer sont vérifiés dans les
+deux régions. Six parcours d’ouverture/fermeture du menu, dont les deux
+premières boutiques, conservent les mêmes fenêtres noires et reprises de jeu
+que la SMS, le HUD et une fermeture silencieuse.
+[Premier cristal](analysis/intro_audio_candidate11_game_v0313_report.json)
+· [Menu de démarrage](analysis/start_menu_candidate11_v0313_report.json)
+· [Menu en jeu](analysis/inventory_candidate11_v0313_report.json)
 
-La sauvegarde réelle dans le premier emplacement et le rechargement par
-**Continuer** sont vérifiés : objets et neuf cristaux restaurés, HUD physique
-et déplacement contrôlés, sans écriture RAM de test ni suppression d’ennemis
-au rechargement. La fin du palais reste à valider.
-[Sauvegarde en jeu et Continuer v313](analysis/game_written_save_v0313_report.json)
+La **sauvegarde réelle de la v313** se recharge normalement sur la v314 en
+PAL/NTSC : objets, neuf cristaux, 128 mots physiques du HUD et déplacement
+vérifiés, sans écriture RAM de test ni suppression d’ennemis. Cela vérifie
+la compatibilité du premier emplacement ; l’écriture de sauvegarde sur la
+v314 et ses étapes après le premier cristal restent à contrôler.
+[Compatibilité de sauvegarde](analysis/save_compatibility_candidate11_v0313_report.json)
 
-Le **ballon utilisé en jeu**, son retour à la carte et la porte des neuf
-cristaux du palais sont vérifiés. Le premier géant du palais est vaincu sans
-protection : cinq étapes avec rejeu RAM/image exact et 245 prédictions
-conformes. Le héros termine à **82 PV et 72 PM**. Les mécanismes intérieurs
-sont franchis, puis le gardien de la Hache d’or est vaincu sans protection.
-La vraie Hache d’or est récupérée et équipée, à **104 PV et 72 PM**.
-Death Adder et le générique restent à vérifier sur v313.
-[Ballon et restauration](analysis/owned_overview_v0313_report.json)
-· [Entrée du palais](analysis/cold_palace_entry_v0313_report.json)
-· [Géant du palais](analysis/cold_palace_giant_v0313_report.json)
-· [Mécanismes intérieurs](analysis/cold_palace_inner_v0313_report.json)
-· [Gardien et Hache d’or](analysis/cold_palace_guardian_v0313_report.json)
+La **v0313** conserve la preuve d’une campagne complète depuis Nouveau Jeu :
+neuf cristaux, ballon, vraie Hache d’or, **Death Adder vaincu sans protection**,
+générique complet et retour à l’intro. Le dernier combat commence à100 PV,
+inflige un coup normal de32 PV et se termine à68 PV. Le point final atteint
+l’image **379 823**, avec rejeu indépendant exact RAM/image. Les protections
+d’approche sont retirées avant chaque boss ; aucun état de progression,
+objet, santé ou SRAM n’est importé dans cette campagne. Cette preuve reste
+liée au binaire v313 ; la fidélité globale R/IRQ, audiovisuelle et matérielle
+reste ouverte.
+[Campagne et fin v313](analysis/cold_palace_final_v0313_report.json)
+· [Neuvième cristal](analysis/d9_campaign_v0313_report.json)
+· [Sauvegarde écrite en jeu](analysis/game_written_save_v0313_report.json)
+
 Les étapes v312/v313 ci-dessous conservent leurs périmètres historiques.
 
 Les étapes v312 ci-dessous documentent la préparation du parcours et les
@@ -621,32 +628,27 @@ Depuis ce répertoire, avec SGDK, Java et Python disponibles :
 python tools/verify_git_roms.py
 ```
 
+Le [module de démarrage SGDK](megadrive/src/gaw_sgdk_sys.c) conserve
+l’[attribution MIT](megadrive/SGDK-license.txt). Seule la largeur des écritures
+d’effacement initial de la RAM change :32 bits pour les mêmes64 Kio.
+
 Les outils de validation mettent en cache les manifestes d'archives pendant
 un processus et les rechargent si leur signature de fichier change. Les hashes
 et la decompression restent controles a chaque lecture. Les trois auditsD9
 produisent des rapports strictement identiques : voir [le controle du cache](analysis/evidence_manifest_cache_v0306_report.json).
 
-Un correctif **privé** du démarrage et du fondu sonore de l’intro passe
-12 959 comparaisons de canaux, tempo et registres PSG, plus 40 images du titre
-en PAL/NTSC. Le dernier candidat sécurise la publication des commandes audio
-face aux interruptions et cale le chargement sur le démarrage réel de la musique.
-Le premier cristal et le retour extérieur passent sur ce binaire, avec rejeu
-froid exact de toute la RAM et de l’image finale. La protection d’approche est
-retirée avant le boss. Ce candidat n’est pas encore intégré à la ROM publique ;
-la suite du jeu reste à contrôler sur ses octets exacts.
-[Audio et titre du candidat](analysis/intro_audio_candidate11_v0313_report.json)
-· [Premier cristal du candidat](analysis/intro_audio_candidate11_game_v0313_report.json)
-· [Musique et bruitages du menu](analysis/start_menu_candidate11_v0313_report.json)
-· [Transitions du menu en jeu](analysis/inventory_candidate11_v0313_report.json)
-· [Compatibilité de la sauvegarde réelle](analysis/save_compatibility_candidate11_v0313_report.json)
-· [Nouveau parcours du prototype précédent](analysis/intro_audio_fresh_d1_v0313_report.json)
+Le candidat audio11 est maintenant intégré dans la **v0314**, avec un binaire
+strictement identique. Ses rapports historiques conservent leur état de
+candidat au moment des mesures ; le
+[rapport d’intégration v314](analysis/intro_audio_integration_v0314_report.json)
+relie leurs empreintes à la ROM publiée.
 
 Les captures binaires de ces six parcours sont archivées sans perte, puis
 supprimées après relecture et contrôle des empreintes : **81,7 Mio nets libérés**.
 Les ROMs numérotées, les sources, symboles et captures PNG sont conservés.
 [Manifeste du nettoyage](analysis/inventory_capture_cleanup_v0313_report.json)
 
-La correction du chargement initial est intégrée à la v313. Le binaire publié
+La correction du chargement initial avait été intégrée à la v313. Son binaire
 est identique au candidat vérifié jusqu’aux huit cristaux et à la sortie de D8.
 Les détails PAL/NTSC et les limites figurent dans le
 [rapport de livraison v313](analysis/startup_v0313_report.json).

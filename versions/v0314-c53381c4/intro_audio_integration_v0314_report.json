@@ -1,0 +1,40 @@
+{
+  "passed": true,
+  "version": 314,
+  "md_sha256": "c53381c459a1e6254a8c9f1cfad1b8cda482cc0614697ad566133b28335e07a7",
+  "previous_md_sha256": "48fb6e924a520ff579d3fb4eabe4aac365e9a37eed3dc33ff0dabfdc232e1932",
+  "production_build_matches_tested_candidate": true,
+  "actual_source_files_integrated": [
+    "intro.inc",
+    "main.c",
+    "sound.inc",
+    "gaw_sgdk_sys.c"
+  ],
+  "native_source_sha256": {
+    "intro.inc": "1ed46ff44ccc0bbdbd8f76157e3e266beb4b467a0e96ca55f538cdc1fa07ba7f",
+    "main.c": "df344321287066c32336ea610fa7e14c494f47ed101449278052a80995784e1f",
+    "sound.inc": "b65b2461ef2cb6ee97bd74a2610ede3f4accf24cc01dc396f904338c2ec742df",
+    "gaw_sgdk_sys.c": "5750c9644dfdd443370ad6489c5309fd7e357cac56fbad32634c7b9ad05f4c00"
+  },
+  "exact_audio_irq_states": 12959,
+  "normalized_title_images": 40,
+  "first_crystal_and_exterior_return_verified": true,
+  "source_exact_cursor_and_confirmation_timing": true,
+  "natural_inventory_transition_cases": 6,
+  "real_earlier_save_compatibility_regions": [
+    "ntsc",
+    "pal"
+  ],
+  "evidence": {
+    "analysis/intro_audio_candidate11_v0313_report.json": "14321709535dc908a49f0824463720b28f7795d0347e6bec4f57c4155f727031",
+    "analysis/intro_audio_candidate11_game_v0313_report.json": "69a92efb0cc5a9583d2d7a4401ce81d9d1b00cf4fe90fab8e21e75e8012ba603",
+    "analysis/start_menu_candidate11_v0313_report.json": "225a976606570b2525278d28c650e2478426da672eebc2bb835f630319b61759",
+    "analysis/inventory_candidate11_v0313_report.json": "d23e9219a497a5ecd3f226a74da81373f1d44ed92b301a6d5ba6bf1721398023",
+    "analysis/save_compatibility_candidate11_v0313_report.json": "7d0aa8a7a7067105b07da35d9b3f7cb53fbdaa1fadfdb4122e6b093d2aaa72e9"
+  },
+  "sgdk_license": "megadrive/SGDK-license.txt",
+  "full_game_validated": false,
+  "limits": [
+    "The complete v313 campaign remains tied to its previous binary. This release has its own intro/title, start menu and first-crystal proof; its later campaign remains to verify."
+  ]
+}

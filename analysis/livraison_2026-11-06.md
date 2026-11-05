@@ -4,26 +4,28 @@
 Mega Drive fidèle de Golden Axe Warrior ; la date ne transforme pas une preuve
 partielle en validation complète.
 
-État courant : v313, 2 Mio, SHA48fb6e92…, checksum544B.
-Le titre s’aligne sur SMS en PAL/NTSC. La campagne froide atteint neuf cristaux
-et treize combats de boss sans protection, puis la sortie à104/104 PV et72 PM.
-Les étapes retenues ont un rejeu indépendant RAM/image exact.
-Voir d9_campaign_v0313_report.json. Sauvegarde réellement écrite dans le
-premier emplacement puis Continuer vérifiés :592 octets, neuf marqueurs,128
-mots du HUD et déplacement réel. Voir game_written_save_v0313_report.json.
-Le ballon utilisé en jeu et la porte des neuf cristaux sont vérifiés.
-Premier géant du palais vaincu sans protection : cinq étapes avec rejeu
-RAM/image exact,245 prédictions conformes,82 PV et72 PM à la fin. Le parcours
-intérieur et ses mécanismes sont vérifiés. Le gardien de la Hache d’or est
-vaincu sans protection, puis la hache est récupérée normalement et équipée,
-à104 PV et72 PM. Death Adder et le générique restent à vérifier sur v313.
-Voir cold_palace_inner_v0313_report.json et cold_palace_guardian_v0313_report.json.
+État courant : **v314**,2 Mio,SHA c53381c4…,checksum241A.
+Le correctif audio de l’intro est intégré : première musique,fondu et titre
+alignés sur SMS en PAL/NTSC,12 959 états audio et40 images normalisées.
+La production reproduit exactement le candidat testé. Premier cristal et
+retour extérieur vérifiés par rejeu RAM/image exact. Menu de démarrage,six
+transitions inventaire et compatibilité de la sauvegarde réelle v313 vérifiés
+dans les deux régions. Voir intro_audio_integration_v0314_report.json.
+L’écriture de sauvegarde et la campagne après D1 restent à vérifier sur v314.
 
-Le candidat audio privé à file atomique et chargement calé sur la musique passe
-12 959 comparaisons audio,40 images du titre et le premier cristal avec retour
-extérieur, rejeu RAM/image exact. Il ne remplace pas encore la ROM publique.
-Voir intro_audio_candidate11_v0313_report.json et
-intro_audio_candidate11_game_v0313_report.json.
+La v313 conserve la campagne complète depuis Nouveau Jeu : neuf cristaux,
+ballon,Hache d’or,Death Adder sans protection,générique complet,retour intro.
+Fin à l’image379 823 ; coup normal de32 PV pendant le dernier boss,
+100→68 PV. Tous les points retenus ont un rejeu indépendant RAM/image exact.
+Aucun état,objet,santé ou SRAM n’est importé ; les protections d’approche
+sont retirées avant chaque boss. Voir cold_palace_final_v0313_report.json.
+Le premier emplacement réellement écrit en jeu et Continuer restent vérifiés
+sur v313. Le chargement de ce même enregistrement sur v314 est également
+vérifié en PAL/NTSC,avec neuf marqueurs,HUD et déplacement.
+
+Nettoyage :81,7 Mio nets libérés après archivage sans perte et relecture des
+captures binaires de six parcours de menu. ROMs,sources,symboles et PNG préservés.
+Voir inventory_capture_cleanup_v0313_report.json.
 
 Entrée D9 v313 vérifiée : paiement réel 23→13 cornes, tombe ouverte par la
 Cloche de glace, entrée à96 PV et72 PM avec huit cristaux. Trois étapes avec
@@ -150,9 +152,10 @@ Historique des étapes précédentes (périmètres propres à chaque version) :
 
 Ordre de travail pour la livraison :
 
-Le correctif du chargement initial est intégré à la v313 ; le binaire public
-est identique au candidat testé jusqu’à la sortie du huitième donjon.
-La suite repart du préfixe froid md-auto-v0313-d8-cold01.
+Le correctif audio est intégré à la v314. Réutiliser ses preuves liées au
+binaire exact ; la campagne complète v313 conserve son périmètre historique.
+Poursuivre les contrôles de v314 depuis son premier cristal et sa sauvegarde
+réelle compatible, sans attribuer la fin de v313 au nouveau binaire.
 
 1. Poursuivre la validation de la ROM courante et traiter les blocages ou régressions
    réellement rencontrés. Réutiliser les préfixes froids déjà vérifiés ; ne pas
