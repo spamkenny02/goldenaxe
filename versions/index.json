@@ -8785,7 +8785,7 @@
     "bytes": 2097152,
     "archived_utc": "2026-11-05T15:58:49.954777+00:00",
     "rom": "v0314-c53381c4/gaw-megadrive-v0314.bin",
-    "notes": "V314 : intro audio PAL/NTSC ; huit cristaux et retours verifies. Continue/soigneur, Cloche et entree D9 verifies. Gardiens D9 et fin en cours.",
+    "notes": "V314 : intro audio PAL/NTSC ; huit cristaux, Continue/soigneur, entree D9 et premier gardien sans aide verifies. Suite D9 et palais en cours.",
     "validation": "targeted_checks_passed",
     "reports": [
       {
@@ -8895,6 +8895,10 @@
       {
         "file": "d9_entry_v0314_report.json",
         "sha256": "38d9d7cb0fe959cb206bb797355af414c050f013c496060c8a2774232733bbb6"
+      },
+      {
+        "file": "d9_midboss_v0314_report.json",
+        "sha256": "9cba891e6ed38689cc5a33c1cd260d517b713a1221fcdcc599a6413c77e6378d"
       }
     ]
   }

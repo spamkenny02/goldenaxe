@@ -39,10 +39,16 @@ sont conservés. Le jeu ramène le héros en95 à24 PV/24 PM et applique sa
 pénalité de8 à6 cornes ; le soigneur restaure ensuite96/96 PV. Les trois
 points reproduisent toute la RAM et l’image finale, sans nouvelle écriture
 de test ni import de ressources. L’accès direct à D9 et le passage CB ouvert
-avec la Cloche sont maintenant vérifiés, à96 PV/24 PM. Les gardiens et
-le neuvième cristal restent à valider.
+avec la Cloche sont maintenant vérifiés, à96 PV/24 PM. Le premier gardien est aussi vaincu ;
+le deuxième gardien et le neuvième cristal restent à valider.
 [Continuer et soin gratuit v314](analysis/d9_recovery_v0314_report.json)
 [Entrée D9 et passage de la Cloche v314](analysis/d9_entry_v0314_report.json)
+
+Le **premier gardien de D9** est vaincu sans protection pendant le combat :
+**221 prédictions exactes**, une perte normale de20 PV, fin à76/96 PV et
+72 PM. Les deux actions Terre, le mécanisme associé, la préparation et
+la fermeture de la protection sont couverts par cinq rejeux RAM/image exacts.
+[Premier gardien D9 v314](analysis/d9_midboss_v0314_report.json)
 
 Sur ce binaire, le parcours depuis Nouveau Jeu atteint **huit cristaux**,
 avec la hache et la première fée de vie obtenues normalement. Le boss de D2

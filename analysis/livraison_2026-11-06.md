@@ -266,3 +266,8 @@ Dix essais clos du contrôleur de collecte ont été archivés et relus :
 conservés,187 273 763 octets libérés nets. Avec le nettoyage D1–D7,
 le gain net de ces deux opérations dépasse600 Mio. Toutes les ROMs gardées.
 Voir failed_d9_toll_cleanup_v0314_report.json.
+
+Premier gardien D9/79 vaincu à279232 :221 prédictions exactes, un seul
+dégât normal de20 PV,76/96 PV et72 PM à la fin. Cinq points supplémentaires
+relus en RAM complète/image, protection retirée avant le combat.
+Voir d9_midboss_v0314_report.json. Deuxième gardien/Ballon en cours.
