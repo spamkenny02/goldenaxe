@@ -260,3 +260,9 @@ Entrée D9 atteinte et vérifiée à l’image264263 : passage CB ouvert avec la
 Cloche réelle,603 points de trajet et16 décisions de coupe normales,96 PV,
 24 PM,6 cornes. Rejeu RAM/image exact. Gardiens et neuvième cristal ouverts.
 Voir d9_entry_v0314_report.json.
+
+Dix essais clos du contrôleur de collecte ont été archivés et relus :
+7 328 captures intermédiaires supprimées,40 derniers fichiers binaires
+conservés,187 273 763 octets libérés nets. Avec le nettoyage D1–D7,
+le gain net de ces deux opérations dépasse600 Mio. Toutes les ROMs gardées.
+Voir failed_d9_toll_cleanup_v0314_report.json.
