@@ -636,6 +636,7 @@ retirée avant le boss. Ce candidat n’est pas encore intégré à la ROM publi
 la suite du jeu reste à contrôler sur ses octets exacts.
 [Audio et titre du candidat](analysis/intro_audio_candidate11_v0313_report.json)
 · [Premier cristal du candidat](analysis/intro_audio_candidate11_game_v0313_report.json)
+· [Musique et bruitages du menu](analysis/start_menu_candidate11_v0313_report.json)
 · [Nouveau parcours du prototype précédent](analysis/intro_audio_fresh_d1_v0313_report.json)
 
 La correction du chargement initial est intégrée à la v313. Le binaire publié
