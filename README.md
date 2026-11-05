@@ -24,6 +24,12 @@ la sortie de D2 conserve les champs de jeu comparés à la v311 sur 35 782
 images, et son image finale. Le panneau complet reste une image tardif en PAL.
 [Correction marchande et restauration du menu v312](analysis/merchant_inventory_v0312_report.json)
 
+La campagne v312 reprend depuis le démarrage avec les deux premiers boss
+sans protection, puis récupère l’huile par le dialogue et les deux escaliers.
+Le héros ressort avec **48 PV, 24 PM et 8 cornes**, sans nouvelle écriture
+d’aide pendant le service. Approche et visite ont chacune un rejeu RAM/image
+exact. [Rapport de l’huile v312](analysis/oil_service_v0312_report.json)
+
 La **v0311** ajoute une image au chargement lors des défilements de donjon
 vers le haut en NTSC. Sur trois trajets comparés à la Master System, la
 reprise du jeu s’aligne. Le premier déplacement s’aligne aussi dans les deux

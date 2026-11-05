@@ -1,0 +1,98 @@
+{
+  "md_sha256": "0b9aecb48fc9bb82cfcebc9547684742134d60e0f82e60b1a070ab3be50b4d64",
+  "candidate_sha256": "0bb314581212e985d722b660008156204901cde929f2431eeeb3afcc2c50ec23",
+  "adopted": false,
+  "production_rom_unchanged": true,
+  "change": "PAL goods icons use convert_patterns_range_fast(144,12), after the prompt.",
+  "observations": [
+    {
+      "region": "auto",
+      "observations": {
+        "sms": {
+          "first_service_state": 3751,
+          "first_settled_panel": 3806,
+          "playfield_black_frames": [
+            3753,
+            3754,
+            3755,
+            3756,
+            3757,
+            3758,
+            3759,
+            3760,
+            3761
+          ],
+          "hud_empty_frames": [],
+          "display_disabled_frames": []
+        },
+        "md": {
+          "first_service_state": 3750,
+          "first_settled_panel": 3806,
+          "playfield_black_frames": [
+            3753,
+            3754,
+            3755,
+            3756,
+            3757,
+            3758,
+            3759,
+            3760,
+            3761
+          ],
+          "hud_empty_frames": [],
+          "display_disabled_frames": []
+        }
+      }
+    },
+    {
+      "region": "pal",
+      "observations": {
+        "sms": {
+          "first_service_state": 3751,
+          "first_settled_panel": 3801,
+          "playfield_black_frames": [
+            3752,
+            3753,
+            3754,
+            3755,
+            3756,
+            3757,
+            3758,
+            3759,
+            3760
+          ],
+          "hud_empty_frames": [],
+          "display_disabled_frames": []
+        },
+        "md": {
+          "first_service_state": 3750,
+          "first_settled_panel": 3802,
+          "playfield_black_frames": [
+            3752,
+            3753,
+            3754,
+            3755,
+            3756,
+            3757,
+            3758,
+            3759,
+            3760
+          ],
+          "hud_empty_frames": [],
+          "display_disabled_frames": []
+        }
+      }
+    }
+  ],
+  "timing_improved": false,
+  "first_village_settled_panel_delta_frames": {
+    "ntsc": 0,
+    "pal": 1
+  },
+  "scope": "Natural first-village merchant entry only, no RAM writes or SRAM input. Other towns, campaign, audio and cross-scene checks were not rerun because the intended improvement did not occur.",
+  "decision": "Retain v312 and continue campaign validation. Goods conversion alone does not remove the PAL panel delay.",
+  "evidence": {
+    "validation\\v0311-merchant\\candidate03\\natural-reveal\\reveal_report.json": "753fa309dcd0937a8c4fe2a99c11bc6116a9a97e02dc6f4f6d04efce316ec559",
+    "validation\\v0311-merchant\\candidate02\\natural-reveal\\reveal_report.json": "753fa309dcd0937a8c4fe2a99c11bc6116a9a97e02dc6f4f6d04efce316ec559"
+  }
+}
