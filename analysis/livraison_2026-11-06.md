@@ -286,3 +286,8 @@ Les neuf cristaux v314 et le retour EB sont vérifiés à303753 : boss6C/90 PV
 sans protection,291 prédictions exactes,un dégât normal20 PV,cristal puis
 retour104/104 PV et72 PM avec67 prédictions. Quatre points RAM/image exacts.
 Voir d9_campaign_v0314_report.json. Le palais final est lancé.
+
+Ballon utilisé et retour carte/HUD768 mots vérifiés à304687. Porte réelle
+aux neuf cristaux ouverte, entrée palais18D à307886,104 PV/72 PM,7 cornes.
+Deux rejeux froids RAM/image exacts. Gardiens,Hache d’or et fin en cours.
+Voir owned_overview_v0314_report.json et cold_palace_entry_v0314_report.json.

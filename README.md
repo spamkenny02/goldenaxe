@@ -41,7 +41,7 @@ points reproduisent toute la RAM et l’image finale, sans nouvelle écriture
 de test ni import de ressources. L’accès direct à D9 et le passage CB ouvert
 avec la Cloche sont maintenant vérifiés, à96 PV/24 PM. Le premier gardien est aussi vaincu ;
 le deuxième gardien et le Ballon sont aussi vérifiés. Le boss principal, le neuvième cristal
-et le retour extérieur sont désormais vérifiés. Le palais final reste à terminer.
+et le retour extérieur sont désormais vérifiés. L’entrée du palais final est validée ; ses gardiens et la fin restent à terminer.
 [Continuer et soin gratuit v314](analysis/d9_recovery_v0314_report.json)
 [Entrée D9 et passage de la Cloche v314](analysis/d9_entry_v0314_report.json)
 
@@ -73,6 +73,14 @@ prédictions et se termine à **104/104 PV et72 PM**, enEB. Les quatre derniers
 points sont relus avec RAM complète et image exacte. Le test du palais
 final, de la Hache d’or et de la fin est lancé sur cette même ROM.
 [Neuvième cristal et retour v314](analysis/d9_campaign_v0314_report.json)
+
+Le **Ballon est utilisé normalement**, puis la carte du monde se referme
+avec restitution du décor/HUD vérifiée sur768 mots physiques. La **porte
+aux neuf cristaux** s’ouvre réellement et l’entrée du palais18D est relue en
+RAM/image exacte, à104 PV/72 PM. Les gardiens du palais, la Hache d’or,
+Death Adder, le générique et la sauvegarde à neuf cristaux restent en test.
+[Ballon et retour de carte v314](analysis/owned_overview_v0314_report.json)
+· [Porte et entrée du palais v314](analysis/cold_palace_entry_v0314_report.json)
 
 Sur ce binaire, le parcours depuis Nouveau Jeu atteint **neuf cristaux**,
 avec la hache et la première fée de vie obtenues normalement. Le boss de D2
