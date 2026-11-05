@@ -96,6 +96,12 @@ l’image finale. Le parcours atteint339379 images depuis Nouveau Jeu ;
 le gardien suivant, la Hache d’or et la fin restent en test.
 [Mécanismes intérieurs v314](analysis/cold_palace_inner_v0314_report.json)
 
+Les anciens monstres et objets restent masqués pendant les changements de
+carte extérieurs : quatre directions en PAL/NTSC, tables matérielles de
+sprites contrôlées, persistance et reprise du jeu conservées. Ce test préparé
+ne prouve pas chaque pixel du décor ni une durée identique de transition.
+[Objets pendant le scrolling v314](analysis/scroll_objects_v0314_report.json)
+
 Sur ce binaire, le parcours depuis Nouveau Jeu atteint **neuf cristaux**,
 avec la hache et la première fée de vie obtenues normalement. Le boss de D2
 est vaincu sans protection ni dégât :89 prédictions conformes, puis cristal

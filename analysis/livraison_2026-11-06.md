@@ -21,7 +21,7 @@ Le quatrième cristal et le retour extérieur sont vérifiés :239 prédictions
 exactes,sans protection ni dégât pendant le boss. Canoë observé sur99 images
 de déplacement aquatique. Feu obtenu contre l’huile,deuxième épée reçue et
 entrée D5 vérifiée à62/64 PV et72 PM. Voir d4_campaign_v0314_report.json
-et fire_sword_v0314_report.json. D8 est terminé ; D9 et le palais final restent à vérifier sur ce binaire.
+et fire_sword_v0314_report.json. D9 et les premiers mécanismes du palais sont terminés ; la suite du palais reste à vérifier sur ce binaire.
 Accélération des contrôles :trois points d’un même rejeu froid continu sont
 identiques aux rejeux séparés en RAM complète et image,avec62 % d’images
 émulées en moins pour cette série. Aucun état de jeu importé ; le noyau reste
@@ -297,3 +297,13 @@ Premier gardien du palais15E/7B vaincu à322922 :165 prédictions exactes,
 type11 de82 à104 PV. Aucune protection pendant le combat.
 Voir cold_palace_giant_v0314_report.json et palace_giant_health_v0314_report.json.
 Mécanismes intérieurs puis gardien de la Hache d’or en cours.
+
+Mécanismes intérieurs v314 validés : portails, deux passages Terre et
+mécanisme distant, cinq points froids RAM/image exacts, fin339379.
+Voir cold_palace_inner_v0314_report.json. Gardien11E en combat sans protection.
+
+Scrolling extérieur v314 : huit cas direction/région validés sur les tables
+matérielles de sprites. Aucun ancien monstre/objet durant le scroll ;
+persistance et reprise préservées. Des écarts de fin d’état subsistent ;
+ce test ne conclut pas à une cadence ou à un décor identiques.
+Voir scroll_objects_v0314_report.json.
