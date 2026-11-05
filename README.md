@@ -77,10 +77,18 @@ final, de la Hache d’or et de la fin est lancé sur cette même ROM.
 Le **Ballon est utilisé normalement**, puis la carte du monde se referme
 avec restitution du décor/HUD vérifiée sur768 mots physiques. La **porte
 aux neuf cristaux** s’ouvre réellement et l’entrée du palais18D est relue en
-RAM/image exacte, à104 PV/72 PM. Les gardiens du palais, la Hache d’or,
+RAM/image exacte, à104 PV/72 PM. Le premier gardien du palais est aussi vaincu. La Hache d’or,
 Death Adder, le générique et la sauvegarde à neuf cristaux restent en test.
 [Ballon et retour de carte v314](analysis/owned_overview_v0314_report.json)
 · [Porte et entrée du palais v314](analysis/cold_palace_entry_v0314_report.json)
+
+Le **premier gardien du palais** est vaincu avec **165 prédictions exactes**
+et cinq points de rejeu RAM/image. La protection est retirée avant sa salle :
+2 PV sont perdus sur le trajet, puis20 pendant le combat. Un butin de soin
+normal ramène ensuite les PV de82 à104 ; le bilan ne revendique donc pas
+un combat sans dégât. Le compte précis des pertes/récupérations est conservé.
+[Premier gardien du palais v314](analysis/cold_palace_giant_v0314_report.json)
+· [Bilan des PV](analysis/palace_giant_health_v0314_report.json)
 
 Sur ce binaire, le parcours depuis Nouveau Jeu atteint **neuf cristaux**,
 avec la hache et la première fée de vie obtenues normalement. Le boss de D2

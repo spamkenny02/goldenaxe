@@ -291,3 +291,9 @@ Ballon utilisé et retour carte/HUD768 mots vérifiés à304687. Porte réelle
 aux neuf cristaux ouverte, entrée palais18D à307886,104 PV/72 PM,7 cornes.
 Deux rejeux froids RAM/image exacts. Gardiens,Hache d’or et fin en cours.
 Voir owned_overview_v0314_report.json et cold_palace_entry_v0314_report.json.
+
+Premier gardien du palais15E/7B vaincu à322922 :165 prédictions exactes,
+5 points RAM/image.2 PV perdus avant combat,20 en combat,puis soin normal
+type11 de82 à104 PV. Aucune protection pendant le combat.
+Voir cold_palace_giant_v0314_report.json et palace_giant_health_v0314_report.json.
+Mécanismes intérieurs puis gardien de la Hache d’or en cours.

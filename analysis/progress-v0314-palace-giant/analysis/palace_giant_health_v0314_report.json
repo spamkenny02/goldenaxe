@@ -1,0 +1,82 @@
+{
+  "passed": true,
+  "version": 314,
+  "md_sha256": "c53381c459a1e6254a8c9f1cfad1b8cda482cc0614697ad566133b28335e07a7",
+  "trace": "natural-dungeon-combat/md-auto-v0314-cold-palace-giant02",
+  "frames": 322922,
+  "first_combat": {
+    "frame": 317493,
+    "room": 350,
+    "game": 12,
+    "health": 102,
+    "hurt": 18,
+    "actors": [
+      {
+        "slot": 0,
+        "kind": 123,
+        "hp": 60
+      }
+    ]
+  },
+  "observed_losses": [
+    {
+      "frame": 317426,
+      "room": 366,
+      "before": 104,
+      "after": 102,
+      "amount": 2
+    },
+    {
+      "frame": 322710,
+      "room": 350,
+      "before": 102,
+      "after": 82,
+      "amount": 20
+    }
+  ],
+  "approach_losses": [
+    {
+      "frame": 317426,
+      "room": 366,
+      "before": 104,
+      "after": 102,
+      "amount": 2
+    }
+  ],
+  "combat_room_losses": [
+    {
+      "frame": 322710,
+      "room": 350,
+      "before": 102,
+      "after": 82,
+      "amount": 20
+    }
+  ],
+  "observed_recoveries": [
+    {
+      "frame": 322780,
+      "room": 350,
+      "before": 82,
+      "after": 104,
+      "amount": 22,
+      "loot_before": [
+        {
+          "slot": 0,
+          "type": 11,
+          "x": 88,
+          "y": 104
+        }
+      ],
+      "loot_after": [],
+      "reward_active": 0
+    }
+  ],
+  "observed_net_combat_room_hp_loss": 20,
+  "no_observed_hp_loss": false,
+  "final_health": 104,
+  "resource_fixture_writes": 0,
+  "whole_ram_png_exact": true,
+  "events_sha256": "7d78dda2b852081dcb53d719075fc310dd4d27bc6691a87f2b35e92f5f11fa40",
+  "source_report_sha256": "8918201d3302bd8a55cbc92b1b3ed36b89849d552c0d806ce284fea49411b4aa",
+  "scope": "Observed frame-end HP changes. Final HP does not establish a damage-free fight; recovery and pre-boss floor losses are separate. No per-instruction damage cancellation or unobserved intermediate-frame claim."
+}
