@@ -99,9 +99,15 @@ la ROM ni réactiver l’aide. [Sixième cristal et sortie v312](analysis/d6_cam
 La préparation de D7 vérifie l’achat d’une clé pour 60 cornes, l’entrée du
 donjon, deux acquisitions de clés et deux ouvertures Terre coûtant 16 PM.
 Les sept étapes passent leur rejeu RAM/image exact. Le point préparatoire
-conserve six cristaux, **64 PV, 56 PM et deux clés**. Le combat intermédiaire
-et le septième cristal restent à valider.
+conserve six cristaux, **64 PV, 56 PM et deux clés**. Le septième cristal
+reste à valider.
 [Ravitaillement, clés et Terre D7 v312](analysis/d7_prep_v0312_report.json)
+
+Le combat intermédiaire de D7 est ensuite gagné sans protection. Un coup
+normal retire 12 PV ; l’approche suivante reprend à **52 PV et 56 PM** après
+la victoire. Le retrait de l’aide, le passage, le combat et la reprise ont
+chacun un rejeu froid RAM/image exact. Le boss principal n’est pas encore
+validé. [Combat intermédiaire D7 v312](analysis/d7_midboss_v0312_report.json)
 
 La **v0311** ajoute une image au chargement lors des défilements de donjon
 vers le haut en NTSC. Sur trois trajets comparés à la Master System, la
@@ -523,8 +529,8 @@ Les rapports v0305 ci-dessus conservent leur périmètre historique.
 ## Campagne et travail restant
 
 Sur la ROM courante **v0312**, six cristaux et leurs sorties sont vérifiés.
-La Cloche de glace et la préparation de D7 sont vérifiées ; le combat
-intermédiaire de D7 et la suite jusqu’à la fin restent à valider sur cette ROM.
+La Cloche de glace, la préparation et le combat intermédiaire de D7 sont vérifiés ;
+le boss principal de D7 et la suite jusqu’à la fin restent à valider sur cette ROM.
 La protection de test est déclarée et limitée aux approches, puis retirée
 avant les combats de boss. Aucun objet, ressource ou progression n’est importé.
 

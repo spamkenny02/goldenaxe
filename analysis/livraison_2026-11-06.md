@@ -53,7 +53,11 @@ partielle en validation complète.
 - D7 v312 préparé : achat réel d'une clé pour 60 cornes, entrée du donjon,
   deux acquisitions de clés et deux ouvertures Terre pour 16 PM. Sept étapes
   avec rejeu froid RAM/image exact ; six cristaux conservés, 64 PV, 56 PM et
-  deux clés au point préparatoire. Combat intermédiaire encore non validé.
+  deux clés au point préparatoire.
+- Intermédiaire D7 v312 vaincu sans protection. Coup normal de 12 PV observé,
+  reprise de l'approche après victoire à 52 PV et 56 PM. Quatre points avec
+  rejeu froid RAM/image exact : retrait, passage, combat et reprise.
+  Le navire et le boss principal restent à valider.
 - Menu Nouveau jeu / Continuer v312 : musique active et audible en PAL/NTSC,
   événements des bruitages de curseur et validation alignés SMS. Aucune
   comparaison globale des formes d'onde n'est déduite de ce contrôle.
