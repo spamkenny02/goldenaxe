@@ -320,3 +320,9 @@ Sauvegarde réelle à neuf cristaux en cours ; correctif marchand candidat03
 validé PAL/NTSC,43 transactions,six menus,intro/audio conservés,non intégré
 tant que les processus v314 restent actifs. Voir cold_palace_final_v0314_report.json
 et merchant_panel_candidate03_v0314_report.json.
+
+Sauvegarde réelle v314 à neuf cristaux vérifiée :592 octets et SRAM exacts,
+Continuer restaure neuf marqueurs/HUD/objets et le déplacement à1343.
+Le premier essai de service ne joue pas :collision du dossier du test D1,
+reprise limitée au service/rechargement sous un nom neuf. Aucun bug ROM.
+Voir game_written_save_v0314_nine_crystals_report.json.

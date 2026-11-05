@@ -1,0 +1,763 @@
+{
+  "version": 314,
+  "md_sha256": "c53381c459a1e6254a8c9f1cfad1b8cda482cc0614697ad566133b28335e07a7",
+  "scope": "Real nine-crystal slot0 SRAM written by game,reproduced with592-byte payload and raw SRAM exact,then cold Continue restores inventory,physical HUD,nine markers and movement. Existing first-crystal save evidence is preserved separately.",
+  "files": {
+    "analysis/game_written_save_v0314_nine_crystals_report.json": "b2b77d8fd1ea18f91295c55d95f5fe44464d597241391273e80805ce4cc7dd38",
+    "tools/finish_nine_crystal_save_v0314.py": "2ac288805270feeef8ab834188543b371a7fd1e33b106529fba208db374a5653",
+    "tools/validate_game_written_save.py": "9074c0975fdeb07966adb040dd540d0054e1bbe73b0efd75ee16d23df8eba807"
+  },
+  "compressed": {
+    "validation/game-written-save-load/v0314-nine-crystals-01/capture.json": {
+      "stored": "objects/7e6152e43cf8d61958a630bf63a552e0293135bfe715910cec9f52667753269d.gz",
+      "raw_sha256": "7e6152e43cf8d61958a630bf63a552e0293135bfe715910cec9f52667753269d",
+      "raw_bytes": 1264,
+      "stored_sha256": "ca976417bc14c69879551e7a41565d98a50e5ab5904849bc5228786842b7d1f1"
+    },
+    "validation/game-written-save-load/v0314-nine-crystals-01/controls.json": {
+      "stored": "objects/16cc5d90c72fed7dfeda7719145c78cda30af52966cc08ebff09eb123c2becc4.gz",
+      "raw_sha256": "16cc5d90c72fed7dfeda7719145c78cda30af52966cc08ebff09eb123c2becc4",
+      "raw_bytes": 567,
+      "stored_sha256": "8972d20f477bd14a78b66ebd4c881b4b8ba9e5dc8f0be5abf6129a68077c0c5b"
+    },
+    "validation/game-written-save-load/v0314-nine-crystals-01/cram_00002.bin": {
+      "stored": "objects/38723a2e5e8a17aa7950dc008209944e898f69a7bd10a23c839d341e935fd5ca.gz",
+      "raw_sha256": "38723a2e5e8a17aa7950dc008209944e898f69a7bd10a23c839d341e935fd5ca",
+      "raw_bytes": 128,
+      "stored_sha256": "57d7ccbdb80092bd7ef74e3c5dea88c5f199b5647483fc08cb4c218eecc5ce7d"
+    },
+    "validation/game-written-save-load/v0314-nine-crystals-01/cram_01051.bin": {
+      "stored": "objects/bc4bb7421af3df9b2c9b8f16a673c68baa3a8c2e8be2199124e90a00d1fa11ef.gz",
+      "raw_sha256": "bc4bb7421af3df9b2c9b8f16a673c68baa3a8c2e8be2199124e90a00d1fa11ef",
+      "raw_bytes": 128,
+      "stored_sha256": "2ab8d03479a2bb370a38f7be4e586de7a3e21aff9879cb553a220d4d8002c4ba"
+    },
+    "validation/game-written-save-load/v0314-nine-crystals-01/cram_01301.bin": {
+      "stored": "objects/bc4bb7421af3df9b2c9b8f16a673c68baa3a8c2e8be2199124e90a00d1fa11ef.gz",
+      "raw_sha256": "bc4bb7421af3df9b2c9b8f16a673c68baa3a8c2e8be2199124e90a00d1fa11ef",
+      "raw_bytes": 128,
+      "stored_sha256": "2ab8d03479a2bb370a38f7be4e586de7a3e21aff9879cb553a220d4d8002c4ba"
+    },
+    "validation/game-written-save-load/v0314-nine-crystals-01/cram_01322.bin": {
+      "stored": "objects/fa4b198ade2f98712476575bc1d4b9edfb41e1ba4176916c4f38430117a3aae9.gz",
+      "raw_sha256": "fa4b198ade2f98712476575bc1d4b9edfb41e1ba4176916c4f38430117a3aae9",
+      "raw_bytes": 128,
+      "stored_sha256": "6544760f94da850289db563570f2da7ed2a7f844ff7090309a4db9c96baf3b10"
+    },
+    "validation/game-written-save-load/v0314-nine-crystals-01/cram_01328.bin": {
+      "stored": "objects/fa4b198ade2f98712476575bc1d4b9edfb41e1ba4176916c4f38430117a3aae9.gz",
+      "raw_sha256": "fa4b198ade2f98712476575bc1d4b9edfb41e1ba4176916c4f38430117a3aae9",
+      "raw_bytes": 128,
+      "stored_sha256": "6544760f94da850289db563570f2da7ed2a7f844ff7090309a4db9c96baf3b10"
+    },
+    "validation/game-written-save-load/v0314-nine-crystals-01/cram_01341.bin": {
+      "stored": "objects/fa4b198ade2f98712476575bc1d4b9edfb41e1ba4176916c4f38430117a3aae9.gz",
+      "raw_sha256": "fa4b198ade2f98712476575bc1d4b9edfb41e1ba4176916c4f38430117a3aae9",
+      "raw_bytes": 128,
+      "stored_sha256": "6544760f94da850289db563570f2da7ed2a7f844ff7090309a4db9c96baf3b10"
+    },
+    "validation/game-written-save-load/v0314-nine-crystals-01/cram_01443.bin": {
+      "stored": "objects/6089785e1ed0e394b29bb1e3fb2d6418d3868a0ced0673e9010e90e867860684.gz",
+      "raw_sha256": "6089785e1ed0e394b29bb1e3fb2d6418d3868a0ced0673e9010e90e867860684",
+      "raw_bytes": 128,
+      "stored_sha256": "f7dd8500c3cb003c12c0702e49784f8b410f628082f151f35353e487d34a2948"
+    },
+    "validation/game-written-save-load/v0314-nine-crystals-01/events.json": {
+      "stored": "objects/8bffc86159730b561a3f8c788ea1476b1175727aac8f61f14bb35b9ec9524a82.gz",
+      "raw_sha256": "8bffc86159730b561a3f8c788ea1476b1175727aac8f61f14bb35b9ec9524a82",
+      "raw_bytes": 1221,
+      "stored_sha256": "086760f1a3f883d2407e732940b783fd7fb1bfe9cbe71e19b118bbc054bdf547"
+    },
+    "validation/game-written-save-load/v0314-nine-crystals-01/frame_00002.png": {
+      "stored": "objects/5203cd22e98be76a3fb269a501397c0e4d4e7f713b9799d1f32f0687d7b1cd54.gz",
+      "raw_sha256": "5203cd22e98be76a3fb269a501397c0e4d4e7f713b9799d1f32f0687d7b1cd54",
+      "raw_bytes": 223,
+      "stored_sha256": "d85500f3bc6bdbb52d83ca1e4dc7cb70bd4a60c52a30b1e0ad4ea3be4b45f341"
+    },
+    "validation/game-written-save-load/v0314-nine-crystals-01/frame_01051.png": {
+      "stored": "objects/e6c8c93d435e56acd5e1d17804db34beb1eee8321561db2b615ebd9a48d221cf.gz",
+      "raw_sha256": "e6c8c93d435e56acd5e1d17804db34beb1eee8321561db2b615ebd9a48d221cf",
+      "raw_bytes": 247,
+      "stored_sha256": "f5e873f173a4ddc0f9bf1df35dda3546410c64f7b85405ec91fad1172079959f"
+    },
+    "validation/game-written-save-load/v0314-nine-crystals-01/frame_01301.png": {
+      "stored": "objects/e6c8c93d435e56acd5e1d17804db34beb1eee8321561db2b615ebd9a48d221cf.gz",
+      "raw_sha256": "e6c8c93d435e56acd5e1d17804db34beb1eee8321561db2b615ebd9a48d221cf",
+      "raw_bytes": 247,
+      "stored_sha256": "f5e873f173a4ddc0f9bf1df35dda3546410c64f7b85405ec91fad1172079959f"
+    },
+    "validation/game-written-save-load/v0314-nine-crystals-01/frame_01322.png": {
+      "stored": "objects/e6c8c93d435e56acd5e1d17804db34beb1eee8321561db2b615ebd9a48d221cf.gz",
+      "raw_sha256": "e6c8c93d435e56acd5e1d17804db34beb1eee8321561db2b615ebd9a48d221cf",
+      "raw_bytes": 247,
+      "stored_sha256": "f5e873f173a4ddc0f9bf1df35dda3546410c64f7b85405ec91fad1172079959f"
+    },
+    "validation/game-written-save-load/v0314-nine-crystals-01/frame_01328.png": {
+      "stored": "objects/e6c8c93d435e56acd5e1d17804db34beb1eee8321561db2b615ebd9a48d221cf.gz",
+      "raw_sha256": "e6c8c93d435e56acd5e1d17804db34beb1eee8321561db2b615ebd9a48d221cf",
+      "raw_bytes": 247,
+      "stored_sha256": "f5e873f173a4ddc0f9bf1df35dda3546410c64f7b85405ec91fad1172079959f"
+    },
+    "validation/game-written-save-load/v0314-nine-crystals-01/frame_01341.png": {
+      "stored": "objects/cea5912869b72ad80548b0ae2bcd3a067476e2524a591097ac92fc6975f3ebee.gz",
+      "raw_sha256": "cea5912869b72ad80548b0ae2bcd3a067476e2524a591097ac92fc6975f3ebee",
+      "raw_bytes": 4893,
+      "stored_sha256": "891fb3f196c32f425091f99000be72198a46a84346afb35fdbf078d5d4b0fd0a"
+    },
+    "validation/game-written-save-load/v0314-nine-crystals-01/frame_01443.png": {
+      "stored": "objects/71fdba54c3fc3b485c6b9f59d80a0c2f83e9e0d63a2affb35d1835700dfeac3a.gz",
+      "raw_sha256": "71fdba54c3fc3b485c6b9f59d80a0c2f83e9e0d63a2affb35d1835700dfeac3a",
+      "raw_bytes": 5532,
+      "stored_sha256": "4499508ab31320029ff92fec873c1b43426176fc330e2b3415516ecb9ba8628b"
+    },
+    "validation/game-written-save-load/v0314-nine-crystals-01/ram_00002.bin": {
+      "stored": "objects/2c847e487e9af978d17d0818c4e2c1094ed17660f6c27042cae6eef324c88268.gz",
+      "raw_sha256": "2c847e487e9af978d17d0818c4e2c1094ed17660f6c27042cae6eef324c88268",
+      "raw_bytes": 65536,
+      "stored_sha256": "dcd44cc06cec8768ca40b6bdc577d4c3b368026376518ab869f811d5ff2247d9"
+    },
+    "validation/game-written-save-load/v0314-nine-crystals-01/ram_01051.bin": {
+      "stored": "objects/6a81ea85be6558ac2c41bea9e1720c031035cf1d422a21a7be68e587ae7feb20.gz",
+      "raw_sha256": "6a81ea85be6558ac2c41bea9e1720c031035cf1d422a21a7be68e587ae7feb20",
+      "raw_bytes": 65536,
+      "stored_sha256": "fc860a8f73e31a5cc6fbe7dbb06192f5ace8db2926f8a212b24f02aac73eeb79"
+    },
+    "validation/game-written-save-load/v0314-nine-crystals-01/ram_01301.bin": {
+      "stored": "objects/86ba7f09301992c7c0af12e24d95271566c85e010600a4afd08822cc4476e99a.gz",
+      "raw_sha256": "86ba7f09301992c7c0af12e24d95271566c85e010600a4afd08822cc4476e99a",
+      "raw_bytes": 65536,
+      "stored_sha256": "8509460fa8302329fe2057ecb5759f743448cbbb1ce72ec924c0bcdbe17312c7"
+    },
+    "validation/game-written-save-load/v0314-nine-crystals-01/ram_01322.bin": {
+      "stored": "objects/697d3e99d809bd84298344a12cf5ee19f5ae7db659ca4cba8e476c1271289cfe.gz",
+      "raw_sha256": "697d3e99d809bd84298344a12cf5ee19f5ae7db659ca4cba8e476c1271289cfe",
+      "raw_bytes": 65536,
+      "stored_sha256": "2e37c58ed69fc02c624b450e2dd7b2f570c683daf32dcd9bdeed58628435b7d7"
+    },
+    "validation/game-written-save-load/v0314-nine-crystals-01/ram_01328.bin": {
+      "stored": "objects/8f38618c24eda585fd6b726f391141fba966624fdc34206545753b2a24ec63b5.gz",
+      "raw_sha256": "8f38618c24eda585fd6b726f391141fba966624fdc34206545753b2a24ec63b5",
+      "raw_bytes": 65536,
+      "stored_sha256": "fede90a8a0266f307fcee77fad77a320880d3d8eeec09188ac73625bcbef4bea"
+    },
+    "validation/game-written-save-load/v0314-nine-crystals-01/ram_01341.bin": {
+      "stored": "objects/ced4f28d2cf1a4789dae9bcb76c51f19f47d5d5d83a70862c6c8123c6f37258d.gz",
+      "raw_sha256": "ced4f28d2cf1a4789dae9bcb76c51f19f47d5d5d83a70862c6c8123c6f37258d",
+      "raw_bytes": 65536,
+      "stored_sha256": "a783e4efe8096f2ef317a5930e578ace2c59ae6855742c1715d4af9a2e9da3ae"
+    },
+    "validation/game-written-save-load/v0314-nine-crystals-01/ram_01443.bin": {
+      "stored": "objects/054287a5d2349730ec5e5c4b79e47a27334569746e9b29844d8e5f097233a598.gz",
+      "raw_sha256": "054287a5d2349730ec5e5c4b79e47a27334569746e9b29844d8e5f097233a598",
+      "raw_bytes": 65536,
+      "stored_sha256": "89f8333c9fc7e835814ccbd661cd524137fa5bcc28a14a1b86bd4290c112fdde"
+    },
+    "validation/game-written-save-load/v0314-nine-crystals-01/report.json": {
+      "stored": "objects/d1d33f66f046ba057190827f37e90ed35e2c83ede8d24bab210397675905d815.gz",
+      "raw_sha256": "d1d33f66f046ba057190827f37e90ed35e2c83ede8d24bab210397675905d815",
+      "raw_bytes": 1892,
+      "stored_sha256": "49e4b26ecb2fd57b7e2c5a5c2b745ffcfc109cbdd2fa4611e16c5e8db8836697"
+    },
+    "validation/game-written-save-load/v0314-nine-crystals-01/vdp_regs_00002.bin": {
+      "stored": "objects/f12d020b012f9fb7d6e67eea6653bd7f06b2c705d3632bd47dd488c5a3945e44.gz",
+      "raw_sha256": "f12d020b012f9fb7d6e67eea6653bd7f06b2c705d3632bd47dd488c5a3945e44",
+      "raw_bytes": 32,
+      "stored_sha256": "4d52aa85af8a65976206df5dbb2847b5747bdf9bdd8549719e86605d417656b3"
+    },
+    "validation/game-written-save-load/v0314-nine-crystals-01/vdp_regs_01051.bin": {
+      "stored": "objects/581969113ac1f0ddd5229bace28f20684b5fd639fde926b1e8b06244c5bc5d1a.gz",
+      "raw_sha256": "581969113ac1f0ddd5229bace28f20684b5fd639fde926b1e8b06244c5bc5d1a",
+      "raw_bytes": 32,
+      "stored_sha256": "9b228bdb085a1301341c5b750a20aafad846528b5729d2cd9bbfecb1572a68c2"
+    },
+    "validation/game-written-save-load/v0314-nine-crystals-01/vdp_regs_01301.bin": {
+      "stored": "objects/581969113ac1f0ddd5229bace28f20684b5fd639fde926b1e8b06244c5bc5d1a.gz",
+      "raw_sha256": "581969113ac1f0ddd5229bace28f20684b5fd639fde926b1e8b06244c5bc5d1a",
+      "raw_bytes": 32,
+      "stored_sha256": "9b228bdb085a1301341c5b750a20aafad846528b5729d2cd9bbfecb1572a68c2"
+    },
+    "validation/game-written-save-load/v0314-nine-crystals-01/vdp_regs_01322.bin": {
+      "stored": "objects/581969113ac1f0ddd5229bace28f20684b5fd639fde926b1e8b06244c5bc5d1a.gz",
+      "raw_sha256": "581969113ac1f0ddd5229bace28f20684b5fd639fde926b1e8b06244c5bc5d1a",
+      "raw_bytes": 32,
+      "stored_sha256": "9b228bdb085a1301341c5b750a20aafad846528b5729d2cd9bbfecb1572a68c2"
+    },
+    "validation/game-written-save-load/v0314-nine-crystals-01/vdp_regs_01328.bin": {
+      "stored": "objects/581969113ac1f0ddd5229bace28f20684b5fd639fde926b1e8b06244c5bc5d1a.gz",
+      "raw_sha256": "581969113ac1f0ddd5229bace28f20684b5fd639fde926b1e8b06244c5bc5d1a",
+      "raw_bytes": 32,
+      "stored_sha256": "9b228bdb085a1301341c5b750a20aafad846528b5729d2cd9bbfecb1572a68c2"
+    },
+    "validation/game-written-save-load/v0314-nine-crystals-01/vdp_regs_01341.bin": {
+      "stored": "objects/1e1bbcdf5b4a49543c3cdf41595c96f6f190e62c7490947777f103d02f8d89c9.gz",
+      "raw_sha256": "1e1bbcdf5b4a49543c3cdf41595c96f6f190e62c7490947777f103d02f8d89c9",
+      "raw_bytes": 32,
+      "stored_sha256": "08d3daa1af15c204697a11e888e62ffddc8fd5e74b178314b866d2abbec2861f"
+    },
+    "validation/game-written-save-load/v0314-nine-crystals-01/vdp_regs_01443.bin": {
+      "stored": "objects/7f4ec3715752244f2db402497f44d42fcc88eb856bd3709f34cf18201740dbff.gz",
+      "raw_sha256": "7f4ec3715752244f2db402497f44d42fcc88eb856bd3709f34cf18201740dbff",
+      "raw_bytes": 32,
+      "stored_sha256": "aac03476ca9479c0ca4234d53d00b27337c6e205d600370199446d40ebc75da1"
+    },
+    "validation/game-written-save-load/v0314-nine-crystals-01/vram_00002.bin": {
+      "stored": "objects/de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31.gz",
+      "raw_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+      "raw_bytes": 65536,
+      "stored_sha256": "1383b0d2cf036f0480b0feefe8db910658cfb60330dea6246e72586a689f8412"
+    },
+    "validation/game-written-save-load/v0314-nine-crystals-01/vram_01051.bin": {
+      "stored": "objects/9767bad0d9997dd222a90d23c50c960a8c830c12a3501dea264a74b25dcd7132.gz",
+      "raw_sha256": "9767bad0d9997dd222a90d23c50c960a8c830c12a3501dea264a74b25dcd7132",
+      "raw_bytes": 65536,
+      "stored_sha256": "cf49dcf760c09e824ca6374d7813e8d336718085af4614ddce567f3ada4f5408"
+    },
+    "validation/game-written-save-load/v0314-nine-crystals-01/vram_01301.bin": {
+      "stored": "objects/46992f839b9ddf4a805edf113dc79792744045a9d54e6aeed388160036b78b2f.gz",
+      "raw_sha256": "46992f839b9ddf4a805edf113dc79792744045a9d54e6aeed388160036b78b2f",
+      "raw_bytes": 65536,
+      "stored_sha256": "475bd376ec1969a997a103d9f0c1686491f07fbdd9864bd512561c25f4877219"
+    },
+    "validation/game-written-save-load/v0314-nine-crystals-01/vram_01322.bin": {
+      "stored": "objects/f6b2862e3818342caf442eb4a9ca6a314615cdbf6c5b791b8a3a33b36ff387c2.gz",
+      "raw_sha256": "f6b2862e3818342caf442eb4a9ca6a314615cdbf6c5b791b8a3a33b36ff387c2",
+      "raw_bytes": 65536,
+      "stored_sha256": "7e99778bf83231ece95681187177dec29b575f42eca6a99b0b4e443ef6a0f888"
+    },
+    "validation/game-written-save-load/v0314-nine-crystals-01/vram_01328.bin": {
+      "stored": "objects/f6b2862e3818342caf442eb4a9ca6a314615cdbf6c5b791b8a3a33b36ff387c2.gz",
+      "raw_sha256": "f6b2862e3818342caf442eb4a9ca6a314615cdbf6c5b791b8a3a33b36ff387c2",
+      "raw_bytes": 65536,
+      "stored_sha256": "7e99778bf83231ece95681187177dec29b575f42eca6a99b0b4e443ef6a0f888"
+    },
+    "validation/game-written-save-load/v0314-nine-crystals-01/vram_01341.bin": {
+      "stored": "objects/d83d221e25ee7750fb16b3c9789ea4bab66b242b5c93ff388dc68ab9e379f801.gz",
+      "raw_sha256": "d83d221e25ee7750fb16b3c9789ea4bab66b242b5c93ff388dc68ab9e379f801",
+      "raw_bytes": 65536,
+      "stored_sha256": "04e2542879a50d4b9cf3d0b11fad52ee046e02c74f77204f31e97ca9f1885b83"
+    },
+    "validation/game-written-save-load/v0314-nine-crystals-01/vram_01443.bin": {
+      "stored": "objects/412423245afe3a8583e1b6cc82f40e11cdfc964eac11321b1a4f8467df533dab.gz",
+      "raw_sha256": "412423245afe3a8583e1b6cc82f40e11cdfc964eac11321b1a4f8467df533dab",
+      "raw_bytes": 65536,
+      "stored_sha256": "c9ce810efd6349a65a4b511af3f03cdfc3dd0eebbf33843db41fac0547c5535b"
+    },
+    "validation/game-written-save-replay/v0314-nine-crystals-01/capture.json": {
+      "stored": "objects/55d13729263d1c28a9e39ff3b16eb009d4818449b3c351b8c5ce3e4bf376dfb2.gz",
+      "raw_sha256": "55d13729263d1c28a9e39ff3b16eb009d4818449b3c351b8c5ce3e4bf376dfb2",
+      "raw_bytes": 15503675,
+      "stored_sha256": "446765eb2a298a34c8d75f6887b06049fdc397648c3f4f0e44006bc9788992a5"
+    },
+    "validation/game-written-save-replay/v0314-nine-crystals-01/cram_304611.bin": {
+      "stored": "objects/81e79d188ad9cb068e40287316cee9c583ef58402ab385c45ada4fc5a55da445.gz",
+      "raw_sha256": "81e79d188ad9cb068e40287316cee9c583ef58402ab385c45ada4fc5a55da445",
+      "raw_bytes": 128,
+      "stored_sha256": "b0e774e700dab765c1f61197ec82f3e1167576c2f84c5a0f5a8ac3c086994c7a"
+    },
+    "validation/game-written-save-replay/v0314-nine-crystals-01/frame_304611.png": {
+      "stored": "objects/2f2aeacb1ebfbbcef9d5342c105d54ce135f55b57a66fdbdb6bcb3b788e9506f.gz",
+      "raw_sha256": "2f2aeacb1ebfbbcef9d5342c105d54ce135f55b57a66fdbdb6bcb3b788e9506f",
+      "raw_bytes": 5556,
+      "stored_sha256": "2d0a3b9ad9da21d29ef9c1de721c15e6c79914070b0dd579f0eeeda32139cf4b"
+    },
+    "validation/game-written-save-replay/v0314-nine-crystals-01/ram_304611.bin": {
+      "stored": "objects/4ae3a37a540f1367b52f37bceabb679c2548068d735a4fe3d939bce8ff802558.gz",
+      "raw_sha256": "4ae3a37a540f1367b52f37bceabb679c2548068d735a4fe3d939bce8ff802558",
+      "raw_bytes": 65536,
+      "stored_sha256": "01f6a70b0773bd30f67ee1e61290cc4a8aea6bd839fc887b426fbc1a84138c58"
+    },
+    "validation/game-written-save-replay/v0314-nine-crystals-01/replay_report.json": {
+      "stored": "objects/ee7f180d3043fcb597f611b1f9c132b8b48aa9b7b4e71a0dcfeca95b4c45a3b4.gz",
+      "raw_sha256": "ee7f180d3043fcb597f611b1f9c132b8b48aa9b7b4e71a0dcfeca95b4c45a3b4",
+      "raw_bytes": 503,
+      "stored_sha256": "1112af2c9ef2c60ac0dca1bba5149bf64ffc68f4e6d8f10346cd603689da9d8f"
+    },
+    "validation/game-written-save-replay/v0314-nine-crystals-01/replayed.srm": {
+      "stored": "objects/466d297b9e9e41b0b0626fa8be561deef47d14dc88791663290da319025b9a81.gz",
+      "raw_sha256": "466d297b9e9e41b0b0626fa8be561deef47d14dc88791663290da319025b9a81",
+      "raw_bytes": 3224,
+      "stored_sha256": "22a5f2c3c2f7acae4ad2a7fc66e41eb402290c779ff6939d90ba00c4b19bdec7"
+    },
+    "validation/game-written-save-replay/v0314-nine-crystals-01/vdp_regs_304611.bin": {
+      "stored": "objects/1c49de91fb297da4e43d2fa84f55c5e394814877557675410b671b05935c545f.gz",
+      "raw_sha256": "1c49de91fb297da4e43d2fa84f55c5e394814877557675410b671b05935c545f",
+      "raw_bytes": 32,
+      "stored_sha256": "11f861f97387582539d13092dd57d21e9860099ad1db82ae59fbd842c40bdce4"
+    },
+    "validation/game-written-save-replay/v0314-nine-crystals-01/vram_304611.bin": {
+      "stored": "objects/c9da81c3409ce1e3b0ba0081e1c931c1f07db822535077ee31eb36fdfa47455a.gz",
+      "raw_sha256": "c9da81c3409ce1e3b0ba0081e1c931c1f07db822535077ee31eb36fdfa47455a",
+      "raw_bytes": 65536,
+      "stored_sha256": "09aa3980ada2dcf291a41c2051e5b4c544534731a25bda05195536213f53f5cd"
+    },
+    "validation/natural-dungeon-route/md-v0314-real-save-route02/assistance.json": {
+      "stored": "objects/3184b14e17a095b6ac114a5d9019e6e2d6f36e3c991bbfdbf1ad1a0af61b3d8a.gz",
+      "raw_sha256": "3184b14e17a095b6ac114a5d9019e6e2d6f36e3c991bbfdbf1ad1a0af61b3d8a",
+      "raw_bytes": 12557851,
+      "stored_sha256": "2dcf508691a26e8bba2fe82ee054c41fb8f638ac8f9e94678c33a441bc7a5dd8"
+    },
+    "validation/natural-dungeon-route/md-v0314-real-save-route02/axe_chops.json": {
+      "stored": "objects/a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f.gz",
+      "raw_sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+      "raw_bytes": 4,
+      "stored_sha256": "9ee5a88c8d7dd7955e0f870eb72b92a69d3c4b7d43837f5eca5ead2e24fef6e2"
+    },
+    "validation/natural-dungeon-route/md-v0314-real-save-route02/capture.json": {
+      "stored": "objects/ca7f4282e0a431db8d8cc869083fab8b3425f46457550eb5c5f72ca8e283c732.gz",
+      "raw_sha256": "ca7f4282e0a431db8d8cc869083fab8b3425f46457550eb5c5f72ca8e283c732",
+      "raw_bytes": 15503602,
+      "stored_sha256": "68c9cb2557c301276780061dd2a0f2ecae51fcb49e57f7d604230e68f96674d6"
+    },
+    "validation/natural-dungeon-route/md-v0314-real-save-route02/controls.json": {
+      "stored": "objects/c4dea9825a24ac25925fc8613b4285a8dd9506da51f81256772744a947a60823.gz",
+      "raw_sha256": "c4dea9825a24ac25925fc8613b4285a8dd9506da51f81256772744a947a60823",
+      "raw_bytes": 479026,
+      "stored_sha256": "d76b0267afdd2ace50349bf8788d7552a9abecc38a5496f01727bcf2a8dd2a3f"
+    },
+    "validation/natural-dungeon-route/md-v0314-real-save-route02/cram_304191.bin": {
+      "stored": "objects/81e79d188ad9cb068e40287316cee9c583ef58402ab385c45ada4fc5a55da445.gz",
+      "raw_sha256": "81e79d188ad9cb068e40287316cee9c583ef58402ab385c45ada4fc5a55da445",
+      "raw_bytes": 128,
+      "stored_sha256": "b0e774e700dab765c1f61197ec82f3e1167576c2f84c5a0f5a8ac3c086994c7a"
+    },
+    "validation/natural-dungeon-route/md-v0314-real-save-route02/events.json": {
+      "stored": "objects/362d5b0210414ef8599c05018fe9a296b031445a3a363b9ab91d00dfa31fb36d.gz",
+      "raw_sha256": "362d5b0210414ef8599c05018fe9a296b031445a3a363b9ab91d00dfa31fb36d",
+      "raw_bytes": 2541,
+      "stored_sha256": "51d136d8780082b1b43ce31f0de9e7b14dedc49ba824ee9411fa3031097bce94"
+    },
+    "validation/natural-dungeon-route/md-v0314-real-save-route02/frame_304191.png": {
+      "stored": "objects/8b4dd105880ccfdf8b3b3b4c3ae3160c61b1a478fb04a13c0df6f61ebc4cf457.gz",
+      "raw_sha256": "8b4dd105880ccfdf8b3b3b4c3ae3160c61b1a478fb04a13c0df6f61ebc4cf457",
+      "raw_bytes": 5570,
+      "stored_sha256": "a172045ea5fe60e1a190ddcb92862eb9cda0f101e0c80918293043e8496709de"
+    },
+    "validation/natural-dungeon-route/md-v0314-real-save-route02/ram_304191.bin": {
+      "stored": "objects/cb30f78e9faf1d0f03a94a51ad1b35af8cd6b8ea09478583b89f40c434ec842b.gz",
+      "raw_sha256": "cb30f78e9faf1d0f03a94a51ad1b35af8cd6b8ea09478583b89f40c434ec842b",
+      "raw_bytes": 65536,
+      "stored_sha256": "7b386c2daf5c138f04ad2e495f87a4e3ab78a455c9cb77e188f059c4e82370cb"
+    },
+    "validation/natural-dungeon-route/md-v0314-real-save-route02/route_report.json": {
+      "stored": "objects/a79ee908f9b93673d9423461207bc383a1b69b4c48666afa56d1a1a566df3b83.gz",
+      "raw_sha256": "a79ee908f9b93673d9423461207bc383a1b69b4c48666afa56d1a1a566df3b83",
+      "raw_bytes": 2544,
+      "stored_sha256": "8915de2ec8fcef1a12620c86921db3e59a6d0c72fbdd7f54e270667ba7449cd6"
+    },
+    "validation/natural-dungeon-route/md-v0314-real-save-route02/samples.json": {
+      "stored": "objects/46b8242f59d27bbec6b17580e4eeb8bd9dcc4fd8e767679cc4f5fb2bea9c71e2.gz",
+      "raw_sha256": "46b8242f59d27bbec6b17580e4eeb8bd9dcc4fd8e767679cc4f5fb2bea9c71e2",
+      "raw_bytes": 26568,
+      "stored_sha256": "d67b0b2f53f690c065296b75eb6882b58ce488635017cf27c3e37760caea4da3"
+    },
+    "validation/natural-dungeon-route/md-v0314-real-save-route02/vdp_regs_304191.bin": {
+      "stored": "objects/1c49de91fb297da4e43d2fa84f55c5e394814877557675410b671b05935c545f.gz",
+      "raw_sha256": "1c49de91fb297da4e43d2fa84f55c5e394814877557675410b671b05935c545f",
+      "raw_bytes": 32,
+      "stored_sha256": "11f861f97387582539d13092dd57d21e9860099ad1db82ae59fbd842c40bdce4"
+    },
+    "validation/natural-dungeon-route/md-v0314-real-save-route02/vram_304191.bin": {
+      "stored": "objects/19e89192e11b696a34f6e1243b261e227fadfb16b1fc94544ec2c4a2dc79e088.gz",
+      "raw_sha256": "19e89192e11b696a34f6e1243b261e227fadfb16b1fc94544ec2c4a2dc79e088",
+      "raw_bytes": 65536,
+      "stored_sha256": "b8e4f0b0988bc56b9e042f2bbde1c5cbc84e7ba14cd08514a4aebb2f99064759"
+    },
+    "validation/natural-dungeon-route/md-v0314-real-save-route02-assisted-fixed-replay-304191/frame_304191.png": {
+      "stored": "objects/8b4dd105880ccfdf8b3b3b4c3ae3160c61b1a478fb04a13c0df6f61ebc4cf457.gz",
+      "raw_sha256": "8b4dd105880ccfdf8b3b3b4c3ae3160c61b1a478fb04a13c0df6f61ebc4cf457",
+      "raw_bytes": 5570,
+      "stored_sha256": "a172045ea5fe60e1a190ddcb92862eb9cda0f101e0c80918293043e8496709de"
+    },
+    "validation/natural-dungeon-route/md-v0314-real-save-route02-assisted-fixed-replay-304191/ram_304191.bin": {
+      "stored": "objects/cb30f78e9faf1d0f03a94a51ad1b35af8cd6b8ea09478583b89f40c434ec842b.gz",
+      "raw_sha256": "cb30f78e9faf1d0f03a94a51ad1b35af8cd6b8ea09478583b89f40c434ec842b",
+      "raw_bytes": 65536,
+      "stored_sha256": "7b386c2daf5c138f04ad2e495f87a4e3ab78a455c9cb77e188f059c4e82370cb"
+    },
+    "validation/natural-dungeon-route/md-v0314-real-save-route02-assisted-fixed-replay-304191/replay_report.json": {
+      "stored": "objects/8621b83d8812e8d40eb3f2086db0ce92ff71a594ac95ff6ad9a12a1966a54420.gz",
+      "raw_sha256": "8621b83d8812e8d40eb3f2086db0ce92ff71a594ac95ff6ad9a12a1966a54420",
+      "raw_bytes": 1523,
+      "stored_sha256": "d4d2e8b8e897035069e04c52f8e06b226733c69787ff053ec21a3de9ad94a228"
+    },
+    "validation/natural-service-route/md-v0314-nine-crystals-save01/assistance.json": {
+      "stored": "objects/3184b14e17a095b6ac114a5d9019e6e2d6f36e3c991bbfdbf1ad1a0af61b3d8a.gz",
+      "raw_sha256": "3184b14e17a095b6ac114a5d9019e6e2d6f36e3c991bbfdbf1ad1a0af61b3d8a",
+      "raw_bytes": 12557851,
+      "stored_sha256": "2dcf508691a26e8bba2fe82ee054c41fb8f638ac8f9e94678c33a441bc7a5dd8"
+    },
+    "validation/natural-service-route/md-v0314-nine-crystals-save01/capture.json": {
+      "stored": "objects/e661ce55352f4071112303ddb9ec242555a2523a8b78aefd6e10e4faf731f5aa.gz",
+      "raw_sha256": "e661ce55352f4071112303ddb9ec242555a2523a8b78aefd6e10e4faf731f5aa",
+      "raw_bytes": 15503320,
+      "stored_sha256": "487f384b2e2aeccb10b93026f46654c92aac32b15de527cf81ff0339c41c0916"
+    },
+    "validation/natural-service-route/md-v0314-nine-crystals-save01/controls.json": {
+      "stored": "objects/596d82e9d393fc78c60be60f65be2ec14fb3d4e9f8aa1b3762f7ed572b46697e.gz",
+      "raw_sha256": "596d82e9d393fc78c60be60f65be2ec14fb3d4e9f8aa1b3762f7ed572b46697e",
+      "raw_bytes": 438660,
+      "stored_sha256": "85ec456de3f1deb106ce6d623d4d291dd237cc7b2d54a9bcfa92d417b604f94f"
+    },
+    "validation/natural-service-route/md-v0314-nine-crystals-save01/cram_304191.bin": {
+      "stored": "objects/81e79d188ad9cb068e40287316cee9c583ef58402ab385c45ada4fc5a55da445.gz",
+      "raw_sha256": "81e79d188ad9cb068e40287316cee9c583ef58402ab385c45ada4fc5a55da445",
+      "raw_bytes": 128,
+      "stored_sha256": "b0e774e700dab765c1f61197ec82f3e1167576c2f84c5a0f5a8ac3c086994c7a"
+    },
+    "validation/natural-service-route/md-v0314-nine-crystals-save01/cram_304192.bin": {
+      "stored": "objects/81e79d188ad9cb068e40287316cee9c583ef58402ab385c45ada4fc5a55da445.gz",
+      "raw_sha256": "81e79d188ad9cb068e40287316cee9c583ef58402ab385c45ada4fc5a55da445",
+      "raw_bytes": 128,
+      "stored_sha256": "b0e774e700dab765c1f61197ec82f3e1167576c2f84c5a0f5a8ac3c086994c7a"
+    },
+    "validation/natural-service-route/md-v0314-nine-crystals-save01/cram_304225.bin": {
+      "stored": "objects/81e79d188ad9cb068e40287316cee9c583ef58402ab385c45ada4fc5a55da445.gz",
+      "raw_sha256": "81e79d188ad9cb068e40287316cee9c583ef58402ab385c45ada4fc5a55da445",
+      "raw_bytes": 128,
+      "stored_sha256": "b0e774e700dab765c1f61197ec82f3e1167576c2f84c5a0f5a8ac3c086994c7a"
+    },
+    "validation/natural-service-route/md-v0314-nine-crystals-save01/cram_304321.bin": {
+      "stored": "objects/ec2ebd0d4a11b28bc7ddd9415cf97023f72601b76456acaea6113753061d41bf.gz",
+      "raw_sha256": "ec2ebd0d4a11b28bc7ddd9415cf97023f72601b76456acaea6113753061d41bf",
+      "raw_bytes": 128,
+      "stored_sha256": "b2923c6e655e4298db885634606b4cbd0bd98b9b6f7d03ddf63dc8c2515fd026"
+    },
+    "validation/natural-service-route/md-v0314-nine-crystals-save01/cram_304401.bin": {
+      "stored": "objects/ec2ebd0d4a11b28bc7ddd9415cf97023f72601b76456acaea6113753061d41bf.gz",
+      "raw_sha256": "ec2ebd0d4a11b28bc7ddd9415cf97023f72601b76456acaea6113753061d41bf",
+      "raw_bytes": 128,
+      "stored_sha256": "b2923c6e655e4298db885634606b4cbd0bd98b9b6f7d03ddf63dc8c2515fd026"
+    },
+    "validation/natural-service-route/md-v0314-nine-crystals-save01/cram_304402.bin": {
+      "stored": "objects/ec2ebd0d4a11b28bc7ddd9415cf97023f72601b76456acaea6113753061d41bf.gz",
+      "raw_sha256": "ec2ebd0d4a11b28bc7ddd9415cf97023f72601b76456acaea6113753061d41bf",
+      "raw_bytes": 128,
+      "stored_sha256": "b2923c6e655e4298db885634606b4cbd0bd98b9b6f7d03ddf63dc8c2515fd026"
+    },
+    "validation/natural-service-route/md-v0314-nine-crystals-save01/cram_304461.bin": {
+      "stored": "objects/67ad4a738d6b835288e3ceb7fc8f37f3fa5fe47616eca33f82392fca28d15272.gz",
+      "raw_sha256": "67ad4a738d6b835288e3ceb7fc8f37f3fa5fe47616eca33f82392fca28d15272",
+      "raw_bytes": 128,
+      "stored_sha256": "54b682c70d9deddb7c0e3f813bfdd5428f4cdc3d007194901fee28df82c9f31e"
+    },
+    "validation/natural-service-route/md-v0314-nine-crystals-save01/cram_304611.bin": {
+      "stored": "objects/81e79d188ad9cb068e40287316cee9c583ef58402ab385c45ada4fc5a55da445.gz",
+      "raw_sha256": "81e79d188ad9cb068e40287316cee9c583ef58402ab385c45ada4fc5a55da445",
+      "raw_bytes": 128,
+      "stored_sha256": "b0e774e700dab765c1f61197ec82f3e1167576c2f84c5a0f5a8ac3c086994c7a"
+    },
+    "validation/natural-service-route/md-v0314-nine-crystals-save01/events.json": {
+      "stored": "objects/232ce0cac1150c63ce2dae5f2a76b4802d91a6a56088d08954fa6a114f1b07e8.gz",
+      "raw_sha256": "232ce0cac1150c63ce2dae5f2a76b4802d91a6a56088d08954fa6a114f1b07e8",
+      "raw_bytes": 1780,
+      "stored_sha256": "544d8f3e352a75bb23f888d3e06ccfc6ad3b1bbd640ad29c9954e20e6c64959b"
+    },
+    "validation/natural-service-route/md-v0314-nine-crystals-save01/frame_304191.png": {
+      "stored": "objects/8b4dd105880ccfdf8b3b3b4c3ae3160c61b1a478fb04a13c0df6f61ebc4cf457.gz",
+      "raw_sha256": "8b4dd105880ccfdf8b3b3b4c3ae3160c61b1a478fb04a13c0df6f61ebc4cf457",
+      "raw_bytes": 5570,
+      "stored_sha256": "a172045ea5fe60e1a190ddcb92862eb9cda0f101e0c80918293043e8496709de"
+    },
+    "validation/natural-service-route/md-v0314-nine-crystals-save01/frame_304192.png": {
+      "stored": "objects/8b4dd105880ccfdf8b3b3b4c3ae3160c61b1a478fb04a13c0df6f61ebc4cf457.gz",
+      "raw_sha256": "8b4dd105880ccfdf8b3b3b4c3ae3160c61b1a478fb04a13c0df6f61ebc4cf457",
+      "raw_bytes": 5570,
+      "stored_sha256": "a172045ea5fe60e1a190ddcb92862eb9cda0f101e0c80918293043e8496709de"
+    },
+    "validation/natural-service-route/md-v0314-nine-crystals-save01/frame_304225.png": {
+      "stored": "objects/96bffebe4cb40b94c3e592724ee54ff0340572c8471662c34a86cdf49b6040ae.gz",
+      "raw_sha256": "96bffebe4cb40b94c3e592724ee54ff0340572c8471662c34a86cdf49b6040ae",
+      "raw_bytes": 1840,
+      "stored_sha256": "40b02f15d0bb95e20d36d5e5d6092b06ce4fa5cd416d61c7da959c4fb5ba733f"
+    },
+    "validation/natural-service-route/md-v0314-nine-crystals-save01/frame_304321.png": {
+      "stored": "objects/5170b2ec5917d61c436ffe0fcea3f35ca9020e715c50be4099fd316b7d8d28ad.gz",
+      "raw_sha256": "5170b2ec5917d61c436ffe0fcea3f35ca9020e715c50be4099fd316b7d8d28ad",
+      "raw_bytes": 5010,
+      "stored_sha256": "fac2d08494aeba1378e71e09926e27eebd1b4e2ff37b2040426f09ea08b4b32e"
+    },
+    "validation/natural-service-route/md-v0314-nine-crystals-save01/frame_304401.png": {
+      "stored": "objects/fe99f503efa8f70e6e42031eb4036c5d1e6fb0032fbeb83c83d102d11d282859.gz",
+      "raw_sha256": "fe99f503efa8f70e6e42031eb4036c5d1e6fb0032fbeb83c83d102d11d282859",
+      "raw_bytes": 4567,
+      "stored_sha256": "8904cbe6ce3bf4b0e4a18d9ad5df257eba029a2f68f49b34a71d6eee03cd5b5c"
+    },
+    "validation/natural-service-route/md-v0314-nine-crystals-save01/frame_304402.png": {
+      "stored": "objects/42f110b08b3fe303df5a9876ee6da91e76340e318b8ee36bde9303048854fcdc.gz",
+      "raw_sha256": "42f110b08b3fe303df5a9876ee6da91e76340e318b8ee36bde9303048854fcdc",
+      "raw_bytes": 4540,
+      "stored_sha256": "8ee8b27bd0c2c859944363ada66168243d2c1559030ee1716bd47b313f02528c"
+    },
+    "validation/natural-service-route/md-v0314-nine-crystals-save01/frame_304461.png": {
+      "stored": "objects/6cea465414457e159bd1a903226384468680e907fb66ed2e965a905c4abf5108.gz",
+      "raw_sha256": "6cea465414457e159bd1a903226384468680e907fb66ed2e965a905c4abf5108",
+      "raw_bytes": 5545,
+      "stored_sha256": "36be3410f1bf40463d463a59d85d6f43686af0663b688a7e67826d8192c363f9"
+    },
+    "validation/natural-service-route/md-v0314-nine-crystals-save01/frame_304611.png": {
+      "stored": "objects/2f2aeacb1ebfbbcef9d5342c105d54ce135f55b57a66fdbdb6bcb3b788e9506f.gz",
+      "raw_sha256": "2f2aeacb1ebfbbcef9d5342c105d54ce135f55b57a66fdbdb6bcb3b788e9506f",
+      "raw_bytes": 5556,
+      "stored_sha256": "2d0a3b9ad9da21d29ef9c1de721c15e6c79914070b0dd579f0eeeda32139cf4b"
+    },
+    "validation/natural-service-route/md-v0314-nine-crystals-save01/game-written.srm": {
+      "stored": "objects/466d297b9e9e41b0b0626fa8be561deef47d14dc88791663290da319025b9a81.gz",
+      "raw_sha256": "466d297b9e9e41b0b0626fa8be561deef47d14dc88791663290da319025b9a81",
+      "raw_bytes": 3224,
+      "stored_sha256": "22a5f2c3c2f7acae4ad2a7fc66e41eb402290c779ff6939d90ba00c4b19bdec7"
+    },
+    "validation/natural-service-route/md-v0314-nine-crystals-save01/ram_304191.bin": {
+      "stored": "objects/cb30f78e9faf1d0f03a94a51ad1b35af8cd6b8ea09478583b89f40c434ec842b.gz",
+      "raw_sha256": "cb30f78e9faf1d0f03a94a51ad1b35af8cd6b8ea09478583b89f40c434ec842b",
+      "raw_bytes": 65536,
+      "stored_sha256": "7b386c2daf5c138f04ad2e495f87a4e3ab78a455c9cb77e188f059c4e82370cb"
+    },
+    "validation/natural-service-route/md-v0314-nine-crystals-save01/ram_304192.bin": {
+      "stored": "objects/e8c9370fde50eb998e8230b44a11739563e66e08960c4bd1a864efbe755ed968.gz",
+      "raw_sha256": "e8c9370fde50eb998e8230b44a11739563e66e08960c4bd1a864efbe755ed968",
+      "raw_bytes": 65536,
+      "stored_sha256": "2bc8d0d37eecff7d9f71c47f98b9c94fc94f632be5efb30610430c59bf326c7d"
+    },
+    "validation/natural-service-route/md-v0314-nine-crystals-save01/ram_304225.bin": {
+      "stored": "objects/3903c0142eca6a8a26d18c03498f8994585a672869cdef4f1575ba798aaf91b5.gz",
+      "raw_sha256": "3903c0142eca6a8a26d18c03498f8994585a672869cdef4f1575ba798aaf91b5",
+      "raw_bytes": 65536,
+      "stored_sha256": "7f282fabb501e34c424087e9dec2cc3df2c1653f2d5cd41d6638d851679f327e"
+    },
+    "validation/natural-service-route/md-v0314-nine-crystals-save01/ram_304321.bin": {
+      "stored": "objects/53bb02318e88ec9d0017f3171d29cedadb2eaf3cd87cb2e469f68f45f27b2659.gz",
+      "raw_sha256": "53bb02318e88ec9d0017f3171d29cedadb2eaf3cd87cb2e469f68f45f27b2659",
+      "raw_bytes": 65536,
+      "stored_sha256": "3fbbd53a5204fe0e685f87a694cfe0ef469cbbf17ddf92983db46bd2970084e8"
+    },
+    "validation/natural-service-route/md-v0314-nine-crystals-save01/ram_304401.bin": {
+      "stored": "objects/ad84ac71dd88474d3232a37aefa80b455d1ad59c5f69dfdd758d7075de521b4f.gz",
+      "raw_sha256": "ad84ac71dd88474d3232a37aefa80b455d1ad59c5f69dfdd758d7075de521b4f",
+      "raw_bytes": 65536,
+      "stored_sha256": "b83e8e30747c418b954b190ac7c9c05a33bc2172563b4854c573a0235014e9e9"
+    },
+    "validation/natural-service-route/md-v0314-nine-crystals-save01/ram_304402.bin": {
+      "stored": "objects/a24d096e6de34b318fc6467fbe5b36776081bc4cc7e5c709a262a190541719d6.gz",
+      "raw_sha256": "a24d096e6de34b318fc6467fbe5b36776081bc4cc7e5c709a262a190541719d6",
+      "raw_bytes": 65536,
+      "stored_sha256": "f0686587be47a8f365231de12e985515e09bbfbb93c7f69e12910fb4f3959e7a"
+    },
+    "validation/natural-service-route/md-v0314-nine-crystals-save01/ram_304461.bin": {
+      "stored": "objects/177de6de1656d3c84d83df60f8d263c86fc12c19241bf77b08a31d1f01f49ac6.gz",
+      "raw_sha256": "177de6de1656d3c84d83df60f8d263c86fc12c19241bf77b08a31d1f01f49ac6",
+      "raw_bytes": 65536,
+      "stored_sha256": "72da39b7984d69be5b07e4873a2a9468d5adc0386669bcc2a8f859050af3cea1"
+    },
+    "validation/natural-service-route/md-v0314-nine-crystals-save01/ram_304611.bin": {
+      "stored": "objects/4ae3a37a540f1367b52f37bceabb679c2548068d735a4fe3d939bce8ff802558.gz",
+      "raw_sha256": "4ae3a37a540f1367b52f37bceabb679c2548068d735a4fe3d939bce8ff802558",
+      "raw_bytes": 65536,
+      "stored_sha256": "01f6a70b0773bd30f67ee1e61290cc4a8aea6bd839fc887b426fbc1a84138c58"
+    },
+    "validation/natural-service-route/md-v0314-nine-crystals-save01/report.json": {
+      "stored": "objects/b618736cf38adbc2728cf8404d5fbf3d2363fbeaaf12080f9d732f88ab832b52.gz",
+      "raw_sha256": "b618736cf38adbc2728cf8404d5fbf3d2363fbeaaf12080f9d732f88ab832b52",
+      "raw_bytes": 1887,
+      "stored_sha256": "bf96977be9b7bcd2473ecce347a44fa8dc164d512b956971661105884e4d06ac"
+    },
+    "validation/natural-service-route/md-v0314-nine-crystals-save01/serialized-payload.bin": {
+      "stored": "objects/820211b0db18c8c2238659eba3ffed0bb5b70153bd0d9edf287d45261d4ab4b8.gz",
+      "raw_sha256": "820211b0db18c8c2238659eba3ffed0bb5b70153bd0d9edf287d45261d4ab4b8",
+      "raw_bytes": 592,
+      "stored_sha256": "6a6404656b516066c70440d0c0dcc2ad39b89a3ea091ce7dfcc798ff3fd39b1c"
+    },
+    "validation/natural-service-route/md-v0314-nine-crystals-save01/vdp_regs_304191.bin": {
+      "stored": "objects/1c49de91fb297da4e43d2fa84f55c5e394814877557675410b671b05935c545f.gz",
+      "raw_sha256": "1c49de91fb297da4e43d2fa84f55c5e394814877557675410b671b05935c545f",
+      "raw_bytes": 32,
+      "stored_sha256": "11f861f97387582539d13092dd57d21e9860099ad1db82ae59fbd842c40bdce4"
+    },
+    "validation/natural-service-route/md-v0314-nine-crystals-save01/vdp_regs_304192.bin": {
+      "stored": "objects/1c49de91fb297da4e43d2fa84f55c5e394814877557675410b671b05935c545f.gz",
+      "raw_sha256": "1c49de91fb297da4e43d2fa84f55c5e394814877557675410b671b05935c545f",
+      "raw_bytes": 32,
+      "stored_sha256": "11f861f97387582539d13092dd57d21e9860099ad1db82ae59fbd842c40bdce4"
+    },
+    "validation/natural-service-route/md-v0314-nine-crystals-save01/vdp_regs_304225.bin": {
+      "stored": "objects/d405a6331c0d18dc6f415e375bc18d24e25371534ed9180f2369027432f5faab.gz",
+      "raw_sha256": "d405a6331c0d18dc6f415e375bc18d24e25371534ed9180f2369027432f5faab",
+      "raw_bytes": 32,
+      "stored_sha256": "ab5d9fc509d2211c680227537e8f49b0bd1ae385ed0c9c93485cd540d20b1a19"
+    },
+    "validation/natural-service-route/md-v0314-nine-crystals-save01/vdp_regs_304321.bin": {
+      "stored": "objects/4144821b664483ec0490a934c4079d5e10a5798e00d7747058892d06bdf4eb8d.gz",
+      "raw_sha256": "4144821b664483ec0490a934c4079d5e10a5798e00d7747058892d06bdf4eb8d",
+      "raw_bytes": 32,
+      "stored_sha256": "4d15d8d98364e87dd38fe5a6cff5f1967856fec971b0069dee61031b28d5de27"
+    },
+    "validation/natural-service-route/md-v0314-nine-crystals-save01/vdp_regs_304401.bin": {
+      "stored": "objects/4144821b664483ec0490a934c4079d5e10a5798e00d7747058892d06bdf4eb8d.gz",
+      "raw_sha256": "4144821b664483ec0490a934c4079d5e10a5798e00d7747058892d06bdf4eb8d",
+      "raw_bytes": 32,
+      "stored_sha256": "4d15d8d98364e87dd38fe5a6cff5f1967856fec971b0069dee61031b28d5de27"
+    },
+    "validation/natural-service-route/md-v0314-nine-crystals-save01/vdp_regs_304402.bin": {
+      "stored": "objects/4144821b664483ec0490a934c4079d5e10a5798e00d7747058892d06bdf4eb8d.gz",
+      "raw_sha256": "4144821b664483ec0490a934c4079d5e10a5798e00d7747058892d06bdf4eb8d",
+      "raw_bytes": 32,
+      "stored_sha256": "4d15d8d98364e87dd38fe5a6cff5f1967856fec971b0069dee61031b28d5de27"
+    },
+    "validation/natural-service-route/md-v0314-nine-crystals-save01/vdp_regs_304461.bin": {
+      "stored": "objects/1c49de91fb297da4e43d2fa84f55c5e394814877557675410b671b05935c545f.gz",
+      "raw_sha256": "1c49de91fb297da4e43d2fa84f55c5e394814877557675410b671b05935c545f",
+      "raw_bytes": 32,
+      "stored_sha256": "11f861f97387582539d13092dd57d21e9860099ad1db82ae59fbd842c40bdce4"
+    },
+    "validation/natural-service-route/md-v0314-nine-crystals-save01/vdp_regs_304611.bin": {
+      "stored": "objects/1c49de91fb297da4e43d2fa84f55c5e394814877557675410b671b05935c545f.gz",
+      "raw_sha256": "1c49de91fb297da4e43d2fa84f55c5e394814877557675410b671b05935c545f",
+      "raw_bytes": 32,
+      "stored_sha256": "11f861f97387582539d13092dd57d21e9860099ad1db82ae59fbd842c40bdce4"
+    },
+    "validation/natural-service-route/md-v0314-nine-crystals-save01/vram_304191.bin": {
+      "stored": "objects/19e89192e11b696a34f6e1243b261e227fadfb16b1fc94544ec2c4a2dc79e088.gz",
+      "raw_sha256": "19e89192e11b696a34f6e1243b261e227fadfb16b1fc94544ec2c4a2dc79e088",
+      "raw_bytes": 65536,
+      "stored_sha256": "b8e4f0b0988bc56b9e042f2bbde1c5cbc84e7ba14cd08514a4aebb2f99064759"
+    },
+    "validation/natural-service-route/md-v0314-nine-crystals-save01/vram_304192.bin": {
+      "stored": "objects/19e89192e11b696a34f6e1243b261e227fadfb16b1fc94544ec2c4a2dc79e088.gz",
+      "raw_sha256": "19e89192e11b696a34f6e1243b261e227fadfb16b1fc94544ec2c4a2dc79e088",
+      "raw_bytes": 65536,
+      "stored_sha256": "b8e4f0b0988bc56b9e042f2bbde1c5cbc84e7ba14cd08514a4aebb2f99064759"
+    },
+    "validation/natural-service-route/md-v0314-nine-crystals-save01/vram_304225.bin": {
+      "stored": "objects/552c1b26daaeddce8d7e9b423707363afd2a378e96f9cdcbf717091b3a3a32e0.gz",
+      "raw_sha256": "552c1b26daaeddce8d7e9b423707363afd2a378e96f9cdcbf717091b3a3a32e0",
+      "raw_bytes": 65536,
+      "stored_sha256": "6fb6530a98c06a2248b4ca9089c29650ec89e5fe1f8d262b0b9a07593ad8d5d2"
+    },
+    "validation/natural-service-route/md-v0314-nine-crystals-save01/vram_304321.bin": {
+      "stored": "objects/a2392cf8bc3a6c4c369986a2d034bdd8aee66243781b4ce0bd91b524f02a3f8f.gz",
+      "raw_sha256": "a2392cf8bc3a6c4c369986a2d034bdd8aee66243781b4ce0bd91b524f02a3f8f",
+      "raw_bytes": 65536,
+      "stored_sha256": "c51ad386d08433e081dbe4721b6f72171bad7b0be0420bb48b3cd97fe0806af8"
+    },
+    "validation/natural-service-route/md-v0314-nine-crystals-save01/vram_304401.bin": {
+      "stored": "objects/8ee63f98a0cde08901da34bfe77282511f7c7bede5bb79086f292198d046d12a.gz",
+      "raw_sha256": "8ee63f98a0cde08901da34bfe77282511f7c7bede5bb79086f292198d046d12a",
+      "raw_bytes": 65536,
+      "stored_sha256": "551b8abfbeb32dd5ab12f87e589b12ebbd9f7b07899c6bea8895ee8e9c9f27ec"
+    },
+    "validation/natural-service-route/md-v0314-nine-crystals-save01/vram_304402.bin": {
+      "stored": "objects/8ee63f98a0cde08901da34bfe77282511f7c7bede5bb79086f292198d046d12a.gz",
+      "raw_sha256": "8ee63f98a0cde08901da34bfe77282511f7c7bede5bb79086f292198d046d12a",
+      "raw_bytes": 65536,
+      "stored_sha256": "551b8abfbeb32dd5ab12f87e589b12ebbd9f7b07899c6bea8895ee8e9c9f27ec"
+    },
+    "validation/natural-service-route/md-v0314-nine-crystals-save01/vram_304461.bin": {
+      "stored": "objects/ad6fc8d5b5a650f72ffb56c8b884a116239861bc0d2042e73f03018066aeb4ec.gz",
+      "raw_sha256": "ad6fc8d5b5a650f72ffb56c8b884a116239861bc0d2042e73f03018066aeb4ec",
+      "raw_bytes": 65536,
+      "stored_sha256": "20a73725275e8c82ce3d464abe65d0ad2498119b8f785538323210cdffd94aeb"
+    },
+    "validation/natural-service-route/md-v0314-nine-crystals-save01/vram_304611.bin": {
+      "stored": "objects/c9da81c3409ce1e3b0ba0081e1c931c1f07db822535077ee31eb36fdfa47455a.gz",
+      "raw_sha256": "c9da81c3409ce1e3b0ba0081e1c931c1f07db822535077ee31eb36fdfa47455a",
+      "raw_bytes": 65536,
+      "stored_sha256": "09aa3980ada2dcf291a41c2051e5b4c544534731a25bda05195536213f53f5cd"
+    },
+    "validation/v0314-after-d9-sources/save/assisted_boss_route.py": {
+      "stored": "objects/2d26b22e732dff44a4e8f7557e72cb489d7b5b3a9f96bfdb737c869f4b2ddd8f.gz",
+      "raw_sha256": "2d26b22e732dff44a4e8f7557e72cb489d7b5b3a9f96bfdb737c869f4b2ddd8f",
+      "raw_bytes": 17757,
+      "stored_sha256": "caba9b0df8d89b632748091d60363845e1416b6ca2b290423ede1da442003de7"
+    },
+    "validation/v0314-after-d9-sources/save/assisted_prefix.py": {
+      "stored": "objects/e2c4f531f372383610a5f0cfbb46000a0b88d46045b51e799efdd9792f164cc6.gz",
+      "raw_sha256": "e2c4f531f372383610a5f0cfbb46000a0b88d46045b51e799efdd9792f164cc6",
+      "raw_bytes": 5005,
+      "stored_sha256": "02d2f445fae62e333529e30d61f2b845420358ab49900e75933d62fed53c7ced"
+    },
+    "validation/v0314-after-d9-sources/save/continue_after_d9_v0314.py": {
+      "stored": "objects/c38c8cb0cf7c72569ffc15c2aa15ea51068eaa45999e08abf8473c5e4a05aeb1.gz",
+      "raw_sha256": "c38c8cb0cf7c72569ffc15c2aa15ea51068eaa45999e08abf8473c5e4a05aeb1",
+      "raw_bytes": 4300,
+      "stored_sha256": "b234ce7bc46f64e2875c3974e2cc171ce0e7a5f37ad81ee11314eaac59576d72"
+    },
+    "validation/v0314-after-d9-sources/save/continue_d8_entry_v0314.py": {
+      "stored": "objects/927c4fd8a2ef103e016159b6747d2e6c8ff1b248bb899148adf24a80f61bc7d5.gz",
+      "raw_sha256": "927c4fd8a2ef103e016159b6747d2e6c8ff1b248bb899148adf24a80f61bc7d5",
+      "raw_bytes": 6359,
+      "stored_sha256": "67a99dab5f3dc16740ebc904c435b7a0fbe936ab9b82ff12571464695a0dd400"
+    },
+    "validation/v0314-after-d9-sources/save/natural_dungeon_route.py": {
+      "stored": "objects/5f7a3f828a0a162e66d32cb7c6029c85f1e653feff707ffc3d73711f180c8211.gz",
+      "raw_sha256": "5f7a3f828a0a162e66d32cb7c6029c85f1e653feff707ffc3d73711f180c8211",
+      "raw_bytes": 31580,
+      "stored_sha256": "7106a22319f4c29f0084e0047634c1f526b1c64957d8b0022e01af8c18fc517d"
+    },
+    "validation/v0314-after-d9-sources/save/natural_owned_overview.py": {
+      "stored": "objects/c393d2f76dcc8b7668898e4a5b83de15a43d716da99c2278c0d998c78b4e5240.gz",
+      "raw_sha256": "c393d2f76dcc8b7668898e4a5b83de15a43d716da99c2278c0d998c78b4e5240",
+      "raw_bytes": 7605,
+      "stored_sha256": "813a779563a62857885b206911416c133d2ff3d4a5ead9d2bb77716b8775f0c1"
+    },
+    "validation/v0314-after-d9-sources/save/natural_palace_world_route.py": {
+      "stored": "objects/676f6e56bb83e912dd95fe8612c9283e140260857a737594546f6cd138f81874.gz",
+      "raw_sha256": "676f6e56bb83e912dd95fe8612c9283e140260857a737594546f6cd138f81874",
+      "raw_bytes": 4524,
+      "stored_sha256": "96081fcfa9b5fa7a3d87084104b65439a2c0b8c80429a830c3277497e14cfd47"
+    },
+    "validation/v0314-after-d9-sources/save/natural_save_service.py": {
+      "stored": "objects/d72512d97a22fc38b7a98f12b397d0d78b91935da113e85e1e82b60f9986cabe.gz",
+      "raw_sha256": "d72512d97a22fc38b7a98f12b397d0d78b91935da113e85e1e82b60f9986cabe",
+      "raw_bytes": 7018,
+      "stored_sha256": "cf033ce94c60a8f6474ad174923283f45af2247e49b7608e9f4452068363ad50"
+    },
+    "validation/v0314-after-d9-sources/save/replay_assisted_prefix.py": {
+      "stored": "objects/3df2d644bef81cb79f5f6948763452ffab3ff6023b9e3b601bcff3bbd6b7df4f.gz",
+      "raw_sha256": "3df2d644bef81cb79f5f6948763452ffab3ff6023b9e3b601bcff3bbd6b7df4f",
+      "raw_bytes": 6845,
+      "stored_sha256": "676dfb2994dcd48601c2142f7a3741a482534e13b14ce9c0a309ebe6e173232d"
+    },
+    "validation/v0314-after-d9-sources/save/source_index.json": {
+      "stored": "objects/12b95c1413743565081e655ff81a43f63a81b4808e70c24d365e62a313fe9630.gz",
+      "raw_sha256": "12b95c1413743565081e655ff81a43f63a81b4808e70c24d365e62a313fe9630",
+      "raw_bytes": 1002,
+      "stored_sha256": "c831afbb901c006f5300e4b2ce74f015745ca4b175ebe1a04996e6eb17bd1fa8"
+    },
+    "validation/v0314-after-d9-sources/save/validate_game_written_save.py": {
+      "stored": "objects/9074c0975fdeb07966adb040dd540d0054e1bbe73b0efd75ee16d23df8eba807.gz",
+      "raw_sha256": "9074c0975fdeb07966adb040dd540d0054e1bbe73b0efd75ee16d23df8eba807",
+      "raw_bytes": 9797,
+      "stored_sha256": "b899846233b9802e26b0aa72bda1a8b7490c6ce71a5b3574fceba49472e2b10c"
+    },
+    "validation/v0314-after-d9-sources/save-resume/commands.json": {
+      "stored": "objects/2c46087f207d44aa5d98bb51793592fc0778b51de4255c8f497da4515e57acd1.gz",
+      "raw_sha256": "2c46087f207d44aa5d98bb51793592fc0778b51de4255c8f497da4515e57acd1",
+      "raw_bytes": 435,
+      "stored_sha256": "ace5ca30b9676e59c54d8be755ef995308e0274086b1e97ee52e291eae4d2284"
+    },
+    "validation/v0314-after-d9-sources/save-resume/finish_nine_crystal_save_v0314.py": {
+      "stored": "objects/2ac288805270feeef8ab834188543b371a7fd1e33b106529fba208db374a5653.gz",
+      "raw_sha256": "2ac288805270feeef8ab834188543b371a7fd1e33b106529fba208db374a5653",
+      "raw_bytes": 1913,
+      "stored_sha256": "0c82d7d83e47ad1b2eaf3bb130da538c6c31715e8758e66b79619b62204ecdef"
+    },
+    "validation/v0314-after-d9-sources/save-resume/natural_save_service.py": {
+      "stored": "objects/d72512d97a22fc38b7a98f12b397d0d78b91935da113e85e1e82b60f9986cabe.gz",
+      "raw_sha256": "d72512d97a22fc38b7a98f12b397d0d78b91935da113e85e1e82b60f9986cabe",
+      "raw_bytes": 7018,
+      "stored_sha256": "cf033ce94c60a8f6474ad174923283f45af2247e49b7608e9f4452068363ad50"
+    },
+    "validation/v0314-after-d9-sources/save-resume/source_index.json": {
+      "stored": "objects/cadcb280dc81728f1b12f41e68605380216d1aefa9540597439a6b40de08040b.gz",
+      "raw_sha256": "cadcb280dc81728f1b12f41e68605380216d1aefa9540597439a6b40de08040b",
+      "raw_bytes": 315,
+      "stored_sha256": "f9acaff37fc81dfdd7b29f05869d6061d8c6495d793f5fe2ae08e6421c16a077"
+    },
+    "validation/v0314-after-d9-sources/save-resume/validate_game_written_save.py": {
+      "stored": "objects/9074c0975fdeb07966adb040dd540d0054e1bbe73b0efd75ee16d23df8eba807.gz",
+      "raw_sha256": "9074c0975fdeb07966adb040dd540d0054e1bbe73b0efd75ee16d23df8eba807",
+      "raw_bytes": 9797,
+      "stored_sha256": "b899846233b9802e26b0aa72bda1a8b7490c6ce71a5b3574fceba49472e2b10c"
+    }
+  },
+  "removed_verified_generated": []
+}

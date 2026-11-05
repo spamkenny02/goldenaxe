@@ -66,7 +66,7 @@ def save_and_reload():
         '0xfa:0x5d', '--live-prefix-terrain', '--live-room-replan'])
     replay(ROUTE, 'md-' + route, lambda r: r['reached_entrance'])
 
-    trial = 'v0314-game-written-save01'
+    trial = 'v0314-nine-crystals-save01'
     run('natural_save_service.py', ['--prefix', 'md-' + route, '--assisted-prefix',
         '--trial', trial])
     run('validate_game_written_save.py', ['--trace', f'{SERVICE}/md-{trial}',

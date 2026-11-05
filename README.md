@@ -24,9 +24,14 @@ dégâts normaux20+20+32 PV, fin à20 PV. Le générique dure7423 images ;
 le parcours se termine à404608. Chaque point retenu est reproduit en
 RAM complète/image exacte. Une mort normale puis Continuer fait partie du
 parcours ; les protections de trajet sont retirées avant chaque boss.
-La sauvegarde réelle à neuf cristaux et la fidélité globale restent distinctes.
+La sauvegarde réelle à neuf cristaux est également vérifiée ; la fidélité globale reste à auditer.
 [Campagne et fin v314](analysis/cold_palace_final_v0314_report.json)
 · [PV du dernier combat](analysis/palace_final_health_v0314_report.json)
+La **sauvegarde à neuf cristaux** est également écrite en jeu et reproduite
+exactement :592 octets du contenu et fichier SRAM identiques. Après
+redémarrage, Continuer restaure les objets, les neuf marqueurs, le HUD et
+le déplacement normal. Le test au premier cristal reste conservé séparément.
+[Sauvegarde réelle à neuf cristaux v314](analysis/game_written_save_v0314_nine_crystals_report.json)
 
 La **v0314** corrige le démarrage et le fondu sonore de l’intro. La première
 musique, le fondu vers le titre et ses animations s’alignent sur la SMS en
@@ -89,7 +94,7 @@ Le **Ballon est utilisé normalement**, puis la carte du monde se referme
 avec restitution du décor/HUD vérifiée sur768 mots physiques. La **porte
 aux neuf cristaux** s’ouvre réellement et l’entrée du palais18D est relue en
 RAM/image exacte, à104 PV/72 PM. Les deux gardiens et la Hache d’or sont vérifiés.
-Death Adder et le générique sont vérifiés ; la sauvegarde à neuf cristaux reste en test.
+Death Adder et le générique sont vérifiés ; la sauvegarde à neuf cristaux est également vérifiée.
 [Ballon et retour de carte v314](analysis/owned_overview_v0314_report.json)
 · [Porte et entrée du palais v314](analysis/cold_palace_entry_v0314_report.json)
 
