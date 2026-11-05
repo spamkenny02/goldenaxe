@@ -1,0 +1,11 @@
+--- a/sgdk/src/sys.c
++++ b/megadrive/src/gaw_sgdk_sys.c
+@@ -438,3 +438,5 @@
+-    dst = (u16*) RAM;
+-    len = 0x8000;
+-    while(len--) *dst++ = 0;
++    {
++        vu32 *clear = (vu32*) RAM;
++        u16 count = 0x4000;
++        while(count--) *clear++ = 0;
++    }

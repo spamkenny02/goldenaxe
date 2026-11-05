@@ -1,0 +1,104 @@
+--- a/megadrive/src/intro.inc
++++ b/megadrive/src/intro.inc
+@@ -3,6 +3,7 @@
+ extern const u8 intro_bank6[],intro_fixed[],intro_mono_font[],intro_symbols_rle[];
+ extern const u8 intro_fire_colors[],intro_lightning_colors[];
+ static u16 intro_scene,intro_counter,intro_abort;
++static bool intro_boot_music;
+ static volatile u16 intro_line,intro_running;
+ static u16 intro_actor_state[16],intro_actor_pose[16];
+ static const u8 *intro_actor_templates;
+@@ -213,6 +214,7 @@
+ {
+     u16 n,destination;const u8 *text=intro_bank6+0x39ce,*patch=intro_address(0x10c3);
+     intro_scene=intro_abort=intro_timer=intro_counter=intro_line=0;intro_running=1;
++    if(intro_boot_music) intro_boot_music=FALSE; else sound_music(0x85);
+     title_phase=FALSE;VDP_setEnable(FALSE);map_origin=0x3800;
+     memset(sms_vram,0,sizeof(sms_vram));
+     decode_planes(number_font_rle,sms_vram+0x2600,4);
+@@ -229,12 +231,11 @@
+     sms_palette[22]=0x2a;sms_palette[23]=0;sms_palette[31]=2;
+     convert_patterns_range_fast(0,512);VDP_loadTileData(md_patterns,16,512,CPU);
+     set_palette(sms_palette);draw_map();VDP_setEnable(TRUE);
+-    sound_music(0x85);
+     /* Reserve the source startup-resource interval before the first scene.
+-     * These21 NTSC /22 PAL IRQs align the natural title epoch while keeping
++     * These27 NTSC /26 PAL IRQs align the natural title epoch while keeping
+      * the existing interval from story completion to the title unchanged.
+      * Foreground loading does not poll for an intro abort; IRQ audio runs. */
+-    { u16 loading=SYS_isPAL()?22:21;while(loading--) wait_frame(); }
++    { u16 loading=SYS_isPAL()?26:27;while(loading--) wait_frame(); }
+     intro_load_scene(1);
+     while(*text && !intro_abort)
+     {
+--- a/megadrive/src/main.c
++++ b/megadrive/src/main.c
+@@ -397,6 +397,8 @@
+     const u8 *src=title_bank7+16;
+     u16 n,k,loading_frames;
+     u32 loading_started,budget;
++    /* Source0B48: twelve fade steps, one every four audio IRQs. */
++    sound_ram[12]=sound_ram[13]=4;sound_ram[11]=12;
+     fade_before_title();
+     if(title_requested) return;
+     loading_started=vtimer;
+@@ -429,7 +431,8 @@
+     VDP_setEnable(TRUE);
+     fade_title_palette(TRUE);
+     if(title_requested) return;
+-    sound_music(0x81);
++    /* Source title audio starts one IRQ after the final palette hold. */
++    sound_music_delayed(0x81,1);
+     /* 165C..167E: three cape poses, six IRQs each, eleven cycles. */
+     for(n=0;n<11;n++)
+         for(k=0;k<3;k++)
+@@ -3515,6 +3518,9 @@
+                   0x11111111,0x11111111,0x11111111,0x11111111};
+     const u16 green=0x06a6; /* SMS $19: R=1,G=2,B=1 => MD 3,5,3. */
+     (void)hardReset;
++    sound_stop();sound_ram[3]=SYS_isPAL()?0:0x80;SYS_setVIntCallback(world_vint);
++    if(!SYS_isPAL()) { wait_frame();wait_frame();sound_ram[4]=3; } else wait_frame();
++    sound_music(0x85);intro_boot_music=TRUE;
+     /* Only indoor 2x2 tile updates copy data into the DMA staging buffer.
+        2 KiB leaves room for the live dialogue snapshot in the 64 KiB RAM. */
+     DMA_setBufferSize(2048);
+@@ -3527,7 +3533,6 @@
+     PAL_setColor(33,green);
+     VDP_fillTileMapRect(BG_B,TILE_ATTR_FULL(PAL2,0,0,0,1),0,2,32,24);
+     JOY_init();game_rng_reset();save_init();
+-    sound_stop();sound_ram[3]=SYS_isPAL()?0:0x80;SYS_setVIntCallback(world_vint);
+     while(TRUE)
+     {
+         title_phase=TRUE; title_requested=FALSE;
+--- a/megadrive/src/sound.inc
++++ b/megadrive/src/sound.inc
+@@ -12,6 +12,7 @@
+ static SourceAudioReaderStatus sound_reader_status;
+ static volatile SourceClockWork sound_source_work; /* Complete8000 T/M1, excludes CALL. */
+ static volatile u16 sound_request;
++static u16 sound_request_delay;
+ static volatile u16 sound_effect_request;
+ static u8 sound_read(u16 address)
+ {
+@@ -29,8 +30,9 @@
+     SourceClockWork work;source_audio_stop(sound_ram,&work);sound_mute();
+ }
+ void sound_effect(u16 command) { sound_effect_request=command; }
+-void sound_effect_main(u16 command) { sound_request=command; }
+-static void sound_music(u16 command) { sound_request=command;sound_current_track=command; }
++void sound_effect_main(u16 command) { sound_request_delay=0;sound_request=command; }
++static void sound_music(u16 command) { sound_request_delay=0;sound_request=command;sound_current_track=command; }
++static void sound_music_delayed(u16 command,u16 delay) { sound_request_delay=delay;sound_request=command; }
+ static void sound_reader_emit(void *context,const u8 *writes,u16 count)
+ {
+     u16 n;(void)context;for(n=0;n<count;n++) PSG_write(writes[n]);
+@@ -40,7 +42,8 @@
+     u8 accepted;SourceClockWork work;
+     /* Source status is latched by world_vint before video and audio. */
+     if(intro_timer) intro_timer--;
+-    if(sound_request) { sound_ram[6]=sound_request;sound_request=0; }
++    if(sound_request_delay) sound_request_delay--;
++    else if(sound_request) { sound_ram[6]=sound_request;sound_request=0; }
+     if(sound_effect_request) { sound_ram[8]=sound_effect_request;sound_effect_request=0; }
+     /* IRQ-only workspace D00..F05 is above dialogue buffers 900..CFF.
+      * Foreground RLE/map data stay below 900; full clears do not retain

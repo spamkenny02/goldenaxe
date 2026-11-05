@@ -8714,7 +8714,7 @@
     "bytes": 2097152,
     "archived_utc": "2026-11-05T11:32:18.468876+00:00",
     "rom": "v0313-48fb6e92/gaw-megadrive-v0313.bin",
-    "notes": "Chargement initial corrige, titre PAL/NTSC aligne SMS ; huit cristaux, entree D9 et premier gardien sans protection verifies. Suite D9, fin et sauvegarde a valider.",
+    "notes": "Titre PAL/NTSC corrige ; neuf cristaux, ballon, retours et sauvegarde reelle/Continuer verifies. Palais et fin a valider.",
     "validation": "targeted_checks_passed",
     "reports": [
       {
@@ -8736,6 +8736,22 @@
       {
         "file": "d9_midboss_v0313_report.json",
         "sha256": "e4ee06b992b1fa69c6ef2dc2cdc68ea8f4ff3dd707e7fd37d8af75e986367314"
+      },
+      {
+        "file": "d9_balloon_v0313_report.json",
+        "sha256": "2dadb132b8ab9a599386af27216c7d86b5200bbf7172e788e20ca35700056cfa"
+      },
+      {
+        "file": "intro_audio_build_cleanup_v0313_report.json",
+        "sha256": "f60007869b57d7d8ab0e997799bd91b5efca35123e2053392cdc59c28b45b694"
+      },
+      {
+        "file": "d9_campaign_v0313_report.json",
+        "sha256": "470847459571d66f2f6f671c3f9a5ec6cbd72af539210bf19b210a56a4631004"
+      },
+      {
+        "file": "game_written_save_v0313_report.json",
+        "sha256": "62082e34579c8e2bcc32548c53bc0d3ea22dfb519c3ee89543a1a97075343a6b"
       }
     ]
   }

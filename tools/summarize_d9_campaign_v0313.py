@@ -80,7 +80,12 @@ def main():
    if kind == 'boss': assert r['full_ram_prediction_matches'] > 0
    elif not r['full_ram_prediction_matches']:
     assert not r['planning_decisions']
-    assert not any(a.get('hp',0)>0 for e in load(folder/'events.json') for a in e.get('actors',[]))
+    # The controller finishes on reaching the exterior. Its newly spawned
+    # outdoor actors are retained; prediction coverage concerns the return
+    # through the already-cleared dungeon, not deleting exterior enemies.
+    assert not r['first_extension_damage']
+    assert not any(a.get('hp',0)>0 for e in load(folder/'events.json')
+                   if e.get('room',0x100)>=0x100 for a in e.get('actors',[]))
    assert not r['stack_only_difference_windows']
    sms = data('sms_vram',16384); vram = read(folder/f'vram_{cap["frames"]:05d}.bin')
    regs = read(folder/f'vdp_regs_{cap["frames"]:05d}.bin'); base = (regs[2]&56)<<10; width = [32,64,32,128][regs[16]&3]

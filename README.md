@@ -19,28 +19,23 @@ Checksum Mega Drive : `544B`
 
 La **v0313** intègre la correction du chargement initial : les publications
 du titre s’alignent sur SMS en PAL/NTSC, avec 40 images normalisées comparées.
-Les 65 lignes du récit sont vérifiées dans les deux régions, avec au plus une
-image d’écart en NTSC. Le parcours depuis le démarrage atteint **huit cristaux**
-et le retour en extérieur à **96/96 PV et 72 PM**. Dix entrées de boss sont
-contrôlées sans protection ; un second rejeu reproduit exactement les 65 536
-octets de RAM et l’image finale. D9, le palais, la fin et la sauvegarde restent
-à vérifier sur cette version.
-[Livraison v313 et périmètre vérifié](analysis/startup_v0313_report.json)
+Les 65 lignes du récit sont vérifiées dans les deux régions. Le parcours depuis
+le démarrage atteint **neuf cristaux** et le retour en extérieur à **104/104 PV
+et 72 PM**. Les treize combats de boss sont vérifiés sans protection. Les étapes
+retenues passent leurs rejeux froids exacts en RAM et en image.
+[Neuvième cristal et sortie D9](analysis/d9_campaign_v0313_report.json)
 
-L’entrée de **D9 sur v313** est vérifiée après le paiement réel de 10 cornes
-et l’ouverture de la tombe avec la Cloche de glace. Les trois étapes ont un
-rejeu froid exact en RAM et en image ; le héros entre avec **96 PV, 72 PM,
-13 cornes et une clé**, en conservant les huit cristaux. Les gardiens de D9
-et son cristal restent à vérifier.
-[Transport, Cloche de glace et entrée D9](analysis/d9_entry_v0313_report.json)
+Le navire, la clé des voleurs et le ballon sont obtenus en jeu. Le combat
+principal de D9 inflige un coup normal de 20 PV ; le cristal remplit ensuite
+la nouvelle capacité de santé. Le retour reste sans protection.
+[Second gardien et ballon](analysis/d9_balloon_v0313_report.json)
 
-Le **premier gardien de D9** est vaincu sans protection : deux coups normaux
-font passer le héros de 96 à **64 PV**, avec 72 PM. Les deux passages Terre,
-l’antichambre, le retrait de l’aide et le combat ont chacun un rejeu froid
-exact en RAM et en image. Les 174 prédictions du combat correspondent à la
-RAM réellement obtenue. Le second gardien, le ballon et le cristal restent
-à vérifier sur v313.
-[Premier gardien de D9](analysis/d9_midboss_v0313_report.json)
+La sauvegarde réelle dans le premier emplacement et le rechargement par
+**Continuer** sont vérifiés : objets et neuf cristaux restaurés, HUD physique
+et déplacement contrôlés, sans écriture RAM de test ni suppression d’ennemis
+au rechargement. Le palais et la fin restent à valider.
+[Sauvegarde en jeu et Continuer v313](analysis/game_written_save_v0313_report.json)
+Les étapes v312/v313 ci-dessous conservent leurs périmètres historiques.
 
 Les étapes v312 ci-dessous documentent la préparation du parcours et les
 corrections précédentes.
@@ -576,9 +571,10 @@ Les rapports v0305 ci-dessus conservent leur périmètre historique.
 
 ## Campagne et travail restant
 
-Sur la ROM courante **v0313**, huit cristaux et le retour en extérieur sont
-vérifiés depuis le démarrage. Le navire et la clé des voleurs sont acquis
-en jeu. Le neuvième donjon, le palais, la fin et la sauvegarde restent à valider.
+Sur la ROM courante **v0313**, neuf cristaux et le retour en extérieur sont
+vérifiés depuis le démarrage. Le navire, la clé des voleurs et le ballon sont
+acquis en jeu. Le premier emplacement de sauvegarde et Continuer sont vérifiés ;
+le palais et la fin restent à valider.
 La protection de test est déclarée et limitée aux approches, puis retirée
 avant les combats de boss. Aucun objet, ressource ou progression n’est importé.
 
@@ -616,6 +612,13 @@ Les outils de validation mettent en cache les manifestes d'archives pendant
 un processus et les rechargent si leur signature de fichier change. Les hashes
 et la decompression restent controles a chaque lecture. Les trois auditsD9
 produisent des rapports strictement identiques : voir [le controle du cache](analysis/evidence_manifest_cache_v0306_report.json).
+
+Un correctif **privé** du démarrage et du fondu sonore de l’intro passe
+12 959 comparaisons de canaux, tempo et registres PSG, plus 40 images du titre
+en PAL/NTSC. L’ancien enregistrement de jeu échoue sur ce binaire et comporte
+une mort : il n’est pas accepté, et le correctif n’est pas publié. Une nouvelle
+validation de jeu est nécessaire avant intégration.
+[Preuves et limites du prototype audio](analysis/intro_audio_candidate08_v0313_report.json)
 
 La correction du chargement initial est intégrée à la v313. Le binaire publié
 est identique au candidat vérifié jusqu’aux huit cristaux et à la sortie de D8.

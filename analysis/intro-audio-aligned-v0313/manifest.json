@@ -1,0 +1,692 @@
+{
+  "candidate_md_sha256": "f04dcfde6b3848b0accc8b6b62d2a093542c12d6ec255b8994f901a3909667d8",
+  "scope": "Private source-built intro/title audio evidence; gameplay replay rejected; no public release.",
+  "files": {
+    "megadrive/src/intro.inc": "0efd95539a6b71df8f51c67e0c9381bf7d853550bbc443b8fdce158a7698271a",
+    "megadrive/src/sound.inc": "e7ca8b8649386ff0b33f8a9b2ee9c0b1f66fe3fadc77742dc3978325886a9f16",
+    "tools/probe_intro_audio_boot.py": "270bc1d693baedc221d90de8a9cfe594796544705768d41e3c742ff4d4eae9e3",
+    "tools/summarize_intro_audio_candidate08_v0313.py": "f941c214cf1e3bed6124c8b8cde7294dc109c27f670b42721b329ac83084038f",
+    "tools/validate_title_cadence.py": "80ee8d9158e9af0bae1fcf1b4ccc400e3633ef68a215ab8dfa2d2c10080ba71a"
+  },
+  "compressed": {
+    "input/original.sms": {
+      "stored": "objects/852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9.gz",
+      "raw_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+      "raw_bytes": 262144,
+      "stored_sha256": "31eb6a31db0115f7b4b54e7132671b665f95c254c4a2f83f5d8450887d8f4324"
+    },
+    "megadrive/src/main.c": {
+      "stored": "objects/d5e14f94818122a3c13975ecda25d842355b9780814d9e79606ec9031afbfb7b.gz",
+      "raw_sha256": "d5e14f94818122a3c13975ecda25d842355b9780814d9e79606ec9031afbfb7b",
+      "raw_bytes": 158476,
+      "stored_sha256": "cc683abc7d6ba713dc2f4aa8c20f445129552e5f3b9bfe7f5ccc1ae2a929d4a8"
+    },
+    "validation/build_intro_audio_candidate08.py": {
+      "stored": "objects/62b2996c69b4c4af40bfbbf17bc7bbdb3655984156bbd5d4543be70408792128.gz",
+      "raw_sha256": "62b2996c69b4c4af40bfbbf17bc7bbdb3655984156bbd5d4543be70408792128",
+      "raw_bytes": 6077,
+      "stored_sha256": "65a772648961dfa86da9df04bb9a291609451c86b819340b599be7f6c021b991"
+    },
+    "validation/compare_intro_audio_title_candidate08.py": {
+      "stored": "objects/ae6fae877536f5e4d3a9f14fb5aab9b98a74427056d60b7041806475f0b7c2f3.gz",
+      "raw_sha256": "ae6fae877536f5e4d3a9f14fb5aab9b98a74427056d60b7041806475f0b7c2f3",
+      "raw_bytes": 193,
+      "stored_sha256": "355bd1d0269ecd78404f28eea6c58a9900f9310a3cf02e33cbe7b184b19afaeb"
+    },
+    "validation/intro-audio-v0313/candidate05/validation/boot-sms-ntsc/audio_channels.bin": {
+      "stored": "objects/524fe5b82446ea955782ddf3b1699938bcc5a356c4272551e466266aaeae7e2b.gz",
+      "raw_sha256": "524fe5b82446ea955782ddf3b1699938bcc5a356c4272551e466266aaeae7e2b",
+      "raw_bytes": 1248000,
+      "stored_sha256": "722806d40099029f72aa9727e36811a7ddd6f8282b8c36e226dbad8522bbf1da"
+    },
+    "validation/intro-audio-v0313/candidate05/validation/boot-sms-ntsc/audio_psg.bin": {
+      "stored": "objects/01823efd3e5c0098c25e2376130974e7ac52257843a66730e98cae3877f00246.gz",
+      "raw_sha256": "01823efd3e5c0098c25e2376130974e7ac52257843a66730e98cae3877f00246",
+      "raw_bytes": 104000,
+      "stored_sha256": "269191c3cf7289f8e462b64786772d2c64779ce9fc063d4cd1dbd6b5efb02591"
+    },
+    "validation/intro-audio-v0313/candidate05/validation/boot-sms-ntsc/audio_tempo.bin": {
+      "stored": "objects/91b530bd34af748dd161907cae611cafb3c43291ca9aff89e518be7350f324de.gz",
+      "raw_sha256": "91b530bd34af748dd161907cae611cafb3c43291ca9aff89e518be7350f324de",
+      "raw_bytes": 26000,
+      "stored_sha256": "507462272c3f896c25bb814e3b1c6f1ade6631b39963b35be38db5c7b702a4e5"
+    },
+    "validation/intro-audio-v0313/candidate05/validation/boot-sms-ntsc/observations.json": {
+      "stored": "objects/f88c2cc5669dde3e45ff5542fc0f7e99b8249bc5e706343f718a73842dbc4a47.gz",
+      "raw_sha256": "f88c2cc5669dde3e45ff5542fc0f7e99b8249bc5e706343f718a73842dbc4a47",
+      "raw_bytes": 17332,
+      "stored_sha256": "0b83aec1f7be722d8d35086b80ecf84d4139cfb3667dfa8a801201467519dfbe"
+    },
+    "validation/intro-audio-v0313/candidate05/validation/boot-sms-pal/audio_channels.bin": {
+      "stored": "objects/e1c4df64ee816bc267c37d572cd7b7bee381c0404ed102d8b3d1c944a99f6213.gz",
+      "raw_sha256": "e1c4df64ee816bc267c37d572cd7b7bee381c0404ed102d8b3d1c944a99f6213",
+      "raw_bytes": 1248000,
+      "stored_sha256": "43f5ecb560794c8bb906c3af6807304b1eebea31e44b54a5b7e491acc04a887e"
+    },
+    "validation/intro-audio-v0313/candidate05/validation/boot-sms-pal/audio_psg.bin": {
+      "stored": "objects/4408c1b52e405f7bafff32cf1e6e562ea55891cedd89b4b399470227cf73fa9e.gz",
+      "raw_sha256": "4408c1b52e405f7bafff32cf1e6e562ea55891cedd89b4b399470227cf73fa9e",
+      "raw_bytes": 104000,
+      "stored_sha256": "3ce5f5506b1f3301b52728bcd44ee6b1677b3744024f07da96e9c1f0e1997db1"
+    },
+    "validation/intro-audio-v0313/candidate05/validation/boot-sms-pal/audio_tempo.bin": {
+      "stored": "objects/a59e64d5128a9cb09c4b351b57b2855150bb386ade6dcaa8a4a5295ec89bfcff.gz",
+      "raw_sha256": "a59e64d5128a9cb09c4b351b57b2855150bb386ade6dcaa8a4a5295ec89bfcff",
+      "raw_bytes": 26000,
+      "stored_sha256": "777fcd9ce54f323ba7218be50779f5585888e484a6073548a0c5f47f0bc39558"
+    },
+    "validation/intro-audio-v0313/candidate05/validation/boot-sms-pal/observations.json": {
+      "stored": "objects/0ff00db6388d48cee3e693a59247647c310c6dafaaa5119c4cd43f1ab659f1be.gz",
+      "raw_sha256": "0ff00db6388d48cee3e693a59247647c310c6dafaaa5119c4cd43f1ab659f1be",
+      "raw_bytes": 17100,
+      "stored_sha256": "16719392c9adbb87f3bda0818f28233b800c86d38f4e12452ce8ec149f740332"
+    },
+    "validation/intro-audio-v0313/candidate08/build_report.json": {
+      "stored": "objects/a3448242bdc3cee9fc7837d19e2492dc4409e808f0cc8e0472b4ebd38132efa0.gz",
+      "raw_sha256": "a3448242bdc3cee9fc7837d19e2492dc4409e808f0cc8e0472b4ebd38132efa0",
+      "raw_bytes": 534,
+      "stored_sha256": "c7836da7f8ae7df32c0346f6896d8e01ad68f16536813f23e6ed92a0fb25c22c"
+    },
+    "validation/intro-audio-v0313/candidate08/gaw-megadrive.bin": {
+      "stored": "objects/f04dcfde6b3848b0accc8b6b62d2a093542c12d6ec255b8994f901a3909667d8.gz",
+      "raw_sha256": "f04dcfde6b3848b0accc8b6b62d2a093542c12d6ec255b8994f901a3909667d8",
+      "raw_bytes": 2097152,
+      "stored_sha256": "eb1211d1df409032b5aa29bc3f78ab7e5c650c1196b9d8caa45c34b497d338f6"
+    },
+    "validation/intro-audio-v0313/candidate08/megadrive/out/release/symbol.txt": {
+      "stored": "objects/4a9742daaffd644f3d05721fac63b6eb050b04217ad24c2a123f09ce4ac9190d.gz",
+      "raw_sha256": "4a9742daaffd644f3d05721fac63b6eb050b04217ad24c2a123f09ce4ac9190d",
+      "raw_bytes": 41726,
+      "stored_sha256": "d749efaf5d9c9d9fc3dd5f6dea9f918cf117fc8335f97d346488bfae74dccc2f"
+    },
+    "validation/intro-audio-v0313/candidate08/megadrive/src/gaw_sgdk_sys.c": {
+      "stored": "objects/5750c9644dfdd443370ad6489c5309fd7e357cac56fbad32634c7b9ad05f4c00.gz",
+      "raw_sha256": "5750c9644dfdd443370ad6489c5309fd7e357cac56fbad32634c7b9ad05f4c00",
+      "raw_bytes": 27771,
+      "stored_sha256": "e439e101ee44ef207426ffa1a06c7e357f2cbb132e854c174fc230e3a08c2f14"
+    },
+    "validation/intro-audio-v0313/candidate08/megadrive/src/intro.inc": {
+      "stored": "objects/adbdfdf8dd3aae211d41e24e7303a34738f92faf416752cdf85df46b36038e25.gz",
+      "raw_sha256": "adbdfdf8dd3aae211d41e24e7303a34738f92faf416752cdf85df46b36038e25",
+      "raw_bytes": 10166,
+      "stored_sha256": "5e51858e55decbc55c9a24f85b50d3bc7fcf339495a8a54ee4c2835f29b58579"
+    },
+    "validation/intro-audio-v0313/candidate08/megadrive/src/main.c": {
+      "stored": "objects/df344321287066c32336ea610fa7e14c494f47ed101449278052a80995784e1f.gz",
+      "raw_sha256": "df344321287066c32336ea610fa7e14c494f47ed101449278052a80995784e1f",
+      "raw_bytes": 158816,
+      "stored_sha256": "26fc6830e759b68bcbd20cc7fb074754e01cf256026354ef8c6e718c800abcb8"
+    },
+    "validation/intro-audio-v0313/candidate08/megadrive/src/sound.inc": {
+      "stored": "objects/9ea7b35f640faeb6ff301276971de6c8b342e16c897ba3ecac4ad98ff24242b9.gz",
+      "raw_sha256": "9ea7b35f640faeb6ff301276971de6c8b342e16c897ba3ecac4ad98ff24242b9",
+      "raw_bytes": 3038,
+      "stored_sha256": "0d5ad14859aed92cd9128b2f4b50d522d347a0f74295098883afaf8f7753417b"
+    },
+    "validation/intro-audio-v0313/candidate08/sdk-base-sys.c": {
+      "stored": "objects/c66eae299280f4ad7fe74370c6dc43e950d5da868b78053c2b6001c6f57355e9.gz",
+      "raw_sha256": "c66eae299280f4ad7fe74370c6dc43e950d5da868b78053c2b6001c6f57355e9",
+      "raw_bytes": 26548,
+      "stored_sha256": "4b04bed8a5120180b0f1a85f7c72f3f057933c88aee663c9c827e778772e0940"
+    },
+    "validation/intro-audio-v0313/candidate08/SGDK-license.txt": {
+      "stored": "objects/991fa8411c28f7aa81d522dc44ad5dec40a5d84ee158f3455d5f09e33c04a8d6.gz",
+      "raw_sha256": "991fa8411c28f7aa81d522dc44ad5dec40a5d84ee158f3455d5f09e33c04a8d6",
+      "raw_bytes": 1092,
+      "stored_sha256": "5549afe72eb1dd0e194ae322bbc50432dd35513db9a4d79d973eb7e425442130"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/boot-md-ntsc/audio_channels.bin": {
+      "stored": "objects/751b8ac438f3534fcb1ca0345a9af3921e9728e35f0a0f52a15e182dc26c0c13.gz",
+      "raw_sha256": "751b8ac438f3534fcb1ca0345a9af3921e9728e35f0a0f52a15e182dc26c0c13",
+      "raw_bytes": 1248000,
+      "stored_sha256": "7ec06a9f580910617c705d93517ed0dd6382244abffa45bfd8bbddea0f29f159"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/boot-md-ntsc/audio_psg.bin": {
+      "stored": "objects/01823efd3e5c0098c25e2376130974e7ac52257843a66730e98cae3877f00246.gz",
+      "raw_sha256": "01823efd3e5c0098c25e2376130974e7ac52257843a66730e98cae3877f00246",
+      "raw_bytes": 104000,
+      "stored_sha256": "269191c3cf7289f8e462b64786772d2c64779ce9fc063d4cd1dbd6b5efb02591"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/boot-md-ntsc/audio_tempo.bin": {
+      "stored": "objects/c08c5d36662f27a95b392e4831732ac65bdc7d7aa61c4a21f3c396b4b7dd1d19.gz",
+      "raw_sha256": "c08c5d36662f27a95b392e4831732ac65bdc7d7aa61c4a21f3c396b4b7dd1d19",
+      "raw_bytes": 26000,
+      "stored_sha256": "7551e1f3fecff238baaf9df34c7049713abf410cf6703293473775eb8aa0b852"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/boot-md-ntsc/observations.json": {
+      "stored": "objects/f2d9077688129a68874b3cfa5885674c4e1ee6024083beb3038733a1470a89f2.gz",
+      "raw_sha256": "f2d9077688129a68874b3cfa5885674c4e1ee6024083beb3038733a1470a89f2",
+      "raw_bytes": 19256,
+      "stored_sha256": "5198286c811d42aa3b66b501b44361a633d3b694b8882b89fe20cc239aca8736"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/boot-md-pal/audio_channels.bin": {
+      "stored": "objects/ffe3cf1c3cba70a59790041439cd2b11a599afc9c308ae12c971bea5c1fca773.gz",
+      "raw_sha256": "ffe3cf1c3cba70a59790041439cd2b11a599afc9c308ae12c971bea5c1fca773",
+      "raw_bytes": 1248000,
+      "stored_sha256": "fad7ecc8284f73a6885fdd717997b6254920487988b7dfe01cb628b2d289bd3d"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/boot-md-pal/audio_psg.bin": {
+      "stored": "objects/4408c1b52e405f7bafff32cf1e6e562ea55891cedd89b4b399470227cf73fa9e.gz",
+      "raw_sha256": "4408c1b52e405f7bafff32cf1e6e562ea55891cedd89b4b399470227cf73fa9e",
+      "raw_bytes": 104000,
+      "stored_sha256": "3ce5f5506b1f3301b52728bcd44ee6b1677b3744024f07da96e9c1f0e1997db1"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/boot-md-pal/audio_tempo.bin": {
+      "stored": "objects/a59e64d5128a9cb09c4b351b57b2855150bb386ade6dcaa8a4a5295ec89bfcff.gz",
+      "raw_sha256": "a59e64d5128a9cb09c4b351b57b2855150bb386ade6dcaa8a4a5295ec89bfcff",
+      "raw_bytes": 26000,
+      "stored_sha256": "777fcd9ce54f323ba7218be50779f5585888e484a6073548a0c5f47f0bc39558"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/boot-md-pal/observations.json": {
+      "stored": "objects/034c3b086adcd29312c198cb1e9f990cc387661139f5926e8d829fc472a2fded.gz",
+      "raw_sha256": "034c3b086adcd29312c198cb1e9f990cc387661139f5926e8d829fc472a2fded",
+      "raw_bytes": 16945,
+      "stored_sha256": "c2d510b0706f4199e83eee599abd4ead061deef24544cdb2fe03bbf03e303ec1"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/md-title-cadence-natural-audio08/frame_06046.png": {
+      "stored": "objects/662f5b6bc9a0782c43e100cd1e77968dad547ebcea39801ca36f884e886a9780.gz",
+      "raw_sha256": "662f5b6bc9a0782c43e100cd1e77968dad547ebcea39801ca36f884e886a9780",
+      "raw_bytes": 4327,
+      "stored_sha256": "5d36f17fb059cf538c1345d5965daed44310676b771e9e417b8b26affd360dfa"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/md-title-cadence-natural-audio08/frame_06052.png": {
+      "stored": "objects/fcee52a1dfaaea96539773677ddc1f56cd32ca2c4e9ae29f5656085aed3d5d27.gz",
+      "raw_sha256": "fcee52a1dfaaea96539773677ddc1f56cd32ca2c4e9ae29f5656085aed3d5d27",
+      "raw_bytes": 4367,
+      "stored_sha256": "fda1217d446646a3bd1407db423cfae2d44647e1b0ed965ac00fa89dd4461b02"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/md-title-cadence-natural-audio08/frame_06058.png": {
+      "stored": "objects/59794484e7d6b8ba9b8bc23ed515d136a68ae56016a3a4b0b29d2af3890a9c30.gz",
+      "raw_sha256": "59794484e7d6b8ba9b8bc23ed515d136a68ae56016a3a4b0b29d2af3890a9c30",
+      "raw_bytes": 4359,
+      "stored_sha256": "e531d0e9f62602a8c04151394f8955f8f70adc544156120a5e0db237c88508c3"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/md-title-cadence-natural-audio08/frame_06244.png": {
+      "stored": "objects/b190a746cbed265b261c365aeeaa1b26faf559991e555f480c7fa00efb8053bb.gz",
+      "raw_sha256": "b190a746cbed265b261c365aeeaa1b26faf559991e555f480c7fa00efb8053bb",
+      "raw_bytes": 5198,
+      "stored_sha256": "a3ac72df3ea18ae65ae70b841240b0978efb8a0ec513fab1c1b18a57e675c20a"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/md-title-cadence-natural-audio08/frame_06250.png": {
+      "stored": "objects/28514c714e2040ab97e1b27ae5fd9bc90d82f86d6c0c6dfd2901b65ecff60ce7.gz",
+      "raw_sha256": "28514c714e2040ab97e1b27ae5fd9bc90d82f86d6c0c6dfd2901b65ecff60ce7",
+      "raw_bytes": 5980,
+      "stored_sha256": "c9d1183537f35bd3830db08547d615507ea389a0a8bd80023cd5b527d65e4cb6"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/md-title-cadence-natural-audio08/frame_06256.png": {
+      "stored": "objects/aa46835319ba78908b2b4355710d14c25ba4e6474582e329790d274659431eeb.gz",
+      "raw_sha256": "aa46835319ba78908b2b4355710d14c25ba4e6474582e329790d274659431eeb",
+      "raw_bytes": 6489,
+      "stored_sha256": "7ddf0b98598fc9cad7b7681b086cb68f9fe79e8b71ed1411e8daa6aa1352c702"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/md-title-cadence-natural-audio08/frame_06262.png": {
+      "stored": "objects/e70c74837252af878f518354faf1149a0cfe6bdefce8673ae990f2e755619c01.gz",
+      "raw_sha256": "e70c74837252af878f518354faf1149a0cfe6bdefce8673ae990f2e755619c01",
+      "raw_bytes": 6924,
+      "stored_sha256": "98992ce047bbc8869d550ff849c00029f471c8e5a73422fa56628f9a432290a3"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/md-title-cadence-natural-audio08/frame_06268.png": {
+      "stored": "objects/e42b3e60f13ea8776b5c8587dbb34d4f2cd7293febc14b1333fefc29dc5187ec.gz",
+      "raw_sha256": "e42b3e60f13ea8776b5c8587dbb34d4f2cd7293febc14b1333fefc29dc5187ec",
+      "raw_bytes": 7108,
+      "stored_sha256": "a69ac38727bf9c47439fb28650e1e58353f7674fa35a1ad2250d78ab79959a20"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/md-title-cadence-natural-audio08/frame_06274.png": {
+      "stored": "objects/89837698b5a1a2ed9a2579e1405e3b90f5eddb4efa836709ffec1af94cf7e0e6.gz",
+      "raw_sha256": "89837698b5a1a2ed9a2579e1405e3b90f5eddb4efa836709ffec1af94cf7e0e6",
+      "raw_bytes": 7341,
+      "stored_sha256": "638f3953028307a3059b0af024775b2d14290a677c4e9292f05be53d4fd1e721"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/md-title-cadence-natural-audio08/frame_06280.png": {
+      "stored": "objects/768b6b5692966f55412ec2dc58102c0b53fd17b244096f52baa1bf9924872fa0.gz",
+      "raw_sha256": "768b6b5692966f55412ec2dc58102c0b53fd17b244096f52baa1bf9924872fa0",
+      "raw_bytes": 7423,
+      "stored_sha256": "d116c91f5451e9dcd8bde8a08a61d5479b948804d4f2dfa590a4489055251104"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/md-title-cadence-natural-audio08/frame_06286.png": {
+      "stored": "objects/d46beff47e2241a685d73b2d441bbbc636723519e848c10b89919ac45e69ab7e.gz",
+      "raw_sha256": "d46beff47e2241a685d73b2d441bbbc636723519e848c10b89919ac45e69ab7e",
+      "raw_bytes": 7436,
+      "stored_sha256": "729cfa42f23d3bff8d3d2d133fe7296fcfc8815dc1537da9248e64f37871a664"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/md-title-cadence-natural-audio08/frame_06292.png": {
+      "stored": "objects/e07e2964ce4b492f032577d3ab54fab0912f89d56a96d66b90a5b06869848473.gz",
+      "raw_sha256": "e07e2964ce4b492f032577d3ab54fab0912f89d56a96d66b90a5b06869848473",
+      "raw_bytes": 7476,
+      "stored_sha256": "890add95262a63154c6888e253496aad920268f38bbd7fd011a19a3c0b482ca8"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/md-title-cadence-natural-audio08/frame_06359.png": {
+      "stored": "objects/a7ef799bb3b8cc4b55c06248579cf30b2b8e47dd7fe443d8037d82fa42b5c0b5.gz",
+      "raw_sha256": "a7ef799bb3b8cc4b55c06248579cf30b2b8e47dd7fe443d8037d82fa42b5c0b5",
+      "raw_bytes": 8172,
+      "stored_sha256": "d7e462609a9426549911a6b07dd8bb77ea6fddcf340b472ded7f788dff1a70ac"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/md-title-cadence-natural-audio08/frame_06360.png": {
+      "stored": "objects/b0893f6a72864da129d3460164344845201d51410d0ed7b4d3c83cceb589d012.gz",
+      "raw_sha256": "b0893f6a72864da129d3460164344845201d51410d0ed7b4d3c83cceb589d012",
+      "raw_bytes": 8394,
+      "stored_sha256": "2686e6444cd1d98b7113cf9f222ba46bc3e84f5fbb7ddfd96cd6b642434f4fdd"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/md-title-cadence-natural-audio08/frame_06361.png": {
+      "stored": "objects/1f066527b6debbf427be8abad3e02dc698f03b2dee891da9e62df66041ecfbd4.gz",
+      "raw_sha256": "1f066527b6debbf427be8abad3e02dc698f03b2dee891da9e62df66041ecfbd4",
+      "raw_bytes": 8594,
+      "stored_sha256": "9af72a04a568ec681478394d8f82ad71dfd6d47be34c7cf76aba4ef06b2d7d8a"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/md-title-cadence-natural-audio08/frame_06362.png": {
+      "stored": "objects/47db85663e6889f276ec2cad87d892ef1f6febb2af8bc89f2612ce37a4d24419.gz",
+      "raw_sha256": "47db85663e6889f276ec2cad87d892ef1f6febb2af8bc89f2612ce37a4d24419",
+      "raw_bytes": 8798,
+      "stored_sha256": "557a7f50efc2969f32445b639d57c6e4c5d07f6f5d8928ca2b19a98a89bfc84f"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/md-title-cadence-natural-audio08/frame_06363.png": {
+      "stored": "objects/4f324e3d7f96879f0f47973e73b3590ff655109a8692fa088471c817e33f8b0e.gz",
+      "raw_sha256": "4f324e3d7f96879f0f47973e73b3590ff655109a8692fa088471c817e33f8b0e",
+      "raw_bytes": 8972,
+      "stored_sha256": "3a328b0a0d9dd48952dfe41d15b84fa32c3878ed8eff3f2188d8a63bc8d11b33"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/md-title-cadence-natural-audio08/frame_06364.png": {
+      "stored": "objects/803b68415d9bc9973de7a536f46d7e904633a69784bee8f6240f9d8812d78879.gz",
+      "raw_sha256": "803b68415d9bc9973de7a536f46d7e904633a69784bee8f6240f9d8812d78879",
+      "raw_bytes": 9120,
+      "stored_sha256": "2fb7ea9517ae2b0c85c11dccb8b010bb7177b1a57e0ea35af3e7e9f25767b59e"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/md-title-cadence-natural-audio08/frame_06365.png": {
+      "stored": "objects/c75136ce0ee51a13c89a6762d3f718a9535360865f59c72defee07a681f1377b.gz",
+      "raw_sha256": "c75136ce0ee51a13c89a6762d3f718a9535360865f59c72defee07a681f1377b",
+      "raw_bytes": 9228,
+      "stored_sha256": "3403f7f9f08b2f9818503534b9d9dac42c3a7dec093174294750b85839618775"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/md-title-cadence-natural-audio08/frame_06366.png": {
+      "stored": "objects/ad714a16fc9b16f8c9aca3bd6230b1250a86a65f2f62085537af95d6d7b578f7.gz",
+      "raw_sha256": "ad714a16fc9b16f8c9aca3bd6230b1250a86a65f2f62085537af95d6d7b578f7",
+      "raw_bytes": 9623,
+      "stored_sha256": "2baafa8593e875e5834830fb4f5b2ef7d794191eb315052ecc2cd0abe3b8ae11"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/md-title-cadence-pal-natural-audio08/frame_06032.png": {
+      "stored": "objects/662f5b6bc9a0782c43e100cd1e77968dad547ebcea39801ca36f884e886a9780.gz",
+      "raw_sha256": "662f5b6bc9a0782c43e100cd1e77968dad547ebcea39801ca36f884e886a9780",
+      "raw_bytes": 4327,
+      "stored_sha256": "5d36f17fb059cf538c1345d5965daed44310676b771e9e417b8b26affd360dfa"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/md-title-cadence-pal-natural-audio08/frame_06038.png": {
+      "stored": "objects/fcee52a1dfaaea96539773677ddc1f56cd32ca2c4e9ae29f5656085aed3d5d27.gz",
+      "raw_sha256": "fcee52a1dfaaea96539773677ddc1f56cd32ca2c4e9ae29f5656085aed3d5d27",
+      "raw_bytes": 4367,
+      "stored_sha256": "fda1217d446646a3bd1407db423cfae2d44647e1b0ed965ac00fa89dd4461b02"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/md-title-cadence-pal-natural-audio08/frame_06044.png": {
+      "stored": "objects/59794484e7d6b8ba9b8bc23ed515d136a68ae56016a3a4b0b29d2af3890a9c30.gz",
+      "raw_sha256": "59794484e7d6b8ba9b8bc23ed515d136a68ae56016a3a4b0b29d2af3890a9c30",
+      "raw_bytes": 4359,
+      "stored_sha256": "e531d0e9f62602a8c04151394f8955f8f70adc544156120a5e0db237c88508c3"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/md-title-cadence-pal-natural-audio08/frame_06230.png": {
+      "stored": "objects/b190a746cbed265b261c365aeeaa1b26faf559991e555f480c7fa00efb8053bb.gz",
+      "raw_sha256": "b190a746cbed265b261c365aeeaa1b26faf559991e555f480c7fa00efb8053bb",
+      "raw_bytes": 5198,
+      "stored_sha256": "a3ac72df3ea18ae65ae70b841240b0978efb8a0ec513fab1c1b18a57e675c20a"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/md-title-cadence-pal-natural-audio08/frame_06236.png": {
+      "stored": "objects/28514c714e2040ab97e1b27ae5fd9bc90d82f86d6c0c6dfd2901b65ecff60ce7.gz",
+      "raw_sha256": "28514c714e2040ab97e1b27ae5fd9bc90d82f86d6c0c6dfd2901b65ecff60ce7",
+      "raw_bytes": 5980,
+      "stored_sha256": "c9d1183537f35bd3830db08547d615507ea389a0a8bd80023cd5b527d65e4cb6"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/md-title-cadence-pal-natural-audio08/frame_06242.png": {
+      "stored": "objects/aa46835319ba78908b2b4355710d14c25ba4e6474582e329790d274659431eeb.gz",
+      "raw_sha256": "aa46835319ba78908b2b4355710d14c25ba4e6474582e329790d274659431eeb",
+      "raw_bytes": 6489,
+      "stored_sha256": "7ddf0b98598fc9cad7b7681b086cb68f9fe79e8b71ed1411e8daa6aa1352c702"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/md-title-cadence-pal-natural-audio08/frame_06248.png": {
+      "stored": "objects/e70c74837252af878f518354faf1149a0cfe6bdefce8673ae990f2e755619c01.gz",
+      "raw_sha256": "e70c74837252af878f518354faf1149a0cfe6bdefce8673ae990f2e755619c01",
+      "raw_bytes": 6924,
+      "stored_sha256": "98992ce047bbc8869d550ff849c00029f471c8e5a73422fa56628f9a432290a3"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/md-title-cadence-pal-natural-audio08/frame_06254.png": {
+      "stored": "objects/e42b3e60f13ea8776b5c8587dbb34d4f2cd7293febc14b1333fefc29dc5187ec.gz",
+      "raw_sha256": "e42b3e60f13ea8776b5c8587dbb34d4f2cd7293febc14b1333fefc29dc5187ec",
+      "raw_bytes": 7108,
+      "stored_sha256": "a69ac38727bf9c47439fb28650e1e58353f7674fa35a1ad2250d78ab79959a20"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/md-title-cadence-pal-natural-audio08/frame_06260.png": {
+      "stored": "objects/89837698b5a1a2ed9a2579e1405e3b90f5eddb4efa836709ffec1af94cf7e0e6.gz",
+      "raw_sha256": "89837698b5a1a2ed9a2579e1405e3b90f5eddb4efa836709ffec1af94cf7e0e6",
+      "raw_bytes": 7341,
+      "stored_sha256": "638f3953028307a3059b0af024775b2d14290a677c4e9292f05be53d4fd1e721"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/md-title-cadence-pal-natural-audio08/frame_06266.png": {
+      "stored": "objects/768b6b5692966f55412ec2dc58102c0b53fd17b244096f52baa1bf9924872fa0.gz",
+      "raw_sha256": "768b6b5692966f55412ec2dc58102c0b53fd17b244096f52baa1bf9924872fa0",
+      "raw_bytes": 7423,
+      "stored_sha256": "d116c91f5451e9dcd8bde8a08a61d5479b948804d4f2dfa590a4489055251104"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/md-title-cadence-pal-natural-audio08/frame_06272.png": {
+      "stored": "objects/d46beff47e2241a685d73b2d441bbbc636723519e848c10b89919ac45e69ab7e.gz",
+      "raw_sha256": "d46beff47e2241a685d73b2d441bbbc636723519e848c10b89919ac45e69ab7e",
+      "raw_bytes": 7436,
+      "stored_sha256": "729cfa42f23d3bff8d3d2d133fe7296fcfc8815dc1537da9248e64f37871a664"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/md-title-cadence-pal-natural-audio08/frame_06278.png": {
+      "stored": "objects/e07e2964ce4b492f032577d3ab54fab0912f89d56a96d66b90a5b06869848473.gz",
+      "raw_sha256": "e07e2964ce4b492f032577d3ab54fab0912f89d56a96d66b90a5b06869848473",
+      "raw_bytes": 7476,
+      "stored_sha256": "890add95262a63154c6888e253496aad920268f38bbd7fd011a19a3c0b482ca8"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/md-title-cadence-pal-natural-audio08/frame_06345.png": {
+      "stored": "objects/a7ef799bb3b8cc4b55c06248579cf30b2b8e47dd7fe443d8037d82fa42b5c0b5.gz",
+      "raw_sha256": "a7ef799bb3b8cc4b55c06248579cf30b2b8e47dd7fe443d8037d82fa42b5c0b5",
+      "raw_bytes": 8172,
+      "stored_sha256": "d7e462609a9426549911a6b07dd8bb77ea6fddcf340b472ded7f788dff1a70ac"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/md-title-cadence-pal-natural-audio08/frame_06346.png": {
+      "stored": "objects/b0893f6a72864da129d3460164344845201d51410d0ed7b4d3c83cceb589d012.gz",
+      "raw_sha256": "b0893f6a72864da129d3460164344845201d51410d0ed7b4d3c83cceb589d012",
+      "raw_bytes": 8394,
+      "stored_sha256": "2686e6444cd1d98b7113cf9f222ba46bc3e84f5fbb7ddfd96cd6b642434f4fdd"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/md-title-cadence-pal-natural-audio08/frame_06347.png": {
+      "stored": "objects/1f066527b6debbf427be8abad3e02dc698f03b2dee891da9e62df66041ecfbd4.gz",
+      "raw_sha256": "1f066527b6debbf427be8abad3e02dc698f03b2dee891da9e62df66041ecfbd4",
+      "raw_bytes": 8594,
+      "stored_sha256": "9af72a04a568ec681478394d8f82ad71dfd6d47be34c7cf76aba4ef06b2d7d8a"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/md-title-cadence-pal-natural-audio08/frame_06348.png": {
+      "stored": "objects/47db85663e6889f276ec2cad87d892ef1f6febb2af8bc89f2612ce37a4d24419.gz",
+      "raw_sha256": "47db85663e6889f276ec2cad87d892ef1f6febb2af8bc89f2612ce37a4d24419",
+      "raw_bytes": 8798,
+      "stored_sha256": "557a7f50efc2969f32445b639d57c6e4c5d07f6f5d8928ca2b19a98a89bfc84f"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/md-title-cadence-pal-natural-audio08/frame_06349.png": {
+      "stored": "objects/4f324e3d7f96879f0f47973e73b3590ff655109a8692fa088471c817e33f8b0e.gz",
+      "raw_sha256": "4f324e3d7f96879f0f47973e73b3590ff655109a8692fa088471c817e33f8b0e",
+      "raw_bytes": 8972,
+      "stored_sha256": "3a328b0a0d9dd48952dfe41d15b84fa32c3878ed8eff3f2188d8a63bc8d11b33"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/md-title-cadence-pal-natural-audio08/frame_06350.png": {
+      "stored": "objects/803b68415d9bc9973de7a536f46d7e904633a69784bee8f6240f9d8812d78879.gz",
+      "raw_sha256": "803b68415d9bc9973de7a536f46d7e904633a69784bee8f6240f9d8812d78879",
+      "raw_bytes": 9120,
+      "stored_sha256": "2fb7ea9517ae2b0c85c11dccb8b010bb7177b1a57e0ea35af3e7e9f25767b59e"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/md-title-cadence-pal-natural-audio08/frame_06351.png": {
+      "stored": "objects/c75136ce0ee51a13c89a6762d3f718a9535360865f59c72defee07a681f1377b.gz",
+      "raw_sha256": "c75136ce0ee51a13c89a6762d3f718a9535360865f59c72defee07a681f1377b",
+      "raw_bytes": 9228,
+      "stored_sha256": "3403f7f9f08b2f9818503534b9d9dac42c3a7dec093174294750b85839618775"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/md-title-cadence-pal-natural-audio08/frame_06352.png": {
+      "stored": "objects/ad714a16fc9b16f8c9aca3bd6230b1250a86a65f2f62085537af95d6d7b578f7.gz",
+      "raw_sha256": "ad714a16fc9b16f8c9aca3bd6230b1250a86a65f2f62085537af95d6d7b578f7",
+      "raw_bytes": 9623,
+      "stored_sha256": "2baafa8593e875e5834830fb4f5b2ef7d794191eb315052ecc2cd0abe3b8ae11"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/natural-dungeon-combat/md-auto-intro-audio08-d8-replay01/report.json": {
+      "stored": "objects/1949d9b8bcacdbb92c2dcebc0dced3aa0230aafb0fbb99271deebc0059e1f57b.gz",
+      "raw_sha256": "1949d9b8bcacdbb92c2dcebc0dced3aa0230aafb0fbb99271deebc0059e1f57b",
+      "raw_bytes": 1019,
+      "stored_sha256": "deaae0b90c8ded8b1c113b26f5ed174ebb4daaa1f44de3f78cf827132927b861"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/sms-title-cadence-natural-audio08/frame_06046.png": {
+      "stored": "objects/e20333d622e4515ac21b29e44d67dad022ca233534168a838bfd7bd0974edf81.gz",
+      "raw_sha256": "e20333d622e4515ac21b29e44d67dad022ca233534168a838bfd7bd0974edf81",
+      "raw_bytes": 4228,
+      "stored_sha256": "11bd70809701abb28cdb39f53314ff4507a49fccca5463708f9f87f1cca27238"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/sms-title-cadence-natural-audio08/frame_06052.png": {
+      "stored": "objects/20aa8dd22518f91e6d6346651d95e46e325d8b74bf6c91474723f449a661da59.gz",
+      "raw_sha256": "20aa8dd22518f91e6d6346651d95e46e325d8b74bf6c91474723f449a661da59",
+      "raw_bytes": 4264,
+      "stored_sha256": "0f12e354274e66ed899e2a1606af0cb563ca5e3775d6f4de8b826d363fb98102"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/sms-title-cadence-natural-audio08/frame_06058.png": {
+      "stored": "objects/272defbe8af39dde0a323ece7585cf207ff86b93af99b2f09049010e3cce7761.gz",
+      "raw_sha256": "272defbe8af39dde0a323ece7585cf207ff86b93af99b2f09049010e3cce7761",
+      "raw_bytes": 4254,
+      "stored_sha256": "247cefaf9fc8fe321ce5f6c254181aa8f2782f8ce18c0914d9a2813ee8b33b98"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/sms-title-cadence-natural-audio08/frame_06244.png": {
+      "stored": "objects/e21fcd4cc18a5669ad9cc152b4aca0a10a26ec3d96588397305f2eaf7ed4f4b8.gz",
+      "raw_sha256": "e21fcd4cc18a5669ad9cc152b4aca0a10a26ec3d96588397305f2eaf7ed4f4b8",
+      "raw_bytes": 5076,
+      "stored_sha256": "cdb41785bb38319422b01b9fcccb234ac3765fec48a7b844148e0caad0d66c1e"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/sms-title-cadence-natural-audio08/frame_06250.png": {
+      "stored": "objects/fae921fb54b0b449c9fabbc1a5d8293bb9a3e8daacd289a07cbe5d940e9a6a0b.gz",
+      "raw_sha256": "fae921fb54b0b449c9fabbc1a5d8293bb9a3e8daacd289a07cbe5d940e9a6a0b",
+      "raw_bytes": 5838,
+      "stored_sha256": "48a33f6659f348667e1a151bf2d62c12133df11764b9c2d648852eacb9e04aac"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/sms-title-cadence-natural-audio08/frame_06256.png": {
+      "stored": "objects/0e9b12036938c7a7f1fa9ef8bd19991d4c1f2391252f567de60249c3edaf7693.gz",
+      "raw_sha256": "0e9b12036938c7a7f1fa9ef8bd19991d4c1f2391252f567de60249c3edaf7693",
+      "raw_bytes": 6287,
+      "stored_sha256": "d7b115a920eb4021672768a4f441d9b51d8213c5d9148d23a4ef98aad097c574"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/sms-title-cadence-natural-audio08/frame_06262.png": {
+      "stored": "objects/a71076c1778ee069dddf6901858f387430bc7d35bd6a091eee85ab4eb7e581fc.gz",
+      "raw_sha256": "a71076c1778ee069dddf6901858f387430bc7d35bd6a091eee85ab4eb7e581fc",
+      "raw_bytes": 6713,
+      "stored_sha256": "37302ac6438ccff4305e6be7da6072980128bc6e59892443e0820e30d6c71c4e"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/sms-title-cadence-natural-audio08/frame_06268.png": {
+      "stored": "objects/d97210264e43ea6436f0740df78355bf8078d8996ed90cf9578a35f31fdc1763.gz",
+      "raw_sha256": "d97210264e43ea6436f0740df78355bf8078d8996ed90cf9578a35f31fdc1763",
+      "raw_bytes": 6900,
+      "stored_sha256": "d39215cda79e0d933c6dea82b10de1dba9e16762ce6d54bc720c83cbb28a7aad"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/sms-title-cadence-natural-audio08/frame_06274.png": {
+      "stored": "objects/bb3afa6513d966aace410e2935ced7c5554c881a600d91bbc583e173840cd48f.gz",
+      "raw_sha256": "bb3afa6513d966aace410e2935ced7c5554c881a600d91bbc583e173840cd48f",
+      "raw_bytes": 7050,
+      "stored_sha256": "e952113fc917180b4289b5ca7b0f622fb9054e018fa5eea100bf848d6de4b4c6"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/sms-title-cadence-natural-audio08/frame_06280.png": {
+      "stored": "objects/b717fdbd1df0b464f60eff26ec80297e5fefedcf601bc4151a831bfff1d0ac18.gz",
+      "raw_sha256": "b717fdbd1df0b464f60eff26ec80297e5fefedcf601bc4151a831bfff1d0ac18",
+      "raw_bytes": 7170,
+      "stored_sha256": "adcf56d39bb5f0175465589c0f7aa6ba32428d3d0dfa071d068e9a6a16a05fcf"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/sms-title-cadence-natural-audio08/frame_06286.png": {
+      "stored": "objects/8f1aab730b563266b79d73c5e3b7ade65f9089b3aa24500d07d3b94a20f8fd5a.gz",
+      "raw_sha256": "8f1aab730b563266b79d73c5e3b7ade65f9089b3aa24500d07d3b94a20f8fd5a",
+      "raw_bytes": 7171,
+      "stored_sha256": "1797cf64b25b45b61d684b144eaa4acf54c4ce8b3c73d510aa274a82b919c6ca"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/sms-title-cadence-natural-audio08/frame_06292.png": {
+      "stored": "objects/0ac2a3a7bd6019feb50cfdc803ade8dd21b3e9fbb2b388a83f784f4d3f15dd64.gz",
+      "raw_sha256": "0ac2a3a7bd6019feb50cfdc803ade8dd21b3e9fbb2b388a83f784f4d3f15dd64",
+      "raw_bytes": 7246,
+      "stored_sha256": "0d0b6250e72b52928cfdafbb8d2c82208c8d4ad69db7f2201226f7ddd7a68a6e"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/sms-title-cadence-natural-audio08/frame_06359.png": {
+      "stored": "objects/900a0f8fd0af76004199be18f30d9d21d8c9aff794a9f7f3cc4206bc7bcbc0a3.gz",
+      "raw_sha256": "900a0f8fd0af76004199be18f30d9d21d8c9aff794a9f7f3cc4206bc7bcbc0a3",
+      "raw_bytes": 7900,
+      "stored_sha256": "89114e7a34d1dadc14b9447f48a4dee17f0d9230d8891b22684923e1f7941e71"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/sms-title-cadence-natural-audio08/frame_06360.png": {
+      "stored": "objects/18d164441634e0e7aff901c55ddb9864ee0b97cddad01f4fb2a272edb6430da2.gz",
+      "raw_sha256": "18d164441634e0e7aff901c55ddb9864ee0b97cddad01f4fb2a272edb6430da2",
+      "raw_bytes": 8111,
+      "stored_sha256": "8481a9efd944b1292decea874e86f3479e943894730cfc6b72c175772062b3bd"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/sms-title-cadence-natural-audio08/frame_06361.png": {
+      "stored": "objects/83f179dd566843252f9d44d7796e6b350cf6d4ae3129fefbca2f94150a6f1b7f.gz",
+      "raw_sha256": "83f179dd566843252f9d44d7796e6b350cf6d4ae3129fefbca2f94150a6f1b7f",
+      "raw_bytes": 8303,
+      "stored_sha256": "bbd00ac6607b526fb1c4a26764989239073935f822e3e0a682343e25d4f290df"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/sms-title-cadence-natural-audio08/frame_06362.png": {
+      "stored": "objects/b309306f2b822b00381d98781321b97627d000f1ecd448aa4b36a36d7d69168f.gz",
+      "raw_sha256": "b309306f2b822b00381d98781321b97627d000f1ecd448aa4b36a36d7d69168f",
+      "raw_bytes": 8496,
+      "stored_sha256": "44758751e8f725f9cc1e3e7681d2ab77a5af3ba8ae2bd3d676c603dd482f3030"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/sms-title-cadence-natural-audio08/frame_06363.png": {
+      "stored": "objects/ba92dc71004dc165739d92adfe1490827946a8ca7230a2634eaa13a386e5906f.gz",
+      "raw_sha256": "ba92dc71004dc165739d92adfe1490827946a8ca7230a2634eaa13a386e5906f",
+      "raw_bytes": 8679,
+      "stored_sha256": "55c38798c73957435e2b8810ee55053d8a577446ed8b631ea3abb80790a14abf"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/sms-title-cadence-natural-audio08/frame_06364.png": {
+      "stored": "objects/637773dfe7c73d7244251058f7df800e3a0b76c261b6330aac122bea800feac2.gz",
+      "raw_sha256": "637773dfe7c73d7244251058f7df800e3a0b76c261b6330aac122bea800feac2",
+      "raw_bytes": 8821,
+      "stored_sha256": "414c3016bf9020c1c093621dba8e366ebde9290f1ac6c28f23444725bb87a05e"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/sms-title-cadence-natural-audio08/frame_06365.png": {
+      "stored": "objects/059fc891dd66145b95d578a52822c48bd8f219d8ac279414193f600eafe1d924.gz",
+      "raw_sha256": "059fc891dd66145b95d578a52822c48bd8f219d8ac279414193f600eafe1d924",
+      "raw_bytes": 8927,
+      "stored_sha256": "e852645a0b8ed5c1ec9fd643b8a47ddead7fb3441a08320ab8a03787535d2097"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/sms-title-cadence-natural-audio08/frame_06366.png": {
+      "stored": "objects/a5d20eaf2e264a78778b19d52b95ba84cd0307da1e153b72f8dbc5a64efb4250.gz",
+      "raw_sha256": "a5d20eaf2e264a78778b19d52b95ba84cd0307da1e153b72f8dbc5a64efb4250",
+      "raw_bytes": 9316,
+      "stored_sha256": "d709f2c93e69c59c4a84cc38910b43e7ea6b988d4c7fd7ac424c12b974519bf7"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/sms-title-cadence-pal-natural-audio08/frame_06032.png": {
+      "stored": "objects/e20333d622e4515ac21b29e44d67dad022ca233534168a838bfd7bd0974edf81.gz",
+      "raw_sha256": "e20333d622e4515ac21b29e44d67dad022ca233534168a838bfd7bd0974edf81",
+      "raw_bytes": 4228,
+      "stored_sha256": "11bd70809701abb28cdb39f53314ff4507a49fccca5463708f9f87f1cca27238"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/sms-title-cadence-pal-natural-audio08/frame_06038.png": {
+      "stored": "objects/20aa8dd22518f91e6d6346651d95e46e325d8b74bf6c91474723f449a661da59.gz",
+      "raw_sha256": "20aa8dd22518f91e6d6346651d95e46e325d8b74bf6c91474723f449a661da59",
+      "raw_bytes": 4264,
+      "stored_sha256": "0f12e354274e66ed899e2a1606af0cb563ca5e3775d6f4de8b826d363fb98102"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/sms-title-cadence-pal-natural-audio08/frame_06044.png": {
+      "stored": "objects/272defbe8af39dde0a323ece7585cf207ff86b93af99b2f09049010e3cce7761.gz",
+      "raw_sha256": "272defbe8af39dde0a323ece7585cf207ff86b93af99b2f09049010e3cce7761",
+      "raw_bytes": 4254,
+      "stored_sha256": "247cefaf9fc8fe321ce5f6c254181aa8f2782f8ce18c0914d9a2813ee8b33b98"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/sms-title-cadence-pal-natural-audio08/frame_06230.png": {
+      "stored": "objects/e21fcd4cc18a5669ad9cc152b4aca0a10a26ec3d96588397305f2eaf7ed4f4b8.gz",
+      "raw_sha256": "e21fcd4cc18a5669ad9cc152b4aca0a10a26ec3d96588397305f2eaf7ed4f4b8",
+      "raw_bytes": 5076,
+      "stored_sha256": "cdb41785bb38319422b01b9fcccb234ac3765fec48a7b844148e0caad0d66c1e"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/sms-title-cadence-pal-natural-audio08/frame_06236.png": {
+      "stored": "objects/fae921fb54b0b449c9fabbc1a5d8293bb9a3e8daacd289a07cbe5d940e9a6a0b.gz",
+      "raw_sha256": "fae921fb54b0b449c9fabbc1a5d8293bb9a3e8daacd289a07cbe5d940e9a6a0b",
+      "raw_bytes": 5838,
+      "stored_sha256": "48a33f6659f348667e1a151bf2d62c12133df11764b9c2d648852eacb9e04aac"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/sms-title-cadence-pal-natural-audio08/frame_06242.png": {
+      "stored": "objects/0e9b12036938c7a7f1fa9ef8bd19991d4c1f2391252f567de60249c3edaf7693.gz",
+      "raw_sha256": "0e9b12036938c7a7f1fa9ef8bd19991d4c1f2391252f567de60249c3edaf7693",
+      "raw_bytes": 6287,
+      "stored_sha256": "d7b115a920eb4021672768a4f441d9b51d8213c5d9148d23a4ef98aad097c574"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/sms-title-cadence-pal-natural-audio08/frame_06248.png": {
+      "stored": "objects/a71076c1778ee069dddf6901858f387430bc7d35bd6a091eee85ab4eb7e581fc.gz",
+      "raw_sha256": "a71076c1778ee069dddf6901858f387430bc7d35bd6a091eee85ab4eb7e581fc",
+      "raw_bytes": 6713,
+      "stored_sha256": "37302ac6438ccff4305e6be7da6072980128bc6e59892443e0820e30d6c71c4e"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/sms-title-cadence-pal-natural-audio08/frame_06254.png": {
+      "stored": "objects/d97210264e43ea6436f0740df78355bf8078d8996ed90cf9578a35f31fdc1763.gz",
+      "raw_sha256": "d97210264e43ea6436f0740df78355bf8078d8996ed90cf9578a35f31fdc1763",
+      "raw_bytes": 6900,
+      "stored_sha256": "d39215cda79e0d933c6dea82b10de1dba9e16762ce6d54bc720c83cbb28a7aad"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/sms-title-cadence-pal-natural-audio08/frame_06260.png": {
+      "stored": "objects/bb3afa6513d966aace410e2935ced7c5554c881a600d91bbc583e173840cd48f.gz",
+      "raw_sha256": "bb3afa6513d966aace410e2935ced7c5554c881a600d91bbc583e173840cd48f",
+      "raw_bytes": 7050,
+      "stored_sha256": "e952113fc917180b4289b5ca7b0f622fb9054e018fa5eea100bf848d6de4b4c6"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/sms-title-cadence-pal-natural-audio08/frame_06266.png": {
+      "stored": "objects/b717fdbd1df0b464f60eff26ec80297e5fefedcf601bc4151a831bfff1d0ac18.gz",
+      "raw_sha256": "b717fdbd1df0b464f60eff26ec80297e5fefedcf601bc4151a831bfff1d0ac18",
+      "raw_bytes": 7170,
+      "stored_sha256": "adcf56d39bb5f0175465589c0f7aa6ba32428d3d0dfa071d068e9a6a16a05fcf"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/sms-title-cadence-pal-natural-audio08/frame_06272.png": {
+      "stored": "objects/8f1aab730b563266b79d73c5e3b7ade65f9089b3aa24500d07d3b94a20f8fd5a.gz",
+      "raw_sha256": "8f1aab730b563266b79d73c5e3b7ade65f9089b3aa24500d07d3b94a20f8fd5a",
+      "raw_bytes": 7171,
+      "stored_sha256": "1797cf64b25b45b61d684b144eaa4acf54c4ce8b3c73d510aa274a82b919c6ca"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/sms-title-cadence-pal-natural-audio08/frame_06278.png": {
+      "stored": "objects/0ac2a3a7bd6019feb50cfdc803ade8dd21b3e9fbb2b388a83f784f4d3f15dd64.gz",
+      "raw_sha256": "0ac2a3a7bd6019feb50cfdc803ade8dd21b3e9fbb2b388a83f784f4d3f15dd64",
+      "raw_bytes": 7246,
+      "stored_sha256": "0d0b6250e72b52928cfdafbb8d2c82208c8d4ad69db7f2201226f7ddd7a68a6e"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/sms-title-cadence-pal-natural-audio08/frame_06345.png": {
+      "stored": "objects/900a0f8fd0af76004199be18f30d9d21d8c9aff794a9f7f3cc4206bc7bcbc0a3.gz",
+      "raw_sha256": "900a0f8fd0af76004199be18f30d9d21d8c9aff794a9f7f3cc4206bc7bcbc0a3",
+      "raw_bytes": 7900,
+      "stored_sha256": "89114e7a34d1dadc14b9447f48a4dee17f0d9230d8891b22684923e1f7941e71"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/sms-title-cadence-pal-natural-audio08/frame_06346.png": {
+      "stored": "objects/18d164441634e0e7aff901c55ddb9864ee0b97cddad01f4fb2a272edb6430da2.gz",
+      "raw_sha256": "18d164441634e0e7aff901c55ddb9864ee0b97cddad01f4fb2a272edb6430da2",
+      "raw_bytes": 8111,
+      "stored_sha256": "8481a9efd944b1292decea874e86f3479e943894730cfc6b72c175772062b3bd"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/sms-title-cadence-pal-natural-audio08/frame_06347.png": {
+      "stored": "objects/83f179dd566843252f9d44d7796e6b350cf6d4ae3129fefbca2f94150a6f1b7f.gz",
+      "raw_sha256": "83f179dd566843252f9d44d7796e6b350cf6d4ae3129fefbca2f94150a6f1b7f",
+      "raw_bytes": 8303,
+      "stored_sha256": "bbd00ac6607b526fb1c4a26764989239073935f822e3e0a682343e25d4f290df"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/sms-title-cadence-pal-natural-audio08/frame_06348.png": {
+      "stored": "objects/b309306f2b822b00381d98781321b97627d000f1ecd448aa4b36a36d7d69168f.gz",
+      "raw_sha256": "b309306f2b822b00381d98781321b97627d000f1ecd448aa4b36a36d7d69168f",
+      "raw_bytes": 8496,
+      "stored_sha256": "44758751e8f725f9cc1e3e7681d2ab77a5af3ba8ae2bd3d676c603dd482f3030"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/sms-title-cadence-pal-natural-audio08/frame_06349.png": {
+      "stored": "objects/ba92dc71004dc165739d92adfe1490827946a8ca7230a2634eaa13a386e5906f.gz",
+      "raw_sha256": "ba92dc71004dc165739d92adfe1490827946a8ca7230a2634eaa13a386e5906f",
+      "raw_bytes": 8679,
+      "stored_sha256": "55c38798c73957435e2b8810ee55053d8a577446ed8b631ea3abb80790a14abf"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/sms-title-cadence-pal-natural-audio08/frame_06350.png": {
+      "stored": "objects/637773dfe7c73d7244251058f7df800e3a0b76c261b6330aac122bea800feac2.gz",
+      "raw_sha256": "637773dfe7c73d7244251058f7df800e3a0b76c261b6330aac122bea800feac2",
+      "raw_bytes": 8821,
+      "stored_sha256": "414c3016bf9020c1c093621dba8e366ebde9290f1ac6c28f23444725bb87a05e"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/sms-title-cadence-pal-natural-audio08/frame_06351.png": {
+      "stored": "objects/059fc891dd66145b95d578a52822c48bd8f219d8ac279414193f600eafe1d924.gz",
+      "raw_sha256": "059fc891dd66145b95d578a52822c48bd8f219d8ac279414193f600eafe1d924",
+      "raw_bytes": 8927,
+      "stored_sha256": "e852645a0b8ed5c1ec9fd643b8a47ddead7fb3441a08320ab8a03787535d2097"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/sms-title-cadence-pal-natural-audio08/frame_06352.png": {
+      "stored": "objects/a5d20eaf2e264a78778b19d52b95ba84cd0307da1e153b72f8dbc5a64efb4250.gz",
+      "raw_sha256": "a5d20eaf2e264a78778b19d52b95ba84cd0307da1e153b72f8dbc5a64efb4250",
+      "raw_bytes": 9316,
+      "stored_sha256": "d709f2c93e69c59c4a84cc38910b43e7ea6b988d4c7fd7ac424c12b974519bf7"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/title_cadence-natural-audio08_report.json": {
+      "stored": "objects/b31284706003f050814d238499495bdba76696b92f0965c62dcb9f15140c637e.gz",
+      "raw_sha256": "b31284706003f050814d238499495bdba76696b92f0965c62dcb9f15140c637e",
+      "raw_bytes": 4826,
+      "stored_sha256": "f71d097608704317e65bf53abbb473d6c47dabe785107d68864a5d01279fb32c"
+    },
+    "validation/intro-audio-v0313/candidate08/validation/title_cadence-pal-natural-audio08_report.json": {
+      "stored": "objects/a4a6347fed74423b3487dbf11386b2aa8ff690d2648c4449b8eb97f736a976a1.gz",
+      "raw_sha256": "a4a6347fed74423b3487dbf11386b2aa8ff690d2648c4449b8eb97f736a976a1",
+      "raw_bytes": 4825,
+      "stored_sha256": "144ad51e9b8c70b2aafcda0b7d227aaab65f6086bf9b186b58c5f0ce4824c8de"
+    },
+    "validation/replay_intro_audio_candidate08_d8.py": {
+      "stored": "objects/4387958f4580723937150c2cc3d83694775994549161be3f1437fe5dc380a856.gz",
+      "raw_sha256": "4387958f4580723937150c2cc3d83694775994549161be3f1437fe5dc380a856",
+      "raw_bytes": 1105,
+      "stored_sha256": "135508ebfbcdf83c5ebfab649c8464ffbee03aa66c2690c35da05359c847e143"
+    }
+  },
+  "removed_verified_generated": []
+}

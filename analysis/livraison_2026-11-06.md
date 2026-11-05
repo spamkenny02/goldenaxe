@@ -5,11 +5,13 @@ Mega Drive fidèle de Golden Axe Warrior ; la date ne transforme pas une preuve
 partielle en validation complète.
 
 État courant : v313, 2 Mio, SHA48fb6e92…, checksum544B.
-Le titre s’aligne sur SMS en PAL/NTSC et les 130 comparaisons de lignes du
-récit passent. Le parcours froid atteint huit cristaux et dix entrées de boss
-sans protection, puis la sortie à96/96 PV et72 PM. Un rejeu indépendant
-reproduit les65536 octets de RAM et l’image finale. Voir startup_v0313_report.json.
-D9, palais, fin et sauvegarde restent à valider sur cette ROM.
+Le titre s’aligne sur SMS en PAL/NTSC. La campagne froide atteint neuf cristaux
+et treize combats de boss sans protection, puis la sortie à104/104 PV et72 PM.
+Les étapes retenues ont un rejeu indépendant RAM/image exact.
+Voir d9_campaign_v0313_report.json. Sauvegarde réellement écrite dans le
+premier emplacement puis Continuer vérifiés :592 octets, neuf marqueurs,128
+mots du HUD et déplacement réel. Voir game_written_save_v0313_report.json.
+Le palais et la fin restent à valider ; le parcours intérieur est lancé.
 
 Entrée D9 v313 vérifiée : paiement réel 23→13 cornes, tombe ouverte par la
 Cloche de glace, entrée à96 PV et72 PM avec huit cristaux. Trois étapes avec
@@ -17,7 +19,13 @@ rejeu froid RAM/image exact. Rapport d9_entry_v0313_report.json. Les mécanismes
 Terre et le premier gardien sont vérifiés : cinq étapes avec rejeu RAM/image
 exact. Deux coups normaux, 96→64 PV ; 72 PM conservés. 174 fenêtres de
 prédiction sont exactes. Rapport d9_midboss_v0313_report.json. La suite
-vers le second gardien et le ballon est lancée.
+vers le second gardien et le ballon est vérifiée : huit étapes avec rejeu
+RAM/image exact. Géant vaincu sans protection, coup normal de20 PV,244
+prédictions exactes. Ballon reçu à88 PV et72 PM, huit cristaux conservés.
+Rapport d9_balloon_v0313_report.json. Le combat principal et le neuvième cristal sont vérifiés : coup normal de20 PV,
+240 prédictions exactes, puis guérison à104/104 PV. Retour extérieur sans aide
+ni dégât, avec rejeu RAM/image exact. Le contrôleur ne prédit aucun combat
+pendant ce retour par les salles vidées ; les ennemis extérieurs restent présents.
 
 Historique des étapes précédentes (périmètres propres à chaque version) :
 
