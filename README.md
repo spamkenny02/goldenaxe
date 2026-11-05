@@ -703,5 +703,10 @@ sans perte et vérifiées avant le nettoyage des fichiers générés.
 D5 v314 : première clé, passage Terre, bottes et sortie de ravitaillement
 vérifiés en RAM complète et image. Sortie à58/64 PV et64 PM ; quatre cristaux
 conservés. Les quatre points sont relus dans un même noyau démarré à froid,
-sans import d’état. Le cinquième boss reste à valider.
+sans import d’état. Le ravitaillement est terminé :deux dons de30 cornes,clé achetée pour60,
+soin gratuit et retour par le second passage Terre puis le mécanisme. Treize
+points concordent en RAM complète et image dans un même rejeu froid continu.
+Le point préparatoire est à64/64 PV et56 PM,avec une clé.
+[Préparation complète de D5](analysis/d5_supplies_v0314_report.json)
+Le cinquième boss reste à valider.
 [Preuve des bottes et de la sortie](analysis/d5_progress_v0314_report.json)

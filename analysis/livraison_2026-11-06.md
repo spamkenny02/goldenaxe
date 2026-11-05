@@ -193,3 +193,7 @@ indiquer clairement ce qui a été vérifié et ce qui reste ouvert.
 
 D5 v314 : clé, Terre, bottes et sortie de ravitaillement vérifiés ;58/64 PV,
 64 PM,quatre cristaux conservés. Voir d5_progress_v0314_report.json.
+
+Préparation D5 terminée :13 points RAM/image exacts,clé achetée pour60,
+soin gratuit et mécanisme d’accès. Point préparatoire à64/64 PV et56 PM,
+une clé. Voir d5_supplies_v0314_report.json. Combat en cours.
