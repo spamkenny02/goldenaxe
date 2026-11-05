@@ -33,7 +33,13 @@ partielle en validation complète.
   soin gratuit, retour, second passage Terre et mécanisme vérifiés. Treize
   étapes depuis l'entrée avec rejeu RAM/image exact ; point préparatoire à
   64/64 PV et 56 PM avec une clé. Protection retirée en 173 à l'image 127330,
-  avant l'entrée du boss 65 en 163 ; combat en cours.
+  avant l'entrée du boss 65 en 163.
+- D5 v312 terminé : huit satellites et boss vaincus sans protection, coup
+  normal de dix PV observé. Cinquième cristal et retour extérieur à 72/72 PV
+  et PM ; cinq étapes finales relues exactement en RAM/image et cinq marqueurs
+  du HUD vérifiés. Le pilote ciblant les satellites réduit la recherche de
+  415 à 60 décisions ; la partie retenue continue sur cette branche.
+  Préparation D6 en cours.
 - Menu Nouveau jeu / Continuer v312 : musique active et audible en PAL/NTSC,
   événements des bruitages de curseur et validation alignés SMS. Aucune
   comparaison globale des formes d'onde n'est déduite de ce contrôle.

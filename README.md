@@ -73,6 +73,13 @@ et franchit le mécanisme à **64/64 PV et 56 PM**, avec une clé. Les treize
 étapes depuis l’entrée initiale ont un rejeu RAM/image exact.
 [Ravitaillement et mécanisme D5 v312](analysis/d5_supplies_v0312_report.json)
 
+Le cinquième cristal et le retour en extérieur sont vérifiés sur v312 à
+**72/72 PV et PM**. Les huit satellites et le boss 65 sont vaincus sans
+protection ; un coup normal retire dix PV pendant le combat. Les cinq étapes
+finales passent leur rejeu RAM/image, avec les cinq marqueurs du HUD vérifiés.
+Le pilote de test cible désormais les satellites : sa recherche passe de
+415 à 60 décisions sur ce combat. [Cinquième cristal et sortie v312](analysis/d5_campaign_v0312_report.json)
+
 La **v0311** ajoute une image au chargement lors des défilements de donjon
 vers le haut en NTSC. Sur trois trajets comparés à la Master System, la
 reprise du jeu s’aligne. Le premier déplacement s’aligne aussi dans les deux
