@@ -17,7 +17,15 @@ restauration des objets/premier cristal/HUD et déplacement vérifiés.
 Voir game_written_save_v0314_report.json,d2_campaign_v0314_report.json
 et oil_service_v0314_report.json. Voir aussi d3_campaign_v0314_report.json,
 earth_learning_v0314_report.json et d4_progress_v0314_report.json.
-La campagne à partir du quatrième boss reste à vérifier.
+Le quatrième cristal et le retour extérieur sont vérifiés :239 prédictions
+exactes,sans protection ni dégât pendant le boss. Canoë observé sur99 images
+de déplacement aquatique. Feu obtenu contre l’huile,deuxième épée reçue et
+entrée D5 vérifiée à62/64 PV et72 PM. Voir d4_campaign_v0314_report.json
+et fire_sword_v0314_report.json. La suite depuis D5 reste à vérifier.
+Accélération des contrôles :trois points d’un même rejeu froid continu sont
+identiques aux rejeux séparés en RAM complète et image,avec62 % d’images
+émulées en moins pour cette série. Aucun état de jeu importé ; le noyau reste
+en pause entre deux enregistrements. Voir cold_replay_stream_v0314_report.json.
 
 La v313 conserve la campagne complète depuis Nouveau Jeu : neuf cristaux,
 ballon,Hache d’or,Death Adder sans protection,générique complet,retour intro.

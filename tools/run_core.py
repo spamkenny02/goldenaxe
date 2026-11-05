@@ -57,7 +57,7 @@ def compact_fixed_inputs(masks,end):
         previous=current
     return sorted(result)
 
-def run(rom,frames,out,captures,presses,core=None,ram_writes=(),skip_intro=True,ram_observer=None,psg_observer=None,audio_out=None,sram_in=None,sram_out=None,core_options=None,vram_observer=None,input_provider=None,stop_when=None,save_states=False):
+def run(rom,frames,out,captures,presses,core=None,ram_writes=(),skip_intro=True,ram_observer=None,psg_observer=None,audio_out=None,sram_in=None,sram_out=None,core_options=None,vram_observer=None,input_provider=None,stop_when=None,save_states=False,post_frame_observer=None):
     # Gameplay regressions explicitly skip the now-ported intro with normal input.
     # Set skip_intro=False to observe the complete boot story without inputs.
     presses=list(presses)
@@ -174,6 +174,7 @@ def run(rom,frames,out,captures,presses,core=None,ram_writes=(),skip_intro=True,
                 (out/f'vram_{frame:05d}.bin').write_bytes(state.raw[base:base+0x10000])
                 (out/f'cram_{frame:05d}.bin').write_bytes(state.raw[base+0x10000:base+0x10080])
                 (out/f'vdp_regs_{frame:05d}.bin').write_bytes(state.raw[base+0x10100:base+0x10120])
+        if post_frame_observer is not None:post_frame_observer(frame)
         if stop_when is not None and stop_when():break
     if hasattr(dll,'gaw_trace_counts'):
         for name,size in [('counts',0x40000*4),('windows',0x40000),('states',256*4)]:

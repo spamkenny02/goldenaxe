@@ -1,0 +1,268 @@
+{
+  "passed": true,
+  "md_sha256": "c53381c459a1e6254a8c9f1cfad1b8cda482cc0614697ad566133b28335e07a7",
+  "checkpoints": 3,
+  "cold_boot_count": 1,
+  "emulated_frames": 21373,
+  "separate_replay_frame_sum": 56463,
+  "replay_work_reduction_percent": 62.15,
+  "whole_ram_and_png_exact": true,
+  "primary_state_imports": 0,
+  "scope": "Harness equivalence on three existing checkpoints; not new game coverage.",
+  "driver_sha256": "36902952553a0a4cbcab3155f14c2e5413c2333d1f39fc2403b172ca04f79819",
+  "run_core_sha256": "e96968ed4a7571638b1f60b32ea54b5c5d393d3a3d680bb019c704c2d7271bdb",
+  "files": {
+    "analysis/cold_replay_stream_v0314_report.json": "2e703735be54bc7f84b203715b5c6b8488e1877ee77eff346bfb64668aa7f189",
+    "tools/cold_replay_stream.py": "36902952553a0a4cbcab3155f14c2e5413c2333d1f39fc2403b172ca04f79819",
+    "tools/run_core.py": "e96968ed4a7571638b1f60b32ea54b5c5d393d3a3d680bb019c704c2d7271bdb"
+  },
+  "compressed": {
+    "validation/cold-stream-v0314-check03/checkpoints.json": {
+      "stored": "objects/a2d12c71eea3843547cdbd93194ada1981be90a72b224298231b5fe1cf6b29e0.gz",
+      "raw_sha256": "a2d12c71eea3843547cdbd93194ada1981be90a72b224298231b5fe1cf6b29e0",
+      "raw_bytes": 562,
+      "stored_sha256": "f3391ecef4bcde619cac715f0673d589e8aca695f4483a3d938f3a6f5db02d29"
+    },
+    "validation/cold-stream-v0314-check03/cold-core/capture.json": {
+      "stored": "objects/a7fddc0567b93aa589e0f5ff397ec33c815eae680ba24d7fbbec21cf824fe299.gz",
+      "raw_sha256": "a7fddc0567b93aa589e0f5ff397ec33c815eae680ba24d7fbbec21cf824fe299",
+      "raw_bytes": 843903,
+      "stored_sha256": "d5f145d2267e313897b1515900f026662c9b2ab331da38b7919a4d60ceef03d0"
+    },
+    "validation/cold-stream-v0314-check03/cold-core/cram_17447.bin": {
+      "stored": "objects/921cd0d9df94c22138182530b07e12cf0b3f9d7c58dd26258d29b93712ca7cc4.gz",
+      "raw_sha256": "921cd0d9df94c22138182530b07e12cf0b3f9d7c58dd26258d29b93712ca7cc4",
+      "raw_bytes": 128,
+      "stored_sha256": "063b92445b1f37e9f8522be76950cdd9d3de8c0f5d52a01b9523fe53c1bafd0c"
+    },
+    "validation/cold-stream-v0314-check03/cold-core/cram_17643.bin": {
+      "stored": "objects/8a609f24231c9ae2a0d8b501752fd2fb914783e0c98375f785d3f6ac89a27efc.gz",
+      "raw_sha256": "8a609f24231c9ae2a0d8b501752fd2fb914783e0c98375f785d3f6ac89a27efc",
+      "raw_bytes": 128,
+      "stored_sha256": "6c7a71ec2c5d5bb99731e47d583b67b395532eddfe9fd7f96fbc70a8df316aa8"
+    },
+    "validation/cold-stream-v0314-check03/cold-core/cram_21373.bin": {
+      "stored": "objects/6da87097515f9ed95907abe793dce4b7dcc4a2588a21a1bc2a265c2ee6961d1f.gz",
+      "raw_sha256": "6da87097515f9ed95907abe793dce4b7dcc4a2588a21a1bc2a265c2ee6961d1f",
+      "raw_bytes": 128,
+      "stored_sha256": "d3bc5d04133dc0f919f94f4b76fd54d96c8e0eb8a09adcdce5056bb4c8728222"
+    },
+    "validation/cold-stream-v0314-check03/cold-core/frame_17447.png": {
+      "stored": "objects/8feff6d60b32fd643ec4fcf9b1f77580fbc6c62a57a9c7115850172052c8f26c.gz",
+      "raw_sha256": "8feff6d60b32fd643ec4fcf9b1f77580fbc6c62a57a9c7115850172052c8f26c",
+      "raw_bytes": 6638,
+      "stored_sha256": "4348fd7504ff2568d35b0cf581b7ddde037c83091fc97dec774b7bd5e6049585"
+    },
+    "validation/cold-stream-v0314-check03/cold-core/frame_17643.png": {
+      "stored": "objects/5cd829b29ae0c86a733a7d9a28865e8bbf8a8a1dd9d4a6a8c51b3cf4319d0a04.gz",
+      "raw_sha256": "5cd829b29ae0c86a733a7d9a28865e8bbf8a8a1dd9d4a6a8c51b3cf4319d0a04",
+      "raw_bytes": 6716,
+      "stored_sha256": "c80d9a8792fd1236af4592463fb490d1022b92d82663035cf50708a9fb49ed92"
+    },
+    "validation/cold-stream-v0314-check03/cold-core/frame_21373.png": {
+      "stored": "objects/b7cd9c2778d2a4ed4e0a4002a6808f16421d7310a25ef9a0af0785e5ae949977.gz",
+      "raw_sha256": "b7cd9c2778d2a4ed4e0a4002a6808f16421d7310a25ef9a0af0785e5ae949977",
+      "raw_bytes": 5202,
+      "stored_sha256": "5770a587d6ce0ee04beb5adadac2be37696d9069f850293a77609533a1302a69"
+    },
+    "validation/cold-stream-v0314-check03/cold-core/ram_17447.bin": {
+      "stored": "objects/81e0ef8986f2d3458c672e747fd2125ec0d47b743acb2c841b3735a4cfc51feb.gz",
+      "raw_sha256": "81e0ef8986f2d3458c672e747fd2125ec0d47b743acb2c841b3735a4cfc51feb",
+      "raw_bytes": 65536,
+      "stored_sha256": "965735106b35098abfc34bea1dac31fda9c55e9225fe2eb888907e80677c21be"
+    },
+    "validation/cold-stream-v0314-check03/cold-core/ram_17643.bin": {
+      "stored": "objects/46bd6c26bce8d25595da84b0900f7d70d0eba46b9498a937b63678bff9aaac01.gz",
+      "raw_sha256": "46bd6c26bce8d25595da84b0900f7d70d0eba46b9498a937b63678bff9aaac01",
+      "raw_bytes": 65536,
+      "stored_sha256": "23ba0faaa460d6b4668bcdaa1c85f7a00daf4a8987681199e34545b186477ee8"
+    },
+    "validation/cold-stream-v0314-check03/cold-core/ram_21373.bin": {
+      "stored": "objects/2ea13a1f0463d3fbfc882179cf0e48bd9710f833eddcc5cc4e8bd5182798f387.gz",
+      "raw_sha256": "2ea13a1f0463d3fbfc882179cf0e48bd9710f833eddcc5cc4e8bd5182798f387",
+      "raw_bytes": 65536,
+      "stored_sha256": "7fb5c699e46d1126349ca2d929af27de9bc7dfd79f63315117b0b11bd57a0820"
+    },
+    "validation/cold-stream-v0314-check03/cold-core/vdp_regs_17447.bin": {
+      "stored": "objects/580ee0146254fce528e6bc5e15f01276b2f5e628c05818c35e167dca0692e292.gz",
+      "raw_sha256": "580ee0146254fce528e6bc5e15f01276b2f5e628c05818c35e167dca0692e292",
+      "raw_bytes": 32,
+      "stored_sha256": "0b826b6f6411ca9ed88af6fa694e528c558e505d937fff8ded96fa369ac4a4b3"
+    },
+    "validation/cold-stream-v0314-check03/cold-core/vdp_regs_17643.bin": {
+      "stored": "objects/1c49de91fb297da4e43d2fa84f55c5e394814877557675410b671b05935c545f.gz",
+      "raw_sha256": "1c49de91fb297da4e43d2fa84f55c5e394814877557675410b671b05935c545f",
+      "raw_bytes": 32,
+      "stored_sha256": "11f861f97387582539d13092dd57d21e9860099ad1db82ae59fbd842c40bdce4"
+    },
+    "validation/cold-stream-v0314-check03/cold-core/vdp_regs_21373.bin": {
+      "stored": "objects/2952726dec98305b5f5694fab14fad42460638ac70c7074bba70488144de0840.gz",
+      "raw_sha256": "2952726dec98305b5f5694fab14fad42460638ac70c7074bba70488144de0840",
+      "raw_bytes": 32,
+      "stored_sha256": "13b75fa2740e2127b8ee0102ca5dd2e18fceb4972eeb1d2fd088d2376e6a21ba"
+    },
+    "validation/cold-stream-v0314-check03/cold-core/vram_17447.bin": {
+      "stored": "objects/3c01a0ded34be9e6c7ff0e4bf79435a11447e2f9903e5e7ea95b60e6d9c3b0d1.gz",
+      "raw_sha256": "3c01a0ded34be9e6c7ff0e4bf79435a11447e2f9903e5e7ea95b60e6d9c3b0d1",
+      "raw_bytes": 65536,
+      "stored_sha256": "c1cb36a1c366d09bccadfd1d1f380abf9233740bfcb929011308e39482e14e47"
+    },
+    "validation/cold-stream-v0314-check03/cold-core/vram_17643.bin": {
+      "stored": "objects/2847471416ac919ade9940ffe97e16cc482df5a3ae62d6ab087e7850ef581031.gz",
+      "raw_sha256": "2847471416ac919ade9940ffe97e16cc482df5a3ae62d6ab087e7850ef581031",
+      "raw_bytes": 65536,
+      "stored_sha256": "62297b69a1b0c8cad4ff7ae1de5c288cf010fbf5d2c12c0b08a4d3052dd8277a"
+    },
+    "validation/cold-stream-v0314-check03/cold-core/vram_21373.bin": {
+      "stored": "objects/7018f4294156375b2e17f20d622d0417ec99200e6fdb2759f07c83b3f76c66ce.gz",
+      "raw_sha256": "7018f4294156375b2e17f20d622d0417ec99200e6fdb2759f07c83b3f76c66ce",
+      "raw_bytes": 65536,
+      "stored_sha256": "cb33d5db0654e2e32ea3e14f8d9fa8fec8a5436aff323492fb469765bb11a4c2"
+    },
+    "validation/cold-stream-v0314-check03/completed.json": {
+      "stored": "objects/9ead6eefb0acbaca0d81e2a9d6c81caf3ecedc90cc2eefe3340fe09b71d60218.gz",
+      "raw_sha256": "9ead6eefb0acbaca0d81e2a9d6c81caf3ecedc90cc2eefe3340fe09b71d60218",
+      "raw_bytes": 641,
+      "stored_sha256": "de58bbda6817e19df4d282810ae3c0db41adc886ad67d1f87dc7ed7635270fa6"
+    },
+    "validation/cold-stream-v0314-check03/request-0001.json": {
+      "stored": "objects/4476036e9089dd8a2a0407193dcedc1e53ca5ace5d056e15fdf2b936d6c7e5d8.gz",
+      "raw_sha256": "4476036e9089dd8a2a0407193dcedc1e53ca5ace5d056e15fdf2b936d6c7e5d8",
+      "raw_bytes": 67,
+      "stored_sha256": "d2ee00b2fdad9398c605a4de3d3761b81cc1e9d993af35decee61c04a7c8a658"
+    },
+    "validation/cold-stream-v0314-check03/request-0002.json": {
+      "stored": "objects/c2b5759a31c7236bbda22208ac53cb076f407c201111a5516b2001d3cbf65e8a.gz",
+      "raw_sha256": "c2b5759a31c7236bbda22208ac53cb076f407c201111a5516b2001d3cbf65e8a",
+      "raw_bytes": 66,
+      "stored_sha256": "976131d9188414116055fe6b76f732d3ecf6638344c52420c7b831c36f8ece83"
+    },
+    "validation/cold-stream-v0314-check03/request-0003.json": {
+      "stored": "objects/4a56b30555ed7f7b4a39cc259711c6e6ae0feec322ef4e06a1e143d7a6e7653d.gz",
+      "raw_sha256": "4a56b30555ed7f7b4a39cc259711c6e6ae0feec322ef4e06a1e143d7a6e7653d",
+      "raw_bytes": 70,
+      "stored_sha256": "29960884d8f351cfde08017cf658223d77b78fc80f6ed709cdb2f52eb22225c1"
+    },
+    "validation/cold-stream-v0314-check03/stop.json": {
+      "stored": "objects/dcabe64bedaaa4b58301480e3e3a0792eeb3480ffebc8c39c56bcd8688af2eda.gz",
+      "raw_sha256": "dcabe64bedaaa4b58301480e3e3a0792eeb3480ffebc8c39c56bcd8688af2eda",
+      "raw_bytes": 22,
+      "stored_sha256": "e1347e00792fd5b0019470b749a0eb2d04081a6c4e9e9b513cb34fcf292d1c79"
+    },
+    "validation/cold-stream-v0314-check03/worker.log": {
+      "stored": "objects/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.gz",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_bytes": 0,
+      "stored_sha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-d1-axe-key01/assistance.json": {
+      "stored": "objects/8dcd1e718458a3619d52c18be0ce993566d3ee854ca88c5f694faf53b6d527b7.gz",
+      "raw_sha256": "8dcd1e718458a3619d52c18be0ce993566d3ee854ca88c5f694faf53b6d527b7",
+      "raw_bytes": 874178,
+      "stored_sha256": "6097f0e245b8dcece09b342b5136005bc0eec767dbace2fa1d2ac014ec105cb8"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-d1-axe-key01/capture.json": {
+      "stored": "objects/109a9fdc7f3059e83b0634ff687d3b7454475a13e1a74dbaf60637c831e5f8e1.gz",
+      "raw_sha256": "109a9fdc7f3059e83b0634ff687d3b7454475a13e1a74dbaf60637c831e5f8e1",
+      "raw_bytes": 968849,
+      "stored_sha256": "8b20c6a165b0e87aafd943b1b8830bcdbd41932daf9c6ac5129f63d09293e79d"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-d1-axe-key01/controls.json": {
+      "stored": "objects/b855bce8a1c46e8378579d056986cea8ab60920543a682faff79da79875d66c4.gz",
+      "raw_sha256": "b855bce8a1c46e8378579d056986cea8ab60920543a682faff79da79875d66c4",
+      "raw_bytes": 65479,
+      "stored_sha256": "bafc2da704d2d666ffbbae1129a4671a7f677febbe95b041f178812f9fb81204"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-d1-axe-key01-assisted-fixed-replay-21373-stream-check03/frame_21373.png": {
+      "stored": "objects/b7cd9c2778d2a4ed4e0a4002a6808f16421d7310a25ef9a0af0785e5ae949977.gz",
+      "raw_sha256": "b7cd9c2778d2a4ed4e0a4002a6808f16421d7310a25ef9a0af0785e5ae949977",
+      "raw_bytes": 5202,
+      "stored_sha256": "5770a587d6ce0ee04beb5adadac2be37696d9069f850293a77609533a1302a69"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-d1-axe-key01-assisted-fixed-replay-21373-stream-check03/ram_21373.bin": {
+      "stored": "objects/2ea13a1f0463d3fbfc882179cf0e48bd9710f833eddcc5cc4e8bd5182798f387.gz",
+      "raw_sha256": "2ea13a1f0463d3fbfc882179cf0e48bd9710f833eddcc5cc4e8bd5182798f387",
+      "raw_bytes": 65536,
+      "stored_sha256": "7fb5c699e46d1126349ca2d929af27de9bc7dfd79f63315117b0b11bd57a0820"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-d1-axe-key01-assisted-fixed-replay-21373-stream-check03/replay_report.json": {
+      "stored": "objects/8030b6c2f0bf7c6a906a207cfa9da5e720a18f7221cc1479bc9013907b40c1ce.gz",
+      "raw_sha256": "8030b6c2f0bf7c6a906a207cfa9da5e720a18f7221cc1479bc9013907b40c1ce",
+      "raw_bytes": 1440,
+      "stored_sha256": "d66157b9483bb9d5cfe7d6945afcd9b054f34a3bc999d9dd02be1168808e1a99"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-d1-cold01/assistance.json": {
+      "stored": "objects/681057a7625084d65488c9fca235bc8d56183b3a817ccaa5f656228af1e37e74.gz",
+      "raw_sha256": "681057a7625084d65488c9fca235bc8d56183b3a817ccaa5f656228af1e37e74",
+      "raw_bytes": 582300,
+      "stored_sha256": "e2a72712a854738e39a576f2b6d99ef4dcc9a8a180173494bfe5a5acaf3d803e"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-d1-cold01/capture.json": {
+      "stored": "objects/b2c51ba61ae3f8eeac5fe5dcccf257112951f6b863a35feb57e958fc8452c7d2.gz",
+      "raw_sha256": "b2c51ba61ae3f8eeac5fe5dcccf257112951f6b863a35feb57e958fc8452c7d2",
+      "raw_bytes": 711209,
+      "stored_sha256": "e5fa504689e48e0de5bd075f8e6d2cd785ff5695c548e736453db9b4b192a158"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-d1-cold01/controls.json": {
+      "stored": "objects/8a39228db8117a5f33c3b373cc580902e43b902423fadf96839587484d4f21f1.gz",
+      "raw_sha256": "8a39228db8117a5f33c3b373cc580902e43b902423fadf96839587484d4f21f1",
+      "raw_bytes": 132946,
+      "stored_sha256": "c99aefa62ab81e7787862bf04422768cb9cc50b19bd296692da3b36e7c8ef173"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-d1-cold01-assisted-fixed-replay-17447-stream-check03/frame_17447.png": {
+      "stored": "objects/8feff6d60b32fd643ec4fcf9b1f77580fbc6c62a57a9c7115850172052c8f26c.gz",
+      "raw_sha256": "8feff6d60b32fd643ec4fcf9b1f77580fbc6c62a57a9c7115850172052c8f26c",
+      "raw_bytes": 6638,
+      "stored_sha256": "4348fd7504ff2568d35b0cf581b7ddde037c83091fc97dec774b7bd5e6049585"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-d1-cold01-assisted-fixed-replay-17447-stream-check03/ram_17447.bin": {
+      "stored": "objects/81e0ef8986f2d3458c672e747fd2125ec0d47b743acb2c841b3735a4cfc51feb.gz",
+      "raw_sha256": "81e0ef8986f2d3458c672e747fd2125ec0d47b743acb2c841b3735a4cfc51feb",
+      "raw_bytes": 65536,
+      "stored_sha256": "965735106b35098abfc34bea1dac31fda9c55e9225fe2eb888907e80677c21be"
+    },
+    "validation/natural-dungeon-combat/md-auto-v0314-d1-cold01-assisted-fixed-replay-17447-stream-check03/replay_report.json": {
+      "stored": "objects/fc06645c4df8f4d1acb36b0258b596d0623a50e98a453e931307c1362895ef9b.gz",
+      "raw_sha256": "fc06645c4df8f4d1acb36b0258b596d0623a50e98a453e931307c1362895ef9b",
+      "raw_bytes": 1500,
+      "stored_sha256": "41bec1ca5731255e2b020819a8ca108c25a71d38abd46e29a3b4876236c6476a"
+    },
+    "validation/natural-dungeon-route/md-v0314-d1-axe-entry01/assistance.json": {
+      "stored": "objects/20acf78f246aff4936b819f6f12fec0c1f0cd6e2ec425617844968c3ec98e0ed.gz",
+      "raw_sha256": "20acf78f246aff4936b819f6f12fec0c1f0cd6e2ec425617844968c3ec98e0ed",
+      "raw_bytes": 619724,
+      "stored_sha256": "d591fc3b98af7f73d3cace60f1bce16e8051390ef7ee88628afabbcbf7bd52ad"
+    },
+    "validation/natural-dungeon-route/md-v0314-d1-axe-entry01/capture.json": {
+      "stored": "objects/b60bc778e07212244975a8ed4e068aa8fdfcf61a8c58adafdcae5b9dc3b6d1d1.gz",
+      "raw_sha256": "b60bc778e07212244975a8ed4e068aa8fdfcf61a8c58adafdcae5b9dc3b6d1d1",
+      "raw_bytes": 714305,
+      "stored_sha256": "21e741996af814fc10f52baf93b04bf648d0a786ee98f5b0c7739487a390b131"
+    },
+    "validation/natural-dungeon-route/md-v0314-d1-axe-entry01/controls.json": {
+      "stored": "objects/8db22c98ce570013bc339b20b9aa1738010babf75bc19f840cfb54b6fab8ccf0.gz",
+      "raw_sha256": "8db22c98ce570013bc339b20b9aa1738010babf75bc19f840cfb54b6fab8ccf0",
+      "raw_bytes": 146082,
+      "stored_sha256": "dd4ec8715e104078401777db9dbfbc281c762a67fe2ac0752f034df07a117d1b"
+    },
+    "validation/natural-dungeon-route/md-v0314-d1-axe-entry01-assisted-fixed-replay-17643-stream-check03/frame_17643.png": {
+      "stored": "objects/5cd829b29ae0c86a733a7d9a28865e8bbf8a8a1dd9d4a6a8c51b3cf4319d0a04.gz",
+      "raw_sha256": "5cd829b29ae0c86a733a7d9a28865e8bbf8a8a1dd9d4a6a8c51b3cf4319d0a04",
+      "raw_bytes": 6716,
+      "stored_sha256": "c80d9a8792fd1236af4592463fb490d1022b92d82663035cf50708a9fb49ed92"
+    },
+    "validation/natural-dungeon-route/md-v0314-d1-axe-entry01-assisted-fixed-replay-17643-stream-check03/ram_17643.bin": {
+      "stored": "objects/46bd6c26bce8d25595da84b0900f7d70d0eba46b9498a937b63678bff9aaac01.gz",
+      "raw_sha256": "46bd6c26bce8d25595da84b0900f7d70d0eba46b9498a937b63678bff9aaac01",
+      "raw_bytes": 65536,
+      "stored_sha256": "23ba0faaa460d6b4668bcdaa1c85f7a00daf4a8987681199e34545b186477ee8"
+    },
+    "validation/natural-dungeon-route/md-v0314-d1-axe-entry01-assisted-fixed-replay-17643-stream-check03/replay_report.json": {
+      "stored": "objects/3cea4c873c0053971896d0bb20a90288f54ae21404a7fc2959bf4ea675382e78.gz",
+      "raw_sha256": "3cea4c873c0053971896d0bb20a90288f54ae21404a7fc2959bf4ea675382e78",
+      "raw_bytes": 1440,
+      "stored_sha256": "738de4509c68ff1cb2cecd6b9257f81322849fcda2ce1fabf37afe9d4d38076f"
+    }
+  },
+  "removed_verified_generated": []
+}

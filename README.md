@@ -25,7 +25,7 @@ protégée contre les interruptions. La compilation de production reproduit
 exactement le binaire testé.
 [Correctif intégré et preuves v314](analysis/intro_audio_integration_v0314_report.json)
 
-Sur ce binaire, le parcours depuis Nouveau Jeu atteint **trois cristaux**,
+Sur ce binaire, le parcours depuis Nouveau Jeu atteint **quatre cristaux**,
 avec la hache et la première fée de vie obtenues normalement. Le boss de D2
 est vaincu sans protection ni dégât :89 prédictions conformes, puis cristal
 et retour extérieur à **48/48 PV et24 PM**. Un dégât normal de4 PV sur le
@@ -35,6 +35,15 @@ essais de contrôleur infructueux sont conservés et exclus de cette preuve.
 [Parcours D1 publié](analysis/d1_campaign_v0314_report.json)
 · [Hache et fée de vie](analysis/d2_approach_v0314_report.json)
 · [Deuxième cristal et retour](analysis/d2_campaign_v0314_report.json)
+
+Le quatrième boss est vaincu sans protection et sans dégât pendant le combat,
+avec **239 prédictions exactes**. Le retour extérieur se termine à62/64 PV ;
+les dégâts de sol avant et après le boss restent comptabilisés. Le canoë est
+également vérifié sur99 images de déplacement dans l’eau.
+La magie de feu est obtenue contre l’huile, puis la deuxième épée est offerte
+normalement. Le parcours atteint ensuite l’entrée de D5, avec72 PM maximum.
+[Quatrième cristal](analysis/d4_campaign_v0314_report.json)
+· [Feu, deuxième épée et D5](analysis/fire_sword_v0314_report.json)
 
 Le **don d’huile**, les deux escaliers de la maison C7 et le retour extérieur
 sont vérifiés, sans nouvelle écriture de test ni modification des ressources
@@ -46,7 +55,7 @@ Son rejeu reproduit les592 octets du contenu et le fichier SRAM, puis un
 redémarrage et **Continuer** restaurent les objets, le premier cristal,
 le HUD physique et le déplacement. Aucun état SRAM synthétique n’est utilisé.
 La sauvegarde à neuf cristaux écrite sur v313 reste également compatible avec
-v314 en PAL/NTSC. La campagne à partir du boss D4 reste à vérifier sur le nouveau binaire.
+v314 en PAL/NTSC. La suite à partir du cinquième donjon reste à vérifier sur le nouveau binaire.
 [Sauvegarde écrite et Continuer v314](analysis/game_written_save_v0314_report.json)
 · [Compatibilité de sauvegarde v313](analysis/save_compatibility_candidate11_v0313_report.json)
 
