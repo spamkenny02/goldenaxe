@@ -15,7 +15,9 @@ La v314 a aussi écrit une vraie sauvegarde dans le premier emplacement :
 rejeu exact des592 octets et du fichier SRAM,puis redémarrage,Continuer,
 restauration des objets/premier cristal/HUD et déplacement vérifiés.
 Voir game_written_save_v0314_report.json,d2_campaign_v0314_report.json
-et oil_service_v0314_report.json. La campagne après D2 reste à vérifier.
+et oil_service_v0314_report.json. Voir aussi d3_campaign_v0314_report.json,
+earth_learning_v0314_report.json et d4_progress_v0314_report.json.
+La campagne à partir du quatrième boss reste à vérifier.
 
 La v313 conserve la campagne complète depuis Nouveau Jeu : neuf cristaux,
 ballon,Hache d’or,Death Adder sans protection,générique complet,retour intro.
@@ -29,7 +31,10 @@ vérifié en PAL/NTSC,avec neuf marqueurs,HUD et déplacement.
 
 Nettoyage :81,7 Mio nets libérés après archivage sans perte et relecture des
 captures binaires de six parcours de menu. ROMs,sources,symboles et PNG préservés.
-Voir inventory_capture_cleanup_v0313_report.json.
+Voir inventory_capture_cleanup_v0313_report.json. Nettoyage supplémentaire :
+4 737 sorties de compilation inactives archivées et relues avant suppression,
+413 Mio nets d’artefacts,environ400 Mio de place disque mesurée. Les ROMs,
+sources,symboles et captures sont préservés. Voir inactive_build_cleanup_v0314_report.json.
 
 Entrée D9 v313 vérifiée : paiement réel 23→13 cornes, tombe ouverte par la
 Cloche de glace, entrée à96 PV et72 PM avec huit cristaux. Trois étapes avec
@@ -158,8 +163,7 @@ Ordre de travail pour la livraison :
 
 Le correctif audio est intégré à la v314. Réutiliser ses preuves liées au
 binaire exact ; la campagne complète v313 conserve son périmètre historique.
-Poursuivre les contrôles de v314 depuis son deuxième cristal et le don d’huile
-vérifié, sans attribuer la fin de v313 au nouveau binaire.
+Poursuivre les contrôles de v314 depuis la préparation de D4 vérifiée, sans attribuer la fin de v313 au nouveau binaire.
 
 1. Poursuivre la validation de la ROM courante et traiter les blocages ou régressions
    réellement rencontrés. Réutiliser les préfixes froids déjà vérifiés ; ne pas

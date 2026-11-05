@@ -25,7 +25,7 @@ protégée contre les interruptions. La compilation de production reproduit
 exactement le binaire testé.
 [Correctif intégré et preuves v314](analysis/intro_audio_integration_v0314_report.json)
 
-Sur ce binaire, le parcours depuis Nouveau Jeu atteint **deux cristaux**,
+Sur ce binaire, le parcours depuis Nouveau Jeu atteint **trois cristaux**,
 avec la hache et la première fée de vie obtenues normalement. Le boss de D2
 est vaincu sans protection ni dégât :89 prédictions conformes, puis cristal
 et retour extérieur à **48/48 PV et24 PM**. Un dégât normal de4 PV sur le
@@ -46,7 +46,7 @@ Son rejeu reproduit les592 octets du contenu et le fichier SRAM, puis un
 redémarrage et **Continuer** restaurent les objets, le premier cristal,
 le HUD physique et le déplacement. Aucun état SRAM synthétique n’est utilisé.
 La sauvegarde à neuf cristaux écrite sur v313 reste également compatible avec
-v314 en PAL/NTSC. La campagne après D2 reste à vérifier sur le nouveau binaire.
+v314 en PAL/NTSC. La campagne à partir du boss D4 reste à vérifier sur le nouveau binaire.
 [Sauvegarde écrite et Continuer v314](analysis/game_written_save_v0314_report.json)
 · [Compatibilité de sauvegarde v313](analysis/save_compatibility_candidate11_v0313_report.json)
 
@@ -662,6 +662,14 @@ Les captures binaires de ces six parcours sont archivées sans perte, puis
 supprimées après relecture et contrôle des empreintes : **81,7 Mio nets libérés**.
 Les ROMs numérotées, les sources, symboles et captures PNG sont conservés.
 [Manifeste du nettoyage](analysis/inventory_capture_cleanup_v0313_report.json)
+
+Un nettoyage supplémentaire archive sans perte **4 737 fichiers de compilation
+générés** devenus inactifs. Après relecture complète et contrôle des empreintes,
+ils sont retirés :413 Mio nets d’artefacts, environ400 Mio de place disque
+mesurée pendant les tests. Les314 ROMs, sources, symboles et captures de jeu
+sont conservés ; les archives d’objets compilés restent locales.
+[Rapport du nettoyage des compilations](analysis/inactive_build_cleanup_v0314_report.json)
+
 
 La correction du chargement initial avait été intégrée à la v313. Son binaire
 est identique au candidat vérifié jusqu’aux huit cristaux et à la sortie de D8.

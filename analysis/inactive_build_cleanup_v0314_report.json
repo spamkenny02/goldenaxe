@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "md_sha256": "c53381c459a1e6254a8c9f1cfad1b8cda482cc0614697ad566133b28335e07a7",
+  "manifest": "analysis/inactive-validation-build-objects-v0314/manifest.json",
+  "manifest_sha256": "672215aaeae9d4a079fe19d57294efc8b1d8a48c6334d7223575fdc49f46256d",
+  "removed_verified_files": 4737,
+  "removed_generated_bytes": 562083512,
+  "archive_bytes": 129076042,
+  "net_artifact_bytes_freed": 433007470,
+  "observed_disk_free_delta_bytes": 418877440,
+  "skipped_files": 0,
+  "numbered_roms_preserved": 314,
+  "current_rom_sources_symbols_and_game_captures_preserved": true,
+  "archive_objects_retained_locally": true,
+  "full_game_validated": false,
+  "limits": [
+    "Each source object is read, compressed, decompressed and hash-checked before per-file deletion inside the verified validation output root.",
+    "Only the manifest/report need Git tracking; this local archive contains reproducible historical compiler outputs. Current intro-audio/v0314 projects and all game captures are excluded."
+  ]
+}
