@@ -29,6 +29,9 @@ vérifiée de Nouveau Jeu au générique.
 La clé supplémentaire, le coffre et le retour en extérieur avec la hache équipée sont vérifiés sur v311.
 [Rapport du parcours de la hache](analysis/axe_route_v0311_report.json)
 
+La fée, l’entrée de D2 et ses trois clés ont passé le rejeu sur v311. Le boss reste en cours de vérification.
+[Rapport de l’approche de D2](analysis/d2_approach_v0311_report.json)
+
 La **[v0310 raccorde la récurrence du hasard SMS](analysis/rng_integration_v0310.md)**
 aux routines du jeu : ennemis, butin, historique des salles et mini-jeu.
 Les lectures directes de R sont séparées des appels 04E1. Le fournisseur de R
