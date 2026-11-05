@@ -35,6 +35,15 @@ La sauvegarde réelle dans le premier emplacement et le rechargement par
 et déplacement contrôlés, sans écriture RAM de test ni suppression d’ennemis
 au rechargement. Le palais et la fin restent à valider.
 [Sauvegarde en jeu et Continuer v313](analysis/game_written_save_v0313_report.json)
+
+Le **ballon utilisé en jeu**, son retour à la carte et la porte des neuf
+cristaux du palais sont vérifiés. Le premier géant du palais est vaincu sans
+protection : cinq étapes avec rejeu RAM/image exact et 245 prédictions
+conformes. Le héros termine à **82 PV et 72 PM**. Le gardien de la Hache d’or
+et Death Adder restent à vérifier sur v313.
+[Ballon et restauration](analysis/owned_overview_v0313_report.json)
+· [Entrée du palais](analysis/cold_palace_entry_v0313_report.json)
+· [Géant du palais](analysis/cold_palace_giant_v0313_report.json)
 Les étapes v312/v313 ci-dessous conservent leurs périmètres historiques.
 
 Les étapes v312 ci-dessous documentent la préparation du parcours et les

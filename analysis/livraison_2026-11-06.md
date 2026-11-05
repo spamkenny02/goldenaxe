@@ -11,7 +11,10 @@ Les étapes retenues ont un rejeu indépendant RAM/image exact.
 Voir d9_campaign_v0313_report.json. Sauvegarde réellement écrite dans le
 premier emplacement puis Continuer vérifiés :592 octets, neuf marqueurs,128
 mots du HUD et déplacement réel. Voir game_written_save_v0313_report.json.
-Le palais et la fin restent à valider ; le parcours intérieur est lancé.
+Le ballon utilisé en jeu et la porte des neuf cristaux sont vérifiés.
+Premier géant du palais vaincu sans protection : cinq étapes avec rejeu
+RAM/image exact,245 prédictions conformes,82 PV et72 PM à la fin. Le parcours
+intérieur se poursuit vers la Hache d’or et Death Adder.
 
 Entrée D9 v313 vérifiée : paiement réel 23→13 cornes, tombe ouverte par la
 Cloche de glace, entrée à96 PV et72 PM avec huit cristaux. Trois étapes avec

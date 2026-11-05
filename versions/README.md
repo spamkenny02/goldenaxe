@@ -4,7 +4,7 @@ Chaque binaire est conserve sans ecrasement. Les controles cibles ne prouvent pa
 
 | Version | ROM | Validation | Changements | SHA-256 |
 | --- | --- | --- | --- | --- |
-| v0313 | [Telecharger](v0313-48fb6e92/gaw-megadrive-v0313.bin) | targeted_checks_passed | Titre PAL/NTSC corrige ; neuf cristaux, ballon, retours et sauvegarde reelle/Continuer verifies. Palais et fin a valider. | `48fb6e924a520ff579d3fb4eabe4aac365e9a37eed3dc33ff0dabfdc232e1932` |
+| v0313 | [Telecharger](v0313-48fb6e92/gaw-megadrive-v0313.bin) | targeted_checks_passed | Neuf cristaux, ballon, sauvegarde/Continuer et premier geant du palais verifies. Hache d or, Death Adder et fin a valider. | `48fb6e924a520ff579d3fb4eabe4aac365e9a37eed3dc33ff0dabfdc232e1932` |
 | v0312 | [Telecharger](v0312-0b9aecb4/gaw-megadrive-v0312.bin) | targeted_checks_passed | v312 : huit cristaux et sorties verifies a 96 PV/72 PM ; correctif du demarrage en verification. Nettoyage lossless des objets de compilation des prototypes : 490 fichiers, 4079914 octets nets liberes, ROMs/sources/preuves preservees. | `0b9aecb48fc9bb82cfcebc9547684742134d60e0f82e60b1a070ab3be50b4d64` |
 | v0311 | [Telecharger](v0311-0972465d/gaw-megadrive-v0311.bin) | targeted_checks_passed | Deuxieme cristal et retour exterieur a 48/48 PV ; boss sans protection, relectures RAM/image exactes. | `0972465d63447f5993324fd63693271f77bcb3f013a125c1d4ed575b2df9d2e2` |
 | v0310 | [Telecharger](v0310-32fe75a6/gaw-megadrive-v0310.bin) | targeted_checks_passed | Campagne v310 vérifiée de Nouveau Jeu au générique et au retour à l’intro. Death Adder vaincu sans invincibilité. | `32fe75a653d7152f7cbf873a32f2ffef14234ea190885ae8a8235f2ccd10e071` |
