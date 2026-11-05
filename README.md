@@ -32,6 +32,11 @@ La clé supplémentaire, le coffre et le retour en extérieur avec la hache équ
 La fée, l’entrée de D2 et ses trois clés ont passé le rejeu sur v311. Le boss reste en cours de vérification.
 [Rapport de l’approche de D2](analysis/d2_approach_v0311_report.json)
 
+Un candidat améliore la transition marchande : neuf images noires et huit
+étapes du portrait alignées sur SMS en PAL/NTSC, sept achats/refus vérifiés.
+Il reste en essai : un chargement vers le haut reprend une image trop tôt.
+[Rapport du candidat marchand](analysis/merchant_candidate_v0311_report.json)
+
 La **[v0310 raccorde la récurrence du hasard SMS](analysis/rng_integration_v0310.md)**
 aux routines du jeu : ennemis, butin, historique des salles et mini-jeu.
 Les lectures directes de R sont séparées des appels 04E1. Le fournisseur de R
