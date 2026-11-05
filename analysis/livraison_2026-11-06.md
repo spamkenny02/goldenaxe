@@ -249,3 +249,9 @@ Nettoyage D1–D7 clos :18 064 captures intermédiaires archivées et relues,
 536 fichiers des points finaux conservés et hachages inchangés. Gain net
 442 077 835 octets, toutes les ROMs numérotées préservées.
 Voir closed_capture_cleanup_v0314_report.json.
+
+Branche D9 : mort normale puis Continuer et soin gratuit vérifiés sur trois
+rejeux RAM/image exacts. Huit cristaux et tous les objets conservés ;96/96 PV,
+24 PM,6 cornes. Aucun argent ni état injecté. Le trajet direct vers la Cloche
+et D9 est lancé ; ce donjon n’est pas encore validé.
+Voir d9_recovery_v0314_report.json.

@@ -22,7 +22,7 @@ def campaign():
         'close_assisted_approach.py','unassisted_dungeon_continuation.py',
         'unassisted_fast_prediction.py','prediction_video_skip.py',
         'natural_dungeon_combat.py','natural_combat_beam.py','replay_assisted_prefix.py',
-        'continue_d9_entry_v0314.py','continue_d8_entry_v0314.py','natural_house_service.py','natural_exterior_toll_v0314.py','guarded_exterior_toll_v0314.py','cold_replay_stream.py','run_core.py')
+        'continue_d9_entry_v0314.py','continue_d8_entry_v0314.py','natural_house_service.py','natural_free_healer.py','natural_death_continue.py','summarize_d9_recovery_v0314.py','cold_replay_stream.py','run_core.py')
     hashes={}
     for name in names:
         target=snapshot/name
@@ -42,16 +42,13 @@ def campaign():
     assert max(frame for frame,_,_ in writes)==last['release_write_frame']
     assert not cap['sram_input'] and assist['primary_state_imports']==0
     world=['--boss-room','0x1ac','--assisted-prefix','--world-route','--live-prefix-terrain','--live-room-replan','--axe-terrain','--rope-terrain','--preserve-floor-hurt']
-    gift='v0314-d9-earned-toll10'
-    replay(SERVICE,'md-'+gift,lambda r:r['passed'] and r['last_state']['gold']>=10 and not r['currency_or_inventory_fixtures'])
-    route='v0314-d9-paid1a-route01'
-    run('assisted_boss_route.py',[*world,'--prefix-service','md-'+gift,'--house-outside','0x1a','--house-target','0x9f','--door-entry-direction','0','--frames',budget(SERVICE,'md-'+gift,16000),'--trial',route])
-    replay(ROUTE,'md-'+route,lambda r:r['reached_entrance'] and r['directional_probe_succeeded'] and r['last_state']['gold']>=10)
-    paid='v0314-d9-paid1a-service01'
-    run('natural_paid_passage.py',['--assisted-prefix','--prefix','md-'+route,'--outside','0x1a','--trial',paid])
-    replay(SERVICE,'md-'+paid,lambda r:r['passed'] and r['price']==10 and r['last_state']['room']==0x3c)
+    recovery=json.loads(evidence(ROOT/'analysis/d9_recovery_v0314_report.json'))
+    assert recovery['passed'] and recovery['md_sha256']==receipt['md_sha256'] and recovery['eight_crystals_preserved']
+    recovered='md-v0314-d9-healer94-service01'
+    assert recovery['current_campaign_trace']=='validation/'+SERVICE+'/'+recovered
+    assert_canonical(SERVICE,recovered)
     entry='v0314-d9-entry01'
-    run('natural_bell_world_route.py',[*world,'--prefix-service','md-'+paid,'--door-index','9','--frames',budget(SERVICE,'md-'+paid,12000),'--trial',entry])
+    run('natural_bell_world_route.py',[*world,'--new-assistance-episode','--completed-exit-proof',COMBAT+'/'+source,'--prefix-service',recovered,'--door-index','9','--frames',budget(SERVICE,recovered,16000),'--trial',entry])
     replay(ROUTE,'md-'+entry,lambda r:r['reached_entrance'] and r['directional_probe_succeeded'])
     base=['--boss-room','0x1ac',*COMMON,'--wake-sentinels','--retry-isolated-foes']
     first='v0314-d9-switch1de-02'

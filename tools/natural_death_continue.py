@@ -17,7 +17,9 @@ def main():
     p.add_argument('--trial', required=True)
     p.add_argument('--assisted-prefix', action='store_true')
     p.add_argument('--exposure-trace', help='Use only ordinary recorded buttons to reach an enemy area; never import its RAM writes')
+    p.add_argument('--exposure-combat', help='Recorded failed exterior combat controls only; requires identical inherited writes, no resource imports')
     a = p.parse_args()
+    assert not(a.exposure_trace and a.exposure_combat)
     source = (ROOT/'validation'/a.trace).resolve()
     assert source.is_relative_to(ROOT/'validation')
     cap = json.loads((source/'capture.json').read_bytes())
@@ -33,13 +35,17 @@ def main():
         end = controls[i+1]['frame']-1 if i+1 < len(controls) else start
         timeline[row['frame']:end+1] = [tuple(row['buttons'])]*(end-row['frame']+1)
     exposure = None
-    if a.exposure_trace:
-        other = (ROOT/'validation'/a.exposure_trace).resolve()
+    if a.exposure_trace or a.exposure_combat:
+        other = (ROOT/'validation'/(a.exposure_trace or a.exposure_combat)).resolve()
         assert other.is_relative_to(ROOT/'validation')
         other_cap = json.loads((other/'capture.json').read_bytes())
-        other_report = json.loads((other/'route_report.json').read_bytes())
+        other_report = json.loads((other/('report.json'if a.exposure_combat else'route_report.json')).read_bytes())
         assert other_cap['rom_sha256'] == cap['rom_sha256'] and other_cap['sram_input'] is None
-        assert other_report['prefix_end'] == start and other_report['reached_entrance']
+        if a.exposure_combat:
+            assert other_report['source_prefix']==source.name and other_report['failure']=='hero_died'
+            assert recording(other,other_cap)[1]==list(writes) and not other_report['new_assistance_writes']
+            assert not other_report['currency_or_inventory_fixtures'] and not other_report['primary_state_imports']
+        else:assert other_report['prefix_end'] == start and other_report['reached_entrance']
         exposure = [()]*(other_cap['frames']+1)
         rows = json.loads((other/'controls.json').read_bytes())
         for i, row in enumerate(rows):
@@ -101,6 +107,7 @@ def main():
         if death is not None:
             return []
         if exposure is not None:
+            if a.exposure_combat:return list(exposure[frame])if frame<len(exposure)else[]
             if state['game'] == 12 and state['hero'] == 1 and state['foes']:
                 if state['counter']:
                     return [4+direction]

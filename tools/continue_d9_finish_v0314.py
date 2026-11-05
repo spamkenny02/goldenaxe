@@ -76,5 +76,12 @@ def campaign():
     print('NINTH CRYSTAL AND EXIT VERIFIED', flush=True)
 
 
+def main():
+    from cold_replay_stream import ReplayStream
+    helper.STREAM=ReplayStream(helper.EVIDENCE/'finish-cold-stream')
+    try:campaign()
+    finally:helper.STREAM.close()
+
+
 if __name__ == '__main__':
     main()

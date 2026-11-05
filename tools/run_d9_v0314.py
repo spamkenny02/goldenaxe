@@ -4,24 +4,27 @@ from run_core import ROOT
 from archive_lossless_evidence import sha
 
 def main():
- p=argparse.ArgumentParser();p.add_argument('--wait-for-toll-pid',type=int);a=p.parse_args()
+ p=argparse.ArgumentParser();p.add_argument('--wait-for-recovery-pid',type=int);p.add_argument('--wait-for-entry-pid',type=int);a=p.parse_args()
+ assert not(a.wait_for_recovery_pid and a.wait_for_entry_pid)
+ wait_pid=a.wait_for_entry_pid or a.wait_for_recovery_pid
+ expected_tool='tools/continue_d9_entry_v0314.py'if a.wait_for_entry_pid else'tools/continue_d9_recovery_v0314.py'
  digest='c53381c459a1e6254a8c9f1cfad1b8cda482cc0614697ad566133b28335e07a7'
  assert sha((ROOT/'gaw-megadrive.bin').read_bytes())==digest
- if a.wait_for_toll_pid:
-  command=f"Get-CimInstance Win32_Process -Filter 'ProcessId={a.wait_for_toll_pid}' | Select-Object ProcessId,Name,CommandLine | ConvertTo-Json -Compress"
+ if wait_pid:
+  command=f"Get-CimInstance Win32_Process -Filter 'ProcessId={wait_pid}' | Select-Object ProcessId,Name,CommandLine | ConvertTo-Json -Compress"
   def process():
    r=subprocess.run(['powershell','-NoProfile','-Command',command],capture_output=True,text=True,check=True)
    return json.loads(r.stdout)if r.stdout.strip()else None
   current=process()
-  if current:assert current['Name']=='python.exe'and 'tools/guarded_exterior_toll_v0314.py'in current['CommandLine']
-  print('Waiting for verified toll process',a.wait_for_toll_pid,flush=True)
+  if current:assert current['Name']=='python.exe'and expected_tool in current['CommandLine']
+  print('Waiting for verified stage process',wait_pid,flush=True)
   while current:
    time.sleep(2);current=process()
-  print('Toll process terminal; inspecting actual report',flush=True)
- toll=json.loads((ROOT/'validation/natural-service-route/md-v0314-d9-earned-toll10/report.json').read_bytes())
- assert toll['passed']and not toll['failure']and toll['rom_sha256']==digest and toll['last_state']['gold']>=10
- assert not toll['currency_or_inventory_fixtures']and not toll['primary_state_imports']
- tools=['continue_d9_entry_v0314.py','summarize_d9_toll_v0314.py','summarize_d9_entry_v0314.py','summarize_d9_midboss_v0314.py','continue_d9_finish_v0314.py','summarize_d9_balloon_v0314.py','summarize_d9_campaign_v0314.py']
+  print('Stage process terminal; inspecting actual reports',flush=True)
+ receipt=json.loads((ROOT/'analysis/d9_recovery_v0314_report.json').read_bytes())
+ assert receipt['passed'] and receipt['md_sha256']==digest and receipt['eight_crystals_preserved'] and not receipt['currency_or_inventory_fixtures']
+ tools=['continue_d9_entry_v0314.py','summarize_d9_entry_v0314.py','summarize_d9_midboss_v0314.py','continue_d9_finish_v0314.py','summarize_d9_balloon_v0314.py','summarize_d9_campaign_v0314.py']
+ if a.wait_for_entry_pid:tools=tools[1:]
  for tool in tools:
   assert sha((ROOT/'gaw-megadrive.bin').read_bytes())==digest
   print('PIPELINE START',tool,flush=True)
