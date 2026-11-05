@@ -236,3 +236,7 @@ D8 :paiement réel11→1,entrée,gardien7A50 PV vaincu sans protection.
 Un coup normal de18 PV (84→66),243 prédictions exactes ; six points
 RAM/image jusqu’à219770. Voir d8_midboss_v0314_report.json.
 Approche principale et clé du voleur en cours.
+
+Approche D8 et clé du voleur terminées :huit points froids RAM/image exacts,
+mécanismes distants et solC8 franchis,gardien7A absent après sa mort.
+Voir d8_approach_v0314_report.json. Combat principal6B en cours,sans protection.

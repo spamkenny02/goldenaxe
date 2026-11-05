@@ -750,3 +750,8 @@ La protection est retirée avant le combat ; un coup normal de18 PV
 (84→66) et243 prédictions exactes. Six points RAM/image exacts.
 Le huitième cristal reste à valider.
 [Entrée et gardien D8](analysis/d8_midboss_v0314_report.json)
+
+D8 :clé du voleur obtenue par le jeu,mécanismes distants et passage Terre
+franchis,approche du boss principal vérifiée en huit points RAM/image.
+Le gardien vaincu ne réapparaît pas. Le boss6B et son cristal restent à valider.
+[Clé du voleur et approche D8](analysis/d8_approach_v0314_report.json)
