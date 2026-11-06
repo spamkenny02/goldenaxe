@@ -1,5 +1,67 @@
 # Reprise du portage dans un autre compte Codex
 
+État courant au 6 novembre 2026, soirée. Les notes historiques conservées
+plus bas décrivent des versions antérieures. Lire d’abord cette section,
+le README et les rapports cités.
+
+La version de référence est V318, 2 Mio, checksum 7863, SHA-256
+b9e1f0a0543f191e24ffd6d2740a0d717501e0fcd986f8b8953a37a1b3c416a4.
+La ROM SMS du dossier input correspond exactement au fichier fourni par
+l’utilisateur sur D:/Cartmod/GoldenAxeWarrior/chat. Une compilation propre
+a reproduit le binaire publié et ses symboles. Le dépôt est sur main,
+avec le remote https://github.com/spamkenny02/goldenaxe.git.
+
+Le parcours NTSC V318 atteint la victoire, le générique et le retour à
+l’intro par rejeu de la campagne V317. La campagne PAL V318 possède
+désormais neuf cristaux et a rejoint le palais après utilisation du ballon.
+Le point vérifié avant le premier géant est la salle 16E à l’image 323222.
+La protection d’approche est retirée à 323223 avant la salle 15E. Consulter
+le processus et les fichiers actuels pour savoir si le combat a fini depuis
+cette note. Le pilote validation/pal318-palace01/run.py est suivi du pilote
+validation/pal318-palace-inner01/run.py dans une même chaîne de commandes.
+Ne pas relancer ces pilotes sur leurs répertoires existants.
+
+Les points d’entrée pour reprendre le suivi sont les commandes exécutées
+et les checkpoints, avec vérification de l’état réel des processus avant
+toute nouvelle exécution.
+
+- validation/pal318-palace01/commands.jsonl
+- validation/pal318-palace01/cold-stream/checkpoints.json
+- validation/pal318-palace-inner01/commands.jsonl
+- validation/pal318-palace-inner01/cold-stream/checkpoints.json
+- analysis/pal_d9_exit_v0318_report.json
+- analysis/pal_palace_entry_v0318_report.json
+- analysis/pal_palace_mechanisms_v0318_report.json
+
+Le pilote audit.py de chaque répertoire de campagne vérifie les points
+courants et archive les preuves. Les audits du géant, du gardien, de la
+Golden Axe et de la fin doivent suivre leurs victoires réelles. La chaîne
+de jeu ne les remplace pas. Les écritures de test sont limitées au compteur
+de protection des approches. Tous les boss doivent être affrontés après
+retrait de cette protection. Aucun objet, cristal, PV ou état de progression
+ne doit être importé dans le parcours depuis Nouvelle partie.
+
+Une sauvegarde écrite normalement par V318 PAL avec neuf cristaux a été
+rejouée, comparée octet par octet puis rechargée par Continuer. Les
+défilements des premières cartes et la disparition des anciens sprites
+passent les contrôles ciblés des deux régions. Ces résultats figurent dans
+le README et leurs archives.
+
+Les aperçus c0042 et c0043 sont des essais numérotés avec limites documentées.
+c0042 récupère une mise à jour PAL pendant une salve mais introduit un saut
+NTSC à 7697. c0043 recale les 7424 étapes du générique PAL dans le test
+contrôlé mais ses rejeux de campagne divergent avant la fin. Aucun de ces
+aperçus ne remplace la V318. La fidélité globale des timings, du hasard,
+de l’image et du son, les chemins optionnels et le matériel restent ouverts.
+
+Le Python actuellement invoqué par python est C:/Python315/python.exe.
+SGDK est dans ../../work/sgdk depuis outputs/gaw-md. Le script
+tools/build_private_candidate.ps1 compile les essais dans validation et
+conserve la ROM de référence. Les programmes de test en cours utilisent
+cette ROM et ses symboles. Préserver les fichiers qu’ils lisent.
+
+## Historique conservé
+
 Etat de cette note : 4 novembre 2026. Lire aussi README.md et les rapports plus recents eventuellement ajoutes depuis cette note. Le changement de compte ne termine pas l'objectif du portage.
 
 ## Priorite utilisateur : livraison vendredi6novembre au soir
