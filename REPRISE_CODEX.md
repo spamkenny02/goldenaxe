@@ -856,3 +856,22 @@ Le premier a terminé ; le second enregistre ses commandes et ses sources
 dans validation/c0046-d2-sources du projet isolé. Vérifier son processus
 réel avant de reprendre. Les outils partagés par lien physique demeurent
 inchangés ; les sorties ne touchent pas au parcours PAL V318.
+
+## Fin PAL V318 confirmée et format c0047
+
+Le pipeline PAL est terminé avec succès. Death Adder : retrait de protection
+381583, premier combat 381672 à 100 PV/hurt0 contre 90 PV source, victoire
+et passage état14 à 383429. 98 prédictions RAM exactes. Neuf gemmes visibles
+383712, générique 384405..391828, retour intro391858, dernier checkpoint
+391958. Audit complet : analysis/pal_palace_ending_v0318_report.json et
+analysis/pal-palace-ending-v0318. RAM/image exactes depuis Nouvelle partie.
+Ne pas relancer les pilotes sur ces dossiers existants.
+
+Erreur de format repérée : les fichiers c0045 et c0046 faisaient 1152 Kio
+bien que leur en-tête annonce 2 Mio. Ils sont conservés et documentés.
+La ROM c0047-d3ea2a83 complète c0046 avec FF à 2 Mio et recalcule le checksum
+DA29. Aucun autre octet du programme et des ressources ne change.
+Les deux campagnes du premier cristal c0046 se rejouent sur c0047 avec
+RAM entière/image finale identiques. La ROM V318 reste référence. Les
+pilotes de compilation concernés ajoutent maintenant le complément et
+finalisent le checksum avant toute publication future.

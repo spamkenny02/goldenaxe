@@ -15,6 +15,10 @@ SHA-256 : `b9e1f0a0543f191e24ffd6d2740a0d717501e0fcd986f8b8953a37a1b3c416a4`
 Checksum Mega Drive : `7863`
 <!-- ROM-RELEASE:END -->
 
+Aperçu actuel : [c0047, ROM de 2 Mio](versions/candidates/c0047-d3ea2a83/README.md).
+Il reprend l’optimisation c0046 et corrige son complément de fichier.
+Premier donjon rejoué en PAL et NTSC ; campagne complète de cet aperçu à valider.
+
 Nouvel aperçu [c0046](versions/candidates/c0046-9e747d38/README.md) :
 préparation des motifs du héros mesurée 44,79 % moins coûteuse ;
 marche contrôlée conforme SMS et premier cristal/retour vérifiés en PAL et NTSC.
@@ -27,6 +31,8 @@ la V318 reste la version de référence.
 
 La **v318** applique le fondu avant le titre pendant l’interruption vidéo.
 Elle ajoute 34 images identiques à la Master System dans chaque région.
+La campagne PAL V318 va désormais de Nouvelle partie à la victoire, au
+générique et au retour à l’intro, avec rejeu indépendant RAM/image.
 Le rejeu de la campagne NTSC retrouve les 393 707 états comparés de la v317
 et les quatre captures de fin. La sauvegarde v317 à neuf cristaux se recharge.
 [Mesures et limites de la v318](analysis/fade_v0318.md)
@@ -63,6 +69,7 @@ et les quatre captures de fin. La sauvegarde v317 à neuf cristaux se recharge.
 · [Gardien de la Golden Axe vaincu en PAL, rejeu depuis Nouvelle partie](analysis/pal_palace_guardian_v0318_report.json)
 · [Golden Axe récupérée normalement en PAL](analysis/pal_palace_golden_axe_v0318_report.json)
 · [Tous les passages du palais jusqu’à l’antichambre de Death Adder en PAL](analysis/pal_palace_pre_final_v0318_report.json)
+· [Victoire PAL, générique complet et retour à l’intro](analysis/pal_palace_ending_v0318_report.json)
 · [Reprise en PAL de la sauvegarde V317 à neuf cristaux](analysis/pal_save_compatibility_v0318_report.json)
 · [Écriture et reprise d’une vraie sauvegarde V318 en PAL](analysis/game_written_save_pal_v0318_nine_crystals_report.json)
 · [Comparaison du générique avec la Master System, en PAL et NTSC](analysis/ending_controlled_v0318.md)

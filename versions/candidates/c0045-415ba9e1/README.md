@@ -1,6 +1,6 @@
 # c0045 — Copie des lignes de sprites
 
-Aperçu de développement de 2 Mio, basé sur c0044. Le choix entre RAM et
+Aperçu de développement de 1152 Kio, basé sur c0044. Le choix entre RAM et
 VDP se fait une seule fois pour les huit lignes ; les lignes RAM masquées
 ne sont plus lues. Les lectures VDP restent effectuées dans leur ordre.
 
@@ -20,3 +20,7 @@ Checksum : 3268. SHA-256 : `415ba9e186a49f9cd3e38865206603f6354b807a231f0c723e57
 - [ROM c0045](gaw-megadrive-c0045.bin)
 - [Patch source](source.patch)
 - [Mesures et captures](../../../analysis/c0045-clone-rows/manifest.json)
+
+Correction de format : ce fichier annonce 2 Mio dans son en-tête mais ne
+contient que 1152 Kio. Il est conservé pour reproduire ses essais.
+Voir c0047 pour le programme de c0046 complété à 2 Mio.

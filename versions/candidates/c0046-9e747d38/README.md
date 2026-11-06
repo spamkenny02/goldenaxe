@@ -1,6 +1,6 @@
 # c0046 — Préparation des motifs du héros
 
-Aperçu de développement de 2 Mio, basé sur c0044. Les petites copies de
+Aperçu de développement de 1152 Kio, basé sur c0044. Les petites copies de
 trois octets dans la préparation des motifs du héros deviennent des
 écritures directes. L’atlas RAM des ennemis de c0044 reste présent.
 
@@ -51,3 +51,7 @@ donjon à l’image 27553, avec 40/40 PV. Ces sept étapes passent leurs
 rejeux RAM/image depuis Nouvelle partie.
 
 [Hache, fée et entrée du deuxième donjon](../../../analysis/c0046_after_d1_report.json).
+
+Correction de format : ce fichier annonce 2 Mio dans son en-tête mais ne
+contient que 1152 Kio. Il est conservé pour reproduire ses essais.
+Voir c0047 pour le programme de c0046 complété à 2 Mio.
