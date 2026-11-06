@@ -15,8 +15,12 @@ En PAL, le rejeu des commandes V318 décalées de trois images après l’entré
 reproduit les champs de jeu comparés jusqu’au premier cristal et à la sortie
 en B9. L’image finale est identique. La comparaison du rejeu exclut le miroir
 VRAM et les octets du lecteur audio. En NTSC, le rejeu des commandes décalées
-diverge à l’image 4 418 de référence et l’image de fin diffère. La V318 reste
-la version de référence pour la campagne complète.
+diverge à l’image 4 418 de référence et l’image de fin diffère. Un nouveau
+parcours NTSC avec des commandes adaptées aux rencontres obtient le premier
+cristal et ressort en B9 à 24/32 PV. Les quatre points de contrôle reproduisent
+la RAM et l’image finale. La protection d’approche est retirée en 185 avant
+le boss. La V318 reste la version de référence pour la campagne complète.
+[Rapport du parcours NTSC](../../../analysis/c0039_ntsc_d1_report.json)
 
 L’horloge de jeu avance de 72 unités entre l’entrée et le retour du contrôle,
 comme sur Master System. La V318 en avance de 73 en NTSC. La demande du
