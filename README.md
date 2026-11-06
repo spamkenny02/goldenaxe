@@ -46,6 +46,7 @@ et les quatre captures de fin. La sauvegarde v317 à neuf cristaux se recharge.
 · [Ballon et entrée du palais en PAL](analysis/pal_palace_entry_v0318.md)
 · [Deux premiers mécanismes du palais en PAL](analysis/pal_palace_mechanisms_v0318_report.json)
 · [Premier géant du palais vaincu en PAL](analysis/pal_palace_giant_v0318.md)
+· [Premier portail intérieur du palais en PAL](analysis/pal_palace_portal_v0318_report.json)
 · [Reprise en PAL de la sauvegarde V317 à neuf cristaux](analysis/pal_save_compatibility_v0318_report.json)
 · [Écriture et reprise d’une vraie sauvegarde V318 en PAL](analysis/game_written_save_pal_v0318_nine_crystals_report.json)
 · [Comparaison du générique avec la Master System, en PAL et NTSC](analysis/ending_controlled_v0318.md)
@@ -62,6 +63,8 @@ L’aperçu [c0042](versions/candidates/c0042-4d3efb5b/README.md) récupère une
 mise à jour de la salve du boss 6A observée sur Master System en PAL.
 L’aperçu [c0043](versions/candidates/c0043-3554bad2/README.md) recale le
 début du générique dans le test contrôlé.
+L’aperçu [c0044](versions/candidates/c0044-cc4c9830/README.md) lit les motifs
+des ennemis depuis la RAM du donjon et récupère une mise à jour de salve PAL.
 
 ## État du portage
 
