@@ -25,7 +25,7 @@ def main():
     roots=[]
     for family in ('natural-dungeon-route','natural-dungeon-combat','natural-service-route'):
         roots.extend(p for p in (ROOT/'validation'/family).iterdir() if p.is_dir() and 'v0317-' in p.name)
-    roots.extend(p for p in (ROOT/'validation').iterdir() if p.is_dir() and p.name.startswith('v0317-'))
+    roots.extend(p for p in (ROOT/'validation').iterdir() if p.is_dir() and p.name.startswith(('v0317-','run-v0317-')))
     if args.stage:
         roots=[p for p in roots if any(re.search(r'v0317-'+re.escape(s)+r'(?:-|$)',p.name) for s in args.stage)]
     else:roots.append(ROOT/'validation/campaign-v0317')
