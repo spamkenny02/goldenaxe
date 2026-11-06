@@ -20,6 +20,7 @@ Elle ajoute 34 images identiques à la Master System dans chaque région.
 Le rejeu de la campagne NTSC retrouve les 393 707 états comparés de la v317
 et les quatre captures de fin. La sauvegarde v317 à neuf cristaux se recharge.
 [Mesures et limites de la v318](analysis/fade_v0318.md)
+· [Mesures des transferts partiels de la troisième scène](analysis/scene3_reveal_experiment_v0318.md)
 · [Premier cristal en PAL et comparaison de l’entrée](analysis/pal_d1_v0318.md)
 · [Hache, fée et deuxième cristal en PAL](analysis/pal_d2_v0318.md)
 · [Huile, corde et troisième cristal en PAL](analysis/pal_d3_v0318.md)
@@ -28,6 +29,7 @@ et les quatre captures de fin. La sauvegarde v317 à neuf cristaux se recharge.
 · [Feu, épée longue et entrée du cinquième donjon en PAL](analysis/pal_fire_sword_v0318_report.json)
 · [Bottes, achat de clé et soin avant le cinquième cristal en PAL](analysis/pal_d5_supplies_v0318_report.json)
 · [Cinquième cristal et retour à l’extérieur en PAL](analysis/pal_d5_campaign_v0318.md)
+· [Cloche de glace, sixième cristal et retour en PAL](analysis/pal_d6_v0318.md)
 
 L’aperçu [c0038](versions/candidates/c0038-e7ee40cb/README.md) est conservé
 avec son rejeu divergent. L’ancien aperçu [c0029](versions/candidates/c0029-c3fca1d6/README.md) reste disponible.
