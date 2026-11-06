@@ -27,6 +27,7 @@ et les quatre captures de fin. La sauvegarde v317 à neuf cristaux se recharge.
 · [Canoë et quatrième cristal en PAL](analysis/pal_d4_v0318.md)
 · [Feu, épée longue et entrée du cinquième donjon en PAL](analysis/pal_fire_sword_v0318_report.json)
 · [Bottes, achat de clé et soin avant le cinquième cristal en PAL](analysis/pal_d5_supplies_v0318_report.json)
+· [Cinquième cristal et retour à l’extérieur en PAL](analysis/pal_d5_campaign_v0318.md)
 
 L’aperçu [c0038](versions/candidates/c0038-e7ee40cb/README.md) est conservé
 avec son rejeu divergent. L’ancien aperçu [c0029](versions/candidates/c0029-c3fca1d6/README.md) reste disponible.
