@@ -25,3 +25,13 @@ cc4c983037441cfb8d81e1233b1326c75ead18c22e3d2b09306ddb64ab0eea18.
 - [Patch source](source.patch)
 - [Rapports et captures](../../../analysis/c0044-dungeon-pattern-ram/manifest.json)
 - [Premier écart NTSC](../../../analysis/c0044-ntsc-divergence/manifest.json)
+
+À la première divergence NTSC, la V318 saute l’appel à la simulation.
+c0044 l’exécute. Les compteurs des acteurs avancent d’une unité, tandis
+que les PV et la position du héros ainsi que les générateurs aléatoires
+concordent encore. Dans un essai contrôlé de la salle 1E2 sur Master System,
+les 768 octets des acteurs après cette mise à jour correspondent à c0044
+à la phase 73. La chronologie naturelle complète entre les deux consoles
+reste à comparer.
+
+- [Mise à jour NTSC comparée à la source](../../../analysis/c0044-ntsc-first-update/manifest.json)

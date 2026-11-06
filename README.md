@@ -49,6 +49,7 @@ et les quatre captures de fin. La sauvegarde v317 à neuf cristaux se recharge.
 · [Premier portail intérieur du palais en PAL](analysis/pal_palace_portal_v0318_report.json)
 · [Passage Terre en salle 14E du palais en PAL](analysis/pal_palace_earth_v0318_report.json)
 · [Portails, Terre et mécanisme 129 du palais en PAL](analysis/pal_palace_inner_v0318.md)
+· [Antichambre du gardien de la Golden Axe en PAL](analysis/pal_palace_pre_guardian_v0318_report.json)
 · [Reprise en PAL de la sauvegarde V317 à neuf cristaux](analysis/pal_save_compatibility_v0318_report.json)
 · [Écriture et reprise d’une vraie sauvegarde V318 en PAL](analysis/game_written_save_pal_v0318_nine_crystals_report.json)
 · [Comparaison du générique avec la Master System, en PAL et NTSC](analysis/ending_controlled_v0318.md)
