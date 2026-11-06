@@ -41,3 +41,11 @@ saute encore les deux mises à jour mesurées.
 - [Mesure de la publication au VBlank](v0318-burst-video-publish/manifest.json)
 - [Trois salves en jeu sur la Master System PAL](sms-pal-room180-burst-cadence/manifest.json)
 - [Essais après c0042](burst-cadence-trials-after-c0042/manifest.json)
+
+La réutilisation d’un masque plus large pour construire un masque plus
+strict conserve les 108 images de sprites contrôlées. Dans le parcours
+PAL, cet essai diverge à 79 474 et saute encore les deux mises à jour
+mesurées. Il est écarté. La ROM temporaire de 2 Mio est conservée sous
+forme compressée et son exemplaire de compilation a été supprimé.
+
+- [Réutilisation partielle des masques](mask-clone-subset-v0318/manifest.json)
