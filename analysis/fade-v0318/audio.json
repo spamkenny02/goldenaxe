@@ -1,0 +1,39 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "region": "ntsc",
+      "state_difference_frames": [],
+      "psg_difference_frames": [],
+      "state_sha256": {
+        "baseline": "108949f37a8f330ec8a20b78f2efa049d2e3cb1fcc2c5c1638ce36cbcfeccc49",
+        "candidate": "108949f37a8f330ec8a20b78f2efa049d2e3cb1fcc2c5c1638ce36cbcfeccc49"
+      },
+      "psg_sha256": {
+        "baseline": "01823efd3e5c0098c25e2376130974e7ac52257843a66730e98cae3877f00246",
+        "candidate": "01823efd3e5c0098c25e2376130974e7ac52257843a66730e98cae3877f00246"
+      }
+    },
+    {
+      "region": "pal",
+      "state_difference_frames": [],
+      "psg_difference_frames": [],
+      "state_sha256": {
+        "baseline": "893a08f06aee434bd43debb9c93fd990e4b75aef015c1018464dcd2a413251bc",
+        "candidate": "893a08f06aee434bd43debb9c93fd990e4b75aef015c1018464dcd2a413251bc"
+      },
+      "psg_sha256": {
+        "baseline": "4408c1b52e405f7bafff32cf1e6e562ea55891cedd89b4b399470227cf73fa9e",
+        "candidate": "4408c1b52e405f7bafff32cf1e6e562ea55891cedd89b4b399470227cf73fa9e"
+      }
+    }
+  ],
+  "baseline_sha256": "7694654ec85dd6626c0e17ff1834e5893d4eb35481400a4725eac6b6f3503294",
+  "md_sha256": "b9e1f0a0543f191e24ffd6d2740a0d717501e0fcd986f8b8953a37a1b3c416a4",
+  "core_sha256": "f0e6f1723602c278d7520b627b1ed96132a8ed48fe1d14704e9cdb6c6c876e7c",
+  "driver_sha256": "c9aaef0118c1a723b02c52bd54eaeb4a31885d74c8e0e012be50a2723167f86a",
+  "frames_per_region": 6500,
+  "ram_writes": 0,
+  "sram_imports": 0,
+  "scope": "Every frame:400 sound reader bytes, pending effect request and8 PSG registers. Baseline equivalence only; no PCM or original SMS audio fidelity claim."
+}

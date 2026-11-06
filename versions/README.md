@@ -2,15 +2,13 @@
 
 Chaque binaire est conserve sans ecrasement. Les controles cibles ne prouvent pas un portage complet.
 
-La v0317 est une version de développement : des écarts visuels et la
-validation complète du jeu restent ouverts. L’ancien aperçu [c0029](candidates/c0029-c3fca1d6/README.md)
-est conservé ; les sources utilisées par défaut correspondent maintenant à v0317.
-
-L’aperçu c0038 teste le recalage du fondu titre–intro sur une ROM numérotée
-séparément. [Téléchargement et mesures c0038](candidates/c0038-e7ee40cb/README.md)
+La v0318 est la version courante. Le [fondu et le rejeu NTSC](../analysis/fade_v0318.md)
+sont vérifiés sur son binaire. Les aperçus [c0029](candidates/c0029-c3fca1d6/README.md)
+et [c0038](candidates/c0038-e7ee40cb/README.md) restent disponibles.
 
 | Version | ROM | Validation | Changements | SHA-256 |
 | --- | --- | --- | --- | --- |
+| v0318 | [Telecharger](v0318-b9e1f0a0/gaw-megadrive-v0318.bin) | development_targeted_checks | Fondu titre recale sur interruption video. 34 images SMS exactes de plus par region ; campagne NTSC et recharge de la sauvegarde v317 rejouees. | `b9e1f0a0543f191e24ffd6d2740a0d717501e0fcd986f8b8953a37a1b3c416a4` |
 | v0317 | [Telecharger](v0317-7694654e/gaw-megadrive-v0317.bin) | development_targeted_checks | Developpement : retours intro/titre, horloge, attente IRQ et compteur du feu corriges ; audio SMS et deux boucles verifies. Menus, inventaires et premier donjon controles ; ecarts visuels et parcours complet encore ouverts. | `7694654ec85dd6626c0e17ff1834e5893d4eb35481400a4725eac6b6f3503294` |
 | v0316 | [Telecharger](v0316-8b94f2e0/gaw-megadrive-v0316.bin) | targeted_checks_passed | Recit : fondu de sortie restaure ; revelation initiale,16 contours et apparition du heros alignes PAL/NTSC. Trajets frais au premier donjon,reprise et inventaires verifies ; parcours complet encore requis. | `8b94f2e022d1027b5bc3cefd18ffd9f79a8895fba7622defc400c10d6fdfff7b` |
 | v0315 | [Telecharger](v0315-004b593b/gaw-megadrive-v0315.bin) | targeted_checks_passed | Panneau marchand aligne SMS PAL/NTSC ; 43 transactions ; parcours complet rejoue,401609 etats semantiques exacts ; sauvegarde v314 compatible PAL/NTSC. | `004b593b8c9869ebac9e01256eb677edd63a22d987dd6694d3591d57cc8e7c1b` |

@@ -5,29 +5,29 @@ puis portage de sa logique Z80 en code natif 68000 avec SGDK.
 La fidélité à la Master System passe avant les améliorations.
 
 <!-- ROM-RELEASE:START -->
-**Version courante : v0317 — 2048 Kio.**
+**Version courante : v0318 — 2048 Kio.**
 
-[Télécharger la ROM v0317](versions/v0317-7694654e/gaw-megadrive-v0317.bin) · [Toutes les versions](versions/README.md)
+[Télécharger la ROM v0318](versions/v0318-b9e1f0a0/gaw-megadrive-v0318.bin) · [Toutes les versions](versions/README.md)
 
 Version de développement ; contrôles ciblés réussis, écarts visuels et validation complète encore ouverts.
 
-SHA-256 : `7694654ec85dd6626c0e17ff1834e5893d4eb35481400a4725eac6b6f3503294`
-Checksum Mega Drive : `7D56`
+SHA-256 : `b9e1f0a0543f191e24ffd6d2740a0d717501e0fcd986f8b8953a37a1b3c416a4`
+Checksum Mega Drive : `7863`
 <!-- ROM-RELEASE:END -->
 
-La v317 est une version de développement. La [v316](versions/v0316-8b94f2e0/gaw-megadrive-v0316.bin)
-et l’ancien aperçu [c0029](versions/candidates/c0029-c3fca1d6/README.md) restent conservés.
+La **v318** applique le fondu avant le titre pendant l’interruption vidéo.
+Elle ajoute 34 images identiques à la Master System dans chaque région.
+Le rejeu de la campagne NTSC retrouve les 393 707 états comparés de la v317
+et les quatre captures de fin. La sauvegarde v317 à neuf cristaux se recharge.
+[Mesures et limites de la v318](analysis/fade_v0318.md)
 
-L’aperçu **c0038** recale l’affichage des couleurs du fondu titre–intro.
-Le rejeu avec les commandes de la v0317 diverge en jeu et n’atteint pas
-la scène finale.
-Les comparaisons ajoutent 34 images identiques à la Master System par région.
-[ROM de travail et mesures c0038](versions/candidates/c0038-e7ee40cb/README.md)
+L’aperçu [c0038](versions/candidates/c0038-e7ee40cb/README.md) est conservé
+avec son rejeu divergent. L’ancien aperçu [c0029](versions/candidates/c0029-c3fca1d6/README.md) reste disponible.
 
 ## État du portage
 
-La **v317** intègre les correctifs de menus et d’intro dans les sources et
-le build par défaut de main. Elle rétablit le fondu titre→intro, les attentes
+La **v317** a intégré les correctifs de menus et d’intro repris dans la v318.
+Elle rétablit le fondu titre→intro, les attentes
 réelles d’interruption, les quatre attentes de chargement, la continuité de
 l’horloge et la remise à zéro du compteur du feu. Les publications de sprites
 et palettes en attente sont nettoyées à l’entrée et à la sortie de l’intro.

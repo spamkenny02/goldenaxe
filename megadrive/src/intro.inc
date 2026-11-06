@@ -8,7 +8,6 @@ static u16 intro_logic_clock;
 static volatile u16 intro_tick_work;
 static volatile u16 intro_text_predictions,intro_text_irq_skips;
 static volatile u32 intro_text_prediction_total;
-static volatile u16 intro_palette_pending;
 static u16 intro_sprite_count,intro_sprite_pending;
 static volatile u16 intro_line,intro_running;
 static u16 intro_actor_state[16],intro_actor_pose[16];

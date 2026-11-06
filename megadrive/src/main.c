@@ -326,6 +326,7 @@ static void wait_frames(u16 n) { while(n-- && !title_requested) wait_frame(); }
 /* 1470 -> 0B48 / 0B12: fade the preceding story out before loading the title. */
 static void title_wait_frame(void);
 static void title_wait_frames(u16 frames);
+static volatile u16 intro_palette_pending;
 static void fade_before_title(void)
 {
     u16 step,n;
@@ -339,7 +340,7 @@ static void fade_before_title(void)
             {
                 sms_palette[n]-=step;changed=TRUE;
             }
-            if(changed) { set_palette(sms_palette);title_wait_frames(2); }
+            if(changed) { intro_palette_pending=1;title_wait_frames(2); }
         } while(changed && !title_requested);
         if(title_requested) return;
     }
