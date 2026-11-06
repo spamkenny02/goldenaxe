@@ -1,0 +1,60 @@
+--- a/megadrive/src/main.c
++++ b/megadrive/src/main.c
+@@ -2695,6 +2695,7 @@
+ 
+ /* 0AD1/0ADE: compare one two-bit component, then wait two IRQs per change.
+  * 0B12 uses red/green/blue; 0AA4 uses blue/green/red. */
++static bool door_fade_palette_after_irq;
+ static void fade_world_palette(const u16 *target,bool fade_in)
+ {
+     u16 step=fade_in?16:1,n;
+@@ -2710,7 +2711,13 @@
+                 u16 current=sms_palette[n]&(step*3),desired=target[n]&(step*3);
+                 if(current!=desired) { sms_palette[n]+=current<desired?step:-step;changed=TRUE; }
+             }
+-            if(changed) { resume_fade_step++;set_world_palette();wait_frame();wait_frame(); }
++            if(changed)
++            {
++                resume_fade_step++;
++                if(door_fade_palette_after_irq) wait_frame();
++                set_world_palette();wait_frame();
++                if(!door_fade_palette_after_irq) wait_frame();
++            }
+         } while(changed);
+         step=fade_in?step>>2:step<<2;
+     }
+--- a/megadrive/src/door_transition.inc
++++ b/megadrive/src/door_transition.inc
+@@ -1,17 +1,31 @@
++/* C065 changes one IRQ before the last source loader wait on first D1 entry. */
++static NO_INLINE void finish_first_dungeon_load(void)
++{
++    u16 waits=SYS_isPAL()?2:3;
++    while(waits--) portal_wait_frame();
++    update_world_music();
++    portal_wait_frame();
++}
++
+ /* 6594/6509/65D0/654D ->0B12,state8,1FA7 for standard doors. */
+ static void load_door_room(u16 number,u16 graphics_class)
+ {
+     u16 black[32]={0},n;
+     u32 started;
+     bool changed=world_graphics_class!=graphics_class;
++    bool first_dungeon_entry=changed && number==0x1e4 && !(game_save_state[0x50+0xe4]&0x10);
+     if(number!=room_id) save_room_actor_mask(room_id);
+     room_id=number; /*18E2 publishes the destination before the old scene fades. */
++    door_fade_palette_after_irq=first_dungeon_entry;
+     resume_phase=1;fade_world_palette(black,FALSE);
++    door_fade_palette_after_irq=FALSE;
+     resume_phase=2;started=vtimer;
+     if(changed) sound_music(0xb0);
+     door_transition_loading=TRUE;
+     load_house_room(number,graphics_class);
+-    update_world_music();
++    /* The measured first D1 loader reaches the source reveal three IRQs early. */
++    if(first_dungeon_entry) finish_first_dungeon_load();
++    else update_world_music();
+     world_clock_shift+=vtimer-started-1; /*Only229C advances C02F while loading. */
+     door_transition_loading=FALSE;
+     for(n=0;n<16;n++) sms_palette[16+n]=menu_palette[n];

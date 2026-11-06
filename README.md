@@ -28,7 +28,9 @@ et les quatre captures de fin. La sauvegarde v317 à neuf cristaux se recharge.
 L’aperçu [c0038](versions/candidates/c0038-e7ee40cb/README.md) est conservé
 avec son rejeu divergent. L’ancien aperçu [c0029](versions/candidates/c0029-c3fca1d6/README.md) reste disponible.
 L’aperçu [c0039](versions/candidates/c0039-aafa3255/README.md) recale la durée
-de la première entrée du donjon 1 en PAL et NTSC. Son rejeu diverge en NTSC.
+de la première entrée du donjon 1 en PAL et NTSC. Un parcours NTSC adapté
+atteint le premier cristal. L’aperçu [c0040](versions/candidates/c0040-1f4355f1/README.md)
+recale aussi la demande musicale et rejoue le donjon dans les deux régions.
 
 ## État du portage
 

@@ -6,7 +6,8 @@ La v0318 est la version courante. Le [fondu et le rejeu NTSC](../analysis/fade_v
 sont vérifiés sur son binaire. Les aperçus [c0029](candidates/c0029-c3fca1d6/README.md)
 et [c0038](candidates/c0038-e7ee40cb/README.md) restent disponibles.
 L’aperçu [c0039](candidates/c0039-aafa3255/README.md) mesure le recalage
-de la première entrée du donjon 1.
+de la première entrée du donjon 1. [c0040](candidates/c0040-1f4355f1/README.md)
+y recale la demande du thème musical.
 
 | Version | ROM | Validation | Changements | SHA-256 |
 | --- | --- | --- | --- | --- |
