@@ -34,6 +34,9 @@ passent. Protection retirée à 346001 ; premier combat à 346117 avec
 100 PV et hurt=0, gardien à ses 60 PV source. Le pilote poursuit vers
 la vraie Golden Axe, puis Death Adder et la fin. Voir
 analysis/pal_palace_guardian_v0318_report.json.
+La vraie Golden Axe est ensuite obtenue en 11D, checkpoint 355012,
+100/104 PV et 72 PM. Le rejeu indépendant RAM/image passe et l’inventaire
+contient la valeur 2. Voir analysis/pal_palace_golden_axe_v0318_report.json.
 
 - validation/pal318-palace01/commands.jsonl
 - validation/pal318-palace01/cold-stream/checkpoints.json
