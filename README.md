@@ -24,6 +24,7 @@ et les quatre captures de fin. La sauvegarde v317 à neuf cristaux se recharge.
 · [Hache, fée et deuxième cristal en PAL](analysis/pal_d2_v0318.md)
 · [Huile, corde et troisième cristal en PAL](analysis/pal_d3_v0318.md)
 · [Achat de Terre et entrée du quatrième donjon en PAL](analysis/pal_earth_v0318_report.json)
+· [Canoë et quatrième cristal en PAL](analysis/pal_d4_v0318.md)
 
 L’aperçu [c0038](versions/candidates/c0038-e7ee40cb/README.md) est conservé
 avec son rejeu divergent. L’ancien aperçu [c0029](versions/candidates/c0029-c3fca1d6/README.md) reste disponible.
