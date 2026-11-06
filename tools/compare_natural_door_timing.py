@@ -32,6 +32,8 @@ def measure(trace, rom, output, *, core=None, native_symbols=None):
     phases = {}
     black_spans = []
     observed = set()
+    clock_by_frame = {}
+    music_changes = []
     previous = 0
     if core is not None:
         dll = c.CDLL(str(core))
@@ -42,6 +44,20 @@ def measure(trace, rom, output, *, core=None, native_symbols=None):
         nonlocal previous
         if frame < first - 12 or frame > ready:
             return
+        if frame >= first - 1:
+            if native_symbols is None:
+                clock, track = ram[0x2F], ram[0x65]
+            else:
+                def word(name, offset=0):
+                    address = native_symbols[name] + offset
+                    return int.from_bytes(ram[address:address + 2], 'little')
+
+                # Only the low byte of vtimer - world_clock_shift survives.
+                clock = (word('vtimer', 2) - word('world_clock_shift', 2)) & 255
+                track = word('sound_current_track')
+            clock_by_frame[frame] = clock
+            if not music_changes or music_changes[-1]['track'] != track:
+                music_changes.append(dict(frame=frame, from_entry=frame-first, track=track))
         if core is not None:
             if frame == first - 12:
                 dll.gaw_timing_reset()
@@ -86,6 +102,9 @@ def measure(trace, rom, output, *, core=None, native_symbols=None):
                 hidden_load_frames=phases['fade_in'] - phases['load'],
                 black_playfield_spans=black_spans,
                 black_playfield_frames=sum(b - a + 1 for a, b in black_spans),
+                logical_clock_advance=(clock_by_frame[ready]-clock_by_frame[first-1]) & 255,
+                logical_clock_at_phases={name: clock_by_frame[frame] for name, frame in phases.items()},
+                music_changes=music_changes,
                 endpoint_png_sha256=sha((output / filename).read_bytes()))
 
 
@@ -93,6 +112,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--sms-trace', type=Path, required=True)
     parser.add_argument('--md-trace', type=Path, required=True)
+    parser.add_argument('--md-rom', type=Path, default=ROOT / 'gaw-megadrive.bin')
+    parser.add_argument('--md-symbols', type=Path, default=ROOT / 'megadrive/out/release/symbol.txt')
     parser.add_argument('--out', type=Path, required=True)
     args = parser.parse_args()
     out = args.out.resolve()
@@ -103,8 +124,7 @@ def main():
     assert len(regions) == 1
     source_core = ROOT.parents[1] / 'work/genesis-plus-gx/genesis_plus_gx_hero_libretro.dll'
     source = measure(traces[0], ROOT / 'input/original.sms', out / 'sms', core=source_core)
-    native = measure(traces[1], ROOT / 'gaw-megadrive.bin', out / 'md',
-                     native_symbols=symbols(ROOT / 'megadrive/out/release/symbol.txt'))
+    native = measure(traces[1], args.md_rom, out / 'md', native_symbols=symbols(args.md_symbols))
     report = dict(region=regions.pop(), sms=source, md=native, driver_sha256=sha(Path(__file__).read_bytes()))
     (out / 'report.json').write_text(json.dumps(report, indent=2) + '\n')
     print(json.dumps(report))

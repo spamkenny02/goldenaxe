@@ -18,6 +18,11 @@ VRAM et les octets du lecteur audio. En NTSC, le rejeu des commandes décalées
 diverge à l’image 4 418 de référence et l’image de fin diffère. La V318 reste
 la version de référence pour la campagne complète.
 
+L’horloge de jeu avance de 72 unités entre l’entrée et le retour du contrôle,
+comme sur Master System. La V318 en avance de 73 en NTSC. La demande du
+thème du donjon arrive encore une image plus tard que sur Master System
+dans les deux régions.
+
 Sur 14 000 images sans entrée par région, les écarts vidéo mesurés contre
 la Master System sont identiques à ceux de la V318. Les états du lecteur
 audio et les huit registres PSG sont identiques à ceux de la V318 sur les
@@ -32,3 +37,4 @@ Le [patch source](source.patch) s’applique au commit `c6c705be`.
 - [Rejeu PAL](pal-replay.json) et [NTSC](ntsc-replay.json)
 - [Démarrage PAL](pal-boot.json) et [NTSC](ntsc-boot.json)
 - [Audio du démarrage](boot-audio.json)
+- [Horloge et demandes musicales en PAL](pal-clock.json) et [NTSC](ntsc-clock.json)
