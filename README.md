@@ -42,11 +42,21 @@ donjon passent. Le build de production et le build propre sont identiques.
 · [Rapport lié au binaire](analysis/attract_v0317_report.json)
 · [Sources et artefacts](analysis/attract_v0317_artifacts_report.json)
 
+Un nouveau parcours sur ce même binaire valide désormais les **deux premiers
+cristaux et les retours extérieurs**, ainsi que la hache et la première fée.
+Les 22 points de contrôle sélectionnés reproduisent la RAM complète et le PNG
+final depuis un démarrage à froid. La protection de test est retirée avant
+chaque boss ; aucune vie, ressource ou progression n'est importée. Le retour
+après le deuxième donjon termine à 31/48 PV, sans mort. La suite du jeu et sa
+fidélité globale restent à vérifier sur v317.
+[Parcours v317, preuves et limites](analysis/campaign_v0317.md)
+
 Les essais clos sont archivés et relus avant nettoyage. Toutes les 317 ROMs
 publiées, les sources, symboles et captures restent préservés ; les ROMs de
 travail sont également conservées dans les archives, et le candidat 37 reste
 disponible localement avec son cache de compilation.
-[Dernier nettoyage vérifié](analysis/attract_v0317_cleanup_report.json)
+[Nettoyage de la campagne : 81 Mio libérés](analysis/campaign_v0317_cleanup_report.json)
+· [Nettoyage précédent des essais d’intro](analysis/attract_v0317_cleanup_report.json)
 
 La **v0316 restaure la sortie du récit et la révélation du premier écran** :
 fondu vers le noir, 16 contours et apparition du héros contrôlés sur SMS
