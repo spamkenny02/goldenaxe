@@ -27,10 +27,13 @@ Les points d’entrée pour reprendre le suivi sont les commandes exécutées
 et les checkpoints, avec vérification de l’état réel des processus avant
 toute nouvelle exécution.
 
-Dernier jalon PAL audité : antichambre 12E à 346000, avec 100/104 PV,
-72 PM et neuf cristaux. Le retrait de protection à 346001 est rejoué
-indépendamment. Le combat réel du gardien 7C en 11E est ensuite en cours ;
-ne pas annoncer sa victoire avant le rapport et le checkpoint suivant.
+Dernier jalon PAL audité : gardien 7C en 11E vaincu à 352326,
+checkpoint à 352477 avec 76/104 PV, 72 PM et neuf cristaux. Les 387
+fenêtres de prédiction et le rejeu RAM/image depuis Nouvelle partie
+passent. Protection retirée à 346001 ; premier combat à 346117 avec
+100 PV et hurt=0, gardien à ses 60 PV source. Le pilote poursuit vers
+la vraie Golden Axe, puis Death Adder et la fin. Voir
+analysis/pal_palace_guardian_v0318_report.json.
 
 - validation/pal318-palace01/commands.jsonl
 - validation/pal318-palace01/cold-stream/checkpoints.json
