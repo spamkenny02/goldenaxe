@@ -831,3 +831,14 @@ Nettoyage : uniquement apres compression sans perte, relecture et verification d
 ## Message a donner au nouveau chat
 
 > Lis REPRISE_CODEX.md, README.md, git status et les derniers rapports de validation. Reprends l'objectif complet : portage Mega Drive natif et fidele de Golden Axe Warrior. Verifie d'abord les derniers rapports et le checkpoint du retour avec neuf cristaux avant de poursuivre. Conserve les changements en cours, les ROMs numerotees et les archives locales ; ne declare pas le jeu termine avec les seuls neuf cristaux ou avec une preuve de determinisme MD.
+
+## Résultats c0046 du 6 novembre, soirée
+
+Les deux pilotes resume_d1_key.py sont terminés avec succès. Le premier
+cristal et la sortie B9 sont prouvés en NTSC (17169, 28/32 PV) et PAL
+(19596, 32/32 PV). Les sept checkpoints par région reproduisent RAM/image.
+Source boss 68 à 12 PV, retrait avant combat : 14253 avant 14465 en NTSC,
+16248 avant 16449 en PAL. Respectivement 21 et 19 prédictions RAM exactes.
+Rapports analysis/c0046_d1_auto_report.json et c0046_d1_pal_report.json.
+La V318 demeure référence ; ne pas confondre le premier donjon c0046 avec
+le parcours PAL complet V318 qui continue indépendamment.

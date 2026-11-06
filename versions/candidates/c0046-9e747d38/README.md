@@ -25,3 +25,22 @@ Checksum : 6AB5. SHA-256 : `9e747d38e0c6fb2d69b7c1aa8c2b296a61e8b6af41171d14e543
 - [Patch source](source.patch)
 - [Mesures, pilotes et captures](../../../analysis/c0046-hero-three-plane/manifest.json)
 - [Profil qui motive le changement](../../../analysis/c0044_burst_stages.md)
+
+Le premier cristal et le retour à l’extérieur sont maintenant vérifiés
+avec de nouvelles commandes en PAL et NTSC, sans mort. La protection de
+test est retirée avant chaque combat. Les sept points de contrôle de chaque
+parcours reproduisent la RAM entière et l’image en rejeu indépendant depuis
+Nouvelle partie. Aucun PV, objet, état de progression ou SRAM n’est importé.
+
+| Région | Premier combat | Retrait de protection | Retour extérieur | PV au retour |
+| --- | ---: | ---: | ---: | ---: |
+| NTSC | 14465 | 14253 | 17169 | 28/32 |
+| PAL | 16449 | 16248 | 19596 | 32/32 |
+
+Le premier essai de pilote avait laissé la seconde clé en salle 193 et
+s’arrêtait devant la porte du boss. Le parcours validé retourne ramasser
+cette clé normalement. Ces commandes régénérées ne prouvent pas une
+chronologie identique à celle de la Master System.
+
+- [Premier cristal NTSC, rapport](../../../analysis/c0046_d1_auto_report.json)
+- [Premier cristal PAL, rapport](../../../analysis/c0046_d1_pal_report.json)
