@@ -14,6 +14,7 @@ def main():
     parser.add_argument('--source', type=Path, default=ROOT / 'gaw-megadrive.bin')
     parser.add_argument('--notes', default='Compilation ; validation en attente.')
     parser.add_argument('--report', type=Path, action='append', default=[])
+    parser.add_argument('--development', action='store_true', help='Label this ROM as a development build with scoped checks.')
     args = parser.parse_args()
     data = args.source.read_bytes()
     digest = hashlib.sha256(data).hexdigest()
@@ -52,8 +53,11 @@ def main():
         if item not in entry['reports']:
             entry['reports'].append(item)
     if reports:
-        entry['validation'] = 'targeted_checks_passed'
+        entry['validation'] = 'development_targeted_checks' if args.development else 'targeted_checks_passed'
         entry['notes'] = args.notes
+    if args.development:
+        entry['development'] = True
+        if not reports: entry['validation'] = 'development_build_only'
     temp = archive / 'index.json.tmp'
     temp.write_text(json.dumps(entries, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
     temp.replace(index)

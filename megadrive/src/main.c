@@ -4,6 +4,7 @@
 #include "source_pattern.h"
 #include "pattern_convert.h"
 #include "source_class0_video.h"
+#include "source_irq.h"
 #include "actors.h"
 #include "source_room_history.h"
 #include "source_magic_rope.h"
@@ -60,6 +61,8 @@ static u16 sms_palette[32];
 static u16 input;
 static u16 map_origin=0x3900;
 static bool title_phase, title_requested;
+/* Source line-counter reload is zero only before024F/0240 first install. */
+static bool title_line_counter_loaded;
 static u16 menu_selection;
 static u16 name_cursor,name_position;
 static u8 character_name[9];
@@ -321,6 +324,8 @@ static void wait_frame(void)
 static void wait_frames(u16 n) { while(n-- && !title_requested) wait_frame(); }
 
 /* 1470 -> 0B48 / 0B12: fade the preceding story out before loading the title. */
+static void title_wait_frame(void);
+static void title_wait_frames(u16 frames);
 static void fade_before_title(void)
 {
     u16 step,n;
@@ -334,7 +339,7 @@ static void fade_before_title(void)
             {
                 sms_palette[n]-=step;changed=TRUE;
             }
-            if(changed) { set_palette(sms_palette);wait_frames(2); }
+            if(changed) { set_palette(sms_palette);title_wait_frames(2); }
         } while(changed && !title_requested);
         if(title_requested) return;
     }
@@ -368,8 +373,8 @@ static void fade_title_palette(bool initial)
             {
                 /* Match IRQ publication, including the first warrior step.
                  * Compute privately so RAM and CRAM become visible together. */
-                wait_frame();memcpy(sms_palette,next_palette,sizeof(next_palette));
-                set_palette(sms_palette);wait_frames(initial?1:5);
+                title_wait_frame();memcpy(sms_palette,next_palette,sizeof(next_palette));
+                set_palette(sms_palette);title_wait_frames(initial?1:5);
             }
         } while(changed && !title_requested);
         if(title_requested) return;
@@ -390,7 +395,36 @@ static void copy_rows(const u8 *source,u16 address,u16 rows,u16 width)
 }
 
 static volatile u16 intro_timer;
+/* 0914 masks IRQs and clears pending VINT after the menu map transfer. */
+static volatile u32 menu_masked_irq_frame;
 #include "sound.inc"
+
+/* 11F3/0914: the fixed1536-byte map copy masks IRQs and reads VDP status.
+ * Forecast its crossing from the current native reader's source T states;
+ * never alter music counters to compensate for a lost source IRQ. */
+static void transfer_typed_name_map(void)
+{
+    u8 state[336]={0};
+    SourceIrqInput entry;
+    SourceIrqOutput output;
+    SourceClockWork reader;
+    u32 started=vtimer,period=SYS_isPAL()?71364UL:59736UL,total;
+    state[0x2e]=1;state[0x35]=0xdd;
+    entry.raster=193UL*3420+72UL*15;entry.lines=SYS_isPAL()?313:262;
+    entry.tile_count=0;entry.joy=0x20;entry.reset_mask=16;entry.compensation=SYS_isPAL()?0:128;
+    reader.tstates=sound_source_work.tstates;reader.fetches=sound_source_work.fetches;
+    if(!source_irq(state,&entry,&reader,&output))
+    { sound_unhandled_command=0x501;draw_map();return; }
+    /* One scanline to VINT, BB3->0914 ordinary glyph input, then0914. */
+    total=228+output.whole.tstates+2034+44842UL;
+    if(total>=period) menu_masked_irq_frame=started+1;
+    draw_map();
+    if(total>=period)
+    {
+        while(vtimer-started<1) wait_frame();
+        menu_masked_irq_frame=0;
+    }
+}
 
 static void title_sequence(void)
 {
@@ -423,42 +457,48 @@ static void title_sequence(void)
      * VBlanks already spent decoding/converting/uploading count toward the work. */
     budget=(SYS_isPAL()?71364:59736)-3072;
     loading_frames=(title_loading_tstates+budget-1)/budget;
+    /* On the first024F install, a zero SMS line counter fires until VINT.
+     * Later installs return within the asset-completion frame, so AA4's
+     * black full wait occupies the final budget IRQ rather than adding one. */
+    if(title_line_counter_loaded && loading_frames) loading_frames--;
     while(vtimer-loading_started<loading_frames && !title_requested) wait_frame();
     if(title_requested) return;
     /* 0AA4 waits one IRQ with a black palette before enabling the display. */
-    wait_frame();
+    title_line_counter_loaded=TRUE;
+    title_wait_frame();
     if(title_requested) return;
     VDP_setEnable(TRUE);
     fade_title_palette(TRUE);
     if(title_requested) return;
-    /* Source title audio starts one IRQ after the final palette hold. */
-    sound_music_delayed(0x81,1);
+    /*14D5 queues81 after the final hold; the next IRQ accepts it.
+     * The black B95 wait is now real, so no extra delay is needed. */
+    sound_music_delayed(0x81,0);
     /* 165C..167E: three cape poses, six IRQs each, eleven cycles. */
     for(n=0;n<11;n++)
         for(k=0;k<3;k++)
         {
-            wait_frames(6);
+            title_wait_frames(6);
             if(title_requested) return;
             copy_rows(animation_map+0x200+234*k,0x3cc4,9,26);
         }
-    wait_frames(6);
+    title_wait_frames(6);
     if(title_requested) return;
     copy_rows(title_map+0x3c0,0x3cc0,9,64);
     /* 169C palette ramp follows, then 163F reveals the eight upper rows. */
     fade_title_palette(FALSE);
     if(title_requested) return;
-    wait_frames(60);
+    title_wait_frames(60);
     if(title_requested) return;
     for(n=0;n<8;n++)
     {
-        wait_frames(1);
+        title_wait_frames(1);
         if(title_requested) return;
         copy_rows(animation_map+n*64,0x3900+n*64,1,64);
     }
     /* 161D: flashing prompt. Full game state 14ED is not ported yet. */
     for(n=360;n>0;n--)
     {
-        wait_frame();
+        title_wait_frame();
         if(title_requested) return;
         copy_rows((n&0x30)?animation_map+0x4be:title_map+0x240,0x3b40,1,64);
     }
@@ -510,7 +550,7 @@ static void update_menu_selection(void)
     u16 second=menu_selection?0x0982:0x18ff;
     sms_vram[0x3a96]=first; sms_vram[0x3a97]=first>>8;
     sms_vram[0x3ad6]=second; sms_vram[0x3ad7]=second>>8;
-    draw_map();
+    { bool previous=map_queue;map_queue=TRUE;draw_map();map_queue=previous; } /* 20F5 IRQ queue */
 }
 
 /* 0A78: relative SMS sprite descriptors, compiled to MD sprite attributes.
@@ -540,7 +580,7 @@ static void update_name_sprites(void)
     VDP_resetSprites();
     count=add_sms_sprite_frame(0,name_positions[name_cursor*2+1],name_positions[name_cursor*2],frame,1);
     count=add_sms_sprite_frame(count,name_caret_positions[name_position*2+1],name_caret_positions[name_position*2],name_caret_frame,1);
-    if(count && count<=64) { VDP_setSpriteLink(count-1,0);VDP_updateSprites(count,CPU); }
+    if(count && count<=64) { VDP_setSpriteLink(count-1,0);VDP_updateSprites(count,DMA_QUEUE); }
 }
 
 /* 129F/12A3/12B6: raw glyph tiles, either spaced or contiguous. */
@@ -1283,6 +1323,12 @@ static void update_hero_sprites(void)
  * copy and no IRQ interleaving in a partially configured DMA command. */
 static void world_vint(void)
 {
+    if(intro_palette_pending)
+    {
+        set_palette(sms_palette);intro_palette_pending=0;
+        if(intro_sprite_pending)
+        { VDP_updateSprites(intro_sprite_count,DMA);intro_sprite_pending=0; }
+    }
     world_sms_sprite_overflow=world_sms_sprite_display_overflow;
     world_sms_sprite_display_overflow=world_sms_sprite_prepared_overflow;
     if(!world_cell_write_active && world_cell_rows_pending)
@@ -1349,6 +1395,12 @@ static void world_vint(void)
         if(audio<period) overview_work_budget+=period-audio;
         else overview_pacing_error=1;
     }
+}
+/* Only menu0914 owns the discarded audio IRQ. Keep the ordinary intro
+ * and gameplay VInt path unchanged, including its native instruction work. */
+static void menu_vint(void)
+{
+    if(vtimer!=menu_masked_irq_frame) world_vint();
 }
 static void wait_world_video(void)
 {
@@ -3000,6 +3052,8 @@ static void enter_initial_room(void)
     u16 n,x,y,destination=0x400,count;
     bool resuming=FALSE,fresh_new_game=!save_resume_pending,initial_sprite_blank=FALSE;
     u32 load_clock=0,initial_load_started=vtimer;
+    title_line_counter_loaded=TRUE; /* Source212C/215F configures reload159. */
+    SYS_setVIntCallback(world_vint);
 reload_world:
     if(resuming) { load_clock=vtimer;resume_phase=2; }
     else { world_clock_shift=0;resume_phase=resume_contour=0; }
@@ -3418,11 +3472,20 @@ static bool finish_name(void)
 static void enter_character_name(void)
 {
     const u8 *text=name_text,*glyphs=name_grid;
-    u16 n,previous=input,held=0;
-    VDP_setEnable(FALSE);
+    u16 n,previous=input,held=0,colors[32],black[32]={0};
+    bool repeat_fast=FALSE;
+    u32 load_started,load_frames;
+    memcpy(colors,sms_palette,sizeof(colors));
+    /* 110E -> 0B53 closes the menu; 1178 transfers the new name map. */
+    fade_opening_palette(black,FALSE);VDP_setEnable(FALSE);
+    load_started=vtimer;
+    /* Observed fixed blank-name setup after0B56; actual masked map crosses
+     * the final PAL IRQ, while the NTSC transfer finishes before that IRQ. */
+    load_frames=SYS_isPAL()?8:9;
+    menu_masked_irq_frame=SYS_isPAL()?load_started+load_frames:0;
     /* $1114 calls $1260 again: restore cursor tiles overwritten by menu RLE. */
     load_mono(0x3000,menu_cursor_bitmap,0x38,3,FALSE);
-    convert_patterns(512);
+    convert_patterns_range_fast(0,512);
     VDP_loadTileData(md_patterns+384*8,16+384,7,CPU);
     for(n=0x3800;n<0x3e00;n+=2) { sms_vram[n]=0xfa; sms_vram[n+1]=1; }
     draw_frame(0x39ce,17,3);
@@ -3439,17 +3502,23 @@ static void enter_character_name(void)
     for(n=0x3801;n<0x3e00;n+=2) sms_vram[n]&=~16;
     name_cursor=0; name_position=0;
     memset(character_name,0,sizeof(character_name));
-    draw_map(); update_name_sprites();
-    VDP_setEnable(TRUE);
+    draw_map();VDP_resetSprites();VDP_updateSprites(0,CPU);
+    while(vtimer-load_started<load_frames) wait_frame();
+    menu_masked_irq_frame=0;
+    while(vtimer-load_started<load_frames+1) wait_frame();
+    VDP_setEnable(TRUE);fade_opening_palette(colors,TRUE);
     while(TRUE)
     {
         u16 pressed,move,old_cursor=name_cursor,old_position=name_position;
         wait_frame();
         pressed=input&~previous;
         move=pressed&15;
-        if((input&15)==0) held=0;
-        else if((input&15)!=(previous&15)) held=0;
-        else if(++held>=24 && ((held-24)&7)==0) move=input&15;
+        /* 12CF clears HL before12D8 increments H, even with no direction.
+         * L selects the24/8 repeat threshold; changing direction does not
+         * reset this shared counter. */
+        if((input&15)==0) {held=0;repeat_fast=FALSE;}
+        if(++held>=(repeat_fast?8:24))
+        {held=0;repeat_fast=TRUE;move|=input&15;}
         previous=input;
         /* 12C1..133B: original cursor movement including the uneven last row. */
         if((move&BUTTON_LEFT) && name_cursor>0) name_cursor--;
@@ -3472,12 +3541,13 @@ static void enter_character_name(void)
                 sms_vram[0x3a1c+name_position*2]=name_typed_tiles[name_cursor];
                 sms_vram[0x3a1d+name_position*2]=8;
                 character_name[name_position]=name_ascii[name_cursor];
+                sound_effect(0x96); /* 11EE */
+                transfer_typed_name_map();
+                /* 11F6 advances the caret after the masked transfer. */
                 if(name_position<7) name_position++;
                 else name_cursor=41;
-                sound_effect(0x96); /* 11EE */
-                draw_map();
             }
-            else if(finish_name()) { sound_effect(0xab);opening_dialogue(); }
+            else if(finish_name()) { opening_dialogue(); } /* 125A: accepted name is silent. */
             else sound_effect(0x96); /* 1253: empty name refused. */
         }
         if(name_position<old_position) sound_effect(0x96); /* 11EE */
@@ -3488,11 +3558,20 @@ static void enter_character_name(void)
 
 static void start_menu(void)
 {
-    u16 n,previous;
+    u16 n,previous,colors[32],black[32]={0};
+    u32 load_started,load_frames;
 reset_start_menu:
     title_phase=FALSE; title_requested=FALSE;return_to_title=FALSE;
-    sound_stop();sound_music(0x89); /* 14F3..14F5: New Game / Continue theme. */
-    VDP_setEnable(FALSE);
+    SYS_setVIntCallback(menu_vint);
+    /* 14ED -> 0B53 closes the title before selecting track89. */
+    fade_opening_palette(black,FALSE);VDP_setEnable(FALSE);
+    load_started=vtimer;
+    /* Profiled 0B56 -> 0AA4 foreground work, including the fixed menu assets. */
+    load_frames=(660339UL+(SYS_isPAL()?71364UL:59736UL)-1)/(SYS_isPAL()?71364UL:59736UL);
+    menu_masked_irq_frame=load_started+load_frames;
+    /* 14F3 follows the source blank-map prelude, after its first IRQ. */
+    while(vtimer-load_started<1) wait_frame();
+    sound_music(0x89);
     memset(sms_vram,0,sizeof(sms_vram));
     /* 1260: original shared cursor, font and numeric/symbol glyph loaders. */
     load_mono(0x1400,font_bitmap,0x180,2,FALSE);
@@ -3501,7 +3580,7 @@ reset_start_menu:
     decode_planes(number_font_rle,sms_vram+0x1e00,4);
     decode_planes(symbol_font_rle,sms_vram+0x1f40,4);
     decode_planes(menu_rle,sms_vram+0x3040,4);
-    convert_patterns(512);
+    convert_patterns_range_fast(0,512);
     VDP_loadTileData(md_patterns,16,512,CPU);
     /* 0B53: blank name table word $01FA, scroll zero. */
     for(n=0x3800;n<0x3e00;n+=2) { sms_vram[n]=0xfa; sms_vram[n+1]=1; }
@@ -3511,10 +3590,19 @@ reset_start_menu:
     for(n=0;n<16;n++) { sms_palette[n]=0; sms_palette[16+n]=menu_palette[n]; }
     /* 1DEB: palette slots selected by current inventory (empty new game). */
     sms_palette[22]=0x2a; sms_palette[23]=0; sms_palette[31]=2;
+    memcpy(colors,sms_palette,sizeof(colors));memset(sms_palette,0,sizeof(sms_palette));
     set_palette(sms_palette);
-    menu_selection=save_last_slot?1:0;
-    update_menu_selection();
-    VDP_setEnable(TRUE);
+    /* 1509..151E: both cursor cells stay blank throughout the ramp. */
+    sms_vram[0x3a96]=sms_vram[0x3ad6]=255;
+    sms_vram[0x3a97]=sms_vram[0x3ad7]=0x18;
+    draw_map();
+    while(vtimer-load_started<load_frames) wait_frame();
+    menu_masked_irq_frame=0;
+    /* 0AA4 owns one black IRQ, then the palette ramp. */
+    while(vtimer-load_started<load_frames+1) wait_frame();
+    VDP_setEnable(TRUE);fade_opening_palette(colors,TRUE);
+    /* 1524 selects the green cursor after the ramp, for the next IRQ. */
+    menu_selection=save_last_slot?1:0;update_menu_selection();
     previous=input;
     while(TRUE)
     {
@@ -3570,7 +3658,7 @@ int main(bool hardReset)
         title_phase=TRUE; title_requested=FALSE;
         intro_sequence();
         title_sequence();
-        if(title_requested) start_menu();
+        if(title_requested) { start_menu();SYS_setVIntCallback(world_vint); }
     }
     return 0;
 }

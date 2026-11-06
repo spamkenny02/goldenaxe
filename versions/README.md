@@ -2,13 +2,13 @@
 
 Chaque binaire est conserve sans ecrasement. Les controles cibles ne prouvent pas un portage complet.
 
-**ROM de développement : [c0029 — télécharger](candidates/c0029-c3fca1d6/gaw-megadrive-c0029.bin).**
-[Sources, correctifs et limites](candidates/c0029-c3fca1d6/README.md).
-Numérotation des candidats distincte des versions ci-dessous ; les différences
-visuelles restantes et le parcours complet restent à valider.
+La v0317 est une version de développement : des écarts visuels et la
+validation complète du jeu restent ouverts. L’ancien aperçu [c0029](candidates/c0029-c3fca1d6/README.md)
+est conservé ; les sources utilisées par défaut correspondent maintenant à v0317.
 
 | Version | ROM | Validation | Changements | SHA-256 |
 | --- | --- | --- | --- | --- |
+| v0317 | [Telecharger](v0317-7694654e/gaw-megadrive-v0317.bin) | development_targeted_checks | Developpement : retours intro/titre, horloge, attente IRQ et compteur du feu corriges ; audio SMS et deux boucles verifies. Menus, inventaires et premier donjon controles ; ecarts visuels et parcours complet encore ouverts. | `7694654ec85dd6626c0e17ff1834e5893d4eb35481400a4725eac6b6f3503294` |
 | v0316 | [Telecharger](v0316-8b94f2e0/gaw-megadrive-v0316.bin) | targeted_checks_passed | Recit : fondu de sortie restaure ; revelation initiale,16 contours et apparition du heros alignes PAL/NTSC. Trajets frais au premier donjon,reprise et inventaires verifies ; parcours complet encore requis. | `8b94f2e022d1027b5bc3cefd18ffd9f79a8895fba7622defc400c10d6fdfff7b` |
 | v0315 | [Telecharger](v0315-004b593b/gaw-megadrive-v0315.bin) | targeted_checks_passed | Panneau marchand aligne SMS PAL/NTSC ; 43 transactions ; parcours complet rejoue,401609 etats semantiques exacts ; sauvegarde v314 compatible PAL/NTSC. | `004b593b8c9869ebac9e01256eb677edd63a22d987dd6694d3591d57cc8e7c1b` |
 | v0314 | [Telecharger](v0314-c53381c4/gaw-megadrive-v0314.bin) | targeted_checks_passed | V314 : intro PAL/NTSC,96 cas de deplacement,neuf cristaux et premier gardien du palais verifies. Degats et soin comptes ; Hache dor et fin en cours. | `c53381c459a1e6254a8c9f1cfad1b8cda482cc0614697ad566133b28335e07a7` |

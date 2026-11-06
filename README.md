@@ -5,46 +5,48 @@ puis portage de sa logique Z80 en code natif 68000 avec SGDK.
 La fidélité à la Master System passe avant les améliorations.
 
 <!-- ROM-RELEASE:START -->
-**Version courante : v0316 — 2048 Kio.**
+**Version courante : v0317 — 2048 Kio.**
 
-[Télécharger la ROM v0316](versions/v0316-8b94f2e0/gaw-megadrive-v0316.bin) · [Toutes les versions](versions/README.md)
+[Télécharger la ROM v0317](versions/v0317-7694654e/gaw-megadrive-v0317.bin) · [Toutes les versions](versions/README.md)
 
-Contrôles ciblés réussis ; portage complet encore non validé.
+Version de développement ; contrôles ciblés réussis, écarts visuels et validation complète encore ouverts.
 
-SHA-256 : `8b94f2e022d1027b5bc3cefd18ffd9f79a8895fba7622defc400c10d6fdfff7b`
-Checksum Mega Drive : `7676`
+SHA-256 : `7694654ec85dd6626c0e17ff1834e5893d4eb35481400a4725eac6b6f3503294`
+Checksum Mega Drive : `7D56`
 <!-- ROM-RELEASE:END -->
 
-**ROM de travail à essayer : [c0029](versions/candidates/c0029-c3fca1d6/gaw-megadrive-c0029.bin).**
-[Correctifs, sources et limites](versions/candidates/c0029-c3fca1d6/README.md).
-La v316 reste disponible ; le portage complet n’est pas encore validé.
+La v317 est une version de développement. La [v316](versions/v0316-8b94f2e0/gaw-megadrive-v0316.bin)
+et l’ancien aperçu [c0029](versions/candidates/c0029-c3fca1d6/README.md) restent conservés.
 
 ## État du portage
 
-Le candidat 29 corrige les attentes NTSC après les copies de texte, un groupe
-de couleurs manquant dans les éclairs et une couleur de sprites. Il reprend
-les corrections des chargements, palettes et plans graphiques de l’intro,
-ainsi que celles des menus.
+La **v317** intègre les correctifs de menus et d’intro dans les sources et
+le build par défaut de main. Elle rétablit le fondu titre→intro, les attentes
+réelles d’interruption, les quatre attentes de chargement, la continuité de
+l’horloge et la remise à zéro du compteur du feu. Les publications de sprites
+et palettes en attente sont nettoyées à l’entrée et à la sortie de l’intro.
 
-Sur 6500 images sans entrée, 6381 images PAL et 6355 NTSC correspondent à la SMS.
-Les trois retards NTSC des images 2992, 4162 et 4522 sont déduits du travail Z80
-et audio courant. Les horloges et compteurs des scènes 2/3 correspondent sur
-les images appariées ; certaines révélations et transitions restent à corriger.
-Ces mesures ne donnent aucun pourcentage de fidélité ou de finition du jeu.
+Sur 14000 images sans entrée par région, 13602 images NTSC et 13648 PAL
+correspondent à la SMS, contre 9454/9298 sur c0029. Le test couvre deux cycles
+complets titre/intro et le début du troisième. Des écarts restent dans les
+révélations partielles et les fondus ; ces comptes ne donnent pas un taux de
+finition ou de fidélité du jeu entier.
 
-Ce binaire passe 210 saisies du nom, 270 images sélectionnées des menus, les
-bruitages de sélection/confirmation, six retours d’inventaire et deux nouvelles
-parties jusqu’au premier donjon. L’état audio reste identique à v316 sur le
-démarrage testé. Une recompilation sans cache donne exactement la même ROM.
-[Preuves et limites de c0029](analysis/intro_text_irq_preview_c0029_report.json)
-· [Explication du correctif](analysis/intro_text_irq_preview_c0029.md)
-· [Travail précédent](analysis/intro_actor_loading_v0316.md)
+Des images 23 à 14000, les 400 octets du lecteur audio et les huit registres PSG
+correspondent à la SMS en PAL/NTSC, avec normalisation des commandes en attente
+et conservation des données brutes. Les formes d’onde PCM ne sont pas certifiées.
+La saisie du nom (210 cas), 270 images sélectionnées des menus, quatre cas de
+bruitages, six retours d’inventaire et deux parties fraîches jusqu’au premier
+donjon passent. Le build de production et le build propre sont identiques.
+[Correctifs et limites de la v317](analysis/attract_v0317.md)
+· [Rapport lié au binaire](analysis/attract_v0317_report.json)
+· [Sources et artefacts](analysis/attract_v0317_artifacts_report.json)
 
-Les essais clos sont archivés et relus avant nettoyage. Toutes les 316 ROMs
+Les essais clos sont archivés et relus avant nettoyage. Toutes les 317 ROMs
 publiées, les sources, symboles et captures restent préservés ; les ROMs de
-travail sont également conservées dans les archives, et le candidat 29 reste
+travail sont également conservées dans les archives, et le candidat 37 reste
 disponible localement avec son cache de compilation.
-[Dernier nettoyage vérifié](analysis/intro_text_irq_preview_c0029_cleanup_report.json)
+[Dernier nettoyage vérifié](analysis/attract_v0317_cleanup_report.json)
 
 La **v0316 restaure la sortie du récit et la révélation du premier écran** :
 fondu vers le noir, 16 contours et apparition du héros contrôlés sur SMS

@@ -13,7 +13,10 @@ def refresh_readme_release(root,entry):
  assert text.count(START)==text.count(END)==1,'Ambiguous README release block'
  rom=root/'versions'/entry['rom'];data=rom.read_bytes()
  assert hashlib.sha256(data).hexdigest()==entry['sha256']
- status='Contrôles ciblés réussis ; portage complet encore non validé.' if entry['validation']=='targeted_checks_passed' else 'Compilation disponible ; validation de cette version en attente.'
+ if entry.get('development'):
+  status='Version de développement ; contrôles ciblés réussis, écarts visuels et validation complète encore ouverts.' if entry['validation']=='development_targeted_checks' else 'Version de développement ; validation en attente.'
+ else:
+  status='Contrôles ciblés réussis ; portage complet encore non validé.' if entry['validation']=='targeted_checks_passed' else 'Compilation disponible ; validation de cette version en attente.'
  block=f'''{START}
 **Version courante : v{entry['version']:04d} — {len(data)//1024} Kio.**
 

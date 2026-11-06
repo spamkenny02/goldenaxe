@@ -4,7 +4,7 @@
 
 Cette version de développement corrige les menus et plusieurs erreurs de
 traduction de l’intro. Elle est numérotée séparément des versions publiques
-v0001..v0316 ; les alias de production restent sur v316.
+v0001..v0316 ; lors de sa publication, les alias de production étaient encore sur v316.
 
 SHA-256 : `c3fca1d60110b78d1ea2207974031401d1c7ed531c8695569e0281d8ffc70d74`
 

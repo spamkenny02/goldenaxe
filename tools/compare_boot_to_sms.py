@@ -26,9 +26,9 @@ def palette_lookup(system):
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--rom',type=Path,required=True);p.add_argument('--out',type=Path,required=True)
-    p.add_argument('--baseline',type=Path,default=ROOT/'versions/v0316-8b94f2e0/gaw-megadrive-v0316.bin');p.add_argument('--pal',action='store_true');a=p.parse_args()
+    p.add_argument('--baseline',type=Path,default=ROOT/'versions/v0316-8b94f2e0/gaw-megadrive-v0316.bin');p.add_argument('--pal',action='store_true');p.add_argument('--frames',type=int,default=6500);a=p.parse_args()
     out=a.out.resolve();assert out.is_relative_to(ROOT/'validation');out.mkdir(parents=True,exist_ok=False)
-    region='pal'if a.pal else'ntsc';frames=6500;baseline=[];baseline_hashes=[];changed={};candidate_hashes=[];records=[];frame_errors=[]
+    region='pal'if a.pal else'ntsc';frames=a.frames;assert frames>0;baseline=[];baseline_hashes=[];changed={};candidate_hashes=[];records=[];frame_errors=[]
     totals=dict(baseline_source_differences=0,candidate_source_differences=0,baseline_exact_frames=0,candidate_exact_frames=0)
     for tag,rom in [('baseline',a.baseline),('candidate',a.rom),('sms',ROOT/'input/original.sms')]:
         lookup=palette_lookup('sms'if tag=='sms'else'md');seen=0;last=bytes(256*192);hashes=bytearray()
@@ -65,7 +65,7 @@ def main():
                 totals['candidate_source_differences']+=new_errors;totals['candidate_exact_frames']+=not new_errors
                 frame_errors.append([old_errors,new_errors])
         folder=out/tag
-        with contextlib.redirect_stdout(io.StringIO()):run(rom,frames,folder,{6500},[],skip_intro=False,video_observer=observe,
+        with contextlib.redirect_stdout(io.StringIO()):run(rom,frames,folder,{frames},[],skip_intro=False,video_observer=observe,
             core_options={'genesis_plus_gx_region_detect':'pal'if a.pal else'auto'})
         assert seen==frames and len(hashes)==frames*32,'Every emitted frame must be observed'
         (folder/'normalized-frame-hashes.bin').write_bytes(hashes)
