@@ -45,14 +45,19 @@ donjon passent. Le build de production et le build propre sont identiques.
 Le nouveau parcours de ce même binaire valide les **neuf cristaux
 et les retours extérieurs** : hache, première fée, huile, corde, Terre, canoë,
 Feu, épée longue, bottes, achat de clé, mécanismes, cloche de glace, navire et
-clé du voleur et ballon sont obtenus ou utilisés normalement. Les 155 points de contrôle sélectionnés
+clé du voleur et ballon sont obtenus ou utilisés normalement. Les 155 points de contrôle jusqu'à la sortie du D9
 reproduisent la RAM complète et le PNG final avec des commandes fixes. La
 protection de test est retirée avant chaque boss ; aucune vie, ressource ou
 progression n'est importée. Les huit premiers donjons terminent sans mort.
 Une mort et un Continue ordinaires ramènent ensuite le héros en région sud,
 avant le soin du jeu et le D9. Le neuvième donjon termine à 74/104 PV, sans
-autre mort. Les essais rejetés restent conservés. Le palais, la fin sur ce
-binaire et sa fidélité globale restent ouverts.
+autre mort. Les essais rejetés restent conservés.
+
+Le parcours se poursuit avec l'usage du ballon, l'entrée du palais, ses
+mécanismes intérieurs et ses deux gardiens, vaincus sans protection de test.
+La Golden Axe est reçue en salle 11D à 88/104 PV. Ces 17 points supplémentaires
+portent le total à 172. Le combat contre Death Adder et le générique restent
+à vérifier. [Ballon, palais et Golden Axe](analysis/campaign_palace_v0317.md)
 
 Les vingt-et-un nouveaux points D9 utilisent trois lecteurs démarrés à froid et
 partagés entre étapes, sans import d'état primaire : 5030091 répétitions

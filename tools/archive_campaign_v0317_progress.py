@@ -19,12 +19,16 @@ def main():
     args=parser.parse_args()
     assert re.fullmatch(r'[a-zA-Z0-9_-]+',args.label)
     assert re.fullmatch(r'[a-zA-Z0-9_-]+\.json',args.report)
-    assert all(re.fullmatch(r'[a-zA-Z0-9_]+',s) for s in args.stage)
+    assert all(re.fullmatch(r'[a-zA-Z0-9_-]+',s) for s in args.stage)
     idle();out=ROOT/'analysis'/args.label
     target=ROOT/'analysis'/args.report;assert not target.exists()
     roots=[]
-    for family in ('natural-dungeon-route','natural-dungeon-combat','natural-service-route'):
-        roots.extend(p for p in (ROOT/'validation'/family).iterdir() if p.is_dir() and 'v0317-' in p.name)
+    families = ('natural-dungeon-route', 'natural-dungeon-combat', 'natural-service-route',
+                'game-written-save-replay', 'game-written-save-load')
+    for family in families:
+        folder = ROOT/'validation'/family
+        if folder.is_dir():
+            roots.extend(p for p in folder.iterdir() if p.is_dir() and 'v0317-' in p.name)
     roots.extend(p for p in (ROOT/'validation').iterdir() if p.is_dir() and p.name.startswith(('v0317-','run-v0317-')))
     if args.stage:
         roots=[p for p in roots if any(re.search(r'v0317-'+re.escape(s)+r'(?:-|$)',p.name) for s in args.stage)]
@@ -33,6 +37,8 @@ def main():
     files=[p for folder in roots for p in folder.rglob('*') if p.is_file()]
     files.extend(p for p in (ROOT/'tools').glob('*v0317.py'))
     files.extend(p for p in (ROOT/'analysis').glob('*v0317_report.json'))
+    if 'nine-crystals' in args.stage:
+        files.append(ROOT/'analysis/game_written_save_v0317_nine_crystals_report.json')
     pattern=re.compile(r'^(ram|vram|cram|vdp_regs)_(\d+)\.bin$')
     endpoints={};candidates=[]
     for p in files:

@@ -79,6 +79,19 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('branch', choices=['palace', 'save'])
     args = parser.parse_args()
+    completed_save = ROOT/'analysis/game_written_save_v0317_nine_crystals_report.json'
+    if args.branch == 'save' and completed_save.exists():
+        receipt = json.loads(completed_save.read_bytes())
+        assert receipt['md_sha256'] == ROM == sha((ROOT/'gaw-megadrive.bin').read_bytes())
+        assert receipt['passed'] and receipt['source_crystal_markers_exact'] == 9
+        assert receipt['source_trace'] == f'{SERVICE}/md-v0317-nine-crystals-save01'
+        assert receipt['raw_sram_fixed_replay_exact'] and receipt['save_whole_ram_png_exact']
+        fixed = ROOT/receipt['fixed_replay_trace']/'replayed.srm'
+        assert sha(evidence(fixed)) == receipt['source_sram_sha256']
+        reload = json.loads(evidence(ROOT/receipt['reload_trace']/'report.json'))
+        assert all(receipt[key] == value for key, value in reload.items())
+        print('V0317 NINE-CRYSTAL SAVE AND CONTINUE ALREADY VERIFIED', flush=True)
+        raise SystemExit(0)
     from cold_replay_stream import ReplayStream
     helper.EVIDENCE.mkdir(exist_ok=True)
     helper.STREAM=ReplayStream(helper.EVIDENCE/(args.branch+'-cold-stream'))
