@@ -10,7 +10,11 @@ encore. Les commandes enregistrées divergent ensuite jusqu’à la fin du rejeu
 L’observation en lecture seule du 68000 retrouve les captures RAM et PNG
 du cœur standard. Les deux ROM sautent un appel à la simulation à l’image
 de référence 80 001. La V318 saute aussi l’appel à 80 003, tandis que
-c0040 exécute la simulation. La mesure situe l’écart de cadence.
+c0040 exécute la simulation. Dans la V318, le masquage des sprites se termine trop tard pour les
+deux interruptions. La routine VBlank consulte la file à 4 623 et
+4 626 cycles maîtres des images 80 001 et 80 003. Le jeu signale que
+l’image est prête à 102 119 et 82 606 cycles. Le transfert est donc
+reporté à l’image suivante dans les deux cas.
 
 Dans un essai contrôlé, la ROM Master System PAL charge la salle 180,
 puis reprend l’état des acteurs qui précède l’écart. À chacune des 16
@@ -23,3 +27,4 @@ restent à vérifier séparément.
 
 - [Rapports, commandes et captures](c0040-pal-campaign-timing/manifest.json)
 - [Essais sur la ROM Master System](c0040-source-burst-cadence/manifest.json)
+- [Mesure de la publication au VBlank](v0318-burst-video-publish/manifest.json)
