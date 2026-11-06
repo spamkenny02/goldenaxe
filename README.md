@@ -42,29 +42,31 @@ donjon passent. Le build de production et le build propre sont identiques.
 · [Rapport lié au binaire](analysis/attract_v0317_report.json)
 · [Sources et artefacts](analysis/attract_v0317_artifacts_report.json)
 
-Le nouveau parcours de ce même binaire valide les **cinq premiers cristaux
+Le nouveau parcours de ce même binaire valide les **six premiers cristaux
 et les retours extérieurs** : hache, première fée, huile, corde, Terre, canoë,
-Feu, épée longue, bottes et achat de clé sont obtenus ou utilisés normalement.
-Les 72 points de contrôle sélectionnés reproduisent la RAM complète et le PNG
-final avec des commandes fixes. La protection de test est retirée avant
-chaque boss ; aucune vie, ressource ou progression n'est importée. Le parcours
-retenu termine le cinquième donjon à 72/72 PV, sans mort. Les essais rejetés
-antérieurs restent conservés. La suite du jeu et sa fidélité globale restent
-ouvertes.
+Feu, épée longue, bottes, achat de clé, mécanismes et cloche de glace sont
+obtenus ou utilisés normalement. Les 92 points de contrôle sélectionnés
+reproduisent la RAM complète et le PNG final avec des commandes fixes. La
+protection de test est retirée avant chaque boss ; aucune vie, ressource ou
+progression n'est importée. Le parcours retenu termine le sixième donjon à
+74/80 PV, sans mort. Les essais rejetés antérieurs restent conservés. La suite
+du jeu et sa fidélité globale restent ouvertes.
 
-Les vingt-cinq nouveaux points Feu/D5 utilisent trois lecteurs démarrés à froid
-et partagés entre étapes, sans import d'état primaire : 2405517 répétitions
+Les vingt nouveaux points D6 utilisent deux lecteurs démarrés à froid et
+partagés entre étapes, sans import d'état primaire : 2603085 répétitions
 d'images de préfixe sont évitées dans ces vérifications, avec les mêmes
 comparaisons de RAM et de PNG.
 [Deux premiers cristaux](analysis/campaign_v0317.md)
 · [Troisième et quatrième cristaux](analysis/campaign_d3_d4_v0317.md)
-· [Cinquième cristal, preuves et limites](analysis/campaign_d5_v0317.md)
+· [Cinquième cristal](analysis/campaign_d5_v0317.md)
+· [Sixième cristal, preuves et limites](analysis/campaign_d6_v0317.md)
 
 Les essais clos sont archivés et relus avant nettoyage. Toutes les 317 ROMs
 publiées, les sources, symboles et captures restent préservés ; les ROMs de
 travail sont également conservées dans les archives, et le candidat 37 reste
 disponible localement avec son cache de compilation.
-[Nettoyage Feu/D5 : environ 92 Mio libérés](analysis/campaign_d5_v0317_cleanup_report.json)
+[Nettoyage D6 : 67 Mio libérés](analysis/campaign_d6_v0317_cleanup_report.json)
+· [Nettoyage précédent Feu/D5 : environ 92 Mio](analysis/campaign_d5_v0317_cleanup_report.json)
 · [Nettoyage précédent D3/D4 : 96 Mio](analysis/campaign_d3_d4_v0317_cleanup_report.json)
 · [Nettoyage précédent de la campagne : 81 Mio](analysis/campaign_v0317_cleanup_report.json)
 · [Nettoyage précédent des essais d’intro](analysis/attract_v0317_cleanup_report.json)
