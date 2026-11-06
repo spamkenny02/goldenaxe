@@ -6,6 +6,9 @@ La v0317 est une version de développement : des écarts visuels et la
 validation complète du jeu restent ouverts. L’ancien aperçu [c0029](candidates/c0029-c3fca1d6/README.md)
 est conservé ; les sources utilisées par défaut correspondent maintenant à v0317.
 
+L’aperçu c0038 teste le recalage du fondu titre–intro sur une ROM numérotée
+séparément. [Téléchargement et mesures c0038](candidates/c0038-e7ee40cb/README.md)
+
 | Version | ROM | Validation | Changements | SHA-256 |
 | --- | --- | --- | --- | --- |
 | v0317 | [Telecharger](v0317-7694654e/gaw-megadrive-v0317.bin) | development_targeted_checks | Developpement : retours intro/titre, horloge, attente IRQ et compteur du feu corriges ; audio SMS et deux boucles verifies. Menus, inventaires et premier donjon controles ; ecarts visuels et parcours complet encore ouverts. | `7694654ec85dd6626c0e17ff1834e5893d4eb35481400a4725eac6b6f3503294` |

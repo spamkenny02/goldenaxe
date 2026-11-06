@@ -1,0 +1,77 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "region": "ntsc",
+      "first_frame": 23,
+      "last_frame": 14000,
+      "raw_state_differences": [
+        {
+          "frame": 6039,
+          "indices": [
+            6
+          ]
+        },
+        {
+          "frame": 6755,
+          "indices": [
+            6
+          ]
+        },
+        {
+          "frame": 12771,
+          "indices": [
+            6
+          ]
+        },
+        {
+          "frame": 13487,
+          "indices": [
+            6
+          ]
+        }
+      ],
+      "logical_state_differences": [],
+      "psg_difference_frames": []
+    },
+    {
+      "region": "pal",
+      "first_frame": 23,
+      "last_frame": 14000,
+      "raw_state_differences": [
+        {
+          "frame": 6025,
+          "indices": [
+            6
+          ]
+        },
+        {
+          "frame": 6739,
+          "indices": [
+            6
+          ]
+        },
+        {
+          "frame": 12744,
+          "indices": [
+            6
+          ]
+        },
+        {
+          "frame": 13458,
+          "indices": [
+            6
+          ]
+        }
+      ],
+      "logical_state_differences": [],
+      "psg_difference_frames": []
+    }
+  ],
+  "md_sha256": "e7ee40cb477905b478d849d52a687ff4a319fc7217f29be5f138cbbcce8febeb",
+  "source_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+  "core_sha256": "f0e6f1723602c278d7520b627b1ed96132a8ed48fe1d14704e9cdb6c6c876e7c",
+  "driver_sha256": "70dd0d3eb424fca41665536ac1eab5448c2d6648e98cd8f55f5d8cc1a6a45abc",
+  "normalization": "Pending native foreground requests supply source DE06/DE08 before IRQ acceptance; raw bytes retained separately.",
+  "scope": "Frames23..end of cold no-input attract loops:400 reader bytes and8 PSG registers. Initial silent startup, PCM and physical hardware are not certified."
+}

@@ -43,6 +43,7 @@ def evidence(path):
   if target in checked:continue
   if not target.parent.resolve().is_relative_to((ROOT/'analysis').resolve()):continue
   manifest=_archive_manifest(target)
+  if not isinstance(manifest,dict):continue
   if not isinstance(manifest.get('files'),dict) or not isinstance(manifest.get('compressed'),dict):continue
   raw=_stored_evidence(target.parent,manifest,name)
   if raw is not None:return raw

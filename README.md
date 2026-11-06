@@ -18,6 +18,10 @@ Checksum Mega Drive : `7D56`
 La v317 est une version de développement. La [v316](versions/v0316-8b94f2e0/gaw-megadrive-v0316.bin)
 et l’ancien aperçu [c0029](versions/candidates/c0029-c3fca1d6/README.md) restent conservés.
 
+L’aperçu **c0038** recale l’affichage des couleurs du fondu titre–intro.
+Les comparaisons ajoutent 34 images identiques à la Master System par région.
+[ROM de travail et mesures c0038](versions/candidates/c0038-e7ee40cb/README.md)
+
 ## État du portage
 
 La **v317** intègre les correctifs de menus et d’intro dans les sources et

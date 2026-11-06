@@ -1,0 +1,11 @@
+--- a/megadrive/src/main.c
++++ b/megadrive/src/main.c
+@@ -339,7 +339,7 @@
+             {
+                 sms_palette[n]-=step;changed=TRUE;
+             }
+-            if(changed) { set_palette(sms_palette);title_wait_frames(2); }
++            if(changed) { title_wait_frames(1);set_palette(sms_palette);title_wait_frames(1); }
+         } while(changed && !title_requested);
+         if(title_requested) return;
+     }
