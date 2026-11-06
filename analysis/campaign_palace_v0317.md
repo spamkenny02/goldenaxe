@@ -72,8 +72,23 @@ Le rejeu reproduit la SRAM, les 65536 octets de RAM et l'image finale.
 Après démarrage à froid avec cette SRAM, le menu Continuer restaure
 le héros en FA à 60/104 PV et le déplacement est confirmé à l'image 1394.
 
-Le trajet vers Death Adder est en cours. Le générique et les écarts
-de fidélité à la SMS restent ouverts.
+## Death Adder et générique
+
+La protection d’approche est retirée en 15C à l’image 383717, à 104/104 PV.
+Le combat commence en 14C à 383822. Death Adder a 90 PV et le compteur de
+blessure du héros est à zéro. Le héros reçoit un coup de 20 PV et remporte
+le combat à 387631 avec 84/104 PV. Le test n’effectue plus d’écriture après
+le retrait de la protection.
+
+Les neuf gemmes sont visibles à 387967. Le générique commence à 388660,
+s’achève à 396083 et la touche C ramène à l’intro à 396113. Les onze derniers
+points portent le total du parcours principal à 183. L’audit du palais
+rejoue 28 points du parcours principal et un point de la branche de
+sauvegarde. Les écarts de fidélité avec la SMS restent à mesurer sur
+l’ensemble du jeu.
+
+- [Combat final et générique](cold_palace_final_v0317_report.json)
+- [Audit des points de contrôle](campaign_palace_stream_v0317_report.json)
 
 - [Ballon et retour au décor](owned_overview_v0317_report.json)
 - [Porte et entrée réelle du palais](cold_palace_entry_v0317_report.json)

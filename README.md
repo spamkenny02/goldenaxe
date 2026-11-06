@@ -59,9 +59,13 @@ autre mort. Les essais rejetés restent conservés.
 
 Le parcours se poursuit avec l'usage du ballon, l'entrée du palais, ses
 mécanismes intérieurs et ses deux gardiens, vaincus sans protection de test.
-La Golden Axe est reçue en salle 11D à 88/104 PV. Ces 17 points supplémentaires
-portent le total à 172. Le combat contre Death Adder et le générique restent
-à vérifier. [Ballon, palais et Golden Axe](analysis/campaign_palace_v0317.md)
+La Golden Axe est reçue en salle 11D à 88/104 PV. Death Adder est vaincu
+sans protection de test. Les neuf gemmes apparaissent dans la scène finale,
+le générique défile entièrement et une commande normale ramène à l’intro.
+Le parcours principal compte 183 points de contrôle. La comparaison intégrale
+avec la Master System reste ouverte.
+[Campagne et palais](analysis/campaign_palace_v0317.md)
+· [Combat final et générique](analysis/cold_palace_final_v0317_report.json)
 
 La sauvegarde écrite par le jeu après le D9 est reproduite à l'octet près.
 Continuer restaure les neuf cristaux et le contrôle du héros en FA.
