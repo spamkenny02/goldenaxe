@@ -1,0 +1,120 @@
+{
+  "passed": false,
+  "first_compared_frame": 2507,
+  "last_compared_frame": 396213,
+  "compared_fields": {
+    "room_id": 2,
+    "game_state": 2,
+    "hero_state": 2,
+    "hero_x": 2,
+    "hero_y": 2,
+    "hero_health": 2,
+    "hero_max_health": 2,
+    "hero_magic": 2,
+    "hero_max_magic": 2,
+    "hero_gold": 2,
+    "hero_keys": 2,
+    "hero_hurt": 2,
+    "hero_selected_item": 2,
+    "hero_weapon_level": 2,
+    "hero_direction": 2,
+    "hero_animation": 2,
+    "hero_counter": 2,
+    "hero_pending": 2,
+    "hero_dx": 2,
+    "hero_dy": 2,
+    "hero_flags": 2,
+    "world_graphics_class": 2,
+    "world_dungeon_number": 2,
+    "hero_basic_level": 2,
+    "hero_armor_level": 2,
+    "hero_shield_level": 2,
+    "game_rng_seed": 2,
+    "randbase": 2,
+    "transition_stage": 2,
+    "transition_direction": 2,
+    "transition_step": 2,
+    "ending_hero_descriptor": 2,
+    "sound_unhandled_command": 2,
+    "world_actor_state": 768,
+    "world_loot_state": 336,
+    "game_save_state": 592,
+    "hero_items": 17,
+    "sms_vram": 16384,
+    "sound_ram": 400
+  },
+  "difference_count": 205263,
+  "first_difference_frames": [
+    4081,
+    16045,
+    16049,
+    68380,
+    68381,
+    93667,
+    103340,
+    115463,
+    135101,
+    147301,
+    157301,
+    157441,
+    167886,
+    167890,
+    167891,
+    173437,
+    178757,
+    190968,
+    190969,
+    190970
+  ],
+  "images": {
+    "387968": {
+      "v0317": "73714b8291ef500290d63456edfdbaac8cf5ebd3609a9c4810c308d331d218c2",
+      "c0038": "6be223beb175a798e3044fb7ca02d4c5cc09bbc0c85f1f3840eaeac9db076f83",
+      "exact": false
+    },
+    "388661": {
+      "v0317": "b44a3384005f1a716d00f0b734045d0e3ad7b049bb4afede41cade595adfba71",
+      "c0038": "6be223beb175a798e3044fb7ca02d4c5cc09bbc0c85f1f3840eaeac9db076f83",
+      "exact": false
+    },
+    "396084": {
+      "v0317": "6c08aee55f15fb7b3f850362c338e90a2b3ae957060856a0ab20a8927d0cabbd",
+      "c0038": "6be223beb175a798e3044fb7ca02d4c5cc09bbc0c85f1f3840eaeac9db076f83",
+      "exact": false
+    },
+    "396213": {
+      "v0317": "e7ab0f45775fbf6d260f32c8ddd4f37c7cef5bb28c2ae0007fc1ed335150109b",
+      "c0038": "a8323e816cb8b2355391aadb31c161b8b5357023a9b7cf85d6e60ddf0a718d3f",
+      "exact": false
+    }
+  },
+  "runs": [
+    {
+      "tag": "v0317",
+      "rom_sha256": "7694654ec85dd6626c0e17ff1834e5893d4eb35481400a4725eac6b6f3503294",
+      "symbols_sha256": "771128084169bb195646f489aff7773cf1581ff8115810f29d5a2c0ea451f28f",
+      "capture_sha256": "c890e8e2c12636a3c5d6d54e6645483aa1749b5a5a807b4a11fc425b964566fa",
+      "checked_frames": 393707,
+      "live_boss_frames": 59859
+    },
+    {
+      "tag": "c0038",
+      "rom_sha256": "e7ee40cb477905b478d849d52a687ff4a319fc7217f29be5f138cbbcce8febeb",
+      "symbols_sha256": "e11e185eba7a47719cb072f65c0dc22bbbf668bf8ec1a9d3cea5d58f8f9a3b03",
+      "capture_sha256": "61b4024aedf2321fcc429f74522f16e1c21fd3e90add962df1b5821079115d0b",
+      "checked_frames": 393707,
+      "live_boss_frames": 18534
+    }
+  ],
+  "input_trace": "validation/natural-dungeon-combat/md-auto-v0317-cold-palace-ending01",
+  "initial_sram": false,
+  "primary_state_imports": 0,
+  "approach_hurt_writes": 184211,
+  "evidence": {
+    "palace_audit_sha256": "2e4c345b422bceeff49e89366f4164fee8b4d749ac318cd06abd32626506bea2",
+    "capture_sha256": "a42c441e7fd6bd057c3db0225778339c74217f5c6fdb0041990656748c112211",
+    "controls_sha256": "b2ae5f962b434d645b98dd5086f851e8f4a11242de4514365f4d5f2a848ed23c",
+    "assistance_sha256": "7d4f41c3ea5fb4e492ebc06a145f32f0567bbae365cc2a2352650450048d2001"
+  },
+  "driver_sha256": "e4bc509b4062481a12b65f5833eb049dff9f491bd837169fcdd834458a8ae940"
+}

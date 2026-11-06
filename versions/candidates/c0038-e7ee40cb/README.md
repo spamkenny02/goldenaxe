@@ -18,8 +18,11 @@ décrite dans le rapport. Deux parties fraîches atteignent le premier
 donjon en PAL et NTSC et déplacent le héros par les commandes normales.
 Les 210 cas de saisie du premier caractère du nom passent.
 
-Les écarts visuels restants et le rejeu de la campagne entière sur c0038
-restent ouverts. Les validations de fin de campagne se poursuivent sur v0317.
+Le rejeu depuis le démarrage avec les commandes de la campagne v0317 diverge
+à partir de l’image 4081. Sur 393 707 images comparées en jeu, 205 263 ont
+un état différent et les quatre captures de fin diffèrent. Le rejeu c0038
+termine dans la salle 95 avec 24 PV. La v0317 reste la version de référence.
+[Rapport du rejeu de la campagne](campaign-replay.json)
 
 ROM de 2 Mio. Checksum Mega Drive `2E44`. SHA-256
 `e7ee40cb477905b478d849d52a687ff4a319fc7217f29be5f138cbbcce8febeb`.

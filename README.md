@@ -19,6 +19,8 @@ La v317 est une version de développement. La [v316](versions/v0316-8b94f2e0/gaw
 et l’ancien aperçu [c0029](versions/candidates/c0029-c3fca1d6/README.md) restent conservés.
 
 L’aperçu **c0038** recale l’affichage des couleurs du fondu titre–intro.
+Le rejeu avec les commandes de la v0317 diverge en jeu et n’atteint pas
+la scène finale.
 Les comparaisons ajoutent 34 images identiques à la Master System par région.
 [ROM de travail et mesures c0038](versions/candidates/c0038-e7ee40cb/README.md)
 
