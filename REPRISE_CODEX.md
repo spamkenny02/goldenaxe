@@ -27,6 +27,11 @@ Les points d’entrée pour reprendre le suivi sont les commandes exécutées
 et les checkpoints, avec vérification de l’état réel des processus avant
 toute nouvelle exécution.
 
+Dernier jalon PAL audité : antichambre 12E à 346000, avec 100/104 PV,
+72 PM et neuf cristaux. Le retrait de protection à 346001 est rejoué
+indépendamment. Le combat réel du gardien 7C en 11E est ensuite en cours ;
+ne pas annoncer sa victoire avant le rapport et le checkpoint suivant.
+
 - validation/pal318-palace01/commands.jsonl
 - validation/pal318-palace01/cold-stream/checkpoints.json
 - validation/pal318-palace-inner01/commands.jsonl
@@ -55,6 +60,22 @@ NTSC à 7697. c0043 recale les 7424 étapes du générique PAL dans le test
 contrôlé mais ses rejeux de campagne divergent avant la fin. Aucun de ces
 aperçus ne remplace la V318. La fidélité globale des timings, du hasard,
 de l’image et du son, les chemins optionnels et le matériel restent ouverts.
+
+c0044 utilise l’atlas RAM des ennemis du donjon. Il récupère la mise à jour
+PAL 80003 ; celle de 80001 manque toujours. La première divergence NTSC
+à 44801 correspond à une mise à jour d’acteurs supplémentaire : un essai
+SMS contrôlé en 1E2 retrouve ses 768 octets d’acteurs à la phase 73.
+Cela ne valide pas une chronologie SMS naturelle complète.
+
+c0045 est un aperçu numéroté de copie des huit lignes, avec 108 images
+de sprites contrôlés identiques et le début NTSC comparé jusqu’à 7710.
+Il ne récupère aucune mise à jour PAL supplémentaire par rapport à c0044.
+La combinaison distincte atlas RAM + cache à sentinelle a aussi été testée,
+sans mise à jour PAL supplémentaire ; elle n’est pas intégrée. Son archive
+analysis/dungeon-atlas-sentinel-v0318 conserve les preuves et le binaire
+compressé. Le nettoyage vérifié y libère 7144211 octets nets.
+La suite de l’optimisation doit examiner la préparation précédant le
+masquage, plutôt que répéter ces deux variantes déjà mesurées.
 
 Le Python actuellement invoqué par python est C:/Python315/python.exe.
 SGDK est dans ../../work/sgdk depuis outputs/gaw-md. Le script
