@@ -4,7 +4,7 @@ Cet aperçu de 2 Mio recale la préparation du générique sur la V318.
 Dans le test contrôlé, la première mise à jour arrive à l’image 4 704
 dans les deux régions, comme sur Master System. En PAL, les 7 424
 étapes du générique tombent aux mêmes images. En NTSC, la source
-conserve une image supplémentaire au moment de publier la ligne 2 006.
+conserve une image supplémentaire pendant la mise à jour 2 006.
 Les états et les images échantillonnées restent concordants par étape.
 
 Les rejeux avant le générique relèvent aussi des écarts. En PAL, les
