@@ -15,6 +15,10 @@ SHA-256 : `b9e1f0a0543f191e24ffd6d2740a0d717501e0fcd986f8b8953a37a1b3c416a4`
 Checksum Mega Drive : `7863`
 <!-- ROM-RELEASE:END -->
 
+Nouvel aperçu [c0046](versions/candidates/c0046-9e747d38/README.md) :
+préparation des motifs du héros mesurée 44,79 % moins coûteuse ;
+marche contrôlée conforme SMS, parcours complet de cet aperçu à valider.
+
 Nouvel aperçu [c0045](versions/candidates/c0045-415ba9e1/README.md) :
 essai de copie des lignes de sprites, sans mise à jour PAL supplémentaire ;
 la V318 reste la version de référence.

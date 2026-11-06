@@ -83,6 +83,30 @@ compressé. Le nettoyage vérifié y libère 7144211 octets nets.
 La suite de l’optimisation doit examiner la préparation précédant le
 masquage, plutôt que répéter ces deux variantes déjà mesurées.
 
+Le profil détaillé c0044 est désormais archivé dans
+analysis/c0044-burst-stages : à 80000, préparer les motifs d’une pose
+changée du héros coûte 241332 cycles maîtres, contre 230146 pour toute
+la simulation. Le témoin est un processus neuf, RAM/image entière identique.
+
+c0046 remplace les copies de trois octets de cette préparation par trois
+écritures directes, sur la base c0044. La médiane des poses mesurées passe
+de 123060 à 67942 cycles maîtres, soit -44,79 %, avec 561 états de pose
+et de pixels identiques par région. Les 16 essais de marche face à SMS
+passent, ainsi que 108 images de sprites physiques. Les mises à jour PAL
+80001 et 80003 sont exécutées ; les anciennes trajectoires divergent dès
+23709 en PAL et 3396 en NTSC, où une mise à jour supplémentaire est observée.
+Le parcours complet de cet aperçu n’est pas validé.
+
+Un nouveau parcours c0046 est lancé dans
+validation/c0046-campaign01/isolated/project. Ses outils sont liés par
+liens physiques en lecture ; ne pas les modifier dans cette copie.
+ROM et symboles publics sont aussi liés. Les sorties de validation sont
+séparées. Les pilotes run_d1.py et resume_d1_key.py, à la racine de ce
+laboratoire, enregistrent les commandes. Le premier parcours laissait
+la seconde clé en 193 et n’entrait pas chez le boss ; sa reprise retourne
+la ramasser normalement avant de retirer la protection. Ne pas annoncer
+le cristal avant victoire, acquisition et rejeu depuis Nouvelle partie.
+
 Le Python actuellement invoqué par python est C:/Python315/python.exe.
 SGDK est dans ../../work/sgdk depuis outputs/gaw-md. Le script
 tools/build_private_candidate.ps1 compile les essais dans validation et

@@ -1,0 +1,2891 @@
+{
+  "candidate": "c0046",
+  "rom_sha256": "9e747d38e0c6fb2d69b7c1aa8c2b296a61e8b6af41171d14e543ed9a6cb49cf5",
+  "hero_pattern_cost_reduction_percent": 44.79,
+  "pal_updates_recovered": [
+    80001,
+    80003
+  ],
+  "physical_sprite_frames": 108,
+  "hero_pose_pattern_frames_per_region": 561,
+  "sms_ground_walk_cases": 16,
+  "ntsc_first_game_field_divergence": 3396,
+  "pal_first_game_field_divergence": 23709,
+  "stable_rom_unchanged": true,
+  "full_candidate_campaign_verified": false,
+  "limits": [
+    "Old campaign inputs diverge after additional simulation updates. PAL burst endpoints are not the same actor trajectory as the old recording. Complete natural SMS timing, audio and candidate campaign remain open."
+  ],
+  "files": {},
+  "compressed": {
+    "validation/build_hero_three_plane_trial.py": {
+      "stored": "objects/e41c33a4b7fee0bc97416577217f0f919241c9494cac1b8176d4246cd0911b3e.gz",
+      "raw_sha256": "e41c33a4b7fee0bc97416577217f0f919241c9494cac1b8176d4246cd0911b3e",
+      "raw_bytes": 1582,
+      "stored_sha256": "4a39c454439de3d233c57b5c389b2602d0b368b987e9e784e00ea5d8121a4700"
+    },
+    "validation/hero-three-plane-ground-walk-auto-0-0-md/capture.json": {
+      "stored": "objects/c3e775efb41669b1896aae2cc01a0fd6ad3876c2429d79ce69b47ed81e9c4259.gz",
+      "raw_sha256": "c3e775efb41669b1896aae2cc01a0fd6ad3876c2429d79ce69b47ed81e9c4259",
+      "raw_bytes": 2425,
+      "stored_sha256": "45841e4848276d28f7ac6db40406657ad400e31af5d449c298ffc95a1b265ac6"
+    },
+    "validation/hero-three-plane-ground-walk-auto-0-0-sms/capture.json": {
+      "stored": "objects/430cc0c9e9103b5e1d544e5afee3457da3687e9df582e771f53f59e24ae8d77e.gz",
+      "raw_sha256": "430cc0c9e9103b5e1d544e5afee3457da3687e9df582e771f53f59e24ae8d77e",
+      "raw_bytes": 1775,
+      "stored_sha256": "d46ad2a83b69292211210e964b6b6e75699123d7ea5919bb479b46473c0d1cf6"
+    },
+    "validation/hero-three-plane-ground-walk-auto-0-1-md/capture.json": {
+      "stored": "objects/e47033371d4541c93c65866076d72d8b6b925f2aa02d146eeb764da710ea1e06.gz",
+      "raw_sha256": "e47033371d4541c93c65866076d72d8b6b925f2aa02d146eeb764da710ea1e06",
+      "raw_bytes": 2425,
+      "stored_sha256": "78018ba569249b3de3d0c5b5c354b80535b68cb56540ca87611004f0818decdf"
+    },
+    "validation/hero-three-plane-ground-walk-auto-0-1-sms/capture.json": {
+      "stored": "objects/927aeaed0d0a859cf1ecffbf9f238feae1dc6dd7e3e5c431c4b397733e192929.gz",
+      "raw_sha256": "927aeaed0d0a859cf1ecffbf9f238feae1dc6dd7e3e5c431c4b397733e192929",
+      "raw_bytes": 1775,
+      "stored_sha256": "01671762e0830b67e667bc5bcab51eccfa20da12104515069593b6e6d6b874ce"
+    },
+    "validation/hero-three-plane-ground-walk-auto-0-2-md/capture.json": {
+      "stored": "objects/5d10c78f7dc294f04a179fa80c5ce4a4aca9074a699f4fc90119815c98b0d9ba.gz",
+      "raw_sha256": "5d10c78f7dc294f04a179fa80c5ce4a4aca9074a699f4fc90119815c98b0d9ba",
+      "raw_bytes": 2425,
+      "stored_sha256": "c98ca8bcde458f3a36eddda928e7bce156526d8db5a4988898660ef6c43e4056"
+    },
+    "validation/hero-three-plane-ground-walk-auto-0-2-sms/capture.json": {
+      "stored": "objects/41cc0f6daf7e1c27b17ea34f40011e5316300971954aac5e7ebefc6f9c8a5af7.gz",
+      "raw_sha256": "41cc0f6daf7e1c27b17ea34f40011e5316300971954aac5e7ebefc6f9c8a5af7",
+      "raw_bytes": 1775,
+      "stored_sha256": "6e958c9dfb3ec5884557f58a472ae2cbae93f6c4f12b6723e93a27f53695cbd2"
+    },
+    "validation/hero-three-plane-ground-walk-auto-0-3-md/capture.json": {
+      "stored": "objects/24509d0d4aa4400eaf74b0eb45cb2f1884f2fe3458c9d6a4941580a1416ef879.gz",
+      "raw_sha256": "24509d0d4aa4400eaf74b0eb45cb2f1884f2fe3458c9d6a4941580a1416ef879",
+      "raw_bytes": 2425,
+      "stored_sha256": "092a7c0371dc968309253af71dbe356e96ecd99b74d8e4351cf9d3a79dfa7cdc"
+    },
+    "validation/hero-three-plane-ground-walk-auto-0-3-sms/capture.json": {
+      "stored": "objects/b6a1189f6a122ce5a4dafa1a2b7efd0197b594de19710ed87505c3854ecd9d97.gz",
+      "raw_sha256": "b6a1189f6a122ce5a4dafa1a2b7efd0197b594de19710ed87505c3854ecd9d97",
+      "raw_bytes": 1775,
+      "stored_sha256": "0244ad991cf753616f67bcf94f1209c972e1cba5fefe8a8eb6bd57ed78c86ecf"
+    },
+    "validation/hero-three-plane-ground-walk-auto-1-0-md/capture.json": {
+      "stored": "objects/c3e775efb41669b1896aae2cc01a0fd6ad3876c2429d79ce69b47ed81e9c4259.gz",
+      "raw_sha256": "c3e775efb41669b1896aae2cc01a0fd6ad3876c2429d79ce69b47ed81e9c4259",
+      "raw_bytes": 2425,
+      "stored_sha256": "45841e4848276d28f7ac6db40406657ad400e31af5d449c298ffc95a1b265ac6"
+    },
+    "validation/hero-three-plane-ground-walk-auto-1-0-sms/capture.json": {
+      "stored": "objects/430cc0c9e9103b5e1d544e5afee3457da3687e9df582e771f53f59e24ae8d77e.gz",
+      "raw_sha256": "430cc0c9e9103b5e1d544e5afee3457da3687e9df582e771f53f59e24ae8d77e",
+      "raw_bytes": 1775,
+      "stored_sha256": "d46ad2a83b69292211210e964b6b6e75699123d7ea5919bb479b46473c0d1cf6"
+    },
+    "validation/hero-three-plane-ground-walk-auto-1-1-md/capture.json": {
+      "stored": "objects/e47033371d4541c93c65866076d72d8b6b925f2aa02d146eeb764da710ea1e06.gz",
+      "raw_sha256": "e47033371d4541c93c65866076d72d8b6b925f2aa02d146eeb764da710ea1e06",
+      "raw_bytes": 2425,
+      "stored_sha256": "78018ba569249b3de3d0c5b5c354b80535b68cb56540ca87611004f0818decdf"
+    },
+    "validation/hero-three-plane-ground-walk-auto-1-1-sms/capture.json": {
+      "stored": "objects/927aeaed0d0a859cf1ecffbf9f238feae1dc6dd7e3e5c431c4b397733e192929.gz",
+      "raw_sha256": "927aeaed0d0a859cf1ecffbf9f238feae1dc6dd7e3e5c431c4b397733e192929",
+      "raw_bytes": 1775,
+      "stored_sha256": "01671762e0830b67e667bc5bcab51eccfa20da12104515069593b6e6d6b874ce"
+    },
+    "validation/hero-three-plane-ground-walk-auto-1-2-md/capture.json": {
+      "stored": "objects/5d10c78f7dc294f04a179fa80c5ce4a4aca9074a699f4fc90119815c98b0d9ba.gz",
+      "raw_sha256": "5d10c78f7dc294f04a179fa80c5ce4a4aca9074a699f4fc90119815c98b0d9ba",
+      "raw_bytes": 2425,
+      "stored_sha256": "c98ca8bcde458f3a36eddda928e7bce156526d8db5a4988898660ef6c43e4056"
+    },
+    "validation/hero-three-plane-ground-walk-auto-1-2-sms/capture.json": {
+      "stored": "objects/41cc0f6daf7e1c27b17ea34f40011e5316300971954aac5e7ebefc6f9c8a5af7.gz",
+      "raw_sha256": "41cc0f6daf7e1c27b17ea34f40011e5316300971954aac5e7ebefc6f9c8a5af7",
+      "raw_bytes": 1775,
+      "stored_sha256": "6e958c9dfb3ec5884557f58a472ae2cbae93f6c4f12b6723e93a27f53695cbd2"
+    },
+    "validation/hero-three-plane-ground-walk-auto-1-3-md/capture.json": {
+      "stored": "objects/24509d0d4aa4400eaf74b0eb45cb2f1884f2fe3458c9d6a4941580a1416ef879.gz",
+      "raw_sha256": "24509d0d4aa4400eaf74b0eb45cb2f1884f2fe3458c9d6a4941580a1416ef879",
+      "raw_bytes": 2425,
+      "stored_sha256": "092a7c0371dc968309253af71dbe356e96ecd99b74d8e4351cf9d3a79dfa7cdc"
+    },
+    "validation/hero-three-plane-ground-walk-auto-1-3-sms/capture.json": {
+      "stored": "objects/b6a1189f6a122ce5a4dafa1a2b7efd0197b594de19710ed87505c3854ecd9d97.gz",
+      "raw_sha256": "b6a1189f6a122ce5a4dafa1a2b7efd0197b594de19710ed87505c3854ecd9d97",
+      "raw_bytes": 1775,
+      "stored_sha256": "0244ad991cf753616f67bcf94f1209c972e1cba5fefe8a8eb6bd57ed78c86ecf"
+    },
+    "validation/hero-three-plane-ground-walk-pal-0-0-md/capture.json": {
+      "stored": "objects/fa72573c790501f091354c87a5f22c7586efa1933e1155ebe4c66e43e3361f90.gz",
+      "raw_sha256": "fa72573c790501f091354c87a5f22c7586efa1933e1155ebe4c66e43e3361f90",
+      "raw_bytes": 2423,
+      "stored_sha256": "108d930300f2395ae6b81d550361931b6c83cad0cec058b400fd2b38c0e975e6"
+    },
+    "validation/hero-three-plane-ground-walk-pal-0-0-sms/capture.json": {
+      "stored": "objects/aa09221308d55de9e57aba4ac35c0fb6b3b6edc1470eb41c30c5e71f8bc00a9b.gz",
+      "raw_sha256": "aa09221308d55de9e57aba4ac35c0fb6b3b6edc1470eb41c30c5e71f8bc00a9b",
+      "raw_bytes": 1773,
+      "stored_sha256": "f9c95926c68b2cb6302c01dda4a1ec9bc3473cc9ba6c258ccd8692f8ad9120bc"
+    },
+    "validation/hero-three-plane-ground-walk-pal-0-1-md/capture.json": {
+      "stored": "objects/bde07989b9b13c295e7f216ce1d3cf31a2eb38b5828e55a18f5bfcb44e210545.gz",
+      "raw_sha256": "bde07989b9b13c295e7f216ce1d3cf31a2eb38b5828e55a18f5bfcb44e210545",
+      "raw_bytes": 2423,
+      "stored_sha256": "4f26dcb32e2ea4eb130870892f434d9fb7fb3e7899ed7134ddaa5635419eb207"
+    },
+    "validation/hero-three-plane-ground-walk-pal-0-1-sms/capture.json": {
+      "stored": "objects/217422b9a7d79199f71ca5bf42034413265207cd25e17efd33de9401281101a7.gz",
+      "raw_sha256": "217422b9a7d79199f71ca5bf42034413265207cd25e17efd33de9401281101a7",
+      "raw_bytes": 1773,
+      "stored_sha256": "b8fabbf60a3720dc5c41f52ca2a4285754c78fb01bdc1be08116070028be7493"
+    },
+    "validation/hero-three-plane-ground-walk-pal-0-2-md/capture.json": {
+      "stored": "objects/89d8f93856c8cbdd5a1d81e8bc3cbb0046f97cae1c1217ba7bdd56c957430823.gz",
+      "raw_sha256": "89d8f93856c8cbdd5a1d81e8bc3cbb0046f97cae1c1217ba7bdd56c957430823",
+      "raw_bytes": 2423,
+      "stored_sha256": "feb8ecf0d8c0619b0ec5e9b2cc9d5984a7f0258614ddac80a8598c780bd405b2"
+    },
+    "validation/hero-three-plane-ground-walk-pal-0-2-sms/capture.json": {
+      "stored": "objects/0c48e1aa36f2e5b800d01ecae3576c06d5f1d73f787210c90ca9e54f80495e61.gz",
+      "raw_sha256": "0c48e1aa36f2e5b800d01ecae3576c06d5f1d73f787210c90ca9e54f80495e61",
+      "raw_bytes": 1773,
+      "stored_sha256": "e1d1dfb7bb3432da8d4265f7347861d5e86ee1dcb9f23057cb3f8fcca97b8200"
+    },
+    "validation/hero-three-plane-ground-walk-pal-0-3-md/capture.json": {
+      "stored": "objects/bac33248bea58212751b6f466470b004bdb2e24efe6df40752db03405e95b9d6.gz",
+      "raw_sha256": "bac33248bea58212751b6f466470b004bdb2e24efe6df40752db03405e95b9d6",
+      "raw_bytes": 2423,
+      "stored_sha256": "30d71f35b56acf7dda0b8e6539c3fd99786eeccde8c577d0fc6bed2cf7e75f21"
+    },
+    "validation/hero-three-plane-ground-walk-pal-0-3-sms/capture.json": {
+      "stored": "objects/5d462e46efd499c78e7957307c7e4bf290c3f7cba88ee332bbb0b2cb3ab40f40.gz",
+      "raw_sha256": "5d462e46efd499c78e7957307c7e4bf290c3f7cba88ee332bbb0b2cb3ab40f40",
+      "raw_bytes": 1773,
+      "stored_sha256": "ff437e1cdc8c6fa458f4c444b7790c9b052889f9ffaec2d1d919656d85cf407f"
+    },
+    "validation/hero-three-plane-ground-walk-pal-1-0-md/capture.json": {
+      "stored": "objects/fa72573c790501f091354c87a5f22c7586efa1933e1155ebe4c66e43e3361f90.gz",
+      "raw_sha256": "fa72573c790501f091354c87a5f22c7586efa1933e1155ebe4c66e43e3361f90",
+      "raw_bytes": 2423,
+      "stored_sha256": "108d930300f2395ae6b81d550361931b6c83cad0cec058b400fd2b38c0e975e6"
+    },
+    "validation/hero-three-plane-ground-walk-pal-1-0-sms/capture.json": {
+      "stored": "objects/aa09221308d55de9e57aba4ac35c0fb6b3b6edc1470eb41c30c5e71f8bc00a9b.gz",
+      "raw_sha256": "aa09221308d55de9e57aba4ac35c0fb6b3b6edc1470eb41c30c5e71f8bc00a9b",
+      "raw_bytes": 1773,
+      "stored_sha256": "f9c95926c68b2cb6302c01dda4a1ec9bc3473cc9ba6c258ccd8692f8ad9120bc"
+    },
+    "validation/hero-three-plane-ground-walk-pal-1-1-md/capture.json": {
+      "stored": "objects/bde07989b9b13c295e7f216ce1d3cf31a2eb38b5828e55a18f5bfcb44e210545.gz",
+      "raw_sha256": "bde07989b9b13c295e7f216ce1d3cf31a2eb38b5828e55a18f5bfcb44e210545",
+      "raw_bytes": 2423,
+      "stored_sha256": "4f26dcb32e2ea4eb130870892f434d9fb7fb3e7899ed7134ddaa5635419eb207"
+    },
+    "validation/hero-three-plane-ground-walk-pal-1-1-sms/capture.json": {
+      "stored": "objects/217422b9a7d79199f71ca5bf42034413265207cd25e17efd33de9401281101a7.gz",
+      "raw_sha256": "217422b9a7d79199f71ca5bf42034413265207cd25e17efd33de9401281101a7",
+      "raw_bytes": 1773,
+      "stored_sha256": "b8fabbf60a3720dc5c41f52ca2a4285754c78fb01bdc1be08116070028be7493"
+    },
+    "validation/hero-three-plane-ground-walk-pal-1-2-md/capture.json": {
+      "stored": "objects/89d8f93856c8cbdd5a1d81e8bc3cbb0046f97cae1c1217ba7bdd56c957430823.gz",
+      "raw_sha256": "89d8f93856c8cbdd5a1d81e8bc3cbb0046f97cae1c1217ba7bdd56c957430823",
+      "raw_bytes": 2423,
+      "stored_sha256": "feb8ecf0d8c0619b0ec5e9b2cc9d5984a7f0258614ddac80a8598c780bd405b2"
+    },
+    "validation/hero-three-plane-ground-walk-pal-1-2-sms/capture.json": {
+      "stored": "objects/0c48e1aa36f2e5b800d01ecae3576c06d5f1d73f787210c90ca9e54f80495e61.gz",
+      "raw_sha256": "0c48e1aa36f2e5b800d01ecae3576c06d5f1d73f787210c90ca9e54f80495e61",
+      "raw_bytes": 1773,
+      "stored_sha256": "e1d1dfb7bb3432da8d4265f7347861d5e86ee1dcb9f23057cb3f8fcca97b8200"
+    },
+    "validation/hero-three-plane-ground-walk-pal-1-3-md/capture.json": {
+      "stored": "objects/bac33248bea58212751b6f466470b004bdb2e24efe6df40752db03405e95b9d6.gz",
+      "raw_sha256": "bac33248bea58212751b6f466470b004bdb2e24efe6df40752db03405e95b9d6",
+      "raw_bytes": 2423,
+      "stored_sha256": "30d71f35b56acf7dda0b8e6539c3fd99786eeccde8c577d0fc6bed2cf7e75f21"
+    },
+    "validation/hero-three-plane-ground-walk-pal-1-3-sms/capture.json": {
+      "stored": "objects/5d462e46efd499c78e7957307c7e4bf290c3f7cba88ee332bbb0b2cb3ab40f40.gz",
+      "raw_sha256": "5d462e46efd499c78e7957307c7e4bf290c3f7cba88ee332bbb0b2cb3ab40f40",
+      "raw_bytes": 1773,
+      "stored_sha256": "ff437e1cdc8c6fa458f4c444b7790c9b052889f9ffaec2d1d919656d85cf407f"
+    },
+    "validation/hero-three-plane-pattern-cost-01/auto-new/capture.json": {
+      "stored": "objects/372236ce6ace38a72a881b67edcf117dd379af2555aee28bbd1c32efc08bd01f.gz",
+      "raw_sha256": "372236ce6ace38a72a881b67edcf117dd379af2555aee28bbd1c32efc08bd01f",
+      "raw_bytes": 1635,
+      "stored_sha256": "41b5649fe37c080788563d819eec89bf36238ef743cabba649933c56a3d91e42"
+    },
+    "validation/hero-three-plane-pattern-cost-01/auto-new/cram_02600.bin": {
+      "stored": "objects/921cd0d9df94c22138182530b07e12cf0b3f9d7c58dd26258d29b93712ca7cc4.gz",
+      "raw_sha256": "921cd0d9df94c22138182530b07e12cf0b3f9d7c58dd26258d29b93712ca7cc4",
+      "raw_bytes": 128,
+      "stored_sha256": "451a417a17cccf69420011e784ae3ff9a7a471cc00c7ef02c5457c79c5620983"
+    },
+    "validation/hero-three-plane-pattern-cost-01/auto-new/cram_02800.bin": {
+      "stored": "objects/af8bcfc6d066885fd9341f113a3cf6f209255e1873f796e50c09ecb4c0889ae8.gz",
+      "raw_sha256": "af8bcfc6d066885fd9341f113a3cf6f209255e1873f796e50c09ecb4c0889ae8",
+      "raw_bytes": 128,
+      "stored_sha256": "a8a031356baaf80dceed436e43dafc22f08d94f42a298cc0179a4cc78d602d86"
+    },
+    "validation/hero-three-plane-pattern-cost-01/auto-new/cram_03000.bin": {
+      "stored": "objects/af8bcfc6d066885fd9341f113a3cf6f209255e1873f796e50c09ecb4c0889ae8.gz",
+      "raw_sha256": "af8bcfc6d066885fd9341f113a3cf6f209255e1873f796e50c09ecb4c0889ae8",
+      "raw_bytes": 128,
+      "stored_sha256": "a8a031356baaf80dceed436e43dafc22f08d94f42a298cc0179a4cc78d602d86"
+    },
+    "validation/hero-three-plane-pattern-cost-01/auto-new/cram_03160.bin": {
+      "stored": "objects/af8bcfc6d066885fd9341f113a3cf6f209255e1873f796e50c09ecb4c0889ae8.gz",
+      "raw_sha256": "af8bcfc6d066885fd9341f113a3cf6f209255e1873f796e50c09ecb4c0889ae8",
+      "raw_bytes": 128,
+      "stored_sha256": "a8a031356baaf80dceed436e43dafc22f08d94f42a298cc0179a4cc78d602d86"
+    },
+    "validation/hero-three-plane-pattern-cost-01/auto-new/frame_02600.png": {
+      "stored": "objects/8d21e626f3e4b2b9993fece31dbbe8c50c30fa7772c526d3efaef895c121540b.gz",
+      "raw_sha256": "8d21e626f3e4b2b9993fece31dbbe8c50c30fa7772c526d3efaef895c121540b",
+      "raw_bytes": 5581,
+      "stored_sha256": "865bf4a394ace0d57a414bb9253a647b795aa92d55cc85cac07fb07c34e7792d"
+    },
+    "validation/hero-three-plane-pattern-cost-01/auto-new/frame_02800.png": {
+      "stored": "objects/9be308a85b6f1c66213fbaaeb6a0de380415fa191d5d0ff81e6406e1c492e9e9.gz",
+      "raw_sha256": "9be308a85b6f1c66213fbaaeb6a0de380415fa191d5d0ff81e6406e1c492e9e9",
+      "raw_bytes": 7607,
+      "stored_sha256": "7bff22fd29ffa5bf031fa720e79891b7b880975c715554eb2393048f2fe44e03"
+    },
+    "validation/hero-three-plane-pattern-cost-01/auto-new/frame_03000.png": {
+      "stored": "objects/8b126b6641ef2b5baa86e2927139e64c60a769de1d6110c90509b0faa8c515e2.gz",
+      "raw_sha256": "8b126b6641ef2b5baa86e2927139e64c60a769de1d6110c90509b0faa8c515e2",
+      "raw_bytes": 7924,
+      "stored_sha256": "4eef54282a164f09370480ae1b12cb5180755cb0dcb7f299d70f7d6543f6497c"
+    },
+    "validation/hero-three-plane-pattern-cost-01/auto-new/frame_03160.png": {
+      "stored": "objects/afa967b32c8e0bf3beb7975c1075591075d5d98023c2f97e4c8819b887ba22a6.gz",
+      "raw_sha256": "afa967b32c8e0bf3beb7975c1075591075d5d98023c2f97e4c8819b887ba22a6",
+      "raw_bytes": 4765,
+      "stored_sha256": "c947d1dcc533601fd0d9e1ef373b580c13169b0437b6513f20d56b3fd0cb544a"
+    },
+    "validation/hero-three-plane-pattern-cost-01/auto-new/observations.json": {
+      "stored": "objects/7b4d59280049eecc793785ae983b0c0641e8cc60dfd30e3f68c331962e3f1d17.gz",
+      "raw_sha256": "7b4d59280049eecc793785ae983b0c0641e8cc60dfd30e3f68c331962e3f1d17",
+      "raw_bytes": 89714,
+      "stored_sha256": "9b323766fd1258d01fb78660ad3559bb31af6e3381a4d8ca059c1f8b1ba17bce"
+    },
+    "validation/hero-three-plane-pattern-cost-01/auto-new/ram_02600.bin": {
+      "stored": "objects/d4665c9480fc7a3c907df62f54b7e0cc0f7e15a4f8672f2d1524192b9de489a5.gz",
+      "raw_sha256": "d4665c9480fc7a3c907df62f54b7e0cc0f7e15a4f8672f2d1524192b9de489a5",
+      "raw_bytes": 65536,
+      "stored_sha256": "691f12e09b93b3e8d6f5ff91e14610a00461965aadbfadd7da20e7d1b3d6c23a"
+    },
+    "validation/hero-three-plane-pattern-cost-01/auto-new/ram_02800.bin": {
+      "stored": "objects/5c6e52fdc3e5dd3645a2a7c3dfc54385a9bd94f01d4075e68fff2d06a0ff5cc9.gz",
+      "raw_sha256": "5c6e52fdc3e5dd3645a2a7c3dfc54385a9bd94f01d4075e68fff2d06a0ff5cc9",
+      "raw_bytes": 65536,
+      "stored_sha256": "94167c41f428a268cc472a0427800cc37b5d307f5dd8083375b23ac55a4511c9"
+    },
+    "validation/hero-three-plane-pattern-cost-01/auto-new/ram_03000.bin": {
+      "stored": "objects/5eaf97a18baff522baef70a934531a8357cd7e4deae5ce8719665732b12b2bd6.gz",
+      "raw_sha256": "5eaf97a18baff522baef70a934531a8357cd7e4deae5ce8719665732b12b2bd6",
+      "raw_bytes": 65536,
+      "stored_sha256": "fa21ad1e1165877d25b46f31cffc808f89c89edb0d6e9a631d857e6ae03fde8d"
+    },
+    "validation/hero-three-plane-pattern-cost-01/auto-new/ram_03160.bin": {
+      "stored": "objects/4b85d236d16b7d3da1fef66c8afda84174854724bdd5decb8b1f1b51a8cdd130.gz",
+      "raw_sha256": "4b85d236d16b7d3da1fef66c8afda84174854724bdd5decb8b1f1b51a8cdd130",
+      "raw_bytes": 65536,
+      "stored_sha256": "ae460515b251930e82d0fceb0cef7a62cd2d9f4f345de0637aef8000434ceac4"
+    },
+    "validation/hero-three-plane-pattern-cost-01/auto-new/trace_counts.bin": {
+      "stored": "objects/30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58.gz",
+      "raw_sha256": "30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58",
+      "raw_bytes": 1048576,
+      "stored_sha256": "f227c53a0b54fb0009773680f60b76c1f346b4dcfca7e03b7f311f0bd0f3bea1"
+    },
+    "validation/hero-three-plane-pattern-cost-01/auto-new/trace_states.bin": {
+      "stored": "objects/5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef.gz",
+      "raw_sha256": "5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+      "raw_bytes": 1024,
+      "stored_sha256": "75eb48369c0d0b1260b7db5c5f831d5f8b1b9b322b64191c96cb147437e7f404"
+    },
+    "validation/hero-three-plane-pattern-cost-01/auto-new/trace_windows.bin": {
+      "stored": "objects/8a39d2abd3999ab73c34db2476849cddf303ce389b35826850f9a700589b4a90.gz",
+      "raw_sha256": "8a39d2abd3999ab73c34db2476849cddf303ce389b35826850f9a700589b4a90",
+      "raw_bytes": 262144,
+      "stored_sha256": "e3c3be563c17c24fb5bfdfefbcbe3882cc985fa4161654a534287d9baafe2a73"
+    },
+    "validation/hero-three-plane-pattern-cost-01/auto-new/vdp_regs_02600.bin": {
+      "stored": "objects/fd0179e5834804fa3340148859ef66d6b30fd1788700006098f5b768588c1764.gz",
+      "raw_sha256": "fd0179e5834804fa3340148859ef66d6b30fd1788700006098f5b768588c1764",
+      "raw_bytes": 32,
+      "stored_sha256": "f09d566b0e4f0a25fd9bfc6458e52b61a2cdeedb8b11d258836e98e0f99e82c8"
+    },
+    "validation/hero-three-plane-pattern-cost-01/auto-new/vdp_regs_02800.bin": {
+      "stored": "objects/f2d8a5124acfa25334a0bfdc5e189cd540f4e5021395f513e427ec37928525fe.gz",
+      "raw_sha256": "f2d8a5124acfa25334a0bfdc5e189cd540f4e5021395f513e427ec37928525fe",
+      "raw_bytes": 32,
+      "stored_sha256": "ad85f0eb4abaf4c675581f7c58c2e7eabeaed9a9369cc5b4e09f90bb94275c11"
+    },
+    "validation/hero-three-plane-pattern-cost-01/auto-new/vdp_regs_03000.bin": {
+      "stored": "objects/f2d8a5124acfa25334a0bfdc5e189cd540f4e5021395f513e427ec37928525fe.gz",
+      "raw_sha256": "f2d8a5124acfa25334a0bfdc5e189cd540f4e5021395f513e427ec37928525fe",
+      "raw_bytes": 32,
+      "stored_sha256": "ad85f0eb4abaf4c675581f7c58c2e7eabeaed9a9369cc5b4e09f90bb94275c11"
+    },
+    "validation/hero-three-plane-pattern-cost-01/auto-new/vdp_regs_03160.bin": {
+      "stored": "objects/a11737113152327d1c9a01b7409316729f7f7a04d998e309f7c2738e72c7bd60.gz",
+      "raw_sha256": "a11737113152327d1c9a01b7409316729f7f7a04d998e309f7c2738e72c7bd60",
+      "raw_bytes": 32,
+      "stored_sha256": "e7fb13a8fa386e06bec4b7a5f6b91540a8b7994b26e7f4cec07108c061635e1b"
+    },
+    "validation/hero-three-plane-pattern-cost-01/auto-new/vram_02600.bin": {
+      "stored": "objects/d9d13e416c4ae2e7c46e082ec5a9e34733632243cc27b9feb548ff9af851b2cb.gz",
+      "raw_sha256": "d9d13e416c4ae2e7c46e082ec5a9e34733632243cc27b9feb548ff9af851b2cb",
+      "raw_bytes": 65536,
+      "stored_sha256": "e70d28e9be53dd9bb1f9710af7c4365712b1b507b6ddecc875f0bd4b65de7fb8"
+    },
+    "validation/hero-three-plane-pattern-cost-01/auto-new/vram_02800.bin": {
+      "stored": "objects/af2cd03e6530b1dc4301ebd2b7fe9ec83d9c46128c54e9824ea31429385b9874.gz",
+      "raw_sha256": "af2cd03e6530b1dc4301ebd2b7fe9ec83d9c46128c54e9824ea31429385b9874",
+      "raw_bytes": 65536,
+      "stored_sha256": "4c0fe5f439e5df28b5932e33a2acfe95252d8c352114af3bd476e236b415d7d8"
+    },
+    "validation/hero-three-plane-pattern-cost-01/auto-new/vram_03000.bin": {
+      "stored": "objects/88d432e54278f1cd4249d8fa2bc4e3ddc93e5d630a472ec0dbeadfedfb7a0327.gz",
+      "raw_sha256": "88d432e54278f1cd4249d8fa2bc4e3ddc93e5d630a472ec0dbeadfedfb7a0327",
+      "raw_bytes": 65536,
+      "stored_sha256": "a84770622944b51661750a2bbdd1c4f7c9b2ed559d94ddfe11d75be7a7d62d0f"
+    },
+    "validation/hero-three-plane-pattern-cost-01/auto-new/vram_03160.bin": {
+      "stored": "objects/3330488cb4e44d4106a1dc49a329c240083bf36a6b910f3a0183da23e8903f55.gz",
+      "raw_sha256": "3330488cb4e44d4106a1dc49a329c240083bf36a6b910f3a0183da23e8903f55",
+      "raw_bytes": 65536,
+      "stored_sha256": "a76becb3c15a9139e1034e20abef885cf50f227cc617876b965e0c270eddc9f9"
+    },
+    "validation/hero-three-plane-pattern-cost-01/auto-old/capture.json": {
+      "stored": "objects/d85ff32c1b85f2778c766956bfda1674e783a8422e22869aa81bbb7548da7dfa.gz",
+      "raw_sha256": "d85ff32c1b85f2778c766956bfda1674e783a8422e22869aa81bbb7548da7dfa",
+      "raw_bytes": 1626,
+      "stored_sha256": "3532813788a5691f5029c5993025137ef2fb451f37009d47584ce0070044256f"
+    },
+    "validation/hero-three-plane-pattern-cost-01/auto-old/cram_02600.bin": {
+      "stored": "objects/921cd0d9df94c22138182530b07e12cf0b3f9d7c58dd26258d29b93712ca7cc4.gz",
+      "raw_sha256": "921cd0d9df94c22138182530b07e12cf0b3f9d7c58dd26258d29b93712ca7cc4",
+      "raw_bytes": 128,
+      "stored_sha256": "451a417a17cccf69420011e784ae3ff9a7a471cc00c7ef02c5457c79c5620983"
+    },
+    "validation/hero-three-plane-pattern-cost-01/auto-old/cram_02800.bin": {
+      "stored": "objects/af8bcfc6d066885fd9341f113a3cf6f209255e1873f796e50c09ecb4c0889ae8.gz",
+      "raw_sha256": "af8bcfc6d066885fd9341f113a3cf6f209255e1873f796e50c09ecb4c0889ae8",
+      "raw_bytes": 128,
+      "stored_sha256": "a8a031356baaf80dceed436e43dafc22f08d94f42a298cc0179a4cc78d602d86"
+    },
+    "validation/hero-three-plane-pattern-cost-01/auto-old/cram_03000.bin": {
+      "stored": "objects/af8bcfc6d066885fd9341f113a3cf6f209255e1873f796e50c09ecb4c0889ae8.gz",
+      "raw_sha256": "af8bcfc6d066885fd9341f113a3cf6f209255e1873f796e50c09ecb4c0889ae8",
+      "raw_bytes": 128,
+      "stored_sha256": "a8a031356baaf80dceed436e43dafc22f08d94f42a298cc0179a4cc78d602d86"
+    },
+    "validation/hero-three-plane-pattern-cost-01/auto-old/cram_03160.bin": {
+      "stored": "objects/af8bcfc6d066885fd9341f113a3cf6f209255e1873f796e50c09ecb4c0889ae8.gz",
+      "raw_sha256": "af8bcfc6d066885fd9341f113a3cf6f209255e1873f796e50c09ecb4c0889ae8",
+      "raw_bytes": 128,
+      "stored_sha256": "a8a031356baaf80dceed436e43dafc22f08d94f42a298cc0179a4cc78d602d86"
+    },
+    "validation/hero-three-plane-pattern-cost-01/auto-old/frame_02600.png": {
+      "stored": "objects/8d21e626f3e4b2b9993fece31dbbe8c50c30fa7772c526d3efaef895c121540b.gz",
+      "raw_sha256": "8d21e626f3e4b2b9993fece31dbbe8c50c30fa7772c526d3efaef895c121540b",
+      "raw_bytes": 5581,
+      "stored_sha256": "865bf4a394ace0d57a414bb9253a647b795aa92d55cc85cac07fb07c34e7792d"
+    },
+    "validation/hero-three-plane-pattern-cost-01/auto-old/frame_02800.png": {
+      "stored": "objects/9be308a85b6f1c66213fbaaeb6a0de380415fa191d5d0ff81e6406e1c492e9e9.gz",
+      "raw_sha256": "9be308a85b6f1c66213fbaaeb6a0de380415fa191d5d0ff81e6406e1c492e9e9",
+      "raw_bytes": 7607,
+      "stored_sha256": "7bff22fd29ffa5bf031fa720e79891b7b880975c715554eb2393048f2fe44e03"
+    },
+    "validation/hero-three-plane-pattern-cost-01/auto-old/frame_03000.png": {
+      "stored": "objects/8b126b6641ef2b5baa86e2927139e64c60a769de1d6110c90509b0faa8c515e2.gz",
+      "raw_sha256": "8b126b6641ef2b5baa86e2927139e64c60a769de1d6110c90509b0faa8c515e2",
+      "raw_bytes": 7924,
+      "stored_sha256": "4eef54282a164f09370480ae1b12cb5180755cb0dcb7f299d70f7d6543f6497c"
+    },
+    "validation/hero-three-plane-pattern-cost-01/auto-old/frame_03160.png": {
+      "stored": "objects/afa967b32c8e0bf3beb7975c1075591075d5d98023c2f97e4c8819b887ba22a6.gz",
+      "raw_sha256": "afa967b32c8e0bf3beb7975c1075591075d5d98023c2f97e4c8819b887ba22a6",
+      "raw_bytes": 4765,
+      "stored_sha256": "c947d1dcc533601fd0d9e1ef373b580c13169b0437b6513f20d56b3fd0cb544a"
+    },
+    "validation/hero-three-plane-pattern-cost-01/auto-old/observations.json": {
+      "stored": "objects/ae44d6f537a1899fe5afdeb53bfa27612d15c442583032b9cd3ffc773e7d1901.gz",
+      "raw_sha256": "ae44d6f537a1899fe5afdeb53bfa27612d15c442583032b9cd3ffc773e7d1901",
+      "raw_bytes": 89762,
+      "stored_sha256": "9b9c7bccd09c7e86a7cbb4299c0749cf24cc25d45d2bc5e4473600751b4f5dba"
+    },
+    "validation/hero-three-plane-pattern-cost-01/auto-old/ram_02600.bin": {
+      "stored": "objects/6ece673eddd950b1bd826099e28889af58399646fcddaca8a90a616ecaaaffb0.gz",
+      "raw_sha256": "6ece673eddd950b1bd826099e28889af58399646fcddaca8a90a616ecaaaffb0",
+      "raw_bytes": 65536,
+      "stored_sha256": "956d0289e7129a87b8d9fc036029fb6c06b3ed9ae187d0fb0aed57c9b0f04605"
+    },
+    "validation/hero-three-plane-pattern-cost-01/auto-old/ram_02800.bin": {
+      "stored": "objects/65e30e269cbf1eed5f5be941e7aead332120f8d21a6222cb9aab0c155a7d5124.gz",
+      "raw_sha256": "65e30e269cbf1eed5f5be941e7aead332120f8d21a6222cb9aab0c155a7d5124",
+      "raw_bytes": 65536,
+      "stored_sha256": "852c5f7072bd8cdf3e29ef829959c74eaf0ece081274f9434302910b0b60a8c5"
+    },
+    "validation/hero-three-plane-pattern-cost-01/auto-old/ram_03000.bin": {
+      "stored": "objects/e1da138c7abf9bc0eee91c146aa3d7aa8c5d3f6560751b46dab6f3ee1ca134ea.gz",
+      "raw_sha256": "e1da138c7abf9bc0eee91c146aa3d7aa8c5d3f6560751b46dab6f3ee1ca134ea",
+      "raw_bytes": 65536,
+      "stored_sha256": "c7b8626f146ab49156491b23081a340ab58fca4c1d36c81ee76a3522ae2418d5"
+    },
+    "validation/hero-three-plane-pattern-cost-01/auto-old/ram_03160.bin": {
+      "stored": "objects/f9d87ed7d72cca8351fca48d8984998d637d20f714f93564ee08996071c08098.gz",
+      "raw_sha256": "f9d87ed7d72cca8351fca48d8984998d637d20f714f93564ee08996071c08098",
+      "raw_bytes": 65536,
+      "stored_sha256": "9cee404d0285f675f0977b7ff7268b409b1763ba634683bb2464c0983759e379"
+    },
+    "validation/hero-three-plane-pattern-cost-01/auto-old/trace_counts.bin": {
+      "stored": "objects/30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58.gz",
+      "raw_sha256": "30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58",
+      "raw_bytes": 1048576,
+      "stored_sha256": "f227c53a0b54fb0009773680f60b76c1f346b4dcfca7e03b7f311f0bd0f3bea1"
+    },
+    "validation/hero-three-plane-pattern-cost-01/auto-old/trace_states.bin": {
+      "stored": "objects/5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef.gz",
+      "raw_sha256": "5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+      "raw_bytes": 1024,
+      "stored_sha256": "75eb48369c0d0b1260b7db5c5f831d5f8b1b9b322b64191c96cb147437e7f404"
+    },
+    "validation/hero-three-plane-pattern-cost-01/auto-old/trace_windows.bin": {
+      "stored": "objects/8a39d2abd3999ab73c34db2476849cddf303ce389b35826850f9a700589b4a90.gz",
+      "raw_sha256": "8a39d2abd3999ab73c34db2476849cddf303ce389b35826850f9a700589b4a90",
+      "raw_bytes": 262144,
+      "stored_sha256": "e3c3be563c17c24fb5bfdfefbcbe3882cc985fa4161654a534287d9baafe2a73"
+    },
+    "validation/hero-three-plane-pattern-cost-01/auto-old/vdp_regs_02600.bin": {
+      "stored": "objects/fd0179e5834804fa3340148859ef66d6b30fd1788700006098f5b768588c1764.gz",
+      "raw_sha256": "fd0179e5834804fa3340148859ef66d6b30fd1788700006098f5b768588c1764",
+      "raw_bytes": 32,
+      "stored_sha256": "f09d566b0e4f0a25fd9bfc6458e52b61a2cdeedb8b11d258836e98e0f99e82c8"
+    },
+    "validation/hero-three-plane-pattern-cost-01/auto-old/vdp_regs_02800.bin": {
+      "stored": "objects/f2d8a5124acfa25334a0bfdc5e189cd540f4e5021395f513e427ec37928525fe.gz",
+      "raw_sha256": "f2d8a5124acfa25334a0bfdc5e189cd540f4e5021395f513e427ec37928525fe",
+      "raw_bytes": 32,
+      "stored_sha256": "ad85f0eb4abaf4c675581f7c58c2e7eabeaed9a9369cc5b4e09f90bb94275c11"
+    },
+    "validation/hero-three-plane-pattern-cost-01/auto-old/vdp_regs_03000.bin": {
+      "stored": "objects/f2d8a5124acfa25334a0bfdc5e189cd540f4e5021395f513e427ec37928525fe.gz",
+      "raw_sha256": "f2d8a5124acfa25334a0bfdc5e189cd540f4e5021395f513e427ec37928525fe",
+      "raw_bytes": 32,
+      "stored_sha256": "ad85f0eb4abaf4c675581f7c58c2e7eabeaed9a9369cc5b4e09f90bb94275c11"
+    },
+    "validation/hero-three-plane-pattern-cost-01/auto-old/vdp_regs_03160.bin": {
+      "stored": "objects/a11737113152327d1c9a01b7409316729f7f7a04d998e309f7c2738e72c7bd60.gz",
+      "raw_sha256": "a11737113152327d1c9a01b7409316729f7f7a04d998e309f7c2738e72c7bd60",
+      "raw_bytes": 32,
+      "stored_sha256": "e7fb13a8fa386e06bec4b7a5f6b91540a8b7994b26e7f4cec07108c061635e1b"
+    },
+    "validation/hero-three-plane-pattern-cost-01/auto-old/vram_02600.bin": {
+      "stored": "objects/d9d13e416c4ae2e7c46e082ec5a9e34733632243cc27b9feb548ff9af851b2cb.gz",
+      "raw_sha256": "d9d13e416c4ae2e7c46e082ec5a9e34733632243cc27b9feb548ff9af851b2cb",
+      "raw_bytes": 65536,
+      "stored_sha256": "e70d28e9be53dd9bb1f9710af7c4365712b1b507b6ddecc875f0bd4b65de7fb8"
+    },
+    "validation/hero-three-plane-pattern-cost-01/auto-old/vram_02800.bin": {
+      "stored": "objects/af2cd03e6530b1dc4301ebd2b7fe9ec83d9c46128c54e9824ea31429385b9874.gz",
+      "raw_sha256": "af2cd03e6530b1dc4301ebd2b7fe9ec83d9c46128c54e9824ea31429385b9874",
+      "raw_bytes": 65536,
+      "stored_sha256": "4c0fe5f439e5df28b5932e33a2acfe95252d8c352114af3bd476e236b415d7d8"
+    },
+    "validation/hero-three-plane-pattern-cost-01/auto-old/vram_03000.bin": {
+      "stored": "objects/88d432e54278f1cd4249d8fa2bc4e3ddc93e5d630a472ec0dbeadfedfb7a0327.gz",
+      "raw_sha256": "88d432e54278f1cd4249d8fa2bc4e3ddc93e5d630a472ec0dbeadfedfb7a0327",
+      "raw_bytes": 65536,
+      "stored_sha256": "a84770622944b51661750a2bbdd1c4f7c9b2ed559d94ddfe11d75be7a7d62d0f"
+    },
+    "validation/hero-three-plane-pattern-cost-01/auto-old/vram_03160.bin": {
+      "stored": "objects/3330488cb4e44d4106a1dc49a329c240083bf36a6b910f3a0183da23e8903f55.gz",
+      "raw_sha256": "3330488cb4e44d4106a1dc49a329c240083bf36a6b910f3a0183da23e8903f55",
+      "raw_bytes": 65536,
+      "stored_sha256": "a76becb3c15a9139e1034e20abef885cf50f227cc617876b965e0c270eddc9f9"
+    },
+    "validation/hero-three-plane-pattern-cost-01/baseline/symbol.txt": {
+      "stored": "objects/6fc859f7b78bbb2d6f154de07f1ae735b5a4a95e6ba1c1f3b6fbf0798dbd46bb.gz",
+      "raw_sha256": "6fc859f7b78bbb2d6f154de07f1ae735b5a4a95e6ba1c1f3b6fbf0798dbd46bb",
+      "raw_bytes": 42600,
+      "stored_sha256": "c50543361d1e816af937ea828ca56c8117f66505fb247812c82b2ddb1c92a023"
+    },
+    "validation/hero-three-plane-pattern-cost-01/pal-new/capture.json": {
+      "stored": "objects/d7b42d90e1ff23e25fc7eb36412d13c0fafc85bea61af674a3c054d12b1ef955.gz",
+      "raw_sha256": "d7b42d90e1ff23e25fc7eb36412d13c0fafc85bea61af674a3c054d12b1ef955",
+      "raw_bytes": 1633,
+      "stored_sha256": "bef3940b82e7f9f73a5bf7a157ebf0c8fd948f0f4ce65983f9fc711787681498"
+    },
+    "validation/hero-three-plane-pattern-cost-01/pal-new/cram_02600.bin": {
+      "stored": "objects/87ee1bce3d8cb1091c7592e5e442642e81c5194ab6a8571b26acc9aaa63c7906.gz",
+      "raw_sha256": "87ee1bce3d8cb1091c7592e5e442642e81c5194ab6a8571b26acc9aaa63c7906",
+      "raw_bytes": 128,
+      "stored_sha256": "c7d99699f8483455460985483e3da2352e20cee4c6532e9473b925fdf18af45b"
+    },
+    "validation/hero-three-plane-pattern-cost-01/pal-new/cram_02800.bin": {
+      "stored": "objects/90bd8f0af11eb699ee548957a8c9c507a9746cf62c65552b303f9630ca7e8a52.gz",
+      "raw_sha256": "90bd8f0af11eb699ee548957a8c9c507a9746cf62c65552b303f9630ca7e8a52",
+      "raw_bytes": 128,
+      "stored_sha256": "c07985f7dbebcb932486f47caa96b2041ede2fb385b6f284e121e2df6183da88"
+    },
+    "validation/hero-three-plane-pattern-cost-01/pal-new/cram_03000.bin": {
+      "stored": "objects/90bd8f0af11eb699ee548957a8c9c507a9746cf62c65552b303f9630ca7e8a52.gz",
+      "raw_sha256": "90bd8f0af11eb699ee548957a8c9c507a9746cf62c65552b303f9630ca7e8a52",
+      "raw_bytes": 128,
+      "stored_sha256": "c07985f7dbebcb932486f47caa96b2041ede2fb385b6f284e121e2df6183da88"
+    },
+    "validation/hero-three-plane-pattern-cost-01/pal-new/cram_03160.bin": {
+      "stored": "objects/90bd8f0af11eb699ee548957a8c9c507a9746cf62c65552b303f9630ca7e8a52.gz",
+      "raw_sha256": "90bd8f0af11eb699ee548957a8c9c507a9746cf62c65552b303f9630ca7e8a52",
+      "raw_bytes": 128,
+      "stored_sha256": "c07985f7dbebcb932486f47caa96b2041ede2fb385b6f284e121e2df6183da88"
+    },
+    "validation/hero-three-plane-pattern-cost-01/pal-new/frame_02600.png": {
+      "stored": "objects/8d21e626f3e4b2b9993fece31dbbe8c50c30fa7772c526d3efaef895c121540b.gz",
+      "raw_sha256": "8d21e626f3e4b2b9993fece31dbbe8c50c30fa7772c526d3efaef895c121540b",
+      "raw_bytes": 5581,
+      "stored_sha256": "865bf4a394ace0d57a414bb9253a647b795aa92d55cc85cac07fb07c34e7792d"
+    },
+    "validation/hero-three-plane-pattern-cost-01/pal-new/frame_02800.png": {
+      "stored": "objects/8bcc4745f27828743926b142da407976fa86149bc43b84e46caa562800dbbdd3.gz",
+      "raw_sha256": "8bcc4745f27828743926b142da407976fa86149bc43b84e46caa562800dbbdd3",
+      "raw_bytes": 7992,
+      "stored_sha256": "26440718a07269791c976ce57a02b564c4ff39e8253d7a3cb574f60e00a96733"
+    },
+    "validation/hero-three-plane-pattern-cost-01/pal-new/frame_03000.png": {
+      "stored": "objects/8b126b6641ef2b5baa86e2927139e64c60a769de1d6110c90509b0faa8c515e2.gz",
+      "raw_sha256": "8b126b6641ef2b5baa86e2927139e64c60a769de1d6110c90509b0faa8c515e2",
+      "raw_bytes": 7924,
+      "stored_sha256": "4eef54282a164f09370480ae1b12cb5180755cb0dcb7f299d70f7d6543f6497c"
+    },
+    "validation/hero-three-plane-pattern-cost-01/pal-new/frame_03160.png": {
+      "stored": "objects/51055d1129c8b351ca8839f8c525448dd60e7bfe932096281ad9bde231819171.gz",
+      "raw_sha256": "51055d1129c8b351ca8839f8c525448dd60e7bfe932096281ad9bde231819171",
+      "raw_bytes": 4908,
+      "stored_sha256": "208a441666eddca22db376075ee78b2432206e5c692c7b96333c9ccd78ef6a1c"
+    },
+    "validation/hero-three-plane-pattern-cost-01/pal-new/observations.json": {
+      "stored": "objects/e427c4787720b3f42430a4ccb77f267f5eb1dcf57d65f3a957f35ebd924aabed.gz",
+      "raw_sha256": "e427c4787720b3f42430a4ccb77f267f5eb1dcf57d65f3a957f35ebd924aabed",
+      "raw_bytes": 89714,
+      "stored_sha256": "acd7257923bb3de1dd298e8e56435c14ee7b10e7a1a0ee42e195a656f147435e"
+    },
+    "validation/hero-three-plane-pattern-cost-01/pal-new/ram_02600.bin": {
+      "stored": "objects/b19c0e8703229c8ece1adef749ae96cfc9305a63c72e72b550bbc653466489ff.gz",
+      "raw_sha256": "b19c0e8703229c8ece1adef749ae96cfc9305a63c72e72b550bbc653466489ff",
+      "raw_bytes": 65536,
+      "stored_sha256": "a9de5586cc0b327f0c37edf3b6050ead0c510ab44e43d482a0dd35eee679291f"
+    },
+    "validation/hero-three-plane-pattern-cost-01/pal-new/ram_02800.bin": {
+      "stored": "objects/3adb060616257924fc5fdb1b35cf2154335960ca5aef47937f6e6629cb70bfe5.gz",
+      "raw_sha256": "3adb060616257924fc5fdb1b35cf2154335960ca5aef47937f6e6629cb70bfe5",
+      "raw_bytes": 65536,
+      "stored_sha256": "e4dc7a34c6502a6c54d6c807866d0dc09b86fc7b289cf64d939acbd1df603970"
+    },
+    "validation/hero-three-plane-pattern-cost-01/pal-new/ram_03000.bin": {
+      "stored": "objects/fab1c126e68dff4d8c8d9a9e48287d5b9d65214613be5501116338f335ac794e.gz",
+      "raw_sha256": "fab1c126e68dff4d8c8d9a9e48287d5b9d65214613be5501116338f335ac794e",
+      "raw_bytes": 65536,
+      "stored_sha256": "33666ab9d51763b9ae1a53a92574a2051d0cf24f999bdf3fa2f373d5d7be4f87"
+    },
+    "validation/hero-three-plane-pattern-cost-01/pal-new/ram_03160.bin": {
+      "stored": "objects/32ffc114549a0a3f2c890f45d6aa91d0e738043bab2ba43e5ec9c8b2309d939c.gz",
+      "raw_sha256": "32ffc114549a0a3f2c890f45d6aa91d0e738043bab2ba43e5ec9c8b2309d939c",
+      "raw_bytes": 65536,
+      "stored_sha256": "57845cf14abf18163710b3c9482ba7289fb28864ee36b3675a6cd39971d6374a"
+    },
+    "validation/hero-three-plane-pattern-cost-01/pal-new/trace_counts.bin": {
+      "stored": "objects/30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58.gz",
+      "raw_sha256": "30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58",
+      "raw_bytes": 1048576,
+      "stored_sha256": "f227c53a0b54fb0009773680f60b76c1f346b4dcfca7e03b7f311f0bd0f3bea1"
+    },
+    "validation/hero-three-plane-pattern-cost-01/pal-new/trace_states.bin": {
+      "stored": "objects/5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef.gz",
+      "raw_sha256": "5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+      "raw_bytes": 1024,
+      "stored_sha256": "75eb48369c0d0b1260b7db5c5f831d5f8b1b9b322b64191c96cb147437e7f404"
+    },
+    "validation/hero-three-plane-pattern-cost-01/pal-new/trace_windows.bin": {
+      "stored": "objects/8a39d2abd3999ab73c34db2476849cddf303ce389b35826850f9a700589b4a90.gz",
+      "raw_sha256": "8a39d2abd3999ab73c34db2476849cddf303ce389b35826850f9a700589b4a90",
+      "raw_bytes": 262144,
+      "stored_sha256": "e3c3be563c17c24fb5bfdfefbcbe3882cc985fa4161654a534287d9baafe2a73"
+    },
+    "validation/hero-three-plane-pattern-cost-01/pal-new/vdp_regs_02600.bin": {
+      "stored": "objects/fd0179e5834804fa3340148859ef66d6b30fd1788700006098f5b768588c1764.gz",
+      "raw_sha256": "fd0179e5834804fa3340148859ef66d6b30fd1788700006098f5b768588c1764",
+      "raw_bytes": 32,
+      "stored_sha256": "f09d566b0e4f0a25fd9bfc6458e52b61a2cdeedb8b11d258836e98e0f99e82c8"
+    },
+    "validation/hero-three-plane-pattern-cost-01/pal-new/vdp_regs_02800.bin": {
+      "stored": "objects/f2d8a5124acfa25334a0bfdc5e189cd540f4e5021395f513e427ec37928525fe.gz",
+      "raw_sha256": "f2d8a5124acfa25334a0bfdc5e189cd540f4e5021395f513e427ec37928525fe",
+      "raw_bytes": 32,
+      "stored_sha256": "ad85f0eb4abaf4c675581f7c58c2e7eabeaed9a9369cc5b4e09f90bb94275c11"
+    },
+    "validation/hero-three-plane-pattern-cost-01/pal-new/vdp_regs_03000.bin": {
+      "stored": "objects/f2d8a5124acfa25334a0bfdc5e189cd540f4e5021395f513e427ec37928525fe.gz",
+      "raw_sha256": "f2d8a5124acfa25334a0bfdc5e189cd540f4e5021395f513e427ec37928525fe",
+      "raw_bytes": 32,
+      "stored_sha256": "ad85f0eb4abaf4c675581f7c58c2e7eabeaed9a9369cc5b4e09f90bb94275c11"
+    },
+    "validation/hero-three-plane-pattern-cost-01/pal-new/vdp_regs_03160.bin": {
+      "stored": "objects/a11737113152327d1c9a01b7409316729f7f7a04d998e309f7c2738e72c7bd60.gz",
+      "raw_sha256": "a11737113152327d1c9a01b7409316729f7f7a04d998e309f7c2738e72c7bd60",
+      "raw_bytes": 32,
+      "stored_sha256": "e7fb13a8fa386e06bec4b7a5f6b91540a8b7994b26e7f4cec07108c061635e1b"
+    },
+    "validation/hero-three-plane-pattern-cost-01/pal-new/vram_02600.bin": {
+      "stored": "objects/d9d13e416c4ae2e7c46e082ec5a9e34733632243cc27b9feb548ff9af851b2cb.gz",
+      "raw_sha256": "d9d13e416c4ae2e7c46e082ec5a9e34733632243cc27b9feb548ff9af851b2cb",
+      "raw_bytes": 65536,
+      "stored_sha256": "e70d28e9be53dd9bb1f9710af7c4365712b1b507b6ddecc875f0bd4b65de7fb8"
+    },
+    "validation/hero-three-plane-pattern-cost-01/pal-new/vram_02800.bin": {
+      "stored": "objects/8828f629f39cf5a6f39b63383f08edb7b7c60cca2a3d77828a8616c3285fbeb8.gz",
+      "raw_sha256": "8828f629f39cf5a6f39b63383f08edb7b7c60cca2a3d77828a8616c3285fbeb8",
+      "raw_bytes": 65536,
+      "stored_sha256": "7a538706ecedc5e573cba44bb544fa76d9c9b4f06555e32ab34041bc1edf3e91"
+    },
+    "validation/hero-three-plane-pattern-cost-01/pal-new/vram_03000.bin": {
+      "stored": "objects/88d432e54278f1cd4249d8fa2bc4e3ddc93e5d630a472ec0dbeadfedfb7a0327.gz",
+      "raw_sha256": "88d432e54278f1cd4249d8fa2bc4e3ddc93e5d630a472ec0dbeadfedfb7a0327",
+      "raw_bytes": 65536,
+      "stored_sha256": "a84770622944b51661750a2bbdd1c4f7c9b2ed559d94ddfe11d75be7a7d62d0f"
+    },
+    "validation/hero-three-plane-pattern-cost-01/pal-new/vram_03160.bin": {
+      "stored": "objects/fb508678a35a1745cb1150eff16adf4d76e6be63a7656d106460ba6d2b476a52.gz",
+      "raw_sha256": "fb508678a35a1745cb1150eff16adf4d76e6be63a7656d106460ba6d2b476a52",
+      "raw_bytes": 65536,
+      "stored_sha256": "edfc0ef1638bddc1658cbce3d5b72b1de551a98c245e2f97e226c10e1f4f7414"
+    },
+    "validation/hero-three-plane-pattern-cost-01/pal-old/capture.json": {
+      "stored": "objects/94650b8a80c64feb897878f25364f33dc78a0e5d959a2f6c332b8a0d830d79bc.gz",
+      "raw_sha256": "94650b8a80c64feb897878f25364f33dc78a0e5d959a2f6c332b8a0d830d79bc",
+      "raw_bytes": 1624,
+      "stored_sha256": "9c7b409159436875f0c76570c2f6e5b86eddae7b8d9415cd687c22db3e26833c"
+    },
+    "validation/hero-three-plane-pattern-cost-01/pal-old/cram_02600.bin": {
+      "stored": "objects/87ee1bce3d8cb1091c7592e5e442642e81c5194ab6a8571b26acc9aaa63c7906.gz",
+      "raw_sha256": "87ee1bce3d8cb1091c7592e5e442642e81c5194ab6a8571b26acc9aaa63c7906",
+      "raw_bytes": 128,
+      "stored_sha256": "c7d99699f8483455460985483e3da2352e20cee4c6532e9473b925fdf18af45b"
+    },
+    "validation/hero-three-plane-pattern-cost-01/pal-old/cram_02800.bin": {
+      "stored": "objects/90bd8f0af11eb699ee548957a8c9c507a9746cf62c65552b303f9630ca7e8a52.gz",
+      "raw_sha256": "90bd8f0af11eb699ee548957a8c9c507a9746cf62c65552b303f9630ca7e8a52",
+      "raw_bytes": 128,
+      "stored_sha256": "c07985f7dbebcb932486f47caa96b2041ede2fb385b6f284e121e2df6183da88"
+    },
+    "validation/hero-three-plane-pattern-cost-01/pal-old/cram_03000.bin": {
+      "stored": "objects/90bd8f0af11eb699ee548957a8c9c507a9746cf62c65552b303f9630ca7e8a52.gz",
+      "raw_sha256": "90bd8f0af11eb699ee548957a8c9c507a9746cf62c65552b303f9630ca7e8a52",
+      "raw_bytes": 128,
+      "stored_sha256": "c07985f7dbebcb932486f47caa96b2041ede2fb385b6f284e121e2df6183da88"
+    },
+    "validation/hero-three-plane-pattern-cost-01/pal-old/cram_03160.bin": {
+      "stored": "objects/90bd8f0af11eb699ee548957a8c9c507a9746cf62c65552b303f9630ca7e8a52.gz",
+      "raw_sha256": "90bd8f0af11eb699ee548957a8c9c507a9746cf62c65552b303f9630ca7e8a52",
+      "raw_bytes": 128,
+      "stored_sha256": "c07985f7dbebcb932486f47caa96b2041ede2fb385b6f284e121e2df6183da88"
+    },
+    "validation/hero-three-plane-pattern-cost-01/pal-old/frame_02600.png": {
+      "stored": "objects/8d21e626f3e4b2b9993fece31dbbe8c50c30fa7772c526d3efaef895c121540b.gz",
+      "raw_sha256": "8d21e626f3e4b2b9993fece31dbbe8c50c30fa7772c526d3efaef895c121540b",
+      "raw_bytes": 5581,
+      "stored_sha256": "865bf4a394ace0d57a414bb9253a647b795aa92d55cc85cac07fb07c34e7792d"
+    },
+    "validation/hero-three-plane-pattern-cost-01/pal-old/frame_02800.png": {
+      "stored": "objects/8bcc4745f27828743926b142da407976fa86149bc43b84e46caa562800dbbdd3.gz",
+      "raw_sha256": "8bcc4745f27828743926b142da407976fa86149bc43b84e46caa562800dbbdd3",
+      "raw_bytes": 7992,
+      "stored_sha256": "26440718a07269791c976ce57a02b564c4ff39e8253d7a3cb574f60e00a96733"
+    },
+    "validation/hero-three-plane-pattern-cost-01/pal-old/frame_03000.png": {
+      "stored": "objects/8b126b6641ef2b5baa86e2927139e64c60a769de1d6110c90509b0faa8c515e2.gz",
+      "raw_sha256": "8b126b6641ef2b5baa86e2927139e64c60a769de1d6110c90509b0faa8c515e2",
+      "raw_bytes": 7924,
+      "stored_sha256": "4eef54282a164f09370480ae1b12cb5180755cb0dcb7f299d70f7d6543f6497c"
+    },
+    "validation/hero-three-plane-pattern-cost-01/pal-old/frame_03160.png": {
+      "stored": "objects/51055d1129c8b351ca8839f8c525448dd60e7bfe932096281ad9bde231819171.gz",
+      "raw_sha256": "51055d1129c8b351ca8839f8c525448dd60e7bfe932096281ad9bde231819171",
+      "raw_bytes": 4908,
+      "stored_sha256": "208a441666eddca22db376075ee78b2432206e5c692c7b96333c9ccd78ef6a1c"
+    },
+    "validation/hero-three-plane-pattern-cost-01/pal-old/observations.json": {
+      "stored": "objects/9b54ac5c4b444e8f7a017e1a408840b8e99860d0d6e9e28cccd0cd107b869109.gz",
+      "raw_sha256": "9b54ac5c4b444e8f7a017e1a408840b8e99860d0d6e9e28cccd0cd107b869109",
+      "raw_bytes": 89762,
+      "stored_sha256": "6395fd9d064985eb3169d96bb6a3289882ed5f0b3421b2f4d216f3e98ecda3d2"
+    },
+    "validation/hero-three-plane-pattern-cost-01/pal-old/ram_02600.bin": {
+      "stored": "objects/c1abf1f51e17746418279e25549ff86b847f8f85b466fab5a82062d103351deb.gz",
+      "raw_sha256": "c1abf1f51e17746418279e25549ff86b847f8f85b466fab5a82062d103351deb",
+      "raw_bytes": 65536,
+      "stored_sha256": "57310cf8d0834820fc6ff93f7b5bb103aab44f9bb1eb832eefadf41898836530"
+    },
+    "validation/hero-three-plane-pattern-cost-01/pal-old/ram_02800.bin": {
+      "stored": "objects/a18f895d76d8601240d2d504753ad6c65537c918a3d85d86ffce22444dd7e007.gz",
+      "raw_sha256": "a18f895d76d8601240d2d504753ad6c65537c918a3d85d86ffce22444dd7e007",
+      "raw_bytes": 65536,
+      "stored_sha256": "eb2ebf8ec36ea724bf6da3dfd3d31f1240015409092d189efb66d16d08704a5c"
+    },
+    "validation/hero-three-plane-pattern-cost-01/pal-old/ram_03000.bin": {
+      "stored": "objects/22f767a659cb47e6d489e6d09ca82875d42aa8bbd7d59172969e4b232913464c.gz",
+      "raw_sha256": "22f767a659cb47e6d489e6d09ca82875d42aa8bbd7d59172969e4b232913464c",
+      "raw_bytes": 65536,
+      "stored_sha256": "3fa2ac5453c5e890c3fcecc6db90981194ccf718e44edfa76f26dbd74a54c5cb"
+    },
+    "validation/hero-three-plane-pattern-cost-01/pal-old/ram_03160.bin": {
+      "stored": "objects/776fe2fc77b5a27df5deece1c2cf05419c7c9352a959717d620d088a5f35449d.gz",
+      "raw_sha256": "776fe2fc77b5a27df5deece1c2cf05419c7c9352a959717d620d088a5f35449d",
+      "raw_bytes": 65536,
+      "stored_sha256": "d2bfa592e10a94235374c58f25103a7cf503a3320bfbd3201036d0120984094a"
+    },
+    "validation/hero-three-plane-pattern-cost-01/pal-old/trace_counts.bin": {
+      "stored": "objects/30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58.gz",
+      "raw_sha256": "30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58",
+      "raw_bytes": 1048576,
+      "stored_sha256": "f227c53a0b54fb0009773680f60b76c1f346b4dcfca7e03b7f311f0bd0f3bea1"
+    },
+    "validation/hero-three-plane-pattern-cost-01/pal-old/trace_states.bin": {
+      "stored": "objects/5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef.gz",
+      "raw_sha256": "5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+      "raw_bytes": 1024,
+      "stored_sha256": "75eb48369c0d0b1260b7db5c5f831d5f8b1b9b322b64191c96cb147437e7f404"
+    },
+    "validation/hero-three-plane-pattern-cost-01/pal-old/trace_windows.bin": {
+      "stored": "objects/8a39d2abd3999ab73c34db2476849cddf303ce389b35826850f9a700589b4a90.gz",
+      "raw_sha256": "8a39d2abd3999ab73c34db2476849cddf303ce389b35826850f9a700589b4a90",
+      "raw_bytes": 262144,
+      "stored_sha256": "e3c3be563c17c24fb5bfdfefbcbe3882cc985fa4161654a534287d9baafe2a73"
+    },
+    "validation/hero-three-plane-pattern-cost-01/pal-old/vdp_regs_02600.bin": {
+      "stored": "objects/fd0179e5834804fa3340148859ef66d6b30fd1788700006098f5b768588c1764.gz",
+      "raw_sha256": "fd0179e5834804fa3340148859ef66d6b30fd1788700006098f5b768588c1764",
+      "raw_bytes": 32,
+      "stored_sha256": "f09d566b0e4f0a25fd9bfc6458e52b61a2cdeedb8b11d258836e98e0f99e82c8"
+    },
+    "validation/hero-three-plane-pattern-cost-01/pal-old/vdp_regs_02800.bin": {
+      "stored": "objects/f2d8a5124acfa25334a0bfdc5e189cd540f4e5021395f513e427ec37928525fe.gz",
+      "raw_sha256": "f2d8a5124acfa25334a0bfdc5e189cd540f4e5021395f513e427ec37928525fe",
+      "raw_bytes": 32,
+      "stored_sha256": "ad85f0eb4abaf4c675581f7c58c2e7eabeaed9a9369cc5b4e09f90bb94275c11"
+    },
+    "validation/hero-three-plane-pattern-cost-01/pal-old/vdp_regs_03000.bin": {
+      "stored": "objects/f2d8a5124acfa25334a0bfdc5e189cd540f4e5021395f513e427ec37928525fe.gz",
+      "raw_sha256": "f2d8a5124acfa25334a0bfdc5e189cd540f4e5021395f513e427ec37928525fe",
+      "raw_bytes": 32,
+      "stored_sha256": "ad85f0eb4abaf4c675581f7c58c2e7eabeaed9a9369cc5b4e09f90bb94275c11"
+    },
+    "validation/hero-three-plane-pattern-cost-01/pal-old/vdp_regs_03160.bin": {
+      "stored": "objects/a11737113152327d1c9a01b7409316729f7f7a04d998e309f7c2738e72c7bd60.gz",
+      "raw_sha256": "a11737113152327d1c9a01b7409316729f7f7a04d998e309f7c2738e72c7bd60",
+      "raw_bytes": 32,
+      "stored_sha256": "e7fb13a8fa386e06bec4b7a5f6b91540a8b7994b26e7f4cec07108c061635e1b"
+    },
+    "validation/hero-three-plane-pattern-cost-01/pal-old/vram_02600.bin": {
+      "stored": "objects/d9d13e416c4ae2e7c46e082ec5a9e34733632243cc27b9feb548ff9af851b2cb.gz",
+      "raw_sha256": "d9d13e416c4ae2e7c46e082ec5a9e34733632243cc27b9feb548ff9af851b2cb",
+      "raw_bytes": 65536,
+      "stored_sha256": "e70d28e9be53dd9bb1f9710af7c4365712b1b507b6ddecc875f0bd4b65de7fb8"
+    },
+    "validation/hero-three-plane-pattern-cost-01/pal-old/vram_02800.bin": {
+      "stored": "objects/8828f629f39cf5a6f39b63383f08edb7b7c60cca2a3d77828a8616c3285fbeb8.gz",
+      "raw_sha256": "8828f629f39cf5a6f39b63383f08edb7b7c60cca2a3d77828a8616c3285fbeb8",
+      "raw_bytes": 65536,
+      "stored_sha256": "7a538706ecedc5e573cba44bb544fa76d9c9b4f06555e32ab34041bc1edf3e91"
+    },
+    "validation/hero-three-plane-pattern-cost-01/pal-old/vram_03000.bin": {
+      "stored": "objects/88d432e54278f1cd4249d8fa2bc4e3ddc93e5d630a472ec0dbeadfedfb7a0327.gz",
+      "raw_sha256": "88d432e54278f1cd4249d8fa2bc4e3ddc93e5d630a472ec0dbeadfedfb7a0327",
+      "raw_bytes": 65536,
+      "stored_sha256": "a84770622944b51661750a2bbdd1c4f7c9b2ed559d94ddfe11d75be7a7d62d0f"
+    },
+    "validation/hero-three-plane-pattern-cost-01/pal-old/vram_03160.bin": {
+      "stored": "objects/fb508678a35a1745cb1150eff16adf4d76e6be63a7656d106460ba6d2b476a52.gz",
+      "raw_sha256": "fb508678a35a1745cb1150eff16adf4d76e6be63a7656d106460ba6d2b476a52",
+      "raw_bytes": 65536,
+      "stored_sha256": "edfc0ef1638bddc1658cbce3d5b72b1de551a98c245e2f97e226c10e1f4f7414"
+    },
+    "validation/publish_hero_three_plane_trial.py": {
+      "stored": "objects/1aa398c25bffb4f8d69f8b0db2a73b5aaa337517975baf3a6157ef72cdf64058.gz",
+      "raw_sha256": "1aa398c25bffb4f8d69f8b0db2a73b5aaa337517975baf3a6157ef72cdf64058",
+      "raw_bytes": 4990,
+      "stored_sha256": "0e80574179fdc4283d9610030c319b9d5e447a3d9086fcfd42b781a7a11c63c5"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-bottom_clip-new/capture.json": {
+      "stored": "objects/cf58f6822170c16e847b414f48b9ddd3e2b0794177313170c0e2dc54e465e472.gz",
+      "raw_sha256": "cf58f6822170c16e847b414f48b9ddd3e2b0794177313170c0e2dc54e465e472",
+      "raw_bytes": 21862,
+      "stored_sha256": "d0b52a083685440f5c62240c1fca9fb91c00fe95d7fa56ec3cece771c53150b1"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-bottom_clip-new/cram_03134.bin": {
+      "stored": "objects/f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb.gz",
+      "raw_sha256": "f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb",
+      "raw_bytes": 128,
+      "stored_sha256": "e96461717d68f4309980492b39c561a8c655b4c6ce089742056a55b46fe9d488"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-bottom_clip-new/cram_03142.bin": {
+      "stored": "objects/f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb.gz",
+      "raw_sha256": "f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb",
+      "raw_bytes": 128,
+      "stored_sha256": "e96461717d68f4309980492b39c561a8c655b4c6ce089742056a55b46fe9d488"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-bottom_clip-new/frame_03134.png": {
+      "stored": "objects/85670cc4254cc9ad6f07435fc79438bec82e9b956a152682d59f0d740b0f2bb8.gz",
+      "raw_sha256": "85670cc4254cc9ad6f07435fc79438bec82e9b956a152682d59f0d740b0f2bb8",
+      "raw_bytes": 4457,
+      "stored_sha256": "c8630630a4289b9fa86142d0eda0986acabc0b3fedc60884316300aab2a4e597"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-bottom_clip-new/frame_03142.png": {
+      "stored": "objects/85670cc4254cc9ad6f07435fc79438bec82e9b956a152682d59f0d740b0f2bb8.gz",
+      "raw_sha256": "85670cc4254cc9ad6f07435fc79438bec82e9b956a152682d59f0d740b0f2bb8",
+      "raw_bytes": 4457,
+      "stored_sha256": "c8630630a4289b9fa86142d0eda0986acabc0b3fedc60884316300aab2a4e597"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-bottom_clip-new/ram_03134.bin": {
+      "stored": "objects/63023c1bed25e59903bacee19718bced85abcd93e187c55cb7a3017515edd2e9.gz",
+      "raw_sha256": "63023c1bed25e59903bacee19718bced85abcd93e187c55cb7a3017515edd2e9",
+      "raw_bytes": 65536,
+      "stored_sha256": "290d329b802cc5fbc476f0a99196396aa27fecf1c00ffb809838c2fbde7f84d1"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-bottom_clip-new/ram_03142.bin": {
+      "stored": "objects/3de23c5d70eac7a69cb1a2a986cf014ece13a9879bcd7157d9adcf6b9f34c13d.gz",
+      "raw_sha256": "3de23c5d70eac7a69cb1a2a986cf014ece13a9879bcd7157d9adcf6b9f34c13d",
+      "raw_bytes": 65536,
+      "stored_sha256": "e864280083c82d283c5934a1f15c76e512292cb48af5f5ee329b8c83c342f8a7"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-bottom_clip-new/vdp_regs_03134.bin": {
+      "stored": "objects/87deac0c862ba5fddc4654eb4d97cc86a80d598e4e90800d31c7b8a5aa02b9fe.gz",
+      "raw_sha256": "87deac0c862ba5fddc4654eb4d97cc86a80d598e4e90800d31c7b8a5aa02b9fe",
+      "raw_bytes": 32,
+      "stored_sha256": "7afc568435dc7e447ff6a771bcd8674ef798240db95c5ae92327aea150acdae9"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-bottom_clip-new/vdp_regs_03142.bin": {
+      "stored": "objects/87deac0c862ba5fddc4654eb4d97cc86a80d598e4e90800d31c7b8a5aa02b9fe.gz",
+      "raw_sha256": "87deac0c862ba5fddc4654eb4d97cc86a80d598e4e90800d31c7b8a5aa02b9fe",
+      "raw_bytes": 32,
+      "stored_sha256": "7afc568435dc7e447ff6a771bcd8674ef798240db95c5ae92327aea150acdae9"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-bottom_clip-new/vram_03134.bin": {
+      "stored": "objects/a3e0288e8edaf250fa9469abf85472ce78ff0133d99793f32c4c41806c0ff3d0.gz",
+      "raw_sha256": "a3e0288e8edaf250fa9469abf85472ce78ff0133d99793f32c4c41806c0ff3d0",
+      "raw_bytes": 65536,
+      "stored_sha256": "40b24e4056eae03de9af81759813394d5e4d926a44bfda0c46b8315648eb8dd6"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-bottom_clip-new/vram_03142.bin": {
+      "stored": "objects/a3e0288e8edaf250fa9469abf85472ce78ff0133d99793f32c4c41806c0ff3d0.gz",
+      "raw_sha256": "a3e0288e8edaf250fa9469abf85472ce78ff0133d99793f32c4c41806c0ff3d0",
+      "raw_bytes": 65536,
+      "stored_sha256": "40b24e4056eae03de9af81759813394d5e4d926a44bfda0c46b8315648eb8dd6"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-bottom_clip-old/capture.json": {
+      "stored": "objects/6dd9a318560717cacca2551b6431640256bffd7de22245a3de6bbe3bc750e83c.gz",
+      "raw_sha256": "6dd9a318560717cacca2551b6431640256bffd7de22245a3de6bbe3bc750e83c",
+      "raw_bytes": 21853,
+      "stored_sha256": "f0071a0fe093792fd6b03b289340154ba214513211487c13742f8228b66d1e25"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-bottom_clip-old/cram_03134.bin": {
+      "stored": "objects/f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb.gz",
+      "raw_sha256": "f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb",
+      "raw_bytes": 128,
+      "stored_sha256": "e96461717d68f4309980492b39c561a8c655b4c6ce089742056a55b46fe9d488"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-bottom_clip-old/cram_03142.bin": {
+      "stored": "objects/f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb.gz",
+      "raw_sha256": "f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb",
+      "raw_bytes": 128,
+      "stored_sha256": "e96461717d68f4309980492b39c561a8c655b4c6ce089742056a55b46fe9d488"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-bottom_clip-old/frame_03134.png": {
+      "stored": "objects/85670cc4254cc9ad6f07435fc79438bec82e9b956a152682d59f0d740b0f2bb8.gz",
+      "raw_sha256": "85670cc4254cc9ad6f07435fc79438bec82e9b956a152682d59f0d740b0f2bb8",
+      "raw_bytes": 4457,
+      "stored_sha256": "c8630630a4289b9fa86142d0eda0986acabc0b3fedc60884316300aab2a4e597"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-bottom_clip-old/frame_03142.png": {
+      "stored": "objects/85670cc4254cc9ad6f07435fc79438bec82e9b956a152682d59f0d740b0f2bb8.gz",
+      "raw_sha256": "85670cc4254cc9ad6f07435fc79438bec82e9b956a152682d59f0d740b0f2bb8",
+      "raw_bytes": 4457,
+      "stored_sha256": "c8630630a4289b9fa86142d0eda0986acabc0b3fedc60884316300aab2a4e597"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-bottom_clip-old/ram_03134.bin": {
+      "stored": "objects/131942c7a7b9e875069d34f1317743274850a19d93fb2029b3ec8a5d7be3f790.gz",
+      "raw_sha256": "131942c7a7b9e875069d34f1317743274850a19d93fb2029b3ec8a5d7be3f790",
+      "raw_bytes": 65536,
+      "stored_sha256": "6ba54577e6a19b4f11c0e2f3d19a7f1ba1815fe15d8405fa4cd8412d65a9280a"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-bottom_clip-old/ram_03142.bin": {
+      "stored": "objects/fba4568e9e868b47f012f8dc9ed6040f30472fcaa65e0e59c3d77c6fc7402357.gz",
+      "raw_sha256": "fba4568e9e868b47f012f8dc9ed6040f30472fcaa65e0e59c3d77c6fc7402357",
+      "raw_bytes": 65536,
+      "stored_sha256": "3e5a3b35b17c3889c0d83fda1229e95ada47d720e0ef5c3c8da9c29477361cc2"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-bottom_clip-old/vdp_regs_03134.bin": {
+      "stored": "objects/87deac0c862ba5fddc4654eb4d97cc86a80d598e4e90800d31c7b8a5aa02b9fe.gz",
+      "raw_sha256": "87deac0c862ba5fddc4654eb4d97cc86a80d598e4e90800d31c7b8a5aa02b9fe",
+      "raw_bytes": 32,
+      "stored_sha256": "7afc568435dc7e447ff6a771bcd8674ef798240db95c5ae92327aea150acdae9"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-bottom_clip-old/vdp_regs_03142.bin": {
+      "stored": "objects/87deac0c862ba5fddc4654eb4d97cc86a80d598e4e90800d31c7b8a5aa02b9fe.gz",
+      "raw_sha256": "87deac0c862ba5fddc4654eb4d97cc86a80d598e4e90800d31c7b8a5aa02b9fe",
+      "raw_bytes": 32,
+      "stored_sha256": "7afc568435dc7e447ff6a771bcd8674ef798240db95c5ae92327aea150acdae9"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-bottom_clip-old/vram_03134.bin": {
+      "stored": "objects/a3e0288e8edaf250fa9469abf85472ce78ff0133d99793f32c4c41806c0ff3d0.gz",
+      "raw_sha256": "a3e0288e8edaf250fa9469abf85472ce78ff0133d99793f32c4c41806c0ff3d0",
+      "raw_bytes": 65536,
+      "stored_sha256": "40b24e4056eae03de9af81759813394d5e4d926a44bfda0c46b8315648eb8dd6"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-bottom_clip-old/vram_03142.bin": {
+      "stored": "objects/a3e0288e8edaf250fa9469abf85472ce78ff0133d99793f32c4c41806c0ff3d0.gz",
+      "raw_sha256": "a3e0288e8edaf250fa9469abf85472ce78ff0133d99793f32c4c41806c0ff3d0",
+      "raw_bytes": 65536,
+      "stored_sha256": "40b24e4056eae03de9af81759813394d5e4d926a44bfda0c46b8315648eb8dd6"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-empty-new/capture.json": {
+      "stored": "objects/cf58f6822170c16e847b414f48b9ddd3e2b0794177313170c0e2dc54e465e472.gz",
+      "raw_sha256": "cf58f6822170c16e847b414f48b9ddd3e2b0794177313170c0e2dc54e465e472",
+      "raw_bytes": 21862,
+      "stored_sha256": "d0b52a083685440f5c62240c1fca9fb91c00fe95d7fa56ec3cece771c53150b1"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-empty-new/cram_03134.bin": {
+      "stored": "objects/f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb.gz",
+      "raw_sha256": "f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb",
+      "raw_bytes": 128,
+      "stored_sha256": "e96461717d68f4309980492b39c561a8c655b4c6ce089742056a55b46fe9d488"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-empty-new/cram_03142.bin": {
+      "stored": "objects/f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb.gz",
+      "raw_sha256": "f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb",
+      "raw_bytes": 128,
+      "stored_sha256": "e96461717d68f4309980492b39c561a8c655b4c6ce089742056a55b46fe9d488"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-empty-new/frame_03134.png": {
+      "stored": "objects/85670cc4254cc9ad6f07435fc79438bec82e9b956a152682d59f0d740b0f2bb8.gz",
+      "raw_sha256": "85670cc4254cc9ad6f07435fc79438bec82e9b956a152682d59f0d740b0f2bb8",
+      "raw_bytes": 4457,
+      "stored_sha256": "c8630630a4289b9fa86142d0eda0986acabc0b3fedc60884316300aab2a4e597"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-empty-new/frame_03142.png": {
+      "stored": "objects/85670cc4254cc9ad6f07435fc79438bec82e9b956a152682d59f0d740b0f2bb8.gz",
+      "raw_sha256": "85670cc4254cc9ad6f07435fc79438bec82e9b956a152682d59f0d740b0f2bb8",
+      "raw_bytes": 4457,
+      "stored_sha256": "c8630630a4289b9fa86142d0eda0986acabc0b3fedc60884316300aab2a4e597"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-empty-new/ram_03134.bin": {
+      "stored": "objects/9cd59fae1fe8bf5a54c93951fa61a73400ee7789d984c68124b83f1d9c43304a.gz",
+      "raw_sha256": "9cd59fae1fe8bf5a54c93951fa61a73400ee7789d984c68124b83f1d9c43304a",
+      "raw_bytes": 65536,
+      "stored_sha256": "b7a500c480153e5a78c4e485f659df76e38f8fc2c5eca9fe7dd6110df5c2565f"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-empty-new/ram_03142.bin": {
+      "stored": "objects/18c59e638e9e57aea9097dae30a4f54954ca26fe1ade95065257c1c1dc205059.gz",
+      "raw_sha256": "18c59e638e9e57aea9097dae30a4f54954ca26fe1ade95065257c1c1dc205059",
+      "raw_bytes": 65536,
+      "stored_sha256": "08e4a3e5befedc75f760f33e4f092f47dbb36fdab5420754af7b719808a57453"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-empty-new/vdp_regs_03134.bin": {
+      "stored": "objects/f2d8a5124acfa25334a0bfdc5e189cd540f4e5021395f513e427ec37928525fe.gz",
+      "raw_sha256": "f2d8a5124acfa25334a0bfdc5e189cd540f4e5021395f513e427ec37928525fe",
+      "raw_bytes": 32,
+      "stored_sha256": "ad85f0eb4abaf4c675581f7c58c2e7eabeaed9a9369cc5b4e09f90bb94275c11"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-empty-new/vdp_regs_03142.bin": {
+      "stored": "objects/f2d8a5124acfa25334a0bfdc5e189cd540f4e5021395f513e427ec37928525fe.gz",
+      "raw_sha256": "f2d8a5124acfa25334a0bfdc5e189cd540f4e5021395f513e427ec37928525fe",
+      "raw_bytes": 32,
+      "stored_sha256": "ad85f0eb4abaf4c675581f7c58c2e7eabeaed9a9369cc5b4e09f90bb94275c11"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-empty-new/vram_03134.bin": {
+      "stored": "objects/16b0ce3953c76f94c6c293c20ee44ce2735d810d06343084f398daa77c6bbd81.gz",
+      "raw_sha256": "16b0ce3953c76f94c6c293c20ee44ce2735d810d06343084f398daa77c6bbd81",
+      "raw_bytes": 65536,
+      "stored_sha256": "df5935116117d61cad0f100f94c8f2ce90b0d18a8e4cdb81b08e3cba3f6014ff"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-empty-new/vram_03142.bin": {
+      "stored": "objects/16b0ce3953c76f94c6c293c20ee44ce2735d810d06343084f398daa77c6bbd81.gz",
+      "raw_sha256": "16b0ce3953c76f94c6c293c20ee44ce2735d810d06343084f398daa77c6bbd81",
+      "raw_bytes": 65536,
+      "stored_sha256": "df5935116117d61cad0f100f94c8f2ce90b0d18a8e4cdb81b08e3cba3f6014ff"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-empty-old/capture.json": {
+      "stored": "objects/6dd9a318560717cacca2551b6431640256bffd7de22245a3de6bbe3bc750e83c.gz",
+      "raw_sha256": "6dd9a318560717cacca2551b6431640256bffd7de22245a3de6bbe3bc750e83c",
+      "raw_bytes": 21853,
+      "stored_sha256": "f0071a0fe093792fd6b03b289340154ba214513211487c13742f8228b66d1e25"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-empty-old/cram_03134.bin": {
+      "stored": "objects/f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb.gz",
+      "raw_sha256": "f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb",
+      "raw_bytes": 128,
+      "stored_sha256": "e96461717d68f4309980492b39c561a8c655b4c6ce089742056a55b46fe9d488"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-empty-old/cram_03142.bin": {
+      "stored": "objects/f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb.gz",
+      "raw_sha256": "f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb",
+      "raw_bytes": 128,
+      "stored_sha256": "e96461717d68f4309980492b39c561a8c655b4c6ce089742056a55b46fe9d488"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-empty-old/frame_03134.png": {
+      "stored": "objects/85670cc4254cc9ad6f07435fc79438bec82e9b956a152682d59f0d740b0f2bb8.gz",
+      "raw_sha256": "85670cc4254cc9ad6f07435fc79438bec82e9b956a152682d59f0d740b0f2bb8",
+      "raw_bytes": 4457,
+      "stored_sha256": "c8630630a4289b9fa86142d0eda0986acabc0b3fedc60884316300aab2a4e597"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-empty-old/frame_03142.png": {
+      "stored": "objects/85670cc4254cc9ad6f07435fc79438bec82e9b956a152682d59f0d740b0f2bb8.gz",
+      "raw_sha256": "85670cc4254cc9ad6f07435fc79438bec82e9b956a152682d59f0d740b0f2bb8",
+      "raw_bytes": 4457,
+      "stored_sha256": "c8630630a4289b9fa86142d0eda0986acabc0b3fedc60884316300aab2a4e597"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-empty-old/ram_03134.bin": {
+      "stored": "objects/00310d52d0f1cb2fc8b330c56c9f63922a5d55b8b47eb96323a1adf45a744ba2.gz",
+      "raw_sha256": "00310d52d0f1cb2fc8b330c56c9f63922a5d55b8b47eb96323a1adf45a744ba2",
+      "raw_bytes": 65536,
+      "stored_sha256": "01d57b505c4baf37d2f1c163dd293cbc15ac798c1b4d9a8c6dde96827ae2dd54"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-empty-old/ram_03142.bin": {
+      "stored": "objects/49746dfed1053638acb4be7df0cdac9fbe5800e7e1cf92d6070777a23edc45ac.gz",
+      "raw_sha256": "49746dfed1053638acb4be7df0cdac9fbe5800e7e1cf92d6070777a23edc45ac",
+      "raw_bytes": 65536,
+      "stored_sha256": "9984c8f0ab99f8d28656f3c3a623dababcef2a7c6b9a523a5b809d2654059b75"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-empty-old/vdp_regs_03134.bin": {
+      "stored": "objects/f2d8a5124acfa25334a0bfdc5e189cd540f4e5021395f513e427ec37928525fe.gz",
+      "raw_sha256": "f2d8a5124acfa25334a0bfdc5e189cd540f4e5021395f513e427ec37928525fe",
+      "raw_bytes": 32,
+      "stored_sha256": "ad85f0eb4abaf4c675581f7c58c2e7eabeaed9a9369cc5b4e09f90bb94275c11"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-empty-old/vdp_regs_03142.bin": {
+      "stored": "objects/f2d8a5124acfa25334a0bfdc5e189cd540f4e5021395f513e427ec37928525fe.gz",
+      "raw_sha256": "f2d8a5124acfa25334a0bfdc5e189cd540f4e5021395f513e427ec37928525fe",
+      "raw_bytes": 32,
+      "stored_sha256": "ad85f0eb4abaf4c675581f7c58c2e7eabeaed9a9369cc5b4e09f90bb94275c11"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-empty-old/vram_03134.bin": {
+      "stored": "objects/16b0ce3953c76f94c6c293c20ee44ce2735d810d06343084f398daa77c6bbd81.gz",
+      "raw_sha256": "16b0ce3953c76f94c6c293c20ee44ce2735d810d06343084f398daa77c6bbd81",
+      "raw_bytes": 65536,
+      "stored_sha256": "df5935116117d61cad0f100f94c8f2ce90b0d18a8e4cdb81b08e3cba3f6014ff"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-empty-old/vram_03142.bin": {
+      "stored": "objects/16b0ce3953c76f94c6c293c20ee44ce2735d810d06343084f398daa77c6bbd81.gz",
+      "raw_sha256": "16b0ce3953c76f94c6c293c20ee44ce2735d810d06343084f398daa77c6bbd81",
+      "raw_bytes": 65536,
+      "stored_sha256": "df5935116117d61cad0f100f94c8f2ce90b0d18a8e4cdb81b08e3cba3f6014ff"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-full_pool-new/capture.json": {
+      "stored": "objects/cf58f6822170c16e847b414f48b9ddd3e2b0794177313170c0e2dc54e465e472.gz",
+      "raw_sha256": "cf58f6822170c16e847b414f48b9ddd3e2b0794177313170c0e2dc54e465e472",
+      "raw_bytes": 21862,
+      "stored_sha256": "d0b52a083685440f5c62240c1fca9fb91c00fe95d7fa56ec3cece771c53150b1"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-full_pool-new/cram_03134.bin": {
+      "stored": "objects/f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb.gz",
+      "raw_sha256": "f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb",
+      "raw_bytes": 128,
+      "stored_sha256": "e96461717d68f4309980492b39c561a8c655b4c6ce089742056a55b46fe9d488"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-full_pool-new/cram_03142.bin": {
+      "stored": "objects/f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb.gz",
+      "raw_sha256": "f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb",
+      "raw_bytes": 128,
+      "stored_sha256": "e96461717d68f4309980492b39c561a8c655b4c6ce089742056a55b46fe9d488"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-full_pool-new/frame_03134.png": {
+      "stored": "objects/ff810b9f147b6f8bcafeb1a7a01175bccddd6f893d0e0d144e19581b94c03509.gz",
+      "raw_sha256": "ff810b9f147b6f8bcafeb1a7a01175bccddd6f893d0e0d144e19581b94c03509",
+      "raw_bytes": 5809,
+      "stored_sha256": "c1b1dcbd9b453a44294ec916e8979cb67177df8d1e713a31b071df9e656d0bf7"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-full_pool-new/frame_03142.png": {
+      "stored": "objects/ff810b9f147b6f8bcafeb1a7a01175bccddd6f893d0e0d144e19581b94c03509.gz",
+      "raw_sha256": "ff810b9f147b6f8bcafeb1a7a01175bccddd6f893d0e0d144e19581b94c03509",
+      "raw_bytes": 5809,
+      "stored_sha256": "c1b1dcbd9b453a44294ec916e8979cb67177df8d1e713a31b071df9e656d0bf7"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-full_pool-new/ram_03134.bin": {
+      "stored": "objects/ff1d41a7898ce912433bbe2521821340510857443b9e720f55d8829b62644fdc.gz",
+      "raw_sha256": "ff1d41a7898ce912433bbe2521821340510857443b9e720f55d8829b62644fdc",
+      "raw_bytes": 65536,
+      "stored_sha256": "a1d93750ad50f8c198fae36199d757205f81165d1ec2bdfcb3230034b280b3a4"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-full_pool-new/ram_03142.bin": {
+      "stored": "objects/9b8d2f29762a0e63b4e1046e3545c6718cecfc70ea7547e32f5d58bf5f446b0a.gz",
+      "raw_sha256": "9b8d2f29762a0e63b4e1046e3545c6718cecfc70ea7547e32f5d58bf5f446b0a",
+      "raw_bytes": 65536,
+      "stored_sha256": "96ee05a918387b4ca498e34c332f40240a1954900d6433a55f65aec0fd0ee8c3"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-full_pool-new/vdp_regs_03134.bin": {
+      "stored": "objects/c3f400564523a403188af5790e4ad073175ebe04a091a459b1bfeb28efc580c6.gz",
+      "raw_sha256": "c3f400564523a403188af5790e4ad073175ebe04a091a459b1bfeb28efc580c6",
+      "raw_bytes": 32,
+      "stored_sha256": "10ad1e257d643d6675e8d7aff287cb568a9112d59de1bdd0450edd194920f330"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-full_pool-new/vdp_regs_03142.bin": {
+      "stored": "objects/c3f400564523a403188af5790e4ad073175ebe04a091a459b1bfeb28efc580c6.gz",
+      "raw_sha256": "c3f400564523a403188af5790e4ad073175ebe04a091a459b1bfeb28efc580c6",
+      "raw_bytes": 32,
+      "stored_sha256": "10ad1e257d643d6675e8d7aff287cb568a9112d59de1bdd0450edd194920f330"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-full_pool-new/vram_03134.bin": {
+      "stored": "objects/585b1eefefd724827d4e6189ed903ccb95497c9050d982d92c31b9802c3d7e05.gz",
+      "raw_sha256": "585b1eefefd724827d4e6189ed903ccb95497c9050d982d92c31b9802c3d7e05",
+      "raw_bytes": 65536,
+      "stored_sha256": "bc4cbbc08e67fb5c19ba411cdc73839e2ab092f2424a0629f25f1a866ea4259a"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-full_pool-new/vram_03142.bin": {
+      "stored": "objects/585b1eefefd724827d4e6189ed903ccb95497c9050d982d92c31b9802c3d7e05.gz",
+      "raw_sha256": "585b1eefefd724827d4e6189ed903ccb95497c9050d982d92c31b9802c3d7e05",
+      "raw_bytes": 65536,
+      "stored_sha256": "bc4cbbc08e67fb5c19ba411cdc73839e2ab092f2424a0629f25f1a866ea4259a"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-full_pool-old/capture.json": {
+      "stored": "objects/6dd9a318560717cacca2551b6431640256bffd7de22245a3de6bbe3bc750e83c.gz",
+      "raw_sha256": "6dd9a318560717cacca2551b6431640256bffd7de22245a3de6bbe3bc750e83c",
+      "raw_bytes": 21853,
+      "stored_sha256": "f0071a0fe093792fd6b03b289340154ba214513211487c13742f8228b66d1e25"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-full_pool-old/cram_03134.bin": {
+      "stored": "objects/f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb.gz",
+      "raw_sha256": "f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb",
+      "raw_bytes": 128,
+      "stored_sha256": "e96461717d68f4309980492b39c561a8c655b4c6ce089742056a55b46fe9d488"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-full_pool-old/cram_03142.bin": {
+      "stored": "objects/f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb.gz",
+      "raw_sha256": "f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb",
+      "raw_bytes": 128,
+      "stored_sha256": "e96461717d68f4309980492b39c561a8c655b4c6ce089742056a55b46fe9d488"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-full_pool-old/frame_03134.png": {
+      "stored": "objects/ff810b9f147b6f8bcafeb1a7a01175bccddd6f893d0e0d144e19581b94c03509.gz",
+      "raw_sha256": "ff810b9f147b6f8bcafeb1a7a01175bccddd6f893d0e0d144e19581b94c03509",
+      "raw_bytes": 5809,
+      "stored_sha256": "c1b1dcbd9b453a44294ec916e8979cb67177df8d1e713a31b071df9e656d0bf7"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-full_pool-old/frame_03142.png": {
+      "stored": "objects/ff810b9f147b6f8bcafeb1a7a01175bccddd6f893d0e0d144e19581b94c03509.gz",
+      "raw_sha256": "ff810b9f147b6f8bcafeb1a7a01175bccddd6f893d0e0d144e19581b94c03509",
+      "raw_bytes": 5809,
+      "stored_sha256": "c1b1dcbd9b453a44294ec916e8979cb67177df8d1e713a31b071df9e656d0bf7"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-full_pool-old/ram_03134.bin": {
+      "stored": "objects/af5f3c22bd2621c10d9a42ed27e28f45991121069b019ae52fa5561d385a3f32.gz",
+      "raw_sha256": "af5f3c22bd2621c10d9a42ed27e28f45991121069b019ae52fa5561d385a3f32",
+      "raw_bytes": 65536,
+      "stored_sha256": "7e0374cf99f80836c270f701cf89d51f03c37b07f9f7ef44e56df058d7df3c0d"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-full_pool-old/ram_03142.bin": {
+      "stored": "objects/114a422d5210d8ad74fb3ec49bc854a4808f3fd352b566726a632c3f1d55d864.gz",
+      "raw_sha256": "114a422d5210d8ad74fb3ec49bc854a4808f3fd352b566726a632c3f1d55d864",
+      "raw_bytes": 65536,
+      "stored_sha256": "f8946786093861bc75603006213fc16acad76683d17b9bfc6755d19c75a80279"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-full_pool-old/vdp_regs_03134.bin": {
+      "stored": "objects/c3f400564523a403188af5790e4ad073175ebe04a091a459b1bfeb28efc580c6.gz",
+      "raw_sha256": "c3f400564523a403188af5790e4ad073175ebe04a091a459b1bfeb28efc580c6",
+      "raw_bytes": 32,
+      "stored_sha256": "10ad1e257d643d6675e8d7aff287cb568a9112d59de1bdd0450edd194920f330"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-full_pool-old/vdp_regs_03142.bin": {
+      "stored": "objects/c3f400564523a403188af5790e4ad073175ebe04a091a459b1bfeb28efc580c6.gz",
+      "raw_sha256": "c3f400564523a403188af5790e4ad073175ebe04a091a459b1bfeb28efc580c6",
+      "raw_bytes": 32,
+      "stored_sha256": "10ad1e257d643d6675e8d7aff287cb568a9112d59de1bdd0450edd194920f330"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-full_pool-old/vram_03134.bin": {
+      "stored": "objects/585b1eefefd724827d4e6189ed903ccb95497c9050d982d92c31b9802c3d7e05.gz",
+      "raw_sha256": "585b1eefefd724827d4e6189ed903ccb95497c9050d982d92c31b9802c3d7e05",
+      "raw_bytes": 65536,
+      "stored_sha256": "bc4cbbc08e67fb5c19ba411cdc73839e2ab092f2424a0629f25f1a866ea4259a"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-full_pool-old/vram_03142.bin": {
+      "stored": "objects/585b1eefefd724827d4e6189ed903ccb95497c9050d982d92c31b9802c3d7e05.gz",
+      "raw_sha256": "585b1eefefd724827d4e6189ed903ccb95497c9050d982d92c31b9802c3d7e05",
+      "raw_bytes": 65536,
+      "stored_sha256": "bc4cbbc08e67fb5c19ba411cdc73839e2ab092f2424a0629f25f1a866ea4259a"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-overlap-new/capture.json": {
+      "stored": "objects/cf58f6822170c16e847b414f48b9ddd3e2b0794177313170c0e2dc54e465e472.gz",
+      "raw_sha256": "cf58f6822170c16e847b414f48b9ddd3e2b0794177313170c0e2dc54e465e472",
+      "raw_bytes": 21862,
+      "stored_sha256": "d0b52a083685440f5c62240c1fca9fb91c00fe95d7fa56ec3cece771c53150b1"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-overlap-new/cram_03134.bin": {
+      "stored": "objects/f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb.gz",
+      "raw_sha256": "f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb",
+      "raw_bytes": 128,
+      "stored_sha256": "e96461717d68f4309980492b39c561a8c655b4c6ce089742056a55b46fe9d488"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-overlap-new/cram_03142.bin": {
+      "stored": "objects/f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb.gz",
+      "raw_sha256": "f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb",
+      "raw_bytes": 128,
+      "stored_sha256": "e96461717d68f4309980492b39c561a8c655b4c6ce089742056a55b46fe9d488"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-overlap-new/frame_03134.png": {
+      "stored": "objects/ff810b9f147b6f8bcafeb1a7a01175bccddd6f893d0e0d144e19581b94c03509.gz",
+      "raw_sha256": "ff810b9f147b6f8bcafeb1a7a01175bccddd6f893d0e0d144e19581b94c03509",
+      "raw_bytes": 5809,
+      "stored_sha256": "c1b1dcbd9b453a44294ec916e8979cb67177df8d1e713a31b071df9e656d0bf7"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-overlap-new/frame_03142.png": {
+      "stored": "objects/ff810b9f147b6f8bcafeb1a7a01175bccddd6f893d0e0d144e19581b94c03509.gz",
+      "raw_sha256": "ff810b9f147b6f8bcafeb1a7a01175bccddd6f893d0e0d144e19581b94c03509",
+      "raw_bytes": 5809,
+      "stored_sha256": "c1b1dcbd9b453a44294ec916e8979cb67177df8d1e713a31b071df9e656d0bf7"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-overlap-new/ram_03134.bin": {
+      "stored": "objects/9b280c6ae5fd2990fd5f3ab30d42e88cb5a8f5915f59d5c46c3c6a9cc63f1aea.gz",
+      "raw_sha256": "9b280c6ae5fd2990fd5f3ab30d42e88cb5a8f5915f59d5c46c3c6a9cc63f1aea",
+      "raw_bytes": 65536,
+      "stored_sha256": "d1d871f846c3b258fe954a604872208fda69e28a8dd97b492989d3e21daabe34"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-overlap-new/ram_03142.bin": {
+      "stored": "objects/d0963c73452a4ce894505c359bc583c9f3a4412cb2b1893f25b70d5e83dc9058.gz",
+      "raw_sha256": "d0963c73452a4ce894505c359bc583c9f3a4412cb2b1893f25b70d5e83dc9058",
+      "raw_bytes": 65536,
+      "stored_sha256": "4ff9c1616d7df785facdf02f08b331bc6cfd12dbc945c4924022591f4f488f0f"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-overlap-new/vdp_regs_03134.bin": {
+      "stored": "objects/87deac0c862ba5fddc4654eb4d97cc86a80d598e4e90800d31c7b8a5aa02b9fe.gz",
+      "raw_sha256": "87deac0c862ba5fddc4654eb4d97cc86a80d598e4e90800d31c7b8a5aa02b9fe",
+      "raw_bytes": 32,
+      "stored_sha256": "7afc568435dc7e447ff6a771bcd8674ef798240db95c5ae92327aea150acdae9"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-overlap-new/vdp_regs_03142.bin": {
+      "stored": "objects/87deac0c862ba5fddc4654eb4d97cc86a80d598e4e90800d31c7b8a5aa02b9fe.gz",
+      "raw_sha256": "87deac0c862ba5fddc4654eb4d97cc86a80d598e4e90800d31c7b8a5aa02b9fe",
+      "raw_bytes": 32,
+      "stored_sha256": "7afc568435dc7e447ff6a771bcd8674ef798240db95c5ae92327aea150acdae9"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-overlap-new/vram_03134.bin": {
+      "stored": "objects/29d29c42b7cb97e8f81cacd97282caffbf43b5dca0223a57afa8acccd5947914.gz",
+      "raw_sha256": "29d29c42b7cb97e8f81cacd97282caffbf43b5dca0223a57afa8acccd5947914",
+      "raw_bytes": 65536,
+      "stored_sha256": "063b5282fcee7bf90e106f374adaedbe2e3a07c9ed254dd26472daec1de49d5c"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-overlap-new/vram_03142.bin": {
+      "stored": "objects/29d29c42b7cb97e8f81cacd97282caffbf43b5dca0223a57afa8acccd5947914.gz",
+      "raw_sha256": "29d29c42b7cb97e8f81cacd97282caffbf43b5dca0223a57afa8acccd5947914",
+      "raw_bytes": 65536,
+      "stored_sha256": "063b5282fcee7bf90e106f374adaedbe2e3a07c9ed254dd26472daec1de49d5c"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-overlap-old/capture.json": {
+      "stored": "objects/6dd9a318560717cacca2551b6431640256bffd7de22245a3de6bbe3bc750e83c.gz",
+      "raw_sha256": "6dd9a318560717cacca2551b6431640256bffd7de22245a3de6bbe3bc750e83c",
+      "raw_bytes": 21853,
+      "stored_sha256": "f0071a0fe093792fd6b03b289340154ba214513211487c13742f8228b66d1e25"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-overlap-old/cram_03134.bin": {
+      "stored": "objects/f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb.gz",
+      "raw_sha256": "f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb",
+      "raw_bytes": 128,
+      "stored_sha256": "e96461717d68f4309980492b39c561a8c655b4c6ce089742056a55b46fe9d488"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-overlap-old/cram_03142.bin": {
+      "stored": "objects/f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb.gz",
+      "raw_sha256": "f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb",
+      "raw_bytes": 128,
+      "stored_sha256": "e96461717d68f4309980492b39c561a8c655b4c6ce089742056a55b46fe9d488"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-overlap-old/frame_03134.png": {
+      "stored": "objects/ff810b9f147b6f8bcafeb1a7a01175bccddd6f893d0e0d144e19581b94c03509.gz",
+      "raw_sha256": "ff810b9f147b6f8bcafeb1a7a01175bccddd6f893d0e0d144e19581b94c03509",
+      "raw_bytes": 5809,
+      "stored_sha256": "c1b1dcbd9b453a44294ec916e8979cb67177df8d1e713a31b071df9e656d0bf7"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-overlap-old/frame_03142.png": {
+      "stored": "objects/ff810b9f147b6f8bcafeb1a7a01175bccddd6f893d0e0d144e19581b94c03509.gz",
+      "raw_sha256": "ff810b9f147b6f8bcafeb1a7a01175bccddd6f893d0e0d144e19581b94c03509",
+      "raw_bytes": 5809,
+      "stored_sha256": "c1b1dcbd9b453a44294ec916e8979cb67177df8d1e713a31b071df9e656d0bf7"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-overlap-old/ram_03134.bin": {
+      "stored": "objects/db2bba0fdec642053f57cfbd409752291b10d260030169637d69e6ff391b1487.gz",
+      "raw_sha256": "db2bba0fdec642053f57cfbd409752291b10d260030169637d69e6ff391b1487",
+      "raw_bytes": 65536,
+      "stored_sha256": "e0472ca1dc3dd28251b297ceb1b1edbd92d04ca6cc423e709351289b5bdc258c"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-overlap-old/ram_03142.bin": {
+      "stored": "objects/76c870d6ff4177da58a29b8cce55ee61f4a452570b9978c7f4a9344312e3b96a.gz",
+      "raw_sha256": "76c870d6ff4177da58a29b8cce55ee61f4a452570b9978c7f4a9344312e3b96a",
+      "raw_bytes": 65536,
+      "stored_sha256": "34b2c1a4971f2d285017fec928ac6a3b74d491f80e23458eff50883d6904a494"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-overlap-old/vdp_regs_03134.bin": {
+      "stored": "objects/87deac0c862ba5fddc4654eb4d97cc86a80d598e4e90800d31c7b8a5aa02b9fe.gz",
+      "raw_sha256": "87deac0c862ba5fddc4654eb4d97cc86a80d598e4e90800d31c7b8a5aa02b9fe",
+      "raw_bytes": 32,
+      "stored_sha256": "7afc568435dc7e447ff6a771bcd8674ef798240db95c5ae92327aea150acdae9"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-overlap-old/vdp_regs_03142.bin": {
+      "stored": "objects/87deac0c862ba5fddc4654eb4d97cc86a80d598e4e90800d31c7b8a5aa02b9fe.gz",
+      "raw_sha256": "87deac0c862ba5fddc4654eb4d97cc86a80d598e4e90800d31c7b8a5aa02b9fe",
+      "raw_bytes": 32,
+      "stored_sha256": "7afc568435dc7e447ff6a771bcd8674ef798240db95c5ae92327aea150acdae9"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-overlap-old/vram_03134.bin": {
+      "stored": "objects/29d29c42b7cb97e8f81cacd97282caffbf43b5dca0223a57afa8acccd5947914.gz",
+      "raw_sha256": "29d29c42b7cb97e8f81cacd97282caffbf43b5dca0223a57afa8acccd5947914",
+      "raw_bytes": 65536,
+      "stored_sha256": "063b5282fcee7bf90e106f374adaedbe2e3a07c9ed254dd26472daec1de49d5c"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-overlap-old/vram_03142.bin": {
+      "stored": "objects/29d29c42b7cb97e8f81cacd97282caffbf43b5dca0223a57afa8acccd5947914.gz",
+      "raw_sha256": "29d29c42b7cb97e8f81cacd97282caffbf43b5dca0223a57afa8acccd5947914",
+      "raw_bytes": 65536,
+      "stored_sha256": "063b5282fcee7bf90e106f374adaedbe2e3a07c9ed254dd26472daec1de49d5c"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-terminator-new/capture.json": {
+      "stored": "objects/cf58f6822170c16e847b414f48b9ddd3e2b0794177313170c0e2dc54e465e472.gz",
+      "raw_sha256": "cf58f6822170c16e847b414f48b9ddd3e2b0794177313170c0e2dc54e465e472",
+      "raw_bytes": 21862,
+      "stored_sha256": "d0b52a083685440f5c62240c1fca9fb91c00fe95d7fa56ec3cece771c53150b1"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-terminator-new/cram_03134.bin": {
+      "stored": "objects/f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb.gz",
+      "raw_sha256": "f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb",
+      "raw_bytes": 128,
+      "stored_sha256": "e96461717d68f4309980492b39c561a8c655b4c6ce089742056a55b46fe9d488"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-terminator-new/cram_03142.bin": {
+      "stored": "objects/f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb.gz",
+      "raw_sha256": "f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb",
+      "raw_bytes": 128,
+      "stored_sha256": "e96461717d68f4309980492b39c561a8c655b4c6ce089742056a55b46fe9d488"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-terminator-new/frame_03134.png": {
+      "stored": "objects/1d6ecd0624d785381a203da0c7ad183e7c6dd26b110ce7fc042810e346967a29.gz",
+      "raw_sha256": "1d6ecd0624d785381a203da0c7ad183e7c6dd26b110ce7fc042810e346967a29",
+      "raw_bytes": 4142,
+      "stored_sha256": "3dac656a702283966b108c773400b1f2860ef4832e0868c68a17b7de968f71c4"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-terminator-new/frame_03142.png": {
+      "stored": "objects/1d6ecd0624d785381a203da0c7ad183e7c6dd26b110ce7fc042810e346967a29.gz",
+      "raw_sha256": "1d6ecd0624d785381a203da0c7ad183e7c6dd26b110ce7fc042810e346967a29",
+      "raw_bytes": 4142,
+      "stored_sha256": "3dac656a702283966b108c773400b1f2860ef4832e0868c68a17b7de968f71c4"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-terminator-new/ram_03134.bin": {
+      "stored": "objects/943b8590f5739fe4e9d46574d4326022556f10aa56957dc3c16f6f4fd81d715b.gz",
+      "raw_sha256": "943b8590f5739fe4e9d46574d4326022556f10aa56957dc3c16f6f4fd81d715b",
+      "raw_bytes": 65536,
+      "stored_sha256": "62939d62d4a0332d27c011caafd1d7a8f79fbbdd351d24aaf2f6d6ecb49b483f"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-terminator-new/ram_03142.bin": {
+      "stored": "objects/46c6aac2c1effbd7f3dced54c94803b78af1bf6bb5b56397dfab019db9ec8e64.gz",
+      "raw_sha256": "46c6aac2c1effbd7f3dced54c94803b78af1bf6bb5b56397dfab019db9ec8e64",
+      "raw_bytes": 65536,
+      "stored_sha256": "2695f69b1371ecee66cafca60ee68f12129c9ccf3a61cc93b826c8b970e115fd"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-terminator-new/vdp_regs_03134.bin": {
+      "stored": "objects/b8874d5c12ccac50e256d6a577b74e3c0bdb955ef5d4ad549047749dde6ccfc6.gz",
+      "raw_sha256": "b8874d5c12ccac50e256d6a577b74e3c0bdb955ef5d4ad549047749dde6ccfc6",
+      "raw_bytes": 32,
+      "stored_sha256": "63cd3323999f21412c0dec1c925417bacd12301e0db4d5669d7310a8c5646540"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-terminator-new/vdp_regs_03142.bin": {
+      "stored": "objects/b8874d5c12ccac50e256d6a577b74e3c0bdb955ef5d4ad549047749dde6ccfc6.gz",
+      "raw_sha256": "b8874d5c12ccac50e256d6a577b74e3c0bdb955ef5d4ad549047749dde6ccfc6",
+      "raw_bytes": 32,
+      "stored_sha256": "63cd3323999f21412c0dec1c925417bacd12301e0db4d5669d7310a8c5646540"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-terminator-new/vram_03134.bin": {
+      "stored": "objects/0cda1882910a9aef91cc4ce34122c6d89a8007dcb96763581c245d33bf99e810.gz",
+      "raw_sha256": "0cda1882910a9aef91cc4ce34122c6d89a8007dcb96763581c245d33bf99e810",
+      "raw_bytes": 65536,
+      "stored_sha256": "41696465f636d7a520437baf6ee2198915af42b8eecada7cdec54b3fde4286a7"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-terminator-new/vram_03142.bin": {
+      "stored": "objects/0cda1882910a9aef91cc4ce34122c6d89a8007dcb96763581c245d33bf99e810.gz",
+      "raw_sha256": "0cda1882910a9aef91cc4ce34122c6d89a8007dcb96763581c245d33bf99e810",
+      "raw_bytes": 65536,
+      "stored_sha256": "41696465f636d7a520437baf6ee2198915af42b8eecada7cdec54b3fde4286a7"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-terminator-old/capture.json": {
+      "stored": "objects/6dd9a318560717cacca2551b6431640256bffd7de22245a3de6bbe3bc750e83c.gz",
+      "raw_sha256": "6dd9a318560717cacca2551b6431640256bffd7de22245a3de6bbe3bc750e83c",
+      "raw_bytes": 21853,
+      "stored_sha256": "f0071a0fe093792fd6b03b289340154ba214513211487c13742f8228b66d1e25"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-terminator-old/cram_03134.bin": {
+      "stored": "objects/f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb.gz",
+      "raw_sha256": "f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb",
+      "raw_bytes": 128,
+      "stored_sha256": "e96461717d68f4309980492b39c561a8c655b4c6ce089742056a55b46fe9d488"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-terminator-old/cram_03142.bin": {
+      "stored": "objects/f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb.gz",
+      "raw_sha256": "f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb",
+      "raw_bytes": 128,
+      "stored_sha256": "e96461717d68f4309980492b39c561a8c655b4c6ce089742056a55b46fe9d488"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-terminator-old/frame_03134.png": {
+      "stored": "objects/1d6ecd0624d785381a203da0c7ad183e7c6dd26b110ce7fc042810e346967a29.gz",
+      "raw_sha256": "1d6ecd0624d785381a203da0c7ad183e7c6dd26b110ce7fc042810e346967a29",
+      "raw_bytes": 4142,
+      "stored_sha256": "3dac656a702283966b108c773400b1f2860ef4832e0868c68a17b7de968f71c4"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-terminator-old/frame_03142.png": {
+      "stored": "objects/1d6ecd0624d785381a203da0c7ad183e7c6dd26b110ce7fc042810e346967a29.gz",
+      "raw_sha256": "1d6ecd0624d785381a203da0c7ad183e7c6dd26b110ce7fc042810e346967a29",
+      "raw_bytes": 4142,
+      "stored_sha256": "3dac656a702283966b108c773400b1f2860ef4832e0868c68a17b7de968f71c4"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-terminator-old/ram_03134.bin": {
+      "stored": "objects/1b20d10df418d87401d8a09c84d23110a403a9340ed4a1e42aa274a0a9a0cf31.gz",
+      "raw_sha256": "1b20d10df418d87401d8a09c84d23110a403a9340ed4a1e42aa274a0a9a0cf31",
+      "raw_bytes": 65536,
+      "stored_sha256": "a71eebf790ce4a1b941dd3d252213e235d60f429bf3b7e24ea865fdd01e67b5f"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-terminator-old/ram_03142.bin": {
+      "stored": "objects/6b451028f256d10ed5968efb4a5d21d2285d1fef4f9f734106bffb365d2fe035.gz",
+      "raw_sha256": "6b451028f256d10ed5968efb4a5d21d2285d1fef4f9f734106bffb365d2fe035",
+      "raw_bytes": 65536,
+      "stored_sha256": "ad2e36d32621f205f0bf4d9a3211ebe19c2fc326021781f34484c1b032989867"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-terminator-old/vdp_regs_03134.bin": {
+      "stored": "objects/b8874d5c12ccac50e256d6a577b74e3c0bdb955ef5d4ad549047749dde6ccfc6.gz",
+      "raw_sha256": "b8874d5c12ccac50e256d6a577b74e3c0bdb955ef5d4ad549047749dde6ccfc6",
+      "raw_bytes": 32,
+      "stored_sha256": "63cd3323999f21412c0dec1c925417bacd12301e0db4d5669d7310a8c5646540"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-terminator-old/vdp_regs_03142.bin": {
+      "stored": "objects/b8874d5c12ccac50e256d6a577b74e3c0bdb955ef5d4ad549047749dde6ccfc6.gz",
+      "raw_sha256": "b8874d5c12ccac50e256d6a577b74e3c0bdb955ef5d4ad549047749dde6ccfc6",
+      "raw_bytes": 32,
+      "stored_sha256": "63cd3323999f21412c0dec1c925417bacd12301e0db4d5669d7310a8c5646540"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-terminator-old/vram_03134.bin": {
+      "stored": "objects/0cda1882910a9aef91cc4ce34122c6d89a8007dcb96763581c245d33bf99e810.gz",
+      "raw_sha256": "0cda1882910a9aef91cc4ce34122c6d89a8007dcb96763581c245d33bf99e810",
+      "raw_bytes": 65536,
+      "stored_sha256": "41696465f636d7a520437baf6ee2198915af42b8eecada7cdec54b3fde4286a7"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-terminator-old/vram_03142.bin": {
+      "stored": "objects/0cda1882910a9aef91cc4ce34122c6d89a8007dcb96763581c245d33bf99e810.gz",
+      "raw_sha256": "0cda1882910a9aef91cc4ce34122c6d89a8007dcb96763581c245d33bf99e810",
+      "raw_bytes": 65536,
+      "stored_sha256": "41696465f636d7a520437baf6ee2198915af42b8eecada7cdec54b3fde4286a7"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-top_clip-new/capture.json": {
+      "stored": "objects/cf58f6822170c16e847b414f48b9ddd3e2b0794177313170c0e2dc54e465e472.gz",
+      "raw_sha256": "cf58f6822170c16e847b414f48b9ddd3e2b0794177313170c0e2dc54e465e472",
+      "raw_bytes": 21862,
+      "stored_sha256": "d0b52a083685440f5c62240c1fca9fb91c00fe95d7fa56ec3cece771c53150b1"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-top_clip-new/cram_03134.bin": {
+      "stored": "objects/f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb.gz",
+      "raw_sha256": "f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb",
+      "raw_bytes": 128,
+      "stored_sha256": "e96461717d68f4309980492b39c561a8c655b4c6ce089742056a55b46fe9d488"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-top_clip-new/cram_03142.bin": {
+      "stored": "objects/f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb.gz",
+      "raw_sha256": "f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb",
+      "raw_bytes": 128,
+      "stored_sha256": "e96461717d68f4309980492b39c561a8c655b4c6ce089742056a55b46fe9d488"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-top_clip-new/frame_03134.png": {
+      "stored": "objects/9a6e55eb2e8f1be273cc1e72865266172c4b7d76bb753f54dad68ed51a853b42.gz",
+      "raw_sha256": "9a6e55eb2e8f1be273cc1e72865266172c4b7d76bb753f54dad68ed51a853b42",
+      "raw_bytes": 4912,
+      "stored_sha256": "76f02a8ca2ca500e0837c7a84213d6dc6781a2819561ece928f7ba284f65a71d"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-top_clip-new/frame_03142.png": {
+      "stored": "objects/9a6e55eb2e8f1be273cc1e72865266172c4b7d76bb753f54dad68ed51a853b42.gz",
+      "raw_sha256": "9a6e55eb2e8f1be273cc1e72865266172c4b7d76bb753f54dad68ed51a853b42",
+      "raw_bytes": 4912,
+      "stored_sha256": "76f02a8ca2ca500e0837c7a84213d6dc6781a2819561ece928f7ba284f65a71d"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-top_clip-new/ram_03134.bin": {
+      "stored": "objects/8b06355e90e638bccfd40903c7246cfa80a2dfbf188b433e1906acf8cc62d447.gz",
+      "raw_sha256": "8b06355e90e638bccfd40903c7246cfa80a2dfbf188b433e1906acf8cc62d447",
+      "raw_bytes": 65536,
+      "stored_sha256": "3704f900dcb21ee7a6670776dac19c0dc2481d10655db0acb036e97377160224"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-top_clip-new/ram_03142.bin": {
+      "stored": "objects/6ec5c63e42e936a289d7d46197c7feeb2ba6273b4605dfa06f1ed7c4b590833e.gz",
+      "raw_sha256": "6ec5c63e42e936a289d7d46197c7feeb2ba6273b4605dfa06f1ed7c4b590833e",
+      "raw_bytes": 65536,
+      "stored_sha256": "4ae2f42b40d7948f5487fc0585d514cdf11394032e42b7a6c40ecbed39db332e"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-top_clip-new/vdp_regs_03134.bin": {
+      "stored": "objects/87deac0c862ba5fddc4654eb4d97cc86a80d598e4e90800d31c7b8a5aa02b9fe.gz",
+      "raw_sha256": "87deac0c862ba5fddc4654eb4d97cc86a80d598e4e90800d31c7b8a5aa02b9fe",
+      "raw_bytes": 32,
+      "stored_sha256": "7afc568435dc7e447ff6a771bcd8674ef798240db95c5ae92327aea150acdae9"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-top_clip-new/vdp_regs_03142.bin": {
+      "stored": "objects/87deac0c862ba5fddc4654eb4d97cc86a80d598e4e90800d31c7b8a5aa02b9fe.gz",
+      "raw_sha256": "87deac0c862ba5fddc4654eb4d97cc86a80d598e4e90800d31c7b8a5aa02b9fe",
+      "raw_bytes": 32,
+      "stored_sha256": "7afc568435dc7e447ff6a771bcd8674ef798240db95c5ae92327aea150acdae9"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-top_clip-new/vram_03134.bin": {
+      "stored": "objects/8f96e9046be358885970d4ea03c928f3332c87ebc4e49028622db5c68b82fff3.gz",
+      "raw_sha256": "8f96e9046be358885970d4ea03c928f3332c87ebc4e49028622db5c68b82fff3",
+      "raw_bytes": 65536,
+      "stored_sha256": "38477f56a1629db659f7859fff0dceaae1e4bcfae574f7c2ddf13b43dab9ca97"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-top_clip-new/vram_03142.bin": {
+      "stored": "objects/8f96e9046be358885970d4ea03c928f3332c87ebc4e49028622db5c68b82fff3.gz",
+      "raw_sha256": "8f96e9046be358885970d4ea03c928f3332c87ebc4e49028622db5c68b82fff3",
+      "raw_bytes": 65536,
+      "stored_sha256": "38477f56a1629db659f7859fff0dceaae1e4bcfae574f7c2ddf13b43dab9ca97"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-top_clip-old/capture.json": {
+      "stored": "objects/6dd9a318560717cacca2551b6431640256bffd7de22245a3de6bbe3bc750e83c.gz",
+      "raw_sha256": "6dd9a318560717cacca2551b6431640256bffd7de22245a3de6bbe3bc750e83c",
+      "raw_bytes": 21853,
+      "stored_sha256": "f0071a0fe093792fd6b03b289340154ba214513211487c13742f8228b66d1e25"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-top_clip-old/cram_03134.bin": {
+      "stored": "objects/f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb.gz",
+      "raw_sha256": "f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb",
+      "raw_bytes": 128,
+      "stored_sha256": "e96461717d68f4309980492b39c561a8c655b4c6ce089742056a55b46fe9d488"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-top_clip-old/cram_03142.bin": {
+      "stored": "objects/f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb.gz",
+      "raw_sha256": "f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb",
+      "raw_bytes": 128,
+      "stored_sha256": "e96461717d68f4309980492b39c561a8c655b4c6ce089742056a55b46fe9d488"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-top_clip-old/frame_03134.png": {
+      "stored": "objects/9a6e55eb2e8f1be273cc1e72865266172c4b7d76bb753f54dad68ed51a853b42.gz",
+      "raw_sha256": "9a6e55eb2e8f1be273cc1e72865266172c4b7d76bb753f54dad68ed51a853b42",
+      "raw_bytes": 4912,
+      "stored_sha256": "76f02a8ca2ca500e0837c7a84213d6dc6781a2819561ece928f7ba284f65a71d"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-top_clip-old/frame_03142.png": {
+      "stored": "objects/9a6e55eb2e8f1be273cc1e72865266172c4b7d76bb753f54dad68ed51a853b42.gz",
+      "raw_sha256": "9a6e55eb2e8f1be273cc1e72865266172c4b7d76bb753f54dad68ed51a853b42",
+      "raw_bytes": 4912,
+      "stored_sha256": "76f02a8ca2ca500e0837c7a84213d6dc6781a2819561ece928f7ba284f65a71d"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-top_clip-old/ram_03134.bin": {
+      "stored": "objects/fa4490cbebf51a2acfa7ea274135bdfd779ab187875019ce1e30c0cb897cc791.gz",
+      "raw_sha256": "fa4490cbebf51a2acfa7ea274135bdfd779ab187875019ce1e30c0cb897cc791",
+      "raw_bytes": 65536,
+      "stored_sha256": "81139c2d0dcf4d34d7f6ec5df1bf43998d081425386b3aa35dbb0c400f1f8d55"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-top_clip-old/ram_03142.bin": {
+      "stored": "objects/b0d4cb25aac1c722e9bd4da5cb7b621af19fa14c43b2793faef62be0fca2350d.gz",
+      "raw_sha256": "b0d4cb25aac1c722e9bd4da5cb7b621af19fa14c43b2793faef62be0fca2350d",
+      "raw_bytes": 65536,
+      "stored_sha256": "c4169146ef2db7f56e8e92d4e6ca3ee6b76db5ca8519f5eb0405db0c720fcd52"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-top_clip-old/vdp_regs_03134.bin": {
+      "stored": "objects/87deac0c862ba5fddc4654eb4d97cc86a80d598e4e90800d31c7b8a5aa02b9fe.gz",
+      "raw_sha256": "87deac0c862ba5fddc4654eb4d97cc86a80d598e4e90800d31c7b8a5aa02b9fe",
+      "raw_bytes": 32,
+      "stored_sha256": "7afc568435dc7e447ff6a771bcd8674ef798240db95c5ae92327aea150acdae9"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-top_clip-old/vdp_regs_03142.bin": {
+      "stored": "objects/87deac0c862ba5fddc4654eb4d97cc86a80d598e4e90800d31c7b8a5aa02b9fe.gz",
+      "raw_sha256": "87deac0c862ba5fddc4654eb4d97cc86a80d598e4e90800d31c7b8a5aa02b9fe",
+      "raw_bytes": 32,
+      "stored_sha256": "7afc568435dc7e447ff6a771bcd8674ef798240db95c5ae92327aea150acdae9"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-top_clip-old/vram_03134.bin": {
+      "stored": "objects/8f96e9046be358885970d4ea03c928f3332c87ebc4e49028622db5c68b82fff3.gz",
+      "raw_sha256": "8f96e9046be358885970d4ea03c928f3332c87ebc4e49028622db5c68b82fff3",
+      "raw_bytes": 65536,
+      "stored_sha256": "38477f56a1629db659f7859fff0dceaae1e4bcfae574f7c2ddf13b43dab9ca97"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/auto-top_clip-old/vram_03142.bin": {
+      "stored": "objects/8f96e9046be358885970d4ea03c928f3332c87ebc4e49028622db5c68b82fff3.gz",
+      "raw_sha256": "8f96e9046be358885970d4ea03c928f3332c87ebc4e49028622db5c68b82fff3",
+      "raw_bytes": 65536,
+      "stored_sha256": "38477f56a1629db659f7859fff0dceaae1e4bcfae574f7c2ddf13b43dab9ca97"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-bottom_clip-new/capture.json": {
+      "stored": "objects/a3252c3c9af77efddf924a00776d6e1e65778d266d77dc6f42f587faf5f3b801.gz",
+      "raw_sha256": "a3252c3c9af77efddf924a00776d6e1e65778d266d77dc6f42f587faf5f3b801",
+      "raw_bytes": 21860,
+      "stored_sha256": "fa82649018a6747b96fc850d105f5f94c155e4425efd8af533d133b2af4e662f"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-bottom_clip-new/cram_03134.bin": {
+      "stored": "objects/f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb.gz",
+      "raw_sha256": "f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb",
+      "raw_bytes": 128,
+      "stored_sha256": "e96461717d68f4309980492b39c561a8c655b4c6ce089742056a55b46fe9d488"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-bottom_clip-new/cram_03142.bin": {
+      "stored": "objects/f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb.gz",
+      "raw_sha256": "f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb",
+      "raw_bytes": 128,
+      "stored_sha256": "e96461717d68f4309980492b39c561a8c655b4c6ce089742056a55b46fe9d488"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-bottom_clip-new/frame_03134.png": {
+      "stored": "objects/85670cc4254cc9ad6f07435fc79438bec82e9b956a152682d59f0d740b0f2bb8.gz",
+      "raw_sha256": "85670cc4254cc9ad6f07435fc79438bec82e9b956a152682d59f0d740b0f2bb8",
+      "raw_bytes": 4457,
+      "stored_sha256": "c8630630a4289b9fa86142d0eda0986acabc0b3fedc60884316300aab2a4e597"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-bottom_clip-new/frame_03142.png": {
+      "stored": "objects/85670cc4254cc9ad6f07435fc79438bec82e9b956a152682d59f0d740b0f2bb8.gz",
+      "raw_sha256": "85670cc4254cc9ad6f07435fc79438bec82e9b956a152682d59f0d740b0f2bb8",
+      "raw_bytes": 4457,
+      "stored_sha256": "c8630630a4289b9fa86142d0eda0986acabc0b3fedc60884316300aab2a4e597"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-bottom_clip-new/ram_03134.bin": {
+      "stored": "objects/ce45de0dda763b9b8a1357f5f7fd65e45e986acca043c90fc2fff23a7931aab7.gz",
+      "raw_sha256": "ce45de0dda763b9b8a1357f5f7fd65e45e986acca043c90fc2fff23a7931aab7",
+      "raw_bytes": 65536,
+      "stored_sha256": "70806ac8473d5efa848d9a67ee0f27a30b3a9241b32a1f770b689a5a6d884c92"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-bottom_clip-new/ram_03142.bin": {
+      "stored": "objects/b0c8ee43461b692bafab1550aedff3c992cd289d19bbd523386001d5e5fccad4.gz",
+      "raw_sha256": "b0c8ee43461b692bafab1550aedff3c992cd289d19bbd523386001d5e5fccad4",
+      "raw_bytes": 65536,
+      "stored_sha256": "2de4bc8c3c996b2e3f08f6654c2b9b507cd3cba127fd2f1d7eaca6eb916fb128"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-bottom_clip-new/vdp_regs_03134.bin": {
+      "stored": "objects/87deac0c862ba5fddc4654eb4d97cc86a80d598e4e90800d31c7b8a5aa02b9fe.gz",
+      "raw_sha256": "87deac0c862ba5fddc4654eb4d97cc86a80d598e4e90800d31c7b8a5aa02b9fe",
+      "raw_bytes": 32,
+      "stored_sha256": "7afc568435dc7e447ff6a771bcd8674ef798240db95c5ae92327aea150acdae9"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-bottom_clip-new/vdp_regs_03142.bin": {
+      "stored": "objects/87deac0c862ba5fddc4654eb4d97cc86a80d598e4e90800d31c7b8a5aa02b9fe.gz",
+      "raw_sha256": "87deac0c862ba5fddc4654eb4d97cc86a80d598e4e90800d31c7b8a5aa02b9fe",
+      "raw_bytes": 32,
+      "stored_sha256": "7afc568435dc7e447ff6a771bcd8674ef798240db95c5ae92327aea150acdae9"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-bottom_clip-new/vram_03134.bin": {
+      "stored": "objects/e21ae013eb1319e764af7927ebc0599864928300096fc52180c7fb68d63b8f14.gz",
+      "raw_sha256": "e21ae013eb1319e764af7927ebc0599864928300096fc52180c7fb68d63b8f14",
+      "raw_bytes": 65536,
+      "stored_sha256": "80209bb90e94673b38400b6b07a9b78a0d114d9d752da2b0de3d2ca59ce90b16"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-bottom_clip-new/vram_03142.bin": {
+      "stored": "objects/e21ae013eb1319e764af7927ebc0599864928300096fc52180c7fb68d63b8f14.gz",
+      "raw_sha256": "e21ae013eb1319e764af7927ebc0599864928300096fc52180c7fb68d63b8f14",
+      "raw_bytes": 65536,
+      "stored_sha256": "80209bb90e94673b38400b6b07a9b78a0d114d9d752da2b0de3d2ca59ce90b16"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-bottom_clip-old/capture.json": {
+      "stored": "objects/2aad81f8c1c61b8b1839ce9e9118f4a1bb9b63285d3611d94f42e593fd9a2bf3.gz",
+      "raw_sha256": "2aad81f8c1c61b8b1839ce9e9118f4a1bb9b63285d3611d94f42e593fd9a2bf3",
+      "raw_bytes": 21851,
+      "stored_sha256": "d692400e919fc3628ea2fd2b1837fbe68254da81261a269cecd7033b67e167a5"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-bottom_clip-old/cram_03134.bin": {
+      "stored": "objects/f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb.gz",
+      "raw_sha256": "f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb",
+      "raw_bytes": 128,
+      "stored_sha256": "e96461717d68f4309980492b39c561a8c655b4c6ce089742056a55b46fe9d488"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-bottom_clip-old/cram_03142.bin": {
+      "stored": "objects/f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb.gz",
+      "raw_sha256": "f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb",
+      "raw_bytes": 128,
+      "stored_sha256": "e96461717d68f4309980492b39c561a8c655b4c6ce089742056a55b46fe9d488"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-bottom_clip-old/frame_03134.png": {
+      "stored": "objects/85670cc4254cc9ad6f07435fc79438bec82e9b956a152682d59f0d740b0f2bb8.gz",
+      "raw_sha256": "85670cc4254cc9ad6f07435fc79438bec82e9b956a152682d59f0d740b0f2bb8",
+      "raw_bytes": 4457,
+      "stored_sha256": "c8630630a4289b9fa86142d0eda0986acabc0b3fedc60884316300aab2a4e597"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-bottom_clip-old/frame_03142.png": {
+      "stored": "objects/85670cc4254cc9ad6f07435fc79438bec82e9b956a152682d59f0d740b0f2bb8.gz",
+      "raw_sha256": "85670cc4254cc9ad6f07435fc79438bec82e9b956a152682d59f0d740b0f2bb8",
+      "raw_bytes": 4457,
+      "stored_sha256": "c8630630a4289b9fa86142d0eda0986acabc0b3fedc60884316300aab2a4e597"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-bottom_clip-old/ram_03134.bin": {
+      "stored": "objects/65ed9a86f19e2dcdb1c8f7b9a36bcb8254e252d7fcc4a5ab4dfeb5d12c80984f.gz",
+      "raw_sha256": "65ed9a86f19e2dcdb1c8f7b9a36bcb8254e252d7fcc4a5ab4dfeb5d12c80984f",
+      "raw_bytes": 65536,
+      "stored_sha256": "c87d3ee0622c4151f54ac6f63c93fd9c0ef5de806c8ade61ca0e7d4fb155e52c"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-bottom_clip-old/ram_03142.bin": {
+      "stored": "objects/6642db1bc2472a6786001e59a8e644fb2510f9c9bd385b317e81c33d08962b5e.gz",
+      "raw_sha256": "6642db1bc2472a6786001e59a8e644fb2510f9c9bd385b317e81c33d08962b5e",
+      "raw_bytes": 65536,
+      "stored_sha256": "711a1940fa88658be0a0cd33411c5b3ccc1ac2b82b24660ccd624d5ee17ba1c0"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-bottom_clip-old/vdp_regs_03134.bin": {
+      "stored": "objects/87deac0c862ba5fddc4654eb4d97cc86a80d598e4e90800d31c7b8a5aa02b9fe.gz",
+      "raw_sha256": "87deac0c862ba5fddc4654eb4d97cc86a80d598e4e90800d31c7b8a5aa02b9fe",
+      "raw_bytes": 32,
+      "stored_sha256": "7afc568435dc7e447ff6a771bcd8674ef798240db95c5ae92327aea150acdae9"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-bottom_clip-old/vdp_regs_03142.bin": {
+      "stored": "objects/87deac0c862ba5fddc4654eb4d97cc86a80d598e4e90800d31c7b8a5aa02b9fe.gz",
+      "raw_sha256": "87deac0c862ba5fddc4654eb4d97cc86a80d598e4e90800d31c7b8a5aa02b9fe",
+      "raw_bytes": 32,
+      "stored_sha256": "7afc568435dc7e447ff6a771bcd8674ef798240db95c5ae92327aea150acdae9"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-bottom_clip-old/vram_03134.bin": {
+      "stored": "objects/e21ae013eb1319e764af7927ebc0599864928300096fc52180c7fb68d63b8f14.gz",
+      "raw_sha256": "e21ae013eb1319e764af7927ebc0599864928300096fc52180c7fb68d63b8f14",
+      "raw_bytes": 65536,
+      "stored_sha256": "80209bb90e94673b38400b6b07a9b78a0d114d9d752da2b0de3d2ca59ce90b16"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-bottom_clip-old/vram_03142.bin": {
+      "stored": "objects/e21ae013eb1319e764af7927ebc0599864928300096fc52180c7fb68d63b8f14.gz",
+      "raw_sha256": "e21ae013eb1319e764af7927ebc0599864928300096fc52180c7fb68d63b8f14",
+      "raw_bytes": 65536,
+      "stored_sha256": "80209bb90e94673b38400b6b07a9b78a0d114d9d752da2b0de3d2ca59ce90b16"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-empty-new/capture.json": {
+      "stored": "objects/a3252c3c9af77efddf924a00776d6e1e65778d266d77dc6f42f587faf5f3b801.gz",
+      "raw_sha256": "a3252c3c9af77efddf924a00776d6e1e65778d266d77dc6f42f587faf5f3b801",
+      "raw_bytes": 21860,
+      "stored_sha256": "fa82649018a6747b96fc850d105f5f94c155e4425efd8af533d133b2af4e662f"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-empty-new/cram_03134.bin": {
+      "stored": "objects/f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb.gz",
+      "raw_sha256": "f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb",
+      "raw_bytes": 128,
+      "stored_sha256": "e96461717d68f4309980492b39c561a8c655b4c6ce089742056a55b46fe9d488"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-empty-new/cram_03142.bin": {
+      "stored": "objects/f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb.gz",
+      "raw_sha256": "f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb",
+      "raw_bytes": 128,
+      "stored_sha256": "e96461717d68f4309980492b39c561a8c655b4c6ce089742056a55b46fe9d488"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-empty-new/frame_03134.png": {
+      "stored": "objects/85670cc4254cc9ad6f07435fc79438bec82e9b956a152682d59f0d740b0f2bb8.gz",
+      "raw_sha256": "85670cc4254cc9ad6f07435fc79438bec82e9b956a152682d59f0d740b0f2bb8",
+      "raw_bytes": 4457,
+      "stored_sha256": "c8630630a4289b9fa86142d0eda0986acabc0b3fedc60884316300aab2a4e597"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-empty-new/frame_03142.png": {
+      "stored": "objects/85670cc4254cc9ad6f07435fc79438bec82e9b956a152682d59f0d740b0f2bb8.gz",
+      "raw_sha256": "85670cc4254cc9ad6f07435fc79438bec82e9b956a152682d59f0d740b0f2bb8",
+      "raw_bytes": 4457,
+      "stored_sha256": "c8630630a4289b9fa86142d0eda0986acabc0b3fedc60884316300aab2a4e597"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-empty-new/ram_03134.bin": {
+      "stored": "objects/08b7aef66e65a2b626a6a9384dc5adfe134ebb481e989a12d4a33da68d33a401.gz",
+      "raw_sha256": "08b7aef66e65a2b626a6a9384dc5adfe134ebb481e989a12d4a33da68d33a401",
+      "raw_bytes": 65536,
+      "stored_sha256": "72f5128fcc7c96b5f761f0ac583f7d3ce22f78122189351bba7b025fc89c3ce2"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-empty-new/ram_03142.bin": {
+      "stored": "objects/b59b2fb9863807a915a4020038430923c7ae298b134b00dc4ea01ebb7d49e820.gz",
+      "raw_sha256": "b59b2fb9863807a915a4020038430923c7ae298b134b00dc4ea01ebb7d49e820",
+      "raw_bytes": 65536,
+      "stored_sha256": "56d0d1107c09332cc5ffc43b169dc34f7809ea4581ab054f5d05f6caac1ef4ed"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-empty-new/vdp_regs_03134.bin": {
+      "stored": "objects/f2d8a5124acfa25334a0bfdc5e189cd540f4e5021395f513e427ec37928525fe.gz",
+      "raw_sha256": "f2d8a5124acfa25334a0bfdc5e189cd540f4e5021395f513e427ec37928525fe",
+      "raw_bytes": 32,
+      "stored_sha256": "ad85f0eb4abaf4c675581f7c58c2e7eabeaed9a9369cc5b4e09f90bb94275c11"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-empty-new/vdp_regs_03142.bin": {
+      "stored": "objects/f2d8a5124acfa25334a0bfdc5e189cd540f4e5021395f513e427ec37928525fe.gz",
+      "raw_sha256": "f2d8a5124acfa25334a0bfdc5e189cd540f4e5021395f513e427ec37928525fe",
+      "raw_bytes": 32,
+      "stored_sha256": "ad85f0eb4abaf4c675581f7c58c2e7eabeaed9a9369cc5b4e09f90bb94275c11"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-empty-new/vram_03134.bin": {
+      "stored": "objects/5adbb484512620a2f31508c2c5d579134b30cb7b6446ff2cc3d30ac37be89e2a.gz",
+      "raw_sha256": "5adbb484512620a2f31508c2c5d579134b30cb7b6446ff2cc3d30ac37be89e2a",
+      "raw_bytes": 65536,
+      "stored_sha256": "c8d46602d07d564c227ec7c5c51471f48c259a8bc4fec01de175f07fdc2eb522"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-empty-new/vram_03142.bin": {
+      "stored": "objects/5adbb484512620a2f31508c2c5d579134b30cb7b6446ff2cc3d30ac37be89e2a.gz",
+      "raw_sha256": "5adbb484512620a2f31508c2c5d579134b30cb7b6446ff2cc3d30ac37be89e2a",
+      "raw_bytes": 65536,
+      "stored_sha256": "c8d46602d07d564c227ec7c5c51471f48c259a8bc4fec01de175f07fdc2eb522"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-empty-old/capture.json": {
+      "stored": "objects/2aad81f8c1c61b8b1839ce9e9118f4a1bb9b63285d3611d94f42e593fd9a2bf3.gz",
+      "raw_sha256": "2aad81f8c1c61b8b1839ce9e9118f4a1bb9b63285d3611d94f42e593fd9a2bf3",
+      "raw_bytes": 21851,
+      "stored_sha256": "d692400e919fc3628ea2fd2b1837fbe68254da81261a269cecd7033b67e167a5"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-empty-old/cram_03134.bin": {
+      "stored": "objects/f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb.gz",
+      "raw_sha256": "f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb",
+      "raw_bytes": 128,
+      "stored_sha256": "e96461717d68f4309980492b39c561a8c655b4c6ce089742056a55b46fe9d488"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-empty-old/cram_03142.bin": {
+      "stored": "objects/f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb.gz",
+      "raw_sha256": "f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb",
+      "raw_bytes": 128,
+      "stored_sha256": "e96461717d68f4309980492b39c561a8c655b4c6ce089742056a55b46fe9d488"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-empty-old/frame_03134.png": {
+      "stored": "objects/85670cc4254cc9ad6f07435fc79438bec82e9b956a152682d59f0d740b0f2bb8.gz",
+      "raw_sha256": "85670cc4254cc9ad6f07435fc79438bec82e9b956a152682d59f0d740b0f2bb8",
+      "raw_bytes": 4457,
+      "stored_sha256": "c8630630a4289b9fa86142d0eda0986acabc0b3fedc60884316300aab2a4e597"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-empty-old/frame_03142.png": {
+      "stored": "objects/85670cc4254cc9ad6f07435fc79438bec82e9b956a152682d59f0d740b0f2bb8.gz",
+      "raw_sha256": "85670cc4254cc9ad6f07435fc79438bec82e9b956a152682d59f0d740b0f2bb8",
+      "raw_bytes": 4457,
+      "stored_sha256": "c8630630a4289b9fa86142d0eda0986acabc0b3fedc60884316300aab2a4e597"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-empty-old/ram_03134.bin": {
+      "stored": "objects/fac80c26de0563097cd4d9e783d0eb32d7c92008c90b8f2572deee71e6a3449d.gz",
+      "raw_sha256": "fac80c26de0563097cd4d9e783d0eb32d7c92008c90b8f2572deee71e6a3449d",
+      "raw_bytes": 65536,
+      "stored_sha256": "b2a7f1f9d9184943bedd2e7c982045a985558f1e2f8225fd75ec8d84b3cc7c18"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-empty-old/ram_03142.bin": {
+      "stored": "objects/1b2113619af0e3eaf805eb5a76169e6a54a0ffc8dc85407bc240478917714cf4.gz",
+      "raw_sha256": "1b2113619af0e3eaf805eb5a76169e6a54a0ffc8dc85407bc240478917714cf4",
+      "raw_bytes": 65536,
+      "stored_sha256": "86a3e83b3899aa941738958d45a6980a0d72e4bfa32de4c3ab69de00c70c9879"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-empty-old/vdp_regs_03134.bin": {
+      "stored": "objects/f2d8a5124acfa25334a0bfdc5e189cd540f4e5021395f513e427ec37928525fe.gz",
+      "raw_sha256": "f2d8a5124acfa25334a0bfdc5e189cd540f4e5021395f513e427ec37928525fe",
+      "raw_bytes": 32,
+      "stored_sha256": "ad85f0eb4abaf4c675581f7c58c2e7eabeaed9a9369cc5b4e09f90bb94275c11"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-empty-old/vdp_regs_03142.bin": {
+      "stored": "objects/f2d8a5124acfa25334a0bfdc5e189cd540f4e5021395f513e427ec37928525fe.gz",
+      "raw_sha256": "f2d8a5124acfa25334a0bfdc5e189cd540f4e5021395f513e427ec37928525fe",
+      "raw_bytes": 32,
+      "stored_sha256": "ad85f0eb4abaf4c675581f7c58c2e7eabeaed9a9369cc5b4e09f90bb94275c11"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-empty-old/vram_03134.bin": {
+      "stored": "objects/5adbb484512620a2f31508c2c5d579134b30cb7b6446ff2cc3d30ac37be89e2a.gz",
+      "raw_sha256": "5adbb484512620a2f31508c2c5d579134b30cb7b6446ff2cc3d30ac37be89e2a",
+      "raw_bytes": 65536,
+      "stored_sha256": "c8d46602d07d564c227ec7c5c51471f48c259a8bc4fec01de175f07fdc2eb522"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-empty-old/vram_03142.bin": {
+      "stored": "objects/5adbb484512620a2f31508c2c5d579134b30cb7b6446ff2cc3d30ac37be89e2a.gz",
+      "raw_sha256": "5adbb484512620a2f31508c2c5d579134b30cb7b6446ff2cc3d30ac37be89e2a",
+      "raw_bytes": 65536,
+      "stored_sha256": "c8d46602d07d564c227ec7c5c51471f48c259a8bc4fec01de175f07fdc2eb522"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-full_pool-new/capture.json": {
+      "stored": "objects/a3252c3c9af77efddf924a00776d6e1e65778d266d77dc6f42f587faf5f3b801.gz",
+      "raw_sha256": "a3252c3c9af77efddf924a00776d6e1e65778d266d77dc6f42f587faf5f3b801",
+      "raw_bytes": 21860,
+      "stored_sha256": "fa82649018a6747b96fc850d105f5f94c155e4425efd8af533d133b2af4e662f"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-full_pool-new/cram_03134.bin": {
+      "stored": "objects/f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb.gz",
+      "raw_sha256": "f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb",
+      "raw_bytes": 128,
+      "stored_sha256": "e96461717d68f4309980492b39c561a8c655b4c6ce089742056a55b46fe9d488"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-full_pool-new/cram_03142.bin": {
+      "stored": "objects/f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb.gz",
+      "raw_sha256": "f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb",
+      "raw_bytes": 128,
+      "stored_sha256": "e96461717d68f4309980492b39c561a8c655b4c6ce089742056a55b46fe9d488"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-full_pool-new/frame_03134.png": {
+      "stored": "objects/ff810b9f147b6f8bcafeb1a7a01175bccddd6f893d0e0d144e19581b94c03509.gz",
+      "raw_sha256": "ff810b9f147b6f8bcafeb1a7a01175bccddd6f893d0e0d144e19581b94c03509",
+      "raw_bytes": 5809,
+      "stored_sha256": "c1b1dcbd9b453a44294ec916e8979cb67177df8d1e713a31b071df9e656d0bf7"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-full_pool-new/frame_03142.png": {
+      "stored": "objects/ff810b9f147b6f8bcafeb1a7a01175bccddd6f893d0e0d144e19581b94c03509.gz",
+      "raw_sha256": "ff810b9f147b6f8bcafeb1a7a01175bccddd6f893d0e0d144e19581b94c03509",
+      "raw_bytes": 5809,
+      "stored_sha256": "c1b1dcbd9b453a44294ec916e8979cb67177df8d1e713a31b071df9e656d0bf7"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-full_pool-new/ram_03134.bin": {
+      "stored": "objects/7fdc3ebcd51f81664b6fc466f589540c9d84de53ccc66aabb5bd69a9e43c4142.gz",
+      "raw_sha256": "7fdc3ebcd51f81664b6fc466f589540c9d84de53ccc66aabb5bd69a9e43c4142",
+      "raw_bytes": 65536,
+      "stored_sha256": "33cb1fe5a88fe66d6eb9efe031acaf8c182ceb8c478e18fc5c763cea5339eaf0"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-full_pool-new/ram_03142.bin": {
+      "stored": "objects/66dfeb5f6563fc79333c4492e8c0b917bf5809e0cd51ef6290b3a003005d1107.gz",
+      "raw_sha256": "66dfeb5f6563fc79333c4492e8c0b917bf5809e0cd51ef6290b3a003005d1107",
+      "raw_bytes": 65536,
+      "stored_sha256": "2f495baf6b85c84d9cd062f66d357e716a4aebce68931dcdd15c1cfbdf700b03"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-full_pool-new/vdp_regs_03134.bin": {
+      "stored": "objects/c3f400564523a403188af5790e4ad073175ebe04a091a459b1bfeb28efc580c6.gz",
+      "raw_sha256": "c3f400564523a403188af5790e4ad073175ebe04a091a459b1bfeb28efc580c6",
+      "raw_bytes": 32,
+      "stored_sha256": "10ad1e257d643d6675e8d7aff287cb568a9112d59de1bdd0450edd194920f330"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-full_pool-new/vdp_regs_03142.bin": {
+      "stored": "objects/c3f400564523a403188af5790e4ad073175ebe04a091a459b1bfeb28efc580c6.gz",
+      "raw_sha256": "c3f400564523a403188af5790e4ad073175ebe04a091a459b1bfeb28efc580c6",
+      "raw_bytes": 32,
+      "stored_sha256": "10ad1e257d643d6675e8d7aff287cb568a9112d59de1bdd0450edd194920f330"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-full_pool-new/vram_03134.bin": {
+      "stored": "objects/43d87033ed898b4da41b73cfe464afd9679dde7750ff6958c6e2e5656201347d.gz",
+      "raw_sha256": "43d87033ed898b4da41b73cfe464afd9679dde7750ff6958c6e2e5656201347d",
+      "raw_bytes": 65536,
+      "stored_sha256": "010455f7ea21bce023e4f0320b692749a6e04f38e28eda4d4f247ab25ba51671"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-full_pool-new/vram_03142.bin": {
+      "stored": "objects/43d87033ed898b4da41b73cfe464afd9679dde7750ff6958c6e2e5656201347d.gz",
+      "raw_sha256": "43d87033ed898b4da41b73cfe464afd9679dde7750ff6958c6e2e5656201347d",
+      "raw_bytes": 65536,
+      "stored_sha256": "010455f7ea21bce023e4f0320b692749a6e04f38e28eda4d4f247ab25ba51671"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-full_pool-old/capture.json": {
+      "stored": "objects/2aad81f8c1c61b8b1839ce9e9118f4a1bb9b63285d3611d94f42e593fd9a2bf3.gz",
+      "raw_sha256": "2aad81f8c1c61b8b1839ce9e9118f4a1bb9b63285d3611d94f42e593fd9a2bf3",
+      "raw_bytes": 21851,
+      "stored_sha256": "d692400e919fc3628ea2fd2b1837fbe68254da81261a269cecd7033b67e167a5"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-full_pool-old/cram_03134.bin": {
+      "stored": "objects/f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb.gz",
+      "raw_sha256": "f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb",
+      "raw_bytes": 128,
+      "stored_sha256": "e96461717d68f4309980492b39c561a8c655b4c6ce089742056a55b46fe9d488"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-full_pool-old/cram_03142.bin": {
+      "stored": "objects/f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb.gz",
+      "raw_sha256": "f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb",
+      "raw_bytes": 128,
+      "stored_sha256": "e96461717d68f4309980492b39c561a8c655b4c6ce089742056a55b46fe9d488"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-full_pool-old/frame_03134.png": {
+      "stored": "objects/ff810b9f147b6f8bcafeb1a7a01175bccddd6f893d0e0d144e19581b94c03509.gz",
+      "raw_sha256": "ff810b9f147b6f8bcafeb1a7a01175bccddd6f893d0e0d144e19581b94c03509",
+      "raw_bytes": 5809,
+      "stored_sha256": "c1b1dcbd9b453a44294ec916e8979cb67177df8d1e713a31b071df9e656d0bf7"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-full_pool-old/frame_03142.png": {
+      "stored": "objects/ff810b9f147b6f8bcafeb1a7a01175bccddd6f893d0e0d144e19581b94c03509.gz",
+      "raw_sha256": "ff810b9f147b6f8bcafeb1a7a01175bccddd6f893d0e0d144e19581b94c03509",
+      "raw_bytes": 5809,
+      "stored_sha256": "c1b1dcbd9b453a44294ec916e8979cb67177df8d1e713a31b071df9e656d0bf7"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-full_pool-old/ram_03134.bin": {
+      "stored": "objects/923b09fbe39065a08e194c0e3d82a7f673f06a78fbbe5978022e9ab640039565.gz",
+      "raw_sha256": "923b09fbe39065a08e194c0e3d82a7f673f06a78fbbe5978022e9ab640039565",
+      "raw_bytes": 65536,
+      "stored_sha256": "0989ef7e928bbe12496781c1b0b0016ac97e4881891088b2599519df7d443f95"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-full_pool-old/ram_03142.bin": {
+      "stored": "objects/0ccb63b05fc695b2410852a82a886bc540f86c5dcab6acbbefdd0b18d46ce831.gz",
+      "raw_sha256": "0ccb63b05fc695b2410852a82a886bc540f86c5dcab6acbbefdd0b18d46ce831",
+      "raw_bytes": 65536,
+      "stored_sha256": "a74439dd9e10bdf333c48822889eabbedc98af9179757cd3f68bafb9fb1c6b28"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-full_pool-old/vdp_regs_03134.bin": {
+      "stored": "objects/c3f400564523a403188af5790e4ad073175ebe04a091a459b1bfeb28efc580c6.gz",
+      "raw_sha256": "c3f400564523a403188af5790e4ad073175ebe04a091a459b1bfeb28efc580c6",
+      "raw_bytes": 32,
+      "stored_sha256": "10ad1e257d643d6675e8d7aff287cb568a9112d59de1bdd0450edd194920f330"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-full_pool-old/vdp_regs_03142.bin": {
+      "stored": "objects/c3f400564523a403188af5790e4ad073175ebe04a091a459b1bfeb28efc580c6.gz",
+      "raw_sha256": "c3f400564523a403188af5790e4ad073175ebe04a091a459b1bfeb28efc580c6",
+      "raw_bytes": 32,
+      "stored_sha256": "10ad1e257d643d6675e8d7aff287cb568a9112d59de1bdd0450edd194920f330"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-full_pool-old/vram_03134.bin": {
+      "stored": "objects/43d87033ed898b4da41b73cfe464afd9679dde7750ff6958c6e2e5656201347d.gz",
+      "raw_sha256": "43d87033ed898b4da41b73cfe464afd9679dde7750ff6958c6e2e5656201347d",
+      "raw_bytes": 65536,
+      "stored_sha256": "010455f7ea21bce023e4f0320b692749a6e04f38e28eda4d4f247ab25ba51671"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-full_pool-old/vram_03142.bin": {
+      "stored": "objects/43d87033ed898b4da41b73cfe464afd9679dde7750ff6958c6e2e5656201347d.gz",
+      "raw_sha256": "43d87033ed898b4da41b73cfe464afd9679dde7750ff6958c6e2e5656201347d",
+      "raw_bytes": 65536,
+      "stored_sha256": "010455f7ea21bce023e4f0320b692749a6e04f38e28eda4d4f247ab25ba51671"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-overlap-new/capture.json": {
+      "stored": "objects/a3252c3c9af77efddf924a00776d6e1e65778d266d77dc6f42f587faf5f3b801.gz",
+      "raw_sha256": "a3252c3c9af77efddf924a00776d6e1e65778d266d77dc6f42f587faf5f3b801",
+      "raw_bytes": 21860,
+      "stored_sha256": "fa82649018a6747b96fc850d105f5f94c155e4425efd8af533d133b2af4e662f"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-overlap-new/cram_03134.bin": {
+      "stored": "objects/f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb.gz",
+      "raw_sha256": "f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb",
+      "raw_bytes": 128,
+      "stored_sha256": "e96461717d68f4309980492b39c561a8c655b4c6ce089742056a55b46fe9d488"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-overlap-new/cram_03142.bin": {
+      "stored": "objects/f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb.gz",
+      "raw_sha256": "f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb",
+      "raw_bytes": 128,
+      "stored_sha256": "e96461717d68f4309980492b39c561a8c655b4c6ce089742056a55b46fe9d488"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-overlap-new/frame_03134.png": {
+      "stored": "objects/ff810b9f147b6f8bcafeb1a7a01175bccddd6f893d0e0d144e19581b94c03509.gz",
+      "raw_sha256": "ff810b9f147b6f8bcafeb1a7a01175bccddd6f893d0e0d144e19581b94c03509",
+      "raw_bytes": 5809,
+      "stored_sha256": "c1b1dcbd9b453a44294ec916e8979cb67177df8d1e713a31b071df9e656d0bf7"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-overlap-new/frame_03142.png": {
+      "stored": "objects/ff810b9f147b6f8bcafeb1a7a01175bccddd6f893d0e0d144e19581b94c03509.gz",
+      "raw_sha256": "ff810b9f147b6f8bcafeb1a7a01175bccddd6f893d0e0d144e19581b94c03509",
+      "raw_bytes": 5809,
+      "stored_sha256": "c1b1dcbd9b453a44294ec916e8979cb67177df8d1e713a31b071df9e656d0bf7"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-overlap-new/ram_03134.bin": {
+      "stored": "objects/bc308b210f5b0b4ac6bbbaf9743a84b32b09dd640707c86f1a54e0df08a8b77c.gz",
+      "raw_sha256": "bc308b210f5b0b4ac6bbbaf9743a84b32b09dd640707c86f1a54e0df08a8b77c",
+      "raw_bytes": 65536,
+      "stored_sha256": "95c1f1eb9a6b35bfaf8320e0d25a659037379a5529473216830d218613001b3b"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-overlap-new/ram_03142.bin": {
+      "stored": "objects/97819c3713a17138ddb3f27fce2048ba3a241e24985439c5add7beae4f658a15.gz",
+      "raw_sha256": "97819c3713a17138ddb3f27fce2048ba3a241e24985439c5add7beae4f658a15",
+      "raw_bytes": 65536,
+      "stored_sha256": "154a29d95b358a992da187ff0fcf54aaf53376547b9454b4d92ca4ffbb834501"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-overlap-new/vdp_regs_03134.bin": {
+      "stored": "objects/87deac0c862ba5fddc4654eb4d97cc86a80d598e4e90800d31c7b8a5aa02b9fe.gz",
+      "raw_sha256": "87deac0c862ba5fddc4654eb4d97cc86a80d598e4e90800d31c7b8a5aa02b9fe",
+      "raw_bytes": 32,
+      "stored_sha256": "7afc568435dc7e447ff6a771bcd8674ef798240db95c5ae92327aea150acdae9"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-overlap-new/vdp_regs_03142.bin": {
+      "stored": "objects/87deac0c862ba5fddc4654eb4d97cc86a80d598e4e90800d31c7b8a5aa02b9fe.gz",
+      "raw_sha256": "87deac0c862ba5fddc4654eb4d97cc86a80d598e4e90800d31c7b8a5aa02b9fe",
+      "raw_bytes": 32,
+      "stored_sha256": "7afc568435dc7e447ff6a771bcd8674ef798240db95c5ae92327aea150acdae9"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-overlap-new/vram_03134.bin": {
+      "stored": "objects/2c025c1e1540f5d56f92130bb2acf1f0b9ac5ea2d49eb7e45c3d4d897157565b.gz",
+      "raw_sha256": "2c025c1e1540f5d56f92130bb2acf1f0b9ac5ea2d49eb7e45c3d4d897157565b",
+      "raw_bytes": 65536,
+      "stored_sha256": "d60f647e187e77b382e9d4b8c247b09653fd5aea40fef09b994d34e0b1096dc2"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-overlap-new/vram_03142.bin": {
+      "stored": "objects/2c025c1e1540f5d56f92130bb2acf1f0b9ac5ea2d49eb7e45c3d4d897157565b.gz",
+      "raw_sha256": "2c025c1e1540f5d56f92130bb2acf1f0b9ac5ea2d49eb7e45c3d4d897157565b",
+      "raw_bytes": 65536,
+      "stored_sha256": "d60f647e187e77b382e9d4b8c247b09653fd5aea40fef09b994d34e0b1096dc2"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-overlap-old/capture.json": {
+      "stored": "objects/2aad81f8c1c61b8b1839ce9e9118f4a1bb9b63285d3611d94f42e593fd9a2bf3.gz",
+      "raw_sha256": "2aad81f8c1c61b8b1839ce9e9118f4a1bb9b63285d3611d94f42e593fd9a2bf3",
+      "raw_bytes": 21851,
+      "stored_sha256": "d692400e919fc3628ea2fd2b1837fbe68254da81261a269cecd7033b67e167a5"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-overlap-old/cram_03134.bin": {
+      "stored": "objects/f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb.gz",
+      "raw_sha256": "f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb",
+      "raw_bytes": 128,
+      "stored_sha256": "e96461717d68f4309980492b39c561a8c655b4c6ce089742056a55b46fe9d488"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-overlap-old/cram_03142.bin": {
+      "stored": "objects/f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb.gz",
+      "raw_sha256": "f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb",
+      "raw_bytes": 128,
+      "stored_sha256": "e96461717d68f4309980492b39c561a8c655b4c6ce089742056a55b46fe9d488"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-overlap-old/frame_03134.png": {
+      "stored": "objects/ff810b9f147b6f8bcafeb1a7a01175bccddd6f893d0e0d144e19581b94c03509.gz",
+      "raw_sha256": "ff810b9f147b6f8bcafeb1a7a01175bccddd6f893d0e0d144e19581b94c03509",
+      "raw_bytes": 5809,
+      "stored_sha256": "c1b1dcbd9b453a44294ec916e8979cb67177df8d1e713a31b071df9e656d0bf7"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-overlap-old/frame_03142.png": {
+      "stored": "objects/ff810b9f147b6f8bcafeb1a7a01175bccddd6f893d0e0d144e19581b94c03509.gz",
+      "raw_sha256": "ff810b9f147b6f8bcafeb1a7a01175bccddd6f893d0e0d144e19581b94c03509",
+      "raw_bytes": 5809,
+      "stored_sha256": "c1b1dcbd9b453a44294ec916e8979cb67177df8d1e713a31b071df9e656d0bf7"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-overlap-old/ram_03134.bin": {
+      "stored": "objects/dc3ea18bc4576246138ef72e61bf21c9c34ee100ab5349e40c3319df760b6379.gz",
+      "raw_sha256": "dc3ea18bc4576246138ef72e61bf21c9c34ee100ab5349e40c3319df760b6379",
+      "raw_bytes": 65536,
+      "stored_sha256": "a735157798419aa2c905fdb9d437c2e9df2b934aec95652b79f89c32a196224d"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-overlap-old/ram_03142.bin": {
+      "stored": "objects/a81d52fd56ef7460e81fdf6c6b7a6ff47967e3a85b7e8d3a836cf3cb5a676c41.gz",
+      "raw_sha256": "a81d52fd56ef7460e81fdf6c6b7a6ff47967e3a85b7e8d3a836cf3cb5a676c41",
+      "raw_bytes": 65536,
+      "stored_sha256": "6bdca8c9479438d3aba5a56c22cb2c626493a7e1defab0432edc944c8cee8224"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-overlap-old/vdp_regs_03134.bin": {
+      "stored": "objects/87deac0c862ba5fddc4654eb4d97cc86a80d598e4e90800d31c7b8a5aa02b9fe.gz",
+      "raw_sha256": "87deac0c862ba5fddc4654eb4d97cc86a80d598e4e90800d31c7b8a5aa02b9fe",
+      "raw_bytes": 32,
+      "stored_sha256": "7afc568435dc7e447ff6a771bcd8674ef798240db95c5ae92327aea150acdae9"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-overlap-old/vdp_regs_03142.bin": {
+      "stored": "objects/87deac0c862ba5fddc4654eb4d97cc86a80d598e4e90800d31c7b8a5aa02b9fe.gz",
+      "raw_sha256": "87deac0c862ba5fddc4654eb4d97cc86a80d598e4e90800d31c7b8a5aa02b9fe",
+      "raw_bytes": 32,
+      "stored_sha256": "7afc568435dc7e447ff6a771bcd8674ef798240db95c5ae92327aea150acdae9"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-overlap-old/vram_03134.bin": {
+      "stored": "objects/2c025c1e1540f5d56f92130bb2acf1f0b9ac5ea2d49eb7e45c3d4d897157565b.gz",
+      "raw_sha256": "2c025c1e1540f5d56f92130bb2acf1f0b9ac5ea2d49eb7e45c3d4d897157565b",
+      "raw_bytes": 65536,
+      "stored_sha256": "d60f647e187e77b382e9d4b8c247b09653fd5aea40fef09b994d34e0b1096dc2"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-overlap-old/vram_03142.bin": {
+      "stored": "objects/2c025c1e1540f5d56f92130bb2acf1f0b9ac5ea2d49eb7e45c3d4d897157565b.gz",
+      "raw_sha256": "2c025c1e1540f5d56f92130bb2acf1f0b9ac5ea2d49eb7e45c3d4d897157565b",
+      "raw_bytes": 65536,
+      "stored_sha256": "d60f647e187e77b382e9d4b8c247b09653fd5aea40fef09b994d34e0b1096dc2"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-terminator-new/capture.json": {
+      "stored": "objects/a3252c3c9af77efddf924a00776d6e1e65778d266d77dc6f42f587faf5f3b801.gz",
+      "raw_sha256": "a3252c3c9af77efddf924a00776d6e1e65778d266d77dc6f42f587faf5f3b801",
+      "raw_bytes": 21860,
+      "stored_sha256": "fa82649018a6747b96fc850d105f5f94c155e4425efd8af533d133b2af4e662f"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-terminator-new/cram_03134.bin": {
+      "stored": "objects/f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb.gz",
+      "raw_sha256": "f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb",
+      "raw_bytes": 128,
+      "stored_sha256": "e96461717d68f4309980492b39c561a8c655b4c6ce089742056a55b46fe9d488"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-terminator-new/cram_03142.bin": {
+      "stored": "objects/f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb.gz",
+      "raw_sha256": "f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb",
+      "raw_bytes": 128,
+      "stored_sha256": "e96461717d68f4309980492b39c561a8c655b4c6ce089742056a55b46fe9d488"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-terminator-new/frame_03134.png": {
+      "stored": "objects/1d6ecd0624d785381a203da0c7ad183e7c6dd26b110ce7fc042810e346967a29.gz",
+      "raw_sha256": "1d6ecd0624d785381a203da0c7ad183e7c6dd26b110ce7fc042810e346967a29",
+      "raw_bytes": 4142,
+      "stored_sha256": "3dac656a702283966b108c773400b1f2860ef4832e0868c68a17b7de968f71c4"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-terminator-new/frame_03142.png": {
+      "stored": "objects/1d6ecd0624d785381a203da0c7ad183e7c6dd26b110ce7fc042810e346967a29.gz",
+      "raw_sha256": "1d6ecd0624d785381a203da0c7ad183e7c6dd26b110ce7fc042810e346967a29",
+      "raw_bytes": 4142,
+      "stored_sha256": "3dac656a702283966b108c773400b1f2860ef4832e0868c68a17b7de968f71c4"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-terminator-new/ram_03134.bin": {
+      "stored": "objects/fd13fd3d69cd84c83b0adfab760518c0fbfaacf454beeab6760501ae4f2adee8.gz",
+      "raw_sha256": "fd13fd3d69cd84c83b0adfab760518c0fbfaacf454beeab6760501ae4f2adee8",
+      "raw_bytes": 65536,
+      "stored_sha256": "23250e4bc545f16a4be1ea2537819381b25612c546ef99936bb3e4587db4641a"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-terminator-new/ram_03142.bin": {
+      "stored": "objects/9b374a7352c41c1868e76bd7f030fc5d75c3c6bbc5bc9130f73dc8dc47f4c3a5.gz",
+      "raw_sha256": "9b374a7352c41c1868e76bd7f030fc5d75c3c6bbc5bc9130f73dc8dc47f4c3a5",
+      "raw_bytes": 65536,
+      "stored_sha256": "7d807c8dc621bd7ed5a9dad2401390cac4e80d8e141d517245de36aa6d43472c"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-terminator-new/vdp_regs_03134.bin": {
+      "stored": "objects/b8874d5c12ccac50e256d6a577b74e3c0bdb955ef5d4ad549047749dde6ccfc6.gz",
+      "raw_sha256": "b8874d5c12ccac50e256d6a577b74e3c0bdb955ef5d4ad549047749dde6ccfc6",
+      "raw_bytes": 32,
+      "stored_sha256": "63cd3323999f21412c0dec1c925417bacd12301e0db4d5669d7310a8c5646540"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-terminator-new/vdp_regs_03142.bin": {
+      "stored": "objects/b8874d5c12ccac50e256d6a577b74e3c0bdb955ef5d4ad549047749dde6ccfc6.gz",
+      "raw_sha256": "b8874d5c12ccac50e256d6a577b74e3c0bdb955ef5d4ad549047749dde6ccfc6",
+      "raw_bytes": 32,
+      "stored_sha256": "63cd3323999f21412c0dec1c925417bacd12301e0db4d5669d7310a8c5646540"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-terminator-new/vram_03134.bin": {
+      "stored": "objects/672bfe728bcea53db318d8aa0ecf52b086dd68dac944503ffa7f6e6e2aef4f7e.gz",
+      "raw_sha256": "672bfe728bcea53db318d8aa0ecf52b086dd68dac944503ffa7f6e6e2aef4f7e",
+      "raw_bytes": 65536,
+      "stored_sha256": "8707d57cb2f5c4324c2a6f8fcece790c5a43ec307911906ca6b4996a2bbec219"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-terminator-new/vram_03142.bin": {
+      "stored": "objects/672bfe728bcea53db318d8aa0ecf52b086dd68dac944503ffa7f6e6e2aef4f7e.gz",
+      "raw_sha256": "672bfe728bcea53db318d8aa0ecf52b086dd68dac944503ffa7f6e6e2aef4f7e",
+      "raw_bytes": 65536,
+      "stored_sha256": "8707d57cb2f5c4324c2a6f8fcece790c5a43ec307911906ca6b4996a2bbec219"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-terminator-old/capture.json": {
+      "stored": "objects/2aad81f8c1c61b8b1839ce9e9118f4a1bb9b63285d3611d94f42e593fd9a2bf3.gz",
+      "raw_sha256": "2aad81f8c1c61b8b1839ce9e9118f4a1bb9b63285d3611d94f42e593fd9a2bf3",
+      "raw_bytes": 21851,
+      "stored_sha256": "d692400e919fc3628ea2fd2b1837fbe68254da81261a269cecd7033b67e167a5"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-terminator-old/cram_03134.bin": {
+      "stored": "objects/f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb.gz",
+      "raw_sha256": "f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb",
+      "raw_bytes": 128,
+      "stored_sha256": "e96461717d68f4309980492b39c561a8c655b4c6ce089742056a55b46fe9d488"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-terminator-old/cram_03142.bin": {
+      "stored": "objects/f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb.gz",
+      "raw_sha256": "f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb",
+      "raw_bytes": 128,
+      "stored_sha256": "e96461717d68f4309980492b39c561a8c655b4c6ce089742056a55b46fe9d488"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-terminator-old/frame_03134.png": {
+      "stored": "objects/1d6ecd0624d785381a203da0c7ad183e7c6dd26b110ce7fc042810e346967a29.gz",
+      "raw_sha256": "1d6ecd0624d785381a203da0c7ad183e7c6dd26b110ce7fc042810e346967a29",
+      "raw_bytes": 4142,
+      "stored_sha256": "3dac656a702283966b108c773400b1f2860ef4832e0868c68a17b7de968f71c4"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-terminator-old/frame_03142.png": {
+      "stored": "objects/1d6ecd0624d785381a203da0c7ad183e7c6dd26b110ce7fc042810e346967a29.gz",
+      "raw_sha256": "1d6ecd0624d785381a203da0c7ad183e7c6dd26b110ce7fc042810e346967a29",
+      "raw_bytes": 4142,
+      "stored_sha256": "3dac656a702283966b108c773400b1f2860ef4832e0868c68a17b7de968f71c4"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-terminator-old/ram_03134.bin": {
+      "stored": "objects/f4a823fa00a6f240c3f3dcc6e23accb617d3c53df1c4130a57d1c7121e8769f0.gz",
+      "raw_sha256": "f4a823fa00a6f240c3f3dcc6e23accb617d3c53df1c4130a57d1c7121e8769f0",
+      "raw_bytes": 65536,
+      "stored_sha256": "6e56cfd75a7eb514d8fddcd2c465070957221444e61411d4cbbf913c562db8e7"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-terminator-old/ram_03142.bin": {
+      "stored": "objects/1a7ad3852070f8f20506cf1cbbeb9beeb306baeda90ede345b939cb9f6f00d76.gz",
+      "raw_sha256": "1a7ad3852070f8f20506cf1cbbeb9beeb306baeda90ede345b939cb9f6f00d76",
+      "raw_bytes": 65536,
+      "stored_sha256": "7c02954a159f3c14460ea3f3b827c4f504f13a34e10ebf37a866c98db684e6fb"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-terminator-old/vdp_regs_03134.bin": {
+      "stored": "objects/b8874d5c12ccac50e256d6a577b74e3c0bdb955ef5d4ad549047749dde6ccfc6.gz",
+      "raw_sha256": "b8874d5c12ccac50e256d6a577b74e3c0bdb955ef5d4ad549047749dde6ccfc6",
+      "raw_bytes": 32,
+      "stored_sha256": "63cd3323999f21412c0dec1c925417bacd12301e0db4d5669d7310a8c5646540"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-terminator-old/vdp_regs_03142.bin": {
+      "stored": "objects/b8874d5c12ccac50e256d6a577b74e3c0bdb955ef5d4ad549047749dde6ccfc6.gz",
+      "raw_sha256": "b8874d5c12ccac50e256d6a577b74e3c0bdb955ef5d4ad549047749dde6ccfc6",
+      "raw_bytes": 32,
+      "stored_sha256": "63cd3323999f21412c0dec1c925417bacd12301e0db4d5669d7310a8c5646540"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-terminator-old/vram_03134.bin": {
+      "stored": "objects/672bfe728bcea53db318d8aa0ecf52b086dd68dac944503ffa7f6e6e2aef4f7e.gz",
+      "raw_sha256": "672bfe728bcea53db318d8aa0ecf52b086dd68dac944503ffa7f6e6e2aef4f7e",
+      "raw_bytes": 65536,
+      "stored_sha256": "8707d57cb2f5c4324c2a6f8fcece790c5a43ec307911906ca6b4996a2bbec219"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-terminator-old/vram_03142.bin": {
+      "stored": "objects/672bfe728bcea53db318d8aa0ecf52b086dd68dac944503ffa7f6e6e2aef4f7e.gz",
+      "raw_sha256": "672bfe728bcea53db318d8aa0ecf52b086dd68dac944503ffa7f6e6e2aef4f7e",
+      "raw_bytes": 65536,
+      "stored_sha256": "8707d57cb2f5c4324c2a6f8fcece790c5a43ec307911906ca6b4996a2bbec219"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-top_clip-new/capture.json": {
+      "stored": "objects/a3252c3c9af77efddf924a00776d6e1e65778d266d77dc6f42f587faf5f3b801.gz",
+      "raw_sha256": "a3252c3c9af77efddf924a00776d6e1e65778d266d77dc6f42f587faf5f3b801",
+      "raw_bytes": 21860,
+      "stored_sha256": "fa82649018a6747b96fc850d105f5f94c155e4425efd8af533d133b2af4e662f"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-top_clip-new/cram_03134.bin": {
+      "stored": "objects/f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb.gz",
+      "raw_sha256": "f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb",
+      "raw_bytes": 128,
+      "stored_sha256": "e96461717d68f4309980492b39c561a8c655b4c6ce089742056a55b46fe9d488"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-top_clip-new/cram_03142.bin": {
+      "stored": "objects/f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb.gz",
+      "raw_sha256": "f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb",
+      "raw_bytes": 128,
+      "stored_sha256": "e96461717d68f4309980492b39c561a8c655b4c6ce089742056a55b46fe9d488"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-top_clip-new/frame_03134.png": {
+      "stored": "objects/9a6e55eb2e8f1be273cc1e72865266172c4b7d76bb753f54dad68ed51a853b42.gz",
+      "raw_sha256": "9a6e55eb2e8f1be273cc1e72865266172c4b7d76bb753f54dad68ed51a853b42",
+      "raw_bytes": 4912,
+      "stored_sha256": "76f02a8ca2ca500e0837c7a84213d6dc6781a2819561ece928f7ba284f65a71d"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-top_clip-new/frame_03142.png": {
+      "stored": "objects/9a6e55eb2e8f1be273cc1e72865266172c4b7d76bb753f54dad68ed51a853b42.gz",
+      "raw_sha256": "9a6e55eb2e8f1be273cc1e72865266172c4b7d76bb753f54dad68ed51a853b42",
+      "raw_bytes": 4912,
+      "stored_sha256": "76f02a8ca2ca500e0837c7a84213d6dc6781a2819561ece928f7ba284f65a71d"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-top_clip-new/ram_03134.bin": {
+      "stored": "objects/bffd958d5b338c8751e7fd090ae220662dfa5706b45fc20927d892aa3b76adb4.gz",
+      "raw_sha256": "bffd958d5b338c8751e7fd090ae220662dfa5706b45fc20927d892aa3b76adb4",
+      "raw_bytes": 65536,
+      "stored_sha256": "20a663f2179a3387bc78aff15048af1f0262b5b87821b3596a6b8ee9969163dc"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-top_clip-new/ram_03142.bin": {
+      "stored": "objects/d89f587d430a31d7fef0288374d15b10ab3d67fc4b7cee58d5970f5ede91b7e8.gz",
+      "raw_sha256": "d89f587d430a31d7fef0288374d15b10ab3d67fc4b7cee58d5970f5ede91b7e8",
+      "raw_bytes": 65536,
+      "stored_sha256": "59d45acb9602df27f662c4dbf172fbb9b043bf1147b0ea7e7c8c2a7c80e62e2d"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-top_clip-new/vdp_regs_03134.bin": {
+      "stored": "objects/87deac0c862ba5fddc4654eb4d97cc86a80d598e4e90800d31c7b8a5aa02b9fe.gz",
+      "raw_sha256": "87deac0c862ba5fddc4654eb4d97cc86a80d598e4e90800d31c7b8a5aa02b9fe",
+      "raw_bytes": 32,
+      "stored_sha256": "7afc568435dc7e447ff6a771bcd8674ef798240db95c5ae92327aea150acdae9"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-top_clip-new/vdp_regs_03142.bin": {
+      "stored": "objects/87deac0c862ba5fddc4654eb4d97cc86a80d598e4e90800d31c7b8a5aa02b9fe.gz",
+      "raw_sha256": "87deac0c862ba5fddc4654eb4d97cc86a80d598e4e90800d31c7b8a5aa02b9fe",
+      "raw_bytes": 32,
+      "stored_sha256": "7afc568435dc7e447ff6a771bcd8674ef798240db95c5ae92327aea150acdae9"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-top_clip-new/vram_03134.bin": {
+      "stored": "objects/5c7c6bbc891b0f2705a20ba5c33831e0e6920b32c23a0bfa353e8177a492802f.gz",
+      "raw_sha256": "5c7c6bbc891b0f2705a20ba5c33831e0e6920b32c23a0bfa353e8177a492802f",
+      "raw_bytes": 65536,
+      "stored_sha256": "db754205ef1c653c00322e72fd866f37c01b3210b419060483583378cd129ab6"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-top_clip-new/vram_03142.bin": {
+      "stored": "objects/5c7c6bbc891b0f2705a20ba5c33831e0e6920b32c23a0bfa353e8177a492802f.gz",
+      "raw_sha256": "5c7c6bbc891b0f2705a20ba5c33831e0e6920b32c23a0bfa353e8177a492802f",
+      "raw_bytes": 65536,
+      "stored_sha256": "db754205ef1c653c00322e72fd866f37c01b3210b419060483583378cd129ab6"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-top_clip-old/capture.json": {
+      "stored": "objects/2aad81f8c1c61b8b1839ce9e9118f4a1bb9b63285d3611d94f42e593fd9a2bf3.gz",
+      "raw_sha256": "2aad81f8c1c61b8b1839ce9e9118f4a1bb9b63285d3611d94f42e593fd9a2bf3",
+      "raw_bytes": 21851,
+      "stored_sha256": "d692400e919fc3628ea2fd2b1837fbe68254da81261a269cecd7033b67e167a5"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-top_clip-old/cram_03134.bin": {
+      "stored": "objects/f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb.gz",
+      "raw_sha256": "f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb",
+      "raw_bytes": 128,
+      "stored_sha256": "e96461717d68f4309980492b39c561a8c655b4c6ce089742056a55b46fe9d488"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-top_clip-old/cram_03142.bin": {
+      "stored": "objects/f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb.gz",
+      "raw_sha256": "f1b97c461fc2f21db401a0b9d0d3a14488b3082c1aa60648c78acc833804eafb",
+      "raw_bytes": 128,
+      "stored_sha256": "e96461717d68f4309980492b39c561a8c655b4c6ce089742056a55b46fe9d488"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-top_clip-old/frame_03134.png": {
+      "stored": "objects/9a6e55eb2e8f1be273cc1e72865266172c4b7d76bb753f54dad68ed51a853b42.gz",
+      "raw_sha256": "9a6e55eb2e8f1be273cc1e72865266172c4b7d76bb753f54dad68ed51a853b42",
+      "raw_bytes": 4912,
+      "stored_sha256": "76f02a8ca2ca500e0837c7a84213d6dc6781a2819561ece928f7ba284f65a71d"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-top_clip-old/frame_03142.png": {
+      "stored": "objects/9a6e55eb2e8f1be273cc1e72865266172c4b7d76bb753f54dad68ed51a853b42.gz",
+      "raw_sha256": "9a6e55eb2e8f1be273cc1e72865266172c4b7d76bb753f54dad68ed51a853b42",
+      "raw_bytes": 4912,
+      "stored_sha256": "76f02a8ca2ca500e0837c7a84213d6dc6781a2819561ece928f7ba284f65a71d"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-top_clip-old/ram_03134.bin": {
+      "stored": "objects/adc66efd101e924b7575e08beff2190048ba06c1147fd7b3e49e235a7af12185.gz",
+      "raw_sha256": "adc66efd101e924b7575e08beff2190048ba06c1147fd7b3e49e235a7af12185",
+      "raw_bytes": 65536,
+      "stored_sha256": "56d3e503ff3e13a52fbed44d73bd492a7fed9962f2b486fcd0419319146ef087"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-top_clip-old/ram_03142.bin": {
+      "stored": "objects/8212e6b1ffa065ed77a15f210338f336aafcd000c92998adf9286916058e4149.gz",
+      "raw_sha256": "8212e6b1ffa065ed77a15f210338f336aafcd000c92998adf9286916058e4149",
+      "raw_bytes": 65536,
+      "stored_sha256": "7dacf0459c4d7203a4f4db84dadd9bd7a64c1db4de7725abb2a4923ae8193df2"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-top_clip-old/vdp_regs_03134.bin": {
+      "stored": "objects/87deac0c862ba5fddc4654eb4d97cc86a80d598e4e90800d31c7b8a5aa02b9fe.gz",
+      "raw_sha256": "87deac0c862ba5fddc4654eb4d97cc86a80d598e4e90800d31c7b8a5aa02b9fe",
+      "raw_bytes": 32,
+      "stored_sha256": "7afc568435dc7e447ff6a771bcd8674ef798240db95c5ae92327aea150acdae9"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-top_clip-old/vdp_regs_03142.bin": {
+      "stored": "objects/87deac0c862ba5fddc4654eb4d97cc86a80d598e4e90800d31c7b8a5aa02b9fe.gz",
+      "raw_sha256": "87deac0c862ba5fddc4654eb4d97cc86a80d598e4e90800d31c7b8a5aa02b9fe",
+      "raw_bytes": 32,
+      "stored_sha256": "7afc568435dc7e447ff6a771bcd8674ef798240db95c5ae92327aea150acdae9"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-top_clip-old/vram_03134.bin": {
+      "stored": "objects/5c7c6bbc891b0f2705a20ba5c33831e0e6920b32c23a0bfa353e8177a492802f.gz",
+      "raw_sha256": "5c7c6bbc891b0f2705a20ba5c33831e0e6920b32c23a0bfa353e8177a492802f",
+      "raw_bytes": 65536,
+      "stored_sha256": "db754205ef1c653c00322e72fd866f37c01b3210b419060483583378cd129ab6"
+    },
+    "validation/sprite-mask-cache-gameplay-hero-three-plane02/pal-top_clip-old/vram_03142.bin": {
+      "stored": "objects/5c7c6bbc891b0f2705a20ba5c33831e0e6920b32c23a0bfa353e8177a492802f.gz",
+      "raw_sha256": "5c7c6bbc891b0f2705a20ba5c33831e0e6920b32c23a0bfa353e8177a492802f",
+      "raw_bytes": 65536,
+      "stored_sha256": "db754205ef1c653c00322e72fd866f37c01b3210b419060483583378cd129ab6"
+    },
+    "validation/v318-hero-three-plane02/baseline/capture.json": {
+      "stored": "objects/b9899715100ff858ea504dd085ce0981b79d1ec2a98dc3c73802da6111879e40.gz",
+      "raw_sha256": "b9899715100ff858ea504dd085ce0981b79d1ec2a98dc3c73802da6111879e40",
+      "raw_bytes": 10590395,
+      "stored_sha256": "3bc1f3046521e09f33b1cf20e53e75e66e62c73c43ba4f7caf00d7a7a6b6a0f3"
+    },
+    "validation/v318-hero-three-plane02/baseline/cram_80012.bin": {
+      "stored": "objects/8986d53fc50dd40eb2379ea6d936cfd63374fc6f533a940ac6464f5e008e4a85.gz",
+      "raw_sha256": "8986d53fc50dd40eb2379ea6d936cfd63374fc6f533a940ac6464f5e008e4a85",
+      "raw_bytes": 128,
+      "stored_sha256": "5a2db8e21ac45e24db738d5c34d79654a617caaecb97af4f9c0111680800288f"
+    },
+    "validation/v318-hero-three-plane02/baseline/frame_80012.png": {
+      "stored": "objects/b281aa58af6dabf30ca09a2864e757065333905f4128ab5489a9b4947e9d80fc.gz",
+      "raw_sha256": "b281aa58af6dabf30ca09a2864e757065333905f4128ab5489a9b4947e9d80fc",
+      "raw_bytes": 7129,
+      "stored_sha256": "41642d8c062af75bbc21bb5356d50522aacdc83c0f425cd762db867083e26c40"
+    },
+    "validation/v318-hero-three-plane02/baseline/ram_80012.bin": {
+      "stored": "objects/40bff0c8554c679bd4fbf92fdc693a17eb948ef55058557100c8f0a771035b99.gz",
+      "raw_sha256": "40bff0c8554c679bd4fbf92fdc693a17eb948ef55058557100c8f0a771035b99",
+      "raw_bytes": 65536,
+      "stored_sha256": "59e5360ec09aea3169fb52e6dd9662ab1eaf536a86e93e1c581d89d3c9eb21e9"
+    },
+    "validation/v318-hero-three-plane02/baseline/trace_counts.bin": {
+      "stored": "objects/30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58.gz",
+      "raw_sha256": "30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58",
+      "raw_bytes": 1048576,
+      "stored_sha256": "f227c53a0b54fb0009773680f60b76c1f346b4dcfca7e03b7f311f0bd0f3bea1"
+    },
+    "validation/v318-hero-three-plane02/baseline/trace_states.bin": {
+      "stored": "objects/5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef.gz",
+      "raw_sha256": "5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+      "raw_bytes": 1024,
+      "stored_sha256": "75eb48369c0d0b1260b7db5c5f831d5f8b1b9b322b64191c96cb147437e7f404"
+    },
+    "validation/v318-hero-three-plane02/baseline/trace_windows.bin": {
+      "stored": "objects/8a39d2abd3999ab73c34db2476849cddf303ce389b35826850f9a700589b4a90.gz",
+      "raw_sha256": "8a39d2abd3999ab73c34db2476849cddf303ce389b35826850f9a700589b4a90",
+      "raw_bytes": 262144,
+      "stored_sha256": "e3c3be563c17c24fb5bfdfefbcbe3882cc985fa4161654a534287d9baafe2a73"
+    },
+    "validation/v318-hero-three-plane02/baseline/vdp_regs_80012.bin": {
+      "stored": "objects/0a414c784920ab907db9e4c1c0ea306877c341a8c8da2942653720f9a888360f.gz",
+      "raw_sha256": "0a414c784920ab907db9e4c1c0ea306877c341a8c8da2942653720f9a888360f",
+      "raw_bytes": 32,
+      "stored_sha256": "110856a41b02d25bc79259e48198482e8cda763fd547d6b6e69ccab4e6211ba9"
+    },
+    "validation/v318-hero-three-plane02/baseline/vram_80012.bin": {
+      "stored": "objects/b7acdd47b83f4cd24ab66486550dd34caed7c1c598d31882ce6e089e7cff5b0f.gz",
+      "raw_sha256": "b7acdd47b83f4cd24ab66486550dd34caed7c1c598d31882ce6e089e7cff5b0f",
+      "raw_bytes": 65536,
+      "stored_sha256": "8d318683463d932c85290ce29231008e0359ae632df82d12038d7630f0999ffc"
+    },
+    "validation/v318-hero-three-plane02/candidate/capture.json": {
+      "stored": "objects/05dc7e09f2bfcbd6a69ba9a835711e6182aaa56adce7e93e10d0615d7283a92c.gz",
+      "raw_sha256": "05dc7e09f2bfcbd6a69ba9a835711e6182aaa56adce7e93e10d0615d7283a92c",
+      "raw_bytes": 10590436,
+      "stored_sha256": "73a11e08e89b6ca1373301f353f02ee9f7be3fd117434d24c2a93cc998881cf9"
+    },
+    "validation/v318-hero-three-plane02/candidate/cram_80012.bin": {
+      "stored": "objects/87ee1bce3d8cb1091c7592e5e442642e81c5194ab6a8571b26acc9aaa63c7906.gz",
+      "raw_sha256": "87ee1bce3d8cb1091c7592e5e442642e81c5194ab6a8571b26acc9aaa63c7906",
+      "raw_bytes": 128,
+      "stored_sha256": "c7d99699f8483455460985483e3da2352e20cee4c6532e9473b925fdf18af45b"
+    },
+    "validation/v318-hero-three-plane02/candidate/frame_80012.png": {
+      "stored": "objects/4f22641af493a29abdc64e2340430b6e80a3aa40547b357f97f1e9135e2811d9.gz",
+      "raw_sha256": "4f22641af493a29abdc64e2340430b6e80a3aa40547b357f97f1e9135e2811d9",
+      "raw_bytes": 4746,
+      "stored_sha256": "d647ec928cf929ebb1596b257c778848a9d07c01c641f4e89737c5911721a039"
+    },
+    "validation/v318-hero-three-plane02/candidate/ram_80012.bin": {
+      "stored": "objects/8313e9c238296c610797e1d7c8ff8c7a49cf5be3ef5536a8e3e5c3426c4cb29e.gz",
+      "raw_sha256": "8313e9c238296c610797e1d7c8ff8c7a49cf5be3ef5536a8e3e5c3426c4cb29e",
+      "raw_bytes": 65536,
+      "stored_sha256": "b1e397e573efc9963c6dc140f44086aecceb48edf409e1f1ddd8fd739a0208f1"
+    },
+    "validation/v318-hero-three-plane02/candidate/trace_counts.bin": {
+      "stored": "objects/30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58.gz",
+      "raw_sha256": "30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58",
+      "raw_bytes": 1048576,
+      "stored_sha256": "f227c53a0b54fb0009773680f60b76c1f346b4dcfca7e03b7f311f0bd0f3bea1"
+    },
+    "validation/v318-hero-three-plane02/candidate/trace_states.bin": {
+      "stored": "objects/5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef.gz",
+      "raw_sha256": "5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+      "raw_bytes": 1024,
+      "stored_sha256": "75eb48369c0d0b1260b7db5c5f831d5f8b1b9b322b64191c96cb147437e7f404"
+    },
+    "validation/v318-hero-three-plane02/candidate/trace_windows.bin": {
+      "stored": "objects/8a39d2abd3999ab73c34db2476849cddf303ce389b35826850f9a700589b4a90.gz",
+      "raw_sha256": "8a39d2abd3999ab73c34db2476849cddf303ce389b35826850f9a700589b4a90",
+      "raw_bytes": 262144,
+      "stored_sha256": "e3c3be563c17c24fb5bfdfefbcbe3882cc985fa4161654a534287d9baafe2a73"
+    },
+    "validation/v318-hero-three-plane02/candidate/vdp_regs_80012.bin": {
+      "stored": "objects/c3660fc4c043551ba052ac0fd4e432b3c7d6c3ea032f7861044a356392d9b75a.gz",
+      "raw_sha256": "c3660fc4c043551ba052ac0fd4e432b3c7d6c3ea032f7861044a356392d9b75a",
+      "raw_bytes": 32,
+      "stored_sha256": "85102d85ea28f68d6c7935dbc8678f08951d0f4b8bd0ad272441c1461e38cec8"
+    },
+    "validation/v318-hero-three-plane02/candidate/vram_80012.bin": {
+      "stored": "objects/b88ae991794d58827e6d5d3e7c63cdc1e0af228ff25d2e2b7af4e7f45da0e07f.gz",
+      "raw_sha256": "b88ae991794d58827e6d5d3e7c63cdc1e0af228ff25d2e2b7af4e7f45da0e07f",
+      "raw_bytes": 65536,
+      "stored_sha256": "18195e3d016ee7fd3551d5de24732b5d213bf00e0d0ceb30f7ce36d2289d3665"
+    },
+    "validation/v318-hero-three-plane02/ground_walk.py": {
+      "stored": "objects/de32969cf5b660c24df846b71ffadcc181c204060dcbd2c2eda3fe64f89bf7c2.gz",
+      "raw_sha256": "de32969cf5b660c24df846b71ffadcc181c204060dcbd2c2eda3fe64f89bf7c2",
+      "raw_bytes": 4318,
+      "stored_sha256": "9da2381b189ca9f3af6723b48909d2ae76d3cfe40d9e1faf68efd452e8804994"
+    },
+    "validation/v318-hero-three-plane02/ground_walk_report.json": {
+      "stored": "objects/7baa642076f990d0ce60ee3144752467a86e5822d9343066b181fc1c208db6b4.gz",
+      "raw_sha256": "7baa642076f990d0ce60ee3144752467a86e5822d9343066b181fc1c208db6b4",
+      "raw_bytes": 4314,
+      "stored_sha256": "83f70811e07a697862c53935b8496a907759d57d420af45a57e75d0bb32ae83a"
+    },
+    "validation/v318-hero-three-plane02/hero_pattern_cost.py": {
+      "stored": "objects/96f8f93aae854d6939641daffa28c33e1b0c68e47e59823ac3781362109b4b2e.gz",
+      "raw_sha256": "96f8f93aae854d6939641daffa28c33e1b0c68e47e59823ac3781362109b4b2e",
+      "raw_bytes": 6368,
+      "stored_sha256": "16d91d89b03279ce69ec946d7b817d338abe66aca49d5c8dd8eaad7de64946e8"
+    },
+    "validation/v318-hero-three-plane02/hero_pattern_cost_report.json": {
+      "stored": "objects/d30c0726599dbf7078f49c5ced44298e70b3ab789483bf82644fc772b33e861c.gz",
+      "raw_sha256": "d30c0726599dbf7078f49c5ced44298e70b3ab789483bf82644fc772b33e861c",
+      "raw_bytes": 1134,
+      "stored_sha256": "8c8df71bb037862719c35228819e4be00c8d6df1b0873062343eb8898c160d0c"
+    },
+    "validation/v318-hero-three-plane02/ntsc-fault-dungeon-patterns/capture.json": {
+      "stored": "objects/7f155539f999cb7f4b922c672a69c1c4d85dcb29df708c8a48011c0b8dc31c43.gz",
+      "raw_sha256": "7f155539f999cb7f4b922c672a69c1c4d85dcb29df708c8a48011c0b8dc31c43",
+      "raw_bytes": 2585,
+      "stored_sha256": "7f7be29da00382a7edd88d7662f2dc790fdd2ce87d5dfd66b098e6d740188c0c"
+    },
+    "validation/v318-hero-three-plane02/ntsc-fault-dungeon-patterns/cram_03395.bin": {
+      "stored": "objects/6089785e1ed0e394b29bb1e3fb2d6418d3868a0ced0673e9010e90e867860684.gz",
+      "raw_sha256": "6089785e1ed0e394b29bb1e3fb2d6418d3868a0ced0673e9010e90e867860684",
+      "raw_bytes": 128,
+      "stored_sha256": "281a5144781c9158c5b8f5879ebcc323b3c02bee63aee84b2c2342b80314869d"
+    },
+    "validation/v318-hero-three-plane02/ntsc-fault-dungeon-patterns/cram_03396.bin": {
+      "stored": "objects/921cd0d9df94c22138182530b07e12cf0b3f9d7c58dd26258d29b93712ca7cc4.gz",
+      "raw_sha256": "921cd0d9df94c22138182530b07e12cf0b3f9d7c58dd26258d29b93712ca7cc4",
+      "raw_bytes": 128,
+      "stored_sha256": "451a417a17cccf69420011e784ae3ff9a7a471cc00c7ef02c5457c79c5620983"
+    },
+    "validation/v318-hero-three-plane02/ntsc-fault-dungeon-patterns/cram_03397.bin": {
+      "stored": "objects/921cd0d9df94c22138182530b07e12cf0b3f9d7c58dd26258d29b93712ca7cc4.gz",
+      "raw_sha256": "921cd0d9df94c22138182530b07e12cf0b3f9d7c58dd26258d29b93712ca7cc4",
+      "raw_bytes": 128,
+      "stored_sha256": "451a417a17cccf69420011e784ae3ff9a7a471cc00c7ef02c5457c79c5620983"
+    },
+    "validation/v318-hero-three-plane02/ntsc-fault-dungeon-patterns/cram_03404.bin": {
+      "stored": "objects/f94dc054c4612bc2961a7a1c461ca1649e2f3d86dbf812705fd217dbfa45d0a1.gz",
+      "raw_sha256": "f94dc054c4612bc2961a7a1c461ca1649e2f3d86dbf812705fd217dbfa45d0a1",
+      "raw_bytes": 128,
+      "stored_sha256": "72b3b6c7c19189df5d46d1a8ba7998875b790f74010fe9f8f27ae497e7663ac5"
+    },
+    "validation/v318-hero-three-plane02/ntsc-fault-dungeon-patterns/frame_03395.png": {
+      "stored": "objects/20647489427fe37a4a05b282bcaae2e18224adf666db620dc73bb4230155a9c8.gz",
+      "raw_sha256": "20647489427fe37a4a05b282bcaae2e18224adf666db620dc73bb4230155a9c8",
+      "raw_bytes": 5133,
+      "stored_sha256": "78e64c972251402844d69f0cb0b1143e7b1739377920cefe6c49fbd7d65c2912"
+    },
+    "validation/v318-hero-three-plane02/ntsc-fault-dungeon-patterns/frame_03396.png": {
+      "stored": "objects/0e0bd8662d296957ae310df5db4a903ec38415ed42db3ce8892ef2397a61efe7.gz",
+      "raw_sha256": "0e0bd8662d296957ae310df5db4a903ec38415ed42db3ce8892ef2397a61efe7",
+      "raw_bytes": 5267,
+      "stored_sha256": "b4cd1cd63a45316c413285e511d46017da0afdb6ea8186dea14cd81f343d31d0"
+    },
+    "validation/v318-hero-three-plane02/ntsc-fault-dungeon-patterns/frame_03397.png": {
+      "stored": "objects/a2f95f59a9e49dc64bd11b6884a6bf137944589905ed69299c6329228e960231.gz",
+      "raw_sha256": "a2f95f59a9e49dc64bd11b6884a6bf137944589905ed69299c6329228e960231",
+      "raw_bytes": 5164,
+      "stored_sha256": "de907945ae10e4e6eea3641ece44ab0c407e39a7ad6295b84cbe845558677e1f"
+    },
+    "validation/v318-hero-three-plane02/ntsc-fault-dungeon-patterns/frame_03404.png": {
+      "stored": "objects/1dd0848769a1f75aadfe138ec9a5027d47089bbdd012353dc26e5bc296fca834.gz",
+      "raw_sha256": "1dd0848769a1f75aadfe138ec9a5027d47089bbdd012353dc26e5bc296fca834",
+      "raw_bytes": 5141,
+      "stored_sha256": "875a4f7aa3c622b30ace55d8b28a1de73e1089c500b0a7e5c5de17b80e57eca0"
+    },
+    "validation/v318-hero-three-plane02/ntsc-fault-dungeon-patterns/ram_03395.bin": {
+      "stored": "objects/581e4d93648e157d3d15bdf0822e0481ea08052786f451dedc5edfcaceaf1214.gz",
+      "raw_sha256": "581e4d93648e157d3d15bdf0822e0481ea08052786f451dedc5edfcaceaf1214",
+      "raw_bytes": 65536,
+      "stored_sha256": "bfb128062a2d308412fc63414ad40357babe1ab4f860ac430bc0cdba5fc2d070"
+    },
+    "validation/v318-hero-three-plane02/ntsc-fault-dungeon-patterns/ram_03396.bin": {
+      "stored": "objects/bf77b54d46d9c04fbac188b72fa14a5f16e8504ae20cb0c10fffd21263455bcc.gz",
+      "raw_sha256": "bf77b54d46d9c04fbac188b72fa14a5f16e8504ae20cb0c10fffd21263455bcc",
+      "raw_bytes": 65536,
+      "stored_sha256": "c64d5a66f79200db0b579d781891102b79dd95f4f7b396f1bea04a00eec4c9d6"
+    },
+    "validation/v318-hero-three-plane02/ntsc-fault-dungeon-patterns/ram_03397.bin": {
+      "stored": "objects/4c1a1c7e80eef1d48f9621e98ce6281d00a9c3e4cbb70d337399222f68e45115.gz",
+      "raw_sha256": "4c1a1c7e80eef1d48f9621e98ce6281d00a9c3e4cbb70d337399222f68e45115",
+      "raw_bytes": 65536,
+      "stored_sha256": "a4ffe4bd763a911ee50ed104d9ed94efac6aa9aad019e21f3a255a58ae5dba67"
+    },
+    "validation/v318-hero-three-plane02/ntsc-fault-dungeon-patterns/ram_03404.bin": {
+      "stored": "objects/4284ee6ef8851ea78c8c415964a223e7ab107c43884f7b60b92a71b2d52a1873.gz",
+      "raw_sha256": "4284ee6ef8851ea78c8c415964a223e7ab107c43884f7b60b92a71b2d52a1873",
+      "raw_bytes": 65536,
+      "stored_sha256": "eed6e78aa22b379ab17ba97dd27ba873808bdedaaf43023a6402e67e09870c98"
+    },
+    "validation/v318-hero-three-plane02/ntsc-fault-dungeon-patterns/trace_counts.bin": {
+      "stored": "objects/30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58.gz",
+      "raw_sha256": "30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58",
+      "raw_bytes": 1048576,
+      "stored_sha256": "f227c53a0b54fb0009773680f60b76c1f346b4dcfca7e03b7f311f0bd0f3bea1"
+    },
+    "validation/v318-hero-three-plane02/ntsc-fault-dungeon-patterns/trace_states.bin": {
+      "stored": "objects/5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef.gz",
+      "raw_sha256": "5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+      "raw_bytes": 1024,
+      "stored_sha256": "75eb48369c0d0b1260b7db5c5f831d5f8b1b9b322b64191c96cb147437e7f404"
+    },
+    "validation/v318-hero-three-plane02/ntsc-fault-dungeon-patterns/trace_windows.bin": {
+      "stored": "objects/8a39d2abd3999ab73c34db2476849cddf303ce389b35826850f9a700589b4a90.gz",
+      "raw_sha256": "8a39d2abd3999ab73c34db2476849cddf303ce389b35826850f9a700589b4a90",
+      "raw_bytes": 262144,
+      "stored_sha256": "e3c3be563c17c24fb5bfdfefbcbe3882cc985fa4161654a534287d9baafe2a73"
+    },
+    "validation/v318-hero-three-plane02/ntsc-fault-dungeon-patterns/vdp_regs_03395.bin": {
+      "stored": "objects/2e0bf3bb31fd67a36ef01942b9b301b266bb5ca5626a9543b9f392c5e2a79bd2.gz",
+      "raw_sha256": "2e0bf3bb31fd67a36ef01942b9b301b266bb5ca5626a9543b9f392c5e2a79bd2",
+      "raw_bytes": 32,
+      "stored_sha256": "dd1311cfad6037cb58595ed148f75b685f1009dd2e7d87c0b2ed716e2c0bbfdb"
+    },
+    "validation/v318-hero-three-plane02/ntsc-fault-dungeon-patterns/vdp_regs_03396.bin": {
+      "stored": "objects/2e0bf3bb31fd67a36ef01942b9b301b266bb5ca5626a9543b9f392c5e2a79bd2.gz",
+      "raw_sha256": "2e0bf3bb31fd67a36ef01942b9b301b266bb5ca5626a9543b9f392c5e2a79bd2",
+      "raw_bytes": 32,
+      "stored_sha256": "dd1311cfad6037cb58595ed148f75b685f1009dd2e7d87c0b2ed716e2c0bbfdb"
+    },
+    "validation/v318-hero-three-plane02/ntsc-fault-dungeon-patterns/vdp_regs_03397.bin": {
+      "stored": "objects/2e0bf3bb31fd67a36ef01942b9b301b266bb5ca5626a9543b9f392c5e2a79bd2.gz",
+      "raw_sha256": "2e0bf3bb31fd67a36ef01942b9b301b266bb5ca5626a9543b9f392c5e2a79bd2",
+      "raw_bytes": 32,
+      "stored_sha256": "dd1311cfad6037cb58595ed148f75b685f1009dd2e7d87c0b2ed716e2c0bbfdb"
+    },
+    "validation/v318-hero-three-plane02/ntsc-fault-dungeon-patterns/vdp_regs_03404.bin": {
+      "stored": "objects/2e0bf3bb31fd67a36ef01942b9b301b266bb5ca5626a9543b9f392c5e2a79bd2.gz",
+      "raw_sha256": "2e0bf3bb31fd67a36ef01942b9b301b266bb5ca5626a9543b9f392c5e2a79bd2",
+      "raw_bytes": 32,
+      "stored_sha256": "dd1311cfad6037cb58595ed148f75b685f1009dd2e7d87c0b2ed716e2c0bbfdb"
+    },
+    "validation/v318-hero-three-plane02/ntsc-fault-dungeon-patterns/vram_03395.bin": {
+      "stored": "objects/099d816e77fdaf90daf95404cd9fb6e3d5f60eac8c4dafc2400677d50104e866.gz",
+      "raw_sha256": "099d816e77fdaf90daf95404cd9fb6e3d5f60eac8c4dafc2400677d50104e866",
+      "raw_bytes": 65536,
+      "stored_sha256": "8762c64c88c06900d0523af769dbf1e94a55915e57b4db0d3e6144705629110b"
+    },
+    "validation/v318-hero-three-plane02/ntsc-fault-dungeon-patterns/vram_03396.bin": {
+      "stored": "objects/14db55b52b498374c09d8e0614ddb5a5f828cfa6891daab094d8a58b53961a2a.gz",
+      "raw_sha256": "14db55b52b498374c09d8e0614ddb5a5f828cfa6891daab094d8a58b53961a2a",
+      "raw_bytes": 65536,
+      "stored_sha256": "136dafbf7ad8a1048b8690347fcb8ccad7b5cdd46607c578ee7c3618d2c7f7e6"
+    },
+    "validation/v318-hero-three-plane02/ntsc-fault-dungeon-patterns/vram_03397.bin": {
+      "stored": "objects/a2a0baee89370e40a7df0f880771e287797d6776422d5a567a35a052a121e39b.gz",
+      "raw_sha256": "a2a0baee89370e40a7df0f880771e287797d6776422d5a567a35a052a121e39b",
+      "raw_bytes": 65536,
+      "stored_sha256": "9bd041e3419e1c9114aa0be97b7fc0c57bd083d34fa388cb183266e6086adb9f"
+    },
+    "validation/v318-hero-three-plane02/ntsc-fault-dungeon-patterns/vram_03404.bin": {
+      "stored": "objects/e54f001414cfa224a711aa8457fd077fcc843305dc6715c73ec4b106283c6bac.gz",
+      "raw_sha256": "e54f001414cfa224a711aa8457fd077fcc843305dc6715c73ec4b106283c6bac",
+      "raw_bytes": 65536,
+      "stored_sha256": "ce028f6f0fd31ea8e09bb05b1ae7d7ac37a4fbc928d63a950e79b14cbe9a3e94"
+    },
+    "validation/v318-hero-three-plane02/ntsc-fault-report.json": {
+      "stored": "objects/e2e8511d8073372a8743dbb5430059620329e1cbbcddaf3dd8d86ea4dc26be2d.gz",
+      "raw_sha256": "e2e8511d8073372a8743dbb5430059620329e1cbbcddaf3dd8d86ea4dc26be2d",
+      "raw_bytes": 54804,
+      "stored_sha256": "88ab3556ae0adf2d0954a28635370251863fe37f2276114838b91c0ca556eb33"
+    },
+    "validation/v318-hero-three-plane02/ntsc-fault-v0318/capture.json": {
+      "stored": "objects/41a53a0d0683bbd695c537360772c824957c21fc1b4e20a849a2e4467e0325f8.gz",
+      "raw_sha256": "41a53a0d0683bbd695c537360772c824957c21fc1b4e20a849a2e4467e0325f8",
+      "raw_bytes": 2576,
+      "stored_sha256": "da7247f7c22db1a99aa289cabd8ec5e6154d1a42f9d0cb86a710693422f7bc07"
+    },
+    "validation/v318-hero-three-plane02/ntsc-fault-v0318/cram_03395.bin": {
+      "stored": "objects/6089785e1ed0e394b29bb1e3fb2d6418d3868a0ced0673e9010e90e867860684.gz",
+      "raw_sha256": "6089785e1ed0e394b29bb1e3fb2d6418d3868a0ced0673e9010e90e867860684",
+      "raw_bytes": 128,
+      "stored_sha256": "281a5144781c9158c5b8f5879ebcc323b3c02bee63aee84b2c2342b80314869d"
+    },
+    "validation/v318-hero-three-plane02/ntsc-fault-v0318/cram_03396.bin": {
+      "stored": "objects/6089785e1ed0e394b29bb1e3fb2d6418d3868a0ced0673e9010e90e867860684.gz",
+      "raw_sha256": "6089785e1ed0e394b29bb1e3fb2d6418d3868a0ced0673e9010e90e867860684",
+      "raw_bytes": 128,
+      "stored_sha256": "281a5144781c9158c5b8f5879ebcc323b3c02bee63aee84b2c2342b80314869d"
+    },
+    "validation/v318-hero-three-plane02/ntsc-fault-v0318/cram_03397.bin": {
+      "stored": "objects/921cd0d9df94c22138182530b07e12cf0b3f9d7c58dd26258d29b93712ca7cc4.gz",
+      "raw_sha256": "921cd0d9df94c22138182530b07e12cf0b3f9d7c58dd26258d29b93712ca7cc4",
+      "raw_bytes": 128,
+      "stored_sha256": "451a417a17cccf69420011e784ae3ff9a7a471cc00c7ef02c5457c79c5620983"
+    },
+    "validation/v318-hero-three-plane02/ntsc-fault-v0318/cram_03404.bin": {
+      "stored": "objects/f94dc054c4612bc2961a7a1c461ca1649e2f3d86dbf812705fd217dbfa45d0a1.gz",
+      "raw_sha256": "f94dc054c4612bc2961a7a1c461ca1649e2f3d86dbf812705fd217dbfa45d0a1",
+      "raw_bytes": 128,
+      "stored_sha256": "72b3b6c7c19189df5d46d1a8ba7998875b790f74010fe9f8f27ae497e7663ac5"
+    },
+    "validation/v318-hero-three-plane02/ntsc-fault-v0318/frame_03395.png": {
+      "stored": "objects/20647489427fe37a4a05b282bcaae2e18224adf666db620dc73bb4230155a9c8.gz",
+      "raw_sha256": "20647489427fe37a4a05b282bcaae2e18224adf666db620dc73bb4230155a9c8",
+      "raw_bytes": 5133,
+      "stored_sha256": "78e64c972251402844d69f0cb0b1143e7b1739377920cefe6c49fbd7d65c2912"
+    },
+    "validation/v318-hero-three-plane02/ntsc-fault-v0318/frame_03396.png": {
+      "stored": "objects/20647489427fe37a4a05b282bcaae2e18224adf666db620dc73bb4230155a9c8.gz",
+      "raw_sha256": "20647489427fe37a4a05b282bcaae2e18224adf666db620dc73bb4230155a9c8",
+      "raw_bytes": 5133,
+      "stored_sha256": "78e64c972251402844d69f0cb0b1143e7b1739377920cefe6c49fbd7d65c2912"
+    },
+    "validation/v318-hero-three-plane02/ntsc-fault-v0318/frame_03397.png": {
+      "stored": "objects/0e0bd8662d296957ae310df5db4a903ec38415ed42db3ce8892ef2397a61efe7.gz",
+      "raw_sha256": "0e0bd8662d296957ae310df5db4a903ec38415ed42db3ce8892ef2397a61efe7",
+      "raw_bytes": 5267,
+      "stored_sha256": "b4cd1cd63a45316c413285e511d46017da0afdb6ea8186dea14cd81f343d31d0"
+    },
+    "validation/v318-hero-three-plane02/ntsc-fault-v0318/frame_03404.png": {
+      "stored": "objects/fe9b18a1f4d9e1d8352f95646c1f9c462a6d2cbed04b4baa65f52696736b9768.gz",
+      "raw_sha256": "fe9b18a1f4d9e1d8352f95646c1f9c462a6d2cbed04b4baa65f52696736b9768",
+      "raw_bytes": 5129,
+      "stored_sha256": "cd805014d4fee90dd7f24146f328d2405dca073dbde3655dcb0d415fbaf326b4"
+    },
+    "validation/v318-hero-three-plane02/ntsc-fault-v0318/ram_03395.bin": {
+      "stored": "objects/319e88eacd987d822ef794f2ed75d886600acdef40fc98ae64b7ab14c986fb4b.gz",
+      "raw_sha256": "319e88eacd987d822ef794f2ed75d886600acdef40fc98ae64b7ab14c986fb4b",
+      "raw_bytes": 65536,
+      "stored_sha256": "a6db97fcb6ae342ffc62af649a8e5a181940b9a55c07f0e13803324c4ef09bb7"
+    },
+    "validation/v318-hero-three-plane02/ntsc-fault-v0318/ram_03396.bin": {
+      "stored": "objects/dde5790836b7a3c0228d5fdead03dbc7d0fe158a4f35b2596afa18ded7f5b126.gz",
+      "raw_sha256": "dde5790836b7a3c0228d5fdead03dbc7d0fe158a4f35b2596afa18ded7f5b126",
+      "raw_bytes": 65536,
+      "stored_sha256": "e34cc4eff10bef71fda98ed13163914e37fab006176556f4feb3ef58b898dd1d"
+    },
+    "validation/v318-hero-three-plane02/ntsc-fault-v0318/ram_03397.bin": {
+      "stored": "objects/3c0c6e6fc876adb97f1328cf883844215979f6c218721a56d0eb590e29d44de7.gz",
+      "raw_sha256": "3c0c6e6fc876adb97f1328cf883844215979f6c218721a56d0eb590e29d44de7",
+      "raw_bytes": 65536,
+      "stored_sha256": "8b67e6f1ab2e995bfca7e7dc59bd9c9930cc41576d1b95969570c07e6a6c4717"
+    },
+    "validation/v318-hero-three-plane02/ntsc-fault-v0318/ram_03404.bin": {
+      "stored": "objects/293a47c1b259cab92f52ad8c786eae6c38e21e66449fea6ae29c10195d7a7663.gz",
+      "raw_sha256": "293a47c1b259cab92f52ad8c786eae6c38e21e66449fea6ae29c10195d7a7663",
+      "raw_bytes": 65536,
+      "stored_sha256": "bc586e5419cd6e135ba3c7cfec9532d72359b69a8f4e3a26417402499efa4946"
+    },
+    "validation/v318-hero-three-plane02/ntsc-fault-v0318/trace_counts.bin": {
+      "stored": "objects/30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58.gz",
+      "raw_sha256": "30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58",
+      "raw_bytes": 1048576,
+      "stored_sha256": "f227c53a0b54fb0009773680f60b76c1f346b4dcfca7e03b7f311f0bd0f3bea1"
+    },
+    "validation/v318-hero-three-plane02/ntsc-fault-v0318/trace_states.bin": {
+      "stored": "objects/5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef.gz",
+      "raw_sha256": "5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+      "raw_bytes": 1024,
+      "stored_sha256": "75eb48369c0d0b1260b7db5c5f831d5f8b1b9b322b64191c96cb147437e7f404"
+    },
+    "validation/v318-hero-three-plane02/ntsc-fault-v0318/trace_windows.bin": {
+      "stored": "objects/8a39d2abd3999ab73c34db2476849cddf303ce389b35826850f9a700589b4a90.gz",
+      "raw_sha256": "8a39d2abd3999ab73c34db2476849cddf303ce389b35826850f9a700589b4a90",
+      "raw_bytes": 262144,
+      "stored_sha256": "e3c3be563c17c24fb5bfdfefbcbe3882cc985fa4161654a534287d9baafe2a73"
+    },
+    "validation/v318-hero-three-plane02/ntsc-fault-v0318/vdp_regs_03395.bin": {
+      "stored": "objects/2e0bf3bb31fd67a36ef01942b9b301b266bb5ca5626a9543b9f392c5e2a79bd2.gz",
+      "raw_sha256": "2e0bf3bb31fd67a36ef01942b9b301b266bb5ca5626a9543b9f392c5e2a79bd2",
+      "raw_bytes": 32,
+      "stored_sha256": "dd1311cfad6037cb58595ed148f75b685f1009dd2e7d87c0b2ed716e2c0bbfdb"
+    },
+    "validation/v318-hero-three-plane02/ntsc-fault-v0318/vdp_regs_03396.bin": {
+      "stored": "objects/2e0bf3bb31fd67a36ef01942b9b301b266bb5ca5626a9543b9f392c5e2a79bd2.gz",
+      "raw_sha256": "2e0bf3bb31fd67a36ef01942b9b301b266bb5ca5626a9543b9f392c5e2a79bd2",
+      "raw_bytes": 32,
+      "stored_sha256": "dd1311cfad6037cb58595ed148f75b685f1009dd2e7d87c0b2ed716e2c0bbfdb"
+    },
+    "validation/v318-hero-three-plane02/ntsc-fault-v0318/vdp_regs_03397.bin": {
+      "stored": "objects/2e0bf3bb31fd67a36ef01942b9b301b266bb5ca5626a9543b9f392c5e2a79bd2.gz",
+      "raw_sha256": "2e0bf3bb31fd67a36ef01942b9b301b266bb5ca5626a9543b9f392c5e2a79bd2",
+      "raw_bytes": 32,
+      "stored_sha256": "dd1311cfad6037cb58595ed148f75b685f1009dd2e7d87c0b2ed716e2c0bbfdb"
+    },
+    "validation/v318-hero-three-plane02/ntsc-fault-v0318/vdp_regs_03404.bin": {
+      "stored": "objects/2e0bf3bb31fd67a36ef01942b9b301b266bb5ca5626a9543b9f392c5e2a79bd2.gz",
+      "raw_sha256": "2e0bf3bb31fd67a36ef01942b9b301b266bb5ca5626a9543b9f392c5e2a79bd2",
+      "raw_bytes": 32,
+      "stored_sha256": "dd1311cfad6037cb58595ed148f75b685f1009dd2e7d87c0b2ed716e2c0bbfdb"
+    },
+    "validation/v318-hero-three-plane02/ntsc-fault-v0318/vram_03395.bin": {
+      "stored": "objects/099d816e77fdaf90daf95404cd9fb6e3d5f60eac8c4dafc2400677d50104e866.gz",
+      "raw_sha256": "099d816e77fdaf90daf95404cd9fb6e3d5f60eac8c4dafc2400677d50104e866",
+      "raw_bytes": 65536,
+      "stored_sha256": "8762c64c88c06900d0523af769dbf1e94a55915e57b4db0d3e6144705629110b"
+    },
+    "validation/v318-hero-three-plane02/ntsc-fault-v0318/vram_03396.bin": {
+      "stored": "objects/099d816e77fdaf90daf95404cd9fb6e3d5f60eac8c4dafc2400677d50104e866.gz",
+      "raw_sha256": "099d816e77fdaf90daf95404cd9fb6e3d5f60eac8c4dafc2400677d50104e866",
+      "raw_bytes": 65536,
+      "stored_sha256": "8762c64c88c06900d0523af769dbf1e94a55915e57b4db0d3e6144705629110b"
+    },
+    "validation/v318-hero-three-plane02/ntsc-fault-v0318/vram_03397.bin": {
+      "stored": "objects/14db55b52b498374c09d8e0614ddb5a5f828cfa6891daab094d8a58b53961a2a.gz",
+      "raw_sha256": "14db55b52b498374c09d8e0614ddb5a5f828cfa6891daab094d8a58b53961a2a",
+      "raw_bytes": 65536,
+      "stored_sha256": "136dafbf7ad8a1048b8690347fcb8ccad7b5cdd46607c578ee7c3618d2c7f7e6"
+    },
+    "validation/v318-hero-three-plane02/ntsc-fault-v0318/vram_03404.bin": {
+      "stored": "objects/b2ebf705d6a02c4256d14673f144d3c21ea077f4e0c31087b91e42130645e779.gz",
+      "raw_sha256": "b2ebf705d6a02c4256d14673f144d3c21ea077f4e0c31087b91e42130645e779",
+      "raw_bytes": 65536,
+      "stored_sha256": "55a1b44d64ae4537170981876cecfa2411b36bd4e23d55150e214e861d6d84a7"
+    },
+    "validation/v318-hero-three-plane02/ntsc-profile-report.json": {
+      "stored": "objects/640e6e96708355cedfc472acf0c46ac9a596478ec0fd5f33c78ff8d51670d7f6.gz",
+      "raw_sha256": "640e6e96708355cedfc472acf0c46ac9a596478ec0fd5f33c78ff8d51670d7f6",
+      "raw_bytes": 78151,
+      "stored_sha256": "f7540ee63a410caa62c01a126b56e6a47ea97650056430b328ada812d0ccb66c"
+    },
+    "validation/v318-hero-three-plane02/ntsc_fault.py": {
+      "stored": "objects/9ad93e95990ae8d831e2043f4c30adbb13b41652ba728b71e014297508d6cfea.gz",
+      "raw_sha256": "9ad93e95990ae8d831e2043f4c30adbb13b41652ba728b71e014297508d6cfea",
+      "raw_bytes": 4395,
+      "stored_sha256": "a66b9cc615e4d6cf6958077bec2b6c4cfd4bd29210cb85337bc624a88b67e872"
+    },
+    "validation/v318-hero-three-plane02/ntsc_prefix.py": {
+      "stored": "objects/f028be020d63cbca56de14669c68f819d24b8cb427ff89f0e8f5cc8764562a78.gz",
+      "raw_sha256": "f028be020d63cbca56de14669c68f819d24b8cb427ff89f0e8f5cc8764562a78",
+      "raw_bytes": 4400,
+      "stored_sha256": "6b028f11186cca646b7cd294a41403631429cba5e61575fa11520895d0a26be5"
+    },
+    "validation/v318-hero-three-plane02/physical-sprites.json": {
+      "stored": "objects/ffff4069f95564182c0c3cdce7b6ec60b1a147bdb51c25c483eabcdb2c12fa8b.gz",
+      "raw_sha256": "ffff4069f95564182c0c3cdce7b6ec60b1a147bdb51c25c483eabcdb2c12fa8b",
+      "raw_bytes": 8103,
+      "stored_sha256": "b2a0ffbbd29c3bc7485e13570a05d19af57b794c9c9d4f7a42e35cfbadb5b2cd"
+    },
+    "validation/v318-hero-three-plane02/physical_sprites.py": {
+      "stored": "objects/106221113dbdcaa2d6b10666b25a25704c18f8d02b31fb632a5c3aeeaa310970.gz",
+      "raw_sha256": "106221113dbdcaa2d6b10666b25a25704c18f8d02b31fb632a5c3aeeaa310970",
+      "raw_bytes": 4323,
+      "stored_sha256": "4bd309e8e85bbe27781f1cfe92b1dc88d8a2f9f0a2764be0343b694cff05c0c4"
+    },
+    "validation/v318-hero-three-plane02/report.json": {
+      "stored": "objects/53558adb9d6ffe4e17f85107a56594716b017e999c2592b4556fae0d52138785.gz",
+      "raw_sha256": "53558adb9d6ffe4e17f85107a56594716b017e999c2592b4556fae0d52138785",
+      "raw_bytes": 30058,
+      "stored_sha256": "9f96e40db59db6efbaa650940a8e176e4de1c434b10dfa0cdb0420aa54ea8925"
+    },
+    "validation/v318-hero-three-plane02/source.patch": {
+      "stored": "objects/cf690febedaeacf28842ef439b103c5db10412aa4384505def86b995fe860ee8.gz",
+      "raw_sha256": "cf690febedaeacf28842ef439b103c5db10412aa4384505def86b995fe860ee8",
+      "raw_bytes": 476,
+      "stored_sha256": "070e0b6d71966d9c053ce51dfb1a609bd66ffe8039cd7f7e9e9ac7cd126115ae"
+    },
+    "validation/v318-hero-three-plane02/timing.py": {
+      "stored": "objects/542b9fdfe1a53ef2922d9447f734d514b82748381849e4a9a43f4fda2b97ea84.gz",
+      "raw_sha256": "542b9fdfe1a53ef2922d9447f734d514b82748381849e4a9a43f4fda2b97ea84",
+      "raw_bytes": 7248,
+      "stored_sha256": "897f8972982cf885ade355d46ab570875d2be50d719d3e379f93dabb288912b0"
+    }
+  },
+  "removed_verified_generated": []
+}
