@@ -96,3 +96,5 @@ l’ensemble du jeu.
 - [Passages Terre et mécanismes intérieurs](cold_palace_inner_v0317_report.json)
 - [Second gardien et Golden Axe](cold_palace_guardian_v0317_report.json)
 - [Sauvegarde à neuf cristaux et reprise](game_written_save_v0317_nine_crystals_report.json)
+- [Archive et empreintes des preuves](campaign-palace-v0317/manifest.json)
+- [Nettoyage des captures temporaires](campaign_palace_v0317_cleanup_report.json)

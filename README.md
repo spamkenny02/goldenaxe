@@ -89,7 +89,8 @@ Les essais clos sont archivés et relus avant nettoyage. Toutes les 317 ROMs
 publiées, les sources, symboles et captures restent préservés ; les ROMs de
 travail sont également conservées dans les archives, et le candidat 37 reste
 disponible localement avec son cache de compilation.
-[Nettoyage D9 : 80 Mio libérés](analysis/campaign_d9_v0317_cleanup_report.json)
+[Nettoyage du palais et de la sauvegarde, 101 Mio libérés](analysis/campaign_palace_v0317_cleanup_report.json)
+· [Nettoyage D9, 80 Mio libérés](analysis/campaign_d9_v0317_cleanup_report.json)
 · [Nettoyage précédent D8 : 63 Mio](analysis/campaign_d8_v0317_cleanup_report.json)
 · [Nettoyage précédent D7 : 74 Mio](analysis/campaign_d7_v0317_cleanup_report.json)
 · [Nettoyage précédent D6 : 67 Mio](analysis/campaign_d6_v0317_cleanup_report.json)

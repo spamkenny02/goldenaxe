@@ -1,0 +1,241 @@
+{
+  "passed": true,
+  "version": 317,
+  "md_sha256": "7694654ec85dd6626c0e17ff1834e5893d4eb35481400a4725eac6b6f3503294",
+  "streams": [
+    {
+      "name": "earth",
+      "checkpoints": [
+        {
+          "trace": "natural-dungeon-route/md-v0317-gold-entry01",
+          "frames": 58974,
+          "new_emulated_frames": 58974
+        },
+        {
+          "trace": "natural-service-route/md-v0317-gold50-01",
+          "frames": 59404,
+          "new_emulated_frames": 430
+        },
+        {
+          "trace": "natural-dungeon-route/md-v0317-earth-entry01",
+          "frames": 61144,
+          "new_emulated_frames": 1740
+        },
+        {
+          "trace": "natural-service-route/md-v0317-earth-learn01",
+          "frames": 62156,
+          "new_emulated_frames": 1012
+        }
+      ],
+      "cold_boot_count": 1,
+      "emulated_frames": 62156,
+      "independent_restarts_would_emulate": 241678,
+      "avoided_repeated_prefix_frames": 179522
+    },
+    {
+      "name": "d4",
+      "checkpoints": [
+        {
+          "trace": "natural-dungeon-route/md-v0317-d4-entry01",
+          "frames": 67040,
+          "new_emulated_frames": 67040
+        },
+        {
+          "trace": "natural-dungeon-combat/md-auto-v0317-d4-key01",
+          "frames": 67762,
+          "new_emulated_frames": 722
+        },
+        {
+          "trace": "natural-dungeon-combat/md-auto-v0317-d4-earth01",
+          "frames": 68779,
+          "new_emulated_frames": 1017
+        },
+        {
+          "trace": "natural-dungeon-combat/md-auto-v0317-d4-a1-key01",
+          "frames": 72686,
+          "new_emulated_frames": 3907
+        },
+        {
+          "trace": "natural-dungeon-combat/md-auto-v0317-d4-canoe01",
+          "frames": 74935,
+          "new_emulated_frames": 2249
+        },
+        {
+          "trace": "natural-dungeon-combat/md-auto-v0317-d4-warp01",
+          "frames": 76132,
+          "new_emulated_frames": 1197
+        },
+        {
+          "trace": "natural-dungeon-combat/md-auto-v0317-d4-boss-key01",
+          "frames": 77672,
+          "new_emulated_frames": 1540
+        },
+        {
+          "trace": "natural-dungeon-combat/md-auto-v0317-d4-pre-boss01",
+          "frames": 79215,
+          "new_emulated_frames": 1543
+        },
+        {
+          "trace": "natural-dungeon-combat/md-auto-v0317-d4-release01",
+          "frames": 79216,
+          "new_emulated_frames": 1
+        },
+        {
+          "trace": "natural-dungeon-combat/md-auto-v0317-d4-boss01",
+          "frames": 84686,
+          "new_emulated_frames": 5470
+        },
+        {
+          "trace": "natural-dungeon-combat/md-auto-v0317-d4-exit01",
+          "frames": 87389,
+          "new_emulated_frames": 2703
+        }
+      ],
+      "cold_boot_count": 1,
+      "emulated_frames": 87389,
+      "independent_restarts_would_emulate": 835512,
+      "avoided_repeated_prefix_frames": 748123
+    }
+  ],
+  "total_checkpoints": 15,
+  "total_cold_boots": 2,
+  "total_emulated_frames": 149545,
+  "total_independent_restart_frames": 1077190,
+  "avoided_repeated_prefix_frames": 927645,
+  "whole_ram_and_final_png_exact": true,
+  "primary_state_imports": 0,
+  "feedback_reads": false,
+  "evidence": {
+    "gaw-megadrive.bin": "7694654ec85dd6626c0e17ff1834e5893d4eb35481400a4725eac6b6f3503294",
+    "validation/v0317-earth-cold-stream/completed.json": "a09ff4761ae34d1894b7b177845fd9aa0ba9df572f65d716814281b93657910b",
+    "validation/v0317-earth-cold-stream/checkpoints.json": "321aa9c85c3190b3e17536045e9dc2d853bc844e540ee0314fb33f24fcc03eb5",
+    "validation/natural-dungeon-route/md-v0317-gold-entry01/capture.json": "9c0660252f397a0d3c0273b82024e763c7b575b9e6a0e77aad7a716cc9d51433",
+    "validation/natural-dungeon-route/md-v0317-gold-entry01-assisted-fixed-replay-58974/replay_report.json": "05b7eedc66f26438666b87b7aa82611b0972799716bd1856fd6b0ba133699b70",
+    "validation/natural-dungeon-route/md-v0317-gold-entry01/controls.json": "b68885f231a04b6126ac16dcd1be3dada34d019f64aab05b0f60ef0501dbcffb",
+    "validation/natural-dungeon-route/md-v0317-gold-entry01/assistance.json": "c8f91e9d7b268cfa7bfe2e2a04c346efaf8c0f796c8c23decf7494b79e710610",
+    "validation/natural-dungeon-route/md-v0317-gold-entry01/ram_58974.bin": "7a8ae1cadc7808f816757aed2be4f583740fd543732abd86f5ba57fb9b368b16",
+    "validation/natural-dungeon-route/md-v0317-gold-entry01-assisted-fixed-replay-58974/ram_58974.bin": "7a8ae1cadc7808f816757aed2be4f583740fd543732abd86f5ba57fb9b368b16",
+    "validation/natural-dungeon-route/md-v0317-gold-entry01/frame_58974.png": "ee7d7c0e37c14f5fae2e063ec4d38ef60c35033024e0e0a101023866286b28b7",
+    "validation/natural-dungeon-route/md-v0317-gold-entry01-assisted-fixed-replay-58974/frame_58974.png": "ee7d7c0e37c14f5fae2e063ec4d38ef60c35033024e0e0a101023866286b28b7",
+    "tools/cold_replay_stream.py": "36902952553a0a4cbcab3155f14c2e5413c2333d1f39fc2403b172ca04f79819",
+    "validation/natural-service-route/md-v0317-gold50-01/capture.json": "19a4fb2e28935d1edb0d203dbfd3aa5fa0774b01c274ca1b9674487d2783d066",
+    "validation/natural-service-route/md-v0317-gold50-01-assisted-fixed-replay-59404/replay_report.json": "b8465eb38e34480083d4c3204681b868b8dd4f1f58904f71b77fccce715e8d29",
+    "validation/natural-service-route/md-v0317-gold50-01/controls.json": "ed5ba48e1a477a19c5e58e30d267e6afeead0ae171f20fb505a6af1bec68ab2d",
+    "validation/natural-service-route/md-v0317-gold50-01/assistance.json": "a67eb328cbec558f7ed5ecc7cfbbc5a46c52da76fa61e29299d61e184de4039a",
+    "validation/natural-service-route/md-v0317-gold50-01/ram_59404.bin": "e7b4c03440d7486f7601def38c74ba2b8c50ccafb571428bbdf2d1314c14a352",
+    "validation/natural-service-route/md-v0317-gold50-01-assisted-fixed-replay-59404/ram_59404.bin": "e7b4c03440d7486f7601def38c74ba2b8c50ccafb571428bbdf2d1314c14a352",
+    "validation/natural-service-route/md-v0317-gold50-01/frame_59404.png": "bc77263919cd7967eced520dd60e9728204b527b61eaf06a7ca1a629f60817c4",
+    "validation/natural-service-route/md-v0317-gold50-01-assisted-fixed-replay-59404/frame_59404.png": "bc77263919cd7967eced520dd60e9728204b527b61eaf06a7ca1a629f60817c4",
+    "validation/natural-dungeon-route/md-v0317-earth-entry01/capture.json": "a13e7fb0da4b25fccbcdd33755bf9560ebf92d31b9e3f3e612ed125e0bdc7575",
+    "validation/natural-dungeon-route/md-v0317-earth-entry01-assisted-fixed-replay-61144/replay_report.json": "e06a559c570233fb43605a28a678989fd37e09e19a13fa9abb1829b77f63c9ed",
+    "validation/natural-dungeon-route/md-v0317-earth-entry01/controls.json": "827961dbccfd9a1aaaaf89c2a418b7c011b74a57c5712d33f70b18a56f776ee7",
+    "validation/natural-dungeon-route/md-v0317-earth-entry01/assistance.json": "4213a08374f185b4c7d7cf1375c0a336cfb5e0a7963fb25d7dc0cc6dfa893d0d",
+    "validation/natural-dungeon-route/md-v0317-earth-entry01/ram_61144.bin": "17d63855670a0184869c1b85505c05d907d3b7e885b0699418aa03c0dd590f9a",
+    "validation/natural-dungeon-route/md-v0317-earth-entry01-assisted-fixed-replay-61144/ram_61144.bin": "17d63855670a0184869c1b85505c05d907d3b7e885b0699418aa03c0dd590f9a",
+    "validation/natural-dungeon-route/md-v0317-earth-entry01/frame_61144.png": "b53a11d1ee0ee2a9ef9016462907ccb69925f13e48e9cfef1293cb255e292e63",
+    "validation/natural-dungeon-route/md-v0317-earth-entry01-assisted-fixed-replay-61144/frame_61144.png": "b53a11d1ee0ee2a9ef9016462907ccb69925f13e48e9cfef1293cb255e292e63",
+    "validation/natural-service-route/md-v0317-earth-learn01/capture.json": "5574e50960a27ec1c36e07b95388d831b823c61d4d725a79cd48507a8b3900eb",
+    "validation/natural-service-route/md-v0317-earth-learn01-assisted-fixed-replay-62156/replay_report.json": "6a12b6315b73186cdf81010461c54db3e3279898801dc1b5b6db1b105d06447f",
+    "validation/natural-service-route/md-v0317-earth-learn01/controls.json": "6223801b1318dd8d8897e629434f52deaf1d21efcb480dcd110473fcdee9bc1f",
+    "validation/natural-service-route/md-v0317-earth-learn01/assistance.json": "8ddd741703c1ec90df5d67a76df2b2195941c696e8a4afe62b3d240412052a2c",
+    "validation/natural-service-route/md-v0317-earth-learn01/ram_62156.bin": "daad09ff0bb30270a942651501911242d3cbcb13bacd53d0c7015eff5509f602",
+    "validation/natural-service-route/md-v0317-earth-learn01-assisted-fixed-replay-62156/ram_62156.bin": "daad09ff0bb30270a942651501911242d3cbcb13bacd53d0c7015eff5509f602",
+    "validation/natural-service-route/md-v0317-earth-learn01/frame_62156.png": "5baf056a3d981c9282611c77e7798294607c78b016fbc74cf39370d35312c724",
+    "validation/natural-service-route/md-v0317-earth-learn01-assisted-fixed-replay-62156/frame_62156.png": "5baf056a3d981c9282611c77e7798294607c78b016fbc74cf39370d35312c724",
+    "validation/v0317-d4-cold-stream/completed.json": "468adea2bf41473cb914c4d46bb135419570aa21cb603b82dfc0b7cb98f69a7f",
+    "validation/v0317-d4-cold-stream/checkpoints.json": "3a05ba0f03208e4c3fbfe81f8db0905b4702635b556e9670caa4930276ce9780",
+    "validation/natural-dungeon-route/md-v0317-d4-entry01/capture.json": "a36e61c59dc949398fe9d5f0cd97fbb8255213be49f7cafadceab082120f8e35",
+    "validation/natural-dungeon-route/md-v0317-d4-entry01-assisted-fixed-replay-67040/replay_report.json": "74bf8b5f2304377d0a34b8042e79b3b6a22e198eb828d1790c06b059b6499d48",
+    "validation/natural-dungeon-route/md-v0317-d4-entry01/controls.json": "cf8e5c99839ce05de73fe02fd54543e229e2017f11bd53e6c9ce19c1880a3223",
+    "validation/natural-dungeon-route/md-v0317-d4-entry01/assistance.json": "9962b474793dc7d3211d5b358447d28771d371226ed94dbbcf3b4c4f41633cbc",
+    "validation/natural-dungeon-route/md-v0317-d4-entry01/ram_67040.bin": "f732b0addb6470f966f881696907adfff2e2fe5106f731b8cc88669d940cc9a9",
+    "validation/natural-dungeon-route/md-v0317-d4-entry01-assisted-fixed-replay-67040/ram_67040.bin": "f732b0addb6470f966f881696907adfff2e2fe5106f731b8cc88669d940cc9a9",
+    "validation/natural-dungeon-route/md-v0317-d4-entry01/frame_67040.png": "16b91f3b4645ffa206b68d5883f092869d04231110eec952dabbb8c6e194f0fc",
+    "validation/natural-dungeon-route/md-v0317-d4-entry01-assisted-fixed-replay-67040/frame_67040.png": "16b91f3b4645ffa206b68d5883f092869d04231110eec952dabbb8c6e194f0fc",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-key01/capture.json": "d699ce0723f08936b9107558d77afe104a21f1354de47866193534f3cb2f4f8c",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-key01-assisted-fixed-replay-67762/replay_report.json": "10836dc796d391f6e12fb3055a9cab51052ac9d2d4133fa3de1e3bde25c18ec2",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-key01/controls.json": "eb5b4be6da88e799f28b882a5879ea2e99c03acd6d499fa0ff91af3850feb2a9",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-key01/assistance.json": "06aa1b8356e57fc874a5bda9f9418ade13c0a5bc7440b17a11a8c62f02126aa8",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-key01/ram_67762.bin": "4a47064c3ff79d498852d5d292aaf2c3e43b7706828e872bb9cd904fff74d300",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-key01-assisted-fixed-replay-67762/ram_67762.bin": "4a47064c3ff79d498852d5d292aaf2c3e43b7706828e872bb9cd904fff74d300",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-key01/frame_67762.png": "df69169d70d83b0619ce4581397a1a492adf508ffb44e25d0dfae8df8a8cabae",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-key01-assisted-fixed-replay-67762/frame_67762.png": "df69169d70d83b0619ce4581397a1a492adf508ffb44e25d0dfae8df8a8cabae",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-earth01/capture.json": "f4eab3271e3772eff6e61569bc0313824abeb1c52358e738f5024548dea1eb98",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-earth01-assisted-fixed-replay-68779/replay_report.json": "c23e1b1746a854068660a95271b47e16cf92726860c9c7cbc47d18def657d770",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-earth01/controls.json": "22c81ab203313dcadb4987e3b7d9d7bc136e457a0bbc52b7982148d6924eb8d8",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-earth01/assistance.json": "bb06fbb5abbb35885dacb2c5aaee1daa4864802cf2c5babb94a3c1c0b37ea1a6",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-earth01/ram_68779.bin": "32e6bbd0c7947d90a6f818c082194a54dac12a6764f9145124cff9cf10f4ced2",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-earth01-assisted-fixed-replay-68779/ram_68779.bin": "32e6bbd0c7947d90a6f818c082194a54dac12a6764f9145124cff9cf10f4ced2",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-earth01/frame_68779.png": "020c885be8df157d6470404737f27d03c88cde2c13cf9d0c68f57ab20286120e",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-earth01-assisted-fixed-replay-68779/frame_68779.png": "020c885be8df157d6470404737f27d03c88cde2c13cf9d0c68f57ab20286120e",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-a1-key01/capture.json": "b45dd9d26b0475a758fea00deea68842da2054c41640dfbfe3b22455d4acd37f",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-a1-key01-assisted-fixed-replay-72686/replay_report.json": "c1cd0d2ab4cc99da3951e954739d02e8a97167cb0c34d09735f9d80e29643971",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-a1-key01/controls.json": "0c31af08fb25bf0daf2c4e9eb6ebfcc56eef11a103e9f034320a3249fc991d9b",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-a1-key01/assistance.json": "28665aca55e24e2b79016685f17e48b32750df1a7f8deb64a7ca8eae1aeb75c9",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-a1-key01/ram_72686.bin": "96c7ccd9f336236d2f9eec669bd3f9b23be8cfc6298d70c2c3d3713a2819d158",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-a1-key01-assisted-fixed-replay-72686/ram_72686.bin": "96c7ccd9f336236d2f9eec669bd3f9b23be8cfc6298d70c2c3d3713a2819d158",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-a1-key01/frame_72686.png": "01eb24e16f3bd6ee1a5e4142595cf0cf2a8c4837e16559f52b68a0e2264b51c6",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-a1-key01-assisted-fixed-replay-72686/frame_72686.png": "01eb24e16f3bd6ee1a5e4142595cf0cf2a8c4837e16559f52b68a0e2264b51c6",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-canoe01/capture.json": "68d91e179d29bac2301d86b3b1e3b0e499feb7353f92f7e1915e13d80db5f640",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-canoe01-assisted-fixed-replay-74935/replay_report.json": "15ffe68164cd43978755d2e914ed9c42140c1c17a7a35ff603de98fee3320dcd",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-canoe01/controls.json": "90599dcb166685e47dadfe202a8eb84a70be7e61e44113251f5779a10f93ecaf",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-canoe01/assistance.json": "59e5f89824bf776b3974e9293ab03d76a8b778be60ad0ccf119b5cb2552dc11d",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-canoe01/ram_74935.bin": "ecab5ea4507ca07acea05b62d58e905153835ec9f261f462a15c517bd11226ec",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-canoe01-assisted-fixed-replay-74935/ram_74935.bin": "ecab5ea4507ca07acea05b62d58e905153835ec9f261f462a15c517bd11226ec",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-canoe01/frame_74935.png": "b6242b3f323226644a7031773097b64cfafd9e0e5ba0b13e9c48b67f7d603211",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-canoe01-assisted-fixed-replay-74935/frame_74935.png": "b6242b3f323226644a7031773097b64cfafd9e0e5ba0b13e9c48b67f7d603211",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-warp01/capture.json": "5b146e03ebb16afabd06154c4d04dcf4afa3670609b0b464f25351d2066a4350",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-warp01-assisted-fixed-replay-76132/replay_report.json": "1622d8bac0ae4192062635a779851373e8b4aaa9ac4f885fec348cd4c81c29d4",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-warp01/controls.json": "57841f8333056733e5fe5da856d16a851d3a7283f8594dba1259ce3f780a8722",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-warp01/assistance.json": "3c858bc368cbab60b5018afba8ab9e93f142b2a0c5d8642fc6d9ca58f7093bc2",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-warp01/ram_76132.bin": "a2790a1abc6c115ae3754ebce3b44f409ad1bb9863d8f83b6859b11f04fbf34d",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-warp01-assisted-fixed-replay-76132/ram_76132.bin": "a2790a1abc6c115ae3754ebce3b44f409ad1bb9863d8f83b6859b11f04fbf34d",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-warp01/frame_76132.png": "42598535214a4a5f70f27df334e33456dcacab6e0da20115afdd8f4f99b33dc9",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-warp01-assisted-fixed-replay-76132/frame_76132.png": "42598535214a4a5f70f27df334e33456dcacab6e0da20115afdd8f4f99b33dc9",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-boss-key01/capture.json": "c74fd40c283c613f6a458b750d8c5fd596fed1bb8550c906e5d678abeaf28470",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-boss-key01-assisted-fixed-replay-77672/replay_report.json": "94f00914f2333940b7b9b456401f6b3e638f066650b874ea320b7debbf7e7cb9",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-boss-key01/controls.json": "e16a40304236259959ac75fef93258519ee4c42ec8b3f52a4cbd6b31320be604",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-boss-key01/assistance.json": "b5e003ef721484f7cc08f211f7b55b78c046b26ff1394380769d9de3c926fbd6",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-boss-key01/ram_77672.bin": "24eecd936d50c53d69e602dc60b3bcbf7f3ff97efe32e2b05106d7cd8cffdf7c",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-boss-key01-assisted-fixed-replay-77672/ram_77672.bin": "24eecd936d50c53d69e602dc60b3bcbf7f3ff97efe32e2b05106d7cd8cffdf7c",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-boss-key01/frame_77672.png": "7ed849e7d851572a9b6fcf7745a4e06b8d74d82af427323bd69a63df0b57770a",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-boss-key01-assisted-fixed-replay-77672/frame_77672.png": "7ed849e7d851572a9b6fcf7745a4e06b8d74d82af427323bd69a63df0b57770a",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-pre-boss01/capture.json": "6f9a38baed80ef902683cbea52ecaa99bd38efb65bfd942b4833f566f89f161f",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-pre-boss01-assisted-fixed-replay-79215/replay_report.json": "034d6c1143e35d2e52a61f4ffa705b5f951beede72517ccd75c027e32e621a33",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-pre-boss01/controls.json": "d20a3c4b06e0a04668b8454612a937b98c4fd1d0cc59e9af52a8163eae8882bf",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-pre-boss01/assistance.json": "e42558f27924639c36754e13c9069255e5f79da6a3039dfc4b434f85fe8f7bec",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-pre-boss01/ram_79215.bin": "1854435bda127bb5966973c7e7e2df5d7b16d66913aa223b5648430a517c8d16",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-pre-boss01-assisted-fixed-replay-79215/ram_79215.bin": "1854435bda127bb5966973c7e7e2df5d7b16d66913aa223b5648430a517c8d16",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-pre-boss01/frame_79215.png": "af91483824ed7ac533860f8415b3e099b4961813da3f8f81e6e224fda22bc79c",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-pre-boss01-assisted-fixed-replay-79215/frame_79215.png": "af91483824ed7ac533860f8415b3e099b4961813da3f8f81e6e224fda22bc79c",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-release01/capture.json": "1ed805f96745727804cf84f77d25aac771ad7bb90cbefe36bd3ad8689c8a1165",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-release01-assisted-fixed-replay-79216/replay_report.json": "856fe681b7b942aae54364318d1a00f131e33a3108559082c3f827259fc9af7f",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-release01/controls.json": "4dac588869d7af611e9db1d10347e485ead14e14931ae8a381c3047486429ba0",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-release01/assistance.json": "f48a85a01b41e458359b8e85eef133e3e848bca2b7beb80066dc1eeb4329cbc8",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-release01/ram_79216.bin": "697b1f8712c8164583a4076c30a416dd8588dd7e7a05a8b436c93dbc22514467",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-release01-assisted-fixed-replay-79216/ram_79216.bin": "697b1f8712c8164583a4076c30a416dd8588dd7e7a05a8b436c93dbc22514467",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-release01/frame_79216.png": "1bdbc8bc60b6e52f5fbaa905a8b80dd3ab68ce20d96d17a8a7d79b08418a612f",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-release01-assisted-fixed-replay-79216/frame_79216.png": "1bdbc8bc60b6e52f5fbaa905a8b80dd3ab68ce20d96d17a8a7d79b08418a612f",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-boss01/capture.json": "c67c8c61c7dc32de38323ca841560d783d1842ff99ceda524ca37656fce8cd48",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-boss01-assisted-fixed-replay-84686/replay_report.json": "c2c008d1529a08b76ccbdb6ce202ac0a6ff2bd8df62d5cdb4669cd39f111b1d8",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-boss01/controls.json": "6cd932dfcf4d22c2476ea34bf256fbdfabc9e35221a5a55360c5c53397dc9898",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-boss01/assistance.json": "9966d17a63ce3eaf6ddba3775e387a1ff76eace3902ba256b33123678e842a86",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-boss01/ram_84686.bin": "bc3a1142655bd844bf5aaa1f358ec3431b3012c437d41ccbebb707564c1de4a4",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-boss01-assisted-fixed-replay-84686/ram_84686.bin": "bc3a1142655bd844bf5aaa1f358ec3431b3012c437d41ccbebb707564c1de4a4",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-boss01/frame_84686.png": "b3feb2458fcb8ec96444ff7340ebd54c866252aa24ea6d733bdfcc8f0769ef8e",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-boss01-assisted-fixed-replay-84686/frame_84686.png": "b3feb2458fcb8ec96444ff7340ebd54c866252aa24ea6d733bdfcc8f0769ef8e",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-exit01/capture.json": "5d660ed2776df07ca496a9d3fac4a1b1b4c84382a2f7722a6fde8633d20689fc",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-exit01-assisted-fixed-replay-87389/replay_report.json": "98c72da38be460fff8440db4abe2c6e6b176a6c1b036255f1e31c2291be408d3",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-exit01/controls.json": "3988188cdac71eaf06a0d041a5df44727a790e1c7bb528ea5255e5093eec2ec9",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-exit01/assistance.json": "fc60d61c72935273daae0845462347c9c95928439dd7d4e42a02478ac6d60b15",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-exit01/ram_87389.bin": "7bf56813015b93c8c62277b8b46ece2973efded3dbf6aaa90053b5c8449fd430",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-exit01-assisted-fixed-replay-87389/ram_87389.bin": "7bf56813015b93c8c62277b8b46ece2973efded3dbf6aaa90053b5c8449fd430",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-exit01/frame_87389.png": "c6e355eb13c7a4c58fc5af61820cb244d152cadfec381ef14de9dcfa5eba337b",
+    "validation/natural-dungeon-combat/md-auto-v0317-d4-exit01-assisted-fixed-replay-87389/frame_87389.png": "c6e355eb13c7a4c58fc5af61820cb244d152cadfec381ef14de9dcfa5eba337b"
+  },
+  "driver_sha256": "b6facb3ea260db895f12beaaa278947d90ee79a8bfc26b86a7d658a765b06651",
+  "limits": [
+    "Only the independent fixed-input proof reader is shared across increasing checkpoints. The planning/game runs are separate and still compared against complete RAM and PNG.",
+    "Emulated-frame savings count the proof reader, not all development or wall-clock time. No game timing, guard rules, boss damage or comparison scope is shortened."
+  ]
+}
