@@ -19,7 +19,7 @@ def main():
             def observe(f,r):
                 if f not in [3300,3370,3440,3470]:return
                 def word(k):return int.from_bytes(bytes(r[(sy[k]+i)^1] for i in range(2)),'big')
-                rows[f]=dict(animated_tile=r[0x9e0] if tag=='sms' else r[(sy['scratch']+0x1e0)^1],state=r[0x1d] if tag=='sms' else word('game_state'),room=int.from_bytes(r[0xb9:0xbb],'little') if tag=='sms' else word('room_id'))
+                rows[f]=dict(animated_tile=r[0x9e0] if tag=='sms' else r[(sy['scratch']+0xe0)^1],state=r[0x1d] if tag=='sms' else word('game_state'),room=int.from_bytes(r[0xb9:0xbb],'little') if tag=='sms' else word('room_id'))
             def vram(f,v):
                 if f in rows:patterns[f]=[sms_pixels(v,n) if tag=='sms' else md_pixels(v,16+n) for n in range(124)]
             folder=ROOT/f'validation/inventory-restore-{name}-{region}-{tag}{"-baseline" if baseline else ""}'

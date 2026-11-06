@@ -17,6 +17,20 @@ Checksum Mega Drive : `7676`
 
 ## État du portage
 
+Un correctif des menus est en préparation. Le candidat08 passe 210 essais
+naturels de frappe, 270 images normalisées des menus et les événements sonores
+de sélection/confirmation en PAL/NTSC. Le candidat09 reprend ces changements
+en isolant leur gestion d’interruption. La comparaison complète de l’intro
+trouve encore 21 images NTSC et 9 images PAL différentes de v316 sur 6500 par
+région, avec certains pixels moins fidèles à la SMS. La v316 demeure la ROM
+publiée pendant leur correction.
+[Travail et limites des candidats](analysis/menu_audio_progress_v0316.md)
+· [Mesures et preuves](analysis/menu_audio_progress_v0316_report.json)
+
+Les essais clos ont été archivés et relus : 34245 fichiers générés retirés,
+environ 877 Mio nets libérés. Les 316 ROMs et le candidat09 de travail sont
+conservés. [Nettoyage](analysis/menu_audio_progress_cleanup_v0316_report.json)
+
 La **v0316 restaure la sortie du récit et la révélation du premier écran** :
 fondu vers le noir, 16 contours et apparition du héros contrôlés sur SMS
 et MD en PAL/NTSC, avec deux instants de validation du récit. La musique du

@@ -1,9 +1,10 @@
 param(
     [Parameter(Mandatory = $true)][string]$Project,
-    [string]$Sgdk = "$PSScriptRoot/../../../work/sgdk",
+    [string]$Sgdk = '',
     [string]$Java = 'D:/jdk-25.0.1/bin/java.exe'
 )
 $ErrorActionPreference = 'Stop'
+if (-not $Sgdk) { $Sgdk = Join-Path $PSScriptRoot '../../../work/sgdk' }
 $candidateRoot = (Resolve-Path -LiteralPath $Project).Path
 $validationRoot = (Resolve-Path -LiteralPath "$PSScriptRoot/../validation").Path
 if (-not $candidateRoot.StartsWith($validationRoot + '\', [StringComparison]::OrdinalIgnoreCase)) {

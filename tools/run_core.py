@@ -57,7 +57,7 @@ def compact_fixed_inputs(masks,end):
         previous=current
     return sorted(result)
 
-def run(rom,frames,out,captures,presses,core=None,ram_writes=(),skip_intro=True,ram_observer=None,psg_observer=None,audio_out=None,sram_in=None,sram_out=None,core_options=None,vram_observer=None,input_provider=None,stop_when=None,save_states=False,post_frame_observer=None):
+def run(rom,frames,out,captures,presses,core=None,ram_writes=(),skip_intro=True,ram_observer=None,psg_observer=None,audio_out=None,sram_in=None,sram_out=None,core_options=None,vram_observer=None,input_provider=None,stop_when=None,save_states=False,post_frame_observer=None,video_observer=None):
     # Gameplay regressions explicitly skip the now-ported intro with normal input.
     # Set skip_intro=False to observe the complete boot story without inputs.
     presses=list(presses)
@@ -95,6 +95,8 @@ def run(rom,frames,out,captures,presses,core=None,ram_writes=(),skip_intro=True,
         return False
     @VIDEO
     def video(data,width,height,pitch):
+        if video_observer is not None:
+            video_observer(frame,c.string_at(data,pitch*height) if data else None,width,height,pitch,mode)
         if frame not in captures or not data: return
         raw=c.string_at(data,pitch*height)
         if mode==1:

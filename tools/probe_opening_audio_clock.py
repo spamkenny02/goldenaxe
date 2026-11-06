@@ -17,25 +17,31 @@ def main():
     parser.add_argument('--symbols',type=Path,required=True)
     parser.add_argument('--out',type=Path,required=True)
     parser.add_argument('--pal',action='store_true')
+    parser.add_argument('--menu-ack',type=int,default=920)
+    parser.add_argument('--new-ack',type=int,default=1050)
+    parser.add_argument('--typed-ack',type=int,default=1200)
     args=parser.parse_args()
     out=args.out.resolve();assert out.is_relative_to(ROOT/'validation')
     out.mkdir(exist_ok=False)
     sy=symbols(args.symbols); results={}
+    remap={920:args.menu_ack,1050:args.new_ack,1200:args.typed_ack}
+    inputs=[(remap.get(start,start),end+remap.get(start,start)-start,key)for start,end,key in PRESSES[:8]]
     for tag,rom in [('sms',ROOT/'input/original.sms'),('md',args.rom)]:
         rows=[]
         def observe(frame,raw):
             if frame<0:return
             if tag=='sms':
-                audio=raw[0x1e00:0x1f00];clock=raw[0x2f]
+                audio=raw[0x1e00:0x1f90];clock=raw[0x2f];pending=audio[8]
             else:
-                audio=bytes(raw[(sy['sound_ram']+i)^1]for i in range(256))
+                audio=bytes(raw[(sy['sound_ram']+i)^1]for i in range(400))
+                pending=int.from_bytes(bytes(raw[(sy['sound_effect_request']+i)^1]for i in range(2)),'big')
                 def long(name):return int.from_bytes(bytes(raw[(sy[name]+i)^1]for i in range(4)),'big')
                 clock=(long('vtimer')-long('world_clock_shift'))&255
             rows.append(dict(frame=frame,clock=clock,tempo=list(audio[1:5]),
-                             fade=list(audio[11:14]),channels=audio[64:256].hex()))
+                             fade=list(audio[11:14]),channels=audio[64:256].hex(),effects=audio[256:400].hex(),pending_effect=pending,last_effect=audio[15]))
         folder=out/tag
         with contextlib.redirect_stdout(io.StringIO()):
-            run(rom,2520,folder,set(),[(200,220,0)]+PRESSES[:8],skip_intro=False,
+            run(rom,2520,folder,set(),[(200,220,0)]+inputs,skip_intro=False,
                 ram_observer=observe,core_options={'genesis_plus_gx_region_detect':'pal' if args.pal else 'auto'})
         (folder/'observations.json').write_text(json.dumps(rows,indent=2)+'\n')
         results[tag]=rows
@@ -48,7 +54,7 @@ def main():
                                 source_clock=sms['clock'],native_clock=md['clock']))
             previous=phase
     result=dict(rom_sha256=sha(args.rom.read_bytes()),region='pal' if args.pal else 'ntsc',
-                phase_changes=changes,ram_writes=0,sram_imports=0,
+                phase_changes=changes,ram_writes=0,sram_imports=0,input_acks=remap,
                 driver_sha256=sha(Path(__file__).read_bytes()),
                 scope='Diagnostic observations; no assertion of complete audio equivalence.')
     (out/'report.json').write_text(json.dumps(result,indent=2)+'\n')
