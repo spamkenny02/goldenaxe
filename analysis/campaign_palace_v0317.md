@@ -64,11 +64,20 @@ victoire. Le héros reçoit la Golden Axe en 11D et termine sa récompense à
 357747 avec 88/104 PV. Les cinq points des mécanismes intérieurs et les six
 points du gardien et de la récompense reproduisent la RAM et le PNG final.
 
-Le trajet vers Death Adder est en cours. Le générique, la sauvegarde de
-cette partie et les écarts de fidélité à la SMS restent ouverts.
+## Sauvegarde et Continue
+
+Une branche issue de la sortie du D9 rejoint la maison de sauvegarde
+en FA. Le jeu écrit le premier emplacement avec les neuf cristaux.
+Le rejeu reproduit la SRAM, les 65536 octets de RAM et l'image finale.
+Après démarrage à froid avec cette SRAM, le menu Continuer restaure
+le héros en FA à 60/104 PV et le déplacement est confirmé à l'image 1394.
+
+Le trajet vers Death Adder est en cours. Le générique et les écarts
+de fidélité à la SMS restent ouverts.
 
 - [Ballon et retour au décor](owned_overview_v0317_report.json)
 - [Porte et entrée réelle du palais](cold_palace_entry_v0317_report.json)
 - [Mécanismes et premier gardien](cold_palace_giant_v0317_report.json)
 - [Passages Terre et mécanismes intérieurs](cold_palace_inner_v0317_report.json)
 - [Second gardien et Golden Axe](cold_palace_guardian_v0317_report.json)
+- [Sauvegarde à neuf cristaux et reprise](game_written_save_v0317_nine_crystals_report.json)

@@ -59,6 +59,10 @@ La Golden Axe est reçue en salle 11D à 88/104 PV. Ces 17 points supplémentair
 portent le total à 172. Le combat contre Death Adder et le générique restent
 à vérifier. [Ballon, palais et Golden Axe](analysis/campaign_palace_v0317.md)
 
+La sauvegarde écrite par le jeu après le D9 est reproduite à l'octet près.
+Continuer restaure les neuf cristaux et le contrôle du héros en FA.
+[Sauvegarde à neuf cristaux et reprise](analysis/game_written_save_v0317_nine_crystals_report.json)
+
 Les vingt-et-un nouveaux points D9 utilisent trois lecteurs démarrés à froid et
 partagés entre étapes, sans import d'état primaire : 5030091 répétitions
 d'images de préfixe sont évitées dans ces vérifications, avec les mêmes
