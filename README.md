@@ -36,6 +36,7 @@ et les quatre captures de fin. La sauvegarde v317 à neuf cristaux se recharge.
 · [Gardien intermédiaire du septième donjon en PAL](analysis/pal_d7_midboss_v0318.md)
 · [Mécanisme et bateau du septième donjon en PAL](analysis/pal_d7_ship_v0318.md)
 · [Septième cristal et retour à l’extérieur en PAL](analysis/pal_d7_campaign_v0318.md)
+· [Passage payant, entrée et gardien intermédiaire D8 en PAL](analysis/pal_d8_midboss_v0318.md)
 
 L’aperçu [c0038](versions/candidates/c0038-e7ee40cb/README.md) est conservé
 avec son rejeu divergent. L’ancien aperçu [c0029](versions/candidates/c0029-c3fca1d6/README.md) reste disponible.
