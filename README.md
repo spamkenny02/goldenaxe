@@ -17,14 +17,18 @@ Checksum Mega Drive : `7676`
 
 ## État du portage
 
-Neuf nouvelles ROMs de travail (candidats 10 à 18) ont été compilées pour
-corriger l’horloge du feu, la publication des palettes et le transfert du texte
-de l’intro. Le candidat 18 améliore le rendu de la première scène ; ses états
-audio et registres PSG restent identiques à v316 sur 6500 images par région.
-La comparaison à la SMS trouve encore des pixels moins fidèles plus loin dans
-l’intro : il demeure un candidat, sans nouvelle version publique annoncée.
-[Corrections et limites actuelles](analysis/intro_clock_progress_v0316.md)
-· [Mesures liées aux neuf ROMs](analysis/intro_clock_progress_v0316_report.json)
+Le candidat 26 corrige les chargements, les palettes et les plans graphiques
+des scènes 2/3 de l’intro. Sur 6500 images sans entrée, 6213 images PAL et 6157
+images NTSC correspondent à la SMS, contre 2003/1398 sur v316. Les 9216 octets
+de l’image finale de la troisième scène correspondent à la source ; l’audio
+reste identique à v316 sur ce démarrage.
+
+Des écarts de cadence NTSC et des transitions restent à corriger. Ces mesures
+ne prouvent pas la fidélité du jeu entier : le candidat 26 reste une ROM de
+travail et la version publique demeure v316.
+[Corrections des acteurs et chargements](analysis/intro_actor_loading_v0316.md)
+· [Preuves liées aux ROMs 19..26](analysis/intro_actor_loading_v0316_report.json)
+· [Travail précédent sur le feu](analysis/intro_clock_progress_v0316.md)
 
 Le travail sur les menus reste conservé : le candidat 08 passe 210 essais
 naturels de frappe, 270 images normalisées et les événements de sélection /
@@ -33,9 +37,9 @@ compilations suivantes. [Détail des menus](analysis/menu_audio_progress_v0316.m
 
 Les essais clos sont archivés et relus avant nettoyage. Toutes les 316 ROMs
 publiées, les sources, symboles et captures restent préservés ; les ROMs de
-travail sont également conservées dans les archives, et le candidat 18 reste
+travail sont également conservées dans les archives, et le candidat 26 reste
 disponible localement avec son cache de compilation.
-[Dernier nettoyage vérifié](analysis/intro_clock_progress_cleanup_v0316_report.json)
+[Dernier nettoyage vérifié](analysis/intro_actor_loading_cleanup_v0316_report.json)
 
 La **v0316 restaure la sortie du récit et la révélation du premier écran** :
 fondu vers le noir, 16 contours et apparition du héros contrôlés sur SMS
