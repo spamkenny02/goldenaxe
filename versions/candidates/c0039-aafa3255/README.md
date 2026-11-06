@@ -19,7 +19,9 @@ diverge à l’image 4 418 de référence et l’image de fin diffère. La V31
 la version de référence pour la campagne complète.
 
 Sur 14 000 images sans entrée par région, les écarts vidéo mesurés contre
-la Master System sont identiques à ceux de la V318.
+la Master System sont identiques à ceux de la V318. Les états du lecteur
+audio et les huit registres PSG sont identiques à ceux de la V318 sur les
+6 500 premières images sans entrée en PAL et en NTSC.
 
 ROM de 2 Mio, checksum `0623`. SHA-256
 `aafa32557159a3c18d0cbbaf1b10926aa05d1ef5fda26d534acf94093e913737`.
@@ -29,3 +31,4 @@ Le [patch source](source.patch) s’applique au commit `c6c705be`.
 - [Mesures PAL](pal-door.json) et [NTSC](ntsc-door.json)
 - [Rejeu PAL](pal-replay.json) et [NTSC](ntsc-replay.json)
 - [Démarrage PAL](pal-boot.json) et [NTSC](ntsc-boot.json)
+- [Audio du démarrage](boot-audio.json)
