@@ -37,6 +37,10 @@ analysis/pal_palace_guardian_v0318_report.json.
 La vraie Golden Axe est ensuite obtenue en 11D, checkpoint 355012,
 100/104 PV et 72 PM. Le rejeu indépendant RAM/image passe et l’inventaire
 contient la valeur 2. Voir analysis/pal_palace_golden_axe_v0318_report.json.
+Le parcours atteint ensuite 15C avant Death Adder : checkpoint 381582,
+100/104 PV, 64 PM, Golden Axe et neuf cristaux. Les dix-neuf étapes
+intérieures sont auditées avec rejeu RAM/image exact ; le HUD matériel
+est vérifié à ce point. Voir analysis/pal_palace_pre_final_v0318_report.json.
 
 - validation/pal318-palace01/commands.jsonl
 - validation/pal318-palace01/cold-stream/checkpoints.json

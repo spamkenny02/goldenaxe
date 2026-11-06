@@ -61,6 +61,7 @@ et les quatre captures de fin. La sauvegarde v317 à neuf cristaux se recharge.
 · [Antichambre du gardien de la Golden Axe en PAL](analysis/pal_palace_pre_guardian_v0318_report.json)
 · [Gardien de la Golden Axe vaincu en PAL, rejeu depuis Nouvelle partie](analysis/pal_palace_guardian_v0318_report.json)
 · [Golden Axe récupérée normalement en PAL](analysis/pal_palace_golden_axe_v0318_report.json)
+· [Tous les passages du palais jusqu’à l’antichambre de Death Adder en PAL](analysis/pal_palace_pre_final_v0318_report.json)
 · [Reprise en PAL de la sauvegarde V317 à neuf cristaux](analysis/pal_save_compatibility_v0318_report.json)
 · [Écriture et reprise d’une vraie sauvegarde V318 en PAL](analysis/game_written_save_pal_v0318_nine_crystals_report.json)
 · [Comparaison du générique avec la Master System, en PAL et NTSC](analysis/ending_controlled_v0318.md)
