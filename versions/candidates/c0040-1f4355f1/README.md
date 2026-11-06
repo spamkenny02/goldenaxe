@@ -6,11 +6,17 @@ que sur c0039. Elle arrive à la même image relative que sur Master System,
 noir et les 72 unités d’horloge de jeu conservent les durées mesurées sur c0039.
 [Télécharger c0040](gaw-megadrive-c0040.bin)
 
-Sur la fenêtre de la transition, les 400 octets normalisés du lecteur audio
-correspondent à la SMS sur 53 images sur 69 en PAL et sur zéro image sur 72
-en NTSC. Les registres PSG présentent encore des écarts dans les deux régions.
+Sur les 53 images après la demande du thème, les 400 octets normalisés du
+lecteur audio et les registres PSG qui influent sur le son correspondent
+à la SMS en PAL. En NTSC, le trajet initial laisse le compteur de tempo
+décalé d’une unité et produit sept écarts de période sur le troisième canal
+tonal. Une image d’attente avant le dernier mouvement sur SMS aligne ce
+compteur et les 53 états audio observés. Le comparateur conserve les écarts
+des registres bruts des canaux muets.
+
 Les 6 500 images de démarrage sans entrée reproduisent les états audio et
-les registres PSG de la V318.
+les registres PSG de la V318. Les mesures d’entrée couvrent les états du
+lecteur et du PSG par image. Les formes d’onde restent à comparer.
 
 Les rejeux reprennent les commandes du parcours PAL de la V318, décalées
 de trois images au chargement, et celles du parcours NTSC de c0039. Les
@@ -32,3 +38,4 @@ Le [patch source](source.patch) s’applique à la V318 du commit `3c14c51d`.
 - [Audio de l’entrée](door-audio.json) et [du démarrage](boot-audio.json)
 - [Rejeu PAL](pal-replay.json) et [NTSC](ntsc-replay.json)
 - [Vidéo au démarrage PAL](pal-boot.json) et [NTSC](ntsc-boot.json)
+- [Après le thème en PAL](pal-after-theme.json), [NTSC](ntsc-after-theme.json) et [NTSC avec tempo aligné](ntsc-phase-aligned.json)
