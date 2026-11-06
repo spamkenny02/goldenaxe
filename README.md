@@ -40,6 +40,7 @@ et les quatre captures de fin. La sauvegarde v317 à neuf cristaux se recharge.
 · [Clé du voleur et approche du boss D8 en PAL](analysis/pal_d8_approach_v0318.md)
 · [Huitième cristal et sortie en PAL](analysis/pal_d8_campaign_v0318.md)
 · [Passeur, entrée et premier gardien D9 en PAL](analysis/pal_d9_midboss_v0318.md)
+· [Géant du neuvième donjon en PAL](analysis/pal_d9_giant_v0318.md)
 
 L’aperçu [c0038](versions/candidates/c0038-e7ee40cb/README.md) est conservé
 avec son rejeu divergent. L’ancien aperçu [c0029](versions/candidates/c0029-c3fca1d6/README.md) reste disponible.

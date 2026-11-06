@@ -29,7 +29,15 @@ chaque projectile baisse d’une unité à chacune des sept images suivantes.
 Les deux ROMs Mega Drive sautaient encore une image après le lancement
 observé dans leur rejeu. Les phases des deux combats restent distinctes.
 
+Deux essais supplémentaires restent écartés. Le premier parcourt les
+emplacements de projectiles en une passe et teste leur type plus tôt.
+Il garde le résultat de c0042 en PAL, y compris l’image 80 001 sautée.
+Le second initialise le cache à son premier usage. Il rejoint la V318
+sur la fenêtre NTSC jusqu’à 7 710, puis diverge en PAL dès 79 474 et
+saute encore les deux mises à jour mesurées.
+
 - [Rapports, commandes et captures](c0040-pal-campaign-timing/manifest.json)
 - [Essais sur la ROM Master System](c0040-source-burst-cadence/manifest.json)
 - [Mesure de la publication au VBlank](v0318-burst-video-publish/manifest.json)
 - [Trois salves en jeu sur la Master System PAL](sms-pal-room180-burst-cadence/manifest.json)
+- [Essais après c0042](burst-cadence-trials-after-c0042/manifest.json)
