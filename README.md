@@ -45,6 +45,7 @@ et les quatre captures de fin. La sauvegarde v317 à neuf cristaux se recharge.
 · [Neuf cristaux et retour à l’extérieur en PAL](analysis/pal_d9_exit_v0318.md)
 · [Ballon et entrée du palais en PAL](analysis/pal_palace_entry_v0318.md)
 · [Reprise en PAL de la sauvegarde V317 à neuf cristaux](analysis/pal_save_compatibility_v0318_report.json)
+· [Écriture et reprise d’une vraie sauvegarde V318 en PAL](analysis/game_written_save_pal_v0318_nine_crystals_report.json)
 · [Comparaison du générique avec la Master System, en PAL et NTSC](analysis/ending_controlled_v0318.md)
 · [Défilements et sprites vérifiés à nouveau sur V318](analysis/scroll_recheck_v0318_report.json)
 · [Compilation propre et correspondance de la ROM source](analysis/rebuild_v0318_report.json)
