@@ -41,3 +41,8 @@ Le [patch source](source.patch) s’applique à la V318 du commit `3c14c51d`.
 - [Vidéo au démarrage PAL](pal-boot.json) et [NTSC](ntsc-boot.json)
 - [Après le thème en PAL](pal-after-theme.json), [NTSC](ntsc-after-theme.json) et [NTSC avec tempo aligné](ntsc-phase-aligned.json)
 - [Mesure exploratoire des formes d’onde](door-pcm.json)
+
+Le rejeu PAL étendu des mêmes commandes diverge pendant le combat contre
+le boss 6A à l’image de référence 80 003. La simulation de c0040 avance
+sur une image où la V318 saute une mise à jour.
+[Rapport et captures](../../../analysis/c0040_pal_campaign_timing.md)
