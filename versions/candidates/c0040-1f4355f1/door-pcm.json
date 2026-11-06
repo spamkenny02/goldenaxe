@@ -1,0 +1,39 @@
+{
+  "source_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+  "md_sha256": "1f4355f1e6ba49b2264cd4ba08652a1292062567fe596a6ae0b9910cffd63f31",
+  "sample_window": "Estimated from the emulator frame rate at 44.1 kHz. Relative shifts tested over a two-thousand-sample window.",
+  "scope": "Exploratory emulator PCM comparison after D1 theme request. No amplitude rescaling. Not a console waveform measurement.",
+  "released_temporary_bytes": 54903992,
+  "results": [
+    {
+      "region": "pal",
+      "rate": 44100,
+      "frames": 53,
+      "compared_samples_per_channel": 47026,
+      "sms_pre_door_wait": 0,
+      "peak_correlation_sample_offset": -403,
+      "mean_channel_pearson": 0.7504332700962256,
+      "raw_pcm_rmse": 397.4325099242781,
+      "pcm_exact": false,
+      "excerpt_sha256": {
+        "sms": "66a761005c5b8b8c3b69fe37847e999f8e122bcebd77cc6981832d568adea551",
+        "md": "89fd0b7da64e1d166eb3a8d5160954a755c9c1078074d762540a612c0f11fede"
+      }
+    },
+    {
+      "region": "ntsc",
+      "rate": 44100,
+      "frames": 53,
+      "compared_samples_per_channel": 39005,
+      "sms_pre_door_wait": 1,
+      "peak_correlation_sample_offset": -57,
+      "mean_channel_pearson": 0.8671062311537577,
+      "raw_pcm_rmse": 282.8803345614171,
+      "pcm_exact": false,
+      "excerpt_sha256": {
+        "sms": "aea3d56c8a137e3eba3021cf7d173851186e2b4f004a1d6077ca3bf66016de30",
+        "md": "32822dd1e6fa34c19bb22806455a2e0677247f0c9c3c81c2562fb8404e3cddcd"
+      }
+    }
+  ]
+}

@@ -16,7 +16,8 @@ des registres bruts des canaux muets.
 
 Les 6 500 images de démarrage sans entrée reproduisent les états audio et
 les registres PSG de la V318. Les mesures d’entrée couvrent les états du
-lecteur et du PSG par image. Les formes d’onde restent à comparer.
+lecteur et du PSG par image. Les extraits PCM de l’émulateur diffèrent
+encore après alignement approximatif des échantillons.
 
 Les rejeux reprennent les commandes du parcours PAL de la V318, décalées
 de trois images au chargement, et celles du parcours NTSC de c0039. Les
@@ -39,3 +40,4 @@ Le [patch source](source.patch) s’applique à la V318 du commit `3c14c51d`.
 - [Rejeu PAL](pal-replay.json) et [NTSC](ntsc-replay.json)
 - [Vidéo au démarrage PAL](pal-boot.json) et [NTSC](ntsc-boot.json)
 - [Après le thème en PAL](pal-after-theme.json), [NTSC](ntsc-after-theme.json) et [NTSC avec tempo aligné](ntsc-phase-aligned.json)
+- [Mesure exploratoire des formes d’onde](door-pcm.json)
