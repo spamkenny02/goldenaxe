@@ -22,9 +22,14 @@ phases testées, dont la phase 193 de l’écart, elle produit exactement les
 768 octets d’acteurs obtenus par c0040. Le rejeu d’un combat SMS enregistré
 en NTSC retrouve la RAM et les pixels finaux. Les 480 compteurs de
 projectiles admissibles avancent d’une unité, sur 60 images distinctes.
-La campagne PAL complète de c0040 et l’image sautée par les deux ROMs
-restent à vérifier séparément.
+Le test suivant charge la salle 180 sur la Master System PAL, puis
+laisse le combat se dérouler sans écriture de test. Aux images 3 562,
+3 808 et 4 054, le boss lance ses huit projectiles. Le compteur de
+chaque projectile baisse d’une unité à chacune des sept images suivantes.
+Les deux ROMs Mega Drive sautaient encore une image après le lancement
+observé dans leur rejeu. Les phases des deux combats restent distinctes.
 
 - [Rapports, commandes et captures](c0040-pal-campaign-timing/manifest.json)
 - [Essais sur la ROM Master System](c0040-source-burst-cadence/manifest.json)
 - [Mesure de la publication au VBlank](v0318-burst-video-publish/manifest.json)
+- [Trois salves en jeu sur la Master System PAL](sms-pal-room180-burst-cadence/manifest.json)
