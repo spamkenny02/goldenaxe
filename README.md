@@ -17,19 +17,25 @@ Checksum Mega Drive : `7676`
 
 ## État du portage
 
-Un correctif des menus est en préparation. Le candidat08 passe 210 essais
-naturels de frappe, 270 images normalisées des menus et les événements sonores
-de sélection/confirmation en PAL/NTSC. Le candidat09 reprend ces changements
-en isolant leur gestion d’interruption. La comparaison complète de l’intro
-trouve encore 21 images NTSC et 9 images PAL différentes de v316 sur 6500 par
-région, avec certains pixels moins fidèles à la SMS. La v316 demeure la ROM
-publiée pendant leur correction.
-[Travail et limites des candidats](analysis/menu_audio_progress_v0316.md)
-· [Mesures et preuves](analysis/menu_audio_progress_v0316_report.json)
+Neuf nouvelles ROMs de travail (candidats 10 à 18) ont été compilées pour
+corriger l’horloge du feu, la publication des palettes et le transfert du texte
+de l’intro. Le candidat 18 améliore le rendu de la première scène ; ses états
+audio et registres PSG restent identiques à v316 sur 6500 images par région.
+La comparaison à la SMS trouve encore des pixels moins fidèles plus loin dans
+l’intro : il demeure un candidat, sans nouvelle version publique annoncée.
+[Corrections et limites actuelles](analysis/intro_clock_progress_v0316.md)
+· [Mesures liées aux neuf ROMs](analysis/intro_clock_progress_v0316_report.json)
 
-Les essais clos ont été archivés et relus : 34245 fichiers générés retirés,
-environ 877 Mio nets libérés. Les 316 ROMs et le candidat09 de travail sont
-conservés. [Nettoyage](analysis/menu_audio_progress_cleanup_v0316_report.json)
+Le travail sur les menus reste conservé : le candidat 08 passe 210 essais
+naturels de frappe, 270 images normalisées et les événements de sélection /
+confirmation en PAL/NTSC. Ces preuves ne certifient pas automatiquement les
+compilations suivantes. [Détail des menus](analysis/menu_audio_progress_v0316.md)
+
+Les essais clos sont archivés et relus avant nettoyage. Toutes les 316 ROMs
+publiées, les sources, symboles et captures restent préservés ; les ROMs de
+travail sont également conservées dans les archives, et le candidat 18 reste
+disponible localement avec son cache de compilation.
+[Dernier nettoyage vérifié](analysis/intro_clock_progress_cleanup_v0316_report.json)
 
 La **v0316 restaure la sortie du récit et la révélation du premier écran** :
 fondu vers le noir, 16 contours et apparition du héros contrôlés sur SMS
@@ -894,7 +900,7 @@ Point préparatoire à72/72 PV et32 PM,devant le boss.
 D6 :boss vaincu sans protection,307 prédictions exactes et un coup normal
 de14 PV (72→58). Le cristal restaure80 PV,puis un autre coup de14 PV
 au retour laisse66/80 PV à la sortie,avec72 PM. Les82 prédictions du retour,
-les six marqueurs et les128 mots physiques du HUD concordent.
+les six marqueurs et les 128 mots physiques du HUD concordent.
 [Sixième cristal et retour](analysis/d6_campaign_v0314_report.json)
 La suite depuis D8 reste à valider.
 

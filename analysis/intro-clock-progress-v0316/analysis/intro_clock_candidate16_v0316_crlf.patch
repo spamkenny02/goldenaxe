@@ -1,0 +1,90 @@
+--- a/megadrive/src/intro.inc
++++ b/megadrive/src/intro.inc
+@@ -4,10 +4,23 @@
+ extern const u8 intro_fire_colors[],intro_lightning_colors[];
+ static u16 intro_scene,intro_counter,intro_abort;
+ static bool intro_boot_music;
++static u16 intro_logic_clock;
++static volatile u16 intro_palette_pending;
+ static volatile u16 intro_line,intro_running;
+ static u16 intro_actor_state[16],intro_actor_pose[16];
+ static const u8 *intro_actor_templates;
+ 
++/* Only the fire sequence owns this full-IRQ publication. */
++static void world_vint(void);
++static void intro_fire_vint(void)
++{
++    if(intro_palette_pending)
++    {
++        set_palette(sms_palette);intro_palette_pending=0;
++    }
++    world_vint();
++}
++
+ static const u8 *intro_address(u16 address) { return intro_fixed+address-0x0f95; }
+ static void intro_init_actors(u16 address)
+ {
+@@ -18,7 +31,7 @@
+ 
+ static void intro_tick(void)
+ {
+-    u16 clock=(u8)vtimer,n,count=0;
++    u16 clock=(u8)(intro_scene==1?intro_logic_clock:vtimer),n,count=0;
+     if(intro_scene==1)
+     {
+         if(!(clock&7))
+@@ -58,15 +71,17 @@
+         for(n=0;n<3;n++) sms_palette[1+n]=colors[n];
+         for(n=0;n<4;n++) { sms_palette[4+n]=colors[3];sms_palette[8+n]=colors[4]; }
+     }
+-    set_palette(sms_palette);
++    if(intro_scene!=1) set_palette(sms_palette);
+ }
+ 
+ static void intro_wait(u16 frames)
+ {
+     while(frames-- && !intro_abort)
+     {
++        if(intro_scene==1) intro_palette_pending=1;
+         wait_frame();
+         if(input&(BUTTON_A|BUTTON_B|BUTTON_C|BUTTON_START)) intro_abort=1;
++        intro_logic_clock=(intro_logic_clock+1)&255;
+         intro_tick();
+     }
+ }
+@@ -140,7 +155,7 @@
+ {
+     u16 n,row,column;
+     const u8 *src=intro_bank6+(scene==1?0x1d70:scene==2?0x2655:0x2f1f);
+-    intro_scene=0;VDP_resetSprites();VDP_updateSprites(0,CPU);
++    intro_scene=scene==1?1:0;VDP_resetSprites();VDP_updateSprites(0,CPU);
+     for(n=0x3800;n<0x3b00;n+=2) { sms_vram[n]=0xfa;sms_vram[n+1]=9; }
+     draw_map();intro_wait(1);
+     for(n=0;n<16;n++) sms_palette[n]=n<4?*src++:0;
+@@ -181,7 +196,7 @@
+ static void intro_fade(void)
+ {
+     u16 step,n;bool changed;
+-    intro_scene=0;
++    intro_scene=0;SYS_setVIntCallback(world_vint);
+     for(step=1;step<=16;step*=4)
+     {
+         do
+@@ -238,6 +253,10 @@
+     sms_palette[22]=0x2a;sms_palette[23]=0;sms_palette[31]=2;
+     convert_patterns_range_fast(0,512);VDP_loadTileData(md_patterns,16,512,CPU);
+     set_palette(sms_palette);draw_map();VDP_setEnable(TRUE);
++    /* Source CE0 has C02F=20. This loader combines the two full
++     * waits of each 0EFA call; account for their two logical ticks.
++     * The callback is active before the first picture-map wait. */
++    intro_logic_clock=22;SYS_setVIntCallback(intro_fire_vint);
+     intro_load_scene(1);
+     while(*text && !intro_abort)
+     {
+@@ -257,5 +276,6 @@
+     VDP_resetSprites();VDP_updateSprites(0,CPU);
+     /* A press skips only the intro; release before accepting a title press. */
+     while(input&(BUTTON_A|BUTTON_B|BUTTON_C|BUTTON_START)) wait_frame();
++    SYS_setVIntCallback(world_vint);intro_palette_pending=0;
+     intro_running=0;title_phase=TRUE;title_requested=FALSE;
+ }

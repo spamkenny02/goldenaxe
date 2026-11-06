@@ -70,7 +70,7 @@ def run(rom,frames,out,captures,presses,core=None,ram_writes=(),skip_intro=True,
     dll=c.CDLL(str(Path(core).resolve() if core else ROOT.parents[1]/'work/libretro/genesis_plus_gx_libretro.dll'))
     system_dir=str(ROOT.parents[1]/'work/libretro').encode()
     options={str(k).encode():str(v).encode() for k,v in (core_options or {}).items()}
-    variables={}; mode=0; frame=0; captured={};audio_pcm=bytearray()
+    variables={}; mode=0; frame=0; captured={};audio_pcm=bytearray();video_error=None
     @ENV
     def environment(command,data):
         nonlocal mode
@@ -95,8 +95,11 @@ def run(rom,frames,out,captures,presses,core=None,ram_writes=(),skip_intro=True,
         return False
     @VIDEO
     def video(data,width,height,pitch):
+        nonlocal video_error
         if video_observer is not None:
-            video_observer(frame,c.string_at(data,pitch*height) if data else None,width,height,pitch,mode)
+            try:video_observer(frame,c.string_at(data,pitch*height) if data else None,width,height,pitch,mode)
+            except Exception as error:
+                if video_error is None:video_error=error
         if frame not in captures or not data: return
         raw=c.string_at(data,pitch*height)
         if mode==1:
@@ -154,6 +157,7 @@ def run(rom,frames,out,captures,presses,core=None,ram_writes=(),skip_intro=True,
                 if Path(rom).suffix.lower()!='.sms':host_address^=1
                 c.c_uint8.from_address(ptr+host_address).value=value
         dll.retro_run()
+        if video_error is not None:raise video_error
         if psg_observer is not None:psg_observer(frame,tuple(dll.gaw_psg_regs()[i] for i in range(8)))
         if ram_observer is not None:
             n=dll.retro_get_memory_size(2);ptr=dll.retro_get_memory_data(2)
