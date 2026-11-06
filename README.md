@@ -42,6 +42,7 @@ et les quatre captures de fin. La sauvegarde v317 à neuf cristaux se recharge.
 · [Passeur, entrée et premier gardien D9 en PAL](analysis/pal_d9_midboss_v0318.md)
 · [Géant du neuvième donjon en PAL](analysis/pal_d9_giant_v0318.md)
 · [Ballon récupéré dans le neuvième donjon en PAL](analysis/pal_d9_balloon_v0318_report.json)
+· [Neuf cristaux et retour à l’extérieur en PAL](analysis/pal_d9_exit_v0318.md)
 · [Reprise en PAL de la sauvegarde V317 à neuf cristaux](analysis/pal_save_compatibility_v0318_report.json)
 · [Comparaison du générique avec la Master System, en PAL et NTSC](analysis/ending_controlled_v0318.md)
 
@@ -53,6 +54,8 @@ atteint le premier cristal. L’aperçu [c0040](versions/candidates/c0040-1f4355
 recale aussi la demande musicale et rejoue le donjon dans les deux régions.
 L’aperçu [c0042](versions/candidates/c0042-4d3efb5b/README.md) récupère une
 mise à jour de la salve du boss 6A observée sur Master System en PAL.
+L’aperçu [c0043](versions/candidates/c0043-3554bad2/README.md) recale le
+début du générique dans le test contrôlé.
 
 ## État du portage
 

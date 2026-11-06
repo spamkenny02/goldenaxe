@@ -1,0 +1,21 @@
+diff --git a/megadrive/src/ending.inc b/megadrive/src/ending.inc
+index f2f17e64..d1245ddf 100644
+--- a/megadrive/src/ending.inc
++++ b/megadrive/src/ending.inc
+@@ -94,10 +94,16 @@ static void run_ending(void)
+     for(n=0x3800;n<0x3e00;n+=2) { sms_vram[n]=255;sms_vram[n+1]=8; }
+     map_origin=0x3800;draw_map();
+     load_mono(0x1600,normal_font,256,3,TRUE);convert_patterns_range(176,32);VDP_loadTileData(md_patterns+176*8,192,32,CPU);
++    /* SMS 6FCE spends two more video frames preparing the map and font
++     * before publishing the stationary hero pose. */
++    wait_frame();wait_frame();
+     ending_hero_descriptor=0x84e1;hero_animation=0;ending_sprites_pending=1;
+     wait_frame();update_hero_sprites();ending_sprites_pending=0;
+     ending_stage=7;ending_map_top=65535;ending_virtual_top=0;memset(&ending_credits,0,sizeof(ending_credits));ending_credits.row=0x7e00;ending_credits.vscroll=0;
+     VDP_fillTileMapRect(WINDOW,0,0,0,32,2);VDP_setWindowHPos(FALSE,0);VDP_setWindowVPos(FALSE,2);
++    /* Source 7004 publishes the initialized row state before the
++     * first 7061 row and 7027 scroll tick on the following frame. */
++    wait_frame();
+     { u16 address=ending_credits.row;ending_credit_row(&ending_credits,line);ending_emit_credit_row(line,address); }
+     while(!ending_credits.done)
+     {
