@@ -1,5 +1,5 @@
 """Preserve closed v317 campaign evidence, then remove intermediate RAM/VDP copies."""
-import gzip,json,os,re,subprocess
+import argparse,gzip,json,os,re,subprocess
 from run_core import ROOT
 from archive_lossless_evidence import freeze,sha
 from rebase_natural_campaign import evidence
@@ -12,13 +12,23 @@ def idle():
 
 
 def main():
-    idle();out=ROOT/'analysis/campaign-v0317-progress'
-    target=ROOT/'analysis/campaign_v0317_cleanup_report.json';assert not target.exists()
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--label',default='campaign-v0317-progress')
+    parser.add_argument('--report',default='campaign_v0317_cleanup_report.json')
+    parser.add_argument('--stage',action='append',default=[])
+    args=parser.parse_args()
+    assert re.fullmatch(r'[a-zA-Z0-9_-]+',args.label)
+    assert re.fullmatch(r'[a-zA-Z0-9_-]+\.json',args.report)
+    assert all(re.fullmatch(r'[a-zA-Z0-9_]+',s) for s in args.stage)
+    idle();out=ROOT/'analysis'/args.label
+    target=ROOT/'analysis'/args.report;assert not target.exists()
     roots=[]
     for family in ('natural-dungeon-route','natural-dungeon-combat','natural-service-route'):
         roots.extend(p for p in (ROOT/'validation'/family).iterdir() if p.is_dir() and 'v0317-' in p.name)
     roots.extend(p for p in (ROOT/'validation').iterdir() if p.is_dir() and p.name.startswith('v0317-'))
-    roots.append(ROOT/'validation/campaign-v0317')
+    if args.stage:
+        roots=[p for p in roots if any(re.search(r'v0317-'+re.escape(s)+r'(?:-|$)',p.name) for s in args.stage)]
+    else:roots.append(ROOT/'validation/campaign-v0317')
     assert roots and all(p.resolve().is_relative_to(ROOT/'validation') for p in roots)
     files=[p for folder in roots for p in folder.rglob('*') if p.is_file()]
     files.extend(p for p in (ROOT/'tools').glob('*v0317.py'))
@@ -28,15 +38,21 @@ def main():
     for p in files:
         match=pattern.fullmatch(p.name)
         if not match:continue
-        capture=p.parent/'capture.json';assert capture.exists()
+        capture=p.parent/'capture.json'
+        if not capture.exists():
+            # Shared readers publish endpoint proofs without duplicating the
+            # source capture metadata. Their RAM endpoint must stay protected.
+            capture=p.parent/'replay_report.json'
+        assert capture.exists(),str(p)
         c=json.loads(capture.read_bytes())
+        assert isinstance(c['frames'],int) and c['frames']>0
         name=p.relative_to(ROOT).as_posix()
         if int(match[2])==c['frames']:endpoints[name]=sha(p.read_bytes())
         else:candidates.append(p)
     tracked=set(subprocess.check_output(['git','ls-files','-z'],cwd=ROOT).decode().split('\0'))
     assert all(p.relative_to(ROOT).as_posix() not in tracked for p in candidates)
     rom_hash=sha((ROOT/'gaw-megadrive.bin').read_bytes())
-    manifest=freeze(ROOT,out,files,dict(version=317,md_sha256=rom_hash,
+    manifest=freeze(ROOT,out,files,dict(version=317,md_sha256=rom_hash,selected_stages=args.stage,
         scope='Closed fresh campaign stages and rejected controller diagnostics; all endpoints, PNGs, sources, symbols and numbered ROMs retained.'),roots,cleanup=False)
     idle();removed=[]
     for p in candidates:
