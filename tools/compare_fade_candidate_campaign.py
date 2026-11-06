@@ -1,4 +1,4 @@
-"""Compare the completed v317 campaign against the c0038 fade preview."""
+"""Compare the completed v317 campaign against a title fade candidate."""
 
 import argparse
 import contextlib
@@ -37,7 +37,17 @@ BOSS_KINDS = set(range(0x63, 0x6E)) | set(range(0x78, 0x7D))
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--out', type=Path, required=True)
+    parser.add_argument('--candidate-rom', type=Path)
+    parser.add_argument('--candidate-symbols', type=Path)
+    parser.add_argument('--candidate-sha256')
     args = parser.parse_args()
+    candidate = (args.candidate_rom, args.candidate_symbols, args.candidate_sha256)
+    if any(candidate) and not all(candidate):
+        parser.error('Supply the candidate ROM, symbols and expected SHA-256 together')
+    preview = ROOT/'versions/candidates/c0038-e7ee40cb'
+    if not any(candidate):
+        candidate = (preview/'gaw-megadrive-c0038.bin', preview/'symbol.txt', CANDIDATE)
+    candidate_tag = 'c0038' if candidate[2] == CANDIDATE else 'candidate'
     out = args.out.resolve()
     assert out.is_relative_to(ROOT/'validation')
 
@@ -73,10 +83,9 @@ def main():
     base_hurt = symbols(base_symbols)['hero_hurt']
     assert all(address == base_hurt and value in (b'\0\0', b'\0\x81')
                for _, address, value in writes)
-    preview = ROOT/'versions/candidates/c0038-e7ee40cb'
     builds = (
         ('v0317', ROOT/'versions/v0317-7694654e/gaw-megadrive-v0317.bin', base_symbols, BASE),
-        ('c0038', preview/'gaw-megadrive-c0038.bin', preview/'symbol.txt', CANDIDATE),
+        (candidate_tag, *candidate),
     )
     out.mkdir(parents=True, exist_ok=False)
     hashes = bytearray()
@@ -132,8 +141,9 @@ def main():
     for frame in sorted(checkpoints):
         name = f'frame_{frame:05d}.png'
         original = sha((out/'v0317'/name).read_bytes())
-        candidate = sha((out/'c0038'/name).read_bytes())
-        images[frame] = dict(v0317=original, c0038=candidate, exact=original == candidate)
+        preview_hash = sha((out/candidate_tag/name).read_bytes())
+        images[frame] = {'v0317': original, candidate_tag: preview_hash,
+                         'exact': original == preview_hash}
     (out/'v0317-semantic-hashes.bin').write_bytes(hashes)
     report = dict(passed=not difference_count and all(row['exact'] for row in images.values()),
                   first_compared_frame=FIRST_GAMEPLAY_FRAME, last_compared_frame=end,
