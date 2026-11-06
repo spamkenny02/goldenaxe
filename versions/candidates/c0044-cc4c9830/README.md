@@ -12,8 +12,11 @@ le point de régression de c0042 à 7 697.
 
 Les douze cas de sprites contrôlés, avec classe graphique de donjon
 imposée pour ce test, comparent 108 images de sprites physiques. Leurs
-pixels concordent avec la V318. Le rejeu complet NTSC est en cours.
-La V318 reste la version de référence du parcours PAL.
+pixels concordent avec la V318. Le rejeu NTSC étendu concorde sur les
+37 champs de jeu jusqu’à 44 800, puis diverge à 44 801. Les anciennes
+commandes atteignent ensuite un boss avant leur retrait enregistré de la
+protection d’approche. Ce rejeu est arrêté à 55 789. La V318 reste la
+version de référence.
 
 Checksum Mega Drive CEAF. SHA-256
 cc4c983037441cfb8d81e1233b1326c75ead18c22e3d2b09306ddb64ab0eea18.
@@ -21,3 +24,4 @@ cc4c983037441cfb8d81e1233b1326c75ead18c22e3d2b09306ddb64ab0eea18.
 - [ROM de test c0044](gaw-megadrive-c0044.bin)
 - [Patch source](source.patch)
 - [Rapports et captures](../../../analysis/c0044-dungeon-pattern-ram/manifest.json)
+- [Premier écart NTSC](../../../analysis/c0044-ntsc-divergence/manifest.json)
