@@ -14,10 +14,12 @@ avec le remote https://github.com/spamkenny02/goldenaxe.git.
 Le parcours NTSC V318 atteint la victoire, le générique et le retour à
 l’intro par rejeu de la campagne V317. La campagne PAL V318 possède
 désormais neuf cristaux et a rejoint le palais après utilisation du ballon.
-Le point vérifié avant le premier géant est la salle 16E à l’image 323222.
-La protection d’approche est retirée à 323223 avant la salle 15E. Consulter
-le processus et les fichiers actuels pour savoir si le combat a fini depuis
-cette note. Le pilote validation/pal318-palace01/run.py est suivi du pilote
+Le premier géant du palais est vaincu en salle 15E à l’image 326281.
+Le héros conserve 82/104 PV, 72 PM et ses neuf cristaux. La protection
+d’approche est retirée à 323223. Le premier combat à 323299 conserve
+un délai naturel après dégât de 18. Les 351 fenêtres de prédiction et
+le rejeu RAM/image depuis le démarrage passent. Consulter le processus
+et les fichiers actuels pour connaître les étapes jouées après ce point. Le pilote validation/pal318-palace01/run.py est suivi du pilote
 validation/pal318-palace-inner01/run.py dans une même chaîne de commandes.
 Ne pas relancer ces pilotes sur leurs répertoires existants.
 
