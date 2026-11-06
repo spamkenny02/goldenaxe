@@ -1,5 +1,5 @@
 """Bind shared cold replay results and count the avoided repeated prefixes."""
-import json
+import argparse,json,re
 from pathlib import Path
 from run_core import ROOT
 from archive_lossless_evidence import sha
@@ -7,14 +7,19 @@ from rebase_natural_campaign import evidence
 
 
 def main():
-    target=ROOT/'analysis/campaign_stream_v0317_report.json';assert not target.exists()
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--report',default='campaign_stream_v0317_report.json')
+    parser.add_argument('--stream',action='append')
+    args=parser.parse_args()
+    assert re.fullmatch(r'[a-zA-Z0-9_-]+\.json',args.report)
+    target=ROOT/'analysis'/args.report;assert not target.exists()
     refs={}
     def read(p):
         raw=evidence(p);refs[p.relative_to(ROOT).as_posix()]=sha(raw);return raw
     def load(p):return json.loads(read(p))
     digest=sha(read(ROOT/'gaw-megadrive.bin'));streams=[]
-    for label in ('earth','d4'):
-        folder=ROOT/'validation'/f'v0317-{label}-cold-stream'
+    for label in (args.stream or ['v0317-earth-cold-stream','v0317-d4-cold-stream']):
+        folder=(ROOT/'validation'/label).resolve();assert folder.is_relative_to(ROOT/'validation')
         done=load(folder/'completed.json')
         assert done['passed'] and done['rom_sha256']==digest
         assert done['cold_boot_count']==1 and not done['primary_state_imports']
