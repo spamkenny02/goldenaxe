@@ -18,7 +18,8 @@ Checksum Mega Drive : `7863`
 Nouvel aperçu [c0046](versions/candidates/c0046-9e747d38/README.md) :
 préparation des motifs du héros mesurée 44,79 % moins coûteuse ;
 marche contrôlée conforme SMS et premier cristal/retour vérifiés en PAL et NTSC.
-Le parcours complet de cet aperçu reste à valider.
+La suite NTSC a aussi obtenu la hache, reçu la première amélioration de vie
+et rejoint le deuxième donjon. Le parcours complet de cet aperçu reste à valider.
 
 Nouvel aperçu [c0045](versions/candidates/c0045-415ba9e1/README.md) :
 essai de copie des lignes de sprites, sans mise à jour PAL supplémentaire ;

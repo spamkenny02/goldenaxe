@@ -846,3 +846,13 @@ Source boss 68 à 12 PV, retrait avant combat : 14253 avant 14465 en NTSC,
 Rapports analysis/c0046_d1_auto_report.json et c0046_d1_pal_report.json.
 La V318 demeure référence ; ne pas confondre le premier donjon c0046 avec
 le parcours PAL complet V318 qui continue indépendamment.
+
+La continuation c0046 NTSC récupère la hache, reçoit la première fée de vie
+et entre en D2 à 27553 avec 40/40 PV. Audit et archive :
+analysis/c0046_after_d1_report.json, analysis/c0046-after-d1.
+Les pilotes spécifiques sont des fichiers ordinaires dans les tools du
+laboratoire : continue_after_d1_c0046.py puis continue_d2_c0046.py.
+Le premier a terminé ; le second enregistre ses commandes et ses sources
+dans validation/c0046-d2-sources du projet isolé. Vérifier son processus
+réel avant de reprendre. Les outils partagés par lien physique demeurent
+inchangés ; les sorties ne touchent pas au parcours PAL V318.

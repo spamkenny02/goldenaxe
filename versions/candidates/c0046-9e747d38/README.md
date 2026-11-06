@@ -44,3 +44,10 @@ chronologie identique à celle de la Master System.
 
 - [Premier cristal NTSC, rapport](../../../analysis/c0046_d1_auto_report.json)
 - [Premier cristal PAL, rapport](../../../analysis/c0046_d1_pal_report.json)
+
+La continuation NTSC a aussi récupéré la hache en 1B6, reçu normalement
+la première amélioration de vie auprès de la fée et rejoint le deuxième
+donjon à l’image 27553, avec 40/40 PV. Ces sept étapes passent leurs
+rejeux RAM/image depuis Nouvelle partie.
+
+[Hache, fée et entrée du deuxième donjon](../../../analysis/c0046_after_d1_report.json).
