@@ -4,6 +4,7 @@ Chaque binaire est conserve sans ecrasement. Les controles cibles ne prouvent pa
 
 | Version | ROM | Validation | Changements | SHA-256 |
 | --- | --- | --- | --- | --- |
+| v0316 | [Telecharger](v0316-8b94f2e0/gaw-megadrive-v0316.bin) | targeted_checks_passed | Recit : fondu de sortie restaure ; revelation initiale,16 contours et apparition du heros alignes PAL/NTSC. Trajets frais au premier donjon,reprise et inventaires verifies ; parcours complet encore requis. | `8b94f2e022d1027b5bc3cefd18ffd9f79a8895fba7622defc400c10d6fdfff7b` |
 | v0315 | [Telecharger](v0315-004b593b/gaw-megadrive-v0315.bin) | targeted_checks_passed | Panneau marchand aligne SMS PAL/NTSC ; 43 transactions ; parcours complet rejoue,401609 etats semantiques exacts ; sauvegarde v314 compatible PAL/NTSC. | `004b593b8c9869ebac9e01256eb677edd63a22d987dd6694d3591d57cc8e7c1b` |
 | v0314 | [Telecharger](v0314-c53381c4/gaw-megadrive-v0314.bin) | targeted_checks_passed | V314 : intro PAL/NTSC,96 cas de deplacement,neuf cristaux et premier gardien du palais verifies. Degats et soin comptes ; Hache dor et fin en cours. | `c53381c459a1e6254a8c9f1cfad1b8cda482cc0614697ad566133b28335e07a7` |
 | v0313 | [Telecharger](v0313-48fb6e92/gaw-megadrive-v0313.bin) | targeted_checks_passed | Chargement initial aligne SMS PAL/NTSC. Campagne depuis Nouveau Jeu jusqu'aux neuf cristaux, vraie Hache d'or, Death Adder sans protection, generique complet et retour intro. Sauvegarde/Continuer verifies. Fidelite globale encore ouverte. | `48fb6e924a520ff579d3fb4eabe4aac365e9a37eed3dc33ff0dabfdc232e1932` |

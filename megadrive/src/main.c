@@ -2998,8 +2998,8 @@ static void enter_initial_room(void)
 {
     const u8 *source,*extra=world_extra_meta;
     u16 n,x,y,destination=0x400,count;
-    bool resuming=FALSE;
-    u32 load_clock=0;
+    bool resuming=FALSE,fresh_new_game=!save_resume_pending,initial_sprite_blank=FALSE;
+    u32 load_clock=0,initial_load_started=vtimer;
 reload_world:
     if(resuming) { load_clock=vtimer;resume_phase=2; }
     else { world_clock_shift=0;resume_phase=resume_contour=0; }
@@ -3087,7 +3087,23 @@ reload_world:
     VDP_resetSprites();
     count=add_sms_sprite_frame(0,0x88,0x70,world_hero_frame,0);
     if(count && count<=64) { VDP_setSpriteLink(count-1,0);VDP_updateSprites(count,CPU); }
-    if(!resuming) VDP_setEnable(TRUE);
+    /* Fixed fresh-game template: observed 0B56 -> 0AA4 foreground work.
+     * Saved games use different equipment/rooms and do not take this budget. */
+    if(!resuming && fresh_new_game)
+    {
+        const u32 period=SYS_isPAL()?71364UL:59736UL;
+        const u32 foreground=SYS_isPAL()?2148962UL:2162477UL;
+        const u32 frames=(foreground+period-1)/period;
+        while(vtimer-initial_load_started<frames-1) wait_frame();
+        /* 1CAF queues the fixed room95 theme before the loader IRQ/0AA4. */
+        {
+            u16 track=0x82;
+            for(n=0;n<11;n++) if(world_music_rooms[n]==0x95) track=0x84;
+            sound_music(track);
+        }
+        while(vtimer-initial_load_started<frames) wait_frame();
+    }
+    /* Display remains disabled until reveal_world has installed its mask. */
     hero_y=0x7000;hero_x=0x8800;hero_direction=1;hero_animation=0;
     hero_counter=hero_pending=0;hero_dy=hero_dx=0;
     hero_loaded_pose=8;hero_pattern_tiles=4;hero_gold_drawn=hero_gold;hero_gold_pending=FALSE;hero_magic_drawn=hero_magic;hero_magic_capacity_drawn=hero_max_magic;hero_magic_pending=FALSE;hero_magic_delay=0;hero_patterns_pending=FALSE;hero_attack_phase=0;world_previous_input=input;
@@ -3099,11 +3115,21 @@ reload_world:
         /* Reload setup temporarily uses room 95; it is not a room departure
          * and must not overwrite mask C295 after the dungeon reset. */
         if(save_resume_room>=256) room_id=save_resume_room;
-        load_house_room(save_resume_room,save_resume_room>=256?2:(save_resume_room<16 || (save_resume_room&15)==15)?1:0);hero_health_drawn=65535;prepare_hero_health_bar(TRUE);
+        {
+            bool previous_loading=door_transition_loading;
+            door_transition_loading=TRUE;
+            load_house_room(save_resume_room,save_resume_room>=256?2:(save_resume_room<16 || (save_resume_room&15)==15)?1:0);
+            door_transition_loading=previous_loading;
+        }
+        hero_health_drawn=65535;prepare_hero_health_bar(TRUE);
         if(save_resume_room>=256) hero_direction=1; /* Continue uses 88/70, unlike doorway entry. */
         hero_health_pending=TRUE;inventory_hud_icon();
     }
-    if(resuming) { world_clock_shift+=vtimer-load_clock;hero_state=0;reveal_world(); }
+    if(!resuming && !fresh_new_game) update_world_music();
+    if(resuming) world_clock_shift+=vtimer-load_clock;
+    /* 1FA7/2003 reveals the initial room as well as a death/Continue reload. */
+    hero_state=0;reveal_world();
+    initial_sprite_blank=!resuming && fresh_new_game;
     /* Original IRQ commits the previous iteration's sprite list. Keep that
      * one-frame presentation delay without delaying the simulation state. */
     while(TRUE)
@@ -3116,7 +3142,9 @@ reload_world:
             { u16 black[32]={0};resume_phase=1;fade_world_palette(black,FALSE); }
             resuming=TRUE;goto reload_world;
         }
-        wait_world_video();
+        /* The first New Game IRQ still owns the empty list from the reveal. */
+        if(initial_sprite_blank) { wait_frame();initial_sprite_blank=FALSE; }
+        else wait_world_video();
         if(game_state==12) { if(tick_world_simulation()) continue; }
         else step_room_transition();
         if(transition_pose_prepared) transition_pose_prepared=FALSE;
@@ -3315,7 +3343,11 @@ static void opening_dialogue(void)
     { load_started=vtimer;do { wait_frame(); } while(vtimer==load_started); }
     else wait_frame();
     VDP_setEnable(TRUE);fade_opening_palette(colors,TRUE);
-    show_dialogue_text(opening_text,FALSE);enter_initial_room();
+    show_dialogue_text(opening_text,FALSE);
+    /* 11B7 jumps to 0B48 again after the opening story. */
+    SYS_disableInts();sound_ram[0xb]=12;sound_ram[0xc]=sound_ram[0xd]=4;SYS_enableInts();
+    fade_opening_palette(black,FALSE);VDP_setEnable(FALSE);
+    enter_initial_room();
 }
 
 #include "house_quest.inc"

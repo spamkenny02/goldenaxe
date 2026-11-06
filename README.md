@@ -5,17 +5,43 @@ puis portage de sa logique Z80 en code natif 68000 avec SGDK.
 La fidélité à la Master System passe avant les améliorations.
 
 <!-- ROM-RELEASE:START -->
-**Version courante : v0315 — 2048 Kio.**
+**Version courante : v0316 — 2048 Kio.**
 
-[Télécharger la ROM v0315](versions/v0315-004b593b/gaw-megadrive-v0315.bin) · [Toutes les versions](versions/README.md)
+[Télécharger la ROM v0316](versions/v0316-8b94f2e0/gaw-megadrive-v0316.bin) · [Toutes les versions](versions/README.md)
 
 Contrôles ciblés réussis ; portage complet encore non validé.
 
-SHA-256 : `004b593b8c9869ebac9e01256eb677edd63a22d987dd6694d3591d57cc8e7c1b`
-Checksum Mega Drive : `DFA4`
+SHA-256 : `8b94f2e022d1027b5bc3cefd18ffd9f79a8895fba7622defc400c10d6fdfff7b`
+Checksum Mega Drive : `7676`
 <!-- ROM-RELEASE:END -->
 
 ## État du portage
+
+La **v0316 restaure la sortie du récit et la révélation du premier écran** :
+fondu vers le noir, 16 contours et apparition du héros contrôlés sur SMS
+et MD en PAL/NTSC, avec deux instants de validation du récit. La musique du
+premier écran démarre pendant la révélation. La compilation de production
+est identique au candidat testé.
+
+Les flux audio de l’intro avant le titre restent identiques à v315 sur
+6500 images par région, ainsi que huit captures du titre. Six retours
+d’inventaire et deux reprises de la sauvegarde réelle à neuf cristaux passent.
+Deux nouveaux trajets depuis Nouveau Jeu atteignent le premier donjon,
+avec déplacement contrôlé et sans écriture de RAM ni import de sauvegarde.
+[Correctif initial v316](analysis/initial_world_v0316_report.json)
+· [Trajets frais v316](analysis/initial_world_route_v0316_report.json)
+
+**Le parcours complet sur v316 reste à refaire.** L’ancien enregistrement
+commence à déplacer le héros à l’image 2501, avant que la SMS et v316 soient
+jouables à l’image 2507 en NTSC. Sur la séquence courte rejouée avec ces
+commandes, SMS et v316 ont les mêmes positions et états pendant 894 images.
+Un décalage de phase audio NTSC déjà présent avant le récit, certains rendus
+pendant les écritures de contours et le flux aléatoire restent à traiter.
+Les limites sont détaillées dans [l’audit v316](analysis/completion_audit_v0316.md).
+
+Les essais clos sont archivés et relus avant nettoyage : 21136 fichiers
+générés retirés, environ 478 Mio nets libérés. Les 316 ROMs sont conservées.
+[Nettoyage v316](analysis/initial_world_cleanup_v0316_report.json)
 
 La **v0315 corrige le dernier décalage du panneau marchand** : il apparaît
 à la même image que sur SMS en PAL et NTSC. Les huit étapes du portrait et la durée de la fenêtre noire

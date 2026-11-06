@@ -1,0 +1,631 @@
+{
+  "passed": true,
+  "md_sha256": "8b94f2e022d1027b5bc3cefd18ffd9f79a8895fba7622defc400c10d6fdfff7b",
+  "public_md_sha256": "004b593b8c9869ebac9e01256eb677edd63a22d987dd6694d3591d57cc8e7c1b",
+  "candidate_promoted": true,
+  "changed_native_sources": [
+    "main.c"
+  ],
+  "main_source_sha256": "d8d1358bd9e2347efaf512c05a410c1f47a6177745296dca1f34a90834a44fb8",
+  "natural_cases": [
+    {
+      "region": "pal",
+      "last_ack": 2400,
+      "hero_ready_frame": 2501,
+      "first_hardware_hero_frame": 2502,
+      "contours": [
+        {
+          "frame": 2470,
+          "cells": 4
+        },
+        {
+          "frame": 2472,
+          "cells": 16
+        },
+        {
+          "frame": 2474,
+          "cells": 36
+        },
+        {
+          "frame": 2476,
+          "cells": 48
+        },
+        {
+          "frame": 2478,
+          "cells": 80
+        },
+        {
+          "frame": 2480,
+          "cells": 120
+        },
+        {
+          "frame": 2482,
+          "cells": 168
+        },
+        {
+          "frame": 2484,
+          "cells": 192
+        },
+        {
+          "frame": 2486,
+          "cells": 252
+        },
+        {
+          "frame": 2488,
+          "cells": 320
+        },
+        {
+          "frame": 2490,
+          "cells": 396
+        },
+        {
+          "frame": 2492,
+          "cells": 432
+        },
+        {
+          "frame": 2494,
+          "cells": 520
+        },
+        {
+          "frame": 2496,
+          "cells": 616
+        },
+        {
+          "frame": 2498,
+          "cells": 720
+        },
+        {
+          "frame": 2500,
+          "cells": 768
+        }
+      ],
+      "occupancy_frames_exact": 32,
+      "closing_normalized_frames_exact": 19,
+      "audio_compared_frames": 85,
+      "audio_channel_mismatch_frames": [],
+      "audio_tempo_mismatch_frames": [],
+      "observations_sha256": "ddb6c390d53ff84d97c35c2312a4c46e884908a2bd0884858e29b03ed597a2e2"
+    },
+    {
+      "region": "pal",
+      "last_ack": 2480,
+      "hero_ready_frame": 2581,
+      "first_hardware_hero_frame": 2582,
+      "contours": [
+        {
+          "frame": 2550,
+          "cells": 4
+        },
+        {
+          "frame": 2552,
+          "cells": 16
+        },
+        {
+          "frame": 2554,
+          "cells": 36
+        },
+        {
+          "frame": 2556,
+          "cells": 48
+        },
+        {
+          "frame": 2558,
+          "cells": 80
+        },
+        {
+          "frame": 2560,
+          "cells": 120
+        },
+        {
+          "frame": 2562,
+          "cells": 168
+        },
+        {
+          "frame": 2564,
+          "cells": 192
+        },
+        {
+          "frame": 2566,
+          "cells": 252
+        },
+        {
+          "frame": 2568,
+          "cells": 320
+        },
+        {
+          "frame": 2570,
+          "cells": 396
+        },
+        {
+          "frame": 2572,
+          "cells": 432
+        },
+        {
+          "frame": 2574,
+          "cells": 520
+        },
+        {
+          "frame": 2576,
+          "cells": 616
+        },
+        {
+          "frame": 2578,
+          "cells": 720
+        },
+        {
+          "frame": 2580,
+          "cells": 768
+        }
+      ],
+      "occupancy_frames_exact": 32,
+      "closing_normalized_frames_exact": 19,
+      "audio_compared_frames": 85,
+      "audio_channel_mismatch_frames": [],
+      "audio_tempo_mismatch_frames": [],
+      "observations_sha256": "4563c29995604e62828d7600b2cb67fc98649be85725dea5edd30777f14c3127"
+    },
+    {
+      "region": "ntsc",
+      "last_ack": 2400,
+      "hero_ready_frame": 2507,
+      "first_hardware_hero_frame": 2508,
+      "contours": [
+        {
+          "frame": 2476,
+          "cells": 4
+        },
+        {
+          "frame": 2478,
+          "cells": 16
+        },
+        {
+          "frame": 2480,
+          "cells": 36
+        },
+        {
+          "frame": 2482,
+          "cells": 48
+        },
+        {
+          "frame": 2484,
+          "cells": 80
+        },
+        {
+          "frame": 2486,
+          "cells": 120
+        },
+        {
+          "frame": 2488,
+          "cells": 168
+        },
+        {
+          "frame": 2490,
+          "cells": 192
+        },
+        {
+          "frame": 2492,
+          "cells": 252
+        },
+        {
+          "frame": 2494,
+          "cells": 320
+        },
+        {
+          "frame": 2496,
+          "cells": 396
+        },
+        {
+          "frame": 2498,
+          "cells": 432
+        },
+        {
+          "frame": 2500,
+          "cells": 520
+        },
+        {
+          "frame": 2502,
+          "cells": 616
+        },
+        {
+          "frame": 2504,
+          "cells": 720
+        },
+        {
+          "frame": 2506,
+          "cells": 768
+        }
+      ],
+      "occupancy_frames_exact": 32,
+      "closing_normalized_frames_exact": 19,
+      "audio_compared_frames": 85,
+      "audio_channel_mismatch_frames": [
+        2455,
+        2456,
+        2461,
+        2462,
+        2467,
+        2468,
+        2473,
+        2474,
+        2479,
+        2480,
+        2485,
+        2486,
+        2491,
+        2492,
+        2497,
+        2498,
+        2503,
+        2504,
+        2509,
+        2510,
+        2515,
+        2516,
+        2521,
+        2522,
+        2527,
+        2528,
+        2533,
+        2534,
+        2539
+      ],
+      "audio_tempo_mismatch_frames": [
+        2455,
+        2456,
+        2457,
+        2458,
+        2459,
+        2460,
+        2461,
+        2462,
+        2463,
+        2464,
+        2465,
+        2466,
+        2467,
+        2468,
+        2469,
+        2470,
+        2471,
+        2472,
+        2473,
+        2474,
+        2475,
+        2476,
+        2477,
+        2478,
+        2479,
+        2480,
+        2481,
+        2482,
+        2483,
+        2484,
+        2485,
+        2486,
+        2487,
+        2488,
+        2489,
+        2490,
+        2491,
+        2492,
+        2493,
+        2494,
+        2495,
+        2496,
+        2497,
+        2498,
+        2499,
+        2500,
+        2501,
+        2502,
+        2503,
+        2504,
+        2505,
+        2506,
+        2507,
+        2508,
+        2509,
+        2510,
+        2511,
+        2512,
+        2513,
+        2514,
+        2515,
+        2516,
+        2517,
+        2518,
+        2519,
+        2520,
+        2521,
+        2522,
+        2523,
+        2524,
+        2525,
+        2526,
+        2527,
+        2528,
+        2529,
+        2530,
+        2531,
+        2532,
+        2533,
+        2534,
+        2535,
+        2536,
+        2537,
+        2538,
+        2539
+      ],
+      "observations_sha256": "fff0d16f733738497c6d6669abb1e3126d2eacdb44ed302a196174cdef76a131"
+    },
+    {
+      "region": "ntsc",
+      "last_ack": 2480,
+      "hero_ready_frame": 2587,
+      "first_hardware_hero_frame": 2588,
+      "contours": [
+        {
+          "frame": 2556,
+          "cells": 4
+        },
+        {
+          "frame": 2558,
+          "cells": 16
+        },
+        {
+          "frame": 2560,
+          "cells": 36
+        },
+        {
+          "frame": 2562,
+          "cells": 48
+        },
+        {
+          "frame": 2564,
+          "cells": 80
+        },
+        {
+          "frame": 2566,
+          "cells": 120
+        },
+        {
+          "frame": 2568,
+          "cells": 168
+        },
+        {
+          "frame": 2570,
+          "cells": 192
+        },
+        {
+          "frame": 2572,
+          "cells": 252
+        },
+        {
+          "frame": 2574,
+          "cells": 320
+        },
+        {
+          "frame": 2576,
+          "cells": 396
+        },
+        {
+          "frame": 2578,
+          "cells": 432
+        },
+        {
+          "frame": 2580,
+          "cells": 520
+        },
+        {
+          "frame": 2582,
+          "cells": 616
+        },
+        {
+          "frame": 2584,
+          "cells": 720
+        },
+        {
+          "frame": 2586,
+          "cells": 768
+        }
+      ],
+      "occupancy_frames_exact": 32,
+      "closing_normalized_frames_exact": 19,
+      "audio_compared_frames": 85,
+      "audio_channel_mismatch_frames": [
+        2535,
+        2536,
+        2537,
+        2538,
+        2541,
+        2542,
+        2543,
+        2544,
+        2547,
+        2548,
+        2549,
+        2550,
+        2553,
+        2554,
+        2555,
+        2556,
+        2559,
+        2560,
+        2561,
+        2562,
+        2565,
+        2566,
+        2567,
+        2568,
+        2571,
+        2572,
+        2573,
+        2574,
+        2577,
+        2578,
+        2579,
+        2580,
+        2583,
+        2584,
+        2585,
+        2586,
+        2589,
+        2590,
+        2591,
+        2592,
+        2595,
+        2596,
+        2597,
+        2598,
+        2601,
+        2602,
+        2603,
+        2604,
+        2607,
+        2608,
+        2609,
+        2610,
+        2613,
+        2614,
+        2615,
+        2616,
+        2619
+      ],
+      "audio_tempo_mismatch_frames": [
+        2535,
+        2536,
+        2537,
+        2538,
+        2539,
+        2540,
+        2541,
+        2542,
+        2543,
+        2544,
+        2545,
+        2546,
+        2547,
+        2548,
+        2549,
+        2550,
+        2551,
+        2552,
+        2553,
+        2554,
+        2555,
+        2556,
+        2557,
+        2558,
+        2559,
+        2560,
+        2561,
+        2562,
+        2563,
+        2564,
+        2565,
+        2566,
+        2567,
+        2568,
+        2569,
+        2570,
+        2571,
+        2572,
+        2573,
+        2574,
+        2575,
+        2576,
+        2577,
+        2578,
+        2579,
+        2580,
+        2581,
+        2582,
+        2583,
+        2584,
+        2585,
+        2586,
+        2587,
+        2588,
+        2589,
+        2590,
+        2591,
+        2592,
+        2593,
+        2594,
+        2595,
+        2596,
+        2597,
+        2598,
+        2599,
+        2600,
+        2601,
+        2602,
+        2603,
+        2604,
+        2605,
+        2606,
+        2607,
+        2608,
+        2609,
+        2610,
+        2611,
+        2612,
+        2613,
+        2614,
+        2615,
+        2616,
+        2617,
+        2618,
+        2619
+      ],
+      "observations_sha256": "dbb9854b47123231c783332d4a2000235f0f56a4e42eb91a0579772660ad5aaa"
+    }
+  ],
+  "regressions": [
+    {
+      "region": "pal",
+      "boot_frames": 6500,
+      "boot_audio_streams_exact": 3,
+      "boot_title_pngs_exact": 4,
+      "save_report_sha256": "8625c768d4441b4e408d92a69b86a0dbed81a37c1716012866267cd50a38e230",
+      "save_ready": 1385,
+      "save_movement": 1389
+    },
+    {
+      "region": "ntsc",
+      "boot_frames": 6500,
+      "boot_audio_streams_exact": 3,
+      "boot_title_pngs_exact": 4,
+      "save_report_sha256": "8f6417ad254af1fe2d9a3e6190c78b6dfbcee258b17ca07e5988bc341dae56bf",
+      "save_ready": 1391,
+      "save_movement": 1395
+    }
+  ],
+  "inventory_cases": 6,
+  "inventory_report_sha256": "d6043d247301c27e34f1000d39a5d737e0627b3171deb875816461ce70b6db31",
+  "natural_first_route_source_frames_exact": 894,
+  "natural_route_fields": [
+    "room",
+    "game",
+    "hero",
+    "x",
+    "y"
+  ],
+  "old_campaign_replay_passed": false,
+  "old_campaign_report_sha256": "673e826af7c3c7ab4467e5ebc663b381cf45616ac6c293f6e66de50865a1b9ea",
+  "complete_campaign_on_this_binary": false,
+  "driver_sha256": "3e56cd5798bb6a55e93870f07781d809a23a8537b174986a24d6b2556935315f",
+  "limits": [
+    "Restores omitted 11B7->0B48 story closing and 1FA7/2003 first-room reveal.",
+    "The former campaign input begins at2501 before source/candidate readiness2507 in NTSC; its divergence does not validate or invalidate later bosses. A fresh complete campaign remains required.",
+    "NTSC music tempo already has a two-tick phase difference before the story; the new theme starts during the reveal, but complete audio equality is not claimed.",
+    "Partial raster publication differs during some contour frames. Occupancy, closing images and hero appearance are distinct measured checks.",
+    "Source refresh/RNG stream, global IRQ clock, other scenes and physical hardware are not proved by these checks."
+  ],
+  "version": 316,
+  "production_build_matches_tested_candidate": true,
+  "prior_campaign_version": 315,
+  "prior_campaign_complete": true,
+  "previous_symbols_sha256": "b1aff954d21f141fa84492b58359984836d7a4d49502e154aed97d5e505ee8b0",
+  "integration_driver_sha256": "a946e00eda0a421639be174eb52c3448b25370d515976f2fc4fb11d32de3e387"
+}

@@ -43,9 +43,10 @@ def main():
         state.update(room=word('room_id'), game=word('game_state'), hero=word('hero_state'),
                      counter=word('hero_counter'), x=word('hero_x')>>8, y=word('hero_y')>>8,
                      health=word('hero_health'), hurt=word('hero_hurt'),
+                     loading=bool(data('door_transition_loading',1)[0]),reveal_phase=word('resume_phase'),
                      tilemap=data('sms_vram',16384)[0x3800:0x3e00])
         assert not word('sound_unhandled_command')
-        if ready is None and state['game'] == 12 and state['hero'] == 1 and state['room'] == target:
+        if ready is None and state['game'] == 12 and state['hero'] == 1 and state['room'] == target and not state['loading'] and not state['reveal_phase']:
             for name, offset in fields.items(): assert word(name) == payload[offset], name
             assert data('hero_items',17) == payload[0x30:0x41]
             assert data('game_save_state',592)[0x1f:0x28] == payload[0x1f:0x28]
