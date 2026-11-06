@@ -15,6 +15,10 @@ SHA-256 : `b9e1f0a0543f191e24ffd6d2740a0d717501e0fcd986f8b8953a37a1b3c416a4`
 Checksum Mega Drive : `7863`
 <!-- ROM-RELEASE:END -->
 
+Nouvel aperçu [c0045](versions/candidates/c0045-415ba9e1/README.md) :
+essai de copie des lignes de sprites, sans mise à jour PAL supplémentaire ;
+la V318 reste la version de référence.
+
 La **v318** applique le fondu avant le titre pendant l’interruption vidéo.
 Elle ajoute 34 images identiques à la Master System dans chaque région.
 Le rejeu de la campagne NTSC retrouve les 393 707 états comparés de la v317

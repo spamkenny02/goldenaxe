@@ -1,0 +1,46 @@
+--- a/megadrive/src/main.c
++++ b/megadrive/src/main.c
+@@ -1181,15 +1181,36 @@
+                 if(tile>=job->tile && tile<job->tile+job->count)
+                 { queued=job->source+(tile-job->tile)*8;break; }
+             }
++            /* Dungeon actor patterns remain resident in their converted
++             * RAM atlas. Inventory and rewards use disjoint tile ranges.
++             * Pending pattern jobs above still own their source tiles. */
++            if(!queued && world_video_preparing && game_state==12 &&
++               world_graphics_class==2 && tile>=272 && tile<272+world_actor_tiles)
++                queued=md_patterns+(tile-16)*8;
+             if(!queued) *(volatile u32*)VDP_CTRL_PORT=VDP_READ_VRAM_ADDR((u32)tile*32);
+-            u16 bit=1;
+-            for(row=0;row<8;row++,bit+=bit)
++            /* Select RAM or VDP once for all eight rows. VDP reads must
++             * still consume suppressed rows to preserve its address. */
++            if(queued)
+             {
+-                /* A68000 long read consumes the two mirrored VDP data
+-                 * words in order. Build queued clones at their final RAM
+-                 * address instead of copying another32-byte buffer. */
+-                pixels[row]=queued?queued[row]:*data;
+-                if(!(mask&bit)) pixels[row]=0;
++                pixels[0]=(mask&1)?queued[0]:0;
++                pixels[1]=(mask&2)?queued[1]:0;
++                pixels[2]=(mask&4)?queued[2]:0;
++                pixels[3]=(mask&8)?queued[3]:0;
++                pixels[4]=(mask&16)?queued[4]:0;
++                pixels[5]=(mask&32)?queued[5]:0;
++                pixels[6]=(mask&64)?queued[6]:0;
++                pixels[7]=(mask&128)?queued[7]:0;
++            }
++            else
++            {
++                pixels[0]=*data;if(!(mask&1)) pixels[0]=0;
++                pixels[1]=*data;if(!(mask&2)) pixels[1]=0;
++                pixels[2]=*data;if(!(mask&4)) pixels[2]=0;
++                pixels[3]=*data;if(!(mask&8)) pixels[3]=0;
++                pixels[4]=*data;if(!(mask&16)) pixels[4]=0;
++                pixels[5]=*data;if(!(mask&32)) pixels[5]=0;
++                pixels[6]=*data;if(!(mask&64)) pixels[6]=0;
++                pixels[7]=*data;if(!(mask&128)) pixels[7]=0;
+             }
+         }
+         if(world_video_preparing)
