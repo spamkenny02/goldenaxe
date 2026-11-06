@@ -22,6 +22,7 @@ et les quatre captures de fin. La sauvegarde v317 à neuf cristaux se recharge.
 [Mesures et limites de la v318](analysis/fade_v0318.md)
 · [Mesures des transferts partiels de la troisième scène](analysis/scene3_reveal_experiment_v0318.md)
 · [Essais de transfert des lignes de révélation](analysis/scene_reveal_row_count_v0318.md)
+· [Nettoyage partiel des essais archivés, 6 Mio libérés](analysis/intro_archived_files_cleanup_v0318_report.json)
 · [Premier cristal en PAL et comparaison de l’entrée](analysis/pal_d1_v0318.md)
 · [Hache, fée et deuxième cristal en PAL](analysis/pal_d2_v0318.md)
 · [Huile, corde et troisième cristal en PAL](analysis/pal_d3_v0318.md)
@@ -34,6 +35,7 @@ et les quatre captures de fin. La sauvegarde v317 à neuf cristaux se recharge.
 · [Ravitaillement et préparation du septième donjon en PAL](analysis/pal_d7_prep_v0318.md)
 · [Gardien intermédiaire du septième donjon en PAL](analysis/pal_d7_midboss_v0318.md)
 · [Mécanisme et bateau du septième donjon en PAL](analysis/pal_d7_ship_v0318.md)
+· [Septième cristal et retour à l’extérieur en PAL](analysis/pal_d7_campaign_v0318.md)
 
 L’aperçu [c0038](versions/candidates/c0038-e7ee40cb/README.md) est conservé
 avec son rejeu divergent. L’ancien aperçu [c0029](versions/candidates/c0029-c3fca1d6/README.md) reste disponible.
