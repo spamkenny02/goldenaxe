@@ -1,5 +1,6 @@
 """Read ROM maps and drive an unmodified game toward dungeon entrance1."""
 import argparse,contextlib,io,json,collections
+from pathlib import Path
 from functools import lru_cache
 from run_core import ROOT,run,FrameWrites
 from extract_world import initial_room
@@ -134,7 +135,8 @@ class World:
         return [step for segment in reversed(segments) for step in segment],len(parents)
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--plan',action='store_true');parser.add_argument('--door-entry-direction',type=int,choices=range(4),default=0,help='Final ordinary door entry direction:0 up,1 down,2 left,3 right');parser.add_argument('--live-room-replan',action='store_true',help='Replan a blocked static waypoint from the observed current room map');parser.add_argument('--rope-terrain',action='store_true',help='Propose vertical source-like climbs using the already acquired rope');parser.add_argument('--required-chop',help='ROOM:cell prerequisite to cut before routing to the final house');parser.add_argument('--axe-terrain',action='store_true',help='Plan destructible exterior cells and cut them using an already owned/equipped axe');parser.add_argument('--sms',action='store_true');parser.add_argument('--pal',action='store_true');parser.add_argument('--frames',type=int,default=12000);parser.add_argument('--trial',default='01');parser.add_argument('--door-index',type=int,default=1);parser.add_argument('--retry-deaths',type=int,default=0,help='Use normal Continue after death, at most this many times');parser.add_argument('--house-outside',type=lambda x:int(x,0),help='Route to a source unconditional house door in this exterior room');parser.add_argument('--house-target',type=lambda x:int(x,0),default=0xaf);parser.add_argument('--prefix-replay',help='Validated cold rebase trace, relative to validation/');parser.add_argument('--prefix-service',help='Completed natural NPC service trace');parser.add_argument('--prefix-combat',help='Natural completed combat trace, replayed from cold boot');parser.add_argument('--prefix-rope',help='Verified acquired-rope route in natural-rope-route/');parser.add_argument('--live-prefix-terrain',action='store_true',help='Use the verified current room map until leaving it');parser.add_argument('--prefix-completed-action',action='store_true',help='Explicitly continue a cold-verified assisted ordinary action; decode its exterior position from captured RAM');parser.add_argument('--assisted-prefix',action='store_true',help='Explicitly continue a verified assisted recording');args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('--plan',action='store_true');parser.add_argument('--door-entry-direction',type=int,choices=range(4),default=0,help='Final ordinary door entry direction:0 up,1 down,2 left,3 right');parser.add_argument('--live-room-replan',action='store_true',help='Replan a blocked static waypoint from the observed current room map');parser.add_argument('--rope-terrain',action='store_true',help='Propose vertical source-like climbs using the already acquired rope');parser.add_argument('--required-chop',help='ROOM:cell prerequisite to cut before routing to the final house');parser.add_argument('--axe-terrain',action='store_true',help='Plan destructible exterior cells and cut them using an already owned/equipped axe');parser.add_argument('--sms',action='store_true');parser.add_argument('--pal',action='store_true');parser.add_argument('--frames',type=int,default=12000);parser.add_argument('--trial',default='01');parser.add_argument('--door-index',type=int,default=1);parser.add_argument('--retry-deaths',type=int,default=0,help='Use normal Continue after death, at most this many times');parser.add_argument('--house-outside',type=lambda x:int(x,0),help='Route to a source unconditional house door in this exterior room');parser.add_argument('--house-target',type=lambda x:int(x,0),default=0xaf);parser.add_argument('--prefix-replay',help='Validated cold rebase trace, relative to validation/');parser.add_argument('--prefix-service',help='Completed natural NPC service trace');parser.add_argument('--prefix-combat',help='Natural completed combat trace, replayed from cold boot');parser.add_argument('--prefix-rope',help='Verified acquired-rope route in natural-rope-route/');parser.add_argument('--live-prefix-terrain',action='store_true',help='Use the verified current room map until leaving it');parser.add_argument('--prefix-completed-action',action='store_true',help='Explicitly continue a cold-verified assisted ordinary action; decode its exterior position from captured RAM');parser.add_argument('--assisted-prefix',action='store_true',help='Explicitly continue a verified assisted recording');parser.add_argument('--rom',type=Path);parser.add_argument('--symbols',type=Path);parser.add_argument('--out',type=Path);args=parser.parse_args()
+    md_rom=args.rom or ROOT/'gaw-megadrive.bin';md_symbols=args.symbols or ROOT/'megadrive/out/release/symbol.txt'
     assert not args.live_room_replan or args.axe_terrain, 'Live replanning requires the existing tilemap observer'
     world=World(args.door_index,args.house_outside,args.house_target);world.axe_terrain=args.axe_terrain;world.rope_terrain=args.rope_terrain;start=(0x95,136,112);prefix_end=0;prefix_inputs=[];prefix_presses=[];inherited_writes=[];prefix_ram=None;live_initial_room=None
     assert sum(bool(v) for v in [args.prefix_combat,args.prefix_service,args.prefix_replay,args.prefix_rope])<=1
@@ -158,9 +160,9 @@ def main():
         else:assert prior['failure'] is None and (prior['passed'] if args.prefix_service else prior['room_cleared'])
         assert capture['sram_input'] is None
         inherited_writes=prefix_writes(prefix,capture,args.assisted_prefix)
-        assert capture['rom_sha256']==sha((ROOT/('input/original.sms' if args.sms else 'gaw-megadrive.bin')).read_bytes())
+        assert capture['rom_sha256']==sha(((ROOT/'input/original.sms' if args.sms else md_rom)).read_bytes())
         if args.prefix_completed_action:
-            action_raw=evidence(prefix/f"ram_{capture['frames']:05d}.bin");action_sy=symbols(ROOT/'megadrive/out/release/symbol.txt')
+            action_raw=evidence(prefix/f"ram_{capture['frames']:05d}.bin");action_sy=symbols(md_symbols)
             action_word=lambda n:int.from_bytes(bytes(action_raw[(action_sy[n]+i)^1] for i in range(2)),'big')
             assert action_word('game_state')==12 and action_word('hero_health')>0 and action_word('world_graphics_class')==0
             start=(action_word('room_id'),action_word('hero_x')>>8,action_word('hero_y')>>8)
@@ -174,35 +176,35 @@ def main():
             prefix_presses.extend((row['frame'],end,b) for b in row['buttons'])
     if has_prefix:
         raw=evidence(prefix/f"ram_{prefix_end:05d}.bin");prefix_ram=raw
-        address=0xec if args.sms else symbols(ROOT/'megadrive/out/release/symbol.txt')['hero_items']+12
+        address=0xec if args.sms else symbols(md_symbols)['hero_items']+12
         world.canoe_owned=bool(raw[address if args.sms else address^1])
-        address=0xf0 if args.sms else symbols(ROOT/'megadrive/out/release/symbol.txt')['hero_items']+16
+        address=0xf0 if args.sms else symbols(md_symbols)['hero_items']+16
         world.ship_owned=bool(raw[address if args.sms else address^1])
-        address=0xee if args.sms else symbols(ROOT/'megadrive/out/release/symbol.txt')['hero_items']+14
+        address=0xee if args.sms else symbols(md_symbols)['hero_items']+14
         world.boots_owned=bool(raw[address if args.sms else address^1])
-        bridge_flag = 0x149 if args.sms else symbols(ROOT/'megadrive/out/release/symbol.txt')['game_save_state'] + 0x99
+        bridge_flag = 0x149 if args.sms else symbols(md_symbols)['game_save_state'] + 0x99
         world.crystal_bridge_open = bool(raw[bridge_flag if args.sms else bridge_flag ^ 1] & 1)
     if args.rope_terrain:
         assert has_prefix,'An acquired-rope prefix is required'
         raw=evidence(prefix/f"ram_{prefix_end:05d}.bin")
-        address=0xed if args.sms else symbols(ROOT/'megadrive/out/release/symbol.txt')['hero_items']+13
+        address=0xed if args.sms else symbols(md_symbols)['hero_items']+13
         assert raw[address if args.sms else address^1], 'The rope must be acquired in the real prefix'
     if args.axe_terrain and has_prefix:
         raw=evidence(prefix/f"ram_{prefix_end:05d}.bin")
         if args.sms:flags=raw[0x100:0x200]
         else:
-            address=symbols(ROOT/'megadrive/out/release/symbol.txt')['game_save_state']+0x50;flags=bytes(raw[(address+i)^1] for i in range(256))
+            address=symbols(md_symbols)['game_save_state']+0x50;flags=bytes(raw[(address+i)^1] for i in range(256))
         world.remote_unlocked.update(room for room,flag in enumerate(flags) if flag&1)
     if args.live_prefix_terrain:
         prefix_ram=evidence(prefix/f"ram_{prefix_end:05d}.bin")
         if args.sms:live_map=prefix_ram[0x1600:0x1c00]
         else:
-            address=symbols(ROOT/'megadrive/out/release/symbol.txt')['sms_vram']+0x3800
+            address=symbols(md_symbols)['sms_vram']+0x3800
             live_map=bytes(prefix_ram[(address+i)^1] for i in range(1536))
         if args.axe_terrain:
             if args.sms:cells=prefix_ram[0x1c00:0x1ca0];meta=prefix_ram[0x900:0x1100]
             else:
-                address=symbols(ROOT/'megadrive/out/release/symbol.txt')['scratch'];meta=bytes(prefix_ram[(address+i)^1] for i in range(2048));cells=bytes(prefix_ram[(address+0x800+i)^1] for i in range(160))
+                address=symbols(md_symbols)['scratch'];meta=bytes(prefix_ram[(address+i)^1] for i in range(2048));cells=bytes(prefix_ram[(address+0x800+i)^1] for i in range(160))
             live_map=world.render_cells(start[0],cells,meta)
         assert len(live_map)==1536
         live_initial_room=world.live_room=start[0];world.live_map=live_map
@@ -217,9 +219,11 @@ def main():
     path,visited=world.route(start);assert path is not None,('No base-map walking route',visited)
     rooms=list(dict.fromkeys([a[0] for a,d,b in path]+[path[-1][2][0]]))
     result=dict(ship_acquired_in_prefix=world.ship_owned,canoe_acquired_in_prefix=world.canoe_owned,source_sha256=sha(world.rom),goal=world.goal,waypoints=len(path),visited_nodes=visited,rooms=[f'{r:02x}' for r in rooms],route=path,scope='Static base-ROM walking proposal with original collision/sliding rules. Does not include actors, quest edits, terrain-dependent speed or prove a playable route.')
-    folder=ROOT/'validation/natural-dungeon-route';folder.mkdir(exist_ok=True);(folder/f'plan-door{args.door_index}-{args.trial}.json').write_text(json.dumps(result,indent=2)+'\n');print({k:v for k,v in result.items() if k!='route'})
+    folder=args.out.resolve()if args.out else ROOT/'validation/natural-dungeon-route'
+    if args.out:assert folder.is_relative_to(ROOT/'validation')
+    folder.mkdir(parents=True,exist_ok=True);(folder/f'plan-door{args.door_index}-{args.trial}.json').write_text(json.dumps(result,indent=2)+'\n');print({k:v for k,v in result.items() if k!='route'})
     if args.plan:return
-    tag='sms' if args.sms else 'md';rom=ROOT/'input/original.sms' if args.sms else ROOT/'gaw-megadrive.bin';sy=None if args.sms else symbols(ROOT/'megadrive/out/release/symbol.txt')
+    tag='sms' if args.sms else 'md';rom=ROOT/'input/original.sms' if args.sms else md_rom;sy=None if args.sms else symbols(md_symbols)
     live_cells=b'';live_tilemap=b'';chops=[];last_chop=None
     live_replans=set()
     state={};events=[];samples=[];captures=set();controls=[];cursor=0;cached_frame=-1;cached_buttons=[];last_progress=route_start;reached_at=None;ready_at=None;room_entry_at=None;saw_target_reset=False;probe_before=None;probe_after=None;failure=None

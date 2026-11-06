@@ -1,13 +1,16 @@
 """Natural controller regression for New Game/Continue cursor and confirm sounds."""
-import contextlib, hashlib, io, json, re
+import argparse,contextlib, hashlib, io, json, re
 from pathlib import Path
 from run_core import run
 
 ROOT = Path(__file__).resolve().parents[1]
 
 def main():
+    parser=argparse.ArgumentParser();parser.add_argument('--rom',type=Path,default=ROOT/'gaw-megadrive.bin');parser.add_argument('--symbols',type=Path,default=ROOT/'megadrive/out/release/symbol.txt');parser.add_argument('--out',type=Path);a=parser.parse_args()
+    base=a.out.resolve()if a.out else ROOT/'validation'
+    if a.out:assert base.is_relative_to(ROOT/'validation');base.mkdir(parents=True,exist_ok=False)
     symbols = {m[2].split('.lto_priv.')[0]: int(m[1], 16) & 65535
-               for line in (ROOT/'megadrive/out/release/symbol.txt').read_text().splitlines()
+               for line in a.symbols.read_text().splitlines()
                if (m := re.match(r'([0-9a-fA-F]+)\s+\w\s+(\S+)', line))}
     source = (ROOT/'input/original.sms').read_bytes()
     assert source[0x1559:0x155e] == bytes.fromhex('2108de3695')
@@ -21,13 +24,13 @@ def main():
             if choice == 'continue': presses.append((1500,1504,5))
             presses.append((1600,1604,0))
             results = {}
-            for tag, rom in [('sms',ROOT/'input/original.sms'), ('md',ROOT/'gaw-megadrive.bin')]:
+            for tag, rom in [('sms',ROOT/'input/original.sms'), ('md',a.rom)]:
                 records = {}; psg = {}
                 def observe(frame, ram):
                     if frame < 1000: return
                     records[frame] = (bytes(ram[0x1e00:0x1f90]) if tag == 'sms' else
                                       bytes(ram[(symbols['sound_ram']+i)^1] for i in range(400)))
-                folder = ROOT/f'validation/start-menu-sfx/{choice}-{region}-{tag}'
+                folder = base/f'start-menu-sfx/{choice}-{region}-{tag}'
                 with contextlib.redirect_stdout(io.StringIO()):
                     run(rom,1700,folder,{1090,1550,1680},presses,skip_intro=False,
                         core=ROOT.parents[1]/'work/genesis-plus-gx/genesis_plus_gx_libretro.dll',
@@ -52,12 +55,12 @@ def main():
                 results[tag] = dict(events=events,frames=len(records),audible_effects=True)
             assert results['sms']['events'] == results['md']['events']
             cases.append(dict(region=region,choice=choice,results=results))
-    report = dict(md_sha256=hashlib.sha256((ROOT/'gaw-megadrive.bin').read_bytes()).hexdigest(),
+    report = dict(md_sha256=hashlib.sha256(a.rom.read_bytes()).hexdigest(),
                   source_sha256=hashlib.sha256(source).hexdigest(),cases=cases,
                   natural_controller_input=True,ram_injections=False,
                   same_choice_presses_silent=True,full_game_ported=False,
                   limits=['Checks natural effect dispatch and audible PSG with music in PAL/NTSC.',
                           'Exact effect sequences are covered separately by validate_sfx; waveform equivalence is not claimed.'])
-    (ROOT/'validation/natural_start_menu_sfx_report.json').write_text(json.dumps(report,indent=2)+'\n')
+    (base/'natural_start_menu_sfx_report.json').write_text(json.dumps(report,indent=2)+'\n')
 
 if __name__ == '__main__': main()

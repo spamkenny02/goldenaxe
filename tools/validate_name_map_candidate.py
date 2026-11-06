@@ -7,6 +7,7 @@ from pathlib import Path
 
 from archive_lossless_evidence import sha
 from run_core import ROOT,run
+from rebase_natural_campaign import evidence
 from validate_playable_sprite_limit import symbols
 
 
@@ -15,7 +16,7 @@ def main():
     p.add_argument('--out',type=Path,required=True);a=p.parse_args()
     out=a.out.resolve();assert out.is_relative_to(ROOT/'validation');out.mkdir(parents=True,exist_ok=False)
     sy=symbols(a.symbols);reference=ROOT/'validation/menu-audio-v0316/name-map-model02'
-    source=json.loads((reference/'report.json').read_bytes());assert source['correct_unambiguous_cases']==len(source['cases'])==210
+    source=json.loads(evidence(reference/'report.json'));assert source['correct_unambiguous_cases']==len(source['cases'])==210
     cases=[]
     for case in source['cases']:
         region=case['region'];cursor=case['cursor'];typed=case['typed_frame'];tag=region+'-'+str(cursor)+'-'+str(typed)
@@ -34,7 +35,7 @@ def main():
             ram_observer=observe,core_options={'genesis_plus_gx_region_detect':'pal'if region=='pal'else'auto'})
         mismatches=[];raw_mismatches=[]
         for frame,row in rows.items():
-            expected=(reference/tag/f'ram_{frame:05d}.bin').read_bytes()
+            expected=evidence(reference/tag/f'ram_{frame:05d}.bin')
             audio=expected[0x1e00:0x1f90]
             native=bytearray(row['audio']);assert row['pending_effect']<=255
             raw_indices=[i for i,(s,m)in enumerate(zip(audio,native))if s!=m]

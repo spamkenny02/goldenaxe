@@ -7,6 +7,7 @@ import re
 from pathlib import Path
 from run_core import ROOT,run
 from archive_lossless_evidence import sha
+from rebase_natural_campaign import evidence
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--project',type=Path,required=True);p.add_argument('--out',type=Path,required=True);a=p.parse_args()
@@ -15,6 +16,10 @@ def main():
     for region in ('ntsc','pal'):
         patterns={}
         for tag,rom,project in systems:
+            if not rom.exists():
+                staged=out/'before-candidate22.bin'
+                if not staged.exists():staged.write_bytes(evidence(rom))
+                assert sha(staged.read_bytes())==sha(evidence(rom));rom=staged
             folder=out/(region+'-'+tag)
             with contextlib.redirect_stdout(io.StringIO()):run(rom,4100,folder,{4100},[],skip_intro=False,core_options={'genesis_plus_gx_region_detect':'pal'if region=='pal'else'auto'})
             if project is None:patterns[tag]=(folder/'vram_04100.bin').read_bytes()[:0x2400]

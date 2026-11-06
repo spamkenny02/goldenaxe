@@ -1,14 +1,18 @@
 """Exercise normal inventory open/close in initial exteriors and village houses."""
-import contextlib,hashlib,io,json,re,sys
+import argparse,contextlib,hashlib,io,json,re,sys
+from pathlib import Path
 from actor_reference import ROOT
 from run_core import run
 from validate_actor_tick import PRESSES
 from audit_item_reward_visuals import sms_pixels,md_pixels
 
 def main():
-    baseline='--baseline' in sys.argv
-    md=ROOT/('versions/v0095-f2f9fdc1/gaw-megadrive-v0095.bin' if baseline else 'gaw-megadrive.bin')
-    symbols=ROOT/('analysis/inventory-restore-baseline-v0095/symbol.txt' if baseline else 'megadrive/out/release/symbol.txt')
+    parser=argparse.ArgumentParser();parser.add_argument('--baseline',action='store_true');parser.add_argument('--rom',type=Path);parser.add_argument('--symbols',type=Path);parser.add_argument('--out',type=Path);a=parser.parse_args()
+    baseline=a.baseline
+    base=a.out.resolve()if a.out else ROOT/'validation'
+    if a.out:assert base.is_relative_to(ROOT/'validation');base.mkdir(parents=True,exist_ok=False)
+    md=a.rom or ROOT/('versions/v0095-f2f9fdc1/gaw-megadrive-v0095.bin' if baseline else 'gaw-megadrive.bin')
+    symbols=a.symbols or ROOT/('analysis/inventory-restore-baseline-v0095/symbol.txt' if baseline else 'megadrive/out/release/symbol.txt')
     sy={m[2].split('.lto_priv.')[0]:int(m[1],16)&65535 for l in symbols.read_text().splitlines() if (m:=re.match(r'([0-9a-fA-F]+)\s+\w\s+(\S+)',l))}
     cases=[]
     for region in ['auto','pal']:
@@ -22,7 +26,7 @@ def main():
                 rows[f]=dict(animated_tile=r[0x9e0] if tag=='sms' else r[(sy['scratch']+0xe0)^1],state=r[0x1d] if tag=='sms' else word('game_state'),room=int.from_bytes(r[0xb9:0xbb],'little') if tag=='sms' else word('room_id'))
             def vram(f,v):
                 if f in rows:patterns[f]=[sms_pixels(v,n) if tag=='sms' else md_pixels(v,16+n) for n in range(124)]
-            folder=ROOT/f'validation/inventory-restore-{name}-{region}-{tag}{"-baseline" if baseline else ""}'
+            folder=base/f'inventory-restore-{name}-{region}-{tag}{"-baseline" if baseline else ""}'
             inputs=([(200,220,0)] if tag=='sms' else [])+route+[(3350,3355,0),(3400,3405,0)]
             with contextlib.redirect_stdout(io.StringIO()):run(rom,3470,folder,{3300,3370,3440,3470},inputs,ram_observer=observe,vram_observer=vram,core_options={'genesis_plus_gx_region_detect':region})
             assert rows[3300]['room']==expected_room and rows[3300]['state']==12,(name,tag,rows)
@@ -37,5 +41,5 @@ def main():
         cases.append(dict(name=name,region=region,room=expected_room,graphics_class=kind,normal_controller_route=True,inventory_open_and_closed=True,background_pattern_difference_indices=diffs,static_background_pattern_difference_indices=static_diffs,animated_source_tile=data['sms'][3300]['animated_tile'],early_native_pattern_changes_from_before_menu=early_native_changes,early_native_static_pattern_changes_from_before_menu=early_static_changes,settled_background_tiles_compared=124))
         print(name,region,{f:len(v) for f,v in diffs.items()},flush=True)
     result=dict(md_sha256=hashlib.sha256(md.read_bytes()).hexdigest(),source_sha256=hashlib.sha256((ROOT/'input/original.sms').read_bytes()).hexdigest(),cases=cases,diagnostic_only=baseline,full_game_ported=False,limits=['All static background tiles among the first 124 match source; four animated house tiles are identified by original C9E0 and excluded from static equality. All raw differences remain recorded. Native early restored static tiles match its pre-menu tiles. Complete framebuffer and animated phase are outside this check.','Initial exterior and two village houses reached by normal input; dungeon inventory restoration is not exercised by these routes.'])
-    (ROOT/f'validation/inventory_restore{"_baseline" if baseline else ""}_report.json').write_text(json.dumps(result,indent=2)+'\n')
+    (base/f'inventory_restore{"_baseline" if baseline else ""}_report.json').write_text(json.dumps(result,indent=2)+'\n')
 if __name__=='__main__':main()

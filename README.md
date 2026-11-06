@@ -15,31 +15,36 @@ SHA-256 : `8b94f2e022d1027b5bc3cefd18ffd9f79a8895fba7622defc400c10d6fdfff7b`
 Checksum Mega Drive : `7676`
 <!-- ROM-RELEASE:END -->
 
+**ROM de travail à essayer : [c0029](versions/candidates/c0029-c3fca1d6/gaw-megadrive-c0029.bin).**
+[Correctifs, sources et limites](versions/candidates/c0029-c3fca1d6/README.md).
+La v316 reste disponible ; le portage complet n’est pas encore validé.
+
 ## État du portage
 
-Le candidat 26 corrige les chargements, les palettes et les plans graphiques
-des scènes 2/3 de l’intro. Sur 6500 images sans entrée, 6213 images PAL et 6157
-images NTSC correspondent à la SMS, contre 2003/1398 sur v316. Les 9216 octets
-de l’image finale de la troisième scène correspondent à la source ; l’audio
-reste identique à v316 sur ce démarrage.
+Le candidat 29 corrige les attentes NTSC après les copies de texte, un groupe
+de couleurs manquant dans les éclairs et une couleur de sprites. Il reprend
+les corrections des chargements, palettes et plans graphiques de l’intro,
+ainsi que celles des menus.
 
-Des écarts de cadence NTSC et des transitions restent à corriger. Ces mesures
-ne prouvent pas la fidélité du jeu entier : le candidat 26 reste une ROM de
-travail et la version publique demeure v316.
-[Corrections des acteurs et chargements](analysis/intro_actor_loading_v0316.md)
-· [Preuves liées aux ROMs 19..26](analysis/intro_actor_loading_v0316_report.json)
-· [Travail précédent sur le feu](analysis/intro_clock_progress_v0316.md)
+Sur 6500 images sans entrée, 6381 images PAL et 6355 NTSC correspondent à la SMS.
+Les trois retards NTSC des images 2992, 4162 et 4522 sont déduits du travail Z80
+et audio courant. Les horloges et compteurs des scènes 2/3 correspondent sur
+les images appariées ; certaines révélations et transitions restent à corriger.
+Ces mesures ne donnent aucun pourcentage de fidélité ou de finition du jeu.
 
-Le travail sur les menus reste conservé : le candidat 08 passe 210 essais
-naturels de frappe, 270 images normalisées et les événements de sélection /
-confirmation en PAL/NTSC. Ces preuves ne certifient pas automatiquement les
-compilations suivantes. [Détail des menus](analysis/menu_audio_progress_v0316.md)
+Ce binaire passe 210 saisies du nom, 270 images sélectionnées des menus, les
+bruitages de sélection/confirmation, six retours d’inventaire et deux nouvelles
+parties jusqu’au premier donjon. L’état audio reste identique à v316 sur le
+démarrage testé. Une recompilation sans cache donne exactement la même ROM.
+[Preuves et limites de c0029](analysis/intro_text_irq_preview_c0029_report.json)
+· [Explication du correctif](analysis/intro_text_irq_preview_c0029.md)
+· [Travail précédent](analysis/intro_actor_loading_v0316.md)
 
 Les essais clos sont archivés et relus avant nettoyage. Toutes les 316 ROMs
 publiées, les sources, symboles et captures restent préservés ; les ROMs de
-travail sont également conservées dans les archives, et le candidat 26 reste
+travail sont également conservées dans les archives, et le candidat 29 reste
 disponible localement avec son cache de compilation.
-[Dernier nettoyage vérifié](analysis/intro_actor_loading_cleanup_v0316_report.json)
+[Dernier nettoyage vérifié](analysis/intro_text_irq_preview_c0029_cleanup_report.json)
 
 La **v0316 restaure la sortie du récit et la révélation du premier écran** :
 fondu vers le noir, 16 contours et apparition du héros contrôlés sur SMS

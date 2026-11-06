@@ -2,6 +2,11 @@
 
 Chaque binaire est conserve sans ecrasement. Les controles cibles ne prouvent pas un portage complet.
 
+**ROM de développement : [c0029 — télécharger](candidates/c0029-c3fca1d6/gaw-megadrive-c0029.bin).**
+[Sources, correctifs et limites](candidates/c0029-c3fca1d6/README.md).
+Numérotation des candidats distincte des versions ci-dessous ; les différences
+visuelles restantes et le parcours complet restent à valider.
+
 | Version | ROM | Validation | Changements | SHA-256 |
 | --- | --- | --- | --- | --- |
 | v0316 | [Telecharger](v0316-8b94f2e0/gaw-megadrive-v0316.bin) | targeted_checks_passed | Recit : fondu de sortie restaure ; revelation initiale,16 contours et apparition du heros alignes PAL/NTSC. Trajets frais au premier donjon,reprise et inventaires verifies ; parcours complet encore requis. | `8b94f2e022d1027b5bc3cefd18ffd9f79a8895fba7622defc400c10d6fdfff7b` |
