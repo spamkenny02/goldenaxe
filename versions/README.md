@@ -5,6 +5,8 @@ Chaque binaire est conserve sans ecrasement. Les controles cibles ne prouvent pa
 La v0318 est la version courante. Le [fondu et le rejeu NTSC](../analysis/fade_v0318.md)
 sont vérifiés sur son binaire. Les aperçus [c0029](candidates/c0029-c3fca1d6/README.md)
 et [c0038](candidates/c0038-e7ee40cb/README.md) restent disponibles.
+L’aperçu [c0039](candidates/c0039-aafa3255/README.md) mesure le recalage
+de la première entrée du donjon 1.
 
 | Version | ROM | Validation | Changements | SHA-256 |
 | --- | --- | --- | --- | --- |
