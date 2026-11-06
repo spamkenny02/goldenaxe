@@ -22,6 +22,7 @@ et les quatre captures de fin. La sauvegarde v317 à neuf cristaux se recharge.
 [Mesures et limites de la v318](analysis/fade_v0318.md)
 · [Premier cristal en PAL et comparaison de l’entrée](analysis/pal_d1_v0318.md)
 · [Hache, fée et deuxième cristal en PAL](analysis/pal_d2_v0318.md)
+· [Huile, corde et troisième cristal en PAL](analysis/pal_d3_v0318.md)
 
 L’aperçu [c0038](versions/candidates/c0038-e7ee40cb/README.md) est conservé
 avec son rejeu divergent. L’ancien aperçu [c0029](versions/candidates/c0029-c3fca1d6/README.md) reste disponible.

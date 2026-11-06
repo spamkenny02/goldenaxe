@@ -25,7 +25,9 @@ le boss. La V318 reste la version de référence pour la campagne complète.
 L’horloge de jeu avance de 72 unités entre l’entrée et le retour du contrôle,
 comme sur Master System. La V318 en avance de 73 en NTSC. La demande du
 thème du donjon arrive encore une image plus tard que sur Master System
-dans les deux régions.
+dans les deux régions. Un essai recale cette demande, mais dégrade le démarrage
+NTSC et laisse les registres PSG différents.
+[Comparaison de l’essai audio](../../../analysis/d1_door_music_trial_v0318_report.json)
 
 Sur 14 000 images sans entrée par région, les écarts vidéo mesurés contre
 la Master System sont identiques à ceux de la V318. Les états du lecteur
