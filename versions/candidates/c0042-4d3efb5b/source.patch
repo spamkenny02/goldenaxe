@@ -1,0 +1,26 @@
+diff --git a/megadrive/src/main.c b/megadrive/src/main.c
+index 807533af..7b7073f8 100644
+--- a/megadrive/src/main.c
++++ b/megadrive/src/main.c
+@@ -1129,7 +1129,7 @@ static void mask_world_sms_sprite_rows(u16 count,u8 *used)
+ {
+     static u16 clone_base;
+     u16 n,row,raw,tile,pattern_jobs=world_tile_job_count,first_clone=64,last_clone=0;u8 mask;s16 top,line;
+-    u32 clone[8],cached_key[8];u16 cached_tile[8];u8 cached_valid=0;
++    u32 clone[8],cached_key[8]={0};u16 cached_tile[8];
+     bool blank_loaded=FALSE,clone_started=FALSE;volatile u32 *data=(volatile u32*)VDP_DATA_PORT;
+     /* Flip clone banks only if this pass actually changes a sprite. */
+     memset(used,255,192);VDP_setAutoInc(2);
+@@ -1166,9 +1166,10 @@ static void mask_world_sms_sprite_rows(u16 count,u8 *used)
+              * suppressed rows. Reuse only within this immutable preparation
+              * pass; later frames may upload new source patterns. */
+             u16 cache_slot=(tile^mask)&7;u32 key=((u32)tile<<8)|mask;
+-            if((cached_valid&(1<<cache_slot)) && cached_key[cache_slot]==key)
++            /* A partial mask is nonzero, so zero marks an unused entry. */
++            if(cached_key[cache_slot]==key)
+             { VDP_setSpriteTile(n,cached_tile[cache_slot]);continue; }
+-            cached_valid|=1<<cache_slot;cached_key[cache_slot]=key;cached_tile[cache_slot]=clone_base+n;
++            cached_key[cache_slot]=key;cached_tile[cache_slot]=clone_base+n;
+         }
+         {
+             const u32 *queued=0;u16 j;
