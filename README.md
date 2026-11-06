@@ -42,18 +42,20 @@ donjon passent. Le build de production et le build propre sont identiques.
 · [Rapport lié au binaire](analysis/attract_v0317_report.json)
 · [Sources et artefacts](analysis/attract_v0317_artifacts_report.json)
 
-Le nouveau parcours de ce même binaire valide les **huit premiers cristaux
+Le nouveau parcours de ce même binaire valide les **neuf cristaux
 et les retours extérieurs** : hache, première fée, huile, corde, Terre, canoë,
 Feu, épée longue, bottes, achat de clé, mécanismes, cloche de glace, navire et
-clé du voleur sont obtenus ou utilisés normalement. Les 134 points de contrôle sélectionnés
+clé du voleur et ballon sont obtenus ou utilisés normalement. Les 155 points de contrôle sélectionnés
 reproduisent la RAM complète et le PNG final avec des commandes fixes. La
 protection de test est retirée avant chaque boss ; aucune vie, ressource ou
-progression n'est importée. Le parcours retenu termine le huitième donjon à
-96/96 PV, sans mort. Les essais rejetés antérieurs restent conservés. La suite
-du jeu et sa fidélité globale restent ouvertes.
+progression n'est importée. Les huit premiers donjons terminent sans mort.
+Une mort et un Continue ordinaires ramènent ensuite le héros en région sud,
+avant le soin du jeu et le D9. Le neuvième donjon termine à 74/104 PV, sans
+autre mort. Les essais rejetés restent conservés. Le palais, la fin sur ce
+binaire et sa fidélité globale restent ouverts.
 
-Les dix-neuf nouveaux points D8 utilisent deux lecteurs démarrés à froid et
-partagés entre étapes, sans import d'état primaire : 3950034 répétitions
+Les vingt-et-un nouveaux points D9 utilisent trois lecteurs démarrés à froid et
+partagés entre étapes, sans import d'état primaire : 5030091 répétitions
 d'images de préfixe sont évitées dans ces vérifications, avec les mêmes
 comparaisons de RAM et de PNG.
 [Deux premiers cristaux](analysis/campaign_v0317.md)
@@ -62,12 +64,14 @@ comparaisons de RAM et de PNG.
 · [Sixième cristal, preuves et limites](analysis/campaign_d6_v0317.md)
 · [Septième cristal, navire et combats sans protection](analysis/campaign_d7_v0317.md)
 · [Huitième cristal, clé du voleur et retour](analysis/campaign_d8_v0317.md)
+· [Neuvième cristal, gardiens, ballon et retour](analysis/campaign_d9_v0317.md)
 
 Les essais clos sont archivés et relus avant nettoyage. Toutes les 317 ROMs
 publiées, les sources, symboles et captures restent préservés ; les ROMs de
 travail sont également conservées dans les archives, et le candidat 37 reste
 disponible localement avec son cache de compilation.
-[Nettoyage D8 : 63 Mio libérés](analysis/campaign_d8_v0317_cleanup_report.json)
+[Nettoyage D9 : 80 Mio libérés](analysis/campaign_d9_v0317_cleanup_report.json)
+· [Nettoyage précédent D8 : 63 Mio](analysis/campaign_d8_v0317_cleanup_report.json)
 · [Nettoyage précédent D7 : 74 Mio](analysis/campaign_d7_v0317_cleanup_report.json)
 · [Nettoyage précédent D6 : 67 Mio](analysis/campaign_d6_v0317_cleanup_report.json)
 · [Nettoyage précédent Feu/D5 : environ 92 Mio](analysis/campaign_d5_v0317_cleanup_report.json)

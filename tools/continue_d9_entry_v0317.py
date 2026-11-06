@@ -8,7 +8,7 @@ from continue_d8_entry_v0317 import ROUTE,SERVICE,COMBAT,COMMON,budget,load,repl
 from run_core import ROOT
 from archive_lossless_evidence import sha
 from rebase_natural_campaign import evidence
-helper.EVIDENCE=ROOT/'validation/v0317-d9-sources01'
+helper.EVIDENCE=ROOT/'validation/v0317-d9-sources03'
 
 
 def campaign():
@@ -42,9 +42,13 @@ def campaign():
     assert max(frame for frame,_,_ in writes)==last['release_write_frame']
     assert not cap['sram_input'] and assist['primary_state_imports']==0
     world=['--boss-room','0x1ac','--assisted-prefix','--world-route','--live-prefix-terrain','--live-room-replan','--axe-terrain','--rope-terrain','--preserve-floor-hurt']
-    assert receipt['stages'][-1]['health']==receipt['stages'][-1]['max_health']==96
+    recovery=json.loads(evidence(ROOT/'analysis/d9_recovery_v0317_report.json'))
+    assert recovery['passed'] and recovery['md_sha256']==receipt['md_sha256'] and recovery['eight_crystals_preserved']
+    recovered='md-v0317-d9-healer94-service01'
+    assert recovery['current_campaign_trace']=='validation/'+SERVICE+'/'+recovered
+    assert_canonical(SERVICE,recovered)
     entry='v0317-d9-entry01'
-    run('natural_bell_world_route.py',[*world,'--new-assistance-episode','--completed-exit-proof',COMBAT+'/'+source,'--prefix-combat',source,'--door-index','9','--frames',budget(COMBAT,source,16000),'--trial',entry])
+    run('natural_bell_world_route.py',[*world,'--new-assistance-episode','--completed-exit-proof',COMBAT+'/'+source,'--prefix-service',recovered,'--door-index','9','--frames',budget(SERVICE,recovered,16000),'--trial',entry])
     replay(ROUTE,'md-'+entry,lambda r:r['reached_entrance'] and r['directional_probe_succeeded'])
     base=['--boss-room','0x1ac',*COMMON,'--wake-sentinels','--retry-isolated-foes']
     first='v0317-d9-switch1de-02'
