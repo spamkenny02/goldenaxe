@@ -62,7 +62,7 @@ def main():
         assert prior['full_dungeon_cleared'] and prior['failure'] is None and prior['last_state']['ship'] == 1
         directory = EVIDENCE / 'd8-entry-and-intermediate'
         directory.mkdir()
-        names = ('continue_d8_entry_v0317.py','run_core.py','cold_replay_stream.py','assisted_boss_route.py', 'assisted_prefix.py', 'natural_dungeon_route.py',
+        names = ('continue_d8_entry_v0317.py','natural_free_healer.py','run_core.py','cold_replay_stream.py','assisted_boss_route.py', 'assisted_prefix.py', 'natural_dungeon_route.py',
                  'natural_paid_passage.py', 'natural_dungeon_combat.py', 'close_assisted_approach.py',
                  'unassisted_dungeon_continuation.py', 'natural_boss_evasive_planner.py',
                  'natural_boss_side_planner.py', 'natural_combat_beam.py', 'replay_assisted_prefix.py',
@@ -75,10 +75,23 @@ def main():
         (directory / 'source_index.json').write_text(json.dumps(hashes, indent=2) + '\n', encoding='utf-8')
         world = ['--boss-room', '0x196', '--assisted-prefix', '--world-route', '--live-room-replan',
                  '--axe-terrain', '--rope-terrain','--preserve-floor-hurt']
+        family = COMBAT
+        origin = ['--new-assistance-episode', '--prefix-combat', source]
+        if receipt['stages'][-1]['health'] < receipt['stages'][-1]['max_health']:
+            healer = 'v0317-d8-healer-route01'
+            run('assisted_boss_route.py', [*world, *origin, '--live-prefix-terrain',
+                '--house-outside', '0x94', '--house-target', '0',
+                '--frames', budget(COMBAT, source, 16000), '--trial', healer])
+            replay(ROUTE, 'md-'+healer, lambda r: r['reached_entrance'])
+            heal = 'v0317-d8-heal01'
+            run('natural_free_healer.py', ['--prefix','md-'+healer,'--trial',heal,'--assisted-prefix'])
+            replay(SERVICE, 'md-'+heal, lambda r: r['passed'] and r['normal_health_refill'])
+            family, source = SERVICE, 'md-'+heal
+            origin = ['--prefix-service',source]
         route = 'v0317-d8-paid3c-route01'
-        run('assisted_boss_route.py', [*world, '--new-assistance-episode', '--prefix-combat', source,
+        run('assisted_boss_route.py', [*world, *origin,
             '--live-prefix-terrain', '--house-outside', '0x3c', '--house-target', '0x9f',
-            '--door-entry-direction', '1', '--frames', budget(COMBAT, source, 16000), '--trial', route])
+            '--door-entry-direction', '1', '--frames', budget(family, source, 16000), '--trial', route])
         replay(ROUTE, 'md-' + route, lambda r: r['reached_entrance'] and r['directional_probe_succeeded'])
         assert load(ROUTE, 'md-' + route, 'route_report.json')['last_state']['gold'] >= 10
         payment = 'v0317-d8-paid3c-service01'
