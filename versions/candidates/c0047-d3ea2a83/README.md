@@ -49,6 +49,15 @@ après retrait de la protection de test.
 Le don réel de 50 pièces puis l’achat de Terre pour 50 pièces sont rejoués
 sur c0047 jusqu’à 81636 images. La RAM entière et l’image finale concordent
 avec c0046 : 48 PV, 12 pièces et 48 PM, Terre niveau 1. Cela ne constitue
-pas encore une validation du quatrième cristal.
+pas à lui seul une validation du quatrième cristal ; le parcours suivant le vérifie.
 
 [Rejeu jusqu’à l’achat de Terre](../../../analysis/c0047_d4_earth_auto_report.json).
+
+Le canoë, le quatrième cristal et le retour extérieur sont désormais rejoués
+sur c0047 jusqu’à 107105 images : 62/64 PV, RAM entière et image finale identiques
+au parcours c0046. Les deux passages Terre consomment chacun leurs 8 PM.
+Le boss conserve ses 30 PV source ; la protection est retirée avant son entrée.
+Les essais de retour bloqué et perdu restent séparés du parcours réussi.
+
+[Audit du quatrième donjon](../../../analysis/c0046_d4_report.json)
+· [Rejeu sur c0047](../../../analysis/c0047_d4_auto_report.json).

@@ -19,6 +19,7 @@ assert args.milestone!='rope' or dungeon==3
 assert args.milestone!='earth' or dungeon==4
 root=ROOT/'validation/c0046-campaign01/isolated/project'
 name='md-'+region+'-c46-d1-exit02' if dungeon==1 else f'md-auto-c0046-d{dungeon}-exit01'
+if dungeon==4:name='md-auto-c0046-d4-exit03'
 if args.milestone=='rope':name='md-auto-c0046-d3-rope03'
 if args.milestone=='earth':name='md-c0046-earth-learn01'
 suffix=f'd{dungeon}'+('-'+args.milestone if args.milestone!='exit' else '')

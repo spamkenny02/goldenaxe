@@ -17,9 +17,14 @@ Checksum Mega Drive : `7863`
 
 Aperçu actuel : [c0047, ROM de 2 Mio](versions/candidates/c0047-d3ea2a83/README.md).
 Il reprend l’optimisation c0046 et corrige son complément de fichier.
-Premier donjon rejoué en PAL et NTSC ; trois premiers cristaux et retours extérieurs
-rejoués en NTSC, ainsi que l’achat normal de Terre.
+Premier donjon rejoué en PAL et NTSC ; quatre premiers cristaux et retours extérieurs
+rejoués en NTSC, ainsi que l’achat normal de Terre et l’acquisition du canoë.
 La campagne complète de cet aperçu reste à valider.
+
+Le quatrième boss est vaincu après retrait de la protection, avec ses 30 PV source.
+Le retour sur c0047 concorde sur les 65536 octets de RAM et l’image finale à
+107105 images, avec 62/64 PV. [Parcours du quatrième donjon](analysis/c0046_d4_report.json)
+· [Rejeu sur c0047](analysis/c0047_d4_auto_report.json).
 
 Nouvel aperçu [c0046](versions/candidates/c0046-9e747d38/README.md) :
 préparation des motifs du héros mesurée 44,79 % moins coûteuse ;

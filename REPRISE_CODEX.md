@@ -12,20 +12,25 @@ Ne pas reprendre ses anciens pilotes mentionnés dans l’historique ci-dessous.
 
 L’aperçu recommandé pour poursuivre l’optimisation est c0047-d3ea2a83,
 2 Mio, checksum DA29. Il reprend le programme de c0046 avec un complément
-correct de fichier. Trois cristaux et retours sont rejoués en NTSC avec
+correct de fichier. Quatre cristaux et retours sont rejoués en NTSC avec
 RAM entière/image finale identiques, ainsi que la corde, le don de 50
 pièces et l’achat de Terre. Dernier point Terre : 81636, 48 PV, 12 pièces,
-48 PM, Terre niveau 1. Le premier donjon est aussi rejoué en PAL.
+48 PM, Terre niveau 1. Dernier retour D4 : 107105, 62/64 PV, canoë acquis.
+Le premier donjon est aussi rejoué en PAL.
 La campagne complète de cet aperçu demeure ouverte.
 
-Le processus courant joue continue_d4_c0046.py dans
+Le processus courant joue continue_fire_sword_c0046.py dans
 validation/c0046-campaign01/isolated/project. Cette branche continue sur
 c0046 puis chaque jalon est rejoué sur c0047. Journaux et sources :
-validation/c0046-d4-sources dans ce projet, preuves indépendantes partagées
-dans validation/c0046-d4-cold-stream. Vérifier le processus réel avant
+validation/c0046-fire-sword-sources dans ce projet, preuves indépendantes partagées
+dans validation/c0046-fire-sword-cold-stream. D4 est terminé : dix points froids
+dans c0046-d4-cold-stream, sortie corrigée dans c0046-d4-exit-cold-stream03.
+Les pilotes de sortie01 (énigme facultative) et sortie02 (mort) ont échoué ;
+exit03 passe sans mort ni nouvelle aide. Vérifier le processus réel avant
 reprise ; ne pas relancer les pilotes dans les sorties existantes.
 
-Preuves actuelles : analysis/c0046_d3_report.json,
+Preuves actuelles : analysis/c0046_d4_report.json, analysis/c0047_d4_auto_report.json,
+analysis/c0046_d3_report.json,
 analysis/c0047_d3_auto_report.json, analysis/earth_learning_c0046_report.json,
 analysis/c0047_d4_earth_auto_report.json. Archive du don et achat :
 analysis/c0046-earth-learning, quatre points d’un même rejeu froid.
