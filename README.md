@@ -26,7 +26,7 @@ cette routine ; la cadence de jeu visée reste celle de la Master System.
 | Domaine | Contrôles passés | Périmètre restant |
 | --- | --- | --- |
 | NTSC | Nouvelle partie → neuf cristaux → ballon → palais → Hache d’or → Death Adder → générique complet → retour à l’intro | Fidélité globale SMS et console réelle |
-| PAL | Six cristaux et retours, hache, fée, huile, corde, Terre, canoë, Feu, épée longue, Clochette de glace | D7 et suite de la campagne ; sauvegarde PAL |
+| PAL | Sept cristaux et retours, hache, fée, huile, corde, Terre, canoë, Feu, épée longue, Clochette de glace, bateau | D8 et suite de la campagne ; sauvegarde PAL |
 | Sauvegarde NTSC | Vraie écriture SRAM à neuf cristaux, puis Continue et déplacement sur cette même SRAM | Autres slots/refus et PAL sur cette version |
 | Démarrage | Deux boucles de 14000 images par région identiques à V318 après normalisation ; états audio et huit registres PSG comparés sur 6500 images | Écarts SMS résiduels de révélations/fondus et formes d’onde PCM |
 | Inventaire | Six retours normaux : extérieur et deux maisons, PAL/NTSC, décor statique restauré | Phase des quatre motifs animés des maisons séparée de l’égalité statique |
@@ -39,16 +39,17 @@ n’est importé. La reprise de sauvegarde importe uniquement la SRAM réellemen
 Le rejeu NTSC de 403488 images retrouve les 65536 octets de RAM et l’image
 finale du parcours c0046. Les étapes intermédiaires ont leurs propres
 preuves indépendantes. Ce contrôle ne compare pas chaque image émise à
-la SMS. Le départ PAL et les six retours sont aussi rejoués sur le binaire
-publié ; retour D6 à 176650 images, 80/80 PV et 72 PM. Le cinquième boss et ses
+la SMS. Le départ PAL et les sept retours sont aussi rejoués sur le binaire
+publié ; retour D7 à 217575 images, 88/88 PV et 64 PM. Le cinquième boss et ses
 huit satellites sont affrontés sans protection ; les vrais dons et
 l’achat d’une clé à 60 pièces sont conservés dans les preuves.
 
 - [Rapport initial V319](analysis/optimization_v0319_report.json)
 - [Campagne NTSC et fin](analysis/cold_palace_final_c0046_report.json) · [Rejeu sur le binaire publié](analysis/c0047_palace_final_auto_report.json)
 - [Vraie sauvegarde et Continue](analysis/c0047_real_save_report.json)
-- [Intermédiaire du septième donjon PAL](analysis/palc0046_d7_midboss_report.json) · [Rejeu publié](analysis/c0047_pal_d7_midboss_report.json) — victoire sans protection ; bateau et boss principal en cours.
-- [Préparation du septième donjon PAL](analysis/palc0046_d7_preparation_report.json) · [Rejeu publié](analysis/c0047_pal_d7_preparation_report.json) — clé achetée et mécanismes ; boss encore ouverts.
+- [Septième cristal, bateau et retour PAL](analysis/palc0046_d7_report.json) · [Rejeu publié](analysis/c0047_pal_d7_report.json)
+- [Intermédiaire du septième donjon PAL](analysis/palc0046_d7_midboss_report.json) · [Rejeu publié](analysis/c0047_pal_d7_midboss_report.json) — victoire sans protection.
+- [Préparation du septième donjon PAL](analysis/palc0046_d7_preparation_report.json) · [Rejeu publié](analysis/c0047_pal_d7_preparation_report.json) — achat normal de la clé et deux préparations de Terre.
 - [Sixième cristal et retour PAL](analysis/palc0046_d6_report.json) · [Rejeu publié](analysis/c0047_pal_d6_report.json)
 - [Cinquième cristal et retour PAL](analysis/palc0046_d5_report.json) · [Rejeu publié](analysis/c0047_pal_d5_report.json)
 - [Feu, épée longue et entrée D5 PAL](analysis/palc0046_fire_sword_report.json) · [Rejeu publié](analysis/c0047_pal_fire_sword_report.json)

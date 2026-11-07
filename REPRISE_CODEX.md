@@ -78,34 +78,45 @@ après les quatre preuves du jeu déjà terminées. Cet import a été corrigé
 sans relancer le combat. Audit full exécuté et passé ; ne pas le relancer
 sur l'archive existante. Même import ajouté à l'audit de la fin D7.
 
-Parcours actif : fin PAL D7, PID44180 au lancement,
-`tools/continue_d7_finish_palc0046.py`, cwd projet isolé habituel.
-`prepare_pal_d7_finish.py` est déjà exécuté ; ne pas répéter. L'entrée D8 est également préparée par
-`prepare_pal_d8_entry.py` (déjà exécuté), mais n'est pas lancée et exige
-le futur rapport D7 complet. Elle prévoit soin normal éventuel, véritable
-paiement de10pièces, entrée D8, retrait avant l'intermédiaire1C9, puis
-combat sans protection. Fichier généré `tools/continue_d8_entry_palc0046.py`.
-Aucun résultat D8 n'est annoncé par cette préparation. Sources
-`palc0046-d7-finish-sources`, lecteur `palc0046-d7-finish-cold-stream01`.
-Vise bateau16, mécanisme distant1E6, retrait avant179/boss67 à60PV,
-cristal7 et sortie1B. Les sept premiers points de la fin sont maintenant
-prouvés : bateau203631, approche211332 en189 à80PV/64PM/deux clés,
-retrait211333/hurt0. `audit_pal_d7_finish.py --prefix-only` passe sur ces
-sept points. Le combat principal est lancé, PID22616 au dernier contrôle,
-avec statistiques source et aucune nouvelle aide après retrait. Les réentrées ordinaires pour ennemis isolés et
-l'évitement des portails connus sont actifs. Le pilote exige le vrai
-rapport de victoire de l'intermédiaire, sans assistance durant ce combat.
+PAL D7 terminé et audité : `palc0046_d7_report.json`, archive
+`palc0046-d7`. Dix points de seconde partie ; bateau203631, retrait
+principal211333 en189/80PV/hurt0, premier combat211520 en179/boss67
+à60PV source,245 prédictions RAM entière, aucun dégât pendant le combat.
+Cristal216054, retour217575 en1B,88/88PV,64PM,deux clés,15pièces.
+Rejeu c0047/V319 exact RAM65536/PNG : `c0047_pal_d7_report.json`, archive
+`c0047-pal-d7`. Reçu `pal_d7_v0319_report.json` et README/index V319
+mis à jour à sept cristaux. Les étapes physiques du HUD sont vérifiées
+après le bateau, le boss et le retour. Les compteurs/poses globaux SMS
+restent une limite distincte.
+Pilote44180, suivi41915/PID44460 et postflight34690/PID3492 terminés0.
+Ne pas relancer leurs anciens handles. Audits/archives D7 existants à préserver.
 
-Suivi41915/PID44460 : `resume_after_d7_midboss_audit.py` a effectué le
-rejeu c0047 puis lancé cette fin D7 et attend sa fermeture. Ne pas le
-relancer : le dossier de rejeu existe. Suivi34690 :
-`after_pal_d7_finish.py --pid 44460` attend ce pipeline vivant, exige
-sortie0 puis audit10 étapes, rejeu c0047 `d7` et reçu V319 du cristal7.
-Ne pas relancer les anciens handles14346/86661 ou créer de doublon.
-`audit_pal_d7_finish.py --prefix-only`/`--through-ship` restent lecture
-seule et ne publient pas de rapport de campagne. Les audits full exigent
-victoire et retour, sans aide après retrait. Vérifier les vrais handles
-et processus avant reprise ; un délai n'est pas une fin de processus.
+Parcours actif : paiement, entrée et intermédiaire PAL D8, PID8480,
+`tools/continue_d8_entry_palc0046.py`, cwd projet isolé habituel.
+Le suivi44326/PID30416 (`after_pal_d7_campaign.py --pid 3492`) l'a lancé
+seulement après le D7 complet rejoué et le reçu V319. Il attend sa fermeture.
+Sources `palc0046-d8-entry-sources/d8-entry-and-intermediate`, lecteur
+`palc0046-d8-entry-cold-stream01`. `prepare_pal_d8_entry.py` est exécuté.
+Le soin conditionnel n'est pas demandé (départ88/88PV). Paiement3C de10
+pièces effectué (15→5), entrée D8 puis quatre premiers points prouvés,
+antichambre1CA à223758,84/88PV/64PM/deux clés. Audit
+`audit_pal_d8_entry.py --prefix-only` passé sur ces quatre points.
+La suite retire la protection avant1C9 puis combat l'intermédiaire7A
+à50PV source, sans aucun nouvel écrit de protection. Aucun succès de
+ce combat n'est déclaré à ce point de reprise.
+
+Suivi14979 : `after_pal_d8_midboss.py --pid 30416`, handle réel du
+pipeline précédent, attend sa sortie0, audite tout le paiement/entrée/
+intermédiaire, rejoue c0047 avec `d8-midboss`, puis lance
+`tools/continue_d8_finish_palc0046.py`. `prepare_pal_d8_finish.py` est
+exécuté, ne pas répéter. Le futur pilote reprend seulement après victoire
+vérifiée, parcourt les mécanismes et la vraie clé du voleur, retire la
+protection avant196/boss6B à80PV, puis vise cristal8 et sortie29.
+Sources futures `palc0046-d8-finish-sources/main-sources`, lecteur
+`palc0046-d8-finish-cold-stream01`. Audits de cette seconde partie D8
+à adapter ; ne pas confondre l'intermédiaire et le huitième cristal.
+Vérifier les vrais handles et processus avant reprise ; un délai n'est pas
+une fin de processus. Ne pas créer de doublon avec ces suivis vivants.
 Le projet isolé conserve c0046/9e747d38 ; ne pas remplacer sa ROM ou ses
 symboles par ceux de la racine pendant le parcours. Les sources racine
 et privées ont été contrôlées sans lien physique partagé avant promotion.
@@ -129,7 +140,7 @@ dans `c0047-clean-build-zero-padding` comme diagnostic échoué explicite.
 Les doublons de compilation sont retirés uniquement après compression
 sans perte et relecture par SHA. Les ROMs historiques sont conservées.
 
-Restent PAL D7 à fin et sauvegarde, écarts de révélations/fondus et phase
+Restent PAL D8 à fin et sauvegarde, écarts de révélations/fondus et phase
 R/IRQ source, fidélité audio PCM globale et vérification console réelle.
 Le portage complet n'est pas déclaré terminé. Lire README pour les limites.
 

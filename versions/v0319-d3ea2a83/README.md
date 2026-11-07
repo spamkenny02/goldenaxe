@@ -32,3 +32,9 @@ Ajout suivant : [sixième cristal, Clochette de glace et retour PAL](../../analy
 et [rejeu c0047/V319](../../analysis/c0047_pal_d6_report.json), à 176650 images,
 80/80 PV et 72 PM. Vingt points froids vérifiés ; 209 prédictions RAM entière
 pendant le boss, sans protection. Fidélité globale et suite PAL ouvertes.
+
+Ajout suivant : [septième cristal, bateau et retour PAL](../../analysis/palc0046_d7_report.json)
+et [rejeu c0047/V319](../../analysis/c0047_pal_d7_report.json), à 217575 images,
+88/88 PV et 64 PM. Les deux boss sont affrontés sans protection ; les dix
+étapes de la seconde partie passent, dont les mots physiques du HUD.
+La RAM entière et l'image finale correspondent au point contrôlé.
