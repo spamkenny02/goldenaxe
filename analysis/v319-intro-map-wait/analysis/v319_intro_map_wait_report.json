@@ -1,0 +1,46 @@
+{
+  "passed": false,
+  "diagnostic_only": true,
+  "promoted": false,
+  "public_rom_unchanged": true,
+  "public_md_sha256": "d3ea2a83ea24ed8a0d3c9857f9fbe70d000a4f73358452c1887f40e78966c56e",
+  "candidate_sha256": "811d73ced114ee4a8a8482d8683f73abe1481257abf9967a9b52a627871aa8c8",
+  "cases": [
+    {
+      "region": "ntsc",
+      "candidate_sha256": "811d73ced114ee4a8a8482d8683f73abe1481257abf9967a9b52a627871aa8c8",
+      "totals": {
+        "baseline_source_differences": 147429,
+        "candidate_source_differences": 4379361,
+        "baseline_exact_frames": 13636,
+        "candidate_exact_frames": 13126
+      },
+      "improved_pixels": 21845,
+      "degraded_pixels": 4253777,
+      "no_source_pixel_regression": false
+    },
+    {
+      "region": "pal",
+      "candidate_sha256": "811d73ced114ee4a8a8482d8683f73abe1481257abf9967a9b52a627871aa8c8",
+      "totals": {
+        "baseline_source_differences": 124148,
+        "candidate_source_differences": 124148,
+        "baseline_exact_frames": 13682,
+        "candidate_exact_frames": 13682
+      },
+      "improved_pixels": 0,
+      "degraded_pixels": 0,
+      "no_source_pixel_regression": true
+    }
+  ],
+  "hardware_plane3_comparison": "validation/v319-boot-fade-localize01/plane3-comparison.json",
+  "observations": [
+    "At NTSC third-scene first pass, source hardware plane3 begins by frame3651 and V319 hardware plane3 begins at3653. At frame3670,1004 of2304 plane3 rows differ; both complete by3692.",
+    "The tested helper counts an IRQ crossed during native picture-map preparation, improving some local pixels but causing4253777 degraded NTSC pixels over14000 frames; PAL video remains unchanged.",
+    "Do not promote a local loader-wait change without integrated source full-IRQ/foreground clock accounting; no recorded-frame or counter override is introduced."
+  ],
+  "ram_writes": 0,
+  "sram_imports": 0,
+  "archive_manifest": "analysis/v319-intro-map-wait/manifest.json",
+  "scope": "Read-only localization on immutable V319/SMS and rejected isolated source experiment, every boot frame compared over two opening loops per region. No gameplay change, new numbered ROM or global fidelity claim."
+}

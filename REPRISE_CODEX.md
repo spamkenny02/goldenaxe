@@ -54,11 +54,37 @@ sources figées dans `palc0046-d6-sources02`, lecteur
 `palc0046-d6-cold-stream01`. Vise sélection normale de la hache, entrée8B,
 15 recettes D6, Clochette10, retrait avant115/boss64 à60PV, sixième
 cristal et sortie8B. Le retour reporte le puzzle facultatif187, cause d'un
-blocage historique du pilote, sans changer la ROM. Audit D6 à préparer.
+blocage historique du pilote, sans changer la ROM. Audit D6 préparé : `validation/c0046-campaign01/audit_pal_d6.py`.
+Son mode `--prefix-only` a passé18 points jusqu'au retrait167339,
+salle125,64/72PV,56PM,0clé,38pièces. Clochette10 acquise réellement.
+Les briques préparatoires135/cell58 et125/cell7B sont explicitement
+vérifiées comme actions Terre sans prétendre avoir traversé un passage.
+La Clochette est acquise par le pilote de combat ordinaire, avec propriété
+0→1 vérifiée dans les deux RAMs et sans écriture d'objet autorisée.
+Le boss64 à60PV est lancé sans protection, processus20520 au dernier
+contrôle. Suivi61129 : `after_pal_d6.py --pid 48408`, handle réel du
+pilote48408 ; attend sa sortie0 puis audit20 points et rejeu c0047 PAL D6.
+Ne pas lancer ces audits en double tant que ce suivi est vivant.
+D7 préparé (`prepare_pal_d7.py` exécuté) mais pas lancé. Le contrôleur
+exige le D6 audité et son SHA RAM final avant d'utiliser les ressources
+réellement obtenues ; don/achat de clé/soin restent des dialogues normaux.
 Vérifier le handle/processus réel avant reprise ; un délai n'est pas un arrêt.
 Le projet isolé conserve c0046/9e747d38 ; ne pas remplacer sa ROM ou ses
 symboles par ceux de la racine pendant le parcours. Les sources racine
 et privées ont été contrôlées sans lien physique partagé avant promotion.
+
+Recherche d'intro séparée, sans promotion : `analysis/v319_intro_map_wait_report.json`,
+archive `analysis/v319-intro-map-wait`. Captures V319/SMS : révélation du
+3e tableau NTSC commence deux images plus tard côté MD (3653/3651),
+1004 lignes de plan3 diffèrent à3670. Le prototype qui compte l'IRQ
+traversée pendant l'envoi de carte dégrade4253777 pixels NTSC sur14000
+images ; PAL inchangé. Prototype explicitement rejeté, V319 inchangée.
+Ne pas promouvoir ce raccourci : intégrer la phase globale des demandes
+IRQ/travail source avant de déplacer une attente isolée. Sources/preuves
+conservées sans perte,17822758 octets générés supprimés après relecture
+(10749468 octets nets libérés). Les dossiers de prototype/localisation
+existent ; leurs binaires de travail ont été archivés et retirés. Ne pas
+relancer dans les mêmes dossiers. Script `localize_v319_boot_fade.py`.
 
 Archives de promotion et reconstruction : `v0319-root-promotion`,
 `c0047-clean-rebuild`; première tentative avec complément zéro conservée
