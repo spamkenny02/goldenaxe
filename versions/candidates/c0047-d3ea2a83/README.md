@@ -141,3 +141,12 @@ l’image finale du retour. Le palais et la fin restent à valider sur cet aper�
 
 [Neuvième cristal et retour](../../../analysis/d9_campaign_c0046_report.json)
 · [Rejeu c0047](../../../analysis/c0047_d9_auto_report.json).
+
+Le deuxième cristal et le retour PAL sont maintenant rejoués sur c0047
+jusqu’à46869 images, avec23/48PV et une clé. Le parcours c0046 comporte
+sept points froids exacts et324 prédictions, le boss conserve30PV source,
+et la protection est retirée avant l’entrée. La RAM entière et l’image
+finale concordent sur c0047. Le troisième donjon PAL reste à vérifier.
+
+[Deuxième cristal PAL](../../../analysis/palc0046_d2_report.json)
+· [Rejeu c0047](../../../analysis/c0047_pal_d2_report.json).

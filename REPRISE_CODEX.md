@@ -40,7 +40,39 @@ Audit préparé audit_pal_d2.py : attend le succès/fermeture du pilote et ses
 sept points, puis gèle analysis/palc0046-d2 et écrit palc0046_d2_report.json.
 Ensuite rejouer c0047 avec validation/replay_c0047_pal.py --report
 analysis/palc0046_d2_report.json --milestone d2. Aucun deuxième cristal PAL
-n’est annoncé par cette préparation. Aucun autre pilote ne prend ce parcours.
+n’était annoncé par cette préparation. Ce parcours est désormais terminé et
+archivé : palc0046_d2_report.json, archive palc0046-d2. Retrait37850,
+premier combat38052, héros40PV/hurt0,boss63 à30PV source. 324 prédictions,
+sept points froids exacts, victoire43765, sortie46869,D6,23/48PV,une clé.
+Le rejeu c0047 PAL passe : c0047_pal_d2_report.json, archive c0047-pal-d2.
+Sessions86870 et67753 terminées0 ; ne pas les relancer. Audit déjà exécuté.
+
+La suite PAL D3 est lancée : tools/continue_d3_palc0046.py, session84152,
+dans le projet isolé. prepare_pal_d3.py est exécuté, ne pas le répéter.
+Sources figées palc0046-d3-sources ; lecteur palc0046-d3-cold-stream.
+Part du vrai retour D2, vise huile/stairsC7, entréeD3, corde13, contact,
+clé, retrait avant1C3/boss69, troisième cristal et sortie62. Les10 étapes
+exigent chacune une preuve RAM/PNG indépendante. Le pilote initial84152
+est maintenant terminal1 : erreur Python de portée du global current après
+les trois premières étapes, avant toute exécution de corde. Ces trois
+preuves sont terminées/passées dans palc0046-d3-cold-stream/completed.json :
+huile48385→49114 puis entrée52030,salle1F8,23PV. Ne pas relancer ce pilote.
+
+La reprise est lancée : tools/continue_d3_palc0046_resume01.py,session4773.
+resume_pal_d3.py a conservé le contrôleur initial et ses sources, vérifié
+les trois points puis repris l’entrée canonique, sans import d’état.
+Nouvelles sources palc0046-d3-resumed-sources01 et lecteur
+palc0046-d3-cold-stream02. Les sept étapes restantes reprennent les mêmes
+noms, dont les sorties n’existaient pas lors de l’erreur. current est partagé
+entre campaign/combat ; le générateur initial est aussi corrigé pour un
+nouveau dossier, sans modifier le premier pilote figé. La vérification des
+deux portées symboliques passe. Corde57593,contact,clé et antichambre60830
+sont déjà rejoués ; retrait60831 avant boss69 à32PV source, combat en cours.
+Audit préparé audit_pal_d3.py : attend les10 étapes sur lecteurs3+7, conserve
+les deux versions sources et déclare explicitement la récupération de portée.
+Après réussite/fermeture : lancer cet audit puis replay_c0047_pal.py avec
+analysis/palc0046_d3_report.json --milestone d3. Aucun troisième cristal
+n’est annoncé par ces seules étapes préparatoires.
 
 Le démarrage c0047 est désormais vérifié : analysis/c0047_boot_report.json,
 archive analysis/c0047-boot. Deux boucles sans entrée (14000 images) dans
@@ -233,7 +265,32 @@ La suite97858 a passé les audits D9, revérifié l’archive ballon existante
 sans la modifier, archivé la fin D9 et rejoué c0047. Elle joue maintenant
 continue_after_d9_c0046.py palace : ballon possédé puis entrée réelle du
 palais avant le premier géant. La suite70465 attend toujours la réussite
-de cette suite97858 avant la fin du palais. Vérifier ces handles réels.
+de cette suite97858 avant la fin du palais. Cette suite97858 est maintenant
+terminée0 : ballon activé/restauré, entrée312797,salle18D,104PV/72PM ;
+premier géant60PV source, retrait321705, premier combat321787avec102PV
+et hurt14 naturel, victoire325979,point326130,86PV/72PM,131 prédictions.
+Rapports owned_overview_c0046_report.json,cold_palace_entry_c0046_report.json,
+cold_palace_giant_c0046_report.json ; archives c0046-palace-entry et giant.
+La suite70465 a automatiquement repris : elle a archivé ces deux jalons,
+terminé/audité/archivé les cinq étapes intérieures jusqu’à339846,salle12A,
+104PV/56PM. Rapport cold_palace_inner_c0046_report.json, archive
+c0046-palace-inner. Elle joue le gardien11E/7C avant la vraie GoldenAxe2,
+puis la route finale ; vérifier son handle réel avant toute reprise.
+Le gardien11E/7C est maintenant vaincu sans protection : victoire359007,
+point359158,80PV/72PM,344 prédictions exactes. Retrait347920. Le pilote
+continue vers resume-final01 puis GoldenAxe2 en11D ; attendre son audit
+cold_palace_guardian_c0046 et son archive avant d’annoncer l’arme acquise.
+
+Les captures binaires intermédiaires des trois combats D9 fermés ont été
+archivées et compressées : analysis/c0046-d9-intermediate-captures.
+cleanup_closed_d9_captures.py a supprimé24934080 octets bruts,14503733
+nets libérés. Tous les fichiers déjà référencés par les archives canoniques,
+les captures finales et tous les PNG restent en place. La revérification
+idempotente de l’archive ballon passe encore après ce ménage. Ne pas répéter
+ce nettoyage dans les mêmes sorties. Pour un ancien binaire intermédiaire,
+utiliser evidence depuis la racine globale avec le chemin complet du manifeste
+ou restaurer l’objet compressé ; aucune donnée n’est perdue. Les captures du
+palais et PAL actifs n’ont pas été touchées.
 L’archive ballon est figée ; archive_d9_finish.py sait désormais revérifier
 une archive existante sans la réécrire. Il vérifie tous les objets/hashes,
 le même rapport et toutes les sources ; seul le journal de points du

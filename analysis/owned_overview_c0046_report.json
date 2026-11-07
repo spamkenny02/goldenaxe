@@ -1,0 +1,40 @@
+{
+  "passed": true,
+  "candidate": "c0046",
+  "md_sha256": "9e747d38e0c6fb2d69b7c1aa8c2b296a61e8b6af41171d14e543ed9a6cb49cf5",
+  "production_rom_unchanged": true,
+  "current_campaign_trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-owned-overview01",
+  "campaign_frames": 309607,
+  "natural_owned_overview_verified": true,
+  "overview_start": 308828,
+  "overview_ready": 309324,
+  "overview_return": 309415,
+  "physical_room_and_hud_words_exact": 768,
+  "source_crystal_markers_exact": 9,
+  "primary_state_imports": 0,
+  "new_assistance_writes": 0,
+  "whole_ram_png_exact": true,
+  "full_game_validated": false,
+  "evidence": {
+    "analysis/d9_campaign_c0046_report.json": "2de5e62ef6d66b03f373499f5f1668ddd8ba024c2134e2b99c233601246714b2",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-owned-overview01/report.json": "d9b96c609f34f41ae91631089b193d88636c72f6a7bd8553f93c8980f1c7b829",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-owned-overview01/capture.json": "126de6e16148b1f9638b95505f879bd3537fd22d3548bd8dd3abd48716f9eb41",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-owned-overview01-assisted-fixed-replay-309607/replay_report.json": "0ef0bd204e8dac9644a77c0b1c72b1adca5e1c289f791de0ca5213ef39f81b1c",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-owned-overview01/controls.json": "81b35c693ca8d1f4644a2acde71c043d9bd0c406647377707b0cc9f42d005f0a",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-owned-overview01/assistance.json": "d5e58352e4cf222234c83363fd958a74de117a22f1f5b51cba941797ab905b63",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-owned-overview01/ram_309607.bin": "3e5cb236abf04f4088ca0751ee242e6353aeb38876fbb2bd90a357837febaf4b",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-owned-overview01-assisted-fixed-replay-309607/ram_309607.bin": "3e5cb236abf04f4088ca0751ee242e6353aeb38876fbb2bd90a357837febaf4b",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-owned-overview01/frame_309607.png": "459a20425280600e004ac597339e9d9522a5f97efca1d39327d7bb231f605cb9",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-owned-overview01-assisted-fixed-replay-309607/frame_309607.png": "459a20425280600e004ac597339e9d9522a5f97efca1d39327d7bb231f605cb9",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-owned-overview01/vram_309607.bin": "c82a79ba2c55dd98bf51235b0f15582724daa9c5f64b3e5ca49425c82b2f0dea",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-owned-overview01/vdp_regs_309607.bin": "1d91e33268c2b090094ec5ab1738d45ab4d3e0f07b868dc430e894fb8d06ee94",
+    "input/original.sms": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-owned-overview01/overview_driver.py": "c393d2f76dcc8b7668898e4a5b83de15a43d716da99c2278c0d998c78b4e5240",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-owned-overview01/overview_rooms.json": "9158cb8fd96b82fde09ed14886f6b37d3954b86c2f02cab6276f29bf9bf6ed28",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-owned-overview01/events.json": "dd86774b658b8d014672a26f08fb1a1d36d1f164bec7b3729cac928d93abc53b"
+  },
+  "limits": [
+    "Actual owned Balloon is selected,activated and closed using ordinary input after the ninth exterior return. No new guard,resource,actor,progression or SRAM writes.",
+    "Modal shadow background/cells/metadata and physical room/HUD restoration are checked. This is not whole-source timing,RNG,ending,save or hardware proof."
+  ]
+}

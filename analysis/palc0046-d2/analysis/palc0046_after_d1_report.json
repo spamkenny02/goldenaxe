@@ -1,0 +1,76 @@
+{
+  "passed": true,
+  "candidate": "c0046",
+  "region": "pal",
+  "rom_sha256": "9e747d38e0c6fb2d69b7c1aa8c2b296a61e8b6af41171d14e543ed9a6cb49cf5",
+  "actual_axe_and_life_fairy": true,
+  "second_dungeon_entered": true,
+  "stages": [
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-route/md-pal-palc0046-d1-axe-entry01",
+      "frame": 19789,
+      "room": 484,
+      "health": 32,
+      "max_health": 32,
+      "weapon": 0,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-pal-palc0046-d1-axe-key01",
+      "frame": 23278,
+      "room": 453,
+      "health": 32,
+      "max_health": 32,
+      "weapon": 0,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-pal-palc0046-d1-axe01",
+      "frame": 24774,
+      "room": 438,
+      "health": 32,
+      "max_health": 32,
+      "weapon": 1,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-pal-palc0046-d1-axe-exit01",
+      "frame": 26206,
+      "room": 185,
+      "health": 32,
+      "max_health": 32,
+      "weapon": 1,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-route/md-pal-palc0046-fairy-route01",
+      "frame": 27236,
+      "room": 175,
+      "health": 32,
+      "max_health": 32,
+      "weapon": 1,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-service-route/md-palc0046-fairy-service01",
+      "frame": 27750,
+      "room": 201,
+      "health": 40,
+      "max_health": 40,
+      "weapon": 1,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-route/md-pal-palc0046-d2-entry01",
+      "frame": 29846,
+      "room": 369,
+      "health": 40,
+      "max_health": 40,
+      "weapon": 1,
+      "whole_ram_png_exact": true
+    }
+  ],
+  "full_candidate_campaign_verified": false,
+  "scope": "Cold continuation after verified first crystal; real item/fairy rewards and controller-only progression, with approach-only hurt-counter writes. No resource or SRAM imports.",
+  "archive_manifest": "analysis/palc0046-after-d1/manifest.json"
+}

@@ -1,0 +1,103 @@
+{
+  "passed": true,
+  "candidate": "c0046",
+  "region": "pal",
+  "rom_sha256": "9e747d38e0c6fb2d69b7c1aa8c2b296a61e8b6af41171d14e543ed9a6cb49cf5",
+  "stages": [
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-pal-palc0046-d2-key101",
+      "frame": 30869,
+      "room": 352,
+      "health": 40,
+      "max_health": 40,
+      "keys": 1,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-pal-palc0046-d2-key201",
+      "frame": 32963,
+      "room": 338,
+      "health": 40,
+      "max_health": 40,
+      "keys": 2,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-pal-palc0046-d2-key301",
+      "frame": 36199,
+      "room": 305,
+      "health": 40,
+      "max_health": 40,
+      "keys": 2,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-pal-palc0046-d2-pre-boss01",
+      "frame": 37849,
+      "room": 323,
+      "health": 40,
+      "max_health": 40,
+      "keys": 2,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-palc0046-d2-release01",
+      "frame": 37850,
+      "room": 323,
+      "health": 40,
+      "max_health": 40,
+      "keys": 2,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-pal-palc0046-d2-boss01",
+      "frame": 43916,
+      "room": 324,
+      "health": 48,
+      "max_health": 48,
+      "keys": 1,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-pal-palc0046-d2-exit01",
+      "frame": 46869,
+      "room": 214,
+      "health": 23,
+      "max_health": 48,
+      "keys": 1,
+      "whole_ram_png_exact": true
+    }
+  ],
+  "actual_second_crystal_and_exterior": true,
+  "current_campaign_trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-pal-palc0046-d2-exit01",
+  "campaign_frames": 46869,
+  "fight": {
+    "first": {
+      "frame": 38052,
+      "room": 324,
+      "game": 12,
+      "health": 40,
+      "hurt": 0,
+      "actors": [
+        {
+          "slot": 0,
+          "kind": 99,
+          "hp": 30
+        }
+      ]
+    },
+    "release_frame": 37850,
+    "prediction_windows": 324,
+    "first_damage": {
+      "frame": 37894,
+      "room": 323,
+      "game": 12,
+      "health": 36,
+      "hurt": 47,
+      "before": 40
+    }
+  },
+  "full_candidate_campaign_verified": false,
+  "archive_manifest": "analysis/palc0046-d2/manifest.json",
+  "scope": "Cold PAL candidate continuation; actual keys/crystal and source-strength boss, approach-only hurt writes removed before combat. No resource, actor, progression or SRAM import; no global SMS fidelity claim."
+}

@@ -1,0 +1,157 @@
+{
+  "passed": true,
+  "candidate": "c0046",
+  "md_sha256": "9e747d38e0c6fb2d69b7c1aa8c2b296a61e8b6af41171d14e543ed9a6cb49cf5",
+  "production_rom_unchanged": true,
+  "current_campaign_trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-cold-palace-giant02",
+  "campaign_frames": 326130,
+  "stages": [
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-cold-palace-switch16d02",
+      "kind": "west",
+      "frames": 315673,
+      "room": 365,
+      "health": 104,
+      "magic": 72,
+      "gold": 21,
+      "keys": 1,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-cold-palace-pre-giant02",
+      "kind": "north",
+      "frames": 321704,
+      "room": 366,
+      "health": 104,
+      "magic": 72,
+      "gold": 21,
+      "keys": 1,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-cold-palace-giant-release02",
+      "kind": "release",
+      "frames": 321705,
+      "room": 366,
+      "health": 104,
+      "magic": 72,
+      "gold": 21,
+      "keys": 1,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-cold-palace-giant02",
+      "kind": "giant",
+      "frames": 326130,
+      "room": 350,
+      "health": 86,
+      "magic": 72,
+      "gold": 21,
+      "keys": 1,
+      "whole_ram_png_exact": true
+    }
+  ],
+  "cold_palace_giant_defeated": true,
+  "guard_release_frame": 321705,
+  "first_giant_combat": {
+    "frame": 321787,
+    "room": 350,
+    "game": 12,
+    "health": 102,
+    "hurt": 14,
+    "actors": [
+      {
+        "slot": 0,
+        "kind": 123,
+        "hp": 60
+      }
+    ]
+  },
+  "observed_health_drops": [
+    {
+      "frame": 321716,
+      "room": 366,
+      "before": 104,
+      "after": 102
+    },
+    {
+      "frame": 325910,
+      "room": 350,
+      "before": 102,
+      "after": 82
+    },
+    {
+      "frame": 325958,
+      "room": 350,
+      "before": 82,
+      "after": 62
+    }
+  ],
+  "full_ram_prediction_windows": 131,
+  "physical_hud_words_exact": 128,
+  "source_crystal_markers_exact": 9,
+  "primary_state_imports": 0,
+  "full_game_validated": false,
+  "evidence": {
+    "analysis/cold_palace_entry_c0046_report.json": "a508b8f3e3d261585506c795b1e758a87609fbfcbacd45ac84ec9d4c6adbbc28",
+    "validation/c0046-campaign01/isolated/project/validation/c0046-palace-sources/giant-tools02/source_index.json": "9195fda8fa1cc9b16fc5fff49bf3421b4e54e34e808cde15edf4d5cc0dfdda7f",
+    "validation/c0046-campaign01/isolated/project/validation/c0046-palace-sources/giant-tools02/assisted_boss_route.py": "2d26b22e732dff44a4e8f7557e72cb489d7b5b3a9f96bfdb737c869f4b2ddd8f",
+    "validation/c0046-campaign01/isolated/project/validation/c0046-palace-sources/giant-tools02/assisted_prefix.py": "e2c4f531f372383610a5f0cfbb46000a0b88d46045b51e799efdd9792f164cc6",
+    "validation/c0046-campaign01/isolated/project/validation/c0046-palace-sources/giant-tools02/natural_dungeon_combat.py": "6710825b5f41d4d19aebf0ed14e98ba0870482f87e4cec2c5d3df0dd51bfa8de",
+    "validation/c0046-campaign01/isolated/project/validation/c0046-palace-sources/giant-tools02/natural_contact_passage.py": "1ee8a36cfa8faf9aa6f8276a143c9517362dddaa07de63e65e40f5ae64e3105a",
+    "validation/c0046-campaign01/isolated/project/validation/c0046-palace-sources/giant-tools02/close_assisted_approach.py": "4aca0af44f51c3ea02fff6b747a329c0c1b2d9221ee9bdc32fb0cb42475d6238",
+    "validation/c0046-campaign01/isolated/project/validation/c0046-palace-sources/giant-tools02/unassisted_fast_prediction.py": "9d566e76ba1875eebef4ccea787e729cc4c5fd1bef0ccc60449e95609d36cdd3",
+    "validation/c0046-campaign01/isolated/project/validation/c0046-palace-sources/giant-tools02/unassisted_dungeon_continuation.py": "a98fd8875c25859ef6523f155ed7a9f4277fa9dc70016b1340af57421892aeca",
+    "validation/c0046-campaign01/isolated/project/validation/c0046-palace-sources/giant-tools02/prediction_video_skip.py": "f5ef8d275328964d09da5b3c4eec75f9cc55bb90f68865036d60d80e57db2ae0",
+    "validation/c0046-campaign01/isolated/project/validation/c0046-palace-sources/giant-tools02/natural_combat_beam.py": "c555702da62ca4fe51f885777be440ac45ec9922827a110a7aa96cb43a57ef96",
+    "validation/c0046-campaign01/isolated/project/validation/c0046-palace-sources/giant-tools02/natural_boss_evasive_planner.py": "2d23735d0f4108dcdec2e050b1960934d2d1733199799b467e6d5e71f8ca1d1f",
+    "validation/c0046-campaign01/isolated/project/validation/c0046-palace-sources/giant-tools02/replay_assisted_prefix.py": "3df2d644bef81cb79f5f6948763452ffab3ff6023b9e3b601bcff3bbd6b7df4f",
+    "validation/c0046-campaign01/isolated/project/validation/c0046-palace-sources/giant-tools02/continue_palace_giant_c0046.py": "ab0b9930c2dd538fce4880d7b641ff4a5e5fe01415d06b0aeefddfcf0034c924",
+    "validation/c0046-campaign01/isolated/project/validation/c0046-palace-sources/giant-tools02/continue_d8_entry_c0046.py": "9026c833116fc3fce00f1fb231ce4135b5974299192af87de33d64110869ad9b",
+    "input/original.sms": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-route/md-c0046-cold-palace-entry02/capture.json": "d5d4e64e01f6565385865b1cc8687e5e34e77370a74481644eccefc89424148b",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-cold-palace-switch16d02/capture.json": "f2ddc95f3d631a5ff1e2ab5308aa7da1c0681f58305ca5af4c53ea6029a92025",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-cold-palace-switch16d02/report.json": "714f2a087dfa0e6e376cab486045dffc93c89768dfd7d188b491d4dd42764e35",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-cold-palace-switch16d02-assisted-fixed-replay-315673/replay_report.json": "858ca4e714f9bdd34c9ef4c0665148f5a8c58fae09bb850abbe0d70167a6fe4b",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-cold-palace-switch16d02/controls.json": "963bb725eb6d48d8ec8a0f1565bf92aa305d08db130f609cf7a213cb181aef18",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-cold-palace-switch16d02/assistance.json": "081afbd0b74d92cf850eb9c61cfeeaec08b7a396b6a98cded82542b57a98950b",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-cold-palace-switch16d02/ram_315673.bin": "2c7e525204b2c9fd61cd3e222b402c171b6fc1cae8c81bcfbac97665c7771556",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-cold-palace-switch16d02-assisted-fixed-replay-315673/ram_315673.bin": "2c7e525204b2c9fd61cd3e222b402c171b6fc1cae8c81bcfbac97665c7771556",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-cold-palace-switch16d02/frame_315673.png": "293f3227c895b1dcfac2829c236914423dbfd8a57accd3832a948cb63c56311f",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-cold-palace-switch16d02-assisted-fixed-replay-315673/frame_315673.png": "293f3227c895b1dcfac2829c236914423dbfd8a57accd3832a948cb63c56311f",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-cold-palace-pre-giant02/capture.json": "1da79ab5589c98311ad3790ec5222ebd6b95d1223a90592b3ea2964d5de4f0b8",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-cold-palace-pre-giant02/report.json": "705f758815eacde709f41e35bca760d071e92f2e92f3891deb8ba85b9bc34d77",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-cold-palace-pre-giant02-assisted-fixed-replay-321704/replay_report.json": "b468fe8c9c1e6bce7229a439c79ed705c4e544209614f1e6e002793f340d4797",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-cold-palace-pre-giant02/controls.json": "69bdb5c1d31b5ce32c4f99c0fda80bfa60b0564d021f75381eb0496503b2d774",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-cold-palace-pre-giant02/assistance.json": "de090192b224f419b4bab5547e4ee84f3f129c16163916050fc9403592ebec6d",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-cold-palace-pre-giant02/ram_321704.bin": "d5b2a2c312ee048c932f81ce61e65f4d784f58f7c3d3f9fb71de4265b6ab5bc9",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-cold-palace-pre-giant02-assisted-fixed-replay-321704/ram_321704.bin": "d5b2a2c312ee048c932f81ce61e65f4d784f58f7c3d3f9fb71de4265b6ab5bc9",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-cold-palace-pre-giant02/frame_321704.png": "82feea3c66288801acbddcf8c8cd4e56687cf289d3979f6bb3bd65944cab356a",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-cold-palace-pre-giant02-assisted-fixed-replay-321704/frame_321704.png": "82feea3c66288801acbddcf8c8cd4e56687cf289d3979f6bb3bd65944cab356a",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-cold-palace-giant-release02/capture.json": "8fffc74bfc90f421c666ad31f60a8a2098cc6768f0723252fdb7e00f86b7ad16",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-cold-palace-giant-release02/report.json": "417c7395e3b41558b0dc8e99ec5c5961ef95eabf2362be8eba1804c088045e28",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-cold-palace-giant-release02-assisted-fixed-replay-321705/replay_report.json": "7af1d70af4ab0b7daa2a05d0502fd6045e9e9efc77721b81031b0f7f1ee6fda7",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-cold-palace-giant-release02/controls.json": "4b54bffb2f01b9ec4d6d6d2c68a52893fde96c30dd419a3a28b933034b5f0ba6",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-cold-palace-giant-release02/assistance.json": "d9a3e145ac9d4ad7d42ce2c44aa86ecf6855cb88e3196230cd3756a1c791c7ad",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-cold-palace-giant-release02/ram_321705.bin": "7eb25204901f53ac18af4f15aef7a4f6f2df0bfc30aeeb3c8a36348d7b35fdde",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-cold-palace-giant-release02-assisted-fixed-replay-321705/ram_321705.bin": "7eb25204901f53ac18af4f15aef7a4f6f2df0bfc30aeeb3c8a36348d7b35fdde",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-cold-palace-giant-release02/frame_321705.png": "82feea3c66288801acbddcf8c8cd4e56687cf289d3979f6bb3bd65944cab356a",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-cold-palace-giant-release02-assisted-fixed-replay-321705/frame_321705.png": "82feea3c66288801acbddcf8c8cd4e56687cf289d3979f6bb3bd65944cab356a",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-cold-palace-giant02/capture.json": "e7ffa1df5c686b827e71448f1c0ab3a1e7ffbafc8c9cd6ad0201b7edb455e6d6",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-cold-palace-giant02/report.json": "20fe7c17a9f6882432e334a8f52c724c649b1007fb4934d857d0780c8d978057",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-cold-palace-giant02-assisted-fixed-replay-326130/replay_report.json": "bbddd7b0a9af1915f7a43cacbd58e484b67fa74888f73d82aee26c08eea89e54",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-cold-palace-giant02/controls.json": "6f9033cf082d0af50db2a53fa6a21028fe05364ae563a8cc91bbfd383eec0a7b",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-cold-palace-giant02/assistance.json": "d9a3e145ac9d4ad7d42ce2c44aa86ecf6855cb88e3196230cd3756a1c791c7ad",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-cold-palace-giant02/ram_326130.bin": "1e3f6ffae1c3731e9d50a05836908289e35c4efd8e91a28630c54c936033a801",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-cold-palace-giant02-assisted-fixed-replay-326130/ram_326130.bin": "1e3f6ffae1c3731e9d50a05836908289e35c4efd8e91a28630c54c936033a801",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-cold-palace-giant02/frame_326130.png": "7aff61953d1117e78278a4f0ff92ad00b7f0c025fd10dbe30d94effa58704d6d",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-cold-palace-giant02-assisted-fixed-replay-326130/frame_326130.png": "7aff61953d1117e78278a4f0ff92ad00b7f0c025fd10dbe30d94effa58704d6d",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-cold-palace-giant02/events.json": "aaf3a0490cab0f23f557adb75b350a4a8dc0c69c0bf79d7b7c86b42c774056cb",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-cold-palace-giant02/vram_326130.bin": "dd13ecc5446a7656d6b817c77794243a00528b9359a03419954700083e80d5f2",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-cold-palace-giant02/vdp_regs_326130.bin": "f2d8a5124acfa25334a0bfdc5e189cd540f4e5021395f513e427ec37928525fe"
+  },
+  "limits": [
+    "Actual cold campaign with nine crystals and owned Balloon. Approach guard is removed before15E;no later writes during the giant fight or antechamber walk. Natural floor/projectile cooldowns below129 are allowed and recorded.",
+    "Guardian11E,real GoldenAxe2 and final14C remain pending. This does not prove whole-source RNG,timing,saves,optional content or hardware."
+  ]
+}

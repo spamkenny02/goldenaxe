@@ -39,6 +39,13 @@ retrouve les 65536 octets de RAM et l’image finale de c0046.
 [Hache, fée et entrée D2 en PAL](analysis/palc0046_after_d1_report.json)
 · [Rejeu c0047](analysis/c0047_pal_after_d1_report.json).
 
+Le deuxième cristal et le retour PAL sont désormais vérifiés jusqu’à
+46869 images : boss à 30 PV source, protection retirée avant l’entrée,
+324 prédictions RAM exactes et sept points du rejeu indépendant. Le retour
+se termine à 23/48 PV ; c0047 retrouve toute la RAM et l’image finale.
+[Deuxième cristal PAL](analysis/palc0046_d2_report.json)
+· [Rejeu c0047](analysis/c0047_pal_d2_report.json).
+
 Le quatrième boss est vaincu après retrait de la protection, avec ses 30 PV source.
 Le retour sur c0047 concorde sur les 65536 octets de RAM et l’image finale à
 107105 images, avec 62/64 PV. [Parcours du quatrième donjon](analysis/c0046_d4_report.json)
@@ -144,6 +151,16 @@ indépendant passent ; le retour termine à 308670 images, avec 104/104 PV,
 et l’image finale. Le palais et la fin restent à valider sur cet aperçu.
 [Neuvième cristal et retour](analysis/d9_campaign_c0046_report.json)
 · [Rejeu c0047](analysis/c0047_d9_auto_report.json).
+
+Sur c0046, l’utilisation réelle du ballon, la restauration de la carte et
+l’ouverture du palais avec les neuf cristaux passent également. Le premier
+géant du palais est vaincu avec ses 60 PV source, après retrait de la
+protection ; les 131 prédictions et les quatre points du rejeu concordent.
+Les portails et deux passages Terre intérieurs sont ensuite vérifiés.
+[Entrée du palais](analysis/cold_palace_entry_c0046_report.json)
+· [Premier géant](analysis/cold_palace_giant_c0046_report.json)
+· [Mécanismes intérieurs](analysis/cold_palace_inner_c0046_report.json).
+Le gardien de la Hache d’or et la fin restent en cours sur cet aperçu.
 [Ancien essai D7 archivé, environ 12 Mo libérés](analysis/c0046-d7-inactive-south01/manifest.json).
 [Captures des retours D4 ratés archivées, environ 9 Mio libérés](analysis/c0046-d4-failed-exit-captures/manifest.json).
 
@@ -236,7 +253,7 @@ sa propre campagne. Un numéro de version ne constitue pas un statut de finale.
 | V318 NTSC | Neuf cristaux, palais, Death Adder, générique et retour à l’intro ; 393707 états comparés au parcours V317 | Ce rejeu ne prouve pas une identité globale avec la SMS. |
 | V318 PAL | Nouvelle partie jusqu’à la victoire et au générique, avec rejeux indépendants RAM/image | La comparaison audiovisuelle source reste ciblée. |
 | c0047 NTSC | Neuf cristaux et retours, ballon, canoë, Feu, épée longue, bottes, cloche de glace, bateau, clé du voleur, achats et soin | Palais, fin de campagne et sauvegarde à revalider sur cet aperçu. |
-| c0047 PAL | Premier cristal et retour, hache, récompense de la fée et entrée D2 | Le deuxième cristal et les donjons suivants restent à vérifier sur cet aperçu. |
+| c0047 PAL | Deux cristaux et retours, hache et récompense de la fée | Troisième donjon et suite de la campagne à vérifier sur cet aperçu. |
 
 Les contrôles V318 couvrent aussi l’intro et le titre, la saisie du nom,
 des bruitages de menu, six restaurations de décor après inventaire et les
