@@ -44,11 +44,15 @@ validation/c0046-campaign01/isolated/project. Cette branche continue sur
 c0046 puis chaque jalon est rejoué sur c0047. Journaux et sources :
 validation/c0046-d6-sources02 dans ce projet, preuves indépendantes partagées
 dans son sous-dossier cold-stream. Le pilote D6 réutilise quinze propositions
-d’actions historiques, toutes rejouées de nouveau sur le candidat. Adapter
-summarize_d6_progress_v0317.py pour c0046 après les dix-sept étapes (sélection
-hache, entrée et quinze recettes) : les chemins du rapport D5 sont préfixés
-par validation/c0046-campaign01/isolated/project, à ramener au projet pour
-les lectures internes. Ne pas lancer l’ancien audit V317 tel quel.
+d’actions historiques, toutes rejouées de nouveau sur le candidat. Après
+les dix-sept étapes (sélection hache, entrée et quinze recettes), lancer
+tools/summarize_d6_progress_c0046.py dans le projet, puis
+validation/c0046-campaign01/archive_d6_progress.py à la racine. L’audit
+préparé distingue les sources du candidat et les références historiques.
+Ensuite seulement lancer tools/finish_d6_c0046.py dans le projet ; ses trois
+étapes sont suivies de summarize_d6_campaign_c0046.py et, à la racine,
+archive_d6_finish.py puis replay_c0047_d1.py auto --dungeon 6.
+Ne pas relancer les scripts de préparation : leurs fichiers existent déjà.
 Les sources natives réelles c0046 sont liées en lecture seule dans
 megadrive/src ; native_sources_setup.json enregistre leurs empreintes.
 Ne pas modifier ces liens ni les outils partagés. prepare_d6.py documente

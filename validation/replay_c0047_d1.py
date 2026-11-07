@@ -11,7 +11,7 @@ from assisted_prefix import recording
 from archive_lossless_evidence import freeze,sha
 
 parser=argparse.ArgumentParser();parser.add_argument('region',choices=['auto','pal'])
-parser.add_argument('--dungeon',type=int,choices=[1,2,3,4,5],default=1)
+parser.add_argument('--dungeon',type=int,choices=[1,2,3,4,5,6],default=1)
 parser.add_argument('--milestone',choices=['exit','rope','earth','fire-sword'],default='exit')
 args=parser.parse_args();region=args.region;dungeon=args.dungeon
 assert dungeon==1 or region=='auto','Only the first-dungeon PAL recording is available here'
