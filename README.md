@@ -21,6 +21,12 @@ Premier donjon rejoué en PAL et NTSC ; huit premiers cristaux et retours extér
 rejoués en NTSC, ainsi que l’achat normal de Terre et l’acquisition du canoë.
 La campagne complète de cet aperçu reste à valider.
 
+Son démarrage est maintenant comparé directement à la SMS sur deux boucles
+sans entrée, en PAL et NTSC : les 14000 images normalisées par région
+restent identiques à V318. Les écarts SMS connus sont conservés ; les
+états audio et huit registres PSG concordent aussi sur 6500 images par région.
+[Démarrage c0047](analysis/c0047_boot_report.json).
+
 Le quatrième boss est vaincu après retrait de la protection, avec ses 30 PV source.
 Le retour sur c0047 concorde sur les 65536 octets de RAM et l’image finale à
 107105 images, avec 62/64 PV. [Parcours du quatrième donjon](analysis/c0046_d4_report.json)

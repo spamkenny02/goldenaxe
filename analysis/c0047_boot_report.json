@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "candidate": "c0047",
+  "md_sha256": "d3ea2a83ea24ed8a0d3c9857f9fbe70d000a4f73358452c1887f40e78966c56e",
+  "baseline_sha256": "b9e1f0a0543f191e24ffd6d2740a0d717501e0fcd986f8b8953a37a1b3c416a4",
+  "source_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+  "regions": [
+    {
+      "region": "ntsc",
+      "frames": 14000,
+      "identical_to_v318_frames": 14000,
+      "sms_exact_frames": 13636,
+      "sms_different_pixels": 147429
+    },
+    {
+      "region": "pal",
+      "frames": 14000,
+      "identical_to_v318_frames": 14000,
+      "sms_exact_frames": 13682,
+      "sms_different_pixels": 124148
+    }
+  ],
+  "audio_frames_per_region": 6500,
+  "audio_reader_bytes_checked": 402,
+  "psg_registers_checked": 8,
+  "ram_writes": 0,
+  "sram_imports": 0,
+  "scope": "Two no-input opening loops per region. All normalized video frames retain V318 behavior; existing partial-reveal and fade differences from SMS remain. Audio-reader and PSG state match V318, not a PCM comparison.",
+  "archive_manifest": "analysis/c0047-boot/manifest.json"
+}

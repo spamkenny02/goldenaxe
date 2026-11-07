@@ -19,6 +19,19 @@ pièces et l’achat de Terre. Dernier point Terre : 81636, 48 PV, 12 pièces,
 Le premier donjon est aussi rejoué en PAL.
 La campagne complète de cet aperçu demeure ouverte.
 
+Le démarrage c0047 est désormais vérifié : analysis/c0047_boot_report.json,
+archive analysis/c0047-boot. Deux boucles sans entrée (14000 images) dans
+chaque région, toutes identiques à V318 après normalisation du viewport.
+Concordance SMS :13636/14000 en NTSC et13682/14000 en PAL ; écarts de
+pixels147429/124148 conservés. Audio6500 images/région,402 octets d’état
+et8 registres PSG identiques à V318. Pas de preuve PCM ni d’effacement
+des limites de révélation/fondu. Les trois processus de test sont terminés.
+Validation/summarize_c0047_boot.py a vérifié et archivé les preuves, puis
+supprimé10704832 octets de doublons générés (9867796 octets nets libérés).
+La vue de lecture seule du binaire publié dans validation/c0047-boot01
+est archivée et supprimée ; ne pas relancer dans ce dossier. Les ROMs
+numérotées et le candidat publié sont conservés.
+
 Feu, le don de l’épée longue et l’entrée D5 sont terminés et rejoués sur
 c0047 à 121528 : 62/64 PV, 72 PM, huile consommée, épée niveau 2 possédée,
 hache toujours sélectionnée. Rapports : analysis/fire_sword_c0046_report.json

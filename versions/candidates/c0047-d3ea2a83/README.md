@@ -105,3 +105,12 @@ Le retour utilise30 prédictions sans nouvelle aide. La suite reste à valider.
 
 [Audit du huitième cristal](../../../analysis/d8_campaign_c0046_report.json)
 · [Rejeu sur c0047](../../../analysis/c0047_d8_auto_report.json).
+
+Le démarrage de cet aperçu est vérifié sur deux boucles sans entrée en
+PAL et NTSC. Les 14000 images normalisées de chaque région sont identiques
+à V318 ; 13636 sont identiques à la SMS en NTSC et13682 en PAL. Les écarts
+résiduels de révélation et de fondu restent présents. Les402 octets d’état
+audio et huit registres PSG concordent avec V318 sur6500 images par région ;
+ce contrôle ne compare pas les formes d’onde PCM.
+
+[Audit du démarrage c0047](../../../analysis/c0047_boot_report.json).

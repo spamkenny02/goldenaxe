@@ -1,0 +1,613 @@
+{
+  "passed": true,
+  "candidate": "c0047",
+  "md_sha256": "d3ea2a83ea24ed8a0d3c9857f9fbe70d000a4f73358452c1887f40e78966c56e",
+  "baseline_sha256": "b9e1f0a0543f191e24ffd6d2740a0d717501e0fcd986f8b8953a37a1b3c416a4",
+  "source_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+  "regions": [
+    {
+      "region": "ntsc",
+      "frames": 14000,
+      "identical_to_v318_frames": 14000,
+      "sms_exact_frames": 13636,
+      "sms_different_pixels": 147429
+    },
+    {
+      "region": "pal",
+      "frames": 14000,
+      "identical_to_v318_frames": 14000,
+      "sms_exact_frames": 13682,
+      "sms_different_pixels": 124148
+    }
+  ],
+  "audio_frames_per_region": 6500,
+  "audio_reader_bytes_checked": 402,
+  "psg_registers_checked": 8,
+  "ram_writes": 0,
+  "sram_imports": 0,
+  "scope": "Two no-input opening loops per region. All normalized video frames retain V318 behavior; existing partial-reveal and fade differences from SMS remain. Audio-reader and PSG state match V318, not a PCM comparison.",
+  "archive_manifest": "analysis/c0047-boot/manifest.json",
+  "files": {
+    "analysis/c0047_boot_report.json": "25a5b1ac751c4a67f5f144944c8267abb422161ad471a165d9cae70ecda00a61",
+    "tools/compare_boot_audio_state.py": "c9aaef0118c1a723b02c52bd54eaeb4a31885d74c8e0e012be50a2723167f86a",
+    "tools/compare_boot_to_sms.py": "d2c93705bc6bca0189b84385676af9ef37789513e8c27c73796453df7cca3aa3"
+  },
+  "compressed": {
+    "validation/c0047-boot01/audio/ntsc-baseline/capture.json": {
+      "stored": "objects/33144a58f714336acde84fa815f2358584643508e10bccf62ada39535dac662b.gz",
+      "raw_sha256": "33144a58f714336acde84fa815f2358584643508e10bccf62ada39535dac662b",
+      "raw_bytes": 596,
+      "stored_sha256": "d22f047420366c2504e5ab4ae7ebdb1e041b2648726c0c8278e6499d7fff1f2c"
+    },
+    "validation/c0047-boot01/audio/ntsc-baseline/trace_counts.bin": {
+      "stored": "objects/30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58.gz",
+      "raw_sha256": "30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58",
+      "raw_bytes": 1048576,
+      "stored_sha256": "f227c53a0b54fb0009773680f60b76c1f346b4dcfca7e03b7f311f0bd0f3bea1"
+    },
+    "validation/c0047-boot01/audio/ntsc-baseline/trace_states.bin": {
+      "stored": "objects/5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef.gz",
+      "raw_sha256": "5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+      "raw_bytes": 1024,
+      "stored_sha256": "75eb48369c0d0b1260b7db5c5f831d5f8b1b9b322b64191c96cb147437e7f404"
+    },
+    "validation/c0047-boot01/audio/ntsc-baseline/trace_windows.bin": {
+      "stored": "objects/8a39d2abd3999ab73c34db2476849cddf303ce389b35826850f9a700589b4a90.gz",
+      "raw_sha256": "8a39d2abd3999ab73c34db2476849cddf303ce389b35826850f9a700589b4a90",
+      "raw_bytes": 262144,
+      "stored_sha256": "e3c3be563c17c24fb5bfdfefbcbe3882cc985fa4161654a534287d9baafe2a73"
+    },
+    "validation/c0047-boot01/audio/ntsc-candidate/capture.json": {
+      "stored": "objects/61a93ac8f2083f04d9c79a81b6f8d8f5531a7b3135e9738d63cccceef20a4232.gz",
+      "raw_sha256": "61a93ac8f2083f04d9c79a81b6f8d8f5531a7b3135e9738d63cccceef20a4232",
+      "raw_bytes": 635,
+      "stored_sha256": "ffae2ac9e9616759d65ea4f4272c3279446d75990b8cd0dc6ef44c94eb34bf8c"
+    },
+    "validation/c0047-boot01/audio/ntsc-candidate/trace_counts.bin": {
+      "stored": "objects/30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58.gz",
+      "raw_sha256": "30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58",
+      "raw_bytes": 1048576,
+      "stored_sha256": "f227c53a0b54fb0009773680f60b76c1f346b4dcfca7e03b7f311f0bd0f3bea1"
+    },
+    "validation/c0047-boot01/audio/ntsc-candidate/trace_states.bin": {
+      "stored": "objects/5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef.gz",
+      "raw_sha256": "5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+      "raw_bytes": 1024,
+      "stored_sha256": "75eb48369c0d0b1260b7db5c5f831d5f8b1b9b322b64191c96cb147437e7f404"
+    },
+    "validation/c0047-boot01/audio/ntsc-candidate/trace_windows.bin": {
+      "stored": "objects/8a39d2abd3999ab73c34db2476849cddf303ce389b35826850f9a700589b4a90.gz",
+      "raw_sha256": "8a39d2abd3999ab73c34db2476849cddf303ce389b35826850f9a700589b4a90",
+      "raw_bytes": 262144,
+      "stored_sha256": "e3c3be563c17c24fb5bfdfefbcbe3882cc985fa4161654a534287d9baafe2a73"
+    },
+    "validation/c0047-boot01/audio/pal-baseline/capture.json": {
+      "stored": "objects/587fc265bc5854e0d7105032b14e26be0e63050b2041be146519ed532f443bdf.gz",
+      "raw_sha256": "587fc265bc5854e0d7105032b14e26be0e63050b2041be146519ed532f443bdf",
+      "raw_bytes": 594,
+      "stored_sha256": "bd0c35ced0f233e641c039bb2c5fad87d5d9cce9bd6f0c6a80ee88e80f37e51d"
+    },
+    "validation/c0047-boot01/audio/pal-baseline/trace_counts.bin": {
+      "stored": "objects/30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58.gz",
+      "raw_sha256": "30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58",
+      "raw_bytes": 1048576,
+      "stored_sha256": "f227c53a0b54fb0009773680f60b76c1f346b4dcfca7e03b7f311f0bd0f3bea1"
+    },
+    "validation/c0047-boot01/audio/pal-baseline/trace_states.bin": {
+      "stored": "objects/5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef.gz",
+      "raw_sha256": "5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+      "raw_bytes": 1024,
+      "stored_sha256": "75eb48369c0d0b1260b7db5c5f831d5f8b1b9b322b64191c96cb147437e7f404"
+    },
+    "validation/c0047-boot01/audio/pal-baseline/trace_windows.bin": {
+      "stored": "objects/8a39d2abd3999ab73c34db2476849cddf303ce389b35826850f9a700589b4a90.gz",
+      "raw_sha256": "8a39d2abd3999ab73c34db2476849cddf303ce389b35826850f9a700589b4a90",
+      "raw_bytes": 262144,
+      "stored_sha256": "e3c3be563c17c24fb5bfdfefbcbe3882cc985fa4161654a534287d9baafe2a73"
+    },
+    "validation/c0047-boot01/audio/pal-candidate/capture.json": {
+      "stored": "objects/b6eb319a5cebccfc242a5d8ceea0ca77ed78259014ca3bd53e03fc06b16f20bf.gz",
+      "raw_sha256": "b6eb319a5cebccfc242a5d8ceea0ca77ed78259014ca3bd53e03fc06b16f20bf",
+      "raw_bytes": 633,
+      "stored_sha256": "1e1430f0d8b9e3734dc3a9f95f24eb5f10618125304ad382e00de5d267215a96"
+    },
+    "validation/c0047-boot01/audio/pal-candidate/trace_counts.bin": {
+      "stored": "objects/30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58.gz",
+      "raw_sha256": "30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58",
+      "raw_bytes": 1048576,
+      "stored_sha256": "f227c53a0b54fb0009773680f60b76c1f346b4dcfca7e03b7f311f0bd0f3bea1"
+    },
+    "validation/c0047-boot01/audio/pal-candidate/trace_states.bin": {
+      "stored": "objects/5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef.gz",
+      "raw_sha256": "5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+      "raw_bytes": 1024,
+      "stored_sha256": "75eb48369c0d0b1260b7db5c5f831d5f8b1b9b322b64191c96cb147437e7f404"
+    },
+    "validation/c0047-boot01/audio/pal-candidate/trace_windows.bin": {
+      "stored": "objects/8a39d2abd3999ab73c34db2476849cddf303ce389b35826850f9a700589b4a90.gz",
+      "raw_sha256": "8a39d2abd3999ab73c34db2476849cddf303ce389b35826850f9a700589b4a90",
+      "raw_bytes": 262144,
+      "stored_sha256": "e3c3be563c17c24fb5bfdfefbcbe3882cc985fa4161654a534287d9baafe2a73"
+    },
+    "validation/c0047-boot01/audio/report.json": {
+      "stored": "objects/a83849906b8dbfbac3594f4e80666eddbbf499537277aafa0009b96f51471c93.gz",
+      "raw_sha256": "a83849906b8dbfbac3594f4e80666eddbbf499537277aafa0009b96f51471c93",
+      "raw_bytes": 1702,
+      "stored_sha256": "15ed40b611153966ed2b5332dff56c77d10e8ba3eeb720a136b9f7997a72289b"
+    },
+    "validation/c0047-boot01/inputs.json": {
+      "stored": "objects/9276fe2f505cce3c20c814b7db9ea82e68990380d4e3cc1bce3dbb33ea79d1fc.gz",
+      "raw_sha256": "9276fe2f505cce3c20c814b7db9ea82e68990380d4e3cc1bce3dbb33ea79d1fc",
+      "raw_bytes": 462,
+      "stored_sha256": "b0e4e3993ad4eacb52c4d74b1bec3d3dfea9efb52351bb8914355d3d5879d36d"
+    },
+    "validation/c0047-boot01/ntsc-video/baseline/capture.json": {
+      "stored": "objects/66f2aa0e18c6f6263a4d404a6de989010b5e0f52ff8b83edcfa22d7cdc65a88c.gz",
+      "raw_sha256": "66f2aa0e18c6f6263a4d404a6de989010b5e0f52ff8b83edcfa22d7cdc65a88c",
+      "raw_bytes": 638,
+      "stored_sha256": "8fc2e72eb363ffc563d668a576ea6a2beb3d7a75c5dd8f176ca43b21ec126d63"
+    },
+    "validation/c0047-boot01/ntsc-video/baseline/cram_14000.bin": {
+      "stored": "objects/e8c17c6c8e44e6d55b32785ff4bb08eaef4cfac7554776eb88b0d44c0bab0eb0.gz",
+      "raw_sha256": "e8c17c6c8e44e6d55b32785ff4bb08eaef4cfac7554776eb88b0d44c0bab0eb0",
+      "raw_bytes": 128,
+      "stored_sha256": "f56f2f8ae9893f8e3fafa6a5a785d244bd89962a0b4b0a091031ad40c1f37b3f"
+    },
+    "validation/c0047-boot01/ntsc-video/baseline/frame_14000.png": {
+      "stored": "objects/aa94a3417f80b1e90eb4d650b6e792bd29081f3a3b515387caa1a2dc67bba1ec.gz",
+      "raw_sha256": "aa94a3417f80b1e90eb4d650b6e792bd29081f3a3b515387caa1a2dc67bba1ec",
+      "raw_bytes": 4380,
+      "stored_sha256": "50f13943a3eaab010683b62231fad9793c0343b28f11035757a4826904892703"
+    },
+    "validation/c0047-boot01/ntsc-video/baseline/normalized-frame-hashes.bin": {
+      "stored": "objects/d5db1200b2f9aff271d43d33e92511543f88201508069f002efd1b784d575c33.gz",
+      "raw_sha256": "d5db1200b2f9aff271d43d33e92511543f88201508069f002efd1b784d575c33",
+      "raw_bytes": 448000,
+      "stored_sha256": "dead77347484461ad5dde4ced4c7ba422d883e355eab30427dca2343001e7545"
+    },
+    "validation/c0047-boot01/ntsc-video/baseline/ram_14000.bin": {
+      "stored": "objects/ba3713225dd9fd4515eb0db4db76b53f8ba75298723f037ae775a70342497ce7.gz",
+      "raw_sha256": "ba3713225dd9fd4515eb0db4db76b53f8ba75298723f037ae775a70342497ce7",
+      "raw_bytes": 65536,
+      "stored_sha256": "7b24a3b336737a7c95cf479bb98b58b46f34a9aa69d64a9ee7e0cd05c200b831"
+    },
+    "validation/c0047-boot01/ntsc-video/baseline/vdp_regs_14000.bin": {
+      "stored": "objects/ea469b392a163c99cb171984c52a0519d0d421a4dfc1857f0c99f57fe2bc5535.gz",
+      "raw_sha256": "ea469b392a163c99cb171984c52a0519d0d421a4dfc1857f0c99f57fe2bc5535",
+      "raw_bytes": 32,
+      "stored_sha256": "829fcabe61e91768f7eecbafc0ecec3d6349509745d23fbe8c5520828eb7db85"
+    },
+    "validation/c0047-boot01/ntsc-video/baseline/vram_14000.bin": {
+      "stored": "objects/716710eb06172c51efa13d05f88c6ddaaa24b78f675977beee12907f38845b80.gz",
+      "raw_sha256": "716710eb06172c51efa13d05f88c6ddaaa24b78f675977beee12907f38845b80",
+      "raw_bytes": 65536,
+      "stored_sha256": "57450d0ea850530dcc25d85235cd235c3e4a429dab74f2acb786b677fb2be1f9"
+    },
+    "validation/c0047-boot01/ntsc-video/candidate/capture.json": {
+      "stored": "objects/3f2ac4067d454a0dceba511eb7c93d8295df908a157d3f898822b1a0fdcfe831.gz",
+      "raw_sha256": "3f2ac4067d454a0dceba511eb7c93d8295df908a157d3f898822b1a0fdcfe831",
+      "raw_bytes": 650,
+      "stored_sha256": "79089c9d2b030f386b24d6ca2470e4816937f5417bd8cc0054ccb77d04b553b3"
+    },
+    "validation/c0047-boot01/ntsc-video/candidate/cram_14000.bin": {
+      "stored": "objects/e8c17c6c8e44e6d55b32785ff4bb08eaef4cfac7554776eb88b0d44c0bab0eb0.gz",
+      "raw_sha256": "e8c17c6c8e44e6d55b32785ff4bb08eaef4cfac7554776eb88b0d44c0bab0eb0",
+      "raw_bytes": 128,
+      "stored_sha256": "f56f2f8ae9893f8e3fafa6a5a785d244bd89962a0b4b0a091031ad40c1f37b3f"
+    },
+    "validation/c0047-boot01/ntsc-video/candidate/frame_14000.png": {
+      "stored": "objects/aa94a3417f80b1e90eb4d650b6e792bd29081f3a3b515387caa1a2dc67bba1ec.gz",
+      "raw_sha256": "aa94a3417f80b1e90eb4d650b6e792bd29081f3a3b515387caa1a2dc67bba1ec",
+      "raw_bytes": 4380,
+      "stored_sha256": "50f13943a3eaab010683b62231fad9793c0343b28f11035757a4826904892703"
+    },
+    "validation/c0047-boot01/ntsc-video/candidate/normalized-frame-hashes.bin": {
+      "stored": "objects/d5db1200b2f9aff271d43d33e92511543f88201508069f002efd1b784d575c33.gz",
+      "raw_sha256": "d5db1200b2f9aff271d43d33e92511543f88201508069f002efd1b784d575c33",
+      "raw_bytes": 448000,
+      "stored_sha256": "dead77347484461ad5dde4ced4c7ba422d883e355eab30427dca2343001e7545"
+    },
+    "validation/c0047-boot01/ntsc-video/candidate/ram_14000.bin": {
+      "stored": "objects/63fbeedeb2e4b1332f1e4c25a78123d18876375c08cf2cf11c99b3a9ad8222b5.gz",
+      "raw_sha256": "63fbeedeb2e4b1332f1e4c25a78123d18876375c08cf2cf11c99b3a9ad8222b5",
+      "raw_bytes": 65536,
+      "stored_sha256": "29285e591d711cf50af58677d06c8b1059c6648530f54cffb9aaa281529d0845"
+    },
+    "validation/c0047-boot01/ntsc-video/candidate/vdp_regs_14000.bin": {
+      "stored": "objects/ea469b392a163c99cb171984c52a0519d0d421a4dfc1857f0c99f57fe2bc5535.gz",
+      "raw_sha256": "ea469b392a163c99cb171984c52a0519d0d421a4dfc1857f0c99f57fe2bc5535",
+      "raw_bytes": 32,
+      "stored_sha256": "829fcabe61e91768f7eecbafc0ecec3d6349509745d23fbe8c5520828eb7db85"
+    },
+    "validation/c0047-boot01/ntsc-video/candidate/vram_14000.bin": {
+      "stored": "objects/716710eb06172c51efa13d05f88c6ddaaa24b78f675977beee12907f38845b80.gz",
+      "raw_sha256": "716710eb06172c51efa13d05f88c6ddaaa24b78f675977beee12907f38845b80",
+      "raw_bytes": 65536,
+      "stored_sha256": "57450d0ea850530dcc25d85235cd235c3e4a429dab74f2acb786b677fb2be1f9"
+    },
+    "validation/c0047-boot01/ntsc-video/report.json": {
+      "stored": "objects/9866406e1c8893e1a1aecdf95b165ded80dfffa27691604e5b4db8061c5b8172.gz",
+      "raw_sha256": "9866406e1c8893e1a1aecdf95b165ded80dfffa27691604e5b4db8061c5b8172",
+      "raw_bytes": 921,
+      "stored_sha256": "a176a889b88a776d31a04df608703fef7cd733ad9582f42da4702abe5096a413"
+    },
+    "validation/c0047-boot01/ntsc-video/sms/capture.json": {
+      "stored": "objects/b0fec4a8965f688d907df87ce32956f28ee5cf184ad69a9084cbb2e551768b4c.gz",
+      "raw_sha256": "b0fec4a8965f688d907df87ce32956f28ee5cf184ad69a9084cbb2e551768b4c",
+      "raw_bytes": 608,
+      "stored_sha256": "cc6ca45128ad312d0f08fb42cc2b923f1df9f6d26e9931da5aba7873c545a7d2"
+    },
+    "validation/c0047-boot01/ntsc-video/sms/cram_14000.bin": {
+      "stored": "objects/70573bf69ecd0767a2535a0f2acd498babf965da6ca16766b8c33fd918434e21.gz",
+      "raw_sha256": "70573bf69ecd0767a2535a0f2acd498babf965da6ca16766b8c33fd918434e21",
+      "raw_bytes": 128,
+      "stored_sha256": "117197a60d6a53849ceb35ac57d843708804d98ebf31d3c5aa8e7cf8a7d6fba9"
+    },
+    "validation/c0047-boot01/ntsc-video/sms/frame_14000.png": {
+      "stored": "objects/3e6a762e508bc60fd60d7c0debf30b715e744729ef82d849568a74d5cfd8a412.gz",
+      "raw_sha256": "3e6a762e508bc60fd60d7c0debf30b715e744729ef82d849568a74d5cfd8a412",
+      "raw_bytes": 4318,
+      "stored_sha256": "792e632a4881110188f3dbc30afda5ff7696b9a34375cdf107e81bb65baa41be"
+    },
+    "validation/c0047-boot01/ntsc-video/sms/normalized-frame-hashes.bin": {
+      "stored": "objects/161a700011e991ad76ba0c56e4879d9e6bb70bbdc39590248ebb502edd4480d5.gz",
+      "raw_sha256": "161a700011e991ad76ba0c56e4879d9e6bb70bbdc39590248ebb502edd4480d5",
+      "raw_bytes": 448000,
+      "stored_sha256": "a119f693335932f15ae5b338403fd07aa47dad32ef5c93dc02454ada66ebb20a"
+    },
+    "validation/c0047-boot01/ntsc-video/sms/ram_14000.bin": {
+      "stored": "objects/95addd9a7265df4323491e9a86093698b6b6247a937477e5a79570ea424d9a93.gz",
+      "raw_sha256": "95addd9a7265df4323491e9a86093698b6b6247a937477e5a79570ea424d9a93",
+      "raw_bytes": 8192,
+      "stored_sha256": "04f965c1a8044913f34f7b567c9803b3e75be1ad10755e5b9eb69c1ceb056193"
+    },
+    "validation/c0047-boot01/ntsc-video/sms/vdp_regs_14000.bin": {
+      "stored": "objects/7c4a4f398690b7fca7f5171edd885ae43078f363c618b4b858fc12d85198669e.gz",
+      "raw_sha256": "7c4a4f398690b7fca7f5171edd885ae43078f363c618b4b858fc12d85198669e",
+      "raw_bytes": 32,
+      "stored_sha256": "293ae1cd2bebfb6e156a4c3a51b3ee4bf6801358e73b78cef2242a7492c39071"
+    },
+    "validation/c0047-boot01/ntsc-video/sms/vram_14000.bin": {
+      "stored": "objects/287097fbfe06a29042ff26f766412e3f87a058c584c3e6ec8d8de4e4d8c3d106.gz",
+      "raw_sha256": "287097fbfe06a29042ff26f766412e3f87a058c584c3e6ec8d8de4e4d8c3d106",
+      "raw_bytes": 65536,
+      "stored_sha256": "51a24615249cd7f29a0e08c6cccf01401d865183c9da205a5b04e4176c7aef1b"
+    },
+    "validation/c0047-boot01/ntsc-video/source-pixel-errors-by-frame.json": {
+      "stored": "objects/65676e5c4a006e53c39bffcbed1aab2dc289c1037facf632093c55d1e5b5ddde.gz",
+      "raw_sha256": "65676e5c4a006e53c39bffcbed1aab2dc289c1037facf632093c55d1e5b5ddde",
+      "raw_bytes": 113302,
+      "stored_sha256": "57c8c5ac139cfca983c9fdf056830bf1da098ea3ac148b05b3b8c73377127d03"
+    },
+    "validation/c0047-boot01/pal-video/baseline/capture.json": {
+      "stored": "objects/ff3562d3979fad6992a54aab1477a39f615861e5d373083c6b249e48239234e9.gz",
+      "raw_sha256": "ff3562d3979fad6992a54aab1477a39f615861e5d373083c6b249e48239234e9",
+      "raw_bytes": 636,
+      "stored_sha256": "a210e8549c42fe54afc055183a588db78b8e0df700def5707fcffb4ecdf0cb9e"
+    },
+    "validation/c0047-boot01/pal-video/baseline/cram_14000.bin": {
+      "stored": "objects/2e9a160a52ef3acbf820a53db55ce643bf84ceca7d19cc2b3d15f3c0e2282b51.gz",
+      "raw_sha256": "2e9a160a52ef3acbf820a53db55ce643bf84ceca7d19cc2b3d15f3c0e2282b51",
+      "raw_bytes": 128,
+      "stored_sha256": "abc7af68781ab58a7404f7f85af86eaab150feddcc9f8087600de0e873c349e8"
+    },
+    "validation/c0047-boot01/pal-video/baseline/frame_14000.png": {
+      "stored": "objects/1503b43b553a314fdc89473137a2f1ca0c16a117d12e94f8fb195269bffba530.gz",
+      "raw_sha256": "1503b43b553a314fdc89473137a2f1ca0c16a117d12e94f8fb195269bffba530",
+      "raw_bytes": 4755,
+      "stored_sha256": "4fb646394cefd2b86263fcc0c8bcdce236b4b170b92ef98f5c25033eec15e33b"
+    },
+    "validation/c0047-boot01/pal-video/baseline/normalized-frame-hashes.bin": {
+      "stored": "objects/daf38194c5e2bf93ebde1f5030c4fc8bb9a4517d10150285399dd7da9f543a12.gz",
+      "raw_sha256": "daf38194c5e2bf93ebde1f5030c4fc8bb9a4517d10150285399dd7da9f543a12",
+      "raw_bytes": 448000,
+      "stored_sha256": "112a2a6585c96b84ce9ae05b209517bd9a54c42bf18129d6c78cd8cf25cd6e03"
+    },
+    "validation/c0047-boot01/pal-video/baseline/ram_14000.bin": {
+      "stored": "objects/e7716ba933f90c202e7a27a589797322e1d51d6b99b9bd873c3272f9c495875b.gz",
+      "raw_sha256": "e7716ba933f90c202e7a27a589797322e1d51d6b99b9bd873c3272f9c495875b",
+      "raw_bytes": 65536,
+      "stored_sha256": "bec273be6ad79b131206e68fddff4dde66d41dc3c3b3a65ad2cd2d51f0c0e8b5"
+    },
+    "validation/c0047-boot01/pal-video/baseline/vdp_regs_14000.bin": {
+      "stored": "objects/ea469b392a163c99cb171984c52a0519d0d421a4dfc1857f0c99f57fe2bc5535.gz",
+      "raw_sha256": "ea469b392a163c99cb171984c52a0519d0d421a4dfc1857f0c99f57fe2bc5535",
+      "raw_bytes": 32,
+      "stored_sha256": "829fcabe61e91768f7eecbafc0ecec3d6349509745d23fbe8c5520828eb7db85"
+    },
+    "validation/c0047-boot01/pal-video/baseline/vram_14000.bin": {
+      "stored": "objects/23658524d148f8f5a69fbc82691970814d0281b6dd8f3991f86b96d1638603af.gz",
+      "raw_sha256": "23658524d148f8f5a69fbc82691970814d0281b6dd8f3991f86b96d1638603af",
+      "raw_bytes": 65536,
+      "stored_sha256": "ea4c7ac57930b5f2d56138fc69d8774fdb349691310cd7d9a77e08659aa12ccf"
+    },
+    "validation/c0047-boot01/pal-video/candidate/capture.json": {
+      "stored": "objects/f372b14fa147e3c319eb235093324819f24f4d450a598bfd132de06ce3011a6e.gz",
+      "raw_sha256": "f372b14fa147e3c319eb235093324819f24f4d450a598bfd132de06ce3011a6e",
+      "raw_bytes": 648,
+      "stored_sha256": "147e9adda3c7faf5a03d399a146aebc487f1594bde90ca16da3412a2d0f40389"
+    },
+    "validation/c0047-boot01/pal-video/candidate/cram_14000.bin": {
+      "stored": "objects/2e9a160a52ef3acbf820a53db55ce643bf84ceca7d19cc2b3d15f3c0e2282b51.gz",
+      "raw_sha256": "2e9a160a52ef3acbf820a53db55ce643bf84ceca7d19cc2b3d15f3c0e2282b51",
+      "raw_bytes": 128,
+      "stored_sha256": "abc7af68781ab58a7404f7f85af86eaab150feddcc9f8087600de0e873c349e8"
+    },
+    "validation/c0047-boot01/pal-video/candidate/frame_14000.png": {
+      "stored": "objects/1503b43b553a314fdc89473137a2f1ca0c16a117d12e94f8fb195269bffba530.gz",
+      "raw_sha256": "1503b43b553a314fdc89473137a2f1ca0c16a117d12e94f8fb195269bffba530",
+      "raw_bytes": 4755,
+      "stored_sha256": "4fb646394cefd2b86263fcc0c8bcdce236b4b170b92ef98f5c25033eec15e33b"
+    },
+    "validation/c0047-boot01/pal-video/candidate/normalized-frame-hashes.bin": {
+      "stored": "objects/daf38194c5e2bf93ebde1f5030c4fc8bb9a4517d10150285399dd7da9f543a12.gz",
+      "raw_sha256": "daf38194c5e2bf93ebde1f5030c4fc8bb9a4517d10150285399dd7da9f543a12",
+      "raw_bytes": 448000,
+      "stored_sha256": "112a2a6585c96b84ce9ae05b209517bd9a54c42bf18129d6c78cd8cf25cd6e03"
+    },
+    "validation/c0047-boot01/pal-video/candidate/ram_14000.bin": {
+      "stored": "objects/e4f6f09d38f28cb9912129005b37190deea951cd426106d0e8a673285dba9035.gz",
+      "raw_sha256": "e4f6f09d38f28cb9912129005b37190deea951cd426106d0e8a673285dba9035",
+      "raw_bytes": 65536,
+      "stored_sha256": "7b239ad82dfdbe9fb266558207eaa8de033e98adf56e7637abc41d3c12404379"
+    },
+    "validation/c0047-boot01/pal-video/candidate/vdp_regs_14000.bin": {
+      "stored": "objects/ea469b392a163c99cb171984c52a0519d0d421a4dfc1857f0c99f57fe2bc5535.gz",
+      "raw_sha256": "ea469b392a163c99cb171984c52a0519d0d421a4dfc1857f0c99f57fe2bc5535",
+      "raw_bytes": 32,
+      "stored_sha256": "829fcabe61e91768f7eecbafc0ecec3d6349509745d23fbe8c5520828eb7db85"
+    },
+    "validation/c0047-boot01/pal-video/candidate/vram_14000.bin": {
+      "stored": "objects/23658524d148f8f5a69fbc82691970814d0281b6dd8f3991f86b96d1638603af.gz",
+      "raw_sha256": "23658524d148f8f5a69fbc82691970814d0281b6dd8f3991f86b96d1638603af",
+      "raw_bytes": 65536,
+      "stored_sha256": "ea4c7ac57930b5f2d56138fc69d8774fdb349691310cd7d9a77e08659aa12ccf"
+    },
+    "validation/c0047-boot01/pal-video/report.json": {
+      "stored": "objects/c9c67a60c47044df9ba07db209d85624ed8bbc85e83a41f69bcc4ba99329f1db.gz",
+      "raw_sha256": "c9c67a60c47044df9ba07db209d85624ed8bbc85e83a41f69bcc4ba99329f1db",
+      "raw_bytes": 920,
+      "stored_sha256": "f580587cc5c50be126573a61800634479df38ffe059bc35185b396d9396791a2"
+    },
+    "validation/c0047-boot01/pal-video/sms/capture.json": {
+      "stored": "objects/5189072e49e7655fc620c73aff1e9fc534b38ee6d6c12e32f22a56bc540e32cf.gz",
+      "raw_sha256": "5189072e49e7655fc620c73aff1e9fc534b38ee6d6c12e32f22a56bc540e32cf",
+      "raw_bytes": 606,
+      "stored_sha256": "32c50ab25d05d82877f960a1aa92baf096a35726585992c677d1c536fc52d6ce"
+    },
+    "validation/c0047-boot01/pal-video/sms/cram_14000.bin": {
+      "stored": "objects/d1ceaa4de618d8d68c4339ab7736691e8730ce8f48debe9778e691357ff86865.gz",
+      "raw_sha256": "d1ceaa4de618d8d68c4339ab7736691e8730ce8f48debe9778e691357ff86865",
+      "raw_bytes": 128,
+      "stored_sha256": "22f34ee2d17d5737baf28578f948bef83607b08f094ee4de9e99f29eaf27f798"
+    },
+    "validation/c0047-boot01/pal-video/sms/frame_14000.png": {
+      "stored": "objects/2d33f496be9153e1d0b65a2357cbfbe4df1625a1f6dc462eb8cb72333852e7a0.gz",
+      "raw_sha256": "2d33f496be9153e1d0b65a2357cbfbe4df1625a1f6dc462eb8cb72333852e7a0",
+      "raw_bytes": 4614,
+      "stored_sha256": "8588c2831d725c08188f6f57768264e0e678c20172a7a245ad29546d5573a2ae"
+    },
+    "validation/c0047-boot01/pal-video/sms/normalized-frame-hashes.bin": {
+      "stored": "objects/30ddfc0aa9dbcf321a311251136e0670cd61880b0340eae011632ba5e929bdf5.gz",
+      "raw_sha256": "30ddfc0aa9dbcf321a311251136e0670cd61880b0340eae011632ba5e929bdf5",
+      "raw_bytes": 448000,
+      "stored_sha256": "899d81dc5b6ce250cc54098733157e96ba7db1f5b89bf596cef31d00f806885c"
+    },
+    "validation/c0047-boot01/pal-video/sms/ram_14000.bin": {
+      "stored": "objects/c9270244f4828c059822ef0f71027850fba8b7ee71de331b7071e46f292f2a8d.gz",
+      "raw_sha256": "c9270244f4828c059822ef0f71027850fba8b7ee71de331b7071e46f292f2a8d",
+      "raw_bytes": 8192,
+      "stored_sha256": "a365e3cccb65363cf420752312f9be888f3c23e0c9efb9cffe27f53343d15a36"
+    },
+    "validation/c0047-boot01/pal-video/sms/vdp_regs_14000.bin": {
+      "stored": "objects/7c4a4f398690b7fca7f5171edd885ae43078f363c618b4b858fc12d85198669e.gz",
+      "raw_sha256": "7c4a4f398690b7fca7f5171edd885ae43078f363c618b4b858fc12d85198669e",
+      "raw_bytes": 32,
+      "stored_sha256": "293ae1cd2bebfb6e156a4c3a51b3ee4bf6801358e73b78cef2242a7492c39071"
+    },
+    "validation/c0047-boot01/pal-video/sms/vram_14000.bin": {
+      "stored": "objects/335c2d1290f69121e8e90aa73e70a13227f3ed659c7e27ac543b4f5afd5270e9.gz",
+      "raw_sha256": "335c2d1290f69121e8e90aa73e70a13227f3ed659c7e27ac543b4f5afd5270e9",
+      "raw_bytes": 65536,
+      "stored_sha256": "3df577d6fd75fd1dfe236efabffc264c75c09dea170a96584c9518f93982eb14"
+    },
+    "validation/c0047-boot01/pal-video/source-pixel-errors-by-frame.json": {
+      "stored": "objects/6af8ded35a0646010eebef69904a1cc3bb0e78a4adde84903b3195dc2925eeee.gz",
+      "raw_sha256": "6af8ded35a0646010eebef69904a1cc3bb0e78a4adde84903b3195dc2925eeee",
+      "raw_bytes": 113140,
+      "stored_sha256": "7b2b80b6ad2e84c0085e5d9e208a83280e15e9d1347669ab0f82facb9e130071"
+    },
+    "validation/c0047-boot01/project/out/release/rom.bin": {
+      "stored": "objects/d3ea2a83ea24ed8a0d3c9857f9fbe70d000a4f73358452c1887f40e78966c56e.gz",
+      "raw_sha256": "d3ea2a83ea24ed8a0d3c9857f9fbe70d000a4f73358452c1887f40e78966c56e",
+      "raw_bytes": 2097152,
+      "stored_sha256": "d35da0ba9e0c410b44fb4e08baf0c1c0a86392d496f2313e7a318d5e750d14bc"
+    },
+    "validation/c0047-boot01/project/out/release/symbol.txt": {
+      "stored": "objects/1ef8ad97f80ad10864ec2bb6a0fa76a95d60a4720151facf1665715823522c27.gz",
+      "raw_sha256": "1ef8ad97f80ad10864ec2bb6a0fa76a95d60a4720151facf1665715823522c27",
+      "raw_bytes": 42600,
+      "stored_sha256": "bc7d9c95cab4714533661fccbcc8ece9316ba9f78fa436a9b1ede33b51851cef"
+    },
+    "validation/summarize_c0047_boot.py": {
+      "stored": "objects/80905e78872ecb81a11fb805b97328c9f13ee2784fd2dee6f0b55e29c023d7cd.gz",
+      "raw_sha256": "80905e78872ecb81a11fb805b97328c9f13ee2784fd2dee6f0b55e29c023d7cd",
+      "raw_bytes": 3727,
+      "stored_sha256": "7d2f2d67635cd06c799a676daca9c4819631f1439e8f7afb8d918e8a320b0e2a"
+    }
+  },
+  "removed_verified_generated": [
+    {
+      "path": "validation/c0047-boot01/audio/ntsc-baseline/trace_counts.bin",
+      "bytes": 1048576
+    },
+    {
+      "path": "validation/c0047-boot01/audio/ntsc-baseline/trace_states.bin",
+      "bytes": 1024
+    },
+    {
+      "path": "validation/c0047-boot01/audio/ntsc-baseline/trace_windows.bin",
+      "bytes": 262144
+    },
+    {
+      "path": "validation/c0047-boot01/audio/ntsc-candidate/trace_counts.bin",
+      "bytes": 1048576
+    },
+    {
+      "path": "validation/c0047-boot01/audio/ntsc-candidate/trace_states.bin",
+      "bytes": 1024
+    },
+    {
+      "path": "validation/c0047-boot01/audio/ntsc-candidate/trace_windows.bin",
+      "bytes": 262144
+    },
+    {
+      "path": "validation/c0047-boot01/audio/pal-baseline/trace_counts.bin",
+      "bytes": 1048576
+    },
+    {
+      "path": "validation/c0047-boot01/audio/pal-baseline/trace_states.bin",
+      "bytes": 1024
+    },
+    {
+      "path": "validation/c0047-boot01/audio/pal-baseline/trace_windows.bin",
+      "bytes": 262144
+    },
+    {
+      "path": "validation/c0047-boot01/audio/pal-candidate/trace_counts.bin",
+      "bytes": 1048576
+    },
+    {
+      "path": "validation/c0047-boot01/audio/pal-candidate/trace_states.bin",
+      "bytes": 1024
+    },
+    {
+      "path": "validation/c0047-boot01/audio/pal-candidate/trace_windows.bin",
+      "bytes": 262144
+    },
+    {
+      "path": "validation/c0047-boot01/ntsc-video/baseline/cram_14000.bin",
+      "bytes": 128
+    },
+    {
+      "path": "validation/c0047-boot01/ntsc-video/baseline/normalized-frame-hashes.bin",
+      "bytes": 448000
+    },
+    {
+      "path": "validation/c0047-boot01/ntsc-video/baseline/ram_14000.bin",
+      "bytes": 65536
+    },
+    {
+      "path": "validation/c0047-boot01/ntsc-video/baseline/vdp_regs_14000.bin",
+      "bytes": 32
+    },
+    {
+      "path": "validation/c0047-boot01/ntsc-video/baseline/vram_14000.bin",
+      "bytes": 65536
+    },
+    {
+      "path": "validation/c0047-boot01/ntsc-video/candidate/cram_14000.bin",
+      "bytes": 128
+    },
+    {
+      "path": "validation/c0047-boot01/ntsc-video/candidate/normalized-frame-hashes.bin",
+      "bytes": 448000
+    },
+    {
+      "path": "validation/c0047-boot01/ntsc-video/candidate/ram_14000.bin",
+      "bytes": 65536
+    },
+    {
+      "path": "validation/c0047-boot01/ntsc-video/candidate/vdp_regs_14000.bin",
+      "bytes": 32
+    },
+    {
+      "path": "validation/c0047-boot01/ntsc-video/candidate/vram_14000.bin",
+      "bytes": 65536
+    },
+    {
+      "path": "validation/c0047-boot01/ntsc-video/sms/cram_14000.bin",
+      "bytes": 128
+    },
+    {
+      "path": "validation/c0047-boot01/ntsc-video/sms/normalized-frame-hashes.bin",
+      "bytes": 448000
+    },
+    {
+      "path": "validation/c0047-boot01/ntsc-video/sms/ram_14000.bin",
+      "bytes": 8192
+    },
+    {
+      "path": "validation/c0047-boot01/ntsc-video/sms/vdp_regs_14000.bin",
+      "bytes": 32
+    },
+    {
+      "path": "validation/c0047-boot01/ntsc-video/sms/vram_14000.bin",
+      "bytes": 65536
+    },
+    {
+      "path": "validation/c0047-boot01/pal-video/baseline/cram_14000.bin",
+      "bytes": 128
+    },
+    {
+      "path": "validation/c0047-boot01/pal-video/baseline/normalized-frame-hashes.bin",
+      "bytes": 448000
+    },
+    {
+      "path": "validation/c0047-boot01/pal-video/baseline/ram_14000.bin",
+      "bytes": 65536
+    },
+    {
+      "path": "validation/c0047-boot01/pal-video/baseline/vdp_regs_14000.bin",
+      "bytes": 32
+    },
+    {
+      "path": "validation/c0047-boot01/pal-video/baseline/vram_14000.bin",
+      "bytes": 65536
+    },
+    {
+      "path": "validation/c0047-boot01/pal-video/candidate/cram_14000.bin",
+      "bytes": 128
+    },
+    {
+      "path": "validation/c0047-boot01/pal-video/candidate/normalized-frame-hashes.bin",
+      "bytes": 448000
+    },
+    {
+      "path": "validation/c0047-boot01/pal-video/candidate/ram_14000.bin",
+      "bytes": 65536
+    },
+    {
+      "path": "validation/c0047-boot01/pal-video/candidate/vdp_regs_14000.bin",
+      "bytes": 32
+    },
+    {
+      "path": "validation/c0047-boot01/pal-video/candidate/vram_14000.bin",
+      "bytes": 65536
+    },
+    {
+      "path": "validation/c0047-boot01/pal-video/sms/cram_14000.bin",
+      "bytes": 128
+    },
+    {
+      "path": "validation/c0047-boot01/pal-video/sms/normalized-frame-hashes.bin",
+      "bytes": 448000
+    },
+    {
+      "path": "validation/c0047-boot01/pal-video/sms/ram_14000.bin",
+      "bytes": 8192
+    },
+    {
+      "path": "validation/c0047-boot01/pal-video/sms/vdp_regs_14000.bin",
+      "bytes": 32
+    },
+    {
+      "path": "validation/c0047-boot01/pal-video/sms/vram_14000.bin",
+      "bytes": 65536
+    },
+    {
+      "path": "validation/c0047-boot01/project/out/release/rom.bin",
+      "bytes": 2097152
+    }
+  ]
+}
