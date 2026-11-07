@@ -135,6 +135,11 @@ Sources futures `palc0046-d9-entry-sources/entry-tools`, lecteur
 Suivi38454 : `after_pal_d8_campaign.py --pid 47148`, handle réel du
 postflight12149/PID47148 ; exige sa sortie0, crée/vérifie explicitement
 le reçu D8, puis lance D9. Ne pas démarrer D9 manuellement en double.
+Audit D9 préparé : `audit_pal_d9_entry.py`, mode `--prefix-only` sans
+rapport final. Il exige la vraie sortie D8 et ses ressources, vérifie le
+don B5 éventuel, le prix réel10 du passage1A, la Clochette, les huit
+étapes et le premier gardien79 à60PV sans protection. Cet audit n'a pas
+encore été exécuté sur D9 : aucun parcours D9 n'a encore commencé.
 `audit_pal_d8_finish.py --prefix-only` passe le retrait256435,7cristaux,
 88PV/72PM/deux clés/7pièces. Ce mode ne publie aucun rapport de fin.
 Le boss44116 était encore actif au dernier contrôle avec CPU croissant,
