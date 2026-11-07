@@ -88,6 +88,11 @@ Ses 50 PV source, les 146 prédictions RAM et les six points du rejeu indépenda
 sont vérifiés. Un coup coûte 18 PV (76→58), puis les récupérations du jeu
 ramènent le héros à 82/88 PV ; le huitième cristal reste à valider.
 [Entrée et gardien D8](analysis/d8_midboss_c0046_report.json).
+La clé du voleur et l’approche du boss principal sont également vérifiées
+en huit points froids : mécanismes distants, passage Terre et absence de
+réapparition du gardien vaincu. Point préparatoire à 264942 images,
+88/88 PV, 72 PM et une clé ordinaire. Le huitième cristal reste à valider.
+[Clé du voleur et approche D8](analysis/d8_approach_c0046_report.json).
 [Ancien essai D7 archivé, environ 12 Mo libérés](analysis/c0046-d7-inactive-south01/manifest.json).
 [Captures des retours D4 ratés archivées, environ 9 Mio libérés](analysis/c0046-d4-failed-exit-captures/manifest.json).
 

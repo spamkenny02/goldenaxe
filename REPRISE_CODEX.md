@@ -108,13 +108,19 @@ Le processus courant joue continue_d8_finish_c0046.py dans
 validation/c0046-campaign01/isolated/project. Cette branche continue sur
 c0046 puis chaque jalon est rejoué sur c0047. Journaux et sources :
 validation/c0046-d8-sources/main-sources dans ce projet, preuves indépendantes
-partagées dans son sous-dossier cold-stream. Onze étapes : reprise après le
+partagées dans son sous-dossier cold-stream. Les huit premières étapes sont
+terminées, auditées et archivées : analysis/d8_approach_c0046_report.json,
+archive c0046-d8-approach. Dernier point264942,salle1A6,88PV,72PM,une clé,
+25 pièces,clé du voleur possédée. Les mécanismes distants et le passage Terre
+passent ; le gardien7A vaincu reste absent. Le boss6B n’est pas entré par
+ce seul rapport. Le pilote a lancé close_assisted_approach pour le retrait
+de protection avant196 ; vérifier le processus réel pour la suite.
+Onze étapes au total : reprise après le
 gardien, sept propositions de recettes source vers la clé du voleur et
 l’antichambre, retrait de protection, boss6B à80PV puis retour extérieur29.
 Les recettes ne fournissent que des actions ; aucune ressource ni état ancien
-n’est importé. Après huit étapes, summarize_d8_approach_c0046.py peut auditer
-l’approche sans revendiquer le cristal. Après succès complet lancer cet audit
-puis summarize_d8_campaign_c0046.py dans le projet, et archive_d8_finish.py
+n’est importé. L’audit d’approche est déjà exécuté ; ne pas recréer son archive.
+Après succès complet lancer summarize_d8_campaign_c0046.py dans le projet, et archive_d8_finish.py
 à la racine. Rejeu final : replay_c0047_d1.py auto --dungeon 8.
 Les générateurs prepare_d8_entry.py et prepare_d8_finish.py
 et prepare_d7_finish.py sont déjà exécutés ; ne pas les relancer.
