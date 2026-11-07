@@ -26,6 +26,11 @@ Le retour sur c0047 concorde sur les 65536 octets de RAM et l’image finale à
 107105 images, avec 62/64 PV. [Parcours du quatrième donjon](analysis/c0046_d4_report.json)
 · [Rejeu sur c0047](analysis/c0047_d4_auto_report.json).
 
+L’échange réel de l’huile contre Feu, le don de l’épée longue et l’entrée
+du cinquième donjon sont également vérifiés, jusqu’à 121528 images :
+62/64 PV et 72 PM. [Transactions et parcours](analysis/fire_sword_c0046_report.json)
+· [Rejeu sur c0047](analysis/c0047_d5_fire_sword_auto_report.json).
+
 Nouvel aperçu [c0046](versions/candidates/c0046-9e747d38/README.md) :
 préparation des motifs du héros mesurée 44,79 % moins coûteuse ;
 marche contrôlée conforme SMS et premier cristal/retour vérifiés en PAL et NTSC.

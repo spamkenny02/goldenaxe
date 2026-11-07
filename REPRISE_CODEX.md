@@ -19,11 +19,21 @@ pièces et l’achat de Terre. Dernier point Terre : 81636, 48 PV, 12 pièces,
 Le premier donjon est aussi rejoué en PAL.
 La campagne complète de cet aperçu demeure ouverte.
 
-Le processus courant joue continue_fire_sword_c0046.py dans
+Feu, le don de l’épée longue et l’entrée D5 sont terminés et rejoués sur
+c0047 à 121528 : 62/64 PV, 72 PM, huile consommée, épée niveau 2 possédée,
+hache toujours sélectionnée. Rapports : analysis/fire_sword_c0046_report.json
+et analysis/c0047_d5_fire_sword_auto_report.json. Archive : c0046-fire-sword,
+sept points d’un même rejeu froid ; c0047-d5-fire-sword-auto pour l’image complétée.
+
+Le processus courant joue continue_d5_supplies_c0046.py dans
 validation/c0046-campaign01/isolated/project. Cette branche continue sur
 c0046 puis chaque jalon est rejoué sur c0047. Journaux et sources :
-validation/c0046-fire-sword-sources dans ce projet, preuves indépendantes partagées
-dans validation/c0046-fire-sword-cold-stream. D4 est terminé : dix points froids
+validation/c0046-d5-supplies-sources dans ce projet, preuves indépendantes partagées
+dans son sous-dossier cold-stream. Le pilote Feu est terminé. Après le succès
+des treize étapes D5, lancer summarize_d5_supplies_c0046.py dans le projet,
+puis validation/c0046-campaign01/archive_d5_supplies.py à la racine ; ne pas
+annoncer le cinquième cristal sur cette seule préparation.
+D4 est terminé : dix points froids
 dans c0046-d4-cold-stream, sortie corrigée dans c0046-d4-exit-cold-stream03.
 Les pilotes de sortie01 (énigme facultative) et sortie02 (mort) ont échoué ;
 exit03 passe sans mort ni nouvelle aide. Vérifier le processus réel avant

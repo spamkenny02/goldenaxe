@@ -61,3 +61,11 @@ Les essais de retour bloqué et perdu restent séparés du parcours réussi.
 
 [Audit du quatrième donjon](../../../analysis/c0046_d4_report.json)
 · [Rejeu sur c0047](../../../analysis/c0047_d4_auto_report.json).
+
+L’échange de l’huile contre Feu, l’épée longue offerte par le PNJ et l’entrée
+du cinquième donjon sont rejoués jusqu’à 121528 images. La capacité magique
+passe normalement de 48 à 72 PM ; la RAM entière et l’image finale concordent
+avec c0046. Le cinquième cristal reste à valider.
+
+[Audit des transactions et du parcours](../../../analysis/fire_sword_c0046_report.json)
+· [Rejeu sur c0047](../../../analysis/c0047_d5_fire_sword_auto_report.json).
