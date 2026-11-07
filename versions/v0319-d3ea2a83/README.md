@@ -27,3 +27,8 @@ et [rejeu c0047/V319](../../analysis/c0047_pal_d5_report.json), à 137596 images
 Les 65536 octets de RAM et le PNG final sont identiques. Huit satellites
 observés ; aucune protection durant le boss ou le retour. Le détour de
 portail du pilote est documenté avec l'échec initial conservé.
+
+Ajout suivant : [sixième cristal, Clochette de glace et retour PAL](../../analysis/palc0046_d6_report.json)
+et [rejeu c0047/V319](../../analysis/c0047_pal_d6_report.json), à 176650 images,
+80/80 PV et 72 PM. Vingt points froids vérifiés ; 209 prédictions RAM entière
+pendant le boss, sans protection. Fidélité globale et suite PAL ouvertes.

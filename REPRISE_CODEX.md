@@ -42,32 +42,35 @@ rapport `c0047_pal_d5_report.json`, archive `c0047-pal-d5`.
 Pilotes96471 initial/38625 suivi terminal1 ; reprise36557 et suivi96285
 terminés0. Ne pas relancer ces anciens handles.
 
-Seul parcours de jeu lancé : PAL D6, session81839/PID48408 au lancement,
-`python -u tools/continue_d6_palc0046.py`, cwd
+PAL D6 terminé et audité : `palc0046_d6_report.json`, archive
+`palc0046-d6`,20 points d'un lecteur froid, Clochette acquise par le
+pilote ordinaire et briques préparatoires Terre explicitement distinguées
+des passages. Retrait167339 en125, héros64PV/hurt0 ; premier combat
+167646 en115,boss64 à60PV source. 209 prédictions RAM entière, cristal
+174966, retour176650 salle8B,80/80PV,72PM,0clé,43pièces.
+Rejeu c0047/V319 passé :65536 octets RAM/PNG final identiques, rapport
+`c0047_pal_d6_report.json`, archive `c0047-pal-d6`. Reçu de version
+`pal_d6_v0319_report.json`, reproductible par
+`validation/summarize_pal_milestone_v0319.py --dungeon 6`.
+Pilote81839/PID48408 et suivi61129 terminés0. Ne pas relancer.
+Premier refus D6 avant émulation (lecteur D5 erroné) conservé dans l'archive.
+
+Seul parcours de jeu lancé : préparation PAL D7, session22320/PID33288,
+`python -u tools/continue_d7_palc0046.py`, cwd
 `validation/c0046-campaign01/isolated/project`.
-`prepare_pal_d6.py` est exécuté, ne pas le répéter dans ce dossier.
-Le premier lancement a refusé avant émulation : mauvais lecteur D5
-(01 au lieu du02 contenant la sortie). Diagnostic conservé dans
-`palc0046-d6-sources/before-emulation-guard.json` ; ce dossier ne contient
-aucune preuve de jeu. Le contrôleur corrigé démarre sur le vrai D5 validé,
-sources figées dans `palc0046-d6-sources02`, lecteur
-`palc0046-d6-cold-stream01`. Vise sélection normale de la hache, entrée8B,
-15 recettes D6, Clochette10, retrait avant115/boss64 à60PV, sixième
-cristal et sortie8B. Le retour reporte le puzzle facultatif187, cause d'un
-blocage historique du pilote, sans changer la ROM. Audit D6 préparé : `validation/c0046-campaign01/audit_pal_d6.py`.
-Son mode `--prefix-only` a passé18 points jusqu'au retrait167339,
-salle125,64/72PV,56PM,0clé,38pièces. Clochette10 acquise réellement.
-Les briques préparatoires135/cell58 et125/cell7B sont explicitement
-vérifiées comme actions Terre sans prétendre avoir traversé un passage.
-La Clochette est acquise par le pilote de combat ordinaire, avec propriété
-0→1 vérifiée dans les deux RAMs et sans écriture d'objet autorisée.
-Le boss64 à60PV est lancé sans protection, processus20520 au dernier
-contrôle. Suivi61129 : `after_pal_d6.py --pid 48408`, handle réel du
-pilote48408 ; attend sa sortie0 puis audit20 points et rejeu c0047 PAL D6.
-Ne pas lancer ces audits en double tant que ce suivi est vivant.
-D7 préparé (`prepare_pal_d7.py` exécuté) mais pas lancé. Le contrôleur
-exige le D6 audité et son SHA RAM final avant d'utiliser les ressources
-réellement obtenues ; don/achat de clé/soin restent des dialogues normaux.
+`prepare_pal_d7.py` est exécuté ; ne pas répéter dans ce dossier. Sources
+figées `palc0046-d7-prep-sources`, lecteur `palc0046-d7-prep-cold-stream01`.
+Départ sur le vrai D6 audité et son SHA RAM final ;43pièces,0clé,80PV.
+Le trajet vise le vrai don7D de30pièces, marchand94 (clé60 et soin normal),
+entrée D7 puis deux clés/deux briques Terre avant l'intermédiaire1B8.
+Le vieux trajet A5 a déjà échoué avec une carte fidèle à la source ;
+il est évité en allant au don7D et au marchand94, sans argent injecté.
+Le don10 deB5 reste conditionnel aux fonds réellement observés (<40) ;
+avec43pièces il n'est pas demandé. Aucun boss D7 n'est encore validé.
+Audit D7 de préparation à créer ; puis retrait de protection avant
+l'intermédiaire, reprise d'approche après victoire, bateau16 et boss
+principal179/67. Les anciens pilotes PAL V318 proposent seulement les
+itinéraires ; ne jamais importer leurs états ou ressources.
 Vérifier le handle/processus réel avant reprise ; un délai n'est pas un arrêt.
 Le projet isolé conserve c0046/9e747d38 ; ne pas remplacer sa ROM ou ses
 symboles par ceux de la racine pendant le parcours. Les sources racine
@@ -92,7 +95,7 @@ dans `c0047-clean-build-zero-padding` comme diagnostic échoué explicite.
 Les doublons de compilation sont retirés uniquement après compression
 sans perte et relecture par SHA. Les ROMs historiques sont conservées.
 
-Restent PAL D6 à fin et sauvegarde, écarts de révélations/fondus et phase
+Restent PAL D7 à fin et sauvegarde, écarts de révélations/fondus et phase
 R/IRQ source, fidélité audio PCM globale et vérification console réelle.
 Le portage complet n'est pas déclaré terminé. Lire README pour les limites.
 
