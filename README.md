@@ -64,7 +64,11 @@ contrôle, clé achetée à 40 pièces, deux acquisitions de clés dans le donjo
 et deux actions Terre consommant 16 PM. Le héros arrive devant le gardien
 intermédiaire avec 80/80 PV, 56 PM et deux clés.
 [Préparation D7](analysis/d7_prep_c0046_report.json).
-Le gardien et le septième cristal restent à valider.
+Le gardien intermédiaire est ensuite vaincu sans protection ni dégât reçu :
+ses 30 PV source, les 92 prédictions RAM et quatre points du rejeu indépendant
+sont vérifiés. La protection d’approche reprend seulement après sa mort.
+[Gardien intermédiaire D7](analysis/d7_midboss_c0046_report.json).
+Le bateau, le boss principal et le septième cristal restent à valider.
 [Captures des retours D4 ratés archivées, environ 9 Mio libérés](analysis/c0046-d4-failed-exit-captures/manifest.json).
 
 Nouvel aperçu [c0046](versions/candidates/c0046-9e747d38/README.md) :

@@ -74,16 +74,27 @@ analysis/d7_prep_c0046_report.json ; archive analysis/c0046-d7-prep.
 Dernier point205302, salle1B9,80/80PV,56PM,deux clés et10 pièces.
 Le pilote préparatoire est clos.
 
-Le processus courant joue continue_d7_midboss_c0046.py dans
+Le gardien intermédiaire D7 est terminé et audité : source78 à30PV,
+protection retirée à205303, premier combat205488, héros80PV/hurt0.
+Victoire sans dégât,92 prédictions RAM exactes, quatre points froids.
+L’approche ne reprend qu’à206489 après la mort, vers le boss179.
+Rapport analysis/d7_midboss_c0046_report.json ; archive c0046-d7-midboss.
+Tous les pilotes préparatoires et intermédiaires D7 sont terminés.
+
+Le processus courant joue continue_d7_finish_c0046.py dans
 validation/c0046-campaign01/isolated/project. Cette branche continue sur
 c0046 puis chaque jalon est rejoué sur c0047. Journaux et sources :
-validation/run-c0046-d7-midboss-02 dans ce projet, preuves indépendantes
-partagées dans son sous-dossier cold-stream. Après les quatre étapes :
-summarize_d7_midboss_c0046.py dans le projet puis archive_d7_midboss.py à
-la racine. Le garde78 a30PV source ; protection retirée avant1B8 et reprise
-uniquement après sa mort pour l’approche du boss179. Ensuite seulement
-continue_d7_finish_c0046.py, puis summarize_d7_campaign_c0046.py,
+validation/run-c0046-d7-finish-02 dans ce projet, preuves indépendantes
+partagées dans son sous-dossier cold-stream. Dix étapes : trajet sud,
+mécanisme distant, bateau, retour nord, Terre, approche, retrait de protection,
+boss67 à60PV, Terre retour, sortie. Après succès : summarize_d7_campaign_c0046.py,
 archive_d7_finish.py et replay_c0047_d1.py auto --dungeon 7.
+Le contrôle --through-ship permet un audit partiel sans revendiquer le cristal.
+Les scripts D8 continue_d8_entry_c0046.py et summarize_d8_midboss_c0046.py sont
+préparés mais NON exécutés. Le départ dépend du retour D7 : vérifier les fonds
+réels pour le passage3C à10. Ne pas inventer d’argent s’il manque.
+Après D8 réussi, archive_d8_entry.py à la racine. Les générateurs prepare_d8_entry.py
+et prepare_d7_finish.py sont déjà exécutés ; ne pas les relancer.
 Les scripts de préparation D7 sont déjà exécutés ; ne pas les relancer.
 Les huit points du parcours corrigé sont dans run-c0046-d7-recovered03-02,
 les deux premiers points (trajet
