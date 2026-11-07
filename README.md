@@ -41,6 +41,12 @@ Les cinq étapes finales concordent au rejeu indépendant ; le parcours c0047
 retrouve aussi toute la RAM et l’image finale à 150525 images.
 [Audit du cinquième cristal](analysis/d5_campaign_c0046_report.json)
 · [Rejeu sur c0047](analysis/c0047_d5_auto_report.json).
+
+La préparation du sixième donjon sur c0046 est vérifiée en dix-sept étapes :
+cinq acquisitions de clés, six étapes Terre, mécanismes et cloche de glace,
+avec HUD physique et rejeu RAM/image. Point préparatoire : 176002 images,
+72 PV et 40 PM. Le sixième boss et le retour restent à valider.
+[Préparation du sixième donjon](analysis/d6_progress_c0046_report.json).
 [Captures des retours D4 ratés archivées, environ 9 Mio libérés](analysis/c0046-d4-failed-exit-captures/manifest.json).
 
 Nouvel aperçu [c0046](versions/candidates/c0046-9e747d38/README.md) :

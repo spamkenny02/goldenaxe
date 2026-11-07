@@ -39,18 +39,21 @@ analysis/d5_campaign_c0046_report.json et analysis/c0047_d5_auto_report.json.
 Archives : c0046-d5-campaign et c0047-d5-auto. Le rejeu c0047 passe aussi
 sur toute la RAM et l’image finale. Tous les pilotes D5 sont terminés.
 
-Le processus courant joue continue_d6_c0046.py dans
+La préparation D6 est terminée : dix-sept étapes, cinq acquisitions de clés,
+six étapes Terre et cloche de glace avec son HUD physique. Rapport :
+analysis/d6_progress_c0046_report.json ; archive analysis/c0046-d6-progress.
+Dernier point 176002, salle 125, 72 PV et 40 PM, aucune clé restante.
+Le passage préparatoire Terre est ouvert ; aucune entrée ni victoire contre
+le boss 115 n’est revendiquée par cette préparation.
+
+Le processus courant joue finish_d6_c0046.py dans
 validation/c0046-campaign01/isolated/project. Cette branche continue sur
 c0046 puis chaque jalon est rejoué sur c0047. Journaux et sources :
-validation/c0046-d6-sources02 dans ce projet, preuves indépendantes partagées
-dans son sous-dossier cold-stream. Le pilote D6 réutilise quinze propositions
-d’actions historiques, toutes rejouées de nouveau sur le candidat. Après
-les dix-sept étapes (sélection hache, entrée et quinze recettes), lancer
-tools/summarize_d6_progress_c0046.py dans le projet, puis
-validation/c0046-campaign01/archive_d6_progress.py à la racine. L’audit
-préparé distingue les sources du candidat et les références historiques.
-Ensuite seulement lancer tools/finish_d6_c0046.py dans le projet ; ses trois
-étapes sont suivies de summarize_d6_campaign_c0046.py et, à la racine,
+validation/c0046-d6-finish-sources dans ce projet, preuves indépendantes partagées
+dans son sous-dossier cold-stream. Le pilote préparatoire D6 est terminal,
+ses audits sont exécutés et archivés. Le pilote de fin joue trois étapes :
+retrait de protection, boss64 à 60 PV source, retour extérieur8B. Après son
+succès, lancer summarize_d6_campaign_c0046.py dans le projet et, à la racine,
 archive_d6_finish.py puis replay_c0047_d1.py auto --dungeon 6.
 Ne pas relancer les scripts de préparation : leurs fichiers existent déjà.
 Les sources natives réelles c0046 sont liées en lecture seule dans
