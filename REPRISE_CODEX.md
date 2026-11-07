@@ -12,7 +12,7 @@ Ne pas reprendre ses anciens pilotes mentionnés dans l’historique ci-dessous.
 
 L’aperçu recommandé pour poursuivre l’optimisation est c0047-d3ea2a83,
 2 Mio, checksum DA29. Il reprend le programme de c0046 avec un complément
-correct de fichier. Huit cristaux et retours sont rejoués en NTSC avec
+correct de fichier. Neuf cristaux et retours sont rejoués en NTSC avec
 RAM entière/image finale identiques, ainsi que la corde, le don de 50
 pièces et l’achat de Terre. Dernier point Terre : 81636, 48 PV, 12 pièces,
 48 PM, Terre niveau 1. Dernier retour D4 : 107105, 62/64 PV, canoë acquis.
@@ -222,7 +222,18 @@ victoire306863, cristal et point final307014,104/104PV/72PM,une clé,
 neuf cristaux. Protection retirée303258, combat sans dégâts reçus,
 183 prédictions exactes et onzième point froid RAM/PNG passé. La sortie01
 est lancée sans protection ; attendre sa preuve et les audits de la suite97858
-avant d’annoncer la campagne D9 terminée ou son rejeu c0047.
+Ces étapes sont désormais terminées : sortie308670,salleEB,104PV/72PM,
+une clé,neuf cristaux. Retour sans nouvelle aide avec23 prédictions ;
+le flux finish-cold-stream est clos et ses douze points passent.
+Rapport analysis/d9_campaign_c0046_report.json, archive c0046-d9-campaign.
+Le rejeu c0047 D9 passe aussi sur65536 octets RAM et PNG final : rapport
+analysis/c0047_d9_auto_report.json, archive c0047-d9-auto. Session44962
+et PID39884 sont terminés0 ; ne pas les relancer.
+La suite97858 a passé les audits D9, revérifié l’archive ballon existante
+sans la modifier, archivé la fin D9 et rejoué c0047. Elle joue maintenant
+continue_after_d9_c0046.py palace : ballon possédé puis entrée réelle du
+palais avant le premier géant. La suite70465 attend toujours la réussite
+de cette suite97858 avant la fin du palais. Vérifier ces handles réels.
 L’archive ballon est figée ; archive_d9_finish.py sait désormais revérifier
 une archive existante sans la réécrire. Il vérifie tous les objets/hashes,
 le même rapport et toutes les sources ; seul le journal de points du

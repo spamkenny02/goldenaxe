@@ -131,3 +131,13 @@ Le deuxième cristal PAL reste à valider.
 
 [Parcours PAL](../../../analysis/palc0046_after_d1_report.json)
 · [Rejeu c0047](../../../analysis/c0047_pal_after_d1_report.json).
+
+Les neuf cristaux et retours sont maintenant rejoués en NTSC jusqu’à
+308670 images : 104/104 PV, 72 PM et une clé, ballon, canoë et bateau
+conservés. Le boss de D9 garde ses90PV source et tombe sans protection
+ni dégât reçu pendant le combat. Les douze points finaux du parcours
+c0046 concordent au rejeu indépendant ; c0047 retrouve toute la RAM et
+l’image finale du retour. Le palais et la fin restent à valider sur cet aperçu.
+
+[Neuvième cristal et retour](../../../analysis/d9_campaign_c0046_report.json)
+· [Rejeu c0047](../../../analysis/c0047_d9_auto_report.json).

@@ -17,7 +17,7 @@ Checksum Mega Drive : `7863`
 
 Aperçu actuel : [c0047, ROM de 2 Mio](versions/candidates/c0047-d3ea2a83/README.md).
 Il reprend l’optimisation c0046 et corrige son complément de fichier.
-Premier donjon rejoué en PAL et NTSC ; huit premiers cristaux et retours extérieurs
+Premier donjon rejoué en PAL et NTSC ; les neuf cristaux et retours extérieurs
 rejoués en NTSC, ainsi que l’achat normal de Terre et l’acquisition du canoë.
 La campagne complète de cet aperçu reste à valider.
 
@@ -137,8 +137,13 @@ et le héros survit avec 8 PV. Le ballon est ensuite récupéré par les
 commandes normales du jeu ; huit étapes concordent au rejeu RAM/image.
 Les cœurs ramassés remontent le héros à 32 PV.
 [Géant et ballon D9](analysis/d9_balloon_c0046_report.json).
-Le neuvième cristal reste à valider ; ces jalons D9 n’ont pas encore été
-rejoués sur c0047.
+Le neuvième boss est maintenant vaincu, avec ses 90 PV source, sans
+protection ni dégât reçu pendant le combat. Les douze étapes du lecteur
+indépendant passent ; le retour termine à 308670 images, avec 104/104 PV,
+72 PM, une clé et les neuf cristaux. Le rejeu c0047 retrouve toute la RAM
+et l’image finale. Le palais et la fin restent à valider sur cet aperçu.
+[Neuvième cristal et retour](analysis/d9_campaign_c0046_report.json)
+· [Rejeu c0047](analysis/c0047_d9_auto_report.json).
 [Ancien essai D7 archivé, environ 12 Mo libérés](analysis/c0046-d7-inactive-south01/manifest.json).
 [Captures des retours D4 ratés archivées, environ 9 Mio libérés](analysis/c0046-d4-failed-exit-captures/manifest.json).
 
@@ -230,7 +235,7 @@ sa propre campagne. Un numéro de version ne constitue pas un statut de finale.
 | --- | --- | --- |
 | V318 NTSC | Neuf cristaux, palais, Death Adder, générique et retour à l’intro ; 393707 états comparés au parcours V317 | Ce rejeu ne prouve pas une identité globale avec la SMS. |
 | V318 PAL | Nouvelle partie jusqu’à la victoire et au générique, avec rejeux indépendants RAM/image | La comparaison audiovisuelle source reste ciblée. |
-| c0047 NTSC | Huit cristaux et retours, canoë, Feu, épée longue, bottes, cloche de glace, bateau, clé du voleur, achats et soin | Trajet vers le neuvième donjon en cours ; fin de campagne et sauvegarde à revalider sur cet aperçu. |
+| c0047 NTSC | Neuf cristaux et retours, ballon, canoë, Feu, épée longue, bottes, cloche de glace, bateau, clé du voleur, achats et soin | Palais, fin de campagne et sauvegarde à revalider sur cet aperçu. |
 | c0047 PAL | Premier cristal et retour, hache, récompense de la fée et entrée D2 | Le deuxième cristal et les donjons suivants restent à vérifier sur cet aperçu. |
 
 Les contrôles V318 couvrent aussi l’intro et le titre, la saisie du nom,
