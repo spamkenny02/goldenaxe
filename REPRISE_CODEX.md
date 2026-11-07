@@ -1,6 +1,6 @@
 # Reprise du portage dans un autre compte Codex
 
-État courant au 6 novembre 2026, soirée. Les notes historiques conservées
+État courant au 7 novembre 2026. Les notes historiques conservées
 plus bas décrivent des versions antérieures. Lire d’abord cette section,
 le README et les rapports cités.
 
