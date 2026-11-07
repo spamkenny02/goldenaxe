@@ -46,16 +46,25 @@ Dernier point 176002, salle 125, 72 PV et 40 PM, aucune clé restante.
 Le passage préparatoire Terre est ouvert ; aucune entrée ni victoire contre
 le boss 115 n’est revendiquée par cette préparation.
 
-Le processus courant joue finish_d6_c0046.py dans
+Le pilote finish_d6_c0046.py s’est arrêté avant le boss sur un délai
+d’attente du lecteur de preuves. Son lecteur a toutefois terminé et fermé
+correctement : preuve du retrait de protection à176003, 65536 octets RAM
+et PNG exacts, completed.json passé. Aucun combat n’avait encore été lancé.
+Le processus courant joue resume_d6_finish_c0046.py dans
 validation/c0046-campaign01/isolated/project. Cette branche continue sur
 c0046 puis chaque jalon est rejoué sur c0047. Journaux et sources :
-validation/c0046-d6-finish-sources dans ce projet, preuves indépendantes partagées
-dans son sous-dossier cold-stream. Le pilote préparatoire D6 est terminal,
-ses audits sont exécutés et archivés. Le pilote de fin joue trois étapes :
-retrait de protection, boss64 à 60 PV source, retour extérieur8B. Après son
+validation/c0046-d6-finish-sources02 dans ce projet, preuves indépendantes partagées
+dans son sous-dossier cold-stream. La première preuve reste dans
+c0046-d6-finish-sources/cold-stream. La reprise joue le boss64 à60 PV puis
+le retour extérieur8B, sans nouvelle aide. L’audit adapté vérifie les deux
+versions du lecteur et les trois étapes sur deux lecteurs froids distincts.
+Le pilote préparatoire D6 est terminal, audité et archivé. Après le
 succès, lancer summarize_d6_campaign_c0046.py dans le projet et, à la racine,
 archive_d6_finish.py puis replay_c0047_d1.py auto --dungeon 6.
 Ne pas relancer les scripts de préparation : leurs fichiers existent déjà.
+adapt_d6_resumed_audit.py est aussi déjà exécuté. Le lecteur de preuves
+revérifie la présence du résultat aux limites de délai et de sortie du
+processus ; quatre tests de cette course passent (test_cold_replay_wait.py).
 Les sources natives réelles c0046 sont liées en lecture seule dans
 megadrive/src ; native_sources_setup.json enregistre leurs empreintes.
 Ne pas modifier ces liens ni les outils partagés. prepare_d6.py documente

@@ -37,8 +37,11 @@ class ReplayStream:
         deadline=time.monotonic()+600
         while not (proof/'replay_report.json').exists():
             if self.process.poll() is not None:
+                if (proof/'replay_report.json').exists():break
                 raise RuntimeError('Cold replay worker stopped; inspect '+str(self.folder/'worker.log'))
-            assert time.monotonic()<deadline,'Cold replay checkpoint timed out'
+            if time.monotonic()>=deadline:
+                if (proof/'replay_report.json').exists():break
+                raise TimeoutError('Cold replay checkpoint timed out; inspect worker state before resuming')
             time.sleep(.05)
         result=json.loads((proof/'replay_report.json').read_bytes())
         assert result['passed'] and result['frames']==capture['frames']
