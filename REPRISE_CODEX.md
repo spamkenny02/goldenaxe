@@ -28,29 +28,49 @@ Le plan sans carte courante trouvait des chemins vers les dons, mais la
 vraie carte29 après D8 ne permet pas ces chemins : ne pas ignorer cet état
 pour prétendre rejoindre une maison. Il manque3pièces pour le péage10.
 
-Collecte de fonds01 terminée0, mais objectif non atteint :7pièces,
-écran29 vidé,76PV. Le pilote a arrêté dès le premier nettoyage du29,
-car le point final de boucle était aussi son écran de départ. Cette
-exécution n'est pas une preuve de fonds suffisants. Rapport/captures
-`natural-dungeon-combat/md-pal-palc0046-d9-funds01` conservés.
+Collectes de fonds01/02/03 terminées sans atteindre10pièces.01 s'arrêtait
+trop tôt ;02 et03 ont parcouru19/1A/29,avec pertes dePV,aucune pièce.
+Archives sans perte des01/02 : `analysis/palc0046-d9-funding-attempts01`,
+rapport diagnostic faux `palc0046_d9_funding_attempts_report.json`.
+11548416 octets générés supprimés après relecture ;7441220 nets libérés.
+Ces captures n'avaient pas de nouvel assistance.json : le pilote ordinaire
+hérite seulement des anciennes écritures, vérifiées identiques dans les
+capture.json au D8. Aucun écrit nouveau ni SRAM importée. Pas de preuve
+canonique publiée. Le03 reste brut ; même résultat7pièces.
 
-Seul parcours lancé : collecte normale02, session99697/PID9760,
-cwd `validation/c0046-campaign01/isolated/project`, commande
-`python -u tools/collect_pal_d9_funds02.py --pal --assisted-prefix
---continuation md-pal-palc0046-d8-exit01 --rooms 0x29,0x19,0x1a,0x19,0x29
---target-room 0x29 --frames 272858 --trial palc0046-d9-funds02 --max-deaths 0
---collision-aim --settle-attacks --doorway-ranges --ignore-inactive-actors
---equip-basic --wake-sentinels`.
-`prepare_pal_d9_funds02.py` prépare la copie privée corrigée : ne conclut
-au nettoyage final qu'à la dernière étape d'itinéraire et marque l'échec
-si gold>=10 n'est pas atteint. Pièces8/9 recherchées normalement, aucune
-nouvelle écriture RAM, argent ou protection. Départ sur le vrai D8 avec
-96PV/7pièces, mêmes octets de ROMc0046. Sources communes inchangées.
-Pas de preuve canonique ni de réussite encore publiée pour cette collecte.
-Si succès, auditer chronologie/gold/absence d'écrits nouveaux, rejouer
-froid RAM/PNG, puis reprendre le vrai passage1A→3C depuis ce point.
-La source de progression ne sera plus D8 direct : adapter pilote/audit D9,
-conserver les deux tentatives, ne pas redemander B5 inaccessible.
+Cause de la collecte impossible sur cette boucle identifiée par tables
+ROM : `analyze_d9_funding_drops.py` et
+`analysis/palc0046_d9_drop_planning_report.json`. Les types2E/2F/33/34
+(catégorie4) n'ont aucun byte aléatoire produisant une pièce. Type21,
+présent en2B, en possède128/256 (énumération, pas probabilité mesurée).
+04 a tenté29→2A→2B mais est mort en29 sans pièces : pilote trop dangereux.
+Les scripts de collecte ordinaires sont conservés ; aucune modification ROM.
+
+Parcours actif : fonds05, session84878, via
+`validation/palc0046-d9-guarded-funding01/run.py` dans le projet isolé.
+Commande : `--boss-room 0x1ac --planner ordinary --release-near-coins
+--new-assistance-episode --pal --assisted-prefix --continuation
+md-pal-palc0046-d8-exit01 --rooms 0x29,0x2a,0x2b,0x2a,0x29 --target-room
+0x29 --rush-rooms 0x29,0x2a --frames 278858 --trial palc0046-d9-funds05
+--max-deaths 0 --collision-aim --settle-attacks --doorway-ranges
+--ignore-inactive-actors --equip-basic --wake-sentinels`.
+C'est la protection d'approche autorisée, uniquement hurt, retirée près
+des vraies pièces. La copie privée du guard est restreinte à ce préfixe
+extérieur et cet itinéraire ; ne pas l'employer pour un boss/donjon.
+Le script principal partagé/ROM restent inchangés. Il faut auditer les
+écrits avant toute utilisation de ce point ; pas encore de réussite.
+
+Un autre défaut du pilote de collecte est trouvé : il cherche des sorties
+aux coordonnées centrales des portes de donjon sur des cartes extérieures.
+Copie privée corrigée préparée, non lancée, dans
+`validation/palc0046-d9-guarded-funding02` (3 scripts) : accepte toute
+la limite extérieure selon la direction. N'écrase pas les scripts du05
+vivant. Après terminaison réelle du05, s'il échoue, lancer cette copie
+avec un nouveau nom de trial06 et le même reste de commande. Les
+réplications précédentes des scripts n'importent aucun état primaire.
+Si fonds>=10 : replay froid obligatoire RAM/PNG, puis reprendre le vrai
+passage1A→3C. Adapter pilote et audit D9 au nouveau préfixe ; ne pas
+redemander B5. Ne jamais utiliser les états ou ressources V318/NTSC.
 
 Fin D9 préparée mais non lancée : `prepare_pal_d9_finish.py` exécuté,
 `tools/continue_d9_finish_palc0046.py` généré. Exige futur audit du premier

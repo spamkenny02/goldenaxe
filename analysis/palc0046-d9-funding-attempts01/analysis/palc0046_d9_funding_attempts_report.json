@@ -1,0 +1,28 @@
+{
+  "passed": false,
+  "diagnostic_only": true,
+  "ordinary_funding_goal_reached": false,
+  "candidate_rom_sha256": "9e747d38e0c6fb2d69b7c1aa8c2b296a61e8b6af41171d14e543ed9a6cb49cf5",
+  "trials": [
+    {
+      "trial": "01",
+      "frames": 261975,
+      "gold": 7,
+      "health": 76,
+      "room": 41,
+      "goal_reached": false,
+      "terminal": true
+    },
+    {
+      "trial": "02",
+      "frames": 265835,
+      "gold": 7,
+      "health": 4,
+      "room": 41,
+      "goal_reached": false,
+      "terminal": true
+    }
+  ],
+  "scope": "Two terminal ordinary-controller attempts retained as failures to earn enough toll money. No resource or actor imports, no new guard writes, no initial SRAM. First stopped on its initial target; second completed the loop but dropped only health/magic. No cold canonical proof or D9 progression is claimed.",
+  "archive_manifest": "analysis/palc0046-d9-funding-attempts01/manifest.json"
+}
