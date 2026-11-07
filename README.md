@@ -47,6 +47,7 @@ l’achat d’une clé à 60 pièces sont conservés dans les preuves.
 - [Rapport initial V319](analysis/optimization_v0319_report.json)
 - [Campagne NTSC et fin](analysis/cold_palace_final_c0046_report.json) · [Rejeu sur le binaire publié](analysis/c0047_palace_final_auto_report.json)
 - [Vraie sauvegarde et Continue](analysis/c0047_real_save_report.json)
+- [Préparation du septième donjon PAL](analysis/palc0046_d7_preparation_report.json) · [Rejeu publié](analysis/c0047_pal_d7_preparation_report.json) — clé achetée et mécanismes ; boss encore ouverts.
 - [Sixième cristal et retour PAL](analysis/palc0046_d6_report.json) · [Rejeu publié](analysis/c0047_pal_d6_report.json)
 - [Cinquième cristal et retour PAL](analysis/palc0046_d5_report.json) · [Rejeu publié](analysis/c0047_pal_d5_report.json)
 - [Feu, épée longue et entrée D5 PAL](analysis/palc0046_fire_sword_report.json) · [Rejeu publié](analysis/c0047_pal_fire_sword_report.json)

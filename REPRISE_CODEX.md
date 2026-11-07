@@ -55,37 +55,41 @@ Rejeu c0047/V319 passé :65536 octets RAM/PNG final identiques, rapport
 Pilote81839/PID48408 et suivi61129 terminés0. Ne pas relancer.
 Premier refus D6 avant émulation (lecteur D5 erroné) conservé dans l'archive.
 
-Seul parcours de jeu lancé : préparation PAL D7, session22320/PID33288,
-`python -u tools/continue_d7_palc0046.py`, cwd
-`validation/c0046-campaign01/isolated/project`.
-`prepare_pal_d7.py` est exécuté ; ne pas répéter dans ce dossier. Sources
-figées `palc0046-d7-prep-sources`, lecteur `palc0046-d7-prep-cold-stream01`.
-Départ sur le vrai D6 audité et son SHA RAM final ;43pièces,0clé,80PV.
-Le trajet vise le vrai don7D de30pièces, marchand94 (clé60 et soin normal),
-entrée D7 puis deux clés/deux briques Terre avant l'intermédiaire1B8.
-Le vieux trajet A5 a déjà échoué avec une carte fidèle à la source ;
-il est évité en allant au don7D et au marchand94, sans argent injecté.
-Le don10 deB5 reste conditionnel aux fonds réellement observés (<40) ;
-avec43pièces il n'est pas demandé. Aucun boss D7 n'est encore validé.
-Audit de préparation créé : `audit_pal_d7_preparation.py`, avec mode
-`--prefix-only` sans publication de rapport final. Cinq points ont passé :
-vrai don7D43→73 pièces, clé94 à60 (reste13), entrée186284 salle1DB,
-64/80PV,72PM,une clé. Pas de donB5 demandé. Sources figées conservées.
-Suivi23307 : `after_pal_d7_preparation.py --pid 33288` détient le handle
-du pilote, exige sortie0, audite la préparation complète puis rejoue
-c0047 avec le jalon explicite `d7-preparation` (pas de cristal7 annoncé).
-Ce suivi lance ensuite `tools/continue_d7_midboss_palc0046.py` dans le
-projet isolé. `prepare_pal_d7_midboss.py` est déjà exécuté ; ne pas répéter.
-Ce pilote vise retrait avant1B8, contact1B9, boss intermédiaire78 sans
-aide, puis réactivation de protection seulement après victoire pour
-l'approche du boss principal179. Futurs dossiers :
-`palc0046-d7-midboss-sources`, `palc0046-d7-midboss-cold-stream01`.
-Vérifier le suivi23307 avant tout lancement manuel pour éviter un doublon.
-La suite après préparation prévoit donc le retrait de protection avant
-l'intermédiaire, reprise d'approche après victoire, bateau16 et boss
-principal179/67. Les anciens pilotes PAL V318 proposent seulement les
-itinéraires ; ne jamais importer leurs états ou ressources.
-Vérifier le handle/processus réel avant reprise ; un délai n'est pas un arrêt.
+Préparation PAL D7 terminée : `palc0046_d7_preparation_report.json`,
+archive `palc0046-d7-preparation`. Neuf points,193118 images,1B9,
+80PV/56PM,deux clés,15pièces. Vrai don7D43→73 et clé94 à60 ; pas de
+B5 ni de ressources injectées. Deux briques Terre préparatoires ouvertes.
+Rejeu c0047/V319 exact RAM65536/PNG : `c0047_pal_d7_preparation_report.json`,
+archive `c0047-pal-d7-preparation`. Ce jalon ne valide aucun boss D7.
+Pilote22320/PID33288 terminé0 ; ne pas le relancer.
+
+Parcours actif : intermédiaire PAL D7, PID46780 au lancement,
+`tools/continue_d7_midboss_palc0046.py`, cwd projet isolé habituel.
+Le suivi23307/PID25252 le lance et attend sa fin ; ne pas dupliquer.
+Sources `palc0046-d7-midboss-sources`, lecteur
+`palc0046-d7-midboss-cold-stream01`. Retrait193119 en1B9/hurt0 ; contact
+et entrée193298 en1B8, héros80PV/hurt0,boss78 à30PV source. Deux points
+passent l'audit `audit_pal_d7_midboss.py --prefix-only`. Le combat est
+lancé par `unassisted_arrival_prediction.py`, PID48776 au dernier contrôle.
+Aucun succès de ce combat n'est encore déclaré dans ce point de reprise.
+
+Suivi14346/PID23580 : `after_pal_d7_midboss.py --pid 46780`, attend
+sortie0 de l'intermédiaire, audit4 points et rejeu c0047 `d7-midboss`,
+puis lance `tools/continue_d7_finish_palc0046.py`. Générateur finish
+`prepare_pal_d7_finish.py` déjà exécuté ; ne pas répéter. Ce pilote vise
+bateau16, mécanisme distant1E6, retrait avant179/boss67 à60PV, cristal7
+et sortie1B. Sources futures `palc0046-d7-finish-sources`, lecteur
+`palc0046-d7-finish-cold-stream01`. Le contrôleur garde les réentrées
+ordinaires pour ennemis isolés et l'évitement des portails déjà connus.
+
+Suivi86661 : `after_pal_d7_finish.py --pid 23580` détient le handle du
+suivi précédent, attend sa fin0 après la campagne, audite les10 étapes,
+rejoue c0047 `d7`, puis crée le reçu V319 du septième cristal. Ne pas
+lancer ces étapes en double. `audit_pal_d7_finish.py --prefix-only`
+ne publie aucun rapport de campagne ; les modes partiels restent lecture
+seule. Les audits full exigent victoire et retour, sans aide après retrait.
+Vérifier les vrais handles/processus avant reprise : un délai n'est pas
+une fin de processus. Ni cristal7 ni fin du donjon ne sont encore validés.
 Le projet isolé conserve c0046/9e747d38 ; ne pas remplacer sa ROM ou ses
 symboles par ceux de la racine pendant le parcours. Les sources racine
 et privées ont été contrôlées sans lien physique partagé avant promotion.
