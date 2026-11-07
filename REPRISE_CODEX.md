@@ -59,11 +59,25 @@ Rapports : analysis/d6_campaign_c0046_report.json et
 analysis/c0047_d6_auto_report.json. Le rejeu c0047 passe aussi sur toute la
 RAM et l’image finale. Tous les pilotes D6 sont terminés.
 
-Le processus courant joue continue_d7_funded_c0046.py dans
+Le premier pilote D7 est terminé en échec sur l’entrée A5 encore fermée.
+La source A5 appelle5FB1 après les ennemis (room_clear kind7) : tuer les
+ennemis ouvre la case83 en4 et pose le bit persistant1. Ce n’est pas une
+entrée à forcer ni un terrain à couper. L’audit indépendant passe :
+analysis/a5_hidden_shop_c0046_report.json, archive c0046-a5-hidden-shop.
+Combat clear à190785 puis boutique à191070, 80 PV, 49 pièces après une pièce
+ramassée normalement. Achat réel à40 : 49→9, une clé,80 PV, sans soin.
+
+Le processus courant joue resume_d7_funded_c0046.py dans
 validation/c0046-campaign01/isolated/project. Cette branche continue sur
 c0046 puis chaque jalon est rejoué sur c0047. Journaux et sources :
-validation/run-c0046-d7-02 dans ce projet, preuves indépendantes partagées
-dans son sous-dossier cold-stream. Avec38 pièces au départ, le don B5 de10
+validation/run-c0046-d7-recovered03-02 dans ce projet, preuves indépendantes
+partagées dans son sous-dossier cold-stream. Les deux premiers points (trajet
+B5 et don10) restent dans run-c0046-d7-02/cold-stream. Les scripts de reprise
+emploient un adaptateur privé du combat restreint à B5→A5 et au préfixe service,
+sans changement ROM. La première tentative de cet adaptateur a échoué avant
+toute émulation sur la restriction donjon ; recovered03 est la vraie reprise.
+Les audits préparés combinent les deux lecteurs froids et l’ouverture A5.
+Avec38 pièces au départ, le don B5 de10
 permet la clé à40 chez A5 ; le pilote conserve les prix réels et choisit94
 si son solde réel atteint60. Aucun argent ni objet n’est importé.
 L’ancien seuil50 du pilote V317 est adapté à30, minimum avant don pour

@@ -54,6 +54,12 @@ finale. Les 190 prédictions du combat et les 97 du retour concordent sur
 toute la RAM. Le parcours c0047 retrouve aussi la RAM entière et l’image finale.
 [Audit du sixième cristal](analysis/d6_campaign_c0046_report.json)
 · [Rejeu sur c0047](analysis/c0047_d6_auto_report.json).
+
+Sur la suite c0046, l’entrée cachée d’A5 s’ouvre après l’élimination normale
+des ennemis de l’écran, comme le prévoit la source. Le combat, la case
+transformée et l’entrée réelle chez le marchand concordent au rejeu indépendant.
+[Boutique cachée A5](analysis/a5_hidden_shop_c0046_report.json).
+La préparation du septième donjon reste en cours.
 [Captures des retours D4 ratés archivées, environ 9 Mio libérés](analysis/c0046-d4-failed-exit-captures/manifest.json).
 
 Nouvel aperçu [c0046](versions/candidates/c0046-9e747d38/README.md) :

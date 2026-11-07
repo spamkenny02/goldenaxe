@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "candidate": "c0046",
+  "rom_sha256": "9e747d38e0c6fb2d69b7c1aa8c2b296a61e8b6af41171d14e543ed9a6cb49cf5",
+  "hidden_shop_opened_by_ordinary_combat": true,
+  "stages": [
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d7-02-a5-clear01",
+      "frames": 190785,
+      "kind": "clear",
+      "room": 165,
+      "health": 80,
+      "gold": 49,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-route/md-c0046-d7-02-key-shop-route02",
+      "frames": 191070,
+      "kind": "entry",
+      "room": 47,
+      "health": 80,
+      "gold": 49,
+      "whole_ram_png_exact": true
+    }
+  ],
+  "scope": "Cold campaign with declared approach hurt writes only. Source A5 clear suffix opens its hidden shop; actual combat, persistent flag, cell transformation and real doorway entry verified. No D7 boss or crystal claim."
+}

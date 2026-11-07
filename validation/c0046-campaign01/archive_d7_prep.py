@@ -10,15 +10,18 @@ report=ROOT/'analysis/d7_prep_c0046_report.json';r=json.loads(report.read_bytes(
 assert r['passed'] and r['candidate']=='c0046' and r['original_crystals_retained']==6
 assert r['keys_bought']==1 and r['key_price'] in (40,60) and r['earth_magic_spent']==16
 assert not r['intermediate_boss_entered'] and not r['full_game_validated']
-paths={Path(__file__).resolve(),work/'prepare_d7.py',report,project/'tools/summarize_d7_prep_c0046.py'}
+paths={Path(__file__).resolve(),work/'prepare_d7.py',work/'prepare_a5_recovery.py',work/'adapt_a5_prep_audit.py',report,project/'tools/summarize_d7_prep_c0046.py'}
 for name,h in r['evidence'].items():
     p=ROOT/name;assert sha(p.read_bytes())==h;paths.add(p)
-snapshot=project/'validation/run-c0046-d7-02'
-paths.update(p for p in snapshot.iterdir() if p.is_file())
-for name,h in json.loads((snapshot/'source_index.json').read_bytes()).items():assert sha((snapshot/Path(name).name).read_bytes())==h
-stream=snapshot/'cold-stream/completed.json';s=json.loads(stream.read_bytes())
-assert s['passed'] and s['cold_boot_count']==1 and s['rom_sha256']==r['md_sha256'] and len(s['checkpoints'])==len(r['stages'])
-assert all(p['whole_ram_png_exact'] for p in s['checkpoints'])
-paths.add(stream)
+count=0
+for name in ['run-c0046-d7-02','run-c0046-d7-recovered03-02']:
+    snapshot=project/'validation'/name
+    paths.update(p for p in snapshot.iterdir() if p.is_file())
+    for name,h in json.loads((snapshot/'source_index.json').read_bytes()).items():assert sha((snapshot/Path(name).name).read_bytes())==h
+    stream=snapshot/'cold-stream/completed.json';s=json.loads(stream.read_bytes())
+    assert s['passed'] and s['cold_boot_count']==1 and s['rom_sha256']==r['md_sha256']
+    assert all(p['whole_ram_png_exact'] for p in s['checkpoints'])
+    count+=len(s['checkpoints']);paths.add(stream)
+assert count==len(r['stages']) and r['cold_replay_streams']==2
 freeze(ROOT,ROOT/'analysis/c0046-d7-prep',paths,r,[work])
 print('D7 ordinary supplies and preparation archived',flush=True)
