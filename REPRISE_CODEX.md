@@ -1,10 +1,61 @@
 # Reprise du portage dans un autre compte Codex
 
-État courant au 7 novembre 2026. Les notes historiques conservées
+État courant au 8 novembre 2026. Les notes historiques conservées
 plus bas décrivent des versions antérieures. Lire d’abord cette section,
 le README et les rapports cités.
 
-## Suivi courant — V319, 7 novembre 2026
+## Suivi courant — V319, 8 novembre 2026
+
+ROM publiée : V319/d3ea2a83 (SHA complet dans le README),2Mio/DA29.
+NTSC terminé, vraie sauvegarde/Continue validés. Huit cristaux PAL avec
+retours désormais validés ; portage complet toujours ouvert.
+D8 : boss6B80PV source, retrait256435,365 prédictions RAM entière,
+cristal260034, retour260858 en29,héros96/96PV,72PM,deux clés,7pièces.
+Rapports `palc0046_d8_report.json`, `c0047_pal_d8_report.json`,
+`pal_d8_v0319_report.json`. Archives `palc0046-d8`, `c0047-pal-d8`.
+Le rejeu V319 passe sur65536 octets RAM et PNG final exacts. Index/README
+V319 mis à jour et poussés, dernier jalon publié c557c4d7.
+
+D8 pilote2744,14979/suivi5420 et12149/suivi47148 terminés0. Aucun
+combat D8 actif. D9 initial s'est arrêté avant émulation : le plan statique
+vers le donB5 n'a pas de chemin depuis la carte29 actuelle. Le lecteur
+`palc0046-d9-entry-cold-stream01` n'a reçu aucun checkpoint (pas de
+completed.json). Sources initiales `palc0046-d9-entry-sources/entry-tools`
+et journal de commande conservés. Pipeline38454/PID12088 et son
+suivi35066 sont terminés1. Ne pas relancer dans ces dossiers ni attendre
+ces vieux handles ; aucun premier gardien D9 n'est encore validé.
+Le plan sans carte courante trouvait des chemins vers les dons, mais la
+vraie carte29 après D8 ne permet pas ces chemins : ne pas ignorer cet état
+pour prétendre rejoindre une maison. Il manque3pièces pour le péage10.
+
+Seul parcours lancé : collecte normale des pièces, session36316/PID20112,
+cwd `validation/c0046-campaign01/isolated/project`, commande
+`python -u tools/collect_pal_d9_funds01.py --pal --assisted-prefix
+--continuation md-pal-palc0046-d8-exit01 --rooms 0x29,0x19,0x1a,0x19,0x29
+--target-room 0x29 --frames 272858 --trial palc0046-d9-funds01 --max-deaths 0
+--collision-aim --settle-attacks --doorway-ranges --ignore-inactive-actors
+--equip-basic --wake-sentinels`.
+`prepare_pal_d9_funds.py` exécuté : copie privée du pilote de combat avec
+itinéraire monde autorisé, pièces8/9 recherchées par déplacement normal,
+fin quand gold>=10 avec héros vivant. Aucune nouvelle écriture RAM, ni
+argent ni protection ajoutés. Préfixe garde seulement les approches
+anciennes clôturées ; même ROMc0046. Source commune d'origine inchangée.
+Pas de preuve canonique ni de réussite encore publiée pour cette collecte.
+Si succès, auditer exact chronologie/gold/pièces/absence d'écrits nouveaux,
+rejouer froid RAM/PNG, puis reprendre le vrai passage1A→3C depuis ce
+point (adapter le pilote et son audit D9, ne pas redemander B5 inaccessible).
+
+Fin D9 préparée mais non lancée : `prepare_pal_d9_finish.py` exécuté,
+`tools/continue_d9_finish_palc0046.py` généré. Exige futur audit du premier
+gardien79 puis géant7B avec retraits séparés, ballon11, boss6C, retourEB.
+Les suivis antérieurs sont morts, il faudra préparer un nouveau suivi sur
+le vrai processus relancé après résolution des fonds. Ne pas importer
+les ressources ou états des parcours NTSC/V318. Reste PAL D9/palais/fin/
+sauvegarde, révélations/fondus, phase R/IRQ et fidélité audio globale.
+
+## Notes historiques du 7 novembre — états de processus périmés
+
+### Ancien suivi V319, 7 novembre 2026
 
 La ROM courante publiée sur main est V319, 2 Mio, SHA-256
 `d3ea2a83ea24ed8a0d3c9857f9fbe70d000a4f73358452c1887f40e78966c56e`,
