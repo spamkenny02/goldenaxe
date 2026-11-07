@@ -77,3 +77,11 @@ pendant le trajet aller. Deux essais de pilote bloqués sont conservés
 séparément ; le maintien supplémentaire de direction a été écarté.
 
 [Entrée D3, portail et corde](../../../analysis/c0046_d3_rope_report.json).
+
+Troisième cristal et sortie vérifiés à 75250 images : 48/56 PV. Le boss
+69 commence avec ses 32 PV source à 71791, après retrait de la protection
+à 71643. Les 69 prédictions de combat et les six checkpoints suivants
+reproduisent RAM entière et image. La sortie utilise 21 prédictions,
+sans nouvelle aide ni import de ressource.
+
+[Audit complet D3](../../../analysis/c0046_d3_report.json).

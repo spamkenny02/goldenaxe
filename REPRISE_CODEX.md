@@ -929,3 +929,19 @@ Le processus actif exécute resume_d3_c0046.py, depuis les tools du projet
 isolé. Il a rejoué la corde et poursuit le mécanisme, la clé puis le boss.
 Ses sources/commandes sont dans validation/c0046-d3-sources03 du projet
 isolé. Ne pas relancer l’ancien continue_d3_c0046.py ni ses sorties rope01.
+
+## Troisième cristal de l’optimisation confirmé
+
+resume_d3_c0046.py a terminé. Retrait de protection71643, premier combat
+71791 à 37 PV/hurt0 contre le boss69 à 32 PV source. 69 prédictions de
+combat exactes, puis 21 sur le retour. Cristal puis sortie62, dernier point
+75250 à 48/56 PV. Audit analysis/c0046_d3_report.json, archive c0046-d3.
+Le rejeu sur c0047 jusqu’à ce même point est RAM entière/image finale
+exacte : analysis/c0047_d3_auto_report.json, archive c0047-d3-auto.
+
+Le processus actif suivant exécute continue_earth_learning_c0046.py dans
+le projet isolé. Il va chercher le don réel de 50 pièces, puis acheter
+Terre normalement. Son journal et les sources sont dans
+validation/c0046-earth-learning-sources du projet isolé. Ses preuves
+indépendantes utilisent un nouveau flux de rejeu froid persistant dans
+validation/c0046-earth-cold-stream. Vérifier le processus avant reprise.

@@ -34,7 +34,14 @@ avec ses 30 PV source et la protection retirée avant l’entrée.
 
 L’entrée du troisième donjon et l’acquisition normale de la corde sont
 également rejouées sur c0047 jusqu’à 67763 images : RAM entière et image
-finale identiques à c0046. Le troisième cristal n’est pas encore validé
-sur cet aperçu.
+finale identiques à c0046. Le troisième cristal et le retour extérieur sont désormais aussi rejoués
+sur cet aperçu, comme indiqué ci-dessous.
 
 [Rejeu jusqu’à la corde](../../../analysis/c0047_d3_rope_auto_report.json).
+
+Le troisième cristal et la sortie sont rejoués en NTSC jusqu’à 75250 images,
+avec 48/56 PV au retour. Les 65536 octets de RAM et l’image finale sont
+identiques à ceux du parcours c0046. Les trois boss ont été affrontés
+après retrait de la protection de test.
+
+[Rejeu du troisième cristal et du retour](../../../analysis/c0047_d3_auto_report.json).

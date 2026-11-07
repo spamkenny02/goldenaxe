@@ -1,0 +1,84 @@
+{
+  "passed": true,
+  "candidate": "c0046",
+  "region": "auto",
+  "rom_sha256": "9e747d38e0c6fb2d69b7c1aa8c2b296a61e8b6af41171d14e543ed9a6cb49cf5",
+  "actual_third_crystal_and_exterior": true,
+  "stages": [
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-switch01",
+      "frame": 68254,
+      "room": 483,
+      "health": 37,
+      "max_health": 48,
+      "magic": 24,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-key01",
+      "frame": 69886,
+      "room": 466,
+      "health": 37,
+      "max_health": 48,
+      "magic": 24,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-pre-boss01",
+      "frame": 71642,
+      "room": 467,
+      "health": 37,
+      "max_health": 48,
+      "magic": 24,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-release01",
+      "frame": 71643,
+      "room": 467,
+      "health": 37,
+      "max_health": 48,
+      "magic": 24,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-boss01",
+      "frame": 73550,
+      "room": 451,
+      "health": 56,
+      "max_health": 56,
+      "magic": 24,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-exit01",
+      "frame": 75250,
+      "room": 98,
+      "health": 48,
+      "max_health": 56,
+      "magic": 24,
+      "whole_ram_png_exact": true
+    }
+  ],
+  "fight": {
+    "first": {
+      "frame": 71791,
+      "room": 451,
+      "game": 12,
+      "health": 37,
+      "hurt": 0,
+      "actors": [
+        {
+          "slot": 0,
+          "kind": 105,
+          "hp": 32
+        }
+      ]
+    },
+    "release_frame": 71643,
+    "prediction_windows": 69
+  },
+  "full_candidate_campaign_verified": false,
+  "scope": "Cold continuation after real rope. Mechanism, key, original-stat boss with aid removed, third crystal and exterior; no resource, actor, progression or SRAM imports.",
+  "archive_manifest": "analysis/c0046-d3/manifest.json"
+}

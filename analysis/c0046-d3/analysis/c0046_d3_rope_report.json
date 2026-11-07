@@ -1,0 +1,46 @@
+{
+  "passed": true,
+  "candidate": "c0046",
+  "region": "auto",
+  "rom_sha256": "9e747d38e0c6fb2d69b7c1aa8c2b296a61e8b6af41171d14e543ed9a6cb49cf5",
+  "real_rope_acquired": true,
+  "portal_rooms": [
+    487,
+    482
+  ],
+  "stages": [
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-route/md-c0046-d3-entry01",
+      "frames": 61462,
+      "room": 504,
+      "health": 37,
+      "max_health": 48,
+      "rope": 0,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-rope03",
+      "frames": 67763,
+      "room": 500,
+      "health": 37,
+      "max_health": 48,
+      "rope": 1,
+      "whole_ram_png_exact": true
+    }
+  ],
+  "rejected_controller_trials": [
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-rope01",
+      "failure": "controller_stalled",
+      "room": 487
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-rope02",
+      "failure": "controller_stalled",
+      "room": 487
+    }
+  ],
+  "full_candidate_campaign_verified": false,
+  "scope": "Real rope after cold boot and normal portal traversal. Approach-only hurt writes, no item/health/SRAM imports, independent whole RAM/image replay.",
+  "archive_manifest": "analysis/c0046-d3-rope/manifest.json"
+}

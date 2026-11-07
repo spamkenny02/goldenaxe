@@ -1,0 +1,516 @@
+{
+  "passed": true,
+  "candidate": "c0046",
+  "region": "auto",
+  "rom_sha256": "9e747d38e0c6fb2d69b7c1aa8c2b296a61e8b6af41171d14e543ed9a6cb49cf5",
+  "actual_third_crystal_and_exterior": true,
+  "stages": [
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-switch01",
+      "frame": 68254,
+      "room": 483,
+      "health": 37,
+      "max_health": 48,
+      "magic": 24,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-key01",
+      "frame": 69886,
+      "room": 466,
+      "health": 37,
+      "max_health": 48,
+      "magic": 24,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-pre-boss01",
+      "frame": 71642,
+      "room": 467,
+      "health": 37,
+      "max_health": 48,
+      "magic": 24,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-release01",
+      "frame": 71643,
+      "room": 467,
+      "health": 37,
+      "max_health": 48,
+      "magic": 24,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-boss01",
+      "frame": 73550,
+      "room": 451,
+      "health": 56,
+      "max_health": 56,
+      "magic": 24,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-exit01",
+      "frame": 75250,
+      "room": 98,
+      "health": 48,
+      "max_health": 56,
+      "magic": 24,
+      "whole_ram_png_exact": true
+    }
+  ],
+  "fight": {
+    "first": {
+      "frame": 71791,
+      "room": 451,
+      "game": 12,
+      "health": 37,
+      "hurt": 0,
+      "actors": [
+        {
+          "slot": 0,
+          "kind": 105,
+          "hp": 32
+        }
+      ]
+    },
+    "release_frame": 71643,
+    "prediction_windows": 69
+  },
+  "full_candidate_campaign_verified": false,
+  "scope": "Cold continuation after real rope. Mechanism, key, original-stat boss with aid removed, third crystal and exterior; no resource, actor, progression or SRAM imports.",
+  "archive_manifest": "analysis/c0046-d3/manifest.json",
+  "files": {
+    "analysis/c0046_d3_rope_report.json": "c349ee05b5d9af917432bb2fd206f72c5cb11d33d2489acbe38c17474e0d5e5b"
+  },
+  "compressed": {
+    "validation/c0046-campaign01/audit_d3.py": {
+      "stored": "objects/fd7f8ae9e83c02ab5df410be6db7320aa161c07cbdf013fcf3939e2a69432373.gz",
+      "raw_sha256": "fd7f8ae9e83c02ab5df410be6db7320aa161c07cbdf013fcf3939e2a69432373",
+      "raw_bytes": 4615,
+      "stored_sha256": "d43177f486cca205f49257e87d95c9b8c6737744225c81ed45822df5255d09fe"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/c0046-d3-sources03/assisted_boss_route.py": {
+      "stored": "objects/2d26b22e732dff44a4e8f7557e72cb489d7b5b3a9f96bfdb737c869f4b2ddd8f.gz",
+      "raw_sha256": "2d26b22e732dff44a4e8f7557e72cb489d7b5b3a9f96bfdb737c869f4b2ddd8f",
+      "raw_bytes": 17757,
+      "stored_sha256": "1f158afaafdfb88feca653026789278137ff1705e11e13ef144e1a45cce7e3ae"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/c0046-d3-sources03/assisted_prefix.py": {
+      "stored": "objects/e2c4f531f372383610a5f0cfbb46000a0b88d46045b51e799efdd9792f164cc6.gz",
+      "raw_sha256": "e2c4f531f372383610a5f0cfbb46000a0b88d46045b51e799efdd9792f164cc6",
+      "raw_bytes": 5005,
+      "stored_sha256": "6a0808cecd69140b8e4ea90a31e086d7680a4585df67569c6ab45fa06aa15b3d"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/c0046-d3-sources03/close_assisted_approach.py": {
+      "stored": "objects/4aca0af44f51c3ea02fff6b747a329c0c1b2d9221ee9bdc32fb0cb42475d6238.gz",
+      "raw_sha256": "4aca0af44f51c3ea02fff6b747a329c0c1b2d9221ee9bdc32fb0cb42475d6238",
+      "raw_bytes": 5416,
+      "stored_sha256": "6c32eedbc4e215c8a1a3fc715a6d6e74c2893b62a0ee32111297f7aa1b04f97a"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/c0046-d3-sources03/commands.jsonl": {
+      "stored": "objects/32873c820b58623e788afd32eb17185bd7c2c76b75e993482e0ed3b9383af9f3.gz",
+      "raw_sha256": "32873c820b58623e788afd32eb17185bd7c2c76b75e993482e0ed3b9383af9f3",
+      "raw_bytes": 4567,
+      "stored_sha256": "86306cc2eeb4bc9b18415a1bef7ccb20032656ab911560f937aabd4831ce8411"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/c0046-d3-sources03/continue_d3_c0046.py": {
+      "stored": "objects/51fd860b84e6108313627d9bfbe7d2981cbb71d5e98d3a73721165bcda597c2e.gz",
+      "raw_sha256": "51fd860b84e6108313627d9bfbe7d2981cbb71d5e98d3a73721165bcda597c2e",
+      "raw_bytes": 5318,
+      "stored_sha256": "3ca202c1321dcf4dac704d7303ab37b6a98f41c275243cd23c7ff2d23ac0f9bb"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/c0046-d3-sources03/continue_d8_entry_v0312.py": {
+      "stored": "objects/47c62f32629acab2c6a0bfc3aff8f6fe6b07245ae130c41aa7818fa21636b9ff.gz",
+      "raw_sha256": "47c62f32629acab2c6a0bfc3aff8f6fe6b07245ae130c41aa7818fa21636b9ff",
+      "raw_bytes": 5986,
+      "stored_sha256": "e55ffca59188311ff830df348e633cb702cf3c7f982e330158ef61dcacc6463c"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/c0046-d3-sources03/natural_contact_passage.py": {
+      "stored": "objects/1ee8a36cfa8faf9aa6f8276a143c9517362dddaa07de63e65e40f5ae64e3105a.gz",
+      "raw_sha256": "1ee8a36cfa8faf9aa6f8276a143c9517362dddaa07de63e65e40f5ae64e3105a",
+      "raw_bytes": 6580,
+      "stored_sha256": "85515dec141255c2ac01f8a26b899d591bf9eee4fa02acd0be7404c37d65e979"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/c0046-d3-sources03/natural_dungeon_combat.py": {
+      "stored": "objects/6710825b5f41d4d19aebf0ed14e98ba0870482f87e4cec2c5d3df0dd51bfa8de.gz",
+      "raw_sha256": "6710825b5f41d4d19aebf0ed14e98ba0870482f87e4cec2c5d3df0dd51bfa8de",
+      "raw_bytes": 39355,
+      "stored_sha256": "741aa87d7d6c8f28cf8eab254de59e6f6bcd6d866964b4f6e32ba5cd3c94db63"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/c0046-d3-sources03/natural_exit_planner.py": {
+      "stored": "objects/133b266619e890a1a7e8224172de54e27a9472957acc186faf03017b385684f3.gz",
+      "raw_sha256": "133b266619e890a1a7e8224172de54e27a9472957acc186faf03017b385684f3",
+      "raw_bytes": 4538,
+      "stored_sha256": "868be4d6d554db4774e9c804e24abef62805fd4c526de8fd5a5055c2daf6dbb4"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/c0046-d3-sources03/natural_item_acquisition.py": {
+      "stored": "objects/447c0b60771441c1de447e478417edd6c21f2abe6de1c3ef0a500a8323e3d4be.gz",
+      "raw_sha256": "447c0b60771441c1de447e478417edd6c21f2abe6de1c3ef0a500a8323e3d4be",
+      "raw_bytes": 4656,
+      "stored_sha256": "64db63c1b7b873f7e54c96b7bf6e291646f9bebb8fcc2ad37534ef7b9fc2f4c9"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/c0046-d3-sources03/prediction_video_skip.py": {
+      "stored": "objects/f5ef8d275328964d09da5b3c4eec75f9cc55bb90f68865036d60d80e57db2ae0.gz",
+      "raw_sha256": "f5ef8d275328964d09da5b3c4eec75f9cc55bb90f68865036d60d80e57db2ae0",
+      "raw_bytes": 940,
+      "stored_sha256": "1bb5e6563b6e36aa868395c9dcc191818c9805e8d8ec1a61bc8a9bdfbe677ce8"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/c0046-d3-sources03/replay_assisted_prefix.py": {
+      "stored": "objects/3df2d644bef81cb79f5f6948763452ffab3ff6023b9e3b601bcff3bbd6b7df4f.gz",
+      "raw_sha256": "3df2d644bef81cb79f5f6948763452ffab3ff6023b9e3b601bcff3bbd6b7df4f",
+      "raw_bytes": 6845,
+      "stored_sha256": "70d30c812ca1a5adf5c0fc66b0cf69cdc403133974c3b34e49442ef3082e0db7"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/c0046-d3-sources03/resume_d3_c0046.py": {
+      "stored": "objects/e1e0b0b007a611817f4d8049c18edf98b896dc878b61200467ffcc03c00c0842.gz",
+      "raw_sha256": "e1e0b0b007a611817f4d8049c18edf98b896dc878b61200467ffcc03c00c0842",
+      "raw_bytes": 3417,
+      "stored_sha256": "c29bc9cbf88823d42c417104efca8265b178419f9d3f8b64f7e769494d040bfc"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/c0046-d3-sources03/source_index.json": {
+      "stored": "objects/5d1d4eb5c8375e9cff137642eea6c37b23bbad292c718185d4926ad4e0d3413f.gz",
+      "raw_sha256": "5d1d4eb5c8375e9cff137642eea6c37b23bbad292c718185d4926ad4e0d3413f",
+      "raw_bytes": 1482,
+      "stored_sha256": "ca354fb8b0a1a7b3fa30cafea9d4f46febd9d9ba25bb34c2697d1381bd4ee513"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/c0046-d3-sources03/unassisted_dungeon_continuation.py": {
+      "stored": "objects/a98fd8875c25859ef6523f155ed7a9f4277fa9dc70016b1340af57421892aeca.gz",
+      "raw_sha256": "a98fd8875c25859ef6523f155ed7a9f4277fa9dc70016b1340af57421892aeca",
+      "raw_bytes": 8666,
+      "stored_sha256": "c4ece3e30451aa28dc76a5b496555a0582ac9b9853509ff7f984f911b3cc3515"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/c0046-d3-sources03/unassisted_fast_prediction.py": {
+      "stored": "objects/9d566e76ba1875eebef4ccea787e729cc4c5fd1bef0ccc60449e95609d36cdd3.gz",
+      "raw_sha256": "9d566e76ba1875eebef4ccea787e729cc4c5fd1bef0ccc60449e95609d36cdd3",
+      "raw_bytes": 2406,
+      "stored_sha256": "529656b442adc152f2761ded99ee49c1d4cc2f7dd2ec96b96fe56a5d8cdce3a0"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-boss01/assistance.json": {
+      "stored": "objects/55623946d389263afc0b4de7a77a4d10f101c6b757fbe34836d722a8bd2800ae.gz",
+      "raw_sha256": "55623946d389263afc0b4de7a77a4d10f101c6b757fbe34836d722a8bd2800ae",
+      "raw_bytes": 2143964,
+      "stored_sha256": "3eeca6c7cd6edc5ea18bc11c534b6748bfb81d026bf0a3da9a2d4462076c368b"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-boss01/capture.json": {
+      "stored": "objects/18c8322eb25382909a73b677fa9aea9f1212cae6005c7180904b92fe06670c91.gz",
+      "raw_sha256": "18c8322eb25382909a73b677fa9aea9f1212cae6005c7180904b92fe06670c91",
+      "raw_bytes": 2530593,
+      "stored_sha256": "b5e27c3ff223f2baec0a07ee50d56d519624c52f860d77dd58a393ea5945e726"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-boss01/controls.json": {
+      "stored": "objects/b7b778f49378c8589de6ed1654b18b480e9bc0164cfb15bb3b3045bf9e55d447.gz",
+      "raw_sha256": "b7b778f49378c8589de6ed1654b18b480e9bc0164cfb15bb3b3045bf9e55d447",
+      "raw_bytes": 102452,
+      "stored_sha256": "6c8f2a9917ebb6b1f797f37c4e2831ca95a46cf7286c8c4ce931bffe3dd1944b"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-boss01/frame_73550.png": {
+      "stored": "objects/2b3528140980a6b45129737da976aa6b3c8f1563da5a0f1c83c185fee1e6aba2.gz",
+      "raw_sha256": "2b3528140980a6b45129737da976aa6b3c8f1563da5a0f1c83c185fee1e6aba2",
+      "raw_bytes": 4907,
+      "stored_sha256": "e588e4b7eeb53f7231131a266be1324582495fbf2220777f7dec23f7676c4997"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-boss01/ram_73550.bin": {
+      "stored": "objects/474bd70d75060a6256ce6805c0526c027fa5a1f606b737b9c399d717d1189c02.gz",
+      "raw_sha256": "474bd70d75060a6256ce6805c0526c027fa5a1f606b737b9c399d717d1189c02",
+      "raw_bytes": 65536,
+      "stored_sha256": "550099cace20c75bcaa1fe4cde9e866bce7af51fbfb4157db417000274f001d9"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-boss01/report.json": {
+      "stored": "objects/97c953c1668188f02e6545706e10186945d0c5b70de63df4d3d885719a8af666.gz",
+      "raw_sha256": "97c953c1668188f02e6545706e10186945d0c5b70de63df4d3d885719a8af666",
+      "raw_bytes": 4552,
+      "stored_sha256": "1986232f4602621dddb813bcbc82ed9c395a4392bd022abb3ca42387c35f5431"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-boss01-assisted-fixed-replay-73550/frame_73550.png": {
+      "stored": "objects/2b3528140980a6b45129737da976aa6b3c8f1563da5a0f1c83c185fee1e6aba2.gz",
+      "raw_sha256": "2b3528140980a6b45129737da976aa6b3c8f1563da5a0f1c83c185fee1e6aba2",
+      "raw_bytes": 4907,
+      "stored_sha256": "e588e4b7eeb53f7231131a266be1324582495fbf2220777f7dec23f7676c4997"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-boss01-assisted-fixed-replay-73550/ram_73550.bin": {
+      "stored": "objects/474bd70d75060a6256ce6805c0526c027fa5a1f606b737b9c399d717d1189c02.gz",
+      "raw_sha256": "474bd70d75060a6256ce6805c0526c027fa5a1f606b737b9c399d717d1189c02",
+      "raw_bytes": 65536,
+      "stored_sha256": "550099cace20c75bcaa1fe4cde9e866bce7af51fbfb4157db417000274f001d9"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-boss01-assisted-fixed-replay-73550/replay_report.json": {
+      "stored": "objects/f3f72b427d2a6f15513a440acd9d96a56472a11c2eed485cbf93d0562394fbb4.gz",
+      "raw_sha256": "f3f72b427d2a6f15513a440acd9d96a56472a11c2eed485cbf93d0562394fbb4",
+      "raw_bytes": 905,
+      "stored_sha256": "e24803697218481f9f36edf0ae1f8b1c781cb83bcff9c713f12cce10f3005faa"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-exit01/assistance.json": {
+      "stored": "objects/4e0e3aaeed55323d6089a437d703451705e0d35f6ee5892bf76938766a3e962f.gz",
+      "raw_sha256": "4e0e3aaeed55323d6089a437d703451705e0d35f6ee5892bf76938766a3e962f",
+      "raw_bytes": 2143964,
+      "stored_sha256": "ddd141038d022d558c1e69840cd0c3bb71d98f89804bad593b1ba01b01632701"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-exit01/capture.json": {
+      "stored": "objects/b2a4983ba3b86fdd56965cc8eb3d7a294aa9d6bc51518d0fecad51c18b8b04bc.gz",
+      "raw_sha256": "b2a4983ba3b86fdd56965cc8eb3d7a294aa9d6bc51518d0fecad51c18b8b04bc",
+      "raw_bytes": 2528271,
+      "stored_sha256": "bbf9fd687161b8e6f12ba511f64ec89ee282d7188dd16390745bd1abd69961f4"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-exit01/controls.json": {
+      "stored": "objects/a3775cc2b1f0cd7df66d12297fa83edfb1cab1872ee441dea0f8be35edf9685f.gz",
+      "raw_sha256": "a3775cc2b1f0cd7df66d12297fa83edfb1cab1872ee441dea0f8be35edf9685f",
+      "raw_bytes": 108997,
+      "stored_sha256": "7729ead48352bcd066ac89a5b7082cf4073fb5d689264809751d07d9facf3445"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-exit01/frame_75250.png": {
+      "stored": "objects/80226aee0f1593a313542c2010baf010b655c7f0e6aa6694c7d067fc308949ab.gz",
+      "raw_sha256": "80226aee0f1593a313542c2010baf010b655c7f0e6aa6694c7d067fc308949ab",
+      "raw_bytes": 6450,
+      "stored_sha256": "ced0c8e1e4f40df64d36264c6b93cc492fa08b2748340ea933281fcc424eeb80"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-exit01/ram_75250.bin": {
+      "stored": "objects/9c0780bda61ba30a26eaa429600713f3bccc5cfa80fddd51d9e2726e7ab4c8da.gz",
+      "raw_sha256": "9c0780bda61ba30a26eaa429600713f3bccc5cfa80fddd51d9e2726e7ab4c8da",
+      "raw_bytes": 65536,
+      "stored_sha256": "c809ac91d13e5a6a9e23917e5a19646ff0ca25d89a4c611fc9de37f683234019"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-exit01/report.json": {
+      "stored": "objects/794039cbdd971d29efac92694e7a2debfda1dc9e4b12c7803e0f4f77a4c3ef0b.gz",
+      "raw_sha256": "794039cbdd971d29efac92694e7a2debfda1dc9e4b12c7803e0f4f77a4c3ef0b",
+      "raw_bytes": 6580,
+      "stored_sha256": "468e2589cdf4272b6677bb8d96cf774b2615925e3ef8a7128f1b4114fb63ba70"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-exit01-assisted-fixed-replay-75250/frame_75250.png": {
+      "stored": "objects/80226aee0f1593a313542c2010baf010b655c7f0e6aa6694c7d067fc308949ab.gz",
+      "raw_sha256": "80226aee0f1593a313542c2010baf010b655c7f0e6aa6694c7d067fc308949ab",
+      "raw_bytes": 6450,
+      "stored_sha256": "ced0c8e1e4f40df64d36264c6b93cc492fa08b2748340ea933281fcc424eeb80"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-exit01-assisted-fixed-replay-75250/ram_75250.bin": {
+      "stored": "objects/9c0780bda61ba30a26eaa429600713f3bccc5cfa80fddd51d9e2726e7ab4c8da.gz",
+      "raw_sha256": "9c0780bda61ba30a26eaa429600713f3bccc5cfa80fddd51d9e2726e7ab4c8da",
+      "raw_bytes": 65536,
+      "stored_sha256": "c809ac91d13e5a6a9e23917e5a19646ff0ca25d89a4c611fc9de37f683234019"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-exit01-assisted-fixed-replay-75250/replay_report.json": {
+      "stored": "objects/22e8bbaca25d838aca73b372ed553398be30e2d7512cc7930e8f308fed62cbb8.gz",
+      "raw_sha256": "22e8bbaca25d838aca73b372ed553398be30e2d7512cc7930e8f308fed62cbb8",
+      "raw_bytes": 905,
+      "stored_sha256": "6231fa624386d2c961a1b5f0216601485cd98cf32296ffc9fea463bb11548b3b"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-key01/assistance.json": {
+      "stored": "objects/f43526a934367495a9816e8683765215a6be2febce928b29c0186aa693dce207.gz",
+      "raw_sha256": "f43526a934367495a9816e8683765215a6be2febce928b29c0186aa693dce207",
+      "raw_bytes": 2165469,
+      "stored_sha256": "64ad75318eb54ae8ecffa4b2814ccfab61ff15cd7a62ef446ffd7b81266aca1b"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-key01/capture.json": {
+      "stored": "objects/e641786266021309032b355006a43f2117c44a423413df4b6f6a83846e49075f.gz",
+      "raw_sha256": "e641786266021309032b355006a43f2117c44a423413df4b6f6a83846e49075f",
+      "raw_bytes": 2426100,
+      "stored_sha256": "77f70f6f64bf08a2b5c0f9d325650bfad4397d6ca1d4097a06813eb06cdd74df"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-key01/controls.json": {
+      "stored": "objects/4bdfaaf35f6df01483bc0fb8fd169d665cc9d81d3e0d7dbb529fb1f05a76e1a3.gz",
+      "raw_sha256": "4bdfaaf35f6df01483bc0fb8fd169d665cc9d81d3e0d7dbb529fb1f05a76e1a3",
+      "raw_bytes": 86937,
+      "stored_sha256": "5bf51f09e79cfec74fe92b181468124f0635678f76c003a4181b62219a78a2b0"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-key01/frame_69886.png": {
+      "stored": "objects/31057a6d8c2b221a4ba6663a102fdef3de777288c469646131080a5e3c0094b0.gz",
+      "raw_sha256": "31057a6d8c2b221a4ba6663a102fdef3de777288c469646131080a5e3c0094b0",
+      "raw_bytes": 5475,
+      "stored_sha256": "ccd869200a46e15116a761ef55bbf2cf1f24c015f311bbdef30d1a1673443df2"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-key01/ram_69886.bin": {
+      "stored": "objects/663d73cc013c5822f09730b0459c9fa9bfba026f7199be6540fe5d9dc88414e8.gz",
+      "raw_sha256": "663d73cc013c5822f09730b0459c9fa9bfba026f7199be6540fe5d9dc88414e8",
+      "raw_bytes": 65536,
+      "stored_sha256": "e5d2827e382ff9c7a130ca243fc137fb0990ce3e2a217a44f5abde2fec491f82"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-key01/report.json": {
+      "stored": "objects/fc09d2c765387c286c6ca36cd372fafd745959f38d21d586897afcc7c9a0eace.gz",
+      "raw_sha256": "fc09d2c765387c286c6ca36cd372fafd745959f38d21d586897afcc7c9a0eace",
+      "raw_bytes": 2563,
+      "stored_sha256": "a9245844fb72208e9e7ce1baa595db678eb8e5000622bdc215dae7c3cd5ce566"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-key01-assisted-fixed-replay-69886/frame_69886.png": {
+      "stored": "objects/31057a6d8c2b221a4ba6663a102fdef3de777288c469646131080a5e3c0094b0.gz",
+      "raw_sha256": "31057a6d8c2b221a4ba6663a102fdef3de777288c469646131080a5e3c0094b0",
+      "raw_bytes": 5475,
+      "stored_sha256": "ccd869200a46e15116a761ef55bbf2cf1f24c015f311bbdef30d1a1673443df2"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-key01-assisted-fixed-replay-69886/ram_69886.bin": {
+      "stored": "objects/663d73cc013c5822f09730b0459c9fa9bfba026f7199be6540fe5d9dc88414e8.gz",
+      "raw_sha256": "663d73cc013c5822f09730b0459c9fa9bfba026f7199be6540fe5d9dc88414e8",
+      "raw_bytes": 65536,
+      "stored_sha256": "e5d2827e382ff9c7a130ca243fc137fb0990ce3e2a217a44f5abde2fec491f82"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-key01-assisted-fixed-replay-69886/replay_report.json": {
+      "stored": "objects/394bee1c7e8f1bb73b05c8bdeb92b14711c806d37990137a37378d382bdb69b1.gz",
+      "raw_sha256": "394bee1c7e8f1bb73b05c8bdeb92b14711c806d37990137a37378d382bdb69b1",
+      "raw_bytes": 846,
+      "stored_sha256": "22ab423d4e8597315d3994100a78c6b16698bf10dd8c6e5b13a45a365782c0c2"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-pre-boss01/assistance.json": {
+      "stored": "objects/1ea795901f6124ef178945922189910266c06bfed660e803fa15884b1e7163eb.gz",
+      "raw_sha256": "1ea795901f6124ef178945922189910266c06bfed660e803fa15884b1e7163eb",
+      "raw_bytes": 2270842,
+      "stored_sha256": "8ee72ab78fbf75dd68d64126228bb3e370e4bdb9090a91a9d65d72f40f0c4aeb"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-pre-boss01/capture.json": {
+      "stored": "objects/f16682f9c5095e733256f17a6d8be05b8c5beb2b402dcc1d31edf0a23bd0452c.gz",
+      "raw_sha256": "f16682f9c5095e733256f17a6d8be05b8c5beb2b402dcc1d31edf0a23bd0452c",
+      "raw_bytes": 2527838,
+      "stored_sha256": "fc2f2961784d4488faa90a04db403d2cd1e1e5a1ec5c09855a30d291bd8e7307"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-pre-boss01/controls.json": {
+      "stored": "objects/d6e4c95e1b76b264c16db7230a4d9fe7b79efc9ccc34c7a630c1ec0143e39398.gz",
+      "raw_sha256": "d6e4c95e1b76b264c16db7230a4d9fe7b79efc9ccc34c7a630c1ec0143e39398",
+      "raw_bytes": 100363,
+      "stored_sha256": "04c0bc2638c9f5b0309aea68f83ed4df99eb112f3c5dce1f32abc354a3da15cb"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-pre-boss01/frame_71642.png": {
+      "stored": "objects/42b968d218f6635cab36d4d44c3a3b9c6d61299a6dd0732b71f05caa7eafd302.gz",
+      "raw_sha256": "42b968d218f6635cab36d4d44c3a3b9c6d61299a6dd0732b71f05caa7eafd302",
+      "raw_bytes": 4239,
+      "stored_sha256": "8a88ae64e62a9dc7bbb155b8d7969cb9a30815107f0d25203c88bb89471bc4d2"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-pre-boss01/ram_71642.bin": {
+      "stored": "objects/f8766716bd1af498bee8f3f55bdaf0d2917143928e57be3aef1031a36c4c97bb.gz",
+      "raw_sha256": "f8766716bd1af498bee8f3f55bdaf0d2917143928e57be3aef1031a36c4c97bb",
+      "raw_bytes": 65536,
+      "stored_sha256": "2f3a11ae4dae1edbf3598b26095a634ae0712434cd9d9c68877e1d1680079914"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-pre-boss01/report.json": {
+      "stored": "objects/b49fe4180031c05346c3aa12f83161ba3bd890efb8573b83a6e2ea3d7a2fca1e.gz",
+      "raw_sha256": "b49fe4180031c05346c3aa12f83161ba3bd890efb8573b83a6e2ea3d7a2fca1e",
+      "raw_bytes": 2553,
+      "stored_sha256": "4e26613ecaae9e0229d4af0f08049e211adc22ff29b6aa62e5fac52ed014ff8e"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-pre-boss01-assisted-fixed-replay-71642/frame_71642.png": {
+      "stored": "objects/42b968d218f6635cab36d4d44c3a3b9c6d61299a6dd0732b71f05caa7eafd302.gz",
+      "raw_sha256": "42b968d218f6635cab36d4d44c3a3b9c6d61299a6dd0732b71f05caa7eafd302",
+      "raw_bytes": 4239,
+      "stored_sha256": "8a88ae64e62a9dc7bbb155b8d7969cb9a30815107f0d25203c88bb89471bc4d2"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-pre-boss01-assisted-fixed-replay-71642/ram_71642.bin": {
+      "stored": "objects/f8766716bd1af498bee8f3f55bdaf0d2917143928e57be3aef1031a36c4c97bb.gz",
+      "raw_sha256": "f8766716bd1af498bee8f3f55bdaf0d2917143928e57be3aef1031a36c4c97bb",
+      "raw_bytes": 65536,
+      "stored_sha256": "2f3a11ae4dae1edbf3598b26095a634ae0712434cd9d9c68877e1d1680079914"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-pre-boss01-assisted-fixed-replay-71642/replay_report.json": {
+      "stored": "objects/2b8df0c20b470616a08097f05394c1c33b5ed0dc8a028e7ea034fb19cb91b10d.gz",
+      "raw_sha256": "2b8df0c20b470616a08097f05394c1c33b5ed0dc8a028e7ea034fb19cb91b10d",
+      "raw_bytes": 846,
+      "stored_sha256": "53d11559f505621bc6ddfafe6a46a9db98ba1c744f6959d27e61342a2bf563a5"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-release01/assistance.json": {
+      "stored": "objects/8f233dc4bd451efce4426316d5af5d21c1b6762a722728d737f4c768332e06d2.gz",
+      "raw_sha256": "8f233dc4bd451efce4426316d5af5d21c1b6762a722728d737f4c768332e06d2",
+      "raw_bytes": 2143442,
+      "stored_sha256": "428ea4b5af1970b2270ed92c9c9ac9cefd59659f62c93c8169b35b141ee57105"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-release01/capture.json": {
+      "stored": "objects/e0f54c2628926768b462c0c8bfd54db7863bd015e51bae281741329e6bd0eb97.gz",
+      "raw_sha256": "e0f54c2628926768b462c0c8bfd54db7863bd015e51bae281741329e6bd0eb97",
+      "raw_bytes": 2525086,
+      "stored_sha256": "7cf79858d82b0928cdab208eafcf3135b8420d94223e728369d2abcb0209723a"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-release01/controls.json": {
+      "stored": "objects/9eb7d1872858f8865f01306873a27f77f7929c5c751f291cca2d05da98bdf82f.gz",
+      "raw_sha256": "9eb7d1872858f8865f01306873a27f77f7929c5c751f291cca2d05da98bdf82f",
+      "raw_bytes": 91648,
+      "stored_sha256": "b11d6e5afcac7d669cf959855e3997cfb243c6f6fb58b6640e7118d0eafd6592"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-release01/frame_71643.png": {
+      "stored": "objects/42b968d218f6635cab36d4d44c3a3b9c6d61299a6dd0732b71f05caa7eafd302.gz",
+      "raw_sha256": "42b968d218f6635cab36d4d44c3a3b9c6d61299a6dd0732b71f05caa7eafd302",
+      "raw_bytes": 4239,
+      "stored_sha256": "8a88ae64e62a9dc7bbb155b8d7969cb9a30815107f0d25203c88bb89471bc4d2"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-release01/ram_71643.bin": {
+      "stored": "objects/604b9885209046cdc3a65793ba7e9e54a91d7911c9e4d711d5edfcd62f7b1c3d.gz",
+      "raw_sha256": "604b9885209046cdc3a65793ba7e9e54a91d7911c9e4d711d5edfcd62f7b1c3d",
+      "raw_bytes": 65536,
+      "stored_sha256": "6503658ff9a46cee623967cee974d85aa4d3de643ba5f9269d3183cdf8d8924c"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-release01/report.json": {
+      "stored": "objects/035a2555d2697a71b68dd59a315c27374d502a250a66e29d854472e308eb025b.gz",
+      "raw_sha256": "035a2555d2697a71b68dd59a315c27374d502a250a66e29d854472e308eb025b",
+      "raw_bytes": 1273,
+      "stored_sha256": "526e650aa11d3ae0dee065ccefa5fa9a36eccefbf2ba09ac4a3ba2cce65442fb"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-release01-assisted-fixed-replay-71643/frame_71643.png": {
+      "stored": "objects/42b968d218f6635cab36d4d44c3a3b9c6d61299a6dd0732b71f05caa7eafd302.gz",
+      "raw_sha256": "42b968d218f6635cab36d4d44c3a3b9c6d61299a6dd0732b71f05caa7eafd302",
+      "raw_bytes": 4239,
+      "stored_sha256": "8a88ae64e62a9dc7bbb155b8d7969cb9a30815107f0d25203c88bb89471bc4d2"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-release01-assisted-fixed-replay-71643/ram_71643.bin": {
+      "stored": "objects/604b9885209046cdc3a65793ba7e9e54a91d7911c9e4d711d5edfcd62f7b1c3d.gz",
+      "raw_sha256": "604b9885209046cdc3a65793ba7e9e54a91d7911c9e4d711d5edfcd62f7b1c3d",
+      "raw_bytes": 65536,
+      "stored_sha256": "6503658ff9a46cee623967cee974d85aa4d3de643ba5f9269d3183cdf8d8924c"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-release01-assisted-fixed-replay-71643/replay_report.json": {
+      "stored": "objects/fe9fce15cba26429159f362c1ab9c675413c62321bbb17e9febc177613981cea.gz",
+      "raw_sha256": "fe9fce15cba26429159f362c1ab9c675413c62321bbb17e9febc177613981cea",
+      "raw_bytes": 847,
+      "stored_sha256": "23838bee8f4f33f3bc2bc7259ceb0211fc573ed43893f789d26775a7ce1cac6f"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-switch01/assistance.json": {
+      "stored": "objects/2d85ca9e5c225d3161765a88d846ff3f9ce90941b55e73b3c7d193f0b1694200.gz",
+      "raw_sha256": "2d85ca9e5c225d3161765a88d846ff3f9ce90941b55e73b3c7d193f0b1694200",
+      "raw_bytes": 2107527,
+      "stored_sha256": "48034f416029dc6caf262749c664be5991796fd1ec2ed2343589e0d7107ace3b"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-switch01/capture.json": {
+      "stored": "objects/51fed4db9e1f400ffce247aa46c56671f06c72d050a4405783f1352aa9e85f5b.gz",
+      "raw_sha256": "51fed4db9e1f400ffce247aa46c56671f06c72d050a4405783f1352aa9e85f5b",
+      "raw_bytes": 2367964,
+      "stored_sha256": "73c70574b2d7be8a84107d5083a12f41f1aa88a70a132f668c3c60d5b858517e"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-switch01/controls.json": {
+      "stored": "objects/1825cdfe6daf29f763fab7625b12968fd4c70f1a752f967506de9a29a86acfb3.gz",
+      "raw_sha256": "1825cdfe6daf29f763fab7625b12968fd4c70f1a752f967506de9a29a86acfb3",
+      "raw_bytes": 69962,
+      "stored_sha256": "f5df5c62e779f3f7c35c31755cd53cc50c49d43b2cfdedd015f8eae2fb709890"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-switch01/frame_68254.png": {
+      "stored": "objects/5126d88449110ff43fa1f80911c6060ca5c3caf4f5ecd816adebc0ba5f1af770.gz",
+      "raw_sha256": "5126d88449110ff43fa1f80911c6060ca5c3caf4f5ecd816adebc0ba5f1af770",
+      "raw_bytes": 7835,
+      "stored_sha256": "aee9d6990f8c2f509e67fd3dfa3bfd80b23d60a27d3df04b4a0c549a966df1f9"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-switch01/ram_68254.bin": {
+      "stored": "objects/dd8c5e72b96ad59542c89e8374fb7ca08023431c233094123d6bc6370d2a555f.gz",
+      "raw_sha256": "dd8c5e72b96ad59542c89e8374fb7ca08023431c233094123d6bc6370d2a555f",
+      "raw_bytes": 65536,
+      "stored_sha256": "ee063aecd4c2fc54c003763ed2a6afb651e717e13447d8d72d58247a43ec7fe5"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-switch01/report.json": {
+      "stored": "objects/6067fb4a9dc1d0954a8e97bbbc4b0630a370a39f08aa4b926f003c1a7e65d0d2.gz",
+      "raw_sha256": "6067fb4a9dc1d0954a8e97bbbc4b0630a370a39f08aa4b926f003c1a7e65d0d2",
+      "raw_bytes": 4840,
+      "stored_sha256": "85067a4d9da1567c2ccfa2d3544c60b1f02a44321f9ee3cb7d91f897d05be72c"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-switch01-assisted-fixed-replay-68254/frame_68254.png": {
+      "stored": "objects/5126d88449110ff43fa1f80911c6060ca5c3caf4f5ecd816adebc0ba5f1af770.gz",
+      "raw_sha256": "5126d88449110ff43fa1f80911c6060ca5c3caf4f5ecd816adebc0ba5f1af770",
+      "raw_bytes": 7835,
+      "stored_sha256": "aee9d6990f8c2f509e67fd3dfa3bfd80b23d60a27d3df04b4a0c549a966df1f9"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-switch01-assisted-fixed-replay-68254/ram_68254.bin": {
+      "stored": "objects/dd8c5e72b96ad59542c89e8374fb7ca08023431c233094123d6bc6370d2a555f.gz",
+      "raw_sha256": "dd8c5e72b96ad59542c89e8374fb7ca08023431c233094123d6bc6370d2a555f",
+      "raw_bytes": 65536,
+      "stored_sha256": "ee063aecd4c2fc54c003763ed2a6afb651e717e13447d8d72d58247a43ec7fe5"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d3-switch01-assisted-fixed-replay-68254/replay_report.json": {
+      "stored": "objects/e1521be7f985e157d003d501ebbc5a56016ee908bf709fdb47d2b76e5c72e0bc.gz",
+      "raw_sha256": "e1521be7f985e157d003d501ebbc5a56016ee908bf709fdb47d2b76e5c72e0bc",
+      "raw_bytes": 845,
+      "stored_sha256": "83baedcd1ee10b1e158c102f81fe7714ad96a083de764c784cf08608394b7f36"
+    }
+  },
+  "removed_verified_generated": []
+}
