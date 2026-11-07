@@ -1,5 +1,6 @@
 """Verify that the v0317 D7 guard ends before 1B8 and resumes only after victory."""
 import argparse,json,sys
+from pathlib import Path
 sys.path.insert(0,"tools")
 from archive_lossless_evidence import freeze
 

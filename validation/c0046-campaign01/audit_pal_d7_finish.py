@@ -1,5 +1,6 @@
 """Verify the v0317 ship, main D7 combat, and exterior return on one run."""
 import argparse,sys
+from pathlib import Path
 sys.path.insert(0,"tools")
 from archive_lossless_evidence import freeze
 import json

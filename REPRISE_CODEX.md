@@ -63,33 +63,40 @@ Rejeu c0047/V319 exact RAM65536/PNG : `c0047_pal_d7_preparation_report.json`,
 archive `c0047-pal-d7-preparation`. Ce jalon ne valide aucun boss D7.
 Pilote22320/PID33288 terminé0 ; ne pas le relancer.
 
-Parcours actif : intermédiaire PAL D7, PID46780 au lancement,
-`tools/continue_d7_midboss_palc0046.py`, cwd projet isolé habituel.
-Le suivi23307/PID25252 le lance et attend sa fin ; ne pas dupliquer.
-Sources `palc0046-d7-midboss-sources`, lecteur
-`palc0046-d7-midboss-cold-stream01`. Retrait193119 en1B9/hurt0 ; contact
-et entrée193298 en1B8, héros80PV/hurt0,boss78 à30PV source. Deux points
-passent l'audit `audit_pal_d7_midboss.py --prefix-only`. Le combat est
-lancé par `unassisted_arrival_prediction.py`, PID48776 au dernier contrôle.
-Aucun succès de ce combat n'est encore déclaré dans ce point de reprise.
+Intermédiaire PAL D7 terminé et audité : `palc0046_d7_midboss_report.json`,
+archive `palc0046-d7-midboss`. Retrait193119 ; premier combat193298,
+1B8,héros80PV/hurt0,boss78 à30PV source. 104 prédictions RAM entière,
+victoire puis reprise d'approche194396 à80PV/56PM/deux clés. Protection
+réactivée seulement après la victoire, avec un unique écrit hurt129.
+Rejeu c0047/V319 exact RAM65536/PNG à194396 :
+`c0047_pal_d7_midboss_report.json`, archive `c0047-pal-d7-midboss`.
+Le cristal7 et le boss principal ne sont pas encore validés par ce jalon.
 
-Suivi14346/PID23580 : `after_pal_d7_midboss.py --pid 46780`, attend
-sortie0 de l'intermédiaire, audit4 points et rejeu c0047 `d7-midboss`,
-puis lance `tools/continue_d7_finish_palc0046.py`. Générateur finish
-`prepare_pal_d7_finish.py` déjà exécuté ; ne pas répéter. Ce pilote vise
-bateau16, mécanisme distant1E6, retrait avant179/boss67 à60PV, cristal7
-et sortie1B. Sources futures `palc0046-d7-finish-sources`, lecteur
-`palc0046-d7-finish-cold-stream01`. Le contrôleur garde les réentrées
-ordinaires pour ennemis isolés et l'évitement des portails déjà connus.
+Pilote intermédiaire46780 et suivi23307 terminés0. L'ancien suivi14346
+et sa dépendance86661 sont terminés1 : import Path manquant dans l'audit,
+après les quatre preuves du jeu déjà terminées. Cet import a été corrigé
+sans relancer le combat. Audit full exécuté et passé ; ne pas le relancer
+sur l'archive existante. Même import ajouté à l'audit de la fin D7.
 
-Suivi86661 : `after_pal_d7_finish.py --pid 23580` détient le handle du
-suivi précédent, attend sa fin0 après la campagne, audite les10 étapes,
-rejoue c0047 `d7`, puis crée le reçu V319 du septième cristal. Ne pas
-lancer ces étapes en double. `audit_pal_d7_finish.py --prefix-only`
-ne publie aucun rapport de campagne ; les modes partiels restent lecture
-seule. Les audits full exigent victoire et retour, sans aide après retrait.
-Vérifier les vrais handles/processus avant reprise : un délai n'est pas
-une fin de processus. Ni cristal7 ni fin du donjon ne sont encore validés.
+Parcours actif : fin PAL D7, PID44180 au lancement,
+`tools/continue_d7_finish_palc0046.py`, cwd projet isolé habituel.
+`prepare_pal_d7_finish.py` est déjà exécuté ; ne pas répéter. Sources
+`palc0046-d7-finish-sources`, lecteur `palc0046-d7-finish-cold-stream01`.
+Vise bateau16, mécanisme distant1E6, retrait avant179/boss67 à60PV,
+cristal7 et sortie1B. Les réentrées ordinaires pour ennemis isolés et
+l'évitement des portails connus sont actifs. Le pilote exige le vrai
+rapport de victoire de l'intermédiaire, sans assistance durant ce combat.
+
+Suivi41915/PID44460 : `resume_after_d7_midboss_audit.py` a effectué le
+rejeu c0047 puis lancé cette fin D7 et attend sa fermeture. Ne pas le
+relancer : le dossier de rejeu existe. Suivi34690 :
+`after_pal_d7_finish.py --pid 44460` attend ce pipeline vivant, exige
+sortie0 puis audit10 étapes, rejeu c0047 `d7` et reçu V319 du cristal7.
+Ne pas relancer les anciens handles14346/86661 ou créer de doublon.
+`audit_pal_d7_finish.py --prefix-only`/`--through-ship` restent lecture
+seule et ne publient pas de rapport de campagne. Les audits full exigent
+victoire et retour, sans aide après retrait. Vérifier les vrais handles
+et processus avant reprise ; un délai n'est pas une fin de processus.
 Le projet isolé conserve c0046/9e747d38 ; ne pas remplacer sa ROM ou ses
 symboles par ceux de la racine pendant le parcours. Les sources racine
 et privées ont été contrôlées sans lien physique partagé avant promotion.
