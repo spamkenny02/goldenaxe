@@ -45,3 +45,10 @@ identiques à ceux du parcours c0046. Les trois boss ont été affrontés
 après retrait de la protection de test.
 
 [Rejeu du troisième cristal et du retour](../../../analysis/c0047_d3_auto_report.json).
+
+Le don réel de 50 pièces puis l’achat de Terre pour 50 pièces sont rejoués
+sur c0047 jusqu’à 81636 images. La RAM entière et l’image finale concordent
+avec c0046 : 48 PV, 12 pièces et 48 PM, Terre niveau 1. Cela ne constitue
+pas encore une validation du quatrième cristal.
+
+[Rejeu jusqu’à l’achat de Terre](../../../analysis/c0047_d4_earth_auto_report.json).

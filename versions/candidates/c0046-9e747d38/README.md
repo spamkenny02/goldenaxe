@@ -85,3 +85,9 @@ reproduisent RAM entière et image. La sortie utilise 21 prédictions,
 sans nouvelle aide ni import de ressource.
 
 [Audit complet D3](../../../analysis/c0046_d3_report.json).
+
+Terre est achetée normalement après le don réel de 50 pièces : prix 50,
+Terre niveau 1, capacité magique 48. Les quatre points de contrôle et les
+128 mots du HUD de chaque service concordent au rejeu indépendant.
+
+[Don d’or et achat de Terre](../../../analysis/earth_learning_c0046_report.json).

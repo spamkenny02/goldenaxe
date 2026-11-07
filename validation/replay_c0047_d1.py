@@ -1,4 +1,4 @@
-"""Replay each exact c0046 first-dungeon recording on the padded c0047 image."""
+"""Replay exact c0046 controller recordings on the padded c0047 image."""
 import argparse
 import contextlib
 import io
@@ -11,16 +11,19 @@ from assisted_prefix import recording
 from archive_lossless_evidence import freeze,sha
 
 parser=argparse.ArgumentParser();parser.add_argument('region',choices=['auto','pal'])
-parser.add_argument('--dungeon',type=int,choices=[1,2,3],default=1)
-parser.add_argument('--milestone',choices=['exit','rope'],default='exit')
+parser.add_argument('--dungeon',type=int,choices=[1,2,3,4],default=1)
+parser.add_argument('--milestone',choices=['exit','rope','earth'],default='exit')
 args=parser.parse_args();region=args.region;dungeon=args.dungeon
-assert dungeon==1 or region=='auto','The c0046 second-dungeon recording is NTSC only'
+assert dungeon==1 or region=='auto','Only the first-dungeon PAL recording is available here'
 assert args.milestone!='rope' or dungeon==3
+assert args.milestone!='earth' or dungeon==4
 root=ROOT/'validation/c0046-campaign01/isolated/project'
 name='md-'+region+'-c46-d1-exit02' if dungeon==1 else f'md-auto-c0046-d{dungeon}-exit01'
 if args.milestone=='rope':name='md-auto-c0046-d3-rope03'
-suffix=f'd{dungeon}'+('-rope' if args.milestone=='rope' else '')
-trace=root/'validation/natural-dungeon-combat'/name
+if args.milestone=='earth':name='md-c0046-earth-learn01'
+suffix=f'd{dungeon}'+('-'+args.milestone if args.milestone!='exit' else '')
+family='natural-service-route' if args.milestone=='earth' else 'natural-dungeon-combat'
+trace=root/'validation'/family/name
 cap=json.loads((trace/'capture.json').read_bytes());assist,writes=recording(trace,cap)
 controls=json.loads((trace/'controls.json').read_bytes());end=cap['frames']
 presses=list(map(tuple,cap['presses']))

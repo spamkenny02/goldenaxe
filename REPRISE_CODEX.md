@@ -4,6 +4,34 @@
 plus bas décrivent des versions antérieures. Lire d’abord cette section,
 le README et les rapports cités.
 
+## Suivi courant au 7 novembre 2026
+
+La V318 a terminé les parcours NTSC et PAL jusqu’à la victoire, au générique
+et au retour à l’intro. Le pipeline PAL est fermé et son audit final passe.
+Ne pas reprendre ses anciens pilotes mentionnés dans l’historique ci-dessous.
+
+L’aperçu recommandé pour poursuivre l’optimisation est c0047-d3ea2a83,
+2 Mio, checksum DA29. Il reprend le programme de c0046 avec un complément
+correct de fichier. Trois cristaux et retours sont rejoués en NTSC avec
+RAM entière/image finale identiques, ainsi que la corde, le don de 50
+pièces et l’achat de Terre. Dernier point Terre : 81636, 48 PV, 12 pièces,
+48 PM, Terre niveau 1. Le premier donjon est aussi rejoué en PAL.
+La campagne complète de cet aperçu demeure ouverte.
+
+Le processus courant joue continue_d4_c0046.py dans
+validation/c0046-campaign01/isolated/project. Cette branche continue sur
+c0046 puis chaque jalon est rejoué sur c0047. Journaux et sources :
+validation/c0046-d4-sources dans ce projet, preuves indépendantes partagées
+dans validation/c0046-d4-cold-stream. Vérifier le processus réel avant
+reprise ; ne pas relancer les pilotes dans les sorties existantes.
+
+Preuves actuelles : analysis/c0046_d3_report.json,
+analysis/c0047_d3_auto_report.json, analysis/earth_learning_c0046_report.json,
+analysis/c0047_d4_earth_auto_report.json. Archive du don et achat :
+analysis/c0046-earth-learning, quatre points d’un même rejeu froid.
+
+## Historique des étapes précédentes
+
 La version de référence est V318, 2 Mio, checksum 7863, SHA-256
 b9e1f0a0543f191e24ffd6d2740a0d717501e0fcd986f8b8953a37a1b3c416a4.
 La ROM SMS du dossier input correspond exactement au fichier fourni par

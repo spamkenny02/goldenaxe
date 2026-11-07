@@ -18,7 +18,8 @@ Checksum Mega Drive : `7863`
 Aperçu actuel : [c0047, ROM de 2 Mio](versions/candidates/c0047-d3ea2a83/README.md).
 Il reprend l’optimisation c0046 et corrige son complément de fichier.
 Premier donjon rejoué en PAL et NTSC ; trois premiers cristaux et retours extérieurs
-rejoués en NTSC. La campagne complète de cet aperçu reste à valider.
+rejoués en NTSC, ainsi que l’achat normal de Terre.
+La campagne complète de cet aperçu reste à valider.
 
 Nouvel aperçu [c0046](versions/candidates/c0046-9e747d38/README.md) :
 préparation des motifs du héros mesurée 44,79 % moins coûteuse ;
