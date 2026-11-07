@@ -17,7 +17,7 @@ Checksum Mega Drive : `7863`
 
 Aperçu actuel : [c0047, ROM de 2 Mio](versions/candidates/c0047-d3ea2a83/README.md).
 Il reprend l’optimisation c0046 et corrige son complément de fichier.
-Premier donjon rejoué en PAL et NTSC ; six premiers cristaux et retours extérieurs
+Premier donjon rejoué en PAL et NTSC ; sept premiers cristaux et retours extérieurs
 rejoués en NTSC, ainsi que l’achat normal de Terre et l’acquisition du canoë.
 La campagne complète de cet aperçu reste à valider.
 
@@ -73,7 +73,14 @@ Le bateau est aussi récupéré et vérifié sur c0046 à 215194 images, avec
 par une marche normale sur leur sol ; le mécanisme distant et les trois
 points RAM/image concordent au rejeu indépendant.
 [Bateau D7](analysis/d7_ship_c0046_report.json).
-Le boss principal et le septième cristal restent à valider.
+Le boss principal et le septième cristal sont désormais vérifiés : boss à
+60 PV source, protection retirée avant l’entrée, 172 prédictions RAM exactes.
+Un dégât normal coûte 2 PV avant que le cristal restaure 88/88 PV. Le retour
+consomme 8 PM pour Terre et termine à 88 PV, 64 PM, une clé et 27 pièces.
+Les dix étapes finales passent au rejeu indépendant ; c0047 reproduit aussi
+toute la RAM et l’image finale à 227539 images.
+[Septième cristal et retour](analysis/d7_campaign_c0046_report.json)
+· [Rejeu sur c0047](analysis/c0047_d7_auto_report.json).
 [Captures des retours D4 ratés archivées, environ 9 Mio libérés](analysis/c0046-d4-failed-exit-captures/manifest.json).
 
 Nouvel aperçu [c0046](versions/candidates/c0046-9e747d38/README.md) :
@@ -164,7 +171,7 @@ sa propre campagne. Un numéro de version ne constitue pas un statut de finale.
 | --- | --- | --- |
 | V318 NTSC | Neuf cristaux, palais, Death Adder, générique et retour à l’intro ; 393707 états comparés au parcours V317 | Ce rejeu ne prouve pas une identité globale avec la SMS. |
 | V318 PAL | Nouvelle partie jusqu’à la victoire et au générique, avec rejeux indépendants RAM/image | La comparaison audiovisuelle source reste ciblée. |
-| c0047 NTSC | Six cristaux et retours, canoë, Feu, épée longue, bottes, cloche de glace, achats et soin | Septième donjon en cours ; fin de campagne et sauvegarde à revalider sur cet aperçu. |
+| c0047 NTSC | Sept cristaux et retours, canoë, Feu, épée longue, bottes, cloche de glace, bateau, achats et soin | Huitième donjon en cours ; fin de campagne et sauvegarde à revalider sur cet aperçu. |
 | c0047 PAL | Premier cristal et retour extérieur | Les autres donjons restent à vérifier sur cet aperçu. |
 
 Les contrôles V318 couvrent aussi l’intro et le titre, la saisie du nom,

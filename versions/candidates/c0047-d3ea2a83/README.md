@@ -86,3 +86,13 @@ protection est retirée avant son approche finale. La suite reste à valider.
 
 [Audit du sixième cristal](../../../analysis/d6_campaign_c0046_report.json)
 · [Rejeu sur c0047](../../../analysis/c0047_d6_auto_report.json).
+
+Le septième cristal et le retour concordent à 227539 images : 88/88 PV,
+64 PM, une clé, 27 pièces et bateau possédé. Le parcours comprend la boutique
+cachée A5 ouverte par combat, le gardien intermédiaire et le boss principal,
+tous deux combattus après retrait de la protection. Les dix étapes finales
+de c0046 passent au rejeu indépendant ; c0047 retrouve aussi les 65536 octets
+de RAM et l’image finale. La suite reste à valider.
+
+[Audit du septième cristal](../../../analysis/d7_campaign_c0046_report.json)
+· [Rejeu sur c0047](../../../analysis/c0047_d7_auto_report.json).

@@ -120,3 +120,12 @@ les trois étapes finales utilisent deux lecteurs froids indépendants.
 
 [Préparation D6](../../../analysis/d6_progress_c0046_report.json)
 · [Sixième cristal et retour](../../../analysis/d6_campaign_c0046_report.json).
+
+D7 est terminé : boutique A5 ouverte par combat, clé achetée à40, gardien78
+vaincu sans dégât, bateau reçu, boss67 à60PV source vaincu sans protection.
+Protection retirée à222304, premier combat222493 à72PV/hurt0 ;172 prédictions
+RAM exactes. Un coup coûte2PV avant restauration du cristal. Retour227539 à
+88/88PV,64PM,27 pièces,une clé et sept cristaux. Dix étapes froides exactes.
+Le premier essai sud sans réveil des52 est conservé et exclu du parcours réussi.
+
+[Septième cristal et retour](../../../analysis/d7_campaign_c0046_report.json).

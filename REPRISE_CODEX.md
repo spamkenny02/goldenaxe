@@ -12,7 +12,7 @@ Ne pas reprendre ses anciens pilotes mentionnés dans l’historique ci-dessous.
 
 L’aperçu recommandé pour poursuivre l’optimisation est c0047-d3ea2a83,
 2 Mio, checksum DA29. Il reprend le programme de c0046 avec un complément
-correct de fichier. Six cristaux et retours sont rejoués en NTSC avec
+correct de fichier. Sept cristaux et retours sont rejoués en NTSC avec
 RAM entière/image finale identiques, ainsi que la corde, le don de 50
 pièces et l’achat de Terre. Dernier point Terre : 81636, 48 PV, 12 pièces,
 48 PM, Terre niveau 1. Dernier retour D4 : 107105, 62/64 PV, canoë acquis.
@@ -89,19 +89,25 @@ bateau. Audit partiel exécuté : analysis/d7_ship_c0046_report.json ; archive
 c0046-d7-ship. Dernier point bateau215194,1D5,80PV,72PM,21 pièces,deux clés,
 six cristaux. Le HUD et les trois points froids concordent.
 
-Le processus courant joue resume_d7_finish_c0046.py dans
+La fin D7 est terminée et auditée : dix étapes froides, bateau, boss67 à60PV,
+protection retirée222304, premier combat222493 à72PV/hurt0.172 prédictions
+RAM exactes, un dégât de2PV (72→70) puis cristal88/88PV. Retour227539 à88PV,
+64PM,une clé,27 pièces,sept cristaux. Le rejeu c0047 retrouve toute la RAM
+et le PNG final. Rapports analysis/d7_campaign_c0046_report.json et
+analysis/c0047_d7_auto_report.json ; archives c0046-d7-campaign et c0047-d7-auto.
+Tous les pilotes D7 sont terminés. Le trajet sud réussi est south02.
+
+Le processus courant joue continue_d8_entry_c0046.py dans
 validation/c0046-campaign01/isolated/project. Cette branche continue sur
 c0046 puis chaque jalon est rejoué sur c0047. Journaux et sources :
-validation/run-c0046-d7-finish-03 dans ce projet, preuves indépendantes
-partagées dans son sous-dossier cold-stream. Dix étapes : trajet sud,
-mécanisme distant, bateau, retour nord, Terre, approche, retrait de protection,
-boss67 à60PV, Terre retour, sortie. Après succès : summarize_d7_campaign_c0046.py,
-archive_d7_finish.py et replay_c0047_d1.py auto --dungeon 7.
-Le contrôle --through-ship permet un audit partiel sans revendiquer le cristal.
-Les scripts D8 continue_d8_entry_c0046.py et summarize_d8_midboss_c0046.py sont
-préparés mais NON exécutés. Le départ dépend du retour D7 : vérifier les fonds
-réels pour le passage3C à10. Ne pas inventer d’argent s’il manque.
-Après D8 réussi, archive_d8_entry.py à la racine. Les générateurs prepare_d8_entry.py
+validation/c0046-d8-sources dans ce projet, preuves indépendantes partagées
+dans son sous-dossier cold-stream ; sources figées dans d8-entry-and-intermediate.
+Le départ D7 dispose27 pièces pour le passage3C à10, bateau possédé et vie
+pleine88 ; pas de soin préalable demandé. Étapes : passage payant, entréeD8,
+antichambre, retrait de protection puis gardien7A à50PV source. Après succès :
+summarize_d8_midboss_c0046.py dans le projet puis archive_d8_entry.py à la racine.
+Ne pas revendiquer le huitième cristal sur ces seuls tests.
+Les générateurs prepare_d8_entry.py
 et prepare_d7_finish.py sont déjà exécutés ; ne pas les relancer.
 Les scripts de préparation D7 et resume_d7_sentinels.py sont déjà exécutés ;
 ne pas les relancer. L’audit final utilise south02 dans ses trois conditions
