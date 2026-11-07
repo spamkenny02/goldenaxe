@@ -109,3 +109,14 @@ normalement. La protection est retirée à 146597, avant le combat à 146688.
 Les 63 prédictions du combat et les 10 du retour concordent sur toute la RAM,
 et les cinq points du rejeu indépendant reproduisent RAM et image finale.
 [Audit du cinquième cristal et du retour](../../../analysis/d5_campaign_c0046_report.json).
+
+La cloche de glace, cinq acquisitions de clés et six étapes Terre sont
+vérifiées en dix-sept points. Le sixième boss est ensuite vaincu avec ses
+60 PV source, après retrait de la protection à 176003. Premier combat à
+176965 : héros 56 PV et hurt0. Les 190 prédictions du combat et les 97 du
+retour concordent sur toute la RAM. Sixième cristal et extérieur à 185456,
+80/80 PV et 72 PM. Le délai d’attente du lecteur avant le boss est documenté ;
+les trois étapes finales utilisent deux lecteurs froids indépendants.
+
+[Préparation D6](../../../analysis/d6_progress_c0046_report.json)
+· [Sixième cristal et retour](../../../analysis/d6_campaign_c0046_report.json).

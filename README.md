@@ -17,7 +17,7 @@ Checksum Mega Drive : `7863`
 
 Aperçu actuel : [c0047, ROM de 2 Mio](versions/candidates/c0047-d3ea2a83/README.md).
 Il reprend l’optimisation c0046 et corrige son complément de fichier.
-Premier donjon rejoué en PAL et NTSC ; cinq premiers cristaux et retours extérieurs
+Premier donjon rejoué en PAL et NTSC ; six premiers cristaux et retours extérieurs
 rejoués en NTSC, ainsi que l’achat normal de Terre et l’acquisition du canoë.
 La campagne complète de cet aperçu reste à valider.
 
@@ -45,8 +45,15 @@ retrouve aussi toute la RAM et l’image finale à 150525 images.
 La préparation du sixième donjon sur c0046 est vérifiée en dix-sept étapes :
 cinq acquisitions de clés, six étapes Terre, mécanismes et cloche de glace,
 avec HUD physique et rejeu RAM/image. Point préparatoire : 176002 images,
-72 PV et 40 PM. Le sixième boss et le retour restent à valider.
+72 PV et 40 PM. Le sixième boss et le retour sont désormais vérifiés ci-dessous.
 [Préparation du sixième donjon](analysis/d6_progress_c0046_report.json).
+
+Sixième cristal et retour vérifiés à 185456 images : 80/80 PV et 72 PM.
+Le boss garde ses 60 PV source ; la protection est retirée avant l’approche
+finale. Les 190 prédictions du combat et les 97 du retour concordent sur
+toute la RAM. Le parcours c0047 retrouve aussi la RAM entière et l’image finale.
+[Audit du sixième cristal](analysis/d6_campaign_c0046_report.json)
+· [Rejeu sur c0047](analysis/c0047_d6_auto_report.json).
 [Captures des retours D4 ratés archivées, environ 9 Mio libérés](analysis/c0046-d4-failed-exit-captures/manifest.json).
 
 Nouvel aperçu [c0046](versions/candidates/c0046-9e747d38/README.md) :
@@ -137,7 +144,7 @@ sa propre campagne. Un numéro de version ne constitue pas un statut de finale.
 | --- | --- | --- |
 | V318 NTSC | Neuf cristaux, palais, Death Adder, générique et retour à l’intro ; 393707 états comparés au parcours V317 | Ce rejeu ne prouve pas une identité globale avec la SMS. |
 | V318 PAL | Nouvelle partie jusqu’à la victoire et au générique, avec rejeux indépendants RAM/image | La comparaison audiovisuelle source reste ciblée. |
-| c0047 NTSC | Cinq cristaux et retours, canoë, Feu, épée longue, bottes, achat de clé et soin | Sixième donjon en cours ; fin de campagne et sauvegarde à revalider sur cet aperçu. |
+| c0047 NTSC | Six cristaux et retours, canoë, Feu, épée longue, bottes, cloche de glace, achats et soin | Septième donjon en cours ; fin de campagne et sauvegarde à revalider sur cet aperçu. |
 | c0047 PAL | Premier cristal et retour extérieur | Les autres donjons restent à vérifier sur cet aperçu. |
 
 Les contrôles V318 couvrent aussi l’intro et le titre, la saisie du nom,

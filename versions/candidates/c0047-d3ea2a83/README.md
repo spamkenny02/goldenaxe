@@ -78,3 +78,11 @@ de test est retirée avant l’entrée. La suite de la campagne reste à valider
 
 [Audit du cinquième cristal](../../../analysis/d5_campaign_c0046_report.json)
 · [Rejeu sur c0047](../../../analysis/c0047_d5_auto_report.json).
+
+Le sixième cristal et le retour sont rejoués à 185456 images : 80/80 PV,
+72 PM, cloche de glace possédée et six cristaux. La RAM entière et l’image
+finale concordent avec c0046. Le boss conserve ses 60 PV source et la
+protection est retirée avant son approche finale. La suite reste à valider.
+
+[Audit du sixième cristal](../../../analysis/d6_campaign_c0046_report.json)
+· [Rejeu sur c0047](../../../analysis/c0047_d6_auto_report.json).

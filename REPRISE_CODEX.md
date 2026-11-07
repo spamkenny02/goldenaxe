@@ -12,7 +12,7 @@ Ne pas reprendre ses anciens pilotes mentionnés dans l’historique ci-dessous.
 
 L’aperçu recommandé pour poursuivre l’optimisation est c0047-d3ea2a83,
 2 Mio, checksum DA29. Il reprend le programme de c0046 avec un complément
-correct de fichier. Cinq cristaux et retours sont rejoués en NTSC avec
+correct de fichier. Six cristaux et retours sont rejoués en NTSC avec
 RAM entière/image finale identiques, ainsi que la corde, le don de 50
 pièces et l’achat de Terre. Dernier point Terre : 81636, 48 PV, 12 pièces,
 48 PM, Terre niveau 1. Dernier retour D4 : 107105, 62/64 PV, canoë acquis.
@@ -50,17 +50,26 @@ Le pilote finish_d6_c0046.py s’est arrêté avant le boss sur un délai
 d’attente du lecteur de preuves. Son lecteur a toutefois terminé et fermé
 correctement : preuve du retrait de protection à176003, 65536 octets RAM
 et PNG exacts, completed.json passé. Aucun combat n’avait encore été lancé.
-Le processus courant joue resume_d6_finish_c0046.py dans
+La reprise D6 est terminée : boss64 à60 PV, premier combat176965 avec héros
+56 PV/hurt0, 190 prédictions ; retour avec97 prédictions à185456, six cristaux,
+80/80 PV et72 PM, 38 pièces et aucune clé. Pas de nouvelle aide après176003.
+Les audits vérifient la preuve de retrait puis les preuves combat/retour
+sur deux lecteurs froids ; l’archive est analysis/c0046-d6-campaign.
+Rapports : analysis/d6_campaign_c0046_report.json et
+analysis/c0047_d6_auto_report.json. Le rejeu c0047 passe aussi sur toute la
+RAM et l’image finale. Tous les pilotes D6 sont terminés.
+
+Le processus courant joue continue_d7_funded_c0046.py dans
 validation/c0046-campaign01/isolated/project. Cette branche continue sur
 c0046 puis chaque jalon est rejoué sur c0047. Journaux et sources :
-validation/c0046-d6-finish-sources02 dans ce projet, preuves indépendantes partagées
-dans son sous-dossier cold-stream. La première preuve reste dans
-c0046-d6-finish-sources/cold-stream. La reprise joue le boss64 à60 PV puis
-le retour extérieur8B, sans nouvelle aide. L’audit adapté vérifie les deux
-versions du lecteur et les trois étapes sur deux lecteurs froids distincts.
-Le pilote préparatoire D6 est terminal, audité et archivé. Après le
-succès, lancer summarize_d6_campaign_c0046.py dans le projet et, à la racine,
-archive_d6_finish.py puis replay_c0047_d1.py auto --dungeon 6.
+validation/run-c0046-d7-02 dans ce projet, preuves indépendantes partagées
+dans son sous-dossier cold-stream. Avec38 pièces au départ, le don B5 de10
+permet la clé à40 chez A5 ; le pilote conserve les prix réels et choisit94
+si son solde réel atteint60. Aucun argent ni objet n’est importé.
+L’ancien seuil50 du pilote V317 est adapté à30, minimum avant don pour
+la boutique à40. Après le succès, lancer summarize_d7_prep_c0046.py dans le
+projet puis validation/c0046-campaign01/archive_d7_prep.py à la racine.
+Ne pas annoncer de gardien ou septième cristal sur cette seule préparation.
 Ne pas relancer les scripts de préparation : leurs fichiers existent déjà.
 adapt_d6_resumed_audit.py est aussi déjà exécuté. Le lecteur de preuves
 revérifie la présence du résultat aux limites de délai et de sortie du
