@@ -112,16 +112,26 @@ retrouve aussi65536RAM/PNG au point final. Rapports d8_campaign_c0046_report.jso
 et c0047_d8_auto_report.json dans analysis ; archives c0046-d8-campaign et
 c0047-d8-auto. Tous les pilotes D8 sont terminés.
 
-Le processus courant joue continue_d9_south_c0046.py dans
-validation/c0046-campaign01/isolated/project. Sorties et preuves dans
-validation/c0046-d9-south-sources, cold-stream partagé. Le retour payant1A
-vers3C coûte10, les fonds réels sont25 ; ce trajet évite la mort/Continue
-utilisée historiquement sur V317. Pas de ressource ou progression importée.
-prepare_d9_south.py est déjà exécuté. Le rapport attendu est
-analysis/d9_south_c0046_report.json ; créer l’archive après succès.
-Le pilote actuel ne fait que le retour sud : l’entrée D9 avec cloche et
-ses gardiens restent à adapter depuis continue_d9_entry_v0317.py, sans
-imposer l’ancien rapport d9_recovery_v0317 ou ses3 pièces historiques.
+Le retour sud est terminé et audité : deux points froids, passage1A→3C
+payé25→15, huit cristaux,96PV,72PM,une clé conservés. Point final270329
+en3C. Rapport analysis/d9_south_c0046_report.json ; archive c0046-d9-south.
+Le pilote continue_d9_south_c0046.py est terminal. Aucun décès/Continue ni
+ressource importée : les fonds réels ont permis le passage inverse normal.
+
+Le processus courant joue continue_d9_entry_c0046.py dans
+validation/c0046-campaign01/isolated/project. Sorties : validation/c0046-d9-sources04,
+sources figées dans entry-tools et lecteur froid partagé dans cold-stream.
+La première préparation sources03 s’est arrêtée avant l’émulation sur une
+assertion de chemin local non préfixé ; sources04 est la vraie reprise.
+L’entrée reprend l’épisode d’approche déjà ouvert après D8, sans créer de
+nouvel épisode après le service payé. Le pilote utilise la cloche enCB,
+entre en1FC, puis Terre et contact1DE,Terre1CE,antichambre,retrait avant1BE,
+gardien79 à60PV source. Les scripts d’audit sont adaptés au retour payé,
+pas à l’ancien décès V317 ni à ses3 pièces. prepare_d9_entry.py est déjà exécuté.
+Après l’entrée prouvée : summarize_d9_entry_c0046.py dans le projet, puis
+archive_d9_entry.py à la racine. Après les six étapes : audit d’entrée si
+pas encore fait, summarize_d9_midboss_c0046.py et archive_d9_entry.py --midboss.
+Ne pas revendiquer le neuvième cristal sur ces étapes.
 
 Historique de la fin D8 (clos) : continue_d8_finish_c0046.py dans
 validation/c0046-campaign01/isolated/project. Cette branche continue sur

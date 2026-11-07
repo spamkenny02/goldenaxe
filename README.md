@@ -99,6 +99,11 @@ sans nouvelle aide. Sortie à 269376 images : huit cristaux, 96/96 PV, 72 PM,
 une clé et 25 pièces. Le rejeu c0047 retrouve la RAM entière et l’image finale.
 [Huitième cristal et retour](analysis/d8_campaign_c0046_report.json)
 · [Rejeu sur c0047](analysis/c0047_d8_auto_report.json).
+Le retour sud après D8 est également vérifié sur c0046 : passage inverse
+1A→3C payé avec l’or du parcours (25→15), huit cristaux et 96 PV conservés.
+Les deux points RAM/image concordent au rejeu indépendant.
+[Retour payant vers D9](analysis/d9_south_c0046_report.json).
+L’entrée du neuvième donjon est en cours de test.
 [Ancien essai D7 archivé, environ 12 Mo libérés](analysis/c0046-d7-inactive-south01/manifest.json).
 [Captures des retours D4 ratés archivées, environ 9 Mio libérés](analysis/c0046-d4-failed-exit-captures/manifest.json).
 
