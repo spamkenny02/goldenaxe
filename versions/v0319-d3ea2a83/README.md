@@ -38,3 +38,9 @@ et [rejeu c0047/V319](../../analysis/c0047_pal_d7_report.json), à 217575 images
 88/88 PV et 64 PM. Les deux boss sont affrontés sans protection ; les dix
 étapes de la seconde partie passent, dont les mots physiques du HUD.
 La RAM entière et l'image finale correspondent au point contrôlé.
+
+Ajout suivant : [huitième cristal et retour PAL](../../analysis/palc0046_d8_report.json)
+et [rejeu c0047/V319](../../analysis/c0047_pal_d8_report.json), à 260858 images,
+96/96 PV et 72 PM. Clé du voleur acquise ; 365 prédictions RAM entière
+pendant le boss principal et 29 au retour, sans aide après retrait.
+RAM entière et PNG final exacts au point contrôlé ; suite PAL ouverte.
