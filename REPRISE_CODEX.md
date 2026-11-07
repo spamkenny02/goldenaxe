@@ -28,22 +28,29 @@ Le plan sans carte courante trouvait des chemins vers les dons, mais la
 vraie carte29 après D8 ne permet pas ces chemins : ne pas ignorer cet état
 pour prétendre rejoindre une maison. Il manque3pièces pour le péage10.
 
-Seul parcours lancé : collecte normale des pièces, session36316/PID20112,
+Collecte de fonds01 terminée0, mais objectif non atteint :7pièces,
+écran29 vidé,76PV. Le pilote a arrêté dès le premier nettoyage du29,
+car le point final de boucle était aussi son écran de départ. Cette
+exécution n'est pas une preuve de fonds suffisants. Rapport/captures
+`natural-dungeon-combat/md-pal-palc0046-d9-funds01` conservés.
+
+Seul parcours lancé : collecte normale02, session99697/PID9760,
 cwd `validation/c0046-campaign01/isolated/project`, commande
-`python -u tools/collect_pal_d9_funds01.py --pal --assisted-prefix
+`python -u tools/collect_pal_d9_funds02.py --pal --assisted-prefix
 --continuation md-pal-palc0046-d8-exit01 --rooms 0x29,0x19,0x1a,0x19,0x29
---target-room 0x29 --frames 272858 --trial palc0046-d9-funds01 --max-deaths 0
+--target-room 0x29 --frames 272858 --trial palc0046-d9-funds02 --max-deaths 0
 --collision-aim --settle-attacks --doorway-ranges --ignore-inactive-actors
 --equip-basic --wake-sentinels`.
-`prepare_pal_d9_funds.py` exécuté : copie privée du pilote de combat avec
-itinéraire monde autorisé, pièces8/9 recherchées par déplacement normal,
-fin quand gold>=10 avec héros vivant. Aucune nouvelle écriture RAM, ni
-argent ni protection ajoutés. Préfixe garde seulement les approches
-anciennes clôturées ; même ROMc0046. Source commune d'origine inchangée.
+`prepare_pal_d9_funds02.py` prépare la copie privée corrigée : ne conclut
+au nettoyage final qu'à la dernière étape d'itinéraire et marque l'échec
+si gold>=10 n'est pas atteint. Pièces8/9 recherchées normalement, aucune
+nouvelle écriture RAM, argent ou protection. Départ sur le vrai D8 avec
+96PV/7pièces, mêmes octets de ROMc0046. Sources communes inchangées.
 Pas de preuve canonique ni de réussite encore publiée pour cette collecte.
-Si succès, auditer exact chronologie/gold/pièces/absence d'écrits nouveaux,
-rejouer froid RAM/PNG, puis reprendre le vrai passage1A→3C depuis ce
-point (adapter le pilote et son audit D9, ne pas redemander B5 inaccessible).
+Si succès, auditer chronologie/gold/absence d'écrits nouveaux, rejouer
+froid RAM/PNG, puis reprendre le vrai passage1A→3C depuis ce point.
+La source de progression ne sera plus D8 direct : adapter pilote/audit D9,
+conserver les deux tentatives, ne pas redemander B5 inaccessible.
 
 Fin D9 préparée mais non lancée : `prepare_pal_d9_finish.py` exécuté,
 `tools/continue_d9_finish_palc0046.py` généré. Exige futur audit du premier
