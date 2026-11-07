@@ -53,34 +53,41 @@ les sorties centrées de donjon ; le06 accepte tout le bord mais tente de
 faire chercher un point hors de la grille de collision et n'appuie plus.
 Les deux copies privées sont conservées, aucun code ROM modifié.
 
-Parcours actif : fonds07,session83466/PID10496, via
-`validation/palc0046-d9-guarded-funding03/run.py` dans le projet isolé.
+Fonds07/session83466 terminé0 mais sans pièces. Une erreur du cache
+manette du pilote privé renvoyait [droite] à une première requête puis[]
+aux suivantes dans la même image ; contrôles dupliqués même frame.
+Corrigé dans copie04 (bouton mémorisé avant retour). Fonds08/session76285
+atteint bien29→2A→2B,mais repart aussitôt par son bord gauche avant le
+réveil des ennemis : sept pièces,échec frame_limit. Suivi19742 termine1
+sur le garde de fonds insuffisants ; aucun replay ni reçu de succès créé.
+Les captures et les événements prouvent la traversée ; aucune règle ROM
+n'a été modifiée. Ne pas relancer07/08 ou leurs anciens suivis.
+
+Parcours actif : fonds09,session96304/PID21496,via
+`validation/palc0046-d9-guarded-funding05/run.py` dans le projet isolé.
 Commande : `--boss-room 0x1ac --planner ordinary --release-near-coins
 --new-assistance-episode --pal --assisted-prefix --continuation
-md-pal-palc0046-d8-exit01 --rooms 0x29,0x2a,0x2b,0x2a,0x29 --target-room
-0x29 --rush-rooms 0x29,0x2a --frames 278858 --trial palc0046-d9-funds07
+md-pal-palc0046-d8-exit01 --rooms 0x29,0x2a,0x2b --target-room 0x2b
+--rush-rooms 0x29,0x2a --frames 278858 --trial palc0046-d9-funds09
 --max-deaths 0 --collision-aim --settle-attacks --doorway-ranges
 --ignore-inactive-actors --equip-basic --wake-sentinels`.
-Copie03 corrige le franchissement extérieur : marche vers le dernier
-point intérieur16/240/160,puis appuie vers le bord pour déclencher la
-transition source (<16/>=241/<16/>=161),au lieu d'attendre un chemin
-BFS au-delà de la collision. Test en cours,aucune réussite encore publiée.
-Protection d'approche autorisée uniquement hurt,retirée près des vraies
-pièces. La copie du guard est restreinte au préfixe D8 extérieur et cet
-itinéraire ; ne pas l'employer pour un boss. Script partagé/ROM inchangés.
-Auditer chaque écrit et rejouer froid RAM/PNG avant usage du point.
+La destination est maintenant2B : le pilote s'y avance vers le centre,
+attend les vrais ennemis et les combat au lieu de retraverser l'écran.
+Protection d'approche autorisée uniquement hurt,retirée près des pièces.
+Copie du guard limitée à cet itinéraire extérieur et préfixeD8 ; ne pas
+l'employer pour un boss. Le code ROM et les scripts partagés sont inchangés.
 
-Les scripts/dossiers privés01/02/03 sont figés quand leur essai est lancé.
-Ne pas les modifier en place pendant un processus vivant,ne pas relancer
-un trial existant. Le03/04 ordinaires sont terminés sans pièces ;04 est
-mort,aucun état de mort n'est utilisé.01/02 ont été archivés en diagnostic
-non concluant,nettoyage des seuls doublons générés après SHA/gzip relus.
-Si fonds>=10 : replay froid obligatoire, puis reprendre passage1A→3C.
-Adapter pilote/audit D9 au nouveau préfixe ; ne pas redemander B5,ne pas
-importer les états/ressources des campagnes NTSC ou V318. Les suivis D9
-antérieurs sont morts ; vérifier/lancer un nouveau suivi seulement après
-réussite et preuve de la collecte. Ce besoin de fonds n'est pas un blocage
-externe et ne justifie pas de marquer le but bloqué ou terminé.
+Suivi68261 : `after_pal_d9_funding.py --pid 21496 --trial 09` détient
+un handle réel du pilote09 ; après sortie0,exige fonds réellement>=10,
+audit des adresses autorisées,propriété des objets/cristaux conservée,
+replay froid65536 octets RAM/PNG puis archive. Script de vérification
+`verify_pal_d9_funding.py`. Pas de reçu de succès ni de preuve canonique
+encore publiés. Le suivi ne lance pas D9 automatiquement après le replay.
+Si succès il faudra adapter le pilote/audit D9 au nouveau point extérieur,
+sans prétendre avoir vidé l'écran si l'objectif pièces a arrêté plus tôt.
+Les essais précédents et les copies privées sont conservés ; ne pas les
+modifier en place après lancement,ni relancer un trial existant. Vérifier
+les vrais handles avant reprise : un délai n'est pas une fin de processus.
 
 Fin D9 préparée mais non lancée : `prepare_pal_d9_finish.py` exécuté,
 `tools/continue_d9_finish_palc0046.py` généré. Exige futur audit du premier
