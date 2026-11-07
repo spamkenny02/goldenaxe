@@ -144,6 +144,18 @@ avec validation/replay_c0047_d1.py auto --dungeon 9.
 Ces étapes D9 ne revendiquent pas encore le neuvième cristal ni sa
 reproduction c0047. Ne pas lancer la suite du palais avant leur succès.
 
+La suite est mise en attente par after_d9_finish.py --wait-for-pid39884
+(session97858). Il tient le handle Windows exact du pilote D9 et vérifie
+son code0 puis les douze preuves froides, sans relancer le pilote. Il
+lance les audits/archives ballon et D9, le rejeu c0047 D9, puis le ballon
+possédé, l’entrée du palais et son premier géant. Chaque commande doit
+réussir avant la suivante ; premier échec = arrêt. Ne pas lancer ces
+étapes en parallèle à cette suite. prepare_palace_entry.py est exécuté :
+cinq scripts privés de continuation/audit, identité c0046 et chemins
+canoniques vers les rapports partagés. Aucun résultat du palais c0046
+n’est revendiqué par cette préparation. Vérifier les deux sessions et
+les processus réels avant toute reprise.
+
 Historique de la fin D8 (clos) : continue_d8_finish_c0046.py dans
 validation/c0046-campaign01/isolated/project. Cette branche continue sur
 c0046 puis chaque jalon est rejoué sur c0047. Journaux et sources :
