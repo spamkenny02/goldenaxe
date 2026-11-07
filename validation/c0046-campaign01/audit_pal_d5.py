@@ -10,7 +10,7 @@ from validate_reward_hud_restore import translated
 
 work=Path(__file__).resolve().parent
 project=work/'isolated/project'
-paths={Path(__file__).resolve(),work/'prepare_pal_d5.py'}
+paths={Path(__file__).resolve(),work/'prepare_pal_d5.py',work/'resume_pal_d5.py',work/'after_pal_d5.py'}
 def read(p): paths.add(p); return p.read_bytes()
 def load(p): return json.loads(read(p))
 
@@ -18,19 +18,27 @@ digest=sha((project/'gaw-megadrive.bin').read_bytes())
 assert digest=='9e747d38e0c6fb2d69b7c1aa8c2b296a61e8b6af41171d14e543ed9a6cb49cf5'
 prior=load(ROOT/'analysis/palc0046_fire_sword_report.json')
 assert prior['passed'] and prior['fifth_dungeon_entered'] and prior['rom_sha256']==digest and prior['region']=='pal'
-snapshot=project/'validation/palc0046-d5-sources'
-for n,h in load(snapshot/'source_index.json').items():
-    assert sha(read(snapshot/Path(n).name))==h and sha(read(project/n))==h
-read(snapshot/'commands.jsonl')
+for snapshot_name in ('palc0046-d5-sources','palc0046-d5-resumed-sources01'):
+    snapshot=project/'validation'/snapshot_name
+    for n,h in load(snapshot/'source_index.json').items():
+        assert sha(read(snapshot/Path(n).name))==h and sha(read(project/n))==h
+    read(snapshot/'commands.jsonl')
+failed=project/'validation/natural-dungeon-combat/md-pal-palc0046-d5-contact01'
+failure=load(failed/'report.json');assert failure['failure']=='frame_limit' and failure['contact_opened'] and not failure['contact_route_passed'] and failure['last_state']['room']==0x153 and not failure['contact_state_writes']
+for p in failed.iterdir():
+    if p.is_file():read(p)
 sy=symbols(project/'megadrive/out/release/symbol.txt')
 source=read(ROOT/'input/original.sms')
 assert source[0x3234e+0x163*8]==0x65 and source[0x320ea+(0x65-0x20)*4]==72
-stream=load(project/'validation/palc0046-d5-cold-stream01/completed.json')
-assert stream['passed'] and stream['cold_boot_count']==1 and stream['rom_sha256']==digest
-assert len(stream['checkpoints'])==18 and all(c['whole_ram_png_exact'] for c in stream['checkpoints'])
+streams=[]
+for stream_name,expected_count in [('palc0046-d5-cold-stream01',12),('palc0046-d5-cold-stream02',6)]:
+    row=load(project/'validation'/stream_name/'completed.json')
+    assert row['passed'] and row['cold_boot_count']==1 and row['rom_sha256']==digest and len(row['checkpoints'])==expected_count and all(c['whole_ram_png_exact'] for c in row['checkpoints'])
+    streams.append(row)
+stream=dict(checkpoints=streams[0]['checkpoints']+streams[1]['checkpoints'])
 previous=ROOT/prior['current_campaign_trace'];pc=load(previous/'capture.json');pa,pw=recording(previous,pc)
 stages=[];transactions={};release=None;fixed=None;boss_report=None;boss_assist=None;boss_folder=None
-expected=['key01','earth01','boots01','supply-exit01','golda1-entry01','golda1-gift01','goldb4-entry01','goldb4-gift01','merchant94-entry01','key94-buy01','return-entry01','warp01','contact01','approach01','release01','boss01','return-contact01','exit01']
+expected=['key01','earth01','boots01','supply-exit01','golda1-entry01','golda1-gift01','goldb4-entry01','goldb4-gift01','merchant94-entry01','key94-buy01','return-entry01','warp01','contact02','approach01','release01','boss01','return-contact01','exit01']
 for suffix,checkpoint in zip(expected,stream['checkpoints']):
     folder=project/'validation'/checkpoint['trace'];family=folder.parent.name;f=checkpoint['frames']
     assert folder.name.endswith('palc0046-d5-'+suffix)
@@ -64,9 +72,10 @@ for suffix,checkpoint in zip(expected,stream['checkpoints']):
         assert r['earth_route_passed'] and r['earth_passage_opened'] and r['earth_passage_traversed'] and not r['earth_state_writes'] and r['earth_passage_room']==room and r['earth_cell']==cell and word('room_id')==dest
     if suffix=='boots01':assert r['item_acquisition_passed'] and r['collect_item_requested']==14 and r['collect_item_target_value']==1 and not r['item_acquisition_state_writes']
     if expected.index(suffix)>=2:assert items[14]==1
-    if suffix in ('contact01','return-contact01'):
-        room,dest=(0x162,0x172) if suffix=='contact01' else (0x173,0x174)
+    if suffix in ('contact02','return-contact01'):
+        room,dest=(0x162,0x172) if suffix=='contact02' else (0x173,0x174)
         assert r['contact_route_passed'] and not r['contact_state_writes'] and r['contact_room']==room and r['contact_destination']==dest
+    if suffix=='contact02':assert r['avoided_portal_rooms']==[0x162]
     if suffix=='release01':
         release=f;fixed=w;assert word('hero_hurt')==0 and a['closed_before_room']==0x163 and w==pw+[(f,sy['hero_hurt'],b'\0\0')]
     if suffix in ('boss01','return-contact01','exit01'):
@@ -93,6 +102,6 @@ sms=data('sms_vram',16384);vram=read(previous/f'vram_{f:05d}.bin');regs=read(pre
 for n in range(128):
     at=base+((n//32+22)*width+n%32)*2;assert int.from_bytes(vram[at:at+2],'little')==translated(int.from_bytes(sms[0x3d00+n*2:0x3d02+n*2],'little'))
 out=ROOT/'analysis/palc0046-d5'
-r=dict(passed=True,candidate='c0046',region='pal',rom_sha256=digest,stages=stages,current_campaign_trace=stages[-1]['trace'],campaign_frames=f,actual_fifth_crystal_and_exterior=True,transactions=transactions,boots_owned=True,satellites_observed=8,first_core_damage=vulnerable,guard_release_frame=release,first_boss_combat=boss_report['first_intermediate_combat'],boss_prediction_windows=boss_report['full_ram_prediction_matches'],physical_hud_words_exact=128,full_candidate_campaign_verified=False,archive_manifest=(out/'manifest.json').relative_to(ROOT).as_posix(),scope='Actual PAL D5 with boots, real gold gifts,60-piece key and ordinary healing, Earth/contact mechanisms, source-strength satellite boss and exterior return. Eighteen cold RAM/PNG checkpoints; approach protection removed before boss. No resource, actor, progression or initial SRAM import. Global SMS fidelity remains open.')
+r=dict(passed=True,candidate='c0046',region='pal',rom_sha256=digest,stages=stages,current_campaign_trace=stages[-1]['trace'],campaign_frames=f,actual_fifth_crystal_and_exterior=True,controller_return_portal_detour_recovered=True,cold_reader_count=2,transactions=transactions,boots_owned=True,satellites_observed=8,first_core_damage=vulnerable,guard_release_frame=release,first_boss_combat=boss_report['first_intermediate_combat'],boss_prediction_windows=boss_report['full_ram_prediction_matches'],physical_hud_words_exact=128,full_candidate_campaign_verified=False,archive_manifest=(out/'manifest.json').relative_to(ROOT).as_posix(),scope='Actual PAL D5 with boots, real gold gifts,60-piece key and ordinary healing, Earth/contact mechanisms, source-strength satellite boss and exterior return. Eighteen cold RAM/PNG checkpoints across two readers after a controller return-portal detour, whose failed trial is preserved; approach protection removed before boss. No resource, actor, progression or initial SRAM import. Global SMS fidelity remains open.')
 freeze(ROOT,out,paths,r,[work]);(ROOT/'analysis/palc0046_d5_report.json').write_text(json.dumps(r,indent=2)+'\n')
 print('PAL D5 full route, real supplies, satellite boss and exterior return audited',flush=True)

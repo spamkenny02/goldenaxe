@@ -6,7 +6,7 @@ le README et les rapports cités.
 
 ## Suivi courant — V319, 7 novembre 2026
 
-La ROM courante locale est V319, 2 Mio, SHA-256
+La ROM courante publiée sur main est V319, 2 Mio, SHA-256
 `d3ea2a83ea24ed8a0d3c9857f9fbe70d000a4f73358452c1887f40e78966c56e`,
 checksum DA29. Les deux alias racine et la ROM numérotée sont identiques
 à c0047. La compilation normale reconstruit exactement ces octets ;
@@ -30,25 +30,34 @@ entrée déjà prouvée ; les deux contrôleurs et les dix étapes sont archivé
 Tous les pilotes NTSC et PAL jusqu'à cette entrée D5 sont terminés.
 Ne pas relancer les anciens handles mentionnés dans l'historique.
 
-Seul parcours de jeu lancé actuellement : PAL D5, session 96471,
-`python -u tools/continue_d5_palc0046.py`, cwd
-`validation/c0046-campaign01/isolated/project`.
-Vérifier ce handle/processus réel avant toute reprise ; ne pas redémarrer
-sur simple délai d'observation. Sources dans `palc0046-d5-sources`,
-lecteur `palc0046-d5-cold-stream01`. Le contrôleur vise bottes, vraies
-récompenses de 30 pièces, achat d'une clé et soin ordinaires, mécanismes,
-retrait de protection avant boss 65, cinquième cristal puis sortie 49.
-Il nécessite l'audit Feu/épée réussi. Les onze premières étapes sont
-terminées au point 123737 (entrée D5 après les vrais dons, l'achat à
-60 pièces et le soin). L'audit en lecture seule de ce préfixe passe.
-Suivi après fermeture : session 38625, `after_pal_d5.py --pid 39348`,
-qui détient un handle réel du contrôleur et exige sa sortie 0 avant audit
-18 étapes puis rejeu c0047 PAL D5. Ne pas lancer ces audits en double.
-`audit_pal_d5.py` et `prepare_pal_d6.py` sont préparés. D6 n'est pas lancé,
-son contrôleur exige le rapport final D5 ; son retour diffère de l'ancien
-pilote par le report du puzzle facultatif187, cause d'un blocage historique
-au retour. Aucune règle de la ROM n'est modifiée par ce choix de parcours.
- Audit D5 préparé, à exécuter après succès via le suivi ci-dessus.
+Seul parcours de jeu lancé actuellement : reprise PAL D5, session36557,
+PID43496 au lancement, `python -u tools/continue_d5_palc0046_resume01.py`,
+cwd `validation/c0046-campaign01/isolated/project`.
+Vérifier le handle/processus réel avant toute reprise ; ne pas redémarrer
+sur simple délai d'observation. Le premier pilote96471/PID39348 et son
+suivi38625 sont terminés1 : après12 points prouvés, le pilote activait
+le mécanisme162 mais reprenait le téléporteur vers153. Le vieux résultat
+contact01 est conservé explicitement comme échec, sans preuve canonique.
+Sources initiales `palc0046-d5-sources`, lecteur01 fermé/passé12 étapes.
+
+`resume_pal_d5.py` est exécuté ; ne pas répéter dans ce dossier. Il reprend
+le vrai point warp131421, vérifie les12 étapes puis évite le portail162
+par de simples directions. Le contact02 passe, point132444, salle172,
+64PV/72PM/une clé. Treize étapes au total passent l'audit en lecture seule.
+Sources reprises `palc0046-d5-resumed-sources01`, lecteur02 six points visés.
+Les prochaines sorties approche/retrait/boss/retour gardent leurs noms01,
+encore inexistants à la reprise. Le générateur de futurs parcours neufs
+est corrigé ; le pilote initial figé demeure inchangé.
+
+Suivi après fermeture de la reprise : session96285,
+`after_pal_d5.py --pid43496` (argument CLI réel : `--pid 43496`).
+Ce suivi détient un handle du processus, exige sortie0, puis exécute
+l'audit combiné12+6 et le rejeu c0047 PAL D5. Ne pas lancer en double.
+L'audit conserve l'échec et déclare deux lecteurs froids et la récupération.
+D6 est préparé mais pas lancé ; son contrôleur exige le rapport final D5.
+Son retour reporte le puzzle facultatif187 qui bloquait l'ancien pilote,
+sans modifier les règles de la ROM. La suite complète et le boss D5
+ne sont pas encore déclarés validés à ce point de reprise.
 Le projet isolé conserve c0046/9e747d38 ; ne pas remplacer sa ROM ou ses
 symboles par ceux de la racine pendant le parcours. Les sources racine
 et privées ont été contrôlées sans lien physique partagé avant promotion.

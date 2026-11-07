@@ -16,5 +16,7 @@ setup="""    import json,shutil
     (helper.EVIDENCE/'source_index.json').write_text(json.dumps(index,indent=2)+'\\n')
 """
 s=s.replace("    current='md-pal-palc0046-d5-entry01'",setup+"    current='md-pal-palc0046-d5-entry01'")
+# Preserve the initial frozen controller; fresh controllers avoid162's return portal.
+s=s.replace("['--contact-room','0x162','--contact-destination','0x172','--mechanism-during-combat']", "['--contact-room','0x162','--contact-destination','0x172','--mechanism-during-combat','--avoid-portal-rooms','0x162']")
 target=p/'isolated/project/tools/continue_d5_palc0046.py';assert not target.exists();ast.parse(s);target.write_text(s)
 print('PAL D5 controller prepared')
