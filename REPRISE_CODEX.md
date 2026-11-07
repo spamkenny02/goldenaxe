@@ -142,8 +142,22 @@ don B5 éventuel, le prix réel10 du passage1A, la Clochette, les huit
 encore été exécuté sur D9 : aucun parcours D9 n'a encore commencé.
 `audit_pal_d8_finish.py --prefix-only` passe le retrait256435,7cristaux,
 88PV/72PM/deux clés/7pièces. Ce mode ne publie aucun rapport de fin.
-Le boss44116 était encore actif au dernier contrôle avec CPU croissant,
-sans rapport final publié ; un délai de son observation n'est pas un arrêt.
+Le boss44116 est désormais terminé0 :365 prédictions RAM entière,
+victoire et cristal260034,96/96PV,72PM,7pièces,deux clés. L'audit en
+lecture seule des deux premières étapes finales (retrait/boss) passe.
+Le retour est en cours via PID33740 `unassisted_fast_prediction.py`,
+planning-step8, mêmes écritures closes et aucune nouvelle protection.
+Le huitième cristal seul ne suffit pas à déclarer le donjon terminé :
+attendre le retour29, audit full et rejeu avant de mettre le README à8.
+Suivi35066 : `after_pal_d9_midboss.py --pid 12088`, détient le handle
+du pipeline D8→D9 ; après sa sortie0, audite le premier gardien D9,
+rejoue c0047 avec `d9-midboss` puis lance la suite D9. Ne pas dupliquer.
+`prepare_pal_d9_finish.py` est exécuté, son contrôleur est généré mais
+pas lancé. Il exige le rapport réel de premier gardien D9 sans aide,
+puis vise géant7B (retrait avant19C), ballon11, retrait avant1AC/boss6C,
+neuvième cristal et retourEB. Aucun nouvel objet ou boss n'est revendiqué
+par cette préparation ; seuls les itinéraires historiques sont réutilisés.
+
 
 Vérifier les vrais handles/processus : un délai n'est pas une fin.
 Le projet isolé conserve c0046/9e747d38 ; ne pas remplacer sa ROM ou ses

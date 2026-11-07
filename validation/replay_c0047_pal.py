@@ -5,7 +5,7 @@ sys.path.insert(0,'tools')
 from run_core import ROOT,FrameWrites,run
 from assisted_prefix import recording
 from archive_lossless_evidence import freeze,sha
-p=argparse.ArgumentParser();p.add_argument('--report',type=Path,required=True);p.add_argument('--milestone',choices=['after-d1','d2','d3','earth','d4','fire-sword','d5','d6','d7-preparation','d7-midboss','d7','d8-midboss','d8','d9','ending'],required=True);a=p.parse_args()
+p=argparse.ArgumentParser();p.add_argument('--report',type=Path,required=True);p.add_argument('--milestone',choices=['after-d1','d2','d3','earth','d4','fire-sword','d5','d6','d7-preparation','d7-midboss','d7','d8-midboss','d8','d9-midboss','d9','ending'],required=True);a=p.parse_args()
 report=a.report.resolve();assert report.is_relative_to(ROOT/'analysis')
 r=json.loads(report.read_bytes());assert r['passed'] and r['candidate']=='c0046' and r['region']=='pal'
 ref_digest=r.get('rom_sha256',r.get('md_sha256'));assert ref_digest=='9e747d38e0c6fb2d69b7c1aa8c2b296a61e8b6af41171d14e543ed9a6cb49cf5'
