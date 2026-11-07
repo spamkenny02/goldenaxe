@@ -129,3 +129,12 @@ RAM exactes. Un coup coûte2PV avant restauration du cristal. Retour227539 à
 Le premier essai sud sans réveil des52 est conservé et exclu du parcours réussi.
 
 [Septième cristal et retour](../../../analysis/d7_campaign_c0046_report.json).
+
+D8 est terminé : passage payé10, gardien7A à50PV vaincu sans protection,
+clé du voleur reçue et mécanismes franchis. Le boss6B commence à80PV source
+à265128, héros88PV/hurt0, protection retirée264943. Aucun dégât reçu pendant
+ce boss ;344 prédictions RAM exactes,30 au retour. Sortie269376 à96/96PV,
+72PM,une clé et25 pièces. Les onze points de la suite reproduisent RAM/PNG
+dans un même lecteur froid ; le parcours c0047 concorde au point final.
+
+[Huitième cristal et retour](../../../analysis/d8_campaign_c0046_report.json).

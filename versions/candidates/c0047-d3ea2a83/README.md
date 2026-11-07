@@ -96,3 +96,12 @@ de RAM et l’image finale. La suite reste à valider.
 
 [Audit du septième cristal](../../../analysis/d7_campaign_c0046_report.json)
 · [Rejeu sur c0047](../../../analysis/c0047_d7_auto_report.json).
+
+Le huitième cristal et le retour concordent à269376 images :96/96PV,72PM,
+une clé,25 pièces et clé du voleur possédée. La RAM entière et le PNG final
+concordent avec c0046. Le boss6B garde80PV source, est combattu après retrait
+de la protection et vaincu sans dégât reçu ;344 prédictions RAM exactes.
+Le retour utilise30 prédictions sans nouvelle aide. La suite reste à valider.
+
+[Audit du huitième cristal](../../../analysis/d8_campaign_c0046_report.json)
+· [Rejeu sur c0047](../../../analysis/c0047_d8_auto_report.json).

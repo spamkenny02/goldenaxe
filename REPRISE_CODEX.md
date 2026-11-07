@@ -12,7 +12,7 @@ Ne pas reprendre ses anciens pilotes mentionnés dans l’historique ci-dessous.
 
 L’aperçu recommandé pour poursuivre l’optimisation est c0047-d3ea2a83,
 2 Mio, checksum DA29. Il reprend le programme de c0046 avec un complément
-correct de fichier. Sept cristaux et retours sont rejoués en NTSC avec
+correct de fichier. Huit cristaux et retours sont rejoués en NTSC avec
 RAM entière/image finale identiques, ainsi que la corde, le don de 50
 pièces et l’achat de Terre. Dernier point Terre : 81636, 48 PV, 12 pièces,
 48 PM, Terre niveau 1. Dernier retour D4 : 107105, 62/64 PV, canoë acquis.
@@ -104,7 +104,26 @@ récupérations normales : victoire à82/88PV,64PM,une clé,point235018.
 Rapport analysis/d8_midboss_c0046_report.json ; archive c0046-d8-midboss.
 Le pilote d’entrée D8 est terminal. Le huitième cristal n’est pas encore acquis.
 
-Le processus courant joue continue_d8_finish_c0046.py dans
+La fin D8 est terminée et auditée : boss6B à80PV source, protection retirée
+264943, premier combat265128 à88PV/hurt0. Victoire sans dégât reçu,344
+prédictions RAM exactes ;30 au retour. Sortie269376 à96/96PV,72PM,une clé,
+25 pièces et huit cristaux. Les onze points froids passent. Le rejeu c0047
+retrouve aussi65536RAM/PNG au point final. Rapports d8_campaign_c0046_report.json
+et c0047_d8_auto_report.json dans analysis ; archives c0046-d8-campaign et
+c0047-d8-auto. Tous les pilotes D8 sont terminés.
+
+Le processus courant joue continue_d9_south_c0046.py dans
+validation/c0046-campaign01/isolated/project. Sorties et preuves dans
+validation/c0046-d9-south-sources, cold-stream partagé. Le retour payant1A
+vers3C coûte10, les fonds réels sont25 ; ce trajet évite la mort/Continue
+utilisée historiquement sur V317. Pas de ressource ou progression importée.
+prepare_d9_south.py est déjà exécuté. Le rapport attendu est
+analysis/d9_south_c0046_report.json ; créer l’archive après succès.
+Le pilote actuel ne fait que le retour sud : l’entrée D9 avec cloche et
+ses gardiens restent à adapter depuis continue_d9_entry_v0317.py, sans
+imposer l’ancien rapport d9_recovery_v0317 ou ses3 pièces historiques.
+
+Historique de la fin D8 (clos) : continue_d8_finish_c0046.py dans
 validation/c0046-campaign01/isolated/project. Cette branche continue sur
 c0046 puis chaque jalon est rejoué sur c0047. Journaux et sources :
 validation/c0046-d8-sources/main-sources dans ce projet, preuves indépendantes
