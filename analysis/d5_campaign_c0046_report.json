@@ -1,0 +1,183 @@
+{
+  "passed": true,
+  "candidate": "c0046",
+  "md_sha256": "9e747d38e0c6fb2d69b7c1aa8c2b296a61e8b6af41171d14e543ed9a6cb49cf5",
+  "production_rom_unchanged": true,
+  "primary_state_imports": 0,
+  "boss_attempt": 1,
+  "stages": [
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-approach01",
+      "kind": "approach",
+      "frames": 146596,
+      "room": 371,
+      "health": 64,
+      "max_health": 64,
+      "magic": 64,
+      "keys": 1,
+      "crystals": 4,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-release01",
+      "kind": "release",
+      "frames": 146597,
+      "room": 371,
+      "health": 64,
+      "max_health": 64,
+      "magic": 64,
+      "keys": 1,
+      "crystals": 4,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-boss01",
+      "kind": "boss",
+      "frames": 149396,
+      "room": 355,
+      "health": 72,
+      "max_health": 72,
+      "magic": 72,
+      "keys": 0,
+      "crystals": 5,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-return-contact01",
+      "kind": "contact",
+      "frames": 149744,
+      "room": 372,
+      "health": 72,
+      "max_health": 72,
+      "magic": 72,
+      "keys": 0,
+      "crystals": 5,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-exit01",
+      "kind": "exit",
+      "frames": 150525,
+      "room": 73,
+      "health": 72,
+      "max_health": 72,
+      "magic": 72,
+      "keys": 0,
+      "crystals": 5,
+      "whole_ram_png_exact": true
+    }
+  ],
+  "fifth_crystal_and_exterior_return": true,
+  "guard_release_frame": 146597,
+  "first_boss_combat": {
+    "frame": 146688,
+    "room": 355,
+    "game": 12,
+    "health": 64,
+    "hurt": 0,
+    "actors": [
+      {
+        "slot": 0,
+        "kind": 101,
+        "hp": 72
+      }
+    ]
+  },
+  "planner_comparison": null,
+  "first_boss_damage": {
+    "frame": 146798,
+    "before": 64,
+    "after": 54,
+    "hurt": 47
+  },
+  "boss_damage_events": [
+    {
+      "frame": 146798,
+      "before": 64,
+      "after": 54
+    },
+    {
+      "frame": 146846,
+      "before": 54,
+      "after": 44
+    },
+    {
+      "frame": 147088,
+      "before": 44,
+      "after": 34
+    }
+  ],
+  "total_boss_health_lost": 30,
+  "satellites_observed": 8,
+  "first_observed_core_damage": 147524,
+  "boss_prediction_windows": 63,
+  "return_prediction_windows": 10,
+  "physical_huds_checked": 2,
+  "owned_crystal_markers": 5,
+  "full_game_validated": false,
+  "interrupted_controller_attempt_excluded": false,
+  "evidence": {
+    "analysis/d5_supplies_c0046_report.json": "3a2b9246c4cf396e50723b9b405bdbc6865bf4e9d14e363443b1ab0d92e994b6",
+    "validation/c0046-campaign01/isolated/project/tools/natural_dungeon_combat.py": "6710825b5f41d4d19aebf0ed14e98ba0870482f87e4cec2c5d3df0dd51bfa8de",
+    "validation/c0046-campaign01/isolated/project/tools/close_assisted_approach.py": "4aca0af44f51c3ea02fff6b747a329c0c1b2d9221ee9bdc32fb0cb42475d6238",
+    "validation/c0046-campaign01/isolated/project/tools/unassisted_dungeon_continuation.py": "a98fd8875c25859ef6523f155ed7a9f4277fa9dc70016b1340af57421892aeca",
+    "validation/c0046-campaign01/isolated/project/tools/unassisted_satellite_boss.py": "b43c7698b32d3927c915c914a8dfe947ca3e857fe30dd732bdd9e11d8b8c29bc",
+    "validation/c0046-campaign01/isolated/project/tools/unassisted_satellite_arrival.py": "d14163ad3d6cbc20b189816d7252c84eafaa771d1ec39431314d22214768fcf7",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-contact01/capture.json": "224b10cf4f1b4738f8b494ce2d450e246826a89fe2f4dc8fa5ae01ca1196263c",
+    "validation/c0046-campaign01/isolated/project/input/original.sms": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-approach01/capture.json": "349ad38781f559f040278ce4b0e2d2d9ccacb99951bace0151cda9b2ddcebdb2",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-approach01/report.json": "fd24260901f54cc849e0e7e11bf898cafa1af4e7e5fb7376364bea7347a8da12",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-approach01-assisted-fixed-replay-146596/replay_report.json": "b58615f00233f26ae1236769d44f361e15b475a82c94cde67371d0dbff2f1bf3",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-approach01/controls.json": "923032aeb1d18a76bf0ee7ddf987b317f3b295db8378e56c718ee4cd2c339ea9",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-approach01/assistance.json": "691063d2ab8f2c35841540131932d217e1fa99b3b7a1e8d250b260b5150b1745",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-approach01/ram_146596.bin": "237268c945a62ee86c193e3c9adeeb9a76e492fc46da7bca27c856319e4396c1",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-approach01-assisted-fixed-replay-146596/ram_146596.bin": "237268c945a62ee86c193e3c9adeeb9a76e492fc46da7bca27c856319e4396c1",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-approach01/frame_146596.png": "10af03358538527e23fde07c03c4c65978cd1f7406eb4e2730319562e1153b87",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-approach01-assisted-fixed-replay-146596/frame_146596.png": "10af03358538527e23fde07c03c4c65978cd1f7406eb4e2730319562e1153b87",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-release01/capture.json": "f6f2b89ac891b47136fe0a5390636df684c5c79b4a513695ba3ed09f44841bf6",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-release01/report.json": "22b210f5a8d74ffd0084503b8601729db883a174d07758d142ca7e62b7d0eb05",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-release01-assisted-fixed-replay-146597/replay_report.json": "50bf38941a29ef981b16be20f3c25b46b87cf49b04bc2cb8f945e2d327424eb8",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-release01/controls.json": "204e2069127bf41e392f2af3215525d5ace9c440d6c6763fdba4f0d11024c06f",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-release01/assistance.json": "d2bba3d072d92d9eab207643eb5609e8828cace77d66380db52f9ed30ef64511",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-release01/ram_146597.bin": "032da385c6f560f6ef9d9e8c8d90f4a1ca09b42dc08467127e1fdc3eea5aadc7",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-release01-assisted-fixed-replay-146597/ram_146597.bin": "032da385c6f560f6ef9d9e8c8d90f4a1ca09b42dc08467127e1fdc3eea5aadc7",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-release01/frame_146597.png": "10af03358538527e23fde07c03c4c65978cd1f7406eb4e2730319562e1153b87",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-release01-assisted-fixed-replay-146597/frame_146597.png": "10af03358538527e23fde07c03c4c65978cd1f7406eb4e2730319562e1153b87",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-boss01/capture.json": "5148f8adfa7a8d23060dba735a27024899372e4feb20447b127d5104e5e2373a",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-boss01/report.json": "c7305f3e3ee3cd87f3aba2543863ec46f7fb8b558f1fa97332f211bddfb0047c",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-boss01-assisted-fixed-replay-149396/replay_report.json": "d2cdd8b8d4704e74ea0e6c24275fb9abd5f56b1df6936589a31a77f2d348ec8c",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-boss01/controls.json": "79145baf2734fc80dadd375a11a803b0632c6d0fb1df2ecf41a1b6f73e886527",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-boss01/assistance.json": "7fbbfd063a43f31fd3fc0927713c0cb311280fb3954c9e8b1361c014c58aeebc",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-boss01/ram_149396.bin": "4d415368a88f2ef8626cf4805cb44d74b8eb81e7f3d00226f64d9ac20e179e1d",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-boss01-assisted-fixed-replay-149396/ram_149396.bin": "4d415368a88f2ef8626cf4805cb44d74b8eb81e7f3d00226f64d9ac20e179e1d",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-boss01/frame_149396.png": "42d985a3eb40a2d5c86d6830a08ce69c7b62fb4bb2abc6263ae404939671c0cd",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-boss01-assisted-fixed-replay-149396/frame_149396.png": "42d985a3eb40a2d5c86d6830a08ce69c7b62fb4bb2abc6263ae404939671c0cd",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-boss01/vram_149396.bin": "1a330e64093828b242b1895bb1095a56d946d460c6294c1e8d0c0745d4933fef",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-boss01/vdp_regs_149396.bin": "f2d8a5124acfa25334a0bfdc5e189cd540f4e5021395f513e427ec37928525fe",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-return-contact01/capture.json": "804b3e6442baa5775d7500d42e06382a6754c7df570a9e2f30970365c1359a99",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-return-contact01/report.json": "9d1fb968e2633341a577b6e95ab384f3ba758e647340a241ca443a60faf65eb3",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-return-contact01-assisted-fixed-replay-149744/replay_report.json": "546e0702c1f25dc6d0d5dacf3dbaa6df547be968da705cbc81d1cf603caab960",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-return-contact01/controls.json": "2538c20401f505f77aa4d6f86efcc6d41a65a3cb213389cca1f841ae1d0b849a",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-return-contact01/assistance.json": "b3bb824cb76ff2c76a03cab771929a059311de945b627f0d2e00d10e6f964713",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-return-contact01/ram_149744.bin": "55e3c984b20a21173c06e2ee7da3857bee0b1ab90b334570be799c108a3a0b9f",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-return-contact01-assisted-fixed-replay-149744/ram_149744.bin": "55e3c984b20a21173c06e2ee7da3857bee0b1ab90b334570be799c108a3a0b9f",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-return-contact01/frame_149744.png": "9bedf2b719b4afdf8ca30bd39f38764dea75f5e27495c10ad9a7eaa329589919",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-return-contact01-assisted-fixed-replay-149744/frame_149744.png": "9bedf2b719b4afdf8ca30bd39f38764dea75f5e27495c10ad9a7eaa329589919",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-exit01/capture.json": "38bea12c2119783ed43ca9934eaa6ca21fe00960549d2490a40f48532ed1418b",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-exit01/report.json": "3b7b75d3a10c3339e5eb068eb44c8bd9410df6ad988d46fce6f3f14bc8375048",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-exit01-assisted-fixed-replay-150525/replay_report.json": "3c73457b00b4b1fe7e59ac7c7d5dce0b15aa6d0d5fadc94b2c69e967b11c850c",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-exit01/controls.json": "3201aa8813af52d1fc2c042a7f7a4b03026f15c534c85ded254256c07d1bfb76",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-exit01/assistance.json": "4bd556c3012bc96a877fd939503b8955f94b94277c48a89d91a7ff73e0298660",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-exit01/ram_150525.bin": "1aaca1d8150581d1e3e89023e979d2dd0befcbb706cae3d83b0e77c7a07329ac",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-exit01-assisted-fixed-replay-150525/ram_150525.bin": "1aaca1d8150581d1e3e89023e979d2dd0befcbb706cae3d83b0e77c7a07329ac",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-exit01/frame_150525.png": "976b6db49a41ade877f22364a20407eddf02385cea0ce3a755626979f14cd7c8",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-exit01-assisted-fixed-replay-150525/frame_150525.png": "976b6db49a41ade877f22364a20407eddf02385cea0ce3a755626979f14cd7c8",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-exit01/vram_150525.bin": "6ece86601bd6ea87e6f4e38f07b2acd3f4e0755a959a1631d376c590100ef8ea",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-exit01/vdp_regs_150525.bin": "f2d8a5124acfa25334a0bfdc5e189cd540f4e5021395f513e427ec37928525fe",
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d5-boss01/events.json": "38cbbe058fe6ac8303d22e26acad834607f83d393c021ed2c571091e3141a750"
+  },
+  "limits": [
+    "Current-ROM cold campaign. Declared approach protection ends in the antechamber; no later writes during the boss or return.",
+    "Five crystals and their returns are covered. Remaining campaign, source RNG/global phase, optional content and global audio/video/hardware fidelity remain open."
+  ]
+}

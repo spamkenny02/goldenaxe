@@ -6,7 +6,7 @@ target=root/'validation/c0046-campaign01/isolated/project/tools'
 assert target.is_dir()
 for name in ('finish_d5','summarize_d5_campaign'):
     source=(root/'tools'/f'{name}_v0317.py').read_text()
-    text=source.replace('v0317','c0046').replace('V317','C0046')
+    text=source.replace('v0317','c0046').replace('V317','C0046').replace('v317:','c0046:')
     if name.startswith('summarize'):
         old='7694654ec85dd6626c0e17ff1834e5893d4eb35481400a4725eac6b6f3503294'
         assert old in text

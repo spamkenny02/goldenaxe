@@ -65,7 +65,16 @@ Les essais de retour bloqué et perdu restent séparés du parcours réussi.
 L’échange de l’huile contre Feu, l’épée longue offerte par le PNJ et l’entrée
 du cinquième donjon sont rejoués jusqu’à 121528 images. La capacité magique
 passe normalement de 48 à 72 PM ; la RAM entière et l’image finale concordent
-avec c0046. Le cinquième cristal reste à valider.
+avec c0046. Le cinquième cristal est vérifié par le parcours suivant.
 
 [Audit des transactions et du parcours](../../../analysis/fire_sword_c0046_report.json)
 · [Rejeu sur c0047](../../../analysis/c0047_d5_fire_sword_auto_report.json).
+
+Le cinquième cristal et le retour extérieur concordent à 150525 images :
+72/72 PV, RAM entière et image finale identiques à c0046. Le parcours inclut
+les bottes, les dons d’or, l’achat de clé, le soin et les mécanismes.
+Le boss conserve ses 72 PV source et ses huit satellites ; la protection
+de test est retirée avant l’entrée. La suite de la campagne reste à valider.
+
+[Audit du cinquième cristal](../../../analysis/d5_campaign_c0046_report.json)
+· [Rejeu sur c0047](../../../analysis/c0047_d5_auto_report.json).

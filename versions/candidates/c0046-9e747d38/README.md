@@ -91,3 +91,21 @@ Terre niveau 1, capacité magique 48. Les quatre points de contrôle et les
 128 mots du HUD de chaque service concordent au rejeu indépendant.
 
 [Don d’or et achat de Terre](../../../analysis/earth_learning_c0046_report.json).
+
+Le canoë, le quatrième cristal et le retour extérieur sont vérifiés à
+107105 images, avec 62/64 PV. Le boss 6A garde ses 30 PV source et la
+protection de test est retirée avant son entrée.
+[Audit D4](../../../analysis/c0046_d4_report.json).
+
+L’huile est échangée contre Feu et l’épée longue est offerte par le PNJ.
+La préparation D5 vérifie ensuite les bottes, deux dons de 30 pièces,
+l’achat d’une clé à 60 et le soin normal.
+[Feu et épée](../../../analysis/fire_sword_c0046_report.json)
+· [Préparation D5](../../../analysis/d5_supplies_c0046_report.json).
+
+Le cinquième cristal et le retour extérieur sont vérifiés à 150525 images,
+avec 72/72 PV. Le boss commence avec 72 PV et ses huit satellites apparaissent
+normalement. La protection est retirée à 146597, avant le combat à 146688.
+Les 63 prédictions du combat et les 10 du retour concordent sur toute la RAM,
+et les cinq points du rejeu indépendant reproduisent RAM et image finale.
+[Audit du cinquième cristal et du retour](../../../analysis/d5_campaign_c0046_report.json).

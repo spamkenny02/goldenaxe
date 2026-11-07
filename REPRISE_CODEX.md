@@ -12,7 +12,7 @@ Ne pas reprendre ses anciens pilotes mentionnés dans l’historique ci-dessous.
 
 L’aperçu recommandé pour poursuivre l’optimisation est c0047-d3ea2a83,
 2 Mio, checksum DA29. Il reprend le programme de c0046 avec un complément
-correct de fichier. Quatre cristaux et retours sont rejoués en NTSC avec
+correct de fichier. Cinq cristaux et retours sont rejoués en NTSC avec
 RAM entière/image finale identiques, ainsi que la corde, le don de 50
 pièces et l’achat de Terre. Dernier point Terre : 81636, 48 PV, 12 pièces,
 48 PM, Terre niveau 1. Dernier retour D4 : 107105, 62/64 PV, canoë acquis.
@@ -28,17 +28,31 @@ sept points d’un même rejeu froid ; c0047-d5-fire-sword-auto pour l’image c
 La préparation D5 est terminée : treize étapes, bottes, deux dons de 30,
 clé achetée à 60, soin normal, Terre et mécanisme 162 vers 172. Rapport :
 analysis/d5_supplies_c0046_report.json ; archive analysis/c0046-d5-supplies.
-Dernier point 144659, salle 172, 64 PV et une clé. Pas encore de cinquième cristal.
+Point de préparation 144659, salle 172, 64 PV et une clé.
 
-Le processus courant joue finish_d5_c0046.py dans
+Le cinquième cristal et le retour sont également terminés : 150525, extérieur
+49, 72/72 PV, 72 PM, cinq cristaux et épée longue sélectionnée. La protection
+est retirée à 146597 ; premier combat à 146688, héros 64 PV/hurt0 et boss65
+72 PV. Huit satellites observés, 63 prédictions de combat et 10 au retour,
+sans mort ni nouvelle aide. Cinq points froids vérifiés. Rapports :
+analysis/d5_campaign_c0046_report.json et analysis/c0047_d5_auto_report.json.
+Archives : c0046-d5-campaign et c0047-d5-auto. Le rejeu c0047 passe aussi
+sur toute la RAM et l’image finale. Tous les pilotes D5 sont terminés.
+
+Le processus courant joue continue_d6_c0046.py dans
 validation/c0046-campaign01/isolated/project. Cette branche continue sur
 c0046 puis chaque jalon est rejoué sur c0047. Journaux et sources :
-validation/c0046-d5-finish-sources dans ce projet, preuves indépendantes partagées
-dans son sous-dossier cold-stream. Les pilotes Feu et préparation sont terminés.
-Après les cinq étapes de fin D5, lancer summarize_d5_campaign_c0046.py dans
-le projet, puis validation/c0046-campaign01/archive_d5_finish.py à la racine.
-Rejouer le point final sur c0047 avec validation/replay_c0047_d1.py auto --dungeon 5.
-Ne pas annoncer le cinquième cristal sur la seule préparation.
+validation/c0046-d6-sources02 dans ce projet, preuves indépendantes partagées
+dans son sous-dossier cold-stream. Le pilote D6 réutilise quinze propositions
+d’actions historiques, toutes rejouées de nouveau sur le candidat. Adapter
+summarize_d6_progress_v0317.py pour c0046 après les dix-sept étapes (sélection
+hache, entrée et quinze recettes) : les chemins du rapport D5 sont préfixés
+par validation/c0046-campaign01/isolated/project, à ramener au projet pour
+les lectures internes. Ne pas lancer l’ancien audit V317 tel quel.
+Les sources natives réelles c0046 sont liées en lecture seule dans
+megadrive/src ; native_sources_setup.json enregistre leurs empreintes.
+Ne pas modifier ces liens ni les outils partagés. prepare_d6.py documente
+la préparation ; le seul changement par rapport aux sources V318 est main.c.
 D4 est terminé : dix points froids
 dans c0046-d4-cold-stream, sortie corrigée dans c0046-d4-exit-cold-stream03.
 Les pilotes de sortie01 (énigme facultative) et sortie02 (mort) ont échoué ;

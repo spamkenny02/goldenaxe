@@ -17,7 +17,7 @@ Checksum Mega Drive : `7863`
 
 Aperçu actuel : [c0047, ROM de 2 Mio](versions/candidates/c0047-d3ea2a83/README.md).
 Il reprend l’optimisation c0046 et corrige son complément de fichier.
-Premier donjon rejoué en PAL et NTSC ; quatre premiers cristaux et retours extérieurs
+Premier donjon rejoué en PAL et NTSC ; cinq premiers cristaux et retours extérieurs
 rejoués en NTSC, ainsi que l’achat normal de Terre et l’acquisition du canoë.
 La campagne complète de cet aperçu reste à valider.
 
@@ -35,7 +35,12 @@ La branche c0046 a aussi obtenu les bottes, reçu deux dons de 30 pièces,
 acheté une clé à 60 pièces et utilisé le soin normal. Treize étapes sont
 rejouées depuis Nouvelle partie jusqu’au mécanisme précédant le cinquième boss.
 [Préparation du cinquième donjon](analysis/d5_supplies_c0046_report.json).
-Le cinquième cristal de cette branche reste à valider.
+Le cinquième boss et le retour sont maintenant vérifiés : boss à 72 PV source,
+huit satellites, protection retirée avant l’entrée, 72/72 PV au retour.
+Les cinq étapes finales concordent au rejeu indépendant ; le parcours c0047
+retrouve aussi toute la RAM et l’image finale à 150525 images.
+[Audit du cinquième cristal](analysis/d5_campaign_c0046_report.json)
+· [Rejeu sur c0047](analysis/c0047_d5_auto_report.json).
 [Captures des retours D4 ratés archivées, environ 9 Mio libérés](analysis/c0046-d4-failed-exit-captures/manifest.json).
 
 Nouvel aperçu [c0046](versions/candidates/c0046-9e747d38/README.md) :
