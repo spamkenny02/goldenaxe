@@ -38,7 +38,17 @@ sur simple délai d'observation. Sources dans `palc0046-d5-sources`,
 lecteur `palc0046-d5-cold-stream01`. Le contrôleur vise bottes, vraies
 récompenses de 30 pièces, achat d'une clé et soin ordinaires, mécanismes,
 retrait de protection avant boss 65, cinquième cristal puis sortie 49.
-Il nécessite l'audit Feu/épée réussi. Audit D5 à préparer après succès.
+Il nécessite l'audit Feu/épée réussi. Les onze premières étapes sont
+terminées au point 123737 (entrée D5 après les vrais dons, l'achat à
+60 pièces et le soin). L'audit en lecture seule de ce préfixe passe.
+Suivi après fermeture : session 38625, `after_pal_d5.py --pid 39348`,
+qui détient un handle réel du contrôleur et exige sa sortie 0 avant audit
+18 étapes puis rejeu c0047 PAL D5. Ne pas lancer ces audits en double.
+`audit_pal_d5.py` et `prepare_pal_d6.py` sont préparés. D6 n'est pas lancé,
+son contrôleur exige le rapport final D5 ; son retour diffère de l'ancien
+pilote par le report du puzzle facultatif187, cause d'un blocage historique
+au retour. Aucune règle de la ROM n'est modifiée par ce choix de parcours.
+ Audit D5 préparé, à exécuter après succès via le suivi ci-dessus.
 Le projet isolé conserve c0046/9e747d38 ; ne pas remplacer sa ROM ou ses
 symboles par ceux de la racine pendant le parcours. Les sources racine
 et privées ont été contrôlées sans lien physique partagé avant promotion.
