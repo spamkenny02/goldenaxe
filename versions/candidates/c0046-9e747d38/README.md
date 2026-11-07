@@ -64,3 +64,9 @@ La continuation, avec décisions plus fréquentes, remporte le combat et
 reproduit toute la RAM et l’image finale depuis Nouvelle partie.
 
 [Audit du deuxième donjon](../../../analysis/c0046_d2_report.json).
+
+Le don d’huile, les deux escaliers de la maison C7 et le retour dehors
+sont vérifiés à 58477 images. PV, argent et magie restent à 37, 12 et 24 ;
+les 128 mots du HUD matériel correspondent au miroir SMS.
+
+[Huile, escaliers et HUD](../../../analysis/oil_service_c0046_report.json).

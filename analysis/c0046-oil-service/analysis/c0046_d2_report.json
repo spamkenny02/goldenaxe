@@ -1,0 +1,116 @@
+{
+  "passed": true,
+  "candidate": "c0046",
+  "region": "auto",
+  "rom_sha256": "9e747d38e0c6fb2d69b7c1aa8c2b296a61e8b6af41171d14e543ed9a6cb49cf5",
+  "actual_second_crystal_and_exterior": true,
+  "stages": [
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d2-key101",
+      "frame": 28651,
+      "room": 352,
+      "health": 40,
+      "max_health": 40,
+      "keys": 1,
+      "partial_living_fight": false,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d2-key202",
+      "frame": 30339,
+      "room": 338,
+      "health": 40,
+      "max_health": 40,
+      "keys": 2,
+      "partial_living_fight": false,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d2-key301",
+      "frame": 33715,
+      "room": 305,
+      "health": 40,
+      "max_health": 40,
+      "keys": 2,
+      "partial_living_fight": false,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d2-pre-boss01",
+      "frame": 35405,
+      "room": 323,
+      "health": 40,
+      "max_health": 40,
+      "keys": 2,
+      "partial_living_fight": false,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d2-release01",
+      "frame": 35406,
+      "room": 323,
+      "health": 40,
+      "max_health": 40,
+      "keys": 2,
+      "partial_living_fight": false,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d2-boss01",
+      "frame": 51406,
+      "room": 324,
+      "health": 40,
+      "max_health": 40,
+      "keys": 1,
+      "partial_living_fight": true,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d2-boss02",
+      "frame": 53548,
+      "room": 324,
+      "health": 48,
+      "max_health": 48,
+      "keys": 1,
+      "partial_living_fight": false,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d2-exit01",
+      "frame": 56219,
+      "room": 214,
+      "health": 37,
+      "max_health": 48,
+      "keys": 1,
+      "partial_living_fight": false,
+      "whole_ram_png_exact": true
+    }
+  ],
+  "fight": {
+    "first": {
+      "frame": 35529,
+      "room": 324,
+      "game": 12,
+      "health": 40,
+      "hurt": 0,
+      "actors": [
+        {
+          "slot": 0,
+          "kind": 99,
+          "hp": 30
+        }
+      ]
+    },
+    "release_frame": 35406,
+    "prediction_windows": 93
+  },
+  "previous_controller_limit": {
+    "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d2-key201",
+    "failure": "frame_limit",
+    "room": 337,
+    "resolved_by_one_ordinary_leave_and_return": true
+  },
+  "full_candidate_campaign_verified": false,
+  "scope": "Cold continuation with real keys and crystal, approach-only hurt-counter aid removed before boss, no health/item/progression/SRAM imports; independent whole RAM/image replays.",
+  "archive_manifest": "analysis/c0046-d2/manifest.json"
+}

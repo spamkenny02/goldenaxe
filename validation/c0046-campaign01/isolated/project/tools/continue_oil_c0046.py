@@ -1,0 +1,37 @@
+"""Visit C7 normally after D2, take the real oil gift, and return upstairs/outside."""
+import json,shutil
+import continue_d8_entry_v0312 as helper
+from continue_after_d1_c0046 import ROM
+from continue_d8_entry_v0312 import ROOT,COMBAT,ROUTE,SERVICE,report,assert_canonical
+from archive_lossless_evidence import sha
+
+helper.EVIDENCE=ROOT/'validation/c0046-oil-sources'
+
+
+def main():
+    prior=report(ROOT/'analysis','c0046_d2_report.json')
+    assert prior['passed'] and prior['actual_second_crystal_and_exterior']
+    assert prior['rom_sha256']==ROM==sha((ROOT/'gaw-megadrive.bin').read_bytes())
+    current=prior['stages'][-1]['trace'].split('/')[-1];assert_canonical(COMBAT,current)
+    helper.EVIDENCE.mkdir(exist_ok=False);index={}
+    for name in ('continue_oil_c0046.py','continue_d8_entry_v0312.py','assisted_boss_route.py',
+                 'assisted_prefix.py','natural_dungeon_route.py','natural_oil_stairs.py','replay_assisted_prefix.py'):
+        shutil.copyfile(ROOT/'tools'/name,helper.EVIDENCE/name)
+        index['tools/'+name]=sha((helper.EVIDENCE/name).read_bytes())
+    (helper.EVIDENCE/'source_index.json').write_text(json.dumps(index,indent=2)+'\n',encoding='utf-8')
+    f=report(ROOT/'validation'/COMBAT/current,'capture.json')['frames']
+    helper.run('assisted_boss_route.py',['--boss-room','0x195','--world-route',
+        '--new-assistance-episode','--preserve-floor-hurt','--assisted-prefix','--prefix-combat',current,
+        '--house-outside','0xc7','--house-target','0x1f','--axe-terrain','--live-prefix-terrain',
+        '--live-room-replan','--frames',str(f+14000),'--trial','c0046-oil-route01'])
+    current='md-c0046-oil-route01';r=report(ROOT/'validation'/ROUTE/current,'route_report.json')
+    assert r['failure'] is None and r['reached_entrance']
+    helper.run('replay_assisted_prefix.py',['--trace',ROUTE+'/'+current]);assert_canonical(ROUTE,current)
+    helper.run('natural_oil_stairs.py',['--prefix',current,'--assisted-prefix','--trial','c0046-oil-service01'])
+    current='md-c0046-oil-service01';r=report(ROOT/'validation'/SERVICE/current,'report.json')
+    assert r['passed'] and r['failure'] is None and not r['new_assistance_writes']
+    helper.run('replay_assisted_prefix.py',['--trace',SERVICE+'/'+current]);assert_canonical(SERVICE,current)
+    print('V317 ACTUAL OIL GIFT, BOTH STAIRS AND EXTERIOR RETURN VERIFIED',flush=True)
+
+
+if __name__=='__main__':main()

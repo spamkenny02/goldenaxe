@@ -892,3 +892,20 @@ RAM entière/image finale identique : analysis/c0047_d2_auto_report.json.
 Tous les processus de ce deuxième donjon sont terminés. Les pilotes à
 reprendre ensuite concernent le don d’huile puis D3 ; ne pas relancer les
 anciens pilotes sur les dossiers de preuve existants.
+
+## Huile et reprise D3 de l’optimisation
+
+Le don d’huile c0046 NTSC est audité et archivé dans
+analysis/oil_service_c0046_report.json et analysis/c0046-oil-service.
+Route 57774, service terminé 58477 : huile obtenue, 37 PV/12 pièces/24 PM
+inchangés, deux cristaux conservés, HUD physique128 mots exacts. Aucun
+nouvel ajout de protection pendant le service. Les preuves RAM/image
+indépendantes passent.
+
+Le pilote continue_d3_c0046.py est maintenant en cours dans les tools du
+projet isolé. Sources et commandes : validation/c0046-d3-sources02, dans
+ce même projet. La première tentative de résumé de l’huile manquait du
+module local z80dis ; le lien de dépendance a été ajouté, puis le résumé
+et son archive ont terminé correctement. setup_c0046_links.ps1 rend
+ces liens reproductibles et est appelé par setup_c0046_campaign.py.
+Ne pas relancer l’ancien pipeline huile sur ses dossiers existants.

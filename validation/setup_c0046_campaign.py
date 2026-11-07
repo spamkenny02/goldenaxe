@@ -20,6 +20,8 @@ os.link(published/'gaw-megadrive-c0046.bin',project/'gaw-megadrive.bin')
 os.link(published/'symbol.txt',release/'symbol.txt')
 (project/'validation').mkdir()
 (lab/'work').mkdir()
+subprocess.run(['powershell.exe','-NoProfile','-ExecutionPolicy','Bypass','-File',str(ROOT/'validation/setup_c0046_links.ps1'),
+                '-Lab',str(lab),'-Root',str(ROOT)],check=True)
 (lab/'setup.json').write_text(json.dumps(dict(project=str(project),
     rom='versions/candidates/c0046-9e747d38/gaw-megadrive-c0046.bin',
     tools_hard_linked_read_only=True,tool_count=len(paths),
