@@ -138,3 +138,11 @@ ce boss ;344 prédictions RAM exactes,30 au retour. Sortie269376 à96/96PV,
 dans un même lecteur froid ; le parcours c0047 concorde au point final.
 
 [Huitième cristal et retour](../../../analysis/d8_campaign_c0046_report.json).
+
+Le parcours D9 a vaincu ses deux gardiens intermédiaires après retrait
+de la protection. Le géant garde ses60PV source ; le ballon est acquis
+par le jeu, avec huit points RAM/image exacts depuis la première victoire.
+Le héros survit au géant avec8PV puis ramasse des cœurs jusqu’à32PV.
+Le neuvième cristal et le rejeu de ces étapes sur c0047 restent à valider.
+
+[Géant et ballon D9](../../../analysis/d9_balloon_c0046_report.json).

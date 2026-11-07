@@ -32,6 +32,15 @@ La vue de lecture seule du binaire publié dans validation/c0047-boot01
 est archivée et supprimée ; ne pas relancer dans ce dossier. Les ROMs
 numérotées et le candidat publié sont conservés.
 
+Six retours d’inventaire c0047 sont également terminés : extérieur et
+maisons0/2, PAL/NTSC, commandes normales, sans import RAM/SRAM. Les motifs
+statiques parmi124 examinés concordent à3300,3440,3470 ; quatre motifs
+animés de maison sont conservés dans les différences et exclus de l’égalité
+statique. Rapport analysis/c0047_inventory_report.json ; archive c0047-inventory.
+Processus6189 terminal0. Validation/summarize_c0047_inventory.py a vérifié
+et archivé les preuves puis supprimé4922880 octets de doublons générés,
+3890509 octets nets libérés. Ne pas relancer ce dossier ni son archivage.
+
 Feu, le don de l’épée longue et l’entrée D5 sont terminés et rejoués sur
 c0047 à 121528 : 62/64 PV, 72 PM, huile consommée, épée niveau 2 possédée,
 hache toujours sélectionnée. Rapports : analysis/fire_sword_c0046_report.json
@@ -174,7 +183,25 @@ contact1AD289095, portail19E290323, approche19D290556 et retrait290557.
 Le héros a88PV avant le géant7B ; les quatre type62 à0PV en19D sont des
 dangers persistants, pas une salle déclarée nettoyée. Le combat géant01
 est lancé avec60PV source et sans protection après290557. Vérifier la
-session44962 pour son résultat, sans relancer dans les mêmes sorties.
+session44962 pour la suite, sans relancer dans les mêmes sorties.
+Le géant est maintenant vaincu : victoire294980, point final295131,
+8PV/72PM, aucune mort ni nouvelle aide après290557. Ses60PV source sont
+conservés et545 fenêtres de prédiction RAM concordent ; la sixième preuve
+RAM/PNG du flux partagé est passée. Reprise d’approche295132 seulement
+après victoire canonique. Le pilote enchaîne vers ballon01 ; l’audit groupé
+ballon reste réservé à la suite97858 après succès des douze points D9.
+Le ballon est maintenant audité et archivé : analysis/d9_balloon_c0046_report.json,
+archive c0046-d9-balloon, huit points RAM/PNG exacts. Récompense terminée
+à296942, salle19B,32PV/72PM,15pièces,une clé,huit cristaux. Les cœurs
+réels récupérés font passer8→32PV. Le pilote a lancé main-approach01
+vers contact1BD, avant le boss1AC/6C. Aucun neuvième cristal annoncé ici.
+L’archive ballon est figée ; archive_d9_finish.py sait désormais revérifier
+une archive existante sans la réécrire. Il vérifie tous les objets/hashes,
+le même rapport et toutes les sources ; seul le journal de points du
+lecteur partagé peut avoir grandi avec le même préfixe exact. Le premier
+archivage et un second appel idempotent sont passés. La suite97858 peut
+ainsi refaire son audit/archivage ballon après les douze points D9 sans
+écraser ce jalon ni échouer sur un dossier déjà présent.
 
 La préparation de la suite du palais est aussi faite (non exécutée) :
 prepare_palace_final.py génère six contrôleurs/audits pour mécanismes,

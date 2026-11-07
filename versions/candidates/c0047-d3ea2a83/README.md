@@ -114,3 +114,11 @@ audio et huit registres PSG concordent avec V318 sur6500 images par région ;
 ce contrôle ne compare pas les formes d’onde PCM.
 
 [Audit du démarrage c0047](../../../analysis/c0047_boot_report.json).
+
+Les six retours d’inventaire sont également vérifiés en PAL et NTSC,
+dans l’extérieur et les deux premières maisons du village. Les motifs
+statiques du décor sont identiques à la SMS après fermeture du menu ;
+la phase des quatre motifs animés des maisons reste hors de cette égalité.
+Ces trajets suivent les commandes normales, sans import de RAM ou SRAM.
+
+[Audit des retours d’inventaire](../../../analysis/c0047_inventory_report.json).

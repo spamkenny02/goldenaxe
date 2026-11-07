@@ -1,5 +1,5 @@
 """Archive actual D9 Balloon and ninth-crystal checkpoints separately."""
-import argparse,json,sys
+import argparse,gzip,json,sys
 from pathlib import Path
 sys.path.insert(0,'tools')
 from run_core import ROOT
@@ -22,5 +22,24 @@ assert s['rom_sha256']==r['md_sha256'] and s['cold_boot_count']==1
 if args.balloon_only:assert len(s['checkpoints'])>=8
 else:assert s['passed'] and len(s['checkpoints'])==12
 assert all(p['whole_ram_png_exact'] for p in s['checkpoints']);paths.add(stream)
-freeze(ROOT,ROOT/f'analysis/c0046-d9-{part}',paths,r,[work])
+out=ROOT/f'analysis/c0046-d9-{part}'
+if out.exists():
+    # Keep an early milestone immutable when the shared reader later advances.
+    m=json.loads((out/'manifest.json').read_bytes())
+    assert all(m[k]==v for k,v in r.items())
+    archived={}
+    for name,h in m['files'].items():
+        raw=(out/name).read_bytes();assert sha(raw)==h;archived[name]=raw
+    for name,item in m['compressed'].items():
+        stored=(out/item['stored']).resolve();assert stored.is_relative_to(out.resolve())
+        encoded=stored.read_bytes();assert sha(encoded)==item['stored_sha256']
+        raw=gzip.decompress(encoded);assert len(raw)==item['raw_bytes'] and sha(raw)==item['raw_sha256'];archived[name]=raw
+    assert set(archived)=={p.resolve().relative_to(ROOT).as_posix() for p in paths}
+    for name,raw in archived.items():
+        if name==stream.relative_to(ROOT).as_posix():
+            old=json.loads(raw);assert old['rom_sha256']==s['rom_sha256'] and old['cold_boot_count']==s['cold_boot_count']
+            assert old['checkpoints']==s['checkpoints'][:len(old['checkpoints'])]
+        else:assert (ROOT/name).read_bytes()==raw
+    print('D9 '+part+' existing immutable archive fully verified',flush=True)
+else:freeze(ROOT,out,paths,r,[work])
 print('D9 '+part+' archived',flush=True)

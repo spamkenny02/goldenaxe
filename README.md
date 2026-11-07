@@ -27,6 +27,12 @@ restent identiques à V318. Les écarts SMS connus sont conservés ; les
 états audio et huit registres PSG concordent aussi sur 6500 images par région.
 [Démarrage c0047](analysis/c0047_boot_report.json).
 
+Les six retours d’inventaire de c0047 passent aussi : extérieur et deux
+premières maisons, en PAL et NTSC, sans décor statique corrompu parmi
+les 124 motifs examinés par capture. Les différences de phase des quatre
+motifs animés des maisons restent séparées.
+[Retour d’inventaire c0047](analysis/c0047_inventory_report.json).
+
 Le quatrième boss est vaincu après retrait de la protection, avec ses 30 PV source.
 Le retour sur c0047 concorde sur les 65536 octets de RAM et l’image finale à
 107105 images, avec 62/64 PV. [Parcours du quatrième donjon](analysis/c0046_d4_report.json)
@@ -119,8 +125,14 @@ sans protection pendant le combat. Deux coups font passer le héros de
 96 à 64 PV. Les 148 fenêtres de prédiction et les six points du rejeu
 indépendant concordent sur toute la RAM et l’image finale.
 [Premier gardien D9](analysis/d9_midboss_c0046_report.json).
-Le second gardien, le ballon et le neuvième cristal restent à valider ;
-ce nouveau jalon D9 n’a pas encore été rejoué sur c0047.
+Le géant optionnel est aussi vaincu sur c0046 avec ses 60 PV source,
+sans protection pendant le combat : 545 fenêtres de prédiction concordent,
+et le héros survit avec 8 PV. Le ballon est ensuite récupéré par les
+commandes normales du jeu ; huit étapes concordent au rejeu RAM/image.
+Les cœurs ramassés remontent le héros à 32 PV.
+[Géant et ballon D9](analysis/d9_balloon_c0046_report.json).
+Le neuvième cristal reste à valider ; ces jalons D9 n’ont pas encore été
+rejoués sur c0047.
 [Ancien essai D7 archivé, environ 12 Mo libérés](analysis/c0046-d7-inactive-south01/manifest.json).
 [Captures des retours D4 ratés archivées, environ 9 Mio libérés](analysis/c0046-d4-failed-exit-captures/manifest.json).
 
