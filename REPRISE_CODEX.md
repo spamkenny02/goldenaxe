@@ -156,6 +156,34 @@ canoniques vers les rapports partagés. Aucun résultat du palais c0046
 n’est revendiqué par cette préparation. Vérifier les deux sessions et
 les processus réels avant toute reprise.
 
+Le lecteur finish-cold-stream a vérifié cinq points : reprise284252,
+contact1AD289095, portail19E290323, approche19D290556 et retrait290557.
+Le héros a88PV avant le géant7B ; les quatre type62 à0PV en19D sont des
+dangers persistants, pas une salle déclarée nettoyée. Le combat géant01
+est lancé avec60PV source et sans protection après290557. Vérifier la
+session44962 pour son résultat, sans relancer dans les mêmes sorties.
+
+La préparation de la suite du palais est aussi faite (non exécutée) :
+prepare_palace_final.py génère six contrôleurs/audits pour mécanismes,
+gardien7C, GoldenAxe2, DeathAdder6D, générique et intro. archive_palace.py
+attend rapports c0046 passés et flux froids terminés avec2/4/5/6/11points
+pour entry/giant/inner/guardian/final. replay_c0047_palace.py rejoue un jalon
+c0046 déjà audité sur c0047, avec comparaison RAM entière/PNG à sa preuve.
+Après réussite et fermeture de la session97858, lancer finish_palace.py
+depuis la racine : archives entrée/géant, trois suites avec leurs audits
+et archives, rejeu c0047 final, puis branche réelle sauvegarde/Continue.
+Ne pas lancer cette suite avant le rapport cold_palace_giant_c0046 passé.
+
+prepare_candidate_save.py est exécuté après prepare_palace_entry.py.
+Il crée validate_candidate_game_written_save_c0046.py et adapte uniquement
+le contrôleur privé continue_after_d9_c0046.py (encore non lancé). Tous
+les contrôles du validateur original précédant la publication du rapport
+sont identiques octet par octet ; seule la recherche dans versions/index.json
+est remplacée par une identité c0046/SHA explicite et un rapport candidat.
+Le projet isolé n’a pas d’index de versions de production ; aucun numéro
+fictif n’est ajouté. La branche de sauvegarde n’a pas encore été exécutée.
+
+
 Historique de la fin D8 (clos) : continue_d8_finish_c0046.py dans
 validation/c0046-campaign01/isolated/project. Cette branche continue sur
 c0046 puis chaque jalon est rejoué sur c0047. Journaux et sources :
