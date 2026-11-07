@@ -2,15 +2,9 @@
 
 Chaque binaire est conserve sans ecrasement. Les controles cibles ne prouvent pas un portage complet.
 
-La v0318 est la version courante. Le [fondu et le rejeu NTSC](../analysis/fade_v0318.md)
-sont vérifiés sur son binaire. Les aperçus [c0029](candidates/c0029-c3fca1d6/README.md)
-et [c0038](candidates/c0038-e7ee40cb/README.md) restent disponibles.
-L’aperçu [c0039](candidates/c0039-aafa3255/README.md) mesure le recalage
-de la première entrée du donjon 1. [c0040](candidates/c0040-1f4355f1/README.md)
-y recale la demande du thème musical.
-
 | Version | ROM | Validation | Changements | SHA-256 |
 | --- | --- | --- | --- | --- |
+| v0319 | [Telecharger](v0319-d3ea2a83/gaw-megadrive-v0319.bin) | development_targeted_checks | Optimisation des motifs du heros et atlas RAM des ennemis ; campagne NTSC complete, sauvegarde/Continue reels et quatre cristaux PAL verifies. Fidelite globale et suite PAL ouvertes. | `d3ea2a83ea24ed8a0d3c9857f9fbe70d000a4f73358452c1887f40e78966c56e` |
 | v0318 | [Telecharger](v0318-b9e1f0a0/gaw-megadrive-v0318.bin) | development_targeted_checks | Fondu titre recale sur interruption video. 34 images SMS exactes de plus par region ; campagne NTSC et recharge de la sauvegarde v317 rejouees. | `b9e1f0a0543f191e24ffd6d2740a0d717501e0fcd986f8b8953a37a1b3c416a4` |
 | v0317 | [Telecharger](v0317-7694654e/gaw-megadrive-v0317.bin) | development_targeted_checks | Developpement : retours intro/titre, horloge, attente IRQ et compteur du feu corriges ; audio SMS et deux boucles verifies. Menus, inventaires et premier donjon controles ; ecarts visuels et parcours complet encore ouverts. | `7694654ec85dd6626c0e17ff1834e5893d4eb35481400a4725eac6b6f3503294` |
 | v0316 | [Telecharger](v0316-8b94f2e0/gaw-megadrive-v0316.bin) | targeted_checks_passed | Recit : fondu de sortie restaure ; revelation initiale,16 contours et apparition du heros alignes PAL/NTSC. Trajets frais au premier donjon,reprise et inventaires verifies ; parcours complet encore requis. | `8b94f2e022d1027b5bc3cefd18ffd9f79a8895fba7622defc400c10d6fdfff7b` |

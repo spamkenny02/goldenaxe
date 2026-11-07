@@ -1,5 +1,8 @@
 # c0047 — ROM de 2 Mio correctement complétée
 
+**Promu en [V319](../../v0319-d3ea2a83/README.md), avec exactement le même binaire.**
+Les paragraphes suivants conservent la progression historique des contrôles.
+
 Cet aperçu contient le programme et les ressources de c0046. Seuls le
 complément final à FF et le checksum changent. L’optimisation des motifs
 du héros reste identique.

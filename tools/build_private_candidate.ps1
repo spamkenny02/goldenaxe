@@ -1,7 +1,8 @@
 param(
     [Parameter(Mandatory = $true)][string]$Project,
     [string]$Sgdk = '',
-    [string]$Java = 'D:/jdk-25.0.1/bin/java.exe'
+    [string]$Java = 'D:/jdk-25.0.1/bin/java.exe',
+    [ValidateRange(0, 255)][int]$PaddingByte = 0
 )
 $ErrorActionPreference = 'Stop'
 if (-not $Sgdk) { $Sgdk = Join-Path $PSScriptRoot '../../../work/sgdk' }
@@ -24,8 +25,23 @@ try {
     $buildExit = $LASTEXITCODE
     $ErrorActionPreference = 'Stop'
     if ($buildExit -ne 0) { throw 'Private SGDK build failed; inspect build.log' }
+    $candidateRomPath = Join-Path $candidateRoot 'out/release/rom.bin'
+    $candidateCompiledLength = (Get-Item -LiteralPath $candidateRomPath).Length
+    if ($candidateCompiledLength -gt 2097152) { throw 'Private ROM exceeds the 2 MiB cartridge' }
     & $Java -jar "$sdkPath/bin/sizebnd.jar" out/release/rom.bin -sizealign 2097152
     if ($LASTEXITCODE -ne 0) { throw 'Private ROM padding failed' }
+    if ($PaddingByte -ne 0) {
+        $candidateRomBytes = [IO.File]::ReadAllBytes($candidateRomPath)
+        for ($candidatePaddingIndex = [int]$candidateCompiledLength; $candidatePaddingIndex -lt $candidateRomBytes.Length; $candidatePaddingIndex++) {
+            $candidateRomBytes[$candidatePaddingIndex] = [byte]$PaddingByte
+        }
+        [IO.File]::WriteAllBytes($candidateRomPath, $candidateRomBytes)
+    }
     & python "$PSScriptRoot/finalize_md_rom.py" out/release/rom.bin
     if ($LASTEXITCODE -ne 0) { throw 'Private ROM checksum failed' }
+    @{
+        compiledBytes = $candidateCompiledLength
+        finalBytes = (Get-Item -LiteralPath $candidateRomPath).Length
+        paddingByte = $PaddingByte
+    } | ConvertTo-Json | Set-Content -LiteralPath (Join-Path $candidateRoot 'packaging-build.json') -Encoding UTF8
 } finally { $env:Path = $previousPath; Pop-Location }

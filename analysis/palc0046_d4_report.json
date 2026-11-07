@@ -1,0 +1,142 @@
+{
+  "passed": true,
+  "candidate": "c0046",
+  "region": "pal",
+  "rom_sha256": "9e747d38e0c6fb2d69b7c1aa8c2b296a61e8b6af41171d14e543ed9a6cb49cf5",
+  "stages": [
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-pal-palc0046-d4-key01",
+      "frame": 76202,
+      "stage": "key01",
+      "room": 497,
+      "health": 56,
+      "max_health": 56,
+      "magic": 48,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-pal-palc0046-d4-earth01",
+      "frame": 77133,
+      "stage": "earth01",
+      "room": 465,
+      "health": 56,
+      "max_health": 56,
+      "magic": 40,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-pal-palc0046-d4-a1-key01",
+      "frame": 82858,
+      "stage": "a1-key01",
+      "room": 417,
+      "health": 56,
+      "max_health": 56,
+      "magic": 48,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-pal-palc0046-d4-canoe01",
+      "frame": 84953,
+      "stage": "canoe01",
+      "room": 418,
+      "health": 56,
+      "max_health": 56,
+      "magic": 48,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-pal-palc0046-d4-warp01",
+      "frame": 86108,
+      "stage": "warp01",
+      "room": 402,
+      "health": 56,
+      "max_health": 56,
+      "magic": 40,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-pal-palc0046-d4-boss-key01",
+      "frame": 87846,
+      "stage": "boss-key01",
+      "room": 386,
+      "health": 56,
+      "max_health": 56,
+      "magic": 40,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-pal-palc0046-d4-pre-boss01",
+      "frame": 89454,
+      "stage": "pre-boss01",
+      "room": 400,
+      "health": 56,
+      "max_health": 56,
+      "magic": 48,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-palc0046-d4-release01",
+      "frame": 89455,
+      "stage": "release01",
+      "room": 400,
+      "health": 56,
+      "max_health": 56,
+      "magic": 48,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-pal-palc0046-d4-boss01",
+      "frame": 92940,
+      "stage": "boss01",
+      "room": 384,
+      "health": 64,
+      "max_health": 64,
+      "magic": 48,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-pal-palc0046-d4-exit01",
+      "frame": 95564,
+      "stage": "exit01",
+      "room": 16,
+      "health": 54,
+      "max_health": 64,
+      "magic": 48,
+      "whole_ram_png_exact": true
+    }
+  ],
+  "current_campaign_trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-pal-palc0046-d4-exit01",
+  "campaign_frames": 95564,
+  "actual_fourth_crystal_and_exterior": true,
+  "canoe_owned": true,
+  "fight": {
+    "first": {
+      "frame": 89748,
+      "room": 384,
+      "game": 12,
+      "health": 54,
+      "hurt": 0,
+      "actors": [
+        {
+          "slot": 0,
+          "kind": 106,
+          "hp": 30
+        }
+      ]
+    },
+    "release_frame": 89455,
+    "prediction_windows": 156,
+    "first_damage": {
+      "frame": 89462,
+      "room": 400,
+      "game": 12,
+      "health": 54,
+      "hurt": 47,
+      "before": 56
+    }
+  },
+  "physical_hud_words_exact": 128,
+  "full_candidate_campaign_verified": false,
+  "archive_manifest": "analysis/palc0046-d4/manifest.json",
+  "scope": "Actual PAL D4 keys, two Earth passages, canoe, source-strength burst boss and return with1B0 optional puzzle deferred. Ten independent cold RAM/PNG checkpoints; no resource, actor, progression or SRAM import, no boss/return aid; global SMS timing remains unproved."
+}

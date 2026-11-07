@@ -1067,7 +1067,7 @@ static void prepare_hero_patterns(void)
         hero_pattern_tiles=*source++;
         for(n=0;n<hero_pattern_tiles*8;n++)
         {
-            memcpy(sms_vram+0x3e00+n*4,source,3);source+=3;
+            sms_vram[0x3e00+n*4]=source[0];sms_vram[0x3e01+n*4]=source[1];sms_vram[0x3e02+n*4]=source[2];source+=3;
             sms_vram[0x3e03+n*4]=0;
         }
         /* The following frame remains owned by wait_world_video/VBlank. */
@@ -1181,6 +1181,12 @@ static void mask_world_sms_sprite_rows(u16 count,u8 *used)
                 if(tile>=job->tile && tile<job->tile+job->count)
                 { queued=job->source+(tile-job->tile)*8;break; }
             }
+            /* Dungeon actor patterns remain resident in their converted
+             * RAM atlas. Inventory and rewards use disjoint tile ranges.
+             * Pending pattern jobs above still own their source tiles. */
+            if(!queued && world_video_preparing && game_state==12 &&
+               world_graphics_class==2 && tile>=272 && tile<272+world_actor_tiles)
+                queued=md_patterns+(tile-16)*8;
             if(!queued) *(volatile u32*)VDP_CTRL_PORT=VDP_READ_VRAM_ADDR((u32)tile*32);
             u16 bit=1;
             for(row=0;row<8;row++,bit+=bit)

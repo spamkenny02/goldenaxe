@@ -1,0 +1,140 @@
+{
+  "passed": true,
+  "candidate": "c0046",
+  "region": "pal",
+  "rom_sha256": "9e747d38e0c6fb2d69b7c1aa8c2b296a61e8b6af41171d14e543ed9a6cb49cf5",
+  "stages": [
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-route/md-pal-palc0046-gold-entry01",
+      "frame": 67620,
+      "kind": "gift-route",
+      "room": 63,
+      "health": 56,
+      "gold": 18,
+      "magic": 24,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-service-route/md-palc0046-gold50-01",
+      "frame": 68083,
+      "kind": "gift",
+      "room": 244,
+      "health": 56,
+      "gold": 68,
+      "magic": 24,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-route/md-pal-palc0046-earth-entry01",
+      "frame": 69780,
+      "kind": "earth-route",
+      "room": 191,
+      "health": 56,
+      "gold": 68,
+      "magic": 24,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-service-route/md-palc0046-earth-learn01",
+      "frame": 70793,
+      "kind": "earth",
+      "room": 163,
+      "health": 56,
+      "gold": 18,
+      "magic": 48,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-route/md-pal-palc0046-d4-entry01",
+      "frame": 75558,
+      "kind": "entry",
+      "room": 496,
+      "health": 56,
+      "gold": 18,
+      "magic": 48,
+      "whole_ram_png_exact": true
+    }
+  ],
+  "current_campaign_trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-route/md-pal-palc0046-d4-entry01",
+  "campaign_frames": 75558,
+  "real_gold_gift_and_earth_purchase": true,
+  "fourth_dungeon_entered": true,
+  "transactions": {
+    "gift": {
+      "before": {
+        "room": 63,
+        "game": 12,
+        "hero": 1,
+        "counter": 0,
+        "x": 136,
+        "y": 144,
+        "health": 56,
+        "gold": 18,
+        "magic": 24,
+        "max_magic": 24,
+        "outside_flags": 85,
+        "level": 0,
+        "intro": 0,
+        "modal": 0,
+        "audio_error": 0
+      },
+      "after": {
+        "room": 244,
+        "game": 12,
+        "hero": 1,
+        "counter": 0,
+        "x": 104,
+        "y": 32,
+        "health": 56,
+        "gold": 68,
+        "magic": 24,
+        "max_magic": 24,
+        "outside_flags": 87,
+        "level": 0,
+        "intro": 0,
+        "modal": 0,
+        "audio_error": 0
+      }
+    },
+    "earth": {
+      "before": {
+        "room": 191,
+        "game": 12,
+        "hero": 1,
+        "counter": 0,
+        "x": 136,
+        "y": 144,
+        "health": 56,
+        "gold": 68,
+        "magic": 24,
+        "max_magic": 24,
+        "outside_flags": 1,
+        "level": 0,
+        "intro": 0,
+        "modal": 0,
+        "audio_error": 0
+      },
+      "after": {
+        "room": 163,
+        "game": 12,
+        "hero": 1,
+        "counter": 0,
+        "x": 136,
+        "y": 80,
+        "health": 56,
+        "gold": 18,
+        "magic": 48,
+        "max_magic": 48,
+        "outside_flags": 1,
+        "level": 1,
+        "intro": 0,
+        "modal": 0,
+        "audio_error": 0
+      }
+    }
+  },
+  "physical_hud_words_exact": 128,
+  "full_candidate_campaign_verified": false,
+  "archive_manifest": "analysis/palc0046-earth/manifest.json",
+  "scope": "Actual PAL continuation after three crystals; real50-piece gift and Earth price, required axe chop, five cold RAM/PNG proofs and physical HUD publication. No resource, actor, progression or SRAM import; fourth crystal and global SMS timing remain open."
+}

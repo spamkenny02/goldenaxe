@@ -1,0 +1,61 @@
+{
+  "version": 319,
+  "md_sha256": "d3ea2a83ea24ed8a0d3c9857f9fbe70d000a4f73358452c1887f40e78966c56e",
+  "bytes": 2097152,
+  "checksum": "DA29",
+  "previous_version": 318,
+  "previous_md_sha256": "b9e1f0a0543f191e24ffd6d2740a0d717501e0fcd986f8b8953a37a1b3c416a4",
+  "promoted_candidate": "c0047",
+  "candidate_bytes_identical": true,
+  "clean_rebuild_identical": true,
+  "symbols_identical": true,
+  "ntsc_new_game_campaign_complete": true,
+  "ntsc_ending_and_intro_return": true,
+  "ntsc_frames_replayed": 403488,
+  "final_checkpoint_whole_ram_bytes_exact": 65536,
+  "final_checkpoint_png_exact": true,
+  "ntsc_actual_save_and_continue": true,
+  "pal_crystals_and_exterior_returns_verified": 4,
+  "pal_complete_campaign_verified": false,
+  "approach_assistance_used": true,
+  "boss_assistance": false,
+  "synthetic_sram_fixture": false,
+  "complete_port_verified": false,
+  "evidence": {
+    "analysis/c0047_boot_report.json": "25a5b1ac751c4a67f5f144944c8267abb422161ad471a165d9cae70ecda00a61",
+    "analysis/c0047_inventory_report.json": "1be65a9aae1164adec09a5999fb1b5d52a256bac20d5f1326bcb09c89b749c58",
+    "analysis/c0047_clean_rebuild_report.json": "7918270e4f22728a6020b81a180b03d25a78c141fbd523ca63610772f14ab1a1",
+    "analysis/c0047_palace_final_auto_report.json": "8a7147c6213de04a0014f02c535c2dbdc2a6ddefd03621d9c754505ecee4d5dd",
+    "analysis/cold_palace_final_c0046_report.json": "3218979bced4d89e1f8f60a4cafdcb3d03e1b7b89ef7dba93780a77e92554af4",
+    "analysis/c0047_real_save_report.json": "36dbed8484da6706b6aaec54ccde4b82e885173eec6b0e548c75878fb233b103",
+    "analysis/c0047_d1_auto_report.json": "e393f32752690b8015f31e03171a00765c0454fdb7e47307f21e7d02f326d49d",
+    "analysis/c0047_d2_auto_report.json": "f88086e53944c6be348b8993c9a417ead60718e69bc8cf067da637082b9cfb10",
+    "analysis/c0047_d3_auto_report.json": "d1eed8b3d5eb184198b71c567e837cc6cbcea68fa37e5e600121c90e3c3dea08",
+    "analysis/c0047_d4_auto_report.json": "3be0b6d3108073617153ead5d7380cf1f71c833ef4cf22ee563999f6b8bafda5",
+    "analysis/c0047_d5_auto_report.json": "aac368641e3e527256f84910b3659751329e5c68072cec9cdd8985fc1451478d",
+    "analysis/c0047_d6_auto_report.json": "ec3ed2813d16993b27ba5a0a093e5925e01c4465caec6190453aa85518268775",
+    "analysis/c0047_d7_auto_report.json": "db4bea72c6de11c3a44865e16e3fd515731d7318622ef9ede711e5395862dc81",
+    "analysis/c0047_d8_auto_report.json": "12edaf43f7ca3b3d78bac8d405512bdf6985ceebc9c45e37b1395116846965f8",
+    "analysis/c0047_d9_auto_report.json": "e01c84d7c984cb3c4ebfafb9ca4d24fddcb0a5f1ad7c0687f41b57a12da7526e",
+    "analysis/c0047_d1_pal_report.json": "7a8127fbd967cbbd61589be0af814e4fa062ff098a9d214e4ce4dae6071ef1f3",
+    "analysis/c0047_pal_d2_report.json": "fb20d8b584608ddc2ced48573b6e340f31b6f09ab9772370ac23d7fefd16cf86",
+    "analysis/c0047_pal_d3_report.json": "fead0d4a1893bd0c94ddd1f9c9fdaf55b2bc1827e9d05194b51ee857e81140b6",
+    "analysis/c0047_pal_d4_report.json": "2256276969f142387f95872059f7877ef72e57b707a190c9ea379bc1e39b9dad",
+    "analysis/c0046-hero-three-plane/manifest.json": "6856bc78d95a690c13097e5271eef09feddc1c298af8e142610e7343399f9d38"
+  },
+  "changes": [
+    "Use resident dungeon actor pattern atlas for sprite masks, avoiding unnecessary VDP readback when no pending job owns the tile.",
+    "Replace tiny three-byte memcpy calls with direct hero pattern expansion writes.",
+    "Package2MiB ROM with explicitFF external padding; normal build and clean historical reconstruction reproduce the published candidate."
+  ],
+  "remaining": [
+    "PAL D5 through ending and PAL save on these bytes.",
+    "Existing partial reveal/fade differences and global source R/IRQ phase.",
+    "Global PCM/audio/framebuffer equivalence and physical console tests are not established."
+  ],
+  "limits": [
+    "Development release of exactly the tested c0047 binary. NTSC campaign uses logged approach-only hurt writes, removed before every boss; no resource,actor,progression or initial SRAM imports.",
+    "The403488-frame c0047 replay compares whole RAM and final image at its endpoint; it does not compare every emitted frame or every source state. Other milestones and source comparisons retain their separate scopes.",
+    "PAL currently covers four crystals and returns; this initial release report remains a dated checkpoint when later evidence is attached."
+  ]
+}

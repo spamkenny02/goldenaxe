@@ -1,0 +1,143 @@
+{
+  "passed": true,
+  "candidate": "c0046",
+  "region": "pal",
+  "rom_sha256": "9e747d38e0c6fb2d69b7c1aa8c2b296a61e8b6af41171d14e543ed9a6cb49cf5",
+  "stages": [
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-route/md-pal-palc0046-oil-route01",
+      "frame": 48385,
+      "kind": "oil-route",
+      "room": 31,
+      "health": 23,
+      "max_health": 48,
+      "magic": 24,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-service-route/md-palc0046-oil-service01",
+      "frame": 49114,
+      "kind": "oil",
+      "room": 199,
+      "health": 23,
+      "max_health": 48,
+      "magic": 24,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-route/md-pal-palc0046-d3-entry01",
+      "frame": 52030,
+      "kind": "entry",
+      "room": 504,
+      "health": 23,
+      "max_health": 48,
+      "magic": 24,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-pal-palc0046-d3-rope01",
+      "frame": 57593,
+      "kind": "rope",
+      "room": 500,
+      "health": 23,
+      "max_health": 48,
+      "magic": 24,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-pal-palc0046-d3-switch01",
+      "frame": 58078,
+      "kind": "switch",
+      "room": 483,
+      "health": 23,
+      "max_health": 48,
+      "magic": 24,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-pal-palc0046-d3-key01",
+      "frame": 59671,
+      "kind": "key",
+      "room": 466,
+      "health": 23,
+      "max_health": 48,
+      "magic": 24,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-pal-palc0046-d3-pre-boss01",
+      "frame": 60830,
+      "kind": "ready",
+      "room": 467,
+      "health": 23,
+      "max_health": 48,
+      "magic": 24,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-palc0046-d3-release01",
+      "frame": 60831,
+      "kind": "release",
+      "room": 467,
+      "health": 23,
+      "max_health": 48,
+      "magic": 24,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-pal-palc0046-d3-boss01",
+      "frame": 63240,
+      "kind": "boss",
+      "room": 451,
+      "health": 56,
+      "max_health": 56,
+      "magic": 24,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-pal-palc0046-d3-exit01",
+      "frame": 64507,
+      "kind": "exit",
+      "room": 98,
+      "health": 56,
+      "max_health": 56,
+      "magic": 24,
+      "whole_ram_png_exact": true
+    }
+  ],
+  "current_campaign_trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-pal-palc0046-d3-exit01",
+  "campaign_frames": 64507,
+  "actual_third_crystal_and_exterior": true,
+  "oil_and_rope_owned": true,
+  "fight": {
+    "first": {
+      "frame": 60951,
+      "room": 451,
+      "game": 12,
+      "health": 23,
+      "hurt": 0,
+      "actors": [
+        {
+          "slot": 0,
+          "kind": 105,
+          "hp": 32
+        }
+      ]
+    },
+    "release_frame": 60831,
+    "prediction_windows": 101,
+    "first_damage": {
+      "frame": 62557,
+      "room": 451,
+      "game": 12,
+      "health": 15,
+      "hurt": 47,
+      "before": 23
+    }
+  },
+  "cold_streams": 2,
+  "controller_scope_error_recovered": true,
+  "full_candidate_campaign_verified": false,
+  "archive_manifest": "analysis/palc0046-d3/manifest.json",
+  "scope": "Actual PAL cold campaign after D2; oil/stairs and D3 entry verified before controller scope fix, remaining seven milestones independently replayed after recovery. No resource, actor, progression or SRAM import; no boss aid or global SMS fidelity claim."
+}

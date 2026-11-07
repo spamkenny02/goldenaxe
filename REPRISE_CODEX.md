@@ -4,7 +4,61 @@
 plus bas décrivent des versions antérieures. Lire d’abord cette section,
 le README et les rapports cités.
 
-## Suivi courant au 7 novembre 2026
+## Suivi courant — V319, 7 novembre 2026
+
+La ROM courante locale est V319, 2 Mio, SHA-256
+`d3ea2a83ea24ed8a0d3c9857f9fbe70d000a4f73358452c1887f40e78966c56e`,
+checksum DA29. Les deux alias racine et la ROM numérotée sont identiques
+à c0047. La compilation normale reconstruit exactement ces octets ;
+`analysis/optimization_v0319_report.json` décrit ce jalon daté.
+Les sources principales intègrent désormais l'optimisation c0047.
+La reconstruction historique épingle 03f21f34 puis applique le patch publié.
+
+NTSC : campagne nouvelle partie complète jusqu'à Death Adder, générique
+et retour intro, 403488 images. Rejeu c0047 avec les 65536 octets RAM et
+l'image finale identiques. Sauvegarde réelle à neuf cristaux et Continue
+sur la SRAM produite par ce même binaire c0047 également vérifiés.
+Rapports `c0047_palace_final_auto_report.json`, `c0047_real_save_report.json`.
+Aucune égalité image par image globale SMS n'est revendiquée.
+
+PAL : quatre cristaux et retours terminés, puis vrai échange huile/Feu,
+don de l'épée longue et entrée D5 à 109653 images. Sept étapes froides
+vérifiées, puis même point rejoué sur c0047 : RAM entière et PNG exacts.
+Rapports `palc0046_fire_sword_report.json`, `c0047_pal_fire_sword_report.json`.
+D3 a connu une erreur de portée Python du pilote, récupérée depuis son
+entrée déjà prouvée ; les deux contrôleurs et les dix étapes sont archivés.
+Tous les pilotes NTSC et PAL jusqu'à cette entrée D5 sont terminés.
+Ne pas relancer les anciens handles mentionnés dans l'historique.
+
+Seul parcours de jeu lancé actuellement : PAL D5, session 96471,
+`python -u tools/continue_d5_palc0046.py`, cwd
+`validation/c0046-campaign01/isolated/project`.
+Vérifier ce handle/processus réel avant toute reprise ; ne pas redémarrer
+sur simple délai d'observation. Sources dans `palc0046-d5-sources`,
+lecteur `palc0046-d5-cold-stream01`. Le contrôleur vise bottes, vraies
+récompenses de 30 pièces, achat d'une clé et soin ordinaires, mécanismes,
+retrait de protection avant boss 65, cinquième cristal puis sortie 49.
+Il nécessite l'audit Feu/épée réussi. Audit D5 à préparer après succès.
+Le projet isolé conserve c0046/9e747d38 ; ne pas remplacer sa ROM ou ses
+symboles par ceux de la racine pendant le parcours. Les sources racine
+et privées ont été contrôlées sans lien physique partagé avant promotion.
+
+Archives de promotion et reconstruction : `v0319-root-promotion`,
+`c0047-clean-rebuild`; première tentative avec complément zéro conservée
+dans `c0047-clean-build-zero-padding` comme diagnostic échoué explicite.
+Les doublons de compilation sont retirés uniquement après compression
+sans perte et relecture par SHA. Les ROMs historiques sont conservées.
+
+Restent PAL D5 à fin et sauvegarde, écarts de révélations/fondus et phase
+R/IRQ source, fidélité audio PCM globale et vérification console réelle.
+Le portage complet n'est pas déclaré terminé. Lire README pour les limites.
+
+## Notes historiques antérieures à la promotion V319
+
+La section suivante est conservée pour les chemins et décisions passées ;
+ses états « en cours » sont périmés sauf confirmation ci-dessus.
+
+### Ancien suivi au 7 novembre 2026
 
 La V318 a terminé les parcours NTSC et PAL jusqu’à la victoire, au générique
 et au retour à l’intro. Le pipeline PAL est fermé et son audit final passe.
