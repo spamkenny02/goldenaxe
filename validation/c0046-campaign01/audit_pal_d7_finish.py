@@ -1,4 +1,4 @@
-"""Verify the v0317 ship, main D7 combat, and exterior return on one run."""
+"""Audit the current PAL ship, main D7 combat and exterior return."""
 import argparse,sys
 from pathlib import Path
 sys.path.insert(0,"tools")
@@ -165,7 +165,7 @@ def main():
     report = dict(passed=True,candidate='c0046',region='pal',rom_sha256=digest,stages=stages,current_campaign_trace=stages[-1]['trace'],campaign_frames=stages[-1]['frame'],actual_seventh_crystal_and_exterior=True,final_ram_sha256=sha(read(previous/f'ram_{stages[-1]["frame"]:05d}.bin')), ship_acquired=True,
                   intermediate_assistance=False, seventh_crystal_and_exterior_return=not args.through_ship,
                   release_frame=release_frame, first_boss_combat=first_combat, first_boss_damage=boss_damage,
-                  full_game_validated=False, production_rom_unchanged=True, controller_sha256=index, evidence=hashes)
+                  full_game_validated=False, candidate_rom_unchanged=True, controller_sha256=index, evidence=hashes)
     read(Path(__file__).resolve());read(PUBLIC_ROOT/'validation/c0046-campaign01/prepare_pal_d7_finish.py');read(ROOT/'validation/palc0046-d7-finish-sources/commands.jsonl')
     out=PUBLIC_ROOT/'analysis/palc0046-d7'
     report['archive_manifest']=out.relative_to(PUBLIC_ROOT).as_posix()

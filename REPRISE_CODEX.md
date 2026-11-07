@@ -80,10 +80,19 @@ sur l'archive existante. Même import ajouté à l'audit de la fin D7.
 
 Parcours actif : fin PAL D7, PID44180 au lancement,
 `tools/continue_d7_finish_palc0046.py`, cwd projet isolé habituel.
-`prepare_pal_d7_finish.py` est déjà exécuté ; ne pas répéter. Sources
+`prepare_pal_d7_finish.py` est déjà exécuté ; ne pas répéter. L'entrée D8 est également préparée par
+`prepare_pal_d8_entry.py` (déjà exécuté), mais n'est pas lancée et exige
+le futur rapport D7 complet. Elle prévoit soin normal éventuel, véritable
+paiement de10pièces, entrée D8, retrait avant l'intermédiaire1C9, puis
+combat sans protection. Fichier généré `tools/continue_d8_entry_palc0046.py`.
+Aucun résultat D8 n'est annoncé par cette préparation. Sources
 `palc0046-d7-finish-sources`, lecteur `palc0046-d7-finish-cold-stream01`.
 Vise bateau16, mécanisme distant1E6, retrait avant179/boss67 à60PV,
-cristal7 et sortie1B. Les réentrées ordinaires pour ennemis isolés et
+cristal7 et sortie1B. Les sept premiers points de la fin sont maintenant
+prouvés : bateau203631, approche211332 en189 à80PV/64PM/deux clés,
+retrait211333/hurt0. `audit_pal_d7_finish.py --prefix-only` passe sur ces
+sept points. Le combat principal est lancé, PID22616 au dernier contrôle,
+avec statistiques source et aucune nouvelle aide après retrait. Les réentrées ordinaires pour ennemis isolés et
 l'évitement des portails connus sont actifs. Le pilote exige le vrai
 rapport de victoire de l'intermédiaire, sans assistance durant ce combat.
 
