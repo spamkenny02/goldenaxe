@@ -1,5 +1,5 @@
 """Audit eighth crystal and actual exterior return on the current cold campaign."""
-import json,sys
+import argparse,json,sys
 from pathlib import Path
 sys.path.insert(0,"tools")
 from archive_lossless_evidence import freeze
@@ -15,6 +15,7 @@ CASES = [('main-release01','release'), ('boss01','boss'), ('exit01','exit')]
 
 
 def main():
+ parser=argparse.ArgumentParser();parser.add_argument('--prefix-only',action='store_true');options=parser.parse_args()
  refs = {}
  def read(p):
   raw = evidence(p); refs[p.relative_to(PUBLIC_ROOT).as_posix()] = sha(raw); return raw
@@ -34,7 +35,12 @@ def main():
  activation = ready_assist['activation_after_frame']
  stages = []; reports = {}; assists = {}; release = None; final_writes = None
  original = (ROOT/'input/original.sms').read_bytes()
- for suffix,kind in CASES:
+ cases=CASES
+ if options.prefix_only:
+  stream=load(ROOT/'validation/palc0046-d8-finish-cold-stream01/checkpoints.json');assert stream['rom_sha256']==digest and stream['cold_boot_count']==1
+  cases=CASES[:max(0,len(stream['checkpoints'])-8)]
+  assert cases
+ for suffix,kind in cases:
   folder = ROOT/'validation/natural-dungeon-combat'/(('md-auto-' if kind=='release' else 'md-pal-')+'palc0046-d8-'+suffix)
   cap = load(folder/'capture.json'); r = load(folder/'report.json'); a,writes = recording(folder,cap)
   assert cap['rom_sha256'] == r['rom_sha256'] == digest and cap['sram_input'] is None and cap['core_options']['genesis_plus_gx_region_detect']=='pal'
@@ -95,10 +101,12 @@ def main():
   if kind == 'exit':
    assert r['full_dungeon_cleared'] and r['dungeon_exit_verified'] and word('room_id') == 0x29 and not word('world_dungeon_number')
   stages.append(dict(trace=folder.relative_to(PUBLIC_ROOT).as_posix(),kind=kind,frames=cap['frames'],room=word('room_id'),
-                     health=word('hero_health'),max_health=word('hero_max_health'),magic=word('hero_magic'),keys=word('hero_keys'),
+                     health=word('hero_health'),max_health=word('hero_max_health'),magic=word('hero_magic'),keys=word('hero_keys'),gold=word('hero_gold'),
                      crystals=sum(x==128 for x in save[0x1f:0x28]),whole_ram_png_exact=True))
   read(folder/'controls.json'); read(folder/'assistance.json')
   reports[kind],assists[kind] = r,a; previous,previous_cap,previous_writes = folder,cap,writes
+ if options.prefix_only:
+  print('Read-only D8 final prefix audit passed:',len(stages),'stages; last',stages[-1],flush=True);return
  first = reports['boss']['first_intermediate_combat']
  assert first['health'] > 0 and first['hurt'] <= 128 and any(e['kind'] == 0x6b and e['hp'] == 80 for e in first['actors'])
  result = dict(passed=True,candidate='c0046',region='pal',rom_sha256=digest,candidate_rom_unchanged=True,primary_state_imports=0,

@@ -125,6 +125,21 @@ ce paramètre a été corrigé dans le fichier pour les futures exécutions.
 Après terminaison vérifier/créer explicitement le reçu D8 avec
 `python validation/summarize_pal_milestone_v0319.py --dungeon 8`.
 Ne pas relancer audit/rejeu complets si leurs archives existent déjà.
+Suite conditionnelle D9 préparée : `prepare_pal_d9_entry.py` est exécuté,
+`tools/continue_d9_entry_palc0046.py` généré mais non lancé. Le pilote
+exige le futur vrai rapport D8. Si les fonds finaux sont inférieurs à10,
+il vérifie le drapeau B5 non encore réclamé et demande son vrai don10
+par dialogue normal avant de payer1A. Aucune monnaie n'est injectée.
+Sources futures `palc0046-d9-entry-sources/entry-tools`, lecteur
+`palc0046-d9-entry-cold-stream01`, passage10pièces puis Clochette/entréeD9.
+Suivi38454 : `after_pal_d8_campaign.py --pid 47148`, handle réel du
+postflight12149/PID47148 ; exige sa sortie0, crée/vérifie explicitement
+le reçu D8, puis lance D9. Ne pas démarrer D9 manuellement en double.
+`audit_pal_d8_finish.py --prefix-only` passe le retrait256435,7cristaux,
+88PV/72PM/deux clés/7pièces. Ce mode ne publie aucun rapport de fin.
+Le boss44116 était encore actif au dernier contrôle avec CPU croissant,
+sans rapport final publié ; un délai de son observation n'est pas un arrêt.
+
 Vérifier les vrais handles/processus : un délai n'est pas une fin.
 Le projet isolé conserve c0046/9e747d38 ; ne pas remplacer sa ROM ou ses
 symboles par ceux de la racine pendant le parcours. Les sources racine
