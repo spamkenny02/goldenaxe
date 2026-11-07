@@ -108,7 +108,13 @@ la cloche possédée ouvre réellement le passage CB, puis le héros entre
 en salle 1FC à 96 PV, 72 PM, 15 pièces et une clé. RAM entière et image
 finale concordent au rejeu indépendant.
 [Cloche et entrée D9](analysis/d9_entry_c0046_report.json).
-Les gardiens et le neuvième cristal restent à valider sur cet aperçu.
+Le premier gardien de D9 est vaincu sur c0046, avec ses 60 PV source et
+sans protection pendant le combat. Deux coups font passer le héros de
+96 à 64 PV. Les 148 fenêtres de prédiction et les six points du rejeu
+indépendant concordent sur toute la RAM et l’image finale.
+[Premier gardien D9](analysis/d9_midboss_c0046_report.json).
+Le second gardien, le ballon et le neuvième cristal restent à valider ;
+ce nouveau jalon D9 n’a pas encore été rejoué sur c0047.
 [Ancien essai D7 archivé, environ 12 Mo libérés](analysis/c0046-d7-inactive-south01/manifest.json).
 [Captures des retours D4 ratés archivées, environ 9 Mio libérés](analysis/c0046-d4-failed-exit-captures/manifest.json).
 

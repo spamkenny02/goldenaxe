@@ -118,24 +118,31 @@ en3C. Rapport analysis/d9_south_c0046_report.json ; archive c0046-d9-south.
 Le pilote continue_d9_south_c0046.py est terminal. Aucun décès/Continue ni
 ressource importée : les fonds réels ont permis le passage inverse normal.
 
-Le processus courant joue continue_d9_entry_c0046.py dans
-validation/c0046-campaign01/isolated/project. Sorties : validation/c0046-d9-sources04,
-sources figées dans entry-tools et lecteur froid partagé dans cold-stream.
-La première préparation sources03 s’est arrêtée avant l’émulation sur une
-assertion de chemin local non préfixé ; sources04 est la vraie reprise.
-L’entrée est terminée, auditée et archivée :273982,salle1FC,96PV,72PM,
-15 pièces,une clé,huit cristaux. La cloche est utilisée par le menu normal
-enCB ; drapeau persistant et case39 vérifiés. Rapport analysis/d9_entry_c0046_report.json,
-archive c0046-d9-entry. Ne pas recréer cette archive. Le même pilote continue
-vers le premier gardien.
-L’entrée reprend l’épisode d’approche déjà ouvert après D8, sans créer de
-nouvel épisode après le service payé. Le pilote utilise la cloche enCB,
-entre en1FC, puis Terre et contact1DE,Terre1CE,antichambre,retrait avant1BE,
-gardien79 à60PV source. Les scripts d’audit sont adaptés au retour payé,
-pas à l’ancien décès V317 ni à ses3 pièces. prepare_d9_entry.py est déjà exécuté.
-L’audit d’entrée est déjà exécuté. Après les six étapes :
-summarize_d9_midboss_c0046.py et archive_d9_entry.py --midboss.
-Ne pas revendiquer le neuvième cristal sur ces étapes.
+Le pilote continue_d9_entry_c0046.py est terminé avec succès. Entrée D9 :
+273982,salle1FC,96PV,72PM,15 pièces,une clé,huit cristaux. La cloche est
+utilisée par le menu normal enCB ; drapeau persistant et case39 vérifiés.
+Rapport analysis/d9_entry_c0046_report.json, archive c0046-d9-entry.
+Les mécanismes Terre/contact1DE et Terre1CE, l’antichambre et le premier
+gardien79 sont également audités et archivés : d9_midboss_c0046_report.json,
+archive c0046-d9-midboss. Retrait de protection282688, premier boss282900
+à60PV source/héros96PV/hurt0. Deux coups96→80→64 ; victoire284100,
+point final284251. 148 prédictions et six points RAM/image exacts sur un
+même rejeu froid. Ne pas recréer ces archives ni reprendre l’ancien pilote.
+Sources figées : validation/c0046-d9-sources04/entry-tools ; lecteur clos
+cold-stream. sources03 s’était arrêté avant émulation sur un chemin local.
+
+Le processus courant joue tools/continue_d9_finish_c0046.py dans
+validation/c0046-campaign01/isolated/project (session44962). Il reprend
+après le gardien puis vise contact1AD, géant7B à60PV sans protection,
+ballon réel, boss6C à90PV sans protection, neuvième cristal et retour.
+Sources figées : c0046-d9-sources04/finish-tools ; lecteur finish-cold-stream.
+prepare_d9_finish.py est déjà exécuté, ne pas le relancer dans les mêmes
+sorties. Après huit étapes : summarize_d9_balloon_c0046.py puis, depuis
+la racine, archive_d9_finish.py --balloon-only. Après douze étapes :
+summarize_d9_campaign_c0046.py puis archive_d9_finish.py et rejeu c0047
+avec validation/replay_c0047_d1.py auto --dungeon 9.
+Ces étapes D9 ne revendiquent pas encore le neuvième cristal ni sa
+reproduction c0047. Ne pas lancer la suite du palais avant leur succès.
 
 Historique de la fin D8 (clos) : continue_d8_finish_c0046.py dans
 validation/c0046-campaign01/isolated/project. Cette branche continue sur
