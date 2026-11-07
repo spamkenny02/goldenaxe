@@ -1,0 +1,148 @@
+{
+  "passed": true,
+  "candidate": "c0046",
+  "region": "pal",
+  "rom_sha256": "9e747d38e0c6fb2d69b7c1aa8c2b296a61e8b6af41171d14e543ed9a6cb49cf5",
+  "stages": [
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-route/md-pal-palc0046-d8-paid3c-route01",
+      "frame": 219002,
+      "kind": "route",
+      "room": 159,
+      "health": 76,
+      "max_health": 88,
+      "magic": 64,
+      "gold": 15,
+      "keys": 2,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-service-route/md-palc0046-d8-paid3c-service01",
+      "frame": 219368,
+      "kind": "payment",
+      "room": 26,
+      "health": 76,
+      "max_health": 88,
+      "magic": 64,
+      "gold": 5,
+      "keys": 2,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-route/md-pal-palc0046-d8-entry01",
+      "frame": 219944,
+      "kind": "entry",
+      "room": 490,
+      "health": 76,
+      "max_health": 88,
+      "magic": 64,
+      "gold": 5,
+      "keys": 2,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-pal-palc0046-d8-mini-ready01",
+      "frame": 223758,
+      "kind": "ready",
+      "room": 458,
+      "health": 84,
+      "max_health": 88,
+      "magic": 64,
+      "gold": 5,
+      "keys": 2,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-palc0046-d8-guard-release01",
+      "frame": 223759,
+      "kind": "release",
+      "room": 458,
+      "health": 84,
+      "max_health": 88,
+      "magic": 64,
+      "gold": 5,
+      "keys": 2,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-pal-palc0046-d8-midboss01",
+      "frame": 225457,
+      "kind": "boss",
+      "room": 457,
+      "health": 84,
+      "max_health": 88,
+      "magic": 64,
+      "gold": 5,
+      "keys": 2,
+      "whole_ram_png_exact": true
+    }
+  ],
+  "current_campaign_trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-pal-palc0046-d8-midboss01",
+  "campaign_frames": 225457,
+  "final_ram_sha256": "cc556c17b956305c708452e115c470dd835de5a796c5b3a44d7784dbf31d1730",
+  "paid_horns": 10,
+  "transactions": [
+    {
+      "kind": "payment",
+      "before": {
+        "room": 159,
+        "game": 12,
+        "hero": 1,
+        "counter": 0,
+        "x": 136,
+        "y": 136,
+        "health": 76,
+        "max_health": 88,
+        "gold": 15,
+        "keys": 2,
+        "magic": 64,
+        "modal": 0,
+        "audio_error": 0,
+        "outside_flags": 0,
+        "inventory_hex": "0201000001010000000001000101010001",
+        "crystals_hex": "808080808080800000"
+      },
+      "after": {
+        "room": 26,
+        "game": 12,
+        "hero": 1,
+        "counter": 0,
+        "x": 232,
+        "y": 32,
+        "health": 76,
+        "max_health": 88,
+        "gold": 5,
+        "keys": 2,
+        "magic": 64,
+        "modal": 0,
+        "audio_error": 0,
+        "outside_flags": 1,
+        "inventory_hex": "0201000001010000000001000101010001",
+        "crystals_hex": "808080808080800000"
+      }
+    }
+  ],
+  "intermediate_defeated": true,
+  "intermediate_assistance": false,
+  "guard_release_frame": 223759,
+  "first_combat": {
+    "frame": 223985,
+    "room": 457,
+    "game": 12,
+    "health": 84,
+    "hurt": 0,
+    "actors": [
+      {
+        "slot": 0,
+        "kind": 122,
+        "hp": 50
+      }
+    ]
+  },
+  "first_damage": null,
+  "prediction_windows": 163,
+  "full_candidate_campaign_verified": false,
+  "eighth_crystal_validated": false,
+  "archive_manifest": "analysis/palc0046-d8-midboss/manifest.json",
+  "scope": "Actual PAL continuation after seven crystals, optional real healer, ten-piece payment, D8 entry and source-strength intermediate. Independent cold whole-RAM/PNG endpoints, no resource/actor/progression/SRAM imports, no boss assistance. Eighth crystal, main boss and global SMS fidelity remain open."
+}

@@ -91,32 +91,41 @@ restent une limite distincte.
 Pilote44180, suivi41915/PID44460 et postflight34690/PID3492 terminés0.
 Ne pas relancer leurs anciens handles. Audits/archives D7 existants à préserver.
 
-Parcours actif : paiement, entrée et intermédiaire PAL D8, PID8480,
-`tools/continue_d8_entry_palc0046.py`, cwd projet isolé habituel.
-Le suivi44326/PID30416 (`after_pal_d7_campaign.py --pid 3492`) l'a lancé
-seulement après le D7 complet rejoué et le reçu V319. Il attend sa fermeture.
-Sources `palc0046-d8-entry-sources/d8-entry-and-intermediate`, lecteur
-`palc0046-d8-entry-cold-stream01`. `prepare_pal_d8_entry.py` est exécuté.
-Le soin conditionnel n'est pas demandé (départ88/88PV). Paiement3C de10
-pièces effectué (15→5), entrée D8 puis quatre premiers points prouvés,
-antichambre1CA à223758,84/88PV/64PM/deux clés. Audit
-`audit_pal_d8_entry.py --prefix-only` passé sur ces quatre points.
-La suite retire la protection avant1C9 puis combat l'intermédiaire7A
-à50PV source, sans aucun nouvel écrit de protection. Aucun succès de
-ce combat n'est déclaré à ce point de reprise.
+PAL D8 paiement/entrée/intermédiaire terminés : `palc0046_d8_midboss_report.json`,
+archive `palc0046-d8-midboss`, six points. Retrait223759 avant1C9,
+intermédiaire7A à50PV source vaincu sans protection,163 prédictions RAM
+entière, point225457. Rejeu c0047/V319 exact RAM65536/PNG : rapport
+`c0047_pal_d8_midboss_report.json`, archive `c0047-pal-d8-midboss`.
+Le paiement normal3C15→5pièces est vérifié ; pas de soin nécessaire.
+Pilote8480 et suivi44326/PID30416 terminés0 ; ne pas les relancer.
 
-Suivi14979 : `after_pal_d8_midboss.py --pid 30416`, handle réel du
-pipeline précédent, attend sa sortie0, audite tout le paiement/entrée/
-intermédiaire, rejoue c0047 avec `d8-midboss`, puis lance
-`tools/continue_d8_finish_palc0046.py`. `prepare_pal_d8_finish.py` est
-exécuté, ne pas répéter. Le futur pilote reprend seulement après victoire
-vérifiée, parcourt les mécanismes et la vraie clé du voleur, retire la
-protection avant196/boss6B à80PV, puis vise cristal8 et sortie29.
-Sources futures `palc0046-d8-finish-sources/main-sources`, lecteur
-`palc0046-d8-finish-cold-stream01`. Audits de cette seconde partie D8
-à adapter ; ne pas confondre l'intermédiaire et le huitième cristal.
-Vérifier les vrais handles et processus avant reprise ; un délai n'est pas
-une fin de processus. Ne pas créer de doublon avec ces suivis vivants.
+Approche PAL D8 terminée et auditée : `palc0046_d8_approach_report.json`,
+archive `palc0046-d8-approach`, huit points du lecteur de seconde partie.
+Reprise de protection seulement après victoire225458 ; mécanismes
+lointains, un aller-retour ordinaire pour ennemi isolé1C8, vraie clé du
+voleur15 acquise248723. Approche256434 en1A6,héros88PV/72PM/deux clés,
+7pièces. Intermédiaire vaincu reste absent ; état source du boss principal
+6B :80PV/16/2/64. Aucun import d'objet/ennemi/ressource/progression/SRAM.
+Audit `audit_pal_d8_approach.py --prefix-only` passé avant publication.
+
+Parcours actif : fin D8, PID2744 au lancement,
+`tools/continue_d8_finish_palc0046.py` cwd projet isolé habituel.
+Sources `palc0046-d8-finish-sources/main-sources`, lecteur
+`palc0046-d8-finish-cold-stream01`. Retrait256435 en1A6/hurt0 déjà
+prouvé. Boss principal lancé avec `unassisted_arrival_prediction.py`,
+PID44116 au dernier contrôle, pas8, aucune nouvelle aide après retrait.
+Le pilote vise cristal8 puis sortie29. Ne pas relancer dans les dossiers
+existants. Aucun huitième cristal n'est encore annoncé à ce point.
+
+Suivi14979/PID5420 attend ce pilote. Suivi12149 :
+`after_pal_d8_finish.py --pid 5420` détient son handle, attend sortie0,
+audit full `audit_pal_d8_finish.py` puis rejeu c0047 `d8`. La copie du
+script en cours avait encore le reçu `--dungeon 7` à son lancement ;
+ce paramètre a été corrigé dans le fichier pour les futures exécutions.
+Après terminaison vérifier/créer explicitement le reçu D8 avec
+`python validation/summarize_pal_milestone_v0319.py --dungeon 8`.
+Ne pas relancer audit/rejeu complets si leurs archives existent déjà.
+Vérifier les vrais handles/processus : un délai n'est pas une fin.
 Le projet isolé conserve c0046/9e747d38 ; ne pas remplacer sa ROM ou ses
 symboles par ceux de la racine pendant le parcours. Les sources racine
 et privées ont été contrôlées sans lien physique partagé avant promotion.
