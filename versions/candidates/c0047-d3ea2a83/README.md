@@ -31,3 +31,10 @@ finale identiques au parcours c0046. Le combat du deuxième boss commence
 avec ses 30 PV source et la protection retirée avant l’entrée.
 
 [Rejeu du deuxième cristal sur c0047](../../../analysis/c0047_d2_auto_report.json).
+
+L’entrée du troisième donjon et l’acquisition normale de la corde sont
+également rejouées sur c0047 jusqu’à 67763 images : RAM entière et image
+finale identiques à c0046. Le troisième cristal n’est pas encore validé
+sur cet aperçu.
+
+[Rejeu jusqu’à la corde](../../../analysis/c0047_d3_rope_auto_report.json).

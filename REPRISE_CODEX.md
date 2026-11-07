@@ -909,3 +909,23 @@ module local z80dis ; le lien de dépendance a été ajouté, puis le résumé
 et son archive ont terminé correctement. setup_c0046_links.ps1 rend
 ces liens reproductibles et est appelé par setup_c0046_campaign.py.
 Ne pas relancer l’ancien pipeline huile sur ses dossiers existants.
+
+## Corde D3 et reprise après les essais de portail
+
+Entrée D3 à 61462, corde obtenue et fenêtre de récompense terminée à
+67763, 37/48 PV. Audit : analysis/c0046_d3_rope_report.json et archive
+analysis/c0046-d3-rope. Le rejeu sur c0047 de ces mêmes commandes jusqu’à
+67763 est RAM entière/image exacte : analysis/c0047_d3_rope_auto_report.json.
+
+rope01 et rope02 s’arrêtaient après un retour involontaire par le portail.
+L’essai d’un maintien supplémentaire de direction dans le pilote n’a rien
+résolu et a été annulé. Le fichier privé natural_dungeon_combat.py est
+revenu byte-identique au fichier partagé original ; il est maintenant un
+fichier ordinaire, pas un lien physique. La ROM et le pilote du dépôt
+racine sont inchangés. portal_controller_fix.json trace cet essai écarté.
+Le succès rope03 utilise l’option existante --avoid-portal-rooms 0x1e2.
+
+Le processus actif exécute resume_d3_c0046.py, depuis les tools du projet
+isolé. Il a rejoué la corde et poursuit le mécanisme, la clé puis le boss.
+Ses sources/commandes sont dans validation/c0046-d3-sources03 du projet
+isolé. Ne pas relancer l’ancien continue_d3_c0046.py ni ses sorties rope01.

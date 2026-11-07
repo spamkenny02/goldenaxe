@@ -70,3 +70,10 @@ sont vérifiés à 58477 images. PV, argent et magie restent à 37, 12 et 24 ;
 les 128 mots du HUD matériel correspondent au miroir SMS.
 
 [Huile, escaliers et HUD](../../../analysis/oil_service_c0046_report.json).
+
+La corde du troisième donjon est obtenue normalement à 67763 images,
+avec 37/48 PV. L’itinéraire validé évite le portail de retour en salle 1E2
+pendant le trajet aller. Deux essais de pilote bloqués sont conservés
+séparément ; le maintien supplémentaire de direction a été écarté.
+
+[Entrée D3, portail et corde](../../../analysis/c0046_d3_rope_report.json).
