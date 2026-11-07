@@ -123,14 +123,18 @@ validation/c0046-campaign01/isolated/project. Sorties : validation/c0046-d9-sour
 sources figées dans entry-tools et lecteur froid partagé dans cold-stream.
 La première préparation sources03 s’est arrêtée avant l’émulation sur une
 assertion de chemin local non préfixé ; sources04 est la vraie reprise.
+L’entrée est terminée, auditée et archivée :273982,salle1FC,96PV,72PM,
+15 pièces,une clé,huit cristaux. La cloche est utilisée par le menu normal
+enCB ; drapeau persistant et case39 vérifiés. Rapport analysis/d9_entry_c0046_report.json,
+archive c0046-d9-entry. Ne pas recréer cette archive. Le même pilote continue
+vers le premier gardien.
 L’entrée reprend l’épisode d’approche déjà ouvert après D8, sans créer de
 nouvel épisode après le service payé. Le pilote utilise la cloche enCB,
 entre en1FC, puis Terre et contact1DE,Terre1CE,antichambre,retrait avant1BE,
 gardien79 à60PV source. Les scripts d’audit sont adaptés au retour payé,
 pas à l’ancien décès V317 ni à ses3 pièces. prepare_d9_entry.py est déjà exécuté.
-Après l’entrée prouvée : summarize_d9_entry_c0046.py dans le projet, puis
-archive_d9_entry.py à la racine. Après les six étapes : audit d’entrée si
-pas encore fait, summarize_d9_midboss_c0046.py et archive_d9_entry.py --midboss.
+L’audit d’entrée est déjà exécuté. Après les six étapes :
+summarize_d9_midboss_c0046.py et archive_d9_entry.py --midboss.
 Ne pas revendiquer le neuvième cristal sur ces étapes.
 
 Historique de la fin D8 (clos) : continue_d8_finish_c0046.py dans
