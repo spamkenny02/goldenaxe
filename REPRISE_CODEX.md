@@ -67,11 +67,26 @@ analysis/a5_hidden_shop_c0046_report.json, archive c0046-a5-hidden-shop.
 Combat clear à190785 puis boutique à191070, 80 PV, 49 pièces après une pièce
 ramassée normalement. Achat réel à40 : 49→9, une clé,80 PV, sans soin.
 
-Le processus courant joue resume_d7_funded_c0046.py dans
+La préparation D7 est terminée et auditée : dix points froids sur deux
+lecteurs indépendants, achat A5 à40, ouverture A5 par combat, entrée D7,
+deux clés et deux actions Terre à8PM chacune. Rapport :
+analysis/d7_prep_c0046_report.json ; archive analysis/c0046-d7-prep.
+Dernier point205302, salle1B9,80/80PV,56PM,deux clés et10 pièces.
+Le pilote préparatoire est clos.
+
+Le processus courant joue continue_d7_midboss_c0046.py dans
 validation/c0046-campaign01/isolated/project. Cette branche continue sur
 c0046 puis chaque jalon est rejoué sur c0047. Journaux et sources :
-validation/run-c0046-d7-recovered03-02 dans ce projet, preuves indépendantes
-partagées dans son sous-dossier cold-stream. Les deux premiers points (trajet
+validation/run-c0046-d7-midboss-02 dans ce projet, preuves indépendantes
+partagées dans son sous-dossier cold-stream. Après les quatre étapes :
+summarize_d7_midboss_c0046.py dans le projet puis archive_d7_midboss.py à
+la racine. Le garde78 a30PV source ; protection retirée avant1B8 et reprise
+uniquement après sa mort pour l’approche du boss179. Ensuite seulement
+continue_d7_finish_c0046.py, puis summarize_d7_campaign_c0046.py,
+archive_d7_finish.py et replay_c0047_d1.py auto --dungeon 7.
+Les scripts de préparation D7 sont déjà exécutés ; ne pas les relancer.
+Les huit points du parcours corrigé sont dans run-c0046-d7-recovered03-02,
+les deux premiers points (trajet
 B5 et don10) restent dans run-c0046-d7-02/cold-stream. Les scripts de reprise
 emploient un adaptateur privé du combat restreint à B5→A5 et au préfixe service,
 sans changement ROM. La première tentative de cet adaptateur a échoué avant

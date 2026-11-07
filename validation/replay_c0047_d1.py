@@ -11,7 +11,7 @@ from assisted_prefix import recording
 from archive_lossless_evidence import freeze,sha
 
 parser=argparse.ArgumentParser();parser.add_argument('region',choices=['auto','pal'])
-parser.add_argument('--dungeon',type=int,choices=[1,2,3,4,5,6],default=1)
+parser.add_argument('--dungeon',type=int,choices=[1,2,3,4,5,6,7],default=1)
 parser.add_argument('--milestone',choices=['exit','rope','earth','fire-sword'],default='exit')
 args=parser.parse_args();region=args.region;dungeon=args.dungeon
 assert dungeon==1 or region=='auto','Only the first-dungeon PAL recording is available here'
@@ -21,6 +21,7 @@ assert args.milestone!='fire-sword' or dungeon==5
 root=ROOT/'validation/c0046-campaign01/isolated/project'
 name='md-'+region+'-c46-d1-exit02' if dungeon==1 else f'md-auto-c0046-d{dungeon}-exit01'
 if dungeon==4:name='md-auto-c0046-d4-exit03'
+if dungeon==7:name='md-auto-c0046-d7-02-exit01'
 if args.milestone=='rope':name='md-auto-c0046-d3-rope03'
 if args.milestone=='earth':name='md-c0046-earth-learn01'
 if args.milestone=='fire-sword':name='md-c0046-d5-entry01'

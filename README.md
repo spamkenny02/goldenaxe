@@ -59,7 +59,12 @@ Sur la suite c0046, l’entrée cachée d’A5 s’ouvre après l’élimination
 des ennemis de l’écran, comme le prévoit la source. Le combat, la case
 transformée et l’entrée réelle chez le marchand concordent au rejeu indépendant.
 [Boutique cachée A5](analysis/a5_hidden_shop_c0046_report.json).
-La préparation du septième donjon reste en cours.
+La préparation du septième donjon est vérifiée sur c0046 : dix points de
+contrôle, clé achetée à 40 pièces, deux acquisitions de clés dans le donjon
+et deux actions Terre consommant 16 PM. Le héros arrive devant le gardien
+intermédiaire avec 80/80 PV, 56 PM et deux clés.
+[Préparation D7](analysis/d7_prep_c0046_report.json).
+Le gardien et le septième cristal restent à valider.
 [Captures des retours D4 ratés archivées, environ 9 Mio libérés](analysis/c0046-d4-failed-exit-captures/manifest.json).
 
 Nouvel aperçu [c0046](versions/candidates/c0046-9e747d38/README.md) :
