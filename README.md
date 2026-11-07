@@ -81,6 +81,14 @@ Les dix étapes finales passent au rejeu indépendant ; c0047 reproduit aussi
 toute la RAM et l’image finale à 227539 images.
 [Septième cristal et retour](analysis/d7_campaign_c0046_report.json)
 · [Rejeu sur c0047](analysis/c0047_d7_auto_report.json).
+
+La branche c0046 a payé le passage 3C (27→17 pièces), atteint le huitième
+donjon et vaincu son gardien intermédiaire après retrait de la protection.
+Ses 50 PV source, les 146 prédictions RAM et les six points du rejeu indépendant
+sont vérifiés. Un coup coûte 18 PV (76→58), puis les récupérations du jeu
+ramènent le héros à 82/88 PV ; le huitième cristal reste à valider.
+[Entrée et gardien D8](analysis/d8_midboss_c0046_report.json).
+[Ancien essai D7 archivé, environ 12 Mo libérés](analysis/c0046-d7-inactive-south01/manifest.json).
 [Captures des retours D4 ratés archivées, environ 9 Mio libérés](analysis/c0046-d4-failed-exit-captures/manifest.json).
 
 Nouvel aperçu [c0046](versions/candidates/c0046-9e747d38/README.md) :

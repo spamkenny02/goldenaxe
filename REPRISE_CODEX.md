@@ -97,17 +97,26 @@ et le PNG final. Rapports analysis/d7_campaign_c0046_report.json et
 analysis/c0047_d7_auto_report.json ; archives c0046-d7-campaign et c0047-d7-auto.
 Tous les pilotes D7 sont terminés. Le trajet sud réussi est south02.
 
-Le processus courant joue continue_d8_entry_c0046.py dans
+L’entrée et le gardien intermédiaire D8 sont terminés et audités : passage3C
+payé27→17, entrée à76PV, garde7A à50PV source, protection retirée233384,
+146 prédictions et six points froids exacts. Un dégât normal76→58 puis
+récupérations normales : victoire à82/88PV,64PM,une clé,point235018.
+Rapport analysis/d8_midboss_c0046_report.json ; archive c0046-d8-midboss.
+Le pilote d’entrée D8 est terminal. Le huitième cristal n’est pas encore acquis.
+
+Le processus courant joue continue_d8_finish_c0046.py dans
 validation/c0046-campaign01/isolated/project. Cette branche continue sur
 c0046 puis chaque jalon est rejoué sur c0047. Journaux et sources :
-validation/c0046-d8-sources dans ce projet, preuves indépendantes partagées
-dans son sous-dossier cold-stream ; sources figées dans d8-entry-and-intermediate.
-Le départ D7 dispose27 pièces pour le passage3C à10, bateau possédé et vie
-pleine88 ; pas de soin préalable demandé. Étapes : passage payant, entréeD8,
-antichambre, retrait de protection puis gardien7A à50PV source. Après succès :
-summarize_d8_midboss_c0046.py dans le projet puis archive_d8_entry.py à la racine.
-Ne pas revendiquer le huitième cristal sur ces seuls tests.
-Les générateurs prepare_d8_entry.py
+validation/c0046-d8-sources/main-sources dans ce projet, preuves indépendantes
+partagées dans son sous-dossier cold-stream. Onze étapes : reprise après le
+gardien, sept propositions de recettes source vers la clé du voleur et
+l’antichambre, retrait de protection, boss6B à80PV puis retour extérieur29.
+Les recettes ne fournissent que des actions ; aucune ressource ni état ancien
+n’est importé. Après huit étapes, summarize_d8_approach_c0046.py peut auditer
+l’approche sans revendiquer le cristal. Après succès complet lancer cet audit
+puis summarize_d8_campaign_c0046.py dans le projet, et archive_d8_finish.py
+à la racine. Rejeu final : replay_c0047_d1.py auto --dungeon 8.
+Les générateurs prepare_d8_entry.py et prepare_d8_finish.py
 et prepare_d7_finish.py sont déjà exécutés ; ne pas les relancer.
 Les scripts de préparation D7 et resume_d7_sentinels.py sont déjà exécutés ;
 ne pas les relancer. L’audit final utilise south02 dans ses trois conditions
