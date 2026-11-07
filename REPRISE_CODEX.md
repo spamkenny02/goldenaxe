@@ -196,6 +196,15 @@ est remplacée par une identité c0046/SHA explicite et un rapport candidat.
 Le projet isolé n’a pas d’index de versions de production ; aucun numéro
 fictif n’est ajouté. La branche de sauvegarde n’a pas encore été exécutée.
 
+La fin du palais est aussi mise en attente : after_palace_entry.py
+--wait-for-pid50460, session70465. Le superviseur tient le handle exact
+du processus de la session97858 ; il attend son code0 avant de lancer
+finish_palace.py. Aucun appel parallèle manuel de finish_palace.py : il
+est déjà programmé derrière les audits D9/entrée/géant. Au premier échec,
+les attentes se terminent en erreur sans relancer ni effacer les sorties.
+Surveiller les sessions44962 (D9),97858 (audits/D9/c0047/entrée/géant),
+70465 (suite palais/finale/sauvegarde), et revalider les processus réels.
+
 
 Historique de la fin D8 (clos) : continue_d8_finish_c0046.py dans
 validation/c0046-campaign01/isolated/project. Cette branche continue sur
