@@ -10,10 +10,10 @@ report=ROOT/'analysis/d7_campaign_c0046_report.json';r=json.loads(report.read_by
 assert r['passed'] and r['candidate']=='c0046' and r['ship_acquired']
 assert r['seventh_crystal_and_exterior_return'] and not r['intermediate_assistance'] and not r['full_game_validated']
 assert len(r['stages'])==10
-paths={Path(__file__).resolve(),work/'prepare_d7_finish.py',report,project/'tools/summarize_d7_campaign_c0046.py'}
+paths={Path(__file__).resolve(),work/'prepare_d7_finish.py',work/'resume_d7_sentinels.py',report,project/'tools/summarize_d7_campaign_c0046.py'}
 for name,h in r['evidence'].items():
     p=ROOT/name;assert sha(p.read_bytes())==h;paths.add(p)
-snapshot=project/'validation/run-c0046-d7-finish-02'
+snapshot=project/'validation/run-c0046-d7-finish-03'
 paths.update(p for p in snapshot.iterdir() if p.is_file())
 for name,h in json.loads((snapshot/'source_index.json').read_bytes()).items():assert sha((snapshot/Path(name).name).read_bytes())==h
 stream=snapshot/'cold-stream/completed.json';s=json.loads(stream.read_bytes())

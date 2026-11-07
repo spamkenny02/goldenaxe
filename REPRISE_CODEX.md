@@ -81,10 +81,18 @@ L’approche ne reprend qu’à206489 après la mort, vers le boss179.
 Rapport analysis/d7_midboss_c0046_report.json ; archive c0046-d7-midboss.
 Tous les pilotes préparatoires et intermédiaires D7 sont terminés.
 
-Le processus courant joue continue_d7_finish_c0046.py dans
+Le premier pilote de fin D7 (run-c0046-d7-finish-02) est terminal en échec
+sur south01 : quatre52 cachés en1D6, aucune mort,80PV. La reprise south02
+active --wake-sentinels et --retry-isolated-foes, vainc les quatre52 par
+les commandes normales, puis franchit le mécanisme distant et reçoit le
+bateau. Audit partiel exécuté : analysis/d7_ship_c0046_report.json ; archive
+c0046-d7-ship. Dernier point bateau215194,1D5,80PV,72PM,21 pièces,deux clés,
+six cristaux. Le HUD et les trois points froids concordent.
+
+Le processus courant joue resume_d7_finish_c0046.py dans
 validation/c0046-campaign01/isolated/project. Cette branche continue sur
 c0046 puis chaque jalon est rejoué sur c0047. Journaux et sources :
-validation/run-c0046-d7-finish-02 dans ce projet, preuves indépendantes
+validation/run-c0046-d7-finish-03 dans ce projet, preuves indépendantes
 partagées dans son sous-dossier cold-stream. Dix étapes : trajet sud,
 mécanisme distant, bateau, retour nord, Terre, approche, retrait de protection,
 boss67 à60PV, Terre retour, sortie. Après succès : summarize_d7_campaign_c0046.py,
@@ -95,7 +103,9 @@ préparés mais NON exécutés. Le départ dépend du retour D7 : vérifier les 
 réels pour le passage3C à10. Ne pas inventer d’argent s’il manque.
 Après D8 réussi, archive_d8_entry.py à la racine. Les générateurs prepare_d8_entry.py
 et prepare_d7_finish.py sont déjà exécutés ; ne pas les relancer.
-Les scripts de préparation D7 sont déjà exécutés ; ne pas les relancer.
+Les scripts de préparation D7 et resume_d7_sentinels.py sont déjà exécutés ;
+ne pas les relancer. L’audit final utilise south02 dans ses trois conditions
+(liste, possession bateau, condition de trajet sud). south01 reste un essai rejeté.
 Les huit points du parcours corrigé sont dans run-c0046-d7-recovered03-02,
 les deux premiers points (trajet
 B5 et don10) restent dans run-c0046-d7-02/cold-stream. Les scripts de reprise
