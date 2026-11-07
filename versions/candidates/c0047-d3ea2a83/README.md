@@ -24,3 +24,10 @@ NTSC et 19596 en PAL.
 
 - [Rejeu NTSC](../../../analysis/c0047_d1_auto_report.json)
 - [Rejeu PAL](../../../analysis/c0047_d1_pal_report.json)
+
+Le parcours NTSC jusqu’au deuxième cristal et au retour extérieur est
+également rejoué : 56219 images, 37/48 PV au retour, RAM entière et image
+finale identiques au parcours c0046. Le combat du deuxième boss commence
+avec ses 30 PV source et la protection retirée avant l’entrée.
+
+[Rejeu du deuxième cristal sur c0047](../../../analysis/c0047_d2_auto_report.json).

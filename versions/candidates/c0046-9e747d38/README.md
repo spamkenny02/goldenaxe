@@ -55,3 +55,12 @@ rejeux RAM/image depuis Nouvelle partie.
 Correction de format : ce fichier annonce 2 Mio dans son en-tête mais ne
 contient que 1152 Kio. Il est conservé pour reproduire ses essais.
 Voir c0047 pour le programme de c0046 complété à 2 Mio.
+
+Le deuxième cristal et le retour en D6 sont aussi vérifiés en NTSC,
+à 56219 images avec 37/48 PV. Le boss à 30 PV est affronté après retrait
+de la protection à 35406 ; son premier combat est observé à 35529.
+Le premier budget de contrôle expire à 51406 avec le boss vivant à 8 PV.
+La continuation, avec décisions plus fréquentes, remporte le combat et
+reproduit toute la RAM et l’image finale depuis Nouvelle partie.
+
+[Audit du deuxième donjon](../../../analysis/c0046_d2_report.json).

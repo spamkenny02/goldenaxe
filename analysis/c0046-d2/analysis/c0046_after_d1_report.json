@@ -1,0 +1,76 @@
+{
+  "passed": true,
+  "candidate": "c0046",
+  "region": "auto",
+  "rom_sha256": "9e747d38e0c6fb2d69b7c1aa8c2b296a61e8b6af41171d14e543ed9a6cb49cf5",
+  "actual_axe_and_life_fairy": true,
+  "second_dungeon_entered": true,
+  "stages": [
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-route/md-c0046-d1-axe-entry01",
+      "frame": 17365,
+      "room": 484,
+      "health": 28,
+      "max_health": 32,
+      "weapon": 0,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d1-axe-key01",
+      "frame": 21633,
+      "room": 453,
+      "health": 32,
+      "max_health": 32,
+      "weapon": 0,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d1-axe01",
+      "frame": 22684,
+      "room": 438,
+      "health": 32,
+      "max_health": 32,
+      "weapon": 1,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-c0046-d1-axe-exit01",
+      "frame": 23815,
+      "room": 185,
+      "health": 32,
+      "max_health": 32,
+      "weapon": 1,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-route/md-c0046-fairy-route01",
+      "frame": 24873,
+      "room": 175,
+      "health": 32,
+      "max_health": 32,
+      "weapon": 1,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-service-route/md-c0046-fairy-service01",
+      "frame": 25392,
+      "room": 201,
+      "health": 40,
+      "max_health": 40,
+      "weapon": 1,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-route/md-c0046-d2-entry01",
+      "frame": 27553,
+      "room": 369,
+      "health": 40,
+      "max_health": 40,
+      "weapon": 1,
+      "whole_ram_png_exact": true
+    }
+  ],
+  "full_candidate_campaign_verified": false,
+  "scope": "Cold continuation after verified first crystal; real item/fairy rewards and controller-only progression, with approach-only hurt-counter writes. No resource or SRAM imports.",
+  "archive_manifest": "analysis/c0046-after-d1/manifest.json"
+}

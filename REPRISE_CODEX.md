@@ -875,3 +875,20 @@ Les deux campagnes du premier cristal c0046 se rejouent sur c0047 avec
 RAM entière/image finale identiques. La ROM V318 reste référence. Les
 pilotes de compilation concernés ajoutent maintenant le complément et
 finalisent le checksum avant toute publication future.
+
+## Deuxième cristal de l’optimisation confirmé
+
+c0046 NTSC atteint le deuxième cristal et le retour D6 à 56219, 37/48 PV.
+Le premier pilote key201 était limité en 151 ; un aller-retour normal
+résout la rencontre et key202 ramasse la vraie clé. Le premier combat
+boss01 atteint son budget à 51406 avec 8 PV ennemis et 40 PV héros, sans
+mort ni ajout de protection. Après preuve RAM/image du point partiel,
+resume_d2_boss_c0046.py prolonge les commandes avec un pas de 16 images.
+Victoire, cristal et retour extérieur passent leurs rejeux indépendants.
+Audit : analysis/c0046_d2_report.json, archive analysis/c0046-d2.
+
+Le rejeu intégral de ces mêmes entrées jusqu’à 56219 sur c0047 est lui aussi
+RAM entière/image finale identique : analysis/c0047_d2_auto_report.json.
+Tous les processus de ce deuxième donjon sont terminés. Les pilotes à
+reprendre ensuite concernent le don d’huile puis D3 ; ne pas relancer les
+anciens pilotes sur les dossiers de preuve existants.
