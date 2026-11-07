@@ -46,31 +46,41 @@ présent en2B, en possède128/256 (énumération, pas probabilité mesurée).
 04 a tenté29→2A→2B mais est mort en29 sans pièces : pilote trop dangereux.
 Les scripts de collecte ordinaires sont conservés ; aucune modification ROM.
 
-Parcours actif : fonds05, session84878, via
-`validation/palc0046-d9-guarded-funding01/run.py` dans le projet isolé.
+Fonds05/session84878 et fonds06/session6689 terminés0 mais objectif
+non atteint :7pièces,96PV,restés en29 àx240. Rapports explicitement en
+échec frame_limit,ne pas les traiter comme fonds suffisants. Le05 impose
+les sorties centrées de donjon ; le06 accepte tout le bord mais tente de
+faire chercher un point hors de la grille de collision et n'appuie plus.
+Les deux copies privées sont conservées, aucun code ROM modifié.
+
+Parcours actif : fonds07,session83466/PID10496, via
+`validation/palc0046-d9-guarded-funding03/run.py` dans le projet isolé.
 Commande : `--boss-room 0x1ac --planner ordinary --release-near-coins
 --new-assistance-episode --pal --assisted-prefix --continuation
 md-pal-palc0046-d8-exit01 --rooms 0x29,0x2a,0x2b,0x2a,0x29 --target-room
-0x29 --rush-rooms 0x29,0x2a --frames 278858 --trial palc0046-d9-funds05
+0x29 --rush-rooms 0x29,0x2a --frames 278858 --trial palc0046-d9-funds07
 --max-deaths 0 --collision-aim --settle-attacks --doorway-ranges
 --ignore-inactive-actors --equip-basic --wake-sentinels`.
-C'est la protection d'approche autorisée, uniquement hurt, retirée près
-des vraies pièces. La copie privée du guard est restreinte à ce préfixe
-extérieur et cet itinéraire ; ne pas l'employer pour un boss/donjon.
-Le script principal partagé/ROM restent inchangés. Il faut auditer les
-écrits avant toute utilisation de ce point ; pas encore de réussite.
+Copie03 corrige le franchissement extérieur : marche vers le dernier
+point intérieur16/240/160,puis appuie vers le bord pour déclencher la
+transition source (<16/>=241/<16/>=161),au lieu d'attendre un chemin
+BFS au-delà de la collision. Test en cours,aucune réussite encore publiée.
+Protection d'approche autorisée uniquement hurt,retirée près des vraies
+pièces. La copie du guard est restreinte au préfixe D8 extérieur et cet
+itinéraire ; ne pas l'employer pour un boss. Script partagé/ROM inchangés.
+Auditer chaque écrit et rejouer froid RAM/PNG avant usage du point.
 
-Un autre défaut du pilote de collecte est trouvé : il cherche des sorties
-aux coordonnées centrales des portes de donjon sur des cartes extérieures.
-Copie privée corrigée préparée, non lancée, dans
-`validation/palc0046-d9-guarded-funding02` (3 scripts) : accepte toute
-la limite extérieure selon la direction. N'écrase pas les scripts du05
-vivant. Après terminaison réelle du05, s'il échoue, lancer cette copie
-avec un nouveau nom de trial06 et le même reste de commande. Les
-réplications précédentes des scripts n'importent aucun état primaire.
-Si fonds>=10 : replay froid obligatoire RAM/PNG, puis reprendre le vrai
-passage1A→3C. Adapter pilote et audit D9 au nouveau préfixe ; ne pas
-redemander B5. Ne jamais utiliser les états ou ressources V318/NTSC.
+Les scripts/dossiers privés01/02/03 sont figés quand leur essai est lancé.
+Ne pas les modifier en place pendant un processus vivant,ne pas relancer
+un trial existant. Le03/04 ordinaires sont terminés sans pièces ;04 est
+mort,aucun état de mort n'est utilisé.01/02 ont été archivés en diagnostic
+non concluant,nettoyage des seuls doublons générés après SHA/gzip relus.
+Si fonds>=10 : replay froid obligatoire, puis reprendre passage1A→3C.
+Adapter pilote/audit D9 au nouveau préfixe ; ne pas redemander B5,ne pas
+importer les états/ressources des campagnes NTSC ou V318. Les suivis D9
+antérieurs sont morts ; vérifier/lancer un nouveau suivi seulement après
+réussite et preuve de la collecte. Ce besoin de fonds n'est pas un blocage
+externe et ne justifie pas de marquer le but bloqué ou terminé.
 
 Fin D9 préparée mais non lancée : `prepare_pal_d9_finish.py` exécuté,
 `tools/continue_d9_finish_palc0046.py` généré. Exige futur audit du premier
