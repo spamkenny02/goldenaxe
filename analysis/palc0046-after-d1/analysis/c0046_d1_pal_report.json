@@ -1,0 +1,95 @@
+{
+  "passed": true,
+  "candidate": "c0046",
+  "region": "pal",
+  "rom_sha256": "9e747d38e0c6fb2d69b7c1aa8c2b296a61e8b6af41171d14e543ed9a6cb49cf5",
+  "stages": [
+    {
+      "trace": "validation\\c0046-campaign01\\isolated\\project\\validation\\natural-dungeon-combat\\md-pal-c46-d1-key01",
+      "frames": 5711,
+      "room": 485,
+      "health": 8,
+      "max_health": 24,
+      "keys": 1,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation\\c0046-campaign01\\isolated\\project\\validation\\natural-dungeon-combat\\md-pal-c46-d1-ready01",
+      "frames": 14652,
+      "room": 389,
+      "health": 16,
+      "max_health": 24,
+      "keys": 0,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation\\c0046-campaign01\\isolated\\project\\validation\\natural-dungeon-combat\\md-pal-c46-d1-key2-01",
+      "frames": 15687,
+      "room": 403,
+      "health": 12,
+      "max_health": 24,
+      "keys": 1,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation\\c0046-campaign01\\isolated\\project\\validation\\natural-dungeon-combat\\md-pal-c46-d1-ready02",
+      "frames": 16247,
+      "room": 389,
+      "health": 12,
+      "max_health": 24,
+      "keys": 1,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation\\c0046-campaign01\\isolated\\project\\validation\\natural-dungeon-combat\\md-auto-c46-pal-d1-release02",
+      "frames": 16248,
+      "room": 389,
+      "health": 12,
+      "max_health": 24,
+      "keys": 1,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation\\c0046-campaign01\\isolated\\project\\validation\\natural-dungeon-combat\\md-pal-c46-d1-boss02",
+      "frames": 17478,
+      "room": 373,
+      "health": 32,
+      "max_health": 32,
+      "keys": 0,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation\\c0046-campaign01\\isolated\\project\\validation\\natural-dungeon-combat\\md-pal-c46-d1-exit02",
+      "frames": 19596,
+      "room": 185,
+      "health": 32,
+      "max_health": 32,
+      "keys": 0,
+      "whole_ram_png_exact": true
+    }
+  ],
+  "fights": [
+    {
+      "first_combat": {
+        "frame": 16449,
+        "room": 373,
+        "game": 12,
+        "health": 12,
+        "hurt": 0,
+        "actors": [
+          {
+            "slot": 0,
+            "kind": 104,
+            "hp": 12
+          }
+        ]
+      },
+      "release_frame": 16248,
+      "prediction_windows": 19
+    }
+  ],
+  "actual_first_crystal_and_exterior": true,
+  "full_candidate_campaign_verified": false,
+  "scope": "Cold New Game with approach-only hurt-counter writes, removed before boss; no health, item, progression or SRAM imports. Fixed independent whole RAM/image replays.",
+  "archive_manifest": "analysis\\c0046-d1-pal\\manifest.json"
+}

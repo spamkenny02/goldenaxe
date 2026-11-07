@@ -33,6 +33,12 @@ les 124 motifs examinés par capture. Les différences de phase des quatre
 motifs animés des maisons restent séparées.
 [Retour d’inventaire c0047](analysis/c0047_inventory_report.json).
 
+La suite PAL atteint aussi D2 sur c0047 : hache récupérée, capacité portée
+à 40 PV par la fée et entrée normale du donjon à 29846 images. Le rejeu
+retrouve les 65536 octets de RAM et l’image finale de c0046.
+[Hache, fée et entrée D2 en PAL](analysis/palc0046_after_d1_report.json)
+· [Rejeu c0047](analysis/c0047_pal_after_d1_report.json).
+
 Le quatrième boss est vaincu après retrait de la protection, avec ses 30 PV source.
 Le retour sur c0047 concorde sur les 65536 octets de RAM et l’image finale à
 107105 images, avec 62/64 PV. [Parcours du quatrième donjon](analysis/c0046_d4_report.json)
@@ -225,7 +231,7 @@ sa propre campagne. Un numéro de version ne constitue pas un statut de finale.
 | V318 NTSC | Neuf cristaux, palais, Death Adder, générique et retour à l’intro ; 393707 états comparés au parcours V317 | Ce rejeu ne prouve pas une identité globale avec la SMS. |
 | V318 PAL | Nouvelle partie jusqu’à la victoire et au générique, avec rejeux indépendants RAM/image | La comparaison audiovisuelle source reste ciblée. |
 | c0047 NTSC | Huit cristaux et retours, canoë, Feu, épée longue, bottes, cloche de glace, bateau, clé du voleur, achats et soin | Trajet vers le neuvième donjon en cours ; fin de campagne et sauvegarde à revalider sur cet aperçu. |
-| c0047 PAL | Premier cristal et retour extérieur | Les autres donjons restent à vérifier sur cet aperçu. |
+| c0047 PAL | Premier cristal et retour, hache, récompense de la fée et entrée D2 | Le deuxième cristal et les donjons suivants restent à vérifier sur cet aperçu. |
 
 Les contrôles V318 couvrent aussi l’intro et le titre, la saisie du nom,
 des bruitages de menu, six restaurations de décor après inventaire et les

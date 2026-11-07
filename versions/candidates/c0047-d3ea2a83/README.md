@@ -122,3 +122,12 @@ la phase des quatre motifs animés des maisons reste hors de cette égalité.
 Ces trajets suivent les commandes normales, sans import de RAM ou SRAM.
 
 [Audit des retours d’inventaire](../../../analysis/c0047_inventory_report.json).
+
+En PAL, la suite après le premier cristal est également rejouée jusqu’à
+29846 images : hache obtenue, vraie récompense de la fée (32→40 PV),
+puis entrée normale de D2. Les sept étapes sont vérifiées sur c0046 ;
+le rejeu c0047 concorde sur toute la RAM et l’image finale de l’entrée.
+Le deuxième cristal PAL reste à valider.
+
+[Parcours PAL](../../../analysis/palc0046_after_d1_report.json)
+· [Rejeu c0047](../../../analysis/c0047_pal_after_d1_report.json).

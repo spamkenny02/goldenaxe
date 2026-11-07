@@ -19,6 +19,29 @@ pièces et l’achat de Terre. Dernier point Terre : 81636, 48 PV, 12 pièces,
 Le premier donjon est aussi rejoué en PAL.
 La campagne complète de cet aperçu demeure ouverte.
 
+Suite PAL démarrée en parallèle du NTSC D9 : hache/fée/entrée D2 terminées,
+sept points d’un même rejeu froid, sans import de ressources/SRAM.
+Rapport analysis/palc0046_after_d1_report.json, archive palc0046-after-d1.
+Entrée29846,salle171,40/40PV,hache niveau1 ; fée32→40PV par dialogue normal.
+Rejeu c0047 PAL passé sur65536 octets RAM et PNG final : rapport
+analysis/c0047_pal_after_d1_report.json, archive c0047-pal-after-d1.
+Le pilote continue_after_d1_palc0046.py/session89302 est terminal0.
+prepare_pal_after_d1.py et prepare_pal_d2.py sont exécutés, ne pas répéter.
+
+PAL D2 est joué par tools/continue_d2_palc0046.py dans le projet isolé,
+session86870, PID3280 au lancement (vérifier le processus réel). Préfixes
+md-pal-palc0046 ; retrait nommé md-auto-palc0046-d2-release01, dont les
+core_options restentPAL. Sources : validation/palc0046-d2-sources ; lecteur
+palc0046-d2-cold-stream. Trois clés, antichambre et retrait37850 sont déjà
+rejoués ; boss63 à30PV source ensuite sans protection, pas16, puis cristal
+et sortieD6. Le contrôleur active les réveils/réentrées ordinaires qui ont
+résolu les ennemis isolés dans les anciens parcours, sans modifier la ROM.
+Audit préparé audit_pal_d2.py : attend le succès/fermeture du pilote et ses
+sept points, puis gèle analysis/palc0046-d2 et écrit palc0046_d2_report.json.
+Ensuite rejouer c0047 avec validation/replay_c0047_pal.py --report
+analysis/palc0046_d2_report.json --milestone d2. Aucun deuxième cristal PAL
+n’est annoncé par cette préparation. Aucun autre pilote ne prend ce parcours.
+
 Le démarrage c0047 est désormais vérifié : analysis/c0047_boot_report.json,
 archive analysis/c0047-boot. Deux boucles sans entrée (14000 images) dans
 chaque région, toutes identiques à V318 après normalisation du viewport.
@@ -194,7 +217,12 @@ Le ballon est maintenant audité et archivé : analysis/d9_balloon_c0046_report.
 archive c0046-d9-balloon, huit points RAM/PNG exacts. Récompense terminée
 à296942, salle19B,32PV/72PM,15pièces,une clé,huit cristaux. Les cœurs
 réels récupérés font passer8→32PV. Le pilote a lancé main-approach01
-vers contact1BD, avant le boss1AC/6C. Aucun neuvième cristal annoncé ici.
+vers contact1BD, avant le boss1AC/6C. Le boss principal est désormais vaincu :
+victoire306863, cristal et point final307014,104/104PV/72PM,une clé,
+neuf cristaux. Protection retirée303258, combat sans dégâts reçus,
+183 prédictions exactes et onzième point froid RAM/PNG passé. La sortie01
+est lancée sans protection ; attendre sa preuve et les audits de la suite97858
+avant d’annoncer la campagne D9 terminée ou son rejeu c0047.
 L’archive ballon est figée ; archive_d9_finish.py sait désormais revérifier
 une archive existante sans la réécrire. Il vérifie tous les objets/hashes,
 le même rapport et toutes les sources ; seul le journal de points du
