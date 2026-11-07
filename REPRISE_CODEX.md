@@ -67,7 +67,21 @@ Le vieux trajet A5 a déjà échoué avec une carte fidèle à la source ;
 il est évité en allant au don7D et au marchand94, sans argent injecté.
 Le don10 deB5 reste conditionnel aux fonds réellement observés (<40) ;
 avec43pièces il n'est pas demandé. Aucun boss D7 n'est encore validé.
-Audit D7 de préparation à créer ; puis retrait de protection avant
+Audit de préparation créé : `audit_pal_d7_preparation.py`, avec mode
+`--prefix-only` sans publication de rapport final. Cinq points ont passé :
+vrai don7D43→73 pièces, clé94 à60 (reste13), entrée186284 salle1DB,
+64/80PV,72PM,une clé. Pas de donB5 demandé. Sources figées conservées.
+Suivi23307 : `after_pal_d7_preparation.py --pid 33288` détient le handle
+du pilote, exige sortie0, audite la préparation complète puis rejoue
+c0047 avec le jalon explicite `d7-preparation` (pas de cristal7 annoncé).
+Ce suivi lance ensuite `tools/continue_d7_midboss_palc0046.py` dans le
+projet isolé. `prepare_pal_d7_midboss.py` est déjà exécuté ; ne pas répéter.
+Ce pilote vise retrait avant1B8, contact1B9, boss intermédiaire78 sans
+aide, puis réactivation de protection seulement après victoire pour
+l'approche du boss principal179. Futurs dossiers :
+`palc0046-d7-midboss-sources`, `palc0046-d7-midboss-cold-stream01`.
+Vérifier le suivi23307 avant tout lancement manuel pour éviter un doublon.
+La suite après préparation prévoit donc le retrait de protection avant
 l'intermédiaire, reprise d'approche après victoire, bateau16 et boss
 principal179/67. Les anciens pilotes PAL V318 proposent seulement les
 itinéraires ; ne jamais importer leurs états ou ressources.
