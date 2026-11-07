@@ -26,7 +26,7 @@ cette routine ; la cadence de jeu visée reste celle de la Master System.
 | Domaine | Contrôles passés | Périmètre restant |
 | --- | --- | --- |
 | NTSC | Nouvelle partie → neuf cristaux → ballon → palais → Hache d’or → Death Adder → générique complet → retour à l’intro | Fidélité globale SMS et console réelle |
-| PAL | Quatre cristaux et retours, hache, fée, huile, corde, Terre, canoë, Feu, épée longue, entrée D5 | D5 et suite de la campagne ; sauvegarde PAL |
+| PAL | Cinq cristaux et retours, hache, fée, huile, corde, Terre, canoë, Feu, épée longue, entrée D5 | D6 et suite de la campagne ; sauvegarde PAL |
 | Sauvegarde NTSC | Vraie écriture SRAM à neuf cristaux, puis Continue et déplacement sur cette même SRAM | Autres slots/refus et PAL sur cette version |
 | Démarrage | Deux boucles de 14000 images par région identiques à V318 après normalisation ; états audio et huit registres PSG comparés sur 6500 images | Écarts SMS résiduels de révélations/fondus et formes d’onde PCM |
 | Inventaire | Six retours normaux : extérieur et deux maisons, PAL/NTSC, décor statique restauré | Phase des quatre motifs animés des maisons séparée de l’égalité statique |
@@ -39,12 +39,15 @@ n’est importé. La reprise de sauvegarde importe uniquement la SRAM réellemen
 Le rejeu NTSC de 403488 images retrouve les 65536 octets de RAM et l’image
 finale du parcours c0046. Les étapes intermédiaires ont leurs propres
 preuves indépendantes. Ce contrôle ne compare pas chaque image émise à
-la SMS. Le départ PAL et les quatre retours sont aussi rejoués sur le binaire
-publié ; retour D4 à 95564 images, 54/64 PV et 48 PM.
+la SMS. Le départ PAL et les cinq retours sont aussi rejoués sur le binaire
+publié ; retour D5 à 137596 images, 56/72 PV et 72 PM. Le boss et ses
+huit satellites sont affrontés sans protection ; les vrais dons et
+l’achat d’une clé à 60 pièces sont conservés dans les preuves.
 
 - [Rapport initial V319](analysis/optimization_v0319_report.json)
 - [Campagne NTSC et fin](analysis/cold_palace_final_c0046_report.json) · [Rejeu sur le binaire publié](analysis/c0047_palace_final_auto_report.json)
 - [Vraie sauvegarde et Continue](analysis/c0047_real_save_report.json)
+- [Cinquième cristal et retour PAL](analysis/palc0046_d5_report.json) · [Rejeu publié](analysis/c0047_pal_d5_report.json)
 - [Feu, épée longue et entrée D5 PAL](analysis/palc0046_fire_sword_report.json) · [Rejeu publié](analysis/c0047_pal_fire_sword_report.json)
 - [Quatrième cristal PAL](analysis/palc0046_d4_report.json) · [Rejeu publié](analysis/c0047_pal_d4_report.json)
 - [Démarrage](analysis/c0047_boot_report.json) · [Retours d’inventaire](analysis/c0047_inventory_report.json)

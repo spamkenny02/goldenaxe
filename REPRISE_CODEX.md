@@ -30,34 +30,32 @@ entrée déjà prouvée ; les deux contrôleurs et les dix étapes sont archivé
 Tous les pilotes NTSC et PAL jusqu'à cette entrée D5 sont terminés.
 Ne pas relancer les anciens handles mentionnés dans l'historique.
 
-Seul parcours de jeu lancé actuellement : reprise PAL D5, session36557,
-PID43496 au lancement, `python -u tools/continue_d5_palc0046_resume01.py`,
-cwd `validation/c0046-campaign01/isolated/project`.
-Vérifier le handle/processus réel avant toute reprise ; ne pas redémarrer
-sur simple délai d'observation. Le premier pilote96471/PID39348 et son
-suivi38625 sont terminés1 : après12 points prouvés, le pilote activait
-le mécanisme162 mais reprenait le téléporteur vers153. Le vieux résultat
-contact01 est conservé explicitement comme échec, sans preuve canonique.
-Sources initiales `palc0046-d5-sources`, lecteur01 fermé/passé12 étapes.
+PAL D5 terminé et audité : rapport `palc0046_d5_report.json`, archive
+`palc0046-d5`. Dix-huit points froids sur lecteurs12+6. Le détour initial
+contact01 vers153 est conservé en échec ; reprise depuis warp131421,
+contact02 avec évitement du portail162, retrait133909 avant salle163,
+premier combat134035 héros64PV/hurt0 et boss65 à72PV source. Huit
+satellites observés,56 prédictions RAM entière, cristal136524, retour
+extérieur137596 salle49,56/72PV,72PM. Aucune nouvelle aide après retrait.
+Le rejeu c0047/V319 passe à137596 :65536 octets RAM et PNG exacts,
+rapport `c0047_pal_d5_report.json`, archive `c0047-pal-d5`.
+Pilotes96471 initial/38625 suivi terminal1 ; reprise36557 et suivi96285
+terminés0. Ne pas relancer ces anciens handles.
 
-`resume_pal_d5.py` est exécuté ; ne pas répéter dans ce dossier. Il reprend
-le vrai point warp131421, vérifie les12 étapes puis évite le portail162
-par de simples directions. Le contact02 passe, point132444, salle172,
-64PV/72PM/une clé. Treize étapes au total passent l'audit en lecture seule.
-Sources reprises `palc0046-d5-resumed-sources01`, lecteur02 six points visés.
-Les prochaines sorties approche/retrait/boss/retour gardent leurs noms01,
-encore inexistants à la reprise. Le générateur de futurs parcours neufs
-est corrigé ; le pilote initial figé demeure inchangé.
-
-Suivi après fermeture de la reprise : session96285,
-`after_pal_d5.py --pid43496` (argument CLI réel : `--pid 43496`).
-Ce suivi détient un handle du processus, exige sortie0, puis exécute
-l'audit combiné12+6 et le rejeu c0047 PAL D5. Ne pas lancer en double.
-L'audit conserve l'échec et déclare deux lecteurs froids et la récupération.
-D6 est préparé mais pas lancé ; son contrôleur exige le rapport final D5.
-Son retour reporte le puzzle facultatif187 qui bloquait l'ancien pilote,
-sans modifier les règles de la ROM. La suite complète et le boss D5
-ne sont pas encore déclarés validés à ce point de reprise.
+Seul parcours de jeu lancé : PAL D6, session81839/PID48408 au lancement,
+`python -u tools/continue_d6_palc0046.py`, cwd
+`validation/c0046-campaign01/isolated/project`.
+`prepare_pal_d6.py` est exécuté, ne pas le répéter dans ce dossier.
+Le premier lancement a refusé avant émulation : mauvais lecteur D5
+(01 au lieu du02 contenant la sortie). Diagnostic conservé dans
+`palc0046-d6-sources/before-emulation-guard.json` ; ce dossier ne contient
+aucune preuve de jeu. Le contrôleur corrigé démarre sur le vrai D5 validé,
+sources figées dans `palc0046-d6-sources02`, lecteur
+`palc0046-d6-cold-stream01`. Vise sélection normale de la hache, entrée8B,
+15 recettes D6, Clochette10, retrait avant115/boss64 à60PV, sixième
+cristal et sortie8B. Le retour reporte le puzzle facultatif187, cause d'un
+blocage historique du pilote, sans changer la ROM. Audit D6 à préparer.
+Vérifier le handle/processus réel avant reprise ; un délai n'est pas un arrêt.
 Le projet isolé conserve c0046/9e747d38 ; ne pas remplacer sa ROM ou ses
 symboles par ceux de la racine pendant le parcours. Les sources racine
 et privées ont été contrôlées sans lien physique partagé avant promotion.
@@ -68,7 +66,7 @@ dans `c0047-clean-build-zero-padding` comme diagnostic échoué explicite.
 Les doublons de compilation sont retirés uniquement après compression
 sans perte et relecture par SHA. Les ROMs historiques sont conservées.
 
-Restent PAL D5 à fin et sauvegarde, écarts de révélations/fondus et phase
+Restent PAL D6 à fin et sauvegarde, écarts de révélations/fondus et phase
 R/IRQ source, fidélité audio PCM globale et vérification console réelle.
 Le portage complet n'est pas déclaré terminé. Lire README pour les limites.
 
