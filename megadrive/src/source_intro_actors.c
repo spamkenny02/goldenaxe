@@ -132,3 +132,27 @@ u8 source_intro_actors_third(SourceClock *clock,SourceIrqContext *context,void *
     if(!lightning(clock,context,data)) return 0;
     return source_clock_checkpoint(clock,source_irq_interrupt,context);
 }
+
+u8 source_intro_actors_initialize(SourceClock *clock,SourceIrqContext *context,
+                                  const SourceIntroActorData *data,u16 template_address,u8 entry_f51)
+{
+    u16 n,actor=0xc300,cursor=template_address;u8 value;
+    static const u8 offsets[5]={0x13,0x0e,0x0c,0x08,0x09};
+    if(!valid(clock,context,data)) return 0;
+    if(entry_f51) {S(10,1);cursor=0x0f95;}
+    S(11,1);S(4,1);S(13,1);PUT(0xdce2,0);
+    S(10,1);S(10,1);S(10,1);S(7,1);PUT(0xc300,0);
+    for(n=1;n<768;n++) {S(n==767?16:21,2);PUT(0xc300+n,GET(0xc2ff+n));}
+    S(10,1);S(14,2);
+    for(n=0;n<=16;n++,actor+=48)
+    {
+        S(7,1);READ(cursor,value);S(4,1);S(value?5:11,1);
+        if(!value) return source_clock_checkpoint(clock,source_irq_interrupt,context);
+        if(n==16) return 0;
+        S(19,2);PUT(actor,1);S(19,2);PUT(actor+0x11,value);
+        for(u16 field=0;field<5;field++)
+        {S(6,1);cursor++;S(7,1);READ(cursor,value);S(19,2);PUT(actor+offsets[field],value);}
+        S(6,1);cursor++;S(10,1);S(15,2);S(12,1);
+    }
+    return 0;
+}

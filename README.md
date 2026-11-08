@@ -117,8 +117,11 @@ compilées 68000 dans les deux régions. Les [callbacks des personnages animés]
 passent également 14704 vecteurs source et 29408 exécutions compilées 68000,
 avec les listes de sprites et les palettes. Le banc de la troisième scène
 fournit explicitement le statut VDP capturé à chaque IRQ ; sa production
-à partir des sprites vivants reste à intégrer. L’initialisation des acteurs,
-le dévoilement de l’image et la publication vidéo/son restent à traiter.
+à partir des sprites vivants reste à intégrer. L’[initialisation des acteurs F51/F54](analysis/v319_intro_init_report.json)
+reproduit aussi les 12 vecteurs d’entrée naturels capturés, puis leurs
+24 exécutions compilées : remise à zéro, neuf/six acteurs et temps source
+identiques. Ces appels ne traversent aucune IRQ ; ce cas reste à couvrir.
+Le dévoilement de l’image et la publication vidéo/son restent à traiter.
 Aucune de ces nouvelles routines ne pilote encore l’intro publiée.
 La recompilation complète conserve exactement la V319.
 

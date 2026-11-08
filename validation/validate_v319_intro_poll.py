@@ -23,7 +23,9 @@ p.add_argument('--fire', action='store_true')
 p.add_argument('--observer-revision',type=int,default=1)
 p.add_argument('--actors',choices=['second','third'])
 p.add_argument('--irq-status',action='store_true')
+p.add_argument('--init',action='store_true')
 a = p.parse_args()
+assert not a.init or (a.actors and a.profile=='callback')
 assert not(a.fire and a.actors)
 assert not a.irq_status or a.actors
 assert a.out_name.startswith('v319-native-intro-poll') and '/' not in a.out_name and '\\' not in a.out_name
@@ -103,6 +105,12 @@ if a.actors:
  for(u16 n=0;n<768;n++) ram[416+n]=actor_full_ram[0x300+n];
  out[0]=clock.raster;''')
     (out/'wrapper.c').write_text(wrapper)
+if a.init:
+    wrapper=wrapper.replace('SourceIntroWaitOutput result;', 'SourceIntroWaitOutput result={0};')
+    wrapper=wrapper.replace('source_intro_wait_callback(&clock,&context,source_intro_actors_'+a.actors+',&actor_data,&result)',
+        'source_intro_actors_initialize(&clock,&context,&actor_data,(u16)phase[4],'+('1' if a.actors=='second' else '0')+')')
+    # phase[4] carries captured source HL; output poll count stays zero for initialization.
+    (out/'wrapper.c').write_text(wrapper)
 if a.irq_status:
     assert wrapper.count('context.full_ram=actor_full_ram;')==1
     wrapper=wrapper.replace('context.full_ram=actor_full_ram;',
@@ -132,6 +140,7 @@ native.restype = c.c_uint8
 build_folder = 'v319-intro-poll-observer01' if a.profile == 'poll' else 'v319-intro-empty-' + a.profile + '-observer01'
 if a.fire: build_folder=build_folder.replace('empty','fire')
 if a.actors:build_folder=build_folder.replace('empty','actors_'+a.actors)
+if a.init:build_folder=build_folder.replace('intro-actors_','intro-init_actors_')
 build_folder=build_folder[:-2]+f'{a.observer_revision:02}'
 build = json.loads((root / 'validation' / build_folder / 'report.json').read_bytes())
 core = Path(build['core']); assert sha(core.read_bytes()) == build['core_sha256']
@@ -169,13 +178,14 @@ for region in ('ntsc', 'pal'):
         refresh, pc = struct.unpack_from('<2I', first, 64); final_refresh, final_pc = struct.unpack_from('<2I', last, 64)
         if a.profile == 'poll': assert (pc, final_pc) == (0xf21, 0xf2b)
         else:
-            assert pc == (0xf09 if a.profile == 'callback' else 0xf1e)
+            assert pc == ((0xf51 if a.actors=='second' else 0xf54) if a.init else 0xf09 if a.profile == 'callback' else 0xf1e)
+            if a.init:phase=tuple(phase[i] if i!=4 else struct.unpack_from('<I',record,snapshot*2)[0] for i in range(12))
             assert final_pc == struct.unpack_from('<I', record, snapshot*2+4)[0]
         before=first[72:408]+(first[808:snapshot] if a.fire or a.actors else b'')
         expected_state=last[72:408]+(last[808:snapshot] if a.fire or a.actors else b'')
         if a.irq_status:
             statuses=struct.unpack_from('<9I',record,snapshot*2+8)
-            assert 0<statuses[0]<=8 and all(v<=255 for v in statuses[1:])
+            assert (0 if a.init else 1)<=statuses[0]<=8 and all(v<=255 for v in statuses[1:])
             before+=bytes(statuses);expected_state+=bytes(statuses)
         state = (c.c_uint8 * len(before)).from_buffer_copy(before); audio = (c.c_uint8 * 400).from_buffer_copy(first[408:808])
         result = (c.c_uint32 * 18)()
@@ -185,7 +195,7 @@ for region in ('ntsc', 'pal'):
         delta = (end[0] - end[2] + 0x80000000) % 0x100000000 - 0x80000000
         raster = (end[1] * 3420 + delta) % (end[3] * 3420)
         assert (result[0], result[1], result[4]*15, result[7]) == (raster, wall, irq, final_refresh), (region, n, list(result), raster, wall, irq, final_refresh)
-        assert result[12] == struct.unpack_from('<I', record, snapshot*2)[0]
+        assert result[12] == (0 if a.init else struct.unpack_from('<I', record, snapshot*2)[0])
         if a.profile == 'poll':
             assert result[2] == 30*result[13] + 44*result[14] + 39
             assert result[3] == 3*result[13] + 5*result[14] + 5
@@ -200,17 +210,20 @@ for region in ('ntsc', 'pal'):
         cases_crossing_irq=sum(bool(case['expected'][6]) for case in cases),
         observer_exposed_psg_exact_frames=14000, source_records_sha256=sha(raw),
         maximum_polls=max(case['expected'][12] for case in cases))
+    if a.init:row['source_template_addresses']=sorted({case['phase'][4] for case in cases})
     results.append(row); print(json.dumps(row), flush=True)
 report = dict(passed=True, diagnostic_only=True, profile=a.profile, fire=a.fire, actors=a.actors,
-    irq_status=a.irq_status,production_rom_changed=False, cases=results,
+    irq_status=a.irq_status,init=a.init,production_rom_changed=False, cases=results,
     core_sha256=sha(core.read_bytes()), source_sha256=sha(image),
     native_sources={name: sha((root / 'megadrive/src' / (name + '.c')).read_bytes()) for name in modules},
-    verified=['Original natural entry/return wall time, raster, polls, R, IFF/EI/pending,336 IRQ RAM and400 reader bytes.'+
+    verified=['Original natural entry/return wall time, raster, '+('initial HL, ' if a.init else 'polls, ')+
+              'R, IFF/EI/pending,336 IRQ RAM and400 reader bytes.'+
               (' Fire palette/counter/mapper/callback snapshots also compared.' if a.fire else '')+
               (' Actor768-byte records and palette/counter/mapper/callback snapshots also compared.' if a.actors else ''),
               'Both regions,14000 no-input cold source frames per region; observer PSG state unchanged.'],
     limits=['Host native semantic helper; compiled68000 timing and physical MD publication not checked here.',
-            ('Selected original actor callback profile; captured VDP status is explicit diagnostic IRQ input where enabled.' if a.actors else
+            ('Natural actor initialization only; these vectors do not exercise IRQ crossing.' if a.init else
+             'Selected original actor callback profile; captured VDP status is explicit diagnostic IRQ input where enabled.' if a.actors else
              'Selected profile with original F37 fire callback; no actors or skip inputs.' if a.fire else
              'Selected entry profile only; callback/window profiles use original F36 empty callback, not fire/actors.'),
             'No production clock integration, full-game or PCM certification.'])

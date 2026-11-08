@@ -6,6 +6,37 @@ le README et les rapports cités.
 
 ## Suivi courant — V319, 8 novembre 2026
 
+DERNIÈRE ÉTAPE : initialisation F51/F54 ajoutée à source_intro_actors.c/.h,
+rapport `analysis/v319_intro_init_report.json`, archive `analysis/v319-intro-init`.
+API source_intro_actors_initialize(clock, context, data, template_address,
+entry_f51) inclut le RET et le checkpoint préfetch. F51 charge F95 ; F54
+utilise le HL source fourni. DCE2=0, 768 octets C300..C5FF effacés à chaque
+frontière LDIR, templates six octets vers records de48, neuf/six acteurs.
+SourceClock/instructions natifs, aucune interprétation Z80.
+
+Deux entrées F51 et quatre F54 par région sur14000 frames naturelles :
+12 vecteurs d’entrée (F54 inclut aussi le suffixe commun de F51), puis
+24 exécutions 68000 compilées dans les deux régions, zéro erreur.
+1193 octets suivis +400 reader, durée/raster/R/latches identiques.
+Ces appels naturels ne traversent AUCUNE IRQ : ne pas étendre cette preuve
+aux initialisations interrompues ou au skip. Le harness accepte --init
+avec --actors second|third --profile callback. phase[4] transporte alors
+HL source, pas vc_max ; output polls reste0. Capture poll brute contient
+HL dans ce profil uniquement. F51 ignore ce HL et charge F95.
+
+Incidents retenus : assertion diagnostic IRQ>0 corrigée pour ce profil ;
+checkpoint final initialement absent rejeté par delta R=1 malgré durée
+exacte. Versions provisoires archivées. Derniers profils second05/third04,
+compilation des deux kernels terminal0 ; rebuild02 terminal0, source exacte
+et ROM byte-identique V319 d3ea2a83/DA29. Aucun nouveau numéro public.
+Archive relue, 57 802 240 octets générés supprimés, 43 840 581 nets libérés.
+Ne pas relancer les handles18561/62071/98844/56905, tous terminaux.
+
+Prochaine étape : E8B..E9D dévoilement et composition F1E, puis plan mémoire
+compact, statut VDP depuis les sprites vivants et deadlines vidéo/PSG.
+Ces helpers ne sont toujours pas sélectionnés dans l’intro publiée.
+Les sections suivantes sont les étapes précédentes, pas l’état courant.
+
 DERNIER CODE NATIF : `source_intro_actors.h/.c`, rapport
 `analysis/v319_intro_actors_report.json`, archive `analysis/v319-intro-actors`.
 Callbacks 1055/104A, scan 1061, activation/poses 108B, lookup RST08,
