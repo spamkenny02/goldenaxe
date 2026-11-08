@@ -9066,12 +9066,16 @@
     "bytes": 2097152,
     "archived_utc": "2026-11-08T21:51:32.619241+00:00",
     "rom": "v0320-9e5b0abe/gaw-megadrive-v0320.bin",
-    "notes": "Générique : masque natif 68000 de la bordure basse MD, sans modifier les 192 lignes SMS ni le code de jeu avant le générique. 7424 états exacts par région et parcours complet NTSC jusqu'au retour à l'introduction.",
+    "notes": "Générique : masque natif 68000 de la bordure basse MD. 7424 états exacts PAL/NTSC, parcours complets enregistrés NTSC et PAL jusqu'au retour intro, puis nouvelle partie après générique testée dans les deux régions.",
     "validation": "development_targeted_checks",
     "reports": [
       {
         "file": "v320_credits_report.json",
         "sha256": "9716090e5091b772098bdfbb05d62575a6255c919e0c1365180a8bfcee9ae4a7"
+      },
+      {
+        "file": "v320_followup_tests_report.json",
+        "sha256": "8ca426e56f6400611040718e6b0ba5602c1a81e75c2e5fab0588c32399b63ede"
       }
     ],
     "development": true

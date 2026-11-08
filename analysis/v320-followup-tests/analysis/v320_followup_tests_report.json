@@ -1,0 +1,107 @@
+{
+  "passed": true,
+  "version": 320,
+  "md_sha256": "9e5b0abed80678ce864a0bb796c17e97047d1d34e5227a5275bf9336129ceaff",
+  "rom_changed": false,
+  "pal_campaign": {
+    "region": "pal",
+    "passed": true,
+    "md_sha256": "9e5b0abed80678ce864a0bb796c17e97047d1d34e5227a5275bf9336129ceaff",
+    "frames": 382208,
+    "events": {
+      "credits_started": 374655,
+      "credits_finished": 382078,
+      "returned_to_intro": 382108
+    },
+    "credit_states": 7424,
+    "borders_black_all_states": true,
+    "final": {
+      "game": 0,
+      "room": 332,
+      "audio_error": 0,
+      "crystals": [
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128
+      ]
+    },
+    "approach_guard_writes": 196493,
+    "boss_assistance": false,
+    "sram_imports": 0,
+    "progression_imports": 0,
+    "recording": "validation\\c0046-campaign01\\isolated\\project\\validation\\natural-dungeon-combat\\md-auto-palc0046-palace-ending01",
+    "limits": [
+      "Recorded full campaign from cold boot; original authorized approach guard rebased to current hero_hurt address and removed before bosses. Not an unassisted campaign or physical hardware/PCM certificate."
+    ]
+  },
+  "pal_fps": 49.7014591857706,
+  "pal_final_picture_exact_to_v319_reference": true,
+  "postcredits_new_game": [
+    {
+      "region": "ntsc",
+      "credits_states": 7424,
+      "credits_borders_black": true,
+      "normal_acknowledgment": 12800,
+      "new_game_playable": 15255,
+      "final": {
+        "game": 12,
+        "room": 164,
+        "health": 24,
+        "crystals": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "audio_error": 0
+      },
+      "bottom_bg_b_restored_to_zero": true,
+      "window_mask_disabled": true,
+      "post_ending_ram_writes": 0
+    },
+    {
+      "region": "pal",
+      "credits_states": 7424,
+      "credits_borders_black": true,
+      "normal_acknowledgment": 12800,
+      "new_game_playable": 15249,
+      "final": {
+        "game": 12,
+        "room": 164,
+        "health": 4,
+        "crystals": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "audio_error": 0
+      },
+      "bottom_bg_b_restored_to_zero": true,
+      "window_mask_disabled": true,
+      "post_ending_ram_writes": 0
+    }
+  ],
+  "limits": [
+    "Full recorded PAL campaign uses authorized approach-only protection,removed before bosses; no progression/save imports.",
+    "New-game-after-credits tests use a controlled terminal-boss fixture before the complete production ending; no RAM writes after setup.",
+    "No exhaustive side-route,physical hardware or exact PCM fidelity certificate."
+  ],
+  "archive_manifest": "analysis/v320-followup-tests/manifest.json"
+}

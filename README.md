@@ -22,6 +22,13 @@ du binaire de jeu garde sa disposition et ses instructions.
 [Validation PAL/NTSC et parcours complet](analysis/v320_credits_report.json) ·
 [Comparaison visuelle](analysis/v320-credits-preview/before-after.png).
 
+Les parcours enregistrés complets **NTSC et PAL** atteignent le retour à
+l’introduction sur la V320, avec protection sur les approches retirée avant les
+boss. Le retour du générique vers une nouvelle partie est également testé dans
+les deux régions : progression réinitialisée, jeu contrôlable et masque retiré.
+[Contrôles supplémentaires V320](analysis/v320_followup_tests_report.json).
+
+
 Pour reconstruire cette correction à partir de la V319 auditée et de son code
 assembleur versionné, depuis la racine du dépôt :
 `python tools/build_credits_border_overlay.py --out validation/credits-build-local`.

@@ -6,6 +6,16 @@ le README et les rapports cités.
 
 ## Suivi courant — V320, 8 novembre 2026
 
+DERNIERS CONTRÔLES V320 : `analysis/v320_followup_tests_report.json`,
+archive `analysis/v320-followup-tests/manifest.json`.
+PAL382208imagesdepuisNewGame :9cristaux,DeathAdder,7424étatscredits bordures
+noires,retourintro382108,imagefinaleidentiqueàréférenceV319. Approcheguard196493
+écritures autorisées,retiréeavantboss ;aucunimportSRAM/progression.
+Aprèsfixturemortboss,finproduction→acknormal→intro→nouvellepartie enNTSC/PAL.
+Jeu12,cristauxàzéro,hérosvivant,masqueWindowdésactivé,BG_B26/27zéro.
+ROM320 inchangée/9e5b0abe…/B0A2 ;pasdeV321pourcesseulstests.
+Cescontrôles ne clôturentpasPCM/matériel/toutesroutes ni compositionCPUexpérimentale.
+
 DERNIÈRE ÉTAPE : correction bordure du générique, V320.
 `analysis/v320_credits_report.json`, archive `analysis/v320-credits/manifest.json`.
 Source : `megadrive/overlays/credits_border.s` ; build reproductible :
