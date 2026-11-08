@@ -54,7 +54,7 @@ expected_reads = sum(case['expected'][12] for case in cases)
 lines = ['static const u8 low[32768]=' + array(image[:32768]) + ';',
          'static const u8 bank[16384]=' + array(image[0x18000:0x1c000]) + ';',
          f'#define RAM_BYTES {ram_bytes}',
-         'typedef struct {u32 phase[12];u8 refresh,ram[RAM_BYTES],audio[400],after_ram[RAM_BYTES],after_audio[400];u32 expected[18];'+(f"u32 events[{len(cases[0]['events'])}];" if reveal else '')+'} PollCase;',
+         'typedef struct {u32 phase[12];u8 refresh,ram[RAM_BYTES],audio[400],after_ram[RAM_BYTES],after_audio[400];u32 expected[18];'+(f"u32 events[{max(len(c['events']) for c in cases)}];" if reveal else '')+'} PollCase;',
          'static const PollCase cases[]={']
 for case in cases:
     lines.append('{' + ','.join([array(case['phase']), str(case['refresh']), array(case['input_ram']),
@@ -90,7 +90,7 @@ if reveal:
     main=(src/'main.c').read_text().replace('int main(bool hard_reset)',
         'void configure_reveal_events(const u32 *,u16);\nint main(bool hard_reset)')
     main=main.replace('if(!poll_case(entry->phase',
-        f"configure_reveal_events(entry->events,{len(cases[0]['events'])//2});\n  if(!poll_case(entry->phase")
+        "configure_reveal_events(entry->events,(u16)entry->expected[12]);\n  if(!poll_case(entry->phase")
     (src/'main.c').write_text(main)
 build_env=dict(os.environ)
 for key in ('TMPDIR','TMP','TEMP'):build_env[key]='.'

@@ -6,6 +6,54 @@ le README et les rapports cités.
 
 ## Suivi courant — V319, 8 novembre 2026
 
+DERNIÈRE ÉTAPE : oracle de skip composé, rapport
+`analysis/v319_intro_skip_report.json`, archive `analysis/v319-intro-skip`.
+Aucun changement du code public natif : la branche skip déjà présente dans
+source_intro_reveal_sequence est maintenant confrontée à l’original.
+84 scénarios normaux de manette :2 boutons libretro0/8,3 callbacks vivants
+F36/F37/1055,7 seuils de progression,2 régions.84 sorties D0B après0..6
+passes. Chaque essai observé rejoué dans le core PSG source indépendant,
+mêmes appuis sur les mêmes frames ;154280 frames d’états PSG identiques.
+Aucune écriture RAM/importSRAM source. Ce n’est pas une comparaison PCM.
+
+Entrée E79, sortie préfetch EA4 ou D0B. Scope ne comprend PAS LD SP/RET D0B
+ni le nettoyage/affichage titre. Joy source capturé après IN DC au01BC,
+associé à l’entrée IRQ0137 correspondante. Audio-only IRQ ne lit pas joy.
+Le diagnostic lie ces entrées joy/statut à chaque IRQ native, sans replay
+de frames dans la production. Tous1321 octets suivis+400reader,clock/R/
+latches et les OUT précédant la sortie correspondent à l’original.
+
+88 vecteurs conservés :42 skips+2 préfixes complets par région. Déduplication
+retire seulement les origines absolues master/IRQ du KEY ; conserve les
+records source représentatifs et les durées mesurées inchangés. Les84
+invocations originales par région sont archivées aussi (work skip02).
+Work finalskip03 :1963008 OUT source,22 kernels de4 cas,176 exécutions
+68000 et3926016 comparaisons OUT, toutes passent. Fin script affiche88
+(correction du texte hérité14, les compteurs structurés étaient déjà88).
+
+Builder/validator --profile callback --skip ; implique --sequence/--reveal.
+Capture helper capture_v319_intro_skip.py pilote les boutons via getters
+read-only, puis rejoue dans genesis_plus_gx_v319_psg_writes_libretro.dll
+SHA épinglé. --capture-work réutilise captures terminales après vérification
+SHA des records/PSG et résultats du rejeu. Events variables : kernel utilise
+le maximum de longueur du lot, configure le compte réel par cas, y compris0.
+Snapshot1664, stride446224 ; events à snapshot*2+524 ; entréeRAM1192,
+statut count+64 bytes jusqu’à1256,64 joybytes1257..1320. Output[16]skip.
+
+Tous handles6867/12545/15017/14811 terminaux0. Archive relue :593346062
+bytes générés supprimés,443608615 nets libérés. Ancien skip01 a seulement
+échoué sur le nom du rapport build référence (report vs build-report),
+aucune capture acceptée. La prose héritée no-input de skip02 est corrigée
+avant gel, résultats numériques/captures inchangés. Public V319 d3ea2a83
+inchangé ; aucun rebuild de jeu nécessaire pour ces seuls diagnostics.
+
+Prochaine étape : setup E50..E75 (réutiliser source_pattern_decode pour032A),
+fonctions EA5/EFA/0E2B et0BD3/7357 si nécessaire ; puis plan mémoire et statut
+VDP des sprites vivants avant intégration/publication MD avec deadlines.
+D0B ne fait que LD SP,(C02A)/RET ; suivre le vrai appelant pour son nettoyage.
+Les nouveaux helpers ne pilotent toujours pas l’intro publiée.
+Les paragraphes suivants décrivent les étapes précédentes.
+
 DERNIÈRE ÉTAPE : source_intro_reveal_sequence dans source_intro_reveal.c/.h,
 rapport `analysis/v319_intro_sequence_report.json`, archive
 `analysis/v319-intro-sequence`. Composition E79..EA2, sortie EA4 préfetch

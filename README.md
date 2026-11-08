@@ -129,8 +129,13 @@ boucles sans interruption préserve ces résultats. La [composition complète E7
 passe maintenant aussi : 14 séquences naturelles SMS, avec leurs attentes,
 callbacks actifs et 40 IRQ par séquence, puis 28 exécutions compilées.
 La boucle comporte huit passages, dont un dernier au masque zéro.
-Le démarrage de la séquence, le skip et la publication vidéo/son restent
-à relier au jeu ; les preuves ci-dessus portent sur les routines sémantiques.
+La [sortie anticipée pendant le dévoilement](analysis/v319_intro_skip_report.json)
+passe également 84 scénarios de manette (deux boutons, trois callbacks,
+sept étapes, PAL/NTSC), avec rejeu indépendant des états audio source.
+Les 88 vecteurs conservés, préfixes complets compris, passent 176 exécutions
+68000. Cette preuve s’arrête à l’entrée D0B, avant le retour à l’écran titre.
+Le démarrage de la séquence et la publication vidéo/son restent à relier
+au jeu ; ces preuves portent sur les routines sémantiques.
 Aucune de ces nouvelles routines ne pilote encore l’intro publiée.
 La recompilation complète conserve exactement la V319.
 

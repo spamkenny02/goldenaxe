@@ -26,7 +26,10 @@ p.add_argument('--irq-status',action='store_true')
 p.add_argument('--init',action='store_true')
 p.add_argument('--reveal',action='store_true')
 p.add_argument('--sequence',action='store_true')
+p.add_argument('--skip',action='store_true')
+p.add_argument('--capture-work')
 a = p.parse_args()
+if a.skip:a.sequence=True
 if a.sequence:a.reveal=True
 if a.reveal:
  assert not(a.actors or a.fire or a.init) and a.profile=='callback'
@@ -180,6 +183,14 @@ if a.sequence:
     wrapper=wrapper.replace('irq_status_count=ram[1184]','irq_status_count=ram[1192]')
     wrapper=wrapper.replace('n<8;n++) irq_status_values[n]=ram[1185+n]', 'n<64;n++) irq_status_values[n]=ram[1193+n]')
     (out/'wrapper.c').write_text(wrapper)
+if a.skip:
+    wrapper=wrapper.replace('irq_status_values[64];','irq_status_values[64],irq_joy_values[64];')
+    wrapper=wrapper.replace('irq->ram[0x1b]=irq_status_values[irq_status_position++];',
+        'irq->input.joy=irq_joy_values[irq_status_position];\n irq->ram[0x1b]=irq_status_values[irq_status_position++];')
+    wrapper=wrapper.replace('context.full_ram=actor_full_ram;',
+        'for(u16 n=0;n<64;n++) irq_joy_values[n]=ram[1257+n];\n context.full_ram=actor_full_ram;')
+    wrapper=wrapper.replace('result.skip=sequence.skip;', 'result.skip=sequence.skip;result.error=sequence.skip;')
+    (out/'wrapper.c').write_text(wrapper)
 sdk = root.parents[1] / 'work/sgdk'
 env = dict(os.environ); env['PATH'] = 'C:/msys64/ucrt64/bin;' + env['PATH']
 modules = ['source_intro_wait', 'source_wait_restore', *MODULES]
@@ -207,6 +218,7 @@ if a.actors:build_folder=build_folder.replace('empty','actors_'+a.actors)
 if a.init:build_folder=build_folder.replace('intro-actors_','intro-init_actors_')
 if a.reveal:build_folder='v319-intro-reveal-callback-observer01'
 if a.sequence:build_folder='v319-intro-reveal_sequence-callback-observer01'
+if a.skip:build_folder='v319-intro-reveal_skip-callback-observer01'
 build_folder=build_folder[:-2]+f'{a.observer_revision:02}'
 build = json.loads((root / 'validation' / build_folder / 'report.json').read_bytes())
 core = Path(build['core']); assert sha(core.read_bytes()) == build['core_sha256']
@@ -217,6 +229,7 @@ dll.gaw_poll_data.restype = c.POINTER(c.c_uint8)
 snapshot=1664 if a.sequence else 1656 if a.actors else 888 if a.fire else 808
 stride=snapshot*2+8
 if a.irq_status:stride+=264 if a.sequence else 40
+if a.skip:stride+=256
 if a.reveal:stride+=(55296 if a.sequence else 6912)*8
 assert dll.gaw_poll_stride() == stride
 image = (root / 'input/original.sms').read_bytes()
@@ -225,19 +238,29 @@ archive = root / 'analysis/v319-psg-write-spacing'
 manifest = json.loads((archive / 'manifest.json').read_bytes())
 results = []
 for region in ('ntsc', 'pal'):
-    dll.gaw_poll_reset(); psg = bytearray()
-    with contextlib.redirect_stdout(io.StringIO()):
-        run(root / 'input/original.sms', 14000, out / region, set(), [], skip_intro=False, core=core,
-            psg_observer=lambda frame, values: psg.extend(struct.pack('<8H', *values)),
-            core_options={'genesis_plus_gx_region_detect': 'pal' if region == 'pal' else 'auto'})
-    assert dll.gaw_poll_errors() == 0
-    count = dll.gaw_poll_size(); assert 0 < count < (128 if a.reveal else 4096)
-    raw = c.string_at(dll.gaw_poll_data(), count * stride)
-    (out / region / 'source-poll-records.bin').write_bytes(raw)
-    item = manifest['compressed'][f'validation/v319-psg-writes01/{region}-sms/exposed-psg-states.bin']
-    encoded = (archive / item['stored']).read_bytes(); assert sha(encoded) == item['stored_sha256']
-    prior = gzip.decompress(encoded); assert sha(prior) == item['raw_sha256'] and prior == psg
-    (out / region / 'psg-states.bin').write_bytes(psg)
+    if a.skip:
+        from capture_v319_intro_skip import capture,reuse
+        if a.capture_work:
+            prior_work=(root/'validation'/a.capture_work).resolve();assert prior_work.is_relative_to(root/'validation')
+            raw,psg,capture_report=reuse(root,prior_work/region,out/region)
+        else:raw,psg,capture_report=capture(root,dll,core,out/region,region)
+        count=len(raw)//stride
+        (out/region/'source-poll-records.bin').write_bytes(raw)
+        (out/region/'psg-states.bin').write_bytes(psg)
+    else:
+        dll.gaw_poll_reset(); psg = bytearray()
+        with contextlib.redirect_stdout(io.StringIO()):
+            run(root / 'input/original.sms', 14000, out / region, set(), [], skip_intro=False, core=core,
+                psg_observer=lambda frame, values: psg.extend(struct.pack('<8H', *values)),
+                core_options={'genesis_plus_gx_region_detect': 'pal' if region == 'pal' else 'auto'})
+        assert dll.gaw_poll_errors() == 0
+        count = dll.gaw_poll_size(); assert 0 < count < (128 if a.reveal else 4096)
+        raw = c.string_at(dll.gaw_poll_data(), count * stride)
+        (out / region / 'source-poll-records.bin').write_bytes(raw)
+        item = manifest['compressed'][f'validation/v319-psg-writes01/{region}-sms/exposed-psg-states.bin']
+        encoded = (archive / item['stored']).read_bytes(); assert sha(encoded) == item['stored_sha256']
+        prior = gzip.decompress(encoded); assert sha(prior) == item['raw_sha256'] and prior == psg
+        (out / region / 'psg-states.bin').write_bytes(psg)
     cases = []
     for n in range(count):
         record = raw[n*stride:(n+1)*stride]; first = record[:snapshot]; last = record[snapshot:snapshot*2]
@@ -247,17 +270,20 @@ for region in ('ntsc', 'pal'):
         else:
             assert pc == (0xe79 if a.sequence else 0xe8b if a.reveal else (0xf51 if a.actors=='second' else 0xf54) if a.init else 0xf09 if a.profile == 'callback' else 0xf1e)
             if a.init:phase=tuple(phase[i] if i!=4 else struct.unpack_from('<I',record,snapshot*2)[0] for i in range(12))
-            assert final_pc == (0xea4 if a.sequence else 0xea0 if a.reveal else struct.unpack_from('<I', record, snapshot*2+4)[0])
+            assert final_pc in ((0xea4,0xd0b) if a.skip else (0xea4,) if a.sequence else (0xea0,) if a.reveal else (struct.unpack_from('<I', record, snapshot*2+4)[0],))
         before=first[72:408]+(first[808:snapshot] if a.fire or a.actors else b'')
         expected_state=last[72:408]+(last[808:snapshot] if a.fire or a.actors else b'')
         if a.irq_status:
             statuses=struct.unpack_from('<65I' if a.sequence else '<9I',record,snapshot*2+8)
             assert (0 if a.init else 1)<=statuses[0]<=(64 if a.sequence else 8) and all(v<=255 for v in statuses[1:])
             before+=bytes(statuses);expected_state+=bytes(statuses)
+            if a.skip:
+                joys=struct.unpack_from('<64I',record,snapshot*2+268);assert all(v<=63 for v in joys)
+                before+=bytes(joys);expected_state+=bytes(joys)
         state = (c.c_uint8 * len(before)).from_buffer_copy(before); audio = (c.c_uint8 * 400).from_buffer_copy(first[408:808])
         if a.reveal:
-            event_count=struct.unpack_from('<I',record,snapshot*2)[0];assert event_count==(55296 if a.sequence else 6912)
-            event_values=struct.unpack_from('<110592I' if a.sequence else '<13824I',record,snapshot*2+(268 if a.sequence else 44))
+            event_count=struct.unpack_from('<I',record,snapshot*2)[0];assert (0<=event_count<=55296 and event_count%6912==0) if a.skip else event_count==(55296 if a.sequence else 6912)
+            event_values=struct.unpack_from('<'+str(event_count*2)+'I',record,snapshot*2+(524 if a.skip else 268 if a.sequence else 44))
             event_buffer=(c.c_uint32*len(event_values))(*event_values)
             configure=c.CDLL(str(out/'native.dll')).configure_reveal_events
             configure.argtypes=[c.POINTER(c.c_uint32),c.c_uint16];configure.restype=None
@@ -280,26 +306,32 @@ for region in ('ntsc', 'pal'):
             input_ram=list(before), input_audio=list(first[408:808]),
             expected_ram=list(state), expected_audio=list(audio)))
         if a.reveal:cases[-1]['events']=list(event_values)
+        if a.skip:
+            assert result[16]==int(final_pc==0xd0b)
+            cases[-1]['source_return_pc']=final_pc
     (out / region / 'native-cases.json').write_text(json.dumps(cases, separators=(',', ':')) + '\n')
     row = dict(region=region, source_cases=count, source_poll_reads=sum(case['expected'][12] for case in cases),
         cases_crossing_irq=sum(bool(case['expected'][6]) for case in cases),
-        observer_exposed_psg_exact_frames=14000, source_records_sha256=sha(raw),
+        observer_exposed_psg_exact_frames=len(psg)//16, source_records_sha256=sha(raw),
         maximum_polls=max(case['expected'][12] for case in cases))
     if a.reveal:
         row['source_io_events']=row.pop('source_poll_reads');row['maximum_io_events']=row.pop('maximum_polls')
+    if a.skip:
+        row['skip_vectors']=sum(c['source_return_pc']==0xd0b for c in cases);row['input_scenarios']=len(capture_report['scenarios'])
     if a.init:row['source_template_addresses']=sorted({case['phase'][4] for case in cases})
     results.append(row); print(json.dumps(row), flush=True)
 report = dict(passed=True, diagnostic_only=True, profile=a.profile, fire=a.fire, actors=a.actors,
-    irq_status=a.irq_status,init=a.init,reveal=a.reveal,sequence=a.sequence,production_rom_changed=False, cases=results,
+    irq_status=a.irq_status,init=a.init,reveal=a.reveal,sequence=a.sequence,skip=a.skip,production_rom_changed=False, cases=results,
     core_sha256=sha(core.read_bytes()), source_sha256=sha(image),
     native_sources={name: sha((root / 'megadrive/src' / (name + '.c')).read_bytes()) for name in modules},
     verified=['Original natural entry/return wall time, raster, '+('initial HL, ' if a.init else 'polls, ')+
               'R, IFF/EI/pending,336 IRQ RAM and400 reader bytes.'+
               (' Fire palette/counter/mapper/callback snapshots also compared.' if a.fire else '')+
               (' Actor768-byte records and palette/counter/mapper/callback snapshots also compared.' if a.actors else ''),
-              'Both regions,14000 no-input cold source frames per region; observer PSG state unchanged.'],
+              'Normal controller skip scenarios, independently replayed source PSG states identical; repeated prefix dedup omits only absolute diagnostic time origins.' if a.skip else 'Both regions,14000 no-input cold source frames per region; observer PSG state unchanged.'],
     limits=['Host native semantic helper; compiled68000 timing and physical MD publication not checked here.',
-            ('Composed E79..EA2 sequence, live F1E callbacks plus eight reveal passes. Natural no-input cases only; VDP status is external diagnostic input.' if a.sequence else
+            ('Normal controller skip inputs and complete prefixes; per-IRQ VDP status and actual observed joy input are diagnostic external inputs.' if a.skip else
+             'Composed E79..EA2 sequence, live F1E callbacks plus eight reveal passes. Natural no-input cases only; VDP status is external diagnostic input.' if a.sequence else
              'Reveal pass E8B..E9D only; every OUT instruction completion compared. Live VDP status remains external diagnostic input.' if a.reveal else
              'Natural actor initialization only; these vectors do not exercise IRQ crossing.' if a.init else
              'Selected original actor callback profile; captured VDP status is explicit diagnostic IRQ input where enabled.' if a.actors else

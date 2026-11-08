@@ -1,0 +1,1007 @@
+{
+  "passed": true,
+  "diagnostic_only": true,
+  "production_rom_changed": false,
+  "public_version": 319,
+  "production_rom_sha256": "d3ea2a83ea24ed8a0d3c9857f9fbe70d000a4f73358452c1887f40e78966c56e",
+  "source_profile": {
+    "passed": true,
+    "diagnostic_only": true,
+    "profile": "callback",
+    "fire": false,
+    "actors": "second",
+    "irq_status": true,
+    "init": false,
+    "reveal": true,
+    "sequence": true,
+    "skip": true,
+    "production_rom_changed": false,
+    "cases": [
+      {
+        "region": "ntsc",
+        "source_cases": 44,
+        "cases_crossing_irq": 44,
+        "observer_exposed_psg_exact_frames": 77336,
+        "source_records_sha256": "e8b8046e156b54056f377b8ea94866428aff0ab80944a57e7c00ed5232f224f8",
+        "source_io_events": 981504,
+        "maximum_io_events": 55296,
+        "skip_vectors": 42,
+        "input_scenarios": 42
+      },
+      {
+        "region": "pal",
+        "source_cases": 44,
+        "cases_crossing_irq": 44,
+        "observer_exposed_psg_exact_frames": 76944,
+        "source_records_sha256": "791af94a19eadd9519a3ef964747cc53cc965fadd1c4226c74160dcbf0a86731",
+        "source_io_events": 981504,
+        "maximum_io_events": 55296,
+        "skip_vectors": 42,
+        "input_scenarios": 42
+      }
+    ],
+    "core_sha256": "c0ea9e0cc61bb33c1c6ecd5a3fceee3851307a5d9854f3ce724620289c6fdcca",
+    "source_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+    "native_sources": {
+      "source_intro_actors": "b7973fb051ea123bef48f539bce75069dd92fef9925587b1f977469e57eac4da",
+      "source_intro_fire": "5649ee6def4debe3bc333e1c5c740279ef35d1206e2c46a554bb96514140e903",
+      "source_intro_reveal": "b4d3f814c8d396b191bf468b72e3fb717ffcb24ee550cb4f4a530a03b3fc67c8",
+      "source_intro_wait": "7d721554756cab01471f0ef5356ee37d101cea2d27918ff40f5a5166a12172e9",
+      "source_wait_restore": "a6ce6eac36ff120f8222dbe24c0456c7729c1062902f997ba7fb296d6dcecd28",
+      "source_wait": "4ed09b544bf7366d82afe04c0d86b07040a453e5e00209cd57fed05db4bfc7f6",
+      "source_irq_context": "013a3ef89374be5f178cf3968aeafca498cdd380b2d943d341c208fa8f9497d9",
+      "source_irq": "bc5921ff1b8a9ed22c6c06c889cc430a469e926c360914e146481a89b1a2c534",
+      "source_clock": "800058a5cbafa50bcf27fc4a91b9622fd34312eb75fa46f8523cffc80799cc9a",
+      "source_rng": "5c64cd42ca0c18d69f8cfb1a185f282268b5dfd45a4b77f355323c6df802919f",
+      "source_audio_fast": "811c9e96d4f587353df50654e01d767f7f1530528efa271d1ee9d15169376cc3",
+      "source_audio_reader": "7ea0d9bdd75168ea85f1e8cf7c9ef4fbb720d746a8e4c9158953a48a5551c624",
+      "source_audio_prefix": "c0c02bafe3dd7e4baf887f67b264786c70c74932c12c897213c941f32fea2d39",
+      "source_audio_dispatch": "f8ce91959f8fb0db6062900e69a1842da8cc108d33bdfcbb7509b681185b0d90",
+      "source_audio_priority": "d5bc487b634abc56b77df5aeec338a447be312c0e76679a1eec3b14585291147",
+      "source_audio_tone": "8098ba4e45c21629a9920e6ca9ac5385ecb986e31d0db143cbbff42c0c92b272",
+      "source_audio_noise": "45b37e1689255404b86855e3970e82bfefd313421522aae46e3fae455fa9690b",
+      "source_audio_sequence": "e7171cc12b4f031dc361943aca679b7a8fa5c1fc2bb7d7798864d16675aa7663",
+      "source_audio_memory": "ec755012b117bdb5bfe2c114037f44abe4891714f6532f4800206915e8dde1f0",
+      "source_audio_envelope": "d0878cd24b5d7bb8f255a5a9e97a231815ac41828cae53342b03c6cbe81ae17c",
+      "source_audio_pitch": "ea46d31e3c73a352995c3dcbcbbe141214a9c536fd827e1a16d49d8e5e058795"
+    },
+    "verified": [
+      "Original natural entry/return wall time, raster, polls, R, IFF/EI/pending,336 IRQ RAM and400 reader bytes. Actor768-byte records and palette/counter/mapper/callback snapshots also compared.",
+      "Normal controller skip scenarios, independently replayed source PSG states identical; repeated prefix dedup omits only absolute diagnostic time origins."
+    ],
+    "limits": [
+      "Host native semantic helper; compiled68000 timing and physical MD publication not checked here.",
+      "Normal controller skip inputs and complete prefixes; per-IRQ VDP status and actual observed joy input are diagnostic external inputs.",
+      "No production clock integration, full-game or PCM certification."
+    ]
+  },
+  "compiled68000_checks": {
+    "passed": true,
+    "source_entry_vectors": 88,
+    "compiled_executions": 176,
+    "partitions": [
+      {
+        "path": "validation/v319-native-intro-poll-skip03/compiled-both-kernel1-report.json",
+        "report": {
+          "passed": true,
+          "diagnostic_only": true,
+          "source_vector_cases": 4,
+          "source_regions": [
+            "ntsc",
+            "pal"
+          ],
+          "case_start": 0,
+          "ram_bytes": 1321,
+          "fire": false,
+          "actors": "second",
+          "reveal": true,
+          "sequence": true,
+          "irq_status": true,
+          "results": [
+            {
+              "region": "ntsc",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 4,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 110592,
+              "intro_poll_first_failure": 0,
+              "frame": 1766
+            },
+            {
+              "region": "pal",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 4,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 110592,
+              "intro_poll_first_failure": 0,
+              "frame": 1478
+            }
+          ],
+          "kernel_sha256": "082eedf5dda36d0b3f5a7d72c93f2fb78dddf8b5f860650e5b8820e886dce29f",
+          "scope": "Compiled68000 source semantic helper checked against the selected natural original source vectors on each target region. No physical publication scheduler or PCM claim."
+        }
+      },
+      {
+        "path": "validation/v319-native-intro-poll-skip03/compiled-both-kernel2-report.json",
+        "report": {
+          "passed": true,
+          "diagnostic_only": true,
+          "source_vector_cases": 4,
+          "source_regions": [
+            "ntsc",
+            "pal"
+          ],
+          "case_start": 4,
+          "ram_bytes": 1321,
+          "fire": false,
+          "actors": "second",
+          "reveal": true,
+          "sequence": true,
+          "irq_status": true,
+          "results": [
+            {
+              "region": "ntsc",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 4,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 41472,
+              "intro_poll_first_failure": 0,
+              "frame": 681
+            },
+            {
+              "region": "pal",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 4,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 41472,
+              "intro_poll_first_failure": 0,
+              "frame": 571
+            }
+          ],
+          "kernel_sha256": "7c0a78b275e81e656ae16c9e8526786bc8472dccfc1f1f9d937b52cc62027bb6",
+          "scope": "Compiled68000 source semantic helper checked against the selected natural original source vectors on each target region. No physical publication scheduler or PCM claim."
+        }
+      },
+      {
+        "path": "validation/v319-native-intro-poll-skip03/compiled-both-kernel3-report.json",
+        "report": {
+          "passed": true,
+          "diagnostic_only": true,
+          "source_vector_cases": 4,
+          "source_regions": [
+            "ntsc",
+            "pal"
+          ],
+          "case_start": 8,
+          "ram_bytes": 1321,
+          "fire": false,
+          "actors": "second",
+          "reveal": true,
+          "sequence": true,
+          "irq_status": true,
+          "results": [
+            {
+              "region": "ntsc",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 4,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 96768,
+              "intro_poll_first_failure": 0,
+              "frame": 1543
+            },
+            {
+              "region": "pal",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 4,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 96768,
+              "intro_poll_first_failure": 0,
+              "frame": 1292
+            }
+          ],
+          "kernel_sha256": "8554365c5ba63028ca8de92e340b62345960e22382546ab8acfa99ee91024102",
+          "scope": "Compiled68000 source semantic helper checked against the selected natural original source vectors on each target region. No physical publication scheduler or PCM claim."
+        }
+      },
+      {
+        "path": "validation/v319-native-intro-poll-skip03/compiled-both-kernel4-report.json",
+        "report": {
+          "passed": true,
+          "diagnostic_only": true,
+          "source_vector_cases": 4,
+          "source_regions": [
+            "ntsc",
+            "pal"
+          ],
+          "case_start": 12,
+          "ram_bytes": 1321,
+          "fire": false,
+          "actors": "second",
+          "reveal": true,
+          "sequence": true,
+          "irq_status": true,
+          "results": [
+            {
+              "region": "ntsc",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 4,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 152064,
+              "intro_poll_first_failure": 0,
+              "frame": 2405
+            },
+            {
+              "region": "pal",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 4,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 152064,
+              "intro_poll_first_failure": 0,
+              "frame": 2013
+            }
+          ],
+          "kernel_sha256": "3309ab9523032270578bd49d0ff40045671e699c8f5d8afcb4296506d5641f41",
+          "scope": "Compiled68000 source semantic helper checked against the selected natural original source vectors on each target region. No physical publication scheduler or PCM claim."
+        }
+      },
+      {
+        "path": "validation/v319-native-intro-poll-skip03/compiled-both-kernel5-report.json",
+        "report": {
+          "passed": true,
+          "diagnostic_only": true,
+          "source_vector_cases": 4,
+          "source_regions": [
+            "ntsc",
+            "pal"
+          ],
+          "case_start": 16,
+          "ram_bytes": 1321,
+          "fire": false,
+          "actors": "second",
+          "reveal": true,
+          "sequence": true,
+          "irq_status": true,
+          "results": [
+            {
+              "region": "ntsc",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 4,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 13824,
+              "intro_poll_first_failure": 0,
+              "frame": 250
+            },
+            {
+              "region": "pal",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 4,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 13824,
+              "intro_poll_first_failure": 0,
+              "frame": 210
+            }
+          ],
+          "kernel_sha256": "c29d775fdd083c0162e65ed19b2967f550741f9009934904cfb51321f79242c3",
+          "scope": "Compiled68000 source semantic helper checked against the selected natural original source vectors on each target region. No physical publication scheduler or PCM claim."
+        }
+      },
+      {
+        "path": "validation/v319-native-intro-poll-skip03/compiled-both-kernel6-report.json",
+        "report": {
+          "passed": true,
+          "diagnostic_only": true,
+          "source_vector_cases": 4,
+          "source_regions": [
+            "ntsc",
+            "pal"
+          ],
+          "case_start": 20,
+          "ram_bytes": 1321,
+          "fire": false,
+          "actors": "second",
+          "reveal": true,
+          "sequence": true,
+          "irq_status": true,
+          "results": [
+            {
+              "region": "ntsc",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 4,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 69120,
+              "intro_poll_first_failure": 0,
+              "frame": 1112
+            },
+            {
+              "region": "pal",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 4,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 69120,
+              "intro_poll_first_failure": 0,
+              "frame": 931
+            }
+          ],
+          "kernel_sha256": "b13c6622bf06ebd43e4e78723b31282ff11061fe22259ce5abf36a5263cf3c67",
+          "scope": "Compiled68000 source semantic helper checked against the selected natural original source vectors on each target region. No physical publication scheduler or PCM claim."
+        }
+      },
+      {
+        "path": "validation/v319-native-intro-poll-skip03/compiled-both-kernel7-report.json",
+        "report": {
+          "passed": true,
+          "diagnostic_only": true,
+          "source_vector_cases": 4,
+          "source_regions": [
+            "ntsc",
+            "pal"
+          ],
+          "case_start": 24,
+          "ram_bytes": 1321,
+          "fire": false,
+          "actors": "second",
+          "reveal": true,
+          "sequence": true,
+          "irq_status": true,
+          "results": [
+            {
+              "region": "ntsc",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 4,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 124416,
+              "intro_poll_first_failure": 0,
+              "frame": 1974
+            },
+            {
+              "region": "pal",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 4,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 124416,
+              "intro_poll_first_failure": 0,
+              "frame": 1652
+            }
+          ],
+          "kernel_sha256": "c880b276b7d27e30f743ec476503c223aab2003410723c2843a0df12b3862c15",
+          "scope": "Compiled68000 source semantic helper checked against the selected natural original source vectors on each target region. No physical publication scheduler or PCM claim."
+        }
+      },
+      {
+        "path": "validation/v319-native-intro-poll-skip03/compiled-both-kernel8-report.json",
+        "report": {
+          "passed": true,
+          "diagnostic_only": true,
+          "source_vector_cases": 4,
+          "source_regions": [
+            "ntsc",
+            "pal"
+          ],
+          "case_start": 28,
+          "ram_bytes": 1321,
+          "fire": false,
+          "actors": "second",
+          "reveal": true,
+          "sequence": true,
+          "irq_status": true,
+          "results": [
+            {
+              "region": "ntsc",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 4,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 82944,
+              "intro_poll_first_failure": 0,
+              "frame": 1329
+            },
+            {
+              "region": "pal",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 4,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 82944,
+              "intro_poll_first_failure": 0,
+              "frame": 1113
+            }
+          ],
+          "kernel_sha256": "94b816b3b53e427e30d4233bcb90945a74cd16b8ab68c06ddacc2c657741fa92",
+          "scope": "Compiled68000 source semantic helper checked against the selected natural original source vectors on each target region. No physical publication scheduler or PCM claim."
+        }
+      },
+      {
+        "path": "validation/v319-native-intro-poll-skip03/compiled-both-kernel9-report.json",
+        "report": {
+          "passed": true,
+          "diagnostic_only": true,
+          "source_vector_cases": 4,
+          "source_regions": [
+            "ntsc",
+            "pal"
+          ],
+          "case_start": 32,
+          "ram_bytes": 1321,
+          "fire": false,
+          "actors": "second",
+          "reveal": true,
+          "sequence": true,
+          "irq_status": true,
+          "results": [
+            {
+              "region": "ntsc",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 4,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 41472,
+              "intro_poll_first_failure": 0,
+              "frame": 691
+            },
+            {
+              "region": "pal",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 4,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 41472,
+              "intro_poll_first_failure": 0,
+              "frame": 579
+            }
+          ],
+          "kernel_sha256": "1279e46dd4188d8602ef44e0f7c7cacb56daa69c50545e0b1a3324d9c66ea2b0",
+          "scope": "Compiled68000 source semantic helper checked against the selected natural original source vectors on each target region. No physical publication scheduler or PCM claim."
+        }
+      },
+      {
+        "path": "validation/v319-native-intro-poll-skip03/compiled-both-kernel10-report.json",
+        "report": {
+          "passed": true,
+          "diagnostic_only": true,
+          "source_vector_cases": 4,
+          "source_regions": [
+            "ntsc",
+            "pal"
+          ],
+          "case_start": 36,
+          "ram_bytes": 1321,
+          "fire": false,
+          "actors": "second",
+          "reveal": true,
+          "sequence": true,
+          "irq_status": true,
+          "results": [
+            {
+              "region": "ntsc",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 4,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 96768,
+              "intro_poll_first_failure": 0,
+              "frame": 1561
+            },
+            {
+              "region": "pal",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 4,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 96768,
+              "intro_poll_first_failure": 0,
+              "frame": 1307
+            }
+          ],
+          "kernel_sha256": "5fd416ebb8fcd7e0724c934924c3abc76d03013101e7d68bcc04c4bf0377675e",
+          "scope": "Compiled68000 source semantic helper checked against the selected natural original source vectors on each target region. No physical publication scheduler or PCM claim."
+        }
+      },
+      {
+        "path": "validation/v319-native-intro-poll-skip03/compiled-both-kernel11-report.json",
+        "report": {
+          "passed": true,
+          "diagnostic_only": true,
+          "source_vector_cases": 4,
+          "source_regions": [
+            "ntsc",
+            "pal"
+          ],
+          "case_start": 40,
+          "ram_bytes": 1321,
+          "fire": false,
+          "actors": "second",
+          "reveal": true,
+          "sequence": true,
+          "irq_status": true,
+          "results": [
+            {
+              "region": "ntsc",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 4,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 152064,
+              "intro_poll_first_failure": 0,
+              "frame": 2431
+            },
+            {
+              "region": "pal",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 4,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 152064,
+              "intro_poll_first_failure": 0,
+              "frame": 2035
+            }
+          ],
+          "kernel_sha256": "26bef974578b80040bc9a9d607041691c703708ce413fc8f2d84c7fb693f04b4",
+          "scope": "Compiled68000 source semantic helper checked against the selected natural original source vectors on each target region. No physical publication scheduler or PCM claim."
+        }
+      },
+      {
+        "path": "validation/v319-native-intro-poll-skip03/compiled-both-kernel12-report.json",
+        "report": {
+          "passed": true,
+          "diagnostic_only": true,
+          "source_vector_cases": 4,
+          "source_regions": [
+            "ntsc",
+            "pal"
+          ],
+          "case_start": 44,
+          "ram_bytes": 1321,
+          "fire": false,
+          "actors": "second",
+          "reveal": true,
+          "sequence": true,
+          "irq_status": true,
+          "results": [
+            {
+              "region": "ntsc",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 4,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 110592,
+              "intro_poll_first_failure": 0,
+              "frame": 1815
+            },
+            {
+              "region": "pal",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 4,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 110592,
+              "intro_poll_first_failure": 0,
+              "frame": 1519
+            }
+          ],
+          "kernel_sha256": "58e225d868b41cf658939eab1562c4355d7026f12e5db94948b5319cb0169308",
+          "scope": "Compiled68000 source semantic helper checked against the selected natural original source vectors on each target region. No physical publication scheduler or PCM claim."
+        }
+      },
+      {
+        "path": "validation/v319-native-intro-poll-skip03/compiled-both-kernel13-report.json",
+        "report": {
+          "passed": true,
+          "diagnostic_only": true,
+          "source_vector_cases": 4,
+          "source_regions": [
+            "ntsc",
+            "pal"
+          ],
+          "case_start": 48,
+          "ram_bytes": 1321,
+          "fire": false,
+          "actors": "second",
+          "reveal": true,
+          "sequence": true,
+          "irq_status": true,
+          "results": [
+            {
+              "region": "ntsc",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 4,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 41472,
+              "intro_poll_first_failure": 0,
+              "frame": 699
+            },
+            {
+              "region": "pal",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 4,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 41472,
+              "intro_poll_first_failure": 0,
+              "frame": 586
+            }
+          ],
+          "kernel_sha256": "753ff37e0a159c3c11a71cad05635da4f465a05f404a86baace7b72f132debf1",
+          "scope": "Compiled68000 source semantic helper checked against the selected natural original source vectors on each target region. No physical publication scheduler or PCM claim."
+        }
+      },
+      {
+        "path": "validation/v319-native-intro-poll-skip03/compiled-both-kernel14-report.json",
+        "report": {
+          "passed": true,
+          "diagnostic_only": true,
+          "source_vector_cases": 4,
+          "source_regions": [
+            "ntsc",
+            "pal"
+          ],
+          "case_start": 52,
+          "ram_bytes": 1321,
+          "fire": false,
+          "actors": "second",
+          "reveal": true,
+          "sequence": true,
+          "irq_status": true,
+          "results": [
+            {
+              "region": "ntsc",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 4,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 96768,
+              "intro_poll_first_failure": 0,
+              "frame": 1586
+            },
+            {
+              "region": "pal",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 4,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 96768,
+              "intro_poll_first_failure": 0,
+              "frame": 1327
+            }
+          ],
+          "kernel_sha256": "977f672cdd011536702242fb493ce2141cfd5e037ac8f587342a336c0df5edda",
+          "scope": "Compiled68000 source semantic helper checked against the selected natural original source vectors on each target region. No physical publication scheduler or PCM claim."
+        }
+      },
+      {
+        "path": "validation/v319-native-intro-poll-skip03/compiled-both-kernel15-report.json",
+        "report": {
+          "passed": true,
+          "diagnostic_only": true,
+          "source_vector_cases": 4,
+          "source_regions": [
+            "ntsc",
+            "pal"
+          ],
+          "case_start": 56,
+          "ram_bytes": 1321,
+          "fire": false,
+          "actors": "second",
+          "reveal": true,
+          "sequence": true,
+          "irq_status": true,
+          "results": [
+            {
+              "region": "ntsc",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 4,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 152064,
+              "intro_poll_first_failure": 0,
+              "frame": 2473
+            },
+            {
+              "region": "pal",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 4,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 152064,
+              "intro_poll_first_failure": 0,
+              "frame": 2070
+            }
+          ],
+          "kernel_sha256": "e6ea3c6ffea625eb89ad2e8cc7c91e55ef2bf4e5a23745008927ec381e2c71a1",
+          "scope": "Compiled68000 source semantic helper checked against the selected natural original source vectors on each target region. No physical publication scheduler or PCM claim."
+        }
+      },
+      {
+        "path": "validation/v319-native-intro-poll-skip03/compiled-both-kernel16-report.json",
+        "report": {
+          "passed": true,
+          "diagnostic_only": true,
+          "source_vector_cases": 4,
+          "source_regions": [
+            "ntsc",
+            "pal"
+          ],
+          "case_start": 60,
+          "ram_bytes": 1321,
+          "fire": false,
+          "actors": "second",
+          "reveal": true,
+          "sequence": true,
+          "irq_status": true,
+          "results": [
+            {
+              "region": "ntsc",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 4,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 13824,
+              "intro_poll_first_failure": 0,
+              "frame": 256
+            },
+            {
+              "region": "pal",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 4,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 13824,
+              "intro_poll_first_failure": 0,
+              "frame": 215
+            }
+          ],
+          "kernel_sha256": "96a70ec7f8eb2ffb99c8cc0cf02eeda1e07d70ce0ccd24da2311f15257260184",
+          "scope": "Compiled68000 source semantic helper checked against the selected natural original source vectors on each target region. No physical publication scheduler or PCM claim."
+        }
+      },
+      {
+        "path": "validation/v319-native-intro-poll-skip03/compiled-both-kernel17-report.json",
+        "report": {
+          "passed": true,
+          "diagnostic_only": true,
+          "source_vector_cases": 4,
+          "source_regions": [
+            "ntsc",
+            "pal"
+          ],
+          "case_start": 64,
+          "ram_bytes": 1321,
+          "fire": false,
+          "actors": "second",
+          "reveal": true,
+          "sequence": true,
+          "irq_status": true,
+          "results": [
+            {
+              "region": "ntsc",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 4,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 69120,
+              "intro_poll_first_failure": 0,
+              "frame": 1142
+            },
+            {
+              "region": "pal",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 4,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 69120,
+              "intro_poll_first_failure": 0,
+              "frame": 956
+            }
+          ],
+          "kernel_sha256": "0f93c5afb3c4eb8dfa5a522c2e80fce2c44a7c6fde0564b9d8030795954bda13",
+          "scope": "Compiled68000 source semantic helper checked against the selected natural original source vectors on each target region. No physical publication scheduler or PCM claim."
+        }
+      },
+      {
+        "path": "validation/v319-native-intro-poll-skip03/compiled-both-kernel18-report.json",
+        "report": {
+          "passed": true,
+          "diagnostic_only": true,
+          "source_vector_cases": 4,
+          "source_regions": [
+            "ntsc",
+            "pal"
+          ],
+          "case_start": 68,
+          "ram_bytes": 1321,
+          "fire": false,
+          "actors": "second",
+          "reveal": true,
+          "sequence": true,
+          "irq_status": true,
+          "results": [
+            {
+              "region": "ntsc",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 4,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 124416,
+              "intro_poll_first_failure": 0,
+              "frame": 2029
+            },
+            {
+              "region": "pal",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 4,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 124416,
+              "intro_poll_first_failure": 0,
+              "frame": 1698
+            }
+          ],
+          "kernel_sha256": "ccda43eba119d3e05a530f9fb936832678e9c7794fd4ed7d8859d2ce276a8819",
+          "scope": "Compiled68000 source semantic helper checked against the selected natural original source vectors on each target region. No physical publication scheduler or PCM claim."
+        }
+      },
+      {
+        "path": "validation/v319-native-intro-poll-skip03/compiled-both-kernel19-report.json",
+        "report": {
+          "passed": true,
+          "diagnostic_only": true,
+          "source_vector_cases": 4,
+          "source_regions": [
+            "ntsc",
+            "pal"
+          ],
+          "case_start": 72,
+          "ram_bytes": 1321,
+          "fire": false,
+          "actors": "second",
+          "reveal": true,
+          "sequence": true,
+          "irq_status": true,
+          "results": [
+            {
+              "region": "ntsc",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 4,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 82944,
+              "intro_poll_first_failure": 0,
+              "frame": 1366
+            },
+            {
+              "region": "pal",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 4,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 82944,
+              "intro_poll_first_failure": 0,
+              "frame": 1144
+            }
+          ],
+          "kernel_sha256": "7366525e08339d4a15ce572554b0b8b5eb474ae0e5b6a2fe59b30decbfc0dd2d",
+          "scope": "Compiled68000 source semantic helper checked against the selected natural original source vectors on each target region. No physical publication scheduler or PCM claim."
+        }
+      },
+      {
+        "path": "validation/v319-native-intro-poll-skip03/compiled-both-kernel20-report.json",
+        "report": {
+          "passed": true,
+          "diagnostic_only": true,
+          "source_vector_cases": 4,
+          "source_regions": [
+            "ntsc",
+            "pal"
+          ],
+          "case_start": 76,
+          "ram_bytes": 1321,
+          "fire": false,
+          "actors": "second",
+          "reveal": true,
+          "sequence": true,
+          "irq_status": true,
+          "results": [
+            {
+              "region": "ntsc",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 4,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 41472,
+              "intro_poll_first_failure": 0,
+              "frame": 709
+            },
+            {
+              "region": "pal",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 4,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 41472,
+              "intro_poll_first_failure": 0,
+              "frame": 594
+            }
+          ],
+          "kernel_sha256": "7248d6512f529b38cef36520a27553505616c555d9ab75dd324ed7c5908b8fce",
+          "scope": "Compiled68000 source semantic helper checked against the selected natural original source vectors on each target region. No physical publication scheduler or PCM claim."
+        }
+      },
+      {
+        "path": "validation/v319-native-intro-poll-skip03/compiled-both-kernel21-report.json",
+        "report": {
+          "passed": true,
+          "diagnostic_only": true,
+          "source_vector_cases": 4,
+          "source_regions": [
+            "ntsc",
+            "pal"
+          ],
+          "case_start": 80,
+          "ram_bytes": 1321,
+          "fire": false,
+          "actors": "second",
+          "reveal": true,
+          "sequence": true,
+          "irq_status": true,
+          "results": [
+            {
+              "region": "ntsc",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 4,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 96768,
+              "intro_poll_first_failure": 0,
+              "frame": 1604
+            },
+            {
+              "region": "pal",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 4,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 96768,
+              "intro_poll_first_failure": 0,
+              "frame": 1342
+            }
+          ],
+          "kernel_sha256": "8d096b1878f9da1c5451a05a7af4dba2a1983d96bd4c88b1f80e8f8538a8fe96",
+          "scope": "Compiled68000 source semantic helper checked against the selected natural original source vectors on each target region. No physical publication scheduler or PCM claim."
+        }
+      },
+      {
+        "path": "validation/v319-native-intro-poll-skip03/compiled-both-kernel22-report.json",
+        "report": {
+          "passed": true,
+          "diagnostic_only": true,
+          "source_vector_cases": 4,
+          "source_regions": [
+            "ntsc",
+            "pal"
+          ],
+          "case_start": 84,
+          "ram_bytes": 1321,
+          "fire": false,
+          "actors": "second",
+          "reveal": true,
+          "sequence": true,
+          "irq_status": true,
+          "results": [
+            {
+              "region": "ntsc",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 4,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 152064,
+              "intro_poll_first_failure": 0,
+              "frame": 2499
+            },
+            {
+              "region": "pal",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 4,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 152064,
+              "intro_poll_first_failure": 0,
+              "frame": 2092
+            }
+          ],
+          "kernel_sha256": "76180643e3c12d2117e4654f6cf2ebfec820b222eab2c39e88b977c84a3c1012",
+          "scope": "Compiled68000 source semantic helper checked against the selected natural original source vectors on each target region. No physical publication scheduler or PCM claim."
+        }
+      }
+    ],
+    "scope": "All deduplicated original E79 entries, normal controller skips and full prefixes, both target regions."
+  },
+  "controller_scenarios": 84,
+  "source_replay_frames": 154280,
+  "source_entry_vectors": 88,
+  "source_skip_vectors": 84,
+  "compiled_executions": 176,
+  "source_io_events": 1963008,
+  "compiled_io_events": 3926016,
+  "verification": "Normal SMS controller buttons0/8, three live DCEC targets F36/F37/1055, seven reveal stages, both regions. Each observer run replayed in independent PSG observer core with identical frame inputs; every exposed PSG state matches. Native sequence exits at prefetched D0B with the same live RAM/audio, clock/R/latches, mask and every preceding OUT event. Full normal prefixes also retained.",
+  "input_binding": "Per-IRQ status at0137 and actual joy bits observed after IN DC at01BC are diagnostic external inputs. Audio-only IRQs have no joy read. Production must bind live controller and chip state; no recorded-frame overrides.",
+  "deduplication": "Only repeated complete prefixes deduplicated, excluding absolute diagnostic master/IRQ time origins from the key while retaining elapsed differences and original raw representative.42 skip vectors plus2 normal prefixes per region; no emulated data changed.",
+  "limits": [
+    "Controller input sampled at seven scenario thresholds; skip after0..6 complete passes covered. This is not every source cycle or every possible button hold/release pattern.",
+    "Exit is D0B entry, not the title cleanup/display after D0B. Full E50 setup and physical publication integration remain open.",
+    "No production memory binding, live VDP status producer, raster/PSG deadlines, PCM or hardware certification. Public V319 remains unchanged."
+  ],
+  "next_action": "Translate/setup E50..E75 and title cleanup D0B as needed, bind compact semantic memory and live sprite VDP status, then integrate the continuous native intro with physical publication deadlines.",
+  "oracle_ram_writes": 0,
+  "sram_imports": 0,
+  "archive_manifest": "analysis/v319-intro-skip/manifest.json"
+}
