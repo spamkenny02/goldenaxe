@@ -23,6 +23,17 @@ cette routine ; la cadence de jeu visée reste celle de la Master System.
 
 ## Travail natif en cours : statut vidéo des sprites
 
+Le chargeur de scène natif peut maintenant publier les motifs décompressés
+avec leurs dates, en plus des effacements et transferts de carte. Les dix
+chargements de référence passent sur hôte, puis sur 68000 en NTSC/PAL :
+**505040 sorties** et **488 interruptions natives** vérifiées, avec les mêmes
+états RAM, audio, VRAM et horloge.
+[Scènes avec sorties datées](analysis/v319_scene_ports_report.json).
+
+Les statuts vidéo de ce banc restent des valeurs capturées. Le raccordement
+au calcul vivant du miroir, aux paquets vidéo des interruptions et aux sorties
+physiques image/son reste à terminer et à mesurer. La ROM reste V319.
+
 Les dates du décodeur sont maintenant confirmées par une capture indépendante
 de l’exécution SMS : **65472 écritures** des deux décors en NTSC/PAL, après
 séparation du temps réellement passé dans les interruptions. Le décodeur relié

@@ -6,7 +6,26 @@ le README et les rapports cités.
 
 ## Suivi courant — V319, 8 novembre 2026
 
-DERNIÈRE ÉTAPE : dates032A originales indépendantes et binding decoder+VDP
+DERNIÈRE ÉTAPE : source_intro_scene_load_ports, rapport
+`analysis/v319_scene_ports_report.json`, archive `analysis/v319-scene-ports`.
+Nouveau point E50 identique au legacy,avec pattern_sink/pattern_user séparés
+avantoutput. Le sink scene existant conserve clear/map ;sinkpattern reçoit
+les OUT11T032A. Un VDP vivant DOIT posséder un miroir distinct du miroir de
+sortie decoder/scene, pour ne pas voir les mutations directes trop tôt.
+10scènes sourceexactes (5NTSC/5PAL),15081RAM/mirror+400audio+18clock/R,
+252520OUT surhôte et244IRQ/audio natifs réels. Compilé2régions :20cas,
+505040OUT et488IRQ. Chronologie des sinks foreground vérifiée ensemble.
+Anciennes8452clear/map OUT/cas restent exactes enelapsedsource. PatternOUT
+comparées à datesforeground originales indépendantes moins IRQ réels.
+IMPORTANT :filesstatusIRQcapturées encore utilisées ; pas de statutVDPvivant
+ni livraisonIRQvideo,coldbootcomplet ou rendu physique. Pas de CPUgate composé.
+Rebuildcomplet identiqueV319/d3ea2a83…/DA29,pas de nouvelleROM numérotée.
+Prochain :sinkVdpclear/map/pattern avec durées11T/16T correctes,IRQ/SAT/status
+vivant,histoireboot,puisprofilage/optimisation etimage/son physique. Vidéo
+complète demandée toujours enattente pour @KennYMcCormick-m2b (session signalée
+connectée,visibilité à choisir) ; préparer après validation du step intégré.
+
+ÉTAPE PRÉCÉDENTE : dates032A originales indépendantes et binding decoder+VDP
 compilé, rapport `analysis/v319_pattern_dates_report.json`, archive
 `analysis/v319-pattern-dates`. 65472OUT originaux (2assets/2régionssource),
 foregroundMaster/port/value exacts,HL/DE de retour et durée foreground exacts.

@@ -68,9 +68,10 @@ static u8 scene_run(void *opaque,const SourceIntroVideoRun *run)
     }
     return 1;
 }
-u8 source_intro_scene_load(SourceClock *clock,SourceIrqContext *context,u16 header,u16 target,
+static u8 scene_load(SourceClock *clock,SourceIrqContext *context,u16 header,u16 target,
                            u8 *mirror,SourceIntroCallback callback,void *callback_user,
-                           SourceIntroRevealSink sink,void *sink_user,SourceIntroSceneOutput *output)
+                           SourceIntroRevealSink sink,void *sink_user,SourcePatternPortSink pattern_sink,void *pattern_user,
+                           SourceIntroSceneOutput *output)
 {
     SourceIntroMapOutput map;SourceIntroMapDecode decode;const u8 *patterns;
     SceneMirror video={mirror,sink,sink_user,0,0,0};u16 writes;
@@ -83,7 +84,9 @@ u8 source_intro_scene_load(SourceClock *clock,SourceIrqContext *context,u16 head
     if(!source_intro_map_prepare(clock,context,header,callback,callback_user,scene_out,scene_run,&video,&map)) return 0;
     if(map.skip) {output->skip=1;return 1;}
     S(10,1);S(17,1);patterns=context->bank6+map.palette_end-0x8000;
-    if(!source_pattern_decode_planned(clock,context,&patterns,mirror,0x4000,&output->pattern_end,plan)) return 0;
+    if(pattern_sink)
+    {if(!source_pattern_decode_ports(clock,context,&patterns,mirror,0x4000,&output->pattern_end,plan,pattern_sink,pattern_user)) return 0;}
+    else if(!source_pattern_decode_planned(clock,context,&patterns,mirror,0x4000,&output->pattern_end,plan)) return 0;
     if(patterns<context->bank6 || patterns>=context->bank6+16384) return 0;
     S(17,1);if(!source_intro_plane_clear(clock,context,scene_out,scene_run,&video,&writes)) return 0;
     S(10,1);S(17,1);
@@ -95,4 +98,16 @@ u8 source_intro_scene_load(SourceClock *clock,SourceIrqContext *context,u16 head
     output->skip=map.skip;
     if(!map.skip) {output->hl=0xd900;output->de=0x7800;output->bc=0x00be;}
     return 1;
+}
+u8 source_intro_scene_load(SourceClock *clock,SourceIrqContext *context,u16 header,u16 target,
+ u8 *mirror,SourceIntroCallback callback,void *callback_user,
+ SourceIntroRevealSink sink,void *sink_user,SourceIntroSceneOutput *output)
+{return scene_load(clock,context,header,target,mirror,callback,callback_user,sink,sink_user,0,0,output);}
+u8 source_intro_scene_load_ports(SourceClock *clock,SourceIrqContext *context,u16 header,u16 target,
+ u8 *mirror,SourceIntroCallback callback,void *callback_user,
+ SourceIntroRevealSink sink,void *sink_user,SourcePatternPortSink pattern_sink,void *pattern_user,
+ SourceIntroSceneOutput *output)
+{
+ if(!pattern_sink) return 0;
+ return scene_load(clock,context,header,target,mirror,callback,callback_user,sink,sink_user,pattern_sink,pattern_user,output);
 }

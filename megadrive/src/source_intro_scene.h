@@ -12,4 +12,15 @@ typedef struct {u16 hl,de,bc,source_end,pattern_end,decoded_bytes;u8 skip;} Sour
 u8 source_intro_scene_load(SourceClock *clock,SourceIrqContext *context,u16 header,u16 target,
                            u8 *mirror,SourceIntroCallback callback,void *callback_user,
                            SourceIntroRevealSink sink,void *sink_user,SourceIntroSceneOutput *output);
+/* Same E50 loader, with dated032A port publication in addition to clear/map
+ * outputs. Pattern sink receives11T immediate OUTs; legacy scene sink also
+ * includes16T OUTI map writes. Separate sinks let the caller preserve those
+ * instruction lengths. A live VDP sink owns a DIFFERENT16KiB mirror from
+ * mirror above: otherwise direct decoder writes could precede its raster
+ * evaluation. IRQ video, register writes and status reads still require
+ * caller wiring. Neither sink may mutate SourceClock or semantic RAM. */
+u8 source_intro_scene_load_ports(SourceClock *clock,SourceIrqContext *context,u16 header,u16 target,
+ u8 *mirror,SourceIntroCallback callback,void *callback_user,
+ SourceIntroRevealSink sink,void *sink_user,SourcePatternPortSink pattern_sink,void *pattern_user,
+ SourceIntroSceneOutput *output);
 #endif

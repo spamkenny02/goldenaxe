@@ -1,0 +1,223 @@
+{
+  "passed": true,
+  "public_version": 319,
+  "production_rom_changed": false,
+  "production_rebuild_byte_identical": true,
+  "production_rom_sha256": "d3ea2a83ea24ed8a0d3c9857f9fbe70d000a4f73358452c1887f40e78966c56e",
+  "implementation": "source_intro_scene_load_ports composes E50 scene preparation/map copy,dated native032A outputs,plane clear,map decode/place/transfer with unchanged real native IRQ/audio work and callbacks. Separate pattern sink preserves11T immediateOUT versus16T mapOUTI distinction. Legacy API retains prior behavior.",
+  "host": {
+    "passed": true,
+    "diagnostic_only": true,
+    "profile": "callback",
+    "fire": false,
+    "actors": "second",
+    "irq_status": true,
+    "init": false,
+    "reveal": true,
+    "sequence": true,
+    "skip": false,
+    "transfer": true,
+    "prepare": false,
+    "map": "decode",
+    "clear": false,
+    "scene": true,
+    "production_rom_changed": false,
+    "cases": [
+      {
+        "region": "ntsc",
+        "source_cases": 5,
+        "cases_crossing_irq": 5,
+        "observer_exposed_psg_exact_frames": 14000,
+        "source_records_sha256": "af59f1cef16dd0a2a1249b98426a11874a4c12970e2b394e0c8ea1f94f60561f",
+        "source_io_events": 42260,
+        "maximum_io_events": 8452
+      },
+      {
+        "region": "pal",
+        "source_cases": 5,
+        "cases_crossing_irq": 5,
+        "observer_exposed_psg_exact_frames": 14000,
+        "source_records_sha256": "cbf5314e50760076c7c9ce4fa4a2b2e2e4b6a7bb3ff92961a9fb62474dbe2fc6",
+        "source_io_events": 42260,
+        "maximum_io_events": 8452
+      }
+    ],
+    "core_sha256": "c5d9bdaf26b01a604bb61d48ff7d0caeb6abbe3fc910b0bd474fc208582c54c2",
+    "source_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+    "native_sources": {
+      "source_intro_scene": "e99e70b99a089da2f1963b0048d63aea6c57f4682ee7d22cabb3998e8912236d",
+      "source_pattern_clock": "0a465ab435eba7d93a0e7b00a3f062e63e15771112a22cc8ce51c80dbbfb54bb",
+      "source_intro_map": "43097be15d9663ea5d1d78d1f663419808cd907778cb62cfa06f3bca93433ad7",
+      "source_intro_video": "c3f94b2260f298731d00502468af9808907fd8f895042b5d1b69d127dde5c13e",
+      "source_intro_actors": "b7973fb051ea123bef48f539bce75069dd92fef9925587b1f977469e57eac4da",
+      "source_intro_fire": "5649ee6def4debe3bc333e1c5c740279ef35d1206e2c46a554bb96514140e903",
+      "source_intro_reveal": "b4d3f814c8d396b191bf468b72e3fb717ffcb24ee550cb4f4a530a03b3fc67c8",
+      "source_intro_wait": "7d721554756cab01471f0ef5356ee37d101cea2d27918ff40f5a5166a12172e9",
+      "source_wait_restore": "a6ce6eac36ff120f8222dbe24c0456c7729c1062902f997ba7fb296d6dcecd28",
+      "source_wait": "4ed09b544bf7366d82afe04c0d86b07040a453e5e00209cd57fed05db4bfc7f6",
+      "source_irq_context": "e87d3abd2b990fdb119f7b42c10b646e26a70d29ce1218b43994b186fbb1f011",
+      "source_irq": "bc5921ff1b8a9ed22c6c06c889cc430a469e926c360914e146481a89b1a2c534",
+      "source_clock": "800058a5cbafa50bcf27fc4a91b9622fd34312eb75fa46f8523cffc80799cc9a",
+      "source_rng": "5c64cd42ca0c18d69f8cfb1a185f282268b5dfd45a4b77f355323c6df802919f",
+      "source_audio_fast": "811c9e96d4f587353df50654e01d767f7f1530528efa271d1ee9d15169376cc3",
+      "source_audio_reader": "7ea0d9bdd75168ea85f1e8cf7c9ef4fbb720d746a8e4c9158953a48a5551c624",
+      "source_audio_prefix": "c0c02bafe3dd7e4baf887f67b264786c70c74932c12c897213c941f32fea2d39",
+      "source_audio_dispatch": "f8ce91959f8fb0db6062900e69a1842da8cc108d33bdfcbb7509b681185b0d90",
+      "source_audio_priority": "d5bc487b634abc56b77df5aeec338a447be312c0e76679a1eec3b14585291147",
+      "source_audio_tone": "8098ba4e45c21629a9920e6ca9ac5385ecb986e31d0db143cbbff42c0c92b272",
+      "source_audio_noise": "45b37e1689255404b86855e3970e82bfefd313421522aae46e3fae455fa9690b",
+      "source_audio_sequence": "e7171cc12b4f031dc361943aca679b7a8fa5c1fc2bb7d7798864d16675aa7663",
+      "source_audio_memory": "ec755012b117bdb5bfe2c114037f44abe4891714f6532f4800206915e8dde1f0",
+      "source_audio_envelope": "d0878cd24b5d7bb8f255a5a9e97a231815ac41828cae53342b03c6cbe81ae17c",
+      "source_audio_pitch": "ea46d31e3c73a352995c3dcbcbbe141214a9c536fd827e1a16d49d8e5e058795"
+    },
+    "verified": [
+      "Original natural entry/return wall time, raster, polls, R, IFF/EI/pending,336 IRQ RAM and400 reader bytes. Actor768-byte records and palette/counter/mapper/callback snapshots also compared.",
+      "Both regions,14000 no-input cold source frames per region; observer PSG state unchanged."
+    ],
+    "limits": [
+      "Status bytes remain original captured diagnostic inputs,not a live VDP provider; IRQ video delivery and complete coldboot are not yet composed.",
+      "Pattern dates compare foreground time excluding actual native IRQ work; existing original map/clear dates remain full elapsed checks. No physical video/PSG or throughput gate."
+    ],
+    "metadata_clarification": "Composed E50 scene loader. Inherited map-only profile prose corrected, raw data and numeric results unchanged.",
+    "host_scene_ports": [
+      {
+        "region": "ntsc",
+        "index": 0,
+        "pattern_outputs": 18528,
+        "all_foreground_outputs": 26980,
+        "real_native_irqs": 27,
+        "state_and_io_exact": true
+      },
+      {
+        "region": "ntsc",
+        "index": 1,
+        "pattern_outputs": 14208,
+        "all_foreground_outputs": 22660,
+        "real_native_irqs": 25,
+        "state_and_io_exact": true
+      },
+      {
+        "region": "ntsc",
+        "index": 2,
+        "pattern_outputs": 18528,
+        "all_foreground_outputs": 26980,
+        "real_native_irqs": 27,
+        "state_and_io_exact": true
+      },
+      {
+        "region": "ntsc",
+        "index": 3,
+        "pattern_outputs": 14208,
+        "all_foreground_outputs": 22660,
+        "real_native_irqs": 25,
+        "state_and_io_exact": true
+      },
+      {
+        "region": "ntsc",
+        "index": 4,
+        "pattern_outputs": 18528,
+        "all_foreground_outputs": 26980,
+        "real_native_irqs": 27,
+        "state_and_io_exact": true
+      },
+      {
+        "region": "pal",
+        "index": 0,
+        "pattern_outputs": 18528,
+        "all_foreground_outputs": 26980,
+        "real_native_irqs": 23,
+        "state_and_io_exact": true
+      },
+      {
+        "region": "pal",
+        "index": 1,
+        "pattern_outputs": 14208,
+        "all_foreground_outputs": 22660,
+        "real_native_irqs": 22,
+        "state_and_io_exact": true
+      },
+      {
+        "region": "pal",
+        "index": 2,
+        "pattern_outputs": 18528,
+        "all_foreground_outputs": 26980,
+        "real_native_irqs": 23,
+        "state_and_io_exact": true
+      },
+      {
+        "region": "pal",
+        "index": 3,
+        "pattern_outputs": 14208,
+        "all_foreground_outputs": 22660,
+        "real_native_irqs": 22,
+        "state_and_io_exact": true
+      },
+      {
+        "region": "pal",
+        "index": 4,
+        "pattern_outputs": 18528,
+        "all_foreground_outputs": 26980,
+        "real_native_irqs": 23,
+        "state_and_io_exact": true
+      }
+    ],
+    "scope": "Composed original ten E50 scene loads with actual native audio/IRQ work and source-captured per-IRQ status inputs. Existing8452map/clear OUT dates remain source-exact; additional032A foreground dates/values independently match original execution. Full tracked RAM/audio/VRAM/clock/R states unchanged."
+  },
+  "compiled68000": {
+    "passed": true,
+    "diagnostic_only": true,
+    "source_vector_cases": 10,
+    "source_regions": [
+      "ntsc",
+      "pal"
+    ],
+    "case_start": 0,
+    "ram_bytes": 15081,
+    "fire": false,
+    "actors": "second",
+    "reveal": true,
+    "sequence": true,
+    "transfer": true,
+    "map": "decode",
+    "scene": true,
+    "measure_native_frames": false,
+    "profile_stages": false,
+    "irq_status": true,
+    "results": [
+      {
+        "region": "ntsc",
+        "intro_poll_done": 1,
+        "intro_poll_cases": 10,
+        "intro_poll_errors": 0,
+        "intro_poll_reads": 84520,
+        "intro_poll_first_failure": 0,
+        "frame": 4532
+      },
+      {
+        "region": "pal",
+        "intro_poll_done": 1,
+        "intro_poll_cases": 10,
+        "intro_poll_errors": 0,
+        "intro_poll_reads": 84520,
+        "intro_poll_first_failure": 0,
+        "frame": 3793
+      }
+    ],
+    "kernel_sha256": "ffbfe033a7374287ac2bfe563ef976f985fb027671c57dc4cff74a756f0e0206",
+    "scope": "Compiled68000 source semantic helper checked against the selected natural original source vectors on each target region. No physical publication scheduler or PCM claim."
+  },
+  "compiled_cases": 20,
+  "compiled_foreground_outputs": 505040,
+  "compiled_real_native_irqs": 488,
+  "verification": "Ten original full-scene state vectors,15081trackedRAM/mirror bytes plus400audio and18clock/R/output fields. All old8452clear/map OUT dates percase remain original full-elapsed exact; additional pattern OUT dates/values match the independent actual original foreground execution after separating IRQ work. Chronological ordering across all foreground sinks checked.",
+  "limits": [
+    "Original per-IRQ status values still come from captured diagnostic inputs. Live ownedVDP status,IRQ video packets/register writes,complete coldboot history and physical MD video/audio are not yet composed.",
+    "Pattern dates are foreground-time exact; source captures constrain real native IRQ timing and full final clock/R state but do not independently sample every pattern wall-clock timestamp.",
+    "Compiled diagnostic frames include expected-output checks; no helper-only composite budget or hardware/PCM claim. PublishedV319 unchanged."
+  ],
+  "next_action": "Bind separate pattern/map/clear ports into ownedVDP with exact instruction durations,deliver real IRQ SAT/status and initial history,then profile/optimize the complete scene and physical video/PSG. Prepare requested full gameplay recording after the current integration step is validated.",
+  "oracle_ram_writes": 0,
+  "sram_imports": 0,
+  "archive_manifest": "analysis/v319-scene-ports/manifest.json"
+}
