@@ -4,15 +4,30 @@ Reconstruction de la ROM Master System fournie, puis portage de sa logique
 Z80 en code natif 68000 avec SGDK. La fidélité précède les améliorations.
 
 <!-- ROM-RELEASE:START -->
-**Version courante : v0319 — 2048 Kio.**
+**Version courante : v0320 — 2048 Kio.**
 
-[Télécharger la ROM v0319](versions/v0319-d3ea2a83/gaw-megadrive-v0319.bin) · [Toutes les versions](versions/README.md)
+[Télécharger la ROM v0320](versions/v0320-9e5b0abe/gaw-megadrive-v0320.bin) · [Toutes les versions](versions/README.md)
 
 Version de développement ; contrôles ciblés réussis, écarts visuels et validation complète encore ouverts.
 
-SHA-256 : `d3ea2a83ea24ed8a0d3c9857f9fbe70d000a4f73358452c1887f40e78966c56e`
-Checksum Mega Drive : `DA29`
+SHA-256 : `9e5b0abed80678ce864a0bb796c17e97047d1d34e5227a5275bf9336129ceaff`
+Checksum Mega Drive : `B0A2`
 <!-- ROM-RELEASE:END -->
+
+La V320 corrige le débordement du générique dans les 16 pixels supplémentaires
+au bas de l’écran Mega Drive. Les 192 lignes SMS conservent leur image et leur
+cadence. La correction est un ajout natif 68000 de 124 octets sur la V319 :
+les deux entrées du générique et sa sortie partagée sont redirigées ; le reste
+du binaire de jeu garde sa disposition et ses instructions.
+[Validation PAL/NTSC et parcours complet](analysis/v320_credits_report.json) ·
+[Comparaison visuelle](analysis/v320-credits-preview/before-after.png).
+
+Pour reconstruire cette correction à partir de la V319 auditée et de son code
+assembleur versionné, depuis la racine du dépôt :
+`python tools/build_credits_border_overlay.py --out validation/credits-build-local`.
+Le dossier de sortie doit être nouveau ; SGDK est recherché dans `../../work/sgdk`.
+Une compilation SGDK générale produit la base V319 ; cette étape applique ensuite
+le correctif natif après vérification du SHA et des instructions remplacées.
 
 La V319 reprend exactement le binaire testé de l’aperçu c0047. Les sources
 principales intègrent maintenant l’atlas RAM des motifs d’ennemis et les
@@ -30,7 +45,8 @@ avant les combats de boss ; aucun import de progression, vie ou sauvegarde.
 [Informations et aperçu](videos/v0319/README.md).
 
 Le MP4 volumineux reste hors Git. L’envoi vers `@KennYMcCormick-m2b` reste à
-faire : accès navigateur local désactivé dans Work et visibilité à choisir.
+faire par l’utilisateur, en visibilité **privée**, selon son choix.
+Cette capture V319 conserve le défaut de bordure du générique signalé ensuite.
 [Rapport de capture](analysis/v319_gameplay_video_report.json).
 
 ## Travail natif en cours : statut vidéo des sprites

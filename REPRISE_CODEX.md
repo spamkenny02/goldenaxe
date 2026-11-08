@@ -4,9 +4,26 @@
 plus bas décrivent des versions antérieures. Lire d’abord cette section,
 le README et les rapports cités.
 
-## Suivi courant — V319, 8 novembre 2026
+## Suivi courant — V320, 8 novembre 2026
 
-DERNIÈRE ÉTAPE : raccourcis exacts du calendrier sans sprites, rapport
+DERNIÈRE ÉTAPE : correction bordure du générique, V320.
+`analysis/v320_credits_report.json`, archive `analysis/v320-credits/manifest.json`.
+Source : `megadrive/overlays/credits_border.s` ; build reproductible :
+`python tools/build_credits_border_overlay.py --out validation/NOUVEAU_DOSSIER`.
+Base V319 auditéed3ea2a83…,124octets68000 à1F0000. Deux LEA originaux2144E/
+226F6 redirigés vers entrée,CLR221E2 vers sortie ; instructions originales
+rejouées, registres/SR/arguments préservés. Les autres octets du jeu identiques
+hors checksum. Palette49 noire,BG_Bprioritaire lignes26/27 puis remiseàzéro.
+7424 états PAL+NTSC : image192lignes identique V319, bordures noires, dates
+4701/12124/12800 identiques dans fixture fin contrôlée. Les recompilations
+SGDK/LTO générales ont fait diverger l’ancien parcours au8e donjon ; rejetées.
+Le correctif livré conserve donc la disposition et les instructions V319.
+Port natif expérimental/sourceclock toujours non sélectionné, CPU gate non
+atteint ; le correctif générique ne clôt pas la fidélité globale du portage.
+Vidéo V319 existante non régénérée : utilisateur enverra lui-même en privé,
+mais capture conserve l’ancien défaut de bordure.
+
+ÉTAPE PRÉCÉDENTE : raccourcis exacts du calendrier sans sprites, rapport
 `analysis/v319_empty_sprite_clock_report.json`, archive
 `analysis/v319-empty-sprite-clock/manifest.json`.
 SourceIntroSpriteClock : avance directe avant prochaine ligne ; sinon saut
@@ -25,7 +42,8 @@ activer cette composition, budget source encore dépassé. Aucun nouveau binaire
 publié pour ce code non sélectionné. Profil exclut livraison vidéo/PSG physique.
 Prochain : coûts attentes/IRQ et calendrier actif, puis budget composé ; dates
 originales IRQ, coldboot continu et livraison physique toujours ouverts.
-Vidéo complète V319 locale ; YouTube navigateur Work désactivé/visibilité pending.
+Vidéo complète V319 locale ; utilisateur enverra lui-même le MP4 en privé.
+Cette capture conserve le défaut de bordure du générique signalé ensuite.
 
 ÉTAPE PRÉCÉDENTE : runsclear/map versownedVDP, rapport
 `analysis/v319_map_runs_report.json`, archive `analysis/v319-map-runs`.

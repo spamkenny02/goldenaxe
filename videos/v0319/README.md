@@ -20,8 +20,10 @@ Cela ne certifie pas la fidélité complète à la SMS ou au matériel.
 
 [Rapport](report.json) · [Titre YouTube](youtube-title.txt) · [Description et chapitres](youtube-description.txt).
 
-Destination prévue : `@KennYMcCormick-m2b`. Pas encore envoyé : l’accès aux
-navigateurs locaux est désactivé dans Work ; la visibilité reste à choisir.
+Destination prévue : `@KennYMcCormick-m2b`, en visibilité **privée**.
+L’utilisateur effectuera lui-même l’envoi du MP4 ; aucun envoi automatique.
+Cette vidéo conserve le défaut de bordure du générique de la V319 : des lignes
+peuvent apparaître dans les 16 pixels supplémentaires en bas de l’écran MD.
 
 Recettes : `tools/record_v319_gameplay.py`, `tools/finalize_v319_gameplay_video.py`,
 `tools/archive_v319_gameplay_video.py`. Dépendances : imageio-ffmpeg, OpenCV,

@@ -1,0 +1,116 @@
+{
+  "rejected_relinked_candidates": [
+    "204be8c2b546f89d64f9464b9ebe5aeb54c3bc52c8389bc97c6220137d853db9"
+  ],
+  "relinked_candidate_limit": "Global SGDK/LTO rebuilds altered generated pre-ending instruction work and the recorded route diverged near eighth dungeon. These candidates were rejected. Final overlay preserves audited base instruction layout.",
+  "passed": true,
+  "md_sha256": "9e5b0abed80678ce864a0bb796c17e97047d1d34e5227a5275bf9336129ceaff",
+  "bytes": 2097152,
+  "checksum": "B0A2",
+  "issue": "The MD224-line display exposes stale or early credit-ring rows in its extra bottom16 pixels outside the original192-line SMS viewport. These apparent lines can appear and disappear at the edge. No missing line was reproduced within the192-line viewport in the controlled full-credit tests.",
+  "fix": "124bytes native68000 overlay on auditedV319,only two credits-entry LEAs and one shared exit CLR redirected. Opaque black high-priorityBG_B bottom border during credits,cleared on normal return. Source28-row ring/text/arithmetic preserved; all other baseROM bytes exact except header checksum.",
+  "cases": [
+    {
+      "region": "ntsc",
+      "credit_states": 7424,
+      "full192line_framebuffer_hashes_exact": true,
+      "old_bottom_nonblack_frames": 5000,
+      "new_bottom_nonblack_frames": 0,
+      "top_border_black": true,
+      "started": 4701,
+      "done": 12124,
+      "returned": 12800,
+      "post_return_picture_exact": true
+    },
+    {
+      "region": "pal",
+      "credit_states": 7424,
+      "full192line_framebuffer_hashes_exact": true,
+      "old_bottom_nonblack_frames": 5000,
+      "new_bottom_nonblack_frames": 0,
+      "top_border_black": true,
+      "started": 4701,
+      "done": 12124,
+      "returned": 12800,
+      "post_return_picture_exact": true
+    }
+  ],
+  "full_campaign": {
+    "passed": true,
+    "md_sha256": "9e5b0abed80678ce864a0bb796c17e97047d1d34e5227a5275bf9336129ceaff",
+    "frames": 403488,
+    "events": {
+      "credits_started": 395935,
+      "credits_finished": 403358,
+      "returned_to_intro": 403388
+    },
+    "credit_states": 7424,
+    "borders_black_all_states": true,
+    "final": {
+      "game": 0,
+      "room": 332,
+      "audio_error": 0,
+      "crystals": [
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128
+      ]
+    },
+    "approach_guard_writes": 190764,
+    "boss_assistance": false,
+    "sram_imports": 0,
+    "progression_imports": 0,
+    "recording": "validation\\c0046-campaign01\\isolated\\project\\validation\\natural-dungeon-combat\\md-auto-c0046-cold-palace-ending01",
+    "limits": [
+      "Recorded full campaign from cold boot; original authorized approach guard rebased to current hero_hurt address and removed before bosses. Not an unassisted campaign or physical hardware/PCM certificate."
+    ]
+  },
+  "source_module_unchanged": true,
+  "native_overlay": {
+    "passed": true,
+    "md_sha256": "9e5b0abed80678ce864a0bb796c17e97047d1d34e5227a5275bf9336129ceaff",
+    "base_sha256": "d3ea2a83ea24ed8a0d3c9857f9fbe70d000a4f73358452c1887f40e78966c56e",
+    "overlay_sha256": "579b52b9fd3efc73b5ab1e18c146105a796138a6cb17dc17998c90fd9414f4c9",
+    "source_sha256": "3bfb811c150044716848da6f03ee700aa06b116f09671cf149bdd3b0c62a00bc",
+    "overlay_address": 2031616,
+    "overlay_bytes": 124,
+    "hooks": [
+      {
+        "site": 136270,
+        "original": "47f900037bd6",
+        "replacement": "4eb9001f0000",
+        "target": 2031616
+      },
+      {
+        "site": 141046,
+        "original": "47f900037bd6",
+        "replacement": "4eb9001f0000",
+        "target": 2031616
+      },
+      {
+        "site": 139746,
+        "original": "4239e0ff2b78",
+        "replacement": "4eb9001f0020",
+        "target": 2031648
+      }
+    ],
+    "changed_bytes": 139,
+    "all_other_bytes_identical": true,
+    "checksum": "B0A2",
+    "scope": "Native68000 code only at two original credits-entry LEAs and one shared normal-exit CLR. Exact base and stolen instructions checked. Full game logic/audio/source arithmetic retain original binary layout and instruction work before credits."
+  },
+  "source_ending_sha256": "e2a0ae080b50bc748518633b2a90025808dcd0e7bf5fe3417f4b9977a21c69df",
+  "source_rom_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+  "limits": [
+    "Specific reproduced viewport-border defect. This does not prove absence of every other possible credit glitch or whole-port SMS/MD fidelity.",
+    "PAL/NTSC complete192-line pictures are bit-identical to prior V319 at all7424 arithmetic states; baseline original arithmetic/glyph evidence remains applicable because ending_credits.inc is unchanged.",
+    "Full campaign uses the previously authorized approach protection, removed before bosses; no save/progression imports. Physical hardware and exact PCM waveform are not certified."
+  ],
+  "archive_manifest": "analysis/v320-credits/manifest.json"
+}
