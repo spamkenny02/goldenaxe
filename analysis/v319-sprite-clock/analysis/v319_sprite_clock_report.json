@@ -1,0 +1,719 @@
+{
+  "passed": true,
+  "public_version": 319,
+  "production_rom_changed": false,
+  "production_rebuild_byte_identical": true,
+  "production_rom_sha256": "d3ea2a83ea24ed8a0d3c9857f9fbe70d000a4f73358452c1887f40e78966c56e",
+  "implementation": "source_intro_sprite_clock.c/.h schedules native sprite parse/render and latched VINT directly from elapsed master ticks and live logical VRAM/register inputs. No reference parse/render callbacks or expected status queues feed the product calendar. IRQ provider samples IN37T before0137 and checks elapsed/raster origins.",
+  "native_calendar": {
+    "passed": true,
+    "frames": 14000,
+    "results": [
+      {
+        "region": "ntsc",
+        "cpu_checkpoints": 84758455,
+        "reads": 16099,
+        "unsupported": 0,
+        "mismatch": 0,
+        "mode4_reads": 16099,
+        "non_11t_reads": 0,
+        "errors": [],
+        "psg_sha256": "fe9d8d291bde4452a67f3bb6c9395f6b5dcb173944aa2286fa6d3758942d7799"
+      },
+      {
+        "region": "pal",
+        "cpu_checkpoints": 101740528,
+        "reads": 17608,
+        "unsupported": 0,
+        "mismatch": 0,
+        "mode4_reads": 17608,
+        "non_11t_reads": 0,
+        "errors": [],
+        "psg_sha256": "3f43db56665636ca212f7fd17b94c0e3e09bea4434923a2183250a5c0922f4f0"
+      }
+    ],
+    "native_sources": {
+      "source_intro_sprite_status.c": "57ae0af2f524be9156fdecf12c887f6434c003bb216b608318fd6f689ba32bdb",
+      "source_intro_sprite_clock.c": "ce179fc00a6a8c078f2a4f9df403ddbe7db41adfe211536ce04d60f8d12edd32"
+    },
+    "core_sha256": "29ffe213f19f29fe7def364a1afa47104e7740ea67f5eeac8af8ba9f51d4e42a",
+    "source_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+    "scope": "Independent native parse/render/VINT calendar driven solely by CPU checkpoint and IN completion time. Reference live VRAM/register inputs; original full status byte compared afterward, never passed to product algorithm.",
+    "limits": [
+      "Reference VRAM and register inputs, not an independently port-written native mirror yet.",
+      "No overscan processing; SMS2 Mode4/192,8px unzoomed sprites, no-input intro/title only. No physical MD/PCM deadline proof."
+    ],
+    "oracle_ram_writes": 0,
+    "sram_imports": 0,
+    "capture_overflow": 0,
+    "transition_stride": 512,
+    "state_stride": 92,
+    "transition_vectors": 58730,
+    "transition_sha256": "64b7a9d201a0c8c48a6f2320a8f84e2690adbaf0aeead3a5f4a4ae74e70491a2",
+    "canonicalization": "Epoch rebased to0 before and delta after; unused sprite slots and unlatched collision coordinates canonicalized. Advance-only cases normalize empty fractional-line tails to exact3420-tick one-line transitions; read cases keep exact raster. Vector copies only; live calendar state unchanged."
+  },
+  "compiled68000": {
+    "passed": true,
+    "source_transition_vectors": 58730,
+    "compiled_executions": 117460,
+    "irq_provider_checks": 6326,
+    "partitions": [
+      {
+        "path": "validation/v319-sprite-clock03/kernel1-report.json",
+        "report": {
+          "passed": true,
+          "start": 0,
+          "count": 3000,
+          "results": [
+            {
+              "region": "ntsc",
+              "clock_done": 1,
+              "clock_errors": 0,
+              "clock_first_failure": 0,
+              "clock_cases_done": 3000,
+              "clock_irq_checks": 620,
+              "frame": 1844
+            },
+            {
+              "region": "pal",
+              "clock_done": 1,
+              "clock_errors": 0,
+              "clock_first_failure": 0,
+              "clock_cases_done": 3000,
+              "clock_irq_checks": 620,
+              "frame": 1543
+            }
+          ],
+          "rom_sha256": "42afdf6bb40a60cdd1bd74bcb16db7a2dc94c13db8cb2fa8d7acfbe23c78c056",
+          "scope": "Normalized advance-only line transitions and exact original read phases, full cache/latch/calendar output on68000. Each read also checks the native IRQ provider with0137 minus37T sampling. Expected read bytes were source-checked by the host corpus."
+        }
+      },
+      {
+        "path": "validation/v319-sprite-clock03/kernel2-report.json",
+        "report": {
+          "passed": true,
+          "start": 3000,
+          "count": 3000,
+          "results": [
+            {
+              "region": "ntsc",
+              "clock_done": 1,
+              "clock_errors": 0,
+              "clock_first_failure": 0,
+              "clock_cases_done": 3000,
+              "clock_irq_checks": 0,
+              "frame": 1741
+            },
+            {
+              "region": "pal",
+              "clock_done": 1,
+              "clock_errors": 0,
+              "clock_first_failure": 0,
+              "clock_cases_done": 3000,
+              "clock_irq_checks": 0,
+              "frame": 1457
+            }
+          ],
+          "rom_sha256": "c123bfae4bf74adefc073e1e25bf561bc9ab38a785d7c53ac4c873f3cc48cb26",
+          "scope": "Normalized advance-only line transitions and exact original read phases, full cache/latch/calendar output on68000. Each read also checks the native IRQ provider with0137 minus37T sampling. Expected read bytes were source-checked by the host corpus."
+        }
+      },
+      {
+        "path": "validation/v319-sprite-clock03/kernel3-report.json",
+        "report": {
+          "passed": true,
+          "start": 6000,
+          "count": 3000,
+          "results": [
+            {
+              "region": "ntsc",
+              "clock_done": 1,
+              "clock_errors": 0,
+              "clock_first_failure": 0,
+              "clock_cases_done": 3000,
+              "clock_irq_checks": 1,
+              "frame": 1737
+            },
+            {
+              "region": "pal",
+              "clock_done": 1,
+              "clock_errors": 0,
+              "clock_first_failure": 0,
+              "clock_cases_done": 3000,
+              "clock_irq_checks": 1,
+              "frame": 1454
+            }
+          ],
+          "rom_sha256": "0d48d37c508d9d0274b84f12e70e822ab060eb76fd4f3af31ffbcdb46e59706b",
+          "scope": "Normalized advance-only line transitions and exact original read phases, full cache/latch/calendar output on68000. Each read also checks the native IRQ provider with0137 minus37T sampling. Expected read bytes were source-checked by the host corpus."
+        }
+      },
+      {
+        "path": "validation/v319-sprite-clock03/kernel4-report.json",
+        "report": {
+          "passed": true,
+          "start": 9000,
+          "count": 3000,
+          "results": [
+            {
+              "region": "ntsc",
+              "clock_done": 1,
+              "clock_errors": 0,
+              "clock_first_failure": 0,
+              "clock_cases_done": 3000,
+              "clock_irq_checks": 6,
+              "frame": 1748
+            },
+            {
+              "region": "pal",
+              "clock_done": 1,
+              "clock_errors": 0,
+              "clock_first_failure": 0,
+              "clock_cases_done": 3000,
+              "clock_irq_checks": 6,
+              "frame": 1463
+            }
+          ],
+          "rom_sha256": "42385e203fdc9b5659e249f8e882ab12da8073222bc478c63acb71ba24c1d9d6",
+          "scope": "Normalized advance-only line transitions and exact original read phases, full cache/latch/calendar output on68000. Each read also checks the native IRQ provider with0137 minus37T sampling. Expected read bytes were source-checked by the host corpus."
+        }
+      },
+      {
+        "path": "validation/v319-sprite-clock03/kernel5-report.json",
+        "report": {
+          "passed": true,
+          "start": 12000,
+          "count": 3000,
+          "results": [
+            {
+              "region": "ntsc",
+              "clock_done": 1,
+              "clock_errors": 0,
+              "clock_first_failure": 0,
+              "clock_cases_done": 3000,
+              "clock_irq_checks": 1,
+              "frame": 1745
+            },
+            {
+              "region": "pal",
+              "clock_done": 1,
+              "clock_errors": 0,
+              "clock_first_failure": 0,
+              "clock_cases_done": 3000,
+              "clock_irq_checks": 1,
+              "frame": 1461
+            }
+          ],
+          "rom_sha256": "5195ad1ebaacf48e93edc16457b4a88a75201c9980da3463c81328e4ef00c8c9",
+          "scope": "Normalized advance-only line transitions and exact original read phases, full cache/latch/calendar output on68000. Each read also checks the native IRQ provider with0137 minus37T sampling. Expected read bytes were source-checked by the host corpus."
+        }
+      },
+      {
+        "path": "validation/v319-sprite-clock03/kernel6-report.json",
+        "report": {
+          "passed": true,
+          "start": 15000,
+          "count": 3000,
+          "results": [
+            {
+              "region": "ntsc",
+              "clock_done": 1,
+              "clock_errors": 0,
+              "clock_first_failure": 0,
+              "clock_cases_done": 3000,
+              "clock_irq_checks": 166,
+              "frame": 1748
+            },
+            {
+              "region": "pal",
+              "clock_done": 1,
+              "clock_errors": 0,
+              "clock_first_failure": 0,
+              "clock_cases_done": 3000,
+              "clock_irq_checks": 166,
+              "frame": 1463
+            }
+          ],
+          "rom_sha256": "3f40fbaeea088046f8da746cd893ee0999137e5489413c821ea8b2f2cb04249d",
+          "scope": "Normalized advance-only line transitions and exact original read phases, full cache/latch/calendar output on68000. Each read also checks the native IRQ provider with0137 minus37T sampling. Expected read bytes were source-checked by the host corpus."
+        }
+      },
+      {
+        "path": "validation/v319-sprite-clock03/kernel7-report.json",
+        "report": {
+          "passed": true,
+          "start": 18000,
+          "count": 3000,
+          "results": [
+            {
+              "region": "ntsc",
+              "clock_done": 1,
+              "clock_errors": 0,
+              "clock_first_failure": 0,
+              "clock_cases_done": 3000,
+              "clock_irq_checks": 0,
+              "frame": 1741
+            },
+            {
+              "region": "pal",
+              "clock_done": 1,
+              "clock_errors": 0,
+              "clock_first_failure": 0,
+              "clock_cases_done": 3000,
+              "clock_irq_checks": 0,
+              "frame": 1457
+            }
+          ],
+          "rom_sha256": "d40d638590a9e8a45a77f67e0b008fdda0511bc880f64edab9dc6668a9f53a9f",
+          "scope": "Normalized advance-only line transitions and exact original read phases, full cache/latch/calendar output on68000. Each read also checks the native IRQ provider with0137 minus37T sampling. Expected read bytes were source-checked by the host corpus."
+        }
+      },
+      {
+        "path": "validation/v319-sprite-clock03/kernel8-report.json",
+        "report": {
+          "passed": true,
+          "start": 21000,
+          "count": 3000,
+          "results": [
+            {
+              "region": "ntsc",
+              "clock_done": 1,
+              "clock_errors": 0,
+              "clock_first_failure": 0,
+              "clock_cases_done": 3000,
+              "clock_irq_checks": 9,
+              "frame": 1738
+            },
+            {
+              "region": "pal",
+              "clock_done": 1,
+              "clock_errors": 0,
+              "clock_first_failure": 0,
+              "clock_cases_done": 3000,
+              "clock_irq_checks": 9,
+              "frame": 1455
+            }
+          ],
+          "rom_sha256": "af10b4e1d3d086ff605d4c06c23ba50f63dce2636bf8206367fe6130370b9719",
+          "scope": "Normalized advance-only line transitions and exact original read phases, full cache/latch/calendar output on68000. Each read also checks the native IRQ provider with0137 minus37T sampling. Expected read bytes were source-checked by the host corpus."
+        }
+      },
+      {
+        "path": "validation/v319-sprite-clock03/kernel9-report.json",
+        "report": {
+          "passed": true,
+          "start": 24000,
+          "count": 3000,
+          "results": [
+            {
+              "region": "ntsc",
+              "clock_done": 1,
+              "clock_errors": 0,
+              "clock_first_failure": 0,
+              "clock_cases_done": 3000,
+              "clock_irq_checks": 2,
+              "frame": 1748
+            },
+            {
+              "region": "pal",
+              "clock_done": 1,
+              "clock_errors": 0,
+              "clock_first_failure": 0,
+              "clock_cases_done": 3000,
+              "clock_irq_checks": 2,
+              "frame": 1463
+            }
+          ],
+          "rom_sha256": "1ac9a154baad21e5e38e024ef6acb3a15e1f9cfb5c1d3cef601577dea2cd268c",
+          "scope": "Normalized advance-only line transitions and exact original read phases, full cache/latch/calendar output on68000. Each read also checks the native IRQ provider with0137 minus37T sampling. Expected read bytes were source-checked by the host corpus."
+        }
+      },
+      {
+        "path": "validation/v319-sprite-clock03/kernel10-report.json",
+        "report": {
+          "passed": true,
+          "start": 27000,
+          "count": 3000,
+          "results": [
+            {
+              "region": "ntsc",
+              "clock_done": 1,
+              "clock_errors": 0,
+              "clock_first_failure": 0,
+              "clock_cases_done": 3000,
+              "clock_irq_checks": 995,
+              "frame": 1884
+            },
+            {
+              "region": "pal",
+              "clock_done": 1,
+              "clock_errors": 0,
+              "clock_first_failure": 0,
+              "clock_cases_done": 3000,
+              "clock_irq_checks": 995,
+              "frame": 1577
+            }
+          ],
+          "rom_sha256": "3a85208d4898d8e4b1f172fbab5cc27cee8a52f34009892cd7a9769b3896f703",
+          "scope": "Normalized advance-only line transitions and exact original read phases, full cache/latch/calendar output on68000. Each read also checks the native IRQ provider with0137 minus37T sampling. Expected read bytes were source-checked by the host corpus."
+        }
+      },
+      {
+        "path": "validation/v319-sprite-clock03/kernel11-report.json",
+        "report": {
+          "passed": true,
+          "start": 30000,
+          "count": 3000,
+          "results": [
+            {
+              "region": "ntsc",
+              "clock_done": 1,
+              "clock_errors": 0,
+              "clock_first_failure": 0,
+              "clock_cases_done": 3000,
+              "clock_irq_checks": 1166,
+              "frame": 1917
+            },
+            {
+              "region": "pal",
+              "clock_done": 1,
+              "clock_errors": 0,
+              "clock_first_failure": 0,
+              "clock_cases_done": 3000,
+              "clock_irq_checks": 1166,
+              "frame": 1605
+            }
+          ],
+          "rom_sha256": "30885d88d6aa986c3b3335ecee9a3978488f828e336b389b78c5368ad50ac707",
+          "scope": "Normalized advance-only line transitions and exact original read phases, full cache/latch/calendar output on68000. Each read also checks the native IRQ provider with0137 minus37T sampling. Expected read bytes were source-checked by the host corpus."
+        }
+      },
+      {
+        "path": "validation/v319-sprite-clock03/kernel12-report.json",
+        "report": {
+          "passed": true,
+          "start": 33000,
+          "count": 3000,
+          "results": [
+            {
+              "region": "ntsc",
+              "clock_done": 1,
+              "clock_errors": 0,
+              "clock_first_failure": 0,
+              "clock_cases_done": 3000,
+              "clock_irq_checks": 0,
+              "frame": 1741
+            },
+            {
+              "region": "pal",
+              "clock_done": 1,
+              "clock_errors": 0,
+              "clock_first_failure": 0,
+              "clock_cases_done": 3000,
+              "clock_irq_checks": 0,
+              "frame": 1458
+            }
+          ],
+          "rom_sha256": "b415207a6505a266d9026e804fa215e2bf68addc81332a67ac4c6f21ad1137ae",
+          "scope": "Normalized advance-only line transitions and exact original read phases, full cache/latch/calendar output on68000. Each read also checks the native IRQ provider with0137 minus37T sampling. Expected read bytes were source-checked by the host corpus."
+        }
+      },
+      {
+        "path": "validation/v319-sprite-clock03/kernel13-report.json",
+        "report": {
+          "passed": true,
+          "start": 36000,
+          "count": 3000,
+          "results": [
+            {
+              "region": "ntsc",
+              "clock_done": 1,
+              "clock_errors": 0,
+              "clock_first_failure": 0,
+              "clock_cases_done": 3000,
+              "clock_irq_checks": 0,
+              "frame": 1737
+            },
+            {
+              "region": "pal",
+              "clock_done": 1,
+              "clock_errors": 0,
+              "clock_first_failure": 0,
+              "clock_cases_done": 3000,
+              "clock_irq_checks": 0,
+              "frame": 1454
+            }
+          ],
+          "rom_sha256": "33e97035ce2220ff5e7ffac152b1940e98501ea575403935ccde1a4542c29f5d",
+          "scope": "Normalized advance-only line transitions and exact original read phases, full cache/latch/calendar output on68000. Each read also checks the native IRQ provider with0137 minus37T sampling. Expected read bytes were source-checked by the host corpus."
+        }
+      },
+      {
+        "path": "validation/v319-sprite-clock03/kernel14-report.json",
+        "report": {
+          "passed": true,
+          "start": 39000,
+          "count": 3000,
+          "results": [
+            {
+              "region": "ntsc",
+              "clock_done": 1,
+              "clock_errors": 0,
+              "clock_first_failure": 0,
+              "clock_cases_done": 3000,
+              "clock_irq_checks": 8,
+              "frame": 1749
+            },
+            {
+              "region": "pal",
+              "clock_done": 1,
+              "clock_errors": 0,
+              "clock_first_failure": 0,
+              "clock_cases_done": 3000,
+              "clock_irq_checks": 8,
+              "frame": 1464
+            }
+          ],
+          "rom_sha256": "0a66fc588df74086ec458999efae5ba9916eb4279101b9a60a0e2c220f601cd8",
+          "scope": "Normalized advance-only line transitions and exact original read phases, full cache/latch/calendar output on68000. Each read also checks the native IRQ provider with0137 minus37T sampling. Expected read bytes were source-checked by the host corpus."
+        }
+      },
+      {
+        "path": "validation/v319-sprite-clock03/kernel15-report.json",
+        "report": {
+          "passed": true,
+          "start": 42000,
+          "count": 3000,
+          "results": [
+            {
+              "region": "ntsc",
+              "clock_done": 1,
+              "clock_errors": 0,
+              "clock_first_failure": 0,
+              "clock_cases_done": 3000,
+              "clock_irq_checks": 1,
+              "frame": 1745
+            },
+            {
+              "region": "pal",
+              "clock_done": 1,
+              "clock_errors": 0,
+              "clock_first_failure": 0,
+              "clock_cases_done": 3000,
+              "clock_irq_checks": 1,
+              "frame": 1461
+            }
+          ],
+          "rom_sha256": "708d632e7decddaf65ddbc6119826f809e75d0bef675a55d6ad319d4a8f9e6f0",
+          "scope": "Normalized advance-only line transitions and exact original read phases, full cache/latch/calendar output on68000. Each read also checks the native IRQ provider with0137 minus37T sampling. Expected read bytes were source-checked by the host corpus."
+        }
+      },
+      {
+        "path": "validation/v319-sprite-clock03/kernel16-report.json",
+        "report": {
+          "passed": true,
+          "start": 45000,
+          "count": 3000,
+          "results": [
+            {
+              "region": "ntsc",
+              "clock_done": 1,
+              "clock_errors": 0,
+              "clock_first_failure": 0,
+              "clock_cases_done": 3000,
+              "clock_irq_checks": 157,
+              "frame": 1742
+            },
+            {
+              "region": "pal",
+              "clock_done": 1,
+              "clock_errors": 0,
+              "clock_first_failure": 0,
+              "clock_cases_done": 3000,
+              "clock_irq_checks": 157,
+              "frame": 1458
+            }
+          ],
+          "rom_sha256": "fa8ea895e12f777111266f5e48ee28bd4f365b4e9281a0064bcb872ff1f64933",
+          "scope": "Normalized advance-only line transitions and exact original read phases, full cache/latch/calendar output on68000. Each read also checks the native IRQ provider with0137 minus37T sampling. Expected read bytes were source-checked by the host corpus."
+        }
+      },
+      {
+        "path": "validation/v319-sprite-clock03/kernel17-report.json",
+        "report": {
+          "passed": true,
+          "start": 48000,
+          "count": 3000,
+          "results": [
+            {
+              "region": "ntsc",
+              "clock_done": 1,
+              "clock_errors": 0,
+              "clock_first_failure": 0,
+              "clock_cases_done": 3000,
+              "clock_irq_checks": 0,
+              "frame": 1742
+            },
+            {
+              "region": "pal",
+              "clock_done": 1,
+              "clock_errors": 0,
+              "clock_first_failure": 0,
+              "clock_cases_done": 3000,
+              "clock_irq_checks": 0,
+              "frame": 1458
+            }
+          ],
+          "rom_sha256": "c3215f5f0f57fe12ad6bbd0f5df703793805c24c2861b75ec2c42f6cf32fecbe",
+          "scope": "Normalized advance-only line transitions and exact original read phases, full cache/latch/calendar output on68000. Each read also checks the native IRQ provider with0137 minus37T sampling. Expected read bytes were source-checked by the host corpus."
+        }
+      },
+      {
+        "path": "validation/v319-sprite-clock03/kernel18-report.json",
+        "report": {
+          "passed": true,
+          "start": 51000,
+          "count": 3000,
+          "results": [
+            {
+              "region": "ntsc",
+              "clock_done": 1,
+              "clock_errors": 0,
+              "clock_first_failure": 0,
+              "clock_cases_done": 3000,
+              "clock_irq_checks": 0,
+              "frame": 1737
+            },
+            {
+              "region": "pal",
+              "clock_done": 1,
+              "clock_errors": 0,
+              "clock_first_failure": 0,
+              "clock_cases_done": 3000,
+              "clock_irq_checks": 0,
+              "frame": 1454
+            }
+          ],
+          "rom_sha256": "25856f845501d120ad0022130ed7f1c94d44467414d8eee195633bf68491b4f8",
+          "scope": "Normalized advance-only line transitions and exact original read phases, full cache/latch/calendar output on68000. Each read also checks the native IRQ provider with0137 minus37T sampling. Expected read bytes were source-checked by the host corpus."
+        }
+      },
+      {
+        "path": "validation/v319-sprite-clock03/kernel19-report.json",
+        "report": {
+          "passed": true,
+          "start": 54000,
+          "count": 3000,
+          "results": [
+            {
+              "region": "ntsc",
+              "clock_done": 1,
+              "clock_errors": 0,
+              "clock_first_failure": 0,
+              "clock_cases_done": 3000,
+              "clock_irq_checks": 9,
+              "frame": 1749
+            },
+            {
+              "region": "pal",
+              "clock_done": 1,
+              "clock_errors": 0,
+              "clock_first_failure": 0,
+              "clock_cases_done": 3000,
+              "clock_irq_checks": 9,
+              "frame": 1464
+            }
+          ],
+          "rom_sha256": "0473055b7e08e6d728389448701317138c0905ff6b4504a061488e3a71b18bb9",
+          "scope": "Normalized advance-only line transitions and exact original read phases, full cache/latch/calendar output on68000. Each read also checks the native IRQ provider with0137 minus37T sampling. Expected read bytes were source-checked by the host corpus."
+        }
+      },
+      {
+        "path": "validation/v319-sprite-clock03/kernel20-report.json",
+        "report": {
+          "passed": true,
+          "start": 57000,
+          "count": 1730,
+          "results": [
+            {
+              "region": "ntsc",
+              "clock_done": 1,
+              "clock_errors": 0,
+              "clock_first_failure": 0,
+              "clock_cases_done": 1730,
+              "clock_irq_checks": 22,
+              "frame": 1019
+            },
+            {
+              "region": "pal",
+              "clock_done": 1,
+              "clock_errors": 0,
+              "clock_first_failure": 0,
+              "clock_cases_done": 1730,
+              "clock_irq_checks": 22,
+              "frame": 853
+            }
+          ],
+          "rom_sha256": "be44b22dc47f363c82dea256b3a03ce0cabd55e93d7117987a90dc2f0afee1e9",
+          "scope": "Normalized advance-only line transitions and exact original read phases, full cache/latch/calendar output on68000. Each read also checks the native IRQ provider with0137 minus37T sampling. Expected read bytes were source-checked by the host corpus."
+        }
+      }
+    ]
+  },
+  "boundary_contracts": {
+    "passed": true,
+    "host_errors": 0,
+    "results": [
+      {
+        "region": "ntsc",
+        "boundary_errors": 0,
+        "boundary_done": 1,
+        "frame": 76
+      },
+      {
+        "region": "pal",
+        "boundary_errors": 0,
+        "boundary_done": 1,
+        "frame": 65
+      }
+    ],
+    "rom_sha256": "86db4b31f3f674b5b0873ff425607b50041dcaefe9340308c48f43828a5a2966",
+    "scope": "48 contract checks on host and each compiled region: whole-frame versus single-line stable advance,32-bit epoch wrap, overflow/collision/VINT/read-to-clear, early horizontal read deferral, correct/mismatched IRQ time origins and overlong-span rejection.",
+    "limits": [
+      "Synthetic contract inputs for early-read branch; not a new source-oracle observation of that branch.",
+      "No physical throughput claim: kernel setup and full-frame stable spans are diagnostic only."
+    ]
+  },
+  "transition_kinds": {
+    "line_boundary": 55567,
+    "source_checked_read": 3163
+  },
+  "psg_exact_frames_per_region": 14000,
+  "hcounter_phases_exact": 3420,
+  "reference_observer": {
+    "passed": true,
+    "core": "C:\\Users\\UniKennY\\Documents\\Codex\\2026-10-07\\hel\\work\\genesis-plus-gx\\genesis_plus_gx_v319_sprite_clock_libretro.dll",
+    "core_sha256": "29ffe213f19f29fe7def364a1afa47104e7740ea67f5eeac8af8ba9f51d4e42a",
+    "original_sources_restored": true,
+    "original_source_sha256": {
+      "core/z80/z80.c": "9056bcf5abcd63f4ec062191e1955873320bd70f50519b4e8d8aac583e2ef63d",
+      "core/vdp_ctrl.c": "34aa4da65cfadf9da528dd387929c4ad5d52ec9bb3d83e379f9c2070ce33542a"
+    },
+    "emulated_state_modifications": 0,
+    "emulated_clock_modifications": 0,
+    "reference_source_url": "https://github.com/ekeeke/Genesis-Plus-GX",
+    "reference_git_revision": "58c341487e5bfcf979ea68413c7987633adb0c56",
+    "input_events": "CPU instruction checkpoints and status-read completion times only. No parse/render source hook."
+  },
+  "rejection": "Initial vector storage kept empty fractional-line tails and exceeded its fixed capacity. Final capture normalizes those tails only in advance-only vector copies, preserving exact read phases and all live calendar state;58730 complete vectors, no overflows. Prior capture inputs and diagnostics retained.",
+  "limits": [
+    "VRAM/register values still come from the reference in this corpus; this is not yet a port-written native mirror connected to the foreground/IRQ writers.",
+    "Advance-only compiled vectors normalize empty fractional-line tails to one exact line; read vectors preserve original phases. Full unnormalized host timeline independently compares all33707 source status bytes.",
+    "Mode4/192/SMS2,unzoomed8px,no overscan processing,no-input intro/title. The early horizontal-read branch has synthetic contract coverage, not a new original-source observation.",
+    "Calendar throughput and composite MD video/PSG deadlines have not been measured. The previous19..22-frame loader CPU measurement excludes this new calendar; no combined budget or hardware/PCM certificate."
+  ],
+  "next_action": "Drive the calendar from the native VRAM/register port mirror, foreground status reads and timed IRQ SAT writes. Provide instruction boundaries around observable writes, preserve boot history, supply032A output dates, then validate combined video/PSG output and throughput before activating a numbered ROM.",
+  "oracle_ram_writes": 0,
+  "sram_imports": 0,
+  "archive_manifest": "analysis/v319-sprite-clock/manifest.json"
+}

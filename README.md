@@ -23,6 +23,21 @@ cette routine ; la cadence de jeu visée reste celle de la Master System.
 
 ## Travail natif en cours : statut vidéo des sprites
 
+Le calendrier `source_intro_sprite_clock.c` déclenche maintenant lui-même
+l’évaluation des sprites et le drapeau VINT à partir des cycles écoulés.
+Il retrouve les **33707 lectures complètes de statut** sur les deux parcours
+de démarrage de 14000 images, sans recevoir les événements d’évaluation ou
+les statuts attendus du moteur de référence. Les **58730 cas** de lignes et
+de lectures passent sur 68000 en NTSC et PAL (117460 exécutions), ainsi que
+le fournisseur de statut des interruptions. Les états PSG capturés restent
+identiques. [Résultats du calendrier](analysis/v319_sprite_clock_report.json).
+
+La VRAM et les registres du banc viennent encore de la référence. Il reste à
+les alimenter depuis les écritures du portage et à dater les sorties du décodeur
+de motifs, puis à mesurer le coût du calendrier avec les sorties vidéo/PSG.
+Le budget CPU précédent de 19..22 images ne comprend pas ce nouveau calcul.
+La ROM publique reste V319 ; la reconstruction complète est identique.
+
 Le contexte des interruptions de l’intro accepte maintenant un fournisseur
 optionnel du statut vidéo. Sa lecture précède les sorties vidéo/PSG et alimente
 `C01B`, y compris pour les interruptions audio seules. Les quatre variantes
@@ -42,7 +57,7 @@ de statut et les 27986 statuts sauvegardés par les interruptions, sans écart.
 Les 33179 transitions distinctes passent aussi sur 68000 en NTSC et PAL,
 soit 66358 exécutions. [Résultats](analysis/v319_chip_temporal_report.json).
 
-Le module reste à alimenter depuis la VRAM et l’horloge natives du portage ;
+Le calendrier reste à raccorder aux écritures VRAM et à l’horloge du portage ;
 les événements de ces tests viennent encore du moteur de référence. La ROM
 publiée reste V319. Les lectures juste avant le pixel de collision ne sont
 pas couvertes par ce parcours naturel, et le rendu physique/PCM reste à vérifier.

@@ -6,7 +6,36 @@ le README et les rapports cités.
 
 ## Suivi courant — V319, 8 novembre 2026
 
-DERNIÈRE ÉTAPE : point de raccordement du statut dans SourceIrqContext,
+DERNIÈRE ÉTAPE : calendrier natif source_intro_sprite_clock.c/.h, rapport
+`analysis/v319_sprite_clock_report.json`, archive `analysis/v319-sprite-clock`.
+SourceIntroSpriteClock : sprites72 +elapsed/raster/period/until_line +lines
++vint/error =92octets. Init cold-history, raster0=ligne0 (comme SourceClock),
+le frameAPI de référence démarre à192*3420. Advance source-master15/T, delta
+modulo32bits <=1période, déclenche render/parse pour192lignes et parse(-1)
+avantligne0. VINT80 à193 ; lecture efface les drapeaux et gère le HC32
+(85..93,E9..FF,00..84,20master/count,phase+545).3420phases vérifiées.
+Read reçoit la fin du IN et sa longueur ; conserve le comportement de lecture
+qui traverse191→blanking. Binding IRQ fourni : vérifie originesraster/elapsed,
+échantillonne37T avant0137, compatible status_read compact/jeu.
+Le banc référence NE fournit PLUS parse/render : seulement checkpoints CPU,
+fin des IN, VRAM/registres vivants.186498983checkpoints,33707lectures complètes
+exactes ; PSG14000frames/région identique à l’archive source indépendante.
+58730vecteurs →117460cas68000 +6326vérifications du providerIRQ.48contrats
+hôte et par région compilée : spans d’une frame/ligne, epochwrap, latches,
+lecture horizontale précoce synthétique, erreur d’origineIRQ et span invalide.
+Vecteurs advance-only normalisent les fractions de ligne vides ; lectures
+conservent leur phase exacte. L’état vivant du test n’est jamais normalisé.
+Premier stockage non normalisé a saturé : diagnostic rejeté conservé ; capture
+finale complète sans saturation. Aucun patch RAM/SRAM, sources cœur restaurées.
+IMPORTANT : VRAM/registres restent ceux de la référence, pas encore un miroir
+écrit par les producteurs natifs. Pas de certification cadence/vidéo/PCM.
+L’ancien budget19..22frames EXCLUT ce calendrier : budget composé à mesurer.
+Prochaine étape : miroir ports VRAM/registres, lectures foreground, SAT IRQ
+datée, dates032A et checkpoints avant/après instructions à effets visibles ;
+puis mesures composées et activation d’une ROM numérotée. Rebuild V319 identique
+SHA d3ea2a83…/DA29 ; pas de V320 pour ce module non sélectionné.
+
+ÉTAPE PRÉCÉDENTE : point de raccordement du statut dans SourceIrqContext,
 rapport `analysis/v319_irq_status_binding_report.json`, archive
 `analysis/v319-irq-status-binding`. Champs optionnels status_read/status_context
 ajoutés en fin de contexte ; signature commune SourceIrqStatusRead, alias
