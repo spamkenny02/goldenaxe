@@ -6,6 +6,36 @@ le README et les rapports cités.
 
 ## Suivi courant — V319, 8 novembre 2026
 
+État prioritaire : NEUF cristaux PAL et retour désormais vérifiés.
+Entrée/premier gardien D9 terminés0, huit étapes froides, retrait277883,
+79/60PV source affronté sans protection (152prédictions), point279458,
+80PV. Rejeu V319 exact, rapports `palc0046_d9_midboss_report.json` et
+`c0047_pal_d9_midboss_report.json`. Suite D9 terminée0, douze points,
+géant7B/60PV et boss6C/90PV sans protection, ballon acquis. RetourEB
+à302755,104/104PV,72PM,deux clés,20pièces. Audit final corrigé uniquement
+sur un chemin de manifeste PUBLIC_ROOT (aucun combat rejoué), passé0.
+Rapports `palc0046_d9_report.json`, `c0047_pal_d9_report.json`,
+`pal_d9_v0319_report.json` ; reçu copié dans versions/V319,index et README
+mis à neuf cristaux. ROM toujours2048Kio/d3ea2a83/DA29, octets inchangés.
+Les sessions15964,42108,74503,93674 sont terminales. Le74503 avait échoué
+sur le chemin de fichier de l'audit ; audit/rejeu/reçu ont été repris et
+réussis, ne pas attendre ces anciens handles. Aucun palais PAL complet
+ni sauvegarde PAL encore annoncé.
+
+Palais PAL actif : session50681/PID15980, script
+`continue_pal_palace_entry_c0046.py`, six étapes prévues jusqu'au géant15E.
+Dossier `palc0046-pal-palace-entry-sources`. Vue ballon réelle passée,
+décor/ressources restaurés ; trajet porte89 en cours au dernier contrôle.
+Suivi74524 attend le vrai handle15980, puis audit
+`audit_pal_palace_entry.py --through giant` et lancement de
+`continue_pal_palace_inner_c0046.py`, seulement si tout réussit. Dossier
+suivant `palc0046-pal-palace-inner-sources` ; générique encore non acquis.
+Sauvegarde PAL indépendante active : session74571,
+`continue_pal_nine_save_c0046.py`, routeFA après D9 et hache sur5D.
+Elle utilise de vrais menus/écriture SRAM puis Continue, aucun état forgé.
+Résultats et ROM publique de ce test de sauvegarde à vérifier ensuite.
+Les autres sessions actives mentionnées ci-dessous sont historiques.
+
 Dernier point confirmé : entrée D9 atteinte et audit de préfixe réussi,
 trois points froids exacts : maison264827, vrai péage265208 (19→9pièces),
 entrée268807 en1FC (96PV,72PM,deux clés,huit cristaux). Clochette de

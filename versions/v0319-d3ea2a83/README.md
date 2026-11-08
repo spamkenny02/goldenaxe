@@ -44,3 +44,10 @@ et [rejeu c0047/V319](../../analysis/c0047_pal_d8_report.json), à 260858 images
 96/96 PV et 72 PM. Clé du voleur acquise ; 365 prédictions RAM entière
 pendant le boss principal et 29 au retour, sans aide après retrait.
 RAM entière et PNG final exacts au point contrôlé ; suite PAL ouverte.
+
+Ajout suivant : [neuvième cristal, ballon et retour PAL](../../analysis/palc0046_d9_report.json)
+et [rejeu c0047/V319](../../analysis/c0047_pal_d9_report.json), à 302755 images,
+104/104 PV et 72 PM. Deux gardiens et boss principal affrontés sans
+protection ; douze étapes finales rejouées, HUD des neuf cristaux vérifié.
+Le financement du passage provient de vrais ramassages, sans écriture
+argent ou ressources. Palais final, générique et sauvegarde PAL restent ouverts.

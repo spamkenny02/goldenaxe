@@ -1,0 +1,138 @@
+{
+  "passed": true,
+  "candidate": "c0046",
+  "region": "pal",
+  "rom_sha256": "9e747d38e0c6fb2d69b7c1aa8c2b296a61e8b6af41171d14e543ed9a6cb49cf5",
+  "stages": [
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-route/md-pal-palc0046-d9-funded-paid1a-route01",
+      "frames": 264827,
+      "room": 159,
+      "health": 96,
+      "magic": 72,
+      "gold": 19,
+      "keys": 2,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-service-route/md-palc0046-d9-funded-paid1a-service01",
+      "frames": 265208,
+      "room": 60,
+      "health": 96,
+      "magic": 72,
+      "gold": 9,
+      "keys": 2,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-route/md-pal-palc0046-d9-funded-entry02",
+      "frames": 268807,
+      "room": 508,
+      "health": 96,
+      "magic": 72,
+      "gold": 9,
+      "keys": 2,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-pal-palc0046-d9-funded-switch1de-02",
+      "frames": 274450,
+      "room": 462,
+      "health": 96,
+      "magic": 64,
+      "gold": 19,
+      "keys": 2,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-pal-palc0046-d9-funded-earth1ce-01",
+      "frames": 274798,
+      "room": 462,
+      "health": 96,
+      "magic": 56,
+      "gold": 19,
+      "keys": 2,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-pal-palc0046-d9-funded-mini-ready01",
+      "frames": 277882,
+      "room": 462,
+      "health": 96,
+      "magic": 72,
+      "gold": 19,
+      "keys": 2,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-auto-palc0046-d9-funded-guard-release01",
+      "frames": 277883,
+      "room": 462,
+      "health": 96,
+      "magic": 72,
+      "gold": 19,
+      "keys": 2,
+      "whole_ram_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-pal-palc0046-d9-funded-midboss01",
+      "frames": 279458,
+      "room": 446,
+      "health": 80,
+      "magic": 72,
+      "gold": 19,
+      "keys": 2,
+      "whole_ram_png_exact": true
+    }
+  ],
+  "current_campaign_trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-pal-palc0046-d9-funded-midboss01",
+  "campaign_frames": 279458,
+  "toll_price": 10,
+  "bell_opened": {
+    "frame": 267660,
+    "room": 203,
+    "game": 12,
+    "hero": 1,
+    "counter": 0,
+    "selected": 10,
+    "slot": 10,
+    "health": 96,
+    "magic": 72,
+    "gold": 9,
+    "keys": 2,
+    "owned": 1,
+    "flag": 25,
+    "cell": 57,
+    "bell": 1
+  },
+  "guard_release_frame": 277883,
+  "first_intermediate_combat": {
+    "frame": 278078,
+    "room": 446,
+    "game": 12,
+    "health": 96,
+    "hurt": 0,
+    "actors": [
+      {
+        "slot": 0,
+        "kind": 121,
+        "hp": 60
+      }
+    ]
+  },
+  "first_intermediate_defeated": true,
+  "intermediate_assistance": false,
+  "first_damage": {
+    "frame": 279272,
+    "room": 446,
+    "game": 12,
+    "health": 80,
+    "hurt": 47,
+    "before": 96
+  },
+  "full_ram_prediction_windows": 152,
+  "eight_crystals_preserved": true,
+  "ninth_crystal_obtained": false,
+  "funding_return_archive_manifest": "analysis/palc0046-d9-funding-return/manifest.json",
+  "archive_manifest": "analysis/palc0046-d9-midboss/manifest.json"
+}

@@ -1,0 +1,119 @@
+{
+  "passed": true,
+  "candidate": "c0047",
+  "region": "pal",
+  "milestone": "d9",
+  "rom_sha256": "d3ea2a83ea24ed8a0d3c9857f9fbe70d000a4f73358452c1887f40e78966c56e",
+  "reference_rom_sha256": "9e747d38e0c6fb2d69b7c1aa8c2b296a61e8b6af41171d14e543ed9a6cb49cf5",
+  "frames": 302755,
+  "whole_ram_bytes_exact": 65536,
+  "final_png_exact": true,
+  "initial_sram": false,
+  "primary_state_imports": 0,
+  "approach_writes": 156329,
+  "source_report": "analysis/palc0046_d9_report.json",
+  "source_report_sha256": "0aa0bec7aabf255b62bb9f87c7e3d7ceef7106356c7572ad467ed9add5dac54f",
+  "archive_manifest": "analysis/c0047-pal-d9/manifest.json",
+  "scope": "Official-core cold replay of the audited PAL c0046 milestone on c0047, same controller recording and logged approach-only hurt writes; no global SMS or PCM fidelity claim.",
+  "files": {
+    "analysis/palc0046_d9_report.json": "0aa0bec7aabf255b62bb9f87c7e3d7ceef7106356c7572ad467ed9add5dac54f"
+  },
+  "compressed": {
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-pal-palc0046-d9-exit01/assistance.json": {
+      "stored": "objects/107ce9f97fcc528d162763cbca8c7352f2d080c5241d9e3fb6f0a69dc76735cd.gz",
+      "raw_sha256": "107ce9f97fcc528d162763cbca8c7352f2d080c5241d9e3fb6f0a69dc76735cd",
+      "raw_bytes": 13247093,
+      "stored_sha256": "530c19683f60ad0227ad3b4000db3098cb1ab37a2f15bc5c0515a2c5dab5c700"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-pal-palc0046-d9-exit01/capture.json": {
+      "stored": "objects/80bca51f8df777b512a17ad8a1863622016a617426699804b4fc6c7c23ec79ab.gz",
+      "raw_sha256": "80bca51f8df777b512a17ad8a1863622016a617426699804b4fc6c7c23ec79ab",
+      "raw_bytes": 15969859,
+      "stored_sha256": "f0aec01e3c0d18121e4059792958dad7cad5e9fd3ed2eace80bd3289f08eab48"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-pal-palc0046-d9-exit01/controls.json": {
+      "stored": "objects/7285b0d866181e182427f374fa59300d969b151873f3d54e9375a909637523fd.gz",
+      "raw_sha256": "7285b0d866181e182427f374fa59300d969b151873f3d54e9375a909637523fd",
+      "raw_bytes": 421233,
+      "stored_sha256": "7f79e816b50175d94cde7d67148415584eeb40e013e389bf57363d895ca0e4f8"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-pal-palc0046-d9-exit01/frame_302755.png": {
+      "stored": "objects/854ec3b7af614055b1d7051e4616fd5d7ebe38b8f2b0e2b898615c72d7d7022b.gz",
+      "raw_sha256": "854ec3b7af614055b1d7051e4616fd5d7ebe38b8f2b0e2b898615c72d7d7022b",
+      "raw_bytes": 6055,
+      "stored_sha256": "c98e965f8b7bd4830fee28fdc2097d6a71ef1f45d561b9bfc87ba4dc4f003e04"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-pal-palc0046-d9-exit01/ram_302755.bin": {
+      "stored": "objects/00209816b61c3e6189287e7d8f6f67c9896e2a647212ab334d14bc9c892c0511.gz",
+      "raw_sha256": "00209816b61c3e6189287e7d8f6f67c9896e2a647212ab334d14bc9c892c0511",
+      "raw_bytes": 65536,
+      "stored_sha256": "9b22ec8556391a22640130b8d354e267c4367bc9c7b1dbe38ca5c02385c2176b"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-pal-palc0046-d9-exit01-assisted-fixed-replay-302755/replay_report.json": {
+      "stored": "objects/aea8cccd64850efd77374b9ea61e7e5bf0e3742423d86894d1e2f2a95612ecba.gz",
+      "raw_sha256": "aea8cccd64850efd77374b9ea61e7e5bf0e3742423d86894d1e2f2a95612ecba",
+      "raw_bytes": 1523,
+      "stored_sha256": "38b9f16154fa98c29c0e37e63209384bdc8ecf1c47b9f7495c437f0a72717322"
+    },
+    "validation/c0047-pal-d901/capture.json": {
+      "stored": "objects/cfddcc6028e92885a7df051cc68d648c1e5a61473f150a08b5b1aa52bb391ac7.gz",
+      "raw_sha256": "cfddcc6028e92885a7df051cc68d648c1e5a61473f150a08b5b1aa52bb391ac7",
+      "raw_bytes": 16339293,
+      "stored_sha256": "f580607d7f78085a02ca600ff92585b75834d732f960d30798353a0301cc86f9"
+    },
+    "validation/c0047-pal-d901/cram_302755.bin": {
+      "stored": "objects/996b3f53a8032acf10407b933d912eb6a3f4086144ecc91bc6d39d4181e81b9f.gz",
+      "raw_sha256": "996b3f53a8032acf10407b933d912eb6a3f4086144ecc91bc6d39d4181e81b9f",
+      "raw_bytes": 128,
+      "stored_sha256": "eebc244bd35df8c4edb5e10463620a62bdd1d97fabd61ae2370857e86235a9db"
+    },
+    "validation/c0047-pal-d901/frame_302755.png": {
+      "stored": "objects/854ec3b7af614055b1d7051e4616fd5d7ebe38b8f2b0e2b898615c72d7d7022b.gz",
+      "raw_sha256": "854ec3b7af614055b1d7051e4616fd5d7ebe38b8f2b0e2b898615c72d7d7022b",
+      "raw_bytes": 6055,
+      "stored_sha256": "c98e965f8b7bd4830fee28fdc2097d6a71ef1f45d561b9bfc87ba4dc4f003e04"
+    },
+    "validation/c0047-pal-d901/ram_302755.bin": {
+      "stored": "objects/00209816b61c3e6189287e7d8f6f67c9896e2a647212ab334d14bc9c892c0511.gz",
+      "raw_sha256": "00209816b61c3e6189287e7d8f6f67c9896e2a647212ab334d14bc9c892c0511",
+      "raw_bytes": 65536,
+      "stored_sha256": "9b22ec8556391a22640130b8d354e267c4367bc9c7b1dbe38ca5c02385c2176b"
+    },
+    "validation/c0047-pal-d901/vdp_regs_302755.bin": {
+      "stored": "objects/b8874d5c12ccac50e256d6a577b74e3c0bdb955ef5d4ad549047749dde6ccfc6.gz",
+      "raw_sha256": "b8874d5c12ccac50e256d6a577b74e3c0bdb955ef5d4ad549047749dde6ccfc6",
+      "raw_bytes": 32,
+      "stored_sha256": "63cd3323999f21412c0dec1c925417bacd12301e0db4d5669d7310a8c5646540"
+    },
+    "validation/c0047-pal-d901/vram_302755.bin": {
+      "stored": "objects/5f732874a5605037db47796e2520aa81c4b0cd510e48a3ef7f08a5989211a8e3.gz",
+      "raw_sha256": "5f732874a5605037db47796e2520aa81c4b0cd510e48a3ef7f08a5989211a8e3",
+      "raw_bytes": 65536,
+      "stored_sha256": "531ae36bccb5d7418f417063be00542cb8e2c1a37ee5e0a77ee1eee7d429eef2"
+    },
+    "validation/replay_c0047_pal.py": {
+      "stored": "objects/3044fcc55d1734d55c1d73b5e727bbb8de15cdcee7da0380fac7d2e6873b2f11.gz",
+      "raw_sha256": "3044fcc55d1734d55c1d73b5e727bbb8de15cdcee7da0380fac7d2e6873b2f11",
+      "raw_bytes": 3639,
+      "stored_sha256": "7117ce77777f67b79c03dff4502466fea018575205fac48441cd88942c389d44"
+    }
+  },
+  "removed_verified_generated": [
+    {
+      "path": "validation/c0047-pal-d901/cram_302755.bin",
+      "bytes": 128
+    },
+    {
+      "path": "validation/c0047-pal-d901/ram_302755.bin",
+      "bytes": 65536
+    },
+    {
+      "path": "validation/c0047-pal-d901/vdp_regs_302755.bin",
+      "bytes": 32
+    },
+    {
+      "path": "validation/c0047-pal-d901/vram_302755.bin",
+      "bytes": 65536
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "passed": true,
+  "candidate": "c0046",
+  "region": "pal",
+  "rom_sha256": "9e747d38e0c6fb2d69b7c1aa8c2b296a61e8b6af41171d14e543ed9a6cb49cf5",
+  "stages": [
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-route/md-pal-palc0046-d9-funding-d8-reentry01",
+      "frames": 261049,
+      "room": 490,
+      "gold": 7,
+      "health": 96,
+      "whole_ram_bytes_exact": 65536,
+      "final_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-pal-palc0046-d9-funds12",
+      "frames": 261957,
+      "room": 474,
+      "gold": 8,
+      "health": 96,
+      "whole_ram_bytes_exact": 65536,
+      "final_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-pal-palc0046-d9-funds13",
+      "frames": 262788,
+      "room": 458,
+      "gold": 14,
+      "health": 96,
+      "whole_ram_bytes_exact": 65536,
+      "final_png_exact": true
+    },
+    {
+      "trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-pal-palc0046-d9-funding-d8-exit01",
+      "frames": 264258,
+      "room": 41,
+      "gold": 19,
+      "health": 96,
+      "whole_ram_bytes_exact": 65536,
+      "final_png_exact": true
+    }
+  ],
+  "current_campaign_trace": "validation/c0046-campaign01/isolated/project/validation/natural-dungeon-combat/md-pal-palc0046-d9-funding-d8-exit01",
+  "campaign_frames": 264258,
+  "final_ram_sha256": "a477aea443788ff5009b525f234931bfc96cb8884a0778f51008891d09df5368",
+  "actual_eighth_crystal_and_exterior": true,
+  "ordinary_coin_collection": true,
+  "gold_before": 7,
+  "gold_after": 19,
+  "resource_or_actor_writes": 0,
+  "primary_state_imports": 0,
+  "approach_protection": true,
+  "ninth_crystal_obtained": false,
+  "full_game_validated": false,
+  "archive_manifest": "analysis/palc0046-d9-funding-return/manifest.json",
+  "scope": "Real D8 detour after eight crystals: ordinary coin pickups and exterior return. Hurt-only approach protection is declared; no currency, resource, actor, SRAM or progression imports. Four cold whole-RAM/PNG endpoints; not a D9 combat or fidelity milestone."
+}

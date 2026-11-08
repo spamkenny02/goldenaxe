@@ -143,7 +143,7 @@ def main():
         ninth_crystal_obtained=count>=11,ninth_crystal_and_exterior_return=count==12,actual_ninth_crystal_and_exterior=count==12,
         first_main_combat=main_boss,
         guard_release_frames=guard_release,current_campaign_trace=stages[-1]['trace'],
-        campaign_frames=stages[-1]['frames'],archive_manifest=(archive/'manifest.json').relative_to(ROOT).as_posix())
+        campaign_frames=stages[-1]['frames'],archive_manifest=(archive/'manifest.json').relative_to(PUBLIC_ROOT).as_posix())
     freeze(PUBLIC_ROOT,archive,paths,result,[ROOT/'validation'])
     output=PUBLIC_ROOT/('analysis/palc0046_d9_report.json' if through=='exit' else f'analysis/palc0046_d9_{through}_report.json')
     assert not output.exists(),output
