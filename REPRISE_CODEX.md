@@ -6,6 +6,22 @@ le README et les rapports cités.
 
 ## Suivi courant — V319, 8 novembre 2026
 
+Dernier point confirmé : entrée D9 atteinte et audit de préfixe réussi,
+trois points froids exacts : maison264827, vrai péage265208 (19→9pièces),
+entrée268807 en1FC (96PV,72PM,deux clés,huit cristaux). Clochette de
+glace utilisée enCB à267660, vrai drapeau de passage ouvert. Commande
+`audit_pal_d9_funded_entry.py --prefix-only` terminée0 pour ces trois
+étapes. Le premier gardien n'est pas encore validé. Pilote15964/PID15736
+actif sur `palc0046-d9-funded-switch1de-02` au dernier contrôle.
+Suivi42108/PID14600 attend ce pilote puis audit8étapes/rejeuV319/finD9.
+Nouveau suivi74503/PID31556 attend le vrai handle14600 ; seulement si
+la suite termine0, il exécutera `audit_pal_d9_funded_finish.py --through
+exit`, le rejeu V319 D9 et le reçu `summarize_pal_milestone_v0319.py
+--dungeon9`. Ces résultats futurs ne sont pas acquis. Le nouvel audit
+contrôle géant7B60PV, ballon réel, boss6C90PV, neuf cristaux/HUD et
+retour extérieurEB ; aucun donjon ni générique complet PAL encore annoncé.
+Git main poussé5a176e20 pour le financement. ROM publique inchangéeV319.
+
 Mise à jour prioritaire : détour de financement D8 terminé et audité.
 Fonds13/session15631 terminé0, objectif atteint à262688 :14pièces,
 96PV,1CA. Rejeu indépendant65536RAM/PNG exact à262788. Le retour
