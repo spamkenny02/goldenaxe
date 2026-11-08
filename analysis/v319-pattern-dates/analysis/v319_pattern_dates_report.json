@@ -1,0 +1,207 @@
+{
+  "passed": true,
+  "public_version": 319,
+  "production_rom_changed": false,
+  "source_executed_dates": {
+    "passed": true,
+    "results": [
+      {
+        "region": "ntsc",
+        "checks": [
+          {
+            "plan": 1,
+            "header": 40304,
+            "outputs": 18528,
+            "foreground_master": 12883290,
+            "actual_elapsed_master": 13576395,
+            "actual_irq_master": 693105,
+            "foreground_dates_and_values_exact": true,
+            "source_end_and_destination_exact": true
+          },
+          {
+            "plan": 2,
+            "header": 42581,
+            "outputs": 14208,
+            "foreground_master": 9874470,
+            "actual_elapsed_master": 10391010,
+            "actual_irq_master": 516540,
+            "foreground_dates_and_values_exact": true,
+            "source_end_and_destination_exact": true
+          }
+        ],
+        "raw_sha256": "0354112abe70e2c17408d86b1552a1040dee5678c9bc096e6c3a0bc11bd3e371",
+        "psg_exact_frames": 14000
+      },
+      {
+        "region": "pal",
+        "checks": [
+          {
+            "plan": 1,
+            "header": 40304,
+            "outputs": 18528,
+            "foreground_master": 12883290,
+            "actual_elapsed_master": 13481070,
+            "actual_irq_master": 597780,
+            "foreground_dates_and_values_exact": true,
+            "source_end_and_destination_exact": true
+          },
+          {
+            "plan": 2,
+            "header": 42581,
+            "outputs": 14208,
+            "foreground_master": 9874470,
+            "actual_elapsed_master": 10335165,
+            "actual_irq_master": 460695,
+            "foreground_dates_and_values_exact": true,
+            "source_end_and_destination_exact": true
+          }
+        ],
+        "raw_sha256": "8e730972ee62a6ae70d5e680e99e964c2db2b198bc81adeb7294e8694fe006e7",
+        "psg_exact_frames": 14000
+      }
+    ],
+    "source_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+    "core_sha256": "be62f02a6529f362c76a7006c16adc17867ccc43122bdaa5d197a1b8ad5d5844",
+    "native_sha256": "0a465ab435eba7d93a0e7b00a3f062e63e15771112a22cc8ce51c80dbbfb54bb",
+    "scope": "Actual original032A foreground OUT completion timestamps,port/value order,final foreground duration and HL/DE return state. Actual IRQ master time separated using original instruction execution accounting; native event foreground dates subtract only its separately counted synthetic IRQ work.",
+    "limits": [
+      "Foreground dates exact, not original absolute wall-clock publication from native full IRQ composition. Native wrapper still uses synthetic82T IRQ callback; real IRQ work remains to compose.",
+      "No physical video/audio or throughput certificate."
+    ],
+    "oracle_ram_writes": 0,
+    "sram_imports": 0
+  },
+  "compiled_native_decoder_and_owned_vdp": {
+    "passed": true,
+    "compiled_cases": 48,
+    "compiled_outputs": 785664,
+    "partitions": [
+      {
+        "passed": true,
+        "plan": 1,
+        "source_lines": 262,
+        "cases": 6,
+        "owned_vdp_bound": true,
+        "results": [
+          {
+            "region": "ntsc",
+            "pattern_outputs": 111168,
+            "pattern_errors": 0,
+            "pattern_cases": 6,
+            "pattern_done": 1,
+            "frame": 6466
+          },
+          {
+            "region": "pal",
+            "pattern_outputs": 111168,
+            "pattern_errors": 0,
+            "pattern_cases": 6,
+            "pattern_done": 1,
+            "frame": 5410
+          }
+        ],
+        "rom_sha256": "bca16d389e012d46c2dbf9c0ef69c37dc84f81b5006caf6af799426cd60ceb72"
+      },
+      {
+        "passed": true,
+        "plan": 1,
+        "source_lines": 313,
+        "cases": 6,
+        "owned_vdp_bound": true,
+        "results": [
+          {
+            "region": "ntsc",
+            "pattern_outputs": 111168,
+            "pattern_errors": 0,
+            "pattern_cases": 6,
+            "pattern_done": 1,
+            "frame": 6437
+          },
+          {
+            "region": "pal",
+            "pattern_outputs": 111168,
+            "pattern_errors": 0,
+            "pattern_cases": 6,
+            "pattern_done": 1,
+            "frame": 5386
+          }
+        ],
+        "rom_sha256": "0980dc119326315bc015635f1cc5cc1501aa66cad95ada2723fc57454be111da"
+      },
+      {
+        "passed": true,
+        "plan": 2,
+        "source_lines": 262,
+        "cases": 6,
+        "owned_vdp_bound": true,
+        "results": [
+          {
+            "region": "ntsc",
+            "pattern_outputs": 85248,
+            "pattern_errors": 0,
+            "pattern_cases": 6,
+            "pattern_done": 1,
+            "frame": 5039
+          },
+          {
+            "region": "pal",
+            "pattern_outputs": 85248,
+            "pattern_errors": 0,
+            "pattern_cases": 6,
+            "pattern_done": 1,
+            "frame": 4216
+          }
+        ],
+        "rom_sha256": "d60d246c6464cc9ccccf5333d468f40aa176ca8623eeaa90fcd456cfc24c65d0"
+      },
+      {
+        "passed": true,
+        "plan": 2,
+        "source_lines": 313,
+        "cases": 6,
+        "owned_vdp_bound": true,
+        "results": [
+          {
+            "region": "ntsc",
+            "pattern_outputs": 85248,
+            "pattern_errors": 0,
+            "pattern_cases": 6,
+            "pattern_done": 1,
+            "frame": 5005
+          },
+          {
+            "region": "pal",
+            "pattern_outputs": 85248,
+            "pattern_errors": 0,
+            "pattern_cases": 6,
+            "pattern_done": 1,
+            "frame": 4188
+          }
+        ],
+        "rom_sha256": "a856d389521f81459d01f81f7dc3bf017c88e12c79cd0433b88ffe4e6982b5ba"
+      }
+    ],
+    "limits": [
+      "Exact host scalar-checked OUT dates on actual68000; synthetic82T IRQ workload. No original absolute032A timestamp certificate or physical output."
+    ]
+  },
+  "source_outputs_exact": 65472,
+  "native_sources": {
+    "source_pattern_clock": "0a465ab435eba7d93a0e7b00a3f062e63e15771112a22cc8ce51c80dbbfb54bb",
+    "source_clock": "800058a5cbafa50bcf27fc4a91b9622fd34312eb75fa46f8523cffc80799cc9a",
+    "source_rng": "5c64cd42ca0c18d69f8cfb1a185f282268b5dfd45a4b77f355323c6df802919f",
+    "source_intro_vdp": "9fffffb2c7ba38ff5de7a728865b29808e8e245b605ddcf5a54edc60f3007b71",
+    "source_intro_sprite_clock": "ce179fc00a6a8c078f2a4f9df403ddbe7db41adfe211536ce04d60f8d12edd32",
+    "source_intro_sprite_status": "57ae0af2f524be9156fdecf12c887f6434c003bb216b608318fd6f689ba32bdb"
+  },
+  "progress": "Both intro032A streams now have independent original execution evidence for every foreground OUT completion date and value, total foreground time and HL/DE return. Native decoder feeding its independently owned VDP memory is additionally compiled and checked in both MD regions at six IRQ edges for each source region/asset.",
+  "limits": [
+    "Foreground dates are original-execution exact after subtracting actual original IRQ work. Native test IRQ callback remains synthetic82T/8M1, so original absolute dates and full audio/SAT IRQ composition are still unproven.",
+    "All16KiB final mirror bytes and all dated outputs are checked in the compiled binding, but source scene boot/status history and physical video/PSG are not yet composed.",
+    "Compiled diagnostic frame counts include expected-event comparisons. They are not a helper CPU profile or game FPS. Large diagnostic runtimes justify profiling and optimization before activation; no combined performance gate claimed."
+  ],
+  "next_action": "Compose dated pattern outputs with the native scene clear/map/reveal ports and real timed IRQ status/SAT history, then profile helper-only execution and physical video/PSG delivery before activating a numbered ROM and recording full gameplay.",
+  "oracle_ram_writes": 0,
+  "sram_imports": 0,
+  "archive_manifest": "analysis/v319-pattern-dates/manifest.json"
+}

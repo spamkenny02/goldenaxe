@@ -6,7 +6,26 @@ le README et les rapports cités.
 
 ## Suivi courant — V319, 8 novembre 2026
 
-DERNIÈRE ÉTAPE : source_pattern_decode_ports, rapport
+DERNIÈRE ÉTAPE : dates032A originales indépendantes et binding decoder+VDP
+compilé, rapport `analysis/v319_pattern_dates_report.json`, archive
+`analysis/v319-pattern-dates`. 65472OUT originaux (2assets/2régionssource),
+foregroundMaster/port/value exacts,HL/DE de retour et durée foreground exacts.
+Instrumentation source capture à032A/0364 et OUTBF/BE horsIRQ ; RET final150master
+ajouté au point0364. Compteurs gaw_elapsed/gaw_irq_elapsed réels séparent temps
+IRQ de la référence. Tous les IRQ sources restent exécutés,aucune mutationRAM.
+Duréesforeground :12883290master pour9D74 et9874470pourA659. DélaisIRQ réels
+capturés dansrapport, pas remplacés par moyenne. Sources cœur restaurées,
+étatsPSG14000frames/région identiques à l’archive indépendante antérieure.
+Binding natif decoder->SourceIntroVdp désormais compilé :48cas/785664OUT,
+VRAM16KiB etclock/R exacts,6edgesIRQ/asset/régionsource,rejouésNTSC/PALMD.
+Test IRQ natif reste82T/8M1 synthétique : PAS preuve des dates absolues avec
+IRQ audio/SAT réel. PAS encore histoireboot/scène complète ni sortiesphysiques.
+Runtimes diagnostic4188..6466frames incluent comparaisons : pas deCPUgate,
+optimiser etprofiler helpersansoracle avant activation. Produit inchangé depuis
+c283f6913 ; pas de nouvelleROM. Prochain : scèneclear/map/reveal+pattern
+sink daté,IRQ/status/SAT réel,histoireboot,puisprofilage/vidéoPSG physique.
+
+ÉTAPE PRÉCÉDENTE : source_pattern_decode_ports, rapport
 `analysis/v319_pattern_ports_report.json`, archive `analysis/v319-pattern-ports`.
 API additionnelle dans source_pattern_clock.c/.h : sink(user,elapsed,raster,
 port,value) pour chaque OUT11T BF/BF/BE, sans changement des API legacy.

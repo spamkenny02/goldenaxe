@@ -1,0 +1,1890 @@
+{
+  "passed": true,
+  "public_version": 319,
+  "production_rom_changed": false,
+  "source_executed_dates": {
+    "passed": true,
+    "results": [
+      {
+        "region": "ntsc",
+        "checks": [
+          {
+            "plan": 1,
+            "header": 40304,
+            "outputs": 18528,
+            "foreground_master": 12883290,
+            "actual_elapsed_master": 13576395,
+            "actual_irq_master": 693105,
+            "foreground_dates_and_values_exact": true,
+            "source_end_and_destination_exact": true
+          },
+          {
+            "plan": 2,
+            "header": 42581,
+            "outputs": 14208,
+            "foreground_master": 9874470,
+            "actual_elapsed_master": 10391010,
+            "actual_irq_master": 516540,
+            "foreground_dates_and_values_exact": true,
+            "source_end_and_destination_exact": true
+          }
+        ],
+        "raw_sha256": "0354112abe70e2c17408d86b1552a1040dee5678c9bc096e6c3a0bc11bd3e371",
+        "psg_exact_frames": 14000
+      },
+      {
+        "region": "pal",
+        "checks": [
+          {
+            "plan": 1,
+            "header": 40304,
+            "outputs": 18528,
+            "foreground_master": 12883290,
+            "actual_elapsed_master": 13481070,
+            "actual_irq_master": 597780,
+            "foreground_dates_and_values_exact": true,
+            "source_end_and_destination_exact": true
+          },
+          {
+            "plan": 2,
+            "header": 42581,
+            "outputs": 14208,
+            "foreground_master": 9874470,
+            "actual_elapsed_master": 10335165,
+            "actual_irq_master": 460695,
+            "foreground_dates_and_values_exact": true,
+            "source_end_and_destination_exact": true
+          }
+        ],
+        "raw_sha256": "8e730972ee62a6ae70d5e680e99e964c2db2b198bc81adeb7294e8694fe006e7",
+        "psg_exact_frames": 14000
+      }
+    ],
+    "source_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+    "core_sha256": "be62f02a6529f362c76a7006c16adc17867ccc43122bdaa5d197a1b8ad5d5844",
+    "native_sha256": "0a465ab435eba7d93a0e7b00a3f062e63e15771112a22cc8ce51c80dbbfb54bb",
+    "scope": "Actual original032A foreground OUT completion timestamps,port/value order,final foreground duration and HL/DE return state. Actual IRQ master time separated using original instruction execution accounting; native event foreground dates subtract only its separately counted synthetic IRQ work.",
+    "limits": [
+      "Foreground dates exact, not original absolute wall-clock publication from native full IRQ composition. Native wrapper still uses synthetic82T IRQ callback; real IRQ work remains to compose.",
+      "No physical video/audio or throughput certificate."
+    ],
+    "oracle_ram_writes": 0,
+    "sram_imports": 0
+  },
+  "compiled_native_decoder_and_owned_vdp": {
+    "passed": true,
+    "compiled_cases": 48,
+    "compiled_outputs": 785664,
+    "partitions": [
+      {
+        "passed": true,
+        "plan": 1,
+        "source_lines": 262,
+        "cases": 6,
+        "owned_vdp_bound": true,
+        "results": [
+          {
+            "region": "ntsc",
+            "pattern_outputs": 111168,
+            "pattern_errors": 0,
+            "pattern_cases": 6,
+            "pattern_done": 1,
+            "frame": 6466
+          },
+          {
+            "region": "pal",
+            "pattern_outputs": 111168,
+            "pattern_errors": 0,
+            "pattern_cases": 6,
+            "pattern_done": 1,
+            "frame": 5410
+          }
+        ],
+        "rom_sha256": "bca16d389e012d46c2dbf9c0ef69c37dc84f81b5006caf6af799426cd60ceb72"
+      },
+      {
+        "passed": true,
+        "plan": 1,
+        "source_lines": 313,
+        "cases": 6,
+        "owned_vdp_bound": true,
+        "results": [
+          {
+            "region": "ntsc",
+            "pattern_outputs": 111168,
+            "pattern_errors": 0,
+            "pattern_cases": 6,
+            "pattern_done": 1,
+            "frame": 6437
+          },
+          {
+            "region": "pal",
+            "pattern_outputs": 111168,
+            "pattern_errors": 0,
+            "pattern_cases": 6,
+            "pattern_done": 1,
+            "frame": 5386
+          }
+        ],
+        "rom_sha256": "0980dc119326315bc015635f1cc5cc1501aa66cad95ada2723fc57454be111da"
+      },
+      {
+        "passed": true,
+        "plan": 2,
+        "source_lines": 262,
+        "cases": 6,
+        "owned_vdp_bound": true,
+        "results": [
+          {
+            "region": "ntsc",
+            "pattern_outputs": 85248,
+            "pattern_errors": 0,
+            "pattern_cases": 6,
+            "pattern_done": 1,
+            "frame": 5039
+          },
+          {
+            "region": "pal",
+            "pattern_outputs": 85248,
+            "pattern_errors": 0,
+            "pattern_cases": 6,
+            "pattern_done": 1,
+            "frame": 4216
+          }
+        ],
+        "rom_sha256": "d60d246c6464cc9ccccf5333d468f40aa176ca8623eeaa90fcd456cfc24c65d0"
+      },
+      {
+        "passed": true,
+        "plan": 2,
+        "source_lines": 313,
+        "cases": 6,
+        "owned_vdp_bound": true,
+        "results": [
+          {
+            "region": "ntsc",
+            "pattern_outputs": 85248,
+            "pattern_errors": 0,
+            "pattern_cases": 6,
+            "pattern_done": 1,
+            "frame": 5005
+          },
+          {
+            "region": "pal",
+            "pattern_outputs": 85248,
+            "pattern_errors": 0,
+            "pattern_cases": 6,
+            "pattern_done": 1,
+            "frame": 4188
+          }
+        ],
+        "rom_sha256": "a856d389521f81459d01f81f7dc3bf017c88e12c79cd0433b88ffe4e6982b5ba"
+      }
+    ],
+    "limits": [
+      "Exact host scalar-checked OUT dates on actual68000; synthetic82T IRQ workload. No original absolute032A timestamp certificate or physical output."
+    ]
+  },
+  "source_outputs_exact": 65472,
+  "native_sources": {
+    "source_pattern_clock": "0a465ab435eba7d93a0e7b00a3f062e63e15771112a22cc8ce51c80dbbfb54bb",
+    "source_clock": "800058a5cbafa50bcf27fc4a91b9622fd34312eb75fa46f8523cffc80799cc9a",
+    "source_rng": "5c64cd42ca0c18d69f8cfb1a185f282268b5dfd45a4b77f355323c6df802919f",
+    "source_intro_vdp": "9fffffb2c7ba38ff5de7a728865b29808e8e245b605ddcf5a54edc60f3007b71",
+    "source_intro_sprite_clock": "ce179fc00a6a8c078f2a4f9df403ddbe7db41adfe211536ce04d60f8d12edd32",
+    "source_intro_sprite_status": "57ae0af2f524be9156fdecf12c887f6434c003bb216b608318fd6f689ba32bdb"
+  },
+  "progress": "Both intro032A streams now have independent original execution evidence for every foreground OUT completion date and value, total foreground time and HL/DE return. Native decoder feeding its independently owned VDP memory is additionally compiled and checked in both MD regions at six IRQ edges for each source region/asset.",
+  "limits": [
+    "Foreground dates are original-execution exact after subtracting actual original IRQ work. Native test IRQ callback remains synthetic82T/8M1, so original absolute dates and full audio/SAT IRQ composition are still unproven.",
+    "All16KiB final mirror bytes and all dated outputs are checked in the compiled binding, but source scene boot/status history and physical video/PSG are not yet composed.",
+    "Compiled diagnostic frame counts include expected-event comparisons. They are not a helper CPU profile or game FPS. Large diagnostic runtimes justify profiling and optimization before activation; no combined performance gate claimed."
+  ],
+  "next_action": "Compose dated pattern outputs with the native scene clear/map/reveal ports and real timed IRQ status/SAT history, then profile helper-only execution and physical video/PSG delivery before activating a numbered ROM and recording full gameplay.",
+  "oracle_ram_writes": 0,
+  "sram_imports": 0,
+  "archive_manifest": "analysis/v319-pattern-dates/manifest.json",
+  "files": {
+    "analysis/v319_pattern_dates_report.json": "772c62c06c04445a33c433fb8f043559ff5f6df20ed2e46e776b826af221d2dc",
+    "megadrive/src/source_clock.c": "800058a5cbafa50bcf27fc4a91b9622fd34312eb75fa46f8523cffc80799cc9a",
+    "megadrive/src/source_clock.h": "d47d9dc891c71b43ab6ffa006b4da0d5ac0f3714793269403c342ae9255badb8",
+    "megadrive/src/source_intro_sprite_clock.c": "ce179fc00a6a8c078f2a4f9df403ddbe7db41adfe211536ce04d60f8d12edd32",
+    "megadrive/src/source_intro_sprite_clock.h": "616d4ee6aab5cf54977c2b84ce7121e91f514fe24c168393520bf5295c2b3b7a",
+    "megadrive/src/source_intro_sprite_status.c": "57ae0af2f524be9156fdecf12c887f6434c003bb216b608318fd6f689ba32bdb",
+    "megadrive/src/source_intro_sprite_status.h": "2331cb04d7472f494f536e01d84e111c987db58eb816f94236a5d9ebd8930676",
+    "megadrive/src/source_intro_vdp.c": "9fffffb2c7ba38ff5de7a728865b29808e8e245b605ddcf5a54edc60f3007b71",
+    "megadrive/src/source_intro_vdp.h": "e98acc48a0797f6e149917035b7846907a136fcac75b66e5bdba8f5e80be5101",
+    "megadrive/src/source_pattern_clock.c": "0a465ab435eba7d93a0e7b00a3f062e63e15771112a22cc8ce51c80dbbfb54bb",
+    "megadrive/src/source_pattern_clock.h": "0c5a8a607c2f4018a4796078a14e8944bfa0bdd30b3464e9079186cc87f2b751",
+    "megadrive/src/source_rng.c": "5c64cd42ca0c18d69f8cfb1a185f282268b5dfd45a4b77f355323c6df802919f",
+    "megadrive/src/source_rng.h": "4c0336042fd9655f7ef59d0815917b5dda9cf04755ff03b729cd048cb1890a7f",
+    "megadrive/src/source_rng_runtime.c": "4ac6192505bc23f28b28391b373692aa8e0544985d4669840c372221301cf753",
+    "megadrive/src/source_rng_runtime.h": "2e73a5ed76555eac3543d0832cb97dc1a69a93bd368da3817788f95cff74e8f9",
+    "megadrive/src/source_rng_timed.c": "722647a01b3ed17acc38f13c0daf72b3cff165e362b230ed7864b617b0f51a04",
+    "megadrive/src/source_rng_timed.h": "83ef265f2519f81fb26dd9a317d605f78aad7ef4950f1c65232859048121f186"
+  },
+  "compressed": {
+    "validation/archive_v319_pattern_dates.py": {
+      "stored": "objects/bb5787e0915e59c3984d0d1ade79efc1983166bb317ee932136329c53129719c.gz",
+      "raw_sha256": "bb5787e0915e59c3984d0d1ade79efc1983166bb317ee932136329c53129719c",
+      "raw_bytes": 4459,
+      "stored_sha256": "74e685c42aa4d2a214078e6ca69d4448c40355e326df25c053fc1b20d67009b8"
+    },
+    "validation/build_v319_pattern_dates_observer.py": {
+      "stored": "objects/76230db5e08bb892da2c76da845b16add25c48e63b595266259b1256ee590708.gz",
+      "raw_sha256": "76230db5e08bb892da2c76da845b16add25c48e63b595266259b1256ee590708",
+      "raw_bytes": 4014,
+      "stored_sha256": "a00ca184499b5f73e0ec3c22ff1054f757e7fc547a7d43427a828befc7bd405b"
+    },
+    "validation/compile_v319_pattern_ports.py": {
+      "stored": "objects/fbb892c1cda122873115302b2b78b3cbb4b7c1b21d8d15b053c2ef0ee14393c1.gz",
+      "raw_sha256": "fbb892c1cda122873115302b2b78b3cbb4b7c1b21d8d15b053c2ef0ee14393c1",
+      "raw_bytes": 8797,
+      "stored_sha256": "445f01f03bbcb1ecef75d8ab9f729fe7a8451d2af65cd7cdf1338e6f555d7301"
+    },
+    "validation/v319-pattern-dates-observer01/build.log": {
+      "stored": "objects/df4097498ff2c7d62703fe7de88f3e8915033375cacfe6051a36bf23ed55555e.gz",
+      "raw_sha256": "df4097498ff2c7d62703fe7de88f3e8915033375cacfe6051a36bf23ed55555e",
+      "raw_bytes": 6581,
+      "stored_sha256": "8111f256e97f5d36dc0f58b8847e7b43e06e787fa894301c8977c16d86ba9ac3"
+    },
+    "validation/v319-pattern-dates-observer01/instrumentation.patch": {
+      "stored": "objects/54862b1984e047c42bdbf1af5661c210e5b480d892438f19e9be20a19bbb92b2.gz",
+      "raw_sha256": "54862b1984e047c42bdbf1af5661c210e5b480d892438f19e9be20a19bbb92b2",
+      "raw_bytes": 1854,
+      "stored_sha256": "13f590a33a7ad80fee4429cf21afeafdc4615abe4af8f34c138a85ddf79aa231"
+    },
+    "validation/v319-pattern-dates-observer01/reference-license.txt": {
+      "stored": "objects/a61f44ae29c1c68226b5cbd054883c3c3739b190c8463e8db239e343cd5361b5.gz",
+      "raw_sha256": "a61f44ae29c1c68226b5cbd054883c3c3739b190c8463e8db239e343cd5361b5",
+      "raw_bytes": 65116,
+      "stored_sha256": "5efc70b2174303f47fa0c946ee11218af8324d6a47ab97e555626f9721843408"
+    },
+    "validation/v319-pattern-dates-observer01/report.json": {
+      "stored": "objects/9fd235451abdf1b912e4f1f246230298dd1b1935208a64b1e1cc6851744e8ee1.gz",
+      "raw_sha256": "9fd235451abdf1b912e4f1f246230298dd1b1935208a64b1e1cc6851744e8ee1",
+      "raw_bytes": 819,
+      "stored_sha256": "36f5556331882bdedbd0935d423047f494fe925b7ec473415d7b978092ab3db4"
+    },
+    "validation/v319-pattern-dates01/compile.log": {
+      "stored": "objects/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.gz",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_bytes": 0,
+      "stored_sha256": "ac73670af3abed54ac6fb4695131f4099be9fbe39d6076c5d0264a6bbdae9d83"
+    },
+    "validation/v319-pattern-dates01/native.dll": {
+      "stored": "objects/e3cdf3e502cc1dc70e60642f9b7f54c82616714199afd4b9d396944b6988b02a.gz",
+      "raw_sha256": "e3cdf3e502cc1dc70e60642f9b7f54c82616714199afd4b9d396944b6988b02a",
+      "raw_bytes": 146556,
+      "stored_sha256": "4f35089ad4fc36d164fa3503ff6ed5a75ccc4d7fbf93f39dbe78600ddc340e76"
+    },
+    "validation/v319-pattern-dates01/ntsc/capture.json": {
+      "stored": "objects/24456175cbd2241849c919b29f7d7740cb2ceca7252b93e227c191e7a9773984.gz",
+      "raw_sha256": "24456175cbd2241849c919b29f7d7740cb2ceca7252b93e227c191e7a9773984",
+      "raw_bytes": 618,
+      "stored_sha256": "6aa290fb034e15b9de1f417bbc269b657e37aa2efa4e05f9f86e40ef11f48ec0"
+    },
+    "validation/v319-pattern-dates01/ntsc/trace_counts.bin": {
+      "stored": "objects/6cc89fc3e12d5331980d18f0f7f60fab2cc2f11c1a89aefbf60ae7ce8b2704e6.gz",
+      "raw_sha256": "6cc89fc3e12d5331980d18f0f7f60fab2cc2f11c1a89aefbf60ae7ce8b2704e6",
+      "raw_bytes": 1048576,
+      "stored_sha256": "b78f7762e980f29b4ba2311f2c341a7b503dc3392ce2615dad11d5a920816908"
+    },
+    "validation/v319-pattern-dates01/ntsc/trace_states.bin": {
+      "stored": "objects/63687f85d261c8b8824b61727fc86b2e63c26ecc30b0667a468af8ff559a7c8c.gz",
+      "raw_sha256": "63687f85d261c8b8824b61727fc86b2e63c26ecc30b0667a468af8ff559a7c8c",
+      "raw_bytes": 1024,
+      "stored_sha256": "a9796f280704a6fecfb85a2090b0ee10bf36263850938b314b489b39de345552"
+    },
+    "validation/v319-pattern-dates01/ntsc/trace_windows.bin": {
+      "stored": "objects/6aa6a12da37a8a7d8a59df0727f1b61e9b107566c60332ab13ad77e8ec856274.gz",
+      "raw_sha256": "6aa6a12da37a8a7d8a59df0727f1b61e9b107566c60332ab13ad77e8ec856274",
+      "raw_bytes": 262144,
+      "stored_sha256": "3d0886926c0cbb9ae2134e3005027953fe93793ecb8eb7e2c2e7f46c3df38570"
+    },
+    "validation/v319-pattern-dates01/ntsc-dates.bin": {
+      "stored": "objects/0354112abe70e2c17408d86b1552a1040dee5678c9bc096e6c3a0bc11bd3e371.gz",
+      "raw_sha256": "0354112abe70e2c17408d86b1552a1040dee5678c9bc096e6c3a0bc11bd3e371",
+      "raw_bytes": 1047680,
+      "stored_sha256": "f12f2c15285f0d46f946dda8fe422ccfd07afb112c35cd064862e5bcbe432096"
+    },
+    "validation/v319-pattern-dates01/ntsc-psg.bin": {
+      "stored": "objects/fe9d8d291bde4452a67f3bb6c9395f6b5dcb173944aa2286fa6d3758942d7799.gz",
+      "raw_sha256": "fe9d8d291bde4452a67f3bb6c9395f6b5dcb173944aa2286fa6d3758942d7799",
+      "raw_bytes": 224000,
+      "stored_sha256": "15a780f13dc512396e362e8c83d2341584902b253f2a949b5b606931ee52f255"
+    },
+    "validation/v319-pattern-dates01/pal/capture.json": {
+      "stored": "objects/bcfaeb4778f1a128410b8571194f14a3b3f6972a39ea6c9bd1d3a0737feaa5e7.gz",
+      "raw_sha256": "bcfaeb4778f1a128410b8571194f14a3b3f6972a39ea6c9bd1d3a0737feaa5e7",
+      "raw_bytes": 616,
+      "stored_sha256": "1f5ffc4fd3cde03fab93ef248a45898f8fea9bcd4334b18c354181b21bb10586"
+    },
+    "validation/v319-pattern-dates01/pal/trace_counts.bin": {
+      "stored": "objects/1312d6aea34cdbd541c10d7f73474fb193159088d82edaddf0dad3d46d81c8a1.gz",
+      "raw_sha256": "1312d6aea34cdbd541c10d7f73474fb193159088d82edaddf0dad3d46d81c8a1",
+      "raw_bytes": 1048576,
+      "stored_sha256": "161fed967f1de0442c36572df977f926e3a24a7cc198543be0ac2fc14e6f5e37"
+    },
+    "validation/v319-pattern-dates01/pal/trace_states.bin": {
+      "stored": "objects/63687f85d261c8b8824b61727fc86b2e63c26ecc30b0667a468af8ff559a7c8c.gz",
+      "raw_sha256": "63687f85d261c8b8824b61727fc86b2e63c26ecc30b0667a468af8ff559a7c8c",
+      "raw_bytes": 1024,
+      "stored_sha256": "a9796f280704a6fecfb85a2090b0ee10bf36263850938b314b489b39de345552"
+    },
+    "validation/v319-pattern-dates01/pal/trace_windows.bin": {
+      "stored": "objects/94c34ab8654d262340e67a48373a94b5008c878926ff959dbaa482fe9a1e8d43.gz",
+      "raw_sha256": "94c34ab8654d262340e67a48373a94b5008c878926ff959dbaa482fe9a1e8d43",
+      "raw_bytes": 262144,
+      "stored_sha256": "813d8c2df7bc38cb7440d7789bdfcbfb76bfa60f53b15f5ab7ae1d81d0a1f13f"
+    },
+    "validation/v319-pattern-dates01/pal-dates.bin": {
+      "stored": "objects/8e730972ee62a6ae70d5e680e99e964c2db2b198bc81adeb7294e8694fe006e7.gz",
+      "raw_sha256": "8e730972ee62a6ae70d5e680e99e964c2db2b198bc81adeb7294e8694fe006e7",
+      "raw_bytes": 1047680,
+      "stored_sha256": "8ea3c86cc6f8d2e2f4dd9a87bb809eef870e8f9dd44e7fe250c47c58d7693248"
+    },
+    "validation/v319-pattern-dates01/pal-psg.bin": {
+      "stored": "objects/3f43db56665636ca212f7fd17b94c0e3e09bea4434923a2183250a5c0922f4f0.gz",
+      "raw_sha256": "3f43db56665636ca212f7fd17b94c0e3e09bea4434923a2183250a5c0922f4f0",
+      "raw_bytes": 224000,
+      "stored_sha256": "58848dc95dc9584dc41b587272742fc411c5913b1305f8532b8cb4209466d891"
+    },
+    "validation/v319-pattern-dates01/report.json": {
+      "stored": "objects/216fa25e99fd7075e2c6d1897148d8175fd796c562b9baccb502eb0dcdec5eea.gz",
+      "raw_sha256": "216fa25e99fd7075e2c6d1897148d8175fd796c562b9baccb502eb0dcdec5eea",
+      "raw_bytes": 2662,
+      "stored_sha256": "d3b494731adcf8e2fcbf206882e61e01d2bc12d1aae115265d65db4011ee0579"
+    },
+    "validation/v319-pattern-ports02/compiled-vdp-report.json": {
+      "stored": "objects/5967d0665acaf48d939de147281fff69456eda60aebb92689e3da0406b7caa97.gz",
+      "raw_sha256": "5967d0665acaf48d939de147281fff69456eda60aebb92689e3da0406b7caa97",
+      "raw_bytes": 2942,
+      "stored_sha256": "ded03414607f1aac6eb999a324d6397275afe652cba491739ddb1413cbfd7860"
+    },
+    "validation/v319-pattern-ports02/kernel-1-262-vdp/build-command.log": {
+      "stored": "objects/2dd3a6612442498bc6be80e7b9b14122b7e924bc5bc247d76e53489fbac6539e.gz",
+      "raw_sha256": "2dd3a6612442498bc6be80e7b9b14122b7e924bc5bc247d76e53489fbac6539e",
+      "raw_bytes": 36,
+      "stored_sha256": "e790a3ba38edc81314fd2b5faf5f9ccc87d7e02660fc8bbfc37192e56e4d4c8d"
+    },
+    "validation/v319-pattern-ports02/kernel-1-262-vdp/build.log": {
+      "stored": "objects/c66112e78f4e16687d2efe711fd4a725e2c001ae83c39fb43cfa9c85770bb981.gz",
+      "raw_sha256": "c66112e78f4e16687d2efe711fd4a725e2c001ae83c39fb43cfa9c85770bb981",
+      "raw_bytes": 39140,
+      "stored_sha256": "0bbdcbaa6cb6748ece9a94c9c423f246b01d3e7f2b1098a765c4769bc6eea747"
+    },
+    "validation/v319-pattern-ports02/kernel-1-262-vdp/inc/source_intro_pattern_plans_generated.h": {
+      "stored": "objects/8d442d1476b7287811f3e2f5fd832a2c1e69b2c20e3e519397f1f6bf9a30670d.gz",
+      "raw_sha256": "8d442d1476b7287811f3e2f5fd832a2c1e69b2c20e3e519397f1f6bf9a30670d",
+      "raw_bytes": 77,
+      "stored_sha256": "3271fff16c6b7080d925f4b3f1b76d4baaa65f64ffb8660174bd5d2f750d76c1"
+    },
+    "validation/v319-pattern-ports02/kernel-1-262-vdp/inc/source_intro_vdp.h": {
+      "stored": "objects/5b9ddd8e77b95cde3f3fbada09e4d94025ab346b15c1a3e1c4979000977ed461.gz",
+      "raw_sha256": "5b9ddd8e77b95cde3f3fbada09e4d94025ab346b15c1a3e1c4979000977ed461",
+      "raw_bytes": 57,
+      "stored_sha256": "08162445907520504ac146f81fd36393b0991074444f8c9a8872134b3d33b498"
+    },
+    "validation/v319-pattern-ports02/kernel-1-262-vdp/inc/source_pattern_clock.h": {
+      "stored": "objects/c30fd119555eaebfe5e2e7ad1f16c0786829714235b3dd921b66967876574501.gz",
+      "raw_sha256": "c30fd119555eaebfe5e2e7ad1f16c0786829714235b3dd921b66967876574501",
+      "raw_bytes": 61,
+      "stored_sha256": "396497899a7e2d5a8df93e9e6510c1212fbdde8c06a34bd1589f19bbc85bc37a"
+    },
+    "validation/v319-pattern-ports02/kernel-1-262-vdp/out/release/_deps/src/events.d": {
+      "stored": "objects/8eff0379462895e6b4fa97f4c6baf9199f51beaba87da7b0c3d98a69b76c3c14.gz",
+      "raw_sha256": "8eff0379462895e6b4fa97f4c6baf9199f51beaba87da7b0c3d98a69b76c3c14",
+      "raw_bytes": 40,
+      "stored_sha256": "d6cc9994f76c2cb082aa104366c0ae4199d5d678e7a710d5816fabbe52683d1e"
+    },
+    "validation/v319-pattern-ports02/kernel-1-262-vdp/out/release/_deps/src/main.d": {
+      "stored": "objects/801212dae0f6d767ea1aa6bf56c9e6640ea132d7e705741c2cf00e4964d90084.gz",
+      "raw_sha256": "801212dae0f6d767ea1aa6bf56c9e6640ea132d7e705741c2cf00e4964d90084",
+      "raw_bytes": 1502,
+      "stored_sha256": "1256cfefce581fe75bbe4afc214ba1b917ddf56f4e1914c33b8edb5a6fa113c1"
+    },
+    "validation/v319-pattern-ports02/kernel-1-262-vdp/out/release/_deps/src/source_clock.d": {
+      "stored": "objects/0ffee9a65747e607d3612a2c2b9ed928e33a48112b27af2b0f0b7b62b67d5d5d.gz",
+      "raw_sha256": "0ffee9a65747e607d3612a2c2b9ed928e33a48112b27af2b0f0b7b62b67d5d5d",
+      "raw_bytes": 336,
+      "stored_sha256": "c7ccc424200ef378fc6726b3cf2001f55c50b3511c2f87cdafb9eb09b2d8a59c"
+    },
+    "validation/v319-pattern-ports02/kernel-1-262-vdp/out/release/_deps/src/source_intro_sprite_clock.d": {
+      "stored": "objects/3e0a1cc59ffdd5ac4d28a1323ce1aed8cefe2d27a69b5b0ddaadff80f4c88040.gz",
+      "raw_sha256": "3e0a1cc59ffdd5ac4d28a1323ce1aed8cefe2d27a69b5b0ddaadff80f4c88040",
+      "raw_bytes": 546,
+      "stored_sha256": "bcff20965c30cc6d50189d193b4206e9ec7f36d0a922b7862c30270aa686d979"
+    },
+    "validation/v319-pattern-ports02/kernel-1-262-vdp/out/release/_deps/src/source_intro_sprite_status.d": {
+      "stored": "objects/6c1d0aca1ffac59c5829a573c4949c8ce2a4dbcc445a7fab5d0227295c3f6c0f.gz",
+      "raw_sha256": "6c1d0aca1ffac59c5829a573c4949c8ce2a4dbcc445a7fab5d0227295c3f6c0f",
+      "raw_bytes": 332,
+      "stored_sha256": "1d4fefdce8e3b5b9c6c4a976c97a069dfe975ee03de85c442a59418f65852756"
+    },
+    "validation/v319-pattern-ports02/kernel-1-262-vdp/out/release/_deps/src/source_intro_vdp.d": {
+      "stored": "objects/308fff7b5b68af59e12ca21f5f1a8c89cdcacf920742b7a7694b5cf1d9eeaab9.gz",
+      "raw_sha256": "308fff7b5b68af59e12ca21f5f1a8c89cdcacf920742b7a7694b5cf1d9eeaab9",
+      "raw_bytes": 610,
+      "stored_sha256": "0af53a629c3d60fea2760da96bc4f4e7724c4b505f4dc7bd6f254317c98f4fa6"
+    },
+    "validation/v319-pattern-ports02/kernel-1-262-vdp/out/release/_deps/src/source_pattern_clock.d": {
+      "stored": "objects/561ead4dc485ed30e59ada2fb2fa05db8f4062654002dccc92596ae00d69ee86.gz",
+      "raw_sha256": "561ead4dc485ed30e59ada2fb2fa05db8f4062654002dccc92596ae00d69ee86",
+      "raw_bytes": 812,
+      "stored_sha256": "de9e9cd527996e7a152dd3917f091728cd3ea4d398aaf388a8e021fefe22113e"
+    },
+    "validation/v319-pattern-ports02/kernel-1-262-vdp/out/release/_deps/src/source_rng.d": {
+      "stored": "objects/a8e39fb8ff372bcbba333718801031c6f471e1cf92a0b72f41d8f3b4b4a5ec85.gz",
+      "raw_sha256": "a8e39fb8ff372bcbba333718801031c6f471e1cf92a0b72f41d8f3b4b4a5ec85",
+      "raw_bytes": 232,
+      "stored_sha256": "1a4cf92dc07fe2c952fe177386d2cd5b8894b11079cb97fd2aae831ae47be930"
+    },
+    "validation/v319-pattern-ports02/kernel-1-262-vdp/out/release/rom.bin": {
+      "stored": "objects/bca16d389e012d46c2dbf9c0ef69c37dc84f81b5006caf6af799426cd60ceb72.gz",
+      "raw_sha256": "bca16d389e012d46c2dbf9c0ef69c37dc84f81b5006caf6af799426cd60ceb72",
+      "raw_bytes": 2097152,
+      "stored_sha256": "2244070e7834ee65b9dff0b95688d5e5d583cbe561d08c671333cebe9eaa29d3"
+    },
+    "validation/v319-pattern-ports02/kernel-1-262-vdp/out/release/rom.out": {
+      "stored": "objects/c1d8104f19be603a1d00307e063a90497031ca700ca3fd050e29d6a84ef383e0.gz",
+      "raw_sha256": "c1d8104f19be603a1d00307e063a90497031ca700ca3fd050e29d6a84ef383e0",
+      "raw_bytes": 1191740,
+      "stored_sha256": "74ec56984734d5fff258bf5a313e55c7151a31bef6b8f80f700885fc24c620ee"
+    },
+    "validation/v319-pattern-ports02/kernel-1-262-vdp/out/release/rom_header.o": {
+      "stored": "objects/1cf3cd3156c9f324724332c805b43baaeeaace2614a89a6207bcb0d7e787c030.gz",
+      "raw_sha256": "1cf3cd3156c9f324724332c805b43baaeeaace2614a89a6207bcb0d7e787c030",
+      "raw_bytes": 932,
+      "stored_sha256": "4e596a08ceb763d140f0d3deccad7c9f5ece3a59a5c0e07cc8578da4c299a20f"
+    },
+    "validation/v319-pattern-ports02/kernel-1-262-vdp/out/release/sega.o": {
+      "stored": "objects/79d2e32e8864b573057c576c6a324067f56fd0faf0fd719fbe8bc53b5242b0c8.gz",
+      "raw_sha256": "79d2e32e8864b573057c576c6a324067f56fd0faf0fd719fbe8bc53b5242b0c8",
+      "raw_bytes": 4276,
+      "stored_sha256": "3ecc53c5dfa658c4026363efe6b77b52f3e9b6180ddb2d815708aaeb93b11727"
+    },
+    "validation/v319-pattern-ports02/kernel-1-262-vdp/out/release/sega.s": {
+      "stored": "objects/d7954a33a7b17ddf060dadf21305256b524a019678849cf9f6e0dde4ee8e211b.gz",
+      "raw_sha256": "d7954a33a7b17ddf060dadf21305256b524a019678849cf9f6e0dde4ee8e211b",
+      "raw_bytes": 10664,
+      "stored_sha256": "59271322abcc9e83c70000ec7d758aa804b5b9605eeddf9ab361723e2e6e96be"
+    },
+    "validation/v319-pattern-ports02/kernel-1-262-vdp/out/release/src/events.o": {
+      "stored": "objects/b9a4996ced4f21cdbd1737c2b408c53c28493d4beb41b2555ba6d6bdca4698d8.gz",
+      "raw_sha256": "b9a4996ced4f21cdbd1737c2b408c53c28493d4beb41b2555ba6d6bdca4698d8",
+      "raw_bytes": 1112216,
+      "stored_sha256": "688d776bac0e6c437aea378fe0f8f0d1142d6cf4343a3afb02d43c8568b98d95"
+    },
+    "validation/v319-pattern-ports02/kernel-1-262-vdp/out/release/src/main.o": {
+      "stored": "objects/40ea6e33dab24abbbe994b69f8dee218e9f2aba41deadfe71b72105b2ebfbe07.gz",
+      "raw_sha256": "40ea6e33dab24abbbe994b69f8dee218e9f2aba41deadfe71b72105b2ebfbe07",
+      "raw_bytes": 64544,
+      "stored_sha256": "01db0eed725fbfa18e94266a7adf81710b0af3c3799a2a92507b62f4b76dec46"
+    },
+    "validation/v319-pattern-ports02/kernel-1-262-vdp/out/release/src/source_clock.o": {
+      "stored": "objects/6055c09e023be0ce0083b4a49f5ffb2446e25b36c2e789f26a7a8fbc990691e8.gz",
+      "raw_sha256": "6055c09e023be0ce0083b4a49f5ffb2446e25b36c2e789f26a7a8fbc990691e8",
+      "raw_bytes": 22868,
+      "stored_sha256": "fc52c005d27c20cbe61aefe708ea066aa375379756fb2420567d011a72e39e75"
+    },
+    "validation/v319-pattern-ports02/kernel-1-262-vdp/out/release/src/source_intro_sprite_clock.o": {
+      "stored": "objects/39c9d86f9628cf8c12d495a77fde2435512610176b9e3e2f628142f08dee293b.gz",
+      "raw_sha256": "39c9d86f9628cf8c12d495a77fde2435512610176b9e3e2f628142f08dee293b",
+      "raw_bytes": 15312,
+      "stored_sha256": "7f64314fb54d33453cd4aa5ad93c227affeb95c2ae7a21764244559f4356fa0e"
+    },
+    "validation/v319-pattern-ports02/kernel-1-262-vdp/out/release/src/source_intro_sprite_status.o": {
+      "stored": "objects/7616985b79c2d7bd5b71f3d01ad4b25bde7318fa7ccb2e0018c06ca6b840631e.gz",
+      "raw_sha256": "7616985b79c2d7bd5b71f3d01ad4b25bde7318fa7ccb2e0018c06ca6b840631e",
+      "raw_bytes": 24412,
+      "stored_sha256": "cfe97b5869768b68c9ad6bbe3b5ffe08ae9b09e71faa1ce0d5544b8571a37edf"
+    },
+    "validation/v319-pattern-ports02/kernel-1-262-vdp/out/release/src/source_intro_vdp.o": {
+      "stored": "objects/b98bb3fddffa2eded5924097488f402dbbc393679036459cd7a4313ada003c57.gz",
+      "raw_sha256": "b98bb3fddffa2eded5924097488f402dbbc393679036459cd7a4313ada003c57",
+      "raw_bytes": 24996,
+      "stored_sha256": "4220652e0723dd18ce5d05abf4ea1ce678f2fab16ae4e3369bd30d621c53cf3a"
+    },
+    "validation/v319-pattern-ports02/kernel-1-262-vdp/out/release/src/source_pattern_clock.o": {
+      "stored": "objects/446fc941e6d2acc1f819c33498120661808b0da441674f0d0c61ff716a3c6bc6.gz",
+      "raw_sha256": "446fc941e6d2acc1f819c33498120661808b0da441674f0d0c61ff716a3c6bc6",
+      "raw_bytes": 56012,
+      "stored_sha256": "58ad66fc0d8635e8e5b8a941c82c3550d33dd71e34c55ddce7f3c354b8b6db5a"
+    },
+    "validation/v319-pattern-ports02/kernel-1-262-vdp/out/release/src/source_rng.o": {
+      "stored": "objects/10c4566ebd0c9bad8896f1aab2fe7652436617bacd4ac31f7673668380257990.gz",
+      "raw_sha256": "10c4566ebd0c9bad8896f1aab2fe7652436617bacd4ac31f7673668380257990",
+      "raw_bytes": 5708,
+      "stored_sha256": "88378b69e3bf4008fab1fbc0e3516bb465039297f77da6d909ffd0d73f5a190e"
+    },
+    "validation/v319-pattern-ports02/kernel-1-262-vdp/out/release/symbol.txt": {
+      "stored": "objects/636d884e830530f15f0157c7332fadca3fc38cbbfa01d2dbac39b6f17c6d38a1.gz",
+      "raw_sha256": "636d884e830530f15f0157c7332fadca3fc38cbbfa01d2dbac39b6f17c6d38a1",
+      "raw_bytes": 16749,
+      "stored_sha256": "190bb8354f36dbaa59fb67ef57580394cd601509e9cd4d2b534d2328a9fea4e6"
+    },
+    "validation/v319-pattern-ports02/kernel-1-262-vdp/out/rom.bin": {
+      "stored": "objects/2a96784139c2281dbf8953db176df5079e8f10808be0cf2106662aa6486a44dd.gz",
+      "raw_sha256": "2a96784139c2281dbf8953db176df5079e8f10808be0cf2106662aa6486a44dd",
+      "raw_bytes": 1179648,
+      "stored_sha256": "2610e93310288fcaf33dfc599970651276fbde6774b61f8d16ca1482addf4bec"
+    },
+    "validation/v319-pattern-ports02/kernel-1-262-vdp/out/rom_header.bin": {
+      "stored": "objects/6e0ba730766dc92a1f148acf452813a8fb897b0b9593288d6f9650d7df93b96c.gz",
+      "raw_sha256": "6e0ba730766dc92a1f148acf452813a8fb897b0b9593288d6f9650d7df93b96c",
+      "raw_bytes": 256,
+      "stored_sha256": "4ebe235b9a11a431a581869c8fbdcd307f5b8390652490d6348c871506496d18"
+    },
+    "validation/v319-pattern-ports02/kernel-1-262-vdp/packaging-build.json": {
+      "stored": "objects/736f594273bb3e6b2ccf0838d86a3b2338570550ef3894891bb39148c52278ab.gz",
+      "raw_sha256": "736f594273bb3e6b2ccf0838d86a3b2338570550ef3894891bb39148c52278ab",
+      "raw_bytes": 95,
+      "stored_sha256": "f0f422cd77b66c5d12b6c1b7212101e6f42d3955e6a9f76a944df7bf4226a668"
+    },
+    "validation/v319-pattern-ports02/kernel-1-262-vdp/src/events.bin": {
+      "stored": "objects/44355c2ba46de22973443cabf8af7c6410947a6afc0654df5991105c08270447.gz",
+      "raw_sha256": "44355c2ba46de22973443cabf8af7c6410947a6afc0654df5991105c08270447",
+      "raw_bytes": 1111680,
+      "stored_sha256": "d453b0387d74c3252eeb291c54ac79c84d0af0a95780381d0076952d5deb84fa"
+    },
+    "validation/v319-pattern-ports02/kernel-1-262-vdp/src/events.s": {
+      "stored": "objects/704225232b2c4982d51df61caa5c8a05482056389731bdc1adcb1dc72e3156d2.gz",
+      "raw_sha256": "704225232b2c4982d51df61caa5c8a05482056389731bdc1adcb1dc72e3156d2",
+      "raw_bytes": 96,
+      "stored_sha256": "11d58e29c59ea3d68366e6a01596aace858f41688540ee34e3fb294a119bedc3"
+    },
+    "validation/v319-pattern-ports02/kernel-1-262-vdp/src/expected.h": {
+      "stored": "objects/e8336995cdbe720c3ba1cf01bbad65a36c29666a194dceed6605f8fa6852a8dd.gz",
+      "raw_sha256": "e8336995cdbe720c3ba1cf01bbad65a36c29666a194dceed6605f8fa6852a8dd",
+      "raw_bytes": 7692,
+      "stored_sha256": "4e6064e8ca822de194bbee1ea9d6afffe5e9472805a098674c23f30f4a8184b9"
+    },
+    "validation/v319-pattern-ports02/kernel-1-262-vdp/src/main.c": {
+      "stored": "objects/cf2b802aa0d8d53a222cd9ed1a5562dc018a66547e9fe36b39ef4e6ccff35c69.gz",
+      "raw_sha256": "cf2b802aa0d8d53a222cd9ed1a5562dc018a66547e9fe36b39ef4e6ccff35c69",
+      "raw_bytes": 2715,
+      "stored_sha256": "96ed488bb0724c39e1513bacbb676cc828de6b7e23a537982132de8fe92132f4"
+    },
+    "validation/v319-pattern-ports02/kernel-1-262-vdp/src/rom_header.c": {
+      "stored": "objects/2447408754cf62a1a5989e99df239ad45270783f9730a465100f7ab80afe97d1.gz",
+      "raw_sha256": "2447408754cf62a1a5989e99df239ad45270783f9730a465100f7ab80afe97d1",
+      "raw_bytes": 793,
+      "stored_sha256": "dbb3057a4e9783a40e8096246871183572ffe7a4b3674d78f4a6c3c9e6435ede"
+    },
+    "validation/v319-pattern-ports02/kernel-1-262-vdp/src/source_clock.c": {
+      "stored": "objects/402f285353517384881d602fedd9cfbc3403f23c11551e3d87016aafe3012962.gz",
+      "raw_sha256": "402f285353517384881d602fedd9cfbc3403f23c11551e3d87016aafe3012962",
+      "raw_bytes": 53,
+      "stored_sha256": "b3ebad87aece6094639d4a4a7832a5feff3260a936ec150a41495ce42ab13740"
+    },
+    "validation/v319-pattern-ports02/kernel-1-262-vdp/src/source_intro_sprite_clock.c": {
+      "stored": "objects/3f5bc2cfa62f90bdfbdb5aea279f8edd7c4179117d774e6386a5bb3162aac511.gz",
+      "raw_sha256": "3f5bc2cfa62f90bdfbdb5aea279f8edd7c4179117d774e6386a5bb3162aac511",
+      "raw_bytes": 66,
+      "stored_sha256": "18d7cc17c8c45bbf37a1c1cd311a2c435191c50a7f717fc1201b6e3a13c73bf0"
+    },
+    "validation/v319-pattern-ports02/kernel-1-262-vdp/src/source_intro_sprite_status.c": {
+      "stored": "objects/8a657e18d79c7fa6b746d2492560889adb88b9de64a3c874f46455e9108e1cff.gz",
+      "raw_sha256": "8a657e18d79c7fa6b746d2492560889adb88b9de64a3c874f46455e9108e1cff",
+      "raw_bytes": 67,
+      "stored_sha256": "32638304b219350b7c86686120339857e713cd387b28a3946a11e49e59f33f7a"
+    },
+    "validation/v319-pattern-ports02/kernel-1-262-vdp/src/source_intro_vdp.c": {
+      "stored": "objects/83c923f5762f2b97631e5b900922bda4f8785e2f1b25259fa9da09726ad50d2a.gz",
+      "raw_sha256": "83c923f5762f2b97631e5b900922bda4f8785e2f1b25259fa9da09726ad50d2a",
+      "raw_bytes": 57,
+      "stored_sha256": "726e5898553e1a6af88e2a43967e265a26c7f1640d413906a4b5e15eceb53819"
+    },
+    "validation/v319-pattern-ports02/kernel-1-262-vdp/src/source_pattern_clock.c": {
+      "stored": "objects/32c179aa36fe5db18784270abdf37d26c4f2546307509314a50a89439c5b2d8b.gz",
+      "raw_sha256": "32c179aa36fe5db18784270abdf37d26c4f2546307509314a50a89439c5b2d8b",
+      "raw_bytes": 61,
+      "stored_sha256": "8ead6505d9f48e6713130f5dac818790836fd88f45dea1bbd9e3cc3c39e4fe5c"
+    },
+    "validation/v319-pattern-ports02/kernel-1-262-vdp/src/source_rng.c": {
+      "stored": "objects/a9ef3fc8d6b9104f774da888d3bda57026d4265ff8539fe5523e3cbadda2295b.gz",
+      "raw_sha256": "a9ef3fc8d6b9104f774da888d3bda57026d4265ff8539fe5523e3cbadda2295b",
+      "raw_bytes": 51,
+      "stored_sha256": "554243f63ec031c3d9558a355429b53f52f5ae600fea918d96979ad874508963"
+    },
+    "validation/v319-pattern-ports02/kernel-1-262-vdp-ntsc/capture.json": {
+      "stored": "objects/568fafde519f8da0a5d08bd6119fd0b275d4a9627b6493d98abf037a286dacb5.gz",
+      "raw_sha256": "568fafde519f8da0a5d08bd6119fd0b275d4a9627b6493d98abf037a286dacb5",
+      "raw_bytes": 572,
+      "stored_sha256": "1b146b268c86c8a326f62010914c7b78184c8fb48ae607a464ee82bb63abe6fb"
+    },
+    "validation/v319-pattern-ports02/kernel-1-262-vdp-pal/capture.json": {
+      "stored": "objects/9dd0e1ffa11a3dd05326e3debbc9c823fe276df01a606ce465476ba8582a8d10.gz",
+      "raw_sha256": "9dd0e1ffa11a3dd05326e3debbc9c823fe276df01a606ce465476ba8582a8d10",
+      "raw_bytes": 570,
+      "stored_sha256": "7673a0542fbd9c4c85adb00bb50f30211a0a315e04b60c854cdf52663f205c50"
+    },
+    "validation/v319-pattern-ports02/kernel-1-262-vdp-report.json": {
+      "stored": "objects/98e89913f8afbf00870baabfcef23882c2b73e81f80511fcc8835187bbe5612e.gz",
+      "raw_sha256": "98e89913f8afbf00870baabfcef23882c2b73e81f80511fcc8835187bbe5612e",
+      "raw_bytes": 562,
+      "stored_sha256": "8bafabb3afc2db0b91d541d9711472eaa3561016f224cdf7482619c27ac5ffb8"
+    },
+    "validation/v319-pattern-ports02/kernel-1-313-vdp/build-command.log": {
+      "stored": "objects/22e2e481f9e2220f865c3bc467be1240cddb036e04f30f657ee5fa3a59e66694.gz",
+      "raw_sha256": "22e2e481f9e2220f865c3bc467be1240cddb036e04f30f657ee5fa3a59e66694",
+      "raw_bytes": 36,
+      "stored_sha256": "b433dbdb758a2253e933106c01482e8df83b1676cc7db1125e05f44c1c730d60"
+    },
+    "validation/v319-pattern-ports02/kernel-1-313-vdp/build.log": {
+      "stored": "objects/292b6853117cd1ce397032f0c65a13cd84adc59215ecb76e0e683218f40f93d4.gz",
+      "raw_sha256": "292b6853117cd1ce397032f0c65a13cd84adc59215ecb76e0e683218f40f93d4",
+      "raw_bytes": 39140,
+      "stored_sha256": "f8ae07849d64238f08c824d9383164cdaf74d653d009c00b1acf8528b424b7d8"
+    },
+    "validation/v319-pattern-ports02/kernel-1-313-vdp/inc/source_intro_pattern_plans_generated.h": {
+      "stored": "objects/8d442d1476b7287811f3e2f5fd832a2c1e69b2c20e3e519397f1f6bf9a30670d.gz",
+      "raw_sha256": "8d442d1476b7287811f3e2f5fd832a2c1e69b2c20e3e519397f1f6bf9a30670d",
+      "raw_bytes": 77,
+      "stored_sha256": "3271fff16c6b7080d925f4b3f1b76d4baaa65f64ffb8660174bd5d2f750d76c1"
+    },
+    "validation/v319-pattern-ports02/kernel-1-313-vdp/inc/source_intro_vdp.h": {
+      "stored": "objects/5b9ddd8e77b95cde3f3fbada09e4d94025ab346b15c1a3e1c4979000977ed461.gz",
+      "raw_sha256": "5b9ddd8e77b95cde3f3fbada09e4d94025ab346b15c1a3e1c4979000977ed461",
+      "raw_bytes": 57,
+      "stored_sha256": "08162445907520504ac146f81fd36393b0991074444f8c9a8872134b3d33b498"
+    },
+    "validation/v319-pattern-ports02/kernel-1-313-vdp/inc/source_pattern_clock.h": {
+      "stored": "objects/c30fd119555eaebfe5e2e7ad1f16c0786829714235b3dd921b66967876574501.gz",
+      "raw_sha256": "c30fd119555eaebfe5e2e7ad1f16c0786829714235b3dd921b66967876574501",
+      "raw_bytes": 61,
+      "stored_sha256": "396497899a7e2d5a8df93e9e6510c1212fbdde8c06a34bd1589f19bbc85bc37a"
+    },
+    "validation/v319-pattern-ports02/kernel-1-313-vdp/out/release/_deps/src/events.d": {
+      "stored": "objects/8eff0379462895e6b4fa97f4c6baf9199f51beaba87da7b0c3d98a69b76c3c14.gz",
+      "raw_sha256": "8eff0379462895e6b4fa97f4c6baf9199f51beaba87da7b0c3d98a69b76c3c14",
+      "raw_bytes": 40,
+      "stored_sha256": "d6cc9994f76c2cb082aa104366c0ae4199d5d678e7a710d5816fabbe52683d1e"
+    },
+    "validation/v319-pattern-ports02/kernel-1-313-vdp/out/release/_deps/src/main.d": {
+      "stored": "objects/801212dae0f6d767ea1aa6bf56c9e6640ea132d7e705741c2cf00e4964d90084.gz",
+      "raw_sha256": "801212dae0f6d767ea1aa6bf56c9e6640ea132d7e705741c2cf00e4964d90084",
+      "raw_bytes": 1502,
+      "stored_sha256": "1256cfefce581fe75bbe4afc214ba1b917ddf56f4e1914c33b8edb5a6fa113c1"
+    },
+    "validation/v319-pattern-ports02/kernel-1-313-vdp/out/release/_deps/src/source_clock.d": {
+      "stored": "objects/0ffee9a65747e607d3612a2c2b9ed928e33a48112b27af2b0f0b7b62b67d5d5d.gz",
+      "raw_sha256": "0ffee9a65747e607d3612a2c2b9ed928e33a48112b27af2b0f0b7b62b67d5d5d",
+      "raw_bytes": 336,
+      "stored_sha256": "c7ccc424200ef378fc6726b3cf2001f55c50b3511c2f87cdafb9eb09b2d8a59c"
+    },
+    "validation/v319-pattern-ports02/kernel-1-313-vdp/out/release/_deps/src/source_intro_sprite_clock.d": {
+      "stored": "objects/3e0a1cc59ffdd5ac4d28a1323ce1aed8cefe2d27a69b5b0ddaadff80f4c88040.gz",
+      "raw_sha256": "3e0a1cc59ffdd5ac4d28a1323ce1aed8cefe2d27a69b5b0ddaadff80f4c88040",
+      "raw_bytes": 546,
+      "stored_sha256": "bcff20965c30cc6d50189d193b4206e9ec7f36d0a922b7862c30270aa686d979"
+    },
+    "validation/v319-pattern-ports02/kernel-1-313-vdp/out/release/_deps/src/source_intro_sprite_status.d": {
+      "stored": "objects/6c1d0aca1ffac59c5829a573c4949c8ce2a4dbcc445a7fab5d0227295c3f6c0f.gz",
+      "raw_sha256": "6c1d0aca1ffac59c5829a573c4949c8ce2a4dbcc445a7fab5d0227295c3f6c0f",
+      "raw_bytes": 332,
+      "stored_sha256": "1d4fefdce8e3b5b9c6c4a976c97a069dfe975ee03de85c442a59418f65852756"
+    },
+    "validation/v319-pattern-ports02/kernel-1-313-vdp/out/release/_deps/src/source_intro_vdp.d": {
+      "stored": "objects/308fff7b5b68af59e12ca21f5f1a8c89cdcacf920742b7a7694b5cf1d9eeaab9.gz",
+      "raw_sha256": "308fff7b5b68af59e12ca21f5f1a8c89cdcacf920742b7a7694b5cf1d9eeaab9",
+      "raw_bytes": 610,
+      "stored_sha256": "0af53a629c3d60fea2760da96bc4f4e7724c4b505f4dc7bd6f254317c98f4fa6"
+    },
+    "validation/v319-pattern-ports02/kernel-1-313-vdp/out/release/_deps/src/source_pattern_clock.d": {
+      "stored": "objects/561ead4dc485ed30e59ada2fb2fa05db8f4062654002dccc92596ae00d69ee86.gz",
+      "raw_sha256": "561ead4dc485ed30e59ada2fb2fa05db8f4062654002dccc92596ae00d69ee86",
+      "raw_bytes": 812,
+      "stored_sha256": "de9e9cd527996e7a152dd3917f091728cd3ea4d398aaf388a8e021fefe22113e"
+    },
+    "validation/v319-pattern-ports02/kernel-1-313-vdp/out/release/_deps/src/source_rng.d": {
+      "stored": "objects/a8e39fb8ff372bcbba333718801031c6f471e1cf92a0b72f41d8f3b4b4a5ec85.gz",
+      "raw_sha256": "a8e39fb8ff372bcbba333718801031c6f471e1cf92a0b72f41d8f3b4b4a5ec85",
+      "raw_bytes": 232,
+      "stored_sha256": "1a4cf92dc07fe2c952fe177386d2cd5b8894b11079cb97fd2aae831ae47be930"
+    },
+    "validation/v319-pattern-ports02/kernel-1-313-vdp/out/release/rom.bin": {
+      "stored": "objects/0980dc119326315bc015635f1cc5cc1501aa66cad95ada2723fc57454be111da.gz",
+      "raw_sha256": "0980dc119326315bc015635f1cc5cc1501aa66cad95ada2723fc57454be111da",
+      "raw_bytes": 2097152,
+      "stored_sha256": "766efed44283ff78fcc4bf7466c9e8771bd45b922007e43b058db8be4a672825"
+    },
+    "validation/v319-pattern-ports02/kernel-1-313-vdp/out/release/rom.out": {
+      "stored": "objects/beec0e525630548967635ce202ada04702dadabe9a168f818a9dd46a6f19bb66.gz",
+      "raw_sha256": "beec0e525630548967635ce202ada04702dadabe9a168f818a9dd46a6f19bb66",
+      "raw_bytes": 1191740,
+      "stored_sha256": "901d64d7d13c73c07d20c19c8681c46ee929e2ca97944335675e6c1765905133"
+    },
+    "validation/v319-pattern-ports02/kernel-1-313-vdp/out/release/rom_header.o": {
+      "stored": "objects/1cf3cd3156c9f324724332c805b43baaeeaace2614a89a6207bcb0d7e787c030.gz",
+      "raw_sha256": "1cf3cd3156c9f324724332c805b43baaeeaace2614a89a6207bcb0d7e787c030",
+      "raw_bytes": 932,
+      "stored_sha256": "4e596a08ceb763d140f0d3deccad7c9f5ece3a59a5c0e07cc8578da4c299a20f"
+    },
+    "validation/v319-pattern-ports02/kernel-1-313-vdp/out/release/sega.o": {
+      "stored": "objects/79d2e32e8864b573057c576c6a324067f56fd0faf0fd719fbe8bc53b5242b0c8.gz",
+      "raw_sha256": "79d2e32e8864b573057c576c6a324067f56fd0faf0fd719fbe8bc53b5242b0c8",
+      "raw_bytes": 4276,
+      "stored_sha256": "3ecc53c5dfa658c4026363efe6b77b52f3e9b6180ddb2d815708aaeb93b11727"
+    },
+    "validation/v319-pattern-ports02/kernel-1-313-vdp/out/release/sega.s": {
+      "stored": "objects/d7954a33a7b17ddf060dadf21305256b524a019678849cf9f6e0dde4ee8e211b.gz",
+      "raw_sha256": "d7954a33a7b17ddf060dadf21305256b524a019678849cf9f6e0dde4ee8e211b",
+      "raw_bytes": 10664,
+      "stored_sha256": "59271322abcc9e83c70000ec7d758aa804b5b9605eeddf9ab361723e2e6e96be"
+    },
+    "validation/v319-pattern-ports02/kernel-1-313-vdp/out/release/src/events.o": {
+      "stored": "objects/32bfc03047e9cd69b69bb173e1e841845be83ea5eea0cf83861515704f311d84.gz",
+      "raw_sha256": "32bfc03047e9cd69b69bb173e1e841845be83ea5eea0cf83861515704f311d84",
+      "raw_bytes": 1112216,
+      "stored_sha256": "6fcddeaa643d207b814cd50f3265e9a2c0d1ce44827777594b3b565db8ad8c3c"
+    },
+    "validation/v319-pattern-ports02/kernel-1-313-vdp/out/release/src/main.o": {
+      "stored": "objects/2f9f955a3caac90790f6101dd6d2525cfe78c7dbee9262a7df803ab0ae78a77c.gz",
+      "raw_sha256": "2f9f955a3caac90790f6101dd6d2525cfe78c7dbee9262a7df803ab0ae78a77c",
+      "raw_bytes": 64548,
+      "stored_sha256": "3b487d6361fda0bc1658642538b04b104b8846ebadf5ef2777cae7bb2d98cf52"
+    },
+    "validation/v319-pattern-ports02/kernel-1-313-vdp/out/release/src/source_clock.o": {
+      "stored": "objects/bdc89e4cb84f123b8a700ce2220e6bbd0c52f2c72e0e0d96ca2687505c9989a1.gz",
+      "raw_sha256": "bdc89e4cb84f123b8a700ce2220e6bbd0c52f2c72e0e0d96ca2687505c9989a1",
+      "raw_bytes": 22872,
+      "stored_sha256": "20f8506e985ad4cd2172207dd7dbb07b0ce21ae1b63cb974ad3a7a60e4d2a3cc"
+    },
+    "validation/v319-pattern-ports02/kernel-1-313-vdp/out/release/src/source_intro_sprite_clock.o": {
+      "stored": "objects/3139de4636daa45ba55deaf45bc27190a5a71627406e9afcabf790ba71e99851.gz",
+      "raw_sha256": "3139de4636daa45ba55deaf45bc27190a5a71627406e9afcabf790ba71e99851",
+      "raw_bytes": 15312,
+      "stored_sha256": "6549ee6867eb72a140db09bb014fccbe9e8e93ad6d6bb014a809523848caf9cf"
+    },
+    "validation/v319-pattern-ports02/kernel-1-313-vdp/out/release/src/source_intro_sprite_status.o": {
+      "stored": "objects/d37336455def80544f3fa557e7491870abd9089358f3416bf0c92c2cd4d98930.gz",
+      "raw_sha256": "d37336455def80544f3fa557e7491870abd9089358f3416bf0c92c2cd4d98930",
+      "raw_bytes": 24412,
+      "stored_sha256": "205cd3e26e272cdf7cc1840e53b92ed7def26a2c7c36c76954e5dd3e009caa2f"
+    },
+    "validation/v319-pattern-ports02/kernel-1-313-vdp/out/release/src/source_intro_vdp.o": {
+      "stored": "objects/938f06908eded6cdf298ee2a7c6da4753db76db181954c283370d8792f79942f.gz",
+      "raw_sha256": "938f06908eded6cdf298ee2a7c6da4753db76db181954c283370d8792f79942f",
+      "raw_bytes": 25000,
+      "stored_sha256": "8a6ad2e28c8777f9ff23f274697760920de3a5b6525e529d4a81e20937500a0b"
+    },
+    "validation/v319-pattern-ports02/kernel-1-313-vdp/out/release/src/source_pattern_clock.o": {
+      "stored": "objects/ca39263d427acfab744d3e61ad562be21175dfc583b4480966f0d5234b150234.gz",
+      "raw_sha256": "ca39263d427acfab744d3e61ad562be21175dfc583b4480966f0d5234b150234",
+      "raw_bytes": 56016,
+      "stored_sha256": "7140e94772359d1521e1dd9f38eb9a5e0f67d6fa2096f7479677235c81d26d27"
+    },
+    "validation/v319-pattern-ports02/kernel-1-313-vdp/out/release/src/source_rng.o": {
+      "stored": "objects/682444fbd7147ed1a3601b0875745c8767768326ed84f5109e8b3f63b5747ea5.gz",
+      "raw_sha256": "682444fbd7147ed1a3601b0875745c8767768326ed84f5109e8b3f63b5747ea5",
+      "raw_bytes": 5708,
+      "stored_sha256": "730062e33c46389e77c41724d70102193f32a33fab2bf9b3cbbe223a87e579af"
+    },
+    "validation/v319-pattern-ports02/kernel-1-313-vdp/out/release/symbol.txt": {
+      "stored": "objects/636d884e830530f15f0157c7332fadca3fc38cbbfa01d2dbac39b6f17c6d38a1.gz",
+      "raw_sha256": "636d884e830530f15f0157c7332fadca3fc38cbbfa01d2dbac39b6f17c6d38a1",
+      "raw_bytes": 16749,
+      "stored_sha256": "190bb8354f36dbaa59fb67ef57580394cd601509e9cd4d2b534d2328a9fea4e6"
+    },
+    "validation/v319-pattern-ports02/kernel-1-313-vdp/out/rom.bin": {
+      "stored": "objects/bb40324dfb1e038d37f52d03df4944650118a6fbd151c68db2ffb407f9241857.gz",
+      "raw_sha256": "bb40324dfb1e038d37f52d03df4944650118a6fbd151c68db2ffb407f9241857",
+      "raw_bytes": 1179648,
+      "stored_sha256": "e0ebbba4dedcab66acb9838c8dbde2a10c9f28a06a416104e4e96ada21037b45"
+    },
+    "validation/v319-pattern-ports02/kernel-1-313-vdp/out/rom_header.bin": {
+      "stored": "objects/6e0ba730766dc92a1f148acf452813a8fb897b0b9593288d6f9650d7df93b96c.gz",
+      "raw_sha256": "6e0ba730766dc92a1f148acf452813a8fb897b0b9593288d6f9650d7df93b96c",
+      "raw_bytes": 256,
+      "stored_sha256": "4ebe235b9a11a431a581869c8fbdcd307f5b8390652490d6348c871506496d18"
+    },
+    "validation/v319-pattern-ports02/kernel-1-313-vdp/packaging-build.json": {
+      "stored": "objects/736f594273bb3e6b2ccf0838d86a3b2338570550ef3894891bb39148c52278ab.gz",
+      "raw_sha256": "736f594273bb3e6b2ccf0838d86a3b2338570550ef3894891bb39148c52278ab",
+      "raw_bytes": 95,
+      "stored_sha256": "f0f422cd77b66c5d12b6c1b7212101e6f42d3955e6a9f76a944df7bf4226a668"
+    },
+    "validation/v319-pattern-ports02/kernel-1-313-vdp/src/events.bin": {
+      "stored": "objects/46e8c31b2a0d8846ea3ce5c6f4e1d5767e0ed6f0a5c1965a2bd41b81014f4b18.gz",
+      "raw_sha256": "46e8c31b2a0d8846ea3ce5c6f4e1d5767e0ed6f0a5c1965a2bd41b81014f4b18",
+      "raw_bytes": 1111680,
+      "stored_sha256": "e4d28aa750eee2ebf5e94d608f99e1e5af035d5c4a2fceb25d4b19459a7b7d4c"
+    },
+    "validation/v319-pattern-ports02/kernel-1-313-vdp/src/events.s": {
+      "stored": "objects/704225232b2c4982d51df61caa5c8a05482056389731bdc1adcb1dc72e3156d2.gz",
+      "raw_sha256": "704225232b2c4982d51df61caa5c8a05482056389731bdc1adcb1dc72e3156d2",
+      "raw_bytes": 96,
+      "stored_sha256": "11d58e29c59ea3d68366e6a01596aace858f41688540ee34e3fb294a119bedc3"
+    },
+    "validation/v319-pattern-ports02/kernel-1-313-vdp/src/expected.h": {
+      "stored": "objects/04ff193339f0643b91b6ae3bb432d2fb6341e4b5a4f9033b348dd976688f9af8.gz",
+      "raw_sha256": "04ff193339f0643b91b6ae3bb432d2fb6341e4b5a4f9033b348dd976688f9af8",
+      "raw_bytes": 7687,
+      "stored_sha256": "b18ce4e7bb1246598a6f3273997d0eb2ec1a3496689898bf0a478a14a7d6e37f"
+    },
+    "validation/v319-pattern-ports02/kernel-1-313-vdp/src/main.c": {
+      "stored": "objects/6bd4b646bedb388d16b208d753fa801ddf8213fed81b8da42cda0acd33636c71.gz",
+      "raw_sha256": "6bd4b646bedb388d16b208d753fa801ddf8213fed81b8da42cda0acd33636c71",
+      "raw_bytes": 2715,
+      "stored_sha256": "4c2c6ef2074bab16b2518d10687d0982dd7fd7250d8411a50d0a325ea565d43d"
+    },
+    "validation/v319-pattern-ports02/kernel-1-313-vdp/src/rom_header.c": {
+      "stored": "objects/2447408754cf62a1a5989e99df239ad45270783f9730a465100f7ab80afe97d1.gz",
+      "raw_sha256": "2447408754cf62a1a5989e99df239ad45270783f9730a465100f7ab80afe97d1",
+      "raw_bytes": 793,
+      "stored_sha256": "dbb3057a4e9783a40e8096246871183572ffe7a4b3674d78f4a6c3c9e6435ede"
+    },
+    "validation/v319-pattern-ports02/kernel-1-313-vdp/src/source_clock.c": {
+      "stored": "objects/402f285353517384881d602fedd9cfbc3403f23c11551e3d87016aafe3012962.gz",
+      "raw_sha256": "402f285353517384881d602fedd9cfbc3403f23c11551e3d87016aafe3012962",
+      "raw_bytes": 53,
+      "stored_sha256": "b3ebad87aece6094639d4a4a7832a5feff3260a936ec150a41495ce42ab13740"
+    },
+    "validation/v319-pattern-ports02/kernel-1-313-vdp/src/source_intro_sprite_clock.c": {
+      "stored": "objects/3f5bc2cfa62f90bdfbdb5aea279f8edd7c4179117d774e6386a5bb3162aac511.gz",
+      "raw_sha256": "3f5bc2cfa62f90bdfbdb5aea279f8edd7c4179117d774e6386a5bb3162aac511",
+      "raw_bytes": 66,
+      "stored_sha256": "18d7cc17c8c45bbf37a1c1cd311a2c435191c50a7f717fc1201b6e3a13c73bf0"
+    },
+    "validation/v319-pattern-ports02/kernel-1-313-vdp/src/source_intro_sprite_status.c": {
+      "stored": "objects/8a657e18d79c7fa6b746d2492560889adb88b9de64a3c874f46455e9108e1cff.gz",
+      "raw_sha256": "8a657e18d79c7fa6b746d2492560889adb88b9de64a3c874f46455e9108e1cff",
+      "raw_bytes": 67,
+      "stored_sha256": "32638304b219350b7c86686120339857e713cd387b28a3946a11e49e59f33f7a"
+    },
+    "validation/v319-pattern-ports02/kernel-1-313-vdp/src/source_intro_vdp.c": {
+      "stored": "objects/83c923f5762f2b97631e5b900922bda4f8785e2f1b25259fa9da09726ad50d2a.gz",
+      "raw_sha256": "83c923f5762f2b97631e5b900922bda4f8785e2f1b25259fa9da09726ad50d2a",
+      "raw_bytes": 57,
+      "stored_sha256": "726e5898553e1a6af88e2a43967e265a26c7f1640d413906a4b5e15eceb53819"
+    },
+    "validation/v319-pattern-ports02/kernel-1-313-vdp/src/source_pattern_clock.c": {
+      "stored": "objects/32c179aa36fe5db18784270abdf37d26c4f2546307509314a50a89439c5b2d8b.gz",
+      "raw_sha256": "32c179aa36fe5db18784270abdf37d26c4f2546307509314a50a89439c5b2d8b",
+      "raw_bytes": 61,
+      "stored_sha256": "8ead6505d9f48e6713130f5dac818790836fd88f45dea1bbd9e3cc3c39e4fe5c"
+    },
+    "validation/v319-pattern-ports02/kernel-1-313-vdp/src/source_rng.c": {
+      "stored": "objects/a9ef3fc8d6b9104f774da888d3bda57026d4265ff8539fe5523e3cbadda2295b.gz",
+      "raw_sha256": "a9ef3fc8d6b9104f774da888d3bda57026d4265ff8539fe5523e3cbadda2295b",
+      "raw_bytes": 51,
+      "stored_sha256": "554243f63ec031c3d9558a355429b53f52f5ae600fea918d96979ad874508963"
+    },
+    "validation/v319-pattern-ports02/kernel-1-313-vdp-ntsc/capture.json": {
+      "stored": "objects/e75c95401bd73e6192c9a2142e8843d20ca59b181457d54cfbd9a2bedeca36e8.gz",
+      "raw_sha256": "e75c95401bd73e6192c9a2142e8843d20ca59b181457d54cfbd9a2bedeca36e8",
+      "raw_bytes": 572,
+      "stored_sha256": "5a955084172414466389d67cc7c232cc02ed8b8defda7c86e2e5c21968765ca9"
+    },
+    "validation/v319-pattern-ports02/kernel-1-313-vdp-pal/capture.json": {
+      "stored": "objects/e15cd8c44e021072381a6e3e089519096ef5e80ebb4a6ea2ae75d1f5c7eaad75.gz",
+      "raw_sha256": "e15cd8c44e021072381a6e3e089519096ef5e80ebb4a6ea2ae75d1f5c7eaad75",
+      "raw_bytes": 570,
+      "stored_sha256": "2a2f4edb40f27e46a295419340ef923f6877d4f8be8d2f38d8c6714a767dc3db"
+    },
+    "validation/v319-pattern-ports02/kernel-1-313-vdp-report.json": {
+      "stored": "objects/b655b63b9249dab4d1912e119efd124fcd0ee0b557b2c11323073dab12ebb5a4.gz",
+      "raw_sha256": "b655b63b9249dab4d1912e119efd124fcd0ee0b557b2c11323073dab12ebb5a4",
+      "raw_bytes": 562,
+      "stored_sha256": "557ee7acaf035a1cb38cdf9a906b7963ddd997c07782c93fb7601c952eb32358"
+    },
+    "validation/v319-pattern-ports02/kernel-2-262-vdp/build-command.log": {
+      "stored": "objects/051049b90bd574ea09e4fbe6347dbc6370cb93d730bad5d81d7297eab57d704a.gz",
+      "raw_sha256": "051049b90bd574ea09e4fbe6347dbc6370cb93d730bad5d81d7297eab57d704a",
+      "raw_bytes": 36,
+      "stored_sha256": "0c27710f7987f454d40d9bd0e5e3b473d4c5c34cc5fb16d470591a4b306bfdf2"
+    },
+    "validation/v319-pattern-ports02/kernel-2-262-vdp/build.log": {
+      "stored": "objects/0bbe121f74610012f6d414000b6b931bbbeb247eec8e46e841754c408a9fa73e.gz",
+      "raw_sha256": "0bbe121f74610012f6d414000b6b931bbbeb247eec8e46e841754c408a9fa73e",
+      "raw_bytes": 39140,
+      "stored_sha256": "8e4ebefc9670fd37ade1c8af3056bb22c21d921503564fbafa8e6736f79cdc0e"
+    },
+    "validation/v319-pattern-ports02/kernel-2-262-vdp/inc/source_intro_pattern_plans_generated.h": {
+      "stored": "objects/8d442d1476b7287811f3e2f5fd832a2c1e69b2c20e3e519397f1f6bf9a30670d.gz",
+      "raw_sha256": "8d442d1476b7287811f3e2f5fd832a2c1e69b2c20e3e519397f1f6bf9a30670d",
+      "raw_bytes": 77,
+      "stored_sha256": "3271fff16c6b7080d925f4b3f1b76d4baaa65f64ffb8660174bd5d2f750d76c1"
+    },
+    "validation/v319-pattern-ports02/kernel-2-262-vdp/inc/source_intro_vdp.h": {
+      "stored": "objects/5b9ddd8e77b95cde3f3fbada09e4d94025ab346b15c1a3e1c4979000977ed461.gz",
+      "raw_sha256": "5b9ddd8e77b95cde3f3fbada09e4d94025ab346b15c1a3e1c4979000977ed461",
+      "raw_bytes": 57,
+      "stored_sha256": "08162445907520504ac146f81fd36393b0991074444f8c9a8872134b3d33b498"
+    },
+    "validation/v319-pattern-ports02/kernel-2-262-vdp/inc/source_pattern_clock.h": {
+      "stored": "objects/c30fd119555eaebfe5e2e7ad1f16c0786829714235b3dd921b66967876574501.gz",
+      "raw_sha256": "c30fd119555eaebfe5e2e7ad1f16c0786829714235b3dd921b66967876574501",
+      "raw_bytes": 61,
+      "stored_sha256": "396497899a7e2d5a8df93e9e6510c1212fbdde8c06a34bd1589f19bbc85bc37a"
+    },
+    "validation/v319-pattern-ports02/kernel-2-262-vdp/out/release/_deps/src/events.d": {
+      "stored": "objects/8eff0379462895e6b4fa97f4c6baf9199f51beaba87da7b0c3d98a69b76c3c14.gz",
+      "raw_sha256": "8eff0379462895e6b4fa97f4c6baf9199f51beaba87da7b0c3d98a69b76c3c14",
+      "raw_bytes": 40,
+      "stored_sha256": "d6cc9994f76c2cb082aa104366c0ae4199d5d678e7a710d5816fabbe52683d1e"
+    },
+    "validation/v319-pattern-ports02/kernel-2-262-vdp/out/release/_deps/src/main.d": {
+      "stored": "objects/801212dae0f6d767ea1aa6bf56c9e6640ea132d7e705741c2cf00e4964d90084.gz",
+      "raw_sha256": "801212dae0f6d767ea1aa6bf56c9e6640ea132d7e705741c2cf00e4964d90084",
+      "raw_bytes": 1502,
+      "stored_sha256": "1256cfefce581fe75bbe4afc214ba1b917ddf56f4e1914c33b8edb5a6fa113c1"
+    },
+    "validation/v319-pattern-ports02/kernel-2-262-vdp/out/release/_deps/src/source_clock.d": {
+      "stored": "objects/0ffee9a65747e607d3612a2c2b9ed928e33a48112b27af2b0f0b7b62b67d5d5d.gz",
+      "raw_sha256": "0ffee9a65747e607d3612a2c2b9ed928e33a48112b27af2b0f0b7b62b67d5d5d",
+      "raw_bytes": 336,
+      "stored_sha256": "c7ccc424200ef378fc6726b3cf2001f55c50b3511c2f87cdafb9eb09b2d8a59c"
+    },
+    "validation/v319-pattern-ports02/kernel-2-262-vdp/out/release/_deps/src/source_intro_sprite_clock.d": {
+      "stored": "objects/3e0a1cc59ffdd5ac4d28a1323ce1aed8cefe2d27a69b5b0ddaadff80f4c88040.gz",
+      "raw_sha256": "3e0a1cc59ffdd5ac4d28a1323ce1aed8cefe2d27a69b5b0ddaadff80f4c88040",
+      "raw_bytes": 546,
+      "stored_sha256": "bcff20965c30cc6d50189d193b4206e9ec7f36d0a922b7862c30270aa686d979"
+    },
+    "validation/v319-pattern-ports02/kernel-2-262-vdp/out/release/_deps/src/source_intro_sprite_status.d": {
+      "stored": "objects/6c1d0aca1ffac59c5829a573c4949c8ce2a4dbcc445a7fab5d0227295c3f6c0f.gz",
+      "raw_sha256": "6c1d0aca1ffac59c5829a573c4949c8ce2a4dbcc445a7fab5d0227295c3f6c0f",
+      "raw_bytes": 332,
+      "stored_sha256": "1d4fefdce8e3b5b9c6c4a976c97a069dfe975ee03de85c442a59418f65852756"
+    },
+    "validation/v319-pattern-ports02/kernel-2-262-vdp/out/release/_deps/src/source_intro_vdp.d": {
+      "stored": "objects/308fff7b5b68af59e12ca21f5f1a8c89cdcacf920742b7a7694b5cf1d9eeaab9.gz",
+      "raw_sha256": "308fff7b5b68af59e12ca21f5f1a8c89cdcacf920742b7a7694b5cf1d9eeaab9",
+      "raw_bytes": 610,
+      "stored_sha256": "0af53a629c3d60fea2760da96bc4f4e7724c4b505f4dc7bd6f254317c98f4fa6"
+    },
+    "validation/v319-pattern-ports02/kernel-2-262-vdp/out/release/_deps/src/source_pattern_clock.d": {
+      "stored": "objects/561ead4dc485ed30e59ada2fb2fa05db8f4062654002dccc92596ae00d69ee86.gz",
+      "raw_sha256": "561ead4dc485ed30e59ada2fb2fa05db8f4062654002dccc92596ae00d69ee86",
+      "raw_bytes": 812,
+      "stored_sha256": "de9e9cd527996e7a152dd3917f091728cd3ea4d398aaf388a8e021fefe22113e"
+    },
+    "validation/v319-pattern-ports02/kernel-2-262-vdp/out/release/_deps/src/source_rng.d": {
+      "stored": "objects/a8e39fb8ff372bcbba333718801031c6f471e1cf92a0b72f41d8f3b4b4a5ec85.gz",
+      "raw_sha256": "a8e39fb8ff372bcbba333718801031c6f471e1cf92a0b72f41d8f3b4b4a5ec85",
+      "raw_bytes": 232,
+      "stored_sha256": "1a4cf92dc07fe2c952fe177386d2cd5b8894b11079cb97fd2aae831ae47be930"
+    },
+    "validation/v319-pattern-ports02/kernel-2-262-vdp/out/release/rom.bin": {
+      "stored": "objects/d60d246c6464cc9ccccf5333d468f40aa176ca8623eeaa90fcd456cfc24c65d0.gz",
+      "raw_sha256": "d60d246c6464cc9ccccf5333d468f40aa176ca8623eeaa90fcd456cfc24c65d0",
+      "raw_bytes": 2097152,
+      "stored_sha256": "f0e073a365fede0cbf3032bf25474b8da342d9f69ccb91d37db2adf386824089"
+    },
+    "validation/v319-pattern-ports02/kernel-2-262-vdp/out/release/rom.out": {
+      "stored": "objects/b7d71bd48859268ceae1e4b8eae4543d5530a9705d79c47e414310febe796bd5.gz",
+      "raw_sha256": "b7d71bd48859268ceae1e4b8eae4543d5530a9705d79c47e414310febe796bd5",
+      "raw_bytes": 929628,
+      "stored_sha256": "2c6baa50c7ae296fef451c27bf16cac6adfadbc946438e3ee21be173b2d721a3"
+    },
+    "validation/v319-pattern-ports02/kernel-2-262-vdp/out/release/rom_header.o": {
+      "stored": "objects/1cf3cd3156c9f324724332c805b43baaeeaace2614a89a6207bcb0d7e787c030.gz",
+      "raw_sha256": "1cf3cd3156c9f324724332c805b43baaeeaace2614a89a6207bcb0d7e787c030",
+      "raw_bytes": 932,
+      "stored_sha256": "4e596a08ceb763d140f0d3deccad7c9f5ece3a59a5c0e07cc8578da4c299a20f"
+    },
+    "validation/v319-pattern-ports02/kernel-2-262-vdp/out/release/sega.o": {
+      "stored": "objects/79d2e32e8864b573057c576c6a324067f56fd0faf0fd719fbe8bc53b5242b0c8.gz",
+      "raw_sha256": "79d2e32e8864b573057c576c6a324067f56fd0faf0fd719fbe8bc53b5242b0c8",
+      "raw_bytes": 4276,
+      "stored_sha256": "3ecc53c5dfa658c4026363efe6b77b52f3e9b6180ddb2d815708aaeb93b11727"
+    },
+    "validation/v319-pattern-ports02/kernel-2-262-vdp/out/release/sega.s": {
+      "stored": "objects/d7954a33a7b17ddf060dadf21305256b524a019678849cf9f6e0dde4ee8e211b.gz",
+      "raw_sha256": "d7954a33a7b17ddf060dadf21305256b524a019678849cf9f6e0dde4ee8e211b",
+      "raw_bytes": 10664,
+      "stored_sha256": "59271322abcc9e83c70000ec7d758aa804b5b9605eeddf9ab361723e2e6e96be"
+    },
+    "validation/v319-pattern-ports02/kernel-2-262-vdp/out/release/src/events.o": {
+      "stored": "objects/da1788a22d4a89e2615a3d0defe63f707e87576b15b27ccf102d468572999094.gz",
+      "raw_sha256": "da1788a22d4a89e2615a3d0defe63f707e87576b15b27ccf102d468572999094",
+      "raw_bytes": 853016,
+      "stored_sha256": "4642c2852039f63e7b95928dccab5e013f18c61aa803d6fd2f0be0e47db34fbc"
+    },
+    "validation/v319-pattern-ports02/kernel-2-262-vdp/out/release/src/main.o": {
+      "stored": "objects/0a9cb6a94b0417a0e84395fc55b7e5954b0173dff81596030755a5f20b1cbbb7.gz",
+      "raw_sha256": "0a9cb6a94b0417a0e84395fc55b7e5954b0173dff81596030755a5f20b1cbbb7",
+      "raw_bytes": 56392,
+      "stored_sha256": "eac8f641b5388cf75788e4997029a0a7063f930dd17ecd41cd721d5755566232"
+    },
+    "validation/v319-pattern-ports02/kernel-2-262-vdp/out/release/src/source_clock.o": {
+      "stored": "objects/1aef6fbe09492300fd19a925e7d95ed038cc937d4ccec256723f8479244e553e.gz",
+      "raw_sha256": "1aef6fbe09492300fd19a925e7d95ed038cc937d4ccec256723f8479244e553e",
+      "raw_bytes": 22864,
+      "stored_sha256": "ee3735d48347a0a8afac99e6f575fc1a3b657732b9253957a391ec80b38e8eba"
+    },
+    "validation/v319-pattern-ports02/kernel-2-262-vdp/out/release/src/source_intro_sprite_clock.o": {
+      "stored": "objects/488833f6ffd6166ca65c24a36c79aac772784849d01607972112c874b4efbb0c.gz",
+      "raw_sha256": "488833f6ffd6166ca65c24a36c79aac772784849d01607972112c874b4efbb0c",
+      "raw_bytes": 15312,
+      "stored_sha256": "df540f4e56276d968056850f9664bccf2529de223261ade5d576d4e259cd8ce9"
+    },
+    "validation/v319-pattern-ports02/kernel-2-262-vdp/out/release/src/source_intro_sprite_status.o": {
+      "stored": "objects/2cdca0286f20783ad3e1476015d7ba22a2216f32707de9a552ad41dba7232fda.gz",
+      "raw_sha256": "2cdca0286f20783ad3e1476015d7ba22a2216f32707de9a552ad41dba7232fda",
+      "raw_bytes": 24408,
+      "stored_sha256": "875c676ca9942850c5ebf69597f1c66edc62b8f00bff8688776f893a774b0636"
+    },
+    "validation/v319-pattern-ports02/kernel-2-262-vdp/out/release/src/source_intro_vdp.o": {
+      "stored": "objects/1572cb3e05516b8305c88938ef437c7496f37f92c7b505ee8e6cb06186c6f34f.gz",
+      "raw_sha256": "1572cb3e05516b8305c88938ef437c7496f37f92c7b505ee8e6cb06186c6f34f",
+      "raw_bytes": 24996,
+      "stored_sha256": "2c6abff8781de2ca8ef0b8ead8f4fba3c7803d39824fade70f13863da13620ec"
+    },
+    "validation/v319-pattern-ports02/kernel-2-262-vdp/out/release/src/source_pattern_clock.o": {
+      "stored": "objects/3f073f6eecd61b6f692e87eba1ee250db034201f0f1ef9430da19ce804335e26.gz",
+      "raw_sha256": "3f073f6eecd61b6f692e87eba1ee250db034201f0f1ef9430da19ce804335e26",
+      "raw_bytes": 56012,
+      "stored_sha256": "b632faa297463fa8e7a501a8f715681d81134d2a3612b527a2d7a5cd51192648"
+    },
+    "validation/v319-pattern-ports02/kernel-2-262-vdp/out/release/src/source_rng.o": {
+      "stored": "objects/d2e95a5c2ca1ce50bd5608a693c2f68ffe73f8b62fe2645d0d08b07b8cfdc64f.gz",
+      "raw_sha256": "d2e95a5c2ca1ce50bd5608a693c2f68ffe73f8b62fe2645d0d08b07b8cfdc64f",
+      "raw_bytes": 5708,
+      "stored_sha256": "7693c3aadbacc47bfac7c3b487f51dcf24ae4a4e4fedde947ad6f74e798450fa"
+    },
+    "validation/v319-pattern-ports02/kernel-2-262-vdp/out/release/symbol.txt": {
+      "stored": "objects/492f79a880dce834515f56f41bbdd48e427fbb1c8cdae77091a41d75de1ad979.gz",
+      "raw_sha256": "492f79a880dce834515f56f41bbdd48e427fbb1c8cdae77091a41d75de1ad979",
+      "raw_bytes": 16749,
+      "stored_sha256": "29cf8eef8e8f247930433b373fa0c27464993a2df2db768501c266868bf36c14"
+    },
+    "validation/v319-pattern-ports02/kernel-2-262-vdp/out/rom.bin": {
+      "stored": "objects/6ad29ef77dd6a12928801bddb2d50661cdd7af6d589ba5c85d41e86a58ce576c.gz",
+      "raw_sha256": "6ad29ef77dd6a12928801bddb2d50661cdd7af6d589ba5c85d41e86a58ce576c",
+      "raw_bytes": 917504,
+      "stored_sha256": "8d979821574d72419b9fda18eff518ad55522ef48932e1f4f56e083e068c2306"
+    },
+    "validation/v319-pattern-ports02/kernel-2-262-vdp/out/rom_header.bin": {
+      "stored": "objects/6e0ba730766dc92a1f148acf452813a8fb897b0b9593288d6f9650d7df93b96c.gz",
+      "raw_sha256": "6e0ba730766dc92a1f148acf452813a8fb897b0b9593288d6f9650d7df93b96c",
+      "raw_bytes": 256,
+      "stored_sha256": "4ebe235b9a11a431a581869c8fbdcd307f5b8390652490d6348c871506496d18"
+    },
+    "validation/v319-pattern-ports02/kernel-2-262-vdp/packaging-build.json": {
+      "stored": "objects/d176098743d79cd53036f9e4ac7256273cbd03a68eaaa57ffcb38aafb88ff1e7.gz",
+      "raw_sha256": "d176098743d79cd53036f9e4ac7256273cbd03a68eaaa57ffcb38aafb88ff1e7",
+      "raw_bytes": 94,
+      "stored_sha256": "6385c6c05a622107190ff8ac1efdb9d5e3b9f5f09cf78215b86aff2bd6b91b4b"
+    },
+    "validation/v319-pattern-ports02/kernel-2-262-vdp/src/events.bin": {
+      "stored": "objects/bed55a4cd12d659dd40279efb8cb8a74d338dd811db70faff21508b31dccb490.gz",
+      "raw_sha256": "bed55a4cd12d659dd40279efb8cb8a74d338dd811db70faff21508b31dccb490",
+      "raw_bytes": 852480,
+      "stored_sha256": "9b3a81e9b73cf592541d15adc2088afcd9b0cfc78643f7f8f3b7c350d1109c01"
+    },
+    "validation/v319-pattern-ports02/kernel-2-262-vdp/src/events.s": {
+      "stored": "objects/704225232b2c4982d51df61caa5c8a05482056389731bdc1adcb1dc72e3156d2.gz",
+      "raw_sha256": "704225232b2c4982d51df61caa5c8a05482056389731bdc1adcb1dc72e3156d2",
+      "raw_bytes": 96,
+      "stored_sha256": "11d58e29c59ea3d68366e6a01596aace858f41688540ee34e3fb294a119bedc3"
+    },
+    "validation/v319-pattern-ports02/kernel-2-262-vdp/src/expected.h": {
+      "stored": "objects/9c8d05d59cc73f7ea3472cd07e86d30334f910cf3ebb16fa12f167802da8f2d8.gz",
+      "raw_sha256": "9c8d05d59cc73f7ea3472cd07e86d30334f910cf3ebb16fa12f167802da8f2d8",
+      "raw_bytes": 7594,
+      "stored_sha256": "c8e2cd0b21080004765d1a16ba2ac10f43326dedb3175b4f614e27500b678cb1"
+    },
+    "validation/v319-pattern-ports02/kernel-2-262-vdp/src/main.c": {
+      "stored": "objects/9990a76afd3fa0a0cb2527106c43737ddc61e688bddf8a933e101547ebd6bf71.gz",
+      "raw_sha256": "9990a76afd3fa0a0cb2527106c43737ddc61e688bddf8a933e101547ebd6bf71",
+      "raw_bytes": 2715,
+      "stored_sha256": "6118fe305aa709f8f9f226866a7c4bc6d4456c2f2383504116d77790d060344d"
+    },
+    "validation/v319-pattern-ports02/kernel-2-262-vdp/src/rom_header.c": {
+      "stored": "objects/2447408754cf62a1a5989e99df239ad45270783f9730a465100f7ab80afe97d1.gz",
+      "raw_sha256": "2447408754cf62a1a5989e99df239ad45270783f9730a465100f7ab80afe97d1",
+      "raw_bytes": 793,
+      "stored_sha256": "dbb3057a4e9783a40e8096246871183572ffe7a4b3674d78f4a6c3c9e6435ede"
+    },
+    "validation/v319-pattern-ports02/kernel-2-262-vdp/src/source_clock.c": {
+      "stored": "objects/402f285353517384881d602fedd9cfbc3403f23c11551e3d87016aafe3012962.gz",
+      "raw_sha256": "402f285353517384881d602fedd9cfbc3403f23c11551e3d87016aafe3012962",
+      "raw_bytes": 53,
+      "stored_sha256": "b3ebad87aece6094639d4a4a7832a5feff3260a936ec150a41495ce42ab13740"
+    },
+    "validation/v319-pattern-ports02/kernel-2-262-vdp/src/source_intro_sprite_clock.c": {
+      "stored": "objects/3f5bc2cfa62f90bdfbdb5aea279f8edd7c4179117d774e6386a5bb3162aac511.gz",
+      "raw_sha256": "3f5bc2cfa62f90bdfbdb5aea279f8edd7c4179117d774e6386a5bb3162aac511",
+      "raw_bytes": 66,
+      "stored_sha256": "18d7cc17c8c45bbf37a1c1cd311a2c435191c50a7f717fc1201b6e3a13c73bf0"
+    },
+    "validation/v319-pattern-ports02/kernel-2-262-vdp/src/source_intro_sprite_status.c": {
+      "stored": "objects/8a657e18d79c7fa6b746d2492560889adb88b9de64a3c874f46455e9108e1cff.gz",
+      "raw_sha256": "8a657e18d79c7fa6b746d2492560889adb88b9de64a3c874f46455e9108e1cff",
+      "raw_bytes": 67,
+      "stored_sha256": "32638304b219350b7c86686120339857e713cd387b28a3946a11e49e59f33f7a"
+    },
+    "validation/v319-pattern-ports02/kernel-2-262-vdp/src/source_intro_vdp.c": {
+      "stored": "objects/83c923f5762f2b97631e5b900922bda4f8785e2f1b25259fa9da09726ad50d2a.gz",
+      "raw_sha256": "83c923f5762f2b97631e5b900922bda4f8785e2f1b25259fa9da09726ad50d2a",
+      "raw_bytes": 57,
+      "stored_sha256": "726e5898553e1a6af88e2a43967e265a26c7f1640d413906a4b5e15eceb53819"
+    },
+    "validation/v319-pattern-ports02/kernel-2-262-vdp/src/source_pattern_clock.c": {
+      "stored": "objects/32c179aa36fe5db18784270abdf37d26c4f2546307509314a50a89439c5b2d8b.gz",
+      "raw_sha256": "32c179aa36fe5db18784270abdf37d26c4f2546307509314a50a89439c5b2d8b",
+      "raw_bytes": 61,
+      "stored_sha256": "8ead6505d9f48e6713130f5dac818790836fd88f45dea1bbd9e3cc3c39e4fe5c"
+    },
+    "validation/v319-pattern-ports02/kernel-2-262-vdp/src/source_rng.c": {
+      "stored": "objects/a9ef3fc8d6b9104f774da888d3bda57026d4265ff8539fe5523e3cbadda2295b.gz",
+      "raw_sha256": "a9ef3fc8d6b9104f774da888d3bda57026d4265ff8539fe5523e3cbadda2295b",
+      "raw_bytes": 51,
+      "stored_sha256": "554243f63ec031c3d9558a355429b53f52f5ae600fea918d96979ad874508963"
+    },
+    "validation/v319-pattern-ports02/kernel-2-262-vdp-ntsc/capture.json": {
+      "stored": "objects/f4074a7a2c945b001f3aa5fe5c5bb1a1ce8c5a480b301a39d065311f4ced1595.gz",
+      "raw_sha256": "f4074a7a2c945b001f3aa5fe5c5bb1a1ce8c5a480b301a39d065311f4ced1595",
+      "raw_bytes": 572,
+      "stored_sha256": "0b589c770c5bc1a86a2a2045ff91a9c1d0a6f931113636144763b330d41d9226"
+    },
+    "validation/v319-pattern-ports02/kernel-2-262-vdp-pal/capture.json": {
+      "stored": "objects/c6aaf653560cf7d59680e44a74cdc9f8cffe4fcdaa3a8123352f151b90179015.gz",
+      "raw_sha256": "c6aaf653560cf7d59680e44a74cdc9f8cffe4fcdaa3a8123352f151b90179015",
+      "raw_bytes": 570,
+      "stored_sha256": "d038bca1471627ceb75cbfc077ef4ae09fc3684af499e1df3c47e83f57d76aac"
+    },
+    "validation/v319-pattern-ports02/kernel-2-262-vdp-report.json": {
+      "stored": "objects/60e14a51ae00136e58f5f6e5ec34d3a1b9507725738582586372294d6cbbc3a7.gz",
+      "raw_sha256": "60e14a51ae00136e58f5f6e5ec34d3a1b9507725738582586372294d6cbbc3a7",
+      "raw_bytes": 560,
+      "stored_sha256": "ef2efc8c1340a309140acc294bbb67daa9fe7dacdee125aa4a64a902ed5bdbe0"
+    },
+    "validation/v319-pattern-ports02/kernel-2-313-vdp/build-command.log": {
+      "stored": "objects/048f486f39f337dd41e22306ebb1ef364ca916c6d9dfd169c1a312169d9aafee.gz",
+      "raw_sha256": "048f486f39f337dd41e22306ebb1ef364ca916c6d9dfd169c1a312169d9aafee",
+      "raw_bytes": 36,
+      "stored_sha256": "0367aa09ebe5a25b38c6a034abd328c251a606e59a32eeced126dab930932d06"
+    },
+    "validation/v319-pattern-ports02/kernel-2-313-vdp/build.log": {
+      "stored": "objects/df906e011e21eec26e0f36da3a4213d2ae81dc1c6a3ee2bbf23dbabde9d52e60.gz",
+      "raw_sha256": "df906e011e21eec26e0f36da3a4213d2ae81dc1c6a3ee2bbf23dbabde9d52e60",
+      "raw_bytes": 39140,
+      "stored_sha256": "cdfb49615e415b5c42912e501b92fb553160613bb9ff31abb2e5c587c42124d9"
+    },
+    "validation/v319-pattern-ports02/kernel-2-313-vdp/inc/source_intro_pattern_plans_generated.h": {
+      "stored": "objects/8d442d1476b7287811f3e2f5fd832a2c1e69b2c20e3e519397f1f6bf9a30670d.gz",
+      "raw_sha256": "8d442d1476b7287811f3e2f5fd832a2c1e69b2c20e3e519397f1f6bf9a30670d",
+      "raw_bytes": 77,
+      "stored_sha256": "3271fff16c6b7080d925f4b3f1b76d4baaa65f64ffb8660174bd5d2f750d76c1"
+    },
+    "validation/v319-pattern-ports02/kernel-2-313-vdp/inc/source_intro_vdp.h": {
+      "stored": "objects/5b9ddd8e77b95cde3f3fbada09e4d94025ab346b15c1a3e1c4979000977ed461.gz",
+      "raw_sha256": "5b9ddd8e77b95cde3f3fbada09e4d94025ab346b15c1a3e1c4979000977ed461",
+      "raw_bytes": 57,
+      "stored_sha256": "08162445907520504ac146f81fd36393b0991074444f8c9a8872134b3d33b498"
+    },
+    "validation/v319-pattern-ports02/kernel-2-313-vdp/inc/source_pattern_clock.h": {
+      "stored": "objects/c30fd119555eaebfe5e2e7ad1f16c0786829714235b3dd921b66967876574501.gz",
+      "raw_sha256": "c30fd119555eaebfe5e2e7ad1f16c0786829714235b3dd921b66967876574501",
+      "raw_bytes": 61,
+      "stored_sha256": "396497899a7e2d5a8df93e9e6510c1212fbdde8c06a34bd1589f19bbc85bc37a"
+    },
+    "validation/v319-pattern-ports02/kernel-2-313-vdp/out/release/_deps/src/events.d": {
+      "stored": "objects/8eff0379462895e6b4fa97f4c6baf9199f51beaba87da7b0c3d98a69b76c3c14.gz",
+      "raw_sha256": "8eff0379462895e6b4fa97f4c6baf9199f51beaba87da7b0c3d98a69b76c3c14",
+      "raw_bytes": 40,
+      "stored_sha256": "d6cc9994f76c2cb082aa104366c0ae4199d5d678e7a710d5816fabbe52683d1e"
+    },
+    "validation/v319-pattern-ports02/kernel-2-313-vdp/out/release/_deps/src/main.d": {
+      "stored": "objects/801212dae0f6d767ea1aa6bf56c9e6640ea132d7e705741c2cf00e4964d90084.gz",
+      "raw_sha256": "801212dae0f6d767ea1aa6bf56c9e6640ea132d7e705741c2cf00e4964d90084",
+      "raw_bytes": 1502,
+      "stored_sha256": "1256cfefce581fe75bbe4afc214ba1b917ddf56f4e1914c33b8edb5a6fa113c1"
+    },
+    "validation/v319-pattern-ports02/kernel-2-313-vdp/out/release/_deps/src/source_clock.d": {
+      "stored": "objects/0ffee9a65747e607d3612a2c2b9ed928e33a48112b27af2b0f0b7b62b67d5d5d.gz",
+      "raw_sha256": "0ffee9a65747e607d3612a2c2b9ed928e33a48112b27af2b0f0b7b62b67d5d5d",
+      "raw_bytes": 336,
+      "stored_sha256": "c7ccc424200ef378fc6726b3cf2001f55c50b3511c2f87cdafb9eb09b2d8a59c"
+    },
+    "validation/v319-pattern-ports02/kernel-2-313-vdp/out/release/_deps/src/source_intro_sprite_clock.d": {
+      "stored": "objects/3e0a1cc59ffdd5ac4d28a1323ce1aed8cefe2d27a69b5b0ddaadff80f4c88040.gz",
+      "raw_sha256": "3e0a1cc59ffdd5ac4d28a1323ce1aed8cefe2d27a69b5b0ddaadff80f4c88040",
+      "raw_bytes": 546,
+      "stored_sha256": "bcff20965c30cc6d50189d193b4206e9ec7f36d0a922b7862c30270aa686d979"
+    },
+    "validation/v319-pattern-ports02/kernel-2-313-vdp/out/release/_deps/src/source_intro_sprite_status.d": {
+      "stored": "objects/6c1d0aca1ffac59c5829a573c4949c8ce2a4dbcc445a7fab5d0227295c3f6c0f.gz",
+      "raw_sha256": "6c1d0aca1ffac59c5829a573c4949c8ce2a4dbcc445a7fab5d0227295c3f6c0f",
+      "raw_bytes": 332,
+      "stored_sha256": "1d4fefdce8e3b5b9c6c4a976c97a069dfe975ee03de85c442a59418f65852756"
+    },
+    "validation/v319-pattern-ports02/kernel-2-313-vdp/out/release/_deps/src/source_intro_vdp.d": {
+      "stored": "objects/308fff7b5b68af59e12ca21f5f1a8c89cdcacf920742b7a7694b5cf1d9eeaab9.gz",
+      "raw_sha256": "308fff7b5b68af59e12ca21f5f1a8c89cdcacf920742b7a7694b5cf1d9eeaab9",
+      "raw_bytes": 610,
+      "stored_sha256": "0af53a629c3d60fea2760da96bc4f4e7724c4b505f4dc7bd6f254317c98f4fa6"
+    },
+    "validation/v319-pattern-ports02/kernel-2-313-vdp/out/release/_deps/src/source_pattern_clock.d": {
+      "stored": "objects/561ead4dc485ed30e59ada2fb2fa05db8f4062654002dccc92596ae00d69ee86.gz",
+      "raw_sha256": "561ead4dc485ed30e59ada2fb2fa05db8f4062654002dccc92596ae00d69ee86",
+      "raw_bytes": 812,
+      "stored_sha256": "de9e9cd527996e7a152dd3917f091728cd3ea4d398aaf388a8e021fefe22113e"
+    },
+    "validation/v319-pattern-ports02/kernel-2-313-vdp/out/release/_deps/src/source_rng.d": {
+      "stored": "objects/a8e39fb8ff372bcbba333718801031c6f471e1cf92a0b72f41d8f3b4b4a5ec85.gz",
+      "raw_sha256": "a8e39fb8ff372bcbba333718801031c6f471e1cf92a0b72f41d8f3b4b4a5ec85",
+      "raw_bytes": 232,
+      "stored_sha256": "1a4cf92dc07fe2c952fe177386d2cd5b8894b11079cb97fd2aae831ae47be930"
+    },
+    "validation/v319-pattern-ports02/kernel-2-313-vdp/out/release/rom.bin": {
+      "stored": "objects/a856d389521f81459d01f81f7dc3bf017c88e12c79cd0433b88ffe4e6982b5ba.gz",
+      "raw_sha256": "a856d389521f81459d01f81f7dc3bf017c88e12c79cd0433b88ffe4e6982b5ba",
+      "raw_bytes": 2097152,
+      "stored_sha256": "e203b481acc58a020c7c174bd01da00af2b3f6d04a224cf6ea67a0b0ca08a816"
+    },
+    "validation/v319-pattern-ports02/kernel-2-313-vdp/out/release/rom.out": {
+      "stored": "objects/a7340d6542bc7ba9b9f8499b3acf35a1913a4dcaab4faef58140a4b9815a182e.gz",
+      "raw_sha256": "a7340d6542bc7ba9b9f8499b3acf35a1913a4dcaab4faef58140a4b9815a182e",
+      "raw_bytes": 929628,
+      "stored_sha256": "bb8a38a636ee3c5b929eac13bf16f63fe89d662aec83abb561b655b8748aa60f"
+    },
+    "validation/v319-pattern-ports02/kernel-2-313-vdp/out/release/rom_header.o": {
+      "stored": "objects/1cf3cd3156c9f324724332c805b43baaeeaace2614a89a6207bcb0d7e787c030.gz",
+      "raw_sha256": "1cf3cd3156c9f324724332c805b43baaeeaace2614a89a6207bcb0d7e787c030",
+      "raw_bytes": 932,
+      "stored_sha256": "4e596a08ceb763d140f0d3deccad7c9f5ece3a59a5c0e07cc8578da4c299a20f"
+    },
+    "validation/v319-pattern-ports02/kernel-2-313-vdp/out/release/sega.o": {
+      "stored": "objects/79d2e32e8864b573057c576c6a324067f56fd0faf0fd719fbe8bc53b5242b0c8.gz",
+      "raw_sha256": "79d2e32e8864b573057c576c6a324067f56fd0faf0fd719fbe8bc53b5242b0c8",
+      "raw_bytes": 4276,
+      "stored_sha256": "3ecc53c5dfa658c4026363efe6b77b52f3e9b6180ddb2d815708aaeb93b11727"
+    },
+    "validation/v319-pattern-ports02/kernel-2-313-vdp/out/release/sega.s": {
+      "stored": "objects/d7954a33a7b17ddf060dadf21305256b524a019678849cf9f6e0dde4ee8e211b.gz",
+      "raw_sha256": "d7954a33a7b17ddf060dadf21305256b524a019678849cf9f6e0dde4ee8e211b",
+      "raw_bytes": 10664,
+      "stored_sha256": "59271322abcc9e83c70000ec7d758aa804b5b9605eeddf9ab361723e2e6e96be"
+    },
+    "validation/v319-pattern-ports02/kernel-2-313-vdp/out/release/src/events.o": {
+      "stored": "objects/96377ed0ef4507dca9f458e21109cc7a6dafdb5355d28dc620b2489662d6e190.gz",
+      "raw_sha256": "96377ed0ef4507dca9f458e21109cc7a6dafdb5355d28dc620b2489662d6e190",
+      "raw_bytes": 853016,
+      "stored_sha256": "6e4312f4e8133202d0229823c23b4351afd6109e808c26a2e2b8f5d2613ef01e"
+    },
+    "validation/v319-pattern-ports02/kernel-2-313-vdp/out/release/src/main.o": {
+      "stored": "objects/ec4635bcd2b77336c400a92f740e4e7747c3ed10611d086a3833eb24252acc60.gz",
+      "raw_sha256": "ec4635bcd2b77336c400a92f740e4e7747c3ed10611d086a3833eb24252acc60",
+      "raw_bytes": 56384,
+      "stored_sha256": "b26c49c346cb7cead22b7d723463c504995807894a1ccc4d43d8d43bbb9a631e"
+    },
+    "validation/v319-pattern-ports02/kernel-2-313-vdp/out/release/src/source_clock.o": {
+      "stored": "objects/1fb113e4361516b38ae5359d3952fc097aa85625939571ad567839db1ca73039.gz",
+      "raw_sha256": "1fb113e4361516b38ae5359d3952fc097aa85625939571ad567839db1ca73039",
+      "raw_bytes": 22872,
+      "stored_sha256": "0c211804e974c9c016dbf642bf96407069ac66f5bb6c1d19f8407ab452b279a9"
+    },
+    "validation/v319-pattern-ports02/kernel-2-313-vdp/out/release/src/source_intro_sprite_clock.o": {
+      "stored": "objects/c433b4863cffd5188a1245d4f9d7a11083574fee58d526e9ad5766ed6ea1f71c.gz",
+      "raw_sha256": "c433b4863cffd5188a1245d4f9d7a11083574fee58d526e9ad5766ed6ea1f71c",
+      "raw_bytes": 15316,
+      "stored_sha256": "99e9781e88c8a929f6bde794bce8a71b30ebd714c6648aa8f8c497b48025e9f2"
+    },
+    "validation/v319-pattern-ports02/kernel-2-313-vdp/out/release/src/source_intro_sprite_status.o": {
+      "stored": "objects/c884d18e0ba6e07ab002ebc821c4b331dafe30fed8551aaee07f7359a1549318.gz",
+      "raw_sha256": "c884d18e0ba6e07ab002ebc821c4b331dafe30fed8551aaee07f7359a1549318",
+      "raw_bytes": 24416,
+      "stored_sha256": "0492fe74979ee9b039bf4398e8878d0b33cc4448d35eb5092bdc9ebe2b626f8a"
+    },
+    "validation/v319-pattern-ports02/kernel-2-313-vdp/out/release/src/source_intro_vdp.o": {
+      "stored": "objects/d08b2b77e6deee098c0e59dcedad2954b96020572075e2bd810915b8bb6eca62.gz",
+      "raw_sha256": "d08b2b77e6deee098c0e59dcedad2954b96020572075e2bd810915b8bb6eca62",
+      "raw_bytes": 25004,
+      "stored_sha256": "2d6d64af9465524fdbfec1f0764e50a23603c0bf80b63da41f9c145484058f7a"
+    },
+    "validation/v319-pattern-ports02/kernel-2-313-vdp/out/release/src/source_pattern_clock.o": {
+      "stored": "objects/60c9d0e7acc8a5dc1b8fb0ee9ea5ec699ede6949b174ceddf996794c5b148ba6.gz",
+      "raw_sha256": "60c9d0e7acc8a5dc1b8fb0ee9ea5ec699ede6949b174ceddf996794c5b148ba6",
+      "raw_bytes": 56016,
+      "stored_sha256": "89b02789e1e0534e0498cfbee6d9ba07ffca185e1bbaabe9afee2624c6bdf0ca"
+    },
+    "validation/v319-pattern-ports02/kernel-2-313-vdp/out/release/src/source_rng.o": {
+      "stored": "objects/cbdce0670915cc925e239b6009e345a1d4df682ae6f0bc9298f8d0e27bfee89a.gz",
+      "raw_sha256": "cbdce0670915cc925e239b6009e345a1d4df682ae6f0bc9298f8d0e27bfee89a",
+      "raw_bytes": 5708,
+      "stored_sha256": "ab85e050b74ba54bcb936f0f4680f35f7addc9194e0096460d4803e10ec6e943"
+    },
+    "validation/v319-pattern-ports02/kernel-2-313-vdp/out/release/symbol.txt": {
+      "stored": "objects/492f79a880dce834515f56f41bbdd48e427fbb1c8cdae77091a41d75de1ad979.gz",
+      "raw_sha256": "492f79a880dce834515f56f41bbdd48e427fbb1c8cdae77091a41d75de1ad979",
+      "raw_bytes": 16749,
+      "stored_sha256": "29cf8eef8e8f247930433b373fa0c27464993a2df2db768501c266868bf36c14"
+    },
+    "validation/v319-pattern-ports02/kernel-2-313-vdp/out/rom.bin": {
+      "stored": "objects/6ee034be23474f0595d68b73402da9dbf3f5998aa54ed12736aa9cb8760f47b5.gz",
+      "raw_sha256": "6ee034be23474f0595d68b73402da9dbf3f5998aa54ed12736aa9cb8760f47b5",
+      "raw_bytes": 917504,
+      "stored_sha256": "83ab7ea97457d091a692355eeceecaaa904d67dbdd8b882ee8497b38b874e0ac"
+    },
+    "validation/v319-pattern-ports02/kernel-2-313-vdp/out/rom_header.bin": {
+      "stored": "objects/6e0ba730766dc92a1f148acf452813a8fb897b0b9593288d6f9650d7df93b96c.gz",
+      "raw_sha256": "6e0ba730766dc92a1f148acf452813a8fb897b0b9593288d6f9650d7df93b96c",
+      "raw_bytes": 256,
+      "stored_sha256": "4ebe235b9a11a431a581869c8fbdcd307f5b8390652490d6348c871506496d18"
+    },
+    "validation/v319-pattern-ports02/kernel-2-313-vdp/packaging-build.json": {
+      "stored": "objects/d176098743d79cd53036f9e4ac7256273cbd03a68eaaa57ffcb38aafb88ff1e7.gz",
+      "raw_sha256": "d176098743d79cd53036f9e4ac7256273cbd03a68eaaa57ffcb38aafb88ff1e7",
+      "raw_bytes": 94,
+      "stored_sha256": "6385c6c05a622107190ff8ac1efdb9d5e3b9f5f09cf78215b86aff2bd6b91b4b"
+    },
+    "validation/v319-pattern-ports02/kernel-2-313-vdp/src/events.bin": {
+      "stored": "objects/cb4a00527226342f3e8cc889d5dd5b858a7f9fde20c2ed5727860185a6efb649.gz",
+      "raw_sha256": "cb4a00527226342f3e8cc889d5dd5b858a7f9fde20c2ed5727860185a6efb649",
+      "raw_bytes": 852480,
+      "stored_sha256": "49da161b7d9832a07f12547277b6c6cbd82319f01fb7261321fdf024c321c261"
+    },
+    "validation/v319-pattern-ports02/kernel-2-313-vdp/src/events.s": {
+      "stored": "objects/704225232b2c4982d51df61caa5c8a05482056389731bdc1adcb1dc72e3156d2.gz",
+      "raw_sha256": "704225232b2c4982d51df61caa5c8a05482056389731bdc1adcb1dc72e3156d2",
+      "raw_bytes": 96,
+      "stored_sha256": "11d58e29c59ea3d68366e6a01596aace858f41688540ee34e3fb294a119bedc3"
+    },
+    "validation/v319-pattern-ports02/kernel-2-313-vdp/src/expected.h": {
+      "stored": "objects/f202d22fc911da05b7e75673c582bc58789449fd82a4c1a5da62b0f38c061c7f.gz",
+      "raw_sha256": "f202d22fc911da05b7e75673c582bc58789449fd82a4c1a5da62b0f38c061c7f",
+      "raw_bytes": 7593,
+      "stored_sha256": "6dd3e06f186243088a6130ac5f27c8ea1bcd91cd6d9815ebfe9c2c6bcf620591"
+    },
+    "validation/v319-pattern-ports02/kernel-2-313-vdp/src/main.c": {
+      "stored": "objects/ec846defa57fdcaa065363a29a5af04a9e717cbfbc657fd7a4b0f7641819a31c.gz",
+      "raw_sha256": "ec846defa57fdcaa065363a29a5af04a9e717cbfbc657fd7a4b0f7641819a31c",
+      "raw_bytes": 2715,
+      "stored_sha256": "2b7fc1d02f8c3efe287a3c55115e2f477c2d3034af58f111e43713bdc154a1de"
+    },
+    "validation/v319-pattern-ports02/kernel-2-313-vdp/src/rom_header.c": {
+      "stored": "objects/2447408754cf62a1a5989e99df239ad45270783f9730a465100f7ab80afe97d1.gz",
+      "raw_sha256": "2447408754cf62a1a5989e99df239ad45270783f9730a465100f7ab80afe97d1",
+      "raw_bytes": 793,
+      "stored_sha256": "dbb3057a4e9783a40e8096246871183572ffe7a4b3674d78f4a6c3c9e6435ede"
+    },
+    "validation/v319-pattern-ports02/kernel-2-313-vdp/src/source_clock.c": {
+      "stored": "objects/402f285353517384881d602fedd9cfbc3403f23c11551e3d87016aafe3012962.gz",
+      "raw_sha256": "402f285353517384881d602fedd9cfbc3403f23c11551e3d87016aafe3012962",
+      "raw_bytes": 53,
+      "stored_sha256": "b3ebad87aece6094639d4a4a7832a5feff3260a936ec150a41495ce42ab13740"
+    },
+    "validation/v319-pattern-ports02/kernel-2-313-vdp/src/source_intro_sprite_clock.c": {
+      "stored": "objects/3f5bc2cfa62f90bdfbdb5aea279f8edd7c4179117d774e6386a5bb3162aac511.gz",
+      "raw_sha256": "3f5bc2cfa62f90bdfbdb5aea279f8edd7c4179117d774e6386a5bb3162aac511",
+      "raw_bytes": 66,
+      "stored_sha256": "18d7cc17c8c45bbf37a1c1cd311a2c435191c50a7f717fc1201b6e3a13c73bf0"
+    },
+    "validation/v319-pattern-ports02/kernel-2-313-vdp/src/source_intro_sprite_status.c": {
+      "stored": "objects/8a657e18d79c7fa6b746d2492560889adb88b9de64a3c874f46455e9108e1cff.gz",
+      "raw_sha256": "8a657e18d79c7fa6b746d2492560889adb88b9de64a3c874f46455e9108e1cff",
+      "raw_bytes": 67,
+      "stored_sha256": "32638304b219350b7c86686120339857e713cd387b28a3946a11e49e59f33f7a"
+    },
+    "validation/v319-pattern-ports02/kernel-2-313-vdp/src/source_intro_vdp.c": {
+      "stored": "objects/83c923f5762f2b97631e5b900922bda4f8785e2f1b25259fa9da09726ad50d2a.gz",
+      "raw_sha256": "83c923f5762f2b97631e5b900922bda4f8785e2f1b25259fa9da09726ad50d2a",
+      "raw_bytes": 57,
+      "stored_sha256": "726e5898553e1a6af88e2a43967e265a26c7f1640d413906a4b5e15eceb53819"
+    },
+    "validation/v319-pattern-ports02/kernel-2-313-vdp/src/source_pattern_clock.c": {
+      "stored": "objects/32c179aa36fe5db18784270abdf37d26c4f2546307509314a50a89439c5b2d8b.gz",
+      "raw_sha256": "32c179aa36fe5db18784270abdf37d26c4f2546307509314a50a89439c5b2d8b",
+      "raw_bytes": 61,
+      "stored_sha256": "8ead6505d9f48e6713130f5dac818790836fd88f45dea1bbd9e3cc3c39e4fe5c"
+    },
+    "validation/v319-pattern-ports02/kernel-2-313-vdp/src/source_rng.c": {
+      "stored": "objects/a9ef3fc8d6b9104f774da888d3bda57026d4265ff8539fe5523e3cbadda2295b.gz",
+      "raw_sha256": "a9ef3fc8d6b9104f774da888d3bda57026d4265ff8539fe5523e3cbadda2295b",
+      "raw_bytes": 51,
+      "stored_sha256": "554243f63ec031c3d9558a355429b53f52f5ae600fea918d96979ad874508963"
+    },
+    "validation/v319-pattern-ports02/kernel-2-313-vdp-ntsc/capture.json": {
+      "stored": "objects/699b2893844ca73c6af695c7971286076fa652777a4abcd37e5e2b58d68d07e6.gz",
+      "raw_sha256": "699b2893844ca73c6af695c7971286076fa652777a4abcd37e5e2b58d68d07e6",
+      "raw_bytes": 572,
+      "stored_sha256": "8f1ff87eaf0a863bb53c15a4c4a71690471d632a0862d1d1198b09eb017c28f0"
+    },
+    "validation/v319-pattern-ports02/kernel-2-313-vdp-pal/capture.json": {
+      "stored": "objects/ba8e529ba66dd54ad341c3d8b05856c13dde954b9588066757f1071aedf0787a.gz",
+      "raw_sha256": "ba8e529ba66dd54ad341c3d8b05856c13dde954b9588066757f1071aedf0787a",
+      "raw_bytes": 570,
+      "stored_sha256": "fe6726de3746adeb41f4c3fb7ac352d59b407e6a16b2716940883b9272da0a3a"
+    },
+    "validation/v319-pattern-ports02/kernel-2-313-vdp-report.json": {
+      "stored": "objects/bfd44b82484239f49ec99270fde939b748bd38571a9486220160ecc1c438e825.gz",
+      "raw_sha256": "bfd44b82484239f49ec99270fde939b748bd38571a9486220160ecc1c438e825",
+      "raw_bytes": 560,
+      "stored_sha256": "49bd8dca810bee2da5d9c4fcaa76624b25f15aa340a722330c479ac643b0e9de"
+    },
+    "validation/validate_v319_pattern_dates.py": {
+      "stored": "objects/802b19be5401f39ffdc70919a6bc71161668878ca4e806fa4502130e1d56b3b8.gz",
+      "raw_sha256": "802b19be5401f39ffdc70919a6bc71161668878ca4e806fa4502130e1d56b3b8",
+      "raw_bytes": 5498,
+      "stored_sha256": "7b512c78856588138b741d6c6796c704bd04361ef6bc12c49bdf2df029016e67"
+    }
+  },
+  "removed_verified_generated": [
+    {
+      "path": "validation/v319-pattern-dates01/native.dll",
+      "bytes": 146556
+    },
+    {
+      "path": "validation/v319-pattern-dates01/ntsc/trace_counts.bin",
+      "bytes": 1048576
+    },
+    {
+      "path": "validation/v319-pattern-dates01/ntsc/trace_states.bin",
+      "bytes": 1024
+    },
+    {
+      "path": "validation/v319-pattern-dates01/ntsc/trace_windows.bin",
+      "bytes": 262144
+    },
+    {
+      "path": "validation/v319-pattern-dates01/ntsc-dates.bin",
+      "bytes": 1047680
+    },
+    {
+      "path": "validation/v319-pattern-dates01/ntsc-psg.bin",
+      "bytes": 224000
+    },
+    {
+      "path": "validation/v319-pattern-dates01/pal/trace_counts.bin",
+      "bytes": 1048576
+    },
+    {
+      "path": "validation/v319-pattern-dates01/pal/trace_states.bin",
+      "bytes": 1024
+    },
+    {
+      "path": "validation/v319-pattern-dates01/pal/trace_windows.bin",
+      "bytes": 262144
+    },
+    {
+      "path": "validation/v319-pattern-dates01/pal-dates.bin",
+      "bytes": 1047680
+    },
+    {
+      "path": "validation/v319-pattern-dates01/pal-psg.bin",
+      "bytes": 224000
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-262-vdp/out/release/_deps/src/events.d",
+      "bytes": 40
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-262-vdp/out/release/_deps/src/main.d",
+      "bytes": 1502
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-262-vdp/out/release/_deps/src/source_clock.d",
+      "bytes": 336
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-262-vdp/out/release/_deps/src/source_intro_sprite_clock.d",
+      "bytes": 546
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-262-vdp/out/release/_deps/src/source_intro_sprite_status.d",
+      "bytes": 332
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-262-vdp/out/release/_deps/src/source_intro_vdp.d",
+      "bytes": 610
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-262-vdp/out/release/_deps/src/source_pattern_clock.d",
+      "bytes": 812
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-262-vdp/out/release/_deps/src/source_rng.d",
+      "bytes": 232
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-262-vdp/out/release/rom.bin",
+      "bytes": 2097152
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-262-vdp/out/release/rom.out",
+      "bytes": 1191740
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-262-vdp/out/release/rom_header.o",
+      "bytes": 932
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-262-vdp/out/release/sega.o",
+      "bytes": 4276
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-262-vdp/out/release/sega.s",
+      "bytes": 10664
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-262-vdp/out/release/src/events.o",
+      "bytes": 1112216
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-262-vdp/out/release/src/main.o",
+      "bytes": 64544
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-262-vdp/out/release/src/source_clock.o",
+      "bytes": 22868
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-262-vdp/out/release/src/source_intro_sprite_clock.o",
+      "bytes": 15312
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-262-vdp/out/release/src/source_intro_sprite_status.o",
+      "bytes": 24412
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-262-vdp/out/release/src/source_intro_vdp.o",
+      "bytes": 24996
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-262-vdp/out/release/src/source_pattern_clock.o",
+      "bytes": 56012
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-262-vdp/out/release/src/source_rng.o",
+      "bytes": 5708
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-262-vdp/out/rom.bin",
+      "bytes": 1179648
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-262-vdp/out/rom_header.bin",
+      "bytes": 256
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-262-vdp/src/events.bin",
+      "bytes": 1111680
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-262-vdp/src/events.s",
+      "bytes": 96
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-262-vdp/src/expected.h",
+      "bytes": 7692
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-313-vdp/out/release/_deps/src/events.d",
+      "bytes": 40
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-313-vdp/out/release/_deps/src/main.d",
+      "bytes": 1502
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-313-vdp/out/release/_deps/src/source_clock.d",
+      "bytes": 336
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-313-vdp/out/release/_deps/src/source_intro_sprite_clock.d",
+      "bytes": 546
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-313-vdp/out/release/_deps/src/source_intro_sprite_status.d",
+      "bytes": 332
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-313-vdp/out/release/_deps/src/source_intro_vdp.d",
+      "bytes": 610
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-313-vdp/out/release/_deps/src/source_pattern_clock.d",
+      "bytes": 812
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-313-vdp/out/release/_deps/src/source_rng.d",
+      "bytes": 232
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-313-vdp/out/release/rom.bin",
+      "bytes": 2097152
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-313-vdp/out/release/rom.out",
+      "bytes": 1191740
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-313-vdp/out/release/rom_header.o",
+      "bytes": 932
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-313-vdp/out/release/sega.o",
+      "bytes": 4276
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-313-vdp/out/release/sega.s",
+      "bytes": 10664
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-313-vdp/out/release/src/events.o",
+      "bytes": 1112216
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-313-vdp/out/release/src/main.o",
+      "bytes": 64548
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-313-vdp/out/release/src/source_clock.o",
+      "bytes": 22872
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-313-vdp/out/release/src/source_intro_sprite_clock.o",
+      "bytes": 15312
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-313-vdp/out/release/src/source_intro_sprite_status.o",
+      "bytes": 24412
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-313-vdp/out/release/src/source_intro_vdp.o",
+      "bytes": 25000
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-313-vdp/out/release/src/source_pattern_clock.o",
+      "bytes": 56016
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-313-vdp/out/release/src/source_rng.o",
+      "bytes": 5708
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-313-vdp/out/rom.bin",
+      "bytes": 1179648
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-313-vdp/out/rom_header.bin",
+      "bytes": 256
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-313-vdp/src/events.bin",
+      "bytes": 1111680
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-313-vdp/src/events.s",
+      "bytes": 96
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-1-313-vdp/src/expected.h",
+      "bytes": 7687
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-262-vdp/out/release/_deps/src/events.d",
+      "bytes": 40
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-262-vdp/out/release/_deps/src/main.d",
+      "bytes": 1502
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-262-vdp/out/release/_deps/src/source_clock.d",
+      "bytes": 336
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-262-vdp/out/release/_deps/src/source_intro_sprite_clock.d",
+      "bytes": 546
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-262-vdp/out/release/_deps/src/source_intro_sprite_status.d",
+      "bytes": 332
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-262-vdp/out/release/_deps/src/source_intro_vdp.d",
+      "bytes": 610
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-262-vdp/out/release/_deps/src/source_pattern_clock.d",
+      "bytes": 812
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-262-vdp/out/release/_deps/src/source_rng.d",
+      "bytes": 232
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-262-vdp/out/release/rom.bin",
+      "bytes": 2097152
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-262-vdp/out/release/rom.out",
+      "bytes": 929628
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-262-vdp/out/release/rom_header.o",
+      "bytes": 932
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-262-vdp/out/release/sega.o",
+      "bytes": 4276
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-262-vdp/out/release/sega.s",
+      "bytes": 10664
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-262-vdp/out/release/src/events.o",
+      "bytes": 853016
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-262-vdp/out/release/src/main.o",
+      "bytes": 56392
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-262-vdp/out/release/src/source_clock.o",
+      "bytes": 22864
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-262-vdp/out/release/src/source_intro_sprite_clock.o",
+      "bytes": 15312
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-262-vdp/out/release/src/source_intro_sprite_status.o",
+      "bytes": 24408
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-262-vdp/out/release/src/source_intro_vdp.o",
+      "bytes": 24996
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-262-vdp/out/release/src/source_pattern_clock.o",
+      "bytes": 56012
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-262-vdp/out/release/src/source_rng.o",
+      "bytes": 5708
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-262-vdp/out/rom.bin",
+      "bytes": 917504
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-262-vdp/out/rom_header.bin",
+      "bytes": 256
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-262-vdp/src/events.bin",
+      "bytes": 852480
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-262-vdp/src/events.s",
+      "bytes": 96
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-262-vdp/src/expected.h",
+      "bytes": 7594
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-313-vdp/out/release/_deps/src/events.d",
+      "bytes": 40
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-313-vdp/out/release/_deps/src/main.d",
+      "bytes": 1502
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-313-vdp/out/release/_deps/src/source_clock.d",
+      "bytes": 336
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-313-vdp/out/release/_deps/src/source_intro_sprite_clock.d",
+      "bytes": 546
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-313-vdp/out/release/_deps/src/source_intro_sprite_status.d",
+      "bytes": 332
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-313-vdp/out/release/_deps/src/source_intro_vdp.d",
+      "bytes": 610
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-313-vdp/out/release/_deps/src/source_pattern_clock.d",
+      "bytes": 812
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-313-vdp/out/release/_deps/src/source_rng.d",
+      "bytes": 232
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-313-vdp/out/release/rom.bin",
+      "bytes": 2097152
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-313-vdp/out/release/rom.out",
+      "bytes": 929628
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-313-vdp/out/release/rom_header.o",
+      "bytes": 932
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-313-vdp/out/release/sega.o",
+      "bytes": 4276
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-313-vdp/out/release/sega.s",
+      "bytes": 10664
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-313-vdp/out/release/src/events.o",
+      "bytes": 853016
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-313-vdp/out/release/src/main.o",
+      "bytes": 56384
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-313-vdp/out/release/src/source_clock.o",
+      "bytes": 22872
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-313-vdp/out/release/src/source_intro_sprite_clock.o",
+      "bytes": 15316
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-313-vdp/out/release/src/source_intro_sprite_status.o",
+      "bytes": 24416
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-313-vdp/out/release/src/source_intro_vdp.o",
+      "bytes": 25004
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-313-vdp/out/release/src/source_pattern_clock.o",
+      "bytes": 56016
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-313-vdp/out/release/src/source_rng.o",
+      "bytes": 5708
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-313-vdp/out/rom.bin",
+      "bytes": 917504
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-313-vdp/out/rom_header.bin",
+      "bytes": 256
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-313-vdp/src/events.bin",
+      "bytes": 852480
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-313-vdp/src/events.s",
+      "bytes": 96
+    },
+    {
+      "path": "validation/v319-pattern-ports02/kernel-2-313-vdp/src/expected.h",
+      "bytes": 7593
+    }
+  ]
+}

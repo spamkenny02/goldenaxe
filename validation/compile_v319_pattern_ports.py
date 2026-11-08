@@ -1,21 +1,28 @@
 """Every original intro pattern OUT compared on compiled68000 at six IRQ edges."""
-import contextlib,io,json,os,re,shutil,struct,subprocess,sys
+import argparse,contextlib,io,json,os,re,shutil,struct,subprocess,sys
 from pathlib import Path
 root=Path(__file__).resolve().parents[1];sys.path.insert(0,str(root/'tools'))
 from archive_lossless_evidence import sha
 from run_core import run
+parser=argparse.ArgumentParser();parser.add_argument('--bind-vdp',action='store_true');args=parser.parse_args()
 work=root/'validation/v319-pattern-ports02';report=json.loads((work/'report.json').read_bytes());assert report['passed']
 assert sha((root/'megadrive/src/source_pattern_clock.c').read_bytes())==report['native_sha256']
-cases=json.loads((work/'compiled-cases.json').read_bytes());parts=[]
+case_path=work/'compiled-cases.json'
+if case_path.exists():cases=json.loads(case_path.read_bytes())
+else:
+ import gzip
+ manifest=json.loads((root/'analysis/v319-pattern-ports/manifest.json').read_bytes());item=manifest['compressed']['validation/v319-pattern-ports02/compiled-cases.json'];encoded=(root/'analysis/v319-pattern-ports'/item['stored']).read_bytes();assert sha(encoded)==item['stored_sha256'];raw=gzip.decompress(encoded);assert sha(raw)==item['raw_sha256'];cases=json.loads(raw)
+parts=[]
 for plan in (1,2):
  for lines in (262,313):
-  name=f'kernel-{plan}-{lines}';project=work/name;target=work/(name+'-report.json')
+  name=f'kernel-{plan}-{lines}'+('-vdp' if args.bind_vdp else '');project=work/name;target=work/(name+'-report.json')
   if target.exists():
    done=json.loads(target.read_bytes());assert done['passed'];parts.append(done);continue
   assert not project.exists();src=project/'src';src.mkdir(parents=True);(project/'inc').mkdir()
   shutil.copyfile(root/'megadrive/src/rom_header.c',src/'rom_header.c')
-  for module in ('source_pattern_clock','source_clock','source_rng'):(src/(module+'.c')).write_text('#include "../../../../megadrive/src/'+module+'.c"\n')
+  for module in ('source_pattern_clock','source_clock','source_rng')+(('source_intro_vdp','source_intro_sprite_clock','source_intro_sprite_status') if args.bind_vdp else ()):(src/(module+'.c')).write_text('#include "../../../../megadrive/src/'+module+'.c"\n')
   for header in ('source_pattern_clock','source_intro_pattern_plans_generated'):(project/'inc'/(header+'.h')).write_text('#include "../../../../megadrive/src/'+header+'.h"\n')
+  if args.bind_vdp:(project/'inc'/'source_intro_vdp.h').write_text('#include "../../../../megadrive/src/source_intro_vdp.h"\n')
   selected=[c for c in cases if c['plan_id']==plan and c['lines']==lines];assert len(selected)==6
   events=bytearray();definitions=['static const u8 packed[]={'+','.join(map(str,selected[0]['stream']))+'};',
    'typedef struct {u32 raster,offset,count,state[16],hash;} PatternCase;','static const PatternCase cases[]={']
@@ -78,6 +85,16 @@ int main(bool hard_reset)
 }
 '''
   tag='gaw_intro_9d70_plan' if plan==1 else 'gaw_intro_a655_plan'
+  if args.bind_vdp:
+   main=main.replace('#include "source_pattern_clock.h"','#include "source_pattern_clock.h"\n#include "source_intro_vdp.h"\nstatic SourceIntroVdp video;static u8 video_memory[16384];')
+   main=main.replace('e=pattern_events+current->offset+position++;pattern_outputs++;','''if(!source_intro_vdp_checkpoint(&video,elapsed-165) ||
+      (video.instruction_raster+165)%video.clock.period!=raster ||
+      !source_intro_vdp_write(&video,elapsed,port,value)) return 0;
+ e=pattern_events+current->offset+position++;pattern_outputs++;''')
+   main=main.replace('source_clock_init(&clock,SOURCE_LINES,current->raster,0,1,0,0);','''source_clock_init(&clock,SOURCE_LINES,current->raster,0,1,0,0);
+  if(!source_intro_vdp_init(&video,video_memory,SOURCE_LINES,current->raster,0)) pattern_errors++;
+  memset(video_memory,0xa7,sizeof(video_memory));''')
+   main=main.replace('if(h!=current->hash) pattern_errors++;','if(h!=current->hash || memcmp(video_memory,pixels,sizeof(pixels))) pattern_errors++;')
   (src/'main.c').write_text(f'#define SOURCE_LINES {lines}\n#define PATTERN_PLAN (&{tag})\n'+main)
   env=dict(os.environ)
   for key in ('TMP','TEMP','TMPDIR'):env[key]='.'
@@ -91,6 +108,6 @@ int main(bool hard_reset)
    with contextlib.redirect_stdout(io.StringIO()):run(project/'out/release/rom.bin',20000,work/(name+'-'+region),set(),[],skip_intro=False,ram_observer=observe,stop_when=lambda:bool(stats.get('pattern_done')),core_options={'genesis_plus_gx_region_detect':'pal' if region=='pal' else 'auto'})
    assert stats['pattern_done'] and stats['pattern_cases']==6 and stats['pattern_errors']==0 and stats['pattern_outputs']==len(events)//10,stats
    results.append(dict(region=region,**stats));print(name,region,stats,flush=True)
-  done=dict(passed=True,plan=plan,source_lines=lines,cases=6,results=results,rom_sha256=sha((project/'out/release/rom.bin').read_bytes()));target.write_text(json.dumps(done,indent=2)+'\n');parts.append(done)
+  done=dict(passed=True,plan=plan,source_lines=lines,cases=6,owned_vdp_bound=args.bind_vdp,results=results,rom_sha256=sha((project/'out/release/rom.bin').read_bytes()));target.write_text(json.dumps(done,indent=2)+'\n');parts.append(done)
 summary=dict(passed=True,compiled_cases=sum(p['cases']*len(p['results']) for p in parts),compiled_outputs=sum(row['pattern_outputs'] for p in parts for row in p['results']),partitions=parts,limits=['Exact host scalar-checked OUT dates on actual68000; synthetic82T IRQ workload. No original absolute032A timestamp certificate or physical output.'])
-(work/'compiled-report.json').write_text(json.dumps(summary,indent=2)+'\n')
+(work/('compiled-vdp-report.json' if args.bind_vdp else 'compiled-report.json')).write_text(json.dumps(summary,indent=2)+'\n')

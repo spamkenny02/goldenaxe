@@ -23,6 +23,17 @@ cette routine ; la cadence de jeu visée reste celle de la Master System.
 
 ## Travail natif en cours : statut vidéo des sprites
 
+Les dates du décodeur sont maintenant confirmées par une capture indépendante
+de l’exécution SMS : **65472 écritures** des deux décors en NTSC/PAL, après
+séparation du temps réellement passé dans les interruptions. Le décodeur relié
+au miroir vidéo passe aussi sur 68000 : 48 cas, 785664 écritures et VRAM finale
+exactes. [Dates originales et raccordement compilé](analysis/v319_pattern_dates_report.json).
+
+Le test natif utilise encore une interruption synthétique. Il faut composer
+l’intro complète avec les vraies interruptions, puis mesurer le coût des
+routines et des sorties vidéo/PSG. Les durées des noyaux diagnostiques ne
+constituent pas cette mesure. Aucune nouvelle ROM jouable n’est publiée ici.
+
 Le décodeur natif de motifs publie maintenant chaque écriture de port avec sa
 date de fin d’instruction, y compris dans ses chemins optimisés. Les 1054 cas
 sur hôte retrouvent les dates, les octets et les états de l’exécution instruction
@@ -32,8 +43,9 @@ hôte : 24 cas, 392832 écritures et comparaison des 16 Kio de VRAM.
 [Résultats des sorties du décodeur](analysis/v319_pattern_ports_report.json).
 
 L’ordre de 18528 écritures du premier décor est confirmé par la capture SMS
-dans chaque région. Les dates absolues de ces écritures restent à comparer
-à une capture indépendante. Le test du décodeur emploie des interruptions
+dans chaque région. Les dates de travail du décodeur sont désormais confirmées par la capture
+indépendante ci-dessus ; les dates avec les vraies interruptions natives
+restent à vérifier. Le test du décodeur emploie des interruptions
 synthétiques ; l’intro complète avec ses sorties vidéo et sonores reste à
 composer et à mesurer avant activation. Le binaire public reste V319.
 
