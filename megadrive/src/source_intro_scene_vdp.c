@@ -1,5 +1,6 @@
 #include "source_intro_scene_vdp.h"
 #include "source_room_memory.h"
+#include "source_video_clock_math.h"
 
 u8 source_intro_scene_vdp_pattern(void *user,u32 elapsed,u32 raster,u8 port,u8 value)
 {return source_intro_vdp_out(user,elapsed,raster,11,port,value);}
@@ -13,7 +14,7 @@ u8 source_intro_scene_vdp_map(void *user,u32 elapsed,u32 raster,u8 port,u8 value
 static u8 out(SourceIntroVdp *vdp,const SourceClockIrq *entry,u32 ticks,u16 instruction,u8 port,u8 value)
 {
  u32 master=ticks*15;
- return source_intro_vdp_out(vdp,entry->entry_elapsed+master,(entry->entry_raster+master)%vdp->clock.period,instruction,port,value);
+ return source_intro_vdp_out(vdp,entry->entry_elapsed+master,source_video_wrap(entry->entry_raster,master,vdp->clock.period),instruction,port,value);
 }
 u8 source_intro_scene_vdp_irq(void *user,const SourceIrqContext *context,const SourceClockIrq *entry,u16 *tile_count)
 {

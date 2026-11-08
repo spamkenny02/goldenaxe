@@ -1,4 +1,5 @@
 #include "source_intro_vdp.h"
+#include "source_video_clock_math.h"
 
 static u8 advance(SourceIntroVdp *vdp,u32 elapsed)
 {
@@ -35,20 +36,20 @@ u8 source_intro_vdp_checkpoint(SourceIntroVdp *vdp,u32 elapsed)
  if(!vdp || !vdp->vram || vdp->error) return 0;
  delta=elapsed-vdp->instruction_elapsed;
  if((s32)delta<0) {vdp->error=2;return 0;}
- vdp->instruction_raster=(vdp->instruction_raster+delta%vdp->clock.period)%vdp->clock.period;
+ vdp->instruction_raster=source_video_wrap(vdp->instruction_raster,delta,vdp->clock.period);
  vdp->instruction_elapsed=elapsed;
  if(!advance(vdp,elapsed)) {vdp->error=3;return 0;}
  return 1;
 }
 static u8 reg_write(SourceIntroVdp *vdp,u32 elapsed,u8 index,u8 value)
 {
- u16 line=vdp->clock.raster/3420;u32 offset=vdp->instruction_raster%3420+(elapsed-vdp->instruction_elapsed);
+ u16 line=source_video_line(vdp->clock.raster);u32 offset=source_video_phase(vdp->instruction_raster)+(elapsed-vdp->instruction_elapsed);
  u8 old=vdp->registers[index];
  if(index>10) return 1;
  if(index==8)
  {
-  u32 delta=elapsed-vdp->clock.elapsed,raster=(vdp->clock.raster+delta+15)%vdp->clock.period;
-  if(raster/3420<192 && raster%3420<15)
+  u32 delta=elapsed-vdp->clock.elapsed,raster=source_video_wrap(vdp->clock.raster,delta+15,vdp->clock.period);
+  if(raster<192UL*3420 && source_video_phase(raster)<15)
   {if(!advance(vdp,elapsed+15)) return 0;}
   else if(!advance(vdp,elapsed)) return 0;
  }
@@ -111,8 +112,8 @@ u8 source_intro_vdp_irq_status(void *user,const SourceClockIrq *entry,u8 *status
  if(!vdp || !entry || !status || vdp->error || entry->entry_raster>=vdp->clock.period) return 0;
  elapsed=entry->entry_elapsed-37UL*15;delta=elapsed-vdp->instruction_elapsed;
  if((s32)delta<0) return 0;
- raster=(vdp->instruction_raster+delta%vdp->clock.period)%vdp->clock.period;
- if((raster+37UL*15)%vdp->clock.period!=entry->entry_raster) return 0;
+ raster=source_video_wrap(vdp->instruction_raster,delta,vdp->clock.period);
+ if(source_video_wrap(raster,37UL*15,vdp->clock.period)!=entry->entry_raster) return 0;
  return source_intro_vdp_checkpoint(vdp,elapsed-11UL*15) && source_intro_vdp_read(vdp,elapsed,11,0xbf,status);
 }
 u8 source_intro_vdp_out(SourceIntroVdp *vdp,u32 elapsed,u32 raster,u16 tstates,u8 port,u8 value)
@@ -121,6 +122,6 @@ u8 source_intro_vdp_out(SourceIntroVdp *vdp,u32 elapsed,u32 raster,u16 tstates,u
  if(!vdp || vdp->error || !tstates || tstates>228 || raster>=vdp->clock.period) return 0;
  delta=elapsed-vdp->instruction_elapsed;
  if((s32)delta<0 || delta<(u32)tstates*15 ||
-    (vdp->instruction_raster+delta%vdp->clock.period)%vdp->clock.period!=raster) return 0;
+    source_video_wrap(vdp->instruction_raster,delta,vdp->clock.period)!=raster) return 0;
  return source_intro_vdp_checkpoint(vdp,elapsed-(u32)tstates*15) && source_intro_vdp_write(vdp,elapsed,port,value);
 }

@@ -4,8 +4,8 @@ from pathlib import Path
 root=Path(__file__).resolve().parents[1];sys.path.insert(0,str(root/'tools'))
 from archive_lossless_evidence import sha
 from run_core import run
-p=argparse.ArgumentParser();p.add_argument('--source-region',choices=['ntsc','pal'],required=True);p.add_argument('--kernel-name');a=p.parse_args()
-work=root/'validation/v319-port-mirror02';report=json.loads((work/'report.json').read_bytes());assert report['passed']
+p=argparse.ArgumentParser();p.add_argument('--source-region',choices=['ntsc','pal'],required=True);p.add_argument('--kernel-name');p.add_argument('--work',default='v319-port-mirror02');a=p.parse_args()
+work=(root/'validation'/a.work).resolve();assert work.is_relative_to(root/'validation');report=json.loads((work/'report.json').read_bytes());assert report['passed']
 for name,digest in report['native_sources'].items():assert sha((root/'megadrive/src'/name).read_bytes())==digest
 row=next(r for r in report['results'] if r['region']==a.source_region)
 origin=json.loads((root/'validation/v319-port-origin01/report.json').read_bytes());assert origin['passed']

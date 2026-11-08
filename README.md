@@ -35,6 +35,18 @@ faire : accès navigateur local désactivé dans Work et visibilité à choisir.
 
 ## Travail natif en cours : statut vidéo des sprites
 
+Le coût du raccordement vidéo vivant est désormais mesuré : en retirant les
+comparaisons par écriture et les copies de préparation du banc, le helper
+initial demandait 1406..1684 images MD dans les exécutions NTSC. Une première
+optimisation des divisions/modulos le ramène à **606..711 images** (507..595
+sur les exécutions PAL), soit environ **57 % de coût en moins**.
+[Profil CPU et contrôles](analysis/v319_video_math_report.json).
+
+Ce coût reste très supérieur au budget source : **ce chemin ne peut pas être
+activé en l’état**. Il faut réduire le traitement par écriture en conservant
+les dates et les observations vidéo. Ce gain concerne le module expérimental,
+pas la cadence de la ROM V319 publiée, qui reste identique.
+
 Les dix scènes calculent maintenant leur statut vidéo depuis le miroir natif
 et l’utilisent pour piloter les interruptions. Les valeurs capturées servent
 uniquement de contrôle après exécution. Le raccordement passe sur 68000 en

@@ -6,7 +6,28 @@ le README et les rapports cités.
 
 ## Suivi courant — V319, 8 novembre 2026
 
-DERNIÈRE ÉTAPE : vidéo complète V319 produite enlocal, rapport
+DERNIÈRE ÉTAPE : premierprofilhelper liveVDP +arithmétique optimisée,
+rapport `analysis/v319_video_math_report.json`, archive `analysis/v319-video-math`.
+Profile01 vs02 :vTimer uniquement autour source_intro_scene_load_ports,exclut
+copiesfixture/comparaisonsfinales etperOUTexpected ;comparesstatutsIRQ restent
+présents (faible coût mais diagnostic). Profile01 NTSC1406..1684frames MD,
+profile02NTSC606..711 ;PAL1176..1409→507..595. Gainmoyen~57%,CPUgateFALSE.
+source_video_clock_math.h :wrap soustractionbornée si delta<period sinonmodulo
+rare,longgap ;DIVU.W3420 quotient/remainder pourraster<313*3420 ;linecounter
+incrémenté àfrontières,phase viauntil_line. Layout inchangé. Mis àjour
+source_intro_vdp/source_intro_sprite_clock/source_intro_scene_vdp.
+1966500rasterticks+6325wraps vérifiés exhaustivement surchaqueregionMD ;
+8.49Msourcewrites/33707status/5616VRAMreads exacts host14000frames/région ;
+535716accès compilés/9856reads,préfixesboot réelsNTSC/PAL→2régionsMD.
+10scèneslivestatushost exactes ;profilekernels20cas68000 conserventRAM/audio/
+clock/R/sourceVRAM. Rebuildcomplet toujoursidentiqueV319/d3ea2a83…/DA29.
+PRIORITÉ :606..711frames est encore trop lent (~scènes24..27sourceframes),
+nePASactivercesinksperOUT enROM. Profilercoûtsappels/stages,traiterrunsdatés
+etplagesstables sansperdrelecturesstatus/IRQ,mémoireécriteavantévaluationligne.
+IRQdates indépendantes/coldboot/imagePSGphysique restentouverts.
+VidéoV319 complète localeprête,YouTube toujoursenattente accèsbrowser/visibilité.
+
+ÉTAPE PRÉCÉDENTE : vidéo complète V319 produite enlocal, rapport
 `analysis/v319_gameplay_video_report.json`, archive `analysis/v319-gameplay-video`.
 Livrable `videos/v0319/golden-axe-warrior-md-v0319-gameplay-complet-ntsc.mp4`,
 1564288703octets,SHA ebf049475a5f92672cd7103066e2f6c3e58c16dbd2624cfd6635936bd34aa11e.
