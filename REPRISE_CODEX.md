@@ -6,7 +6,23 @@ le README et les rapports cités.
 
 ## Suivi courant — V319, 8 novembre 2026
 
-DERNIÈRE ÉTAPE : optimisation source_intro_video/scene/map et plans032A,
+DERNIÈRE ÉTAPE : modèle temporel natif des statuts sprites, rapport
+`analysis/v319_chip_temporal_report.json`, archive `analysis/v319-chip-temporal`.
+Module `source_intro_sprite_status.c/.h` : caches de deux lignes, collision20,
+débordement40 en attente, lecture avec remise à zéro et report horizontal.
+33707 lectures source +27986 statuts IRQ exacts ;33179 transitions distinctes
+→66358 exécutions68000 NTSC/PAL sans écart. La VRAM/les registres/les événements
+viennent encore de la référence : PAS de raccordement producteur natif achevé,
+PAS de suppression des files de statuts attendus des anciens bancs de scènes.
+La branche de lecture précoce sur la ligne de collision n’est pas couverte par
+le corpus naturel. Rebuild publié identiqueV319, pas deV320 pour ce seul module.
+Prochaine étape : alimentation par VRAM/SourceClock natifs, lectures foreground
+et IRQ, histoire des caches dès le boot ; réutiliser status_read et SAT datée
+de source_game_irq lorsque possible. Ensuite livraison vidéo/PSG physique.
+Erratum :9F/BF diffèrent par collision20, PAS overflow40 ; anciennes données
+numériques intactes. Voir `analysis/v319_sprite_status_erratum.json`.
+
+ÉTAPE PRÉCÉDENTE : optimisation source_intro_video/scene/map et plans032A,
 rapport `analysis/v319_intro_runs_report.json`, archive `analysis/v319-intro-runs`.
 GATE CPU DU HELPER OBSERVÉ SATISFAIT pour les10cas source/région correspondante,
 avec1frame ajoutée par prudence à la mesure. Ce n’est PAS une preuve de
@@ -419,7 +435,7 @@ listes SAT A60/A78/0978 et palette éclair BE25 traduits avec SourceClock.
 états suivis comparés sans exclusion. Aucun changement de ROM publique :
 recompilation complète byte-identique V319 d3ea2a83/DA29.
 
-Attention : scène 3, C01B prend 9F/BF selon overflow sprite source.
+Attention : scène 3, C01B prend 9F/BF selon collision sprite source (bit20 ; erratum ci-dessus).
 Le diagnostic reçoit ce statut indépendant à chaque entrée IRQ 0137,
 puis délègue au modèle IRQ natif inchangé. Ce n’est pas un replay autorisé
 en production : calculer ce statut depuis les sprites vivants avant

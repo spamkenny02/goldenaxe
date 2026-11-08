@@ -21,6 +21,26 @@ pose passe de 123060 à 67942 cycles maîtres médians, soit −44,79 % pour
 cette routine ; la cadence de jeu visée reste celle de la Master System.
 [Mesures et captures](analysis/c0046-hero-three-plane/manifest.json).
 
+## Travail natif en cours : statut vidéo des sprites
+
+Le nouveau module `source_intro_sprite_status.c` calcule les collisions et le
+débordement des sprites à partir de la VRAM, des registres et des événements
+vidéo. Il conserve les caches et les drapeaux entre les lignes et les lectures.
+Sur deux parcours de démarrage de 14000 images, il retrouve les 33707 lectures
+de statut et les 27986 statuts sauvegardés par les interruptions, sans écart.
+Les 33179 transitions distinctes passent aussi sur 68000 en NTSC et PAL,
+soit 66358 exécutions. [Résultats](analysis/v319_chip_temporal_report.json).
+
+Le module reste à alimenter depuis la VRAM et l’horloge natives du portage ;
+les événements de ces tests viennent encore du moteur de référence. La ROM
+publiée reste V319. Les lectures juste avant le pixel de collision ne sont
+pas couvertes par ce parcours naturel, et le rendu physique/PCM reste à vérifier.
+
+Correction des anciennes notes : la différence `9F/BF` indique une **collision**
+(bit `20`), et le débordement utilise le bit `40`. Les valeurs capturées et les
+comparaisons antérieures sont inchangées.
+[Erratum](analysis/v319_sprite_status_erratum.json).
+
 ## État vérifié de la V319
 
 | Domaine | Contrôles passés | Périmètre restant |

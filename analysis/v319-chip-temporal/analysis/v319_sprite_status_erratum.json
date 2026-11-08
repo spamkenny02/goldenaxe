@@ -1,0 +1,6 @@
+{
+  "affected": "Earlier intro actor notes and reports labeled the9F/BF change as sprite overflow.",
+  "correct": "In the reference Mode4 status byte, bit20 is sprite collision and bit40 is sprite overflow.9F/BF differ by collision20. Original numeric captures/comparisons are unchanged.",
+  "evidence": "Local reference vdp_render.c parse_satb_m4/render_obj_m4 and vdp_ctrl.c vdp_z80_ctrl_r, plus33707 direct native temporal read comparisons.",
+  "production_rom_changed": false
+}

@@ -1,0 +1,523 @@
+{
+  "passed": true,
+  "diagnostic_only": true,
+  "production_rom_changed": false,
+  "public_version": 319,
+  "production_rom_sha256": "d3ea2a83ea24ed8a0d3c9857f9fbe70d000a4f73358452c1887f40e78966c56e",
+  "production_rebuild_byte_identical": true,
+  "temporal_reference": {
+    "passed": true,
+    "results": [
+      {
+        "region": "ntsc",
+        "parse_events": 2688135,
+        "render_events": 2688000,
+        "read_events": 16099,
+        "irq_samples": 13993,
+        "read_errors": 0,
+        "irq_errors": 0,
+        "unsupported": 0,
+        "errors": [],
+        "psg_exact_frames": 14000
+      },
+      {
+        "region": "pal",
+        "parse_events": 2688116,
+        "render_events": 2688002,
+        "read_events": 17608,
+        "irq_samples": 13993,
+        "read_errors": 0,
+        "irq_errors": 0,
+        "unsupported": 0,
+        "errors": [],
+        "psg_exact_frames": 14000
+      }
+    ],
+    "native_source_sha256": "57ae0af2f524be9156fdecf12c887f6434c003bb216b608318fd6f689ba32bdb",
+    "core_sha256": "b708622e86bda4e4f1659256334c23837321ffe01efa02c4f98bad2d80df5aaf",
+    "source_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+    "scope": "Native temporal parser/cache,render collision order and status latches driven by actual reference parse/render/read events. No expected status is passed into the native algorithm; only the bridge compares its outputs.",
+    "limits": [
+      "Reference live VRAM/register/timing events, not a production callback bound to the MD renderer yet.",
+      "Mode4/192/SMS2 unzoomed8-pixel sprites only; no hardware/PCM certificate."
+    ],
+    "oracle_ram_writes": 0,
+    "sram_imports": 0,
+    "transition_vectors": 33179,
+    "transition_stride": 472,
+    "transition_sha256": "d13d1eea7ea1129581f909add74aaeb8d6568f2dea3d19be751bd4ad7fee1ef6",
+    "transition_canonicalization": "Only unused cached sprite slots and collision coordinates when no collision is latched are canonicalized in vector snapshots; live model state is not modified."
+  },
+  "compiled68000_checks": {
+    "passed": true,
+    "source_transition_vectors": 33179,
+    "compiled_executions": 66358,
+    "partitions": [
+      {
+        "path": "validation/v319-chip-events02/kernel1-report.json",
+        "report": {
+          "passed": true,
+          "start": 0,
+          "count": 3000,
+          "results": [
+            {
+              "region": "ntsc",
+              "chip_cases_done": 3000,
+              "chip_case_errors": 0,
+              "chip_done": 1,
+              "chip_first_failure": 0,
+              "frame": 1615
+            },
+            {
+              "region": "pal",
+              "chip_cases_done": 3000,
+              "chip_case_errors": 0,
+              "chip_done": 1,
+              "chip_first_failure": 0,
+              "frame": 1352
+            }
+          ],
+          "rom_sha256": "90daa8153b70b3cf0c3a13017d51079f6769a062457efc10454676e356a9b682",
+          "scope": "All requested native parse/render/read state transitions, input sparse VRAM,flags and observable cached state compared on compiled68000. Direct original expected read flags checked where captured."
+        }
+      },
+      {
+        "path": "validation/v319-chip-events02/kernel2-report.json",
+        "report": {
+          "passed": true,
+          "start": 3000,
+          "count": 3000,
+          "results": [
+            {
+              "region": "ntsc",
+              "chip_cases_done": 3000,
+              "chip_case_errors": 0,
+              "chip_done": 1,
+              "chip_first_failure": 0,
+              "frame": 1619
+            },
+            {
+              "region": "pal",
+              "chip_cases_done": 3000,
+              "chip_case_errors": 0,
+              "chip_done": 1,
+              "chip_first_failure": 0,
+              "frame": 1355
+            }
+          ],
+          "rom_sha256": "3b628034e70ce157ac18bef050b7de4c5ffee344b4b53717b104e579244901a7",
+          "scope": "All requested native parse/render/read state transitions, input sparse VRAM,flags and observable cached state compared on compiled68000. Direct original expected read flags checked where captured."
+        }
+      },
+      {
+        "path": "validation/v319-chip-events02/kernel3-report.json",
+        "report": {
+          "passed": true,
+          "start": 6000,
+          "count": 3000,
+          "results": [
+            {
+              "region": "ntsc",
+              "chip_cases_done": 3000,
+              "chip_case_errors": 0,
+              "chip_done": 1,
+              "chip_first_failure": 0,
+              "frame": 1617
+            },
+            {
+              "region": "pal",
+              "chip_cases_done": 3000,
+              "chip_case_errors": 0,
+              "chip_done": 1,
+              "chip_first_failure": 0,
+              "frame": 1354
+            }
+          ],
+          "rom_sha256": "0aaf2c3448c8f4a731d6ea3ef239c4326fb5bc5c84ba86d421e59793fd2ab673",
+          "scope": "All requested native parse/render/read state transitions, input sparse VRAM,flags and observable cached state compared on compiled68000. Direct original expected read flags checked where captured."
+        }
+      },
+      {
+        "path": "validation/v319-chip-events02/kernel4-report.json",
+        "report": {
+          "passed": true,
+          "start": 9000,
+          "count": 3000,
+          "results": [
+            {
+              "region": "ntsc",
+              "chip_cases_done": 3000,
+              "chip_case_errors": 0,
+              "chip_done": 1,
+              "chip_first_failure": 0,
+              "frame": 1618
+            },
+            {
+              "region": "pal",
+              "chip_cases_done": 3000,
+              "chip_case_errors": 0,
+              "chip_done": 1,
+              "chip_first_failure": 0,
+              "frame": 1354
+            }
+          ],
+          "rom_sha256": "d11dc5573f0c1ec6609f9a8d1e78b5d0140e29c648634945479361000a1c344e",
+          "scope": "All requested native parse/render/read state transitions, input sparse VRAM,flags and observable cached state compared on compiled68000. Direct original expected read flags checked where captured."
+        }
+      },
+      {
+        "path": "validation/v319-chip-events02/kernel5-report.json",
+        "report": {
+          "passed": true,
+          "start": 12000,
+          "count": 3000,
+          "results": [
+            {
+              "region": "ntsc",
+              "chip_cases_done": 3000,
+              "chip_case_errors": 0,
+              "chip_done": 1,
+              "chip_first_failure": 0,
+              "frame": 1621
+            },
+            {
+              "region": "pal",
+              "chip_cases_done": 3000,
+              "chip_case_errors": 0,
+              "chip_done": 1,
+              "chip_first_failure": 0,
+              "frame": 1357
+            }
+          ],
+          "rom_sha256": "bbb349e2d0c4619cf5c2715f8a1cf6ed48ef2c588c1d2cbc5313583e6ba4e982",
+          "scope": "All requested native parse/render/read state transitions, input sparse VRAM,flags and observable cached state compared on compiled68000. Direct original expected read flags checked where captured."
+        }
+      },
+      {
+        "path": "validation/v319-chip-events02/kernel6-report.json",
+        "report": {
+          "passed": true,
+          "start": 15000,
+          "count": 3000,
+          "results": [
+            {
+              "region": "ntsc",
+              "chip_cases_done": 3000,
+              "chip_case_errors": 0,
+              "chip_done": 1,
+              "chip_first_failure": 0,
+              "frame": 1611
+            },
+            {
+              "region": "pal",
+              "chip_cases_done": 3000,
+              "chip_case_errors": 0,
+              "chip_done": 1,
+              "chip_first_failure": 0,
+              "frame": 1349
+            }
+          ],
+          "rom_sha256": "0ee9456ca6b8e41ba976d58fe955a69c419a91f295b5814a2f975982bfaa7d71",
+          "scope": "All requested native parse/render/read state transitions, input sparse VRAM,flags and observable cached state compared on compiled68000. Direct original expected read flags checked where captured."
+        }
+      },
+      {
+        "path": "validation/v319-chip-events02/kernel7-report.json",
+        "report": {
+          "passed": true,
+          "start": 18000,
+          "count": 3000,
+          "results": [
+            {
+              "region": "ntsc",
+              "chip_cases_done": 3000,
+              "chip_case_errors": 0,
+              "chip_done": 1,
+              "chip_first_failure": 0,
+              "frame": 1613
+            },
+            {
+              "region": "pal",
+              "chip_cases_done": 3000,
+              "chip_case_errors": 0,
+              "chip_done": 1,
+              "chip_first_failure": 0,
+              "frame": 1350
+            }
+          ],
+          "rom_sha256": "a416bb98abfb9aecd222db9bcba7e5d80b461f6b4464b5b6816531198d992ad2",
+          "scope": "All requested native parse/render/read state transitions, input sparse VRAM,flags and observable cached state compared on compiled68000. Direct original expected read flags checked where captured."
+        }
+      },
+      {
+        "path": "validation/v319-chip-events02/kernel8-report.json",
+        "report": {
+          "passed": true,
+          "start": 21000,
+          "count": 3000,
+          "results": [
+            {
+              "region": "ntsc",
+              "chip_cases_done": 3000,
+              "chip_case_errors": 0,
+              "chip_done": 1,
+              "chip_first_failure": 0,
+              "frame": 1618
+            },
+            {
+              "region": "pal",
+              "chip_cases_done": 3000,
+              "chip_case_errors": 0,
+              "chip_done": 1,
+              "chip_first_failure": 0,
+              "frame": 1354
+            }
+          ],
+          "rom_sha256": "0bc666c8ace1aeae4d26e48dffa4428c87028ef096e44dfcd048d22984595be6",
+          "scope": "All requested native parse/render/read state transitions, input sparse VRAM,flags and observable cached state compared on compiled68000. Direct original expected read flags checked where captured."
+        }
+      },
+      {
+        "path": "validation/v319-chip-events02/kernel9-report.json",
+        "report": {
+          "passed": true,
+          "start": 24000,
+          "count": 3000,
+          "results": [
+            {
+              "region": "ntsc",
+              "chip_cases_done": 3000,
+              "chip_case_errors": 0,
+              "chip_done": 1,
+              "chip_first_failure": 0,
+              "frame": 1618
+            },
+            {
+              "region": "pal",
+              "chip_cases_done": 3000,
+              "chip_case_errors": 0,
+              "chip_done": 1,
+              "chip_first_failure": 0,
+              "frame": 1355
+            }
+          ],
+          "rom_sha256": "f517b462427291ba05d88600e859c55048d667681ecd4791b0c7ae9ead14a687",
+          "scope": "All requested native parse/render/read state transitions, input sparse VRAM,flags and observable cached state compared on compiled68000. Direct original expected read flags checked where captured."
+        }
+      },
+      {
+        "path": "validation/v319-chip-events02/kernel10-report.json",
+        "report": {
+          "passed": true,
+          "start": 27000,
+          "count": 3000,
+          "results": [
+            {
+              "region": "ntsc",
+              "chip_cases_done": 3000,
+              "chip_case_errors": 0,
+              "chip_done": 1,
+              "chip_first_failure": 0,
+              "frame": 1620
+            },
+            {
+              "region": "pal",
+              "chip_cases_done": 3000,
+              "chip_case_errors": 0,
+              "chip_done": 1,
+              "chip_first_failure": 0,
+              "frame": 1356
+            }
+          ],
+          "rom_sha256": "4cc127f644137786f3e955ddc403b14ad479c33aedc6be5725aaf4709e0162eb",
+          "scope": "All requested native parse/render/read state transitions, input sparse VRAM,flags and observable cached state compared on compiled68000. Direct original expected read flags checked where captured."
+        }
+      },
+      {
+        "path": "validation/v319-chip-events02/kernel11-report.json",
+        "report": {
+          "passed": true,
+          "start": 30000,
+          "count": 3000,
+          "results": [
+            {
+              "region": "ntsc",
+              "chip_cases_done": 3000,
+              "chip_case_errors": 0,
+              "chip_done": 1,
+              "chip_first_failure": 0,
+              "frame": 1593
+            },
+            {
+              "region": "pal",
+              "chip_cases_done": 3000,
+              "chip_case_errors": 0,
+              "chip_done": 1,
+              "chip_first_failure": 0,
+              "frame": 1333
+            }
+          ],
+          "rom_sha256": "8d29d7df9a955a62462465014d1defc46ea090266b071115ef140cecd645bfab",
+          "scope": "All requested native parse/render/read state transitions, input sparse VRAM,flags and observable cached state compared on compiled68000. Direct original expected read flags checked where captured."
+        }
+      },
+      {
+        "path": "validation/v319-chip-events02/kernel12-report.json",
+        "report": {
+          "passed": true,
+          "start": 33000,
+          "count": 179,
+          "results": [
+            {
+              "region": "ntsc",
+              "chip_cases_done": 179,
+              "chip_case_errors": 0,
+              "chip_done": 1,
+              "chip_first_failure": 0,
+              "frame": 120
+            },
+            {
+              "region": "pal",
+              "chip_cases_done": 179,
+              "chip_case_errors": 0,
+              "chip_done": 1,
+              "chip_first_failure": 0,
+              "frame": 101
+            }
+          ],
+          "rom_sha256": "52c2a4e741e97fe2c95ac7f840ed22716ea6f3cebb646aa46954b2487e161fd4",
+          "scope": "All requested native parse/render/read state transitions, input sparse VRAM,flags and observable cached state compared on compiled68000. Direct original expected read flags checked where captured."
+        }
+      }
+    ]
+  },
+  "distinct_native_transition_vectors": 33179,
+  "compiled_executions": 66358,
+  "transition_kinds": {
+    "parse": 26749,
+    "render": 4000,
+    "status_read": 2430
+  },
+  "source_status_reads": 33707,
+  "source_irq_status_samples": 27986,
+  "implementation": "New source_intro_sprite_status.c/.h computes native SMS2 Mode4/192 unzoomed8-pixel sprite flags. Two parsed sprite caches, pending overflow latch, ordered opaque-pixel collision detection, read-to-clear flags and horizontal collision timing. No expected status byte or frame lookup is used by the product algorithm.",
+  "verification": "Read-only reference callbacks supply live VRAM/register and parse/render/read timing inputs. Native model independently caches/parses/draws/reads; bridge compares expected outputs only afterward. All reference status reads and IRQ-saved flags agree over14000 no-input frames per region; exposed PSG states also match prior immutable source captures.",
+  "static_snapshot_probe": {
+    "passed": false,
+    "static_frame_candidate": true,
+    "results": [
+      {
+        "region": "ntsc",
+        "irq_samples": 13993,
+        "matched": 13991,
+        "mismatch": 2,
+        "new_unique_cases": 977,
+        "observer_psg_exact_frames": 14000
+      },
+      {
+        "region": "pal",
+        "irq_samples": 13993,
+        "matched": 13993,
+        "new_unique_cases": 358,
+        "observer_psg_exact_frames": 14000
+      }
+    ],
+    "unique_cases": 1335,
+    "unique_mismatches": 2,
+    "unique_unsupported": 0,
+    "mismatches": [
+      {
+        "index": 1,
+        "region_first_seen": "ntsc",
+        "frame_first_seen": 9,
+        "status": 159,
+        "expected": 0,
+        "predicted": 64,
+        "supported": true,
+        "hardware": 33,
+        "height": 192,
+        "regs": [
+          6,
+          160,
+          255,
+          255,
+          255,
+          255,
+          255,
+          0,
+          0,
+          0,
+          255,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record_sha256": "c3edddca2a05ade460194ea80e761201042c5ea4ff564d67459fbfe15cd6f289",
+        "occurrences": 1
+      },
+      {
+        "index": 3,
+        "region_first_seen": "ntsc",
+        "frame_first_seen": 11,
+        "status": 223,
+        "expected": 64,
+        "predicted": 0,
+        "supported": true,
+        "hardware": 33,
+        "height": 192,
+        "regs": [
+          6,
+          160,
+          255,
+          255,
+          255,
+          255,
+          255,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "record_sha256": "4965e5e9289dfe0e7f98cfb1c980d86a62a4e533b8db436f64ddbd228fdbea89",
+        "occurrences": 1
+      }
+    ],
+    "unsupported": [],
+    "core_sha256": "d06426ce38bad6f271bc41833fbe4af20db31e7884b454a2749ca4206e58203e",
+    "source_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+    "native_source_sha256": "0a0c6b81a126a81ec591f7a61f765d896c3c6d3dd094cfe57dd209642e60b6c2",
+    "limits": [
+      "Static current VRAM/register evaluator, no mid-frame write history,flag latching or status-read timing. Not a live production binding.",
+      "Original no-input14000 frames per region; PSG noninterference matched prior immutable captures."
+    ],
+    "oracle_ram_writes": 0,
+    "sram_imports": 0
+  },
+  "recovery": "Static-frame prediction first missed disabled-display overflow, then still failed two NTSC startup samples because current VRAM cannot reconstruct prior reads/writes/latches. Preserved rejected probes; temporal cache/latch model resolves them without frame-specific values.",
+  "boundary_coverage": {
+    "read_vectors_with_collision": 16,
+    "limit": "Natural corpus has no same-collision-line early-HCounter read; that deferral branch is implemented from the reference logic but not source-oracle exercised here."
+  },
+  "erratum": {
+    "affected": "Earlier intro actor notes and reports labeled the9F/BF change as sprite overflow.",
+    "correct": "In the reference Mode4 status byte, bit20 is sprite collision and bit40 is sprite overflow.9F/BF differ by collision20. Original numeric captures/comparisons are unchanged.",
+    "evidence": "Local reference vdp_render.c parse_satb_m4/render_obj_m4 and vdp_ctrl.c vdp_z80_ctrl_r, plus33707 direct native temporal read comparisons.",
+    "production_rom_changed": false
+  },
+  "limits": [
+    "Reference-driven event timeline is not yet a live producer connected to the MD native VRAM/SourceClock. No claim that source IRQ fixture queues have already been removed from the scene-loader diagnostic.",
+    "Compiled vectors canonicalize only unused cached slots and unlatched collision coordinates; live model state is unchanged. Direct original read flags are checked for2430 unique read vectors.",
+    "Mode4/192/SMS2,8-pixel unzoomed sprites and no-input intro/title loops only. No general VDP,hardware or PCM certification."
+  ],
+  "next_action": "Connect native logical VRAM/register writes and SourceClock raster/status reads to this temporal model; reuse source_game_irq status_read and timed SAT first_y/first_xy interfaces where applicable. Preserve boot latch history and handle foreground status reads, not just IRQ reads. Then validate native intro physical video/PSG delivery.",
+  "oracle_ram_writes": 0,
+  "sram_imports": 0,
+  "archive_manifest": "analysis/v319-chip-temporal/manifest.json"
+}
