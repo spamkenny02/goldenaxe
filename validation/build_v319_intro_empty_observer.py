@@ -10,7 +10,8 @@ sys.path.insert(0, str(root / 'tools'))
 from archive_lossless_evidence import sha
 p = argparse.ArgumentParser(); p.add_argument('--profile', choices=['callback','window'], required=True)
 p.add_argument('--fire', action='store_true');p.add_argument('--revision',type=int,default=1)
-p.add_argument('--actors',choices=['second','third']);p.add_argument('--irq-status',action='store_true');p.add_argument('--init',action='store_true');p.add_argument('--reveal',action='store_true');p.add_argument('--sequence',action='store_true');p.add_argument('--skip',action='store_true');p.add_argument('--transfer',action='store_true');p.add_argument('--prepare',action='store_true');p.add_argument('--map',choices=['decode','place']);p.add_argument('--clear',action='store_true');a=p.parse_args()
+p.add_argument('--actors',choices=['second','third']);p.add_argument('--irq-status',action='store_true');p.add_argument('--init',action='store_true');p.add_argument('--reveal',action='store_true');p.add_argument('--sequence',action='store_true');p.add_argument('--skip',action='store_true');p.add_argument('--transfer',action='store_true');p.add_argument('--prepare',action='store_true');p.add_argument('--map',choices=['decode','place']);p.add_argument('--clear',action='store_true');p.add_argument('--scene',action='store_true');a=p.parse_args()
+if a.scene:a.map='decode'
 if a.clear:a.transfer=True
 if a.map:a.transfer=True
 if a.prepare:a.transfer=True
@@ -37,6 +38,7 @@ if a.clear:kind='plane_clear'
 if a.map:
  assert not a.prepare
  kind='map_'+a.map
+if a.scene:kind='scene_load'
 out=root/'validation'/('v319-intro-'+kind+'-'+a.profile+f'-observer{a.revision:02}');assert not out.exists();out.mkdir()
 core=root.parents[1]/'work/genesis-plus-gx';path=core/'core/z80/z80.c'
 suffix='' if a.revision==1 else f'_r{a.revision:02}'
@@ -153,6 +155,22 @@ if a.clear:
  observer=observer.replace(b'==0x85 && work_ram[(SP+1)&0x1fff]==3',b'==0x30 && work_ram[(SP+1)&0x1fff]==0x0e')
  observer=observer.replace(b'(pc==0xe36?240:165)',b'165')
  observer=observer.replace(b'0xbe00|work_ram[HL&0x1fff]',b'0xbe00|A')
+if a.scene:
+ observer=observer.replace(b'extra[4696]',b'extra[14680]')
+ observer=observer.replace(b'pc==0xbd3 && DE==0xc900 && SP>=0xc000',b'pc==0xe50 && SP>=0xc000')
+ observer=observer.replace(b'pc==gaw_poll_return_pc',b'pc==0xe75')
+ observer=observer.replace(b'memcpy(e->extra+2904,work_ram+0x900,1792);',
+     b'memcpy(e->extra+2904,work_ram+0x900,1792);memcpy(e->extra+4696,vram,9216);memcpy(e->extra+13912,vram+0x3800,768);')
+ observer=observer.replace(b'770',b'8452')
+ begin=observer.index(b' if(gaw_poll_active && (pc==0x38e')
+ end=observer.index(b'\n}',begin)
+ observer=observer[:begin]+b''' if(gaw_poll_active && (pc==0x38e || pc==0xe36 || ((pc==0x2a || pc==0x2d) &&
+    ((work_ram[SP&0x1fff]==0x85 && work_ram[(SP+1)&0x1fff]==3) ||
+     (work_ram[SP&0x1fff]==0x30 && work_ram[(SP+1)&0x1fff]==0x0e))))) {
+  if(e->polls>=8452) gaw_poll_overflow++;
+  else {e->events[e->polls][0]=(unsigned)(gaw_elapsed-e->first.master)+(pc==0x38e?240:165);
+   e->events[e->polls++][1]=pc==0x38e?0xbe00|work_ram[HL&0x1fff]:pc==0xe36?0xbe00|A:0xbf00|A;}
+ }'''+observer[end:]
 original=path.read_bytes();needle=b'static void gaw_timing_observe(unsigned pc)\r\n{'
 if needle not in original:needle=needle.replace(b'\r\n',b'\n')
 assert original.count(needle)==1
@@ -166,7 +184,7 @@ finally:path.write_bytes(original)
 assert path.read_bytes()==original
 (out/'report.json').write_text(json.dumps(dict(passed=True,profile=a.profile,core=str(target),core_sha256=sha(target.read_bytes()),
  original_source_sha256=sha(original),observer_source_sha256=sha(changed),original_source_restored=True,
- emulated_state_modifications=0,emulated_cycle_modifications=0,irq_status=a.irq_status,init=a.init,reveal=a.reveal,sequence=a.sequence,skip=a.skip,transfer=a.transfer,prepare=a.prepare,map=a.map,clear=a.clear,
- entry_pc=(0xe2b if a.clear else (0xbd3 if a.map=='decode' else 0x7357) if a.map else 0xea5 if a.prepare else 0xefa if a.transfer else 0xe79 if a.sequence else 0xe8b if a.reveal else (0xf51 if a.actors=='second' else 0xf54) if a.init else 0xf09 if a.profile=='callback' else 0xf1e),
+ emulated_state_modifications=0,emulated_cycle_modifications=0,irq_status=a.irq_status,init=a.init,reveal=a.reveal,sequence=a.sequence,skip=a.skip,transfer=a.transfer,prepare=a.prepare,map=a.map,clear=a.clear,scene=a.scene,
+ entry_pc=(0xe50 if a.scene else 0xe2b if a.clear else (0xbd3 if a.map=='decode' else 0x7357) if a.map else 0xea5 if a.prepare else 0xefa if a.transfer else 0xe79 if a.sequence else 0xe8b if a.reveal else (0xf51 if a.actors=='second' else 0xf54) if a.init else 0xf09 if a.profile=='callback' else 0xf1e),
  callback_target=None if a.reveal else (0x1055 if a.actors=='second' else 0x104a) if a.actors else 0xf37 if a.fire else 0xf36,
  scope='Natural calls only; source first/actual caller-return entry snapshots. Runtime parity pending.'),indent=2)+'\n')

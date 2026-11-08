@@ -144,9 +144,15 @@ avec les banques ROM 6/7, les tampons mémoire et les temps correspondants.
 L’[effacement du quatrième plan graphique E2B](analysis/v319_intro_clear_report.json)
 est aussi traduit et vérifié : 96768 écritures source, puis 28 exécutions
 compilées en PAL/NTSC. Son regroupement des boucles sans interruption
-préserve chaque écriture et son timing. La composition du chargement complet
-de la scène et la publication vidéo/son restent à relier au jeu ; ces preuves
-portent sur les routines sémantiques.
+préserve chaque écriture et son timing. Le [chargement complet E50..E72](analysis/v319_intro_scene_report.json)
+est maintenant composé et vérifié : graphismes et carte en mémoire vidéo,
+états suivis et horloge source correspondent sur les dix chargements capturés,
+puis vingt exécutions 68000. Le décodeur optimisé conserve aussi les cas de
+la banque ROM 7. Le profilage sans comparaison de chaque écriture réduit
+le coût natif d’environ 20 %, mais celui-ci dépasse encore le temps disponible
+sur la SMS. L’effacement et les transferts sont les prochains postes à optimiser.
+L’intégration à l’intro publiée, le statut VDP vivant et la livraison vidéo/son
+sur Mega Drive restent à finaliser.
 Aucune de ces nouvelles routines ne pilote encore l’intro publiée.
 La recompilation complète conserve exactement la V319.
 

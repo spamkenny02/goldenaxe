@@ -9,7 +9,7 @@ static u8 valid(SourceClock *clock,SourceIrqContext *context,SourceIntroMapDecod
 u8 source_intro_map_decode(SourceClock *clock,SourceIrqContext *context,const u8 *map_bank,u16 address,
                            u16 destination,SourceIntroMapDecode *output)
 {
-    u16 cursor=address,scratch=0xd100,n,count,plane,write,read;u8 command,value,literal,carry;
+    u16 cursor=address,scratch=0xd100,n,count,plane,write,read;u8 command,value=0,literal,carry;
     if(!valid(clock,context,output) || !map_bank || destination<0xc900 || destination>=0xd000) return 0;
     output->scratch_bytes=output->decoded_bytes=0;output->source_end=output->destination_end=0;
     S(11,1);S(10,1);
@@ -22,6 +22,17 @@ u8 source_intro_map_decode(SourceClock *clock,SourceIrqContext *context,const u8
         else {S(4,1);S(7,1);ROM(cursor,value);}
         for(n=0;n<count;n++)
         {
+            u16 limit=count-n-1,batch;
+            if(limit && (u32)scratch+limit<=0xd600 && (!literal || (cursor>=0x8000 && (u32)cursor+limit<=0xc000)))
+            {
+                batch=source_clock_repeat(clock,literal?39:30,literal?5:4,limit);
+                if(batch)
+                {
+                    if(literal) {__builtin_memcpy(context->full_ram+scratch-0xc000,map_bank+cursor-0x8000,batch);cursor+=batch;}
+                    else for(u16 k=0;k<batch;k++) context->full_ram[scratch-0xc000+k]=value++;
+                    scratch+=batch;n+=batch-1;continue;
+                }
+            }
             if(literal) {S(7,1);ROM(cursor,value);}
             if(scratch>=0xd600) return 0;
             S(7,1);PUT(scratch,value);S(6,1);scratch++;
@@ -47,6 +58,22 @@ u8 source_intro_map_decode(SourceClock *clock,SourceIrqContext *context,const u8
             else {S(4,1);S(6,1);read++;if(read>=scratch) return 0;}
             for(n=0;n<count;n++)
             {
+                u16 limit=count-n-1,window=(255-(write&255))/2,batch;
+                if(window>limit) window=limit;
+                if(write>=0xc900 && write<0xd000 && window &&
+                   (u32)write+(u32)(window-1)*2<0xd000 && (!literal || (u32)read+window<scratch))
+                {
+                    /* Nonterminal DJNZ and noncarry address updates only.
+                     * All scratch data is stable until the next IRQ boundary. */
+                    batch=source_clock_repeat(clock,literal?57:51,literal?8:7,window);
+                    if(batch)
+                    {
+                        if(!literal) value=GET(read);
+                        for(u16 k=0;k<batch;k++)
+                        {if(literal) {read++;value=GET(read);}PUT(write,value);write+=2;}
+                        output->decoded_bytes+=batch;n+=batch-1;continue;
+                    }
+                }
                 if(literal) {S(6,1);read++;if(read>=scratch) return 0;S(7,1);value=GET(read);}
                 if(!literal) {S(7,1);value=GET(read);}
                 if(write<0xc900 || write>=0xd000) return 0;

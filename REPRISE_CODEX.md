@@ -6,6 +6,60 @@ le README et les rapports cités.
 
 ## Suivi courant — V319, 8 novembre 2026
 
+DERNIÈRE ÉTAPE : `source_intro_scene.c/.h`, rapport
+`analysis/v319_intro_scene_report.json`, archive `analysis/v319-intro-scene`.
+Composition E50..E72 en un SourceClock :setDCEC,EA5,032A,E2B,BD3/BFE,
+7357,EFA, sortie E75 préfetch (avant LD D7F). API reçoit HLheader/DEtarget,
+miroir16KiB SMS,dispatch callback vivant et sinkoptionnel. SceneMirror
+met à jour commandes/adresse VDP pour OUTclear/map ;032A écrit directement
+lespatterns. Pas de publication MD ni de replay de frames source.
+
+10entrées naturelles(5/région),14000frames source/région,20exécutions68000.
+Tous15081bytes suivis incluant9216patterns+768nametable,400reader,clock/R/
+latches et84520 OUTmonitored identiques.169040comparaisonsOUT compilées.
+OUTcollector couvreclear+map, PAS OUT032A individuels ; finalpatterns exacts.
+Headers9D70/F37 etA655/1055. IRQsource27/25NTSC,23/22PAL. Durées source
+24.27..26.95framesNTSC,21.48..22.96PAL. RegistresfinHL D900,DE7800,BC00BE.
+
+PROBLÈME À RÉSOUDRE AVANT INTÉGRATION : coûtCPU natif tropgrand. Profil sans
+oracleOUT et horscopiesfixtures/comparaisons, vtimer mesuré DANS helper :
+avant124..125framescibleNTSC,103..105PAL ;aprèsoptim97..99NTSC,81..83PAL.
+Environ20% gagné, encore~4fois la durée source. Ces temps excluent les IO
+physiquesMD et sont donc optimistes. Résolution1frame, instrumentationlégère.
+Étapes aprèsoptNTSC :prepare23..26,patterns6..9,clear31..32,decode10..11,
+place4..5,finaltransfer19..21. Priorité suivante clear/transfers puisLDIRprepare,
+pas une intégration lente ni un calibrage artificiel des compteurs source.
+
+Optimisation source_intro_map.c :1er étage literal39T/5M1,increment30T/4M1
+nonterminal ;2e literal57T/8M1,repeat51T/7M1 noncarry/nonterminal. Coupe
+avantcarry de l’octet bas et avantVINT via source_clock_repeat. Commit RAM
+avantfrontièreIRQ suivante. Sourcepathinstruction resteauxlimites.
+Rétgression14vecteurs mapdecode bank6/bank7,28exécutions68000 passent aussi.
+Premierhostbuild a rejeté warning value possiblementnoninit, initexplicite0
+sans suppressionwarnings puis tous les vecteurs passent.
+
+Works finauxscene03,mapdecode05,scene-throughput02 ;baseline scene01 et
+scene-throughput01 conservés avecsource préoptim de rebuild01. Nouveau
+build_v319_intro_scene_profile.py --source-work --out-name produit un profil
+reproductible, épingle SHA sources, désactive seulement l’oracleOUT, conserve
+miroir/calculs etcomparetoutétatfinal. Compilateur ajoute wrappers deprofil
+uniquement au diagnostic (macros aprèsheaders), aucunemodifsourceproduction.
+Six étapes prepare,patterns,clear,decode,place,finaltransfer. Profils mesurent
+vtimer autourappels, pas le nombre de frames du banc entier.
+
+Builder/validator --profile callback --scene implique layoutmapdecode,
+appelle source_intro_scene_load. Snapshot15488,extra14680 ; RAM5032..14247
+patterns,14248..15015nametable,15016IRQcount puis64statuses. Recordstride98864,
+events àsnapshot*2+268,8452monitoredOUT/call. Cap512records. CibleRAMfixture15K,
+full_ram8K,miroir16K,leskernels passent. StatutVDP resteinputdiagnostic.
+
+Handles20817/26708/14754/79239/18585 terminaux0. Rebuild02 sourceexacte,
+byte-identiqueV319 d3ea2a83/DA29. Archive relue :75544902bytes générés
+supprimés,50824811netslibérés. ROMpublique inchangée ; helpersnon sélectionnés.
+AprèsoptimCPU : liermémoirecompacte/statutVDPdespritesvivants, livraison
+vidéo/PSG réelle et vérifierdeadlines. EntréesE3F/E4A,révélationE75 etskip
+ne sont pas dans ce profil de chargement. Paragraphes suivants historiques.
+
 DERNIÈRE ÉTAPE : source_intro_plane_clear dans source_intro_video.c/.h,
 rapport `analysis/v319_intro_clear_report.json`, archive `analysis/v319-intro-clear`.
 E2B..E3E : PUSH HL/LDDE4003,2304boucles RST28 DI/EI,4INCDE,OUTBE FF,

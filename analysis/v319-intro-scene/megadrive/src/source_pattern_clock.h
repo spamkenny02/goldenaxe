@@ -1,0 +1,40 @@
+#ifndef GAW_SOURCE_PATTERN_CLOCK_H
+#define GAW_SOURCE_PATTERN_CLOCK_H
+#include "source_irq_context.h"
+
+/* Prefix sums at complete ROM-command boundaries, generated from032A.
+ * A plan must describe the exact immutable ROM stream passed to the loader. */
+typedef struct {u32 ticks,fetches;u16 source,decoded;} SourcePatternBoundary;
+typedef struct {
+    const SourcePatternBoundary *boundary;
+    const u8 *decoded;
+    u16 count;
+} SourcePatternPlane;
+typedef struct {SourcePatternPlane planes[4];} SourcePatternPlan;
+
+/* Audited changed class0 loading path 16D0..1706. Graphics output goes to a
+ * caller-owned SMS pattern mirror. Entry phase/R and RAM/audio must be real
+ * logical state; no resource-average delay or captured phase lookup is used.
+ * Scope: ordinary class0 bank change, display disabled, full IRQ gate clear.
+ * This component does not perform physical Mega Drive VRAM uploads. */
+u8 source_graphics_prefix_class0(SourceClock *clock,SourceIrqContext *context,
+                                 const u8 *patterns,u8 *destination,const u8 **end);
+u8 source_graphics_prefix_class0_planned(SourceClock *clock,SourceIrqContext *context,
+                                 const u8 *patterns,u8 *destination,const u8 **end,
+                                 const SourcePatternPlan *plan);
+/* Original175F classification for a changed bank, display already off.
+ * room selects class0/1/2; patterns must start at that bank's8010. The
+ * optional verified plan must describe exactly those pattern bytes.
+ * With context->full_ram, also commits C065/C066 and the16-byte DCA0 header;
+ * patterns must have its original16 preceding ROM bytes. An unchanged
+ * C066 bank is outside this changed-bank path and is rejected. */
+u8 source_graphics_prefix_changed(SourceClock *clock,SourceIrqContext *context,u16 room,
+                                 const u8 *patterns,u8 *destination,const u8 **end,
+                                 const SourcePatternPlan *plan);
+/* Original032A including RET, at an explicit logical VDP command address.
+ * Destination is the matching caller-owned mirror location. Source is an
+ * immutable valid ROM stream; caller guarantees decoded capacity. Updates
+ * source/end address and live C031/C032 with the original plane-end writes. */
+u8 source_pattern_decode(SourceClock *clock,SourceIrqContext *context,
+ const u8 **source,u8 *destination,u16 address,u16 *end_address);
+#endif

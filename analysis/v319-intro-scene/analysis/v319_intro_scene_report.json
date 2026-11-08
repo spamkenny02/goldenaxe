@@ -1,0 +1,793 @@
+{
+  "passed": true,
+  "diagnostic_only": true,
+  "production_rom_changed": false,
+  "public_version": 319,
+  "production_rom_sha256": "d3ea2a83ea24ed8a0d3c9857f9fbe70d000a4f73358452c1887f40e78966c56e",
+  "production_rebuild_byte_identical": true,
+  "source_profile": {
+    "passed": true,
+    "diagnostic_only": true,
+    "profile": "callback",
+    "fire": false,
+    "actors": "second",
+    "irq_status": true,
+    "init": false,
+    "reveal": true,
+    "sequence": true,
+    "skip": false,
+    "transfer": true,
+    "prepare": false,
+    "map": "decode",
+    "clear": false,
+    "scene": true,
+    "production_rom_changed": false,
+    "cases": [
+      {
+        "region": "ntsc",
+        "source_cases": 5,
+        "cases_crossing_irq": 5,
+        "observer_exposed_psg_exact_frames": 14000,
+        "source_records_sha256": "af59f1cef16dd0a2a1249b98426a11874a4c12970e2b394e0c8ea1f94f60561f",
+        "source_io_events": 42260,
+        "maximum_io_events": 8452
+      },
+      {
+        "region": "pal",
+        "source_cases": 5,
+        "cases_crossing_irq": 5,
+        "observer_exposed_psg_exact_frames": 14000,
+        "source_records_sha256": "cbf5314e50760076c7c9ce4fa4a2b2e2e4b6a7bb3ff92961a9fb62474dbe2fc6",
+        "source_io_events": 42260,
+        "maximum_io_events": 8452
+      }
+    ],
+    "core_sha256": "c5d9bdaf26b01a604bb61d48ff7d0caeb6abbe3fc910b0bd474fc208582c54c2",
+    "source_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+    "native_sources": {
+      "source_intro_scene": "4c3a0f77870f832b81e1c53a10c3674a05b251462c075d0a5a5c40d8ed6bde53",
+      "source_pattern_clock": "be36a399ae39e093a7489d71c205fe09a7f67755307b8385e6f872d46656146e",
+      "source_intro_map": "ce977f0772e423ad4939d97732baac81307413c9ce22974f9c890c59f15c45f3",
+      "source_intro_video": "4ee5293e3e56a09d6c07da10bc20b4d133f14a80bffd151ab14b31a4a41883df",
+      "source_intro_actors": "b7973fb051ea123bef48f539bce75069dd92fef9925587b1f977469e57eac4da",
+      "source_intro_fire": "5649ee6def4debe3bc333e1c5c740279ef35d1206e2c46a554bb96514140e903",
+      "source_intro_reveal": "b4d3f814c8d396b191bf468b72e3fb717ffcb24ee550cb4f4a530a03b3fc67c8",
+      "source_intro_wait": "7d721554756cab01471f0ef5356ee37d101cea2d27918ff40f5a5166a12172e9",
+      "source_wait_restore": "a6ce6eac36ff120f8222dbe24c0456c7729c1062902f997ba7fb296d6dcecd28",
+      "source_wait": "4ed09b544bf7366d82afe04c0d86b07040a453e5e00209cd57fed05db4bfc7f6",
+      "source_irq_context": "013a3ef89374be5f178cf3968aeafca498cdd380b2d943d341c208fa8f9497d9",
+      "source_irq": "bc5921ff1b8a9ed22c6c06c889cc430a469e926c360914e146481a89b1a2c534",
+      "source_clock": "800058a5cbafa50bcf27fc4a91b9622fd34312eb75fa46f8523cffc80799cc9a",
+      "source_rng": "5c64cd42ca0c18d69f8cfb1a185f282268b5dfd45a4b77f355323c6df802919f",
+      "source_audio_fast": "811c9e96d4f587353df50654e01d767f7f1530528efa271d1ee9d15169376cc3",
+      "source_audio_reader": "7ea0d9bdd75168ea85f1e8cf7c9ef4fbb720d746a8e4c9158953a48a5551c624",
+      "source_audio_prefix": "c0c02bafe3dd7e4baf887f67b264786c70c74932c12c897213c941f32fea2d39",
+      "source_audio_dispatch": "f8ce91959f8fb0db6062900e69a1842da8cc108d33bdfcbb7509b681185b0d90",
+      "source_audio_priority": "d5bc487b634abc56b77df5aeec338a447be312c0e76679a1eec3b14585291147",
+      "source_audio_tone": "8098ba4e45c21629a9920e6ca9ac5385ecb986e31d0db143cbbff42c0c92b272",
+      "source_audio_noise": "45b37e1689255404b86855e3970e82bfefd313421522aae46e3fae455fa9690b",
+      "source_audio_sequence": "e7171cc12b4f031dc361943aca679b7a8fa5c1fc2bb7d7798864d16675aa7663",
+      "source_audio_memory": "ec755012b117bdb5bfe2c114037f44abe4891714f6532f4800206915e8dde1f0",
+      "source_audio_envelope": "d0878cd24b5d7bb8f255a5a9e97a231815ac41828cae53342b03c6cbe81ae17c",
+      "source_audio_pitch": "ea46d31e3c73a352995c3dcbcbbe141214a9c536fd827e1a16d49d8e5e058795"
+    },
+    "verified": [
+      "Original natural entry/return wall time, raster, polls, R, IFF/EI/pending,336 IRQ RAM and400 reader bytes. Actor768-byte records and palette/counter/mapper/callback snapshots also compared.",
+      "Both regions,14000 no-input cold source frames per region; observer PSG state unchanged."
+    ],
+    "limits": [
+      "Host native semantic helper; compiled68000 timing and physical MD publication not checked here.",
+      "E50..E72 scene load, exit E75. Snapshot includes9216 pattern bytes and768 map VRAM bytes. OUT collector covers clear/map operations only; individual032A OUT timestamps are not exposed.",
+      "No production clock integration, full-game or PCM certification."
+    ],
+    "metadata_clarification": "Composed E50 scene loader. Inherited map-only profile prose corrected, raw data and numeric results unchanged."
+  },
+  "compiled68000_checks": {
+    "passed": true,
+    "diagnostic_only": true,
+    "source_vector_cases": 10,
+    "source_regions": [
+      "ntsc",
+      "pal"
+    ],
+    "case_start": 0,
+    "ram_bytes": 15081,
+    "fire": false,
+    "actors": "second",
+    "reveal": true,
+    "sequence": true,
+    "transfer": true,
+    "map": "decode",
+    "scene": true,
+    "measure_native_frames": false,
+    "profile_stages": false,
+    "irq_status": true,
+    "results": [
+      {
+        "region": "ntsc",
+        "intro_poll_done": 1,
+        "intro_poll_cases": 10,
+        "intro_poll_errors": 0,
+        "intro_poll_reads": 84520,
+        "intro_poll_first_failure": 0,
+        "frame": 2290
+      },
+      {
+        "region": "pal",
+        "intro_poll_done": 1,
+        "intro_poll_cases": 10,
+        "intro_poll_errors": 0,
+        "intro_poll_reads": 84520,
+        "intro_poll_first_failure": 0,
+        "frame": 1916
+      }
+    ],
+    "kernel_sha256": "b0531ba7ff3afd4e27984ee08b49e291f401836088c459d38d4edbaab1af28ca",
+    "scope": "Compiled68000 source semantic helper checked against the selected natural original source vectors on each target region. No physical publication scheduler or PCM claim."
+  },
+  "source_entry_vectors": 10,
+  "compiled_executions": 20,
+  "monitored_source_out_events": 84520,
+  "monitored_compiled_out_events": 169040,
+  "regression": {
+    "source_profile": {
+      "passed": true,
+      "diagnostic_only": true,
+      "profile": "callback",
+      "fire": false,
+      "actors": "second",
+      "irq_status": true,
+      "init": false,
+      "reveal": true,
+      "sequence": true,
+      "skip": false,
+      "transfer": true,
+      "prepare": false,
+      "map": "decode",
+      "clear": false,
+      "scene": false,
+      "production_rom_changed": false,
+      "cases": [
+        {
+          "region": "ntsc",
+          "source_cases": 7,
+          "cases_crossing_irq": 7,
+          "observer_exposed_psg_exact_frames": 14000,
+          "source_records_sha256": "bfac0f2a96b35dc62ef65fbc713830ee019f5e80cbe65608a47cc5ad15efad48",
+          "source_io_events": 0,
+          "maximum_io_events": 0
+        },
+        {
+          "region": "pal",
+          "source_cases": 7,
+          "cases_crossing_irq": 2,
+          "observer_exposed_psg_exact_frames": 14000,
+          "source_records_sha256": "7836b351d9b17704725210732b028a049a7f67b8efccd2dab677455ea7251a1c",
+          "source_io_events": 0,
+          "maximum_io_events": 0
+        }
+      ],
+      "core_sha256": "a1b2b99f70027bce7248f1d1c382a0f632d2ebcf019b425008686163cff4b87c",
+      "source_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+      "native_sources": {
+        "source_intro_map": "ce977f0772e423ad4939d97732baac81307413c9ce22974f9c890c59f15c45f3",
+        "source_intro_video": "4ee5293e3e56a09d6c07da10bc20b4d133f14a80bffd151ab14b31a4a41883df",
+        "source_intro_actors": "b7973fb051ea123bef48f539bce75069dd92fef9925587b1f977469e57eac4da",
+        "source_intro_fire": "5649ee6def4debe3bc333e1c5c740279ef35d1206e2c46a554bb96514140e903",
+        "source_intro_reveal": "b4d3f814c8d396b191bf468b72e3fb717ffcb24ee550cb4f4a530a03b3fc67c8",
+        "source_intro_wait": "7d721554756cab01471f0ef5356ee37d101cea2d27918ff40f5a5166a12172e9",
+        "source_wait_restore": "a6ce6eac36ff120f8222dbe24c0456c7729c1062902f997ba7fb296d6dcecd28",
+        "source_wait": "4ed09b544bf7366d82afe04c0d86b07040a453e5e00209cd57fed05db4bfc7f6",
+        "source_irq_context": "013a3ef89374be5f178cf3968aeafca498cdd380b2d943d341c208fa8f9497d9",
+        "source_irq": "bc5921ff1b8a9ed22c6c06c889cc430a469e926c360914e146481a89b1a2c534",
+        "source_clock": "800058a5cbafa50bcf27fc4a91b9622fd34312eb75fa46f8523cffc80799cc9a",
+        "source_rng": "5c64cd42ca0c18d69f8cfb1a185f282268b5dfd45a4b77f355323c6df802919f",
+        "source_audio_fast": "811c9e96d4f587353df50654e01d767f7f1530528efa271d1ee9d15169376cc3",
+        "source_audio_reader": "7ea0d9bdd75168ea85f1e8cf7c9ef4fbb720d746a8e4c9158953a48a5551c624",
+        "source_audio_prefix": "c0c02bafe3dd7e4baf887f67b264786c70c74932c12c897213c941f32fea2d39",
+        "source_audio_dispatch": "f8ce91959f8fb0db6062900e69a1842da8cc108d33bdfcbb7509b681185b0d90",
+        "source_audio_priority": "d5bc487b634abc56b77df5aeec338a447be312c0e76679a1eec3b14585291147",
+        "source_audio_tone": "8098ba4e45c21629a9920e6ca9ac5385ecb986e31d0db143cbbff42c0c92b272",
+        "source_audio_noise": "45b37e1689255404b86855e3970e82bfefd313421522aae46e3fae455fa9690b",
+        "source_audio_sequence": "e7171cc12b4f031dc361943aca679b7a8fa5c1fc2bb7d7798864d16675aa7663",
+        "source_audio_memory": "ec755012b117bdb5bfe2c114037f44abe4891714f6532f4800206915e8dde1f0",
+        "source_audio_envelope": "d0878cd24b5d7bb8f255a5a9e97a231815ac41828cae53342b03c6cbe81ae17c",
+        "source_audio_pitch": "ea46d31e3c73a352995c3dcbcbbe141214a9c536fd827e1a16d49d8e5e058795"
+      },
+      "verified": [
+        "Original natural entry/return wall time, raster, polls, R, IFF/EI/pending,336 IRQ RAM and400 reader bytes. Actor768-byte records and palette/counter/mapper/callback snapshots also compared.",
+        "Both regions,14000 no-input cold source frames per region; observer PSG state unchanged."
+      ],
+      "limits": [
+        "Host native semantic helper; compiled68000 timing and physical MD publication not checked here.",
+        "Intro map BD3/BFE decode or7357 placement entry/return; natural no-input only, original buffer contract filtered at entry. VDP status external diagnostic input.",
+        "No production clock integration, full-game or PCM certification."
+      ]
+    },
+    "compiled68000_checks": {
+      "passed": true,
+      "diagnostic_only": true,
+      "source_vector_cases": 14,
+      "source_regions": [
+        "ntsc",
+        "pal"
+      ],
+      "case_start": 0,
+      "ram_bytes": 5097,
+      "fire": false,
+      "actors": "second",
+      "reveal": true,
+      "sequence": true,
+      "transfer": true,
+      "map": "decode",
+      "scene": false,
+      "measure_native_frames": false,
+      "profile_stages": false,
+      "irq_status": true,
+      "results": [
+        {
+          "region": "ntsc",
+          "intro_poll_done": 1,
+          "intro_poll_cases": 14,
+          "intro_poll_errors": 0,
+          "intro_poll_reads": 0,
+          "intro_poll_first_failure": 0,
+          "frame": 270
+        },
+        {
+          "region": "pal",
+          "intro_poll_done": 1,
+          "intro_poll_cases": 14,
+          "intro_poll_errors": 0,
+          "intro_poll_reads": 0,
+          "intro_poll_first_failure": 0,
+          "frame": 226
+        }
+      ],
+      "kernel_sha256": "699d61b932a908ee2aa9712d3411e482b030c98fe571f6d1d0656fa2f9dc2182",
+      "scope": "Compiled68000 source semantic helper checked against the selected natural original source vectors on each target region. No physical publication scheduler or PCM claim."
+    },
+    "source_vectors": 14,
+    "compiled_executions": 28,
+    "scope": "Recheck optimized decoder including ROM bank7 and IRQ/no-IRQ cases."
+  },
+  "implementation": "New source_intro_scene.c/.h composes E50..E72 on one SourceClock: set DCEC, EA5 prepare,032A pattern decode, E2B plane clear,BD3/BFE map decode,7357 placement,EFA map transfer. Semantic16KiB VRAM mirror; optional clear/map OUT sink. Exit prefetched E75, no scene-stage frame lookup.",
+  "verification": "All15081 tracked bytes including scratch,map,actor/palette state,9216 pattern and768 name-table VRAM bytes, plus400 reader bytes match original, along with wall/IRQ/R/latches and monitored OUT values/completion times/raster. Ten complete natural fire/actor scene loads over14000 no-input frames per region. Full IRQ status remains external diagnostic input.",
+  "optimization": "BD3 first-layer literal/increment loops batch nonterminal39T/5M1 or30T/4M1 runs only before VINT. BFE second-layer literal/repeated loops batch57T/8M1 or51T/7M1 nonterminal/noncarry runs, split at low-byte carry and IRQ boundaries. Commit writes before the next IRQ; ordinary path handles all other boundaries. Whole scene and bank7 regression prove final original state/time unchanged.",
+  "performance": {
+    "within_source_frame_budget": false,
+    "source_durations": [
+      {
+        "source_region": "ntsc",
+        "source_frames": 26.948071514664523,
+        "source_irqs": 27
+      },
+      {
+        "source_region": "ntsc",
+        "source_frames": 24.31135328779965,
+        "source_irqs": 25
+      },
+      {
+        "source_region": "ntsc",
+        "source_frames": 26.945326101513324,
+        "source_irqs": 27
+      },
+      {
+        "source_region": "ntsc",
+        "source_frames": 24.26848131779831,
+        "source_irqs": 25
+      },
+      {
+        "source_region": "ntsc",
+        "source_frames": 26.945008035355563,
+        "source_irqs": 27
+      },
+      {
+        "source_region": "pal",
+        "source_frames": 22.95660276890309,
+        "source_irqs": 23
+      },
+      {
+        "source_region": "pal",
+        "source_frames": 21.482736393699906,
+        "source_irqs": 22
+      },
+      {
+        "source_region": "pal",
+        "source_frames": 22.954430805448126,
+        "source_irqs": 23
+      },
+      {
+        "source_region": "pal",
+        "source_frames": 21.483338938400315,
+        "source_irqs": 22
+      },
+      {
+        "source_region": "pal",
+        "source_frames": 22.954024438092034,
+        "source_irqs": 23
+      }
+    ],
+    "baseline": {
+      "passed": true,
+      "diagnostic_only": true,
+      "source_vector_cases": 10,
+      "source_regions": [
+        "ntsc",
+        "pal"
+      ],
+      "case_start": 0,
+      "ram_bytes": 15081,
+      "fire": false,
+      "actors": "second",
+      "reveal": true,
+      "sequence": true,
+      "transfer": true,
+      "map": "decode",
+      "scene": true,
+      "measure_native_frames": true,
+      "profile_stages": true,
+      "irq_status": true,
+      "results": [
+        {
+          "region": "ntsc",
+          "intro_poll_done": 1,
+          "intro_poll_cases": 10,
+          "intro_poll_errors": 0,
+          "intro_poll_reads": 0,
+          "intro_poll_first_failure": 0,
+          "frame": 1424,
+          "native_call_frames": [
+            125,
+            125,
+            125,
+            125,
+            125,
+            124,
+            125,
+            124,
+            125,
+            124
+          ],
+          "native_stage_frames": [
+            [
+              23,
+              9,
+              32,
+              37,
+              5,
+              19
+            ],
+            [
+              25,
+              7,
+              32,
+              35,
+              5,
+              21
+            ],
+            [
+              24,
+              9,
+              31,
+              37,
+              5,
+              19
+            ],
+            [
+              26,
+              6,
+              32,
+              35,
+              5,
+              21
+            ],
+            [
+              24,
+              9,
+              31,
+              37,
+              5,
+              19
+            ],
+            [
+              24,
+              8,
+              31,
+              37,
+              5,
+              19
+            ],
+            [
+              26,
+              6,
+              32,
+              35,
+              5,
+              21
+            ],
+            [
+              24,
+              8,
+              31,
+              37,
+              5,
+              19
+            ],
+            [
+              26,
+              6,
+              31,
+              35,
+              5,
+              21
+            ],
+            [
+              24,
+              8,
+              31,
+              37,
+              5,
+              19
+            ]
+          ]
+        },
+        {
+          "region": "pal",
+          "intro_poll_done": 1,
+          "intro_poll_cases": 10,
+          "intro_poll_errors": 0,
+          "intro_poll_reads": 0,
+          "intro_poll_first_failure": 0,
+          "frame": 1192,
+          "native_call_frames": [
+            105,
+            105,
+            104,
+            104,
+            104,
+            104,
+            104,
+            103,
+            104,
+            104
+          ],
+          "native_stage_frames": [
+            [
+              20,
+              8,
+              26,
+              31,
+              4,
+              16
+            ],
+            [
+              22,
+              5,
+              27,
+              30,
+              4,
+              17
+            ],
+            [
+              20,
+              7,
+              26,
+              31,
+              4,
+              16
+            ],
+            [
+              21,
+              6,
+              26,
+              30,
+              4,
+              17
+            ],
+            [
+              20,
+              7,
+              26,
+              31,
+              5,
+              15
+            ],
+            [
+              20,
+              7,
+              26,
+              31,
+              4,
+              16
+            ],
+            [
+              21,
+              5,
+              27,
+              29,
+              4,
+              18
+            ],
+            [
+              19,
+              7,
+              27,
+              31,
+              4,
+              15
+            ],
+            [
+              22,
+              5,
+              26,
+              30,
+              4,
+              17
+            ],
+            [
+              20,
+              7,
+              26,
+              31,
+              4,
+              16
+            ]
+          ]
+        }
+      ],
+      "kernel_sha256": "5a86217f7dd3d68bb22edc8a723a9c74b312e4c57efad2efd810429fa22775bd",
+      "scope": "Compiled68000 source semantic helper checked against the selected natural original source vectors on each target region. No physical publication scheduler or PCM claim."
+    },
+    "optimized": {
+      "passed": true,
+      "diagnostic_only": true,
+      "source_vector_cases": 10,
+      "source_regions": [
+        "ntsc",
+        "pal"
+      ],
+      "case_start": 0,
+      "ram_bytes": 15081,
+      "fire": false,
+      "actors": "second",
+      "reveal": true,
+      "sequence": true,
+      "transfer": true,
+      "map": "decode",
+      "scene": true,
+      "measure_native_frames": true,
+      "profile_stages": true,
+      "irq_status": true,
+      "results": [
+        {
+          "region": "ntsc",
+          "intro_poll_done": 1,
+          "intro_poll_cases": 10,
+          "intro_poll_errors": 0,
+          "intro_poll_reads": 0,
+          "intro_poll_first_failure": 0,
+          "frame": 1160,
+          "native_call_frames": [
+            98,
+            99,
+            98,
+            99,
+            98,
+            98,
+            99,
+            97,
+            99,
+            97
+          ],
+          "native_stage_frames": [
+            [
+              23,
+              9,
+              31,
+              10,
+              5,
+              19
+            ],
+            [
+              26,
+              6,
+              32,
+              10,
+              5,
+              20
+            ],
+            [
+              23,
+              9,
+              31,
+              11,
+              5,
+              19
+            ],
+            [
+              25,
+              7,
+              31,
+              10,
+              5,
+              21
+            ],
+            [
+              24,
+              9,
+              31,
+              10,
+              5,
+              19
+            ],
+            [
+              24,
+              8,
+              31,
+              11,
+              4,
+              20
+            ],
+            [
+              25,
+              7,
+              31,
+              10,
+              5,
+              21
+            ],
+            [
+              23,
+              9,
+              31,
+              10,
+              5,
+              19
+            ],
+            [
+              26,
+              6,
+              31,
+              10,
+              5,
+              21
+            ],
+            [
+              24,
+              8,
+              31,
+              10,
+              5,
+              19
+            ]
+          ]
+        },
+        {
+          "region": "pal",
+          "intro_poll_done": 1,
+          "intro_poll_cases": 10,
+          "intro_poll_errors": 0,
+          "intro_poll_reads": 0,
+          "intro_poll_first_failure": 0,
+          "frame": 971,
+          "native_call_frames": [
+            82,
+            83,
+            82,
+            82,
+            82,
+            81,
+            83,
+            82,
+            83,
+            81
+          ],
+          "native_stage_frames": [
+            [
+              20,
+              8,
+              26,
+              8,
+              4,
+              16
+            ],
+            [
+              22,
+              5,
+              26,
+              9,
+              4,
+              17
+            ],
+            [
+              20,
+              7,
+              26,
+              9,
+              4,
+              16
+            ],
+            [
+              21,
+              6,
+              26,
+              8,
+              4,
+              17
+            ],
+            [
+              20,
+              7,
+              26,
+              9,
+              4,
+              16
+            ],
+            [
+              20,
+              7,
+              26,
+              8,
+              4,
+              16
+            ],
+            [
+              21,
+              6,
+              26,
+              8,
+              4,
+              18
+            ],
+            [
+              20,
+              7,
+              26,
+              9,
+              4,
+              16
+            ],
+            [
+              22,
+              5,
+              26,
+              8,
+              4,
+              18
+            ],
+            [
+              19,
+              7,
+              26,
+              9,
+              4,
+              16
+            ]
+          ]
+        }
+      ],
+      "kernel_sha256": "24631580a0aed47fc79f25abf42169dd4f3638ceaaf13c75294f51570220dbf2",
+      "scope": "Compiled68000 source semantic helper checked against the selected natural original source vectors on each target region. No physical publication scheduler or PCM claim."
+    },
+    "stage_order": [
+      "prepare_including_first_transfer",
+      "patterns032A",
+      "clearE2B",
+      "decodeBD3_BFE",
+      "place7357",
+      "final_transferEFA"
+    ],
+    "measurement": "SDK vtimer deltas inside the native helper and six call wrappers, excluding fixture copies and final comparisons, foreground per-OUT oracle disabled. Every final state/clock still checked. One-frame resolution, optimistic: no physical MD video/PSG delivery. Profiling adds small overhead; cannot explain the large remaining gap.",
+    "finding": "Native helper drops from124..125 to97..99 target NTSC frames and103..105 to81..83 PAL. Source scenes take24.27..26.95 NTSC or21.48..22.96 PAL virtual frames. Still too costly for faithful physical integration. Clear32-ish, prepare24-ish and final transfer20-ish target NTSC frames are next bottlenecks."
+  },
+  "limits": [
+    "No input/skip or alternate E50 headers beyond captured fire/actor paths. E3F actor initialization and E75 reveal not included in this profile.",
+    "Pattern individual OUT timestamps and VRAM outside0000..23FF/3800..3AFF are not compared here. Source VDP status still diagnostic input, not a live producer.",
+    "No production memory/live sprite binding, physical publication deadlines, PCM or hardware certification. Public V319 unchanged."
+  ],
+  "next_action": "Optimize clear and transfer semantic memory/IO delivery in IRQ-safe batches, then prepare LDIR loops; retain per-write checked path and source clock behavior. Reprofile whole native helper against source duration before integration. Then bind compact memory/live VDP status and actual MD video/PSG delivery.",
+  "oracle_ram_writes": 0,
+  "sram_imports": 0,
+  "archive_manifest": "analysis/v319-intro-scene/manifest.json"
+}
