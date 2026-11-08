@@ -6,6 +6,47 @@ le README et les rapports cités.
 
 ## Suivi courant — V319, 8 novembre 2026
 
+DERNIÈRE PREUVE : `analysis/v319_intro_empty_report.json`, archive
+`analysis/v319-intro-empty`. API source_intro_wait_callback et window
+vérifiées DIRECTEMENT sur captures naturelles source DCEC=0F36, donc
+callbackvide F36RET seulement. F09retourappelant :986NTSC+994PAL cas.
+F1Eattentecomplèteretourappelant :36NTSC+36PAL cas,32705+40288 lecturesVC.
+Toutes2052captures traversent au moins uneIRQ. Durée/raster/workIRQ/R,
+IFF/EI/pending,336RAMIRQ+400reader identiques. Aucun writeRAM/importSRAM,
+ROMsource nonmodifiée. Getter enregistre débutF09/F1E et VRAI PCretour,
+pas seulementF2B. Deux nouveaux DLLobservateurs locaux callback/window,
+sources z80.c restaurées enfinally ;PSG source identique aux anciens
+14000frames/région pour chaqueprofile. Aucun DLLémulateur distribué.
+
+Compiled68000 :tous1980vecteursF09 et72F1E testés dans chaque région
+cible,soit4104exécutions,0erreur. KernelF09-N986 :1008framesNTSC/844PAL ;
+kernelF09-P994 :1028/861 ;kernelF1E72 :106/89. Ces frames mesurent le
+banc, pas le FPS ni la durée du jeu. Aucun changement sourceproduction ni
+ROM depuis50918125e (seuls scripts/rapports/docs ajoutés ou étendus).
+
+Un link kernel2PAL a échoué avec cheminTMPMSYS/GCC. État terminal clair,
+logfirstfailure sauvegardé ; même arborescence d'objets relinkée avec
+TMPDIR/TMP/TEMP='.' seulement dans la commande enfant, puis kernelconstruit
+réutilisé par run_v319_intro_empty_pal68k.py. Pas de modificationoracle/code.
+Tousprocessus terminal0 après récupération, aucun ancien handle à attendre.
+Nettoyage archivé/relu :279références,36015764octets générés supprimés,
+32198996nets libérés. Sources gardées ; données/kernel/symboles restituables.
+
+Prochaine action :callbackfeuF37..F4E+bank5BDFF..BE12. Source :litC02F,
+AND7,RET NZ ;sinon banque5, INCcompteurDCE2/CP6/JR C/XOR vers0, écrit
+DCE2, JPBDFF ;BDFF multiplieindexpar3 et copie3octetsBE13→DCA1avecLDI.
+Palette+compteur hors vue336RAMIRQ :utiliser ctx.full_ram/source_room_get/put
+ou un adaptateur explicite, puis capturer aussi ces octets au source pour
+l'oracle. Ne pas remplacer par un simpleworktotal car IRQ peut intervenir
+entre instructions. Puiscallbacks1055/104A acteurs/SAT. Branche skipD0B
+surC021&30 reste à tester avec entrées normales. Ensuite intégrer le modèle
+continu dansintro :preuve sémantique ne vaut pas deadlinesvidéo/PSGphysiques.
+
+Scripts build_v319_intro_empty_observer.py,validate_v319_intro_poll.py
+(--profilepoll/callback/window),compile_v319_intro_poll_68k.py
+(--source-regionboth/ntsc/pal),run_v319_intro_empty_pal68k.py,
+archive_v319_intro_empty.py. V319resteversionpublique, aucun nouveauROM.
+
 NOUVEAU CODE NATIF : `megadrive/src/source_intro_wait.h/.c`, rapport
 `analysis/v319_native_intro_poll_report.json`, archive `analysis/v319-native-intro-poll`.
 F21pollage VCounter traduit sur SourceClock, avec vrais IN11T/CP/JR et

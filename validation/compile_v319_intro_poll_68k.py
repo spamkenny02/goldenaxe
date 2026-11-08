@@ -17,6 +17,7 @@ from validate_native_source_wait import MODULES
 p = argparse.ArgumentParser()
 p.add_argument('--work', default='v319-native-intro-poll01')
 p.add_argument('--kernel-name', default='kernel')
+p.add_argument('--source-region', choices=['both','ntsc','pal'], default='both')
 a = p.parse_args()
 work = root / 'validation' / a.work
 assert work.resolve().is_relative_to(root / 'validation')
@@ -32,7 +33,9 @@ for module in ['source_intro_wait', 'source_wait_restore', *MODULES]:
 (src / 'wrapper.c').write_text('#include "../../wrapper.c"\n')
 image = (root / 'input/original.sms').read_bytes()
 def array(raw): return '{' + ','.join(map(str, raw)) + '}'
-cases = [case for region in ('ntsc', 'pal') for case in json.loads((work / region / 'native-cases.json').read_bytes())]
+source_regions = ('ntsc','pal') if a.source_region == 'both' else (a.source_region,)
+cases = [case for region in source_regions for case in json.loads((work / region / 'native-cases.json').read_bytes())]
+expected_reads = sum(case['expected'][12] for case in cases)
 lines = ['static const u8 low[32768]=' + array(image[:32768]) + ';',
          'static const u8 bank[16384]=' + array(image[0x18000:0x1c000]) + ';',
          'typedef struct {u32 phase[12];u8 refresh,ram[336],audio[400],after_ram[336],after_audio[400];u32 expected[18];} PollCase;',
@@ -80,14 +83,15 @@ for region in ('ntsc', 'pal'):
             stats[name] = int.from_bytes(bytes(raw[(sy[name] + i) ^ 1] for i in range(size)), 'big')
         stats['frame'] = frame
     with contextlib.redirect_stdout(io.StringIO()):
-        run(project / 'out/release/rom.bin', 5000, work / ('compiled-' + region), set(), [], skip_intro=False,
+        run(project / 'out/release/rom.bin', 5000, work / ('compiled-' + a.source_region + '-' + region), set(), [], skip_intro=False,
             ram_observer=observe, stop_when=lambda: bool(stats.get('intro_poll_done')),
             core_options={'genesis_plus_gx_region_detect': 'pal' if region == 'pal' else 'auto'})
     assert stats['intro_poll_done'] == 1 and stats['intro_poll_errors'] == 0, stats
-    assert stats['intro_poll_cases'] == len(cases) and stats['intro_poll_reads'] == 172770
+    assert stats['intro_poll_cases'] == len(cases) and stats['intro_poll_reads'] == expected_reads
     results.append(dict(region=region, **stats)); print(region, stats, flush=True)
-report = dict(passed=True, diagnostic_only=True, source_vector_cases=len(cases), results=results,
+report = dict(passed=True, diagnostic_only=True, source_vector_cases=len(cases), source_regions=source_regions, results=results,
     kernel_sha256=sha((project / 'out/release/rom.bin').read_bytes()),
-    scope='Compiled68000 source semantic helper checked against172 natural original source poll vectors, '
-          'including both source region phases on each target region. No physical publication scheduler or PCM claim.')
-(work / 'compiled-report.json').write_text(json.dumps(report, indent=2) + '\n')
+    scope='Compiled68000 source semantic helper checked against the selected natural original source vectors '
+          'on each target region. No physical publication scheduler or PCM claim.')
+name = 'compiled-report.json' if a.source_region == 'both' else 'compiled-' + a.source_region + '-report.json'
+(work / name).write_text(json.dumps(report, indent=2) + '\n')

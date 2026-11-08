@@ -108,9 +108,12 @@ Cette étape commence avec [la nouvelle attente vidéo native](analysis/v319_nat
 Le regroupement des lectures sans changement de condition ni IRQ ramène
 le banc NTSC de 2453 à 105 frames d’émulation, sans changer les résultats.
 5948 contextes supplémentaires vérifient ce regroupement aux frontières
-d’IRQ, DI/EI et compteur. Les continuations `F09/F32/F1E` sont écrites mais
-restent à vérifier directement ; aucune de ces routines ne pilote encore
-l’intro publiée. La recompilation complète conserve exactement la V319.
+d’IRQ, DI/EI et compteur. Les [continuations `F09/F32/F1E` avec callback vide](analysis/v319_intro_empty_report.json)
+passent maintenant 2052 captures naturelles SMS, toutes avec IRQ pendant
+l’attente, puis 4104 exécutions compilées 68000 dans les deux régions.
+Les callbacks du feu et des acteurs restent à traiter ; aucune de ces
+routines ne pilote encore l’intro publiée. La recompilation complète
+conserve exactement la V319.
 
 ## Sources et compilation
 

@@ -18,6 +18,7 @@ from validate_native_source_wait import MODULES
 
 p = argparse.ArgumentParser()
 p.add_argument('--out-name', default='v319-native-intro-poll01')
+p.add_argument('--profile', choices=['poll','callback','window'], default='poll')
 a = p.parse_args()
 assert a.out_name.startswith('v319-native-intro-poll') and '/' not in a.out_name and '\\' not in a.out_name
 out = root / 'validation' / a.out_name
@@ -43,6 +44,10 @@ u8 poll_case(const u32 *phase,u8 refresh,u8 *ram,u8 *audio,const u8 *low,const u
 }
 '''
 (out / 'wrapper.c').write_text(wrapper)
+if a.profile != 'poll':
+    wrapper = wrapper.replace('source_intro_vcounter_poll(&clock,&context,&result)',
+        'source_intro_wait_' + ('callback' if a.profile == 'callback' else 'window') + '(&clock,&context,0,0,&result)')
+    (out / 'wrapper.c').write_text(wrapper)
 sdk = root.parents[1] / 'work/sgdk'
 env = dict(os.environ); env['PATH'] = 'C:/msys64/ucrt64/bin;' + env['PATH']
 modules = ['source_intro_wait', 'source_wait_restore', *MODULES]
@@ -56,7 +61,8 @@ assert built.returncode == 0, built.stderr
 native = c.CDLL(str(out / 'native.dll')).poll_case
 native.argtypes = [c.POINTER(c.c_uint32), c.c_uint8] + [c.POINTER(c.c_uint8)] * 4 + [c.POINTER(c.c_uint32)]
 native.restype = c.c_uint8
-build = json.loads((root / 'validation/v319-intro-poll-observer01/report.json').read_bytes())
+build_folder = 'v319-intro-poll-observer01' if a.profile == 'poll' else 'v319-intro-empty-' + a.profile + '-observer01'
+build = json.loads((root / 'validation' / build_folder / 'report.json').read_bytes())
 core = Path(build['core']); assert sha(core.read_bytes()) == build['core_sha256']
 dll = c.CDLL(str(core))
 dll.gaw_poll_reset.restype = None
@@ -87,7 +93,10 @@ for region in ('ntsc', 'pal'):
         record = raw[n*1624:(n+1)*1624]; first = record[:808]; last = record[808:1616]
         phase = struct.unpack_from('<12I', first, 16); end = struct.unpack_from('<12I', last, 16)
         refresh, pc = struct.unpack_from('<2I', first, 64); final_refresh, final_pc = struct.unpack_from('<2I', last, 64)
-        assert (pc, final_pc) == (0xf21, 0xf2b)
+        if a.profile == 'poll': assert (pc, final_pc) == (0xf21, 0xf2b)
+        else:
+            assert pc == (0xf09 if a.profile == 'callback' else 0xf1e)
+            assert final_pc == struct.unpack_from('<I', record, 1620)[0]
         state = (c.c_uint8 * 336).from_buffer_copy(first[72:408]); audio = (c.c_uint8 * 400).from_buffer_copy(first[408:808])
         result = (c.c_uint32 * 18)()
         assert native((c.c_uint32 * 12)(*phase), refresh, state, audio, low, bank, result), (region, n, 'native rejection')
@@ -97,8 +106,10 @@ for region in ('ntsc', 'pal'):
         raster = (end[1] * 3420 + delta) % (end[3] * 3420)
         assert (result[0], result[1], result[4]*15, result[7]) == (raster, wall, irq, final_refresh), (region, n, list(result), raster, wall, irq, final_refresh)
         assert result[12] == struct.unpack_from('<I', record, 1616)[0]
-        assert result[2] == 30*result[13] + 44*result[14] + 39
-        assert result[3] == 3*result[13] + 5*result[14] + 5
+        if a.profile == 'poll':
+            assert result[2] == 30*result[13] + 44*result[14] + 39
+            assert result[3] == 3*result[13] + 5*result[14] + 5
+        assert result[2]*15 + irq == wall
         assert (result[8], result[9], result[10], result[11]) == (end[8], end[9], end[10], 1)
         assert bytes(state) == last[72:408] and bytes(audio) == last[408:808], (region, n, 'RAM/audio')
         cases.append(dict(phase=list(phase), refresh=refresh, expected=list(result),
@@ -110,12 +121,12 @@ for region in ('ntsc', 'pal'):
         observer_exposed_psg_exact_frames=14000, source_records_sha256=sha(raw),
         maximum_polls=max(case['expected'][12] for case in cases))
     results.append(row); print(json.dumps(row), flush=True)
-report = dict(passed=True, diagnostic_only=True, production_rom_changed=False, cases=results,
+report = dict(passed=True, diagnostic_only=True, profile=a.profile, production_rom_changed=False, cases=results,
     core_sha256=sha(core.read_bytes()), source_sha256=sha(image),
     native_sources={name: sha((root / 'megadrive/src' / (name + '.c')).read_bytes()) for name in modules},
-    verified=['Original F21/F2B natural entry/return wall time, raster, polls, R, IFF/EI/pending,336 IRQ RAM and400 reader bytes.',
+    verified=['Original natural entry/return wall time, raster, polls, R, IFF/EI/pending,336 IRQ RAM and400 reader bytes.',
               'Both regions,14000 no-input cold source frames per region; observer PSG state unchanged.'],
     limits=['Host native semantic helper; compiled68000 timing and physical MD publication not checked here.',
-            'F09 callback continuation APIs compile but have no direct oracle check in this poll-only test.',
+            'Selected entry profile only; callback/window profiles use original F36 empty callback, not fire/actors.',
             'No production clock integration, full-game or PCM certification.'])
 (out / 'report.json').write_text(json.dumps(report, indent=2) + '\n')
