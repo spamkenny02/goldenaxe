@@ -102,6 +102,16 @@ des régressions de pixels. Ces cinq variantes restent privées et écartées.
 L’étape suivante est l’ordonnancement continu avec `SourceClock` et le coût
 réel du lecteur, en réutilisant le modèle existant de l’attente SMS `0B95`.
 
+Cette étape commence avec [la nouvelle attente vidéo native](analysis/v319_native_intro_poll_report.json) :
+172 attentes `0F21..0F2B` de la ROM SMS sont reproduites exactement, soit
+172770 lectures de compteur. Les vecteurs passent aussi sur le 68000 compilé.
+Le regroupement des lectures sans changement de condition ni IRQ ramène
+le banc NTSC de 2453 à 105 frames d’émulation, sans changer les résultats.
+5948 contextes supplémentaires vérifient ce regroupement aux frontières
+d’IRQ, DI/EI et compteur. Les continuations `F09/F32/F1E` sont écrites mais
+restent à vérifier directement ; aucune de ces routines ne pilote encore
+l’intro publiée. La recompilation complète conserve exactement la V319.
+
 ## Sources et compilation
 
 Les fichiers racine `gaw-megadrive.bin` et `gaw-title-megadrive.bin` contiennent

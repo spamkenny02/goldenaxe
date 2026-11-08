@@ -1,0 +1,152 @@
+{
+  "passed": true,
+  "diagnostic_only": true,
+  "production_rom_changed": false,
+  "production_rom_sha256": "d3ea2a83ea24ed8a0d3c9857f9fbe70d000a4f73358452c1887f40e78966c56e",
+  "production_rebuild_byte_identical": true,
+  "natural_source_poll_checks": {
+    "passed": true,
+    "diagnostic_only": true,
+    "production_rom_changed": false,
+    "cases": [
+      {
+        "region": "ntsc",
+        "source_cases": 86,
+        "source_poll_reads": 77629,
+        "cases_crossing_irq": 0,
+        "observer_exposed_psg_exact_frames": 14000,
+        "source_records_sha256": "c290464365888f2d837c14c318375eed7ca6b15f14a09e541d538c266eab293d",
+        "maximum_polls": 964
+      },
+      {
+        "region": "pal",
+        "source_cases": 86,
+        "source_poll_reads": 95141,
+        "cases_crossing_irq": 0,
+        "observer_exposed_psg_exact_frames": 14000,
+        "source_records_sha256": "6ac77f8189ac93a960768c12afff397396aa55afa23f7ae6d0fcac22a2307555",
+        "maximum_polls": 1127
+      }
+    ],
+    "core_sha256": "383fc3a9553aaf87f5da7b24807b480c578b4f6577df9ca30857c9e41736ffed",
+    "source_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+    "native_sources": {
+      "source_intro_wait": "7d721554756cab01471f0ef5356ee37d101cea2d27918ff40f5a5166a12172e9",
+      "source_wait_restore": "a6ce6eac36ff120f8222dbe24c0456c7729c1062902f997ba7fb296d6dcecd28",
+      "source_wait": "4ed09b544bf7366d82afe04c0d86b07040a453e5e00209cd57fed05db4bfc7f6",
+      "source_irq_context": "013a3ef89374be5f178cf3968aeafca498cdd380b2d943d341c208fa8f9497d9",
+      "source_irq": "bc5921ff1b8a9ed22c6c06c889cc430a469e926c360914e146481a89b1a2c534",
+      "source_clock": "800058a5cbafa50bcf27fc4a91b9622fd34312eb75fa46f8523cffc80799cc9a",
+      "source_rng": "5c64cd42ca0c18d69f8cfb1a185f282268b5dfd45a4b77f355323c6df802919f",
+      "source_audio_fast": "811c9e96d4f587353df50654e01d767f7f1530528efa271d1ee9d15169376cc3",
+      "source_audio_reader": "7ea0d9bdd75168ea85f1e8cf7c9ef4fbb720d746a8e4c9158953a48a5551c624",
+      "source_audio_prefix": "c0c02bafe3dd7e4baf887f67b264786c70c74932c12c897213c941f32fea2d39",
+      "source_audio_dispatch": "f8ce91959f8fb0db6062900e69a1842da8cc108d33bdfcbb7509b681185b0d90",
+      "source_audio_priority": "d5bc487b634abc56b77df5aeec338a447be312c0e76679a1eec3b14585291147",
+      "source_audio_tone": "8098ba4e45c21629a9920e6ca9ac5385ecb986e31d0db143cbbff42c0c92b272",
+      "source_audio_noise": "45b37e1689255404b86855e3970e82bfefd313421522aae46e3fae455fa9690b",
+      "source_audio_sequence": "e7171cc12b4f031dc361943aca679b7a8fa5c1fc2bb7d7798864d16675aa7663",
+      "source_audio_memory": "ec755012b117bdb5bfe2c114037f44abe4891714f6532f4800206915e8dde1f0",
+      "source_audio_envelope": "d0878cd24b5d7bb8f255a5a9e97a231815ac41828cae53342b03c6cbe81ae17c",
+      "source_audio_pitch": "ea46d31e3c73a352995c3dcbcbbe141214a9c536fd827e1a16d49d8e5e058795"
+    },
+    "verified": [
+      "Original F21/F2B natural entry/return wall time, raster, polls, R, IFF/EI/pending,336 IRQ RAM and400 reader bytes.",
+      "Both regions,14000 no-input cold source frames per region; observer PSG state unchanged."
+    ],
+    "limits": [
+      "Host native semantic helper; compiled68000 timing and physical MD publication not checked here.",
+      "F09 callback continuation APIs compile but have no direct oracle check in this poll-only test.",
+      "No production clock integration, full-game or PCM certification."
+    ]
+  },
+  "compiled68000_unbatched": {
+    "passed": true,
+    "diagnostic_only": true,
+    "source_vector_cases": 172,
+    "results": [
+      {
+        "region": "ntsc",
+        "intro_poll_done": 1,
+        "intro_poll_cases": 172,
+        "intro_poll_errors": 0,
+        "intro_poll_reads": 172770,
+        "intro_poll_first_failure": 0,
+        "frame": 2453
+      },
+      {
+        "region": "pal",
+        "intro_poll_done": 1,
+        "intro_poll_cases": 172,
+        "intro_poll_errors": 0,
+        "intro_poll_reads": 172770,
+        "intro_poll_first_failure": 0,
+        "frame": 2053
+      }
+    ],
+    "kernel_sha256": "5b9a4ba6ea3e04f80b4379524711b4c2087d1ece4abda6693bb0798841aad8e9",
+    "scope": "Compiled68000 source semantic helper checked against172 natural original source poll vectors, including both source region phases on each target region. No physical publication scheduler or PCM claim."
+  },
+  "compiled68000_batched": {
+    "passed": true,
+    "diagnostic_only": true,
+    "source_vector_cases": 172,
+    "results": [
+      {
+        "region": "ntsc",
+        "intro_poll_done": 1,
+        "intro_poll_cases": 172,
+        "intro_poll_errors": 0,
+        "intro_poll_reads": 172770,
+        "intro_poll_first_failure": 0,
+        "frame": 105
+      },
+      {
+        "region": "pal",
+        "intro_poll_done": 1,
+        "intro_poll_cases": 172,
+        "intro_poll_errors": 0,
+        "intro_poll_reads": 172770,
+        "intro_poll_first_failure": 0,
+        "frame": 89
+      }
+    ],
+    "kernel_sha256": "8753385078c6f19c7e383e3788823b8333f797be0bc9b189392d4e6d9abeb518",
+    "scope": "Compiled68000 source semantic helper checked against172 natural original source poll vectors, including both source region phases on each target region. No physical publication scheduler or PCM claim."
+  },
+  "batching_boundary_regression": {
+    "passed": true,
+    "cases": [
+      {
+        "region": "ntsc",
+        "cases": 2974,
+        "accepted": 2789,
+        "rejected": 185,
+        "accepted_with_irq": 840,
+        "accepted_with_full_irq": 372,
+        "result_sha256": "277a3f2fbd11c549ca2d670470eeb0258cbda8da202f0d4753a566ed94402be8"
+      },
+      {
+        "region": "pal",
+        "cases": 2974,
+        "accepted": 2798,
+        "rejected": 176,
+        "accepted_with_irq": 865,
+        "accepted_with_full_irq": 384,
+        "result_sha256": "b43b169bf46eb4ba4fb9d3e4e24774c07fb71e299eeab4fcce6e9bd0d575b2c6"
+      }
+    ],
+    "scope": "Optimized/native unbatched parity at synthetic raster,DI/EI/pending,R,full/audio IRQ,paused/live reader contexts. The unbatched implementation is directly source-checked for natural polls; these synthetic contexts are regression coverage, not a second direct source oracle."
+  },
+  "implementation": "Native source_intro_wait.h/.c: F21 VCounter poll with exact IN/CP/JR boundaries, mode4/192 counter discontinuities and source IRQ adapter. Failed30T/3M1 and44T/5M1 loops batch only before the counter condition changes and before VINT. Generic F09/F32/F1E composition APIs also written, not selected by the published game.",
+  "coverage": "172 natural original-ROM F21/F2B entry/return vectors,172770 actual source port reads, both regions. Wall time,raster,polls,R,IFF/EI/pending,336 IRQ RAM bytes and400 audio bytes checked. These natural vectors have no IRQ inside the poll.",
+  "next_action": "Validate F09/F32/F1E continuation APIs against original source snapshots, including the empty F36 callback first, then actual fire/actor callbacks with source instruction scheduling. Do not select them in production before native publication deadlines and source raster are validated.",
+  "limits": [
+    "F09 callback/window APIs are compiled but have no direct source-oracle check yet.",
+    "Synthetic5948-case IRQ/DI/EI/R/paused/live regression compares to the unbatched native implementation, not direct emulator execution of those artificial phases.",
+    "Compiled kernel completion frames are aggregate diagnostic throughput, not gameplay FPS or individual routine cycle counts.",
+    "First kernel attempt failed header packaging. A second kernel build used the project2MiB header; the initial2000-frame run stopped before completion with144 cases and no errors. The completed build was then reused in a new5000-frame run, finishing2453NTSC/2053PAL.",
+    "No integration into published intro, asynchronous PSG scheduler, PCM or real hardware proof."
+  ],
+  "archive_manifest": "analysis/v319-native-intro-poll/manifest.json"
+}

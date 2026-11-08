@@ -6,6 +6,53 @@ le README et les rapports cités.
 
 ## Suivi courant — V319, 8 novembre 2026
 
+NOUVEAU CODE NATIF : `megadrive/src/source_intro_wait.h/.c`, rapport
+`analysis/v319_native_intro_poll_report.json`, archive `analysis/v319-native-intro-poll`.
+F21pollage VCounter traduit sur SourceClock, avec vrais IN11T/CP/JR et
+discontinuités Mode4/192(218NTSC/242PAL). SourceIntroWaitOutput comptepolls,
+below,above,counter,skip,error. API poll s'arrête à F2B RET préfetché.
+API callback modélise F09/B95+restore/F32LDHLJP+callbacknatif/continuation,
+NULL=F36RET. API window inclut F1E CALLF09,poll et RET. ATTENTION :seul
+F21pollage a une preuve oracle directe ; F09/F32/F1E restent à vérifier,
+non sélectionnés par sound.inc/intro.inc de production. Aucun nouveau binaire
+public ; reconstruction finale des sources identique V319 SHA d3ea2a83/DA29.
+
+Preuve source originale sans entrées :86 cas NTSC+86 PAL,77629+95141
+lectures port7E. Snapshots à premièreF21 et F2B, durée/raster/R/polls/IFF,
+EI/pending,336octetsRAM IRQ et400reader exacts. AUCUN de ces cas naturels
+ne traverse une IRQ pendant le poll (ne pas prétendre le contraire).
+Observateur dédié local genesis_plus_gx_v319_intro_poll_libretro.dll,
+sourcez80.c restaurée enfinally, ROM inchangée ; PSG source préexistant
+identique sur28000frames donc non-interférence vérifiée à ce niveau.
+
+Versioninitiale non batchée source vérifiée, conservée dans archive comme
+unbatched-source.c avec SHA comparé au rapport initial. Version courante
+batch30T/3M1 dessous112,44T/5M1 au-dessus127, seulement jusqu'au changement
+de condition et avantVINT ; source_clock_repeat refusefirstfetch/EI/DI/pending.
+5948 cas bords synthétiques comparent batché/nonbatché avec lecteur vivant
+ou pause :5587acceptés,361rejetés identiquement,1705acceptés avecIRQ dont
+756avecfullIRQ. Ce contrôle est une parité native, pas second oracle Z80.
+
+Tests compilés68000 sur2régions cibles, les172vecteurs source dans chacune :
+nonbatch2453framesNTSC/2053PAL ;batch105/89, zéro erreur et172770lectures
+comptées chacune. Gain de throughput du BANC, pas FPS du jeu ni mesurecycle
+isolée. Premierkernel échouéaupackaging(headerSGDKpar défaut),kernel02
+avecrom_headerprojet2MiB. Capinitial2000frames avait144cas et0erreur ;
+kernel02 construit réutilisé dans nouveau run5000frames, puis complété.
+Commandes toutes terminales ; aucun job à attendre. Fichiers temporaires
+compressés/relu/nettoyés :768références,32250012octets supprimés,
+23243238nets libérés. Sources gardées ; tableaux/kernel/DLLhost restituables.
+
+Prochaine action : oracle direct F09/F32/F1E, d'abord cas naturels callback
+F36vide (DCEC=0F36), puis callbacksfeu/acteurs avec instructionsSourceClock,
+et copieE8B..E9D. Réutiliser source_wait_complete, ne pas moyenner son coût.
+Conserver les frontières source et brancheskipD0B de C021&30. Le callback
+natif fourni modélise son RET ;les tests actuels compilent ces API sans
+les certifier. Ensuite seulement intégrer les délais de publication natifs.
+Scripts build_v319_intro_poll_observer.py,validate_v319_intro_poll.py,
+compile_v319_intro_poll_68k.py,run_v319_intro_poll_68k.py (reprise cas2000),
+stress_v319_intro_poll.py,archive_v319_intro_poll.py.
+
 DERNIER ESSAI : `analysis/v319_intro_irq_ack_report.json`, archive
 `analysis/v319-intro-irq-ack`. Cinq variantes privées, TOUTES ÉCARTÉES.
 01demande complète explicite et callback dans IRQ après son ;02idem avec
