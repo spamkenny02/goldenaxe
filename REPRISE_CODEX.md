@@ -6,6 +6,31 @@ le README et les rapports cités.
 
 ## Suivi courant — V319, 8 novembre 2026
 
+Point prioritaire : premier géant du palais PAL vaincu et audité.
+Session50681/PID15980 terminée0. Retrait313520 ; première simulation du
+7B/60PV à313599,héros102PV,hurt14 naturel (pas de129 de test). Victoire
+315704,point froid315855,héros104/104PV.260prédictions RAM entière,
+zéro écriture d'assistance durant combat. Six étapes froides passées,
+porte neuf cristaux en89 réellement ouverte, vue ballon/restauration
+vérifiée,128mots HUD/neuf marqueurs source. Rapport
+`analysis/palc0046_palace_giant_report.json`, archive
+`analysis/palc0046-pal-palace-giant`. Candidatc0046 ; rejeu complet public
+du palais prévu au jalon de fin, pas encore acquis.
+
+Suivi74524/PID50376 actif : audit géant passé0, a démarré
+`continue_pal_palace_inner_c0046.py`. Reprise315856 puis trajet
+`palc0046-palace-portal14e01` actif au dernier contrôle. Lecteur unique
+`palc0046-pal-palace-inner-sources/cold-stream`,22points prévus.
+Suivi11254 attend le vrai handle50376, puis audit de fin et rejeu V319
+seulement si la suite entière réussit. Les anciens15980/50681 ne sont
+plus vivants. Hache d'or, Death Adder et générique PAL encore non acquis.
+
+Intro résiduelle relue : chargeur `intro.inc` et budget audio524T dans
+`main.c`. La précédente expérience map-wait rejetée dégradait plus de
+4millions de pixels NTSC : ne pas la promouvoir ni appliquer un simple
+ajout/suppression de frame. Aucun nouveau changement ROM sur cette reprise.
+La ROM resteV319 ; README à neuf cristaux PAL et sauvegardesNTSC/PAL.
+
 Dernier résultat : vraie sauvegarde PAL + Continue validés sur V319.
 Le pilote74571 et son suivi38252 sont terminés1 après les vérifications
 runtime : le validateur générique avait déjà écrit son rapport de reload,
