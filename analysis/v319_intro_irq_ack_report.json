@@ -1,0 +1,690 @@
+{
+  "diagnostic_only": true,
+  "promoted": false,
+  "public_version": 319,
+  "production_rom_sha256": "d3ea2a83ea24ed8a0d3c9857f9fbe70d000a4f73358452c1887f40e78966c56e",
+  "variants": [
+    {
+      "number": 1,
+      "hypothesis": {
+        "diagnostic_only": true,
+        "promoted": false,
+        "prefetch": false,
+        "native_68000": true,
+        "frame_overrides": false,
+        "ram_writes": 0,
+        "sram_imports": 0,
+        "request": "Explicit clock-only or clock+F32 request before the wait/first reveal slice.",
+        "acknowledgement": "Native IRQ after video and audio; prepares SAT/palette for following IRQ; foreground awaits acknowledgement.",
+        "limits": "Source F32 executes in foreground after source IRQ return; this prototype moves its native work into the IRQ tail to audit ordering independently of later foreground work. Not an instruction-phase equivalence claim."
+      },
+      "state": {
+        "diagnostic_only": true,
+        "promoted": false,
+        "cases": [
+          {
+            "region": "ntsc",
+            "frames": 14000,
+            "runtime_errors": 0,
+            "first_errors": [],
+            "counters": {
+              "intro_full_irq_requests": 13377,
+              "intro_full_irq_acks": 13376,
+              "pending": 2
+            },
+            "reader_state_difference_frames": 0,
+            "first_reader_differences": [],
+            "source_psg_difference_frames": 0,
+            "first_psg_differences": [],
+            "intro_state_difference_frames": 5472,
+            "first_intro_differences": [
+              8517,
+              8522,
+              8527,
+              8532,
+              8533,
+              8534,
+              8535,
+              8536,
+              8537,
+              8538,
+              8539,
+              8540
+            ]
+          },
+          {
+            "region": "pal",
+            "frames": 14000,
+            "runtime_errors": 0,
+            "first_errors": [],
+            "counters": {
+              "intro_full_irq_requests": 13447,
+              "intro_full_irq_acks": 13446,
+              "pending": 2
+            },
+            "reader_state_difference_frames": 0,
+            "first_reader_differences": [],
+            "source_psg_difference_frames": 0,
+            "first_psg_differences": [],
+            "intro_state_difference_frames": 0,
+            "first_intro_differences": []
+          }
+        ],
+        "audio_fields": [
+          [
+            "sound_ram",
+            400
+          ],
+          [
+            "sound_source_de",
+            2
+          ],
+          [
+            "sound_source_work",
+            8
+          ],
+          [
+            "sound_effect_request",
+            2
+          ],
+          [
+            "sound_request",
+            2
+          ],
+          [
+            "sound_request_delay",
+            2
+          ],
+          [
+            "sound_current_track",
+            2
+          ],
+          [
+            "sound_track_started_frame",
+            2
+          ]
+        ],
+        "intro_fields": [
+          "intro_logic_clock",
+          "intro_counter",
+          "intro_line",
+          "intro_timer",
+          "intro_scene"
+        ],
+        "ram_writes": 0,
+        "sram_imports": 0,
+        "md_sha256": "493fdf76960c731a88494390731387fb1ce730dee1e78ca391de00f0cf6f5390",
+        "baseline_sha256": "d3ea2a83ea24ed8a0d3c9857f9fbe70d000a4f73358452c1887f40e78966c56e",
+        "scope": "Natural no-input cold opening only. Every-frame native reader state/work/DE/requests/track compared to production; exposed PSG compared directly to source. Separate video checks required."
+      },
+      "video": {
+        "ntsc": {
+          "totals": {
+            "baseline_source_differences": 147429,
+            "candidate_source_differences": 1709395,
+            "baseline_exact_frames": 13636,
+            "candidate_exact_frames": 13312
+          },
+          "improved_pixels": 3103,
+          "degraded_pixels": 1565069,
+          "no_source_pixel_regression": false
+        },
+        "pal": {
+          "totals": {
+            "baseline_source_differences": 124148,
+            "candidate_source_differences": 124070,
+            "baseline_exact_frames": 13682,
+            "candidate_exact_frames": 13682
+          },
+          "improved_pixels": 158,
+          "degraded_pixels": 80,
+          "no_source_pixel_regression": false
+        }
+      },
+      "promoted": false
+    },
+    {
+      "number": 2,
+      "hypothesis": {
+        "diagnostic_only": true,
+        "promoted": false,
+        "prefetch": true,
+        "native_68000": true,
+        "frame_overrides": false,
+        "ram_writes": 0,
+        "sram_imports": 0,
+        "request": "Explicit clock-only or clock+F32 request before the wait/first reveal slice.",
+        "acknowledgement": "Native IRQ after video and audio; prepares SAT/palette for following IRQ; foreground awaits acknowledgement.",
+        "limits": "Source F32 executes in foreground after source IRQ return; this prototype moves its native work into the IRQ tail to audit ordering independently of later foreground work. Not an instruction-phase equivalence claim."
+      },
+      "state": {
+        "diagnostic_only": true,
+        "promoted": false,
+        "cases": [
+          {
+            "region": "ntsc",
+            "frames": 14000,
+            "runtime_errors": 0,
+            "first_errors": [],
+            "counters": {
+              "intro_full_irq_requests": 13375,
+              "intro_full_irq_acks": 13374,
+              "pending": 2
+            },
+            "reader_state_difference_frames": 0,
+            "first_reader_differences": [],
+            "source_psg_difference_frames": 0,
+            "first_psg_differences": [],
+            "intro_state_difference_frames": 12205,
+            "first_intro_differences": [
+              1784,
+              1789,
+              1794,
+              1799,
+              1800,
+              1801,
+              1802,
+              1803,
+              1804,
+              1805,
+              1806,
+              1807
+            ]
+          },
+          {
+            "region": "pal",
+            "frames": 14000,
+            "runtime_errors": 0,
+            "first_errors": [],
+            "counters": {
+              "intro_full_irq_requests": 13447,
+              "intro_full_irq_acks": 13446,
+              "pending": 2
+            },
+            "reader_state_difference_frames": 0,
+            "first_reader_differences": [],
+            "source_psg_difference_frames": 0,
+            "first_psg_differences": [],
+            "intro_state_difference_frames": 0,
+            "first_intro_differences": []
+          }
+        ],
+        "audio_fields": [
+          [
+            "sound_ram",
+            400
+          ],
+          [
+            "sound_source_de",
+            2
+          ],
+          [
+            "sound_source_work",
+            8
+          ],
+          [
+            "sound_effect_request",
+            2
+          ],
+          [
+            "sound_request",
+            2
+          ],
+          [
+            "sound_request_delay",
+            2
+          ],
+          [
+            "sound_current_track",
+            2
+          ],
+          [
+            "sound_track_started_frame",
+            2
+          ]
+        ],
+        "intro_fields": [
+          "intro_logic_clock",
+          "intro_counter",
+          "intro_line",
+          "intro_timer",
+          "intro_scene"
+        ],
+        "ram_writes": 0,
+        "sram_imports": 0,
+        "md_sha256": "d7cd05a209b6281ab9c153558c6e1b618e8a452f54b48bf590affe4e757321c8",
+        "baseline_sha256": "d3ea2a83ea24ed8a0d3c9857f9fbe70d000a4f73358452c1887f40e78966c56e",
+        "scope": "Natural no-input cold opening only. Every-frame native reader state/work/DE/requests/track compared to production; exposed PSG compared directly to source. Separate video checks required."
+      },
+      "video": {
+        "ntsc": {
+          "totals": {
+            "baseline_source_differences": 147429,
+            "candidate_source_differences": 16050450,
+            "baseline_exact_frames": 13636,
+            "candidate_exact_frames": 11668
+          },
+          "improved_pixels": 5915,
+          "degraded_pixels": 15908936,
+          "no_source_pixel_regression": false
+        },
+        "pal": {
+          "totals": {
+            "baseline_source_differences": 124148,
+            "candidate_source_differences": 124126,
+            "baseline_exact_frames": 13682,
+            "candidate_exact_frames": 13682
+          },
+          "improved_pixels": 158,
+          "degraded_pixels": 136,
+          "no_source_pixel_regression": false
+        }
+      },
+      "promoted": false
+    },
+    {
+      "number": 3,
+      "hypothesis": {
+        "diagnostic_only": true,
+        "promoted": false,
+        "prefetch": false,
+        "native_68000": true,
+        "frame_overrides": false,
+        "ram_writes": 0,
+        "sram_imports": 0,
+        "foreground_callback": true,
+        "request": "Explicit clock-only or clock+F32 request before the wait/first reveal slice.",
+        "acknowledgement": "Native IRQ after video and audio; prepares SAT/palette for following IRQ; foreground awaits acknowledgement.",
+        "limits": "Source F32 executes in foreground after source IRQ return. IRQ-tail variants relocate its work; foreground variants acknowledge and publish readiness in IRQ, then execute in foreground. Not an instruction-phase equivalence claim."
+      },
+      "state": {
+        "diagnostic_only": true,
+        "promoted": false,
+        "cases": [
+          {
+            "region": "ntsc",
+            "frames": 14000,
+            "runtime_errors": 0,
+            "first_errors": [],
+            "counters": {
+              "intro_full_irq_requests": 13378,
+              "intro_full_irq_acks": 13377,
+              "pending": 2
+            },
+            "reader_state_difference_frames": 0,
+            "first_reader_differences": [],
+            "source_psg_difference_frames": 0,
+            "first_psg_differences": [],
+            "intro_state_difference_frames": 0,
+            "first_intro_differences": []
+          },
+          {
+            "region": "pal",
+            "frames": 14000,
+            "runtime_errors": 0,
+            "first_errors": [],
+            "counters": {
+              "intro_full_irq_requests": 13447,
+              "intro_full_irq_acks": 13446,
+              "pending": 2
+            },
+            "reader_state_difference_frames": 0,
+            "first_reader_differences": [],
+            "source_psg_difference_frames": 0,
+            "first_psg_differences": [],
+            "intro_state_difference_frames": 0,
+            "first_intro_differences": []
+          }
+        ],
+        "audio_fields": [
+          [
+            "sound_ram",
+            400
+          ],
+          [
+            "sound_source_de",
+            2
+          ],
+          [
+            "sound_source_work",
+            8
+          ],
+          [
+            "sound_effect_request",
+            2
+          ],
+          [
+            "sound_request",
+            2
+          ],
+          [
+            "sound_request_delay",
+            2
+          ],
+          [
+            "sound_current_track",
+            2
+          ],
+          [
+            "sound_track_started_frame",
+            2
+          ]
+        ],
+        "intro_fields": [
+          "intro_logic_clock",
+          "intro_counter",
+          "intro_line",
+          "intro_timer",
+          "intro_scene"
+        ],
+        "ram_writes": 0,
+        "sram_imports": 0,
+        "md_sha256": "50cb21d70039d61deb0701440758640347b2788ada1559b9afa5b82feb30c898",
+        "baseline_sha256": "d3ea2a83ea24ed8a0d3c9857f9fbe70d000a4f73358452c1887f40e78966c56e",
+        "scope": "Natural no-input cold opening only. Every-frame native reader state/work/DE/requests/track compared to production; exposed PSG compared directly to source. Separate video checks required."
+      },
+      "video": {
+        "ntsc": {
+          "totals": {
+            "baseline_source_differences": 147429,
+            "candidate_source_differences": 147438,
+            "baseline_exact_frames": 13636,
+            "candidate_exact_frames": 13636
+          },
+          "improved_pixels": 75,
+          "degraded_pixels": 84,
+          "no_source_pixel_regression": false
+        },
+        "pal": {
+          "totals": {
+            "baseline_source_differences": 124148,
+            "candidate_source_differences": 124122,
+            "baseline_exact_frames": 13682,
+            "candidate_exact_frames": 13682
+          },
+          "improved_pixels": 26,
+          "degraded_pixels": 0,
+          "no_source_pixel_regression": true
+        }
+      },
+      "promoted": false
+    },
+    {
+      "number": 4,
+      "hypothesis": {
+        "diagnostic_only": true,
+        "promoted": false,
+        "prefetch": true,
+        "native_68000": true,
+        "frame_overrides": false,
+        "ram_writes": 0,
+        "sram_imports": 0,
+        "foreground_callback": true,
+        "request": "Explicit clock-only or clock+F32 request before the wait/first reveal slice.",
+        "acknowledgement": "Native IRQ after video and audio; prepares SAT/palette for following IRQ; foreground awaits acknowledgement.",
+        "limits": "Source F32 executes in foreground after source IRQ return. IRQ-tail variants relocate its work; foreground variants acknowledge and publish readiness in IRQ, then execute in foreground. Not an instruction-phase equivalence claim."
+      },
+      "state": {
+        "diagnostic_only": true,
+        "promoted": false,
+        "cases": [
+          {
+            "region": "ntsc",
+            "frames": 14000,
+            "runtime_errors": 0,
+            "first_errors": [],
+            "counters": {
+              "intro_full_irq_requests": 13377,
+              "intro_full_irq_acks": 13376,
+              "pending": 2
+            },
+            "reader_state_difference_frames": 0,
+            "first_reader_differences": [],
+            "source_psg_difference_frames": 0,
+            "first_psg_differences": [],
+            "intro_state_difference_frames": 12205,
+            "first_intro_differences": [
+              1784,
+              1789,
+              1794,
+              1799,
+              1800,
+              1801,
+              1802,
+              1803,
+              1804,
+              1805,
+              1806,
+              1807
+            ]
+          },
+          {
+            "region": "pal",
+            "frames": 14000,
+            "runtime_errors": 0,
+            "first_errors": [],
+            "counters": {
+              "intro_full_irq_requests": 13447,
+              "intro_full_irq_acks": 13446,
+              "pending": 2
+            },
+            "reader_state_difference_frames": 0,
+            "first_reader_differences": [],
+            "source_psg_difference_frames": 0,
+            "first_psg_differences": [],
+            "intro_state_difference_frames": 0,
+            "first_intro_differences": []
+          }
+        ],
+        "audio_fields": [
+          [
+            "sound_ram",
+            400
+          ],
+          [
+            "sound_source_de",
+            2
+          ],
+          [
+            "sound_source_work",
+            8
+          ],
+          [
+            "sound_effect_request",
+            2
+          ],
+          [
+            "sound_request",
+            2
+          ],
+          [
+            "sound_request_delay",
+            2
+          ],
+          [
+            "sound_current_track",
+            2
+          ],
+          [
+            "sound_track_started_frame",
+            2
+          ]
+        ],
+        "intro_fields": [
+          "intro_logic_clock",
+          "intro_counter",
+          "intro_line",
+          "intro_timer",
+          "intro_scene"
+        ],
+        "ram_writes": 0,
+        "sram_imports": 0,
+        "md_sha256": "1ec6363e0f0dc7eec570255cd3ab9dc4239cb33ad266e44d10fa31d33c53c243",
+        "baseline_sha256": "d3ea2a83ea24ed8a0d3c9857f9fbe70d000a4f73358452c1887f40e78966c56e",
+        "scope": "Natural no-input cold opening only. Every-frame native reader state/work/DE/requests/track compared to production; exposed PSG compared directly to source. Separate video checks required."
+      },
+      "video": {
+        "ntsc": {
+          "totals": {
+            "baseline_source_differences": 147429,
+            "candidate_source_differences": 4839961,
+            "baseline_exact_frames": 13636,
+            "candidate_exact_frames": 12839
+          },
+          "improved_pixels": 2938,
+          "degraded_pixels": 4695470,
+          "no_source_pixel_regression": false
+        },
+        "pal": {
+          "totals": {
+            "baseline_source_differences": 124148,
+            "candidate_source_differences": 124126,
+            "baseline_exact_frames": 13682,
+            "candidate_exact_frames": 13682
+          },
+          "improved_pixels": 158,
+          "degraded_pixels": 136,
+          "no_source_pixel_regression": false
+        }
+      },
+      "promoted": false
+    },
+    {
+      "number": 5,
+      "hypothesis": {
+        "diagnostic_only": true,
+        "promoted": false,
+        "prefetch": false,
+        "native_68000": true,
+        "frame_overrides": false,
+        "ram_writes": 0,
+        "sram_imports": 0,
+        "foreground_callback": true,
+        "lean": true,
+        "request": "Explicit clock-only or clock+F32 request before the wait/first reveal slice.",
+        "acknowledgement": "Native IRQ after video and audio; prepares SAT/palette for following IRQ; foreground awaits acknowledgement.",
+        "limits": "Source F32 executes in foreground after source IRQ return. IRQ-tail variants relocate its work; foreground variants acknowledge and publish readiness in IRQ, then execute in foreground. Not an instruction-phase equivalence claim."
+      },
+      "state": {
+        "diagnostic_only": true,
+        "promoted": false,
+        "cases": [
+          {
+            "region": "ntsc",
+            "frames": 14000,
+            "runtime_errors": 0,
+            "first_errors": [],
+            "counters": {
+              "pending": 1
+            },
+            "reader_state_difference_frames": 0,
+            "first_reader_differences": [],
+            "source_psg_difference_frames": 0,
+            "first_psg_differences": [],
+            "intro_state_difference_frames": 0,
+            "first_intro_differences": []
+          },
+          {
+            "region": "pal",
+            "frames": 14000,
+            "runtime_errors": 0,
+            "first_errors": [],
+            "counters": {
+              "pending": 1
+            },
+            "reader_state_difference_frames": 0,
+            "first_reader_differences": [],
+            "source_psg_difference_frames": 0,
+            "first_psg_differences": [],
+            "intro_state_difference_frames": 0,
+            "first_intro_differences": []
+          }
+        ],
+        "audio_fields": [
+          [
+            "sound_ram",
+            400
+          ],
+          [
+            "sound_source_de",
+            2
+          ],
+          [
+            "sound_source_work",
+            8
+          ],
+          [
+            "sound_effect_request",
+            2
+          ],
+          [
+            "sound_request",
+            2
+          ],
+          [
+            "sound_request_delay",
+            2
+          ],
+          [
+            "sound_current_track",
+            2
+          ],
+          [
+            "sound_track_started_frame",
+            2
+          ]
+        ],
+        "intro_fields": [
+          "intro_logic_clock",
+          "intro_counter",
+          "intro_line",
+          "intro_timer",
+          "intro_scene"
+        ],
+        "ram_writes": 0,
+        "sram_imports": 0,
+        "md_sha256": "5608a9a043758f725abab8be9defa555b42558edc7d13396858fa7224adda441",
+        "baseline_sha256": "d3ea2a83ea24ed8a0d3c9857f9fbe70d000a4f73358452c1887f40e78966c56e",
+        "scope": "Natural no-input cold opening only. Every-frame native reader state/work/DE/requests/track compared to production; exposed PSG compared directly to source. Separate video checks required."
+      },
+      "video": {
+        "ntsc": {
+          "totals": {
+            "baseline_source_differences": 147429,
+            "candidate_source_differences": 147548,
+            "baseline_exact_frames": 13636,
+            "candidate_exact_frames": 13636
+          },
+          "improved_pixels": 45,
+          "degraded_pixels": 164,
+          "no_source_pixel_regression": false
+        },
+        "pal": {
+          "totals": {
+            "baseline_source_differences": 124148,
+            "candidate_source_differences": 124090,
+            "baseline_exact_frames": 13682,
+            "candidate_exact_frames": 13682
+          },
+          "improved_pixels": 158,
+          "degraded_pixels": 100,
+          "no_source_pixel_regression": false
+        }
+      },
+      "promoted": false
+    }
+  ],
+  "disposition": "Reject all five integrations. Moving native F32 work into IRQ tail is not equivalent to the source foreground callback after IRQ return. Foreground callbacks with explicit IRQ acknowledgement preserve all five sampled intro fields but still change raster pixels. Speculative preparation remains unsafe for NTSC video in this integration.",
+  "strongest_preserved_checks": "Variants03/05: every frame of two14000-frame region runs has identical five intro fields and420 bytes of reader/work/DE/requests/track data to V319, and all eight exposed PSG values identical to SMS. These scoped equalities do not prove physical publication timing.",
+  "end_pending_request": "All runs end while waiting for the following full IRQ; instrumented variants have requests=acks+1 and pending2. Lean variant has pending1. This is not an observed stuck wait.",
+  "next_action": "Use continuous SourceClock instruction boundaries and dynamic SourceIrqContext audio work for reveal/loader scheduling. Existing source_wait/source_wait_complete already model B95 request and acknowledgement. Model F09/F32 continuation and F21 V-counter polling there, then connect native publication with measured preparation deadlines. Avoid frame-count/counter overrides or further arbitrary IRQ-tail relocation.",
+  "limits": [
+    "No production ROM/source modifications; private tests only.",
+    "No interactive, SRAM, boss, PCM or real-hardware test of these rejected integrations.",
+    "Five intro fields are logical clock, actor counter, text line, text timer, scene. All other RAM and every actual actor slot were not compared by this checker.",
+    "Compact speculative channel capacity remains experimental; full-size native IRQ fallback retained."
+  ],
+  "ram_writes": 0,
+  "sram_imports": 0,
+  "archive_manifest": "analysis/v319-intro-irq-ack/manifest.json"
+}

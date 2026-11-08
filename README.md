@@ -94,6 +94,14 @@ sur deux boucles, avec encore des différences de frame. Le placement de
 ces callbacks doit être rendu indépendant du coût du lecteur audio natif
 avant d’intégrer le nouvel ordonnanceur sonore.
 
+Les [essais d’acquittement explicite de l’IRQ](analysis/v319_intro_irq_ack_report.json)
+confirment aussi que déplacer le callback dans l’IRQ ne reproduit pas la
+continuation SMS. Son exécution au premier plan préserve les cinq champs
+d’état d’intro contrôlés et les 420 octets d’état audio suivis, mais laisse
+des régressions de pixels. Ces cinq variantes restent privées et écartées.
+L’étape suivante est l’ordonnancement continu avec `SourceClock` et le coût
+réel du lecteur, en réutilisant le modèle existant de l’attente SMS `0B95`.
+
 ## Sources et compilation
 
 Les fichiers racine `gaw-megadrive.bin` et `gaw-title-megadrive.bin` contiennent

@@ -6,6 +6,49 @@ le README et les rapports cités.
 
 ## Suivi courant — V319, 8 novembre 2026
 
+DERNIER ESSAI : `analysis/v319_intro_irq_ack_report.json`, archive
+`analysis/v319-intro-irq-ack`. Cinq variantes privées, TOUTES ÉCARTÉES.
+01demande complète explicite et callback dans IRQ après son ;02idem avec
+prefetch02. 03IRQ incrémente clock et signale ready, F32 exécuté au premier
+plan après retour ;04idem+prefetch02 ;05version03 allégée sans compteurs,
+requête binaire et choix du callback conservé par l’appelant.
+Toutes :420octets reader/DE/T-M1/effet/requêtes/track identiques V319 à
+chaque frame, états PSG source exacts14000NTSC+14000PAL, zéro erreur monitorée.
+PAL cinq champs intro exacts pour toutes. NTSC03/05 cinq champs exacts aussi
+(clock/counter/line/timer/scene seulement, pas toute la RAM ou tous les acteurs).
+NTSC01 première divergence8517,02/04dès1784. Requests=acks+1 à la fin des
+variantes instrumentées, pending2 ;05pending1. Normal :attente IRQ suivante,
+pas preuve d'un blocage. Tous les processus sont terminal0.
+
+Vidéo NTSC diff pixelsV319147429 →01:1709395,02:16050450,03:147438,
+04:4839961,05:147548. PAL124148→124070/124126/124122/124126/124090.
+Même03 reste75pixels améliorés/84dégradés enNTSC ;05:45/164. Pas de
+promotion pour une simple égalité d’états fin de frame ; le raster change.
+Callback F32 doit rester foreground après B95. Réexécuter arbitrairement
+le callback dans la queue IRQ ne reproduit pas le source. Le simple booléen
+hardwareIRQ n'est pas suffisant : il manque l'ordonnancement source continu.
+
+PROCHAINE ÉTAPE CONCRÈTE : réutiliser source_clock(.h/.c),source_irq_context,
+source_wait,source_wait_restore. Ces modèles natifs comptent instructions,
+R/M1,DI/EI/attente B95 et IRQ avec le VRAI coût reader, pas une moyenne.
+Modéliser la continuation F09/F32/F21 au-dessus, puis les copies E8B..E9D
+et la publication vidéo. SourceF32 est après wait_restore, avec PUSH/POP
+et callback à coûts variables ; F21 poll IN/CP70/JRC/CP80/JRNC/RET doit
+garder ses vrais points de lecture. SourceIRQ audio-only décrémente aussi
+C030 (0205..020C), donc garder le timer courant chaque IRQ. Aucun besoin
+de changer globalement musique/compensation pour réparer les callbacks.
+Anciennes approximations reveal count-3600 et F09request physique seul ne
+suffisent pas. Ne pas refaire une sixième variante de déplacement IRQ sans
+modèle source. Sources de production/ROM restées byte-identiques au HEAD
+précédent ; V319 publique inchangée, aucun nouveau binaire final annoncé.
+
+Scripts prepare_v319_intro_irq_ack.py (génère01..05, option06 non construite),
+measure_v319_intro_irq_ack.py,archive_v319_intro_irq_ack.py versionnés.
+Archivage/relecture :2834références,215755522octets générés supprimés,
+185881941nets libérés. Sources privées conservées ; ROM/symboles restituables
+depuis gzip. Ne pas relancer dans les dossiers déjà archivés, aucun ancien
+handle de build ou de comparaison à attendre.
+
 NOUVEAU : préparation audio foreground testée et ÉCARTÉE, puis observateur
 direct IRQ/F32 source. Rapports `analysis/v319_audio_prefetch_report.json`
 et `analysis/v319_intro_irq_trace_report.json`, archives `v319-audio-prefetch`
