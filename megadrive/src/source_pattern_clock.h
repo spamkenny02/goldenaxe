@@ -37,4 +37,8 @@ u8 source_graphics_prefix_changed(SourceClock *clock,SourceIrqContext *context,u
  * source/end address and live C031/C032 with the original plane-end writes. */
 u8 source_pattern_decode(SourceClock *clock,SourceIrqContext *context,
  const u8 **source,u8 *destination,u16 address,u16 *end_address);
+/* Optional immutable ROM-command prefix plan, same instruction/IRQ contract.
+ * Null plan follows the ordinary decoder. Plan bytes must match the stream. */
+u8 source_pattern_decode_planned(SourceClock *clock,SourceIrqContext *context,
+ const u8 **source,u8 *destination,u16 address,u16 *end_address,const SourcePatternPlan *plan);
 #endif

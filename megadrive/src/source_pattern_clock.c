@@ -181,12 +181,15 @@ static u8 patterns032a(SourceClock *clock,SourceIrqContext *context,
     *source=src;if(end_address) *end_address=cursor-3;return 1;
 }
 
-u8 source_pattern_decode(SourceClock *clock,SourceIrqContext *context,
- const u8 **source,u8 *destination,u16 address,u16 *end_address)
+u8 source_pattern_decode_planned(SourceClock *clock,SourceIrqContext *context,
+ const u8 **source,u8 *destination,u16 address,u16 *end_address,const SourcePatternPlan *plan)
 {
  if(!clock || !context || !context->ram || !source || !*source || !destination || !end_address) return 0;
- return patterns032a(clock,context,source,destination,0,address,end_address);
+ return patterns032a(clock,context,source,destination,plan,address,end_address);
 }
+u8 source_pattern_decode(SourceClock *clock,SourceIrqContext *context,
+ const u8 **source,u8 *destination,u16 address,u16 *end_address)
+{return source_pattern_decode_planned(clock,context,source,destination,address,end_address,0);}
 
 u8 source_graphics_prefix_changed(SourceClock *clock,SourceIrqContext *context,u16 room,
                                  const u8 *patterns,u8 *destination,const u8 **end,const SourcePatternPlan *plan)

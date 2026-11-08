@@ -6,6 +6,7 @@ p=argparse.ArgumentParser();p.add_argument('--source-work',required=True);p.add_
 source=(root/'validation'/a.source_work).resolve();out=(root/'validation'/a.out_name).resolve()
 report=json.loads((source/'report.json').read_bytes())
 for name,digest in report['native_sources'].items():assert hashlib.sha256((root/'megadrive/src'/(name+'.c')).read_bytes()).hexdigest()==digest
+for name,digest in report.get('native_assets',{}).items():assert hashlib.sha256((root/'megadrive/src'/name).read_bytes()).hexdigest()==digest
 assert source.is_relative_to(root/'validation') and out.is_relative_to(root/'validation') and not out.exists();out.mkdir()
 s=(source/'wrapper.c').read_text();needle='scene_vram,sequence_callback,&sequence_data,reveal_sink,0,&sequence)';assert needle in s
 s=s.replace(needle,'scene_vram,sequence_callback,&sequence_data,0,0,&sequence)')

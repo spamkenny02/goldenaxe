@@ -148,10 +148,18 @@ préserve chaque écriture et son timing. Le [chargement complet E50..E72](analy
 est maintenant composé et vérifié : graphismes et carte en mémoire vidéo,
 états suivis et horloge source correspondent sur les dix chargements capturés,
 puis vingt exécutions 68000. Le décodeur optimisé conserve aussi les cas de
-la banque ROM 7. Le profilage sans comparaison de chaque écriture réduit
-le coût natif d’environ 20 %, mais celui-ci dépasse encore le temps disponible
-sur la SMS. L’effacement et les transferts sont les prochains postes à optimiser.
-L’intégration à l’intro publiée, le statut VDP vivant et la livraison vidéo/son
+la banque ROM 7. Les [optimisations des transferts, copies et plans ROM](analysis/v319_intro_runs_report.json)
+font désormais tenir le helper dans la durée des cas SMS correspondants :
+
+| Région | Helper MD avant | Helper MD après | Durée SMS |
+| --- | ---: | ---: | ---: |
+| NTSC | 98–99 frames | 19–22 frames | 24–27 frames |
+| PAL | 81–83 frames | 15–18 frames | 21–23 frames |
+
+Ces mesures ont une résolution d’une frame, désactivent les comparaisons de
+chaque écriture et excluent la livraison vidéo/PSG sur le matériel. Tous les
+états finaux restent contrôlés ; les écritures sont vérifiées séparément.
+L’intégration à l’intro publiée, le statut VDP vivant et les délais réels
 sur Mega Drive restent à finaliser.
 Aucune de ces nouvelles routines ne pilote encore l’intro publiée.
 La recompilation complète conserve exactement la V319.

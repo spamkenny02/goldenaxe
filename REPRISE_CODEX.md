@@ -6,6 +6,69 @@ le README et les rapports cités.
 
 ## Suivi courant — V319, 8 novembre 2026
 
+DERNIÈRE ÉTAPE : optimisation source_intro_video/scene/map et plans032A,
+rapport `analysis/v319_intro_runs_report.json`, archive `analysis/v319-intro-runs`.
+GATE CPU DU HELPER OBSERVÉ SATISFAIT pour les10cas source/région correspondante,
+avec1frame ajoutée par prudence à la mesure. Ce n’est PAS une preuve de
+livraison vidéo/PSG réelle ni une certification du jeu sur matériel.
+NTSCsame-region :98..99 ->19..22framesMD,source24.27..26.95 ;PAL81..83 ->
+15..18,source21.48..22.96. Marge minimale conservative1.31frameNTSC et
+2.48PAL. Le reste du budget devra absorber sortiesMD et statutVDP vivant.
+
+SourceIntroVideoRun nouveau :kindCLEAR/TRANSFER,elapsed/raster/period,
+address/count,constbytes. run_sink optionnel ajouté APRÈS out_sink dans
+prepare/transfer/clear (puis sink_user,output). Legacy appelle run_sink=0.
+CLEAR décrit3OUT/byte offsets30/45/101T,espacement124T ; dernier119T même
+outputs. TRANSFER décritOUTBE16T,espacement32T. Descripteurs seulement
+avantpossibleIRQ ; appliquer les effets vidéo avant retour. Les bytes de
+transfert sont un pointeurRAM vivant : COPIER ou garantir sa durée de vie
+si livraison physique différée. Aucune avanceClock/mutationRAM par sink.
+
+SceneRun applique les fills/memcpy rapides quand aucun observateurOUT.
+Avecobservateur, développe par scene_out, chaque écriture voit le miroir
+au bon état intermédiaire. Chemins comparés aux mêmes états/horloge/VRAM
+source. Ne pas extrapoler une visibilité GPU par ligne depuis le seul
+miroir final : futur statutVDP doit consommer les temps de ces runs.
+
+Optimisations additionnelles :OUTI/NOP/JR nonterminal32T/4M1 ;LDIR forward
+21T/2M1 jusqu’àIRQ/dernier16T, pas memcpy avec chevauchementD600/D602.
+7357 LDI/DJNZ29T/3M1 nonterminal copie disjointe. BD3 commandes complètes
+literal52+39N,increment58+30N ;BFE literal52+57N-carries,repeat51+51N-carries,
+avecM1exacts. Seulement source_clock_block stable avantVINT, chemins
+instruction conservés aux frontières. Profil mapdecode10 ->1..2framesNTSC,
+clear31..32 ->2..3,place5 ->1 ;prepare4..7,patterns4..7,transfer2..5.
+
+Plans intro immuables générés par tools/generate_intro_pattern_plans.py,
+header source_intro_pattern_plans_generated.h,rapport
+analysis/intro_pattern_plan_assets_report.json. Flux9D74/A659 bank6,
+chaquecommande comparée à Trace/pattern_rle. Prefixes T/M1 etdataROM,
+pas de phases/frames capturées. Plans valides pour adresseVDP4000/alignment
+original ; ne pas réutiliser leurs coûts pour une autre base de page.
+source_pattern_decode_planned accepte plan ouNULL ;fonctionordinaire reste.
+HeadergénéréSHAépinglé dans rapports etbuilderprofile. Fichierspattern_clock
+C/H normalisésLF lors de l’ajout de l’API,codecommun validé par rebuild.
+
+Work final scene-runs04,profile scene-throughput05,map-runs01(bank7reg).
+10vecteursE50,20exécutions68000,84520OUTmonitoredsource/169040compilés ;
+états15081bytes+400reader,horloge etmiroirs exacts. Regressionsprepare14,
+clear14,transfer28,mapdecode14vecteurs avec2régionscibles, toutes passent.
+Prototypes intermédiairesruns01..03/throughput03..04/place-runs01 archivés.
+Revalidate scripts all/final/budget conservés ;ne pas relancer dans dossiers
+existants gelés. build_v319_intro_scene_profile.py réutilisable en nouveauwork.
+
+Handles53819/64834/90974/32423/99086/80234/95497/53291/74344/30144/66453
+terminaux0. Rebuild03 exactV319 d3ea2a83/DA29 ;ROMpublique inchangée.
+Archive relue :134496634bytes générés supprimés,94805973netslibérés.
+Aucune nouvelle ROM : nouveaux modules restent non sélectionnés.
+
+PROCHAINE PRIORITÉ : lier statutVDP des sprites vivant et mémoirecompacte,
+puis sortiesvidéo/PSG aux vrais délaisMD. Définir amorçage de SourceClock
+sans importer d’état source ni phases de frames enregistrées. Réutiliser
+SourceIrqContext.video pour effetsIRQ nécessaires. Patterns032A n’exposent
+pas encore OUTindividuels ; considérer leurs temps pour statutGPUparligne.
+Tester l’intro visible et les deadlines en exécution réelle avant V320.
+Les paragraphes suivants sont historiques,notamment anciengapCPU désormaisréduit.
+
 DERNIÈRE ÉTAPE : `source_intro_scene.c/.h`, rapport
 `analysis/v319_intro_scene_report.json`, archive `analysis/v319-intro-scene`.
 Composition E50..E72 en un SourceClock :setDCEC,EA5,032A,E2B,BD3/BFE,

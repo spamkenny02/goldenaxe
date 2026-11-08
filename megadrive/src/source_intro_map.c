@@ -15,6 +15,20 @@ u8 source_intro_map_decode(SourceClock *clock,SourceIrqContext *context,const u8
     S(11,1);S(10,1);
     for(;;)
     {
+        /* A whole immutable command may commit at once only before VINT.
+         * Commands crossing any IRQ/first/EI boundary use the detailed path. */
+        if(cursor>=0x8000 && cursor<=0xbfff && (command=map_bank[cursor-0x8000])!=0)
+        {
+            u16 amount=command&127,packed,ticks,fetches;u8 repeated=!(command&128);
+            if(!amount) amount=256;
+            packed=1+(repeated?1:amount);ticks=repeated?58+amount*30:52+amount*39;fetches=repeated?9+amount*4:8+amount*5;
+            if((u32)cursor+packed<=0xc000 && (u32)scratch+amount<=0xd600 && source_clock_block(clock,ticks,fetches))
+            {
+                if(repeated) {u8 byte=map_bank[cursor+1-0x8000];for(u16 k=0;k<amount;k++) context->full_ram[scratch-0xc000+k]=byte++;}
+                else __builtin_memcpy(context->full_ram+scratch-0xc000,map_bank+cursor+1-0x8000,amount);
+                cursor+=packed;scratch+=amount;continue;
+            }
+        }
         S(7,1);ROM(cursor,command);S(6,1);cursor++;S(4,1);S(command?7:12,1);
         if(!command) break;
         S(10,1);literal=command&128;count=command&127;if(!count) count=256;
@@ -50,6 +64,22 @@ u8 source_intro_map_decode(SourceClock *clock,SourceIrqContext *context,const u8
         write=destination+plane;S(11,1);S(11,1);
         for(;;)
         {
+            if(read<scratch && (command=GET(read))!=0 && write>=0xc900 && write<0xd000)
+            {
+                u16 amount=command&127,packed,carries,ticks,fetches;u8 repeated=!(command&128);
+                if(!amount) amount=256;
+                packed=1+(repeated?1:amount);carries=((write&255)+amount*2)>>8;
+                ticks=(repeated?51+amount*51:52+amount*57)-carries;
+                fetches=(repeated?8+amount*7:8+amount*8)+carries;
+                if((u32)read+packed<=scratch && (u32)write+(u32)(amount-1)*2<0xd000 && source_clock_block(clock,ticks,fetches))
+                {
+                    u8 *destination_bytes=context->full_ram+write-0xc000;
+                    const u8 *source_bytes=context->full_ram+read+1-0xc000;
+                    if(repeated) {u8 byte=*source_bytes;for(u16 k=0;k<amount;k++) destination_bytes[k*2]=byte;}
+                    else for(u16 k=0;k<amount;k++) destination_bytes[k*2]=source_bytes[k];
+                    read+=packed;write+=amount*2;output->decoded_bytes+=amount;continue;
+                }
+            }
             if(read>=scratch) return 0;
             S(7,1);command=GET(read);S(4,1);S(command?7:12,1);
             if(!command) break;
@@ -100,6 +130,17 @@ u8 source_intro_map_place(SourceClock *clock,SourceIrqContext *context,u16 sourc
         S(11,1);S(11,1);S(4,1);
         for(n=0;n<width;n++)
         {
+            u16 limit=width-n-1,batch;
+            if(limit && read>=0xc900 && (u32)read+limit<=0xd000 &&
+               (u32)base+n>=0xd600 && (u32)base+n+limit<=0xd900)
+            {
+                batch=source_clock_repeat(clock,29,3,limit);
+                if(batch)
+                {
+                    __builtin_memcpy(context->full_ram+base+n-0xc000,context->full_ram+read-0xc000,batch);
+                    read+=batch;output->decoded_bytes+=batch;n+=batch-1;continue;
+                }
+            }
             if(read<0xc900 || read>=0xd000 || (u32)base+n<0xd600 || (u32)base+n>=0xd900) return 0;
             S(16,2);value=GET(read);PUT(base+n,value);read++;output->decoded_bytes++;
             S(n+1<width?13:8,1);

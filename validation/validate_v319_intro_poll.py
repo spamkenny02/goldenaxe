@@ -207,7 +207,7 @@ if a.transfer:
     wrapper=wrapper.replace('#include "source_intro_reveal.h"','#include "source_intro_video.h"')
     wrapper=wrapper.replace('SourceIntroRevealSequenceOutput sequence;', 'SourceIntroMapOutput sequence;')
     wrapper=wrapper.replace('source_intro_reveal_sequence(&clock,&context,ram[1184],sequence_callback,&sequence_data,reveal_sink,0,&sequence)',
-        'source_intro_map_transfer(&clock,&context,sequence_callback,&sequence_data,reveal_sink,0,&sequence)')
+        'source_intro_map_transfer(&clock,&context,sequence_callback,&sequence_data,reveal_sink,0,0,&sequence)')
     wrapper=wrapper.replace('ram[411]=sequence.last.address;ram[412]=sequence.last.address>>8;ram[413]=sequence.last.step;ram[414]=sequence.last.step>>8;ram[415]=sequence.last.value;', '')
     wrapper=wrapper.replace('ram[1184]=sequence.mask;result.below=sequence.passes;result.above=sequence.writes;result.counter=sequence.mask;result.skip=sequence.skip;',
         'result.below=sequence.writes;result.skip=sequence.skip;')
@@ -219,8 +219,8 @@ if a.transfer:
         'for(u16 n=0;n<768;n++) ram[1192+n]=actor_full_ram[0x1600+n];\n if(reveal_event_position!=reveal_event_count) return 0;')
     (out/'wrapper.c').write_text(wrapper)
 if a.prepare:
-    wrapper=wrapper.replace('source_intro_map_transfer(&clock,&context,sequence_callback,&sequence_data,reveal_sink,0,&sequence)',
-        'source_intro_map_prepare(&clock,&context,ram[1184]|((u16)ram[1185]<<8),sequence_callback,&sequence_data,reveal_sink,0,&sequence)')
+    wrapper=wrapper.replace('source_intro_map_transfer(&clock,&context,sequence_callback,&sequence_data,reveal_sink,0,0,&sequence)',
+        'source_intro_map_prepare(&clock,&context,ram[1184]|((u16)ram[1185]<<8),sequence_callback,&sequence_data,reveal_sink,0,0,&sequence)')
     wrapper=wrapper.replace('out[0]=clock.raster;',
         'ram[1184]=sequence.palette_end;ram[1185]=sequence.palette_end>>8;\n out[0]=clock.raster;')
     (out/'wrapper.c').write_text(wrapper)
@@ -231,7 +231,7 @@ if a.map:
     wrapper=wrapper.replace('static u8 actor_full_ram[8192];','static u8 actor_full_ram[8192];\nstatic const u8 map_bank7[16384]={'+','.join(map(str,bank7))+'};')
     call=('source_intro_map_decode(&clock,&context,ram[408]==6?bank:ram[408]==7?map_bank7:0,ram[1184]|((u16)ram[1185]<<8),ram[1186]|((u16)ram[1187]<<8),&sequence)' if a.map=='decode' else
           'source_intro_map_place(&clock,&context,ram[1184]|((u16)ram[1185]<<8),ram[1186]|((u16)ram[1187]<<8),ram[1189],ram[1188],&sequence)')
-    wrapper=wrapper.replace('source_intro_map_transfer(&clock,&context,sequence_callback,&sequence_data,reveal_sink,0,&sequence)',call)
+    wrapper=wrapper.replace('source_intro_map_transfer(&clock,&context,sequence_callback,&sequence_data,reveal_sink,0,0,&sequence)',call)
     wrapper=wrapper.replace('result.below=sequence.writes;result.skip=sequence.skip;',
         'result.below=sequence.decoded_bytes;result.above=sequence.scratch_bytes;')
     wrapper=wrapper.replace('irq_status_count=ram[1960]', 'irq_status_count=ram[5032]')
@@ -251,8 +251,8 @@ if a.map:
     (out/'wrapper.c').write_text(wrapper)
 if a.clear:
     wrapper=wrapper.replace('SourceIntroMapOutput sequence;', 'SourceIntroMapOutput sequence={0};')
-    wrapper=wrapper.replace('source_intro_map_transfer(&clock,&context,sequence_callback,&sequence_data,reveal_sink,0,&sequence)',
-        'source_intro_plane_clear(&clock,&context,reveal_sink,0,&sequence.writes)')
+    wrapper=wrapper.replace('source_intro_map_transfer(&clock,&context,sequence_callback,&sequence_data,reveal_sink,0,0,&sequence)',
+        'source_intro_plane_clear(&clock,&context,reveal_sink,0,0,&sequence.writes)')
     wrapper=wrapper.replace('context.input.lines=phase[3];','(void)sequence_data;(void)sequence_callback;\n context.input.lines=phase[3];')
     (out/'wrapper.c').write_text(wrapper)
 if a.scene:
@@ -414,6 +414,7 @@ for region in ('ntsc', 'pal'):
 report = dict(passed=True, diagnostic_only=True, profile=a.profile, fire=a.fire, actors=a.actors,
     irq_status=a.irq_status,init=a.init,reveal=a.reveal,sequence=a.sequence,skip=a.skip,transfer=a.transfer,prepare=a.prepare,map=a.map,clear=a.clear,scene=a.scene,production_rom_changed=False, cases=results,
     core_sha256=sha(core.read_bytes()), source_sha256=sha(image),
+    native_assets=({'source_intro_pattern_plans_generated.h':sha((root/'megadrive/src/source_intro_pattern_plans_generated.h').read_bytes())} if a.scene else {}),
     native_sources={name: sha((root / 'megadrive/src' / (name + '.c')).read_bytes()) for name in modules},
     verified=['Original natural entry/return wall time, raster, '+('initial HL, ' if a.init else 'polls, ')+
               'R, IFF/EI/pending,336 IRQ RAM and400 reader bytes.'+
