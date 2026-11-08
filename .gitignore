@@ -29,3 +29,9 @@ __pycache__/
 # Full gameplay movies stay local; version capture recipes,reports and previews.
 /videos/**/*.mp4
 /videos/**/*.wav
+
+# Generated local video QA; immutable copies live in the evidence archive.
+/videos/**/qa-*.jpg
+/videos/**/*.log
+/videos/**/segments.txt
+/videos/**/video-packet-check.txt
