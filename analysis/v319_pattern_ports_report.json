@@ -1,0 +1,376 @@
+{
+  "passed": true,
+  "public_version": 319,
+  "production_rom_changed": false,
+  "production_rebuild_byte_identical": true,
+  "production_rom_sha256": "d3ea2a83ea24ed8a0d3c9857f9fbe70d000a4f73358452c1887f40e78966c56e",
+  "implementation": "source_pattern_decode_ports retains the native032A instruction/IRQ clock and decoded mirror while publishing every BF/BF/BE write at completed OUT time. Planned ROM windows,whole commands and repeated-byte batches expand exact dates; scalar fallback emits after each actual native instruction. Sink failure is fatal.",
+  "host": {
+    "passed": true,
+    "host_cases": 1054,
+    "modes_per_case": 3,
+    "compiled_asset_cases": 24,
+    "source_matches": [
+      {
+        "region": "ntsc",
+        "source_write_index": 22130,
+        "events": 18528,
+        "original_bytes_exact": true
+      },
+      {
+        "region": "pal",
+        "source_write_index": 22130,
+        "events": 18528,
+        "original_bytes_exact": true
+      }
+    ],
+    "event_digest": "800c69cc0f0d289481a34128a2924187cb47cd7bc2f4c79e60e8ef142c40d03c",
+    "source_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+    "native_sha256": "0a465ab435eba7d93a0e7b00a3f062e63e15771112a22cc8ce51c80dbbfb54bb",
+    "limits": [
+      "Instruction-only scalar variant shares semantic032A logic but disables every batching path. Independent original corpus currently checks port/value order for first intro asset, not original032A absolute output dates.",
+      "Synthetic82T/8M1 IRQ callback exercises native scheduling boundaries; no real IRQ audio/video publication in this test.",
+      "No physical MD timing/PCM or activated ROM claim."
+    ]
+  },
+  "compiled68000": {
+    "passed": true,
+    "compiled_cases": 48,
+    "compiled_outputs": 785664,
+    "partitions": [
+      {
+        "passed": true,
+        "plan": 1,
+        "source_lines": 262,
+        "cases": 6,
+        "results": [
+          {
+            "region": "ntsc",
+            "pattern_outputs": 111168,
+            "pattern_errors": 0,
+            "pattern_cases": 6,
+            "pattern_done": 1,
+            "frame": 1039
+          },
+          {
+            "region": "pal",
+            "pattern_outputs": 111168,
+            "pattern_errors": 0,
+            "pattern_cases": 6,
+            "pattern_done": 1,
+            "frame": 870
+          }
+        ],
+        "rom_sha256": "4dc071708681a00886b6d329ecedac7b5023bc864b8db09ee3d4e146daaa74a1"
+      },
+      {
+        "passed": true,
+        "plan": 1,
+        "source_lines": 313,
+        "cases": 6,
+        "results": [
+          {
+            "region": "ntsc",
+            "pattern_outputs": 111168,
+            "pattern_errors": 0,
+            "pattern_cases": 6,
+            "pattern_done": 1,
+            "frame": 1036
+          },
+          {
+            "region": "pal",
+            "pattern_outputs": 111168,
+            "pattern_errors": 0,
+            "pattern_cases": 6,
+            "pattern_done": 1,
+            "frame": 867
+          }
+        ],
+        "rom_sha256": "09637f06ddc362d80a5ca79fc9e255517c57b1024e9d98c47a395f08ab35441c"
+      },
+      {
+        "passed": true,
+        "plan": 2,
+        "source_lines": 262,
+        "cases": 6,
+        "results": [
+          {
+            "region": "ntsc",
+            "pattern_outputs": 85248,
+            "pattern_errors": 0,
+            "pattern_cases": 6,
+            "pattern_done": 1,
+            "frame": 863
+          },
+          {
+            "region": "pal",
+            "pattern_outputs": 85248,
+            "pattern_errors": 0,
+            "pattern_cases": 6,
+            "pattern_done": 1,
+            "frame": 723
+          }
+        ],
+        "rom_sha256": "345e35da80028453475d2c8d6e61ef413f19b6879b8adca4c155e746ec5915f7"
+      },
+      {
+        "passed": true,
+        "plan": 2,
+        "source_lines": 313,
+        "cases": 6,
+        "results": [
+          {
+            "region": "ntsc",
+            "pattern_outputs": 85248,
+            "pattern_errors": 0,
+            "pattern_cases": 6,
+            "pattern_done": 1,
+            "frame": 860
+          },
+          {
+            "region": "pal",
+            "pattern_outputs": 85248,
+            "pattern_errors": 0,
+            "pattern_cases": 6,
+            "pattern_done": 1,
+            "frame": 720
+          }
+        ],
+        "rom_sha256": "69c6488759bd82f83a437770afe4de246035dce8e771a01f5597b9fda9efa9b3"
+      }
+    ],
+    "limits": [
+      "Exact host scalar-checked OUT dates on actual68000; synthetic82T IRQ workload. No original absolute032A timestamp certificate or physical output."
+    ]
+  },
+  "native_owned_vdp_binding": {
+    "passed": true,
+    "cases": 24,
+    "outputs": 392832,
+    "checks": [
+      {
+        "index": 515,
+        "lines": 262,
+        "raster": 0,
+        "outputs": 18528,
+        "state_exact": true,
+        "full_vram_exact": true
+      },
+      {
+        "index": 515,
+        "lines": 262,
+        "raster": 660059,
+        "outputs": 18528,
+        "state_exact": true,
+        "full_vram_exact": true
+      },
+      {
+        "index": 515,
+        "lines": 262,
+        "raster": 659060,
+        "outputs": 18528,
+        "state_exact": true,
+        "full_vram_exact": true
+      },
+      {
+        "index": 515,
+        "lines": 262,
+        "raster": 896039,
+        "outputs": 18528,
+        "state_exact": true,
+        "full_vram_exact": true
+      },
+      {
+        "index": 515,
+        "lines": 262,
+        "raster": 660060,
+        "outputs": 18528,
+        "state_exact": true,
+        "full_vram_exact": true
+      },
+      {
+        "index": 515,
+        "lines": 262,
+        "raster": 660061,
+        "outputs": 18528,
+        "state_exact": true,
+        "full_vram_exact": true
+      },
+      {
+        "index": 515,
+        "lines": 313,
+        "raster": 0,
+        "outputs": 18528,
+        "state_exact": true,
+        "full_vram_exact": true
+      },
+      {
+        "index": 515,
+        "lines": 313,
+        "raster": 660059,
+        "outputs": 18528,
+        "state_exact": true,
+        "full_vram_exact": true
+      },
+      {
+        "index": 515,
+        "lines": 313,
+        "raster": 659060,
+        "outputs": 18528,
+        "state_exact": true,
+        "full_vram_exact": true
+      },
+      {
+        "index": 515,
+        "lines": 313,
+        "raster": 1070459,
+        "outputs": 18528,
+        "state_exact": true,
+        "full_vram_exact": true
+      },
+      {
+        "index": 515,
+        "lines": 313,
+        "raster": 660060,
+        "outputs": 18528,
+        "state_exact": true,
+        "full_vram_exact": true
+      },
+      {
+        "index": 515,
+        "lines": 313,
+        "raster": 660061,
+        "outputs": 18528,
+        "state_exact": true,
+        "full_vram_exact": true
+      },
+      {
+        "index": 516,
+        "lines": 262,
+        "raster": 0,
+        "outputs": 14208,
+        "state_exact": true,
+        "full_vram_exact": true
+      },
+      {
+        "index": 516,
+        "lines": 262,
+        "raster": 660059,
+        "outputs": 14208,
+        "state_exact": true,
+        "full_vram_exact": true
+      },
+      {
+        "index": 516,
+        "lines": 262,
+        "raster": 659060,
+        "outputs": 14208,
+        "state_exact": true,
+        "full_vram_exact": true
+      },
+      {
+        "index": 516,
+        "lines": 262,
+        "raster": 896039,
+        "outputs": 14208,
+        "state_exact": true,
+        "full_vram_exact": true
+      },
+      {
+        "index": 516,
+        "lines": 262,
+        "raster": 660060,
+        "outputs": 14208,
+        "state_exact": true,
+        "full_vram_exact": true
+      },
+      {
+        "index": 516,
+        "lines": 262,
+        "raster": 660061,
+        "outputs": 14208,
+        "state_exact": true,
+        "full_vram_exact": true
+      },
+      {
+        "index": 516,
+        "lines": 313,
+        "raster": 0,
+        "outputs": 14208,
+        "state_exact": true,
+        "full_vram_exact": true
+      },
+      {
+        "index": 516,
+        "lines": 313,
+        "raster": 660059,
+        "outputs": 14208,
+        "state_exact": true,
+        "full_vram_exact": true
+      },
+      {
+        "index": 516,
+        "lines": 313,
+        "raster": 659060,
+        "outputs": 14208,
+        "state_exact": true,
+        "full_vram_exact": true
+      },
+      {
+        "index": 516,
+        "lines": 313,
+        "raster": 1070459,
+        "outputs": 14208,
+        "state_exact": true,
+        "full_vram_exact": true
+      },
+      {
+        "index": 516,
+        "lines": 313,
+        "raster": 660060,
+        "outputs": 14208,
+        "state_exact": true,
+        "full_vram_exact": true
+      },
+      {
+        "index": 516,
+        "lines": 313,
+        "raster": 660061,
+        "outputs": 14208,
+        "state_exact": true,
+        "full_vram_exact": true
+      }
+    ],
+    "native_sources": {
+      "source_pattern_clock": "0a465ab435eba7d93a0e7b00a3f062e63e15771112a22cc8ce51c80dbbfb54bb",
+      "source_clock": "800058a5cbafa50bcf27fc4a91b9622fd34312eb75fa46f8523cffc80799cc9a",
+      "source_rng": "5c64cd42ca0c18d69f8cfb1a185f282268b5dfd45a4b77f355323c6df802919f",
+      "source_intro_vdp": "9fffffb2c7ba38ff5de7a728865b29808e8e245b605ddcf5a54edc60f3007b71",
+      "source_intro_sprite_clock": "ce179fc00a6a8c078f2a4f9df403ddbe7db41adfe211536ce04d60f8d12edd32",
+      "source_intro_sprite_status": "57ae0af2f524be9156fdecf12c887f6434c003bb216b608318fd6f689ba32bdb"
+    },
+    "scope": "Native032A dated output sink checkpoints the owned SourceIntroVdp before each11T OUT then writes at completion. Full16KiB video memory agrees with decoder mirror, all source-clock state and OUT events agree with prior instruction-only comparison.",
+    "limits": [
+      "Host integration with synthetic82T IRQ callback and initialized synthetic video history, not the complete boot/scene/IRQ renderer.",
+      "This composition has not yet been compiled/profiled with physical MD video/audio output."
+    ]
+  },
+  "output_dates": "Per decoded byte,BF low at30T,BF high45T,BE value77T after RST28 call entry; literal135T or repeat134T byte stride,minus1T on page carry,minus5T terminal DJNZ. Command prefix44T and suffix16T literal/29T repeat. All calculations preserve15master ticks/T.",
+  "limits": [
+    "Independent original SMS trace checks18528port/value outputs for the first intro asset in each source region. Exact absolute original032A output timestamps remain to capture; scalar-expanded timing checks share the semantic instruction plan.",
+    "Synthetic82T/8M1 interrupt callback in these decoder tests, not full native IRQ audio/SAT work. Complete scene boot history,foreground status reads and physical outputs are not yet composed.",
+    "Owned VDP binding is host-tested24cases; decoder outputs alone are compiled48cases. Do not claim compiled complete decoder+VDP binding yet. No composite throughput/PCM/hardware certificate.",
+    "PublishedV319 remains byte-identical. No numbered release for the unselected output sink."
+  ],
+  "next_action": "Compile/profile the decoder+ownedVDP sink, capture original032A OUT timestamps independently, then compose scene map/reveal sinks and timed IRQ SAT/status with complete boot history. Measure combined budget before activation and requested full gameplay video.",
+  "video_request": {
+    "channel": "@KennYMcCormick-m2b",
+    "user_reports_authenticated_session": true,
+    "deliverable": "Full gameplay video through credits after current step is validated, then YouTube upload.",
+    "visibility": "not specified",
+    "publication_pending": true
+  },
+  "oracle_ram_writes": 0,
+  "sram_imports": 0,
+  "archive_manifest": "analysis/v319-pattern-ports/manifest.json"
+}

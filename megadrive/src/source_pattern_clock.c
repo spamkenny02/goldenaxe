@@ -1,5 +1,48 @@
 #include "source_pattern_clock.h"
 
+typedef struct {SourcePatternPortSink sink;void *user;u8 failed;} PatternPorts;
+static void video_advance(u32 *elapsed,u32 *raster,u32 period,u16 ticks)
+{u32 master=(u32)ticks*15;*elapsed+=master;*raster+=master;if(*raster>=period) *raster-=period;}
+static u8 video_out(PatternPorts *video,u32 elapsed,u32 raster,u8 port,u8 value)
+{
+ if(!video || !video->sink) return 1;
+ if(!video->sink(video->user,elapsed,raster,port,value)) {video->failed=1;return 0;}
+ return 1;
+}
+static u8 video_bytes(PatternPorts *video,u32 period,u32 *elapsed,u32 *raster,
+ u16 address,const u8 *bytes,u16 count,u8 literal,u8 terminal)
+{
+ if(!video || !video->sink) return 1;
+ for(u16 n=0;n<count;n++)
+ {
+  static const u16 offsets[3]={30,45,77};
+  u8 values[3]={(u8)address,(u8)(address>>8),literal?bytes[n]:bytes[0]};
+  for(u16 k=0;k<3;k++)
+  {
+   u32 sample=*raster+(u32)offsets[k]*15;if(sample>=period) sample-=period;
+   if(!video_out(video,*elapsed+(u32)offsets[k]*15,sample,k==2?0xbe:0xbf,values[k])) return 0;
+  }
+  video_advance(elapsed,raster,period,(literal?135:134)-((address&255)>=252)-(terminal && n+1==count?5:0));
+  address+=4;
+ }
+ return 1;
+}
+static u8 video_commands(PatternPorts *video,u32 period,u32 elapsed,u32 raster,
+ u16 address,const u8 *source,const u8 *end)
+{
+ if(!video || !video->sink) return 1;
+ while(source<end)
+ {
+  u16 command=*source++,count=command&127;u8 literal=command&128;
+  if(!count) count=256;
+  video_advance(&elapsed,&raster,period,44);
+  if(!video_bytes(video,period,&elapsed,&raster,address,source,count,literal,1)) return 0;
+  video_advance(&elapsed,&raster,period,literal?16:29);
+  source+=literal?count:1;address+=count*4;
+ }
+ return source==end;
+}
+
 static inline u32 window_ticks(u32 master)
 {
     /* Both windows already saturate at65535T. Clamp before DIVU so every
@@ -21,11 +64,12 @@ static u8 step(SourceClock *clock,SourceIrqContext *context,u16 ticks,u8 fetches
     return source_clock_execute(clock,ticks,fetches,effect,source_irq_interrupt,context);
 }
 #define S(t,m) do { if(!step(clock,context,t,m,SOURCE_CLOCK_NONE)) return 0; } while(0)
-static u8 rst28(SourceClock *clock,SourceIrqContext *context)
+static u8 rst28(SourceClock *clock,SourceIrqContext *context,u16 address,PatternPorts *video)
 {
     S(11,1);
     if(!step(clock,context,4,1,SOURCE_CLOCK_DI)) return 0;
-    S(4,1);S(11,1);S(4,1);S(11,1);
+    S(4,1);S(11,1);if(!video_out(video,clock->elapsed,clock->raster,0xbf,(u8)address)) return 0;
+    S(4,1);S(11,1);if(!video_out(video,clock->elapsed,clock->raster,0xbf,address>>8)) return 0;
     if(!step(clock,context,4,1,SOURCE_CLOCK_EI)) return 0;
     S(10,1);return 1;
 }
@@ -33,10 +77,10 @@ static u8 rst28(SourceClock *clock,SourceIrqContext *context)
 /* ROM input is immutable. Scan complete commands up to the next VINT,
  * then commit their decoded bytes before the next clock operation. No
  * plane-end RAM write is included in this window. */
-static u16 command_window(SourceClock *clock,const u8 **source,u8 **destination,u16 *cursor)
+static u16 command_window(SourceClock *clock,const u8 **source,u8 **destination,u16 *cursor,PatternPorts *video)
 {
     const u8 *scan=*source,*src;u8 *write;
-    u32 available;u16 ticks=0,fetches=0,commands=0,position=*cursor;
+    u32 available,elapsed=clock->elapsed,raster=clock->raster;u16 ticks=0,fetches=0,commands=0,position=*cursor;
     if(clock->first || clock->blocked || clock->pending || !clock->iff) return 0;
     available=window_ticks(clock->until_vint);
     while(*scan)
@@ -51,6 +95,7 @@ static u16 command_window(SourceClock *clock,const u8 **source,u8 **destination,
         scan+=1+(literal?count:1);
     }
     if(commands<2 || !source_clock_block(clock,ticks,fetches)) return 0;
+    if(!video_commands(video,clock->period,elapsed,raster,*cursor,*source,scan)) return 0;
     src=*source;write=*destination;
     while(src<scan)
     {
@@ -64,10 +109,10 @@ static u16 command_window(SourceClock *clock,const u8 **source,u8 **destination,
 }
 
 static u16 planned_window(SourceClock *clock,const SourcePatternPlane *plan,u16 *index,
-                          const u8 **source,u8 **destination,u16 *cursor)
+                          const u8 **source,u8 **destination,u16 *cursor,PatternPorts *video)
 {
     const SourcePatternBoundary *base,*end;const u8 *decoded;
-    u32 available;u16 lo=*index,hi=plan->count,mid,n,count;
+    u32 available,elapsed=clock->elapsed,raster=clock->raster;u16 lo=*index,hi=plan->count,mid,n,count;
     u8 *write=*destination;
     if(lo>=hi || clock->first || clock->blocked || clock->pending || !clock->iff) return 0;
     available=window_ticks(clock->until_vint);
@@ -80,6 +125,7 @@ static u16 planned_window(SourceClock *clock,const SourcePatternPlane *plan,u16 
     if(lo==*index) return 0;
     end=plan->boundary+lo;
     if(!source_clock_block(clock,(u16)(end->ticks-base->ticks),(u16)(end->fetches-base->fetches))) return 0;
+    if(!video_commands(video,clock->period,elapsed,raster,*cursor,*source,*source+end->source-base->source)) return 0;
     /* The verified plan is immutable ROM. Cache its bound and stream pointer
      * before writing the RAM mirror; otherwise alias conservatism reloads
      * both fields for every decoded byte in the68000 copy loop. */
@@ -91,7 +137,7 @@ static u16 planned_window(SourceClock *clock,const SourcePatternPlane *plan,u16 
 }
 
 static u8 patterns032a(SourceClock *clock,SourceIrqContext *context,
-                       const u8 **source,u8 *destination,const SourcePatternPlan *plan,u16 address,u16 *end_address)
+                       const u8 **source,u8 *destination,const SourcePatternPlan *plan,u16 address,u16 *end_address,PatternPorts *video)
 {
     u16 plane,cursor=address;
     const u8 *src=*source;
@@ -106,8 +152,9 @@ static u8 patterns032a(SourceClock *clock,SourceIrqContext *context,
             u16 command,count,n;
             u8 literal;
             if(plan)
-            {if(planned_window(clock,plan->planes+plane,&command_index,&src,&write,&cursor)) continue;}
-            else if(command_window(clock,&src,&write,&cursor)) continue;
+            {if(planned_window(clock,plan->planes+plane,&command_index,&src,&write,&cursor,video)) continue;}
+            else if(command_window(clock,&src,&write,&cursor,video)) continue;
+            if(video && video->failed) return 0;
             command=*src++;
             if(!command)
             {
@@ -123,8 +170,10 @@ static u8 patterns032a(SourceClock *clock,SourceIrqContext *context,
                 u16 carries=((cursor&255)+count*4)>>8;
                 u16 ticks=44+count*(literal?135:134)-carries-5+(literal?16:29);
                 u16 fetches=9+count*(literal?19:18)+carries+(literal?2:4);
+                u32 elapsed=clock->elapsed,raster=clock->raster;
                 if(source_clock_block(clock,ticks,fetches))
                 {
+                    if(!video_commands(video,clock->period,elapsed,raster,cursor,src-1,src+(literal?count:1))) return 0;
                     for(n=0;n<count;n++) { *write=*src;write+=4;if(literal) src++; }
                     if(!literal) src++;
                     cursor+=count*4;continue;
@@ -142,14 +191,17 @@ static u8 patterns032a(SourceClock *clock,SourceIrqContext *context,
                 if(!limit) {limit=1;ticks--;fetches++;}
                 else if(limit>count-n-1) limit=count-n-1;
                 if(n+1==count) {limit=1;ticks-=5;}
+                u32 elapsed=clock->elapsed,raster=clock->raster;
                 batch=source_clock_repeat(clock,ticks,fetches,limit);
                 if(batch)
                 {
+                    if(!video_bytes(video,clock->period,&elapsed,&raster,cursor,src,batch,literal,n+batch==count)) return 0;
                     for(k=0;k<batch;k++) { *write=*src;write+=4;if(literal) src++; }
                     cursor+=batch*4;n+=batch-1;continue;
                 }
-                if(!rst28(clock,context)) return 0;
-                S(7,1);S(11,1);S(4,1);S(literal?7:12,1);
+                if(!rst28(clock,context,cursor,video)) return 0;
+                S(7,1);S(11,1);if(!video_out(video,clock->elapsed,clock->raster,0xbe,*src)) return 0;
+                S(4,1);S(literal?7:12,1);
                 *write=*src;write+=4;
                 if(literal) { S(6,1);src++; }
                 S(4,1);S(4,1);S(4,1);S(4,1);
@@ -185,7 +237,15 @@ u8 source_pattern_decode_planned(SourceClock *clock,SourceIrqContext *context,
  const u8 **source,u8 *destination,u16 address,u16 *end_address,const SourcePatternPlan *plan)
 {
  if(!clock || !context || !context->ram || !source || !*source || !destination || !end_address) return 0;
- return patterns032a(clock,context,source,destination,plan,address,end_address);
+ return patterns032a(clock,context,source,destination,plan,address,end_address,0);
+}
+u8 source_pattern_decode_ports(SourceClock *clock,SourceIrqContext *context,
+ const u8 **source,u8 *destination,u16 address,u16 *end_address,const SourcePatternPlan *plan,
+ SourcePatternPortSink sink,void *user)
+{
+ PatternPorts video={sink,user,0};
+ if(!clock || !context || !context->ram || !source || !*source || !destination || !end_address || !sink) return 0;
+ return patterns032a(clock,context,source,destination,plan,address,end_address,&video);
 }
 u8 source_pattern_decode(SourceClock *clock,SourceIrqContext *context,
  const u8 **source,u8 *destination,u16 address,u16 *end_address)
@@ -234,7 +294,7 @@ u8 source_graphics_prefix_changed(SourceClock *clock,SourceIrqContext *context,u
         if(context->full_ram) context->full_ram[0x1ca0+n]=(patterns-16)[n];
     }
     S(10,1);S(17,1);
-    if(!patterns032a(clock,context,&patterns,destination,plan,0x4000,0)) return 0;
+    if(!patterns032a(clock,context,&patterns,destination,plan,0x4000,0,0)) return 0;
     *end=patterns;
     return source_clock_checkpoint(clock,source_irq_interrupt,context);
 }

@@ -11,6 +11,7 @@ typedef struct {
     u16 count;
 } SourcePatternPlane;
 typedef struct {SourcePatternPlane planes[4];} SourcePatternPlan;
+typedef u8 (*SourcePatternPortSink)(void *user,u32 elapsed,u32 raster,u8 port,u8 value);
 
 /* Audited changed class0 loading path 16D0..1706. Graphics output goes to a
  * caller-owned SMS pattern mirror. Entry phase/R and RAM/audio must be real
@@ -41,4 +42,13 @@ u8 source_pattern_decode(SourceClock *clock,SourceIrqContext *context,
  * Null plan follows the ordinary decoder. Plan bytes must match the stream. */
 u8 source_pattern_decode_planned(SourceClock *clock,SourceIrqContext *context,
  const u8 **source,u8 *destination,u16 address,u16 *end_address,const SourcePatternPlan *plan);
+/* Same native032A work/state, additionally emits every BF/BF/BE instruction
+ * at its completed OUT date. All outputs here are11T immediate OUTs.
+ * Sink must preserve chronological video history and not mutate SourceClock
+ * or semantic RAM. Stable before-IRQ batches retain exact per-byte dates.
+ * Mirror writes remain available for legacy consumers; sink may own another
+ * mirror. Partial publication on failure is fatal, never retry. */
+u8 source_pattern_decode_ports(SourceClock *clock,SourceIrqContext *context,
+ const u8 **source,u8 *destination,u16 address,u16 *end_address,const SourcePatternPlan *plan,
+ SourcePatternPortSink sink,void *user);
 #endif

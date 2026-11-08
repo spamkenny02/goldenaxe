@@ -23,6 +23,20 @@ cette routine ; la cadence de jeu visée reste celle de la Master System.
 
 ## Travail natif en cours : statut vidéo des sprites
 
+Le décodeur natif de motifs publie maintenant chaque écriture de port avec sa
+date de fin d’instruction, y compris dans ses chemins optimisés. Les 1054 cas
+sur hôte retrouvent les dates, les octets et les états de l’exécution instruction
+par instruction. Sur 68000, les deux décors d’intro passent 48 cas et 785664
+écritures vérifiées. Le raccordement au miroir vidéo séparé passe aussi sur
+hôte : 24 cas, 392832 écritures et comparaison des 16 Kio de VRAM.
+[Résultats des sorties du décodeur](analysis/v319_pattern_ports_report.json).
+
+L’ordre de 18528 écritures du premier décor est confirmé par la capture SMS
+dans chaque région. Les dates absolues de ces écritures restent à comparer
+à une capture indépendante. Le test du décodeur emploie des interruptions
+synthétiques ; l’intro complète avec ses sorties vidéo et sonores reste à
+composer et à mesurer avant activation. Le binaire public reste V319.
+
 Le miroir `source_intro_vdp.c` possède désormais sa propre VRAM, ses registres,
 sa palette et les états des ports. Alimenté uniquement par les instructions
 OUT/IN originales, il retrouve **8494239 écritures**, **33707 lectures de statut**

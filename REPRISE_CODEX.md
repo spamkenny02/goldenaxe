@@ -6,7 +6,29 @@ le README et les rapports cités.
 
 ## Suivi courant — V319, 8 novembre 2026
 
-DERNIÈRE ÉTAPE : miroir natif source_intro_vdp.c/.h, rapport
+DERNIÈRE ÉTAPE : source_pattern_decode_ports, rapport
+`analysis/v319_pattern_ports_report.json`, archive `analysis/v319-pattern-ports`.
+API additionnelle dans source_pattern_clock.c/.h : sink(user,elapsed,raster,
+port,value) pour chaque OUT11T BF/BF/BE, sans changement des API legacy.
+Plan/window/commande/repeat développent les dates exactes avant prochainIRQ ;
+fallback émet après chaque S. RST28 byte :BF30T/BF45T/BE77T ;135Tliteral,
+134Trepeat,carry-1T,terminalDJNZ-5T ;prefix44T,suffix16/29T. Échec sink fatal.
+1054cas hôte x3modes legacy/ports/scalar sansbatch :clock/R/RAM/mirror/outputs
+exacts. 2assetsintro x6phasesIRQ x2régionssource x2régionsMD =48cas68000,
+785664OUT exacts. Originaltrace confirme18528port/value du premierasset par
+région ; PAS encore une preuve des dates absolues OUT032A originales.
+Binding decoder -> SourceIntroVdp sur hôte :24cas/392832OUT,checkpoint avant
+OUT11T,write à completion,VRAM16KiB exacte. Interruption de test82T/8M1
+synthétique : pas de publicationaudio/SAT réelle. Binding composite pas encore
+compilé/profilé ; anciens tests68000 couvrent séparément decoder etmiroir.
+Rebuild complet identiqueV319/d3ea2a83…/DA29. Pas de nouvelleROM numérotée.
+Prochain : capture indépendante dates032A,compile/profile decoder+miroir,
+compose map/reveal+IRQ/SAT/status avec histoireboot, puis budget physique.
+Demande utilisateur en attente après cette étape : vidéo gameplay complète
+jusqu’au générique,upload YouTube @KennYMcCormick-m2b ; utilisateur indique
+session connectée. Accès chaîne à vérifier lorsupload ; visibilité non choisie.
+
+ÉTAPE PRÉCÉDENTE : miroir natif source_intro_vdp.c/.h, rapport
 `analysis/v319_port_mirror_report.json`, archive `analysis/v319-port-mirror`.
 Own16KiB VRAM externe,16regs,32palette,adresse/latch/code/buffer,calendrier
 sprites/VINT. Init SMS2 sansBIOS :reg0=36,reg1=80,reg2..6=FF,reg10=FF.
