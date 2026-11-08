@@ -32,10 +32,12 @@ shutil.copyfile(root / 'megadrive/src/rom_header.c', src / 'rom_header.c')
 inc = project / 'inc'; inc.mkdir()
 (inc / 'source_intro_wait.h').write_text('#include "../../../../megadrive/src/source_intro_wait.h"\n')
 profile_report=json.loads((work/'report.json').read_bytes())
+reveal=profile_report.get('reveal',False)
 fire=profile_report.get('fire',False);actors=profile_report.get('actors');irq_status=profile_report.get('irq_status',False)
 if fire: (inc/'source_intro_fire.h').write_text('#include "../../../../megadrive/src/source_intro_fire.h"\n')
+if reveal:(inc/'source_intro_reveal.h').write_text('#include "../../../../megadrive/src/source_intro_reveal.h"\n')
 if actors:(inc/'source_intro_actors.h').write_text('#include "../../../../megadrive/src/source_intro_actors.h"\n')
-for module in (['source_intro_fire'] if fire else [])+(['source_intro_actors'] if actors else [])+['source_intro_wait', 'source_wait_restore', *MODULES]:
+for module in (['source_intro_fire'] if fire else [])+(['source_intro_reveal' if reveal else 'source_intro_actors'] if actors else [])+['source_intro_wait', 'source_wait_restore', *MODULES]:
     prefix='#define source_irq_interrupt source_irq_interrupt_impl\n' if irq_status and module=='source_irq_context' else ''
     (src / (module + '.c')).write_text(prefix+'#include "../../../../megadrive/src/' + module + '.c"\n')
 (src / 'wrapper.c').write_text('#include "../../wrapper.c"\n')
@@ -51,11 +53,11 @@ expected_reads = sum(case['expected'][12] for case in cases)
 lines = ['static const u8 low[32768]=' + array(image[:32768]) + ';',
          'static const u8 bank[16384]=' + array(image[0x18000:0x1c000]) + ';',
          f'#define RAM_BYTES {ram_bytes}',
-         'typedef struct {u32 phase[12];u8 refresh,ram[RAM_BYTES],audio[400],after_ram[RAM_BYTES],after_audio[400];u32 expected[18];} PollCase;',
+         'typedef struct {u32 phase[12];u8 refresh,ram[RAM_BYTES],audio[400],after_ram[RAM_BYTES],after_audio[400];u32 expected[18];'+('u32 events[13824];' if reveal else '')+'} PollCase;',
          'static const PollCase cases[]={']
 for case in cases:
     lines.append('{' + ','.join([array(case['phase']), str(case['refresh']), array(case['input_ram']),
-        array(case['input_audio']), array(case['expected_ram']), array(case['expected_audio']), array(case['expected'])]) + '},')
+        array(case['input_audio']), array(case['expected_ram']), array(case['expected_audio']), array(case['expected'])]+([array(case['events'])] if reveal else [])) + '},')
 lines.append('};')
 (src / 'expected.h').write_text('\n'.join(lines) + '\n')
 (src / 'main.c').write_text('''#include <genesis.h>
@@ -83,6 +85,12 @@ int main(bool hard_reset)
  intro_poll_done=1;while(TRUE) SYS_doVBlankProcess();return 0;
 }
 ''')
+if reveal:
+    main=(src/'main.c').read_text().replace('int main(bool hard_reset)',
+        'void configure_reveal_events(const u32 *,u16);\nint main(bool hard_reset)')
+    main=main.replace('if(!poll_case(entry->phase',
+        'configure_reveal_events(entry->events,6912);\n  if(!poll_case(entry->phase')
+    (src/'main.c').write_text(main)
 build_env=dict(os.environ)
 for key in ('TMPDIR','TMP','TEMP'):build_env[key]='.'
 built=subprocess.run(['powershell', '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
@@ -113,7 +121,7 @@ for region in ('ntsc', 'pal'):
     assert stats['intro_poll_cases'] == len(cases) and stats['intro_poll_reads'] == expected_reads
     results.append(dict(region=region, **stats)); print(region, stats, flush=True)
 report = dict(passed=True, diagnostic_only=True, source_vector_cases=len(cases), source_regions=source_regions,
-    case_start=a.case_start,ram_bytes=ram_bytes,fire=fire,actors=actors,irq_status=irq_status,results=results,
+    case_start=a.case_start,ram_bytes=ram_bytes,fire=fire,actors=actors,reveal=reveal,irq_status=irq_status,results=results,
     kernel_sha256=sha((project / 'out/release/rom.bin').read_bytes()),
     scope='Compiled68000 source semantic helper checked against the selected natural original source vectors '
           'on each target region. No physical publication scheduler or PCM claim.')

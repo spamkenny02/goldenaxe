@@ -1,0 +1,297 @@
+{
+  "passed": true,
+  "diagnostic_only": true,
+  "production_rom_changed": false,
+  "public_version": 319,
+  "production_rom_sha256": "d3ea2a83ea24ed8a0d3c9857f9fbe70d000a4f73358452c1887f40e78966c56e",
+  "production_rebuild_byte_identical": true,
+  "source_profile": {
+    "passed": true,
+    "diagnostic_only": true,
+    "profile": "callback",
+    "fire": false,
+    "actors": "second",
+    "irq_status": true,
+    "init": false,
+    "reveal": true,
+    "production_rom_changed": false,
+    "cases": [
+      {
+        "region": "ntsc",
+        "source_cases": 56,
+        "cases_crossing_irq": 56,
+        "observer_exposed_psg_exact_frames": 14000,
+        "source_records_sha256": "a9e539c04fde8be11fba00e3c8335e23683e157d8d030a940dc5bb7f01d3aa3b",
+        "source_io_events": 387072,
+        "maximum_io_events": 6912
+      },
+      {
+        "region": "pal",
+        "source_cases": 56,
+        "cases_crossing_irq": 56,
+        "observer_exposed_psg_exact_frames": 14000,
+        "source_records_sha256": "7769a93b500d561aa63185aa9d01c62e471ea00855a77b72c7976cbad95eacb4",
+        "source_io_events": 387072,
+        "maximum_io_events": 6912
+      }
+    ],
+    "core_sha256": "650de8bdfe075d7048af0e41a3e1e380024b1f03600e27fa1484f592bd915dec",
+    "source_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+    "native_sources": {
+      "source_intro_reveal": "4b717d7212acf3879d068fd9023181fbf61c399a2e8d29901474f186d725bc49",
+      "source_intro_wait": "7d721554756cab01471f0ef5356ee37d101cea2d27918ff40f5a5166a12172e9",
+      "source_wait_restore": "a6ce6eac36ff120f8222dbe24c0456c7729c1062902f997ba7fb296d6dcecd28",
+      "source_wait": "4ed09b544bf7366d82afe04c0d86b07040a453e5e00209cd57fed05db4bfc7f6",
+      "source_irq_context": "013a3ef89374be5f178cf3968aeafca498cdd380b2d943d341c208fa8f9497d9",
+      "source_irq": "bc5921ff1b8a9ed22c6c06c889cc430a469e926c360914e146481a89b1a2c534",
+      "source_clock": "800058a5cbafa50bcf27fc4a91b9622fd34312eb75fa46f8523cffc80799cc9a",
+      "source_rng": "5c64cd42ca0c18d69f8cfb1a185f282268b5dfd45a4b77f355323c6df802919f",
+      "source_audio_fast": "811c9e96d4f587353df50654e01d767f7f1530528efa271d1ee9d15169376cc3",
+      "source_audio_reader": "7ea0d9bdd75168ea85f1e8cf7c9ef4fbb720d746a8e4c9158953a48a5551c624",
+      "source_audio_prefix": "c0c02bafe3dd7e4baf887f67b264786c70c74932c12c897213c941f32fea2d39",
+      "source_audio_dispatch": "f8ce91959f8fb0db6062900e69a1842da8cc108d33bdfcbb7509b681185b0d90",
+      "source_audio_priority": "d5bc487b634abc56b77df5aeec338a447be312c0e76679a1eec3b14585291147",
+      "source_audio_tone": "8098ba4e45c21629a9920e6ca9ac5385ecb986e31d0db143cbbff42c0c92b272",
+      "source_audio_noise": "45b37e1689255404b86855e3970e82bfefd313421522aae46e3fae455fa9690b",
+      "source_audio_sequence": "e7171cc12b4f031dc361943aca679b7a8fa5c1fc2bb7d7798864d16675aa7663",
+      "source_audio_memory": "ec755012b117bdb5bfe2c114037f44abe4891714f6532f4800206915e8dde1f0",
+      "source_audio_envelope": "d0878cd24b5d7bb8f255a5a9e97a231815ac41828cae53342b03c6cbe81ae17c",
+      "source_audio_pitch": "ea46d31e3c73a352995c3dcbcbbe141214a9c536fd827e1a16d49d8e5e058795"
+    },
+    "verified": [
+      "Original natural entry/return wall time, raster, polls, R, IFF/EI/pending,336 IRQ RAM and400 reader bytes. Actor768-byte records and palette/counter/mapper/callback snapshots also compared.",
+      "Both regions,14000 no-input cold source frames per region; observer PSG state unchanged."
+    ],
+    "limits": [
+      "Host native semantic helper; compiled68000 timing and physical MD publication not checked here.",
+      "Reveal pass E8B..E9D only; every OUT instruction completion compared. Live VDP status remains external diagnostic input.",
+      "No production clock integration, full-game or PCM certification."
+    ]
+  },
+  "compiled68000_checks": {
+    "passed": true,
+    "source_entry_vectors": 112,
+    "compiled_executions": 224,
+    "partitions": [
+      {
+        "path": "validation/v319-native-intro-poll-reveal05/compiled-both-kernel1-report.json",
+        "report": {
+          "passed": true,
+          "diagnostic_only": true,
+          "source_vector_cases": 24,
+          "source_regions": [
+            "ntsc",
+            "pal"
+          ],
+          "case_start": 0,
+          "ram_bytes": 1193,
+          "fire": false,
+          "actors": "second",
+          "reveal": true,
+          "irq_status": true,
+          "results": [
+            {
+              "region": "ntsc",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 24,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 165888,
+              "intro_poll_first_failure": 0,
+              "frame": 2175
+            },
+            {
+              "region": "pal",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 24,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 165888,
+              "intro_poll_first_failure": 0,
+              "frame": 1821
+            }
+          ],
+          "kernel_sha256": "dce3575d9f92bb616e9da311ade871c99c40d01bf08c637f34e8c2b4267b3cd1",
+          "scope": "Compiled68000 source semantic helper checked against the selected natural original source vectors on each target region. No physical publication scheduler or PCM claim."
+        }
+      },
+      {
+        "path": "validation/v319-native-intro-poll-reveal05/compiled-both-kernel2-report.json",
+        "report": {
+          "passed": true,
+          "diagnostic_only": true,
+          "source_vector_cases": 24,
+          "source_regions": [
+            "ntsc",
+            "pal"
+          ],
+          "case_start": 24,
+          "ram_bytes": 1193,
+          "fire": false,
+          "actors": "second",
+          "reveal": true,
+          "irq_status": true,
+          "results": [
+            {
+              "region": "ntsc",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 24,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 165888,
+              "intro_poll_first_failure": 0,
+              "frame": 2175
+            },
+            {
+              "region": "pal",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 24,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 165888,
+              "intro_poll_first_failure": 0,
+              "frame": 1820
+            }
+          ],
+          "kernel_sha256": "70fae0a75c72a85ca4b175d8e93981a9cede2899e1246dd4fb0bc7b36d66f014",
+          "scope": "Compiled68000 source semantic helper checked against the selected natural original source vectors on each target region. No physical publication scheduler or PCM claim."
+        }
+      },
+      {
+        "path": "validation/v319-native-intro-poll-reveal05/compiled-both-kernel3-report.json",
+        "report": {
+          "passed": true,
+          "diagnostic_only": true,
+          "source_vector_cases": 24,
+          "source_regions": [
+            "ntsc",
+            "pal"
+          ],
+          "case_start": 48,
+          "ram_bytes": 1193,
+          "fire": false,
+          "actors": "second",
+          "reveal": true,
+          "irq_status": true,
+          "results": [
+            {
+              "region": "ntsc",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 24,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 165888,
+              "intro_poll_first_failure": 0,
+              "frame": 2222
+            },
+            {
+              "region": "pal",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 24,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 165888,
+              "intro_poll_first_failure": 0,
+              "frame": 1860
+            }
+          ],
+          "kernel_sha256": "23c67191697d9e95759fc48cea721870ad4dabcb584ab91effa99882458c5a4f",
+          "scope": "Compiled68000 source semantic helper checked against the selected natural original source vectors on each target region. No physical publication scheduler or PCM claim."
+        }
+      },
+      {
+        "path": "validation/v319-native-intro-poll-reveal05/compiled-both-kernel4-report.json",
+        "report": {
+          "passed": true,
+          "diagnostic_only": true,
+          "source_vector_cases": 24,
+          "source_regions": [
+            "ntsc",
+            "pal"
+          ],
+          "case_start": 72,
+          "ram_bytes": 1193,
+          "fire": false,
+          "actors": "second",
+          "reveal": true,
+          "irq_status": true,
+          "results": [
+            {
+              "region": "ntsc",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 24,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 165888,
+              "intro_poll_first_failure": 0,
+              "frame": 2246
+            },
+            {
+              "region": "pal",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 24,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 165888,
+              "intro_poll_first_failure": 0,
+              "frame": 1880
+            }
+          ],
+          "kernel_sha256": "fd7e12dee2beb2d5c0629fd73bc713d499cd35645dda1636c7021e5fdbb1e97a",
+          "scope": "Compiled68000 source semantic helper checked against the selected natural original source vectors on each target region. No physical publication scheduler or PCM claim."
+        }
+      },
+      {
+        "path": "validation/v319-native-intro-poll-reveal05/compiled-both-kernel5-report.json",
+        "report": {
+          "passed": true,
+          "diagnostic_only": true,
+          "source_vector_cases": 16,
+          "source_regions": [
+            "ntsc",
+            "pal"
+          ],
+          "case_start": 96,
+          "ram_bytes": 1193,
+          "fire": false,
+          "actors": "second",
+          "reveal": true,
+          "irq_status": true,
+          "results": [
+            {
+              "region": "ntsc",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 16,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 110592,
+              "intro_poll_first_failure": 0,
+              "frame": 1506
+            },
+            {
+              "region": "pal",
+              "intro_poll_done": 1,
+              "intro_poll_cases": 16,
+              "intro_poll_errors": 0,
+              "intro_poll_reads": 110592,
+              "intro_poll_first_failure": 0,
+              "frame": 1261
+            }
+          ],
+          "kernel_sha256": "c39c498c6c639c657a80fbe8b8d0fd9a77cfd091e25745e7a17901ef7cfe2f48",
+          "scope": "Compiled68000 source semantic helper checked against the selected natural original source vectors on each target region. No physical publication scheduler or PCM claim."
+        }
+      }
+    ],
+    "scope": "Every source reveal vector on each target region, all OUT events compared."
+  },
+  "source_entry_vectors": 112,
+  "compiled_executions": 224,
+  "source_io_events": 774144,
+  "compiled_io_events": 1548288,
+  "implementation": "New source_intro_reveal.c/.h: E8B..E9D plane reveal pass, alternate-HL address/DE step and foreground E rotations, paired DI/EI and precise SourceClock IRQ boundaries. Semantic OUT sink only; no hardware publication.",
+  "verification": "Every BF low/high address byte and BE data byte, original instruction-completion elapsed time and derived raster compared. All1193 tracked bytes,400 reader bytes, total wall/IRQ work, R and IFF/EI/pending match original. Source event timestamps are instruction-entry observation plus12T for OUT, not an external bus trace.",
+  "optimization": "Stable100T/18M1 loops batch only before VINT and with no first-fetch/EI/pending boundary. Other loops retain individual instructions. Every emitted time/value and final clock/RAM is checked against original, not an average frame budget.",
+  "status_binding": "Original independently observed VDP status at each0137 IRQ entry is an explicit diagnostic input; must be computed from the live sprite model before production integration.",
+  "recovery": "First host build rejected a signedness warning. Next checker rejected a4-byte packed-record offset error; events begin immediately after IRQ status, before record tail padding. Corrected byte layout passes. Slow and intermediate native binaries retained as provisional evidence.",
+  "limits": [
+    "Natural no-input112 pass entries over14000 source frames per region; all cross IRQ. No intro skip/composed F1E entry tested here.",
+    "No production memory binding, live VDP status producer, physical raster/PSG deadlines, PCM or hardware certification.",
+    "Diagnostic kernel frame counts include checking overhead and are not game frame rate. Public V319 does not select this routine."
+  ],
+  "next_action": "Compose F1E plus reveal and seven-pass D shift/branch loop; translate setup/publication as needed, bind compact memory and live source VDP status before native intro integration.",
+  "ram_writes": 0,
+  "sram_imports": 0,
+  "archive_manifest": "analysis/v319-intro-reveal/manifest.json"
+}

@@ -121,7 +121,12 @@ fournit explicitement le statut VDP capturé à chaque IRQ ; sa production
 reproduit aussi les 12 vecteurs d’entrée naturels capturés, puis leurs
 24 exécutions compilées : remise à zéro, neuf/six acteurs et temps source
 identiques. Ces appels ne traversent aucune IRQ ; ce cas reste à couvrir.
-Le dévoilement de l’image et la publication vidéo/son restent à traiter.
+Le [passage de dévoilement E8B..E9D](analysis/v319_intro_reveal_report.json)
+reproduit désormais 112 entrées SMS et 774144 écritures vidéo : valeurs,
+ordre et temps de fin d’instruction identiques. Tous les vecteurs passent
+également en 68000 compilé sur les deux régions. Le regroupement des
+boucles sans interruption préserve ces résultats. La composition des sept
+passages avec les attentes, puis la publication vidéo/son, restent à intégrer.
 Aucune de ces nouvelles routines ne pilote encore l’intro publiée.
 La recompilation complète conserve exactement la V319.
 

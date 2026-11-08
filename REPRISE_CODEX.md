@@ -6,6 +6,49 @@ le README et les rapports cités.
 
 ## Suivi courant — V319, 8 novembre 2026
 
+DERNIÈRE ÉTAPE : `source_intro_reveal.c/.h`, rapport
+`analysis/v319_intro_reveal_report.json`, archive `analysis/v319-intro-reveal`.
+API source_intro_reveal_pass(clock,context,state,sink,user), E8B..E9D,
+sortie EA0 préfetch. state.address=HL alternatif, step=DE alternatif,
+value=E principal. Chaque passe écrit2304 octets de plan,6912 OUT BF/BE.
+Sink reçoit elapsed/raster/port/value à la fin sémantique de l’instruction ;
+il ne doit ni modifier RAM sémantique ni avancer clock/injecter IRQ.
+Ce n’est pas un scheduler de publication sur le VDP MD.
+
+112 vecteurs naturels (56/région) sur14000 frames sans entrée, tous avec IRQ.
+774144 OUT capturés, tous comparés sans hash de substitution : port, valeur,
+temps de fin d’instruction et raster dérivé. Origine source = observation
+entrée instruction +12T pour OUT, pas une mesure de bus matériel.
+1193 octets suivis+400 reader, durée totale/IRQ/R/latches identiques.
+Tous112 vecteurs compilés,5 kernels bornés24 cas, chacun NTSC+PAL :
+224 exécutions,1548288 comparaisons OUT, zéro erreur. Dernier work reveal05.
+Source statut VDP à chaque0137 reste une entrée diagnostic explicite,
+pas une solution de statut dynamique pour la production.
+
+Optimisation : boucle100T/18M1 regroupée via source_clock_repeat seulement
+sans first/EI/pending et avant frontière VINT. Sinon instructions individuelles
+DI/EI/OUT/rotations. Écritures regroupées horodatées20T,32T,83T, vérifiées
+individuellement contre source. Ancien modèle lent exact conservé (source
+reconstruite avec SHA identique au rapport reveal03). Ne pas assimiler le
+nombre de frames des kernels avec oracle au débit réel du jeu.
+
+Incidents rejetés : warning signé/non signé au host ; offset des events
+lu4 octets trop loin (padding de fin de struct confondu avec son contenu).
+Observer corrigé et read-only, source émulateur restaurée. Dans ces outils,
+--reveal implique le layout acteurs seulement ; aucun callback1055 appelé.
+Le champ polls du record et output[12] comptent alors les OUT, pas les IN.
+Les events commencent snapshot*2+44, stride total58656. 128 records max.
+Builder accepts --profile callback --reveal ; validator idem. Le compileur
+utilise events ROM sans gros buffer RAM, partitions requises sous2MiB.
+
+Tous processus terminaux :22020(all),9349(rebuild),93915(provisoire).
+Rebuild source exact byte-identique V319 d3ea2a83/DA29. Aucune nouvelle ROM.
+Archive relue :114765009 octets générés supprimés,71793238 nets libérés.
+Prochaine étape : composition F1E+pass puis SRL D/JR de sept passages,
+setup/transfert vidéo selon besoin, plan mémoire compact et statut sprite
+vivant avant intégration. Les nouveaux helpers restent non sélectionnés.
+Les notes suivantes sont les étapes précédentes.
+
 DERNIÈRE ÉTAPE : initialisation F51/F54 ajoutée à source_intro_actors.c/.h,
 rapport `analysis/v319_intro_init_report.json`, archive `analysis/v319-intro-init`.
 API source_intro_actors_initialize(clock, context, data, template_address,
