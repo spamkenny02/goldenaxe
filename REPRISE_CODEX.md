@@ -6,6 +6,30 @@ le README et les rapports cités.
 
 ## Suivi courant — V319, 8 novembre 2026
 
+Dernière preuve : PSG du démarrage maintenant comparé DIRECTEMENT à laSMS,
+pas seulement à un ancien binaireMD. `compare_v319_psg_to_sms.py` a produit
+6500puis14000frames par région. Les huit registres bruts sont exactement
+égaux sur chacune des28000frames de la grande comparaison, aucun décalage,
+aucune normalisation, aucune écritureRAM/SRAM. Préfixes6500 des deux runs
+égaux. Flux non triviaux :1014étatsNTSC/989PAL, chaque registre varie,
+9787/9896frames non totalement muettes. ROMs d'entrée distinctes et leurs
+empreintes, compteframes, options de région et traces sans entrée vérifiés.
+Rapport `analysis/sms_psg_v0319_report.json`, archive
+`analysis/v319-sms-psg`, reçu copié enversions/V319 et indexé. README sépare
+maintenant démarragevidéo et audio. Cela ne couvre ni instants d'écriture
+à l'intérieur de laframe, ni latched-register/LFSR/PCM, ni sons interactifs
+hors de ces boucles. Les contrôles `compare_boot_audio_state.py` antérieurs
+étaient seulement une équivalence MD/MD ; ne pas les citer comme référenceSMS.
+
+Conséquence pour l'intro : ne pas décaler globalement la musique afin de
+réparer une révélation graphique. Les états PSG à fin de frame sont déjà
+exacts dans les deux régions pendant14000frames ; poursuivre la phase de
+publication vidéo/instructions, ou instrumenter l'audio intraframe séparément.
+Aucun nouveau changement de ROM/source de production. Nettoyage du nouveau
+relevé après archivage/relecture :44références,11805952octets générés
+supprimés,11719013octets nets libérés. Les deux commandes PSG sont terminales0.
+Il ne reste aucun ancien job à attendre ; ne pas relancer des sessions mortes.
+
 ÉTAT PRIORITAIRE : PARCOURS COMPLETS NTSC ET PAL VÉRIFIÉS SUR V319.
 Palais PAL terminé0 :22points froids depuis le premier géant, gardien7C/60PV
 sans protection (303prédictions), Hache d'or acquise à341509. Retrait final

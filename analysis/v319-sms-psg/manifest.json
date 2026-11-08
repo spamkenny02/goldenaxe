@@ -1,0 +1,460 @@
+{
+  "passed": true,
+  "version": 319,
+  "md_sha256": "d3ea2a83ea24ed8a0d3c9857f9fbe70d000a4f73358452c1887f40e78966c56e",
+  "source_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+  "core_sha256": "f0e6f1723602c278d7520b627b1ed96132a8ed48fe1d14704e9cdb6c6c876e7c",
+  "direct_sms_reference": true,
+  "frames_per_region": 14000,
+  "total_compared_frames": 28000,
+  "cases": [
+    {
+      "region": "ntsc",
+      "frames": 14000,
+      "exact_register_frames": 14000,
+      "different_register_frames": 0,
+      "unique_states": 1014,
+      "different_value_counts_by_register": [
+        15,
+        9,
+        11,
+        12,
+        24,
+        7,
+        4,
+        12
+      ],
+      "non_fully_muted_state_frames": 9787,
+      "raw_register_sha256": "fe9d8d291bde4452a67f3bb6c9395f6b5dcb173944aa2286fa6d3758942d7799",
+      "short_run_prefix_exact": true
+    },
+    {
+      "region": "pal",
+      "frames": 14000,
+      "exact_register_frames": 14000,
+      "different_register_frames": 0,
+      "unique_states": 989,
+      "different_value_counts_by_register": [
+        15,
+        14,
+        11,
+        12,
+        24,
+        12,
+        4,
+        12
+      ],
+      "non_fully_muted_state_frames": 9896,
+      "raw_register_sha256": "3f43db56665636ca212f7fd17b94c0e3e09bea4434923a2183250a5c0922f4f0",
+      "short_run_prefix_exact": true
+    }
+  ],
+  "temporal_shift_frames": 0,
+  "register_normalisation": false,
+  "ram_writes": 0,
+  "sram_imports": 0,
+  "intra_frame_write_timing_validated": false,
+  "pcm_equivalence_validated": false,
+  "whole_game_audio_validated": false,
+  "archive_manifest": "analysis/v319-sms-psg/manifest.json",
+  "scope": "All8 raw PSG registers match SMS at every sampled frame over two cold no-input opening loops per region. Independently captured6500-frame prefixes also match. Nontrivial tone/noise/volume states; no temporal shift. This is not an intra-frame write trace, PCM or interactive/whole-game audio certification.",
+  "files": {
+    "analysis/sms_psg_v0319_report.json": "27ed5522e97ccd795d477008bea6b137d09dfb06da41a123445f21fba52e6edc"
+  },
+  "compressed": {
+    "validation/archive_v319_sms_psg.py": {
+      "stored": "objects/4c3959c20367ff51a1fb206fcb4d4fa349765c34c3c6e350530428893fa8902b.gz",
+      "raw_sha256": "4c3959c20367ff51a1fb206fcb4d4fa349765c34c3c6e350530428893fa8902b",
+      "raw_bytes": 4124,
+      "stored_sha256": "9cd61ac4ee63168f8f3579d4c097bd29a9703350d065b710db06974a55ce8dde"
+    },
+    "validation/compare_v319_psg_to_sms.py": {
+      "stored": "objects/40a63b043514cc4519096f4767e238daf436cb4ff18462c17f537524a5123259.gz",
+      "raw_sha256": "40a63b043514cc4519096f4767e238daf436cb4ff18462c17f537524a5123259",
+      "raw_bytes": 3537,
+      "stored_sha256": "aaa2574ae97012df3863c8b8018024bd6d6c36c8d94587406edb6077bdcac065"
+    },
+    "validation/v319-sms-psg01/ntsc-md/capture.json": {
+      "stored": "objects/a622dfdd688afd49d5ab58607ebc31b014cc1e1b1fe4f87b78c7221754e0ffb1.gz",
+      "raw_sha256": "a622dfdd688afd49d5ab58607ebc31b014cc1e1b1fe4f87b78c7221754e0ffb1",
+      "raw_bytes": 628,
+      "stored_sha256": "36366b89a096bb38a7bfa3d1005154206f9e648d6d678535b992fa0d1a78c434"
+    },
+    "validation/v319-sms-psg01/ntsc-md/psg-registers.bin": {
+      "stored": "objects/01823efd3e5c0098c25e2376130974e7ac52257843a66730e98cae3877f00246.gz",
+      "raw_sha256": "01823efd3e5c0098c25e2376130974e7ac52257843a66730e98cae3877f00246",
+      "raw_bytes": 104000,
+      "stored_sha256": "581cd3580423bbec43cee6c3a5b52f4b313c15f2011ed9a382f253d62fd49ed1"
+    },
+    "validation/v319-sms-psg01/ntsc-md/trace_counts.bin": {
+      "stored": "objects/30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58.gz",
+      "raw_sha256": "30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58",
+      "raw_bytes": 1048576,
+      "stored_sha256": "f227c53a0b54fb0009773680f60b76c1f346b4dcfca7e03b7f311f0bd0f3bea1"
+    },
+    "validation/v319-sms-psg01/ntsc-md/trace_states.bin": {
+      "stored": "objects/5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef.gz",
+      "raw_sha256": "5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+      "raw_bytes": 1024,
+      "stored_sha256": "75eb48369c0d0b1260b7db5c5f831d5f8b1b9b322b64191c96cb147437e7f404"
+    },
+    "validation/v319-sms-psg01/ntsc-md/trace_windows.bin": {
+      "stored": "objects/8a39d2abd3999ab73c34db2476849cddf303ce389b35826850f9a700589b4a90.gz",
+      "raw_sha256": "8a39d2abd3999ab73c34db2476849cddf303ce389b35826850f9a700589b4a90",
+      "raw_bytes": 262144,
+      "stored_sha256": "e3c3be563c17c24fb5bfdfefbcbe3882cc985fa4161654a534287d9baafe2a73"
+    },
+    "validation/v319-sms-psg01/ntsc-sms/capture.json": {
+      "stored": "objects/d721d2b6ff4ccaf9751b95e728228ff7d4bfc32a00416451e69cdb49122723db.gz",
+      "raw_sha256": "d721d2b6ff4ccaf9751b95e728228ff7d4bfc32a00416451e69cdb49122723db",
+      "raw_bytes": 598,
+      "stored_sha256": "daf680d4c2ddb91c0bff304176ddb7a413860766731675da09d62a311932fee3"
+    },
+    "validation/v319-sms-psg01/ntsc-sms/psg-registers.bin": {
+      "stored": "objects/01823efd3e5c0098c25e2376130974e7ac52257843a66730e98cae3877f00246.gz",
+      "raw_sha256": "01823efd3e5c0098c25e2376130974e7ac52257843a66730e98cae3877f00246",
+      "raw_bytes": 104000,
+      "stored_sha256": "581cd3580423bbec43cee6c3a5b52f4b313c15f2011ed9a382f253d62fd49ed1"
+    },
+    "validation/v319-sms-psg01/ntsc-sms/trace_counts.bin": {
+      "stored": "objects/ce66221939cb6e24b5d716602d556365891197c71280503b69b514ae12dc3258.gz",
+      "raw_sha256": "ce66221939cb6e24b5d716602d556365891197c71280503b69b514ae12dc3258",
+      "raw_bytes": 1048576,
+      "stored_sha256": "c3625ac976ac4c65c1abab75364a124e3c40915853ccbff2c75a17f27a7d624f"
+    },
+    "validation/v319-sms-psg01/ntsc-sms/trace_states.bin": {
+      "stored": "objects/91fd9dbe4d5a5fd8a32c47425d44e07358443d88ddc196ecd52b491fd32382b9.gz",
+      "raw_sha256": "91fd9dbe4d5a5fd8a32c47425d44e07358443d88ddc196ecd52b491fd32382b9",
+      "raw_bytes": 1024,
+      "stored_sha256": "e050e87557ba99920da881be3465b897856fabef93b5f7d05dad3a972fefd5c8"
+    },
+    "validation/v319-sms-psg01/ntsc-sms/trace_windows.bin": {
+      "stored": "objects/61d9791569daf1562620bf592b2c57c0e8a5a3f7b28572fef1925caf45c92e34.gz",
+      "raw_sha256": "61d9791569daf1562620bf592b2c57c0e8a5a3f7b28572fef1925caf45c92e34",
+      "raw_bytes": 262144,
+      "stored_sha256": "25844cae68be6e56112680ef6d069b85d75c1321ac6be9aa7dec23382433509e"
+    },
+    "validation/v319-sms-psg01/pal-md/capture.json": {
+      "stored": "objects/1f322dfaa534edf1a503e65ae72daed7ee3375541f3454a68d1492d5040d6395.gz",
+      "raw_sha256": "1f322dfaa534edf1a503e65ae72daed7ee3375541f3454a68d1492d5040d6395",
+      "raw_bytes": 626,
+      "stored_sha256": "49b4d359938ef7641220a694a1347d22bd3c2da0e6d3d87feaf140b057805206"
+    },
+    "validation/v319-sms-psg01/pal-md/psg-registers.bin": {
+      "stored": "objects/4408c1b52e405f7bafff32cf1e6e562ea55891cedd89b4b399470227cf73fa9e.gz",
+      "raw_sha256": "4408c1b52e405f7bafff32cf1e6e562ea55891cedd89b4b399470227cf73fa9e",
+      "raw_bytes": 104000,
+      "stored_sha256": "0199ac17b1acb4260838638cc35c222c0e504a30e0154b9691219f82b8272831"
+    },
+    "validation/v319-sms-psg01/pal-md/trace_counts.bin": {
+      "stored": "objects/30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58.gz",
+      "raw_sha256": "30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58",
+      "raw_bytes": 1048576,
+      "stored_sha256": "f227c53a0b54fb0009773680f60b76c1f346b4dcfca7e03b7f311f0bd0f3bea1"
+    },
+    "validation/v319-sms-psg01/pal-md/trace_states.bin": {
+      "stored": "objects/5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef.gz",
+      "raw_sha256": "5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+      "raw_bytes": 1024,
+      "stored_sha256": "75eb48369c0d0b1260b7db5c5f831d5f8b1b9b322b64191c96cb147437e7f404"
+    },
+    "validation/v319-sms-psg01/pal-md/trace_windows.bin": {
+      "stored": "objects/8a39d2abd3999ab73c34db2476849cddf303ce389b35826850f9a700589b4a90.gz",
+      "raw_sha256": "8a39d2abd3999ab73c34db2476849cddf303ce389b35826850f9a700589b4a90",
+      "raw_bytes": 262144,
+      "stored_sha256": "e3c3be563c17c24fb5bfdfefbcbe3882cc985fa4161654a534287d9baafe2a73"
+    },
+    "validation/v319-sms-psg01/pal-sms/capture.json": {
+      "stored": "objects/e29d4a673eefb74837669607ddbe270a533122219681a1ec1bf7d9bbce0a2fd3.gz",
+      "raw_sha256": "e29d4a673eefb74837669607ddbe270a533122219681a1ec1bf7d9bbce0a2fd3",
+      "raw_bytes": 596,
+      "stored_sha256": "a59818c7bec6dd409d98a3a20755a0f31c9b9223ef6ee6cb7741f7160e61fda3"
+    },
+    "validation/v319-sms-psg01/pal-sms/psg-registers.bin": {
+      "stored": "objects/4408c1b52e405f7bafff32cf1e6e562ea55891cedd89b4b399470227cf73fa9e.gz",
+      "raw_sha256": "4408c1b52e405f7bafff32cf1e6e562ea55891cedd89b4b399470227cf73fa9e",
+      "raw_bytes": 104000,
+      "stored_sha256": "0199ac17b1acb4260838638cc35c222c0e504a30e0154b9691219f82b8272831"
+    },
+    "validation/v319-sms-psg01/pal-sms/trace_counts.bin": {
+      "stored": "objects/64edb73292baa3e994c7e0120e064db108f88d621ad0c69d394eb34563c11efa.gz",
+      "raw_sha256": "64edb73292baa3e994c7e0120e064db108f88d621ad0c69d394eb34563c11efa",
+      "raw_bytes": 1048576,
+      "stored_sha256": "e54c26872fed963f1710d780e6564c97978f07bbce6f03e1e297cdea6a583487"
+    },
+    "validation/v319-sms-psg01/pal-sms/trace_states.bin": {
+      "stored": "objects/91fd9dbe4d5a5fd8a32c47425d44e07358443d88ddc196ecd52b491fd32382b9.gz",
+      "raw_sha256": "91fd9dbe4d5a5fd8a32c47425d44e07358443d88ddc196ecd52b491fd32382b9",
+      "raw_bytes": 1024,
+      "stored_sha256": "e050e87557ba99920da881be3465b897856fabef93b5f7d05dad3a972fefd5c8"
+    },
+    "validation/v319-sms-psg01/pal-sms/trace_windows.bin": {
+      "stored": "objects/ab4f77f129c5face6ad0405f2a9fe22e697cb9c941f2e59b47d73edc6974cdfb.gz",
+      "raw_sha256": "ab4f77f129c5face6ad0405f2a9fe22e697cb9c941f2e59b47d73edc6974cdfb",
+      "raw_bytes": 262144,
+      "stored_sha256": "59b269bb84d3ba940942802fa1db18d1aa4342d75debc6c75f46cce36e6210c5"
+    },
+    "validation/v319-sms-psg01/report.json": {
+      "stored": "objects/cb5f079c926d412721c6c9b4119551f258243c7afff4fe2282c32e434a6681bc.gz",
+      "raw_sha256": "cb5f079c926d412721c6c9b4119551f258243c7afff4fe2282c32e434a6681bc",
+      "raw_bytes": 1769,
+      "stored_sha256": "56384c61d21cd98da0d7fb7f587b5542eb40ef70d5d1ff40a30cc10fc31b65dd"
+    },
+    "validation/v319-sms-psg02/ntsc-md/capture.json": {
+      "stored": "objects/59f79b027983d3de6217fbccc64e281493f0f6a42c32c25e61f654e85b3f5691.gz",
+      "raw_sha256": "59f79b027983d3de6217fbccc64e281493f0f6a42c32c25e61f654e85b3f5691",
+      "raw_bytes": 629,
+      "stored_sha256": "b45cf48f4278489cc1eb91de4b470c5b8538a4ddbde95509c4f07f029854cb14"
+    },
+    "validation/v319-sms-psg02/ntsc-md/psg-registers.bin": {
+      "stored": "objects/fe9d8d291bde4452a67f3bb6c9395f6b5dcb173944aa2286fa6d3758942d7799.gz",
+      "raw_sha256": "fe9d8d291bde4452a67f3bb6c9395f6b5dcb173944aa2286fa6d3758942d7799",
+      "raw_bytes": 224000,
+      "stored_sha256": "15a780f13dc512396e362e8c83d2341584902b253f2a949b5b606931ee52f255"
+    },
+    "validation/v319-sms-psg02/ntsc-md/trace_counts.bin": {
+      "stored": "objects/30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58.gz",
+      "raw_sha256": "30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58",
+      "raw_bytes": 1048576,
+      "stored_sha256": "f227c53a0b54fb0009773680f60b76c1f346b4dcfca7e03b7f311f0bd0f3bea1"
+    },
+    "validation/v319-sms-psg02/ntsc-md/trace_states.bin": {
+      "stored": "objects/5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef.gz",
+      "raw_sha256": "5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+      "raw_bytes": 1024,
+      "stored_sha256": "75eb48369c0d0b1260b7db5c5f831d5f8b1b9b322b64191c96cb147437e7f404"
+    },
+    "validation/v319-sms-psg02/ntsc-md/trace_windows.bin": {
+      "stored": "objects/8a39d2abd3999ab73c34db2476849cddf303ce389b35826850f9a700589b4a90.gz",
+      "raw_sha256": "8a39d2abd3999ab73c34db2476849cddf303ce389b35826850f9a700589b4a90",
+      "raw_bytes": 262144,
+      "stored_sha256": "e3c3be563c17c24fb5bfdfefbcbe3882cc985fa4161654a534287d9baafe2a73"
+    },
+    "validation/v319-sms-psg02/ntsc-sms/capture.json": {
+      "stored": "objects/fd23c6299f7bab62eb69070c99e51afda6bc95f29f2f6bd413f9750f8f2aaafc.gz",
+      "raw_sha256": "fd23c6299f7bab62eb69070c99e51afda6bc95f29f2f6bd413f9750f8f2aaafc",
+      "raw_bytes": 599,
+      "stored_sha256": "c5230c81da52121536cf47ef078010c0780dbcca5eb113a1fd1ac2feaf56b9ea"
+    },
+    "validation/v319-sms-psg02/ntsc-sms/psg-registers.bin": {
+      "stored": "objects/fe9d8d291bde4452a67f3bb6c9395f6b5dcb173944aa2286fa6d3758942d7799.gz",
+      "raw_sha256": "fe9d8d291bde4452a67f3bb6c9395f6b5dcb173944aa2286fa6d3758942d7799",
+      "raw_bytes": 224000,
+      "stored_sha256": "15a780f13dc512396e362e8c83d2341584902b253f2a949b5b606931ee52f255"
+    },
+    "validation/v319-sms-psg02/ntsc-sms/trace_counts.bin": {
+      "stored": "objects/6cc89fc3e12d5331980d18f0f7f60fab2cc2f11c1a89aefbf60ae7ce8b2704e6.gz",
+      "raw_sha256": "6cc89fc3e12d5331980d18f0f7f60fab2cc2f11c1a89aefbf60ae7ce8b2704e6",
+      "raw_bytes": 1048576,
+      "stored_sha256": "b78f7762e980f29b4ba2311f2c341a7b503dc3392ce2615dad11d5a920816908"
+    },
+    "validation/v319-sms-psg02/ntsc-sms/trace_states.bin": {
+      "stored": "objects/63687f85d261c8b8824b61727fc86b2e63c26ecc30b0667a468af8ff559a7c8c.gz",
+      "raw_sha256": "63687f85d261c8b8824b61727fc86b2e63c26ecc30b0667a468af8ff559a7c8c",
+      "raw_bytes": 1024,
+      "stored_sha256": "a9796f280704a6fecfb85a2090b0ee10bf36263850938b314b489b39de345552"
+    },
+    "validation/v319-sms-psg02/ntsc-sms/trace_windows.bin": {
+      "stored": "objects/6aa6a12da37a8a7d8a59df0727f1b61e9b107566c60332ab13ad77e8ec856274.gz",
+      "raw_sha256": "6aa6a12da37a8a7d8a59df0727f1b61e9b107566c60332ab13ad77e8ec856274",
+      "raw_bytes": 262144,
+      "stored_sha256": "3d0886926c0cbb9ae2134e3005027953fe93793ecb8eb7e2c2e7f46c3df38570"
+    },
+    "validation/v319-sms-psg02/pal-md/capture.json": {
+      "stored": "objects/40c493a08a056e4e3a30938a360dc86b1298630ff9c04a461fba360392d61dbc.gz",
+      "raw_sha256": "40c493a08a056e4e3a30938a360dc86b1298630ff9c04a461fba360392d61dbc",
+      "raw_bytes": 627,
+      "stored_sha256": "da27b8121cc6abaac61c6e810ba4bc251127ac9121ddf8cb58d75764b69fda4d"
+    },
+    "validation/v319-sms-psg02/pal-md/psg-registers.bin": {
+      "stored": "objects/3f43db56665636ca212f7fd17b94c0e3e09bea4434923a2183250a5c0922f4f0.gz",
+      "raw_sha256": "3f43db56665636ca212f7fd17b94c0e3e09bea4434923a2183250a5c0922f4f0",
+      "raw_bytes": 224000,
+      "stored_sha256": "58848dc95dc9584dc41b587272742fc411c5913b1305f8532b8cb4209466d891"
+    },
+    "validation/v319-sms-psg02/pal-md/trace_counts.bin": {
+      "stored": "objects/30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58.gz",
+      "raw_sha256": "30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58",
+      "raw_bytes": 1048576,
+      "stored_sha256": "f227c53a0b54fb0009773680f60b76c1f346b4dcfca7e03b7f311f0bd0f3bea1"
+    },
+    "validation/v319-sms-psg02/pal-md/trace_states.bin": {
+      "stored": "objects/5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef.gz",
+      "raw_sha256": "5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+      "raw_bytes": 1024,
+      "stored_sha256": "75eb48369c0d0b1260b7db5c5f831d5f8b1b9b322b64191c96cb147437e7f404"
+    },
+    "validation/v319-sms-psg02/pal-md/trace_windows.bin": {
+      "stored": "objects/8a39d2abd3999ab73c34db2476849cddf303ce389b35826850f9a700589b4a90.gz",
+      "raw_sha256": "8a39d2abd3999ab73c34db2476849cddf303ce389b35826850f9a700589b4a90",
+      "raw_bytes": 262144,
+      "stored_sha256": "e3c3be563c17c24fb5bfdfefbcbe3882cc985fa4161654a534287d9baafe2a73"
+    },
+    "validation/v319-sms-psg02/pal-sms/capture.json": {
+      "stored": "objects/e1994ffb0330eef73f9d2597120635a61a545969623e64349b81906c1141ad46.gz",
+      "raw_sha256": "e1994ffb0330eef73f9d2597120635a61a545969623e64349b81906c1141ad46",
+      "raw_bytes": 597,
+      "stored_sha256": "435dba35b520faf89e71c6991d753b8978214eb44b7b9314c6c8a0ec2444d682"
+    },
+    "validation/v319-sms-psg02/pal-sms/psg-registers.bin": {
+      "stored": "objects/3f43db56665636ca212f7fd17b94c0e3e09bea4434923a2183250a5c0922f4f0.gz",
+      "raw_sha256": "3f43db56665636ca212f7fd17b94c0e3e09bea4434923a2183250a5c0922f4f0",
+      "raw_bytes": 224000,
+      "stored_sha256": "58848dc95dc9584dc41b587272742fc411c5913b1305f8532b8cb4209466d891"
+    },
+    "validation/v319-sms-psg02/pal-sms/trace_counts.bin": {
+      "stored": "objects/1312d6aea34cdbd541c10d7f73474fb193159088d82edaddf0dad3d46d81c8a1.gz",
+      "raw_sha256": "1312d6aea34cdbd541c10d7f73474fb193159088d82edaddf0dad3d46d81c8a1",
+      "raw_bytes": 1048576,
+      "stored_sha256": "161fed967f1de0442c36572df977f926e3a24a7cc198543be0ac2fc14e6f5e37"
+    },
+    "validation/v319-sms-psg02/pal-sms/trace_states.bin": {
+      "stored": "objects/63687f85d261c8b8824b61727fc86b2e63c26ecc30b0667a468af8ff559a7c8c.gz",
+      "raw_sha256": "63687f85d261c8b8824b61727fc86b2e63c26ecc30b0667a468af8ff559a7c8c",
+      "raw_bytes": 1024,
+      "stored_sha256": "a9796f280704a6fecfb85a2090b0ee10bf36263850938b314b489b39de345552"
+    },
+    "validation/v319-sms-psg02/pal-sms/trace_windows.bin": {
+      "stored": "objects/94c34ab8654d262340e67a48373a94b5008c878926ff959dbaa482fe9a1e8d43.gz",
+      "raw_sha256": "94c34ab8654d262340e67a48373a94b5008c878926ff959dbaa482fe9a1e8d43",
+      "raw_bytes": 262144,
+      "stored_sha256": "813d8c2df7bc38cb7440d7789bdfcbfb76bfa60f53b15f5ab7ae1d81d0a1f13f"
+    },
+    "validation/v319-sms-psg02/report.json": {
+      "stored": "objects/b8dab1dcb3ce7244be830d47252e47ad1e841de93d69ff5acc8e2c5c8fdb95bb.gz",
+      "raw_sha256": "b8dab1dcb3ce7244be830d47252e47ad1e841de93d69ff5acc8e2c5c8fdb95bb",
+      "raw_bytes": 1773,
+      "stored_sha256": "cdb642d54a88fd1ce6a99f6a3537952b4c42f456de707ea116a9cf5fc5ddc2e0"
+    }
+  },
+  "removed_verified_generated": [
+    {
+      "path": "validation/v319-sms-psg01/ntsc-md/psg-registers.bin",
+      "bytes": 104000
+    },
+    {
+      "path": "validation/v319-sms-psg01/ntsc-md/trace_counts.bin",
+      "bytes": 1048576
+    },
+    {
+      "path": "validation/v319-sms-psg01/ntsc-md/trace_states.bin",
+      "bytes": 1024
+    },
+    {
+      "path": "validation/v319-sms-psg01/ntsc-md/trace_windows.bin",
+      "bytes": 262144
+    },
+    {
+      "path": "validation/v319-sms-psg01/ntsc-sms/psg-registers.bin",
+      "bytes": 104000
+    },
+    {
+      "path": "validation/v319-sms-psg01/ntsc-sms/trace_counts.bin",
+      "bytes": 1048576
+    },
+    {
+      "path": "validation/v319-sms-psg01/ntsc-sms/trace_states.bin",
+      "bytes": 1024
+    },
+    {
+      "path": "validation/v319-sms-psg01/ntsc-sms/trace_windows.bin",
+      "bytes": 262144
+    },
+    {
+      "path": "validation/v319-sms-psg01/pal-md/psg-registers.bin",
+      "bytes": 104000
+    },
+    {
+      "path": "validation/v319-sms-psg01/pal-md/trace_counts.bin",
+      "bytes": 1048576
+    },
+    {
+      "path": "validation/v319-sms-psg01/pal-md/trace_states.bin",
+      "bytes": 1024
+    },
+    {
+      "path": "validation/v319-sms-psg01/pal-md/trace_windows.bin",
+      "bytes": 262144
+    },
+    {
+      "path": "validation/v319-sms-psg01/pal-sms/psg-registers.bin",
+      "bytes": 104000
+    },
+    {
+      "path": "validation/v319-sms-psg01/pal-sms/trace_counts.bin",
+      "bytes": 1048576
+    },
+    {
+      "path": "validation/v319-sms-psg01/pal-sms/trace_states.bin",
+      "bytes": 1024
+    },
+    {
+      "path": "validation/v319-sms-psg01/pal-sms/trace_windows.bin",
+      "bytes": 262144
+    },
+    {
+      "path": "validation/v319-sms-psg02/ntsc-md/psg-registers.bin",
+      "bytes": 224000
+    },
+    {
+      "path": "validation/v319-sms-psg02/ntsc-md/trace_counts.bin",
+      "bytes": 1048576
+    },
+    {
+      "path": "validation/v319-sms-psg02/ntsc-md/trace_states.bin",
+      "bytes": 1024
+    },
+    {
+      "path": "validation/v319-sms-psg02/ntsc-md/trace_windows.bin",
+      "bytes": 262144
+    },
+    {
+      "path": "validation/v319-sms-psg02/ntsc-sms/psg-registers.bin",
+      "bytes": 224000
+    },
+    {
+      "path": "validation/v319-sms-psg02/ntsc-sms/trace_counts.bin",
+      "bytes": 1048576
+    },
+    {
+      "path": "validation/v319-sms-psg02/ntsc-sms/trace_states.bin",
+      "bytes": 1024
+    },
+    {
+      "path": "validation/v319-sms-psg02/ntsc-sms/trace_windows.bin",
+      "bytes": 262144
+    },
+    {
+      "path": "validation/v319-sms-psg02/pal-md/psg-registers.bin",
+      "bytes": 224000
+    },
+    {
+      "path": "validation/v319-sms-psg02/pal-md/trace_counts.bin",
+      "bytes": 1048576
+    },
+    {
+      "path": "validation/v319-sms-psg02/pal-md/trace_states.bin",
+      "bytes": 1024
+    },
+    {
+      "path": "validation/v319-sms-psg02/pal-md/trace_windows.bin",
+      "bytes": 262144
+    },
+    {
+      "path": "validation/v319-sms-psg02/pal-sms/psg-registers.bin",
+      "bytes": 224000
+    },
+    {
+      "path": "validation/v319-sms-psg02/pal-sms/trace_counts.bin",
+      "bytes": 1048576
+    },
+    {
+      "path": "validation/v319-sms-psg02/pal-sms/trace_states.bin",
+      "bytes": 1024
+    },
+    {
+      "path": "validation/v319-sms-psg02/pal-sms/trace_windows.bin",
+      "bytes": 262144
+    }
+  ]
+}

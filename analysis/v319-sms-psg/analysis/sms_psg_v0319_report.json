@@ -1,0 +1,61 @@
+{
+  "passed": true,
+  "version": 319,
+  "md_sha256": "d3ea2a83ea24ed8a0d3c9857f9fbe70d000a4f73358452c1887f40e78966c56e",
+  "source_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+  "core_sha256": "f0e6f1723602c278d7520b627b1ed96132a8ed48fe1d14704e9cdb6c6c876e7c",
+  "direct_sms_reference": true,
+  "frames_per_region": 14000,
+  "total_compared_frames": 28000,
+  "cases": [
+    {
+      "region": "ntsc",
+      "frames": 14000,
+      "exact_register_frames": 14000,
+      "different_register_frames": 0,
+      "unique_states": 1014,
+      "different_value_counts_by_register": [
+        15,
+        9,
+        11,
+        12,
+        24,
+        7,
+        4,
+        12
+      ],
+      "non_fully_muted_state_frames": 9787,
+      "raw_register_sha256": "fe9d8d291bde4452a67f3bb6c9395f6b5dcb173944aa2286fa6d3758942d7799",
+      "short_run_prefix_exact": true
+    },
+    {
+      "region": "pal",
+      "frames": 14000,
+      "exact_register_frames": 14000,
+      "different_register_frames": 0,
+      "unique_states": 989,
+      "different_value_counts_by_register": [
+        15,
+        14,
+        11,
+        12,
+        24,
+        12,
+        4,
+        12
+      ],
+      "non_fully_muted_state_frames": 9896,
+      "raw_register_sha256": "3f43db56665636ca212f7fd17b94c0e3e09bea4434923a2183250a5c0922f4f0",
+      "short_run_prefix_exact": true
+    }
+  ],
+  "temporal_shift_frames": 0,
+  "register_normalisation": false,
+  "ram_writes": 0,
+  "sram_imports": 0,
+  "intra_frame_write_timing_validated": false,
+  "pcm_equivalence_validated": false,
+  "whole_game_audio_validated": false,
+  "archive_manifest": "analysis/v319-sms-psg/manifest.json",
+  "scope": "All8 raw PSG registers match SMS at every sampled frame over two cold no-input opening loops per region. Independently captured6500-frame prefixes also match. Nontrivial tone/noise/volume states; no temporal shift. This is not an intra-frame write trace, PCM or interactive/whole-game audio certification."
+}

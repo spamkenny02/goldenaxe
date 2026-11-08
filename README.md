@@ -27,7 +27,8 @@ cette routine ; la cadence de jeu visée reste celle de la Master System.
 | --- | --- | --- |
 | Campagnes NTSC/PAL | Nouvelle partie → neuf cristaux → ballon → palais → Hache d’or → Death Adder → générique complet → retour à l’intro | Fidélité globale SMS et console réelle |
 | Sauvegarde NTSC/PAL | Vraies écritures SRAM à neuf cristaux, puis Continue et déplacement sur ces mêmes SRAM | Autres slots/refus et console réelle |
-| Démarrage | Deux boucles de 14000 images par région identiques à V318 après normalisation ; états audio et huit registres PSG comparés sur 6500 images | Écarts SMS résiduels de révélations/fondus et formes d’onde PCM |
+| Démarrage vidéo | Deux boucles de 14000 images par région identiques à V318 après normalisation | Écarts SMS résiduels de révélations/fondus |
+| Audio du démarrage | Huit registres PSG bruts identiques à la SMS sur 14000 frames par région, sans décalage | Instants d’écriture dans la frame, PCM et sons interactifs du reste du jeu |
 | Inventaire | Six retours normaux : extérieur et deux maisons, PAL/NTSC, décor statique restauré | Phase des quatre motifs animés des maisons séparée de l’égalité statique |
 
 Les parcours emploient une protection de test uniquement durant les approches,
@@ -43,6 +44,7 @@ jusqu’au retour à l’intro à 382208 images, avec RAM entière et image fina
 identiques. Les vrais dons et l’achat d’une clé à 60 pièces sont conservés
 dans les preuves ; les huit satellites du cinquième boss sont aussi vérifiés.
 
+- [PSG du démarrage face à la SMS](analysis/sms_psg_v0319_report.json) — 28000 frames comparées au total, sans écriture RAM ni import SRAM.
 - [Rapport initial V319](analysis/optimization_v0319_report.json)
 - [Campagne NTSC et fin](analysis/cold_palace_final_c0046_report.json) · [Rejeu sur le binaire publié](analysis/c0047_palace_final_auto_report.json)
 - [Campagne PAL, Hache d’or et générique complet](analysis/palc0046_palace_ending_report.json) · [Rejeu sur le binaire publié](analysis/c0047_pal_ending_report.json)
