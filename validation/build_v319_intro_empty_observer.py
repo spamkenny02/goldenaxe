@@ -8,10 +8,14 @@ from pathlib import Path
 root = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(root / 'tools'))
 from archive_lossless_evidence import sha
-p = argparse.ArgumentParser(); p.add_argument('--profile', choices=['callback','window'], required=True); a=p.parse_args()
-out=root/'validation'/('v319-intro-empty-'+a.profile+'-observer01');assert not out.exists();out.mkdir()
+p = argparse.ArgumentParser(); p.add_argument('--profile', choices=['callback','window'], required=True)
+p.add_argument('--fire', action='store_true');p.add_argument('--revision',type=int,default=1); a=p.parse_args()
+assert 1<=a.revision<=99
+kind='fire' if a.fire else 'empty'
+out=root/'validation'/('v319-intro-'+kind+'-'+a.profile+f'-observer{a.revision:02}');assert not out.exists();out.mkdir()
 core=root.parents[1]/'work/genesis-plus-gx';path=core/'core/z80/z80.c'
-target=core/('genesis_plus_gx_v319_intro_empty_'+a.profile+'_libretro.dll');assert not target.exists()
+suffix='' if a.revision==1 else f'_r{a.revision:02}'
+target=core/('genesis_plus_gx_v319_intro_'+kind+'_'+a.profile+suffix+'_libretro.dll');assert not target.exists()
 tree=ast.parse((root/'validation/build_v319_intro_poll_observer.py').read_text())
 observer=next(ast.literal_eval(node.value) for node in tree.body if isinstance(node,ast.Assign) and
               any(isinstance(t,ast.Name) and t.id=='observer' for t in node.targets))
@@ -35,6 +39,12 @@ static void gaw_poll_observe(unsigned pc) {
  if(gaw_poll_active && pc==0xf21) e->polls++;
 }
 '''.replace(b'ENTRY_PC',b'0xf09' if a.profile=='callback' else b'0xf1e')
+if a.fire:
+ observer=observer.replace(b'unsigned char ram[336],sound[400];',b'unsigned char ram[336],sound[400],extra[80];')
+ observer=observer.replace(b'memcpy(e->sound,work_ram+0x1e00,400);',b'''memcpy(e->sound,work_ram+0x1e00,400);
+ memcpy(e->extra,work_ram+0x1ca0,72);e->extra[72]=work_ram[0x1fff];
+ e->extra[73]=work_ram[0x1cec];e->extra[74]=work_ram[0x1ced];''')
+ observer=observer.replace(b'work_ram[0x1cec]==0x36',b'work_ram[0x1cec]==0x37')
 original=path.read_bytes();needle=b'static void gaw_timing_observe(unsigned pc)\r\n{'
 if needle not in original:needle=needle.replace(b'\r\n',b'\n')
 assert original.count(needle)==1
@@ -42,10 +52,11 @@ changed=original.replace(needle,observer+needle+b'\n gaw_poll_observe(pc);')
 (out/'z80-before.c').write_bytes(original);(out/'z80-observer.c').write_bytes(changed)
 try:
  path.write_bytes(changed)
- subprocess.run([sys.executable,'tools/build_timing_core.py','--target',target.name,'--log',str(out/'build.log')],cwd=root,check=True)
+ subprocess.run([sys.executable,'tools/build_timing_core.py','--target',target.name,'--log',str(out/'build.log'),
+                 '--force-source','core/z80/z80.c'],cwd=root,check=True)
 finally:path.write_bytes(original)
 assert path.read_bytes()==original
 (out/'report.json').write_text(json.dumps(dict(passed=True,profile=a.profile,core=str(target),core_sha256=sha(target.read_bytes()),
  original_source_sha256=sha(original),observer_source_sha256=sha(changed),original_source_restored=True,
- emulated_state_modifications=0,emulated_cycle_modifications=0,callback_target=0xf36,
+ emulated_state_modifications=0,emulated_cycle_modifications=0,callback_target=0xf37 if a.fire else 0xf36,
  scope='Natural calls only; source first/actual caller-return entry snapshots. Runtime parity pending.'),indent=2)+'\n')

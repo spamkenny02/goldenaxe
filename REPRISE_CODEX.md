@@ -6,6 +6,53 @@ le README et les rapports cités.
 
 ## Suivi courant — V319, 8 novembre 2026
 
+DERNIER CODE NATIF : `source_intro_fire.h/.c`, rapport
+`analysis/v319_intro_fire_report.json`, archive `analysis/v319-intro-fire`.
+F37..F4E etbank5BDFF..BE12 traduits surSourceClock :retourrapide clock&7,
+banque5,INC compteurbyteDCE2/CP6/JRC/XOR,3LDI deBE13 versDCA1..DCA3,
+RET. Signature SourceIntroCallback,user pointe18octetsBE13(table ROM).
+ctx.full_ram requis pour palette/compteur/mapper via source_room_get/put.
+Aucune écriture IO/hardware, seulement sémantique native et temps source.
+Intégration au jeu publiée NON sélectionnée ; sources recompilées finales
+byte-identiques V319 d3ea2a83/DA29. Aucun nouveau numéro de ROM public.
+
+Oracle source original sans écriture RAM/ROM :F09/F37 3533NTSC+3566PAL,
+F1E/F37 30NTSC+30PAL, soit7159 cas, tous traversantIRQ. Snapshots incluent
+336RAMIRQ+400reader et80octets de palette/counter/mapper/target (padding
+inclus). Source exactement durée/raster/workIRQ/R/IFF/EI/pending/états et
+polls. CallbackF37 sélectionné par DCECsource, pas fixé surune frame.
+Compteurs retenus observés0..5 et225NTSC/227PAL ;441/445changements
+palette/counter dansF09,75retoursà0 chaque région. Tous vecteurs compilés
+68000 :8kernels F09 de900max sous2MiB +1kernel60F1E, chacun dansles2
+régions cibles,14318exécutions,0erreur. Ce sont des kernels sémantiques,
+pas une preuve de deadlines de publication vidéo/PSG dans le jeu.
+
+Incidents conservés :premierharness host `<string.h>` résolu versSGDK et
+rejeté ; utiliser__builtin_memset, pas le headerSGDK surhost. PremierDLL
+window lié avec ancienobjetcallback (planmake ne recompilaitpas z80.c,
+timestamp trop proche). Assertion PCF1E a REJETÉ ses captures ; aucunpass
+report pourwindow02. Nouveauwindowobserver02+D L Lsuffixr02 :force-source
+core/z80/z80.c. tools/build_timing_core.py a maintenant --force-source
+(make-W, chemin validé souswork/genesis-plus-gx) ; builderempty/fire l'utilise.
+Ne pas invoquer deux builds modifiant la même source émulateur en parallèle.
+La sourcez80.c est restauréeenfinally etSHAvérifié. PSGsource28kframes par
+profil identiqueaux anciennescaptures ; pas de DLLémulateur distribué.
+
+Tousprocessus terminal0 après corrections ; aucun handleàattendre. Archives
+relues :1286références,129979484octets générés supprimés,112167663nets
+libérés. Sources gardées, vecteurs et kernelsrestaurables depuisgzip.
+Scripts validate_v319_intro_poll.py accepte--fire et--observer-revision ;
+build_v319_intro_empty_observer.py accepte--fire,--revision ;
+compile_v319_intro_poll_68k.py acceptepartitionscase-start/count etRAM416,
+fixeTMPDIR/TMP/TEMP='.' uniquementdanssonprocessusbuild ;
+compile_v319_intro_fire_all.py,archive_v319_intro_fire.py versionnés.
+
+Prochaine étape :callbacks1055/104A/1061/108B acteurs/SAT, distincts du
+fire ;capturerétatC300..C5FF etDD40/DD80 en pluspalette/clock, modéliser
+instructions/retours viaSourceClock. Branche skipD0B surentrée normale
+resteouverte. PuiscopieE8B..E9D etpublicationraster nativeavecdeadlines.
+Ne pas remplacer ces modèles par un worktotalmoyen ou des overridesframes.
+
 DERNIÈRE PREUVE : `analysis/v319_intro_empty_report.json`, archive
 `analysis/v319-intro-empty`. API source_intro_wait_callback et window
 vérifiées DIRECTEMENT sur captures naturelles source DCEC=0F36, donc

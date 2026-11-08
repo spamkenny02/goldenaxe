@@ -19,6 +19,8 @@ from validate_native_source_wait import MODULES
 p = argparse.ArgumentParser()
 p.add_argument('--out-name', default='v319-native-intro-poll01')
 p.add_argument('--profile', choices=['poll','callback','window'], default='poll')
+p.add_argument('--fire', action='store_true')
+p.add_argument('--observer-revision',type=int,default=1)
 a = p.parse_args()
 assert a.out_name.startswith('v319-native-intro-poll') and '/' not in a.out_name and '\\' not in a.out_name
 out = root / 'validation' / a.out_name
@@ -48,9 +50,24 @@ if a.profile != 'poll':
     wrapper = wrapper.replace('source_intro_vcounter_poll(&clock,&context,&result)',
         'source_intro_wait_' + ('callback' if a.profile == 'callback' else 'window') + '(&clock,&context,0,0,&result)')
     (out / 'wrapper.c').write_text(wrapper)
+if a.fire:
+    assert a.profile != 'poll'
+    palette=(root/'input/original.sms').read_bytes()[0x17e13:0x17e25]
+    wrapper=wrapper.replace('#include "source_intro_wait.h"', '#include "source_intro_fire.h"\n'
+        'static u8 fire_full_ram[8192];\nstatic const u8 fire_colors[18]={'+','.join(map(str,palette))+'};')
+    wrapper=wrapper.replace('context.ram=ram;', '''__builtin_memset(fire_full_ram,0,sizeof(fire_full_ram));
+ for(u16 n=0;n<72;n++) fire_full_ram[0x1ca0+n]=ram[336+n];
+ fire_full_ram[0x1fff]=ram[408];fire_full_ram[0x1cec]=ram[409];fire_full_ram[0x1ced]=ram[410];
+ context.full_ram=fire_full_ram;context.ram=ram;''')
+    wrapper=wrapper.replace('(&clock,&context,0,0,&result)', '(&clock,&context,source_intro_fire_callback,(void *)fire_colors,&result)')
+    wrapper=wrapper.replace('out[0]=clock.raster;', '''for(u16 n=0;n<72;n++) ram[336+n]=fire_full_ram[0x1ca0+n];
+ ram[408]=fire_full_ram[0x1fff];ram[409]=fire_full_ram[0x1cec];ram[410]=fire_full_ram[0x1ced];
+ out[0]=clock.raster;''')
+    (out/'wrapper.c').write_text(wrapper)
 sdk = root.parents[1] / 'work/sgdk'
 env = dict(os.environ); env['PATH'] = 'C:/msys64/ucrt64/bin;' + env['PATH']
 modules = ['source_intro_wait', 'source_wait_restore', *MODULES]
+if a.fire: modules.insert(0,'source_intro_fire')
 command = ['C:/msys64/ucrt64/bin/gcc.exe', '-O3', '-shared', '-Wall', '-Wextra', '-Werror',
     '-I', str(sdk / 'inc'), '-I', str(root / 'megadrive/src'), str(out / 'wrapper.c')]
 command += [str(root / 'megadrive/src' / (name + '.c')) for name in modules]
@@ -62,13 +79,17 @@ native = c.CDLL(str(out / 'native.dll')).poll_case
 native.argtypes = [c.POINTER(c.c_uint32), c.c_uint8] + [c.POINTER(c.c_uint8)] * 4 + [c.POINTER(c.c_uint32)]
 native.restype = c.c_uint8
 build_folder = 'v319-intro-poll-observer01' if a.profile == 'poll' else 'v319-intro-empty-' + a.profile + '-observer01'
+if a.fire: build_folder=build_folder.replace('empty','fire')
+build_folder=build_folder[:-2]+f'{a.observer_revision:02}'
 build = json.loads((root / 'validation' / build_folder / 'report.json').read_bytes())
 core = Path(build['core']); assert sha(core.read_bytes()) == build['core_sha256']
 dll = c.CDLL(str(core))
 dll.gaw_poll_reset.restype = None
 dll.gaw_poll_size.restype = dll.gaw_poll_errors.restype = dll.gaw_poll_stride.restype = c.c_uint
 dll.gaw_poll_data.restype = c.POINTER(c.c_uint8)
-assert dll.gaw_poll_stride() == 1624
+stride=1784 if a.fire else 1624
+snapshot=888 if a.fire else 808
+assert dll.gaw_poll_stride() == stride
 image = (root / 'input/original.sms').read_bytes()
 low = (c.c_uint8 * 32768).from_buffer_copy(image[:32768]); bank = (c.c_uint8 * 16384).from_buffer_copy(image[0x18000:0x1c000])
 archive = root / 'analysis/v319-psg-write-spacing'
@@ -82,7 +103,7 @@ for region in ('ntsc', 'pal'):
             core_options={'genesis_plus_gx_region_detect': 'pal' if region == 'pal' else 'auto'})
     assert dll.gaw_poll_errors() == 0
     count = dll.gaw_poll_size(); assert 0 < count < 4096
-    raw = c.string_at(dll.gaw_poll_data(), count * 1624)
+    raw = c.string_at(dll.gaw_poll_data(), count * stride)
     (out / region / 'source-poll-records.bin').write_bytes(raw)
     item = manifest['compressed'][f'validation/v319-psg-writes01/{region}-sms/exposed-psg-states.bin']
     encoded = (archive / item['stored']).read_bytes(); assert sha(encoded) == item['stored_sha256']
@@ -90,14 +111,16 @@ for region in ('ntsc', 'pal'):
     (out / region / 'psg-states.bin').write_bytes(psg)
     cases = []
     for n in range(count):
-        record = raw[n*1624:(n+1)*1624]; first = record[:808]; last = record[808:1616]
+        record = raw[n*stride:(n+1)*stride]; first = record[:snapshot]; last = record[snapshot:snapshot*2]
         phase = struct.unpack_from('<12I', first, 16); end = struct.unpack_from('<12I', last, 16)
         refresh, pc = struct.unpack_from('<2I', first, 64); final_refresh, final_pc = struct.unpack_from('<2I', last, 64)
         if a.profile == 'poll': assert (pc, final_pc) == (0xf21, 0xf2b)
         else:
             assert pc == (0xf09 if a.profile == 'callback' else 0xf1e)
-            assert final_pc == struct.unpack_from('<I', record, 1620)[0]
-        state = (c.c_uint8 * 336).from_buffer_copy(first[72:408]); audio = (c.c_uint8 * 400).from_buffer_copy(first[408:808])
+            assert final_pc == struct.unpack_from('<I', record, snapshot*2+4)[0]
+        before=first[72:408]+(first[808:888] if a.fire else b'')
+        expected_state=last[72:408]+(last[808:888] if a.fire else b'')
+        state = (c.c_uint8 * len(before)).from_buffer_copy(before); audio = (c.c_uint8 * 400).from_buffer_copy(first[408:808])
         result = (c.c_uint32 * 18)()
         assert native((c.c_uint32 * 12)(*phase), refresh, state, audio, low, bank, result), (region, n, 'native rejection')
         wall = struct.unpack_from('<Q', last)[0] - struct.unpack_from('<Q', first)[0]
@@ -105,15 +128,15 @@ for region in ('ntsc', 'pal'):
         delta = (end[0] - end[2] + 0x80000000) % 0x100000000 - 0x80000000
         raster = (end[1] * 3420 + delta) % (end[3] * 3420)
         assert (result[0], result[1], result[4]*15, result[7]) == (raster, wall, irq, final_refresh), (region, n, list(result), raster, wall, irq, final_refresh)
-        assert result[12] == struct.unpack_from('<I', record, 1616)[0]
+        assert result[12] == struct.unpack_from('<I', record, snapshot*2)[0]
         if a.profile == 'poll':
             assert result[2] == 30*result[13] + 44*result[14] + 39
             assert result[3] == 3*result[13] + 5*result[14] + 5
         assert result[2]*15 + irq == wall
         assert (result[8], result[9], result[10], result[11]) == (end[8], end[9], end[10], 1)
-        assert bytes(state) == last[72:408] and bytes(audio) == last[408:808], (region, n, 'RAM/audio')
+        assert bytes(state) == expected_state and bytes(audio) == last[408:808], (region, n, 'RAM/audio')
         cases.append(dict(phase=list(phase), refresh=refresh, expected=list(result),
-            input_ram=list(first[72:408]), input_audio=list(first[408:808]),
+            input_ram=list(before), input_audio=list(first[408:808]),
             expected_ram=list(state), expected_audio=list(audio)))
     (out / region / 'native-cases.json').write_text(json.dumps(cases, separators=(',', ':')) + '\n')
     row = dict(region=region, source_cases=count, source_poll_reads=sum(case['expected'][12] for case in cases),
@@ -121,12 +144,14 @@ for region in ('ntsc', 'pal'):
         observer_exposed_psg_exact_frames=14000, source_records_sha256=sha(raw),
         maximum_polls=max(case['expected'][12] for case in cases))
     results.append(row); print(json.dumps(row), flush=True)
-report = dict(passed=True, diagnostic_only=True, profile=a.profile, production_rom_changed=False, cases=results,
+report = dict(passed=True, diagnostic_only=True, profile=a.profile, fire=a.fire, production_rom_changed=False, cases=results,
     core_sha256=sha(core.read_bytes()), source_sha256=sha(image),
     native_sources={name: sha((root / 'megadrive/src' / (name + '.c')).read_bytes()) for name in modules},
-    verified=['Original natural entry/return wall time, raster, polls, R, IFF/EI/pending,336 IRQ RAM and400 reader bytes.',
+    verified=['Original natural entry/return wall time, raster, polls, R, IFF/EI/pending,336 IRQ RAM and400 reader bytes.'+
+              (' Fire palette/counter/mapper/callback snapshots also compared.' if a.fire else ''),
               'Both regions,14000 no-input cold source frames per region; observer PSG state unchanged.'],
     limits=['Host native semantic helper; compiled68000 timing and physical MD publication not checked here.',
-            'Selected entry profile only; callback/window profiles use original F36 empty callback, not fire/actors.',
+            ('Selected profile with original F37 fire callback; no actors or skip inputs.' if a.fire else
+             'Selected entry profile only; callback/window profiles use original F36 empty callback, not fire/actors.'),
             'No production clock integration, full-game or PCM certification.'])
 (out / 'report.json').write_text(json.dumps(report, indent=2) + '\n')

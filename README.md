@@ -111,9 +111,11 @@ le banc NTSC de 2453 à 105 frames d’émulation, sans changer les résultats.
 d’IRQ, DI/EI et compteur. Les [continuations `F09/F32/F1E` avec callback vide](analysis/v319_intro_empty_report.json)
 passent maintenant 2052 captures naturelles SMS, toutes avec IRQ pendant
 l’attente, puis 4104 exécutions compilées 68000 dans les deux régions.
-Les callbacks du feu et des acteurs restent à traiter ; aucune de ces
-routines ne pilote encore l’intro publiée. La recompilation complète
-conserve exactement la V319.
+Le [callback du feu avec son compteur et sa palette](analysis/v319_intro_fire_report.json)
+est aussi traduit : 7159 vecteurs source passent, puis 14318 exécutions
+compilées 68000 dans les deux régions. Les callbacks des acteurs restent
+à traiter ; aucune de ces nouvelles routines ne pilote encore l’intro
+publiée. La recompilation complète conserve exactement la V319.
 
 ## Sources et compilation
 
