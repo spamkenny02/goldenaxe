@@ -47,3 +47,31 @@ u8 source_intro_reveal_pass(SourceClock *clock,SourceIrqContext *context,
     }
     return 0;
 }
+
+u8 source_intro_reveal_sequence(SourceClock *clock,SourceIrqContext *context,u8 mask,
+                                SourceIntroCallback callback,void *callback_user,
+                                SourceIntroRevealSink sink,void *sink_user,
+                                SourceIntroRevealSequenceOutput *output)
+{
+    SourceIntroWaitOutput wait;u8 carry;u16 guard;
+    if(!clock || !context || !context->ram || !context->audio || !output) return 0;
+    output->passes=output->writes=0;output->skip=0;output->mask=mask;
+    output->last.address=output->last.step=output->last.writes=0;output->last.value=0;
+    for(guard=0;guard<9;guard++)
+    {
+        S(4,1);S(10,1);output->last.address=0x4003;
+        S(10,1);output->last.step=4;S(7,1);S(4,1);
+        S(4,1);output->last.value=output->mask;
+        S(8,2);output->last.value=(output->last.value<<1)|(output->last.value>>7);
+        S(8,2);output->last.value=(output->last.value<<1)|(output->last.value>>7);
+        S(17,1);
+        if(!source_intro_wait_window(clock,context,callback,callback_user,&wait)) return 0;
+        if(wait.skip) {output->skip=1;return 1;}
+        if(!source_intro_reveal_pass(clock,context,&output->last,sink,sink_user)) return 0;
+        output->passes++;output->writes+=output->last.writes;
+        S(8,2);carry=output->mask&1;output->mask>>=1;
+        S(carry?12:7,1);
+        if(!carry) return source_clock_checkpoint(clock,source_irq_interrupt,context);
+    }
+    return 0;
+}

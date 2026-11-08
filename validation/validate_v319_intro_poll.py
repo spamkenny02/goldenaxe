@@ -25,7 +25,9 @@ p.add_argument('--actors',choices=['second','third'])
 p.add_argument('--irq-status',action='store_true')
 p.add_argument('--init',action='store_true')
 p.add_argument('--reveal',action='store_true')
+p.add_argument('--sequence',action='store_true')
 a = p.parse_args()
+if a.sequence:a.reveal=True
 if a.reveal:
  assert not(a.actors or a.fire or a.init) and a.profile=='callback'
  a.actors='second';a.irq_status=True
@@ -144,17 +146,46 @@ static u8 reveal_sink(void *user,u32 elapsed,u32 raster,u8 port,u8 value)
  result.polls=reveal_event_position;
  out[0]=clock.raster;''')
     (out/'wrapper.c').write_text(wrapper)
+if a.sequence:
+    palette=(root/'input/original.sms').read_bytes()[0x17e13:0x17e25]
+    declarations='#include "source_intro_actors.h"\n#include "source_intro_fire.h"\n'+        'static const u8 sequence_bank5[16384]={[0x3e13]='+','.join(map(str,palette))+',[0x3e57]='+','.join(map(str,colors))+'};\n'
+    dispatch='''static u8 sequence_callback(SourceClock *clock,SourceIrqContext *context,void *user)
+{
+ const SourceIntroActorData *data=user;
+ u16 target=context->full_ram[0x1cec]|((u16)context->full_ram[0x1ced]<<8);
+ if(target==0xf37) return source_intro_fire_callback(clock,context,(void *)(data->bank5+0x3e13));
+ if(target==0x1055) return source_intro_actors_second(clock,context,user);
+ if(target==0x104a) return source_intro_actors_third(clock,context,user);
+ if(target==0xf36) return source_clock_plain(clock,10,1,source_irq_interrupt,context) && source_clock_checkpoint(clock,source_irq_interrupt,context);
+ return 0;
+}
+'''
+    wrapper=wrapper.replace('#include "source_intro_reveal.h"','#include "source_intro_reveal.h"\n'+declarations+dispatch)
+    begin=wrapper.index('SourceIntroRevealPass reveal=');end=wrapper.index(';',begin)
+    wrapper=wrapper[:begin]+'SourceIntroRevealSequenceOutput sequence;SourceIntroActorData sequence_data={low,sequence_bank5}'+wrapper[end:]
+    wrapper=wrapper.replace('source_intro_reveal_pass(&clock,&context,&reveal,reveal_sink,0)',
+        'source_intro_reveal_sequence(&clock,&context,ram[1184],sequence_callback,&sequence_data,reveal_sink,0,&sequence)')
+    wrapper=wrapper.replace('reveal.address','sequence.last.address').replace('reveal.step','sequence.last.step').replace('reveal.value','sequence.last.value')
+    wrapper=wrapper.replace('result.polls=reveal_event_position;',
+        'ram[1184]=sequence.mask;result.below=sequence.passes;result.above=sequence.writes;result.counter=sequence.mask;result.skip=sequence.skip;\n result.polls=reveal_event_position;')
+    wrapper=wrapper.replace('irq_status_values[8]','irq_status_values[64]')
+    (out/'wrapper.c').write_text(wrapper)
 if a.irq_status:
     assert wrapper.count('context.full_ram=actor_full_ram;')==1
     wrapper=wrapper.replace('context.full_ram=actor_full_ram;',
         'irq_status_count=ram[1184];irq_status_position=0;\n'
         ' for(u16 n=0;n<8;n++) irq_status_values[n]=ram[1185+n];\n context.full_ram=actor_full_ram;')
     (out/'wrapper.c').write_text(wrapper)
+if a.sequence:
+    wrapper=wrapper.replace('irq_status_count=ram[1184]','irq_status_count=ram[1192]')
+    wrapper=wrapper.replace('n<8;n++) irq_status_values[n]=ram[1185+n]', 'n<64;n++) irq_status_values[n]=ram[1193+n]')
+    (out/'wrapper.c').write_text(wrapper)
 sdk = root.parents[1] / 'work/sgdk'
 env = dict(os.environ); env['PATH'] = 'C:/msys64/ucrt64/bin;' + env['PATH']
 modules = ['source_intro_wait', 'source_wait_restore', *MODULES]
 if a.fire: modules.insert(0,'source_intro_fire')
 if a.actors: modules.insert(0,'source_intro_reveal' if a.reveal else 'source_intro_actors')
+if a.sequence:modules[:0]=['source_intro_actors','source_intro_fire']
 command = ['C:/msys64/ucrt64/bin/gcc.exe', '-O3', '-shared', '-Wall', '-Wextra', '-Werror',
     '-I', str(sdk / 'inc'), '-I', str(root / 'megadrive/src'), str(out / 'wrapper.c')]
 module_paths=[root/'megadrive/src'/(name+'.c') for name in modules]
@@ -175,6 +206,7 @@ if a.fire: build_folder=build_folder.replace('empty','fire')
 if a.actors:build_folder=build_folder.replace('empty','actors_'+a.actors)
 if a.init:build_folder=build_folder.replace('intro-actors_','intro-init_actors_')
 if a.reveal:build_folder='v319-intro-reveal-callback-observer01'
+if a.sequence:build_folder='v319-intro-reveal_sequence-callback-observer01'
 build_folder=build_folder[:-2]+f'{a.observer_revision:02}'
 build = json.loads((root / 'validation' / build_folder / 'report.json').read_bytes())
 core = Path(build['core']); assert sha(core.read_bytes()) == build['core_sha256']
@@ -182,10 +214,10 @@ dll = c.CDLL(str(core))
 dll.gaw_poll_reset.restype = None
 dll.gaw_poll_size.restype = dll.gaw_poll_errors.restype = dll.gaw_poll_stride.restype = c.c_uint
 dll.gaw_poll_data.restype = c.POINTER(c.c_uint8)
-snapshot=1656 if a.actors else 888 if a.fire else 808
+snapshot=1664 if a.sequence else 1656 if a.actors else 888 if a.fire else 808
 stride=snapshot*2+8
-if a.irq_status:stride+=40
-if a.reveal:stride+=6912*8
+if a.irq_status:stride+=264 if a.sequence else 40
+if a.reveal:stride+=(55296 if a.sequence else 6912)*8
 assert dll.gaw_poll_stride() == stride
 image = (root / 'input/original.sms').read_bytes()
 low = (c.c_uint8 * 32768).from_buffer_copy(image[:32768]); bank = (c.c_uint8 * 16384).from_buffer_copy(image[0x18000:0x1c000])
@@ -213,19 +245,19 @@ for region in ('ntsc', 'pal'):
         refresh, pc = struct.unpack_from('<2I', first, 64); final_refresh, final_pc = struct.unpack_from('<2I', last, 64)
         if a.profile == 'poll': assert (pc, final_pc) == (0xf21, 0xf2b)
         else:
-            assert pc == (0xe8b if a.reveal else (0xf51 if a.actors=='second' else 0xf54) if a.init else 0xf09 if a.profile == 'callback' else 0xf1e)
+            assert pc == (0xe79 if a.sequence else 0xe8b if a.reveal else (0xf51 if a.actors=='second' else 0xf54) if a.init else 0xf09 if a.profile == 'callback' else 0xf1e)
             if a.init:phase=tuple(phase[i] if i!=4 else struct.unpack_from('<I',record,snapshot*2)[0] for i in range(12))
-            assert final_pc == (0xea0 if a.reveal else struct.unpack_from('<I', record, snapshot*2+4)[0])
+            assert final_pc == (0xea4 if a.sequence else 0xea0 if a.reveal else struct.unpack_from('<I', record, snapshot*2+4)[0])
         before=first[72:408]+(first[808:snapshot] if a.fire or a.actors else b'')
         expected_state=last[72:408]+(last[808:snapshot] if a.fire or a.actors else b'')
         if a.irq_status:
-            statuses=struct.unpack_from('<9I',record,snapshot*2+8)
-            assert (0 if a.init else 1)<=statuses[0]<=8 and all(v<=255 for v in statuses[1:])
+            statuses=struct.unpack_from('<65I' if a.sequence else '<9I',record,snapshot*2+8)
+            assert (0 if a.init else 1)<=statuses[0]<=(64 if a.sequence else 8) and all(v<=255 for v in statuses[1:])
             before+=bytes(statuses);expected_state+=bytes(statuses)
         state = (c.c_uint8 * len(before)).from_buffer_copy(before); audio = (c.c_uint8 * 400).from_buffer_copy(first[408:808])
         if a.reveal:
-            event_count=struct.unpack_from('<I',record,snapshot*2)[0];assert event_count==6912
-            event_values=struct.unpack_from('<13824I',record,snapshot*2+44)
+            event_count=struct.unpack_from('<I',record,snapshot*2)[0];assert event_count==(55296 if a.sequence else 6912)
+            event_values=struct.unpack_from('<110592I' if a.sequence else '<13824I',record,snapshot*2+(268 if a.sequence else 44))
             event_buffer=(c.c_uint32*len(event_values))(*event_values)
             configure=c.CDLL(str(out/'native.dll')).configure_reveal_events
             configure.argtypes=[c.POINTER(c.c_uint32),c.c_uint16];configure.restype=None
@@ -258,7 +290,7 @@ for region in ('ntsc', 'pal'):
     if a.init:row['source_template_addresses']=sorted({case['phase'][4] for case in cases})
     results.append(row); print(json.dumps(row), flush=True)
 report = dict(passed=True, diagnostic_only=True, profile=a.profile, fire=a.fire, actors=a.actors,
-    irq_status=a.irq_status,init=a.init,reveal=a.reveal,production_rom_changed=False, cases=results,
+    irq_status=a.irq_status,init=a.init,reveal=a.reveal,sequence=a.sequence,production_rom_changed=False, cases=results,
     core_sha256=sha(core.read_bytes()), source_sha256=sha(image),
     native_sources={name: sha((root / 'megadrive/src' / (name + '.c')).read_bytes()) for name in modules},
     verified=['Original natural entry/return wall time, raster, '+('initial HL, ' if a.init else 'polls, ')+
@@ -267,7 +299,8 @@ report = dict(passed=True, diagnostic_only=True, profile=a.profile, fire=a.fire,
               (' Actor768-byte records and palette/counter/mapper/callback snapshots also compared.' if a.actors else ''),
               'Both regions,14000 no-input cold source frames per region; observer PSG state unchanged.'],
     limits=['Host native semantic helper; compiled68000 timing and physical MD publication not checked here.',
-            ('Reveal pass E8B..E9D only; every OUT instruction completion compared. Live VDP status remains external diagnostic input.' if a.reveal else
+            ('Composed E79..EA2 sequence, live F1E callbacks plus eight reveal passes. Natural no-input cases only; VDP status is external diagnostic input.' if a.sequence else
+             'Reveal pass E8B..E9D only; every OUT instruction completion compared. Live VDP status remains external diagnostic input.' if a.reveal else
              'Natural actor initialization only; these vectors do not exercise IRQ crossing.' if a.init else
              'Selected original actor callback profile; captured VDP status is explicit diagnostic IRQ input where enabled.' if a.actors else
              'Selected profile with original F37 fire callback; no actors or skip inputs.' if a.fire else

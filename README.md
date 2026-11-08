@@ -125,8 +125,12 @@ Le [passage de dévoilement E8B..E9D](analysis/v319_intro_reveal_report.json)
 reproduit désormais 112 entrées SMS et 774144 écritures vidéo : valeurs,
 ordre et temps de fin d’instruction identiques. Tous les vecteurs passent
 également en 68000 compilé sur les deux régions. Le regroupement des
-boucles sans interruption préserve ces résultats. La composition des sept
-passages avec les attentes, puis la publication vidéo/son, restent à intégrer.
+boucles sans interruption préserve ces résultats. La [composition complète E79..EA2](analysis/v319_intro_sequence_report.json)
+passe maintenant aussi : 14 séquences naturelles SMS, avec leurs attentes,
+callbacks actifs et 40 IRQ par séquence, puis 28 exécutions compilées.
+La boucle comporte huit passages, dont un dernier au masque zéro.
+Le démarrage de la séquence, le skip et la publication vidéo/son restent
+à relier au jeu ; les preuves ci-dessus portent sur les routines sémantiques.
 Aucune de ces nouvelles routines ne pilote encore l’intro publiée.
 La recompilation complète conserve exactement la V319.
 

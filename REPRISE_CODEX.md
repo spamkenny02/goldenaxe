@@ -6,6 +6,44 @@ le README et les rapports cités.
 
 ## Suivi courant — V319, 8 novembre 2026
 
+DERNIÈRE ÉTAPE : source_intro_reveal_sequence dans source_intro_reveal.c/.h,
+rapport `analysis/v319_intro_sequence_report.json`, archive
+`analysis/v319-intro-sequence`. Composition E79..EA2, sortie EA4 préfetch
+(RET non inclus), même SourceClock pour setup registres alternatifs,
+rotations E, F1E/callback courant, passe E8B et SRL D/JR carry.
+Le masque D=7F produit HUIT passes : sept carry-set puis une à D=0.
+Ceci corrige les mentions anciennes de sept passages dans les notes.
+
+14 séquences naturelles complètes :7 NTSC+7 PAL,14000 frames source/région.
+Chacune traverse40 IRQ,55296 OUT,18432 écritures de plan,8 passes.
+Tous774144 OUT comparés (port/valeur/temps fin instruction/raster dérivé),
+1257 octets suivis+400 reader, durée totale/IRQ/R/latches identiques.
+Dispatch du diagnostic lit DCEC vivant, sélectionne F36/F37/1055 observés ;
+104A supporté mais absent de ce profil. Pas de replay de timings de frames.
+Tous14 vecteurs compilés en4 kernels de4/4/4/2cas, chacun NTSC+PAL :
+28 exécutions et1548288 comparaisons OUT, zéro erreur.
+Les entrées statut VDP source restent explicites à chaque0137 ; à remplacer
+par le calcul vivant avant production, jamais par des enregistrements.
+
+API source_intro_reveal_sequence(clock,ctx,mask,callback,callback_user,
+sink,sink_user,output). Output contient last,passes,writes,mask,skip.
+Skip sort D0B via F1E, mais aucun cas skip n’est prouvé dans ce profil.
+Le code couvre le terminal de boucle, pas E50..E75/setup, ni EA4 RET.
+--sequence sur builder/validator implique --reveal et layout acteurs ;
+aucun callback fixe. Snapshot1664, extra856 dont index848=D, statut IRQ
+count+64 valeurs : entréeRAM1192 puis65bytes statut,
+soit1257bytes totaux. D à inputRAM1184, statut count1192, valeurs1193.
+Events record à snapshot*2+268, stride445968, cap32records. Output[12]
+compte OUT55296, [13]passes8, [14]writes18432, [15]mask0.
+compileur kernel déduit longueur des tableaux events depuis les fixtures.
+
+Processus78967(all) et32863(rebuild) terminaux0. ROM rebuild01 source exacte,
+byte-identique V319 d3ea2a83/DA29 ; aucune nouvelle ROM publique.
+Archive relue :67879504 octets générés supprimés,31762021 nets libérés.
+Prochaine étape : oracle du skip composé, setup E50..E75 selon besoin,
+plan mémoire compact, statut VDP vivant puis publication MD avec deadlines.
+Les helpers ne pilotent toujours pas l’intro publiée. Notes suivantes historiques.
+
 DERNIÈRE ÉTAPE : `source_intro_reveal.c/.h`, rapport
 `analysis/v319_intro_reveal_report.json`, archive `analysis/v319-intro-reveal`.
 API source_intro_reveal_pass(clock,context,state,sink,user), E8B..E9D,

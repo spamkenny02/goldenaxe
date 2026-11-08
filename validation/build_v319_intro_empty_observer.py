@@ -10,7 +10,8 @@ sys.path.insert(0, str(root / 'tools'))
 from archive_lossless_evidence import sha
 p = argparse.ArgumentParser(); p.add_argument('--profile', choices=['callback','window'], required=True)
 p.add_argument('--fire', action='store_true');p.add_argument('--revision',type=int,default=1)
-p.add_argument('--actors',choices=['second','third']);p.add_argument('--irq-status',action='store_true');p.add_argument('--init',action='store_true');p.add_argument('--reveal',action='store_true');a=p.parse_args()
+p.add_argument('--actors',choices=['second','third']);p.add_argument('--irq-status',action='store_true');p.add_argument('--init',action='store_true');p.add_argument('--reveal',action='store_true');p.add_argument('--sequence',action='store_true');a=p.parse_args()
+if a.sequence:a.reveal=True
 if a.reveal:
  assert not(a.actors or a.fire or a.init) and a.profile=='callback'
  a.actors='second';a.irq_status=True
@@ -21,6 +22,7 @@ assert 1<=a.revision<=99
 kind='actors_'+a.actors if a.actors else 'fire' if a.fire else 'empty'
 if a.init:kind='init_'+kind
 if a.reveal:kind='reveal'
+if a.sequence:kind='reveal_sequence'
 out=root/'validation'/('v319-intro-'+kind+'-'+a.profile+f'-observer{a.revision:02}');assert not out.exists();out.mkdir()
 core=root.parents[1]/'work/genesis-plus-gx';path=core/'core/z80/z80.c'
 suffix='' if a.revision==1 else f'_r{a.revision:02}'
@@ -83,6 +85,12 @@ if a.reveal:
    e->events[e->polls++][1]=pc==0xe8d?0xbf00|L:pc==0xe8f?0xbf00|H:0xbe00|E;}
  }''')
  assert b'pc==0xf09 &&' not in observer
+if a.sequence:
+ observer=observer.replace(b'extra[848]',b'extra[856]')
+ observer=observer.replace(b'e->extra[79]=E;',b'e->extra[79]=E;e->extra[848]=D;')
+ observer=observer.replace(b'pc==0xea0',b'pc==0xea4').replace(b'pc==0xe8b',b'pc==0xe79')
+ observer=observer.replace(b'irq_status[8]',b'irq_status[64]').replace(b'irq_count>=8',b'irq_count>=64')
+ observer=observer.replace(b'6912',b'55296').replace(b'[128]',b'[32]').replace(b'>=128',b'>=32')
 original=path.read_bytes();needle=b'static void gaw_timing_observe(unsigned pc)\r\n{'
 if needle not in original:needle=needle.replace(b'\r\n',b'\n')
 assert original.count(needle)==1
@@ -96,7 +104,7 @@ finally:path.write_bytes(original)
 assert path.read_bytes()==original
 (out/'report.json').write_text(json.dumps(dict(passed=True,profile=a.profile,core=str(target),core_sha256=sha(target.read_bytes()),
  original_source_sha256=sha(original),observer_source_sha256=sha(changed),original_source_restored=True,
- emulated_state_modifications=0,emulated_cycle_modifications=0,irq_status=a.irq_status,init=a.init,reveal=a.reveal,
- entry_pc=(0xe8b if a.reveal else (0xf51 if a.actors=='second' else 0xf54) if a.init else 0xf09 if a.profile=='callback' else 0xf1e),
+ emulated_state_modifications=0,emulated_cycle_modifications=0,irq_status=a.irq_status,init=a.init,reveal=a.reveal,sequence=a.sequence,
+ entry_pc=(0xe79 if a.sequence else 0xe8b if a.reveal else (0xf51 if a.actors=='second' else 0xf54) if a.init else 0xf09 if a.profile=='callback' else 0xf1e),
  callback_target=None if a.reveal else (0x1055 if a.actors=='second' else 0x104a) if a.actors else 0xf37 if a.fire else 0xf36,
  scope='Natural calls only; source first/actual caller-return entry snapshots. Runtime parity pending.'),indent=2)+'\n')
