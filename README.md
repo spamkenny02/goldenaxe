@@ -23,6 +23,20 @@ cette routine ; la cadence de jeu visée reste celle de la Master System.
 
 ## Travail natif en cours : statut vidéo des sprites
 
+Le miroir `source_intro_vdp.c` possède désormais sa propre VRAM, ses registres,
+sa palette et les états des ports. Alimenté uniquement par les instructions
+OUT/IN originales, il retrouve **8494239 écritures**, **33707 lectures de statut**
+et **5616 lectures VRAM**, avec comparaison intégrale de sa mémoire après les
+accès, sur les deux parcours de 14000 images. Les préfixes de démarrage passent
+aussi sur 68000 dans les deux régions : 535716 accès et 9856 lectures vérifiés.
+[Résultats du miroir des ports](analysis/v319_port_mirror_report.json).
+
+Le producteur des accès de ce banc est encore le Z80 original. Il reste à
+raccorder les sorties des routines natives, notamment les motifs décompressés,
+puis à optimiser et mesurer le budget complet avec les sorties vidéo/PSG.
+Les durées des noyaux de test ne mesurent pas la cadence du jeu. La ROM
+publiée reste V319 ; la reconstruction complète demeure identique.
+
 Le calendrier `source_intro_sprite_clock.c` déclenche maintenant lui-même
 l’évaluation des sprites et le drapeau VINT à partir des cycles écoulés.
 Il retrouve les **33707 lectures complètes de statut** sur les deux parcours

@@ -6,7 +6,37 @@ le README et les rapports cités.
 
 ## Suivi courant — V319, 8 novembre 2026
 
-DERNIÈRE ÉTAPE : calendrier natif source_intro_sprite_clock.c/.h, rapport
+DERNIÈRE ÉTAPE : miroir natif source_intro_vdp.c/.h, rapport
+`analysis/v319_port_mirror_report.json`, archive `analysis/v319-port-mirror`.
+Own16KiB VRAM externe,16regs,32palette,adresse/latch/code/buffer,calendrier
+sprites/VINT. Init SMS2 sansBIOS :reg0=36,reg1=80,reg2..6=FF,reg10=FF.
+Checkpoint au début IO puis write/read à la fin. ProviderIRQ complet efface
+le latch commande, sample0137-37T, checkpoint au début du IN11T. Pas de MD IO.
+BE(code<3) avance/rend la nouvelle ligne AVANT la mutation VRAM ; BF n’avance
+pas le calendrier avant changement de registre, sauf HScroll anticipé15master.
+Redraw/parse sur écritures de registres en début de ligne, lecture VRAM avec
+buffer/préfetch,CRAM et incréments reproduits. Tout échec est fatal.
+Banc n’injecte PLUS de VRAM/registres source : seulement OUT/IN et tempsCPU.
+8494239writes +33707status +5616VRAMreads exacts ; mémoire/protocole/regs/palette
+comparés après chaque accès sur14000frames/région. ÉtatsPSG référence inchangés.
+535716accès compilés,9856lectures exactes et3056lectures via providerIRQ sur68000.
+Préfixes complets200périodes source par région, chacun rejoué NTSC/PAL MD.
+IMPORTANT : CPU commence159*3420+990 NTSC /132*3420+990 PAL, pas192*3420.
+Échec initial du noyau venait de cette mauvaise origine. Probe201frames capture
+l’origine et reproduit les mêmes préfixes/hash. Code produit inchangé.
+La référence ne reset pas FIFO ; utiliser une imageDLL froide séparée pour PAL,
+pas importer son buffer dans le produit. Première capture rouvrait sa fenêtre
+après epochwrap : capture finale ferme définitivement à200périodes, monotone.
+Rejets et sources instrumentation conservés ; copiesDLL froides identiques
+supprimées après vérification, baseline core conservé, sources cœur restaurées.
+Les4258..5500frames du noyau incluent le rejeu diagnostic : PAS desFPS jeu ni
+un budgethelper mesuré. Coût composé calendrier/ports/loader reste à optimiser
+et profiler, ancien19..22frames exclut ces modules. Pas de vidéo/PCM physique.
+Prochaine étape : sorties vidéo foreground/IRQ natives vers ce miroir, surtout
+dates032A, ordre des instructions IO et histoireboot ; optimiser/profile avant
+activation ROM. Rebuild sourcecomplet identiqueV319/d3ea2a83…/DA29. Pas deV320.
+
+ÉTAPE PRÉCÉDENTE : calendrier natif source_intro_sprite_clock.c/.h, rapport
 `analysis/v319_sprite_clock_report.json`, archive `analysis/v319-sprite-clock`.
 SourceIntroSpriteClock : sprites72 +elapsed/raster/period/until_line +lines
 +vint/error =92octets. Init cold-history, raster0=ligne0 (comme SourceClock),
