@@ -85,6 +85,15 @@ de travail fourni par l’appelant passe 25644 cas source ; il reste inutilisé
 par la ROM publiée. La recompilation des sources conserve exactement V319.
 La suite est une émission datée sans attente bloquante dans l’IRQ vidéo.
 
+La [préparation audio avant l’IRQ](analysis/v319_audio_prefetch_report.json)
+conserve aussi les états du lecteur et les commandes PSG, mais ses trois
+variantes restent écartées après comparaison vidéo. Le [relevé direct des
+IRQ et callbacks SMS](analysis/v319_intro_irq_trace_report.json) précise le
+problème : la V319 et la SMS exécutent le même nombre total de callbacks
+sur deux boucles, avec encore des différences de frame. Le placement de
+ces callbacks doit être rendu indépendant du coût du lecteur audio natif
+avant d’intégrer le nouvel ordonnanceur sonore.
+
 ## Sources et compilation
 
 Les fichiers racine `gaw-megadrive.bin` et `gaw-title-megadrive.bin` contiennent

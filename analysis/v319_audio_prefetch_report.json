@@ -1,0 +1,883 @@
+{
+  "diagnostic_only": true,
+  "promoted": false,
+  "public_version": 319,
+  "production_rom_sha256": "d3ea2a83ea24ed8a0d3c9857f9fbe70d000a4f73358452c1887f40e78966c56e",
+  "variants": [
+    {
+      "number": 1,
+      "hypothesis": {
+        "diagnostic_only": true,
+        "promoted": false,
+        "preparation": "Foreground before frame waits; never writes live reader state or PSG.",
+        "publication": "Atomic valid flag only if frame and all foreground reader parameters/requests unchanged.",
+        "fallback": "Full-size existing IRQ reader on stale cache, late effect/music, speculative rejection or overflow.",
+        "producer_capacity": 32,
+        "timed_channel_capacity": 32,
+        "max_speculative_attempts": 2,
+        "native_68000_only": true,
+        "absolute_phase_validated": false,
+        "limits": "Prepared IRQ replay still waits physically; aim is to replace IRQ calculation with earlier idle-time preparation, not certify complete asynchronous output."
+      },
+      "audio": {
+        "diagnostic_only": true,
+        "promoted": false,
+        "cases": [
+          {
+            "region": "ntsc",
+            "frames": 14000,
+            "counters": {
+              "attempts": 13791,
+              "hits": 13779,
+              "misses": 201,
+              "races": 11
+            },
+            "runtime_error_count": 0,
+            "first_runtime_errors": [],
+            "reader_state_difference_frames": 0,
+            "first_reader_differences": [],
+            "source_psg_state_difference_frames": 0,
+            "first_psg_differences": [],
+            "musical_byte_order_difference_frames": 0,
+            "first_byte_differences": [],
+            "compared_intervals": 20028,
+            "exact_intervals": 1491,
+            "spacing_error_ticks": {
+              "median": 492.0,
+              "mean": 620.9027860994607,
+              "maximum": 34113
+            },
+            "reader_sha256": {
+              "baseline": "a8edf11f43fe6f082db38226d8d2e73d52a607ed3f3a351ae4bd825b4906bcd6",
+              "candidate": "a8edf11f43fe6f082db38226d8d2e73d52a607ed3f3a351ae4bd825b4906bcd6"
+            }
+          },
+          {
+            "region": "pal",
+            "frames": 14000,
+            "counters": {
+              "attempts": 13834,
+              "hits": 13833,
+              "misses": 149,
+              "races": 0
+            },
+            "runtime_error_count": 0,
+            "first_runtime_errors": [],
+            "reader_state_difference_frames": 0,
+            "first_reader_differences": [],
+            "source_psg_state_difference_frames": 0,
+            "first_psg_differences": [],
+            "musical_byte_order_difference_frames": 0,
+            "first_byte_differences": [],
+            "compared_intervals": 23371,
+            "exact_intervals": 1884,
+            "spacing_error_ticks": {
+              "median": 400,
+              "mean": 554.9282871935304,
+              "maximum": 38333
+            },
+            "reader_sha256": {
+              "baseline": "ea73446a4205d161f64bbfb92ebd7ac01f2264c974922db04e7f1ba3ce253ab0",
+              "candidate": "ea73446a4205d161f64bbfb92ebd7ac01f2264c974922db04e7f1ba3ce253ab0"
+            }
+          }
+        ],
+        "core_sha256": "ed388762882b2be3603deda4acef42351d7836039400e525e5484d939a212d57",
+        "md_sha256": "1972b1b7cc77a9b4908dee5355555d3bf8f54f0c379e7c80d26fd6de3e8bd86c",
+        "production_sha256": "d3ea2a83ea24ed8a0d3c9857f9fbe70d000a4f73358452c1887f40e78966c56e",
+        "ram_writes": 0,
+        "sram_imports": 0,
+        "absolute_source_phase_validated": false,
+        "scope": "Cold no-input opening only. Native speculative reader preparation plus native IRQ replay/fallback. No video, interactive, SRAM, PCM or hardware certification."
+      },
+      "source_video": {
+        "ntsc": {
+          "totals": {
+            "baseline_source_differences": 147429,
+            "candidate_source_differences": 15725485,
+            "baseline_exact_frames": 13636,
+            "candidate_exact_frames": 11843
+          },
+          "improved_pixels": 5980,
+          "degraded_pixels": 15584036,
+          "no_source_pixel_regression": false
+        },
+        "pal": {
+          "totals": {
+            "baseline_source_differences": 124148,
+            "candidate_source_differences": 124010,
+            "baseline_exact_frames": 13682,
+            "candidate_exact_frames": 13682
+          },
+          "improved_pixels": 140,
+          "degraded_pixels": 2,
+          "no_source_pixel_regression": false
+        }
+      },
+      "promoted": false
+    },
+    {
+      "number": 2,
+      "hypothesis": {
+        "diagnostic_only": true,
+        "promoted": false,
+        "preparation": "Foreground before frame waits; never writes live reader state or PSG.",
+        "publication": "Atomic valid flag only if frame and all foreground reader parameters/requests unchanged.",
+        "fallback": "Full-size existing IRQ reader on stale cache, late effect/music, speculative rejection or overflow.",
+        "producer_capacity": 32,
+        "timed_channel_capacity": 32,
+        "max_speculative_attempts": 2,
+        "native_68000_only": true,
+        "absolute_phase_validated": false,
+        "count_crossed_irq": true,
+        "limits": "Prepared IRQ replay still waits physically; aim is to replace IRQ calculation with earlier idle-time preparation, not certify complete asynchronous output."
+      },
+      "audio": {
+        "diagnostic_only": true,
+        "promoted": false,
+        "cases": [
+          {
+            "region": "ntsc",
+            "frames": 14000,
+            "counters": {
+              "attempts": 13792,
+              "hits": 13781,
+              "misses": 199,
+              "races": 10
+            },
+            "runtime_error_count": 0,
+            "first_runtime_errors": [],
+            "reader_state_difference_frames": 0,
+            "first_reader_differences": [],
+            "source_psg_state_difference_frames": 0,
+            "first_psg_differences": [],
+            "musical_byte_order_difference_frames": 0,
+            "first_byte_differences": [],
+            "compared_intervals": 20028,
+            "exact_intervals": 1521,
+            "spacing_error_ticks": {
+              "median": 492.0,
+              "mean": 619.7283303375275,
+              "maximum": 38089
+            },
+            "reader_sha256": {
+              "baseline": "a8edf11f43fe6f082db38226d8d2e73d52a607ed3f3a351ae4bd825b4906bcd6",
+              "candidate": "a8edf11f43fe6f082db38226d8d2e73d52a607ed3f3a351ae4bd825b4906bcd6"
+            }
+          },
+          {
+            "region": "pal",
+            "frames": 14000,
+            "counters": {
+              "attempts": 13834,
+              "hits": 13833,
+              "misses": 149,
+              "races": 0
+            },
+            "runtime_error_count": 0,
+            "first_runtime_errors": [],
+            "reader_state_difference_frames": 0,
+            "first_reader_differences": [],
+            "source_psg_state_difference_frames": 0,
+            "first_psg_differences": [],
+            "musical_byte_order_difference_frames": 0,
+            "first_byte_differences": [],
+            "compared_intervals": 23371,
+            "exact_intervals": 1890,
+            "spacing_error_ticks": {
+              "median": 400,
+              "mean": 564.9435197466946,
+              "maximum": 44241
+            },
+            "reader_sha256": {
+              "baseline": "ea73446a4205d161f64bbfb92ebd7ac01f2264c974922db04e7f1ba3ce253ab0",
+              "candidate": "ea73446a4205d161f64bbfb92ebd7ac01f2264c974922db04e7f1ba3ce253ab0"
+            }
+          }
+        ],
+        "core_sha256": "ed388762882b2be3603deda4acef42351d7836039400e525e5484d939a212d57",
+        "md_sha256": "a5bfe7ff2d1307e4fab493725b22f72fa432f790b35e2b7d85abd45f38ec3821",
+        "production_sha256": "d3ea2a83ea24ed8a0d3c9857f9fbe70d000a4f73358452c1887f40e78966c56e",
+        "ram_writes": 0,
+        "sram_imports": 0,
+        "absolute_source_phase_validated": false,
+        "scope": "Cold no-input opening only. Native speculative reader preparation plus native IRQ replay/fallback. No video, interactive, SRAM, PCM or hardware certification."
+      },
+      "source_video": {
+        "ntsc": {
+          "totals": {
+            "baseline_source_differences": 147429,
+            "candidate_source_differences": 6278199,
+            "baseline_exact_frames": 13636,
+            "candidate_exact_frames": 12730
+          },
+          "improved_pixels": 5117,
+          "degraded_pixels": 6135887,
+          "no_source_pixel_regression": false
+        },
+        "pal": {
+          "totals": {
+            "baseline_source_differences": 124148,
+            "candidate_source_differences": 124008,
+            "baseline_exact_frames": 13682,
+            "candidate_exact_frames": 13682
+          },
+          "improved_pixels": 142,
+          "degraded_pixels": 2,
+          "no_source_pixel_regression": false
+        }
+      },
+      "promoted": false
+    },
+    {
+      "number": 3,
+      "hypothesis": {
+        "diagnostic_only": true,
+        "promoted": false,
+        "preparation": "Foreground before frame waits; never writes live reader state or PSG.",
+        "publication": "Atomic valid flag only if frame and all foreground reader parameters/requests unchanged.",
+        "fallback": "Full-size existing IRQ reader on stale cache, late effect/music, speculative rejection or overflow.",
+        "producer_capacity": 32,
+        "timed_channel_capacity": 32,
+        "max_speculative_attempts": 2,
+        "native_68000_only": true,
+        "absolute_phase_validated": false,
+        "count_crossed_irq": true,
+        "immediate_emission_control": true,
+        "limits": "Prepared IRQ replay still waits physically; aim is to replace IRQ calculation with earlier idle-time preparation, not certify complete asynchronous output."
+      },
+      "audio": {
+        "diagnostic_only": true,
+        "promoted": false,
+        "cases": [
+          {
+            "region": "ntsc",
+            "frames": 14000,
+            "counters": {
+              "attempts": 13793,
+              "hits": 13785,
+              "misses": 195,
+              "races": 7
+            },
+            "runtime_error_count": 0,
+            "first_runtime_errors": [],
+            "reader_state_difference_frames": 0,
+            "first_reader_differences": [],
+            "source_psg_state_difference_frames": 0,
+            "first_psg_differences": [],
+            "musical_byte_order_difference_frames": 0,
+            "first_byte_differences": [],
+            "compared_intervals": 20028,
+            "exact_intervals": 0,
+            "spacing_error_ticks": {
+              "median": 8957.0,
+              "mean": 9838.10140802876,
+              "maximum": 45692
+            },
+            "reader_sha256": {
+              "baseline": "a8edf11f43fe6f082db38226d8d2e73d52a607ed3f3a351ae4bd825b4906bcd6",
+              "candidate": "a8edf11f43fe6f082db38226d8d2e73d52a607ed3f3a351ae4bd825b4906bcd6"
+            }
+          },
+          {
+            "region": "pal",
+            "frames": 14000,
+            "counters": {
+              "attempts": 13835,
+              "hits": 13833,
+              "misses": 149,
+              "races": 0
+            },
+            "runtime_error_count": 0,
+            "first_runtime_errors": [],
+            "reader_state_difference_frames": 0,
+            "first_reader_differences": [],
+            "source_psg_state_difference_frames": 0,
+            "first_psg_differences": [],
+            "musical_byte_order_difference_frames": 0,
+            "first_byte_differences": [],
+            "compared_intervals": 23371,
+            "exact_intervals": 0,
+            "spacing_error_ticks": {
+              "median": 8957,
+              "mean": 9893.690770613153,
+              "maximum": 45122
+            },
+            "reader_sha256": {
+              "baseline": "ea73446a4205d161f64bbfb92ebd7ac01f2264c974922db04e7f1ba3ce253ab0",
+              "candidate": "ea73446a4205d161f64bbfb92ebd7ac01f2264c974922db04e7f1ba3ce253ab0"
+            }
+          }
+        ],
+        "core_sha256": "ed388762882b2be3603deda4acef42351d7836039400e525e5484d939a212d57",
+        "md_sha256": "8369b59bebc9d88bd8eaf0b0fd535daa51043fb7dcc05e6037a7371faaf996fc",
+        "production_sha256": "d3ea2a83ea24ed8a0d3c9857f9fbe70d000a4f73358452c1887f40e78966c56e",
+        "ram_writes": 0,
+        "sram_imports": 0,
+        "absolute_source_phase_validated": false,
+        "scope": "Cold no-input opening only. Native speculative reader preparation plus native IRQ replay/fallback. No video, interactive, SRAM, PCM or hardware certification."
+      },
+      "source_video": {
+        "ntsc": {
+          "totals": {
+            "baseline_source_differences": 147429,
+            "candidate_source_differences": 4382562,
+            "baseline_exact_frames": 13636,
+            "candidate_exact_frames": 13128
+          },
+          "improved_pixels": 22151,
+          "degraded_pixels": 4257284,
+          "no_source_pixel_regression": false
+        },
+        "pal": {
+          "totals": {
+            "baseline_source_differences": 124148,
+            "candidate_source_differences": 124218,
+            "baseline_exact_frames": 13682,
+            "candidate_exact_frames": 13682
+          },
+          "improved_pixels": 0,
+          "degraded_pixels": 70,
+          "no_source_pixel_regression": false
+        }
+      },
+      "promoted": false
+    }
+  ],
+  "ntsc_intro_clock_probe": {
+    "fields": [
+      "intro_running",
+      "intro_logic_clock",
+      "intro_scene",
+      "intro_counter",
+      "intro_line",
+      "intro_timer"
+    ],
+    "different_frame_counts": {
+      "intro_running": 0,
+      "intro_logic_clock": 12209,
+      "intro_scene": 4,
+      "intro_counter": 3369,
+      "intro_line": 0,
+      "intro_timer": 0
+    },
+    "first_difference_frames": {
+      "intro_running": [],
+      "intro_logic_clock": [
+        32,
+        34,
+        44,
+        46,
+        1784,
+        1789,
+        1794,
+        1799,
+        1800,
+        1801,
+        1802,
+        1803
+      ],
+      "intro_scene": [
+        4032,
+        4033,
+        10765,
+        10766
+      ],
+      "intro_counter": [
+        46,
+        1789,
+        1801,
+        1805,
+        1809,
+        1813,
+        1817,
+        1821,
+        1825,
+        1829,
+        1833,
+        1837
+      ],
+      "intro_line": [],
+      "intro_timer": []
+    },
+    "first_rows": [
+      {
+        "frame": 32,
+        "baseline": [
+          1,
+          21,
+          1,
+          0,
+          0,
+          0
+        ],
+        "candidate": [
+          1,
+          20,
+          1,
+          0,
+          0,
+          0
+        ],
+        "sms": [
+          11,
+          1
+        ]
+      },
+      {
+        "frame": 34,
+        "baseline": [
+          1,
+          22,
+          1,
+          0,
+          0,
+          0
+        ],
+        "candidate": [
+          1,
+          21,
+          1,
+          0,
+          0,
+          0
+        ],
+        "sms": [
+          13,
+          1
+        ]
+      },
+      {
+        "frame": 44,
+        "baseline": [
+          1,
+          23,
+          1,
+          0,
+          0,
+          0
+        ],
+        "candidate": [
+          1,
+          22,
+          1,
+          0,
+          0,
+          0
+        ],
+        "sms": [
+          22,
+          0
+        ]
+      },
+      {
+        "frame": 46,
+        "baseline": [
+          1,
+          24,
+          1,
+          1,
+          0,
+          0
+        ],
+        "candidate": [
+          1,
+          23,
+          1,
+          0,
+          0,
+          0
+        ],
+        "sms": [
+          22,
+          0
+        ]
+      },
+      {
+        "frame": 1784,
+        "baseline": [
+          1,
+          131,
+          2,
+          2,
+          19,
+          35
+        ],
+        "candidate": [
+          1,
+          130,
+          2,
+          2,
+          19,
+          35
+        ],
+        "sms": [
+          131,
+          0
+        ]
+      },
+      {
+        "frame": 1789,
+        "baseline": [
+          1,
+          132,
+          2,
+          3,
+          19,
+          30
+        ],
+        "candidate": [
+          1,
+          131,
+          2,
+          2,
+          19,
+          30
+        ],
+        "sms": [
+          132,
+          0
+        ]
+      },
+      {
+        "frame": 1794,
+        "baseline": [
+          1,
+          133,
+          2,
+          3,
+          19,
+          25
+        ],
+        "candidate": [
+          1,
+          132,
+          2,
+          3,
+          19,
+          25
+        ],
+        "sms": [
+          133,
+          0
+        ]
+      },
+      {
+        "frame": 1799,
+        "baseline": [
+          1,
+          134,
+          2,
+          3,
+          19,
+          20
+        ],
+        "candidate": [
+          1,
+          133,
+          2,
+          3,
+          19,
+          20
+        ],
+        "sms": [
+          134,
+          1
+        ]
+      },
+      {
+        "frame": 1800,
+        "baseline": [
+          1,
+          135,
+          2,
+          3,
+          19,
+          19
+        ],
+        "candidate": [
+          1,
+          134,
+          2,
+          3,
+          19,
+          19
+        ],
+        "sms": [
+          135,
+          1
+        ]
+      },
+      {
+        "frame": 1801,
+        "baseline": [
+          1,
+          136,
+          2,
+          4,
+          19,
+          18
+        ],
+        "candidate": [
+          1,
+          135,
+          2,
+          3,
+          19,
+          18
+        ],
+        "sms": [
+          136,
+          1
+        ]
+      },
+      {
+        "frame": 1802,
+        "baseline": [
+          1,
+          137,
+          2,
+          4,
+          19,
+          17
+        ],
+        "candidate": [
+          1,
+          136,
+          2,
+          4,
+          19,
+          17
+        ],
+        "sms": [
+          137,
+          1
+        ]
+      },
+      {
+        "frame": 1803,
+        "baseline": [
+          1,
+          138,
+          2,
+          4,
+          19,
+          16
+        ],
+        "candidate": [
+          1,
+          137,
+          2,
+          4,
+          19,
+          16
+        ],
+        "sms": [
+          138,
+          1
+        ]
+      },
+      {
+        "frame": 1804,
+        "baseline": [
+          1,
+          139,
+          2,
+          4,
+          19,
+          15
+        ],
+        "candidate": [
+          1,
+          138,
+          2,
+          4,
+          19,
+          15
+        ],
+        "sms": [
+          139,
+          1
+        ]
+      },
+      {
+        "frame": 1805,
+        "baseline": [
+          1,
+          140,
+          2,
+          5,
+          19,
+          14
+        ],
+        "candidate": [
+          1,
+          139,
+          2,
+          4,
+          19,
+          14
+        ],
+        "sms": [
+          140,
+          1
+        ]
+      },
+      {
+        "frame": 1806,
+        "baseline": [
+          1,
+          141,
+          2,
+          5,
+          19,
+          13
+        ],
+        "candidate": [
+          1,
+          140,
+          2,
+          5,
+          19,
+          13
+        ],
+        "sms": [
+          141,
+          1
+        ]
+      },
+      {
+        "frame": 1807,
+        "baseline": [
+          1,
+          142,
+          2,
+          5,
+          19,
+          12
+        ],
+        "candidate": [
+          1,
+          141,
+          2,
+          5,
+          19,
+          12
+        ],
+        "sms": [
+          142,
+          1
+        ]
+      },
+      {
+        "frame": 1808,
+        "baseline": [
+          1,
+          143,
+          2,
+          5,
+          19,
+          11
+        ],
+        "candidate": [
+          1,
+          142,
+          2,
+          5,
+          19,
+          11
+        ],
+        "sms": [
+          143,
+          1
+        ]
+      },
+      {
+        "frame": 1809,
+        "baseline": [
+          1,
+          144,
+          2,
+          6,
+          19,
+          10
+        ],
+        "candidate": [
+          1,
+          143,
+          2,
+          5,
+          19,
+          10
+        ],
+        "sms": [
+          144,
+          1
+        ]
+      },
+      {
+        "frame": 1810,
+        "baseline": [
+          1,
+          145,
+          2,
+          6,
+          19,
+          9
+        ],
+        "candidate": [
+          1,
+          144,
+          2,
+          6,
+          19,
+          9
+        ],
+        "sms": [
+          145,
+          1
+        ]
+      },
+      {
+        "frame": 1811,
+        "baseline": [
+          1,
+          146,
+          2,
+          6,
+          19,
+          8
+        ],
+        "candidate": [
+          1,
+          145,
+          2,
+          6,
+          19,
+          8
+        ],
+        "sms": [
+          146,
+          1
+        ]
+      }
+    ],
+    "diagnostic_only": true,
+    "ram_writes": 0,
+    "sram_imports": 0
+  },
+  "disposition": "Reject all three foreground-preparation integrations. Reader state, source PSG states and musical byte/order remain exact across 14000 frames per region for all variants, but source video regresses. Avoiding a second wait after a preparation crossing reduces the regression, not eliminates it. Immediate-emission control also regresses NTSC and worsens spacing.",
+  "observations": [
+    "Speculative state is separate; actual IRQ reader is the fallback for stale frames, changed requests, foreground fade/compensation parameters, rejection and compact-capacity overflow.",
+    "Variant01 baseline/candidate native intro line and timer remain equal at every sampled NTSC frame; intro callback clock differs on12209 and actor counter on3369. The clock/source mismatch is much larger than baseline. Foreground callback phase is therefore a separate integration issue, not a musical-state mismatch.",
+    "Variant03 removes dated wait but retains speculative computation/cache use. It does not prove preparation alone causes all drift because emission work also changes relative to production."
+  ],
+  "next_action": "Trace full-IRQ requests/acknowledgement and F09/F32 callback publication against the source IRQ phase; integrate source callback scheduling independently of native reader cost. For asynchronous PSG delivery retain real preparation/publication deadlines and first-write phase. Do not tune animation counters to a recorded frame or assume matching end-of-frame PSG states imply correct video/audio timing.",
+  "limits": [
+    "No interactive input, boss, SRAM or full-game test of these rejected prototypes.",
+    "The source C02F clock probe is NTSC only; PAL video/audio reports are separate.",
+    "No PCM equality, absolute source audio phase, hardware or complete asynchronous scheduler claim.",
+    "Production sources and V319 ROM unchanged by this experiment."
+  ],
+  "archive_manifest": "analysis/v319-audio-prefetch/manifest.json"
+}

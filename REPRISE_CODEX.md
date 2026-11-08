@@ -6,6 +6,54 @@ le README et les rapports cités.
 
 ## Suivi courant — V319, 8 novembre 2026
 
+NOUVEAU : préparation audio foreground testée et ÉCARTÉE, puis observateur
+direct IRQ/F32 source. Rapports `analysis/v319_audio_prefetch_report.json`
+et `analysis/v319_intro_irq_trace_report.json`, archives `v319-audio-prefetch`
+et `v319-intro-irq-trace`. Sources de production/ROM inchangées depuis le
+dernier commit ; pas de nouvelle ROM publique. Trois candidats privés :
+01préparation spéculative+replay IRQ,02compte IRQ franchie pendant préparation,
+03contrôle préparation+émission immédiate sans attente datée. Chacun garde
+400 octets reader+effet et états PSG/source et octets/ordre exacts sur14000
+frames par région. Cache utilisé>13000 fois, fallback natif conservé pour
+requête/effet tardif, paramètres fade/compensation changés, contexte périmé,
+rejet ou dépassement du prototype. Cela ne prouve pas les interactions.
+
+Vidéo NTSC source :V319147429 pixels diff,01→15725485,02→6278199,
+03→4382562. PAL124148→124010/124008/124218, quelques pixels dégradés
+même quand le total baisse. Aucune promotion. Erreur médiane timing01/02
+~492NTSC/400PAL contre6246/6260 V319 ; contrôle immédiat03→8957/8957,
+confirmant qu'émettre les listes préparées en rafale n'est pas la correction.
+
+OBSERVATEUR RÉEL source PCB95,BB3,F09,F0C,F32,0137,01DD,0CE0 :
+getter compte8192 par lecture hôte ; source CPU/cycles/état jamais modifiés.
+DLL distincte locale work/genesis-plus-gx/genesis_plus_gx_v319_intro_irq_libretro.dll,
+source z80.c restaurée exactement enfinally. Rapports et source avant/après
+archivés, pas de DLL distribuée. Non-interférence :PSG tous5flux NTSC/PAL
+sur14000frames ; états intro antérieurs SMS/baseline/prefetch01 exacts enNTSC.
+
+Preuve source :13397 retours IRQ complets NTSC/13466PAL, tous C02F+1.
+F32total11857NTSC/11926PAL, égal au total intro_tick V319, mais frame
+différente94NTSC/84PAL. Les trois prototypes gardent les frames callback
+PAL V319 ; NTSC deltas totaux-6,-2,+1. IMPORTANT :fullcounts égaux ne
+prouvent pas la phase. Deuxième révélation :source/V319 F32 aux frames
+1784/1789/1794/1799 ;prefetch01 aux1785/1790/1795/1800. Préfetch02
+retire les attentes supplémentaires bootstrap mais conserve ce passage.
+Contrôle03 diffère de V319 plus tard dès3624, +1callback accumulé à10425.
+Prochain travail : ordonnancement source B95/IRQ/F09/F32 aux frontières
+loader/reveal indépendant du coût CPU MD du son ; maintenir les dates
+source sans imposer des counters/frame overrides enregistrés. Une sortie
+asynchrone nécessite toujours deadlines de préparation et phase première
+écriture ; les wrappers md_z80_psg existent mais leurs anciens kernels ne
+prouvent pas l'intégration boot/jeu/IRQ/DMA. Pas de nouveau test console.
+
+Scripts nouveaux prepare_v319_audio_prefetch.py,measure_v319_audio_prefetch.py,
+probe_v319_intro_clock_prefetch.py,archive_v319_audio_prefetch.py,
+build_v319_intro_irq_observer.py,trace_v319_intro_irq.py,
+archive_v319_intro_irq_trace.py. Toutes commandes terminales0, aucun handle
+à attendre. Archivages relus :128921718+33361312 octets générés supprimés,
+109282125+28557045 nets libérés. Sources conservées, candidats/symboles
+restaurables depuis gzip ; choisir de nouveaux dossiers pour de futurs essais.
+
 Dernier travail : `analysis/v319_buffered_psg_report.json`, archive
 `analysis/v319-buffered-psg`. Cinq prototypes d’émission datée 68000,
 TOUS ÉCARTÉS, aucun changement de ROM publique. Variante03 compacte :
