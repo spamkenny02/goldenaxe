@@ -115,3 +115,12 @@ u8 source_intro_vdp_irq_status(void *user,const SourceClockIrq *entry,u8 *status
  if((raster+37UL*15)%vdp->clock.period!=entry->entry_raster) return 0;
  return source_intro_vdp_checkpoint(vdp,elapsed-11UL*15) && source_intro_vdp_read(vdp,elapsed,11,0xbf,status);
 }
+u8 source_intro_vdp_out(SourceIntroVdp *vdp,u32 elapsed,u32 raster,u16 tstates,u8 port,u8 value)
+{
+ u32 delta;
+ if(!vdp || vdp->error || !tstates || tstates>228 || raster>=vdp->clock.period) return 0;
+ delta=elapsed-vdp->instruction_elapsed;
+ if((s32)delta<0 || delta<(u32)tstates*15 ||
+    (vdp->instruction_raster+delta%vdp->clock.period)%vdp->clock.period!=raster) return 0;
+ return source_intro_vdp_checkpoint(vdp,elapsed-(u32)tstates*15) && source_intro_vdp_write(vdp,elapsed,port,value);
+}

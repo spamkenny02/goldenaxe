@@ -20,6 +20,10 @@ u8 source_intro_vdp_init(SourceIntroVdp *vdp,u8 *vram,u16 lines,u32 raster,u32 e
 u8 source_intro_vdp_checkpoint(SourceIntroVdp *vdp,u32 elapsed);
 u8 source_intro_vdp_write(SourceIntroVdp *vdp,u32 elapsed,u8 port,u8 value);
 u8 source_intro_vdp_read(SourceIntroVdp *vdp,u32 elapsed,u16 tstates,u8 port,u8 *value);
+/* Validate the shared source raster/epoch, checkpoint at OUT instruction
+ * start and commit at completion. All callers supply the real instruction
+ * length:11T immediate OUT,12T OUT(C),16T OUTI/OUTD. */
+u8 source_intro_vdp_out(SourceIntroVdp *vdp,u32 elapsed,u32 raster,u16 tstates,u8 port,u8 value);
 /* SourceIrqStatusRead-compatible; includes command-latch clearing. */
 u8 source_intro_vdp_irq_status(void *user,const SourceClockIrq *entry,u8 *status);
 #endif

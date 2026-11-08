@@ -32,6 +32,9 @@ shutil.copyfile(root / 'megadrive/src/rom_header.c', src / 'rom_header.c')
 inc = project / 'inc'; inc.mkdir()
 (inc / 'source_intro_wait.h').write_text('#include "../../../../megadrive/src/source_intro_wait.h"\n')
 profile_report=json.loads((work/'report.json').read_bytes())
+for header in profile_report.get('extra_headers',[]):
+    assert re.fullmatch(r'source_[a-z_]+\.h',header)
+    (inc/header).write_text('#include "../../../../megadrive/src/'+header+'"\n')
 profile_stages=profile_report.get('profile_stages',False)
 measure_native=profile_report.get('measure_native_frames',False)
 scene=profile_report.get('scene',False)
@@ -46,7 +49,7 @@ if map_mode:(inc/'source_intro_map.h').write_text('#include "../../../../megadri
 if transfer:(inc/'source_intro_video.h').write_text('#include "../../../../megadrive/src/source_intro_video.h"\n')
 if reveal:(inc/'source_intro_reveal.h').write_text('#include "../../../../megadrive/src/source_intro_reveal.h"\n')
 if actors:(inc/'source_intro_actors.h').write_text('#include "../../../../megadrive/src/source_intro_actors.h"\n')
-for module in (['source_intro_scene','source_pattern_clock'] if scene else [])+(['source_intro_map'] if map_mode else [])+(['source_intro_video'] if transfer else [])+(['source_intro_actors','source_intro_fire'] if sequence else ['source_intro_fire'] if fire else [])+(['source_intro_reveal' if reveal else 'source_intro_actors'] if actors else [])+['source_intro_wait', 'source_wait_restore', *MODULES]:
+for module in (['source_intro_scene','source_pattern_clock'] if scene else [])+(['source_intro_map'] if map_mode else [])+(['source_intro_video'] if transfer else [])+(['source_intro_actors','source_intro_fire'] if sequence else ['source_intro_fire'] if fire else [])+(['source_intro_reveal' if reveal else 'source_intro_actors'] if actors else [])+['source_intro_wait', 'source_wait_restore', *MODULES]+profile_report.get('extra_modules',[]):
     prefix='#define source_irq_interrupt source_irq_interrupt_impl\n' if irq_status and module=='source_irq_context' else ''
     if profile_stages and module=='source_intro_scene':
         prefix='#include <genesis.h>\n#include "../../../../megadrive/src/source_intro_scene.h"\nextern volatile u32 scene_profile_frames[6];\n'
@@ -144,7 +147,7 @@ for region in ('ntsc', 'pal'):
                 base=sy['intro_scene_stage_elapsed']
                 stats['native_stage_frames']=[[int.from_bytes(bytes(raw[(base+n*24+j*4+i)^1] for i in range(4)),'big') for j in range(6)] for n in range(len(cases))]
     with contextlib.redirect_stdout(io.StringIO()):
-        run(project / 'out/release/rom.bin', 5000, work / (run_prefix + '-' + region), set(), [], skip_intro=False,
+        run(project / 'out/release/rom.bin', profile_report.get('max_kernel_frames',5000), work / (run_prefix + '-' + region), set(), [], skip_intro=False,
             ram_observer=observe, stop_when=lambda: bool(stats.get('intro_poll_done')),
             core_options={'genesis_plus_gx_region_detect': 'pal' if region == 'pal' else 'auto'})
     assert stats['intro_poll_done'] == 1 and stats['intro_poll_errors'] == 0, stats

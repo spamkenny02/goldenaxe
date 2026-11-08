@@ -23,6 +23,18 @@ cette routine ; la cadence de jeu visée reste celle de la Master System.
 
 ## Travail natif en cours : statut vidéo des sprites
 
+Les dix scènes calculent maintenant leur statut vidéo depuis le miroir natif
+et l’utilisent pour piloter les interruptions. Les valeurs capturées servent
+uniquement de contrôle après exécution. Le raccordement passe sur 68000 en
+NTSC/PAL : **488 lectures de statut** et **80 publications vidéo d’interruption**,
+avec les états RAM/audio, l’horloge et la VRAM suivie identiques.
+[Scènes pilotées par le statut vivant](analysis/v319_scene_live_vdp_report.json).
+
+Le miroir reçoit les écritures natives de motifs, carte, registres, sprites et
+palette. Les états initiaux restent des instantanés de scène ; le démarrage
+continu complet, les dates des sorties IRQ et le budget avec la restitution
+physique image/son restent à vérifier. La ROM publiée reste V319.
+
 Le chargeur de scène natif peut maintenant publier les motifs décompressés
 avec leurs dates, en plus des effacements et transferts de carte. Les dix
 chargements de référence passent sur hôte, puis sur 68000 en NTSC/PAL :

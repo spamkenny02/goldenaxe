@@ -6,7 +6,32 @@ le README et les rapports cités.
 
 ## Suivi courant — V319, 8 novembre 2026
 
-DERNIÈRE ÉTAPE : source_intro_scene_load_ports, rapport
+DERNIÈRE ÉTAPE : source_intro_scene_vdp.c/.h +source_intro_vdp_out,
+rapport `analysis/v319_scene_live_vdp_report.json`, archive
+`analysis/v319-scene-live-vdp`. Sinks pattern11T /mapBE16T dans3800..3AFF,
+clear11T ;OUT valide origineelapsed/raster etcheckpointdébutinstruction.
+IRQ compact callback publie regs10/9/8 viaOUTD16T/OUT(C)12T,SAT192OUTI16T,
+palette32OUTI/DJNZ29T avec pollPAL/NTSC canonique. Scopeintro sans requêtes
+pendingtiles/HUD/map ; autres requêtes rejetées avantpublication. Publication
+partielle fatale. HorsIRQ RAM/audio reste gérée par adaptercanonique.
+SourceIntroVdp status provider pilote MAINTENANT C01B dansces10vecteurs :
+aucune assignation depuis queueattendue,contrôle aprèsIRQ uniquement.
+244lectures et40fullIRQvideo surhôte ;20cas68000 NTSC/PAL :488lectures,
+80fullIRQvideo,états15081RAM/mirror+400audio+clock/R exacts. Modulesextra
+etheaders ajoutés enoption aucompileurintro générique ;maxframesdiag50000.
+Snapshotinitial explicite regs/SAT/VRAM/palette ; caches/latchescold :cescas
+passent,mais histoirecoldboot/titrecontinue reste àprouver. Pas de preuve
+indépendante des datesIRQvideo nouvelles,niCPUbudgethelpersansoracle,niMD
+physique/PCM. Les16054..19188frameskernel incluentcomparaison,setups ;PASFPS.
+RebuildV319 identique ; rapportinitialdehashavait lu unéditiontemporaire
+révoquée,correctionprovenance conservée :touslesinputscompilationcopiés sont
+byteidentical auxsources réellementtestées/courantes. Aucun binaire modifié.
+Prochain :audit datesIRQ,profilage/optimisation,coldboot,image/sonphysique.
+Vidéo complète :préparer MAINTENANT enregistrement deV319publiée/parcours
+validé,labelversiondéveloppement ;Youtube @KennYMcCormick-m2b,sessionsignalée
+connectée,visibilité nonchoisie,pas encoreupload. Encodingoutilàpréparer.
+
+ÉTAPE PRÉCÉDENTE : source_intro_scene_load_ports, rapport
 `analysis/v319_scene_ports_report.json`, archive `analysis/v319-scene-ports`.
 Nouveau point E50 identique au legacy,avec pattern_sink/pattern_user séparés
 avantoutput. Le sink scene existant conserve clear/map ;sinkpattern reçoit
