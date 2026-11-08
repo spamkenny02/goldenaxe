@@ -21,7 +21,11 @@ p.add_argument('--out-name', default='v319-native-intro-poll01')
 p.add_argument('--profile', choices=['poll','callback','window'], default='poll')
 p.add_argument('--fire', action='store_true')
 p.add_argument('--observer-revision',type=int,default=1)
+p.add_argument('--actors',choices=['second','third'])
+p.add_argument('--irq-status',action='store_true')
 a = p.parse_args()
+assert not(a.fire and a.actors)
+assert not a.irq_status or a.actors
 assert a.out_name.startswith('v319-native-intro-poll') and '/' not in a.out_name and '\\' not in a.out_name
 out = root / 'validation' / a.out_name
 assert not out.exists()
@@ -64,13 +68,60 @@ if a.fire:
  ram[408]=fire_full_ram[0x1fff];ram[409]=fire_full_ram[0x1cec];ram[410]=fire_full_ram[0x1ced];
  out[0]=clock.raster;''')
     (out/'wrapper.c').write_text(wrapper)
+if a.irq_status:
+    hook='''static u8 irq_status_count,irq_status_position,irq_status_values[8];
+u8 source_irq_interrupt_impl(void *,const SourceClockIrq *,SourceClockWork *);
+u8 source_irq_interrupt(void *opaque,const SourceClockIrq *entry,SourceClockWork *work)
+{
+ SourceIrqContext *irq=opaque;
+ if(irq_status_position>=irq_status_count) return 0;
+ irq->ram[0x1b]=irq_status_values[irq_status_position++];
+ return source_irq_interrupt_impl(opaque,entry,work);
+}
+'''
+    point=wrapper.index('u8 poll_case(')
+    wrapper=wrapper[:point]+hook+wrapper[point:]
+    wrapper=wrapper.replace('out[0]=clock.raster;',
+        'if(irq_status_position!=irq_status_count) return 0;\n out[0]=clock.raster;')
+    (out/'wrapper.c').write_text(wrapper)
+if a.actors:
+    assert a.profile!='poll'
+    colors=(root/'input/original.sms').read_bytes()[0x17e57:0x17e78]
+    wrapper=wrapper.replace('#include "source_intro_wait.h"','#include "source_intro_actors.h"\n'
+        'static u8 actor_full_ram[8192];\nstatic const u8 actor_bank5[16384]={[0x3e57]='+','.join(map(str,colors))+'};')
+    wrapper=wrapper.replace('SourceClock clock;SourceIrqContext context={0};',
+        'SourceClock clock;SourceIrqContext context={0};SourceIntroActorData actor_data={low,actor_bank5};')
+    wrapper=wrapper.replace('context.ram=ram;', '''__builtin_memset(actor_full_ram,0,sizeof(actor_full_ram));
+ for(u16 n=0;n<72;n++) actor_full_ram[0x1ca0+n]=ram[336+n];
+ actor_full_ram[0x1fff]=ram[408];actor_full_ram[0x1cec]=ram[409];actor_full_ram[0x1ced]=ram[410];
+ for(u16 n=0;n<768;n++) actor_full_ram[0x300+n]=ram[416+n];
+ context.full_ram=actor_full_ram;context.ram=ram;''')
+    wrapper=wrapper.replace('(&clock,&context,0,0,&result)',
+        '(&clock,&context,source_intro_actors_'+a.actors+',&actor_data,&result)')
+    wrapper=wrapper.replace('out[0]=clock.raster;', '''for(u16 n=0;n<72;n++) ram[336+n]=actor_full_ram[0x1ca0+n];
+ ram[408]=actor_full_ram[0x1fff];ram[409]=actor_full_ram[0x1cec];ram[410]=actor_full_ram[0x1ced];
+ for(u16 n=0;n<768;n++) ram[416+n]=actor_full_ram[0x300+n];
+ out[0]=clock.raster;''')
+    (out/'wrapper.c').write_text(wrapper)
+if a.irq_status:
+    assert wrapper.count('context.full_ram=actor_full_ram;')==1
+    wrapper=wrapper.replace('context.full_ram=actor_full_ram;',
+        'irq_status_count=ram[1184];irq_status_position=0;\n'
+        ' for(u16 n=0;n<8;n++) irq_status_values[n]=ram[1185+n];\n context.full_ram=actor_full_ram;')
+    (out/'wrapper.c').write_text(wrapper)
 sdk = root.parents[1] / 'work/sgdk'
 env = dict(os.environ); env['PATH'] = 'C:/msys64/ucrt64/bin;' + env['PATH']
 modules = ['source_intro_wait', 'source_wait_restore', *MODULES]
 if a.fire: modules.insert(0,'source_intro_fire')
+if a.actors: modules.insert(0,'source_intro_actors')
 command = ['C:/msys64/ucrt64/bin/gcc.exe', '-O3', '-shared', '-Wall', '-Wextra', '-Werror',
     '-I', str(sdk / 'inc'), '-I', str(root / 'megadrive/src'), str(out / 'wrapper.c')]
-command += [str(root / 'megadrive/src' / (name + '.c')) for name in modules]
+module_paths=[root/'megadrive/src'/(name+'.c') for name in modules]
+if a.irq_status:
+    override=out/'irq-status-adapter.c'
+    override.write_text('#define source_irq_interrupt source_irq_interrupt_impl\n#include "../../megadrive/src/source_irq_context.c"\n')
+    module_paths=[override if p.name=='source_irq_context.c' else p for p in module_paths]
+command += [str(p) for p in module_paths]
 command += ['-o', str(out / 'native.dll')]
 built = subprocess.run(command, env=env, capture_output=True, text=True)
 (out / 'compile.log').write_text(built.stdout + built.stderr)
@@ -80,6 +131,7 @@ native.argtypes = [c.POINTER(c.c_uint32), c.c_uint8] + [c.POINTER(c.c_uint8)] * 
 native.restype = c.c_uint8
 build_folder = 'v319-intro-poll-observer01' if a.profile == 'poll' else 'v319-intro-empty-' + a.profile + '-observer01'
 if a.fire: build_folder=build_folder.replace('empty','fire')
+if a.actors:build_folder=build_folder.replace('empty','actors_'+a.actors)
 build_folder=build_folder[:-2]+f'{a.observer_revision:02}'
 build = json.loads((root / 'validation' / build_folder / 'report.json').read_bytes())
 core = Path(build['core']); assert sha(core.read_bytes()) == build['core_sha256']
@@ -87,8 +139,9 @@ dll = c.CDLL(str(core))
 dll.gaw_poll_reset.restype = None
 dll.gaw_poll_size.restype = dll.gaw_poll_errors.restype = dll.gaw_poll_stride.restype = c.c_uint
 dll.gaw_poll_data.restype = c.POINTER(c.c_uint8)
-stride=1784 if a.fire else 1624
-snapshot=888 if a.fire else 808
+snapshot=1656 if a.actors else 888 if a.fire else 808
+stride=snapshot*2+8
+if a.irq_status:stride+=40
 assert dll.gaw_poll_stride() == stride
 image = (root / 'input/original.sms').read_bytes()
 low = (c.c_uint8 * 32768).from_buffer_copy(image[:32768]); bank = (c.c_uint8 * 16384).from_buffer_copy(image[0x18000:0x1c000])
@@ -118,8 +171,12 @@ for region in ('ntsc', 'pal'):
         else:
             assert pc == (0xf09 if a.profile == 'callback' else 0xf1e)
             assert final_pc == struct.unpack_from('<I', record, snapshot*2+4)[0]
-        before=first[72:408]+(first[808:888] if a.fire else b'')
-        expected_state=last[72:408]+(last[808:888] if a.fire else b'')
+        before=first[72:408]+(first[808:snapshot] if a.fire or a.actors else b'')
+        expected_state=last[72:408]+(last[808:snapshot] if a.fire or a.actors else b'')
+        if a.irq_status:
+            statuses=struct.unpack_from('<9I',record,snapshot*2+8)
+            assert 0<statuses[0]<=8 and all(v<=255 for v in statuses[1:])
+            before+=bytes(statuses);expected_state+=bytes(statuses)
         state = (c.c_uint8 * len(before)).from_buffer_copy(before); audio = (c.c_uint8 * 400).from_buffer_copy(first[408:808])
         result = (c.c_uint32 * 18)()
         assert native((c.c_uint32 * 12)(*phase), refresh, state, audio, low, bank, result), (region, n, 'native rejection')
@@ -144,14 +201,17 @@ for region in ('ntsc', 'pal'):
         observer_exposed_psg_exact_frames=14000, source_records_sha256=sha(raw),
         maximum_polls=max(case['expected'][12] for case in cases))
     results.append(row); print(json.dumps(row), flush=True)
-report = dict(passed=True, diagnostic_only=True, profile=a.profile, fire=a.fire, production_rom_changed=False, cases=results,
+report = dict(passed=True, diagnostic_only=True, profile=a.profile, fire=a.fire, actors=a.actors,
+    irq_status=a.irq_status,production_rom_changed=False, cases=results,
     core_sha256=sha(core.read_bytes()), source_sha256=sha(image),
     native_sources={name: sha((root / 'megadrive/src' / (name + '.c')).read_bytes()) for name in modules},
     verified=['Original natural entry/return wall time, raster, polls, R, IFF/EI/pending,336 IRQ RAM and400 reader bytes.'+
-              (' Fire palette/counter/mapper/callback snapshots also compared.' if a.fire else ''),
+              (' Fire palette/counter/mapper/callback snapshots also compared.' if a.fire else '')+
+              (' Actor768-byte records and palette/counter/mapper/callback snapshots also compared.' if a.actors else ''),
               'Both regions,14000 no-input cold source frames per region; observer PSG state unchanged.'],
     limits=['Host native semantic helper; compiled68000 timing and physical MD publication not checked here.',
-            ('Selected profile with original F37 fire callback; no actors or skip inputs.' if a.fire else
+            ('Selected original actor callback profile; captured VDP status is explicit diagnostic IRQ input where enabled.' if a.actors else
+             'Selected profile with original F37 fire callback; no actors or skip inputs.' if a.fire else
              'Selected entry profile only; callback/window profiles use original F36 empty callback, not fire/actors.'),
             'No production clock integration, full-game or PCM certification.'])
 (out / 'report.json').write_text(json.dumps(report, indent=2) + '\n')

@@ -9,9 +9,12 @@ root = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(root / 'tools'))
 from archive_lossless_evidence import sha
 p = argparse.ArgumentParser(); p.add_argument('--profile', choices=['callback','window'], required=True)
-p.add_argument('--fire', action='store_true');p.add_argument('--revision',type=int,default=1); a=p.parse_args()
+p.add_argument('--fire', action='store_true');p.add_argument('--revision',type=int,default=1)
+p.add_argument('--actors',choices=['second','third']);p.add_argument('--irq-status',action='store_true');a=p.parse_args()
+assert not a.irq_status or a.actors
+assert not(a.fire and a.actors)
 assert 1<=a.revision<=99
-kind='fire' if a.fire else 'empty'
+kind='actors_'+a.actors if a.actors else 'fire' if a.fire else 'empty'
 out=root/'validation'/('v319-intro-'+kind+'-'+a.profile+f'-observer{a.revision:02}');assert not out.exists();out.mkdir()
 core=root.parents[1]/'work/genesis-plus-gx';path=core/'core/z80/z80.c'
 suffix='' if a.revision==1 else f'_r{a.revision:02}'
@@ -39,12 +42,23 @@ static void gaw_poll_observe(unsigned pc) {
  if(gaw_poll_active && pc==0xf21) e->polls++;
 }
 '''.replace(b'ENTRY_PC',b'0xf09' if a.profile=='callback' else b'0xf1e')
-if a.fire:
+if a.fire or a.actors:
  observer=observer.replace(b'unsigned char ram[336],sound[400];',b'unsigned char ram[336],sound[400],extra[80];')
  observer=observer.replace(b'memcpy(e->sound,work_ram+0x1e00,400);',b'''memcpy(e->sound,work_ram+0x1e00,400);
  memcpy(e->extra,work_ram+0x1ca0,72);e->extra[72]=work_ram[0x1fff];
  e->extra[73]=work_ram[0x1cec];e->extra[74]=work_ram[0x1ced];''')
  observer=observer.replace(b'work_ram[0x1cec]==0x36',b'work_ram[0x1cec]==0x37')
+if a.actors:
+ observer=observer.replace(b'extra[80]',b'extra[848]')
+ observer=observer.replace(b'e->extra[74]=work_ram[0x1ced];',b'e->extra[74]=work_ram[0x1ced];memcpy(e->extra+80,work_ram+0x300,768);')
+ observer=observer.replace(b'work_ram[0x1cec]==0x37',b'work_ram[0x1cec]=='+(b'0x55' if a.actors=='second' else b'0x4a'))
+ observer=observer.replace(b'work_ram[0x1ced]==0x0f',b'work_ram[0x1ced]==0x10')
+if a.irq_status:
+ observer=observer.replace(b'unsigned polls,pad;}',b'unsigned polls,pad,irq_count,irq_status[8];}')
+ observer=observer.replace(b' if(gaw_poll_active && pc==0xf21) e->polls++;',b''' if(gaw_poll_active && pc==0x137) {
+  if(e->irq_count>=8) gaw_poll_overflow++;else e->irq_status[e->irq_count++]=work_ram[0x1b];
+ }
+ if(gaw_poll_active && pc==0xf21) e->polls++;''')
 original=path.read_bytes();needle=b'static void gaw_timing_observe(unsigned pc)\r\n{'
 if needle not in original:needle=needle.replace(b'\r\n',b'\n')
 assert original.count(needle)==1
@@ -58,5 +72,6 @@ finally:path.write_bytes(original)
 assert path.read_bytes()==original
 (out/'report.json').write_text(json.dumps(dict(passed=True,profile=a.profile,core=str(target),core_sha256=sha(target.read_bytes()),
  original_source_sha256=sha(original),observer_source_sha256=sha(changed),original_source_restored=True,
- emulated_state_modifications=0,emulated_cycle_modifications=0,callback_target=0xf37 if a.fire else 0xf36,
+ emulated_state_modifications=0,emulated_cycle_modifications=0,irq_status=a.irq_status,
+ callback_target=(0x1055 if a.actors=='second' else 0x104a) if a.actors else 0xf37 if a.fire else 0xf36,
  scope='Natural calls only; source first/actual caller-return entry snapshots. Runtime parity pending.'),indent=2)+'\n')

@@ -6,6 +6,37 @@ le README et les rapports cités.
 
 ## Suivi courant — V319, 8 novembre 2026
 
+DERNIER CODE NATIF : `source_intro_actors.h/.c`, rapport
+`analysis/v319_intro_actors_report.json`, archive `analysis/v319-intro-actors`.
+Callbacks 1055/104A, scan 1061, activation/poses 108B, lookup RST08,
+listes SAT A60/A78/0978 et palette éclair BE25 traduits avec SourceClock.
+6992 vecteurs source scène 2 + 7712 scène 3 = 14704, tous avec IRQ.
+29408 exécutions compilées 68000 sur les deux régions passent, tous les
+états suivis comparés sans exclusion. Aucun changement de ROM publique :
+recompilation complète byte-identique V319 d3ea2a83/DA29.
+
+Attention : scène 3, C01B prend 9F/BF selon overflow sprite source.
+Le diagnostic reçoit ce statut indépendant à chaque entrée IRQ 0137,
+puis délègue au modèle IRQ natif inchangé. Ce n’est pas un replay autorisé
+en production : calculer ce statut depuis les sprites vivants avant
+intégration. full_ram 8K est un backing diagnostic, pas le plan mémoire final.
+Initialisation F51/F54 et dévoilement E8B..E9D pas encore traduits/validés.
+Prochaine étape : F51/F54 avec oracle source, puis composition F1E,
+plan mémoire compact et deadlines vidéo/PSG. Ne pas intégrer les helpers
+isolés à l’aveugle : la fidélité finale reste à démontrer dans le jeu.
+
+Tous les lots sont terminaux. Incidents conservés : C01B externe absent,
+puis queue diagnostic non initialisée, tous deux rejetés avant correction.
+Un kernel a échoué au lien LTO (chemin temporaire MSYS) : mêmes objets
+reliés avec -flto=1, recette/log conservés, exécution ensuite validée.
+compile_v319_intro_actors_all.py gère partitions et reprise ; le compilateur
+ne relance en série que ce motif précis d’échec terminal. Ne pas relancer
+les anciens handles 19373/61905/17802/76108/28193.
+Archive terminée, 1791 fichiers générés supprimés après relecture vérifiée,
+vecteurs/kernels restaurables ; scripts et sources conservés.
+
+Les paragraphes suivants décrivent les étapes précédentes.
+
 DERNIER CODE NATIF : `source_intro_fire.h/.c`, rapport
 `analysis/v319_intro_fire_report.json`, archive `analysis/v319-intro-fire`.
 F37..F4E etbank5BDFF..BE12 traduits surSourceClock :retourrapide clock&7,

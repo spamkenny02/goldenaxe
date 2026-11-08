@@ -113,9 +113,14 @@ passent maintenant 2052 captures naturelles SMS, toutes avec IRQ pendant
 l’attente, puis 4104 exécutions compilées 68000 dans les deux régions.
 Le [callback du feu avec son compteur et sa palette](analysis/v319_intro_fire_report.json)
 est aussi traduit : 7159 vecteurs source passent, puis 14318 exécutions
-compilées 68000 dans les deux régions. Les callbacks des acteurs restent
-à traiter ; aucune de ces nouvelles routines ne pilote encore l’intro
-publiée. La recompilation complète conserve exactement la V319.
+compilées 68000 dans les deux régions. Les [callbacks des personnages animés](analysis/v319_intro_actors_report.json)
+passent également 14704 vecteurs source et 29408 exécutions compilées 68000,
+avec les listes de sprites et les palettes. Le banc de la troisième scène
+fournit explicitement le statut VDP capturé à chaque IRQ ; sa production
+à partir des sprites vivants reste à intégrer. L’initialisation des acteurs,
+le dévoilement de l’image et la publication vidéo/son restent à traiter.
+Aucune de ces nouvelles routines ne pilote encore l’intro publiée.
+La recompilation complète conserve exactement la V319.
 
 ## Sources et compilation
 

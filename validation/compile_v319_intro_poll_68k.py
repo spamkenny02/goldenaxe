@@ -31,10 +31,13 @@ src = project / 'src'; src.mkdir(parents=True)
 shutil.copyfile(root / 'megadrive/src/rom_header.c', src / 'rom_header.c')
 inc = project / 'inc'; inc.mkdir()
 (inc / 'source_intro_wait.h').write_text('#include "../../../../megadrive/src/source_intro_wait.h"\n')
-fire=json.loads((work/'report.json').read_bytes()).get('fire',False)
+profile_report=json.loads((work/'report.json').read_bytes())
+fire=profile_report.get('fire',False);actors=profile_report.get('actors');irq_status=profile_report.get('irq_status',False)
 if fire: (inc/'source_intro_fire.h').write_text('#include "../../../../megadrive/src/source_intro_fire.h"\n')
-for module in (['source_intro_fire'] if fire else [])+['source_intro_wait', 'source_wait_restore', *MODULES]:
-    (src / (module + '.c')).write_text('#include "../../../../megadrive/src/' + module + '.c"\n')
+if actors:(inc/'source_intro_actors.h').write_text('#include "../../../../megadrive/src/source_intro_actors.h"\n')
+for module in (['source_intro_fire'] if fire else [])+(['source_intro_actors'] if actors else [])+['source_intro_wait', 'source_wait_restore', *MODULES]:
+    prefix='#define source_irq_interrupt source_irq_interrupt_impl\n' if irq_status and module=='source_irq_context' else ''
+    (src / (module + '.c')).write_text(prefix+'#include "../../../../megadrive/src/' + module + '.c"\n')
 (src / 'wrapper.c').write_text('#include "../../wrapper.c"\n')
 image = (root / 'input/original.sms').read_bytes()
 def array(raw): return '{' + ','.join(map(str, raw)) + '}'
@@ -82,8 +85,14 @@ int main(bool hard_reset)
 ''')
 build_env=dict(os.environ)
 for key in ('TMPDIR','TMP','TEMP'):build_env[key]='.'
-subprocess.run(['powershell', '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
-    str(root / 'tools/build_private_candidate.ps1'), '-Project', str(project), '-PaddingByte', '255'], cwd=root, env=build_env, check=True)
+built=subprocess.run(['powershell', '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
+    str(root / 'tools/build_private_candidate.ps1'), '-Project', str(project), '-PaddingByte', '255'], cwd=root, env=build_env)
+if built.returncode:
+    failure=(project/'build.log').read_bytes()
+    failure=failure.decode('utf-16' if failure.startswith(b'\xff\xfe') else 'utf-8')
+    if 'Cannot create temporary file' not in failure or 'lto-wrapper failed' not in failure:
+        raise subprocess.CalledProcessError(built.returncode,built.args)
+    subprocess.run([sys.executable,str(root/'validation/relink_v319_kernel_serial.py'),'--project',str(project)],cwd=root,check=True)
 sy = {m[2].split('.lto_priv.')[0]: int(m[1], 16) & 65535 for line in (project / 'out/release/symbol.txt').read_text().splitlines()
       if (m := re.match(r'([0-9a-fA-F]+)\s+\w\s+(\S+)', line))}
 results = []
@@ -104,7 +113,7 @@ for region in ('ntsc', 'pal'):
     assert stats['intro_poll_cases'] == len(cases) and stats['intro_poll_reads'] == expected_reads
     results.append(dict(region=region, **stats)); print(region, stats, flush=True)
 report = dict(passed=True, diagnostic_only=True, source_vector_cases=len(cases), source_regions=source_regions,
-    case_start=a.case_start,ram_bytes=ram_bytes,fire=fire,results=results,
+    case_start=a.case_start,ram_bytes=ram_bytes,fire=fire,actors=actors,irq_status=irq_status,results=results,
     kernel_sha256=sha((project / 'out/release/rom.bin').read_bytes()),
     scope='Compiled68000 source semantic helper checked against the selected natural original source vectors '
           'on each target region. No physical publication scheduler or PCM claim.')
