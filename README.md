@@ -138,9 +138,11 @@ La [préparation de la carte et son transfert vidéo EA5/EFA](analysis/v319_intr
 sont également traduits : 42 vecteurs d’entrée source et 84 exécutions
 68000 passent, avec 32340 écritures vidéo vérifiées. Cela inclut la carte
 vide, les quatre couleurs du bandeau de données et les deux attentes avec
-callbacks autour du transfert. Le chargement complet de la scène et la
-publication vidéo/son restent à relier au jeu ; ces preuves portent sur
-les routines sémantiques.
+callbacks autour du transfert. Le [décodage de carte BD3/BFE et son placement par lignes](analysis/v319_intro_map_report.json)
+sont aussi traduits : 28 vecteurs source et 56 exécutions compilées passent,
+avec les banques ROM 6/7, les tampons mémoire et les temps correspondants.
+La composition du chargement complet de la scène et la publication vidéo/son
+restent à relier au jeu ; ces preuves portent sur les routines sémantiques.
 Aucune de ces nouvelles routines ne pilote encore l’intro publiée.
 La recompilation complète conserve exactement la V319.
 

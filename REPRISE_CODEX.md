@@ -6,6 +6,48 @@ le README et les rapports cités.
 
 ## Suivi courant — V319, 8 novembre 2026
 
+DERNIÈRE ÉTAPE : `source_intro_map.c/.h`, rapport
+`analysis/v319_intro_map_report.json`, archive `analysis/v319-intro-map`.
+source_intro_map_decode :BD3 literal/increment vers scratchD100..D5FF,
+BFE literal/repeated en deux plans intercalés versC900..CFFF, RET/checkpoint.
+Prend explicitement un const u8 *map_bank (fenêtre ROM16KiB courante),
+indépendant du context->bank6 réservé au lecteur audio. Données observées
+bank6:A598/AE6F et bank7:A886. Ce dernier décode1278bytes, les autres576.
+source_intro_map_place :7357 strided rows,contrat intro sourceC900..CFFF,
+48bytes*12rows versD608, stride64. OutputHL CB40,DE D908,BC3000.
+API rejette largeur0 ou>64 et hauteur0 ; pas de preuve générique zéro.
+
+7décode+7placement par région sur14000frames sans input :28vecteurs,
+13avecIRQ et15sans. Tous5097octets suivis+400reader,HL/DE/BC,wall/IRQ/R/
+latches identiques. Décode scratchcounts281/242/728, placements576bytes.
+Tous vecteurs compilés sur NTSC+PAL :56exécutions,zéro erreur. Pas de IO
+avant-plan dans ces helpers ; la livraison VDP est toujours distincte.
+Rebuild source exacte byte-identique V319 d3ea2a83/DA29,aucune nouvelle ROM.
+
+Incidents rejetés :premier BFE repeat avait remonté LD A,(HL) hors boucle ;
+source le relit à chaque octet. Wall/R rejetaient, correction lecture7T
+parbyte. Puis bank7 observée :pointeur ROM explicite à la place de bank6
+fixe. Placement sansIRQ a corrigé une précondition trop stricte du harness.
+Toutes captures finales incluent les bytes de RAM suivis sans exclusions.
+Observer2 filtre seulement les contrats intro :BD3 DE=C900 ;7357 HL=C900,
+DE=D608,BC=300C. Observer1 antérieur nonfiltré conservé mais pas utilisé.
+
+Builder/validator --profile callback --map decode|place --observer-revision2
+(ce dernier seulement validator), implique layout transfer/sequence, pas
+leurs appels natifs. Nouveau module source_intro_map compilé dans kernels.
+Snapshot5504,extra4696 ; inputRAM1192..1959=D600 map,1960..3239=D100scratch,
+3240..5031=C900 decoded,5032 IRQcount/5033..5096statuses. HL1184/85,
+DE1186/87,BC1188/89. Events record à snapshot*2+268, stride17440, mais
+countIO=0. Kernel utilise un tableau events d’au moins1mot pour zéroIO.
+Work finaux mapdecode03/mapplace03. Prose héritée EFA corrigée au gel.
+
+Handles80466/86687/16998/63537/39618 terminaux ; derniers lots terminaux0.
+Archive relue :34652365octets générés supprimés,25246550nets libérés.
+Prochaine étape :0E2B plane clear, puis composer E50..E75 avec032A existant,
+EA5,BD3/BFE,7357 etEFA. Ensuite mémoire compacte/statut sprite vivant et
+publication MD avec deadlines ; helpers nouveaux toujours non sélectionnés.
+Les paragraphes suivants décrivent les étapes précédentes.
+
 DERNIÈRE ÉTAPE : `source_intro_video.c/.h`, rapport
 `analysis/v319_intro_transfer_report.json`, archive `analysis/v319-intro-transfer`.
 source_intro_map_transfer modélise EFA : CALL F1E, LD HL D600/DE7800/BC0300,

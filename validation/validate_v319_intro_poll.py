@@ -30,7 +30,9 @@ p.add_argument('--skip',action='store_true')
 p.add_argument('--capture-work')
 p.add_argument('--transfer',action='store_true')
 p.add_argument('--prepare',action='store_true')
+p.add_argument('--map',choices=['decode','place'])
 a = p.parse_args()
+if a.map:a.transfer=True
 if a.prepare:a.transfer=True
 if a.transfer:
  assert not a.skip
@@ -218,6 +220,31 @@ if a.prepare:
     wrapper=wrapper.replace('out[0]=clock.raster;',
         'ram[1184]=sequence.palette_end;ram[1185]=sequence.palette_end>>8;\n out[0]=clock.raster;')
     (out/'wrapper.c').write_text(wrapper)
+if a.map:
+    wrapper=wrapper.replace('#include "source_intro_video.h"','#include "source_intro_map.h"')
+    wrapper=wrapper.replace('SourceIntroMapOutput sequence;', 'SourceIntroMapDecode sequence;')
+    bank7=(root/'input/original.sms').read_bytes()[0x1c000:0x20000]
+    wrapper=wrapper.replace('static u8 actor_full_ram[8192];','static u8 actor_full_ram[8192];\nstatic const u8 map_bank7[16384]={'+','.join(map(str,bank7))+'};')
+    call=('source_intro_map_decode(&clock,&context,ram[408]==6?bank:ram[408]==7?map_bank7:0,ram[1184]|((u16)ram[1185]<<8),ram[1186]|((u16)ram[1187]<<8),&sequence)' if a.map=='decode' else
+          'source_intro_map_place(&clock,&context,ram[1184]|((u16)ram[1185]<<8),ram[1186]|((u16)ram[1187]<<8),ram[1189],ram[1188],&sequence)')
+    wrapper=wrapper.replace('source_intro_map_transfer(&clock,&context,sequence_callback,&sequence_data,reveal_sink,0,&sequence)',call)
+    wrapper=wrapper.replace('result.below=sequence.writes;result.skip=sequence.skip;',
+        'result.below=sequence.decoded_bytes;result.above=sequence.scratch_bytes;')
+    wrapper=wrapper.replace('irq_status_count=ram[1960]', 'irq_status_count=ram[5032]')
+    wrapper=wrapper.replace('irq_status_values[n]=ram[1961+n]', 'irq_status_values[n]=ram[5033+n]')
+    wrapper=wrapper.replace('context.full_ram=actor_full_ram;',
+        'for(u16 n=0;n<1280;n++) actor_full_ram[0x1100+n]=ram[1960+n];\n'
+        ' for(u16 n=0;n<1792;n++) actor_full_ram[0x900+n]=ram[3240+n];\n context.full_ram=actor_full_ram;')
+    wrapper=wrapper.replace('out[0]=clock.raster;',
+        'for(u16 n=0;n<1280;n++) ram[1960+n]=actor_full_ram[0x1100+n];\n'
+        ' for(u16 n=0;n<1792;n++) ram[3240+n]=actor_full_ram[0x900+n];\n'
+        ' ram[1184]=sequence.source_end;ram[1185]=sequence.source_end>>8;\n'
+        ' ram[1186]=sequence.destination_end;ram[1187]=sequence.destination_end>>8;\n'
+        +(' ram[1188]=2;ram[1189]=0;\n' if a.map=='decode' else ' ram[1188]=0;\n')+
+        ' out[0]=clock.raster;')
+    wrapper=wrapper.replace('context.input.lines=phase[3];',
+        '(void)sequence_data;(void)sequence_callback;(void)reveal_sink;(void)map_bank7;\n context.input.lines=phase[3];')
+    (out/'wrapper.c').write_text(wrapper)
 sdk = root.parents[1] / 'work/sgdk'
 env = dict(os.environ); env['PATH'] = 'C:/msys64/ucrt64/bin;' + env['PATH']
 modules = ['source_intro_wait', 'source_wait_restore', *MODULES]
@@ -225,6 +252,7 @@ if a.fire: modules.insert(0,'source_intro_fire')
 if a.actors: modules.insert(0,'source_intro_reveal' if a.reveal else 'source_intro_actors')
 if a.sequence:modules[:0]=['source_intro_actors','source_intro_fire']
 if a.transfer:modules.insert(0,'source_intro_video')
+if a.map:modules.insert(0,'source_intro_map')
 command = ['C:/msys64/ucrt64/bin/gcc.exe', '-O3', '-shared', '-Wall', '-Wextra', '-Werror',
     '-I', str(sdk / 'inc'), '-I', str(root / 'megadrive/src'), str(out / 'wrapper.c')]
 module_paths=[root/'megadrive/src'/(name+'.c') for name in modules]
@@ -249,6 +277,7 @@ if a.sequence:build_folder='v319-intro-reveal_sequence-callback-observer01'
 if a.skip:build_folder='v319-intro-reveal_skip-callback-observer01'
 if a.transfer:build_folder='v319-intro-intro_transfer-callback-observer01'
 if a.prepare:build_folder='v319-intro-intro_prepare-callback-observer01'
+if a.map:build_folder='v319-intro-map_'+a.map+'-callback-observer01'
 build_folder=build_folder[:-2]+f'{a.observer_revision:02}'
 build = json.loads((root / 'validation' / build_folder / 'report.json').read_bytes())
 core = Path(build['core']); assert sha(core.read_bytes()) == build['core_sha256']
@@ -256,7 +285,7 @@ dll = c.CDLL(str(core))
 dll.gaw_poll_reset.restype = None
 dll.gaw_poll_size.restype = dll.gaw_poll_errors.restype = dll.gaw_poll_stride.restype = c.c_uint
 dll.gaw_poll_data.restype = c.POINTER(c.c_uint8)
-snapshot=2432 if a.transfer else 1664 if a.sequence else 1656 if a.actors else 888 if a.fire else 808
+snapshot=5504 if a.map else 2432 if a.transfer else 1664 if a.sequence else 1656 if a.actors else 888 if a.fire else 808
 stride=snapshot*2+8
 if a.irq_status:stride+=264 if a.sequence else 40
 if a.skip:stride+=256
@@ -298,21 +327,21 @@ for region in ('ntsc', 'pal'):
         refresh, pc = struct.unpack_from('<2I', first, 64); final_refresh, final_pc = struct.unpack_from('<2I', last, 64)
         if a.profile == 'poll': assert (pc, final_pc) == (0xf21, 0xf2b)
         else:
-            assert pc == (0xea5 if a.prepare else 0xefa if a.transfer else 0xe79 if a.sequence else 0xe8b if a.reveal else (0xf51 if a.actors=='second' else 0xf54) if a.init else 0xf09 if a.profile == 'callback' else 0xf1e)
+            assert pc == ((0xbd3 if a.map=='decode' else 0x7357) if a.map else 0xea5 if a.prepare else 0xefa if a.transfer else 0xe79 if a.sequence else 0xe8b if a.reveal else (0xf51 if a.actors=='second' else 0xf54) if a.init else 0xf09 if a.profile == 'callback' else 0xf1e)
             if a.init:phase=tuple(phase[i] if i!=4 else struct.unpack_from('<I',record,snapshot*2)[0] for i in range(12))
             assert final_pc in ((struct.unpack_from('<I',record,snapshot*2+4)[0],) if a.transfer else (0xea4,0xd0b) if a.skip else (0xea4,) if a.sequence else (0xea0,) if a.reveal else (struct.unpack_from('<I', record, snapshot*2+4)[0],))
         before=first[72:408]+(first[808:snapshot] if a.fire or a.actors else b'')
         expected_state=last[72:408]+(last[808:snapshot] if a.fire or a.actors else b'')
         if a.irq_status:
             statuses=struct.unpack_from('<65I' if a.sequence else '<9I',record,snapshot*2+8)
-            assert (0 if a.init else 1)<=statuses[0]<=(64 if a.sequence else 8) and all(v<=255 for v in statuses[1:])
+            assert (0 if a.init or a.map else 1)<=statuses[0]<=(64 if a.sequence else 8) and all(v<=255 for v in statuses[1:])
             before+=bytes(statuses);expected_state+=bytes(statuses)
             if a.skip:
                 joys=struct.unpack_from('<64I',record,snapshot*2+268);assert all(v<=63 for v in joys)
                 before+=bytes(joys);expected_state+=bytes(joys)
         state = (c.c_uint8 * len(before)).from_buffer_copy(before); audio = (c.c_uint8 * 400).from_buffer_copy(first[408:808])
         if a.reveal:
-            event_count=struct.unpack_from('<I',record,snapshot*2)[0];assert (0<=event_count<=55296 and event_count%6912==0) if a.skip else event_count==(770 if a.transfer else 55296 if a.sequence else 6912)
+            event_count=struct.unpack_from('<I',record,snapshot*2)[0];assert (0<=event_count<=55296 and event_count%6912==0) if a.skip else event_count==(0 if a.map else 770 if a.transfer else 55296 if a.sequence else 6912)
             event_values=struct.unpack_from('<'+str(event_count*2)+'I',record,snapshot*2+(524 if a.skip else 268 if a.sequence else 44))
             event_buffer=(c.c_uint32*len(event_values))(*event_values)
             configure=c.CDLL(str(out/'native.dll')).configure_reveal_events
@@ -351,7 +380,7 @@ for region in ('ntsc', 'pal'):
     if a.init:row['source_template_addresses']=sorted({case['phase'][4] for case in cases})
     results.append(row); print(json.dumps(row), flush=True)
 report = dict(passed=True, diagnostic_only=True, profile=a.profile, fire=a.fire, actors=a.actors,
-    irq_status=a.irq_status,init=a.init,reveal=a.reveal,sequence=a.sequence,skip=a.skip,transfer=a.transfer,prepare=a.prepare,production_rom_changed=False, cases=results,
+    irq_status=a.irq_status,init=a.init,reveal=a.reveal,sequence=a.sequence,skip=a.skip,transfer=a.transfer,prepare=a.prepare,map=a.map,production_rom_changed=False, cases=results,
     core_sha256=sha(core.read_bytes()), source_sha256=sha(image),
     native_sources={name: sha((root / 'megadrive/src' / (name + '.c')).read_bytes()) for name in modules},
     verified=['Original natural entry/return wall time, raster, '+('initial HL, ' if a.init else 'polls, ')+
@@ -361,6 +390,7 @@ report = dict(passed=True, diagnostic_only=True, profile=a.profile, fire=a.fire,
               'Normal controller skip scenarios, independently replayed source PSG states identical; repeated prefix dedup omits only absolute diagnostic time origins.' if a.skip else 'Both regions,14000 no-input cold source frames per region; observer PSG state unchanged.'],
     limits=['Host native semantic helper; compiled68000 timing and physical MD publication not checked here.',
             ('Normal controller skip inputs and complete prefixes; per-IRQ VDP status and actual observed joy input are diagnostic external inputs.' if a.skip else
+             'Intro map BD3/BFE decode or7357 placement entry/return; natural no-input only, original buffer contract filtered at entry. VDP status external diagnostic input.' if a.map else
              'Complete EA5 setup and EFA transfer with both callbacks, palette clearing and four bank6 header colors. Natural no-input only; VDP status external diagnostic input.' if a.prepare else
              'Complete EFA map transfer, F1E then F09 callbacks. Natural no-input only; VDP status external diagnostic input.' if a.transfer else
              'Composed E79..EA2 sequence, live F1E callbacks plus eight reveal passes. Natural no-input cases only; VDP status is external diagnostic input.' if a.sequence else

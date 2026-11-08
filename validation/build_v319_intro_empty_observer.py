@@ -10,7 +10,8 @@ sys.path.insert(0, str(root / 'tools'))
 from archive_lossless_evidence import sha
 p = argparse.ArgumentParser(); p.add_argument('--profile', choices=['callback','window'], required=True)
 p.add_argument('--fire', action='store_true');p.add_argument('--revision',type=int,default=1)
-p.add_argument('--actors',choices=['second','third']);p.add_argument('--irq-status',action='store_true');p.add_argument('--init',action='store_true');p.add_argument('--reveal',action='store_true');p.add_argument('--sequence',action='store_true');p.add_argument('--skip',action='store_true');p.add_argument('--transfer',action='store_true');p.add_argument('--prepare',action='store_true');a=p.parse_args()
+p.add_argument('--actors',choices=['second','third']);p.add_argument('--irq-status',action='store_true');p.add_argument('--init',action='store_true');p.add_argument('--reveal',action='store_true');p.add_argument('--sequence',action='store_true');p.add_argument('--skip',action='store_true');p.add_argument('--transfer',action='store_true');p.add_argument('--prepare',action='store_true');p.add_argument('--map',choices=['decode','place']);a=p.parse_args()
+if a.map:a.transfer=True
 if a.prepare:a.transfer=True
 if a.transfer:a.sequence=True
 if a.skip:a.sequence=True
@@ -31,6 +32,9 @@ if a.transfer:
  assert not a.skip
  kind='intro_transfer'
 if a.prepare:kind='intro_prepare'
+if a.map:
+ assert not a.prepare
+ kind='map_'+a.map
 out=root/'validation'/('v319-intro-'+kind+'-'+a.profile+f'-observer{a.revision:02}');assert not out.exists();out.mkdir()
 core=root.parents[1]/'work/genesis-plus-gx';path=core/'core/z80/z80.c'
 suffix='' if a.revision==1 else f'_r{a.revision:02}'
@@ -131,6 +135,15 @@ if a.prepare:
  observer=observer.replace(b'pc==0xefa &&',b'pc==0xea5 &&')
  observer=observer.replace(b'memcpy(e->extra+856,work_ram+0x1600,768);',
      b'e->extra[848]=L;e->extra[849]=H;memcpy(e->extra+856,work_ram+0x1600,768);')
+if a.map:
+ observer=observer.replace(b'extra[1624]',b'extra[4696]')
+ observer=observer.replace(b'pc==0xefa &&',b'pc=='+(b'0xbd3' if a.map=='decode' else b'0x7357')+b' &&')
+ observer=observer.replace(b'memcpy(e->extra+856,work_ram+0x1600,768);',b'''e->extra[848]=L;e->extra[849]=H;e->extra[850]=E;e->extra[851]=D;
+ e->extra[852]=C;e->extra[853]=B;memcpy(e->extra+856,work_ram+0x1600,768);
+ memcpy(e->extra+1624,work_ram+0x1100,1280);memcpy(e->extra+2904,work_ram+0x900,1792);''')
+if a.map:
+ if a.map=='decode':observer=observer.replace(b'pc==0xbd3 && SP>=0xc000',b'pc==0xbd3 && DE==0xc900 && SP>=0xc000')
+ else:observer=observer.replace(b'pc==0x7357 && SP>=0xc000',b'pc==0x7357 && HL==0xc900 && DE==0xd608 && BC==0x300c && SP>=0xc000')
 original=path.read_bytes();needle=b'static void gaw_timing_observe(unsigned pc)\r\n{'
 if needle not in original:needle=needle.replace(b'\r\n',b'\n')
 assert original.count(needle)==1
@@ -144,7 +157,7 @@ finally:path.write_bytes(original)
 assert path.read_bytes()==original
 (out/'report.json').write_text(json.dumps(dict(passed=True,profile=a.profile,core=str(target),core_sha256=sha(target.read_bytes()),
  original_source_sha256=sha(original),observer_source_sha256=sha(changed),original_source_restored=True,
- emulated_state_modifications=0,emulated_cycle_modifications=0,irq_status=a.irq_status,init=a.init,reveal=a.reveal,sequence=a.sequence,skip=a.skip,transfer=a.transfer,prepare=a.prepare,
- entry_pc=(0xea5 if a.prepare else 0xefa if a.transfer else 0xe79 if a.sequence else 0xe8b if a.reveal else (0xf51 if a.actors=='second' else 0xf54) if a.init else 0xf09 if a.profile=='callback' else 0xf1e),
+ emulated_state_modifications=0,emulated_cycle_modifications=0,irq_status=a.irq_status,init=a.init,reveal=a.reveal,sequence=a.sequence,skip=a.skip,transfer=a.transfer,prepare=a.prepare,map=a.map,
+ entry_pc=((0xbd3 if a.map=='decode' else 0x7357) if a.map else 0xea5 if a.prepare else 0xefa if a.transfer else 0xe79 if a.sequence else 0xe8b if a.reveal else (0xf51 if a.actors=='second' else 0xf54) if a.init else 0xf09 if a.profile=='callback' else 0xf1e),
  callback_target=None if a.reveal else (0x1055 if a.actors=='second' else 0x104a) if a.actors else 0xf37 if a.fire else 0xf36,
  scope='Natural calls only; source first/actual caller-return entry snapshots. Runtime parity pending.'),indent=2)+'\n')

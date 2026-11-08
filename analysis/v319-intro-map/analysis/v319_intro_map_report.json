@@ -1,0 +1,253 @@
+{
+  "passed": true,
+  "diagnostic_only": true,
+  "production_rom_changed": false,
+  "public_version": 319,
+  "production_rom_sha256": "d3ea2a83ea24ed8a0d3c9857f9fbe70d000a4f73358452c1887f40e78966c56e",
+  "production_rebuild_byte_identical": true,
+  "source_profiles": [
+    {
+      "passed": true,
+      "diagnostic_only": true,
+      "profile": "callback",
+      "fire": false,
+      "actors": "second",
+      "irq_status": true,
+      "init": false,
+      "reveal": true,
+      "sequence": true,
+      "skip": false,
+      "transfer": true,
+      "prepare": false,
+      "map": "decode",
+      "production_rom_changed": false,
+      "cases": [
+        {
+          "region": "ntsc",
+          "source_cases": 7,
+          "cases_crossing_irq": 7,
+          "observer_exposed_psg_exact_frames": 14000,
+          "source_records_sha256": "bfac0f2a96b35dc62ef65fbc713830ee019f5e80cbe65608a47cc5ad15efad48",
+          "source_io_events": 0,
+          "maximum_io_events": 0
+        },
+        {
+          "region": "pal",
+          "source_cases": 7,
+          "cases_crossing_irq": 2,
+          "observer_exposed_psg_exact_frames": 14000,
+          "source_records_sha256": "7836b351d9b17704725210732b028a049a7f67b8efccd2dab677455ea7251a1c",
+          "source_io_events": 0,
+          "maximum_io_events": 0
+        }
+      ],
+      "core_sha256": "a1b2b99f70027bce7248f1d1c382a0f632d2ebcf019b425008686163cff4b87c",
+      "source_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+      "native_sources": {
+        "source_intro_map": "ac81e47b6f1013e3881bf5dac4a115af3cb2815e3beaca36b554be97bf910b3a",
+        "source_intro_video": "2d4de23b897e3a1b6ba33d4c75aadf612b04c60ebeb64a3243facb32bd8c5ba5",
+        "source_intro_actors": "b7973fb051ea123bef48f539bce75069dd92fef9925587b1f977469e57eac4da",
+        "source_intro_fire": "5649ee6def4debe3bc333e1c5c740279ef35d1206e2c46a554bb96514140e903",
+        "source_intro_reveal": "b4d3f814c8d396b191bf468b72e3fb717ffcb24ee550cb4f4a530a03b3fc67c8",
+        "source_intro_wait": "7d721554756cab01471f0ef5356ee37d101cea2d27918ff40f5a5166a12172e9",
+        "source_wait_restore": "a6ce6eac36ff120f8222dbe24c0456c7729c1062902f997ba7fb296d6dcecd28",
+        "source_wait": "4ed09b544bf7366d82afe04c0d86b07040a453e5e00209cd57fed05db4bfc7f6",
+        "source_irq_context": "013a3ef89374be5f178cf3968aeafca498cdd380b2d943d341c208fa8f9497d9",
+        "source_irq": "bc5921ff1b8a9ed22c6c06c889cc430a469e926c360914e146481a89b1a2c534",
+        "source_clock": "800058a5cbafa50bcf27fc4a91b9622fd34312eb75fa46f8523cffc80799cc9a",
+        "source_rng": "5c64cd42ca0c18d69f8cfb1a185f282268b5dfd45a4b77f355323c6df802919f",
+        "source_audio_fast": "811c9e96d4f587353df50654e01d767f7f1530528efa271d1ee9d15169376cc3",
+        "source_audio_reader": "7ea0d9bdd75168ea85f1e8cf7c9ef4fbb720d746a8e4c9158953a48a5551c624",
+        "source_audio_prefix": "c0c02bafe3dd7e4baf887f67b264786c70c74932c12c897213c941f32fea2d39",
+        "source_audio_dispatch": "f8ce91959f8fb0db6062900e69a1842da8cc108d33bdfcbb7509b681185b0d90",
+        "source_audio_priority": "d5bc487b634abc56b77df5aeec338a447be312c0e76679a1eec3b14585291147",
+        "source_audio_tone": "8098ba4e45c21629a9920e6ca9ac5385ecb986e31d0db143cbbff42c0c92b272",
+        "source_audio_noise": "45b37e1689255404b86855e3970e82bfefd313421522aae46e3fae455fa9690b",
+        "source_audio_sequence": "e7171cc12b4f031dc361943aca679b7a8fa5c1fc2bb7d7798864d16675aa7663",
+        "source_audio_memory": "ec755012b117bdb5bfe2c114037f44abe4891714f6532f4800206915e8dde1f0",
+        "source_audio_envelope": "d0878cd24b5d7bb8f255a5a9e97a231815ac41828cae53342b03c6cbe81ae17c",
+        "source_audio_pitch": "ea46d31e3c73a352995c3dcbcbbe141214a9c536fd827e1a16d49d8e5e058795"
+      },
+      "verified": [
+        "Original natural entry/return wall time, raster, polls, R, IFF/EI/pending,336 IRQ RAM and400 reader bytes. Actor768-byte records and palette/counter/mapper/callback snapshots also compared. Scratch D100..D5FF, decoded C900..CFFF and placed D600..D8FF, plus HL/DE/BC snapshots, all compared.",
+        "Both regions,14000 no-input cold source frames per region; observer PSG state unchanged."
+      ],
+      "limits": [
+        "Host native semantic helper; compiled68000 timing and physical MD publication not checked here.",
+        "Intro map decode/place only, selected original buffer contracts. ROM bank6/7 preserved as data source independently of the audio bank6 pointer.",
+        "No production clock integration, full-game or PCM certification."
+      ],
+      "metadata_clarification": "BD3/BFE map decode or7357 placement; inherited transfer-profile prose corrected, all numeric results/raw captures unchanged."
+    },
+    {
+      "passed": true,
+      "diagnostic_only": true,
+      "profile": "callback",
+      "fire": false,
+      "actors": "second",
+      "irq_status": true,
+      "init": false,
+      "reveal": true,
+      "sequence": true,
+      "skip": false,
+      "transfer": true,
+      "prepare": false,
+      "map": "place",
+      "production_rom_changed": false,
+      "cases": [
+        {
+          "region": "ntsc",
+          "source_cases": 7,
+          "cases_crossing_irq": 2,
+          "observer_exposed_psg_exact_frames": 14000,
+          "source_records_sha256": "ade2a20d8a295e10568afe7947f506ff23d7c6522f317a8b2558d80082c0ed8e",
+          "source_io_events": 0,
+          "maximum_io_events": 0
+        },
+        {
+          "region": "pal",
+          "source_cases": 7,
+          "cases_crossing_irq": 2,
+          "observer_exposed_psg_exact_frames": 14000,
+          "source_records_sha256": "5e7a6a70013f41bc2213f7fc488c99a8f7e8ca57d293883f2482edc8fb6909f1",
+          "source_io_events": 0,
+          "maximum_io_events": 0
+        }
+      ],
+      "core_sha256": "f40df93bbf21c577c3cd9c1014c0829e2e3cfdab685cea6d6db4951d859f4a7f",
+      "source_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+      "native_sources": {
+        "source_intro_map": "ac81e47b6f1013e3881bf5dac4a115af3cb2815e3beaca36b554be97bf910b3a",
+        "source_intro_video": "2d4de23b897e3a1b6ba33d4c75aadf612b04c60ebeb64a3243facb32bd8c5ba5",
+        "source_intro_actors": "b7973fb051ea123bef48f539bce75069dd92fef9925587b1f977469e57eac4da",
+        "source_intro_fire": "5649ee6def4debe3bc333e1c5c740279ef35d1206e2c46a554bb96514140e903",
+        "source_intro_reveal": "b4d3f814c8d396b191bf468b72e3fb717ffcb24ee550cb4f4a530a03b3fc67c8",
+        "source_intro_wait": "7d721554756cab01471f0ef5356ee37d101cea2d27918ff40f5a5166a12172e9",
+        "source_wait_restore": "a6ce6eac36ff120f8222dbe24c0456c7729c1062902f997ba7fb296d6dcecd28",
+        "source_wait": "4ed09b544bf7366d82afe04c0d86b07040a453e5e00209cd57fed05db4bfc7f6",
+        "source_irq_context": "013a3ef89374be5f178cf3968aeafca498cdd380b2d943d341c208fa8f9497d9",
+        "source_irq": "bc5921ff1b8a9ed22c6c06c889cc430a469e926c360914e146481a89b1a2c534",
+        "source_clock": "800058a5cbafa50bcf27fc4a91b9622fd34312eb75fa46f8523cffc80799cc9a",
+        "source_rng": "5c64cd42ca0c18d69f8cfb1a185f282268b5dfd45a4b77f355323c6df802919f",
+        "source_audio_fast": "811c9e96d4f587353df50654e01d767f7f1530528efa271d1ee9d15169376cc3",
+        "source_audio_reader": "7ea0d9bdd75168ea85f1e8cf7c9ef4fbb720d746a8e4c9158953a48a5551c624",
+        "source_audio_prefix": "c0c02bafe3dd7e4baf887f67b264786c70c74932c12c897213c941f32fea2d39",
+        "source_audio_dispatch": "f8ce91959f8fb0db6062900e69a1842da8cc108d33bdfcbb7509b681185b0d90",
+        "source_audio_priority": "d5bc487b634abc56b77df5aeec338a447be312c0e76679a1eec3b14585291147",
+        "source_audio_tone": "8098ba4e45c21629a9920e6ca9ac5385ecb986e31d0db143cbbff42c0c92b272",
+        "source_audio_noise": "45b37e1689255404b86855e3970e82bfefd313421522aae46e3fae455fa9690b",
+        "source_audio_sequence": "e7171cc12b4f031dc361943aca679b7a8fa5c1fc2bb7d7798864d16675aa7663",
+        "source_audio_memory": "ec755012b117bdb5bfe2c114037f44abe4891714f6532f4800206915e8dde1f0",
+        "source_audio_envelope": "d0878cd24b5d7bb8f255a5a9e97a231815ac41828cae53342b03c6cbe81ae17c",
+        "source_audio_pitch": "ea46d31e3c73a352995c3dcbcbbe141214a9c536fd827e1a16d49d8e5e058795"
+      },
+      "verified": [
+        "Original natural entry/return wall time, raster, polls, R, IFF/EI/pending,336 IRQ RAM and400 reader bytes. Actor768-byte records and palette/counter/mapper/callback snapshots also compared. Scratch D100..D5FF, decoded C900..CFFF and placed D600..D8FF, plus HL/DE/BC snapshots, all compared.",
+        "Both regions,14000 no-input cold source frames per region; observer PSG state unchanged."
+      ],
+      "limits": [
+        "Host native semantic helper; compiled68000 timing and physical MD publication not checked here.",
+        "Intro map decode/place only, selected original buffer contracts. ROM bank6/7 preserved as data source independently of the audio bank6 pointer.",
+        "No production clock integration, full-game or PCM certification."
+      ],
+      "metadata_clarification": "BD3/BFE map decode or7357 placement; inherited transfer-profile prose corrected, all numeric results/raw captures unchanged."
+    }
+  ],
+  "compiled68000_checks": [
+    {
+      "passed": true,
+      "diagnostic_only": true,
+      "source_vector_cases": 14,
+      "source_regions": [
+        "ntsc",
+        "pal"
+      ],
+      "case_start": 0,
+      "ram_bytes": 5097,
+      "fire": false,
+      "actors": "second",
+      "reveal": true,
+      "sequence": true,
+      "transfer": true,
+      "map": "decode",
+      "irq_status": true,
+      "results": [
+        {
+          "region": "ntsc",
+          "intro_poll_done": 1,
+          "intro_poll_cases": 14,
+          "intro_poll_errors": 0,
+          "intro_poll_reads": 0,
+          "intro_poll_first_failure": 0,
+          "frame": 716
+        },
+        {
+          "region": "pal",
+          "intro_poll_done": 1,
+          "intro_poll_cases": 14,
+          "intro_poll_errors": 0,
+          "intro_poll_reads": 0,
+          "intro_poll_first_failure": 0,
+          "frame": 599
+        }
+      ],
+      "kernel_sha256": "e0e9c903e5b9c9a3892cfef48bc9802f91821418a4e9792704cc4f78a34a16bb",
+      "scope": "Compiled68000 source semantic helper checked against the selected natural original source vectors on each target region. No physical publication scheduler or PCM claim."
+    },
+    {
+      "passed": true,
+      "diagnostic_only": true,
+      "source_vector_cases": 14,
+      "source_regions": [
+        "ntsc",
+        "pal"
+      ],
+      "case_start": 0,
+      "ram_bytes": 5097,
+      "fire": false,
+      "actors": "second",
+      "reveal": true,
+      "sequence": true,
+      "transfer": true,
+      "map": "place",
+      "irq_status": true,
+      "results": [
+        {
+          "region": "ntsc",
+          "intro_poll_done": 1,
+          "intro_poll_cases": 14,
+          "intro_poll_errors": 0,
+          "intro_poll_reads": 0,
+          "intro_poll_first_failure": 0,
+          "frame": 158
+        },
+        {
+          "region": "pal",
+          "intro_poll_done": 1,
+          "intro_poll_cases": 14,
+          "intro_poll_errors": 0,
+          "intro_poll_reads": 0,
+          "intro_poll_first_failure": 0,
+          "frame": 133
+        }
+      ],
+      "kernel_sha256": "a693690d7d2287e01bf906648302c249384709cb221fd03bdb95748b0e420ecc",
+      "scope": "Compiled68000 source semantic helper checked against the selected natural original source vectors on each target region. No physical publication scheduler or PCM claim."
+    }
+  ],
+  "source_entry_vectors": 28,
+  "compiled_executions": 56,
+  "source_vectors_crossing_irq": 13,
+  "implementation": "New source_intro_map.c/.h: BD3 literal/increment stream to D100 scratch, BFE two interleaved literal/repeated planes to C900, and7357 strided row placement to D600. Includes native SourceClock instruction/IRQ timing and RET/checkpoint; live semantic memory aliases, no Z80 interpreter.",
+  "verification": "Seven decode entries and seven48-byte/12-row placement entries per source region over14000 no-input frames. Every5097 tracked byte plus400 reader bytes, HL/DE/BC outputs, wall/IRQ time,R and latches match original.13 vectors cross IRQ,15 do not. Every vector executes compiled68000 on both target regions with zero errors.",
+  "recovery": "Initial repeated-plane branch moved LD A,(HL) outside its loop; original repeats this read, so timing/R checker rejected it. Corrected per-byte read. Another original map uses ROM bank7, not bank6; rejected wrong data source replaced by explicit immutable mapped-bank pointer, leaving the audio reader bank6 pointer unchanged. Natural placement zero-IRQ vectors also exposed an overly strict diagnostic precondition, now corrected.",
+  "limits": [
+    "Original intro decode destination C900 and7357 source C900,destination D608,width48,height12 only. General malformed streams, zero dimensions and every capacity edge are not source-oracle tested.",
+    "No skip inputs, full scene-loader composition, live production sprite status/memory binding or physical video/audio publication. VDP status remains diagnostic external input.",
+    "No PCM or hardware certification. Public V319 remains unchanged."
+  ],
+  "next_action": "Translate0E2B plane clear and compose E50..E75 around existing032A pattern decode, EA5 preparation, BD3/BFE map decode,7357 placement and EFA publication. Then bind compact semantic memory/live sprite VDP status and MD publication deadlines.",
+  "oracle_ram_writes": 0,
+  "sram_imports": 0,
+  "archive_manifest": "analysis/v319-intro-map/manifest.json"
+}
