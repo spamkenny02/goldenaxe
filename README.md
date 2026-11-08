@@ -25,8 +25,7 @@ cette routine ; la cadence de jeu visée reste celle de la Master System.
 
 | Domaine | Contrôles passés | Périmètre restant |
 | --- | --- | --- |
-| NTSC | Nouvelle partie → neuf cristaux → ballon → palais → Hache d’or → Death Adder → générique complet → retour à l’intro | Fidélité globale SMS et console réelle |
-| PAL | Neuf cristaux et retours, ballon, hache, fée, huile, corde, Terre, canoë, Feu, épée longue, Clochette de glace, bateau, clé du voleur | Palais final et générique PAL |
+| Campagnes NTSC/PAL | Nouvelle partie → neuf cristaux → ballon → palais → Hache d’or → Death Adder → générique complet → retour à l’intro | Fidélité globale SMS et console réelle |
 | Sauvegarde NTSC/PAL | Vraies écritures SRAM à neuf cristaux, puis Continue et déplacement sur ces mêmes SRAM | Autres slots/refus et console réelle |
 | Démarrage | Deux boucles de 14000 images par région identiques à V318 après normalisation ; états audio et huit registres PSG comparés sur 6500 images | Écarts SMS résiduels de révélations/fondus et formes d’onde PCM |
 | Inventaire | Six retours normaux : extérieur et deux maisons, PAL/NTSC, décor statique restauré | Phase des quatre motifs animés des maisons séparée de l’égalité statique |
@@ -39,13 +38,14 @@ n’est importé. La reprise de sauvegarde importe uniquement la SRAM réellemen
 Le rejeu NTSC de 403488 images retrouve les 65536 octets de RAM et l’image
 finale du parcours c0046. Les étapes intermédiaires ont leurs propres
 preuves indépendantes. Ce contrôle ne compare pas chaque image émise à
-la SMS. Le départ PAL et les neuf retours sont aussi rejoués sur le binaire
-publié ; retour D9 à 302755 images, 104/104 PV et 72 PM. Le cinquième boss et ses
-huit satellites sont affrontés sans protection ; les vrais dons et
-l’achat d’une clé à 60 pièces sont conservés dans les preuves.
+la SMS. Le parcours PAL complet est aussi rejoué sur le binaire publié,
+jusqu’au retour à l’intro à 382208 images, avec RAM entière et image finale
+identiques. Les vrais dons et l’achat d’une clé à 60 pièces sont conservés
+dans les preuves ; les huit satellites du cinquième boss sont aussi vérifiés.
 
 - [Rapport initial V319](analysis/optimization_v0319_report.json)
 - [Campagne NTSC et fin](analysis/cold_palace_final_c0046_report.json) · [Rejeu sur le binaire publié](analysis/c0047_palace_final_auto_report.json)
+- [Campagne PAL, Hache d’or et générique complet](analysis/palc0046_palace_ending_report.json) · [Rejeu sur le binaire publié](analysis/c0047_pal_ending_report.json)
 - [Vraie sauvegarde et Continue NTSC](analysis/c0047_real_save_report.json) · [Sauvegarde et Continue PAL](analysis/c0047_pal_real_save_report.json)
 - [Neuvième cristal, ballon et retour PAL](analysis/palc0046_d9_report.json) · [Rejeu publié](analysis/c0047_pal_d9_report.json)
 - [Premier gardien D9 PAL](analysis/palc0046_d9_midboss_report.json) · [Rejeu publié](analysis/c0047_pal_d9_midboss_report.json) — combat sans protection.
@@ -99,9 +99,9 @@ proviennent de la ROM source fournie.
 
 ## Travail encore ouvert
 
-La suite PAL reste en cours de validation sur ces octets. La récurrence
-aléatoire SMS est intégrée, mais le fournisseur du registre R utilise encore
-SGDK : la phase globale R/IRQ reste à porter.
+Les parcours complets et les sauvegardes NTSC/PAL sont vérifiés sur ces
+octets. La récurrence aléatoire SMS est intégrée, mais le fournisseur du
+registre R utilise encore SGDK : la phase globale R/IRQ reste à porter.
 [Adaptateur actuel](megadrive/src/source_rng_runtime.c).
 Des écarts restent dans des révélations partielles et des fondus.
 Les contrôles audio logiques ne certifient pas toutes les formes d’onde PCM,

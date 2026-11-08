@@ -1,0 +1,179 @@
+{
+  "passed": false,
+  "diagnostic_only": true,
+  "promoted": false,
+  "public_rom_unchanged": true,
+  "public_rom_sha256": "d3ea2a83ea24ed8a0d3c9857f9fbe70d000a4f73358452c1887f40e78966c56e",
+  "cases": [
+    {
+      "name": "v319-reveal-irq-budget01",
+      "rom_sha256": "6b170ea93e2e014ea0bb58132c0d5b63291ae58993ae47ca009cce96aac8a7a8",
+      "promoted": false,
+      "comparisons": [
+        {
+          "region": "ntsc",
+          "totals": {
+            "baseline_source_differences": 147429,
+            "candidate_source_differences": 4837920,
+            "baseline_exact_frames": 13636,
+            "candidate_exact_frames": 12838
+          },
+          "improved_pixels": 5453,
+          "degraded_pixels": 4695944,
+          "no_source_pixel_regression": false
+        },
+        {
+          "region": "pal",
+          "totals": {
+            "baseline_source_differences": 124148,
+            "candidate_source_differences": 121065,
+            "baseline_exact_frames": 13682,
+            "candidate_exact_frames": 13682
+          },
+          "improved_pixels": 6367,
+          "degraded_pixels": 3284,
+          "no_source_pixel_regression": false
+        }
+      ]
+    },
+    {
+      "name": "v319-reveal-row-tail01",
+      "rom_sha256": "f84ef8ac1f03be1c173a02d4c2bf67fb8112f68e3cb1d1f3b53f875ea2c92e7c",
+      "promoted": false,
+      "comparisons": [
+        {
+          "region": "ntsc",
+          "totals": {
+            "baseline_source_differences": 147429,
+            "candidate_source_differences": 147593,
+            "baseline_exact_frames": 13636,
+            "candidate_exact_frames": 13636
+          },
+          "improved_pixels": 50,
+          "degraded_pixels": 214,
+          "no_source_pixel_regression": false
+        },
+        {
+          "region": "pal",
+          "totals": {
+            "baseline_source_differences": 124148,
+            "candidate_source_differences": 124273,
+            "baseline_exact_frames": 13682,
+            "candidate_exact_frames": 13682
+          },
+          "improved_pixels": 32,
+          "degraded_pixels": 157,
+          "no_source_pixel_regression": false
+        }
+      ]
+    },
+    {
+      "name": "v319-reveal-audio-rows01",
+      "rom_sha256": "0323b3337efb075a8f81a8e83b24d678445cbfe2c3683eda0ee7a578397fa962",
+      "promoted": false,
+      "comparisons": [
+        {
+          "region": "ntsc",
+          "totals": {
+            "baseline_source_differences": 147429,
+            "candidate_source_differences": 147720,
+            "baseline_exact_frames": 13636,
+            "candidate_exact_frames": 13636
+          },
+          "improved_pixels": 267,
+          "degraded_pixels": 558,
+          "no_source_pixel_regression": false
+        },
+        {
+          "region": "pal",
+          "totals": {
+            "baseline_source_differences": 124148,
+            "candidate_source_differences": 124227,
+            "baseline_exact_frames": 13682,
+            "candidate_exact_frames": 13682
+          },
+          "improved_pixels": 265,
+          "degraded_pixels": 344,
+          "no_source_pixel_regression": false
+        }
+      ]
+    }
+  ],
+  "first_slice_probe": {
+    "passed": true,
+    "candidate_sha256": "f84ef8ac1f03be1c173a02d4c2bf67fb8112f68e3cb1d1f3b53f875ea2c92e7c",
+    "baseline_sha256": "d3ea2a83ea24ed8a0d3c9857f9fbe70d000a4f73358452c1887f40e78966c56e",
+    "cases": [
+      {
+        "region": "ntsc",
+        "frames": [
+          69,
+          70,
+          73
+        ],
+        "first_slice_non_ff_rows": {
+          "baseline": 180,
+          "candidate": 182,
+          "sms": 182
+        },
+        "first_slice_all_2304_source_bytes_exact": true,
+        "completed_pass_all_2304_source_bytes_exact": true,
+        "native_logic_phase_unchanged": true,
+        "per_frame_plane3_byte_differences": {
+          "baseline": [
+            2,
+            2,
+            0
+          ],
+          "candidate": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      {
+        "region": "pal",
+        "frames": [
+          62,
+          63,
+          66
+        ],
+        "first_slice_non_ff_rows": {
+          "baseline": 180,
+          "candidate": 182,
+          "sms": 182
+        },
+        "first_slice_all_2304_source_bytes_exact": true,
+        "completed_pass_all_2304_source_bytes_exact": true,
+        "native_logic_phase_unchanged": true,
+        "per_frame_plane3_byte_differences": {
+          "baseline": [
+            2,
+            3,
+            0
+          ],
+          "candidate": [
+            0,
+            1,
+            0
+          ]
+        }
+      }
+    ],
+    "ram_writes": 0,
+    "sram_imports": 0,
+    "scope": "Cold no-input first reveal: physical pattern plane3, including bits hidden by equal palette colors. First 182 rows and complete pass match SMS; selected native phase fields match V319. Full boot visual comparisons remain a separate gate."
+  },
+  "observations": [
+    "Source first-slice plane3 contains182 changed rows; V319 rounds this to180.",
+    "The row-tail prototype reproduces all2304 physical plane3 bytes at the first slice and completed pass in both regions, with selected native logic fields unchanged.",
+    "Physical VRAM-boundary equality alone does not prove source-visible raster equality: the isolated row-tail fix increases total visible errors slightly in both regions.",
+    "F1E calls F09/B95 before waiting for V112; charging its full IRQ again between copy slices is incorrect and seriously degrades NTSC.",
+    "Audio-only per-slice work without sub-instruction/row publication phase also fails the source-pixel gate. Do not promote any of these three candidates.",
+    "Next timing work needs continuous source instruction phase and visible-pattern publication timing, rather than another fixed frame or budget adjustment."
+  ],
+  "ram_writes": 0,
+  "sram_imports": 0,
+  "scope": "Three isolated native experiments, every boot frame compared over14000 frames per region. Rejected development binaries, not numbered releases or gameplay changes."
+}

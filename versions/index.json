@@ -9010,7 +9010,7 @@
     "bytes": 2097152,
     "archived_utc": "2026-11-07T21:08:55.439708+00:00",
     "rom": "v0319-d3ea2a83/gaw-megadrive-v0319.bin",
-    "notes": "Optimisation des motifs du heros et atlas RAM des ennemis ; campagne NTSC complete, neuf cristaux PAL et ballon verifies, sauvegarde/Continue reels NTSC et PAL. Fidelite globale et palais final PAL ouverts.",
+    "notes": "Campagnes NTSC et PAL completes jusqu au retour intro ; sauvegarde/Continue reels dans les deux regions. Atlas RAM et preparation des poses optimises. Fidelite globale SMS, autres slots/refus et console physique ouverts.",
     "validation": "development_targeted_checks",
     "reports": [
       {
@@ -9044,6 +9044,10 @@
       {
         "file": "pal_save_v0319_report.json",
         "sha256": "a4e2826224cdaf31a1e3791a11e49cc8f40a7c02bcc3de54eae1ec54c1a0e135"
+      },
+      {
+        "file": "pal_ending_v0319_report.json",
+        "sha256": "cc31bce5b618a8a4c69c5785fc48f98cee34b4910bab38854f517398284fc35e"
       }
     ],
     "development": true

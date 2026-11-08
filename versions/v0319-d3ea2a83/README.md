@@ -57,3 +57,13 @@ La V319 écrit sa propre SRAM au slot0 à neuf cristaux ; Continue recharge
 ces mêmes octets et permet un déplacement. RAM entière et images finales
 du sauvegardeur et du chargement identiques au candidat vérifié. Les autres
 slots/refus, la fidélité globale et le palais final PAL restent ouverts.
+
+Ajout suivant : [campagne PAL et fin complète](../../analysis/palc0046_palace_ending_report.json)
+et [rejeu c0047/V319](../../analysis/c0047_pal_ending_report.json), à 382208 images.
+Le géant du palais, le gardien de la Hache d’or et Death Adder sont vaincus
+sans protection de test pendant leurs combats. La Hache d’or est acquise,
+les neuf gemmes de fin s’affichent, le générique se déroule entièrement
+et le jeu revient à l’intro. Les parcours complets NTSC et PAL, ainsi que
+leurs sauvegardes/Continue, passent désormais sur ces mêmes octets.
+La phase globale R/IRQ source, les révélations/fondus résiduels, toutes
+les formes d’onde PCM et la console réelle restent hors certification.

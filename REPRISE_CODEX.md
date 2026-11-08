@@ -6,6 +6,52 @@ le README et les rapports cités.
 
 ## Suivi courant — V319, 8 novembre 2026
 
+ÉTAT PRIORITAIRE : PARCOURS COMPLETS NTSC ET PAL VÉRIFIÉS SUR V319.
+Palais PAL terminé0 :22points froids depuis le premier géant, gardien7C/60PV
+sans protection (303prédictions), Hache d'or acquise à341509. Retrait final
+371775, DeathAdder6D/90PV à371856,héros92PV,hurt0.101prédictions, zéro
+écriture d'assistance durant combat ; vraie victoire373655. Neuf gemmes
+373962, générique374655→382078, retour intro382108, point final382208.
+Audit de fin passé0 ; rejeu complet officiel C47/V319 passé0,65536RAM et
+PNG final exacts,aucune SRAM initiale,aucun import primaire. Rapports
+`palc0046_palace_ending_report.json`, `c0047_pal_ending_report.json`,
+`pal_ending_v0319_report.json`. Le reçu V319 est copié enversions et indexé.
+README/index mis à parcours complets et sauvegardesNTSC/PAL. ROM toujours
+2048Kio/d3ea2a83/DA29. Les sessions74524 et11254/PID50376 sont terminales0.
+Il n'y a plus de campagne ni de suivi vivant à attendre/repartir par défaut.
+Tous les autres pilotes/sessions prétendus actifs plus bas sont historiques.
+
+Le portage n'est pas déclaré globalement achevé : source_rng_runtime.c
+emploie encore SGDK pour la fourniture de R ; phase source R/IRQ globale,
+révélations/fondus résiduels, PCM global et matériel restent non certifiés.
+Autres slots/refus et phase des quatre motifs animés des maisons non
+couverts par les contrôles ciblés déjà publiés. Continuer sur de vrais écarts,
+ne pas relancer les campagnes inchangées pour leur seule ancienneté.
+
+Trois nouveaux prototypes d'intro sont REJETÉS, jamais promus. Archive
+`analysis/v319-reveal-experiments`, rapport
+`analysis/v319_reveal_experiments_report.json`. Comparaisons14000images
+PAL/NTSC chacune,aucune écriture RAM/SRAM. Premier : coût fullIRQ+audio
+facturé entre tranches, NTSC147429→4837920différences, PAL124148→121065,
+mais3284pixels PAL dégradés. Deuxième : vrai reliquat182lignes au lieu180,
+rotation de masque conservée ; sonde physique première tranche et passe
+complète égales SMS dans les deux régions, logique native inchangée aux
+points contrôlés. Mais rendu NTSC147429→147593 etPAL124148→124273.
+Troisième : reliquat + coût audio seul courant (524/536T+lecteur8000),
+NTSC147429→147720 etPAL124148→124227. Aucun modèle n'a passé le garde
+visuel. Pas d'erreur audio ni abandon intro dans les captures finales.
+L'égalité VRAM physique seule ne prouve pas l'égalité du rendu en cours de
+balayage : ne pas promouvoir ces prototypes parce que la sonde182passe.
+F1E appelle F09/B95 AVANT sa fenêtreV112, donc pas de second débit fullIRQ
+entre tranches. Prochaine piste : phase continue des instructions/écritures
+et leur publication visible ; éviter encore un décalage de frame arbitraire.
+Archive relue avant nettoyage :1716références,40721930octets générés
+supprimés,22797527octets nets libérés. Sources prototypes conservées,
+ROMs de développement restaurables depuis gzip ; aucune ROM numérotée
+ni source de production modifiée. Sessions40342,74121,25137,34426,91370,
+12935,73201,74105,35667 toutes terminales ; ne pas les relancer dans les
+mêmes dossiers. Générateurs `prepare_v319_reveal_*` et sonde suivis.
+
 Point prioritaire : premier géant du palais PAL vaincu et audité.
 Session50681/PID15980 terminée0. Retrait313520 ; première simulation du
 7B/60PV à313599,héros102PV,hurt14 naturel (pas de129 de test). Victoire

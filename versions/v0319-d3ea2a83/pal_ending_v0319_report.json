@@ -1,0 +1,41 @@
+{
+  "passed": true,
+  "version": 319,
+  "region": "pal",
+  "md_sha256": "d3ea2a83ea24ed8a0d3c9857f9fbe70d000a4f73358452c1887f40e78966c56e",
+  "pal_campaign_from_new_game_to_intro_verified": true,
+  "actual_golden_axe_acquired": true,
+  "death_adder_defeated_without_test_protection": true,
+  "ending_complete": true,
+  "ending": {
+    "nine_gems_visible_frame": 373962,
+    "credits_started_frame": 374655,
+    "credits_finished_frame": 382078,
+    "title_flow_return_frame": 382108,
+    "music_requests": [
+      {
+        "frame": 373918,
+        "command": 141
+      },
+      {
+        "frame": 374323,
+        "command": 136
+      },
+      {
+        "frame": 382137,
+        "command": 133
+      }
+    ]
+  },
+  "frames": 382208,
+  "whole_ram_bytes_exact": 65536,
+  "final_png_exact": true,
+  "initial_sram": false,
+  "primary_state_imports": 0,
+  "full_game_validated": false,
+  "evidence": {
+    "analysis/palc0046_palace_ending_report.json": "9676501002b628a6ff045d32c85aa2531918a5f8573e10333e8d530d4aedb646",
+    "analysis/c0047_pal_ending_report.json": "76e2cdb15cacbcd6369a25dc34652fc11a499739d097317291d8356b009ca1ad"
+  },
+  "scope": "Complete recorded PAL New Game campaign through the nine crystals, Balloon, palace, Golden Axe, Death Adder, full credits and intro return, replayed on unchanged V319. Declared approach-only test protection ends before bosses. This does not certify global SMS cycle/PCM equivalence, every input/side route or physical hardware."
+}
