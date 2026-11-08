@@ -29,4 +29,10 @@ u8 source_intro_scene_load_runs(SourceClock *clock,SourceIrqContext *context,u16
  u8 *mirror,SourceIntroCallback callback,void *callback_user,
  SourceIntroRevealSink sink,void *sink_user,SourcePatternPortSink pattern_sink,void *pattern_user,
  SourcePatternVideoRunSink pattern_run,SourceIntroSceneOutput *output);
+/* Also forwards stable clear/map runs to map_run,sharing sink_user. Output
+ * mirror is updated in bulk; liveVDP sink must own a separate mirror. */
+u8 source_intro_scene_load_video_runs(SourceClock *clock,SourceIrqContext *context,u16 header,u16 target,
+ u8 *mirror,SourceIntroCallback callback,void *callback_user,
+ SourceIntroRevealSink sink,void *sink_user,SourcePatternPortSink pattern_sink,void *pattern_user,
+ SourcePatternVideoRunSink pattern_run,SourceIntroVideoRunSink map_run,SourceIntroSceneOutput *output);
 #endif

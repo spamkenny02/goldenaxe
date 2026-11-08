@@ -53,7 +53,7 @@ for module in (['source_intro_scene','source_pattern_clock'] if scene else [])+(
     prefix='#define source_irq_interrupt source_irq_interrupt_impl\n' if irq_status and module=='source_irq_context' else ''
     if profile_stages and module=='source_intro_scene':
         prefix='#include <genesis.h>\n#include "../../../../megadrive/src/source_intro_scene.h"\nextern volatile u32 scene_profile_frames[6];\n'
-        for index,name in [(0,'source_intro_map_prepare'),(1,'source_pattern_decode'),(1,'source_pattern_decode_planned'),(2,'source_intro_plane_clear'),(3,'source_intro_map_decode'),(4,'source_intro_map_place'),(5,'source_intro_map_transfer')]:
+        for index,name in [(0,'source_intro_map_prepare'),(1,'source_pattern_decode'),(1,'source_pattern_decode_planned'),(1,'source_pattern_decode_runs'),(2,'source_intro_plane_clear'),(3,'source_intro_map_decode'),(4,'source_intro_map_place'),(5,'source_intro_map_transfer')]:
             prefix+=f'#define {name}(...) ({{u32 began=vtimer;u8 accepted={name}(__VA_ARGS__);scene_profile_frames[{index}]+=vtimer-began;accepted;}})\n'
     (src / (module + '.c')).write_text(prefix+'#include "../../../../megadrive/src/' + module + '.c"\n')
 (src / 'wrapper.c').write_text('#include "../../wrapper.c"\n')

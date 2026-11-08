@@ -6,7 +6,29 @@ le README et les rapports cités.
 
 ## Suivi courant — V319, 8 novembre 2026
 
-DERNIÈRE ÉTAPE : SourcePatternVideoRun/source_pattern_decode_runs et
+DERNIÈRE ÉTAPE : runsclear/map versownedVDP, rapport
+`analysis/v319_map_runs_report.json`, archive `analysis/v319-map-runs`.
+source_intro_scene_load_video_runs ajoute map_run(sharedsink_user),scène met
+miroirlegacyàjour enbulk et transmetles SourceIntroVideoRun existants (sinks
+standalone conserventfrontières).source_intro_scene_vdp_run adapte vers
+source_intro_vdp_map_run :CLEARBE101T,stride124T,address+4,FF ;TRANSFERBE16T,
+stride32T,address+1,bytesRAMborrowedimmediate. Propriétésfinales code/pending/
+low/address/buffer/instructiondate respectentchaqueOUT. Bancsopposés sansSAT
+peuventavancerunefois ;banque activesprites gardeavanceavantchaqueBE.
+Profilstages01→03 :totalNTSC316..335→144..162,PAL265..281→120..136.
+StagesclearNTSC165→22..24 ;patterns51..73,prepare30..34,transfer29..32
+restentdominants. 20cas68000 sourcefinalstate/status/clockR exacts.
+Unitmap02 host576 +1152cas68000 comparefullVDP/16KiBVRAM,2regions/2banques/
+2kinds/6phases/4counts/3adresses,readstatusavantsequence etindicespatterns
+recouvrantzonesécrites. Unit01plusbasiqueconservé aussi. Sourceskernel snapshots
+autonomes pourpreuve réexécutable. RebuildV319 identique/d3ea2a83…/DA29.
+CPUgateFALSE :144..162resteau-dessusbudgetSMS24..27. NePASactiverenROM.
+DatesIRQ/coldbootcontinu/physicalbackground/PSG/PCM restentouverts. Conserver
+descripteursparbyte pourlivraisonphysique,nepasinstantanéifieruploadbackground.
+Prochain :pattern/attentesIRQ/coûtscalendrier,runstableslimitésauxobservations,
+puisbudgetcomposéetphysique. VidéoV319 prête,YouTubeaccès/visibilitétoujourspending.
+
+ÉTAPE PRÉCÉDENTE : SourcePatternVideoRun/source_pattern_decode_runs et
 source_intro_scene_load_runs, rapport `analysis/v319_pattern_runs_report.json`,
 archive `analysis/v319-pattern-runs`. BF30/45T,BE77T,strides135/134T,carry-1T,
 terminal-5T,ROMborrowed,count<=256,runs uniquementfenêtresstablesavantIRQ.

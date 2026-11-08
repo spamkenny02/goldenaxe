@@ -11,6 +11,11 @@ u8 source_intro_scene_vdp_map(void *user,u32 elapsed,u32 raster,u8 port,u8 value
  if(port==0xbe && vdp->code==1 && vdp->address>=0x3800 && vdp->address<0x3b00) tstates=16;
  return source_intro_vdp_out(vdp,elapsed,raster,tstates,port,value);
 }
+u8 source_intro_scene_vdp_run(void *user,const SourceIntroVideoRun *run)
+{
+ if(!run || (run->kind!=SOURCE_INTRO_VIDEO_CLEAR && run->kind!=SOURCE_INTRO_VIDEO_TRANSFER)) return 0;
+ return source_intro_vdp_map_run(user,run->elapsed,run->raster,run->period,run->address,run->count,run->bytes,run->kind==SOURCE_INTRO_VIDEO_CLEAR);
+}
 static u8 out(SourceIntroVdp *vdp,const SourceClockIrq *entry,u32 ticks,u16 instruction,u8 port,u8 value)
 {
  u32 master=ticks*15;

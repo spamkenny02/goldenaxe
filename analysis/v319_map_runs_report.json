@@ -1,0 +1,672 @@
+{
+  "passed": true,
+  "public_version": 319,
+  "production_rom_changed": false,
+  "production_rebuild_byte_identical": true,
+  "production_rom_sha256": "d3ea2a83ea24ed8a0d3c9857f9fbe70d000a4f73358452c1887f40e78966c56e",
+  "implementation": "source_intro_scene_load_video_runs forwards existing exact clear/map descriptors instead of expanding per-OUT callbacks. SourceIntroVdp consumes clearBE101T/124Tstride/address+4 and transferBE16T/32Tstride/address+1. Sprite-sensitive bytes still evaluate before their mutation; opposite8KiB bank can advance once. Final port address,latch,buffer and instruction checkpoint remain individual-OUT exact.",
+  "stage_names": [
+    "prepare",
+    "patterns",
+    "plane_clear",
+    "map_decode",
+    "map_place",
+    "map_transfer"
+  ],
+  "profile": [
+    {
+      "region": "ntsc",
+      "before": [
+        334,
+        323,
+        335,
+        323,
+        335,
+        326,
+        317,
+        325,
+        317,
+        325
+      ],
+      "after": [
+        162,
+        150,
+        162,
+        148,
+        162,
+        152,
+        144,
+        152,
+        144,
+        152
+      ],
+      "stages_before": [
+        [
+          46,
+          73,
+          166,
+          4,
+          1,
+          44
+        ],
+        [
+          48,
+          56,
+          167,
+          1,
+          4,
+          47
+        ],
+        [
+          46,
+          74,
+          165,
+          4,
+          1,
+          44
+        ],
+        [
+          49,
+          56,
+          166,
+          2,
+          3,
+          47
+        ],
+        [
+          46,
+          74,
+          165,
+          4,
+          1,
+          45
+        ],
+        [
+          47,
+          67,
+          164,
+          2,
+          1,
+          45
+        ],
+        [
+          50,
+          51,
+          164,
+          1,
+          4,
+          47
+        ],
+        [
+          46,
+          67,
+          165,
+          1,
+          1,
+          45
+        ],
+        [
+          50,
+          51,
+          164,
+          1,
+          4,
+          47
+        ],
+        [
+          47,
+          67,
+          164,
+          2,
+          1,
+          44
+        ]
+      ],
+      "stages_after": [
+        [
+          30,
+          73,
+          23,
+          5,
+          1,
+          29
+        ],
+        [
+          34,
+          56,
+          23,
+          1,
+          4,
+          32
+        ],
+        [
+          31,
+          73,
+          24,
+          4,
+          1,
+          29
+        ],
+        [
+          33,
+          56,
+          22,
+          2,
+          4,
+          31
+        ],
+        [
+          31,
+          73,
+          24,
+          4,
+          1,
+          29
+        ],
+        [
+          31,
+          67,
+          22,
+          1,
+          1,
+          30
+        ],
+        [
+          34,
+          51,
+          22,
+          1,
+          3,
+          32
+        ],
+        [
+          31,
+          67,
+          22,
+          2,
+          1,
+          29
+        ],
+        [
+          34,
+          51,
+          22,
+          1,
+          4,
+          32
+        ],
+        [
+          32,
+          66,
+          22,
+          2,
+          1,
+          29
+        ]
+      ],
+      "mean_reduction_percent": 53.128834355828225
+    },
+    {
+      "region": "pal",
+      "before": [
+        280,
+        270,
+        281,
+        270,
+        280,
+        272,
+        265,
+        272,
+        265,
+        272
+      ],
+      "after": [
+        136,
+        125,
+        136,
+        124,
+        136,
+        127,
+        121,
+        128,
+        120,
+        127
+      ],
+      "stages_before": [
+        [
+          38,
+          62,
+          138,
+          4,
+          1,
+          37
+        ],
+        [
+          40,
+          47,
+          139,
+          2,
+          3,
+          39
+        ],
+        [
+          39,
+          61,
+          139,
+          3,
+          0,
+          38
+        ],
+        [
+          41,
+          46,
+          139,
+          2,
+          3,
+          39
+        ],
+        [
+          39,
+          61,
+          139,
+          3,
+          1,
+          37
+        ],
+        [
+          39,
+          56,
+          138,
+          1,
+          1,
+          37
+        ],
+        [
+          41,
+          43,
+          137,
+          2,
+          3,
+          39
+        ],
+        [
+          39,
+          56,
+          137,
+          2,
+          0,
+          38
+        ],
+        [
+          42,
+          43,
+          137,
+          1,
+          3,
+          39
+        ],
+        [
+          39,
+          56,
+          137,
+          2,
+          1,
+          37
+        ]
+      ],
+      "stages_after": [
+        [
+          26,
+          61,
+          20,
+          3,
+          1,
+          25
+        ],
+        [
+          28,
+          47,
+          19,
+          2,
+          3,
+          26
+        ],
+        [
+          26,
+          61,
+          20,
+          3,
+          1,
+          25
+        ],
+        [
+          28,
+          47,
+          19,
+          1,
+          3,
+          26
+        ],
+        [
+          26,
+          61,
+          20,
+          4,
+          0,
+          25
+        ],
+        [
+          26,
+          56,
+          18,
+          1,
+          1,
+          25
+        ],
+        [
+          29,
+          43,
+          18,
+          1,
+          3,
+          27
+        ],
+        [
+          27,
+          56,
+          18,
+          1,
+          1,
+          25
+        ],
+        [
+          28,
+          43,
+          18,
+          1,
+          4,
+          26
+        ],
+        [
+          26,
+          56,
+          18,
+          2,
+          1,
+          24
+        ]
+      ],
+      "mean_reduction_percent": 53.061972863953066
+    }
+  ],
+  "compiled_scene": {
+    "passed": true,
+    "diagnostic_only": true,
+    "source_vector_cases": 10,
+    "source_regions": [
+      "ntsc",
+      "pal"
+    ],
+    "case_start": 0,
+    "ram_bytes": 15081,
+    "fire": false,
+    "actors": "second",
+    "reveal": true,
+    "sequence": true,
+    "transfer": true,
+    "map": "decode",
+    "scene": true,
+    "measure_native_frames": true,
+    "profile_stages": true,
+    "irq_status": true,
+    "results": [
+      {
+        "region": "ntsc",
+        "intro_poll_done": 1,
+        "intro_poll_cases": 10,
+        "intro_poll_errors": 0,
+        "intro_poll_reads": 84520,
+        "intro_poll_first_failure": 0,
+        "frame": 1792,
+        "native_call_frames": [
+          162,
+          150,
+          162,
+          148,
+          162,
+          152,
+          144,
+          152,
+          144,
+          152
+        ],
+        "native_stage_frames": [
+          [
+            30,
+            73,
+            23,
+            5,
+            1,
+            29
+          ],
+          [
+            34,
+            56,
+            23,
+            1,
+            4,
+            32
+          ],
+          [
+            31,
+            73,
+            24,
+            4,
+            1,
+            29
+          ],
+          [
+            33,
+            56,
+            22,
+            2,
+            4,
+            31
+          ],
+          [
+            31,
+            73,
+            24,
+            4,
+            1,
+            29
+          ],
+          [
+            31,
+            67,
+            22,
+            1,
+            1,
+            30
+          ],
+          [
+            34,
+            51,
+            22,
+            1,
+            3,
+            32
+          ],
+          [
+            31,
+            67,
+            22,
+            2,
+            1,
+            29
+          ],
+          [
+            34,
+            51,
+            22,
+            1,
+            4,
+            32
+          ],
+          [
+            32,
+            66,
+            22,
+            2,
+            1,
+            29
+          ]
+        ]
+      },
+      {
+        "region": "pal",
+        "intro_poll_done": 1,
+        "intro_poll_cases": 10,
+        "intro_poll_errors": 0,
+        "intro_poll_reads": 84520,
+        "intro_poll_first_failure": 0,
+        "frame": 1500,
+        "native_call_frames": [
+          136,
+          125,
+          136,
+          124,
+          136,
+          127,
+          121,
+          128,
+          120,
+          127
+        ],
+        "native_stage_frames": [
+          [
+            26,
+            61,
+            20,
+            3,
+            1,
+            25
+          ],
+          [
+            28,
+            47,
+            19,
+            2,
+            3,
+            26
+          ],
+          [
+            26,
+            61,
+            20,
+            3,
+            1,
+            25
+          ],
+          [
+            28,
+            47,
+            19,
+            1,
+            3,
+            26
+          ],
+          [
+            26,
+            61,
+            20,
+            4,
+            0,
+            25
+          ],
+          [
+            26,
+            56,
+            18,
+            1,
+            1,
+            25
+          ],
+          [
+            29,
+            43,
+            18,
+            1,
+            3,
+            27
+          ],
+          [
+            27,
+            56,
+            18,
+            1,
+            1,
+            25
+          ],
+          [
+            28,
+            43,
+            18,
+            1,
+            4,
+            26
+          ],
+          [
+            26,
+            56,
+            18,
+            2,
+            1,
+            24
+          ]
+        ]
+      }
+    ],
+    "kernel_sha256": "746e27b3645de3ac6c6e5238db24e6a271ad0c961171ff797e4615eab415e8c2",
+    "scope": "Compiled68000 source semantic helper checked against the selected natural original source vectors on each target region. No physical publication scheduler or PCM claim."
+  },
+  "full_vdp_equivalence": {
+    "passed": true,
+    "host_cases": 576,
+    "results": [
+      {
+        "region": "ntsc",
+        "run_cases_done": 576,
+        "run_errors": 0,
+        "run_done": 1,
+        "frame": 18142
+      },
+      {
+        "region": "pal",
+        "run_cases_done": 576,
+        "run_errors": 0,
+        "run_done": 1,
+        "frame": 15179
+      }
+    ],
+    "native_sources": {
+      "source_intro_vdp": "cca63915adf1d39927b777742ce973e9d9f4ecf7b427af38f3c2be900eb8edb4",
+      "source_intro_sprite_clock": "dc74c4d7df02e2a7e8705d91bbbdd27e52bb53e6dd55e85a876a2a4fad2ca453",
+      "source_intro_sprite_status": "57ae0af2f524be9156fdecf12c887f6434c003bb216b608318fd6f689ba32bdb"
+    },
+    "scope": "576clear/transfer runs versus individual BF/BF/BE native port handling onhost and each compiled region. Full16KiBVRAM and entire logicalVDP/cache/latch/calendar state compared,only owner pointer normalized. Both frame periods,6raster edges,3address ranges,4counts,clear/transfer,active sprites with cleared status before each run and pattern indices in the written ranges."
+  },
+  "compiled_scene_cases": 20,
+  "compiled_vdp_differential_cases": 1152,
+  "budget_gate_passed": false,
+  "limits": [
+    "Helper-only profile excludes fixture setup/final comparisons/per-OUT expected checks; small IRQ-status diagnostic checks remain. Physical MD background/video/PSG publication excluded.",
+    "144..162MDframes NTSC,120..136PAL remain above source scene budget. This CPU gate is still failed; keep unselected in publicROM.",
+    "Run descriptors preserve every original write date for physical renderer. Logical background-bank batching must not become one instantaneous physical upload.",
+    "Initial scene snapshots,not uninterrupted coldboot; independent IRQ OUT-date audit and physical image/PCM/hardware remain open."
+  ],
+  "next_action": "Patterns and wait/IRQ preparation/transfer are now dominant; profile their hot paths and batch stable calendar spans or real IRQ packets without losing status observations. Recheck combined CPU gate before ROM activation. FullV319 video remains local pending browser access/visibility.",
+  "oracle_ram_writes": 0,
+  "sram_imports": 0,
+  "archive_manifest": "analysis/v319-map-runs/manifest.json"
+}

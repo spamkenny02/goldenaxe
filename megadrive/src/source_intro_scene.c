@@ -2,7 +2,7 @@
 #include "source_room_memory.h"
 #include "source_intro_pattern_plans_generated.h"
 #define S(t,m) do {if(!source_clock_plain(clock,t,m,source_irq_interrupt,context)) return 0;} while(0)
-typedef struct {u8 *mirror;SourceIntroRevealSink sink;void *user;u16 command;u8 low,latch;} SceneMirror;
+typedef struct {u8 *mirror;SourceIntroRevealSink sink;void *user;u16 command;u8 low,latch;SourceIntroVideoRunSink run;} SceneMirror;
 static u8 scene_out(void *opaque,u32 elapsed,u32 raster,u8 port,u8 value)
 {
     SceneMirror *state=opaque;
@@ -27,7 +27,7 @@ static u8 scene_run(void *opaque,const SourceIntroVideoRun *run)
     if(run->kind==SOURCE_INTRO_VIDEO_CLEAR)
     {
         if(address<0x4003 || (u32)address+(u32)(run->count-1)*4>=0x6400) return 0;
-        if(!state->sink)
+        if(!state->sink || state->run)
         {
             for(u16 n=0;n<run->count;n++) state->mirror[(address&0x3fff)+n*4]=255;
             state->low=(u8)(address+(run->count-1)*4);
@@ -37,13 +37,14 @@ static u8 scene_run(void *opaque,const SourceIntroVideoRun *run)
     else if(run->kind==SOURCE_INTRO_VIDEO_TRANSFER)
     {
         if(state->command!=address || !run->bytes || address<0x7800 || (u32)address+run->count>0x7b00) return 0;
-        if(!state->sink)
+        if(!state->sink || state->run)
         {
             __builtin_memcpy(state->mirror+(address&0x3fff),run->bytes,run->count);
             state->command+=run->count;
         }
     }
     else return 0;
+    if(state->run) return state->run(state->user,run);
     if(!state->sink) return 1;
     for(u16 n=0;n<run->count;n++)
     {
@@ -71,10 +72,10 @@ static u8 scene_run(void *opaque,const SourceIntroVideoRun *run)
 static u8 scene_load(SourceClock *clock,SourceIrqContext *context,u16 header,u16 target,
                            u8 *mirror,SourceIntroCallback callback,void *callback_user,
                            SourceIntroRevealSink sink,void *sink_user,SourcePatternPortSink pattern_sink,void *pattern_user,SourcePatternVideoRunSink pattern_run,
-                           SourceIntroSceneOutput *output)
+                           SourceIntroSceneOutput *output,SourceIntroVideoRunSink map_run)
 {
     SourceIntroMapOutput map;SourceIntroMapDecode decode;const u8 *patterns;
-    SceneMirror video={mirror,sink,sink_user,0,0,0};u16 writes;
+    SceneMirror video={mirror,sink,sink_user,0,0,0,map_run};u16 writes;
     const SourcePatternPlan *plan=header==0x9d70?&gaw_intro_9d70_plan:header==0xa655?&gaw_intro_a655_plan:0;
     if(!clock || !context || !context->ram || !context->audio || !context->full_ram ||
        !context->bank6 || !mirror || !output || header<0x8000 || header>0xbffc) return 0;
@@ -102,14 +103,14 @@ static u8 scene_load(SourceClock *clock,SourceIrqContext *context,u16 header,u16
 u8 source_intro_scene_load(SourceClock *clock,SourceIrqContext *context,u16 header,u16 target,
  u8 *mirror,SourceIntroCallback callback,void *callback_user,
  SourceIntroRevealSink sink,void *sink_user,SourceIntroSceneOutput *output)
-{return scene_load(clock,context,header,target,mirror,callback,callback_user,sink,sink_user,0,0,0,output);}
+{return scene_load(clock,context,header,target,mirror,callback,callback_user,sink,sink_user,0,0,0,output,0);}
 u8 source_intro_scene_load_ports(SourceClock *clock,SourceIrqContext *context,u16 header,u16 target,
  u8 *mirror,SourceIntroCallback callback,void *callback_user,
  SourceIntroRevealSink sink,void *sink_user,SourcePatternPortSink pattern_sink,void *pattern_user,
  SourceIntroSceneOutput *output)
 {
  if(!pattern_sink) return 0;
- return scene_load(clock,context,header,target,mirror,callback,callback_user,sink,sink_user,pattern_sink,pattern_user,0,output);
+ return scene_load(clock,context,header,target,mirror,callback,callback_user,sink,sink_user,pattern_sink,pattern_user,0,output,0);
 }
 u8 source_intro_scene_load_runs(SourceClock *clock,SourceIrqContext *context,u16 header,u16 target,
  u8 *mirror,SourceIntroCallback callback,void *callback_user,
@@ -117,5 +118,13 @@ u8 source_intro_scene_load_runs(SourceClock *clock,SourceIrqContext *context,u16
  SourcePatternVideoRunSink pattern_run,SourceIntroSceneOutput *output)
 {
  if(!pattern_sink || !pattern_run) return 0;
- return scene_load(clock,context,header,target,mirror,callback,callback_user,sink,sink_user,pattern_sink,pattern_user,pattern_run,output);
+ return scene_load(clock,context,header,target,mirror,callback,callback_user,sink,sink_user,pattern_sink,pattern_user,pattern_run,output,0);
+}
+u8 source_intro_scene_load_video_runs(SourceClock *clock,SourceIrqContext *context,u16 header,u16 target,
+ u8 *mirror,SourceIntroCallback callback,void *callback_user,
+ SourceIntroRevealSink sink,void *sink_user,SourcePatternPortSink pattern_sink,void *pattern_user,
+ SourcePatternVideoRunSink pattern_run,SourceIntroVideoRunSink map_run,SourceIntroSceneOutput *output)
+{
+ if(!pattern_sink || !pattern_run || !sink || !map_run) return 0;
+ return scene_load(clock,context,header,target,mirror,callback,callback_user,sink,sink_user,pattern_sink,pattern_user,pattern_run,output,map_run);
 }

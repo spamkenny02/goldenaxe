@@ -35,6 +35,18 @@ faire : accès navigateur local désactivé dans Work et visibilité à choisir.
 
 ## Travail natif en cours : statut vidéo des sprites
 
+Le profil par étape a identifié l’effacement comme principal coût restant.
+Les blocs datés sont maintenant aussi utilisés pour l’effacement et les copies
+de carte : le helper passe de 316..335 à **144..162 images MD en NTSC**, et
+de 265..281 à **120..136 en PAL**. L’effacement seul passe d’environ 165 à
+22..24 images dans ces mesures NTSC.
+[Profil par étape et équivalence vidéo](analysis/v319_map_runs_report.json).
+
+576 cas par région MD comparent les blocs aux écritures individuelles sur
+l’ensemble de la VRAM, des caches et des drapeaux, avec des sprites actifs et
+les statuts effacés avant chaque séquence. Les scènes conservent leurs états
+attendus. Le budget source n’est toujours pas atteint : la V319 reste inchangée.
+
 Les motifs décompressés peuvent maintenant être livrés sous forme de blocs
 datés : les dates exactes de chaque écriture restent disponibles, avec moins
 d’appels. Le modèle conserve l’ordre de chaque écriture pouvant affecter les

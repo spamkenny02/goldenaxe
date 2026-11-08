@@ -162,3 +162,36 @@ u8 source_intro_vdp_pattern_run(void *user,const SourcePatternVideoRun *run)
  vdp->address=(address&0x3fff)+1;vdp->low=address;vdp->pending=0;vdp->code=1;vdp->buffer=value;
  return 1;
 }
+u8 source_intro_vdp_map_run(SourceIntroVdp *vdp,u32 elapsed,u32 raster,u32 period,
+ u16 address,u16 count,const u8 *bytes,u8 clear)
+{
+ u32 delta,last;u16 step=clear?4:1,stride=clear?1860:480,duration=clear?165:240;u8 value=255;
+ if(!vdp || !vdp->vram || vdp->error || vdp->pending || !count || period!=vdp->clock.period || raster>=period) return 0;
+ if(clear)
+ {if(address<0x4003 || ((address-0x4003)&3) || (u32)address+(u32)(count-1)*4>=0x6400) return 0;}
+ else if(!bytes || address<0x7800 || (u32)address+count>0x7b00 || vdp->code!=1 || vdp->address!=(address&0x3fff)) return 0;
+ delta=elapsed-vdp->instruction_elapsed;
+ if((s32)delta<0 || source_video_wrap(vdp->instruction_raster,delta,period)!=raster || (u32)count*stride>period) return 0;
+ elapsed+=clear?1515:240;last=(u32)address+(u32)(count-1)*step;
+ /* No sprite reads from the opposite8KiB bank; SAT is never in these ranges. */
+ if((vdp->registers[6]&4)?last<0x6000:address>=0x6000)
+ {
+  elapsed+=(u32)(count-1)*stride;
+  for(u16 n=0;n<count;n++) {value=clear?255:bytes[n];vdp->vram[address&0x3fff]=value;address+=step;}
+  if(!advance(vdp,elapsed)) {vdp->error=3;return 0;}
+ }
+ else
+ {
+  for(u16 n=0;n<count;n++)
+  {
+   if(!advance(vdp,elapsed)) {vdp->error=3;return 0;}
+   value=clear?255:bytes[n];vdp->vram[address&0x3fff]=value;address+=step;
+   if(n+1<count) elapsed+=stride;
+  }
+ }
+ if(clear) {vdp->low=(u8)(address-step);vdp->code=1;}
+ vdp->address=((address-step)&0x3fff)+1;vdp->pending=0;vdp->buffer=value;
+ vdp->instruction_elapsed=elapsed-duration;
+ vdp->instruction_raster=vdp->clock.raster>=duration?vdp->clock.raster-duration:vdp->clock.raster+period-duration;
+ return 1;
+}

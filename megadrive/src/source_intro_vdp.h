@@ -30,6 +30,11 @@ u8 source_intro_vdp_out(SourceIntroVdp *vdp,u32 elapsed,u32 raster,u16 tstates,u
  * the calendar BEFORE its own RAM mutation. No status/IRQ may intervene.
  * Does not publish physical MD pixels; run retains every original OUT date. */
 u8 source_intro_vdp_pattern_run(void *user,const SourcePatternVideoRun *run);
+/* Stable E2B plane-clear or EFA map-transfer run,as described by
+ * SourceIntroVideoRun. clear=1:BE101T,stride124T,address+4,valueFF;
+ * clear=0:BE16T,stride32T,address+1,borrowed immutable-for-call bytes. */
+u8 source_intro_vdp_map_run(SourceIntroVdp *vdp,u32 elapsed,u32 raster,u32 period,
+ u16 address,u16 count,const u8 *bytes,u8 clear);
 /* SourceIrqStatusRead-compatible; includes command-latch clearing. */
 u8 source_intro_vdp_irq_status(void *user,const SourceClockIrq *entry,u8 *status);
 #endif
