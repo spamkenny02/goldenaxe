@@ -6,6 +6,49 @@ le README et les rapports cités.
 
 ## Suivi courant — V319, 8 novembre 2026
 
+DERNIÈRE ÉTAPE : `source_intro_video.c/.h`, rapport
+`analysis/v319_intro_transfer_report.json`, archive `analysis/v319-intro-transfer`.
+source_intro_map_transfer modélise EFA : CALL F1E, LD HL D600/DE7800/BC0300,
+CALL384 (RST28 DI/EI/OUT adresse,768 OUTI avec NOP/JR/DEC exacts), puis
+FALLTHROUGH F09 pour une deuxième attente/callback avant le vrai RET.
+Ne pas traiter F06 CALL384 comme fin de EFA : il n’y a pas de RET ici.
+source_intro_map_prepare modélise EA5..ED3 : remplissage D600..D8FF par
+FA09, EFA complet, zéro16 palettes, mapper6,4 couleurs depuis HL ROM restauré.
+SourceIntroMapOutput :writes,palette_end,skip. full_ram/live aliases requis.
+Même callback dispatch vivant DCEC et sink sémantique elapsed/raster/port.
+
+EFA :14 source NTSC+14 PAL ; EA5 :7+7, soit42 vecteurs d’entrée (profils
+imbriqués distincts), tous avec IRQ. EFA3IRQ, EA5 3ou4. Chaque invocation
+émet770 OUT dont768dataBE,32 340 OUT source en tout, tous comparés avec
+temps et raster dérivé.2025 octets suivis+400 reader, wall/IRQ/R/latches
+identiques. EA5 vérifie map FA09,clear16palette et4 couleurs originales
+aux adresses9D70/A655/AF1F. Callbacks F36/F37/1055 observés.
+Tous vecteurs compilés sur les deux régions :84 exécutions,64 680 OUT,
+zéro erreur. Aucun skip n’est prouvé dans ces nouveaux profils d’entrée.
+
+Builder/validator --profile callback --transfer ou --prepare. --prepare
+implique --transfer/--sequence/--reveal pour réutiliser le layout et dispatch,
+pas pour appeler le dévoilement. Noms observers hérités intro-intro_transfer
+et intro-intro_prepare. Snapshot2432, extra1624, map768 à extra856,
+soit inputRAM1192..1959 ; IRQcount1960,valeurs1961..2024 (64 slots).
+Prepare capture HL à inputRAM1184/1185 avant/après ; transfer pas de regs.
+Events à snapshot*2+268,recordstride11296,cap512.770events parappel.
+Output[12]events770,[13]writes768. Module source_intro_video inclus au kernel.
+
+Derniers works transfer03/prepare02. Erreur préprocesseur tokenhex0x15fe+n
+au premier append EA5 corrigée avec espace, aucun résultat accepté avant
+correction. Transfert seul antérieur transfer01 était déjà exact ; gardé
+avec rebuild01/sources. Handles39689/61307/67754/9870/96513 terminaux0.
+Rebuild02 source finale exacte,byte-identique V319 d3ea2a83/DA29.
+Archive relue :44541475 octets générés supprimés,29662215 nets libérés.
+Pas de nouvelle ROM publique : les helpers restent non sélectionnés.
+
+Prochaine étape : composition E50..E75 avec EA5/EFA, réutiliser
+source_pattern_decode pour032A ; traduire0E2B,0BD3/0BFE et7357 si nécessaire.
+Puis plan mémoire compact,statut VDP des sprites vivants et publication MD
+avec deadlines. Les queues de statut source restent réservées au diagnostic.
+Les paragraphes suivants décrivent les étapes précédentes.
+
 DERNIÈRE ÉTAPE : oracle de skip composé, rapport
 `analysis/v319_intro_skip_report.json`, archive `analysis/v319-intro-skip`.
 Aucun changement du code public natif : la branche skip déjà présente dans

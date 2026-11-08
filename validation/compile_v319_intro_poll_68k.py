@@ -32,13 +32,15 @@ shutil.copyfile(root / 'megadrive/src/rom_header.c', src / 'rom_header.c')
 inc = project / 'inc'; inc.mkdir()
 (inc / 'source_intro_wait.h').write_text('#include "../../../../megadrive/src/source_intro_wait.h"\n')
 profile_report=json.loads((work/'report.json').read_bytes())
+transfer=profile_report.get('transfer',False)
 sequence=profile_report.get('sequence',False)
 reveal=profile_report.get('reveal',False)
 fire=profile_report.get('fire',False);actors=profile_report.get('actors');irq_status=profile_report.get('irq_status',False)
 if fire or sequence: (inc/'source_intro_fire.h').write_text('#include "../../../../megadrive/src/source_intro_fire.h"\n')
+if transfer:(inc/'source_intro_video.h').write_text('#include "../../../../megadrive/src/source_intro_video.h"\n')
 if reveal:(inc/'source_intro_reveal.h').write_text('#include "../../../../megadrive/src/source_intro_reveal.h"\n')
 if actors:(inc/'source_intro_actors.h').write_text('#include "../../../../megadrive/src/source_intro_actors.h"\n')
-for module in (['source_intro_actors','source_intro_fire'] if sequence else ['source_intro_fire'] if fire else [])+(['source_intro_reveal' if reveal else 'source_intro_actors'] if actors else [])+['source_intro_wait', 'source_wait_restore', *MODULES]:
+for module in (['source_intro_video'] if transfer else [])+(['source_intro_actors','source_intro_fire'] if sequence else ['source_intro_fire'] if fire else [])+(['source_intro_reveal' if reveal else 'source_intro_actors'] if actors else [])+['source_intro_wait', 'source_wait_restore', *MODULES]:
     prefix='#define source_irq_interrupt source_irq_interrupt_impl\n' if irq_status and module=='source_irq_context' else ''
     (src / (module + '.c')).write_text(prefix+'#include "../../../../megadrive/src/' + module + '.c"\n')
 (src / 'wrapper.c').write_text('#include "../../wrapper.c"\n')
@@ -122,7 +124,7 @@ for region in ('ntsc', 'pal'):
     assert stats['intro_poll_cases'] == len(cases) and stats['intro_poll_reads'] == expected_reads
     results.append(dict(region=region, **stats)); print(region, stats, flush=True)
 report = dict(passed=True, diagnostic_only=True, source_vector_cases=len(cases), source_regions=source_regions,
-    case_start=a.case_start,ram_bytes=ram_bytes,fire=fire,actors=actors,reveal=reveal,sequence=sequence,irq_status=irq_status,results=results,
+    case_start=a.case_start,ram_bytes=ram_bytes,fire=fire,actors=actors,reveal=reveal,sequence=sequence,transfer=transfer,irq_status=irq_status,results=results,
     kernel_sha256=sha((project / 'out/release/rom.bin').read_bytes()),
     scope='Compiled68000 source semantic helper checked against the selected natural original source vectors '
           'on each target region. No physical publication scheduler or PCM claim.')

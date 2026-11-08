@@ -134,8 +134,13 @@ passe également 84 scénarios de manette (deux boutons, trois callbacks,
 sept étapes, PAL/NTSC), avec rejeu indépendant des états audio source.
 Les 88 vecteurs conservés, préfixes complets compris, passent 176 exécutions
 68000. Cette preuve s’arrête à l’entrée D0B, avant le retour à l’écran titre.
-Le démarrage de la séquence et la publication vidéo/son restent à relier
-au jeu ; ces preuves portent sur les routines sémantiques.
+La [préparation de la carte et son transfert vidéo EA5/EFA](analysis/v319_intro_transfer_report.json)
+sont également traduits : 42 vecteurs d’entrée source et 84 exécutions
+68000 passent, avec 32340 écritures vidéo vérifiées. Cela inclut la carte
+vide, les quatre couleurs du bandeau de données et les deux attentes avec
+callbacks autour du transfert. Le chargement complet de la scène et la
+publication vidéo/son restent à relier au jeu ; ces preuves portent sur
+les routines sémantiques.
 Aucune de ces nouvelles routines ne pilote encore l’intro publiée.
 La recompilation complète conserve exactement la V319.
 

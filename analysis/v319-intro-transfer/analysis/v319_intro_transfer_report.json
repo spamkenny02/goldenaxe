@@ -1,0 +1,247 @@
+{
+  "passed": true,
+  "diagnostic_only": true,
+  "production_rom_changed": false,
+  "public_version": 319,
+  "production_rom_sha256": "d3ea2a83ea24ed8a0d3c9857f9fbe70d000a4f73358452c1887f40e78966c56e",
+  "production_rebuild_byte_identical": true,
+  "source_profiles": [
+    {
+      "passed": true,
+      "diagnostic_only": true,
+      "profile": "callback",
+      "fire": false,
+      "actors": "second",
+      "irq_status": true,
+      "init": false,
+      "reveal": true,
+      "sequence": true,
+      "skip": false,
+      "transfer": true,
+      "prepare": false,
+      "production_rom_changed": false,
+      "cases": [
+        {
+          "region": "ntsc",
+          "source_cases": 14,
+          "cases_crossing_irq": 14,
+          "observer_exposed_psg_exact_frames": 14000,
+          "source_records_sha256": "58e5e24da5e077a218fbc08d382bbfbe2621e65ddaef46700241f4a8ae582813",
+          "source_io_events": 10780,
+          "maximum_io_events": 770
+        },
+        {
+          "region": "pal",
+          "source_cases": 14,
+          "cases_crossing_irq": 14,
+          "observer_exposed_psg_exact_frames": 14000,
+          "source_records_sha256": "771fa5a668f5d25b47363d73a491be5f926c25a51178385f8e89fba13c732392",
+          "source_io_events": 10780,
+          "maximum_io_events": 770
+        }
+      ],
+      "core_sha256": "7966c1e0419352ec2881f37f449303aa6bbbb86a25419f6501c1e1ece592e170",
+      "source_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+      "native_sources": {
+        "source_intro_video": "2d4de23b897e3a1b6ba33d4c75aadf612b04c60ebeb64a3243facb32bd8c5ba5",
+        "source_intro_actors": "b7973fb051ea123bef48f539bce75069dd92fef9925587b1f977469e57eac4da",
+        "source_intro_fire": "5649ee6def4debe3bc333e1c5c740279ef35d1206e2c46a554bb96514140e903",
+        "source_intro_reveal": "b4d3f814c8d396b191bf468b72e3fb717ffcb24ee550cb4f4a530a03b3fc67c8",
+        "source_intro_wait": "7d721554756cab01471f0ef5356ee37d101cea2d27918ff40f5a5166a12172e9",
+        "source_wait_restore": "a6ce6eac36ff120f8222dbe24c0456c7729c1062902f997ba7fb296d6dcecd28",
+        "source_wait": "4ed09b544bf7366d82afe04c0d86b07040a453e5e00209cd57fed05db4bfc7f6",
+        "source_irq_context": "013a3ef89374be5f178cf3968aeafca498cdd380b2d943d341c208fa8f9497d9",
+        "source_irq": "bc5921ff1b8a9ed22c6c06c889cc430a469e926c360914e146481a89b1a2c534",
+        "source_clock": "800058a5cbafa50bcf27fc4a91b9622fd34312eb75fa46f8523cffc80799cc9a",
+        "source_rng": "5c64cd42ca0c18d69f8cfb1a185f282268b5dfd45a4b77f355323c6df802919f",
+        "source_audio_fast": "811c9e96d4f587353df50654e01d767f7f1530528efa271d1ee9d15169376cc3",
+        "source_audio_reader": "7ea0d9bdd75168ea85f1e8cf7c9ef4fbb720d746a8e4c9158953a48a5551c624",
+        "source_audio_prefix": "c0c02bafe3dd7e4baf887f67b264786c70c74932c12c897213c941f32fea2d39",
+        "source_audio_dispatch": "f8ce91959f8fb0db6062900e69a1842da8cc108d33bdfcbb7509b681185b0d90",
+        "source_audio_priority": "d5bc487b634abc56b77df5aeec338a447be312c0e76679a1eec3b14585291147",
+        "source_audio_tone": "8098ba4e45c21629a9920e6ca9ac5385ecb986e31d0db143cbbff42c0c92b272",
+        "source_audio_noise": "45b37e1689255404b86855e3970e82bfefd313421522aae46e3fae455fa9690b",
+        "source_audio_sequence": "e7171cc12b4f031dc361943aca679b7a8fa5c1fc2bb7d7798864d16675aa7663",
+        "source_audio_memory": "ec755012b117bdb5bfe2c114037f44abe4891714f6532f4800206915e8dde1f0",
+        "source_audio_envelope": "d0878cd24b5d7bb8f255a5a9e97a231815ac41828cae53342b03c6cbe81ae17c",
+        "source_audio_pitch": "ea46d31e3c73a352995c3dcbcbbe141214a9c536fd827e1a16d49d8e5e058795"
+      },
+      "verified": [
+        "Original natural entry/return wall time, raster, polls, R, IFF/EI/pending,336 IRQ RAM and400 reader bytes. Actor768-byte records and palette/counter/mapper/callback snapshots also compared.",
+        "Both regions,14000 no-input cold source frames per region; observer PSG state unchanged."
+      ],
+      "limits": [
+        "Host native semantic helper; compiled68000 timing and physical MD publication not checked here.",
+        "Complete EFA map transfer, F1E then F09 callbacks. Natural no-input only; VDP status external diagnostic input.",
+        "No production clock integration, full-game or PCM certification."
+      ]
+    },
+    {
+      "passed": true,
+      "diagnostic_only": true,
+      "profile": "callback",
+      "fire": false,
+      "actors": "second",
+      "irq_status": true,
+      "init": false,
+      "reveal": true,
+      "sequence": true,
+      "skip": false,
+      "transfer": true,
+      "prepare": true,
+      "production_rom_changed": false,
+      "cases": [
+        {
+          "region": "ntsc",
+          "source_cases": 7,
+          "cases_crossing_irq": 7,
+          "observer_exposed_psg_exact_frames": 14000,
+          "source_records_sha256": "db70044aa740fd66471a3a76e1edf45b611deefd8b14c83182c88003f2ef6009",
+          "source_io_events": 5390,
+          "maximum_io_events": 770
+        },
+        {
+          "region": "pal",
+          "source_cases": 7,
+          "cases_crossing_irq": 7,
+          "observer_exposed_psg_exact_frames": 14000,
+          "source_records_sha256": "2f84357af56f8c17f144077a77620a308525bcd288a812912acac8ebbc39b63e",
+          "source_io_events": 5390,
+          "maximum_io_events": 770
+        }
+      ],
+      "core_sha256": "10de6a4d64d1fad8a99d8b8bc67b999674fc6726c7ccf7d3970187f23e03b2fa",
+      "source_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+      "native_sources": {
+        "source_intro_video": "2d4de23b897e3a1b6ba33d4c75aadf612b04c60ebeb64a3243facb32bd8c5ba5",
+        "source_intro_actors": "b7973fb051ea123bef48f539bce75069dd92fef9925587b1f977469e57eac4da",
+        "source_intro_fire": "5649ee6def4debe3bc333e1c5c740279ef35d1206e2c46a554bb96514140e903",
+        "source_intro_reveal": "b4d3f814c8d396b191bf468b72e3fb717ffcb24ee550cb4f4a530a03b3fc67c8",
+        "source_intro_wait": "7d721554756cab01471f0ef5356ee37d101cea2d27918ff40f5a5166a12172e9",
+        "source_wait_restore": "a6ce6eac36ff120f8222dbe24c0456c7729c1062902f997ba7fb296d6dcecd28",
+        "source_wait": "4ed09b544bf7366d82afe04c0d86b07040a453e5e00209cd57fed05db4bfc7f6",
+        "source_irq_context": "013a3ef89374be5f178cf3968aeafca498cdd380b2d943d341c208fa8f9497d9",
+        "source_irq": "bc5921ff1b8a9ed22c6c06c889cc430a469e926c360914e146481a89b1a2c534",
+        "source_clock": "800058a5cbafa50bcf27fc4a91b9622fd34312eb75fa46f8523cffc80799cc9a",
+        "source_rng": "5c64cd42ca0c18d69f8cfb1a185f282268b5dfd45a4b77f355323c6df802919f",
+        "source_audio_fast": "811c9e96d4f587353df50654e01d767f7f1530528efa271d1ee9d15169376cc3",
+        "source_audio_reader": "7ea0d9bdd75168ea85f1e8cf7c9ef4fbb720d746a8e4c9158953a48a5551c624",
+        "source_audio_prefix": "c0c02bafe3dd7e4baf887f67b264786c70c74932c12c897213c941f32fea2d39",
+        "source_audio_dispatch": "f8ce91959f8fb0db6062900e69a1842da8cc108d33bdfcbb7509b681185b0d90",
+        "source_audio_priority": "d5bc487b634abc56b77df5aeec338a447be312c0e76679a1eec3b14585291147",
+        "source_audio_tone": "8098ba4e45c21629a9920e6ca9ac5385ecb986e31d0db143cbbff42c0c92b272",
+        "source_audio_noise": "45b37e1689255404b86855e3970e82bfefd313421522aae46e3fae455fa9690b",
+        "source_audio_sequence": "e7171cc12b4f031dc361943aca679b7a8fa5c1fc2bb7d7798864d16675aa7663",
+        "source_audio_memory": "ec755012b117bdb5bfe2c114037f44abe4891714f6532f4800206915e8dde1f0",
+        "source_audio_envelope": "d0878cd24b5d7bb8f255a5a9e97a231815ac41828cae53342b03c6cbe81ae17c",
+        "source_audio_pitch": "ea46d31e3c73a352995c3dcbcbbe141214a9c536fd827e1a16d49d8e5e058795"
+      },
+      "verified": [
+        "Original natural entry/return wall time, raster, polls, R, IFF/EI/pending,336 IRQ RAM and400 reader bytes. Actor768-byte records and palette/counter/mapper/callback snapshots also compared.",
+        "Both regions,14000 no-input cold source frames per region; observer PSG state unchanged."
+      ],
+      "limits": [
+        "Host native semantic helper; compiled68000 timing and physical MD publication not checked here.",
+        "Complete EA5 setup and EFA transfer with both callbacks, palette clearing and four bank6 header colors. Natural no-input only; VDP status external diagnostic input.",
+        "No production clock integration, full-game or PCM certification."
+      ]
+    }
+  ],
+  "compiled68000_checks": [
+    {
+      "passed": true,
+      "diagnostic_only": true,
+      "source_vector_cases": 28,
+      "source_regions": [
+        "ntsc",
+        "pal"
+      ],
+      "case_start": 0,
+      "ram_bytes": 2025,
+      "fire": false,
+      "actors": "second",
+      "reveal": true,
+      "sequence": true,
+      "transfer": true,
+      "irq_status": true,
+      "results": [
+        {
+          "region": "ntsc",
+          "intro_poll_done": 1,
+          "intro_poll_cases": 28,
+          "intro_poll_errors": 0,
+          "intro_poll_reads": 21560,
+          "intro_poll_first_failure": 0,
+          "frame": 814
+        },
+        {
+          "region": "pal",
+          "intro_poll_done": 1,
+          "intro_poll_cases": 28,
+          "intro_poll_errors": 0,
+          "intro_poll_reads": 21560,
+          "intro_poll_first_failure": 0,
+          "frame": 682
+        }
+      ],
+      "kernel_sha256": "18323da32af60883f4daca1b8b1b9c2a4b6cf274e14a3d66f26a04ba48f4980a",
+      "scope": "Compiled68000 source semantic helper checked against the selected natural original source vectors on each target region. No physical publication scheduler or PCM claim."
+    },
+    {
+      "passed": true,
+      "diagnostic_only": true,
+      "source_vector_cases": 14,
+      "source_regions": [
+        "ntsc",
+        "pal"
+      ],
+      "case_start": 0,
+      "ram_bytes": 2025,
+      "fire": false,
+      "actors": "second",
+      "reveal": true,
+      "sequence": true,
+      "transfer": true,
+      "irq_status": true,
+      "results": [
+        {
+          "region": "ntsc",
+          "intro_poll_done": 1,
+          "intro_poll_cases": 14,
+          "intro_poll_errors": 0,
+          "intro_poll_reads": 10780,
+          "intro_poll_first_failure": 0,
+          "frame": 491
+        },
+        {
+          "region": "pal",
+          "intro_poll_done": 1,
+          "intro_poll_cases": 14,
+          "intro_poll_errors": 0,
+          "intro_poll_reads": 10780,
+          "intro_poll_first_failure": 0,
+          "frame": 412
+        }
+      ],
+      "kernel_sha256": "09fe68bbcd9b9ea0959b6bad13a11c573f5932247e28600ad364391d81c047c3",
+      "scope": "Compiled68000 source semantic helper checked against the selected natural original source vectors on each target region. No physical publication scheduler or PCM claim."
+    }
+  ],
+  "source_entry_vectors": 42,
+  "compiled_executions": 84,
+  "source_io_events": 32340,
+  "compiled_io_events": 64680,
+  "implementation": "New source_intro_video.c/.h. Full EFA transfer composes F1E window/callback, fixed D600..D8FF to logical7800 copy via384/RST28/OUTI, then falls through F09 wait/callback and returns. EA5 preparation fills768 bytes with FA09, calls EFA, clears16 palette bytes, maps bank6 and copies four colors from restored source HL. All instruction/IRQ boundaries retained.",
+  "verification": "Natural original entry and actual caller-return snapshots, both regions14000 frames each. Every OUT instruction completion timestamp, derived raster, port/value and all2025 tracked bytes plus400 audio-reader bytes compared. All42 source entry vectors cross IRQs. Header addresses9D70/A655/AF1F and F36/F37/1055 callbacks observed. All vectors execute compiled68000 on both target regions.",
+  "status_binding": "Captured original status at each0137 entry remains diagnostic external input. It must be computed from live source sprite/chip state before production use.",
+  "recovery": "First transfer-only implementation already matched and compiled. Appending EA5 preparation first produced a host preprocessor error for hexadecimal token0x15fe+n; added whitespace, then both final profiles and kernels passed. Failed logs and earlier rebuild/source retained.",
+  "limits": [
+    "Natural no-input EFA and EA5 only; skip inside these new entry profiles is not checked here.",
+    "Semantic IO sink, not physical MD video publication. E50 setup, pattern decode0E2B/032A and map decode0BD3/7357 composition remain open.",
+    "No live production VDP status/memory binding, raster/PSG deadline, PCM or hardware certification. Public V319 unchanged."
+  ],
+  "next_action": "Compose E50..E75 scene setup around EA5/EFA, reuse source_pattern_decode for032A, translate map decode and strided placement as needed; bind compact memory/live source sprite status and physical publication deadlines before native intro integration.",
+  "oracle_ram_writes": 0,
+  "sram_imports": 0,
+  "archive_manifest": "analysis/v319-intro-transfer/manifest.json"
+}
