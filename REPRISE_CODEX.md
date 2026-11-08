@@ -6,7 +6,23 @@ le README et les rapports cités.
 
 ## Suivi courant — V319, 8 novembre 2026
 
-DERNIÈRE ÉTAPE : modèle temporel natif des statuts sprites, rapport
+DERNIÈRE ÉTAPE : point de raccordement du statut dans SourceIrqContext,
+rapport `analysis/v319_irq_status_binding_report.json`, archive
+`analysis/v319-irq-status-binding`. Champs optionnels status_read/status_context
+ajoutés en fin de contexte ; signature commune SourceIrqStatusRead, alias
+SourceGameStatusRead. Provider reçoit l’entrée0137 : IN terminé37T plus tôt,
+modulo période. Écrit C01B avant full/video/audio, y compris audio-only.
+Sans provider, C01B reste fourni par l’appelant. Refus →804, work nul, aucune
+publication vidéo/PSG ni mutation RAM/audio ; échec fatal, ne pas réessayer.
+Les quatre adapters partagent source_irq_context.c (base/timed/fast/master).
+384cas hôte +768 exécutions68000 NTSC/PAL passent (full/audio-only,20/40,
+262/313lignes,epoch normal/wrap,off/on/refus). Modèle sprites réellement appelé
+mais latches initialisés par le test : PAS encore de producteur VRAM/raster
+vivant connecté. La reconstruction complète est identique V319/DA29 : voir
+`analysis/v319_irq_status_rebuild_report.json`, archive
+`analysis/v319-irq-status-rebuild`. Pas de nouvelle ROM numérotée.
+
+ÉTAPE PRÉCÉDENTE : modèle temporel natif des statuts sprites, rapport
 `analysis/v319_chip_temporal_report.json`, archive `analysis/v319-chip-temporal`.
 Module `source_intro_sprite_status.c/.h` : caches de deux lignes, collision20,
 débordement40 en attente, lecture avec remise à zéro et report horizontal.

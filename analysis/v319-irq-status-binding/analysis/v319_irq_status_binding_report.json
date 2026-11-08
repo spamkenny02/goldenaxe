@@ -1,0 +1,60 @@
+{
+  "passed": true,
+  "host_cases": 384,
+  "compiled_executions": 768,
+  "results": [
+    {
+      "region": "ntsc",
+      "binding_done": 1,
+      "binding_errors": 0,
+      "binding_cases": 384,
+      "binding_first_failure": 0,
+      "frame": 968
+    },
+    {
+      "region": "pal",
+      "binding_done": 1,
+      "binding_errors": 0,
+      "binding_cases": 384,
+      "binding_first_failure": 0,
+      "frame": 810
+    }
+  ],
+  "native_sources": {
+    "source_wait": "4ed09b544bf7366d82afe04c0d86b07040a453e5e00209cd57fed05db4bfc7f6",
+    "source_irq_context": "e87d3abd2b990fdb119f7b42c10b646e26a70d29ce1218b43994b186fbb1f011",
+    "source_irq": "bc5921ff1b8a9ed22c6c06c889cc430a469e926c360914e146481a89b1a2c534",
+    "source_clock": "800058a5cbafa50bcf27fc4a91b9622fd34312eb75fa46f8523cffc80799cc9a",
+    "source_rng": "5c64cd42ca0c18d69f8cfb1a185f282268b5dfd45a4b77f355323c6df802919f",
+    "source_audio_fast": "811c9e96d4f587353df50654e01d767f7f1530528efa271d1ee9d15169376cc3",
+    "source_audio_reader": "7ea0d9bdd75168ea85f1e8cf7c9ef4fbb720d746a8e4c9158953a48a5551c624",
+    "source_audio_prefix": "c0c02bafe3dd7e4baf887f67b264786c70c74932c12c897213c941f32fea2d39",
+    "source_audio_dispatch": "f8ce91959f8fb0db6062900e69a1842da8cc108d33bdfcbb7509b681185b0d90",
+    "source_audio_priority": "d5bc487b634abc56b77df5aeec338a447be312c0e76679a1eec3b14585291147",
+    "source_audio_tone": "8098ba4e45c21629a9920e6ca9ac5385ecb986e31d0db143cbbff42c0c92b272",
+    "source_audio_noise": "45b37e1689255404b86855e3970e82bfefd313421522aae46e3fae455fa9690b",
+    "source_audio_sequence": "e7171cc12b4f031dc361943aca679b7a8fa5c1fc2bb7d7798864d16675aa7663",
+    "source_audio_memory": "ec755012b117bdb5bfe2c114037f44abe4891714f6532f4800206915e8dde1f0",
+    "source_audio_envelope": "d0878cd24b5d7bb8f255a5a9e97a231815ac41828cae53342b03c6cbe81ae17c",
+    "source_audio_pitch": "ea46d31e3c73a352995c3dcbcbbe141214a9c536fd827e1a16d49d8e5e058795",
+    "source_audio_reader_timed": "39351e701b76354fac3aef32824d3bc8e665fe6596955f3a365c243f3e21b279",
+    "source_audio_prefix_timed": "6e66131d2e9daa764ae12eca02b886f25fbf4fcf13a2972d34ccecddfcc12c0d",
+    "source_audio_tone_timed": "7cd41ea9933d6b627322f8ca988de7ee05d5795e839d1462fab3aa5a6a7c0dbf",
+    "source_audio_noise_timed": "e5a538370c3f1632a2fe0014224b62b722f1d64dd6c30b7c1ba79a50c23ac891",
+    "source_audio_sequence_timed": "ace5c4b83ca43928aa453c30fa7c2d72c7e1bd49bfb782407408545e641ea888",
+    "source_irq_timed_context": "a05756c6d8295a0df329a4b4f278ef62dc8369ba8e37acc92275f1c15c006251",
+    "source_irq_fast_timed_context": "ecf19d599f0a9aa57427abe2806e8244923fb2fdb085f68a093a63021a0cf434",
+    "source_audio_fast_timed": "3eec12b4c5f6cab858fbfe96afca852c730b31735f6e035967ca0acfca4b92cd",
+    "source_audio_reader_master": "1a1a3c49db90f37ff7711fe040bf48bae64cddac5be416ebdde2a6abeabcbc9d",
+    "source_irq_master_context": "1b11182a3c10d8ab59ca6708853d6133ebe84423a7e5cbc1388e1ce01fd70d77",
+    "source_intro_sprite_status": "57ae0af2f524be9156fdecf12c887f6434c003bb216b608318fd6f689ba32bdb"
+  },
+  "header_sha256": "6c46a5418546140e83f4ee87900677dfddc9ec85892c33aa5865fe1e4ae44fb9",
+  "kernel_sha256": "556036bf72db16a515a12cca77952c84929bc55c81dee92ff10b7d584ac87f16",
+  "scope": "Optional live sprite status delivered to compact intro IRQ context before full/video/audio work. Four adapters, full/audio-only, flags20/40, NTSC/PAL and elapsed wrap. Real semantic IRQ and audio modules; disabled-provider state/work/PSG parity and provider rejection before publication.",
+  "limits": [
+    "Contract integration with seeded native sprite latches, not a SourceClock-driven parse/render/VRAM producer or physical audio/video proof.",
+    "Expected compiled outputs are independently host-checked adapter contracts; original source game coverage remains the separate temporal sprite corpus."
+  ],
+  "production_rom_changed": false
+}

@@ -5,7 +5,7 @@
 #include "source_wait.h"
 typedef struct {u8 bytes[192];u32 first_y,first_xy;} SourceGameSatPacket;
 typedef u8 (*SourceGameSatSink)(void *user,const SourceGameSatPacket *packet);
-typedef u8 (*SourceGameStatusRead)(void *user,const SourceClockIrq *entry,u8 *status);
+typedef SourceIrqStatusRead SourceGameStatusRead;
 
 typedef struct {
  SourceTimedIrqContext timed; /* core is first; wait can use its C000 prefix. */

@@ -3,6 +3,7 @@
 #include "source_irq.h"
 #include "source_audio_reader.h"
 typedef void (*SourceIrqTrace)(void *context,const SourceClockIrq *entry,const SourceClockWork *work);
+typedef u8 (*SourceIrqStatusRead)(void *user,const SourceClockIrq *entry,u8 *status);
 struct SourceIrqContext;
 typedef u8 (*SourceIrqVideoPublish)(void *user,const struct SourceIrqContext *context,const SourceClockIrq *entry,u16 *tile_count);
 typedef struct SourceIrqContext {
@@ -23,8 +24,14 @@ typedef struct SourceIrqContext {
     u8 *full_ram;
     /* Optional full-IRQ video delivery; may publish before later failure. */
     SourceIrqVideoPublish video;void *video_context;
+    /* Optional original vector status read, before video/audio publication.
+     * Entry describes0137; the completed IN is37T earlier, modulo period.
+     * Provider advances its own logical video state and returns the whole
+     * SMS status byte, never the physical MD status. Failure is fatal.
+     * With no provider, caller-owned C01B is retained for legacy loaders. */
+    SourceIrqStatusRead status_read;void *status_context;
 } SourceIrqContext;
-enum {SOURCE_IRQ_CONTEXT_INVALID=0x800,SOURCE_IRQ_CONTEXT_RESET,SOURCE_IRQ_CONTEXT_NESTED,SOURCE_IRQ_CONTEXT_VIDEO};
+enum {SOURCE_IRQ_CONTEXT_INVALID=0x800,SOURCE_IRQ_CONTEXT_RESET,SOURCE_IRQ_CONTEXT_NESTED,SOURCE_IRQ_CONTEXT_VIDEO,SOURCE_IRQ_CONTEXT_STATUS};
 /* SourceClockInterrupt adapter with dynamic native8000 + IRQ state/work.
  * Input lines/joy/reset/tile count are supplied by the caller; raster comes
  * from the scheduler and compensation from audio RAM. Null sink discards PSG

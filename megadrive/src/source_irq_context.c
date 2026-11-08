@@ -27,6 +27,13 @@ u8 source_irq_interrupt(void *context,const SourceClockIrq *entry,SourceClockWor
     u8 ram[336],full,timer_after=0;SourceIrqInput input;SourceIrqOutput irq;
     SourceClockWork zero={0,0},audio;u32 period,start,ack,until;
     work->tstates=work->fetches=0;ctx->error=0;ctx->last_entry=*entry;
+    if(ctx->status_read)
+    {
+        u8 status;
+        if(!ctx->status_read(ctx->status_context,entry,&status))
+        {ctx->error=SOURCE_IRQ_CONTEXT_STATUS;return 0;}
+        ctx->ram[0x1b]=status;
+    }
     full=ctx->ram[0x2e]!=0;input=ctx->input;
     input.raster=entry->entry_raster;input.compensation=ctx->audio[3];
     if(full)

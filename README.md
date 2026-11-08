@@ -23,6 +23,17 @@ cette routine ; la cadence de jeu visée reste celle de la Master System.
 
 ## Travail natif en cours : statut vidéo des sprites
 
+Le contexte des interruptions de l’intro accepte maintenant un fournisseur
+optionnel du statut vidéo. Sa lecture précède les sorties vidéo/PSG et alimente
+`C01B`, y compris pour les interruptions audio seules. Les quatre variantes
+d’interruption passent 384 cas au total sur hôte, puis les mêmes
+384 cas en NTSC et en PAL sur 68000 (768 exécutions compilées).
+Sans fournisseur, le comportement et les dates PSG du banc sont conservés ;
+un refus du fournisseur arrête l’interruption avant publication.
+[Contrats de raccordement](analysis/v319_irq_status_binding_report.json).
+La reconstruction complète reste identique à la V319 publiée, octet pour octet.
+[Reconstruction](analysis/v319_irq_status_rebuild_report.json).
+
 Le nouveau module `source_intro_sprite_status.c` calcule les collisions et le
 débordement des sprites à partir de la VRAM, des registres et des événements
 vidéo. Il conserve les caches et les drapeaux entre les lignes et les lectures.
