@@ -1,0 +1,227 @@
+{
+  "passed": true,
+  "candidate": "c0047",
+  "region": "pal",
+  "rom_sha256": "d3ea2a83ea24ed8a0d3c9857f9fbe70d000a4f73358452c1887f40e78966c56e",
+  "game_written_save": true,
+  "synthetic_sram_fixture": false,
+  "writer_initial_sram": false,
+  "writer_primary_state_imports": 0,
+  "writer_whole_ram_bytes_exact": 65536,
+  "writer_final_png_exact": true,
+  "writer_frames": 303609,
+  "raw_sram_exact_to_c0046": true,
+  "sram_sha256": "af6c039d328a25e6a851dba8b04bb25ce2b745de19f4419c7e7b348ea6a86e49",
+  "reload_from_own_game_written_sram": true,
+  "reload_primary_sram_imports": 1,
+  "reload_ram_writes": 0,
+  "reload_frames": 1487,
+  "reload_whole_ram_bytes_exact": 65536,
+  "reload_final_png_exact": true,
+  "source_crystal_markers_exact": 9,
+  "physical_hud_words_exact": 128,
+  "source_reference": "analysis/game_written_save_pal_c0046_nine_crystals_report.json",
+  "archive_manifest": "analysis/c0047-pal-real-save/manifest.json",
+  "scope": "Actual PAL c0047 slot0 SRAM write from a separate cold nine-crystal controller branch, then normal Continue and movement from that exact c0047-generated SRAM. Both complete RAM and final image match the verified c0046 branch, no stack normalization. Reload is a normal SRAM import, not a cold New Game campaign; not all slots/refusals or source/hardware fidelity.",
+  "files": {
+    "analysis/game_written_save_pal_c0046_nine_crystals_report.json": "de499b59334d755a224c061b48c836c02848fe23d12bac5ee9e7c0bd2c703c61"
+  },
+  "compressed": {
+    "validation/c0046-campaign01/isolated/project/validation/game-written-save-load/palc0046-nine-crystals01/capture.json": {
+      "stored": "objects/cf9b3d6ab20dc507de988dc2a4df7e1c9eacc8bc499f95f39fa0d881f33fe0fd.gz",
+      "raw_sha256": "cf9b3d6ab20dc507de988dc2a4df7e1c9eacc8bc499f95f39fa0d881f33fe0fd",
+      "raw_bytes": 1363,
+      "stored_sha256": "81d1a973024c9b453d5c6f97640496f43910ae4ea8ed13a536b3eaf9b7cc08f4"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/game-written-save-load/palc0046-nine-crystals01/controls.json": {
+      "stored": "objects/acffb533f8898ce2cc4927a1fc4dadb9b69d07f14253e8111d4c7ae13107b02b.gz",
+      "raw_sha256": "acffb533f8898ce2cc4927a1fc4dadb9b69d07f14253e8111d4c7ae13107b02b",
+      "raw_bytes": 567,
+      "stored_sha256": "f6af85764064d098ef155e75b8d65d6514a7355218c447413c50dd7a2ea82877"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/game-written-save-load/palc0046-nine-crystals01/frame_01487.png": {
+      "stored": "objects/772104995fc894eb6844c561e1563396752777771bf526cda3fad3af8f8eb6da.gz",
+      "raw_sha256": "772104995fc894eb6844c561e1563396752777771bf526cda3fad3af8f8eb6da",
+      "raw_bytes": 5916,
+      "stored_sha256": "16b64b384c34654ef719d3e479c903f8f9d1fda0b5e2fadceb268d2f7f4ac55a"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/game-written-save-load/palc0046-nine-crystals01/ram_01487.bin": {
+      "stored": "objects/c8119a5700709bf12aaed81acfb42ab557362fabb267cf189788d5716090bbc5.gz",
+      "raw_sha256": "c8119a5700709bf12aaed81acfb42ab557362fabb267cf189788d5716090bbc5",
+      "raw_bytes": 65536,
+      "stored_sha256": "3a7f1ad04fe01ca149525883cbf330dfdf9ebfa4c999c07c4db3b0e72a7c5b77"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/game-written-save-load/palc0046-nine-crystals01/report.json": {
+      "stored": "objects/e57ff77275eb69cbcb61a86cedb9538d1d8302869b1544e5f26b5ae4fa4ff7b3.gz",
+      "raw_sha256": "e57ff77275eb69cbcb61a86cedb9538d1d8302869b1544e5f26b5ae4fa4ff7b3",
+      "raw_bytes": 1898,
+      "stored_sha256": "f326072300404d9fb7b20a23baec860ebcdeebcd8049c48c83c748d9f6c75e35"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-service-route/md-palc0046-nine-crystals-save01/assistance.json": {
+      "stored": "objects/107ce9f97fcc528d162763cbca8c7352f2d080c5241d9e3fb6f0a69dc76735cd.gz",
+      "raw_sha256": "107ce9f97fcc528d162763cbca8c7352f2d080c5241d9e3fb6f0a69dc76735cd",
+      "raw_bytes": 13247093,
+      "stored_sha256": "530c19683f60ad0227ad3b4000db3098cb1ab37a2f15bc5c0515a2c5dab5c700"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-service-route/md-palc0046-nine-crystals-save01/capture.json": {
+      "stored": "objects/69cddc463d004004a0f37b876e529d2c69dffa6d21a4d6ca0fff9540e63aacca.gz",
+      "raw_sha256": "69cddc463d004004a0f37b876e529d2c69dffa6d21a4d6ca0fff9540e63aacca",
+      "raw_bytes": 16340112,
+      "stored_sha256": "444e1b65c5eb9b1f49831e60cef18a8cb5bb7c14621bf8927dd634f5b23b85a3"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-service-route/md-palc0046-nine-crystals-save01/controls.json": {
+      "stored": "objects/47c1400ad731a39870f6cea5d21bd8c77b5d97f62d6b41056722df0bb575c7d1.gz",
+      "raw_sha256": "47c1400ad731a39870f6cea5d21bd8c77b5d97f62d6b41056722df0bb575c7d1",
+      "raw_bytes": 422912,
+      "stored_sha256": "4fc7a004aa97dd1ef0eb3738ba1590a005e36016b849b7c0339ad3a5bbf3525c"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-service-route/md-palc0046-nine-crystals-save01/frame_303609.png": {
+      "stored": "objects/3dcab3abaef70fb1925fd59a14411825c64144d07aab1977a23ef1c1382ae516.gz",
+      "raw_sha256": "3dcab3abaef70fb1925fd59a14411825c64144d07aab1977a23ef1c1382ae516",
+      "raw_bytes": 5671,
+      "stored_sha256": "faf86d6e0a160823fa264f5e49305d402d33a3185bca7478c51103b125fd4ed2"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-service-route/md-palc0046-nine-crystals-save01/game-written.srm": {
+      "stored": "objects/af6c039d328a25e6a851dba8b04bb25ce2b745de19f4419c7e7b348ea6a86e49.gz",
+      "raw_sha256": "af6c039d328a25e6a851dba8b04bb25ce2b745de19f4419c7e7b348ea6a86e49",
+      "raw_bytes": 3224,
+      "stored_sha256": "7ebea4db2a98b46672e2441fb199c74e8579cbebd34a9a3f961aa757ab1dc4ff"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-service-route/md-palc0046-nine-crystals-save01/ram_303609.bin": {
+      "stored": "objects/3ba34bb315756872cbb092f13af7ae370e80cbacf19dcadc85675298b837705b.gz",
+      "raw_sha256": "3ba34bb315756872cbb092f13af7ae370e80cbacf19dcadc85675298b837705b",
+      "raw_bytes": 65536,
+      "stored_sha256": "1454b6d922974b6e60e9fe4d0948214869e40848920d3a2f9ddcfc0355c32d5e"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-service-route/md-palc0046-nine-crystals-save01/report.json": {
+      "stored": "objects/584aa369d52290860e3b8dfbc269e4d5a11bf9c2e54fe674289d3df328f851cc.gz",
+      "raw_sha256": "584aa369d52290860e3b8dfbc269e4d5a11bf9c2e54fe674289d3df328f851cc",
+      "raw_bytes": 1906,
+      "stored_sha256": "34c0eb44eadbda5b8337e885aa0b3cd923e0a205a50bd67388666f5aa840e8fc"
+    },
+    "validation/c0046-campaign01/isolated/project/validation/natural-service-route/md-palc0046-nine-crystals-save01/serialized-payload.bin": {
+      "stored": "objects/59e0e5de313a46486f6a5bcfc870729044fe075ddf6c50c2a056df6858232d8e.gz",
+      "raw_sha256": "59e0e5de313a46486f6a5bcfc870729044fe075ddf6c50c2a056df6858232d8e",
+      "raw_bytes": 592,
+      "stored_sha256": "08d50b671f832b17a3fa24cdb85252dea0ef21fc1114b41192b0cb3e59f1edda"
+    },
+    "validation/c0047-pal-real-save01/continue/capture.json": {
+      "stored": "objects/38398cbe4f1b36d92ef64ad8c60e2d4106917f93e653be86d554223e864fdcb0.gz",
+      "raw_sha256": "38398cbe4f1b36d92ef64ad8c60e2d4106917f93e653be86d554223e864fdcb0",
+      "raw_bytes": 1024,
+      "stored_sha256": "fd5f7f05f71943f0d730e9d9ca27f42085b3cee12525d367a813d699248b287b"
+    },
+    "validation/c0047-pal-real-save01/continue/cram_01487.bin": {
+      "stored": "objects/f94dc054c4612bc2961a7a1c461ca1649e2f3d86dbf812705fd217dbfa45d0a1.gz",
+      "raw_sha256": "f94dc054c4612bc2961a7a1c461ca1649e2f3d86dbf812705fd217dbfa45d0a1",
+      "raw_bytes": 128,
+      "stored_sha256": "72b3b6c7c19189df5d46d1a8ba7998875b790f74010fe9f8f27ae497e7663ac5"
+    },
+    "validation/c0047-pal-real-save01/continue/frame_01487.png": {
+      "stored": "objects/772104995fc894eb6844c561e1563396752777771bf526cda3fad3af8f8eb6da.gz",
+      "raw_sha256": "772104995fc894eb6844c561e1563396752777771bf526cda3fad3af8f8eb6da",
+      "raw_bytes": 5916,
+      "stored_sha256": "16b64b384c34654ef719d3e479c903f8f9d1fda0b5e2fadceb268d2f7f4ac55a"
+    },
+    "validation/c0047-pal-real-save01/continue/ram_01487.bin": {
+      "stored": "objects/c8119a5700709bf12aaed81acfb42ab557362fabb267cf189788d5716090bbc5.gz",
+      "raw_sha256": "c8119a5700709bf12aaed81acfb42ab557362fabb267cf189788d5716090bbc5",
+      "raw_bytes": 65536,
+      "stored_sha256": "3a7f1ad04fe01ca149525883cbf330dfdf9ebfa4c999c07c4db3b0e72a7c5b77"
+    },
+    "validation/c0047-pal-real-save01/continue/vdp_regs_01487.bin": {
+      "stored": "objects/6238201c25ec326ff7a3987d3a4b33fa17b64a97cf0f6950dd58fd8ab0ff62c9.gz",
+      "raw_sha256": "6238201c25ec326ff7a3987d3a4b33fa17b64a97cf0f6950dd58fd8ab0ff62c9",
+      "raw_bytes": 32,
+      "stored_sha256": "8d438e9158ea72d08b66d4ce367932a43db5db68e36771abeb3966fc87988c00"
+    },
+    "validation/c0047-pal-real-save01/continue/vram_01487.bin": {
+      "stored": "objects/cc6a74cbbdd097bb21b83cbdc8234fd0f61c5ab3859f34487c0c275dd91d75ce.gz",
+      "raw_sha256": "cc6a74cbbdd097bb21b83cbdc8234fd0f61c5ab3859f34487c0c275dd91d75ce",
+      "raw_bytes": 65536,
+      "stored_sha256": "8b57ae7e6b06d83dbe6c9e6f60a5a093d42846088471e9d22b262b6fc7159110"
+    },
+    "validation/c0047-pal-real-save01/write/capture.json": {
+      "stored": "objects/954fd7e353f41f6523e48a7999983177e7a59ef747e7dd2d3064264cfab7c901.gz",
+      "raw_sha256": "954fd7e353f41f6523e48a7999983177e7a59ef747e7dd2d3064264cfab7c901",
+      "raw_bytes": 16340394,
+      "stored_sha256": "89854777c4afa6d7f2a071355a5aea3744ce2e85b63e0bf0d56ee2c7a12eb85d"
+    },
+    "validation/c0047-pal-real-save01/write/cram_303609.bin": {
+      "stored": "objects/67ad4a738d6b835288e3ceb7fc8f37f3fa5fe47616eca33f82392fca28d15272.gz",
+      "raw_sha256": "67ad4a738d6b835288e3ceb7fc8f37f3fa5fe47616eca33f82392fca28d15272",
+      "raw_bytes": 128,
+      "stored_sha256": "7daccea9eb9526bf5c556f43e8b798d8ad83a0de24ed313bb8f8eefcef524d58"
+    },
+    "validation/c0047-pal-real-save01/write/frame_303609.png": {
+      "stored": "objects/3dcab3abaef70fb1925fd59a14411825c64144d07aab1977a23ef1c1382ae516.gz",
+      "raw_sha256": "3dcab3abaef70fb1925fd59a14411825c64144d07aab1977a23ef1c1382ae516",
+      "raw_bytes": 5671,
+      "stored_sha256": "faf86d6e0a160823fa264f5e49305d402d33a3185bca7478c51103b125fd4ed2"
+    },
+    "validation/c0047-pal-real-save01/write/game-written.srm": {
+      "stored": "objects/af6c039d328a25e6a851dba8b04bb25ce2b745de19f4419c7e7b348ea6a86e49.gz",
+      "raw_sha256": "af6c039d328a25e6a851dba8b04bb25ce2b745de19f4419c7e7b348ea6a86e49",
+      "raw_bytes": 3224,
+      "stored_sha256": "7ebea4db2a98b46672e2441fb199c74e8579cbebd34a9a3f961aa757ab1dc4ff"
+    },
+    "validation/c0047-pal-real-save01/write/ram_303609.bin": {
+      "stored": "objects/3ba34bb315756872cbb092f13af7ae370e80cbacf19dcadc85675298b837705b.gz",
+      "raw_sha256": "3ba34bb315756872cbb092f13af7ae370e80cbacf19dcadc85675298b837705b",
+      "raw_bytes": 65536,
+      "stored_sha256": "1454b6d922974b6e60e9fe4d0948214869e40848920d3a2f9ddcfc0355c32d5e"
+    },
+    "validation/c0047-pal-real-save01/write/vdp_regs_303609.bin": {
+      "stored": "objects/f2d8a5124acfa25334a0bfdc5e189cd540f4e5021395f513e427ec37928525fe.gz",
+      "raw_sha256": "f2d8a5124acfa25334a0bfdc5e189cd540f4e5021395f513e427ec37928525fe",
+      "raw_bytes": 32,
+      "stored_sha256": "ad85f0eb4abaf4c675581f7c58c2e7eabeaed9a9369cc5b4e09f90bb94275c11"
+    },
+    "validation/c0047-pal-real-save01/write/vram_303609.bin": {
+      "stored": "objects/9007b6dc5daf88a460287003f1f928fc9d8be0aaaa53137bb9968dfcc8f82a52.gz",
+      "raw_sha256": "9007b6dc5daf88a460287003f1f928fc9d8be0aaaa53137bb9968dfcc8f82a52",
+      "raw_bytes": 65536,
+      "stored_sha256": "baa7791adccde4e7769193fdf9e28f9542e0f8cb25a35e77c284f0c07578e756"
+    },
+    "validation/verify_c0047_pal_save.py": {
+      "stored": "objects/4449b01e923e208273f36a9a6a2039bf5a47f0a8b2a7e8a58b0462c50f455ac9.gz",
+      "raw_sha256": "4449b01e923e208273f36a9a6a2039bf5a47f0a8b2a7e8a58b0462c50f455ac9",
+      "raw_bytes": 6536,
+      "stored_sha256": "4a24b60e4daf5f102f3e9c46fa2357e8d6721f503b64a5893b2dfbc23ce278a2"
+    }
+  },
+  "removed_verified_generated": [
+    {
+      "path": "validation/c0047-pal-real-save01/continue/cram_01487.bin",
+      "bytes": 128
+    },
+    {
+      "path": "validation/c0047-pal-real-save01/continue/ram_01487.bin",
+      "bytes": 65536
+    },
+    {
+      "path": "validation/c0047-pal-real-save01/continue/vdp_regs_01487.bin",
+      "bytes": 32
+    },
+    {
+      "path": "validation/c0047-pal-real-save01/continue/vram_01487.bin",
+      "bytes": 65536
+    },
+    {
+      "path": "validation/c0047-pal-real-save01/write/cram_303609.bin",
+      "bytes": 128
+    },
+    {
+      "path": "validation/c0047-pal-real-save01/write/ram_303609.bin",
+      "bytes": 65536
+    },
+    {
+      "path": "validation/c0047-pal-real-save01/write/vdp_regs_303609.bin",
+      "bytes": 32
+    },
+    {
+      "path": "validation/c0047-pal-real-save01/write/vram_303609.bin",
+      "bytes": 65536
+    }
+  ]
+}

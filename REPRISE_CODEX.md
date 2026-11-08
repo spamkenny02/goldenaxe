@@ -6,6 +6,35 @@ le README et les rapports cités.
 
 ## Suivi courant — V319, 8 novembre 2026
 
+Dernier résultat : vraie sauvegarde PAL + Continue validés sur V319.
+Le pilote74571 et son suivi38252 sont terminés1 après les vérifications
+runtime : le validateur générique avait déjà écrit son rapport de reload,
+mais échouait ensuite faute de versions/index.json dans le projet isolé.
+Pas de bug ROM ni nouveau jeu rejoué : `archive_pal_save.py` a revérifié
+les SRAM,592octets de payload, RAM complète, images, champs restaurés,
+neuf marqueurs et HUD, puis publié l'identité c0046. Archive
+`c0046-pal-real-save`, rapports `game_written_save_pal_c0046_nine_crystals_report.json`
+et `c0046_pal_real_save_report.json`. Vérificateur public76287 terminé0 :
+V319 écrit ses propres octets SRAM, puis Continue normal sans écritures RAM ;
+RAM et images exactes au sauvegardeur/chargeur. Rapports
+`c0047_pal_real_save_report.json` et `pal_save_v0319_report.json`, archive
+`c0047-pal-real-save`. Reçu copié enV319, README/index à sauvegardesNTSC/PAL.
+Autres slots/refus et fidélité globale restent ouverts.
+
+Archive intermédiaire D9 terminée0 (10408) :3449références,113121984octets
+générés supprimés après relecture,80403145octets nets libérés. Tous les
+points finaux des20étapes et toutes les captures PNG gardés. Archive
+`analysis/palc0046-d9-intermediate-captures`, script de nettoyage suivi.
+ROMs numérotées, sources et traces de commandes conservées.
+
+Palais PAL :50681/PID15980 toujours actif au dernier contrôle, géant15E
+sans protection après retrait313520 ; entrée et deux mécanismes passés.
+Suivi74524/PID50376 attend ce pilote, audit du géant puis suite intérieure.
+Nouveau suivi11254 attend le vrai handle50376 ; après succès complet, il
+lancera `audit_pal_palace_inner.py --through ending`, puis rejeu V319
+`--milestone ending`. Ces preuves de fin ne sont pas encore acquises.
+Les sessions/save/PID historiques plus bas ne doivent pas être relancés.
+
 État prioritaire : NEUF cristaux PAL et retour désormais vérifiés.
 Entrée/premier gardien D9 terminés0, huit étapes froides, retrait277883,
 79/60PV source affronté sans protection (152prédictions), point279458,

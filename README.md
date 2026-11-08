@@ -26,8 +26,8 @@ cette routine ; la cadence de jeu visée reste celle de la Master System.
 | Domaine | Contrôles passés | Périmètre restant |
 | --- | --- | --- |
 | NTSC | Nouvelle partie → neuf cristaux → ballon → palais → Hache d’or → Death Adder → générique complet → retour à l’intro | Fidélité globale SMS et console réelle |
-| PAL | Neuf cristaux et retours, ballon, hache, fée, huile, corde, Terre, canoë, Feu, épée longue, Clochette de glace, bateau, clé du voleur | Palais final, générique et sauvegarde PAL |
-| Sauvegarde NTSC | Vraie écriture SRAM à neuf cristaux, puis Continue et déplacement sur cette même SRAM | Autres slots/refus et PAL sur cette version |
+| PAL | Neuf cristaux et retours, ballon, hache, fée, huile, corde, Terre, canoë, Feu, épée longue, Clochette de glace, bateau, clé du voleur | Palais final et générique PAL |
+| Sauvegarde NTSC/PAL | Vraies écritures SRAM à neuf cristaux, puis Continue et déplacement sur ces mêmes SRAM | Autres slots/refus et console réelle |
 | Démarrage | Deux boucles de 14000 images par région identiques à V318 après normalisation ; états audio et huit registres PSG comparés sur 6500 images | Écarts SMS résiduels de révélations/fondus et formes d’onde PCM |
 | Inventaire | Six retours normaux : extérieur et deux maisons, PAL/NTSC, décor statique restauré | Phase des quatre motifs animés des maisons séparée de l’égalité statique |
 
@@ -46,7 +46,7 @@ l’achat d’une clé à 60 pièces sont conservés dans les preuves.
 
 - [Rapport initial V319](analysis/optimization_v0319_report.json)
 - [Campagne NTSC et fin](analysis/cold_palace_final_c0046_report.json) · [Rejeu sur le binaire publié](analysis/c0047_palace_final_auto_report.json)
-- [Vraie sauvegarde et Continue](analysis/c0047_real_save_report.json)
+- [Vraie sauvegarde et Continue NTSC](analysis/c0047_real_save_report.json) · [Sauvegarde et Continue PAL](analysis/c0047_pal_real_save_report.json)
 - [Neuvième cristal, ballon et retour PAL](analysis/palc0046_d9_report.json) · [Rejeu publié](analysis/c0047_pal_d9_report.json)
 - [Premier gardien D9 PAL](analysis/palc0046_d9_midboss_report.json) · [Rejeu publié](analysis/c0047_pal_d9_midboss_report.json) — combat sans protection.
 - [Huitième cristal et retour PAL](analysis/palc0046_d8_report.json) · [Rejeu publié](analysis/c0047_pal_d8_report.json)

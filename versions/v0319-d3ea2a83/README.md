@@ -51,3 +51,9 @@ et [rejeu c0047/V319](../../analysis/c0047_pal_d9_report.json), à 302755 images
 protection ; douze étapes finales rejouées, HUD des neuf cristaux vérifié.
 Le financement du passage provient de vrais ramassages, sans écriture
 argent ou ressources. Palais final, générique et sauvegarde PAL restent ouverts.
+
+Ajout suivant : [vraie sauvegarde PAL et Continue](../../analysis/c0047_pal_real_save_report.json).
+La V319 écrit sa propre SRAM au slot0 à neuf cristaux ; Continue recharge
+ces mêmes octets et permet un déplacement. RAM entière et images finales
+du sauvegardeur et du chargement identiques au candidat vérifié. Les autres
+slots/refus, la fidélité globale et le palais final PAL restent ouverts.
