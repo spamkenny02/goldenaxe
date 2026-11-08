@@ -6,6 +6,28 @@ le README et les rapports cités.
 
 ## Suivi courant — V319, 8 novembre 2026
 
+Mise à jour prioritaire : détour de financement D8 terminé et audité.
+Fonds13/session15631 terminé0, objectif atteint à262688 :14pièces,
+96PV,1CA. Rejeu indépendant65536RAM/PNG exact à262788. Le retour
+normal avec hache, session68311, termine0 :19pièces,96PV,8cristaux,
+extérieur29 à264258. Audit91807 terminé0, quatre étapes exactes,
+rapport `analysis/palc0046_d9_funding_return_report.json`, archive
+`analysis/palc0046-d9-funding-return`. Aucune écriture argent, ressources,
+acteurs, progression ou SRAM ; protection d'approche déclarée seulement.
+Le fonds12 reste un objectif10 échoué, malgré son vrai ramassage7→8.
+
+D9 reprend désormais sur ce retour, sans nouveau donB5 ni nouvel épisode.
+Pilote `tools/continue_d9_funded_entry_palc0046.py` actif session15964,
+PID15736. Première route vers la maison payante1A atteinte sans erreur,
+19pièces ; lecteur froid `palc0046-d9-funded-entry-cold-stream01`.
+Pas encore de premier gardien D9 validé. Suivi session42108 attend le vrai
+handle15736 ; il lance le nouvel audit `audit_pal_d9_funded_entry.py`,
+puis le rejeu V319 du premier gardien et, seulement en cas de succès,
+`continue_d9_funded_finish_palc0046.py`. Nouveaux dossiers sources
+`palc0046-d9-funded-entry-sources` et `palc0046-d9-funded-finish-sources`.
+Les anciens pilotes D9 sans le préfixe funded ne sont pas à relancer.
+Les suivis/sessions actifs indiqués plus bas sont historiques si contredits ici.
+
 Dernière reprise : fonds10 et11 terminés sans atteindre10pièces, aucun
 succès de collecte à revendiquer. Le diagnostic
 `analysis/palc0046_d9_funding_shore_report.json` explique fonds10 : la
