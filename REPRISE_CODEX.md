@@ -6,7 +6,28 @@ le README et les rapports cités.
 
 ## Suivi courant — V319, 8 novembre 2026
 
-DERNIÈRE ÉTAPE : runsclear/map versownedVDP, rapport
+DERNIÈRE ÉTAPE : raccourcis exacts du calendrier sans sprites, rapport
+`analysis/v319_empty_sprite_clock_report.json`, archive
+`analysis/v319-empty-sprite-clock/manifest.json`.
+SourceIntroSpriteClock : avance directe avant prochaine ligne ; sinon saut
+stable uniquement hors Mode4 ou, sans zoom, avec deux caches vides, aucun
+overflow en attente et premier Y SAT=D0. Conserver drapeaux, collision et
+entrées inutilisées ; calculer VINT à la ligne193 et phase finale exactement.
+Les autres états gardent la boucle précédente.
+172500 états complets host +172500 par région MD : toutes les 575 lignes,
+3 phases, 10 états mode/cache/SAT/drapeaux, 5 deltas et wrap32. Aucun écart.
+Profil stages05 : NTSC 144..162 →88..96 ; PAL120..136 →74..80.
+Stages NTSC : prepare24..27, patterns25..35, clear9..12, transfert22..25.
+20 scènes source/clock/R/audio/statut identiques ; ports originaux14000 images
+par région puis préfixes compilés sur les deux régions MD sans écart.
+Rebuild production identique V319/d3ea2a83…/DA29. CPUgateFALSE : ne pas
+activer cette composition, budget source encore dépassé. Aucun nouveau binaire
+publié pour ce code non sélectionné. Profil exclut livraison vidéo/PSG physique.
+Prochain : coûts attentes/IRQ et calendrier actif, puis budget composé ; dates
+originales IRQ, coldboot continu et livraison physique toujours ouverts.
+Vidéo complète V319 locale ; YouTube navigateur Work désactivé/visibilité pending.
+
+ÉTAPE PRÉCÉDENTE : runsclear/map versownedVDP, rapport
 `analysis/v319_map_runs_report.json`, archive `analysis/v319-map-runs`.
 source_intro_scene_load_video_runs ajoute map_run(sharedsink_user),scène met
 miroirlegacyàjour enbulk et transmetles SourceIntroVideoRun existants (sinks

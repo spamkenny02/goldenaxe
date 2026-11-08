@@ -35,9 +35,29 @@ faire : accès navigateur local désactivé dans Work et visibilité à choisir.
 
 ## Travail natif en cours : statut vidéo des sprites
 
-Le profil par étape a identifié l’effacement comme principal coût restant.
-Les blocs datés sont maintenant aussi utilisés pour l’effacement et les copies
-de carte : le helper passe de 316..335 à **144..162 images MD en NTSC**, et
+Le calendrier vidéo évite maintenant de parcourir les lignes quand la liste
+native de sprites est vide et que cet intervalle ne peut modifier aucun statut.
+Les drapeaux déjà présents, les coordonnées de collision et le déclenchement
+VINT restent identiques. Les appels qui ne franchissent aucune ligne prennent
+également un chemin direct.
+
+Sur les dix scènes mesurées, le helper composé passe de 144..162 à
+**88..96 images MD en NTSC**, et de 120..136 à **74..80 en PAL**.
+Ce sont des durées d’exécution du helper de diagnostic, pas la cadence du jeu.
+172500 comparaisons complètes sur ordinateur et **345000 sur 68000**
+retrouvent exactement le calendrier précédent. Les relectures des ports SMS
+sur 14000 images par région et les scènes natives restent sans écart.
+[Mesures, limites et preuves](analysis/v319_empty_sprite_clock_report.json).
+
+Le budget source reste dépassé : cette composition n’est pas activée dans
+la ROM distribuée. La reconstruction de production reste identique à la V319.
+Les prochaines réductions concernent les attentes/IRQ, le calendrier avec
+sprites actifs et les motifs. La livraison physique vidéo/audio, les dates IRQ
+indépendantes et le démarrage continu restent à valider.
+
+À l’étape précédente, le profil avait identifié le coût de l’effacement.
+Les blocs datés ajoutés pour l’effacement et les copies
+de carte avaient fait passer le helper de 316..335 à **144..162 images MD en NTSC**, et
 de 265..281 à **120..136 en PAL**. L’effacement seul passe d’environ 165 à
 22..24 images dans ces mesures NTSC.
 [Profil par étape et équivalence vidéo](analysis/v319_map_runs_report.json).

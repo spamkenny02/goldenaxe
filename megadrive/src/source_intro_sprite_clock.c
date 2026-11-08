@@ -15,6 +15,22 @@ u8 source_intro_sprite_clock_advance(SourceIntroSpriteClock *clock,u32 elapsed,c
  if(!clock || !vram || !registers || clock->error) return 0;
  delta=elapsed-clock->elapsed;
  if(delta>clock->period) {clock->error=1;return 0;}
+ if(delta<clock->until_line)
+ {clock->raster+=delta;clock->until_line-=delta;clock->elapsed=elapsed;return 1;}
+ /* Stable VRAM/registers throughout this call. With no cached sprites,no
+  * pending overflow and an immediate SAT terminator,every parse/render is
+  * a no-op. Retain latched flags/collision coordinates and unused cache
+  * entries exactly; only the raster and independently latched VINT advance.
+  * Non-Mode4 processing also leaves sprite state untouched. */
+ if(!(registers[0]&4) || (!(registers[1]&3) && !clock->sprites.count[0] &&
+    !clock->sprites.count[1] && !clock->sprites.pending_overflow &&
+    vram[((u16)registers[5]<<7)&0x3f00]==208))
+ {
+  u32 until=clock->raster<193UL*3420?193UL*3420-clock->raster:clock->period-(clock->raster-193UL*3420);
+  if(delta>=until) clock->vint=0x80;
+  clock->raster=source_video_wrap(clock->raster,delta,clock->period);
+  clock->until_line=3420-source_video_phase(clock->raster);clock->elapsed=elapsed;return 1;
+ }
  line=delta>=clock->until_line?source_video_line(clock->raster):0;
  while(delta>=clock->until_line)
  {

@@ -1,0 +1,649 @@
+{
+  "passed": true,
+  "public_version": 319,
+  "production_rom_changed": false,
+  "production_rebuild_byte_identical": true,
+  "production_rom_sha256": "d3ea2a83ea24ed8a0d3c9857f9fbe70d000a4f73358452c1887f40e78966c56e",
+  "implementation": "When cached counts are both zero,pending overflow zero,and live SAT starts withD0,stable parse/render operations are all no-ops. Advance only raster,line phase and independently latchedVINT,retaining all flags/collision coordinates/unused entries. NonMode4 also preserves sprite state. Calls ending before the next line take a direct increment path. Every other condition retains original line-by-line evaluation.",
+  "full_state_equivalence": {
+    "passed": true,
+    "host_cases": 172500,
+    "results": [
+      {
+        "region": "ntsc",
+        "empty_cases": 172500,
+        "empty_errors": 0,
+        "empty_done": 1,
+        "frame": 118831
+      },
+      {
+        "region": "pal",
+        "empty_cases": 172500,
+        "empty_errors": 0,
+        "empty_done": 1,
+        "frame": 99420
+      }
+    ],
+    "reference_sha256": "dc74c4d7df02e2a7e8705d91bbbdd27e52bb53e6dd55e85a876a2a4fad2ca453",
+    "native_source_sha256": "6fa738e378eba15a1252a2825c63146ae077cb99397b08d89f15b1fad148e9a6",
+    "scope": "All575PAL/NTSC lines,3intraline phases,10cache/flag/mode/SAT states,5delta edges and32bit epoch wrap. Complete calendar/caches/latches compared against frozen prior line-by-line implementation; unsupported-mode return/partial state included."
+  },
+  "source_port_regression": {
+    "passed": true,
+    "frames": 14000,
+    "results": [
+      {
+        "region": "ntsc",
+        "initial_raster": 544770,
+        "cpu_checkpoints": 84758455,
+        "writes": 4238224,
+        "status_reads": 16099,
+        "data_reads": 2808,
+        "read_errors": 0,
+        "rejected": 0,
+        "vram_errors": 0,
+        "protocol_errors": 0,
+        "register_errors": 0,
+        "palette_errors": 0,
+        "errors": [],
+        "psg_sha256": "fe9d8d291bde4452a67f3bb6c9395f6b5dcb173944aa2286fa6d3758942d7799",
+        "captured_port_events": 131958,
+        "capture_overflow": 0,
+        "event_sha256": "032b2648464b0b7ece933ec01f1617e7be0a3c2119997bb967418a90ccd93e76",
+        "capture_final_hash": 1787184675
+      },
+      {
+        "region": "pal",
+        "initial_raster": 452430,
+        "cpu_checkpoints": 101740528,
+        "writes": 4256015,
+        "status_reads": 17608,
+        "data_reads": 2808,
+        "read_errors": 0,
+        "rejected": 0,
+        "vram_errors": 0,
+        "protocol_errors": 0,
+        "register_errors": 0,
+        "palette_errors": 0,
+        "errors": [],
+        "psg_sha256": "3f43db56665636ca212f7fd17b94c0e3e09bea4434923a2183250a5c0922f4f0",
+        "captured_port_events": 135900,
+        "capture_overflow": 0,
+        "event_sha256": "f5870109211f4fe6b0b452123bc68cea7f97a66c5d6a025afa8eae64a78f00e6",
+        "capture_final_hash": 234531631
+      }
+    ],
+    "native_sources": {
+      "source_intro_sprite_status.c": "57ae0af2f524be9156fdecf12c887f6434c003bb216b608318fd6f689ba32bdb",
+      "source_intro_sprite_clock.c": "6fa738e378eba15a1252a2825c63146ae077cb99397b08d89f15b1fad148e9a6",
+      "source_intro_vdp.c": "cca63915adf1d39927b777742ce973e9d9f4ecf7b427af38f3c2be900eb8edb4"
+    },
+    "core_sha256": "caa8e464834dc113e698a16e31a8f4207b137797a37bd5ff96cc82292a445e9d",
+    "source_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+    "scope": "Native-owned zero-initialized VRAM/register/palette/port protocol and native sprite calendar driven only by raw original OUT/IN times and bytes. Reference arrays and expected reads are compared afterward; never copied into the product model.",
+    "limits": [
+      "Original Z80 produces the raw IO here; native foreground/IRQ writers still need binding to the same port model.",
+      "No-input intro/title, SMS2 Mode4/192,no overscan. No physical MD/PCM/throughput proof."
+    ],
+    "oracle_ram_writes": 0,
+    "sram_imports": 0
+  },
+  "compiled_port_regression": [
+    {
+      "passed": true,
+      "source_region": "ntsc",
+      "source_events": 131958,
+      "source_reads": 1704,
+      "results": [
+        {
+          "region": "ntsc",
+          "port_events_done": 131958,
+          "port_errors": 0,
+          "port_first_failure": 0,
+          "port_reads": 1704,
+          "port_irq_reads": 384,
+          "port_final_hash": 1787184675,
+          "port_done": 1,
+          "port_expected": 0,
+          "port_actual": 0,
+          "port_elapsed": 0,
+          "port_raster": 0,
+          "frame": 2350
+        },
+        {
+          "region": "pal",
+          "port_events_done": 131958,
+          "port_errors": 0,
+          "port_first_failure": 0,
+          "port_reads": 1704,
+          "port_irq_reads": 384,
+          "port_final_hash": 1787184675,
+          "port_done": 1,
+          "port_expected": 0,
+          "port_actual": 0,
+          "port_elapsed": 0,
+          "port_raster": 0,
+          "frame": 1967
+        }
+      ],
+      "rom_sha256": "1e81737675f521ae6530c45b0335baf4498ec60b672f8b98d8e99a1ea46382ff",
+      "scope": "Complete cold first200 source-period raw IO prefix; own16KiB VRAM,registers,palette,buffered reads and command state. All original source-checked read bytes plus final full-state digest agree on68000. Alternating status reads also execute the native IRQ adapter. Diagnostic kernel frames are not game cadence."
+    },
+    {
+      "passed": true,
+      "source_region": "pal",
+      "source_events": 135900,
+      "source_reads": 3224,
+      "results": [
+        {
+          "region": "ntsc",
+          "port_events_done": 135900,
+          "port_errors": 0,
+          "port_first_failure": 0,
+          "port_reads": 3224,
+          "port_irq_reads": 1144,
+          "port_final_hash": 234531631,
+          "port_done": 1,
+          "port_expected": 0,
+          "port_actual": 0,
+          "port_elapsed": 0,
+          "port_raster": 0,
+          "frame": 2435
+        },
+        {
+          "region": "pal",
+          "port_events_done": 135900,
+          "port_errors": 0,
+          "port_first_failure": 0,
+          "port_reads": 3224,
+          "port_irq_reads": 1144,
+          "port_final_hash": 234531631,
+          "port_done": 1,
+          "port_expected": 0,
+          "port_actual": 0,
+          "port_elapsed": 0,
+          "port_raster": 0,
+          "frame": 2038
+        }
+      ],
+      "rom_sha256": "38318b5c65a3ab4e6b4735ccd46b41e8c4ea9fe4b667bff2019452d2828a40ab",
+      "scope": "Complete cold first200 source-period raw IO prefix; own16KiB VRAM,registers,palette,buffered reads and command state. All original source-checked read bytes plus final full-state digest agree on68000. Alternating status reads also execute the native IRQ adapter. Diagnostic kernel frames are not game cadence."
+    }
+  ],
+  "compiled_scene": {
+    "passed": true,
+    "diagnostic_only": true,
+    "source_vector_cases": 10,
+    "source_regions": [
+      "ntsc",
+      "pal"
+    ],
+    "case_start": 0,
+    "ram_bytes": 15081,
+    "fire": false,
+    "actors": "second",
+    "reveal": true,
+    "sequence": true,
+    "transfer": true,
+    "map": "decode",
+    "scene": true,
+    "measure_native_frames": true,
+    "profile_stages": true,
+    "irq_status": true,
+    "results": [
+      {
+        "region": "ntsc",
+        "intro_poll_done": 1,
+        "intro_poll_cases": 10,
+        "intro_poll_errors": 0,
+        "intro_poll_reads": 84520,
+        "intro_poll_first_failure": 0,
+        "frame": 1187,
+        "native_call_frames": [
+          95,
+          89,
+          95,
+          88,
+          96,
+          94,
+          90,
+          93,
+          90,
+          93
+        ],
+        "native_stage_frames": [
+          [
+            24,
+            34,
+            12,
+            2,
+            1,
+            22
+          ],
+          [
+            26,
+            26,
+            10,
+            2,
+            1,
+            24
+          ],
+          [
+            24,
+            35,
+            11,
+            2,
+            1,
+            22
+          ],
+          [
+            26,
+            26,
+            9,
+            2,
+            1,
+            24
+          ],
+          [
+            24,
+            35,
+            11,
+            2,
+            1,
+            23
+          ],
+          [
+            24,
+            34,
+            11,
+            1,
+            1,
+            23
+          ],
+          [
+            27,
+            25,
+            11,
+            2,
+            1,
+            24
+          ],
+          [
+            24,
+            33,
+            12,
+            1,
+            1,
+            22
+          ],
+          [
+            26,
+            25,
+            12,
+            1,
+            1,
+            25
+          ],
+          [
+            24,
+            34,
+            11,
+            1,
+            1,
+            22
+          ]
+        ]
+      },
+      {
+        "region": "pal",
+        "intro_poll_done": 1,
+        "intro_poll_cases": 10,
+        "intro_poll_errors": 0,
+        "intro_poll_reads": 84520,
+        "intro_poll_first_failure": 0,
+        "frame": 993,
+        "native_call_frames": [
+          80,
+          74,
+          80,
+          74,
+          80,
+          79,
+          76,
+          79,
+          75,
+          78
+        ],
+        "native_stage_frames": [
+          [
+            20,
+            29,
+            10,
+            1,
+            1,
+            19
+          ],
+          [
+            22,
+            21,
+            9,
+            1,
+            1,
+            20
+          ],
+          [
+            20,
+            29,
+            10,
+            2,
+            1,
+            18
+          ],
+          [
+            22,
+            21,
+            8,
+            2,
+            1,
+            20
+          ],
+          [
+            20,
+            29,
+            9,
+            2,
+            1,
+            19
+          ],
+          [
+            21,
+            28,
+            9,
+            1,
+            1,
+            19
+          ],
+          [
+            22,
+            22,
+            9,
+            1,
+            1,
+            21
+          ],
+          [
+            21,
+            27,
+            10,
+            1,
+            1,
+            19
+          ],
+          [
+            22,
+            21,
+            10,
+            1,
+            1,
+            20
+          ],
+          [
+            20,
+            28,
+            9,
+            2,
+            0,
+            19
+          ]
+        ]
+      }
+    ],
+    "kernel_sha256": "ffcf0829db7cfbb065d16e3b439726981f920c0d73bd5d7430e07e8822b36853",
+    "scope": "Compiled68000 source semantic helper checked against the selected natural original source vectors on each target region. No physical publication scheduler or PCM claim."
+  },
+  "helper_profile": [
+    {
+      "region": "ntsc",
+      "before": [
+        162,
+        150,
+        162,
+        148,
+        162,
+        152,
+        144,
+        152,
+        144,
+        152
+      ],
+      "after": [
+        95,
+        89,
+        95,
+        88,
+        96,
+        94,
+        90,
+        93,
+        90,
+        93
+      ],
+      "stage_frames": [
+        [
+          24,
+          34,
+          12,
+          2,
+          1,
+          22
+        ],
+        [
+          26,
+          26,
+          10,
+          2,
+          1,
+          24
+        ],
+        [
+          24,
+          35,
+          11,
+          2,
+          1,
+          22
+        ],
+        [
+          26,
+          26,
+          9,
+          2,
+          1,
+          24
+        ],
+        [
+          24,
+          35,
+          11,
+          2,
+          1,
+          23
+        ],
+        [
+          24,
+          34,
+          11,
+          1,
+          1,
+          23
+        ],
+        [
+          27,
+          25,
+          11,
+          2,
+          1,
+          24
+        ],
+        [
+          24,
+          33,
+          12,
+          1,
+          1,
+          22
+        ],
+        [
+          26,
+          25,
+          12,
+          1,
+          1,
+          25
+        ],
+        [
+          24,
+          34,
+          11,
+          1,
+          1,
+          22
+        ]
+      ],
+      "mean_reduction_percent": 39.59424083769634
+    },
+    {
+      "region": "pal",
+      "before": [
+        136,
+        125,
+        136,
+        124,
+        136,
+        127,
+        121,
+        128,
+        120,
+        127
+      ],
+      "after": [
+        80,
+        74,
+        80,
+        74,
+        80,
+        79,
+        76,
+        79,
+        75,
+        78
+      ],
+      "stage_frames": [
+        [
+          20,
+          29,
+          10,
+          1,
+          1,
+          19
+        ],
+        [
+          22,
+          21,
+          9,
+          1,
+          1,
+          20
+        ],
+        [
+          20,
+          29,
+          10,
+          2,
+          1,
+          18
+        ],
+        [
+          22,
+          21,
+          8,
+          2,
+          1,
+          20
+        ],
+        [
+          20,
+          29,
+          9,
+          2,
+          1,
+          19
+        ],
+        [
+          21,
+          28,
+          9,
+          1,
+          1,
+          19
+        ],
+        [
+          22,
+          22,
+          9,
+          1,
+          1,
+          21
+        ],
+        [
+          21,
+          27,
+          10,
+          1,
+          1,
+          19
+        ],
+        [
+          22,
+          21,
+          10,
+          1,
+          1,
+          20
+        ],
+        [
+          20,
+          28,
+          9,
+          2,
+          0,
+          19
+        ]
+      ],
+      "mean_reduction_percent": 39.453125
+    }
+  ],
+  "compiled_differential_cases": 345000,
+  "budget_gate_passed": false,
+  "limits": [
+    "88..96MDframes NTSC and74..80PAL across these helper executions remain above original scene budget. Do not activate in publicROM.",
+    "Helper profile excludes fixture setup/final checks/per-OUT expected checks; small IRQ diagnostic checks remain. Physical MD video/PSG publication excluded.",
+    "Complete uninterrupted coldboot and independently captured native IRQ port dates remain open. No PCM/hardware/global fidelity certificate."
+  ],
+  "removed_verified_reference_duplicates": [
+    {
+      "path": "C:\\Users\\UniKennY\\Documents\\Codex\\2026-10-07\\hel\\work\\genesis-plus-gx\\genesis_plus_gx_v319_port_mirror_libretro_v319_port_mirror03_pal.dll",
+      "bytes": 9287177,
+      "sha256": "caa8e464834dc113e698a16e31a8f4207b137797a37bd5ff96cc82292a445e9d"
+    },
+    {
+      "path": "C:\\Users\\UniKennY\\Documents\\Codex\\2026-10-07\\hel\\work\\genesis-plus-gx\\genesis_plus_gx_v319_port_mirror_libretro_v319_port_mirror04_pal.dll",
+      "bytes": 9287177,
+      "sha256": "caa8e464834dc113e698a16e31a8f4207b137797a37bd5ff96cc82292a445e9d"
+    }
+  ],
+  "next_action": "Profile active sprite/calendar and real IRQ/wait paths now dominating preparation/map waits;batch only intervals with no observable change. Recheck CPU gate before physical video/audio activation. FullV319 video remains local;YouTube access/visibility awaiting user.",
+  "oracle_ram_writes": 0,
+  "sram_imports": 0,
+  "archive_manifest": "analysis/v319-empty-sprite-clock/manifest.json"
+}
