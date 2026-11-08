@@ -1,0 +1,1045 @@
+{
+  "audit_passed": true,
+  "audio_timing_equivalence_passed": false,
+  "version": 319,
+  "rom_sha256": "d3ea2a83ea24ed8a0d3c9857f9fbe70d000a4f73358452c1887f40e78966c56e",
+  "source_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+  "observer_core_sha256": "ed388762882b2be3603deda4acef42351d7836039400e525e5484d939a212d57",
+  "cases": [
+    {
+      "region": "ntsc",
+      "frames": 14000,
+      "exact_exposed_state_frames": 14000,
+      "exposed_state_sha256": "fe9d8d291bde4452a67f3bb6c9395f6b5dcb173944aa2286fa6d3758942d7799",
+      "unique_states": 1014,
+      "non_fully_muted_state_frames": 13739,
+      "first_nonmuted_source_frame": 23,
+      "exposed_volume_values": [
+        0,
+        111,
+        140,
+        176,
+        222,
+        280,
+        352,
+        443,
+        558,
+        703,
+        885,
+        1114,
+        1403,
+        1766
+      ],
+      "startup_byte_order_differences": [
+        {
+          "frame": 9,
+          "md": [],
+          "sms": [
+            [
+              122640,
+              128
+            ],
+            [
+              122955,
+              0
+            ],
+            [
+              123270,
+              160
+            ],
+            [
+              123585,
+              0
+            ],
+            [
+              123900,
+              192
+            ],
+            [
+              124215,
+              0
+            ],
+            [
+              124530,
+              159
+            ],
+            [
+              124845,
+              191
+            ],
+            [
+              125160,
+              223
+            ],
+            [
+              125475,
+              255
+            ]
+          ]
+        },
+        {
+          "frame": 12,
+          "md": [
+            [
+              305832,
+              128
+            ],
+            [
+              305916,
+              0
+            ],
+            [
+              306000,
+              159
+            ],
+            [
+              306098,
+              160
+            ],
+            [
+              306182,
+              0
+            ],
+            [
+              306266,
+              191
+            ],
+            [
+              306350,
+              192
+            ],
+            [
+              306434,
+              0
+            ],
+            [
+              306518,
+              223
+            ],
+            [
+              306602,
+              224
+            ],
+            [
+              306686,
+              0
+            ],
+            [
+              306770,
+              255
+            ]
+          ],
+          "sms": []
+        },
+        {
+          "frame": 17,
+          "md": [
+            [
+              460346,
+              128
+            ],
+            [
+              460430,
+              0
+            ],
+            [
+              460514,
+              159
+            ],
+            [
+              460598,
+              160
+            ],
+            [
+              460682,
+              0
+            ],
+            [
+              460766,
+              191
+            ],
+            [
+              460850,
+              192
+            ],
+            [
+              460934,
+              0
+            ],
+            [
+              461018,
+              223
+            ],
+            [
+              461102,
+              224
+            ],
+            [
+              461200,
+              0
+            ],
+            [
+              461284,
+              255
+            ]
+          ],
+          "sms": []
+        },
+        {
+          "frame": 20,
+          "md": [
+            [
+              723944,
+              128
+            ],
+            [
+              726212,
+              0
+            ],
+            [
+              728494,
+              160
+            ],
+            [
+              730762,
+              0
+            ],
+            [
+              733044,
+              192
+            ],
+            [
+              735312,
+              0
+            ],
+            [
+              737594,
+              159
+            ],
+            [
+              739862,
+              191
+            ],
+            [
+              742144,
+              223
+            ],
+            [
+              744412,
+              255
+            ]
+          ],
+          "sms": []
+        }
+      ],
+      "startup_additional_md_writes": 24,
+      "bytes_and_order_exact_from_first_nonmuted_source_frame": true,
+      "equal_musical_writes_per_system": 31546,
+      "within_frame_multiwrite_packets": 9468,
+      "equal_spacing_packets": 0,
+      "consecutive_write_intervals": 20028,
+      "exact_intervals": 0,
+      "spacing_master_clock_ticks": {
+        "md": {
+          "count": 20028,
+          "minimum": 84,
+          "maximum": 72688,
+          "median": 14980.0,
+          "most_common": [
+            [
+              14980,
+              5779
+            ],
+            [
+              28420,
+              3193
+            ],
+            [
+              27468,
+              1793
+            ],
+            [
+              13720,
+              1725
+            ],
+            [
+              280,
+              1700
+            ],
+            [
+              294,
+              1696
+            ],
+            [
+              14672,
+              1436
+            ],
+            [
+              14952,
+              513
+            ],
+            [
+              37422,
+              397
+            ],
+            [
+              45766,
+              222
+            ],
+            [
+              30800,
+              160
+            ],
+            [
+              38570,
+              147
+            ]
+          ]
+        },
+        "sms": {
+          "count": 20028,
+          "minimum": 315,
+          "maximum": 46440,
+          "median": 9405.0,
+          "most_common": [
+            [
+              9405,
+              6292
+            ],
+            [
+              15660,
+              3307
+            ],
+            [
+              15885,
+              1848
+            ],
+            [
+              7950,
+              1726
+            ],
+            [
+              630,
+              1700
+            ],
+            [
+              6540,
+              1696
+            ],
+            [
+              7725,
+              1456
+            ],
+            [
+              13605,
+              397
+            ],
+            [
+              17880,
+              222
+            ],
+            [
+              15075,
+              161
+            ],
+            [
+              9285,
+              160
+            ],
+            [
+              18675,
+              145
+            ]
+          ]
+        }
+      },
+      "spacing_difference_examples": [
+        {
+          "frame": 23,
+          "bytes": [
+            128,
+            0,
+            160,
+            0,
+            192,
+            0,
+            159,
+            191,
+            223,
+            255,
+            142,
+            11,
+            147,
+            174,
+            15,
+            180,
+            192,
+            20,
+            211,
+            229
+          ],
+          "md_gaps": [
+            84,
+            98,
+            84,
+            84,
+            84,
+            84,
+            84,
+            84,
+            84,
+            48818,
+            280,
+            294,
+            53004,
+            294,
+            280,
+            53004,
+            294,
+            280,
+            24822
+          ],
+          "sms_gaps": [
+            315,
+            315,
+            315,
+            315,
+            315,
+            315,
+            315,
+            315,
+            315,
+            46440,
+            630,
+            6540,
+            21285,
+            630,
+            6540,
+            21285,
+            630,
+            6540,
+            6525
+          ]
+        },
+        {
+          "frame": 24,
+          "bytes": [
+            147,
+            180,
+            211,
+            243
+          ],
+          "md_gaps": [
+            14980,
+            14980,
+            13720
+          ],
+          "sms_gaps": [
+            9405,
+            9405,
+            7950
+          ]
+        },
+        {
+          "frame": 26,
+          "bytes": [
+            147,
+            180,
+            211,
+            244
+          ],
+          "md_gaps": [
+            14980,
+            14980,
+            13720
+          ],
+          "sms_gaps": [
+            9405,
+            9405,
+            7950
+          ]
+        },
+        {
+          "frame": 27,
+          "bytes": [
+            148,
+            181,
+            212,
+            245
+          ],
+          "md_gaps": [
+            14980,
+            14980,
+            13720
+          ],
+          "sms_gaps": [
+            9405,
+            9405,
+            7950
+          ]
+        },
+        {
+          "frame": 28,
+          "bytes": [
+            148,
+            181,
+            212,
+            247
+          ],
+          "md_gaps": [
+            14980,
+            14980,
+            13720
+          ],
+          "sms_gaps": [
+            9405,
+            9405,
+            7950
+          ]
+        },
+        {
+          "frame": 29,
+          "bytes": [
+            149,
+            182,
+            213,
+            248
+          ],
+          "md_gaps": [
+            14980,
+            14980,
+            13720
+          ],
+          "sms_gaps": [
+            9405,
+            9405,
+            7950
+          ]
+        }
+      ]
+    },
+    {
+      "region": "pal",
+      "frames": 14000,
+      "exact_exposed_state_frames": 14000,
+      "exposed_state_sha256": "3f43db56665636ca212f7fd17b94c0e3e09bea4434923a2183250a5c0922f4f0",
+      "unique_states": 989,
+      "non_fully_muted_state_frames": 13480,
+      "first_nonmuted_source_frame": 20,
+      "exposed_volume_values": [
+        0,
+        111,
+        140,
+        176,
+        222,
+        280,
+        352,
+        443,
+        558,
+        703,
+        885,
+        1114,
+        1403,
+        1766
+      ],
+      "startup_byte_order_differences": [
+        {
+          "frame": 8,
+          "md": [],
+          "sms": [
+            [
+              495420,
+              128
+            ],
+            [
+              495735,
+              0
+            ],
+            [
+              496050,
+              160
+            ],
+            [
+              496365,
+              0
+            ],
+            [
+              496680,
+              192
+            ],
+            [
+              496995,
+              0
+            ],
+            [
+              497310,
+              159
+            ],
+            [
+              497625,
+              191
+            ],
+            [
+              497940,
+              223
+            ],
+            [
+              498255,
+              255
+            ]
+          ]
+        },
+        {
+          "frame": 10,
+          "md": [
+            [
+              610279,
+              128
+            ],
+            [
+              610363,
+              0
+            ],
+            [
+              610447,
+              159
+            ],
+            [
+              610545,
+              160
+            ],
+            [
+              610629,
+              0
+            ],
+            [
+              610713,
+              191
+            ],
+            [
+              610797,
+              192
+            ],
+            [
+              610881,
+              0
+            ],
+            [
+              610965,
+              223
+            ],
+            [
+              611049,
+              224
+            ],
+            [
+              611133,
+              0
+            ],
+            [
+              611217,
+              255
+            ]
+          ],
+          "sms": []
+        },
+        {
+          "frame": 15,
+          "md": [
+            [
+              460162,
+              128
+            ],
+            [
+              460246,
+              0
+            ],
+            [
+              460330,
+              159
+            ],
+            [
+              460414,
+              160
+            ],
+            [
+              460498,
+              0
+            ],
+            [
+              460582,
+              191
+            ],
+            [
+              460666,
+              192
+            ],
+            [
+              460750,
+              0
+            ],
+            [
+              460834,
+              223
+            ],
+            [
+              460918,
+              224
+            ],
+            [
+              461016,
+              0
+            ],
+            [
+              461100,
+              255
+            ]
+          ],
+          "sms": []
+        },
+        {
+          "frame": 18,
+          "md": [
+            [
+              200486,
+              128
+            ],
+            [
+              202754,
+              0
+            ],
+            [
+              205036,
+              160
+            ],
+            [
+              207304,
+              0
+            ],
+            [
+              209586,
+              192
+            ],
+            [
+              211854,
+              0
+            ],
+            [
+              214136,
+              159
+            ],
+            [
+              216404,
+              191
+            ],
+            [
+              218686,
+              223
+            ],
+            [
+              220954,
+              255
+            ]
+          ],
+          "sms": []
+        }
+      ],
+      "startup_additional_md_writes": 24,
+      "bytes_and_order_exact_from_first_nonmuted_source_frame": true,
+      "equal_musical_writes_per_system": 36915,
+      "within_frame_multiwrite_packets": 11150,
+      "equal_spacing_packets": 0,
+      "consecutive_write_intervals": 23371,
+      "exact_intervals": 0,
+      "spacing_master_clock_ticks": {
+        "md": {
+          "count": 23371,
+          "minimum": 84,
+          "maximum": 72688,
+          "median": 14980,
+          "most_common": [
+            [
+              14980,
+              6769
+            ],
+            [
+              28420,
+              3890
+            ],
+            [
+              27468,
+              2230
+            ],
+            [
+              280,
+              1987
+            ],
+            [
+              294,
+              1983
+            ],
+            [
+              13720,
+              1924
+            ],
+            [
+              14672,
+              1560
+            ],
+            [
+              14952,
+              511
+            ],
+            [
+              37422,
+              482
+            ],
+            [
+              45766,
+              246
+            ],
+            [
+              30800,
+              199
+            ],
+            [
+              47558,
+              177
+            ]
+          ]
+        },
+        "sms": {
+          "count": 23371,
+          "minimum": 315,
+          "maximum": 45570,
+          "median": 9405,
+          "most_common": [
+            [
+              9405,
+              7280
+            ],
+            [
+              15660,
+              3975
+            ],
+            [
+              15885,
+              2234
+            ],
+            [
+              630,
+              1987
+            ],
+            [
+              6540,
+              1983
+            ],
+            [
+              7950,
+              1924
+            ],
+            [
+              7725,
+              1718
+            ],
+            [
+              13605,
+              482
+            ],
+            [
+              17880,
+              246
+            ],
+            [
+              9285,
+              199
+            ],
+            [
+              15075,
+              193
+            ],
+            [
+              18675,
+              177
+            ]
+          ]
+        }
+      },
+      "spacing_difference_examples": [
+        {
+          "frame": 20,
+          "bytes": [
+            128,
+            0,
+            160,
+            0,
+            192,
+            0,
+            159,
+            191,
+            223,
+            255,
+            142,
+            11,
+            147,
+            174,
+            15,
+            180,
+            192,
+            20,
+            211,
+            229
+          ],
+          "md_gaps": [
+            84,
+            84,
+            84,
+            84,
+            84,
+            84,
+            84,
+            98,
+            84,
+            48258,
+            280,
+            294,
+            53004,
+            294,
+            280,
+            53004,
+            294,
+            280,
+            24822
+          ],
+          "sms_gaps": [
+            315,
+            315,
+            315,
+            315,
+            315,
+            315,
+            315,
+            315,
+            315,
+            45570,
+            630,
+            6540,
+            21285,
+            630,
+            6540,
+            21285,
+            630,
+            6540,
+            6525
+          ]
+        },
+        {
+          "frame": 21,
+          "bytes": [
+            147,
+            180,
+            211,
+            243
+          ],
+          "md_gaps": [
+            14980,
+            14980,
+            13720
+          ],
+          "sms_gaps": [
+            9405,
+            9405,
+            7950
+          ]
+        },
+        {
+          "frame": 22,
+          "bytes": [
+            147,
+            180,
+            211,
+            244
+          ],
+          "md_gaps": [
+            14980,
+            14980,
+            13720
+          ],
+          "sms_gaps": [
+            9405,
+            9405,
+            7950
+          ]
+        },
+        {
+          "frame": 23,
+          "bytes": [
+            148,
+            181,
+            212,
+            245
+          ],
+          "md_gaps": [
+            14980,
+            14980,
+            13720
+          ],
+          "sms_gaps": [
+            9405,
+            9405,
+            7950
+          ]
+        },
+        {
+          "frame": 24,
+          "bytes": [
+            148,
+            181,
+            212,
+            247
+          ],
+          "md_gaps": [
+            14980,
+            14980,
+            13720
+          ],
+          "sms_gaps": [
+            9405,
+            9405,
+            7950
+          ]
+        },
+        {
+          "frame": 25,
+          "bytes": [
+            149,
+            182,
+            213,
+            248
+          ],
+          "md_gaps": [
+            14980,
+            14980,
+            13720
+          ],
+          "sms_gaps": [
+            9405,
+            9405,
+            7950
+          ]
+        }
+      ]
+    }
+  ],
+  "frames_compared": 28000,
+  "ram_writes": 0,
+  "sram_imports": 0,
+  "metadata_erratum": {
+    "supersedes": "analysis/sms_psg_v0319_report.json",
+    "unchanged": "Exact equality of all eight exposed states at every sampled frame remains proved.",
+    "corrected": "Odd slots are decoded volume amplitudes, not raw attenuation nibbles. Zero means mute; the old <15 activity count and raw-register label were incorrect. Original frozen evidence retained."
+  },
+  "timing_scope": "Consecutive clock differences within the same frame cancel cross-platform clock origins. No inter-frame interval or absolute lateness claim. All startup discrepancies retained. No PCM equality or whole-game audio certification.",
+  "next_action": "Native streaming emits successful channel lists in bursts. Preserve per-write source timestamps and establish actual delivery deadlines before changing production audio scheduling.",
+  "archive_manifest": "analysis/v319-psg-write-spacing/manifest.json"
+}

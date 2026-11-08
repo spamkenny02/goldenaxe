@@ -6,29 +6,32 @@ le README et les rapports cités.
 
 ## Suivi courant — V319, 8 novembre 2026
 
-Dernière preuve : PSG du démarrage maintenant comparé DIRECTEMENT à laSMS,
-pas seulement à un ancien binaireMD. `compare_v319_psg_to_sms.py` a produit
-6500puis14000frames par région. Les huit registres bruts sont exactement
-égaux sur chacune des28000frames de la grande comparaison, aucun décalage,
-aucune normalisation, aucune écritureRAM/SRAM. Préfixes6500 des deux runs
-égaux. Flux non triviaux :1014étatsNTSC/989PAL, chaque registre varie,
-9787/9896frames non totalement muettes. ROMs d'entrée distinctes et leurs
-empreintes, compteframes, options de région et traces sans entrée vérifiés.
-Rapport `analysis/sms_psg_v0319_report.json`, archive
-`analysis/v319-sms-psg`, reçu copié enversions/V319 et indexé. README sépare
-maintenant démarragevidéo et audio. Cela ne couvre ni instants d'écriture
-à l'intérieur de laframe, ni latched-register/LFSR/PCM, ni sons interactifs
-hors de ces boucles. Les contrôles `compare_boot_audio_state.py` antérieurs
-étaient seulement une équivalence MD/MD ; ne pas les citer comme référenceSMS.
-
-Conséquence pour l'intro : ne pas décaler globalement la musique afin de
-réparer une révélation graphique. Les états PSG à fin de frame sont déjà
-exacts dans les deux régions pendant14000frames ; poursuivre la phase de
-publication vidéo/instructions, ou instrumenter l'audio intraframe séparément.
-Aucun nouveau changement de ROM/source de production. Nettoyage du nouveau
-relevé après archivage/relecture :44références,11805952octets générés
-supprimés,11719013octets nets libérés. Les deux commandes PSG sont terminales0.
-Il ne reste aucun ancien job à attendre ; ne pas relancer des sessions mortes.
+Dernière preuve : `analysis/sms_psg_writes_v0319_report.json`, archive
+`analysis/v319-psg-write-spacing`. Observateur séparé avant décodage PSG,
+aucune modification des cycles/états émulés ; ses 28000 états de fin de frame
+reproduisent exactement ceux du précédent cœur. Aucun overflow. Les huit
+états exposés SMS/MD restent égaux ; les volumes sont des amplitudes, pas
+des nibbles d’atténuation. Erratum : ancien libellé « registres bruts » et
+ancien comptage <15 incorrects ; le rapport historique est immuable.
+Comptage corrigé :13739 frames actives NTSC,13480 PAL ; première23/20.
+Quatre frames d’initialisation diffèrent dans chaque région, toutes avant
+le premier état actif. Ensuite31546 écritures musicales NTSC et36915 PAL
+par système : octets, nombre et ordre identiques chaque frame.
+En revanche aucun des20028/23371 intervalles entre écritures consécutives
+dans une même frame n’est exact. Médiane14980 ticks MD contre9405 SMS.
+Les origines absolues ne sont pas alignées : ne pas appeler leur delta
+un retard physique. Les intervalles dans la même frame annulent l’origine.
+Ne pas retarder globalement la musique pour corriger une révélation vidéo.
+Le reader natif calcule puis émet des listes par canal ; les intervalles
+intercanaux sont souvent trop longs, ceux intraliste trop courts. Ajouter
+seulement des attentes ne résoudra pas les deux. Étudier production anticipée
+et livraison datée avec budget réel ; les APIs fast_timed existent mais
+leur surcoût et workspace (~2560 octets) interdisent un remplacement aveugle
+du workspace actuel scratch+D00..F05. Aucune ROM de production modifiée.
+Scripts constructeurs et captures compressées archivés ; DLL diagnostic
+locale sous work/genesis-plus-gx, hors dépôt. Job94890 terminal0.
+Audit/archivage terminal0,7376066 octets générés supprimés après relecture,
+6738531 nets libérés. Aucun ancien job à attendre.
 
 ÉTAT PRIORITAIRE : PARCOURS COMPLETS NTSC ET PAL VÉRIFIÉS SUR V319.
 Palais PAL terminé0 :22points froids depuis le premier géant, gardien7C/60PV

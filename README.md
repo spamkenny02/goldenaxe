@@ -28,7 +28,7 @@ cette routine ; la cadence de jeu visée reste celle de la Master System.
 | Campagnes NTSC/PAL | Nouvelle partie → neuf cristaux → ballon → palais → Hache d’or → Death Adder → générique complet → retour à l’intro | Fidélité globale SMS et console réelle |
 | Sauvegarde NTSC/PAL | Vraies écritures SRAM à neuf cristaux, puis Continue et déplacement sur ces mêmes SRAM | Autres slots/refus et console réelle |
 | Démarrage vidéo | Deux boucles de 14000 images par région identiques à V318 après normalisation | Écarts SMS résiduels de révélations/fondus |
-| Audio du démarrage | Huit registres PSG bruts identiques à la SMS sur 14000 frames par région, sans décalage | Instants d’écriture dans la frame, PCM et sons interactifs du reste du jeu |
+| Audio du démarrage | Huit états PSG exposés identiques sur 14000 frames par région ; octets et ordre des écritures identiques dès le premier état sonore actif | Espacement des écritures différent dans la frame ; PCM et sons interactifs du reste du jeu |
 | Inventaire | Six retours normaux : extérieur et deux maisons, PAL/NTSC, décor statique restauré | Phase des quatre motifs animés des maisons séparée de l’égalité statique |
 
 Les parcours emploient une protection de test uniquement durant les approches,
@@ -44,7 +44,7 @@ jusqu’au retour à l’intro à 382208 images, avec RAM entière et image fina
 identiques. Les vrais dons et l’achat d’une clé à 60 pièces sont conservés
 dans les preuves ; les huit satellites du cinquième boss sont aussi vérifiés.
 
-- [PSG du démarrage face à la SMS](analysis/sms_psg_v0319_report.json) — 28000 frames comparées au total, sans écriture RAM ni import SRAM.
+- [PSG et espacement des écritures face à la SMS](analysis/sms_psg_writes_v0319_report.json) — 28000 frames ; 31546 écritures musicales NTSC et 36915 PAL identiques par système. Les écarts d’initialisation et de timing restent documentés.
 - [Rapport initial V319](analysis/optimization_v0319_report.json)
 - [Campagne NTSC et fin](analysis/cold_palace_final_c0046_report.json) · [Rejeu sur le binaire publié](analysis/c0047_palace_final_auto_report.json)
 - [Campagne PAL, Hache d’or et générique complet](analysis/palc0046_palace_ending_report.json) · [Rejeu sur le binaire publié](analysis/c0047_pal_ending_report.json)
@@ -63,6 +63,17 @@ dans les preuves ; les huit satellites du cinquième boss sont aussi vérifiés.
 - [Quatrième cristal PAL](analysis/palc0046_d4_report.json) · [Rejeu publié](analysis/c0047_pal_d4_report.json)
 - [Démarrage](analysis/c0047_boot_report.json) · [Retours d’inventaire](analysis/c0047_inventory_report.json)
 - [Écritures et poses du héros](versions/candidates/c0046-9e747d38/README.md)
+
+
+Le relevé PSG initial appelait à tort les valeurs exposées « registres bruts » :
+les volumes sont déjà décodés en amplitudes par l’émulateur. L’égalité des
+huit états reste exacte ; le comptage corrigé donne 13739 frames actives
+en NTSC et 13480 en PAL. Le nouveau relevé observe aussi les octets avant
+décodage : quatre frames d’initialisation diffèrent par région, avant le
+premier état actif. Ensuite les octets et leur ordre sont exacts, mais
+l’espacement entre écritures diffère. Cette mesure confirme un travail
+de synchronisation audio restant ; elle ne certifie pas les formes d’onde.
+Le rapport historique est conservé, avec cet erratum explicite.
 
 ## Sources et compilation
 

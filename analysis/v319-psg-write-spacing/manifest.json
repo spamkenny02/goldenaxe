@@ -1,0 +1,1324 @@
+{
+  "audit_passed": true,
+  "audio_timing_equivalence_passed": false,
+  "version": 319,
+  "rom_sha256": "d3ea2a83ea24ed8a0d3c9857f9fbe70d000a4f73358452c1887f40e78966c56e",
+  "source_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+  "observer_core_sha256": "ed388762882b2be3603deda4acef42351d7836039400e525e5484d939a212d57",
+  "cases": [
+    {
+      "region": "ntsc",
+      "frames": 14000,
+      "exact_exposed_state_frames": 14000,
+      "exposed_state_sha256": "fe9d8d291bde4452a67f3bb6c9395f6b5dcb173944aa2286fa6d3758942d7799",
+      "unique_states": 1014,
+      "non_fully_muted_state_frames": 13739,
+      "first_nonmuted_source_frame": 23,
+      "exposed_volume_values": [
+        0,
+        111,
+        140,
+        176,
+        222,
+        280,
+        352,
+        443,
+        558,
+        703,
+        885,
+        1114,
+        1403,
+        1766
+      ],
+      "startup_byte_order_differences": [
+        {
+          "frame": 9,
+          "md": [],
+          "sms": [
+            [
+              122640,
+              128
+            ],
+            [
+              122955,
+              0
+            ],
+            [
+              123270,
+              160
+            ],
+            [
+              123585,
+              0
+            ],
+            [
+              123900,
+              192
+            ],
+            [
+              124215,
+              0
+            ],
+            [
+              124530,
+              159
+            ],
+            [
+              124845,
+              191
+            ],
+            [
+              125160,
+              223
+            ],
+            [
+              125475,
+              255
+            ]
+          ]
+        },
+        {
+          "frame": 12,
+          "md": [
+            [
+              305832,
+              128
+            ],
+            [
+              305916,
+              0
+            ],
+            [
+              306000,
+              159
+            ],
+            [
+              306098,
+              160
+            ],
+            [
+              306182,
+              0
+            ],
+            [
+              306266,
+              191
+            ],
+            [
+              306350,
+              192
+            ],
+            [
+              306434,
+              0
+            ],
+            [
+              306518,
+              223
+            ],
+            [
+              306602,
+              224
+            ],
+            [
+              306686,
+              0
+            ],
+            [
+              306770,
+              255
+            ]
+          ],
+          "sms": []
+        },
+        {
+          "frame": 17,
+          "md": [
+            [
+              460346,
+              128
+            ],
+            [
+              460430,
+              0
+            ],
+            [
+              460514,
+              159
+            ],
+            [
+              460598,
+              160
+            ],
+            [
+              460682,
+              0
+            ],
+            [
+              460766,
+              191
+            ],
+            [
+              460850,
+              192
+            ],
+            [
+              460934,
+              0
+            ],
+            [
+              461018,
+              223
+            ],
+            [
+              461102,
+              224
+            ],
+            [
+              461200,
+              0
+            ],
+            [
+              461284,
+              255
+            ]
+          ],
+          "sms": []
+        },
+        {
+          "frame": 20,
+          "md": [
+            [
+              723944,
+              128
+            ],
+            [
+              726212,
+              0
+            ],
+            [
+              728494,
+              160
+            ],
+            [
+              730762,
+              0
+            ],
+            [
+              733044,
+              192
+            ],
+            [
+              735312,
+              0
+            ],
+            [
+              737594,
+              159
+            ],
+            [
+              739862,
+              191
+            ],
+            [
+              742144,
+              223
+            ],
+            [
+              744412,
+              255
+            ]
+          ],
+          "sms": []
+        }
+      ],
+      "startup_additional_md_writes": 24,
+      "bytes_and_order_exact_from_first_nonmuted_source_frame": true,
+      "equal_musical_writes_per_system": 31546,
+      "within_frame_multiwrite_packets": 9468,
+      "equal_spacing_packets": 0,
+      "consecutive_write_intervals": 20028,
+      "exact_intervals": 0,
+      "spacing_master_clock_ticks": {
+        "md": {
+          "count": 20028,
+          "minimum": 84,
+          "maximum": 72688,
+          "median": 14980.0,
+          "most_common": [
+            [
+              14980,
+              5779
+            ],
+            [
+              28420,
+              3193
+            ],
+            [
+              27468,
+              1793
+            ],
+            [
+              13720,
+              1725
+            ],
+            [
+              280,
+              1700
+            ],
+            [
+              294,
+              1696
+            ],
+            [
+              14672,
+              1436
+            ],
+            [
+              14952,
+              513
+            ],
+            [
+              37422,
+              397
+            ],
+            [
+              45766,
+              222
+            ],
+            [
+              30800,
+              160
+            ],
+            [
+              38570,
+              147
+            ]
+          ]
+        },
+        "sms": {
+          "count": 20028,
+          "minimum": 315,
+          "maximum": 46440,
+          "median": 9405.0,
+          "most_common": [
+            [
+              9405,
+              6292
+            ],
+            [
+              15660,
+              3307
+            ],
+            [
+              15885,
+              1848
+            ],
+            [
+              7950,
+              1726
+            ],
+            [
+              630,
+              1700
+            ],
+            [
+              6540,
+              1696
+            ],
+            [
+              7725,
+              1456
+            ],
+            [
+              13605,
+              397
+            ],
+            [
+              17880,
+              222
+            ],
+            [
+              15075,
+              161
+            ],
+            [
+              9285,
+              160
+            ],
+            [
+              18675,
+              145
+            ]
+          ]
+        }
+      },
+      "spacing_difference_examples": [
+        {
+          "frame": 23,
+          "bytes": [
+            128,
+            0,
+            160,
+            0,
+            192,
+            0,
+            159,
+            191,
+            223,
+            255,
+            142,
+            11,
+            147,
+            174,
+            15,
+            180,
+            192,
+            20,
+            211,
+            229
+          ],
+          "md_gaps": [
+            84,
+            98,
+            84,
+            84,
+            84,
+            84,
+            84,
+            84,
+            84,
+            48818,
+            280,
+            294,
+            53004,
+            294,
+            280,
+            53004,
+            294,
+            280,
+            24822
+          ],
+          "sms_gaps": [
+            315,
+            315,
+            315,
+            315,
+            315,
+            315,
+            315,
+            315,
+            315,
+            46440,
+            630,
+            6540,
+            21285,
+            630,
+            6540,
+            21285,
+            630,
+            6540,
+            6525
+          ]
+        },
+        {
+          "frame": 24,
+          "bytes": [
+            147,
+            180,
+            211,
+            243
+          ],
+          "md_gaps": [
+            14980,
+            14980,
+            13720
+          ],
+          "sms_gaps": [
+            9405,
+            9405,
+            7950
+          ]
+        },
+        {
+          "frame": 26,
+          "bytes": [
+            147,
+            180,
+            211,
+            244
+          ],
+          "md_gaps": [
+            14980,
+            14980,
+            13720
+          ],
+          "sms_gaps": [
+            9405,
+            9405,
+            7950
+          ]
+        },
+        {
+          "frame": 27,
+          "bytes": [
+            148,
+            181,
+            212,
+            245
+          ],
+          "md_gaps": [
+            14980,
+            14980,
+            13720
+          ],
+          "sms_gaps": [
+            9405,
+            9405,
+            7950
+          ]
+        },
+        {
+          "frame": 28,
+          "bytes": [
+            148,
+            181,
+            212,
+            247
+          ],
+          "md_gaps": [
+            14980,
+            14980,
+            13720
+          ],
+          "sms_gaps": [
+            9405,
+            9405,
+            7950
+          ]
+        },
+        {
+          "frame": 29,
+          "bytes": [
+            149,
+            182,
+            213,
+            248
+          ],
+          "md_gaps": [
+            14980,
+            14980,
+            13720
+          ],
+          "sms_gaps": [
+            9405,
+            9405,
+            7950
+          ]
+        }
+      ]
+    },
+    {
+      "region": "pal",
+      "frames": 14000,
+      "exact_exposed_state_frames": 14000,
+      "exposed_state_sha256": "3f43db56665636ca212f7fd17b94c0e3e09bea4434923a2183250a5c0922f4f0",
+      "unique_states": 989,
+      "non_fully_muted_state_frames": 13480,
+      "first_nonmuted_source_frame": 20,
+      "exposed_volume_values": [
+        0,
+        111,
+        140,
+        176,
+        222,
+        280,
+        352,
+        443,
+        558,
+        703,
+        885,
+        1114,
+        1403,
+        1766
+      ],
+      "startup_byte_order_differences": [
+        {
+          "frame": 8,
+          "md": [],
+          "sms": [
+            [
+              495420,
+              128
+            ],
+            [
+              495735,
+              0
+            ],
+            [
+              496050,
+              160
+            ],
+            [
+              496365,
+              0
+            ],
+            [
+              496680,
+              192
+            ],
+            [
+              496995,
+              0
+            ],
+            [
+              497310,
+              159
+            ],
+            [
+              497625,
+              191
+            ],
+            [
+              497940,
+              223
+            ],
+            [
+              498255,
+              255
+            ]
+          ]
+        },
+        {
+          "frame": 10,
+          "md": [
+            [
+              610279,
+              128
+            ],
+            [
+              610363,
+              0
+            ],
+            [
+              610447,
+              159
+            ],
+            [
+              610545,
+              160
+            ],
+            [
+              610629,
+              0
+            ],
+            [
+              610713,
+              191
+            ],
+            [
+              610797,
+              192
+            ],
+            [
+              610881,
+              0
+            ],
+            [
+              610965,
+              223
+            ],
+            [
+              611049,
+              224
+            ],
+            [
+              611133,
+              0
+            ],
+            [
+              611217,
+              255
+            ]
+          ],
+          "sms": []
+        },
+        {
+          "frame": 15,
+          "md": [
+            [
+              460162,
+              128
+            ],
+            [
+              460246,
+              0
+            ],
+            [
+              460330,
+              159
+            ],
+            [
+              460414,
+              160
+            ],
+            [
+              460498,
+              0
+            ],
+            [
+              460582,
+              191
+            ],
+            [
+              460666,
+              192
+            ],
+            [
+              460750,
+              0
+            ],
+            [
+              460834,
+              223
+            ],
+            [
+              460918,
+              224
+            ],
+            [
+              461016,
+              0
+            ],
+            [
+              461100,
+              255
+            ]
+          ],
+          "sms": []
+        },
+        {
+          "frame": 18,
+          "md": [
+            [
+              200486,
+              128
+            ],
+            [
+              202754,
+              0
+            ],
+            [
+              205036,
+              160
+            ],
+            [
+              207304,
+              0
+            ],
+            [
+              209586,
+              192
+            ],
+            [
+              211854,
+              0
+            ],
+            [
+              214136,
+              159
+            ],
+            [
+              216404,
+              191
+            ],
+            [
+              218686,
+              223
+            ],
+            [
+              220954,
+              255
+            ]
+          ],
+          "sms": []
+        }
+      ],
+      "startup_additional_md_writes": 24,
+      "bytes_and_order_exact_from_first_nonmuted_source_frame": true,
+      "equal_musical_writes_per_system": 36915,
+      "within_frame_multiwrite_packets": 11150,
+      "equal_spacing_packets": 0,
+      "consecutive_write_intervals": 23371,
+      "exact_intervals": 0,
+      "spacing_master_clock_ticks": {
+        "md": {
+          "count": 23371,
+          "minimum": 84,
+          "maximum": 72688,
+          "median": 14980,
+          "most_common": [
+            [
+              14980,
+              6769
+            ],
+            [
+              28420,
+              3890
+            ],
+            [
+              27468,
+              2230
+            ],
+            [
+              280,
+              1987
+            ],
+            [
+              294,
+              1983
+            ],
+            [
+              13720,
+              1924
+            ],
+            [
+              14672,
+              1560
+            ],
+            [
+              14952,
+              511
+            ],
+            [
+              37422,
+              482
+            ],
+            [
+              45766,
+              246
+            ],
+            [
+              30800,
+              199
+            ],
+            [
+              47558,
+              177
+            ]
+          ]
+        },
+        "sms": {
+          "count": 23371,
+          "minimum": 315,
+          "maximum": 45570,
+          "median": 9405,
+          "most_common": [
+            [
+              9405,
+              7280
+            ],
+            [
+              15660,
+              3975
+            ],
+            [
+              15885,
+              2234
+            ],
+            [
+              630,
+              1987
+            ],
+            [
+              6540,
+              1983
+            ],
+            [
+              7950,
+              1924
+            ],
+            [
+              7725,
+              1718
+            ],
+            [
+              13605,
+              482
+            ],
+            [
+              17880,
+              246
+            ],
+            [
+              9285,
+              199
+            ],
+            [
+              15075,
+              193
+            ],
+            [
+              18675,
+              177
+            ]
+          ]
+        }
+      },
+      "spacing_difference_examples": [
+        {
+          "frame": 20,
+          "bytes": [
+            128,
+            0,
+            160,
+            0,
+            192,
+            0,
+            159,
+            191,
+            223,
+            255,
+            142,
+            11,
+            147,
+            174,
+            15,
+            180,
+            192,
+            20,
+            211,
+            229
+          ],
+          "md_gaps": [
+            84,
+            84,
+            84,
+            84,
+            84,
+            84,
+            84,
+            98,
+            84,
+            48258,
+            280,
+            294,
+            53004,
+            294,
+            280,
+            53004,
+            294,
+            280,
+            24822
+          ],
+          "sms_gaps": [
+            315,
+            315,
+            315,
+            315,
+            315,
+            315,
+            315,
+            315,
+            315,
+            45570,
+            630,
+            6540,
+            21285,
+            630,
+            6540,
+            21285,
+            630,
+            6540,
+            6525
+          ]
+        },
+        {
+          "frame": 21,
+          "bytes": [
+            147,
+            180,
+            211,
+            243
+          ],
+          "md_gaps": [
+            14980,
+            14980,
+            13720
+          ],
+          "sms_gaps": [
+            9405,
+            9405,
+            7950
+          ]
+        },
+        {
+          "frame": 22,
+          "bytes": [
+            147,
+            180,
+            211,
+            244
+          ],
+          "md_gaps": [
+            14980,
+            14980,
+            13720
+          ],
+          "sms_gaps": [
+            9405,
+            9405,
+            7950
+          ]
+        },
+        {
+          "frame": 23,
+          "bytes": [
+            148,
+            181,
+            212,
+            245
+          ],
+          "md_gaps": [
+            14980,
+            14980,
+            13720
+          ],
+          "sms_gaps": [
+            9405,
+            9405,
+            7950
+          ]
+        },
+        {
+          "frame": 24,
+          "bytes": [
+            148,
+            181,
+            212,
+            247
+          ],
+          "md_gaps": [
+            14980,
+            14980,
+            13720
+          ],
+          "sms_gaps": [
+            9405,
+            9405,
+            7950
+          ]
+        },
+        {
+          "frame": 25,
+          "bytes": [
+            149,
+            182,
+            213,
+            248
+          ],
+          "md_gaps": [
+            14980,
+            14980,
+            13720
+          ],
+          "sms_gaps": [
+            9405,
+            9405,
+            7950
+          ]
+        }
+      ]
+    }
+  ],
+  "frames_compared": 28000,
+  "ram_writes": 0,
+  "sram_imports": 0,
+  "metadata_erratum": {
+    "supersedes": "analysis/sms_psg_v0319_report.json",
+    "unchanged": "Exact equality of all eight exposed states at every sampled frame remains proved.",
+    "corrected": "Odd slots are decoded volume amplitudes, not raw attenuation nibbles. Zero means mute; the old <15 activity count and raw-register label were incorrect. Original frozen evidence retained."
+  },
+  "timing_scope": "Consecutive clock differences within the same frame cancel cross-platform clock origins. No inter-frame interval or absolute lateness claim. All startup discrepancies retained. No PCM equality or whole-game audio certification.",
+  "next_action": "Native streaming emits successful channel lists in bursts. Preserve per-write source timestamps and establish actual delivery deadlines before changing production audio scheduling.",
+  "archive_manifest": "analysis/v319-psg-write-spacing/manifest.json",
+  "files": {
+    "analysis/sms_psg_writes_v0319_report.json": "da1201f2394b927f46a3eef5f0a188b7f6561f9c028197c58d8e1f87625724c5"
+  },
+  "compressed": {
+    "validation/audit_v319_psg_write_spacing.py": {
+      "stored": "objects/f3b5334d8f4212ed7673e02fdb763f4688e436bf3f4f15781ca75def37756964.gz",
+      "raw_sha256": "f3b5334d8f4212ed7673e02fdb763f4688e436bf3f4f15781ca75def37756964",
+      "raw_bytes": 6501,
+      "stored_sha256": "a06f9b37b05f82e83698fa05a94f9d545458a644b97788b13c44c7c9253a6646"
+    },
+    "validation/build_v319_psg_write_observer.py": {
+      "stored": "objects/d5c86ca8da601129caec3542d4dd9e242dc465045295b54ce1fb49aa6c8ddf61.gz",
+      "raw_sha256": "d5c86ca8da601129caec3542d4dd9e242dc465045295b54ce1fb49aa6c8ddf61",
+      "raw_bytes": 3211,
+      "stored_sha256": "994c0fdb4a85bdebff74782eac60fbac217cd1380830578974ba610d72227f26"
+    },
+    "validation/trace_v319_psg_writes.py": {
+      "stored": "objects/5ea2678cf480622292a3a22df7a2ddba1db84003126fa6a5c41d101492dad396.gz",
+      "raw_sha256": "5ea2678cf480622292a3a22df7a2ddba1db84003126fa6a5c41d101492dad396",
+      "raw_bytes": 5665,
+      "stored_sha256": "682cb86b56360156d7f3d0a30df308824221b95a8690bd56b7943a8fb97972cf"
+    },
+    "validation/v319-psg-write-observer01/build-report.json": {
+      "stored": "objects/bdc9e968971f9989c36b45a9763680c292751968fac4ee933d729b0b4034813f.gz",
+      "raw_sha256": "bdc9e968971f9989c36b45a9763680c292751968fac4ee933d729b0b4034813f",
+      "raw_bytes": 937,
+      "stored_sha256": "4b75ea11978faea55dbb04cb1ed59c55a3b82eba225dc7b6681301c0c267c412"
+    },
+    "validation/v319-psg-write-observer01/build.log": {
+      "stored": "objects/b8dd81f1044a737a5b6fbd4aaae677962aa656d57405ca70eb1b8ab00a922bd8.gz",
+      "raw_sha256": "b8dd81f1044a737a5b6fbd4aaae677962aa656d57405ca70eb1b8ab00a922bd8",
+      "raw_bytes": 4872,
+      "stored_sha256": "201dbcce052dcdb7c795bad11d08991d07e87ae89a0d5436c4af76cf119461fa"
+    },
+    "validation/v319-psg-write-observer01/psg-before.c": {
+      "stored": "objects/ccbba419929f7a432786cecc36f41c653670943e016b2f31772004dd8a6063b6.gz",
+      "raw_sha256": "ccbba419929f7a432786cecc36f41c653670943e016b2f31772004dd8a6063b6",
+      "raw_bytes": 17677,
+      "stored_sha256": "8e018923a94f5811f7f9e94def7ecb16c8bddb36ad1e84375a0c8136d0e3636a"
+    },
+    "validation/v319-psg-write-observer01/psg-observer.c": {
+      "stored": "objects/118111f35e7a9c290a0ef1c03130a2bcd2d9be7215e8be967d63b3fe2cc583a3.gz",
+      "raw_sha256": "118111f35e7a9c290a0ef1c03130a2bcd2d9be7215e8be967d63b3fe2cc583a3",
+      "raw_bytes": 18572,
+      "stored_sha256": "c164edd093ecee7e6f9b01efb52a558141108eb41bf302bb9b015a5a455f8f00"
+    },
+    "validation/v319-psg-writes01/ntsc-md/capture.json": {
+      "stored": "objects/1ad19492573f1d7f76bc01ba11dec804071840f631dec2f5724929c38032ad27.gz",
+      "raw_sha256": "1ad19492573f1d7f76bc01ba11dec804071840f631dec2f5724929c38032ad27",
+      "raw_bytes": 645,
+      "stored_sha256": "8a41790732e6a0bd3b1cdbc5f6d9fc04bcc3b355a8bf6ac17d333f035233173c"
+    },
+    "validation/v319-psg-writes01/ntsc-md/exposed-psg-states.bin": {
+      "stored": "objects/fe9d8d291bde4452a67f3bb6c9395f6b5dcb173944aa2286fa6d3758942d7799.gz",
+      "raw_sha256": "fe9d8d291bde4452a67f3bb6c9395f6b5dcb173944aa2286fa6d3758942d7799",
+      "raw_bytes": 224000,
+      "stored_sha256": "15a780f13dc512396e362e8c83d2341584902b253f2a949b5b606931ee52f255"
+    },
+    "validation/v319-psg-writes01/ntsc-md/psg-port-writes.bin": {
+      "stored": "objects/d824ef9de60be9e76e1ea0d73a41b297e7b5623cb69191d458b948142c09c4fe.gz",
+      "raw_sha256": "d824ef9de60be9e76e1ea0d73a41b297e7b5623cb69191d458b948142c09c4fe",
+      "raw_bytes": 284220,
+      "stored_sha256": "e20563e409be8d0554caa5ff2e5a5c08ec1fea0fe8764764f3c16c0355b0ba63"
+    },
+    "validation/v319-psg-writes01/ntsc-md/trace_counts.bin": {
+      "stored": "objects/30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58.gz",
+      "raw_sha256": "30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58",
+      "raw_bytes": 1048576,
+      "stored_sha256": "f227c53a0b54fb0009773680f60b76c1f346b4dcfca7e03b7f311f0bd0f3bea1"
+    },
+    "validation/v319-psg-writes01/ntsc-md/trace_states.bin": {
+      "stored": "objects/5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef.gz",
+      "raw_sha256": "5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+      "raw_bytes": 1024,
+      "stored_sha256": "75eb48369c0d0b1260b7db5c5f831d5f8b1b9b322b64191c96cb147437e7f404"
+    },
+    "validation/v319-psg-writes01/ntsc-md/trace_windows.bin": {
+      "stored": "objects/8a39d2abd3999ab73c34db2476849cddf303ce389b35826850f9a700589b4a90.gz",
+      "raw_sha256": "8a39d2abd3999ab73c34db2476849cddf303ce389b35826850f9a700589b4a90",
+      "raw_bytes": 262144,
+      "stored_sha256": "e3c3be563c17c24fb5bfdfefbcbe3882cc985fa4161654a534287d9baafe2a73"
+    },
+    "validation/v319-psg-writes01/ntsc-sms/capture.json": {
+      "stored": "objects/4260058f4c6e3fa198e01a2f01140b6eb171952f51409e406aa25f635e0f8fb0.gz",
+      "raw_sha256": "4260058f4c6e3fa198e01a2f01140b6eb171952f51409e406aa25f635e0f8fb0",
+      "raw_bytes": 615,
+      "stored_sha256": "b7c0b130b17c9db568580a13c591e7352bf77e79e7339198c4869112604b3676"
+    },
+    "validation/v319-psg-writes01/ntsc-sms/exposed-psg-states.bin": {
+      "stored": "objects/fe9d8d291bde4452a67f3bb6c9395f6b5dcb173944aa2286fa6d3758942d7799.gz",
+      "raw_sha256": "fe9d8d291bde4452a67f3bb6c9395f6b5dcb173944aa2286fa6d3758942d7799",
+      "raw_bytes": 224000,
+      "stored_sha256": "15a780f13dc512396e362e8c83d2341584902b253f2a949b5b606931ee52f255"
+    },
+    "validation/v319-psg-writes01/ntsc-sms/psg-port-writes.bin": {
+      "stored": "objects/78b9d7d053764a6d34ca7e127f1d777759c8c72a6009c3178e6cf7d007ea692d.gz",
+      "raw_sha256": "78b9d7d053764a6d34ca7e127f1d777759c8c72a6009c3178e6cf7d007ea692d",
+      "raw_bytes": 284004,
+      "stored_sha256": "5c10fd04d5590fdba82262412d47825d22ce1eefe84282780d255f1d90789bf5"
+    },
+    "validation/v319-psg-writes01/ntsc-sms/trace_counts.bin": {
+      "stored": "objects/6cc89fc3e12d5331980d18f0f7f60fab2cc2f11c1a89aefbf60ae7ce8b2704e6.gz",
+      "raw_sha256": "6cc89fc3e12d5331980d18f0f7f60fab2cc2f11c1a89aefbf60ae7ce8b2704e6",
+      "raw_bytes": 1048576,
+      "stored_sha256": "b78f7762e980f29b4ba2311f2c341a7b503dc3392ce2615dad11d5a920816908"
+    },
+    "validation/v319-psg-writes01/ntsc-sms/trace_states.bin": {
+      "stored": "objects/63687f85d261c8b8824b61727fc86b2e63c26ecc30b0667a468af8ff559a7c8c.gz",
+      "raw_sha256": "63687f85d261c8b8824b61727fc86b2e63c26ecc30b0667a468af8ff559a7c8c",
+      "raw_bytes": 1024,
+      "stored_sha256": "a9796f280704a6fecfb85a2090b0ee10bf36263850938b314b489b39de345552"
+    },
+    "validation/v319-psg-writes01/ntsc-sms/trace_windows.bin": {
+      "stored": "objects/6aa6a12da37a8a7d8a59df0727f1b61e9b107566c60332ab13ad77e8ec856274.gz",
+      "raw_sha256": "6aa6a12da37a8a7d8a59df0727f1b61e9b107566c60332ab13ad77e8ec856274",
+      "raw_bytes": 262144,
+      "stored_sha256": "3d0886926c0cbb9ae2134e3005027953fe93793ecb8eb7e2c2e7f46c3df38570"
+    },
+    "validation/v319-psg-writes01/pal-md/capture.json": {
+      "stored": "objects/46f97d530b4c80e0468b2227bc5f1ab381524df2bcb10a3302df764ccabb74a7.gz",
+      "raw_sha256": "46f97d530b4c80e0468b2227bc5f1ab381524df2bcb10a3302df764ccabb74a7",
+      "raw_bytes": 643,
+      "stored_sha256": "fffc23cdb943f930941066e12957af9f1e1cbb828628bedcb48210c68d767851"
+    },
+    "validation/v319-psg-writes01/pal-md/exposed-psg-states.bin": {
+      "stored": "objects/3f43db56665636ca212f7fd17b94c0e3e09bea4434923a2183250a5c0922f4f0.gz",
+      "raw_sha256": "3f43db56665636ca212f7fd17b94c0e3e09bea4434923a2183250a5c0922f4f0",
+      "raw_bytes": 224000,
+      "stored_sha256": "58848dc95dc9584dc41b587272742fc411c5913b1305f8532b8cb4209466d891"
+    },
+    "validation/v319-psg-writes01/pal-md/psg-port-writes.bin": {
+      "stored": "objects/6251c23b33e9625e3ba87bc04bd77646ba195de888382eeceba0741fd0872af0.gz",
+      "raw_sha256": "6251c23b33e9625e3ba87bc04bd77646ba195de888382eeceba0741fd0872af0",
+      "raw_bytes": 332541,
+      "stored_sha256": "6901a7acb27d11717a58b189b4de72bf08125520220b5b37ba1dd81e956d7c84"
+    },
+    "validation/v319-psg-writes01/pal-md/trace_counts.bin": {
+      "stored": "objects/30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58.gz",
+      "raw_sha256": "30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58",
+      "raw_bytes": 1048576,
+      "stored_sha256": "f227c53a0b54fb0009773680f60b76c1f346b4dcfca7e03b7f311f0bd0f3bea1"
+    },
+    "validation/v319-psg-writes01/pal-md/trace_states.bin": {
+      "stored": "objects/5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef.gz",
+      "raw_sha256": "5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+      "raw_bytes": 1024,
+      "stored_sha256": "75eb48369c0d0b1260b7db5c5f831d5f8b1b9b322b64191c96cb147437e7f404"
+    },
+    "validation/v319-psg-writes01/pal-md/trace_windows.bin": {
+      "stored": "objects/8a39d2abd3999ab73c34db2476849cddf303ce389b35826850f9a700589b4a90.gz",
+      "raw_sha256": "8a39d2abd3999ab73c34db2476849cddf303ce389b35826850f9a700589b4a90",
+      "raw_bytes": 262144,
+      "stored_sha256": "e3c3be563c17c24fb5bfdfefbcbe3882cc985fa4161654a534287d9baafe2a73"
+    },
+    "validation/v319-psg-writes01/pal-sms/capture.json": {
+      "stored": "objects/919d1622ff56c99adb66dc48d2e009665c9af9b905662e386a660c1125e7423b.gz",
+      "raw_sha256": "919d1622ff56c99adb66dc48d2e009665c9af9b905662e386a660c1125e7423b",
+      "raw_bytes": 613,
+      "stored_sha256": "be78fe51a1494511634d9bacdbe8ada987b39d92beb211b6d9d8a8c1de11a48e"
+    },
+    "validation/v319-psg-writes01/pal-sms/exposed-psg-states.bin": {
+      "stored": "objects/3f43db56665636ca212f7fd17b94c0e3e09bea4434923a2183250a5c0922f4f0.gz",
+      "raw_sha256": "3f43db56665636ca212f7fd17b94c0e3e09bea4434923a2183250a5c0922f4f0",
+      "raw_bytes": 224000,
+      "stored_sha256": "58848dc95dc9584dc41b587272742fc411c5913b1305f8532b8cb4209466d891"
+    },
+    "validation/v319-psg-writes01/pal-sms/psg-port-writes.bin": {
+      "stored": "objects/22befa012f00d953114c5753b18361a49684d27017f48fcc4e3929eb4be28c56.gz",
+      "raw_sha256": "22befa012f00d953114c5753b18361a49684d27017f48fcc4e3929eb4be28c56",
+      "raw_bytes": 332325,
+      "stored_sha256": "a98f7f6a6b33a27e4bb4d476e671ad982e18a84c60fc03b037773d1405d71b1f"
+    },
+    "validation/v319-psg-writes01/pal-sms/trace_counts.bin": {
+      "stored": "objects/1312d6aea34cdbd541c10d7f73474fb193159088d82edaddf0dad3d46d81c8a1.gz",
+      "raw_sha256": "1312d6aea34cdbd541c10d7f73474fb193159088d82edaddf0dad3d46d81c8a1",
+      "raw_bytes": 1048576,
+      "stored_sha256": "161fed967f1de0442c36572df977f926e3a24a7cc198543be0ac2fc14e6f5e37"
+    },
+    "validation/v319-psg-writes01/pal-sms/trace_states.bin": {
+      "stored": "objects/63687f85d261c8b8824b61727fc86b2e63c26ecc30b0667a468af8ff559a7c8c.gz",
+      "raw_sha256": "63687f85d261c8b8824b61727fc86b2e63c26ecc30b0667a468af8ff559a7c8c",
+      "raw_bytes": 1024,
+      "stored_sha256": "a9796f280704a6fecfb85a2090b0ee10bf36263850938b314b489b39de345552"
+    },
+    "validation/v319-psg-writes01/pal-sms/trace_windows.bin": {
+      "stored": "objects/94c34ab8654d262340e67a48373a94b5008c878926ff959dbaa482fe9a1e8d43.gz",
+      "raw_sha256": "94c34ab8654d262340e67a48373a94b5008c878926ff959dbaa482fe9a1e8d43",
+      "raw_bytes": 262144,
+      "stored_sha256": "813d8c2df7bc38cb7440d7789bdfcbfb76bfa60f53b15f5ab7ae1d81d0a1f13f"
+    },
+    "validation/v319-psg-writes01/report.json": {
+      "stored": "objects/67e5e4a04382b35c37abc8487dc7095f509fcd9d048b8a3d37d8faec694c2f36.gz",
+      "raw_sha256": "67e5e4a04382b35c37abc8487dc7095f509fcd9d048b8a3d37d8faec694c2f36",
+      "raw_bytes": 9457,
+      "stored_sha256": "377c8e39761d05310b2b9845da8df4e2bae110d20d4b440def17422723568a36"
+    }
+  },
+  "removed_verified_generated": [
+    {
+      "path": "validation/v319-psg-writes01/ntsc-md/exposed-psg-states.bin",
+      "bytes": 224000
+    },
+    {
+      "path": "validation/v319-psg-writes01/ntsc-md/psg-port-writes.bin",
+      "bytes": 284220
+    },
+    {
+      "path": "validation/v319-psg-writes01/ntsc-md/trace_counts.bin",
+      "bytes": 1048576
+    },
+    {
+      "path": "validation/v319-psg-writes01/ntsc-md/trace_states.bin",
+      "bytes": 1024
+    },
+    {
+      "path": "validation/v319-psg-writes01/ntsc-md/trace_windows.bin",
+      "bytes": 262144
+    },
+    {
+      "path": "validation/v319-psg-writes01/ntsc-sms/exposed-psg-states.bin",
+      "bytes": 224000
+    },
+    {
+      "path": "validation/v319-psg-writes01/ntsc-sms/psg-port-writes.bin",
+      "bytes": 284004
+    },
+    {
+      "path": "validation/v319-psg-writes01/ntsc-sms/trace_counts.bin",
+      "bytes": 1048576
+    },
+    {
+      "path": "validation/v319-psg-writes01/ntsc-sms/trace_states.bin",
+      "bytes": 1024
+    },
+    {
+      "path": "validation/v319-psg-writes01/ntsc-sms/trace_windows.bin",
+      "bytes": 262144
+    },
+    {
+      "path": "validation/v319-psg-writes01/pal-md/exposed-psg-states.bin",
+      "bytes": 224000
+    },
+    {
+      "path": "validation/v319-psg-writes01/pal-md/psg-port-writes.bin",
+      "bytes": 332541
+    },
+    {
+      "path": "validation/v319-psg-writes01/pal-md/trace_counts.bin",
+      "bytes": 1048576
+    },
+    {
+      "path": "validation/v319-psg-writes01/pal-md/trace_states.bin",
+      "bytes": 1024
+    },
+    {
+      "path": "validation/v319-psg-writes01/pal-md/trace_windows.bin",
+      "bytes": 262144
+    },
+    {
+      "path": "validation/v319-psg-writes01/pal-sms/exposed-psg-states.bin",
+      "bytes": 224000
+    },
+    {
+      "path": "validation/v319-psg-writes01/pal-sms/psg-port-writes.bin",
+      "bytes": 332325
+    },
+    {
+      "path": "validation/v319-psg-writes01/pal-sms/trace_counts.bin",
+      "bytes": 1048576
+    },
+    {
+      "path": "validation/v319-psg-writes01/pal-sms/trace_states.bin",
+      "bytes": 1024
+    },
+    {
+      "path": "validation/v319-psg-writes01/pal-sms/trace_windows.bin",
+      "bytes": 262144
+    }
+  ]
+}

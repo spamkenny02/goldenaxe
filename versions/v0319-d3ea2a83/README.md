@@ -69,8 +69,15 @@ La phase globale R/IRQ source, les révélations/fondus résiduels, toutes
 les formes d’onde PCM et la console réelle restent hors certification.
 
 Ajout suivant : [PSG du démarrage comparé directement à la SMS](../../analysis/sms_psg_v0319_report.json).
-Les huit registres bruts correspondent à chaque frame de deux boucles
+Les huit états PSG exposés correspondent à chaque frame de deux boucles
 sans entrée, soit14000frames enNTSC et14000enPAL. Aucun décalage ni
 normalisation ; états de tonalité, volume et bruit variés. Cette preuve
 porte sur les états par frame, sans certification des écritures dans la
 frame, des formes d’onde PCM ou des effets interactifs du reste du jeu.
+
+Erratum et mesure complémentaire : [octets PSG et espacement](../../analysis/sms_psg_writes_v0319_report.json).
+Les volumes exposés sont des amplitudes décodées, zéro signifie muet ;
+le précédent comptage d’activité était incorrect. Les états restent égaux.
+Les octets et leur ordre correspondent dès la première frame sonore active
+(23 NTSC, 20 PAL), avec quatre frames d’initialisation différentes par région.
+L’espacement entre écritures reste différent : aucune équivalence PCM annoncée.
