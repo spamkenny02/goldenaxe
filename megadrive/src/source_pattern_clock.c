@@ -1,6 +1,6 @@
 #include "source_pattern_clock.h"
 
-typedef struct {SourcePatternPortSink sink;void *user;u8 failed;} PatternPorts;
+typedef struct {SourcePatternPortSink sink;void *user;u8 failed;SourcePatternVideoRunSink run;} PatternPorts;
 static void video_advance(u32 *elapsed,u32 *raster,u32 period,u16 ticks)
 {u32 master=(u32)ticks*15;*elapsed+=master;*raster+=master;if(*raster>=period) *raster-=period;}
 static u8 video_out(PatternPorts *video,u32 elapsed,u32 raster,u8 port,u8 value)
@@ -13,6 +13,14 @@ static u8 video_bytes(PatternPorts *video,u32 period,u32 *elapsed,u32 *raster,
  u16 address,const u8 *bytes,u16 count,u8 literal,u8 terminal)
 {
  if(!video || !video->sink) return 1;
+ if(video->run)
+ {
+  SourcePatternVideoRun run={*elapsed,*raster,period,bytes,address,count,literal,terminal};
+  if(!video->run(video->user,&run)) {video->failed=1;return 0;}
+  /* Number of page carries for the exact address progression. */
+  video_advance(elapsed,raster,period,count*(literal?135:134)-(((address&255)+(u32)count*4)>>8)-(terminal?5:0));
+  return 1;
+ }
  for(u16 n=0;n<count;n++)
  {
   static const u16 offsets[3]={30,45,77};
@@ -243,7 +251,13 @@ u8 source_pattern_decode_ports(SourceClock *clock,SourceIrqContext *context,
  const u8 **source,u8 *destination,u16 address,u16 *end_address,const SourcePatternPlan *plan,
  SourcePatternPortSink sink,void *user)
 {
- PatternPorts video={sink,user,0};
+ return source_pattern_decode_runs(clock,context,source,destination,address,end_address,plan,sink,0,user);
+}
+u8 source_pattern_decode_runs(SourceClock *clock,SourceIrqContext *context,
+ const u8 **source,u8 *destination,u16 address,u16 *end_address,const SourcePatternPlan *plan,
+ SourcePatternPortSink sink,SourcePatternVideoRunSink run_sink,void *user)
+{
+ PatternPorts video={sink,user,0,run_sink};
  if(!clock || !context || !context->ram || !source || !*source || !destination || !end_address || !sink) return 0;
  return patterns032a(clock,context,source,destination,plan,address,end_address,&video);
 }

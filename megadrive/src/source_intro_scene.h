@@ -23,4 +23,10 @@ u8 source_intro_scene_load_ports(SourceClock *clock,SourceIrqContext *context,u1
  u8 *mirror,SourceIntroCallback callback,void *callback_user,
  SourceIntroRevealSink sink,void *sink_user,SourcePatternPortSink pattern_sink,void *pattern_user,
  SourceIntroSceneOutput *output);
+/* Same scene semantics; stable032A byte sequences go to pattern_run while
+ * boundary instructions retain pattern_sink. Shared pattern_user. */
+u8 source_intro_scene_load_runs(SourceClock *clock,SourceIrqContext *context,u16 header,u16 target,
+ u8 *mirror,SourceIntroCallback callback,void *callback_user,
+ SourceIntroRevealSink sink,void *sink_user,SourcePatternPortSink pattern_sink,void *pattern_user,
+ SourcePatternVideoRunSink pattern_run,SourceIntroSceneOutput *output);
 #endif

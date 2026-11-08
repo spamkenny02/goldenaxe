@@ -1,0 +1,8 @@
+{
+  "comment_only_correction": true,
+  "file": "megadrive/src/source_intro_vdp.c",
+  "tested_source_sha256": "4298b5ff3dc6a313439a180edef8472415c2cdb46d7b830d4d81ea001e8e1a4f",
+  "current_source_sha256": "36030b6536514ff47a97ba87440445ea9049847bbf6b7326084c6ded90079d4b",
+  "correction": "The selected sprite pattern bank contains256tiles*32bytes=8KiB. Corrected4KiB to8KiB in comment only; guard addresses and all executable code unchanged.",
+  "proof": "analysis/v319_pattern_runs_report.json"
+}

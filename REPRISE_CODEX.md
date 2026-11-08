@@ -6,7 +6,31 @@ le README et les rapports cités.
 
 ## Suivi courant — V319, 8 novembre 2026
 
-DERNIÈRE ÉTAPE : premierprofilhelper liveVDP +arithmétique optimisée,
+DERNIÈRE ÉTAPE : SourcePatternVideoRun/source_pattern_decode_runs et
+source_intro_scene_load_runs, rapport `analysis/v319_pattern_runs_report.json`,
+archive `analysis/v319-pattern-runs`. BF30/45T,BE77T,strides135/134T,carry-1T,
+terminal-5T,ROMborrowed,count<=256,runs uniquementfenêtresstablesavantIRQ.
+FallbackOUT obligatoire.SinkownedVDP avance avantchaqueBE affectantsprites.
+Runentièrementdansbanque8KiBopposée àcelle dessprites(reg6bit2) :écritures
+sans effet surSAT/pixelsprites,uneavancecalendrierfinale suffit. Dates originales
+toujoursdansdescriptor pourfond physique futur ;nePASfaireuploadinstantané.
+392832OUT des24assets/IRQedges développés :hashdates/valeurs/clock/mirror
+identiquespreuves indépendantesprécédentes.1728cas host +3456cas68000 :
+fullVDP/cache/latch/VRAMcomparées vsOUTindividuels,2banques/6phases/3adresses/
+6counts/literal-repeat/terminal. Snapshotcompilationsources autonome dansunit03.
+Premierkernelunit01 nefinissaitpas en30000frames (setupmémoiredivisioncoûteuse),
+rejetconservé. Unit02 avantoptimbanque passait864cas ;unit03final1728passe.
+Profil05 :NTSC316..335,PAL265..281,vs606..711/507..595précédent.20scènes68000
+liveIRQ/statusfinalstatesexactes,sourcecallbackcomparaisonsIRQretenues.
+CPUgateFALSE,toujoursau-dessus budgetSMS~24..27/21..23. Pas derenduphysique.
+RebuildtoujoursidentiqueV319.PasdeV320. Correctioncommentairefinal8KiBau lieu
+4KiBdocumentée dansanalysis/v319_pattern_runs_source_note.json :codeexécutable
+inchangéaprèspreuve,SHAversiontestéeetcommentée tousdeuxconsignés.
+Prochain :profilparstage(clear/map surtout),runssinks équivalents etévaluation
+lignesstables,budgetcomposé ;IRQdates/coldboot/image/PSGphysique ouverts.
+VidéoV319 localeprête,upload toujoursattenteaccèsnavigateur/visibilité.
+
+ÉTAPE PRÉCÉDENTE : premierprofilhelper liveVDP +arithmétique optimisée,
 rapport `analysis/v319_video_math_report.json`, archive `analysis/v319-video-math`.
 Profile01 vs02 :vTimer uniquement autour source_intro_scene_load_ports,exclut
 copiesfixture/comparaisonsfinales etperOUTexpected ;comparesstatutsIRQ restent

@@ -125,3 +125,40 @@ u8 source_intro_vdp_out(SourceIntroVdp *vdp,u32 elapsed,u32 raster,u16 tstates,u
     source_video_wrap(vdp->instruction_raster,delta,vdp->clock.period)!=raster) return 0;
  return source_intro_vdp_checkpoint(vdp,elapsed-(u32)tstates*15) && source_intro_vdp_write(vdp,elapsed,port,value);
 }
+u8 source_intro_vdp_pattern_run(void *user,const SourcePatternVideoRun *run)
+{
+ SourceIntroVdp *vdp=user;u32 elapsed,delta,span;u16 address;u8 value=0;
+ if(!vdp || !run || !vdp->vram || vdp->error || vdp->pending || !run->bytes ||
+    !run->count || run->count>256 || run->period!=vdp->clock.period || run->raster>=run->period ||
+    run->address<0x4000 || (u32)run->address+(u32)(run->count-1)*4>=0x6400) return 0;
+ delta=run->elapsed-vdp->instruction_elapsed;
+ if((s32)delta<0 || source_video_wrap(vdp->instruction_raster,delta,run->period)!=run->raster) return 0;
+ span=(u32)run->count*(run->literal?135:134)-(((run->address&255)+(u32)run->count*4)>>8)-(run->terminal?5:0);
+ if(span*15>run->period) return 0;
+ elapsed=run->elapsed+77UL*15;address=run->address;
+ /* A whole run in the opposite8KiB pattern bank cannot affect any sprite
+  * pixel or SAT parse. Background pixels are not rendered by this logical
+  * status model; their exact write dates remain in the run descriptor. */
+ if((vdp->registers[6]&4)?(u32)address+(u32)(run->count-1)*4<0x6000:address>=0x6000)
+ {
+  elapsed+=(u32)((run->count-1)*(run->literal?135:134)-(((address&255)+(u32)(run->count-1)*4)>>8))*15;
+  for(u16 n=0;n<run->count;n++)
+  {value=run->bytes[run->literal?n:0];vdp->vram[address&0x3fff]=value;address+=4;}
+  if(!advance(vdp,elapsed)) {vdp->error=3;return 0;}
+ }
+ else
+ {
+  for(u16 n=0;n<run->count;n++)
+  {
+   if(!advance(vdp,elapsed)) {vdp->error=3;return 0;}
+   value=run->bytes[run->literal?n:0];vdp->vram[address&0x3fff]=value;
+   if(n+1<run->count) elapsed+=(u32)((run->literal?135:134)-((address&255)>=252))*15;
+   address+=4;
+  }
+ }
+ address-=4;
+ vdp->instruction_elapsed=elapsed-165;
+ vdp->instruction_raster=vdp->clock.raster>=165?vdp->clock.raster-165:vdp->clock.raster+run->period-165;
+ vdp->address=(address&0x3fff)+1;vdp->low=address;vdp->pending=0;vdp->code=1;vdp->buffer=value;
+ return 1;
+}

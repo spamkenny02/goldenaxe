@@ -35,6 +35,18 @@ faire : accès navigateur local désactivé dans Work et visibilité à choisir.
 
 ## Travail natif en cours : statut vidéo des sprites
 
+Les motifs décompressés peuvent maintenant être livrés sous forme de blocs
+datés : les dates exactes de chaque écriture restent disponibles, avec moins
+d’appels. Le modèle conserve l’ordre de chaque écriture pouvant affecter les
+sprites ; seules les zones sans effet sur ceux-ci sont regroupées davantage.
+392832 écritures retrouvent leurs dates et octets audités ; 1728 cas par région
+MD retrouvent aussi tout l’état vidéo intermédiaire et les 16 Kio de VRAM.
+
+Le helper de scène passe de 606..711 à **316..335 images MD en NTSC**, et de
+507..595 à **265..281 en PAL**, dans le même périmètre de mesure.
+[Blocs datés et mesures](analysis/v319_pattern_runs_report.json).
+Ce coût reste trop élevé : ce chemin expérimental reste désactivé dans la V319.
+
 Le coût du raccordement vidéo vivant est désormais mesuré : en retirant les
 comparaisons par écriture et les copies de préparation du banc, le helper
 initial demandait 1406..1684 images MD dans les exécutions NTSC. Une première

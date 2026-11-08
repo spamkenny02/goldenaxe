@@ -1,6 +1,7 @@
 #ifndef GAW_SOURCE_PATTERN_CLOCK_H
 #define GAW_SOURCE_PATTERN_CLOCK_H
 #include "source_irq_context.h"
+#include "source_pattern_video.h"
 
 /* Prefix sums at complete ROM-command boundaries, generated from032A.
  * A plan must describe the exact immutable ROM stream passed to the loader. */
@@ -51,4 +52,10 @@ u8 source_pattern_decode_planned(SourceClock *clock,SourceIrqContext *context,
 u8 source_pattern_decode_ports(SourceClock *clock,SourceIrqContext *context,
  const u8 **source,u8 *destination,u16 address,u16 *end_address,const SourcePatternPlan *plan,
  SourcePatternPortSink sink,void *user);
+/* Optional stable byte-run delivery; ordinary OUT sink remains mandatory
+ * for boundary/IRQ fallback. Both callbacks share user and must preserve
+ * the same logical video history. */
+u8 source_pattern_decode_runs(SourceClock *clock,SourceIrqContext *context,
+ const u8 **source,u8 *destination,u16 address,u16 *end_address,const SourcePatternPlan *plan,
+ SourcePatternPortSink sink,SourcePatternVideoRunSink run_sink,void *user);
 #endif

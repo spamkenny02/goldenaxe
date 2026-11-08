@@ -1,0 +1,348 @@
+{
+  "passed": true,
+  "public_version": 319,
+  "production_rom_changed": false,
+  "production_rebuild_byte_identical": true,
+  "production_rom_sha256": "d3ea2a83ea24ed8a0d3c9857f9fbe70d000a4f73358452c1887f40e78966c56e",
+  "implementation": "SourcePatternVideoRun preserves BF30T/BF45T/BE77T and exact135/134T strides,carry andterminal adjustments for stable before-IRQ sequences. Native decoder and scene expose optional run sinks; boundary instructions retain ordinary port sinks. LogicalVDP evaluates each sprite-sensitive BE before its mutation; whole runs in opposite sprite pattern bank can advance once because those bytes cannot affect SAT or sprite pixels. Full original write dates remain in descriptor for later physical delivery.",
+  "original_dated_output_equivalence": {
+    "passed": true,
+    "cases": 24,
+    "outputs": 392832,
+    "runs": 10769,
+    "checks": [
+      {
+        "plan": 1,
+        "lines": 262,
+        "raster": 0,
+        "outputs": 18528,
+        "runs": 517
+      },
+      {
+        "plan": 1,
+        "lines": 262,
+        "raster": 660059,
+        "outputs": 18528,
+        "runs": 520
+      },
+      {
+        "plan": 1,
+        "lines": 262,
+        "raster": 659060,
+        "outputs": 18528,
+        "runs": 520
+      },
+      {
+        "plan": 1,
+        "lines": 262,
+        "raster": 896039,
+        "outputs": 18528,
+        "runs": 517
+      },
+      {
+        "plan": 1,
+        "lines": 262,
+        "raster": 660060,
+        "outputs": 18528,
+        "runs": 521
+      },
+      {
+        "plan": 1,
+        "lines": 262,
+        "raster": 660061,
+        "outputs": 18528,
+        "runs": 521
+      },
+      {
+        "plan": 1,
+        "lines": 313,
+        "raster": 0,
+        "outputs": 18528,
+        "runs": 515
+      },
+      {
+        "plan": 1,
+        "lines": 313,
+        "raster": 660059,
+        "outputs": 18528,
+        "runs": 509
+      },
+      {
+        "plan": 1,
+        "lines": 313,
+        "raster": 659060,
+        "outputs": 18528,
+        "runs": 511
+      },
+      {
+        "plan": 1,
+        "lines": 313,
+        "raster": 1070459,
+        "outputs": 18528,
+        "runs": 515
+      },
+      {
+        "plan": 1,
+        "lines": 313,
+        "raster": 660060,
+        "outputs": 18528,
+        "runs": 510
+      },
+      {
+        "plan": 1,
+        "lines": 313,
+        "raster": 660061,
+        "outputs": 18528,
+        "runs": 510
+      },
+      {
+        "plan": 2,
+        "lines": 262,
+        "raster": 0,
+        "outputs": 14208,
+        "runs": 390
+      },
+      {
+        "plan": 2,
+        "lines": 262,
+        "raster": 660059,
+        "outputs": 14208,
+        "runs": 382
+      },
+      {
+        "plan": 2,
+        "lines": 262,
+        "raster": 659060,
+        "outputs": 14208,
+        "runs": 381
+      },
+      {
+        "plan": 2,
+        "lines": 262,
+        "raster": 896039,
+        "outputs": 14208,
+        "runs": 390
+      },
+      {
+        "plan": 2,
+        "lines": 262,
+        "raster": 660060,
+        "outputs": 14208,
+        "runs": 382
+      },
+      {
+        "plan": 2,
+        "lines": 262,
+        "raster": 660061,
+        "outputs": 14208,
+        "runs": 382
+      },
+      {
+        "plan": 2,
+        "lines": 313,
+        "raster": 0,
+        "outputs": 14208,
+        "runs": 378
+      },
+      {
+        "plan": 2,
+        "lines": 313,
+        "raster": 660059,
+        "outputs": 14208,
+        "runs": 376
+      },
+      {
+        "plan": 2,
+        "lines": 313,
+        "raster": 659060,
+        "outputs": 14208,
+        "runs": 380
+      },
+      {
+        "plan": 2,
+        "lines": 313,
+        "raster": 1070459,
+        "outputs": 14208,
+        "runs": 378
+      },
+      {
+        "plan": 2,
+        "lines": 313,
+        "raster": 660060,
+        "outputs": 14208,
+        "runs": 382
+      },
+      {
+        "plan": 2,
+        "lines": 313,
+        "raster": 660061,
+        "outputs": 14208,
+        "runs": 382
+      }
+    ],
+    "native_source_sha256": "9f92484d6369905da9cc19ca0a3032cd4722da37f6abf8d00dd3c8602b7f670d",
+    "scope": "Expanded every emitted stable-run BF/BF/BE date,value and raster matches immutable pre-run individual-output hashes,plus all final native decoder/clock states for24intro asset/IRQ-edge cases."
+  },
+  "full_vdp_equivalence": {
+    "passed": true,
+    "host_cases": 1728,
+    "results": [
+      {
+        "region": "ntsc",
+        "run_cases_done": 1728,
+        "run_errors": 0,
+        "run_done": 1,
+        "frame": 57034
+      },
+      {
+        "region": "pal",
+        "run_cases_done": 1728,
+        "run_errors": 0,
+        "run_done": 1,
+        "frame": 47718
+      }
+    ],
+    "native_sources": {
+      "source_intro_vdp": "4298b5ff3dc6a313439a180edef8472415c2cdb46d7b830d4d81ea001e8e1a4f",
+      "source_intro_sprite_clock": "dc74c4d7df02e2a7e8705d91bbbdd27e52bb53e6dd55e85a876a2a4fad2ca453",
+      "source_intro_sprite_status": "57ae0af2f524be9156fdecf12c887f6434c003bb216b608318fd6f689ba32bdb"
+    },
+    "scope": "1728runs versus individual BF/BF/BE native port handling onhost and each compiled region. Full16KiBVRAM and entire logicalVDP/cache/latch/calendar state compared,only owner pointer normalized. Both frame periods,6raster edges,3address ranges,6counts,literal/repeat,terminal/nonterminal,active collision/overflow sprites."
+  },
+  "compiled_scene_profile": {
+    "passed": true,
+    "diagnostic_only": true,
+    "source_vector_cases": 10,
+    "source_regions": [
+      "ntsc",
+      "pal"
+    ],
+    "case_start": 0,
+    "ram_bytes": 15081,
+    "fire": false,
+    "actors": "second",
+    "reveal": true,
+    "sequence": true,
+    "transfer": true,
+    "map": "decode",
+    "scene": true,
+    "measure_native_frames": true,
+    "profile_stages": false,
+    "irq_status": true,
+    "results": [
+      {
+        "region": "ntsc",
+        "intro_poll_done": 1,
+        "intro_poll_cases": 10,
+        "intro_poll_errors": 0,
+        "intro_poll_reads": 84520,
+        "intro_poll_first_failure": 0,
+        "frame": 3520,
+        "native_call_frames": [
+          334,
+          323,
+          335,
+          322,
+          335,
+          325,
+          317,
+          325,
+          316,
+          325
+        ]
+      },
+      {
+        "region": "pal",
+        "intro_poll_done": 1,
+        "intro_poll_cases": 10,
+        "intro_poll_errors": 0,
+        "intro_poll_reads": 84520,
+        "intro_poll_first_failure": 0,
+        "frame": 2945,
+        "native_call_frames": [
+          280,
+          270,
+          281,
+          270,
+          280,
+          272,
+          265,
+          272,
+          265,
+          272
+        ]
+      }
+    ],
+    "kernel_sha256": "37bb836157bf696023e3b937d8ca22b96920f89acfd6258a09762ee7be7e20cb",
+    "scope": "Compiled68000 source semantic helper checked against the selected natural original source vectors on each target region. No physical publication scheduler or PCM claim."
+  },
+  "helper_profile": [
+    {
+      "region": "ntsc",
+      "before": [
+        711,
+        612,
+        711,
+        612,
+        711,
+        702,
+        607,
+        702,
+        606,
+        702
+      ],
+      "after": [
+        334,
+        323,
+        335,
+        322,
+        335,
+        325,
+        317,
+        325,
+        316,
+        325
+      ],
+      "mean_reduction_percent": 51.213301378070696
+    },
+    {
+      "region": "pal",
+      "before": [
+        595,
+        512,
+        595,
+        511,
+        595,
+        588,
+        508,
+        587,
+        507,
+        587
+      ],
+      "after": [
+        280,
+        270,
+        281,
+        270,
+        280,
+        272,
+        265,
+        272,
+        265,
+        272
+      ],
+      "mean_reduction_percent": 51.1727842435094
+    }
+  ],
+  "budget_gate_passed": false,
+  "limits": [
+    "Optimized helper316..335MDframes NTSC (265..281PAL across these executions) is still above original scene budget. This is a CPU gate failure; do not activate in published ROM.",
+    "Profile excludes setup/final comparisons and per-OUT expected checks; small per-IRQ status checks remain. No physical MD background rendering or PSG delivery is included.",
+    "Background-bank batching is valid for logical sprite/status semantics only. Physical background pixel visibility must consume the retained per-byte dates; never turn it into one instantaneous physical upload.",
+    "Scene snapshots rather than uninterrupted coldboot. Native IRQ date proof,full image/PSG throughput and hardware remain open."
+  ],
+  "next_action": "Profile remaining clear/map/per-line and IRQ overhead; implement equivalent dated runs there while preserving live status observations. Then remeasure combined CPU gate before physical video/PSG and ROM activation. FullV319 gameplay video is ready locally; upload pending browser access/visibility.",
+  "oracle_ram_writes": 0,
+  "sram_imports": 0,
+  "archive_manifest": "analysis/v319-pattern-runs/manifest.json"
+}
