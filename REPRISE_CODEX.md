@@ -6,6 +6,48 @@ le README et les rapports cités.
 
 ## Suivi courant — V319, 8 novembre 2026
 
+DERNIÈRE ÉTAPE : source_intro_plane_clear dans source_intro_video.c/.h,
+rapport `analysis/v319_intro_clear_report.json`, archive `analysis/v319-intro-clear`.
+E2B..E3E : PUSH HL/LDDE4003,2304boucles RST28 DI/EI,4INCDE,OUTBE FF,
+CP64/JRC puis POPHL/RET/checkpoint. Sink reçoit les3OUT horodatés par byte.
+14vecteurs naturels (7/région),tousavecIRQ,96768OUT source vérifiés.
+2025octets suivis+400reader,wall/IRQ/R/latches identiques. Foreground exact
+285732T/39172M1. Toutes entrées compilées sur68000 NTSC+PAL :28exécutions,
+193536OUT vérifiés,zéro erreur. Rebuild02 source exacte byte-identiqueV319.
+
+Optimisation :source_clock_repeat124T/17M1 pour boucles JRtaken, dernier119T.
+Regroupe plusieurs boucles jusqu’àVINT seulement,aucun pending/first/EI.
+OUT offsets30/45/101T, data FF. Sans sink, avance aussi compte/adresse sans
+IO. Avec sink, publie chaque event avant prochaine frontière IRQ, ordre exact.
+Sinon chemininstruction DI/EI complet. Prototype lent conservé avec source
+SHA vérifiée contre rebuild01. Kernel14vecteurs passe de3428/2869frames à
+1176/985 NTSC/PAL ; débit du banc avec oracle, PAS vitesse du jeu.
+
+Builder/validator --profile callback --clear implique le layout transfer,
+mais appelle uniquement clear. Snapshot2432,recordstride60432 (6912events
+au lieu770),events à snapshot*2+268,64statusesIRQ etmapsnapD600 conservés.
+Workclear02 final ;clear01 prototype lent valide. Z80source restaurée.
+Handles37070/21239/69063 terminaux0. Archive relue :43088352 octets générés
+supprimés,25585991nets libérés. Aucun nouveau numéro ROM, helpernon sélectionné.
+
+PROCHAINE ÉTAPE prioritaire : composer E50..E75, entrée HLheader/DEcallback,
+avec EA5,032A(source_pattern_decode),E2B,BD3/BFE,7357,EFA. E75 est avant
+LD D7F ; ne pas inclure le dévoilement déjà validé dans ce premier profil.
+Source_pattern_decode écrit un miroir pattern et RAMC031/C032, ne fournit
+pas les OUT individuels. Comparer aussi le miroir source final :patterns
+0000..23FF etmap3800..3AFF. Collector OUT clear+map couvre8452events par
+chargement complet (2*770+6912), pas touslesOUT RLE032A. Ne pas prétendre
+avoir prouvé les timestamps pattern individuels si non capturés.
+
+Piste layout diagnostic si utile : extra4696 ancienlayoutmap +9216patterns
++768nametable =14680, snapshot15488 ; RAM15016+65statuses=15081. Static
+full_ram8K+patternmirror16K etramfixture15K devront tenir dans64K cible.
+Attach IRQ video si nécessaire : ne pas supposer que le miroir n’est jamais
+modifié par IRQ ; la comparaison source doit trancher. Le sink de composition
+pourrait maintenir commande VDP/adresse etmiroir, puis déléguer les events.
+Après preuve de composition : mémoirecompacte/statutVDPspritevivant et
+publication MD avecdeadlines. Les paragraphs suivants sont historiques.
+
 DERNIÈRE ÉTAPE : `source_intro_map.c/.h`, rapport
 `analysis/v319_intro_map_report.json`, archive `analysis/v319-intro-map`.
 source_intro_map_decode :BD3 literal/increment vers scratchD100..D5FF,

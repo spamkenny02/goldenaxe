@@ -31,7 +31,9 @@ p.add_argument('--capture-work')
 p.add_argument('--transfer',action='store_true')
 p.add_argument('--prepare',action='store_true')
 p.add_argument('--map',choices=['decode','place'])
+p.add_argument('--clear',action='store_true')
 a = p.parse_args()
+if a.clear:a.transfer=True
 if a.map:a.transfer=True
 if a.prepare:a.transfer=True
 if a.transfer:
@@ -245,6 +247,12 @@ if a.map:
     wrapper=wrapper.replace('context.input.lines=phase[3];',
         '(void)sequence_data;(void)sequence_callback;(void)reveal_sink;(void)map_bank7;\n context.input.lines=phase[3];')
     (out/'wrapper.c').write_text(wrapper)
+if a.clear:
+    wrapper=wrapper.replace('SourceIntroMapOutput sequence;', 'SourceIntroMapOutput sequence={0};')
+    wrapper=wrapper.replace('source_intro_map_transfer(&clock,&context,sequence_callback,&sequence_data,reveal_sink,0,&sequence)',
+        'source_intro_plane_clear(&clock,&context,reveal_sink,0,&sequence.writes)')
+    wrapper=wrapper.replace('context.input.lines=phase[3];','(void)sequence_data;(void)sequence_callback;\n context.input.lines=phase[3];')
+    (out/'wrapper.c').write_text(wrapper)
 sdk = root.parents[1] / 'work/sgdk'
 env = dict(os.environ); env['PATH'] = 'C:/msys64/ucrt64/bin;' + env['PATH']
 modules = ['source_intro_wait', 'source_wait_restore', *MODULES]
@@ -278,6 +286,7 @@ if a.skip:build_folder='v319-intro-reveal_skip-callback-observer01'
 if a.transfer:build_folder='v319-intro-intro_transfer-callback-observer01'
 if a.prepare:build_folder='v319-intro-intro_prepare-callback-observer01'
 if a.map:build_folder='v319-intro-map_'+a.map+'-callback-observer01'
+if a.clear:build_folder='v319-intro-plane_clear-callback-observer01'
 build_folder=build_folder[:-2]+f'{a.observer_revision:02}'
 build = json.loads((root / 'validation' / build_folder / 'report.json').read_bytes())
 core = Path(build['core']); assert sha(core.read_bytes()) == build['core_sha256']
@@ -289,7 +298,7 @@ snapshot=5504 if a.map else 2432 if a.transfer else 1664 if a.sequence else 1656
 stride=snapshot*2+8
 if a.irq_status:stride+=264 if a.sequence else 40
 if a.skip:stride+=256
-if a.reveal:stride+=(770 if a.transfer else 55296 if a.sequence else 6912)*8
+if a.reveal:stride+=(6912 if a.clear else 770 if a.transfer else 55296 if a.sequence else 6912)*8
 assert dll.gaw_poll_stride() == stride
 image = (root / 'input/original.sms').read_bytes()
 low = (c.c_uint8 * 32768).from_buffer_copy(image[:32768]); bank = (c.c_uint8 * 16384).from_buffer_copy(image[0x18000:0x1c000])
@@ -327,7 +336,7 @@ for region in ('ntsc', 'pal'):
         refresh, pc = struct.unpack_from('<2I', first, 64); final_refresh, final_pc = struct.unpack_from('<2I', last, 64)
         if a.profile == 'poll': assert (pc, final_pc) == (0xf21, 0xf2b)
         else:
-            assert pc == ((0xbd3 if a.map=='decode' else 0x7357) if a.map else 0xea5 if a.prepare else 0xefa if a.transfer else 0xe79 if a.sequence else 0xe8b if a.reveal else (0xf51 if a.actors=='second' else 0xf54) if a.init else 0xf09 if a.profile == 'callback' else 0xf1e)
+            assert pc == (0xe2b if a.clear else (0xbd3 if a.map=='decode' else 0x7357) if a.map else 0xea5 if a.prepare else 0xefa if a.transfer else 0xe79 if a.sequence else 0xe8b if a.reveal else (0xf51 if a.actors=='second' else 0xf54) if a.init else 0xf09 if a.profile == 'callback' else 0xf1e)
             if a.init:phase=tuple(phase[i] if i!=4 else struct.unpack_from('<I',record,snapshot*2)[0] for i in range(12))
             assert final_pc in ((struct.unpack_from('<I',record,snapshot*2+4)[0],) if a.transfer else (0xea4,0xd0b) if a.skip else (0xea4,) if a.sequence else (0xea0,) if a.reveal else (struct.unpack_from('<I', record, snapshot*2+4)[0],))
         before=first[72:408]+(first[808:snapshot] if a.fire or a.actors else b'')
@@ -341,7 +350,7 @@ for region in ('ntsc', 'pal'):
                 before+=bytes(joys);expected_state+=bytes(joys)
         state = (c.c_uint8 * len(before)).from_buffer_copy(before); audio = (c.c_uint8 * 400).from_buffer_copy(first[408:808])
         if a.reveal:
-            event_count=struct.unpack_from('<I',record,snapshot*2)[0];assert (0<=event_count<=55296 and event_count%6912==0) if a.skip else event_count==(0 if a.map else 770 if a.transfer else 55296 if a.sequence else 6912)
+            event_count=struct.unpack_from('<I',record,snapshot*2)[0];assert (0<=event_count<=55296 and event_count%6912==0) if a.skip else event_count==(0 if a.map else 6912 if a.clear else 770 if a.transfer else 55296 if a.sequence else 6912)
             event_values=struct.unpack_from('<'+str(event_count*2)+'I',record,snapshot*2+(524 if a.skip else 268 if a.sequence else 44))
             event_buffer=(c.c_uint32*len(event_values))(*event_values)
             configure=c.CDLL(str(out/'native.dll')).configure_reveal_events
@@ -380,7 +389,7 @@ for region in ('ntsc', 'pal'):
     if a.init:row['source_template_addresses']=sorted({case['phase'][4] for case in cases})
     results.append(row); print(json.dumps(row), flush=True)
 report = dict(passed=True, diagnostic_only=True, profile=a.profile, fire=a.fire, actors=a.actors,
-    irq_status=a.irq_status,init=a.init,reveal=a.reveal,sequence=a.sequence,skip=a.skip,transfer=a.transfer,prepare=a.prepare,map=a.map,production_rom_changed=False, cases=results,
+    irq_status=a.irq_status,init=a.init,reveal=a.reveal,sequence=a.sequence,skip=a.skip,transfer=a.transfer,prepare=a.prepare,map=a.map,clear=a.clear,production_rom_changed=False, cases=results,
     core_sha256=sha(core.read_bytes()), source_sha256=sha(image),
     native_sources={name: sha((root / 'megadrive/src' / (name + '.c')).read_bytes()) for name in modules},
     verified=['Original natural entry/return wall time, raster, '+('initial HL, ' if a.init else 'polls, ')+
@@ -390,6 +399,7 @@ report = dict(passed=True, diagnostic_only=True, profile=a.profile, fire=a.fire,
               'Normal controller skip scenarios, independently replayed source PSG states identical; repeated prefix dedup omits only absolute diagnostic time origins.' if a.skip else 'Both regions,14000 no-input cold source frames per region; observer PSG state unchanged.'],
     limits=['Host native semantic helper; compiled68000 timing and physical MD publication not checked here.',
             ('Normal controller skip inputs and complete prefixes; per-IRQ VDP status and actual observed joy input are diagnostic external inputs.' if a.skip else
+             'Original E2B plane clear entry/return and every semantic OUT completion; natural no-input only. VDP status external diagnostic input.' if a.clear else
              'Intro map BD3/BFE decode or7357 placement entry/return; natural no-input only, original buffer contract filtered at entry. VDP status external diagnostic input.' if a.map else
              'Complete EA5 setup and EFA transfer with both callbacks, palette clearing and four bank6 header colors. Natural no-input only; VDP status external diagnostic input.' if a.prepare else
              'Complete EFA map transfer, F1E then F09 callbacks. Natural no-input only; VDP status external diagnostic input.' if a.transfer else

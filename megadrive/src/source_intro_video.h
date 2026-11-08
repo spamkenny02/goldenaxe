@@ -15,4 +15,8 @@ u8 source_intro_map_transfer(SourceClock *clock,SourceIrqContext *context,
 u8 source_intro_map_prepare(SourceClock *clock,SourceIrqContext *context,u16 palette_address,
                             SourceIntroCallback callback,void *callback_user,
                             SourceIntroRevealSink sink,void *sink_user,SourceIntroMapOutput *output);
+/* E2B..E3E: set plane3 of logical4000..63FF to FF through original
+ * RST28/DI/EI address writes. Includes RET/checkpoint, no physical MD IO. */
+u8 source_intro_plane_clear(SourceClock *clock,SourceIrqContext *context,
+                            SourceIntroRevealSink sink,void *sink_user,u16 *writes);
 #endif

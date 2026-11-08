@@ -141,8 +141,12 @@ vide, les quatre couleurs du bandeau de données et les deux attentes avec
 callbacks autour du transfert. Le [décodage de carte BD3/BFE et son placement par lignes](analysis/v319_intro_map_report.json)
 sont aussi traduits : 28 vecteurs source et 56 exécutions compilées passent,
 avec les banques ROM 6/7, les tampons mémoire et les temps correspondants.
-La composition du chargement complet de la scène et la publication vidéo/son
-restent à relier au jeu ; ces preuves portent sur les routines sémantiques.
+L’[effacement du quatrième plan graphique E2B](analysis/v319_intro_clear_report.json)
+est aussi traduit et vérifié : 96768 écritures source, puis 28 exécutions
+compilées en PAL/NTSC. Son regroupement des boucles sans interruption
+préserve chaque écriture et son timing. La composition du chargement complet
+de la scène et la publication vidéo/son restent à relier au jeu ; ces preuves
+portent sur les routines sémantiques.
 Aucune de ces nouvelles routines ne pilote encore l’intro publiée.
 La recompilation complète conserve exactement la V319.
 

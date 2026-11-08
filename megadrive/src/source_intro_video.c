@@ -57,3 +57,44 @@ u8 source_intro_map_prepare(SourceClock *clock,SourceIrqContext *context,u16 pal
     output->palette_end=palette_address+4;
     S(10,1);return source_clock_checkpoint(clock,source_irq_interrupt,context);
 }
+
+u8 source_intro_plane_clear(SourceClock *clock,SourceIrqContext *context,
+                            SourceIntroRevealSink sink,void *sink_user,u16 *writes)
+{
+    u16 address=0x4003;
+    if(!clock || !context || !context->ram || !context->audio || !writes) return 0;
+    *writes=0;S(11,1);S(10,1);
+    while(address<0x6400)
+    {
+        u16 remaining=(0x6403-address)/4,rows;
+        u32 elapsed=clock->elapsed,raster=clock->raster;
+        /* All intermediate branches are taken; the last loop is five T
+         * shorter. Paired DI/EI has expired before each loop boundary. */
+        rows=source_clock_repeat(clock,remaining==1?119:124,17,remaining==1?1:remaining-1);
+        if(rows)
+        {
+            for(u16 row=0;row<rows;row++)
+            {
+                if(sink)
+                {
+                    static const u16 offsets[3]={450,675,1515};
+                    u8 values[3]={(u8)address,(u8)(address>>8),255};
+                    for(u16 n=0;n<3;n++)
+                    {
+                        u32 offset=(u32)row*1860+offsets[n],sample=raster+offset;
+                        if(sample>=clock->period) sample-=clock->period;
+                        if(!sink(sink_user,elapsed+offset,sample,n==2?0xbe:0xbf,values[n])) return 0;
+                    }
+                }
+                address+=4;(*writes)++;
+            }
+            continue;
+        }
+        S(11,1);EFFECT(SOURCE_CLOCK_DI);S(4,1);S(11,1);EMIT(0xbf,address);
+        S(4,1);S(11,1);EMIT(0xbf,address>>8);EFFECT(SOURCE_CLOCK_EI);S(10,1);
+        S(6,1);S(6,1);S(6,1);S(6,1);address+=4;
+        S(7,1);S(11,1);EMIT(0xbe,255);(*writes)++;
+        S(4,1);S(7,1);S(address<0x6400?12:7,1);
+    }
+    S(10,1);S(10,1);return source_clock_checkpoint(clock,source_irq_interrupt,context);
+}
