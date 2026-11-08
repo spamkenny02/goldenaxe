@@ -6,7 +6,34 @@ le README et les rapports cités.
 
 ## Suivi courant — V319, 8 novembre 2026
 
-DERNIÈRE ÉTAPE : source_intro_scene_vdp.c/.h +source_intro_vdp_out,
+DERNIÈRE ÉTAPE : vidéo complète V319 produite enlocal, rapport
+`analysis/v319_gameplay_video_report.json`, archive `analysis/v319-gameplay-video`.
+Livrable `videos/v0319/golden-axe-warrior-md-v0319-gameplay-complet-ntsc.mp4`,
+1564288703octets,SHA ebf049475a5f92672cd7103066e2f6c3e58c16dbd2624cfd6635936bd34aa11e.
+410213frames,59.9227433977fps,960x720,stéréoAAC192k,durée6845.698s=1h54m06.
+Deuxsegments :intro/titre intégral6725frames,puis403488frames campagnecontinue
+NewGame→DeathAdder→générique→retourintro. 190764écrituresguardapproches,
+bossnonassistés,aucunimportvie/inventaire/progression/saveétat/SRAM.
+RAMfinale65536octets etPNGfinal exacts référencecampagne. Tout le fluxvidéo
+lu(packet),toutaudio décodé,12aperçus issus du MP4 final inspectés,peakaudio
+-12.38dBFS,pas deNaN/Inf. N’est pas une preuve de fidélitéaudioSMS complète.
+Titre,descriptiontransparente,chapitres dansvideos/v0319. MP4 horsGit.
+Outilsrecord/finalize/archive ajoutés ;run_core aaudio_observer optionnelpour
+streamWAV,sansbuffer1.2GB enRAM. Dépendances imageio-ffmpeg danswork/video-tools
+etcv2/numpy/Pillow existants. EncodeurNVENC ici lent,CPUlibx264veryfast~16x réel.
+Capturesintro tronquées/probe conservéesdanspreuves,intermédiairesMP4/WAV
+supprimés après vérification etarchivage desmétadonnées ;finalMP4conservé.
+ENVOIYOUTUBE PENDING :chaîne @KennYMcCormick-m2b,userdit sessionconnectée.
+Tentativecua.getTab renvoie 'Local browser use is disabled in Work settings'.
+Aucun accèsàlasession,vérificationchaîne ouupload effectué. Ne pas contourner.
+Questionasyncvisibilité ouverte(nonrépertoriée/publique/privée) etquestionpour
+activeraccèsbrowser ouenvoyer soi-même. Attendre réponses pourpublication.
+Modulepluginmanagement consulté :vidIQ/Metricool trouvés,pas de connecteur
+YouTube direct vérifié pouruploadlongfichier ;rieninstallé/lié/publié.
+Objectifportagetoujoursactif ;aprèsremisevidéo,reprendreauditdatesIRQ/coldboot,
+profilage/optimisation composés etimage/son physique avant nouvelleROM.
+
+ÉTAPE PRÉCÉDENTE : source_intro_scene_vdp.c/.h +source_intro_vdp_out,
 rapport `analysis/v319_scene_live_vdp_report.json`, archive
 `analysis/v319-scene-live-vdp`. Sinks pattern11T /mapBE16T dans3800..3AFF,
 clear11T ;OUT valide origineelapsed/raster etcheckpointdébutinstruction.

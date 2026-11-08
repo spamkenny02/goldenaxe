@@ -57,7 +57,7 @@ def compact_fixed_inputs(masks,end):
         previous=current
     return sorted(result)
 
-def run(rom,frames,out,captures,presses,core=None,ram_writes=(),skip_intro=True,ram_observer=None,psg_observer=None,audio_out=None,sram_in=None,sram_out=None,core_options=None,vram_observer=None,input_provider=None,stop_when=None,save_states=False,post_frame_observer=None,video_observer=None):
+def run(rom,frames,out,captures,presses,core=None,ram_writes=(),skip_intro=True,ram_observer=None,psg_observer=None,audio_out=None,sram_in=None,sram_out=None,core_options=None,vram_observer=None,input_provider=None,stop_when=None,save_states=False,post_frame_observer=None,video_observer=None,audio_observer=None):
     # Gameplay regressions explicitly skip the now-ported intro with normal input.
     # Set skip_intro=False to observe the complete boot story without inputs.
     presses=list(presses)
@@ -115,10 +115,24 @@ def run(rom,frames,out,captures,presses,core=None,ram_writes=(),skip_intro=True,
         im.save(out/f'frame_{frame:05d}.png'); captured[frame]={'width':width,'height':height,'format':mode}
     @AUDIO
     def audio(left,right):
-        if audio_out is not None:audio_pcm.extend(struct.pack('<hh',left,right))
+        nonlocal video_error
+        if audio_out is not None or audio_observer is not None:
+            raw=struct.pack('<hh',left,right)
+            if audio_out is not None:audio_pcm.extend(raw)
+            if audio_observer is not None:
+                try:audio_observer(raw)
+                except Exception as error:
+                    if video_error is None:video_error=error
     @BATCH
     def batch(data,count):
-        if audio_out is not None:audio_pcm.extend(c.string_at(data,count*4))
+        nonlocal video_error
+        if audio_out is not None or audio_observer is not None:
+            raw=c.string_at(data,count*4)
+            if audio_out is not None:audio_pcm.extend(raw)
+            if audio_observer is not None:
+                try:audio_observer(raw)
+                except Exception as error:
+                    if video_error is None:video_error=error
         return count
     @POLL
     def poll(): pass

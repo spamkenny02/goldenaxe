@@ -21,6 +21,18 @@ pose passe de 123060 à 67942 cycles maîtres médians, soit −44,79 % pour
 cette routine ; la cadence de jeu visée reste celle de la Master System.
 [Mesures et captures](analysis/c0046-hero-three-plane/manifest.json).
 
+## Vidéo complète de la V319
+
+Une capture NTSC de **1 h 54 min 06 s**, en 720p avec son stéréo, est prête en
+local : introduction/titre complets, puis parcours continu de nouvelle partie
+jusqu’au générique. Protection de test uniquement sur les approches, retirée
+avant les combats de boss ; aucun import de progression, vie ou sauvegarde.
+[Informations et aperçu](videos/v0319/README.md).
+
+Le MP4 volumineux reste hors Git. L’envoi vers `@KennYMcCormick-m2b` reste à
+faire : accès navigateur local désactivé dans Work et visibilité à choisir.
+[Rapport de capture](analysis/v319_gameplay_video_report.json).
+
 ## Travail natif en cours : statut vidéo des sprites
 
 Les dix scènes calculent maintenant leur statut vidéo depuis le miroir natif
