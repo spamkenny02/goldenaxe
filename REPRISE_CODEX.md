@@ -6,6 +6,28 @@ le README et les rapports cités.
 
 ## Suivi courant — V319, 8 novembre 2026
 
+Dernière reprise : fonds10 et11 terminés sans atteindre10pièces, aucun
+succès de collecte à revendiquer. Le diagnostic
+`analysis/palc0046_d9_funding_shore_report.json` explique fonds10 : la
+pièce de cinq existe en40,144 mais sa zone de contact est inaccessible
+depuis le bateau en40,120, même avec les deux embarcations acquises.
+Pilote07 : géométrie de ramassage issue des descripteurs source, ignore
+un butin inaccessible ; trajet29/39/3A, terminé sans pièces supplémentaires.
+Nouveau trajet `md-pal-palc0046-d9-funding-d8-reentry01` terminé0 : vraie
+entrée D8 en1EA,96PV,7pièces,83images de transition. Rejeu indépendant
+session37376 terminé0 :65536octets RAM et PNG final exacts à261049.
+Rapport `palc0046_d9_funding_reentry_report.json`, archive dédiée.
+Contrôleur privé08/fonds12 terminé0 : première pièce vraiment ramassée
+à261406,7→8pièces,96PV,1DA nettoyée,objectif10 non atteint. Rapport
+explicitement faux pour cet objectif. Il hérite de la même approche1AC.
+Suite privée09 préparée pour1DA/1CA/1C9/1C8. Coordinateur
+`continue_pal_d9_funding13.py` actif en session15631 : rejoue fonds12
+à froid avant de lancer fonds13, jamais un import de cet état.
+Archives des échecs10/11 relues et nettoyées :365références,8923776octets
+générés supprimés,4074821octets nets libérés. Aucune ROM numérotée supprimée.
+Cartridge et version restent V319 ; ces changements concernent les tests.
+Les anciens paragraphes de sessions actives ci-dessous sont historiques.
+
 ROM publiée : V319/d3ea2a83 (SHA complet dans le README),2Mio/DA29.
 NTSC terminé, vraie sauvegarde/Continue validés. Huit cristaux PAL avec
 retours désormais validés ; portage complet toujours ouvert.
