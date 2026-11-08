@@ -19,12 +19,12 @@ static void prefix(SourceAudioReaderStatus *status,SourceAudioTimedReaderSink si
     if(output->mute) emit(status,sink,context,bank+0x412,output->mute_tstates,10,base);
     emit(status,sink,context,output->writes,output->write_tstates,output->count,base);
 }
-u8 source_audio_reader_stream_timed(u8 *state,const u8 *low,u16 low_bytes,const u8 *bank,
+u8 source_audio_reader_stream_timed_work(u8 *state,const u8 *low,u16 low_bytes,const u8 *bank,
                                     u16 *de,SourceClockWork *work,SourceAudioReaderStatus *output,
-                                    SourceAudioTimedReaderSink sink,void *context)
+                                    SourceAudioTimedReaderSink sink,void *context,SourceAudioTimedSequenceOutput *channel)
 {
     u8 phase;u16 offset;u32 base;SourceClockWork sub;
-    SourceAudioTimedDispatchOutput dispatch;SourceAudioTimedSequenceOutput channel;
+    SourceAudioTimedDispatchOutput dispatch;
     output->count=output->error=output->track=0;
     if(source_audio_gate_timed(state,work,&dispatch))
     {prefix(output,sink,context,bank,&dispatch,0);return 1;}
@@ -49,15 +49,23 @@ u8 source_audio_reader_stream_timed(u8 *state,const u8 *low,u16 low_bytes,const 
         ADD(17,1);base=work->tstates;
         if(offset==0xd0)
         {
-            if(!source_audio_noise_timed(state,offset,low,low_bytes,bank,de,&sub,&channel))
-            {output->error=0x600|channel.error;goto reject;}
+            if(!source_audio_noise_timed(state,offset,low,low_bytes,bank,de,&sub,channel))
+            {output->error=0x600|channel->error;goto reject;}
         }
-        else if(!source_audio_tone_timed(state,offset,low,low_bytes,bank,de,&sub,&channel))
-        {output->error=0x700|channel.error;goto reject;}
-        ADD(sub.tstates,sub.fetches);emit(output,sink,context,channel.writes,channel.write_tstates,channel.count,base);
-        if(channel.unwind==2) return 1;
+        else if(!source_audio_tone_timed(state,offset,low,low_bytes,bank,de,&sub,channel))
+        {output->error=0x700|channel->error;goto reject;}
+        ADD(sub.tstates,sub.fetches);emit(output,sink,context,channel->writes,channel->write_tstates,channel->count,base);
+        if(channel->unwind==2) return 1;
     }
     ADD(10,1);return 1;
 reject:
     work->tstates=work->fetches=0;return 0;
+}
+
+u8 source_audio_reader_stream_timed(u8 *state,const u8 *low,u16 low_bytes,const u8 *bank,
+                                    u16 *de,SourceClockWork *work,SourceAudioReaderStatus *output,
+                                    SourceAudioTimedReaderSink sink,void *context)
+{
+    SourceAudioTimedSequenceOutput channel;
+    return source_audio_reader_stream_timed_work(state,low,low_bytes,bank,de,work,output,sink,context,&channel);
 }

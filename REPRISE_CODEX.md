@@ -6,6 +6,40 @@ le README et les rapports cités.
 
 ## Suivi courant — V319, 8 novembre 2026
 
+Dernier travail : `analysis/v319_buffered_psg_report.json`, archive
+`analysis/v319-buffered-psg`. Cinq prototypes d’émission datée 68000,
+TOUS ÉCARTÉS, aucun changement de ROM publique. Variante03 compacte :
+14000 frames par région, zéro erreur runtime, zéro écart d’état PSG,
+de commandes musicales ou d’intervalles SOURCE PRÉPARÉS. Maximum20 événements.
+Erreur physique médiane d’espacement :6246→431 ticks NTSC,6260→415 PAL.
+Mais vidéo face SMS :147429→6293441 pixels différents NTSC (13636→12715
+frames exactes),124148→125392 PAL. Ne pas promouvoir sur la seule preuve
+audio. Les attentes dans l’IRQ changent le rendu/rythme de l’intro.
+Variante04 planned : dérive NTSC à5963, sans code erreur ; PAL états exacts.
+Variante05 raw dix écritures : faute horloge NTSC dès23, PAL états exacts.
+La fenêtre entre seed et entrée consommateur inclut rebasing/classification ;
+ne pas l’ignorer ni augmenter une constante d’attente pour masquer une faute.
+Variantes01/02 restent noires avant PSG ; sonde PC montre DMA_init/MEM_alloc,
+puis aucun PSG_reset. Variante03 réduit la file DMA initiale80→32 et borne
+le workspace daté à32 écritures/canal, dans scratch+D00, rejet explicite.
+Ces limites de prototype ne prouvent pas une capacité suffisante au jeu entier.
+
+Seul ajout aux sources principales : API source_audio_reader_stream_timed_work
+et fast_timed_work avec workspace de l’appelant. Anciennes API wrappers,
+composition master renommée pour éviter les collisions. Vérification host :
+25644 vecteurs du reader SMS, deux implémentations,89200 octets datés chacune,
+400 octets état/DE/T/M1/track/octets/dates exacts. Rebuild production privé
+`validation/v319-timed-workspace-rebuild01` byte-identique à V319, checksumDA29.
+API non sélectionnée par sound.inc publié. Aucun correctif audio public annoncé.
+Prochaine action : émission des événements préparés sans bloquer l’IRQ vidéo,
+avec phase physique de première écriture et deadlines de préparation établies.
+Scripts prepare_v319_buffered_psg.py / measure_v319_buffered_psg.py /
+check_timed_reader_workspace.py / archive_v319_buffered_psg.py versionnés.
+Toutes les commandes terminales ; ne pas attendre leurs anciens handles.
+Archivage relu :3100 références,85993032 octets générés supprimés,
+50851406 nets libérés. Sources et scripts conservés, ROMs privées restituables
+depuis gzip ; ne pas relancer dans les mêmes répertoires d’expérimentation.
+
 Dernière preuve : `analysis/sms_psg_writes_v0319_report.json`, archive
 `analysis/v319-psg-write-spacing`. Observateur séparé avant décodage PSG,
 aucune modification des cycles/états émulés ; ses 28000 états de fin de frame

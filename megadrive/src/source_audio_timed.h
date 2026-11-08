@@ -67,6 +67,15 @@ u8 source_audio_reader_stream_timed(u8 *state,const u8 *low,u16 low_bytes,const 
 u8 source_audio_reader_stream_fast_timed(u8 *state,const u8 *low,u16 low_bytes,const u8 *bank,
                                          u16 *de,SourceClockWork *work,SourceAudioReaderStatus *status,
                                          SourceAudioTimedReaderSink sink,void *context);
+/* Caller-owned aligned timed workspace (2566 bytes on68000). It must not
+ * overlap state/source/context/output and is exclusive until return. Same
+ * stream contract, including partial publication on rejection, as above. */
+u8 source_audio_reader_stream_timed_work(u8 *state,const u8 *low,u16 low_bytes,const u8 *bank,
+                                         u16 *de,SourceClockWork *work,SourceAudioReaderStatus *status,
+                                         SourceAudioTimedReaderSink sink,void *context,SourceAudioTimedSequenceOutput *channel);
+u8 source_audio_reader_stream_fast_timed_work(u8 *state,const u8 *low,u16 low_bytes,const u8 *bank,
+                                              u16 *de,SourceClockWork *work,SourceAudioReaderStatus *status,
+                                              SourceAudioTimedReaderSink sink,void *context,SourceAudioTimedSequenceOutput *channel);
 /* Diagnostic variant (measured slower in loading; not production-selected).
  * Same fast stream, directly emitting modulo32-bit master dates at15 master
  * ticks per source T, relative to the supplied8000-entry epoch. The existing

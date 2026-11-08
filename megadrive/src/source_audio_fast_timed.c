@@ -24,4 +24,5 @@ u8 source_audio_noise_sequence_fast_timed(u8 *,u16,const u8 *,u16,const u8 *,Sou
 #define source_audio_tone_timed source_audio_tone_fast_timed
 #define source_audio_noise_timed source_audio_noise_fast_timed
 #define source_audio_reader_stream_timed source_audio_reader_stream_fast_timed
+#define source_audio_reader_stream_timed_work source_audio_reader_stream_fast_timed_work
 #include "source_audio_reader_timed.c"

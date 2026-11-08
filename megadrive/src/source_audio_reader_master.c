@@ -12,6 +12,7 @@ typedef struct {u32 epoch;void *user;} MasterEpoch;
 #define source_audio_tone_timed source_audio_tone_fast_timed
 #define source_audio_noise_timed source_audio_noise_fast_timed
 #define source_audio_reader_stream_timed reader_master_inner
+#define source_audio_reader_stream_timed_work reader_master_inner_work
 #include "source_audio_reader_timed.c"
 
 u8 source_audio_reader_stream_fast_master(u8 *state,const u8 *low,u16 low_bytes,const u8 *bank,

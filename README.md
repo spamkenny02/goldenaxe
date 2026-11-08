@@ -75,6 +75,16 @@ l’espacement entre écritures diffère. Cette mesure confirme un travail
 de synchronisation audio restant ; elle ne certifie pas les formes d’onde.
 Le rapport historique est conservé, avec cet erratum explicite.
 
+Un [prototype d’émission PSG datée](analysis/v319_buffered_psg_report.json)
+réduit l’erreur médiane d’espacement de 6246 à 431 ticks en NTSC et de
+6260 à 415 en PAL. Il est écarté : l’attente dans l’IRQ dégrade l’intro,
+fortement en NTSC. Les commandes préparées conservent exactement leurs
+intervalles source et les états sonores de fin de frame, mais cela ne
+suffit pas à valider le jeu entier. Le nouveau point d’entrée avec espace
+de travail fourni par l’appelant passe 25644 cas source ; il reste inutilisé
+par la ROM publiée. La recompilation des sources conserve exactement V319.
+La suite est une émission datée sans attente bloquante dans l’IRQ vidéo.
+
 ## Sources et compilation
 
 Les fichiers racine `gaw-megadrive.bin` et `gaw-title-megadrive.bin` contiennent

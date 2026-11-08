@@ -81,3 +81,9 @@ le précédent comptage d’activité était incorrect. Les états restent égau
 Les octets et leur ordre correspondent dès la première frame sonore active
 (23 NTSC, 20 PAL), avec quatre frames d’initialisation différentes par région.
 L’espacement entre écritures reste différent : aucune équivalence PCM annoncée.
+
+Recherche suivante : [cinq prototypes PSG écartés](../../analysis/v319_buffered_psg_report.json).
+Le meilleur réduit l’erreur d’espacement, mais dégrade l’intro en attendant
+dans l’IRQ. Aucun de ces binaires ne remplace V319. Le point d’entrée daté
+avec workspace fourni par l’appelant est testé sur 25644 cas source ; sa
+présence inutilisée dans les sources laisse la ROM recompilée identique.
