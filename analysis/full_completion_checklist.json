@@ -2261,13 +2261,17 @@
         "Return after once-only flag is set",
         "Economic boundary branches if reachable; use an alternate cold-boot input branch"
       ],
-      "sms_status": "pending",
+      "sms_status": "initial_plus50_gold_replayed; return_and_other_checks_pending",
       "md_status": "pending",
       "sms_md_comparison_status": "pending",
       "guide_episode": null,
       "guide_timestamp": null,
       "static_basis": "analysis/house_gold_reference.json; megadrive/src/house_gold.inc",
-      "observations": []
+      "observations": [
+        {
+          "report": "analysis/sms_npc_campaign_progress_report.json"
+        }
+      ]
     },
     {
       "id": "gold_house:80",
@@ -3003,13 +3007,17 @@
         "Already owned, inferior equipment, full capacity: each applicable reachable message",
         "Return after equipment and quest changes"
       ],
-      "sms_status": "pending",
+      "sms_status": "one_key_purchase_for60_gold_and_exit_replayed; other_variants_and_checks_pending",
       "md_status": "pending",
       "sms_md_comparison_status": "pending",
       "guide_episode": null,
       "guide_timestamp": null,
       "static_basis": "megadrive/src/merchant_data.c; megadrive/src/merchant.inc",
-      "observations": []
+      "observations": [
+        {
+          "report": "analysis/sms_npc_campaign_progress_report.json"
+        }
+      ]
     },
     {
       "id": "merchant:d7",

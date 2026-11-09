@@ -132,6 +132,13 @@ def main():
             outside=0xd4, gift=10, return_without_second_gift=True, all_variants_complete=False)
         result['latest_selected_prefix'] = 'validation/' + gold['latest_selected_sms_prefix']
         result['current_campaign_checkpoint'] = dict(**gold['current_sms_state'], second_boss_defeated=False)
+    campaign_path = ROOT / 'analysis/sms_npc_campaign_progress_report.json'
+    if campaign_path.exists():
+        campaign = read(campaign_path)
+        assert campaign['passed']
+        result['played_campaign_continuation'] = campaign_path.relative_to(ROOT).as_posix()
+        result['latest_selected_prefix'] = 'validation/' + campaign['latest_selected_prefix']
+        result['current_campaign_checkpoint'] = campaign['current_sms_state']
     out = ROOT / 'analysis/sms_npc_coverage_report.json'
     out.write_text(json.dumps(result, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
     print(json.dumps({k: result[k] for k in ('observed_acknowledged_conversations', 'static_plain_house_context_count', 'all_npcs_complete')}))

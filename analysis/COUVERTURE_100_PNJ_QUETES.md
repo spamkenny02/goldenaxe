@@ -13,7 +13,10 @@ Les huit liens intégrés sont relevés dans `lord_paddle_guide_reference.json`.
 L'accès au navigateur fonctionne désormais. Des passages du premier épisode
 ont été observés entre 2:45 et 3:24 : premiers habitants, service et sauvegarde.
 Les observations sont conservées dans `lord_paddle_observations.json`.
-Aucun épisode n'est encore visionné intégralement. La vidéo présente des textes
+Des salles de labyrinthe du premier épisode et un passage extérieur du deuxième épisode
+ont également été relevés comme simples repères de route, sans nouvelle
+conversation attestée par ces images. Aucun épisode n'est encore visionné
+intégralement. La vidéo présente des textes
 anglais, tandis que la ROM fournie contient des textes français ; les repères
 visuels ne prouvent donc pas une identité de ROM ou de synchronisation.
 
@@ -63,6 +66,18 @@ et reprise des déplacements ; comparer rendu, animation et audio en PAL/NTSC.
 Une sélection de texte correcte ou le seul bitmap final ne suffit pas.
 
 ## Résultats actuels et anomalie trouvée
+
+Le deuxième boss SMS est vaincu sans assistance au combat ; la récompense du
+cristal a été réellement acquittée, avec capacité de vie 48, puis le héros est
+sorti du donjon. Le drapeau du cristal précède la fin de sa fenêtre de récompense :
+le contrôleur exige maintenant la capacité attendue pour accepter cette étape.
+Un don de 50 pièces en F4 finance un achat réel de clé à 60 pièces en C7.
+La corde du troisième donjon et son mécanisme sont ensuite obtenus/activés.
+Son boss est vaincu, le troisième cristal acquitté et la capacité portée à 56 ;
+le retour à l'extérieur est également rejoué.
+Voir `sms_npc_campaign_progress_report.json` : chaque étape sélectionnée est
+rejouée depuis le démarrage. Les retours/variantes de ces nouveaux services,
+le reste de la campagne et les comparaisons MD restent à faire.
 
 Le parcours SMS a acquis et équipé la hache, coupé l'arbre qui révèle Gillian,
 puis observé son introduction, l'échange de la pomme d'or contre la magie de

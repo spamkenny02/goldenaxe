@@ -1,0 +1,87 @@
+"""Verify the selected cold-boot NPC campaign beyond the second crystal."""
+import hashlib
+import json
+from run_core import ROOT
+
+
+def read(path):return json.loads(path.read_bytes())
+
+
+def main():
+    chain=[
+        ('natural-dungeon-route/sms-sms-npc-d2-fairy-entry01','entry'),
+        ('natural-dungeon-combat/sms-auto-sms-npc-d2-fairy-boss07','partial_combat'),
+        ('natural-dungeon-combat/sms-auto-sms-npc-d2-fairy-boss08','boss_defeated_reward_pending'),
+        ('natural-dungeon-combat/sms-auto-sms-npc-d2-reward01','crystal_reward_finished'),
+        ('natural-dungeon-combat/sms-auto-sms-npc-d2-exit02','partial_exit'),
+        ('natural-dungeon-combat/sms-auto-sms-npc-d2-exit03','dungeon_exit'),
+        ('natural-dungeon-route/sms-sms-npc-gold-f4-entry01','entry'),
+        ('natural-service-route/sms-npc-gold-f4-gift01','gold_gift'),
+        ('natural-dungeon-route/sms-sms-npc-key-shop-c7-entry01','entry'),
+        ('natural-service-route/sms-npc-key-c7-buy01','key_purchase'),
+        ('natural-dungeon-route/sms-sms-npc-d3-entry02','entry'),
+        ('natural-dungeon-combat/sms-auto-sms-npc-d3-rope02','rope'),
+        ('natural-dungeon-combat/sms-auto-sms-npc-d3-switch01','mechanism'),
+        ('natural-dungeon-combat/sms-auto-sms-npc-d3-key01','dungeon_key'),
+        ('natural-dungeon-combat/sms-auto-sms-npc-d3-pre-boss01','entry_combat'),
+        ('natural-dungeon-combat/sms-auto-sms-npc-d3-boss01','third_crystal'),
+        ('natural-dungeon-combat/sms-auto-sms-npc-d3-exit01','partial_exit'),
+        ('natural-dungeon-combat/sms-auto-sms-npc-d3-exit02','third_dungeon_exit'),
+    ]
+    stages=[]
+    expected=hashlib.sha256((ROOT/'input/original.sms').read_bytes()).hexdigest()
+    for relative,kind in chain:
+        folder=ROOT/'validation'/relative
+        cap=read(folder/'capture.json')
+        report=read(folder/('route_report.json' if kind=='entry' else 'report.json'))
+        proof_path=folder.with_name(folder.name+f'-assisted-fixed-replay-{cap["frames"]}')/'replay_report.json'
+        proof=read(proof_path)
+        assert cap['rom_sha256']==proof['rom_sha256']==expected and cap['sram_input'] is None
+        assert proof['passed'] and proof['whole_ram_bytes']==8192 and proof['final_png_exact']
+        hashes={name:hashlib.sha256((folder/name).read_bytes()).hexdigest()
+                for name in ('capture.json','controls.json','assistance.json')}
+        assert hashes==proof['evidence']
+        assert report['failure'] in (None,'frame_limit')
+        raw=(folder/f'ram_{cap["frames"]:05d}.bin').read_bytes()
+        assert raw[0x1d]==12 and raw[0x318]>0
+        if kind.startswith('partial_'):
+            assert not report['room_cleared']
+        elif kind=='entry':assert report['reached_entrance']
+        elif kind=='boss_defeated_reward_pending':
+            assert report['room_cleared'] and not report['last_actors'] and raw[0xd0]&128
+            assert raw[0xda]==40,'This checkpoint is before the real capacity reward'
+        elif kind=='crystal_reward_finished':assert raw[0xd0]&128 and raw[0xda]==raw[0x318]==48
+        elif kind=='dungeon_exit':assert report['full_dungeon_cleared'] and raw[0xba]==raw[0x37]==0
+        elif kind=='gold_gift':assert report['passed'] and report['last_state']['gold']-report['first_state']['gold']==50
+        elif kind=='key_purchase':
+            assert report['passed'] and report['last_state']['keys']-report['first_state']['keys']==1
+            assert report['first_state']['gold']-report['last_state']['gold']==60
+        elif kind=='rope':assert report['item_acquisition_passed'] and raw[0xed]==1
+        elif kind=='mechanism':assert report['contact_route_passed'] and report['contact_opened']['flags']&4
+        elif kind=='dungeon_key':assert report['new_key_verified'] and raw[0xde]==1
+        elif kind=='entry_combat':assert report['room_cleared']
+        elif kind=='third_crystal':assert report['room_cleared'] and raw[0xd1]&128 and raw[0xda]==raw[0x318]==56
+        elif kind=='third_dungeon_exit':assert report['full_dungeon_cleared'] and raw[0xba]==raw[0x37]==0
+        stages.append(dict(trace=relative,kind=kind,frame=cap['frames'],
+                           fixed_replay=proof_path.relative_to(ROOT).as_posix(),evidence_sha256=hashes))
+    state=dict(frame=cap['frames'],room=int.from_bytes(raw[0xb9:0xbb],'little'),health=raw[0x318],
+               max_health=raw[0xda],gold=raw[0xdd],keys=raw[0xde],rope=raw[0xed],
+               crystals=sum(bool(b&128) for b in raw[0xcf:0xd8]),second_boss_defeated=True)
+    report=dict(passed=True,source_sha256=expected,stages=stages,
+                second_crystal_reward_and_exit_verified=True,
+                third_crystal_reward_and_exit_verified=True,
+                f4_gold_gift=50,c7_key_purchase_price=60,
+                rope_acquired=True,d3_mechanism_activated=True,
+                latest_selected_prefix=chain[-1][0],current_sms_state=state,
+                full_campaign_complete=False,all_npcs_complete=False,completion_percentage=None,
+                limits=['The successful type63 fight uses recorded approach protection, removed before combat. Its reward acknowledgment is a separate verified stage.',
+                        'Partial live fight/exit checkpoints are included only as replayed continuations, never as completed objectives.',
+                        'Failed controller experiments and the earlier D3 attempt without a key are not selected.',
+                        'Source reward flags can precede modal completion. The second crystal is accepted only after real capacity48 and HP refill, followed by movement and exterior return.',
+                        'F4 return, all merchant choices/refusals/pages, remaining NPCs/quests and paired MD checks remain open.',
+                        'Guide observations are sampled screenshots. Neither episode has been watched in full.'])
+    (ROOT/'analysis/sms_npc_campaign_progress_report.json').write_text(json.dumps(report,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
+    print(json.dumps(dict(passed=True,stages=len(stages),current=state)))
+
+
+if __name__=='__main__':main()

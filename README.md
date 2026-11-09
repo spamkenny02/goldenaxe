@@ -40,6 +40,13 @@ de ces services reste ouverte.
 La [maison d'argent D4](analysis/npc_gold_campaign_report.json) est aussi
 parcourue sur SMS : don de 10 pièces, puis retour sans nouveau don, avec
 relecture indépendante. Sa visite MD reste à faire.
+Le [parcours SMS avec les PNJ](analysis/sms_npc_campaign_progress_report.json)
+a depuis vaincu le deuxième boss, achevé la récompense du deuxième cristal et
+quitté son donjon. Le don de 50 pièces en F4 et l'achat réel d'une clé pour
+60 pièces en C7 sont rejoués. La corde du troisième donjon est acquise,
+son mécanisme activé, puis son boss vaincu : troisième cristal, capacité de
+vie 56 et sortie du donjon vérifiés. La campagne SMS et la couverture exhaustive restent
+en cours. Les essais échoués ne sont pas ajoutés aux étapes accomplies.
 Les 65 contextes statiques des maisons ordinaires ne constituent pas le
 nombre total de PNJ ou de variantes. Marchands, donneurs de quêtes,
 dialogues conditionnels et autres textes restent à couvrir. Ce parcours

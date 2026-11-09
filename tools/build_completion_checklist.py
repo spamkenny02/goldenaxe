@@ -170,6 +170,13 @@ def main():
             assert read('npc_gold_campaign_report.json')['passed']
             case['sms_status'] = 'initial_plus10_gold_and_no_repeat_gift_replayed; other_checks_pending'
             case['observations'].append(dict(report='analysis/npc_gold_campaign_report.json'))
+        if case['id'] in ('gold_house:f4','merchant:c7'):
+            campaign_path=ROOT/'analysis/sms_npc_campaign_progress_report.json'
+            if campaign_path.exists():
+                assert json.loads(campaign_path.read_bytes())['passed']
+                case['sms_status']=('initial_plus50_gold_replayed; return_and_other_checks_pending' if case['id']=='gold_house:f4'
+                                    else 'one_key_purchase_for60_gold_and_exit_replayed; other_variants_and_checks_pending')
+                case['observations'].append(dict(report='analysis/sms_npc_campaign_progress_report.json'))
     result = dict(requirement='ALL NPCs and ALL side quests on SMS and MD, including relevant return visits and conditional text variants',
                   requirement_complete=False, census_proved_complete=False,
                   completion_percentage=None,

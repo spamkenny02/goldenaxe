@@ -18,21 +18,32 @@
           "seconds": 165,
           "kind": "house_entry",
           "summary_fr": "Le héros est à l'entrée sud de la première maison, qui réunit des habitants et plusieurs services.",
-          "inferred_source_context": {"outside": 148, "room": 0},
+          "inferred_source_context": {
+            "outside": 148,
+            "room": 0
+          },
           "dialogue_text_observed": false
         },
         {
           "seconds": 175,
           "kind": "service_portrait",
           "summary_fr": "Un portrait de service est affiché avec une salutation encore en cours de rendu. L'issue du service n'est pas établie par cette image.",
-          "inferred_source_context": {"outside": 148, "room": 0},
+          "inferred_source_context": {
+            "outside": 148,
+            "room": 0
+          },
           "dialogue_text_observed": "partial_only"
         },
         {
           "seconds": 180,
           "kind": "npc_dialogue",
           "summary_fr": "L'habitant de droite commence à parler d'une ville du sud-est nommée Saylun.",
-          "inferred_source_context": {"outside": 148, "room": 0, "coordinate": 744, "text_pc": 39794},
+          "inferred_source_context": {
+            "outside": 148,
+            "room": 0,
+            "coordinate": 744,
+            "text_pc": 39794
+          },
           "checklist_id": "plain_house:94/00/02e8",
           "dialogue_text_observed": "partial_only"
         },
@@ -40,7 +51,10 @@
           "seconds": 190,
           "kind": "save_service",
           "summary_fr": "L'écran du service de sauvegarde affiche une confirmation de sauvegarde réalisée. Le créneau choisi n'est pas déduit de l'image.",
-          "inferred_source_context": {"outside": 148, "room": 0},
+          "inferred_source_context": {
+            "outside": 148,
+            "room": 0
+          },
           "checklist_id": "save_service:audit",
           "dialogue_text_observed": true
         },
@@ -48,7 +62,12 @@
           "seconds": 200,
           "kind": "npc_dialogue",
           "summary_fr": "Le PNJ du haut dans la seconde maison signale des monstres de Death Adder près de Miliver.",
-          "inferred_source_context": {"outside": 148, "room": 2, "coordinate": 604, "text_pc": 39877},
+          "inferred_source_context": {
+            "outside": 148,
+            "room": 2,
+            "coordinate": 604,
+            "text_pc": 39877
+          },
           "checklist_id": "plain_house:94/02/025c",
           "dialogue_text_observed": true
         },
@@ -56,11 +75,56 @@
           "seconds": 204.333332,
           "kind": "npc_dialogue",
           "summary_fr": "L'habitant de gauche dans la seconde maison parle de la mort du roi et de la princesse Tyris, et du sort de Firewood.",
-          "inferred_source_context": {"outside": 148, "room": 2, "coordinate": 836, "text_pc": 39945},
+          "inferred_source_context": {
+            "outside": 148,
+            "room": 2,
+            "coordinate": 836,
+            "text_pc": 39945
+          },
           "checklist_id": "plain_house:94/02/0344",
           "dialogue_text_observed": true
+        },
+        {
+          "seconds": 1882.22836,
+          "kind": "route_scene",
+          "summary_fr": "Passage extérieur devant l'entrée d'un labyrinthe, hache équipée ; correspondance avec le deuxième accès supposée, non certifiée par la seule image.",
+          "dialogue_text_observed": false
+        },
+        {
+          "seconds": 1999.026666,
+          "kind": "route_scene",
+          "summary_fr": "Salle de labyrinthe à deux colonnes de blocs ; le héros se tient devant une porte nord verrouillée.",
+          "dialogue_text_observed": false
+        },
+        {
+          "seconds": 2064.026664,
+          "kind": "route_scene",
+          "summary_fr": "Salle de labyrinthe traversée par une rivière en zigzag et deux petits ponts.",
+          "dialogue_text_observed": false
+        },
+        {
+          "seconds": 2318.905,
+          "kind": "route_scene",
+          "summary_fr": "Salle de labyrinthe avec rivière verticale et escalier ; le héros n'est pas visible sur cette image.",
+          "dialogue_text_observed": false
         }
       ]
+    },
+    {
+      "part": 2,
+      "url": "https://www.youtube.com/watch?v=wcaW3w6lG_M",
+      "duration_seconds": null,
+      "viewing_status": "sampled_scenes_only",
+      "transcript_status": "not_used",
+      "observations": [
+        {
+          "seconds": 123.0,
+          "kind": "route_scene",
+          "summary_fr": "Le héros parcourt un écran extérieur avec rivière horizontale, pont à droite et plusieurs arbres.",
+          "dialogue_text_observed": false
+        }
+      ],
+      "duration_display": "50:59"
     }
   ]
 }
