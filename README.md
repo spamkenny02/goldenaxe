@@ -43,6 +43,15 @@ base dans l’historique Git si la copie locale a été nettoyée.
 Les archives de passation dans `handoff` restent les instantanés **V320**
 demandés ; elles ne contiennent pas ce correctif V321.
 
+La recherche sur la première ligne du logo a ensuite mesuré les écritures
+réelles SMS : un octet toutes les 32 périodes Z80. Un candidat privé réduit
+l’écart NTSC de 262 à **20 pixels**, sans différence dans la plage du titre
+PAL comparée. Son délai initial est encore calibré et son modèle de phase
+d’interruption est incomplet : **ce candidat n’est pas publié**, la ROM
+courante reste la V321. La correction finale doit aussi traiter la différence
+entre les écritures SMS par octet et les écritures MD par mot.
+[Mesures raster et travail restant](analysis/title_logo_raster_v0321_research_report.json).
+
 La V320 corrige le débordement du générique dans les 16 pixels supplémentaires
 au bas de l’écran Mega Drive. Les 192 lignes SMS conservent leur image et leur
 cadence. La correction est un ajout natif 68000 de 124 octets sur la V319 :

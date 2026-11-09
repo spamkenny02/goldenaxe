@@ -1,0 +1,164 @@
+{
+  "version_tested": 321,
+  "public_rom_unchanged": true,
+  "public_md_sha256": "89c5833351312ffaa591efb1939161910a298af06437080e2cf84fb3fb8ac86e",
+  "candidate_selected_for_release": false,
+  "candidate": {
+    "md_sha256": "a363b9b686db47aed579facf1d177e3a381a0fa6998f4321697aa2d2139e7023",
+    "base_sha256": "89c5833351312ffaa591efb1939161910a298af06437080e2cf84fb3fb8ac86e",
+    "source_sha256": "f13f27465b5321fa778cd8310925462023919df4659be4fc96c481617d605212",
+    "overlay_bytes": 2750,
+    "runtime_validation_required": true,
+    "selected_for_release": false,
+    "experimental_lead_in_nops": 454,
+    "source_irq_phase_model_complete": false
+  },
+  "results": [
+    {
+      "region": "ntsc",
+      "frame": 6358,
+      "source_writes_per_row": 64,
+      "source_observed_byte_period_master": 480,
+      "source_observed_byte_period_z80_tstates": 32,
+      "first_row_first_outi_entry_master": 234420,
+      "first_row_last_outi_entry_master": 264660,
+      "source_wait_and_irq_observations": [
+        {
+          "frame": 6358,
+          "pc": 311,
+          "elapsed": 51078765,
+          "irq": 11575290,
+          "physical_master_cycles": 4575,
+          "clock": 196,
+          "hl": 25603,
+          "de": 4,
+          "bc": 191
+        },
+        {
+          "frame": 6358,
+          "pc": 2995,
+          "elapsed": 51303945,
+          "irq": 11799870,
+          "physical_master_cycles": 229755,
+          "clock": 197,
+          "hl": 49199,
+          "de": 35914,
+          "bc": 228
+        },
+        {
+          "frame": 6358,
+          "pc": 5706,
+          "elapsed": 51306645,
+          "irq": 11799870,
+          "physical_master_cycles": 232455,
+          "clock": 197,
+          "hl": 51456,
+          "de": 30976,
+          "bc": 2048
+        },
+        {
+          "frame": 6358,
+          "pc": 5703,
+          "elapsed": 51340320,
+          "irq": 11799870,
+          "physical_master_cycles": 266130,
+          "clock": 197,
+          "hl": 51520,
+          "de": 31040,
+          "bc": 1792
+        }
+      ],
+      "title_interval_inclusive": [
+        5960,
+        6741
+      ],
+      "candidate_whole_image_mismatch_frames": [
+        6358
+      ],
+      "v321_pixels_different_on_target_frame": 262,
+      "candidate_pixels_different_on_target_frame": 20,
+      "all_other_frames_in_interval_exact": true
+    },
+    {
+      "region": "pal",
+      "frame": 6344,
+      "source_writes_per_row": 64,
+      "source_observed_byte_period_master": 480,
+      "source_observed_byte_period_z80_tstates": 32,
+      "first_row_first_outi_entry_master": 236205,
+      "first_row_last_outi_entry_master": 266445,
+      "source_wait_and_irq_observations": [
+        {
+          "frame": 6344,
+          "pc": 311,
+          "elapsed": 46034385,
+          "irq": 10533105,
+          "physical_master_cycles": 4665,
+          "clock": 214,
+          "hl": 25603,
+          "de": 4,
+          "bc": 191
+        },
+        {
+          "frame": 6344,
+          "pc": 2995,
+          "elapsed": 46261260,
+          "irq": 10759380,
+          "physical_master_cycles": 231540,
+          "clock": 215,
+          "hl": 49199,
+          "de": 56841,
+          "bc": 2
+        },
+        {
+          "frame": 6344,
+          "pc": 5706,
+          "elapsed": 46263960,
+          "irq": 10759380,
+          "physical_master_cycles": 234240,
+          "clock": 215,
+          "hl": 51456,
+          "de": 30976,
+          "bc": 2048
+        },
+        {
+          "frame": 6344,
+          "pc": 5703,
+          "elapsed": 46297635,
+          "irq": 10759380,
+          "physical_master_cycles": 267915,
+          "clock": 215,
+          "hl": 51520,
+          "de": 31040,
+          "bc": 1792
+        }
+      ],
+      "title_interval_inclusive": [
+        5953,
+        6727
+      ],
+      "candidate_whole_image_mismatch_frames": [],
+      "v321_pixels_different_on_target_frame": 0,
+      "candidate_pixels_different_on_target_frame": 0,
+      "all_other_frames_in_interval_exact": true
+    }
+  ],
+  "native_observed_word_period_master": [
+    952,
+    980
+  ],
+  "native_seven_word_period_master": 6720,
+  "scope": "Read-only original SMS and native MD render/write timing measurements, cold boot with no inputs or RAM writes. One experimental lead-in calibration, not a completed source timing model.",
+  "findings": [
+    "SMS0384 streams64 bytes via038E with a32T byte period; original64-byte row occupies30240master clocks from first to last OUTI entry.",
+    "The published V321 transfers native tile words faster. One partial NTSC frame therefore differs despite matching title picture-run starts.",
+    "A private word-paced row candidate reduces262 differing pixels to20 on that frame; PAL title interval remains exact.",
+    "Source IRQ/wait exit at0BB3 and first038E are observed explicitly. The454-NOP candidate lead-in is calibrated, not derived from a complete dynamic IRQ model."
+  ],
+  "remaining": [
+    "Derive foreground publication deadline from original IRQ work and the live sound state rather than a calibrated NOP count.",
+    "Account for SMS low/high byte updates and native word writes/VDP fetch timing; the current grouping leaves20 differing pixels.",
+    "Validate all title controls and sound after a final correction, then number a new ROM only when selected."
+  ],
+  "next_action": "Use captured0137/0BB3/164A/038E dates to validate a source IRQ-to-first-map-byte timing model; retainV321 until that model and rendered equivalence are proved."
+}
