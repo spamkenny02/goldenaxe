@@ -35,6 +35,11 @@ u8 source_intro_vdp_pattern_run(void *user,const SourcePatternVideoRun *run);
  * clear=0:BE16T,stride32T,address+1,borrowed immutable-for-call bytes. */
 u8 source_intro_vdp_map_run(SourceIntroVdp *vdp,u32 elapsed,u32 raster,u32 period,
  u16 address,u16 count,const u8 *bytes,u8 clear);
+/* Consecutive16T OUTI writes to the live SAT,without an intervening observer.
+ * first elapsed/raster is the completion of the first OUTI. Address/code must
+ * already be established. Group only bytes before the next sprite line edge;
+ * every crossed line is evaluated before its first following mutation. */
+u8 source_intro_vdp_sat_run(SourceIntroVdp *vdp,u32 elapsed,u32 raster,const u8 *bytes,u16 count);
 /* SourceIrqStatusRead-compatible; includes command-latch clearing. */
 u8 source_intro_vdp_irq_status(void *user,const SourceClockIrq *entry,u8 *status);
 #endif

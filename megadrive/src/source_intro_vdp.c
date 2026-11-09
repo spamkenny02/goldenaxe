@@ -195,3 +195,33 @@ u8 source_intro_vdp_map_run(SourceIntroVdp *vdp,u32 elapsed,u32 raster,u32 perio
  vdp->instruction_raster=vdp->clock.raster>=duration?vdp->clock.raster-duration:vdp->clock.raster+period-duration;
  return 1;
 }
+
+u8 source_intro_vdp_sat_run(SourceIntroVdp *vdp,u32 elapsed,u32 raster,const u8 *bytes,u16 count)
+{
+ u32 delta;u16 remaining=count;
+ if(!vdp || !vdp->vram || !bytes || vdp->error || vdp->pending || vdp->code!=1 ||
+    !count || count>128 || vdp->address<0x3f00 || (u32)vdp->address+count>0x4000 ||
+    raster>=vdp->clock.period) return 0;
+ delta=elapsed-vdp->instruction_elapsed;
+ if((s32)delta<0 || delta<240 || source_video_wrap(vdp->instruction_raster,delta,vdp->clock.period)!=raster) return 0;
+ if(!source_intro_vdp_checkpoint(vdp,elapsed-240)) return 0;
+ while(remaining)
+ {
+  u16 batch;u32 span;
+  if(!advance(vdp,elapsed)) {vdp->error=3;return 0;}
+  /* No parse/render/status observation can occur between these byte dates.
+   * SAT may alias sprite pattern pixels; those are also read only at edges. */
+  batch=(vdp->clock.until_line+239)/240;
+  if(batch>remaining) batch=remaining;
+  for(u16 n=0;n<batch;n++) vdp->vram[vdp->address++]=*bytes++;
+  span=(u32)(batch-1)*240;
+  vdp->clock.raster+=span;vdp->clock.until_line-=span;
+  vdp->clock.elapsed=elapsed+span;
+  remaining-=batch;elapsed+=span;
+  if(remaining) elapsed+=240;
+ }
+ vdp->pending=0;vdp->buffer=bytes[-1];
+ vdp->instruction_elapsed=elapsed-240;
+ vdp->instruction_raster=vdp->clock.raster>=240?vdp->clock.raster-240:vdp->clock.raster+vdp->clock.period-240;
+ return 1;
+}

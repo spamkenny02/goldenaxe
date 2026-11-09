@@ -58,6 +58,21 @@ Cette capture V319 conserve le défaut de bordure du générique signalé ensuit
 
 ## Travail natif en cours : statut vidéo des sprites
 
+Les écritures de sprites des interruptions sont maintenant regroupées entre
+les frontières de ligne, en conservant l’ordre des mutations observables.
+Le helper composé passe de 88..96 à **70..78 images MD en NTSC**, et de
+74..80 à **58..65 en PAL**, soit environ 20 % de temps en moins sur ces cas.
+Il s’agit de durées de diagnostic du helper, pas de la cadence du jeu.
+
+48300 cas sur ordinateur et **96600 cas compilés 68000** comparent le nouvel
+envoi aux OUTI individuels : caches, collisions, débordements, phases de ligne,
+VRAM et lecture du statut. Les vingt scènes compilées gardent leurs états
+attendus. Les reconstructions de la base V319 et du correctif V320 restent
+identiques aux ROMs publiées. Le budget source est encore dépassé : cette
+composition reste désactivée dans la V320.
+[Mesures, preuves et limites](analysis/v320_sat_runs_report.json).
+
+
 Le calendrier vidéo évite maintenant de parcourir les lignes quand la liste
 native de sprites est vide et que cet intervalle ne peut modifier aucun statut.
 Les drapeaux déjà présents, les coordonnées de collision et le déclenchement

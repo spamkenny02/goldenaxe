@@ -6,6 +6,23 @@ le README et les rapports cités.
 
 ## Suivi courant — V320, 8 novembre 2026
 
+DERNIÈRE ÉTAPE NATIVE : envois SAT IRQ groupés entre frontières de ligne.
+`analysis/v320_sat_runs_report.json`, archive `analysis/v320-sat-runs/manifest.json`.
+source_intro_vdp_sat_run :64Y/128XY,OUTI16T,source_raster/epoch validés,
+checkpoint initial puis avance avant chaque ligne ; mutations dans une ligne
+sans nouvelle évaluation,avec caches/flags/VINT/adresse/buffer finaux exacts.
+Les registres/BF et palette gardent leurs écritures datées individuelles.
+48300cas host et48300par région MD :575lignes,6phases,7tailles,displayon/off,
+patterns aliasSAT,caches,counters,overflow/collision/VINT et wrap32.
+VDP/cache/SAT exact après run/read ; canaris16KiB après chaque bloc de ligne.
+Premier test01 arrêté à sa limite180000frames sans écart,non compté comme
+succès complet ; test02 évite les comparaisons16KiB inutiles à chaque octet.
+20scènes compilées exactes. HelperNTSC88..96→70..78,PAL74..80→58..65.
+CPUgateFALSE ; aucun branchement vers cette composition en ROM publique.
+Rebuild baseV319 exact puis overlayV320 exact/9e5b0abe…/B0A2. Pas de V321.
+Prochain : motifs25..34framesNTSC,coût preview/rollbackIRQ ; dates originales
+IRQ,coldboot natif continu,livraison physiqueVDP/PSG et PCM restent ouverts.
+
 DERNIERS CONTRÔLES V320 : `analysis/v320_followup_tests_report.json`,
 archive `analysis/v320-followup-tests/manifest.json`.
 PAL382208imagesdepuisNewGame :9cristaux,DeathAdder,7424étatscredits bordures

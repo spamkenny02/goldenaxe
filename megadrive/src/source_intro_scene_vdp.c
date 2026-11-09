@@ -41,9 +41,9 @@ u8 source_intro_scene_vdp_irq(void *user,const SourceIrqContext *context,const S
      !out(vdp,entry,75+n*28,12,0xbf,0x8a-n)) return 0;
  }
  if(!out(vdp,entry,166,11,0xbf,0) || !out(vdp,entry,184,11,0xbf,0x7f)) return 0;
- for(n=0;n<64;n++) if(!out(vdp,entry,234+(u32)n*16,16,0xbe,context->ram[144+n])) return 0;
+ if(!source_intro_vdp_sat_run(vdp,entry->entry_elapsed+234UL*15,source_video_wrap(entry->entry_raster,234UL*15,vdp->clock.period),context->ram+144,64)) return 0;
  if(!out(vdp,entry,1267,11,0xbf,0x80) || !out(vdp,entry,1282,11,0xbf,0x7f)) return 0;
- for(n=0;n<128;n++) if(!out(vdp,entry,1315+(u32)n*16,16,0xbe,context->ram[208+n])) return 0;
+ if(!source_intro_vdp_sat_run(vdp,entry->entry_elapsed+1315UL*15,source_video_wrap(entry->entry_raster,1315UL*15,vdp->clock.period),context->ram+208,128)) return 0;
  if(!context->ram[0x33])
  {
   prefix=0;for(n=0;n<SOURCE_IRQ_PALETTE;n++) prefix+=irq.stages[n].tstates;
