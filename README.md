@@ -35,6 +35,13 @@ nombre total de PNJ ou de variantes. Marchands, donneurs de quêtes,
 dialogues conditionnels et autres textes restent à couvrir. Ce parcours
 partiel n'est pas encore livré dans l'archive du kit de tests.
 
+La même couverture exhaustive est requise sur Mega Drive, avec les mêmes
+conditions de quête : textes, pages, choix, récompenses, fermeture du dialogue,
+restauration graphique, transitions et son en PAL/NTSC.
+[Suivi comparé des PNJ SMS/MD](analysis/paired_npc_coverage_report.json).
+Les visites MD de ce nouveau parcours comparé restent à effectuer ; les
+anciens tests de scènes et de campagnes ne valent pas validation de tous les PNJ.
+
 La **V321** corrige le retard d’une image des portions de carte du titre :
 cape, apparition du logo et clignotement de l’invite. Les 198 images des
 33 poses de cape correspondent à la source, avec six images par pose, en
