@@ -1,0 +1,114 @@
+{
+  "passed": true,
+  "libretro_runs": [
+    {
+      "route": "md_ntsc",
+      "rom_sha256": "9e5b0abed80678ce864a0bb796c17e97047d1d34e5227a5275bf9336129ceaff",
+      "core_sha256": "d17f2392115b3cd54258a1fa6c4195ddadc19b0805ebcca400db5162b1793516",
+      "frames": 403488,
+      "full_route_executed": true,
+      "ending_seen": true,
+      "expected_final_passed": true,
+      "final": {
+        "game": 0,
+        "room": 332,
+        "health": 60,
+        "crystals": 9,
+        "audio_error": 0
+      },
+      "approach_writes": 190764,
+      "boss_assistance": false,
+      "sram_imports": 0,
+      "scope": "Recorded libretro route replay. SMS files cover intro only. Reaching the recorded ending is not exhaustive game or fidelity validation."
+    },
+    {
+      "route": "md_ntsc",
+      "rom_sha256": "89c5833351312ffaa591efb1939161910a298af06437080e2cf84fb3fb8ac86e",
+      "core_sha256": "d17f2392115b3cd54258a1fa6c4195ddadc19b0805ebcca400db5162b1793516",
+      "frames": 403488,
+      "full_route_executed": true,
+      "ending_seen": true,
+      "expected_final_passed": true,
+      "final": {
+        "game": 0,
+        "room": 332,
+        "health": 60,
+        "crystals": 9,
+        "audio_error": 0
+      },
+      "approach_writes": 190764,
+      "boss_assistance": false,
+      "sram_imports": 0,
+      "scope": "Recorded libretro route replay. SMS files cover intro only. Reaching the recorded ending is not exhaustive game or fidelity validation."
+    },
+    {
+      "route": "md_pal",
+      "rom_sha256": "89c5833351312ffaa591efb1939161910a298af06437080e2cf84fb3fb8ac86e",
+      "core_sha256": "d17f2392115b3cd54258a1fa6c4195ddadc19b0805ebcca400db5162b1793516",
+      "frames": 382208,
+      "full_route_executed": true,
+      "ending_seen": true,
+      "expected_final_passed": true,
+      "final": {
+        "game": 0,
+        "room": 332,
+        "health": 92,
+        "crystals": 9,
+        "audio_error": 0
+      },
+      "approach_writes": 196493,
+      "boss_assistance": false,
+      "sram_imports": 0,
+      "scope": "Recorded libretro route replay. SMS files cover intro only. Reaching the recorded ending is not exhaustive game or fidelity validation."
+    },
+    {
+      "route": "sms_intro_ntsc",
+      "rom_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+      "core_sha256": "d17f2392115b3cd54258a1fa6c4195ddadc19b0805ebcca400db5162b1793516",
+      "frames": 7600,
+      "full_route_executed": true,
+      "ending_seen": false,
+      "expected_final_passed": null,
+      "final": {},
+      "approach_writes": 0,
+      "boss_assistance": false,
+      "sram_imports": 0,
+      "scope": "Recorded libretro route replay. SMS files cover intro only. Reaching the recorded ending is not exhaustive game or fidelity validation."
+    },
+    {
+      "route": "sms_intro_pal",
+      "rom_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+      "core_sha256": "d17f2392115b3cd54258a1fa6c4195ddadc19b0805ebcca400db5162b1793516",
+      "frames": 7600,
+      "full_route_executed": true,
+      "ending_seen": false,
+      "expected_final_passed": null,
+      "final": {},
+      "approach_writes": 0,
+      "boss_assistance": false,
+      "sram_imports": 0,
+      "scope": "Recorded libretro route replay. SMS files cover intro only. Reaching the recorded ending is not exhaustive game or fidelity validation."
+    }
+  ],
+  "bizhawk": {
+    "lua_syntax_checked": true,
+    "lua_version": "5.3",
+    "api_mock_cases": [
+      "MD replay4422frames:libretro B input200..220 and3hurt writes4420..4422",
+      "SMS record8frames:recorded Up onframes2and3, no memory writes"
+    ],
+    "runtime_used_for_mocks": "Fengari; NOT EmuHawk",
+    "actual_bizhawk_full_campaign_tested": false
+  },
+  "export": {
+    "all_md_input_masks_and_guard_writes_expanded_back_exactly": true,
+    "rom_files_in_archive": false,
+    "core_dll_in_archive": false,
+    "save_states_in_archive": false
+  },
+  "limits": [
+    "MD end-to-end routes are assisted on approaches; bosses unassisted.",
+    "SMS supplied automatic routes are intro/title only.",
+    "No claim of exact image/audio parity or complete optional-quest coverage."
+  ]
+}

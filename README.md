@@ -14,6 +14,15 @@ SHA-256 : `89c5833351312ffaa591efb1939161910a298af06437080e2cf84fb3fb8ac86e`
 Checksum Mega Drive : `CB3C`
 <!-- ROM-RELEASE:END -->
 
+Les scripts et les entrées de campagne sont disponibles dans
+[le kit de tests SMS/MD](testkit/README_FR.md). Le lecteur Python/libretro
+rejoint la fin sur la V321 en PAL et NTSC avec les parcours enregistrés et
+la protection autorisée sur les approches, retirée avant les boss.
+Le Lua BizHawk fourni est une adaptation dont le fonctionnement complet
+dans BizHawk reste à vérifier. Le kit SMS couvre l’intro et permet de
+suivre/enregistrer une partie ; il ne contient pas de campagne SMS complète
+validée. [Résultats du kit](testkit/verification.json).
+
 La **V321** corrige le retard d’une image des portions de carte du titre :
 cape, apparition du logo et clignotement de l’invite. Les 198 images des
 33 poses de cape correspondent à la source, avec six images par pose, en

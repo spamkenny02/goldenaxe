@@ -1,0 +1,97 @@
+{
+  "format": 1,
+  "routes": {
+    "md_ntsc": {
+      "system": "md",
+      "region": "ntsc",
+      "frames": 403488,
+      "csv": "md_ntsc.csv",
+      "csv_sha256": "beff9bc1c016451323fba5960278355e88374136de08ead7ebec06bf4d29d494",
+      "rows": 71642,
+      "approach_writes": 190764,
+      "boss_assistance": false,
+      "save_imports": 0,
+      "historical_recording_rom_sha256": "9e747d38e0c6fb2d69b7c1aa8c2b296a61e8b6af41171d14e543ed9a6cb49cf5",
+      "source_files": {
+        "capture.json": "7c90e5b070f5c7770a5fb603e2093d2e148de71e07fd6c4d57ccd5c65d029895",
+        "controls.json": "58fef1f92271c21f793d49a039046a81674aa22c1f2f8a4ccc74d2066ee0da62",
+        "assistance.json": "04d20160338725b2a4852344fd26ba9fb589be0d7bd41191dfa876d52be06b3e"
+      },
+      "expected_final": {
+        "game": 0,
+        "room": 332,
+        "crystals": 9
+      },
+      "libretro_validated_rom_versions": [
+        320,
+        321
+      ],
+      "bizhawk_runtime_validated": false
+    },
+    "md_pal": {
+      "system": "md",
+      "region": "pal",
+      "frames": 382208,
+      "csv": "md_pal.csv",
+      "csv_sha256": "eac15c34c4810bae69bd05a9d6688605086381dddfa293bddaba1059ccf690c2",
+      "rows": 71256,
+      "approach_writes": 196493,
+      "boss_assistance": false,
+      "save_imports": 0,
+      "historical_recording_rom_sha256": "9e747d38e0c6fb2d69b7c1aa8c2b296a61e8b6af41171d14e543ed9a6cb49cf5",
+      "source_files": {
+        "capture.json": "6eed3783d520d403bc94f39a0941edc3e28fc34cb692ca6e80a99843368bc21c",
+        "controls.json": "a1ae5815fc00172433e787e76e95e3ddfcd2b17bd8879f971bed1321d205b352",
+        "assistance.json": "8cb6031cbedf1ff5aaa050a45eeea1d0a337034bda8702eb1e3cd015f84a840c"
+      },
+      "expected_final": {
+        "game": 0,
+        "room": 332,
+        "crystals": 9
+      },
+      "libretro_validated_rom_versions": [
+        320,
+        321
+      ],
+      "bizhawk_runtime_validated": false
+    },
+    "sms_intro_ntsc": {
+      "system": "sms",
+      "region": "ntsc",
+      "frames": 7600,
+      "csv": "sms_intro_ntsc.csv",
+      "csv_sha256": "d326a8da91b5b7ad0ba990b9f78be2b20f3e72d8e2f1111e3ed59aaa2d3a134f",
+      "rows": 1,
+      "approach_writes": 0,
+      "full_campaign": false,
+      "scope": "Cold boot intro/title only; not an SMS A-to-Z route.",
+      "bizhawk_runtime_validated": false
+    },
+    "sms_intro_pal": {
+      "system": "sms",
+      "region": "pal",
+      "frames": 7600,
+      "csv": "sms_intro_pal.csv",
+      "csv_sha256": "d326a8da91b5b7ad0ba990b9f78be2b20f3e72d8e2f1111e3ed59aaa2d3a134f",
+      "rows": 1,
+      "approach_writes": 0,
+      "full_campaign": false,
+      "scope": "Cold boot intro/title only; not an SMS A-to-Z route.",
+      "bizhawk_runtime_validated": false
+    }
+  },
+  "roms": {
+    "320": {
+      "sha256": "9e5b0abed80678ce864a0bb796c17e97047d1d34e5227a5275bf9336129ceaff",
+      "sha1": "65dbbd5c318a5dc8fad9cfcd369a051a48fa39eb"
+    },
+    "321": {
+      "sha256": "89c5833351312ffaa591efb1939161910a298af06437080e2cf84fb3fb8ac86e",
+      "sha1": "9a42e3283d7b10035924636f56dbb9ad67b4303c"
+    },
+    "sms": {
+      "sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+      "sha1": "5dc6988b6592a61c8a66f744e9701bfc1494d5b1"
+    }
+  }
+}
