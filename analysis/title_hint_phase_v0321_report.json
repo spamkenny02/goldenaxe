@@ -1,0 +1,84 @@
+{
+  "passed": true,
+  "public_version": 321,
+  "public_md_sha256": "89c5833351312ffaa591efb1939161910a298af06437080e2cf84fb3fb8ac86e",
+  "public_rom_unchanged": true,
+  "selected_in_game": false,
+  "module": "megadrive/src/source_title_wait.c",
+  "module_sha256": "40878b295ecc8a870fa9f6358a9878aecaab4cbb9003636e921518fa2099ed27",
+  "source_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+  "results": [
+    {
+      "region": "ntsc",
+      "wait_cases": 79,
+      "exact_deadlines": 79,
+      "exact_irq_ram_cases": 79,
+      "exact_audio_ram_cases": 79,
+      "ordinary_vint_only_model_exact_deadlines": 0,
+      "ordinary_model_wait_master_tick_deltas": [
+        -360,
+        -330,
+        45,
+        75
+      ],
+      "observed_horizontal_irq_dispatches": 80,
+      "paired_horizontal_irq_work_cases": 79,
+      "horizontal_irq_tstates": 691,
+      "callback": "0280",
+      "line": 187,
+      "vdp_reg0": "16",
+      "vdp_reg10": 187,
+      "first_logo_outi_predictions": [
+        {
+          "raster": 891060,
+          "exact": true
+        }
+      ],
+      "capture_sha256": "477340ce5bb5dae89157b90e8ba7146894dafe2fd75b3231dcdf28cf6625df40"
+    },
+    {
+      "region": "pal",
+      "wait_cases": 79,
+      "exact_deadlines": 79,
+      "exact_irq_ram_cases": 79,
+      "exact_audio_ram_cases": 79,
+      "ordinary_vint_only_model_exact_deadlines": 0,
+      "ordinary_model_wait_master_tick_deltas": [
+        -360,
+        75
+      ],
+      "observed_horizontal_irq_dispatches": 80,
+      "paired_horizontal_irq_work_cases": 79,
+      "horizontal_irq_tstates": 691,
+      "callback": "0280",
+      "line": 187,
+      "vdp_reg0": "16",
+      "vdp_reg10": 187,
+      "first_logo_outi_predictions": [
+        {
+          "raster": 892845,
+          "exact": true
+        }
+      ],
+      "capture_sha256": "8e3f7f11b7a2a9d2ffc1e4d86d34f6f601bcb4cf0d4d36ce0fa1bc759bf238c7"
+    }
+  ],
+  "native_compile": {
+    "passed": true,
+    "target": "m68000",
+    "source_sha256": "40878b295ecc8a870fa9f6358a9878aecaab4cbb9003636e921518fa2099ed27",
+    "object_sha256": "4a1fece3af9748dbad126b62e934c2d43dec32984aa53525c60c9055ad2a7b84",
+    "object_bytes": 2284
+  },
+  "model": "Original B95 prefix and polling, semantic native full IRQ/audio, plus title HINT0280 at line187 (691T/84fetches). Stable polls batch only before both interrupt deadlines. No calibrated NOP delay.",
+  "logo_first_outi_continuation": "BB3 restore149T + input check31T + map/address setup131T =311T before first038E instruction entry.",
+  "limits": [
+    "Host-native deadline/state equivalence on158 waits; m68000 compile verified, no physicalMD runtime scheduler selected.",
+    "Title HINT timing modeled but its CRAM16 write is not physically rendered by this helper.",
+    "Only mode4/192 title callback0280, line187, empty video queue/no pending tile request and readerDE4 in these captures.",
+    "Initial refresh register is0; no M1/R equivalence or gameplay/randomness certification.",
+    "Whole source clock composition cost on actual68k remains a separate performance constraint.",
+    "V321 still has262 differing pixels on the partial logo frame. Prior private raster trial has20. Neither is changed by this model-only commit."
+  ],
+  "next_action": "Use the validated native wait/continuation dates in a title-specific physicalVDP scheduler, including source byte writes and HINT palette effect; validate rendered PAL/NTSC title and sound before selecting a new ROM."
+}

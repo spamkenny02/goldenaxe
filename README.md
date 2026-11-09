@@ -52,6 +52,16 @@ courante reste la V321. La correction finale doit aussi traiter la différence
 entre les écritures SMS par octet et les écritures MD par mot.
 [Mesures raster et travail restant](analysis/title_logo_raster_v0321_research_report.json).
 
+La cause de l’échec d’un simple modèle d’attente a été identifiée : le titre
+SMS active aussi une interruption horizontale à la ligne 187, avec le callback
+`0280` de 691 périodes Z80. Le nouveau module natif `source_title_wait`
+reproduit exactement les échéances et les états IRQ/audio de **158 attentes**
+PAL/NTSC enregistrées, puis prédit le début de la première écriture du logo.
+Il compile pour le 68000 et ne contient pas le délai calibré du candidat.
+Il reste à le raccorder aux écritures physiques du VDP ; il n’est pas encore
+sélectionné dans la ROM V321. Le modèle ordinaire `source_wait` est conservé.
+[Validation du modèle d’attente avec interruption horizontale](analysis/title_hint_phase_v0321_report.json).
+
 La V320 corrige le débordement du générique dans les 16 pixels supplémentaires
 au bas de l’écran Mega Drive. Les 192 lignes SMS conservent leur image et leur
 cadence. La correction est un ajout natif 68000 de 124 octets sur la V319 :
