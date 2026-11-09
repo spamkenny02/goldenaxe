@@ -81,7 +81,9 @@ def main():
         assert rr['visited'] == [0x1f, 0x0f, 0xc7]
         result['verified_reward_visits'] = [dict(
             trace=reward.relative_to(ROOT).as_posix(), outside=0xc7,
-            rooms=rr['visited'], reward='oil', end_frame=rc['frames'],
+            rooms=rr['visited'], reward='golden_apple', end_frame=rc['frames'],
+            inventory_offset=8,source_label_pc=0xbbeb,
+            legacy_trace_naming_warning='The historical oil filename/state key actually tracks the golden apple. Magic oil is inventory slot2, not slot8.',
             independent_fixed_replay=proof.relative_to(ROOT).as_posix(),
             new_assistance_writes=rr['new_assistance_writes'],
             text_content_comparison='pending',
@@ -99,6 +101,37 @@ def main():
             health=cr['last_state']['health'], keys=cr['last_state']['keys'],
             crystals=1, second_boss_defeated=False,
             scope='Three key rooms completed in dungeon two. The later exploratory boss attempt is not a selected campaign stage.')
+    gillian_path = ROOT / 'analysis/gillian_quest_campaign_report.json'
+    if gillian_path.exists():
+        gr = read(gillian_path)
+        assert gr['passed']
+        result['verified_teacher_visits'] = dict(npc=gr['npc'], magic=gr['magic'],
+            source=gillian_path.relative_to(ROOT).as_posix(), dialogues=gr['dialogues'],
+            golden_apple_consumed=True, spell_level=1, all_variants_complete=False)
+        result['latest_selected_prefix'] = 'validation/' + gr['latest_selected_prefix']
+        result['current_campaign_checkpoint'] = gr['current_sms_state']
+    fairy_path = ROOT / 'analysis/npc_fairy_campaign_report.json'
+    if fairy_path.exists():
+        fr = read(fairy_path)
+        assert fr['passed']
+        result['verified_fairy_visits'] = dict(source=fairy_path.relative_to(ROOT).as_posix(),
+            outside=0xc9, initial_reward=True, return_without_second_reward=True,
+            all_variants_complete=False)
+        latest = ROOT / 'validation' / fr['latest_selected_sms_prefix']
+        report = read(latest / 'report.json'); cap = read(latest / 'capture.json')
+        assert report['passed']
+        result['latest_selected_prefix'] = latest.relative_to(ROOT).as_posix()
+        result['current_campaign_checkpoint'] = dict(frame=cap['frames'], **report['last_state'],
+            crystals=1, second_boss_defeated=False,
+            scope='Axe acquired, Gillian apple exchange and C9 life-fairy reward/return replayed. Failed exploratory dungeon-two boss branches are not selected.')
+    gold_path = ROOT / 'analysis/npc_gold_campaign_report.json'
+    if gold_path.exists():
+        gold = read(gold_path)
+        assert gold['passed']
+        result['verified_gold_house_visits'] = dict(source=gold_path.relative_to(ROOT).as_posix(),
+            outside=0xd4, gift=10, return_without_second_gift=True, all_variants_complete=False)
+        result['latest_selected_prefix'] = 'validation/' + gold['latest_selected_sms_prefix']
+        result['current_campaign_checkpoint'] = dict(**gold['current_sms_state'], second_boss_defeated=False)
     out = ROOT / 'analysis/sms_npc_coverage_report.json'
     out.write_text(json.dumps(result, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
     print(json.dumps({k: result[k] for k in ('observed_acknowledged_conversations', 'static_plain_house_context_count', 'all_npcs_complete')}))

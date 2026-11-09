@@ -34,7 +34,18 @@ def main():
                                 article_topic=topics[i], viewing_status='pending',
                                 npc_timestamps=[], quest_timestamps=[])
                            for i, video in enumerate(ids)],
-                 limits='Article and eight embedded URLs inspected. Episodes have NOT been watched. Browser tool reports local browser use disabled; timestamps must remain empty until observed.')
+                 limits='Article and eight embedded URLs inspected. Episode viewing and timestamps are populated only from explicit observations; no full-episode coverage is inferred.')
+    observation_path = ROOT / 'analysis/lord_paddle_observations.json'
+    observed_guide = json.loads(observation_path.read_bytes()) if observation_path.exists() else dict(episodes=[])
+    for episode in guide['episodes']:
+        observed = next((e for e in observed_guide['episodes'] if e['url'] == episode['url']), None)
+        if observed:
+            episode.update(viewing_status=observed['viewing_status'],
+                           transcript_status=observed.get('transcript_status'),
+                           duration_seconds=observed.get('duration_seconds'),
+                           npc_timestamps=[o['seconds'] for o in observed['observations'] if o['kind']=='npc_dialogue'],
+                           quest_timestamps=[o['seconds'] for o in observed['observations'] if o['kind']=='save_service'])
+    guide['observation_ledger']='analysis/lord_paddle_observations.json'
     (ROOT / 'analysis/lord_paddle_guide_reference.json').write_text(json.dumps(guide, indent=2, ensure_ascii=False) + '\n')
     cases = []
 
@@ -106,7 +117,8 @@ def main():
              'Level 1 before all nine crystals', 'Upgrade after all nine crystals', 'Return at level 2'],
             ['First acquisition', 'Return with spell already owned'],
         ][teacher]
-        add('teacher', f'{outside:02x}', dict(outside=outside, room=0xbf, teacher=teacher), variants,
+        name, magic = [('Gillian','Foudre'),('Battler','Terre'),('Tyris','Feu'),('Linda','Eau')][teacher]
+        add('teacher', f'{outside:02x}', dict(outside=outside, room=0xbf, teacher=teacher, name=name, magic=magic), variants,
             'megadrive/src/source_spell_teacher.c; megadrive/src/spell_teacher.inc')
     passages = read('paid_passage_reference.json')
     for outside in passages['towns']:
@@ -133,6 +145,31 @@ def main():
         if 'md_evidence' in row:
             case['sms_md_comparison_status'] = 'selected_dialogue_and_final_bitmap_verified; other checks pending'
             case['observations'].append(row['md_evidence'])
+    for episode in observed_guide['episodes']:
+        for observation in episode['observations']:
+            for case in cases:
+                if observation.get('checklist_id') == case['id']:
+                    case['guide_episode'] = episode['part']
+                    case['guide_timestamp'] = observation['seconds']
+                    case['guide_observation'] = observation
+    gillian = read('gillian_quest_campaign_report.json')
+    fairies = read('npc_fairy_campaign_report.json')
+    assert gillian['passed'] and fairies['passed']
+    for case in cases:
+        if case['id'] == 'teacher:e6':
+            case['sms_status'] = 'three_variants_observed_and_replayed; remaining_variants_pending'
+            case['observations'].append(dict(report='analysis/gillian_quest_campaign_report.json', variants=[d['variant'] for d in gillian['dialogues']]))
+        if case['id'] == 'house_item_quest:c7/0f':
+            case['sms_status'] = case['md_status'] = 'initial_golden_apple_reward_effect_and_exit_replayed; remaining_checks_pending'
+            case['context'].update(reward='golden_apple', inventory_offset=8, source_label_pc=0xbbeb)
+            case['observations'].append(dict(report='analysis/gillian_quest_campaign_report.json'))
+        if case['id'] == 'fairy:c9':
+            case['sms_status'] = case['md_status'] = 'initial_plus8_hp_reward_and_no_repeat_reward_replayed; other_checks_pending'
+            case['observations'].append(dict(report='analysis/npc_fairy_campaign_report.json'))
+        if case['id'] == 'gold_house:d4':
+            assert read('npc_gold_campaign_report.json')['passed']
+            case['sms_status'] = 'initial_plus10_gold_and_no_repeat_gift_replayed; other_checks_pending'
+            case['observations'].append(dict(report='analysis/npc_gold_campaign_report.json'))
     result = dict(requirement='ALL NPCs and ALL side quests on SMS and MD, including relevant return visits and conditional text variants',
                   requirement_complete=False, census_proved_complete=False,
                   completion_percentage=None,

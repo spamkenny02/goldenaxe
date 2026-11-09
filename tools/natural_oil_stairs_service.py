@@ -1,4 +1,8 @@
-"""Continue a real C7->1F approach through both stairs, oil gift and house exit."""
+"""C7->1F/0F golden-apple gift and exit (historical filename retained).
+
+The legacy state key 'oil' means inventory slot8, actually the GOLDEN APPLE.
+Original reward item12 label at BBEB confirms it; magic oil is item6/slot2.
+"""
 import argparse
 import contextlib
 import io
@@ -96,7 +100,8 @@ def main():
                 source_prefix=a.prefix,first_state=first,last_state=state,visited=visited,complete_frame=done,
                 ram_injections=bool(writes),assisted_route=bool(writes),new_assistance_writes=0,sram_checkpoint_injection=False,primary_state_imports=0,
                 source_route_replay_sha256=sha(proof.read_bytes()),driver_sha256=sha(driver),
-                scope='Normal boot and recorded approach,real C7 doorway,both indoor stairs,oil gift and exterior exit. Inherited approach hurt writes,if explicitly enabled,are replayed unchanged;no new aid,resource writes,SRAM fixture or actor mutation.')
+                reward_name='golden_apple',reward_inventory_offset=8,legacy_state_key='oil',reward_label_source_pc=0xbbeb,
+                scope='Normal boot and recorded approach,real C7 doorway,both indoor stairs,golden-apple gift and exterior exit. Inherited approach hurt writes,if explicitly enabled,are replayed unchanged;no new aid,resource writes,SRAM fixture or actor mutation.')
     for name,value in [('report',result),('events',events),('controls',controls)]:
         (folder/(name+'.json')).write_bytes((json.dumps(value,indent=2)+'\n').encode())
     if writes:

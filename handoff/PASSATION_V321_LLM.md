@@ -46,6 +46,11 @@ pour les rendre accessibles. Voir `analysis/reported_missing_texts_v0320_report.
 Dernier préfixe SMS continu sélectionné :
 `validation/natural-service-route/sms-npc-villagec7-house1f-01`.
 Son replay canonique indépendant et ceux des étapes précédentes sont inclus.
+Correction de libellé après la création du ZIP : les noms historiques
+`oil`/`oil_stairs` suivent le slot d'inventaire 8, qui est la **pomme d'or**
+(récompense 12, texte SMS BBEB). L'huile magique est le slot 2/récompense 6.
+Le ZIP livré reste l'instantané immuable antérieur à cette correction de note.
+
 Protection autorisée uniquement sur certaines approches, via l'octet hurt
 C305 ; retirée avant le boss. Premier boss combattu sans protection, dégâts
 normaux observés. Aucun import de sauvegarde/progression. Toute assistance

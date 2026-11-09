@@ -1,0 +1,236 @@
+{
+  "passed": true,
+  "outside": 201,
+  "stages": [
+    {
+      "trace": "natural-dungeon-route/sms-sms-npc-life-fairy-entry01",
+      "end_frame": 46308,
+      "rom_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+      "fixed_replay": "validation/natural-dungeon-route/sms-sms-npc-life-fairy-entry01-assisted-fixed-replay-46308/replay_report.json",
+      "evidence_sha256": {
+        "capture.json": "1ef21c4fbb1766a268423a884a0653b790c6eb40977974392b087895cd280a36",
+        "controls.json": "16623f338ef796767a2423bff2ae1fe105c118e65f88e24a5ae018b1890da727",
+        "assistance.json": "7fcf2cd9d14b1086595fd10b581c7eb70b62fbd9741ed40916c9b38ea860e0f1"
+      }
+    },
+    {
+      "trace": "natural-service-route/sms-npc-life-fairy01",
+      "end_frame": 46929,
+      "rom_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+      "fixed_replay": "validation/natural-service-route/sms-npc-life-fairy01-assisted-fixed-replay-46929/replay_report.json",
+      "evidence_sha256": {
+        "capture.json": "0820ae791e820dab0bcfde2dd156e97d2f1126e6b16f60259511c3651bc9af02",
+        "controls.json": "00e37362a2450a2a6be3af1e615c8353620c5d312f8307b78bfab3509caadc19",
+        "assistance.json": "9b35410d9e7accc39e98564b110755bd70438b811d956260d84e7f775d58b852"
+      },
+      "variant": "initial_reward",
+      "initial_state": {
+        "room": 175,
+        "game": 12,
+        "hero": 1,
+        "counter": 0,
+        "x": 136,
+        "y": 144,
+        "health": 32,
+        "max_health": 32,
+        "outside_flags": 0,
+        "first_crystal": 128,
+        "modal": 0,
+        "audio_error": 0
+      },
+      "final_state": {
+        "room": 201,
+        "game": 12,
+        "hero": 1,
+        "counter": 0,
+        "x": 104,
+        "y": 96,
+        "health": 40,
+        "max_health": 40,
+        "outside_flags": 2,
+        "first_crystal": 128,
+        "modal": 0,
+        "audio_error": 0
+      },
+      "observed_text_entries": [
+        {
+          "frame": 46353,
+          "text_pc": 36897
+        },
+        {
+          "frame": 46355,
+          "text_pc": 36897
+        }
+      ],
+      "platform": "sms"
+    },
+    {
+      "trace": "natural-dungeon-route/sms-sms-npc-life-fairy-return-entry01",
+      "end_frame": 47129,
+      "rom_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+      "fixed_replay": "validation/natural-dungeon-route/sms-sms-npc-life-fairy-return-entry01-assisted-fixed-replay-47129/replay_report.json",
+      "evidence_sha256": {
+        "capture.json": "d84de5aba1eff69d687bd4b399cd04bbe932e902476e4b3f3288855c7aff6f30",
+        "controls.json": "a06a8d09e636f0d24d1cd8909b3913d191fb37913efcf593151a2437336e8fb3",
+        "assistance.json": "d6dc64bdd9a1ce9e14fe30f1ff8ec5aa38df06a4ff6c8248b12830ad27c09cca"
+      }
+    },
+    {
+      "trace": "natural-service-route/sms-npc-life-fairy-return01",
+      "end_frame": 47576,
+      "rom_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+      "fixed_replay": "validation/natural-service-route/sms-npc-life-fairy-return01-assisted-fixed-replay-47576/replay_report.json",
+      "evidence_sha256": {
+        "capture.json": "99776b460b770785e08dc2b58e01ca9551c8dcf93452f62069e767f9e6f1fecb",
+        "controls.json": "542f87b786da38412e7b3f31276d1b638b0f494b7c423a91ed770b43a51ef15f",
+        "assistance.json": "4db7360faa5dd0042f9993c4c9c2e5e2d289836fb85a2fdfce3c681a126b62a4"
+      },
+      "variant": "return_after_reward",
+      "initial_state": {
+        "room": 175,
+        "game": 12,
+        "hero": 1,
+        "counter": 0,
+        "x": 136,
+        "y": 144,
+        "health": 40,
+        "max_health": 40,
+        "outside_flags": 2,
+        "first_crystal": 128,
+        "modal": 0,
+        "audio_error": 0
+      },
+      "final_state": {
+        "room": 201,
+        "game": 12,
+        "hero": 1,
+        "counter": 0,
+        "x": 104,
+        "y": 96,
+        "health": 40,
+        "max_health": 40,
+        "outside_flags": 2,
+        "first_crystal": 128,
+        "modal": 0,
+        "audio_error": 0
+      },
+      "observed_text_entries": [],
+      "platform": "sms"
+    },
+    {
+      "trace": "natural-dungeon-route/md-md-npc-life-fairy-entry01",
+      "end_frame": 8297,
+      "rom_sha256": "89c5833351312ffaa591efb1939161910a298af06437080e2cf84fb3fb8ac86e",
+      "fixed_replay": "validation/natural-dungeon-route/md-md-npc-life-fairy-entry01-assisted-fixed-replay-8297/replay_report.json",
+      "evidence_sha256": {
+        "capture.json": "0920a9fe9daa4192523ce811a308ebbf13c08c8aaac20fecbdfd68d4903851d0",
+        "controls.json": "63a1543f9bce1aa93105855e8d383facb9b267cce38326da02e4ee1b1b2ec1d9",
+        "assistance.json": "5d5cda43ad55991a74993bb026a0a1efb27b0d4cab3564321ad13a9d3cfd94e1"
+      }
+    },
+    {
+      "trace": "natural-service-route/md-npc-life-fairy02",
+      "end_frame": 8812,
+      "rom_sha256": "89c5833351312ffaa591efb1939161910a298af06437080e2cf84fb3fb8ac86e",
+      "fixed_replay": "validation/natural-service-route/md-npc-life-fairy02-assisted-fixed-replay-8812/replay_report.json",
+      "evidence_sha256": {
+        "capture.json": "67caf3a44d71643c57f549b3d67ca2a9645785a9bb9c72e2ef621dacac246d4f",
+        "controls.json": "5aa8524fe47ca417bff6057e0e30878d2ba6710d2701473c883cdeb7977580b6",
+        "assistance.json": "554de4cb292e858ee47380bbe13a63ccea25c7d7e621b8fbc349a6fa5b6d6b8c"
+      },
+      "variant": "initial_reward",
+      "initial_state": {
+        "room": 175,
+        "game": 12,
+        "hero": 1,
+        "counter": 0,
+        "x": 136,
+        "y": 144,
+        "health": 24,
+        "max_health": 24,
+        "outside_flags": 0,
+        "first_crystal": 0,
+        "modal": 0,
+        "audio_error": 0
+      },
+      "final_state": {
+        "room": 201,
+        "game": 12,
+        "hero": 1,
+        "counter": 0,
+        "x": 104,
+        "y": 96,
+        "health": 32,
+        "max_health": 32,
+        "outside_flags": 2,
+        "first_crystal": 0,
+        "modal": 0,
+        "audio_error": 0
+      },
+      "platform": "md"
+    },
+    {
+      "trace": "natural-dungeon-route/md-md-npc-life-fairy-return-entry01",
+      "end_frame": 9008,
+      "rom_sha256": "89c5833351312ffaa591efb1939161910a298af06437080e2cf84fb3fb8ac86e",
+      "fixed_replay": "validation/natural-dungeon-route/md-md-npc-life-fairy-return-entry01-assisted-fixed-replay-9008/replay_report.json",
+      "evidence_sha256": {
+        "capture.json": "6cb1cc3da5afd6a9e7bad0806da693867299dcb097b473d1c5d51c3f7c0f1c69",
+        "controls.json": "5d137f1b2ab777cefa6b1bf9c6185b83006ae806c98b7bbfc4dfc49670754ded",
+        "assistance.json": "b22e3ce242c3ad44be1d9a03b472f05083ab3743644dbf068850ab7ad260bc99"
+      }
+    },
+    {
+      "trace": "natural-service-route/md-npc-life-fairy-return01",
+      "end_frame": 9358,
+      "rom_sha256": "89c5833351312ffaa591efb1939161910a298af06437080e2cf84fb3fb8ac86e",
+      "fixed_replay": "validation/natural-service-route/md-npc-life-fairy-return01-assisted-fixed-replay-9358/replay_report.json",
+      "evidence_sha256": {
+        "capture.json": "736caa33af1aea875cf48b303d98768cf6e0e3c31e17f0b4ae66e3d5c13e45dc",
+        "controls.json": "98f87ee424f3096fb5240fe1f755f5e0810e9b6c2746604c3c3425c675e222f6",
+        "assistance.json": "1f83dbbe003013a2dc2ecb8a1958be5a9270f6ca412289dae036a4fdf19a96eb"
+      },
+      "variant": "return_after_reward",
+      "initial_state": {
+        "room": 175,
+        "game": 12,
+        "hero": 1,
+        "counter": 0,
+        "x": 136,
+        "y": 144,
+        "health": 32,
+        "max_health": 32,
+        "outside_flags": 2,
+        "first_crystal": 0,
+        "modal": 0,
+        "audio_error": 0
+      },
+      "final_state": {
+        "room": 201,
+        "game": 12,
+        "hero": 1,
+        "counter": 0,
+        "x": 104,
+        "y": 96,
+        "health": 32,
+        "max_health": 32,
+        "outside_flags": 2,
+        "first_crystal": 0,
+        "modal": 0,
+        "audio_error": 0
+      },
+      "platform": "md"
+    }
+  ],
+  "initial_reward_effect_both_platforms_verified": true,
+  "return_no_second_reward_both_platforms_verified": true,
+  "latest_selected_sms_prefix": "natural-service-route/sms-npc-life-fairy-return01",
+  "latest_selected_md_prefix": "natural-service-route/md-npc-life-fairy-return01",
+  "all_npcs_complete": false,
+  "limits": [
+    "SMS has the first crystal; this MD branch does not. Compare the +8 reward and once-only effect, not absolute HP or timing.",
+    "Both branches use recorded approach protection; none is added during these service visits. No quest/save imports.",
+    "SMS entry observation establishes the initial 9021 text and no new formatter entry on return. MD text/pages/pixels/audio/timing remain to compare.",
+    "Only the C9 life fairy initial/repeat variants are covered here; other fairies and capacity-boundary variants remain open."
+  ]
+}

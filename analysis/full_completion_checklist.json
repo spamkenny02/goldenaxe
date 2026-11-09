@@ -170,8 +170,8 @@
       "sms_status": "visited_current_state",
       "md_status": "visited_current_state_and_fixed_replayed",
       "sms_md_comparison_status": "selected_dialogue_and_final_bitmap_verified; other checks pending",
-      "guide_episode": null,
-      "guide_timestamp": null,
+      "guide_episode": 1,
+      "guide_timestamp": 180,
       "static_basis": "analysis/plain_house_dialogue_reference.json",
       "observations": [
         {
@@ -185,7 +185,20 @@
           "acknowledged_and_walked_away_frame": 3345,
           "trace": "validation/natural-service-route/md-npc-village94-house00-01"
         }
-      ]
+      ],
+      "guide_observation": {
+        "seconds": 180,
+        "kind": "npc_dialogue",
+        "summary_fr": "L'habitant de droite commence à parler d'une ville du sud-est nommée Saylun.",
+        "inferred_source_context": {
+          "outside": 148,
+          "room": 0,
+          "coordinate": 744,
+          "text_pc": 39794
+        },
+        "checklist_id": "plain_house:94/00/02e8",
+        "dialogue_text_observed": "partial_only"
+      }
     },
     {
       "id": "plain_house:2e/00/02e8",
@@ -395,8 +408,8 @@
       "sms_status": "visited_current_state",
       "md_status": "visited_current_state_and_fixed_replayed",
       "sms_md_comparison_status": "selected_dialogue_and_final_bitmap_verified; other checks pending",
-      "guide_episode": null,
-      "guide_timestamp": null,
+      "guide_episode": 1,
+      "guide_timestamp": 200,
       "static_basis": "analysis/plain_house_dialogue_reference.json",
       "observations": [
         {
@@ -410,7 +423,20 @@
           "acknowledged_and_walked_away_frame": 3883,
           "trace": "validation/natural-service-route/md-npc-village94-house02-01"
         }
-      ]
+      ],
+      "guide_observation": {
+        "seconds": 200,
+        "kind": "npc_dialogue",
+        "summary_fr": "Le PNJ du haut dans la seconde maison signale des monstres de Death Adder près de Miliver.",
+        "inferred_source_context": {
+          "outside": 148,
+          "room": 2,
+          "coordinate": 604,
+          "text_pc": 39877
+        },
+        "checklist_id": "plain_house:94/02/025c",
+        "dialogue_text_observed": true
+      }
     },
     {
       "id": "plain_house:4c/02/025c",
@@ -545,8 +571,8 @@
       "sms_status": "visited_current_state",
       "md_status": "visited_current_state_and_fixed_replayed",
       "sms_md_comparison_status": "selected_dialogue_and_final_bitmap_verified; other checks pending",
-      "guide_episode": null,
-      "guide_timestamp": null,
+      "guide_episode": 1,
+      "guide_timestamp": 204.333332,
       "static_basis": "analysis/plain_house_dialogue_reference.json",
       "observations": [
         {
@@ -560,7 +586,20 @@
           "acknowledged_and_walked_away_frame": 4121,
           "trace": "validation/natural-service-route/md-npc-village94-house02-01"
         }
-      ]
+      ],
+      "guide_observation": {
+        "seconds": 204.333332,
+        "kind": "npc_dialogue",
+        "summary_fr": "L'habitant de gauche dans la seconde maison parle de la mort du roi et de la princesse Tyris, et du sort de Firewood.",
+        "inferred_source_context": {
+          "outside": 148,
+          "room": 2,
+          "coordinate": 836,
+          "text_pc": 39945
+        },
+        "checklist_id": "plain_house:94/02/0344",
+        "dialogue_text_observed": true
+      }
     },
     {
       "id": "plain_house:4c/02/0344",
@@ -1786,7 +1825,10 @@
       "category": "house_item_quest",
       "context": {
         "outside": 199,
-        "room": 15
+        "room": 15,
+        "reward": "golden_apple",
+        "inventory_offset": 8,
+        "source_label_pc": 48107
       },
       "required_variants": [
         "Before prerequisite, where applicable",
@@ -1794,13 +1836,17 @@
         "Return with reward already owned",
         "Visit connected floors and nearby hint NPCs"
       ],
-      "sms_status": "pending",
-      "md_status": "pending",
+      "sms_status": "initial_golden_apple_reward_effect_and_exit_replayed; remaining_checks_pending",
+      "md_status": "initial_golden_apple_reward_effect_and_exit_replayed; remaining_checks_pending",
       "sms_md_comparison_status": "pending",
       "guide_episode": null,
       "guide_timestamp": null,
       "static_basis": "analysis/house_quest_reference.json; megadrive/src/house_quest.inc",
-      "observations": []
+      "observations": [
+        {
+          "report": "analysis/gillian_quest_campaign_report.json"
+        }
+      ]
     },
     {
       "id": "house_item_quest:55/0f",
@@ -1969,13 +2015,17 @@
         "Return after once-only flag is set",
         "Economic boundary branches if reachable; use an alternate cold-boot input branch"
       ],
-      "sms_status": "pending",
+      "sms_status": "initial_plus10_gold_and_no_repeat_gift_replayed; other_checks_pending",
       "md_status": "pending",
       "sms_md_comparison_status": "pending",
       "guide_episode": null,
       "guide_timestamp": null,
       "static_basis": "analysis/house_gold_reference.json; megadrive/src/house_gold.inc",
-      "observations": []
+      "observations": [
+        {
+          "report": "analysis/npc_gold_campaign_report.json"
+        }
+      ]
     },
     {
       "id": "gold_house:43",
@@ -2625,13 +2675,17 @@
         "Return after reward",
         "Capacity boundary if reachable"
       ],
-      "sms_status": "pending",
-      "md_status": "pending",
+      "sms_status": "initial_plus8_hp_reward_and_no_repeat_reward_replayed; other_checks_pending",
+      "md_status": "initial_plus8_hp_reward_and_no_repeat_reward_replayed; other_checks_pending",
       "sms_md_comparison_status": "pending",
       "guide_episode": null,
       "guide_timestamp": null,
       "static_basis": "analysis/fairy_reference.json",
-      "observations": []
+      "observations": [
+        {
+          "report": "analysis/npc_fairy_campaign_report.json"
+        }
+      ]
     },
     {
       "id": "fairy:32",
@@ -3528,7 +3582,9 @@
       "context": {
         "outside": 230,
         "room": 191,
-        "teacher": 0
+        "teacher": 0,
+        "name": "Gillian",
+        "magic": "Foudre"
       },
       "required_variants": [
         "First introduction",
@@ -3538,13 +3594,22 @@
         "Upgrade with HP capacity at least 72",
         "Return at level 2"
       ],
-      "sms_status": "pending",
+      "sms_status": "three_variants_observed_and_replayed; remaining_variants_pending",
       "md_status": "pending",
       "sms_md_comparison_status": "pending",
       "guide_episode": null,
       "guide_timestamp": null,
       "static_basis": "megadrive/src/source_spell_teacher.c; megadrive/src/spell_teacher.inc",
-      "observations": []
+      "observations": [
+        {
+          "report": "analysis/gillian_quest_campaign_report.json",
+          "variants": [
+            "first_introduction",
+            "golden_apple_exchange",
+            "return_below_72_hp_capacity"
+          ]
+        }
+      ]
     },
     {
       "id": "teacher:a3",
@@ -3552,7 +3617,9 @@
       "context": {
         "outside": 163,
         "room": 191,
-        "teacher": 1
+        "teacher": 1,
+        "name": "Battler",
+        "magic": "Terre"
       },
       "required_variants": [
         "First offer and repeat offer",
@@ -3577,7 +3644,9 @@
       "context": {
         "outside": 44,
         "room": 191,
-        "teacher": 2
+        "teacher": 2,
+        "name": "Tyris",
+        "magic": "Feu"
       },
       "required_variants": [
         "No spell with HP capacity below 72",
@@ -3600,7 +3669,9 @@
       "context": {
         "outside": 170,
         "room": 191,
-        "teacher": 3
+        "teacher": 3,
+        "name": "Linda",
+        "magic": "Eau"
       },
       "required_variants": [
         "First acquisition",
@@ -3780,10 +3851,21 @@
       "sms_status": "pending",
       "md_status": "pending",
       "sms_md_comparison_status": "pending",
-      "guide_episode": null,
-      "guide_timestamp": null,
+      "guide_episode": 1,
+      "guide_timestamp": 190,
       "static_basis": "Open audit; requires ROM reachability and/or actual guide observations",
-      "observations": []
+      "observations": [],
+      "guide_observation": {
+        "seconds": 190,
+        "kind": "save_service",
+        "summary_fr": "L'écran du service de sauvegarde affiche une confirmation de sauvegarde réalisée. Le créneau choisi n'est pas déduit de l'image.",
+        "inferred_source_context": {
+          "outside": 148,
+          "room": 0
+        },
+        "checklist_id": "save_service:audit",
+        "dialogue_text_observed": true
+      }
     },
     {
       "id": "hidden_interiors:audit",

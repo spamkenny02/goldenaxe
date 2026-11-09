@@ -10,9 +10,12 @@ sans couverture exhaustive des PNJ.
 
 [Guide Lord Paddle sur Méga Force Magazine](https://megaforcemagazine.com/2021/06/gameplay-100-golden-axe-warrior-master-system-lord-paddle/).
 Les huit liens intégrés sont relevés dans `lord_paddle_guide_reference.json`.
-L'article et ses titres ont été consultés ; les épisodes n'ont pas encore été
-visionnés. L'outil de navigateur renvoie « Local browser use is disabled in
-Work settings ». Aucun horodatage ou passage non vu n'est inventé.
+L'accès au navigateur fonctionne désormais. Des passages du premier épisode
+ont été observés entre 2:45 et 3:24 : premiers habitants, service et sauvegarde.
+Les observations sont conservées dans `lord_paddle_observations.json`.
+Aucun épisode n'est encore visionné intégralement. La vidéo présente des textes
+anglais, tandis que la ROM fournie contient des textes français ; les repères
+visuels ne prouvent donc pas une identité de ROM ou de synchronisation.
 
 | Partie | Repère dans l'article | Vidéo |
 |---|---|---|
@@ -60,6 +63,33 @@ et reprise des déplacements ; comparer rendu, animation et audio en PAL/NTSC.
 Une sélection de texte correcte ou le seul bitmap final ne suffit pas.
 
 ## Résultats actuels et anomalie trouvée
+
+Le parcours SMS a acquis et équipé la hache, coupé l'arbre qui révèle Gillian,
+puis observé son introduction, l'échange de la pomme d'or contre la magie de
+la Foudre et son dialogue de retour avant la capacité de vie de 72.
+La pomme est réellement consommée et la capacité magique passe de 24 à 48.
+Chaque étape sélectionnée réussit la relecture indépendante depuis le démarrage.
+Voir `gillian_quest_campaign_report.json`. L'échange chez Gillian reste à jouer
+sur MD, ainsi que les autres variantes de cet enseignant sur SMS.
+
+Le don initial de la pomme d'or en C7 est vérifié sur SMS et MD.
+Les anciens chemins `oil`/`oil_stairs` désignent cette pomme (inventaire 8),
+pas l'huile magique (inventaire 2). De même, les chemins historiques
+`fire-teacher` correspondent à Gillian/Foudre, pas à la magie du Feu.
+
+La fée de vie en C9 a été visitée puis revisitée sur les deux systèmes :
+capacité augmentée de 8, vie restaurée, sortie normale, puis absence de second
+don après un nouvel essai de contact. Les huit étapes d'entrée/service/retour
+réussissent leur relecture indépendante. Voir `npc_fairy_campaign_report.json`.
+La branche SMS possède le premier cristal, contrairement à cette branche MD ;
+ce résultat compare l'effet du don, pas des états de campagne identiques.
+Les textes, images, vitesses et sons restent à comparer sur ces services.
+
+La maison d'argent cachée D4 a également été visitée puis revisitée sur SMS :
+gain réel de 10 pièces, texte 8E30 observé, puis aucun nouveau texte ou don
+lors du retour. Les quatre étapes sont relues indépendamment ; la branche
+sélectionnée finit dehors, en état de jeu normal. La visite MD et les limites
+de monnaie restent ouvertes. Voir `npc_gold_campaign_report.json`.
 
 Neuf conversations SMS sont observées. Huit ont désormais une visite MD V321
 avec sélection correcte, bitmap final de 1040 octets identique à la SMS,

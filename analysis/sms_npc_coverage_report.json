@@ -848,22 +848,92 @@
         15,
         199
       ],
-      "reward": "oil",
+      "reward": "golden_apple",
       "end_frame": 21973,
+      "inventory_offset": 8,
+      "source_label_pc": 48107,
+      "legacy_trace_naming_warning": "The historical oil filename/state key actually tracks the golden apple. Magic oil is inventory slot2, not slot8.",
       "independent_fixed_replay": "validation/natural-service-route/sms-sms-npc-villagec7-oil02-assisted-fixed-replay-21973/replay_report.json",
       "new_assistance_writes": 0,
       "text_content_comparison": "pending",
       "scope": "Real NPC reward, acknowledgment, both stairs and exterior return. Not counted as a standard 050C/627A plain conversation."
     }
   ],
-  "latest_selected_prefix": "validation/natural-dungeon-combat/sms-auto-sms-npc-d2-key03",
+  "latest_selected_prefix": "validation/natural-service-route/sms-npc-gold-d4-return02",
   "current_campaign_checkpoint": {
-    "frame": 31499,
-    "room": 305,
-    "health": 32,
-    "keys": 2,
+    "frame": 50575,
+    "room": 212,
+    "game": 12,
+    "hero": 1,
+    "counter": 0,
+    "x": 128,
+    "y": 64,
+    "health": 36,
+    "gold": 38,
+    "magic": 48,
+    "max_magic": 48,
+    "outside_flags": 19,
+    "level": 1,
+    "intro": 1,
+    "modal": false,
+    "audio_error": 0,
+    "max_health": 40,
+    "keys": 1,
     "crystals": 1,
-    "second_boss_defeated": false,
-    "scope": "Three key rooms completed in dungeon two. The later exploratory boss attempt is not a selected campaign stage."
+    "second_boss_defeated": false
+  },
+  "verified_teacher_visits": {
+    "npc": "Gillian",
+    "magic": "Foudre",
+    "source": "analysis/gillian_quest_campaign_report.json",
+    "dialogues": [
+      {
+        "text_pc": 44425,
+        "variant": "first_introduction",
+        "entry_frame": 42392,
+        "render_return_frame": 42596,
+        "caller": 29767,
+        "stack_pointer": 57322,
+        "text_bytes_hex": "5475206e2665732070617320756e20656e6e656d692c206865696e3f2024ff4a6520737569732047696c6c69616e2e204a652073756973206426756e2076696c6c616765206465206e61696e73206175206e6f72642eff4f75682c20bc61206c616e63652eff506575782d7475206170706f7274657220756e6520506f6d6d652064264f723f204f6e206469742071756520bc6120736f69676e6520696e7374616e74616ec26d656e742e2020202000",
+        "quest_state_hex": "410000000000000000bf00e60050580095009500e40100000000000000000080000000000000000000002018181c0101010100000000000001000000000000000001010100000000000000000000000000000000000000000000000000000000000000000000000000000000000000009050000000000000000000000000000018984000000000000000000000000000340000000000000000000000000000003094580000000000000000000000000098500000000000000000000000000000001000000014000000000000000000000000000010300000000000000000000000000098740000000000000000000000000000003010000000000000000000000000000090f45400000000000000000000000000101000020000000000000000000000001000000000000000000000000000000090580100000000000000000000000000000000000000000000000000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffce0fffffffffffffffffffffffffffffcfffffffffffffffffffffffffffffff8fffffffffffffffffffffffffff0f8f0fffffffffffffffffffffffffffbf4ffffffffffffffff"
+      },
+      {
+        "text_pc": 44601,
+        "variant": "golden_apple_exchange",
+        "entry_frame": 43255,
+        "render_return_frame": 43577,
+        "caller": 29767,
+        "stack_pointer": 57322,
+        "text_bytes_hex": "4d657263692e204d6120626c657373757265206e26617572616974206a616d616973206775c272692e204326c274616974207175656c71756573206a6f757273206176616e7420717565206c2661726dc265206465204465617468204164646572206e26656e76616869737365206c652076696c6c6167652e20496c206675742064c2747275697420657420696c207920657574206465206e6f6d6272657578206d6f7274732e20506172206368616e6365206a652070757320667569722eff436f6d6d6520707265757665206465206d61206772617469747564652c206a65207661697320746520646f6e6e6572206c6520706170696572206465206c61204d61676965206465206c6120466f756472652e2041766563206365747465206d616769652c207475207065757820617474617175657220c42064697374616e63652e204164696575212052657669656e73206d6520766f6972212000",
+        "quest_state_hex": "410000000000000000bf00e60050580095009500e40100000000000000000080000000000000000000002030301c0101010100000100000000000000000000000001010100000000000000000000000000000000000000000000000000000000000000000000000000000000000000009050000000000000000000000000000018984000000000000000000000000000340000000000000000000000000000003094580000000000000000000000000098500000000000000000000000000000001000000014000000000000000000000000000010300000000000000000000000000098740000000000000000000000000000003010000000000000000000000000000090f45400000000000000000000000000101000020000000000000000000000001000000000000000000000000000000090580100000000000000000000000000000000000000000000000000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffce0ffffffffff00fffffffffffffffffcfffffffffffffffffffffffffffffff8fffffffffffffffffffffffffff0f8f0fffffffffffffffffffffffffffbf4ffffffffffffffff"
+      },
+      {
+        "text_pc": 44949,
+        "variant": "return_below_72_hp_capacity",
+        "entry_frame": 44254,
+        "render_return_frame": 44312,
+        "caller": 29767,
+        "stack_pointer": 57322,
+        "text_bytes_hex": "456e636f726520756e206566666f72742c206a65756e6520686f6d6d652e2052657669656e73207175616e64207475206573207072c1742e202020202020202000",
+        "quest_state_hex": "410000000000000000bf00e60050580095009500e40100000000000000000080000000000000000000002030301c0101010100000100000000000000000000000001010100000000000000000000000000000000000000000000000000000000000000000000000000000000000000009050000000000000000000000000000018984000000000000000000000000000340000000000000000000000000000003094580000000000000000000000000098500000000000000000000000000000001000000014000000000000000000000000000010300000000000000000000000000098740000000000000000000000000000003010000000000000000000000000000090f45400000000000000000000000000101000020000000000000000000000001000000000000000000000000000000090580100000000000000000000000000000000000000000000000000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffce0ffffffffff00fffffffffffffffffcfffffffffffffffffffffffffffffff8fffffffffffffffffffffffffff0f8f0fffffffffffffffffffffffffffbf4ffffffffffffffff"
+      }
+    ],
+    "golden_apple_consumed": true,
+    "spell_level": 1,
+    "all_variants_complete": false
+  },
+  "verified_fairy_visits": {
+    "source": "analysis/npc_fairy_campaign_report.json",
+    "outside": 201,
+    "initial_reward": true,
+    "return_without_second_reward": true,
+    "all_variants_complete": false
+  },
+  "verified_gold_house_visits": {
+    "source": "analysis/npc_gold_campaign_report.json",
+    "outside": 212,
+    "gift": 10,
+    "return_without_second_gift": true,
+    "all_variants_complete": false
   }
 }

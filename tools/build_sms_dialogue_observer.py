@@ -1,4 +1,4 @@
-"""Read-only original 050C dialogue-entry observer; no ROM/CPU changes."""
+"""Read-only original dialogue observer; include the common service frontend."""
 import argparse,hashlib,json,subprocess,sys
 from pathlib import Path
 from run_core import ROOT
@@ -12,7 +12,7 @@ __declspec(dllexport) unsigned gaw_dialogue_size(void) {return gaw_dialogue_coun
 __declspec(dllexport) const unsigned char *gaw_dialogue_data(void) {return &gaw_dialogue_records[0][0];}
 static void gaw_dialogue_observe(unsigned pc) {
  unsigned *h;unsigned char *r;
- if((pc!=0x050c && pc!=0x627a) || gaw_dialogue_count>=4096) return;
+ if((pc!=0x050c && pc!=0x0524 && pc!=0x06e3 && pc!=0x627a) || gaw_dialogue_count>=4096) return;
  r=gaw_dialogue_records[gaw_dialogue_count++];h=(unsigned *)r;
  h[0]=pc;h[1]=HLD;h[2]=work_ram[0xb9]|(work_ram[0xba]<<8);h[3]=work_ram[0xbb];
  h[4]=work_ram[0x312]|(work_ram[0x313]<<8);h[5]=work_ram[0x310]|(work_ram[0x311]<<8);

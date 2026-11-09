@@ -30,6 +30,16 @@ terminé, fermeture et déplacement, puis relecture indépendante des entrées.
 La protection autorisée sur certaines approches est enregistrée et retirée
 avant le boss ; aucun état de quête ni sauvegarde n'est importé.
 [Relevé des PNJ SMS](analysis/sms_npc_coverage_report.json).
+Le parcours a également acquis la hache, révélé Gillian et échangé la pomme
+d'or contre la magie de la Foudre, avec trois dialogues SMS observés et rejoués.
+Le [suivi de cette quête](analysis/gillian_quest_campaign_report.json) distingue
+les variantes restantes. La [fée de vie C9](analysis/npc_fairy_campaign_report.json)
+a été visitée puis revisitée sur SMS et MD : gain de capacité de 8, puis
+absence de second don. La comparaison complète des pages, du rendu et du son
+de ces services reste ouverte.
+La [maison d'argent D4](analysis/npc_gold_campaign_report.json) est aussi
+parcourue sur SMS : don de 10 pièces, puis retour sans nouveau don, avec
+relecture indépendante. Sa visite MD reste à faire.
 Les 65 contextes statiques des maisons ordinaires ne constituent pas le
 nombre total de PNJ ou de variantes. Marchands, donneurs de quêtes,
 dialogues conditionnels et autres textes restent à couvrir. Ce parcours

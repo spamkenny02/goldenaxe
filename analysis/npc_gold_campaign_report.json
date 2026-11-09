@@ -1,0 +1,161 @@
+{
+  "passed": true,
+  "outside": 212,
+  "stages": [
+    {
+      "trace": "natural-dungeon-route/sms-sms-npc-gold-d4-entry01",
+      "end_frame": 49425,
+      "rom_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+      "fixed_replay": "validation/natural-dungeon-route/sms-sms-npc-gold-d4-entry01-assisted-fixed-replay-49425/replay_report.json",
+      "evidence_sha256": {
+        "capture.json": "20c726f43f58a7b219d0d6c95cf21c106b1400789a41d684c586eb9685e67c46",
+        "controls.json": "769dde01d7b0f9efb109ef7d47995199d0bec87619a78c3e4f2ad5b476a63ffa",
+        "assistance.json": "19b274f32fce15a8e03c21ce17ad8bad6f866649fbc9d0fd6da079ffcd303227"
+      }
+    },
+    {
+      "trace": "natural-service-route/sms-npc-gold-d4-gift01",
+      "end_frame": 49896,
+      "rom_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+      "fixed_replay": "validation/natural-service-route/sms-npc-gold-d4-gift01-assisted-fixed-replay-49896/replay_report.json",
+      "evidence_sha256": {
+        "capture.json": "8aa5247b832a4f493a26d140f376575bb26f6b33a5d3c784bce9a0675ea7fff3",
+        "controls.json": "ae3d1956978a9ce9c7ac66ce66d7421e29ac8f8e86e3bed56562542509bceeca",
+        "assistance.json": "cd30e1be3334f884aa0cd3b479a0e63ac9fe4fd6352b1b3adc11677757e9a94c"
+      },
+      "variant": "initial_gift",
+      "initial_state": {
+        "room": 63,
+        "game": 12,
+        "hero": 1,
+        "counter": 0,
+        "x": 136,
+        "y": 144,
+        "health": 40,
+        "gold": 28,
+        "magic": 48,
+        "max_magic": 48,
+        "outside_flags": 17,
+        "level": 1,
+        "intro": 1,
+        "modal": false,
+        "audio_error": 0
+      },
+      "final_state": {
+        "room": 212,
+        "game": 12,
+        "hero": 1,
+        "counter": 0,
+        "x": 120,
+        "y": 48,
+        "health": 40,
+        "gold": 38,
+        "magic": 48,
+        "max_magic": 48,
+        "outside_flags": 19,
+        "level": 1,
+        "intro": 1,
+        "modal": false,
+        "audio_error": 0
+      },
+      "text_entries": [
+        {
+          "frame": 49461,
+          "text_pc": 36400
+        },
+        {
+          "frame": 49463,
+          "text_pc": 36400
+        }
+      ]
+    },
+    {
+      "trace": "natural-dungeon-route/sms-sms-npc-gold-d4-return-entry01",
+      "end_frame": 50095,
+      "rom_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+      "fixed_replay": "validation/natural-dungeon-route/sms-sms-npc-gold-d4-return-entry01-assisted-fixed-replay-50095/replay_report.json",
+      "evidence_sha256": {
+        "capture.json": "cc8fa4ead395fff8bb2f08bc7ed8b3a1ce41d351bdb84819271362042bc0f3e4",
+        "controls.json": "cb7b08777ce03326a5f2d3c12ca6606a3062b6dbd4f938ededc7eae2746608bb",
+        "assistance.json": "fc7ccda625f481391d01484df4953c1935a39ee35a359b9e0a086fffa293d30a"
+      }
+    },
+    {
+      "trace": "natural-service-route/sms-npc-gold-d4-return02",
+      "end_frame": 50575,
+      "rom_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+      "fixed_replay": "validation/natural-service-route/sms-npc-gold-d4-return02-assisted-fixed-replay-50575/replay_report.json",
+      "evidence_sha256": {
+        "capture.json": "511da22fa81898f8e67a764e4096b5a6d08fc9276700095764e15bb1669d49ad",
+        "controls.json": "d6000b8f6717aa956a58c31bdceb05de0b0b3e7f3b8ab4f39adba607795911c8",
+        "assistance.json": "2e6b95b0aa20580f95ec0f13406b3040424b3ac84177410905db1acd871f014f"
+      },
+      "variant": "return_after_reward",
+      "initial_state": {
+        "room": 63,
+        "game": 12,
+        "hero": 1,
+        "counter": 0,
+        "x": 136,
+        "y": 144,
+        "health": 40,
+        "gold": 38,
+        "magic": 48,
+        "max_magic": 48,
+        "outside_flags": 19,
+        "level": 1,
+        "intro": 1,
+        "modal": false,
+        "audio_error": 0
+      },
+      "final_state": {
+        "room": 212,
+        "game": 12,
+        "hero": 1,
+        "counter": 0,
+        "x": 128,
+        "y": 64,
+        "health": 36,
+        "gold": 38,
+        "magic": 48,
+        "max_magic": 48,
+        "outside_flags": 19,
+        "level": 1,
+        "intro": 1,
+        "modal": false,
+        "audio_error": 0
+      },
+      "text_entries": []
+    }
+  ],
+  "latest_selected_sms_prefix": "natural-service-route/sms-npc-gold-d4-return02",
+  "current_sms_state": {
+    "frame": 50575,
+    "room": 212,
+    "game": 12,
+    "hero": 1,
+    "counter": 0,
+    "x": 128,
+    "y": 64,
+    "health": 36,
+    "gold": 38,
+    "magic": 48,
+    "max_magic": 48,
+    "outside_flags": 19,
+    "level": 1,
+    "intro": 1,
+    "modal": false,
+    "audio_error": 0,
+    "max_health": 40,
+    "keys": 1,
+    "crystals": 1
+  },
+  "all_npcs_complete": false,
+  "md_status": "pending",
+  "limits": [
+    "Only the SMS initial +10 gold gift and return without a second gift are verified.",
+    "MD approach did not enter this house; that attempt is not an accepted stage.",
+    "Capacity/currency boundaries, graphic restoration, timing, audio and the paired MD service remain open.",
+    "Ordinary controller input with inherited recorded approach protection; no new service assistance or progression imports."
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "browser_access_available": true,
+  "observation_method": "YouTube UI seeking and paused rendered screenshots; timestamps are sampled images, not complete dialogue intervals.",
+  "limits": [
+    "Only sampled scenes of episode 1 have been visually inspected. No episode is certified fully watched.",
+    "The guide displays English dialogue and LIFE/MAGIC. The supplied source ROM displays French; scene/location correspondence is a spatial inference, not a ROM checksum match.",
+    "Automatic episode-1 transcript is predominantly music markers and isolated words; it cannot establish NPC or quest coverage."
+  ],
+  "episodes": [
+    {
+      "part": 1,
+      "url": "https://www.youtube.com/watch?v=EwDYM1NL_Eo",
+      "duration_seconds": 2348.821,
+      "viewing_status": "sampled_scenes_only",
+      "transcript_status": "visible_but_unusable_for_dialogue_inventory",
+      "observations": [
+        {
+          "seconds": 165,
+          "kind": "house_entry",
+          "summary_fr": "Le héros est à l'entrée sud de la première maison, qui réunit des habitants et plusieurs services.",
+          "inferred_source_context": {"outside": 148, "room": 0},
+          "dialogue_text_observed": false
+        },
+        {
+          "seconds": 175,
+          "kind": "service_portrait",
+          "summary_fr": "Un portrait de service est affiché avec une salutation encore en cours de rendu. L'issue du service n'est pas établie par cette image.",
+          "inferred_source_context": {"outside": 148, "room": 0},
+          "dialogue_text_observed": "partial_only"
+        },
+        {
+          "seconds": 180,
+          "kind": "npc_dialogue",
+          "summary_fr": "L'habitant de droite commence à parler d'une ville du sud-est nommée Saylun.",
+          "inferred_source_context": {"outside": 148, "room": 0, "coordinate": 744, "text_pc": 39794},
+          "checklist_id": "plain_house:94/00/02e8",
+          "dialogue_text_observed": "partial_only"
+        },
+        {
+          "seconds": 190,
+          "kind": "save_service",
+          "summary_fr": "L'écran du service de sauvegarde affiche une confirmation de sauvegarde réalisée. Le créneau choisi n'est pas déduit de l'image.",
+          "inferred_source_context": {"outside": 148, "room": 0},
+          "checklist_id": "save_service:audit",
+          "dialogue_text_observed": true
+        },
+        {
+          "seconds": 200,
+          "kind": "npc_dialogue",
+          "summary_fr": "Le PNJ du haut dans la seconde maison signale des monstres de Death Adder près de Miliver.",
+          "inferred_source_context": {"outside": 148, "room": 2, "coordinate": 604, "text_pc": 39877},
+          "checklist_id": "plain_house:94/02/025c",
+          "dialogue_text_observed": true
+        },
+        {
+          "seconds": 204.333332,
+          "kind": "npc_dialogue",
+          "summary_fr": "L'habitant de gauche dans la seconde maison parle de la mort du roi et de la princesse Tyris, et du sort de Firewood.",
+          "inferred_source_context": {"outside": 148, "room": 2, "coordinate": 836, "text_pc": 39945},
+          "checklist_id": "plain_house:94/02/0344",
+          "dialogue_text_observed": true
+        }
+      ]
+    }
+  ]
+}
