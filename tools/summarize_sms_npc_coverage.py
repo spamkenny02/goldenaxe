@@ -69,6 +69,36 @@ def main():
                   reported_unresolved_sms_offsets=['0xDA58', '0xDA7C', '0xED3C'],
                   unresolved_scope='Presence in ROM is established; gameplay triggers remain unproved. These strings are not counted as visited.',
                   method='Continuous cold-boot SMS controller route. Read-only original text-entry/completion observation, dismissal followed by movement, and independent fixed-input official-core replay. Approach hurt-byte protection is recorded where used; no quest or save imports.')
+    # Reward windows use a different source path. Keep their evidence separate
+    # from the nine formatter-entry/completion-verified plain conversations.
+    reward = ROOT / 'validation/natural-service-route/sms-sms-npc-villagec7-oil02'
+    if (reward / 'report.json').exists():
+        rr = read(reward / 'report.json')
+        rc = read(reward / 'capture.json')
+        proof = reward.with_name(reward.name + f'-assisted-fixed-replay-{rc["frames"]}') / 'replay_report.json'
+        assert rr['passed'] and read(proof)['passed']
+        assert rr['first_state']['oil'] == 0 and rr['last_state']['oil'] == 1
+        assert rr['visited'] == [0x1f, 0x0f, 0xc7]
+        result['verified_reward_visits'] = [dict(
+            trace=reward.relative_to(ROOT).as_posix(), outside=0xc7,
+            rooms=rr['visited'], reward='oil', end_frame=rc['frames'],
+            independent_fixed_replay=proof.relative_to(ROOT).as_posix(),
+            new_assistance_writes=rr['new_assistance_writes'],
+            text_content_comparison='pending',
+            scope='Real NPC reward, acknowledgment, both stairs and exterior return. Not counted as a standard 050C/627A plain conversation.')]
+        result['latest_selected_prefix'] = reward.relative_to(ROOT).as_posix()
+    continuation = ROOT / 'validation/natural-dungeon-combat/sms-auto-sms-npc-d2-key03'
+    if (continuation / 'report.json').exists():
+        cr = read(continuation / 'report.json')
+        cc = read(continuation / 'capture.json')
+        cp = continuation.with_name(continuation.name + f'-assisted-fixed-replay-{cc["frames"]}') / 'replay_report.json'
+        assert cr['room_cleared'] and cr['failure'] is None and read(cp)['passed']
+        result['latest_selected_prefix'] = continuation.relative_to(ROOT).as_posix()
+        result['current_campaign_checkpoint'] = dict(
+            frame=cc['frames'], room=cr['last_state']['room'],
+            health=cr['last_state']['health'], keys=cr['last_state']['keys'],
+            crystals=1, second_boss_defeated=False,
+            scope='Three key rooms completed in dungeon two. The later exploratory boss attempt is not a selected campaign stage.')
     out = ROOT / 'analysis/sms_npc_coverage_report.json'
     out.write_text(json.dumps(result, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
     print(json.dumps({k: result[k] for k in ('observed_acknowledged_conversations', 'static_plain_house_context_count', 'all_npcs_complete')}))

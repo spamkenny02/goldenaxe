@@ -42,6 +42,12 @@ restauration graphique, transitions et son en PAL/NTSC.
 Les visites MD de ce nouveau parcours comparé restent à effectuer ; les
 anciens tests de scènes et de campagnes ne valent pas validation de tous les PNJ.
 
+Une nouvelle [vidéo de la campagne V321](videos/v0321/README.md) est prête
+localement pour YouTube : introduction, nouvelle partie et générique,
+1 h 54 min en NTSC avec le son du jeu. La visite exhaustive des PNJ reste
+hors de ce parcours MD. La vidéo SMS avec notre parcours maison et les PNJ
+attend encore la fin de cette campagne ; aucun TAS externe n'est utilisé.
+
 La **V321** corrige le retard d’une image des portions de carte du titre :
 cape, apparition du logo et clignotement de l’invite. Les 198 images des
 33 poses de cape correspondent à la source, avec six images par pose, en
