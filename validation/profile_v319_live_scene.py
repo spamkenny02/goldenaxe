@@ -36,6 +36,8 @@ if a.stages:
 (out/'wrapper.c').write_text(s);(out/'pattern_expected.h').write_bytes((source/'pattern_expected.h').read_bytes())
 report=json.loads((source/'report.json').read_bytes());report.update(measure_native_frames=True,throughput_only=True,profile_stages=a.stages,max_kernel_frames=50000,scope='Helper-only native scene with ownedVDP status and real IRQ work: fixture copies and final comparisons excluded from measured interval,per-OUT expected-event checks disabled; all original final state/clock/status checks retained. Physical MD video/PSG excluded.')
 report['native_sources']={name:hashlib.sha256((root/'megadrive/src'/(name+'.c')).read_bytes()).hexdigest() for name in report['native_sources']}
+report['native_sources']['source_irq_workspace']=hashlib.sha256((root/'megadrive/src/source_irq_workspace.c').read_bytes()).hexdigest()
+if 'source_irq_workspace' not in report['extra_modules']:report['extra_modules'].append('source_irq_workspace')
 report['native_headers']={'source_video_clock_math.h':hashlib.sha256((root/'megadrive/src/source_video_clock_math.h').read_bytes()).hexdigest()} if (root/'megadrive/src/source_video_clock_math.h').exists() else {}
 report['pattern_runs']=a.runs
 report['scene_video_runs']=a.scene_runs

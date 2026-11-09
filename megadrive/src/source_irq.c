@@ -3,6 +3,7 @@
 #include <memory.h>
 #endif
 
+#ifndef GAW_IRQ_PRIVATE_WORKSPACE
 static void copy_state(u8 *to,const u8 *from)
 {
 #ifdef SGDK_GCC
@@ -11,6 +12,7 @@ static void copy_state(u8 *to,const u8 *from)
     __builtin_memcpy(to,from,336);
 #endif
 }
+#endif
 
 static u8 address_index(u16 address,u16 *index)
 {
@@ -32,7 +34,11 @@ static void clear(SourceIrqOutput *output)
 
 u8 source_irq(u8 *state,const SourceIrqInput *input,const SourceClockWork *reader,SourceIrqOutput *output)
 {
-    u8 old[336],value,bank,count_byte,height_byte,width_byte,previous,pause;
+    u8
+#ifndef GAW_IRQ_PRIVATE_WORKSPACE
+    old[336],
+#endif
+    value,bank,count_byte,height_byte,width_byte,previous,pause;
     u16 count,height,width,pointer,iy,guard,n;u32 t,m,loop,sample,period,prefix,target;
     clear(output);
     if((input->lines!=262 && input->lines!=313) || input->raster>=(u32)input->lines*3420 ||
@@ -47,7 +53,9 @@ u8 source_irq(u8 *state,const SourceIrqInput *input,const SourceClockWork *reade
         output->whole.tstates=82+t+reader->tstates;output->whole.fetches=7+m+reader->fetches;
         return 1;
     }
+#ifndef GAW_IRQ_PRIVATE_WORKSPACE
     copy_state(old,state);
+#endif
     output->stages[SOURCE_IRQ_SAT64].tstates=27+10+10+3*(16+12)+7+13+4+11+7+11+7+10+17+64*16+10;
     output->stages[SOURCE_IRQ_SAT64].fetches=3+2+3*(2+2)+9+64*2+1;
     output->stages[SOURCE_IRQ_SAT128].tstates=4+11+4+11+17+128*16+10;
@@ -157,5 +165,8 @@ u8 source_irq(u8 *state,const SourceIrqInput *input,const SourceClockWork *reade
     }
     return 1;
 reject:
-    copy_state(state,old);clear(output);return 0;
+#ifndef GAW_IRQ_PRIVATE_WORKSPACE
+    copy_state(state,old);
+#endif
+    clear(output);return 0;
 }

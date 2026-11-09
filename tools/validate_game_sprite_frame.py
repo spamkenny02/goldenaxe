@@ -4,7 +4,7 @@ from game_sprite_frame_fixture import ROOT,generate,unpack_body
 from run_core import run
 from validate_sprite_scene_timed import sha
 from validate_native_audio_reader import MODULES as AUDIO
-MODULES=['source_game_irq','source_game_frame','source_sprite_scene_timed','source_clock','source_rng','source_irq','source_irq_master_context','source_audio_reader_master','source_audio_prefix_timed','source_audio_fast_timed',*AUDIO]
+MODULES=['source_game_irq','source_game_frame','source_sprite_scene_timed','source_clock','source_rng','source_irq','source_irq_workspace','source_irq_master_context','source_audio_reader_master','source_audio_prefix_timed','source_audio_fast_timed',*AUDIO]
 WRAPPER=r'''
 #include "source_game_irq.h"
 typedef struct {const u8 *points,*psg,*sat,*statuses;u32 points_count,psg_count,sat_count,point,psg_at,sat_at,status_at,status_count,origin;u32 *out;SourceGameIrqContext *irq;} Compare;

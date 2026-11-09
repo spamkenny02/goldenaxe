@@ -63,7 +63,7 @@ def main():
     partial=next(row for row in json.loads(fixture_raw) if len(row['batches'])>1)
     fixture='static const u8 partial_audio[]={'+','.join(map(str,partial['before']))+'};\n#define PARTIAL_DE '+str(partial['de'])+'\n#define PARTIAL_ALLOW '+str(partial['batches'][0])+'\n'
     (src/'wrapper.c').write_text(WRAPPER.replace('/*PARTIAL_FIXTURE*/',fixture))
-    modules=list(dict.fromkeys(['source_irq_queue_context','source_irq','source_clock','source_rng','source_audio_fast_timed','source_psg_queue','source_psg_stream',*TIMED_MODULES]))
+    modules=list(dict.fromkeys(['source_irq_queue_context','source_irq','source_irq_workspace','source_clock','source_rng','source_audio_fast_timed','source_psg_queue','source_psg_stream',*TIMED_MODULES]))
     sdk=(ROOT.parents[1]/'work/sgdk').resolve();env=dict(os.environ);env['PATH']='C:/msys64/ucrt64/bin;'+env['PATH']
     args=['C:/msys64/ucrt64/bin/gcc.exe','-O3','-Wall','-Wextra','-Werror','-shared','-I',str(sdk/'inc'),'-I',str(ROOT/'megadrive/src'),str(src/'wrapper.c')]+[str(ROOT/'megadrive/src'/(n+'.c')) for n in modules]+['-o',str(folder/'faults.dll')]
     built=subprocess.run(args,env=env,capture_output=True,text=True);(folder/'host-build.log').write_text(built.stdout+built.stderr);assert not built.returncode,built.stderr

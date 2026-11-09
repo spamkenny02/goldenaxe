@@ -1,6 +1,9 @@
 #include "source_intro_scene_vdp.h"
 #include "source_room_memory.h"
 #include "source_video_clock_math.h"
+#ifdef SGDK_GCC
+#include <memory.h>
+#endif
 
 u8 source_intro_scene_vdp_pattern(void *user,u32 elapsed,u32 raster,u8 port,u8 value)
 {return source_intro_vdp_out(user,elapsed,raster,11,port,value);}
@@ -30,11 +33,15 @@ u8 source_intro_scene_vdp_irq(void *user,const SourceIrqContext *context,const S
  if(!context->ram[0x2e]) return 1;
  if(context->ram[0x42] || (!context->ram[0x33] && (context->ram[0x45]&3)) ||
     context->ram[80] || (!context->ram[0x33] && !context->full_ram)) return 0;
- for(n=0;n<336;n++) ram[n]=context->ram[n];
+#ifdef SGDK_GCC
+ memcpy(ram,context->ram,336);
+#else
+ __builtin_memcpy(ram,context->ram,336);
+#endif
  input=context->input;input.raster=entry->entry_raster;input.compensation=context->audio[3];input.tile_count=0;
  /* Canonical stage lengths include the same PAL/NTSC palette polling date.
   * Validate the whole path on a private copy before any publication. */
- if(!source_irq(ram,&input,&zero,&irq) || irq.reset_requested) return 0;
+ if(!source_irq_workspace(ram,&input,&zero,&irq) || irq.reset_requested) return 0;
  for(n=0;n<3;n++)
  {
   if(!out(vdp,entry,63+n*28,16,0xbf,context->ram[0x1a-n]) ||

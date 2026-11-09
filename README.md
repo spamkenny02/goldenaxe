@@ -58,6 +58,19 @@ Cette capture V319 conserve le défaut de bordure du générique signalé ensuit
 
 ## Travail natif en cours : statut vidéo des sprites
 
+Les interruptions qui travaillent déjà sur une copie privée n’en font plus
+une seconde pour pouvoir revenir en arrière : en cas d’échec, la copie privée
+est simplement jetée. La routine sur RAM réelle conserve sa restauration.
+Cette étape supprime un tampon de secours de 336 octets par appel concerné ;
+le gain de temps mesuré reste modeste, proche de 1 %.
+
+46000 cas compilés 68000 conservent les états et rejets attendus ; 133 cas de
+trames par région retrouvent aussi les états et dates de ports SMS en simulation
+native sur ordinateur. Le helper reste à **69..77 images MD en NTSC** et
+**58..64 en PAL**, au-dessus du budget source. La V320 reste identique.
+[Preuves et limites](analysis/v320_irq_workspace_report.json).
+
+
 Les écritures de sprites des interruptions sont maintenant regroupées entre
 les frontières de ligne, en conservant l’ordre des mutations observables.
 Le helper composé passe de 88..96 à **70..78 images MD en NTSC**, et de

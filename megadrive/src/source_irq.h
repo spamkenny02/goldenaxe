@@ -22,4 +22,9 @@ typedef struct {
  * Failed uncaptured RAM/queue/raster inputs roll back all336 bytes. */
 u8 source_irq(u8 *state,const SourceIrqInput *input,const SourceClockWork *reader,
                SourceIrqOutput *output);
+/* Disposable private336-byte workspace variant. Successful RAM/output/work
+ * match source_irq exactly. Failure may modify workspace; never pass live RAM.
+ * Output is still cleared on rejection. Caller commits only after success. */
+u8 source_irq_workspace(u8 *state,const SourceIrqInput *input,const SourceClockWork *reader,
+                        SourceIrqOutput *output);
 #endif

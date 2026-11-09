@@ -8,7 +8,7 @@ import subprocess
 from actor_reference import ROOT
 from validate_native_audio_reader import MODULES as AUDIO_MODULES
 
-MODULES=['source_wait','source_irq_context','source_irq','source_clock','source_rng',*AUDIO_MODULES]
+MODULES=['source_wait','source_irq_context','source_irq','source_irq_workspace','source_clock','source_rng',*AUDIO_MODULES]
 WRAPPER='''#include "source_wait.h"
 typedef struct {u32 count,events[16][6];SourceIrqContext *irq;} WaitTrace;
 static void trace(void *context,const SourceClockIrq *entry,const SourceClockWork *work)

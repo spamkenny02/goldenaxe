@@ -6,6 +6,18 @@ le README et les rapports cités.
 
 ## Suivi courant — V320, 8 novembre 2026
 
+DERNIÈRE ÉTAPE NATIVE : workspaceIRQ privé sans rollback redondant.
+`analysis/v320_irq_workspace_report.json`, archive `analysis/v320-irq-workspace`.
+source_irq_workspace.c instancie le même corps via macro GAW_IRQ_PRIVATE_WORKSPACE.
+La routine canonique conserve les mêmes tokens préprocesseur et son rollback.
+La variante privée enlève old[336]/copie ; après rejet son état est jetable.
+Seuls l’adaptateur fullIRQ et le preview vidéo, déjà sur RAM privée, l’utilisent.
+23000cas host +46000compilés,acceptations/rejets/queue/reset/overflowwork exacts.
+133fixtures source/frame/SAT/PSG par région passent en composition host ;
+20scènes compilées exactes. GainCPUmodeste~1%,helper69..77NTSC/58..64PAL.
+Rebuild baseV319 puisoverlayV320 identiques. Pas de changement ROM publique.
+Prochain : motifs/clock25..35framesNTSC ;gateCPU et auditsVDP/PSG restentouverts.
+
 DERNIÈRE ÉTAPE NATIVE : envois SAT IRQ groupés entre frontières de ligne.
 `analysis/v320_sat_runs_report.json`, archive `analysis/v320-sat-runs/manifest.json`.
 source_intro_vdp_sat_run :64Y/128XY,OUTI16T,source_raster/epoch validés,

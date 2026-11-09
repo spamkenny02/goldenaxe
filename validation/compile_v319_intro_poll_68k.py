@@ -32,6 +32,9 @@ shutil.copyfile(root / 'megadrive/src/rom_header.c', src / 'rom_header.c')
 inc = project / 'inc'; inc.mkdir()
 (inc / 'source_intro_wait.h').write_text('#include "../../../../megadrive/src/source_intro_wait.h"\n')
 profile_report=json.loads((work/'report.json').read_bytes())
+if 'source_intro_scene_vdp' in profile_report.get('extra_modules',[]) and 'source_irq_workspace' not in profile_report['extra_modules']:
+    profile_report['extra_modules'].append('source_irq_workspace')
+
 for header in profile_report.get('extra_headers',[]):
     assert re.fullmatch(r'source_[a-z_]+\.h',header)
     (inc/header).write_text('#include "../../../../megadrive/src/'+header+'"\n')
