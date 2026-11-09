@@ -4,6 +4,7 @@ import contextlib
 import io
 import time
 import json
+from pathlib import Path
 from PIL import Image
 from run_core import ROOT, run, FrameWrites
 from archive_lossless_evidence import sha
@@ -14,6 +15,7 @@ from validate_playable_sprite_limit import symbols
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--trace', required=True)
+    parser.add_argument('--rom', type=Path, help='Explicit same-layout ROM; exact capture SHA is required')
     parser.add_argument('--controlled-sram-prefix',action='store_true',help='Explicit synthetic-SRAM component proof; never a cold campaign proof')
     parser.add_argument('--trial', help='Additional independent replay suffix; canonical proof remains unchanged')
     parser.add_argument('--observe-water',action='store_true',help='Read canoe ownership,water terrain and ordinary movement during the fixed replay')
@@ -25,7 +27,7 @@ def main():
     controls = json.loads((folder / 'controls.json').read_bytes())
     assist, writes = recording(folder, capture)
     sms = folder.name.startswith('sms')
-    rom = ROOT / 'input/original.sms' if sms else ROOT / 'gaw-megadrive.bin'
+    rom = args.rom or (ROOT / 'input/original.sms' if sms else ROOT / 'gaw-megadrive.bin')
     assert capture['rom_sha256'] == sha(rom.read_bytes())
     initial=controlled_sram_input(folder,capture,args.controlled_sram_prefix)
     sy=None if sms else symbols(ROOT/'megadrive/out/release/symbol.txt')

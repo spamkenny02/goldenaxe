@@ -39,8 +39,18 @@ La même couverture exhaustive est requise sur Mega Drive, avec les mêmes
 conditions de quête : textes, pages, choix, récompenses, fermeture du dialogue,
 restauration graphique, transitions et son en PAL/NTSC.
 [Suivi comparé des PNJ SMS/MD](analysis/paired_npc_coverage_report.json).
-Les visites MD de ce nouveau parcours comparé restent à effectuer ; les
-anciens tests de scènes et de campagnes ne valent pas validation de tous les PNJ.
+Huit conversations ont maintenant une visite MD avec sélection et bitmap final
+de 1040 octets identiques à la SMS, acquittement et déplacement, puis relecture
+indépendante. Les autres critères restent ouverts. L'indice du mur en C7/maison
+1F révèle un retour à la ligne supplémentaire sur V321 ; le correctif privé
+n'est pas livré. Les anciens tests de scènes et campagnes ne valident pas tous
+les PNJ.
+
+**La couverture demandée porte sur tous les PNJ et toutes les quêtes secondaires,
+sur les deux systèmes.** Le [suivi exhaustif en cours](analysis/COUVERTURE_100_PNJ_QUETES.md)
+réunit 173 obligations initiales, les variantes à visiter et les huit épisodes
+du guide Lord Paddle fourni. Le recensement reste ouvert ; ce nombre n'est ni
+un nombre total de PNJ ni un pourcentage de validation.
 
 Une nouvelle [vidéo de la campagne V321](videos/v0321/README.md) est prête
 localement pour YouTube : introduction, nouvelle partie et générique,

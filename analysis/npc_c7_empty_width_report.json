@@ -1,0 +1,107 @@
+{
+  "issue": "C7/house31 wall hint inserts an extra blank line and scrolls out its first sentence on V321",
+  "source_text_pc": 40244,
+  "source_file_offset": 56628,
+  "published_rom_sha256": "89c5833351312ffaa591efb1939161910a298af06437080e2cf84fb3fb8ac86e",
+  "published_case_failed": true,
+  "published_trace": "validation/natural-service-route/md-npc-villagec7-house1f-02",
+  "cause": "The native renderer performs its wrapping test even for a zero-width run of spaces/control characters. Padding spaces before FF trigger a soft wrap and FF adds a second line. Original Z80 05B2..05D0 dispatches controls before glyph-width tests; 066B increments X without the wrap check.",
+  "private_candidate": {
+    "private_candidate": true,
+    "base_sha256": "89c5833351312ffaa591efb1939161910a298af06437080e2cf84fb3fb8ac86e",
+    "md_sha256": "1421abe47de95ac104a03e2fb1be7001f70aeca1fbb6a9b35669aa6e98b7d9a4",
+    "overlay_bytes": 76,
+    "all_other_bytes_identical": true,
+    "title_and_credits_overlays_unchanged": true,
+    "source_basis": "Original 05B2..05D0 dispatches empty/control characters before width checks; 066B only adds6 to X. Native empty word wrap adds an extra line before FF.",
+    "selected_for_release": false,
+    "runtime_validation_required": true,
+    "scope": "Private room31 experiment, while house_dialogue_active is set. Other rooms and opening-story layout unchanged; not a general released repair."
+  },
+  "private_case": {
+    "passed": true,
+    "failure": null,
+    "rom_sha256": "1421abe47de95ac104a03e2fb1be7001f70aeca1fbb6a9b35669aa6e98b7d9a4",
+    "sms_reference": "natural-service-route/sms-npc-villagec7-house1f-01",
+    "prefix": "natural-dungeon-route/md-npc-villagec7-house1f-01",
+    "room": 31,
+    "outside": 199,
+    "visited": [
+      {
+        "text_pc": 40244,
+        "coordinate": 360,
+        "md_index": 45,
+        "entry_frame": 6539,
+        "bitmap_exact_frame": 6676,
+        "bitmap_exact_bytes": 1040,
+        "sms_bitmap_sha256": "4b5c53a91d1e743fa397cf2ede3453ce8fe5fb21221bb7427f6be1b53275de3f",
+        "acknowledged_and_walked_away_frame": 6727
+      }
+    ],
+    "events": [
+      {
+        "frame": 6539,
+        "text_pc": 40244,
+        "md_index": 45,
+        "event": "opened"
+      },
+      {
+        "frame": 6676,
+        "text_pc": 40244,
+        "event": "final_bitmap_exact_sms",
+        "bytes": 1040
+      }
+    ],
+    "last_state": {
+      "room": 199,
+      "game": 12,
+      "hero": 0,
+      "counter": 0,
+      "x": 168,
+      "y": 128,
+      "health": 24,
+      "modal": 0,
+      "dialogue_index": 45,
+      "audio_error": 0
+    },
+    "ram_injections": true,
+    "new_assistance_writes": 0,
+    "sram_checkpoint_injection": false,
+    "primary_state_imports": 0,
+    "scope": "Ordinary cold-boot walking and acknowledgment. Native selected dialogue and final 1040-byte bitmap match the played SMS reference. Intermediate pages, full physical pixels/audio/timing and conditional variants are not certified."
+  },
+  "independent_replay": {
+    "elapsed_seconds": 1.452945000026375,
+    "indexed_writes": true,
+    "passed": true,
+    "assisted_route": true,
+    "natural_campaign_proof": false,
+    "rom_sha256": "1421abe47de95ac104a03e2fb1be7001f70aeca1fbb6a9b35669aa6e98b7d9a4",
+    "frames": 6856,
+    "feedback_reads": false,
+    "ram_injections": true,
+    "injection_count": 606,
+    "last_injection_frame": 5271,
+    "release_write_frame": null,
+    "first_boss_combat": null,
+    "boss_assistance": false,
+    "approach_only": true,
+    "whole_ram_bytes": 65536,
+    "final_png_exact": true,
+    "final_rgb_sha256": "2cbbeef1249170a43854962fa5b19fba628470c70beb9ce23e15a0f05cb891f2",
+    "png_container_bytes_exact": true,
+    "evidence": {
+      "capture.json": "9a53add8c77753efd85ea7462f1db5271ba24e2c261a5907cdef7106b202a0e2",
+      "controls.json": "9f7c41380aadfdf32267690954c55d137693715db0f055aa2b280570138cce60",
+      "assistance.json": "bfbb1b7b53956779ec01fb8c52dedcc26209caebfd8eca00c859e630697a5401"
+    }
+  },
+  "selected_for_release": false,
+  "global_repair_complete": false,
+  "remaining": [
+    "General house/service candidate changed earlier recorded dialogue durations; its old fixed prefix no longer reaches the intended NPC. Rebuild a fresh adaptive route before judging general behavior.",
+    "Room31 trial proves the cause and restores the final 1040-byte SMS bitmap, acknowledgment and exterior return. It is not a universal fix.",
+    "PAL case, intermediate pages, full physical graphics/timing/audio and other padded text need comparison.",
+    "Published V321 and its delivered ZIP/video remain unchanged."
+  ]
+}
