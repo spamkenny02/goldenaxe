@@ -4,6 +4,7 @@ import contextlib
 import io
 import time
 import json
+from PIL import Image
 from run_core import ROOT, run, FrameWrites
 from archive_lossless_evidence import sha
 from assisted_prefix import recording,controlled_sram_input
@@ -64,9 +65,14 @@ def main():
     started=time.perf_counter()
     with contextlib.redirect_stdout(io.StringIO()):
         run(rom, end, out, {end}, presses, ram_writes=FrameWrites(writes), skip_intro=False, core_options=capture['core_options'],sram_in=initial,ram_observer=observe_water if args.observe_water or args.observe_grabs else None)
-    for stem, ext in [('ram', 'bin'), ('frame', 'png')]:
-        filename = f'{stem}_{end:05d}.{ext}'
-        assert (folder / filename).read_bytes() == (out / filename).read_bytes(), filename
+    filename = f'ram_{end:05d}.bin'
+    assert (folder / filename).read_bytes() == (out / filename).read_bytes(), filename
+    filename = f'frame_{end:05d}.png'
+    with Image.open(folder/filename) as source_image, Image.open(out/filename) as replay_image:
+        source_pixels=source_image.convert('RGB');replay_pixels=replay_image.convert('RGB')
+        assert source_pixels.size==replay_pixels.size and source_pixels.tobytes()==replay_pixels.tobytes(), filename
+        picture_sha256=sha(source_pixels.tobytes())
+    png_container_bytes_exact=(folder/filename).read_bytes()==(out/filename).read_bytes()
     report = dict(elapsed_seconds=time.perf_counter()-started,indexed_writes=True,passed=True, assisted_route=True, natural_campaign_proof=False,
                   rom_sha256=capture['rom_sha256'], frames=end, feedback_reads=False,
                   ram_injections=True, injection_count=len(writes),
@@ -74,6 +80,7 @@ def main():
                   first_boss_combat=assist['first_boss_combat'], boss_assistance=False,
                   approach_only=assist['first_boss_combat'] is None,
                   whole_ram_bytes=8192 if sms else 65536, final_png_exact=True,
+                  final_rgb_sha256=picture_sha256,png_container_bytes_exact=png_container_bytes_exact,
                   evidence={name: sha((folder / name).read_bytes()) for name in
                             ['capture.json', 'controls.json', 'assistance.json']})
     if initial:report.update(controlled_sram_fixture=True,sram_sha256=sha(initial.read_bytes()),game_written_save=False,primary_state_imports=1)

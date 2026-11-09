@@ -23,6 +23,18 @@ dans BizHawk reste à vérifier. Le kit SMS couvre l’intro et permet de
 suivre/enregistrer une partie ; il ne contient pas de campagne SMS complète
 validée. [Résultats du kit](testkit/verification.json).
 
+Un nouveau parcours SMS continu est en cours, avec visite des PNJ et
+revisites selon les étapes des quêtes. Il a terminé le premier donjon et
+validé neuf conversations dans deux villages : texte déclenché, rendu
+terminé, fermeture et déplacement, puis relecture indépendante des entrées.
+La protection autorisée sur certaines approches est enregistrée et retirée
+avant le boss ; aucun état de quête ni sauvegarde n'est importé.
+[Relevé des PNJ SMS](analysis/sms_npc_coverage_report.json).
+Les 65 contextes statiques des maisons ordinaires ne constituent pas le
+nombre total de PNJ ou de variantes. Marchands, donneurs de quêtes,
+dialogues conditionnels et autres textes restent à couvrir. Ce parcours
+partiel n'est pas encore livré dans l'archive du kit de tests.
+
 La **V321** corrige le retard d’une image des portions de carte du titre :
 cape, apparition du logo et clignotement de l’invite. Les 198 images des
 33 poses de cape correspondent à la source, avec six images par pose, en
