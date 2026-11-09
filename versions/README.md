@@ -4,6 +4,7 @@ Chaque binaire est conserve sans ecrasement. Les controles cibles ne prouvent pa
 
 | Version | ROM | Validation | Changements | SHA-256 |
 | --- | --- | --- | --- | --- |
+| v0321 | [Telecharger](v0321-89c58333/gaw-megadrive-v0321.bin) | development_targeted_checks | Titre : cape, logo et clignotement avances d'une image pour suivre la SMS ; controles PAL/NTSC reussis. Ecarts raster/intro encore ouverts. | `89c5833351312ffaa591efb1939161910a298af06437080e2cf84fb3fb8ac86e` |
 | v0320 | [Telecharger](v0320-9e5b0abe/gaw-megadrive-v0320.bin) | development_targeted_checks | Générique : masque natif 68000 de la bordure basse MD. 7424 états exacts PAL/NTSC, parcours complets enregistrés NTSC et PAL jusqu'au retour intro, puis nouvelle partie après générique testée dans les deux régions. | `9e5b0abed80678ce864a0bb796c17e97047d1d34e5227a5275bf9336129ceaff` |
 | v0319 | [Telecharger](v0319-d3ea2a83/gaw-megadrive-v0319.bin) | development_targeted_checks | Campagnes NTSC et PAL completes jusqu au retour intro ; sauvegarde/Continue reels dans les deux regions. Atlas RAM et preparation des poses optimises. Fidelite globale SMS, autres slots/refus et console physique ouverts. | `d3ea2a83ea24ed8a0d3c9857f9fbe70d000a4f73358452c1887f40e78966c56e` |
 | v0318 | [Telecharger](v0318-b9e1f0a0/gaw-megadrive-v0318.bin) | development_targeted_checks | Fondu titre recale sur interruption video. 34 images SMS exactes de plus par region ; campagne NTSC et recharge de la sauvegarde v317 rejouees. | `b9e1f0a0543f191e24ffd6d2740a0d717501e0fcd986f8b8953a37a1b3c416a4` |

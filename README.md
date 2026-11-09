@@ -4,15 +4,44 @@ Reconstruction de la ROM Master System fournie, puis portage de sa logique
 Z80 en code natif 68000 avec SGDK. La fidélité précède les améliorations.
 
 <!-- ROM-RELEASE:START -->
-**Version courante : v0320 — 2048 Kio.**
+**Version courante : v0321 — 2048 Kio.**
 
-[Télécharger la ROM v0320](versions/v0320-9e5b0abe/gaw-megadrive-v0320.bin) · [Toutes les versions](versions/README.md)
+[Télécharger la ROM v0321](versions/v0321-89c58333/gaw-megadrive-v0321.bin) · [Toutes les versions](versions/README.md)
 
 Version de développement ; contrôles ciblés réussis, écarts visuels et validation complète encore ouverts.
 
-SHA-256 : `9e5b0abed80678ce864a0bb796c17e97047d1d34e5227a5275bf9336129ceaff`
-Checksum Mega Drive : `B0A2`
+SHA-256 : `89c5833351312ffaa591efb1939161910a298af06437080e2cf84fb3fb8ac86e`
+Checksum Mega Drive : `CB3C`
 <!-- ROM-RELEASE:END -->
+
+La **V321** corrige le retard d’une image des portions de carte du titre :
+cape, apparition du logo et clignotement de l’invite. Les 198 images des
+33 poses de cape correspondent à la source, avec six images par pose, en
+PAL et NTSC après conversion des niveaux de couleur matériels connus.
+L’apparition initiale du guerrier et la durée totale du cycle sont conservées.
+Le correctif natif 68000 de 60 octets conserve la disposition du jeu et
+le correctif des crédits V320. Les huit parcours ciblés conservent les états
+de contrôle, l’image finale, les registres PSG et l’état du lecteur sonore.
+Le PCM diffère : ces tests ne certifient pas une identité audio bit à bit.
+[Mesures et limites V321](analysis/title_publication_v0321_report.json).
+
+**Graphismes et animations restent la priorité ; ils ne sont pas certifiés à
+100 %.** Il reste notamment une différence de 262 pixels sur une image NTSC
+pendant la première ligne du logo, des révélations partielles de scènes et
+la préparation du récit suivant. Héros, transitions, PNJ, ennemis, boss et
+générique nécessitent encore une couverture visuelle complète.
+Les trois textes signalés aux offsets SMS `DA58`, `DA7C` et `ED3C` sont absents
+des données MD ; leur déclenchement sur SMS reste à établir. Aucune condition
+de dialogue n’a été inventée pour les afficher.
+[Audit des textes signalés](analysis/reported_missing_texts_v0320_report.json).
+
+Pour reconstruire la V321 depuis la V320 exacte :
+`python tools/build_title_publication_overlay.py --out validation/title-build-local`.
+Une V320 reconstruite peut être fournie avec `--base chemin/rom-v320.bin` ;
+son SHA est vérifié avant toute modification. Le script retrouve aussi la
+base dans l’historique Git si la copie locale a été nettoyée.
+Les archives de passation dans `handoff` restent les instantanés **V320**
+demandés ; elles ne contiennent pas ce correctif V321.
 
 La V320 corrige le débordement du générique dans les 16 pixels supplémentaires
 au bas de l’écran Mega Drive. Les 192 lignes SMS conservent leur image et leur

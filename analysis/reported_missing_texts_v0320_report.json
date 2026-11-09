@@ -1,0 +1,75 @@
+{
+  "source_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+  "published_v320_sha256": "9e5b0abed80678ce864a0bb796c17e97047d1d34e5227a5275bf9336129ceaff",
+  "asset_absence_confirmed": true,
+  "gameplay_omission_confirmed": false,
+  "unused_in_sms_proven": false,
+  "rom_modified": false,
+  "findings": [
+    {
+      "sms_file_offset": "DA58",
+      "sms_text_bank": 3,
+      "z80_address_when_bank3_selected": "9A58",
+      "text_bytes_hex": "41732d7475206c6520706170696572206465206c612054657272653f2020202020202000",
+      "text_preview": "As-tu le papier de la Terre?       ",
+      "present_verbatim_in_v320": false,
+      "raw_little_endian_pointer_occurrences": [
+        "09A1F"
+      ],
+      "exported_plain_house_contexts": [],
+      "sms_reachable": null,
+      "classification": "absent MD asset; SMS dialogue trigger not established"
+    },
+    {
+      "sms_file_offset": "DA7C",
+      "sms_text_bank": 3,
+      "z80_address_when_bank3_selected": "9A7C",
+      "text_bytes_hex": "54752061732066696e616c656d656e74206f6274656e75206c65207365636f6e6420706170696572206465206c612054657272652e204269656e2e20436f6e74656e7420706f757220746f6921202000",
+      "text_preview": "Tu as finalement obtenu le second papier de la Terre. Bien. Content pour toi!  ",
+      "present_verbatim_in_v320": false,
+      "raw_little_endian_pointer_occurrences": [],
+      "exported_plain_house_contexts": [],
+      "sms_reachable": null,
+      "classification": "absent MD asset; SMS dialogue trigger not established"
+    },
+    {
+      "sms_file_offset": "ED3C",
+      "sms_text_bank": 3,
+      "z80_address_when_bank3_selected": "AD3C",
+      "text_bytes_hex": "4f6821204a65206d6520736f757669656e7321205175616e64206c6120636c6f63686520736f6e6e652c20756e20706173736167652073266f75767265212045737361696520bc612120202000",
+      "text_preview": "Oh! Je me souviens! Quand la cloche sonne, un passage s&ouvre! Essaie ¼a!   ",
+      "present_verbatim_in_v320": false,
+      "raw_little_endian_pointer_occurrences": [],
+      "exported_plain_house_contexts": [],
+      "sms_reachable": null,
+      "classification": "absent MD asset; SMS dialogue trigger not established"
+    }
+  ],
+  "rejected_pointer_match": {
+    "file_offset": "09A1F",
+    "bank": 2,
+    "table": "09A1B",
+    "table_targets": [
+      "984F",
+      "9A2B",
+      "9A58",
+      "9A66",
+      "9A92",
+      "9AA9",
+      "9AD7",
+      "9AE6"
+    ],
+    "table_selected_at": "04F44: LD HL,9A1B",
+    "target_bytes": "09A58: CALL 4AB7; RET C",
+    "native_counterpart": "megadrive/src/actors.c (4F44 ->9A1B)",
+    "reason": "Actor-state code pointer in bank 2, not text in bank 3."
+  },
+  "plain_house_contexts_examined": 65,
+  "limits": [
+    "A byte search cannot rule out a computed pointer or another encoding.",
+    "Existing house-dialogue exports are not a complete reachability proof.",
+    "No new SMS NPC walkthrough or runtime text-pointer trace was performed by this audit.",
+    "Do not add a quest condition or classify these strings as unused solely from these results."
+  ],
+  "next_evidence_needed": "Observe an original SMS text frontend receiving 9A58, 9A7C or AD3C with bank 3 selected, and record the NPC/quest state; alternatively establish a complete source call/data-flow proof."
+}

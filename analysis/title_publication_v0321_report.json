@@ -1,0 +1,315 @@
+{
+  "passed": true,
+  "version": 321,
+  "md_sha256": "89c5833351312ffaa591efb1939161910a298af06437080e2cf84fb3fb8ac86e",
+  "source_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+  "base_sha256": "9e5b0abed80678ce864a0bb796c17e97047d1d34e5227a5275bf9336129ceaff",
+  "change": "Title-only immediate map-row publication removes a one-frame delay in the cape, logo rows and prompt flash.",
+  "build": {
+    "base_sha256": "9e5b0abed80678ce864a0bb796c17e97047d1d34e5227a5275bf9336129ceaff",
+    "md_sha256": "89c5833351312ffaa591efb1939161910a298af06437080e2cf84fb3fb8ac86e",
+    "source_sha256": "ad1e5520061d7a37ebe5955dfa41b17160079199e3d0da582f878fe673bc7245",
+    "overlay_address": 2031872,
+    "overlay_bytes": 60,
+    "hooks": [
+      {
+        "site": 306492,
+        "original": "4eb900026754",
+        "replacement": "4eb9001f0100"
+      },
+      {
+        "site": 306526,
+        "original": "4eb900026754",
+        "replacement": "4eb9001f0100"
+      },
+      {
+        "site": 306652,
+        "original": "4eb900026754",
+        "replacement": "4eb9001f0100"
+      },
+      {
+        "site": 306706,
+        "original": "4eb900026754",
+        "replacement": "4eb9001f0100"
+      },
+      {
+        "site": 306742,
+        "original": "4eb900026754",
+        "replacement": "4eb9001f0100"
+      },
+      {
+        "site": 307486,
+        "original": "4eb900026754",
+        "replacement": "4eb9001f0100"
+      },
+      {
+        "site": 307520,
+        "original": "4eb900026754",
+        "replacement": "4eb9001f0100"
+      },
+      {
+        "site": 308238,
+        "original": "4eb900026754",
+        "replacement": "4eb9001f0100"
+      },
+      {
+        "site": 308270,
+        "original": "4eb900026754",
+        "replacement": "4eb9001f0100"
+      },
+      {
+        "site": 308382,
+        "original": "4eb900026754",
+        "replacement": "4eb9001f0100"
+      },
+      {
+        "site": 308416,
+        "original": "4eb900026754",
+        "replacement": "4eb9001f0100"
+      },
+      {
+        "site": 308454,
+        "original": "4eb900026754",
+        "replacement": "4eb9001f0100"
+      },
+      {
+        "site": 306934,
+        "original": "49f900026754",
+        "replacement": "49f9001f0100"
+      },
+      {
+        "site": 305896,
+        "original": "48780002",
+        "replacement": "42a74e71"
+      }
+    ],
+    "changed_bytes": 102,
+    "all_other_bytes_identical": true,
+    "credits_overlay_unchanged": true,
+    "checksum": "CB3C",
+    "runtime_validation_required": true
+  },
+  "rendered_comparison": [
+    {
+      "region": "ntsc",
+      "fps": 59.92274340431231,
+      "title_comparison_interval_inclusive": [
+        5960,
+        6741
+      ],
+      "frames_examined": 782,
+      "whole_image_mismatch_frames": [
+        6358
+      ],
+      "cape_interval_inclusive": [
+        6045,
+        6242
+      ],
+      "all_198_cape_frames_exact": true,
+      "cape_pose_duration_frames": 6,
+      "cape_poses": 33,
+      "next_story_first_line_source": 6844,
+      "next_story_first_line_native": 6844,
+      "next_story_boundary_exact": true,
+      "source_capture": "v320-visual-sms-ntsc01",
+      "native_capture": "title-native-publication01-ntsc"
+    },
+    {
+      "region": "pal",
+      "fps": 49.7014591857706,
+      "title_comparison_interval_inclusive": [
+        5953,
+        6727
+      ],
+      "frames_examined": 775,
+      "whole_image_mismatch_frames": [],
+      "cape_interval_inclusive": [
+        6031,
+        6228
+      ],
+      "all_198_cape_frames_exact": true,
+      "cape_pose_duration_frames": 6,
+      "cape_poses": 33,
+      "next_story_first_line_source": 6824,
+      "next_story_first_line_native": 6824,
+      "next_story_boundary_exact": true,
+      "source_capture": "v320-visual-sms-pal01",
+      "native_capture": "title-native-publication01-pal"
+    }
+  ],
+  "controls": {
+    "passed": true,
+    "md_sha256": "89c5833351312ffaa591efb1939161910a298af06437080e2cf84fb3fb8ac86e",
+    "fresh_process_runs": 16,
+    "no_ram_writes": true,
+    "cases": [
+      {
+        "region": "ntsc",
+        "case": "walk",
+        "frames": 3900,
+        "state_transitions_exact": true,
+        "final_fields_exact": true,
+        "final_video_exact": true,
+        "psg_registers_every_frame_exact": true,
+        "sound_reader_state_every_frame_exact": true,
+        "pcm_exact": false,
+        "final": {
+          "game_state": 12,
+          "room_id": 164,
+          "hero_x": 28672,
+          "hero_y": 4096,
+          "hero_direction": 1,
+          "hero_health": 20
+        }
+      },
+      {
+        "region": "ntsc",
+        "case": "cape",
+        "frames": 6400,
+        "state_transitions_exact": true,
+        "final_fields_exact": true,
+        "final_video_exact": true,
+        "psg_registers_every_frame_exact": true,
+        "sound_reader_state_every_frame_exact": true,
+        "pcm_exact": false,
+        "final": {
+          "game_state": 0,
+          "room_id": 0,
+          "hero_x": 0,
+          "hero_y": 0,
+          "hero_direction": 0,
+          "hero_health": 0
+        }
+      },
+      {
+        "region": "ntsc",
+        "case": "logo",
+        "frames": 6660,
+        "state_transitions_exact": true,
+        "final_fields_exact": true,
+        "final_video_exact": true,
+        "psg_registers_every_frame_exact": true,
+        "sound_reader_state_every_frame_exact": true,
+        "pcm_exact": false,
+        "final": {
+          "game_state": 0,
+          "room_id": 0,
+          "hero_x": 0,
+          "hero_y": 0,
+          "hero_direction": 0,
+          "hero_health": 0
+        }
+      },
+      {
+        "region": "ntsc",
+        "case": "prompt",
+        "frames": 6900,
+        "state_transitions_exact": true,
+        "final_fields_exact": true,
+        "final_video_exact": true,
+        "psg_registers_every_frame_exact": true,
+        "sound_reader_state_every_frame_exact": true,
+        "pcm_exact": false,
+        "final": {
+          "game_state": 0,
+          "room_id": 0,
+          "hero_x": 0,
+          "hero_y": 0,
+          "hero_direction": 0,
+          "hero_health": 0
+        }
+      },
+      {
+        "region": "pal",
+        "case": "walk",
+        "frames": 3900,
+        "state_transitions_exact": true,
+        "final_fields_exact": true,
+        "final_video_exact": true,
+        "psg_registers_every_frame_exact": true,
+        "sound_reader_state_every_frame_exact": true,
+        "pcm_exact": false,
+        "final": {
+          "game_state": 12,
+          "room_id": 164,
+          "hero_x": 30720,
+          "hero_y": 4096,
+          "hero_direction": 1,
+          "hero_health": 24
+        }
+      },
+      {
+        "region": "pal",
+        "case": "cape",
+        "frames": 6400,
+        "state_transitions_exact": true,
+        "final_fields_exact": true,
+        "final_video_exact": true,
+        "psg_registers_every_frame_exact": true,
+        "sound_reader_state_every_frame_exact": true,
+        "pcm_exact": false,
+        "final": {
+          "game_state": 0,
+          "room_id": 0,
+          "hero_x": 0,
+          "hero_y": 0,
+          "hero_direction": 0,
+          "hero_health": 0
+        }
+      },
+      {
+        "region": "pal",
+        "case": "logo",
+        "frames": 6660,
+        "state_transitions_exact": true,
+        "final_fields_exact": true,
+        "final_video_exact": true,
+        "psg_registers_every_frame_exact": true,
+        "sound_reader_state_every_frame_exact": true,
+        "pcm_exact": false,
+        "final": {
+          "game_state": 0,
+          "room_id": 0,
+          "hero_x": 0,
+          "hero_y": 0,
+          "hero_direction": 0,
+          "hero_health": 0
+        }
+      },
+      {
+        "region": "pal",
+        "case": "prompt",
+        "frames": 6900,
+        "state_transitions_exact": true,
+        "final_fields_exact": true,
+        "final_video_exact": true,
+        "psg_registers_every_frame_exact": true,
+        "sound_reader_state_every_frame_exact": true,
+        "pcm_exact": false,
+        "final": {
+          "game_state": 0,
+          "room_id": 0,
+          "hero_x": 0,
+          "hero_y": 0,
+          "hero_direction": 0,
+          "hero_health": 0
+        }
+      }
+    ],
+    "core_sha256": "2577100f7c8786c86ce152beba6d924ab0589ac3ac75f055b0e49eaa9d6ed188",
+    "scope": "Controller-only title exit in cape, logo and prompt; early skip plus existing walking/new-game route. Exact V320 control-state transitions, final video, per-frame PSG registers and sound-reader state. PCM phase equality is reported separately; CPU publication changes subframe work. Not a full campaign replay."
+  },
+  "remaining": [
+    "NTSC frame6358 differs by262 normalized pixels in top7lines during first logo-row publication; subframe raster timing remains open.",
+    "Story partial-image reveals and the preparation of the next intro text still have mismatches.",
+    "Three source strings DA58/DA7C/ED3C absent in V320; actual SMS trigger unestablished, no invented dialogue added.",
+    "Gameplay graphics/animations and full PAL/NTSC campaign not newly certified by this focused change."
+  ],
+  "graphics_complete": false,
+  "audio_note": "Per-frame PSG registers and sound-reader state exact in eight routes. PCM samples are not bitexact after publication timing changes; no listening/hardware sound certification by these tests.",
+  "normalization": "Rendered GX RGB565 pixels mapped through the known SMS2bit/MD3bit DAC levels; MD top/bottom16px removed. No arbitrary nearest observed color matching.",
+  "evidence": {
+    "comparison": "validation/title-native-publication01-comparison/report.json",
+    "controls": "validation/title-native-publication02-controls/report.json"
+  }
+}

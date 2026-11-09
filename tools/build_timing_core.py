@@ -7,9 +7,11 @@ from actor_reference import ROOT
 
 def main():
  parser=argparse.ArgumentParser();parser.add_argument('--target',default='genesis_plus_gx_timing_libretro.dll');parser.add_argument('--log',type=Path,default=ROOT/'validation/timing-core-build-python.log');parser.add_argument('--force-source',action='append',default=[]);args=parser.parse_args()
- workspace=ROOT.parents[1];cwd=workspace/'work/genesis-plus-gx';gcc='C:/msys64/ucrt64/bin/gcc.exe'
- env=dict(os.environ);env['PATH']='C:/msys64/ucrt64/bin;'+env['PATH']
- command=[str(workspace/'work/sgdk/bin/make.exe'),'-n','-f','Makefile.libretro','platform=win',f'TARGET={args.target}',f'CC={gcc}','CXX=C:/msys64/ucrt64/bin/g++.exe','GIT_VERSION=','SHELL=C:/Windows/System32/cmd.exe']
+ workspace=ROOT.parents[1];cwd=workspace/'work/genesis-plus-gx'
+ gcc=next((p for p in [Path('C:/msys64/ucrt64/bin/gcc.exe'),Path('D:/mingw64/bin/gcc.exe')] if p.is_file()),None);assert gcc,'Windows GCC not found'
+ gcc=gcc.as_posix();compiler_bin=Path(gcc).parent.as_posix()
+ env=dict(os.environ);env['PATH']=compiler_bin+';'+env['PATH']
+ command=[str(workspace/'work/sgdk/bin/make.exe'),'-n','-f','Makefile.libretro','platform=win',f'TARGET={args.target}',f'CC={gcc}',f'CXX={compiler_bin}/g++.exe','GIT_VERSION=','SHELL=C:/Windows/System32/cmd.exe']
  for source in args.force_source:
   candidate=(cwd/source).resolve();assert candidate.is_relative_to(cwd.resolve()) and candidate.is_file()
   command+=['-W',source]
