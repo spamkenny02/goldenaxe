@@ -1,0 +1,130 @@
+{
+  "passed": true,
+  "scope": "Local outputs directory cleanup;Git history retained.",
+  "before": {
+    "files": 1484451,
+    "logical_bytes": 106154268449
+  },
+  "after": {
+    "files": 397261,
+    "logical_bytes": 30674281457,
+    "stored_bytes_unique_file_ids": 20159483181,
+    "groups": {
+      "gaw-md/.gitattributes": 81,
+      "gaw-md/.gitignore": 1164,
+      "gaw-md/build.ps1": 4507,
+      "gaw-md/gaw-megadrive.bin": 2097152,
+      "gaw-md/gaw-title-megadrive.bin": 2097152,
+      "gaw-md/HISTORIQUE_PORTAGE.md": 64078,
+      "gaw-md/JALONS_C0046_C0047.md": 20598,
+      "gaw-md/README.md": 29691,
+      "gaw-md/REPRISE_CODEX.md": 195903,
+      "gaw-md/.git": 1628883208,
+      "gaw-md/analysis": 26422163743,
+      "gaw-md/handoff": 80142238,
+      "gaw-md/input": 262144,
+      "gaw-md/megadrive": 12091808,
+      "gaw-md/tools": 33032180,
+      "gaw-md/validation": 87882871,
+      "gaw-md/versions": 809340205,
+      "gaw-md/videos": 1566977190,
+      "gaw-md-upward-ntsc01/megadrive": 41467,
+      "gaw-md-upward-ntsc01/tools": 28954077
+    },
+    "seconds": 121.37901258468628,
+    "measurement": "GetCompressedFileSizeW with unique Windows file IDs;includes NTFS compression/hardlinks,excludes directory/MFT overhead."
+  },
+  "validation_compaction": {
+    "packs": 123,
+    "statistics": {
+      "planned": 1087758,
+      "processed": 1087758,
+      "deleted": 1087758,
+      "removed_bytes": 80788772172,
+      "archive_members": 355636,
+      "duplicate_files": 719710,
+      "git_references": 3770,
+      "discarded_generated": 8642,
+      "skipped_changed": 0,
+      "missing": 0,
+      "locked": 0
+    },
+    "cache_data_and_index_bytes": 5214171710,
+    "all_unique_zip_members_sha256_read_back_before_original_removal": true
+  },
+  "transparent_ntfs_compression": {
+    "files": 15810,
+    "allocated_before": 10964217749,
+    "allocated_after": 1382894464,
+    "physical_bytes_saved": 9581323285,
+    "failed_batches": [],
+    "seconds": 79.91610074043274,
+    "method": "Transparent NTFS compression of large analysis data;file contents and paths unchanged."
+  },
+  "immutable_archive_dedup": {
+    "seen": 331434,
+    "linked": 57745,
+    "duplicate_bytes": 703634871,
+    "seconds": 299.3588778972626,
+    "all_linked_contents_sha256_verified": true
+  },
+  "empty_directories": {
+    "removed": 25733,
+    "recursive_delete_used": false
+  },
+  "preserved_hashes": {
+    "gaw-megadrive.bin": "9e5b0abed80678ce864a0bb796c17e97047d1d34e5227a5275bf9336129ceaff",
+    "input/original.sms": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+    "videos/v0319/golden-axe-warrior-md-v0319-gameplay-complet-ntsc.mp4": "ebf049475a5f92672cd7103066e2f6c3e58c16dbd2624cfd6635936bd34aa11e"
+  },
+  "old_rom_policy": {
+    "local_numbered_roms": [
+      "versions/v0320-9e5b0abe/gaw-megadrive-v0320.bin"
+    ],
+    "historical_roms_removed_locally": 319,
+    "history_rewritten": false,
+    "git_local_index_skip_worktree": true
+  },
+  "v320_history_base_rebuild": {
+    "base_source": "git:95935a2db8331394f3b0889b4630258f412a5f31:versions/v0319-d3ea2a83/gaw-megadrive-v0319.bin",
+    "passed": true,
+    "md_sha256": "9e5b0abed80678ce864a0bb796c17e97047d1d34e5227a5275bf9336129ceaff",
+    "base_sha256": "d3ea2a83ea24ed8a0d3c9857f9fbe70d000a4f73358452c1887f40e78966c56e",
+    "overlay_sha256": "579b52b9fd3efc73b5ab1e18c146105a796138a6cb17dc17998c90fd9414f4c9",
+    "source_sha256": "3bfb811c150044716848da6f03ee700aa06b116f09671cf149bdd3b0c62a00bc",
+    "overlay_address": 2031616,
+    "overlay_bytes": 124,
+    "hooks": [
+      {
+        "site": 136270,
+        "original": "47f900037bd6",
+        "replacement": "4eb9001f0000",
+        "target": 2031616
+      },
+      {
+        "site": 141046,
+        "original": "47f900037bd6",
+        "replacement": "4eb9001f0000",
+        "target": 2031616
+      },
+      {
+        "site": 139746,
+        "original": "4239e0ff2b78",
+        "replacement": "4eb9001f0020",
+        "target": 2031648
+      }
+    ],
+    "changed_bytes": 139,
+    "all_other_bytes_identical": true,
+    "checksum": "B0A2",
+    "scope": "Native68000 code only at two original credits-entry LEAs and one shared normal-exit CLR. Exact base and stolen instructions checked. Full game logic/audio/source arithmetic retain original binary layout and instruction work before credits."
+  },
+  "restore_tool": "tools/restore_validation_cache.py",
+  "local_cache": "analysis/local-validation-cache",
+  "notes": [
+    "Large old validation outputs are stored losslessly with content deduplication,or referenced by independently verified Git blobs. Compiler objects/DLLs/generated videos in validation are regenerable and discarded.",
+    "Source code,original SMS,latest ROM,active source-clock fixtures,complete V319 MP4 and immutable evidence kept.",
+    "NTFS compression and identical-content hardlinks preserve analysis file contents/paths. Stored-byte measurement counts hardlinked file IDs once and excludes directory/MFT overhead.",
+    "Historical ROMs remain in Git;only local checkout copies are absent. Packaged standalone V320 can build without these historical files or Git."
+  ]
+}

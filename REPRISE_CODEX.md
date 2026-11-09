@@ -6,6 +6,20 @@ le README et les rapports cités.
 
 ## Suivi courant — V320, 8 novembre 2026
 
+STOCKAGE ET PASSATION : anciennes sorties locales compactées, cache ignoré
+`analysis/local-validation-cache/catalog.json`. Ne pas supprimer ce cache sans
+accepter de régénérer les sorties non versionnées. Restauration ciblée :
+`python tools/restore_validation_cache.py --path validation/...`.
+Fixtures v319-scene-live-vdp02 et deux enregistrements canoniques c0046 conservés.
+319 anciennes ROMs retirées du poste avec skip-worktree ; historique Git intact.
+Seule la V320 numérotée reste déployée. `tools/prune_local_roms.py --apply` pour
+les futurs nettoyages ; le constructeur overlay lit la base319 depuis Git.
+Paquets locaux `handoff/gaw-v320-ready-to-build-windows.zip` (autonome Windows)
+et `handoff/gaw-v320-sources-pour-llm.zip` (léger,sans outils binaires).
+Sources du script BUILD_V320.ps1 + instructions + PASSATION_LLM.md versionnées.
+Paquet complet compilé après extraction : SHA9e5b0abe… exact. Gros caches,
+MP4 et ZIP restent horsGit. Sources/données du paquet indépendantes des caches.
+
 DERNIÈRE ÉTAPE NATIVE : workspaceIRQ privé sans rollback redondant.
 `analysis/v320_irq_workspace_report.json`, archive `analysis/v320-irq-workspace`.
 source_irq_workspace.c instancie le même corps via macro GAW_IRQ_PRIVATE_WORKSPACE.

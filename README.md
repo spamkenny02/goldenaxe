@@ -43,6 +43,26 @@ pose passe de 123060 à 67942 cycles maîtres médians, soit −44,79 % pour
 cette routine ; la cadence de jeu visée reste celle de la Master System.
 [Mesures et captures](analysis/c0046-hero-three-plane/manifest.json).
 
+## Espace disque et paquet de reprise V320
+
+Le poste de travail garde seulement la dernière ROM numérotée. Les anciennes
+restent dans Git ; `python tools/prune_local_roms.py --apply` retire les copies
+locales inchangées, après vérification de leur présence dans Git.
+Le correctif V320 récupère automatiquement sa base V319 depuis Git au besoin.
+
+Les anciennes sorties de validation sont compactées dans le cache local ignoré
+`analysis/local-validation-cache/`. Pour restaurer un fichier précis :
+`python tools/restore_validation_cache.py --path validation/chemin/du/fichier`.
+Les objets de compilation régénérables ne sont pas conservés. Les fixtures
+actives restent déployées. [Bilan du nettoyage](analysis/output_storage_cleanup_report.json).
+
+Les ZIP de livraison locaux sont dans `handoff/` : un paquet Windows autonome
+avec SGDK/Java, et une version légère des sources pour un autre LLM. Les deux
+contiennent les sources V320 ; le paquet autonome extrait a été recompilé avec
+le SHA exact attendu. [Instructions](handoff/README_BUILD_FR.md) ·
+[Note pour le LLM](handoff/PASSATION_LLM.md) · [Vérification](handoff/package-verification.json).
+Les gros ZIP et le cache local restent hors Git.
+
 ## Vidéo complète de la V319
 
 Une capture NTSC de **1 h 54 min 06 s**, en 720p avec son stéréo, est prête en

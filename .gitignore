@@ -35,3 +35,9 @@ __pycache__/
 /videos/**/*.log
 /videos/**/segments.txt
 /videos/**/video-packet-check.txt
+
+# Local lossless compacted validation cache; regenerated outputs stay off Git.
+/analysis/local-validation-cache/
+
+# Standalone handoff bundles include binary toolchains; keep archives local.
+/handoff/*.zip
