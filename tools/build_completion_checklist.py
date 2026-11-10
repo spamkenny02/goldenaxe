@@ -221,6 +221,30 @@ def main():
                 if case['id'] in upgrades:
                     case['sms_status']=upgrades[case['id']]
                     case['observations'].append(dict(report='analysis/sms_npc_campaign_progress_report.json',milestone='sixth_crystal'))
+    coverage_path=ROOT/'analysis/sms_npc_coverage_report.json'
+    if coverage_path.exists():
+        coverage=json.loads(coverage_path.read_bytes())
+        for visit in coverage['visits']:
+            identity=f'plain_house:{visit["outside"]:02x}/{visit["room"]:02x}/{visit["coordinate"]:04x}'
+            case=next(c for c in cases if c['id']==identity)
+            case['sms_status']='visited_current_state_and_fixed_replayed; relevant_revisits_pending'
+            evidence=dict(report='analysis/sms_npc_coverage_report.json',stage=visit['stage'],
+                text_pc=visit['text_pc'],entry_frame=visit['entry_frame'],
+                acknowledged_and_walked_away_frame=visit['acknowledged_and_walked_away_frame'])
+            if evidence not in case['observations']:case['observations'].append(evidence)
+    for branch_path in sorted((ROOT/'analysis').glob('sms-conditional-*.json')):
+        branch=json.loads(branch_path.read_bytes());assert branch['passed']
+        folder=ROOT/'validation'/branch['trace'];capture=json.loads((folder/'capture.json').read_bytes())
+        proof=folder.with_name(folder.name+f'-assisted-fixed-replay-{capture["frames"]}')/'replay_report.json'
+        assert json.loads(proof.read_bytes())['passed']
+        for visit in branch['visits']:
+            identity=f'conditional_house:{branch["outside"]:02x}/{branch["room"]:02x}/{visit["coordinate"]:04x}'
+            case=next(c for c in cases if c['id']==identity)
+            variants=case.setdefault('sms_variants_observed',[])
+            if branch['variant'] not in variants:variants.append(branch['variant'])
+            case['sms_status']='selected_conditional_variants_observed_and_replayed; remaining_variants_pending'
+            case['observations'].append(dict(report=branch_path.relative_to(ROOT).as_posix(),
+                separate_branch=True,variant=branch['variant'],**visit))
     result = dict(requirement='ALL NPCs and ALL side quests on SMS and MD, including relevant return visits and conditional text variants',
                   requirement_complete=False, census_proved_complete=False,
                   completion_percentage=None,

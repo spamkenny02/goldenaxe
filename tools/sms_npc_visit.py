@@ -12,7 +12,7 @@ from run_core import FrameWrites
 
 dialogue_events=[]
 def main():
- p=argparse.ArgumentParser();p.add_argument('--sms',action='store_true',required=True);p.add_argument('--prefix',required=True);p.add_argument('--out',required=True);p.add_argument('--room',type=lambda x:int(x,0),required=True);p.add_argument('--outside',type=lambda x:int(x,0),required=True);p.add_argument('--frames',type=int,default=18000);p.add_argument('--assisted-prefix',action='store_true');a=p.parse_args()
+ p=argparse.ArgumentParser();p.add_argument('--conditional',action='store_true');p.add_argument('--sms',action='store_true',required=True);p.add_argument('--prefix',required=True);p.add_argument('--out',required=True);p.add_argument('--room',type=lambda x:int(x,0),required=True);p.add_argument('--outside',type=lambda x:int(x,0),required=True);p.add_argument('--frames',type=int,default=18000);p.add_argument('--assisted-prefix',action='store_true');a=p.parse_args()
  prefix=(ROOT/'validation'/a.prefix).resolve();out=(ROOT/'validation'/a.out).resolve();assert prefix.is_relative_to(ROOT/'validation') and out.is_relative_to(ROOT/'validation') and not out.exists()
  cap=json.loads((prefix/'capture.json').read_bytes());assert cap['sram_input'] is None
  writes=prefix_writes(prefix,cap,a.assisted_prefix)
@@ -21,7 +21,22 @@ def main():
  for i,row in enumerate(prior):
   last=prior[i+1]['frame']-1 if i+1<len(prior) else start
   presses.extend((row['frame'],min(last,start),key) for key in row['buttons'])
- masks=compile_fixed_inputs(presses,start);contexts=json.loads((ROOT/'analysis/plain_house_dialogue_reference.json').read_text())['contexts'];targets=[x for x in contexts if x['room']==a.room and x['outside']==a.outside];assert targets
+ masks=compile_fixed_inputs(presses,start)
+ initial=(prefix/f'ram_{start:05d}.bin').read_bytes();variant=None
+ if a.conditional:
+  reference=json.loads((ROOT/'analysis/conditional_house_reference.json').read_bytes())
+  if a.outside==0xce:
+   variant='ninth_crystal_present' if initial[0xd7]&128 else 'ninth_crystal_absent'
+   targets=[dict(room=room,outside=outside,coordinate=coordinate,text_pc=reference['text_pcs'][n*2+bool(initial[0xd7]&128)]) for n,(room,outside,coordinate,handler) in enumerate(reference['nodes'][:3]) if room==a.room and outside==a.outside]
+  else:
+   assert a.outside==0x22 and a.room==7
+   choice=6 if not initial[0xd2] else 8 if initial[0xf7] else 7
+   variant={6:'prerequisite_absent',7:'collect_actual_100_gold_reward',8:'reward_already_collected'}[choice]
+   targets=[dict(room=7,outside=0x22,coordinate=0x2d4,text_pc=reference['text_pcs'][choice])]
+ else:
+  contexts=json.loads((ROOT/'analysis/plain_house_dialogue_reference.json').read_text())['contexts']
+  targets=[x for x in contexts if x['room']==a.room and x['outside']==a.outside]
+ assert targets
  for t in targets:
   t['point']=next((x,y) for y in range(8,161,8) for x in range(8,249,8) if (((y-12)&248)<<3)+(((x-12)&255)>>2&62)+126==t['coordinate'])
  controls=[];captures=set();state={};observed=0;cursor=0;active=None;rendered=False;talk_started=0;last_direction=0;visited=[];failure=None;done=None;phase='walk';current=0;entry=None
@@ -29,7 +44,7 @@ def main():
   nonlocal observed,failure,done
   observed=frame
   if frame<start:return
-  state.update(room=int.from_bytes(raw[0xb9:0xbb],'little'),game=raw[0x1d],hero=raw[0x301],counter=raw[0x304],x=raw[0x313],y=raw[0x311],health=raw[0x318],tilemap=bytes(raw[0x1600:0x1c00]))
+  state.update(room=int.from_bytes(raw[0xb9:0xbb],'little'),game=raw[0x1d],hero=raw[0x301],counter=raw[0x304],x=raw[0x313],y=raw[0x311],health=raw[0x318],gold=raw[0xdd],reward_flag=raw[0xf7],ninth_crystal=raw[0xd7],tilemap=bytes(raw[0x1600:0x1c00]))
   if not state['health']:failure='hero_died'
   if current==len(targets) and state['room']==a.outside and state['game']==12 and state['hero']==1 and done is None:done=frame;captures.add(frame+30)
  def decide(frame):
@@ -69,7 +84,8 @@ def main():
  with contextlib.redirect_stdout(io.StringIO()):run(rom,max(a.frames,start+10000),out,captures,cap['presses'],skip_intro=False,input_provider=controller,ram_observer=observe,ram_writes=FrameWrites(writes),core_options=cap['core_options'],stop_when=lambda:bool(failure) or done is not None and observed>=done+30)
  # Preserve the exact prefix inputs as ordinary intervals in capture.json.
  actual=json.loads((out/'capture.json').read_bytes());actual['presses']=[list(x) for x in presses];(out/'capture.json').write_text(json.dumps(actual,indent=2)+'\n')
- report=dict(passed=done is not None and len(visited)==len(targets) and not failure,failure=failure or (None if done else 'frame_limit'),source_sha256=cap['rom_sha256'],rom_sha256=cap['rom_sha256'],prefix=a.prefix,prefix_end=start,room=a.room,outside=a.outside,visited=visited,required_targets=targets,last_state={k:v for k,v in state.items() if k!='tilemap'},primary_ram_writes=len(writes),new_assistance_writes=0,assisted_route=bool(writes),sram_imports=0,progression_imports=0,scope='Unmodified SMS from cold boot with original text-entry/completion observations and ordinary walking/acknowledgment. Inherited approach protection, if any, is fully recorded; no new writes during this NPC stage. Plain-house current-state variants only.')
+ effects_ok=not a.conditional or (state['gold']==min(255,initial[0xdd]+100) and state['reward_flag']==1 if variant=='collect_actual_100_gold_reward' else state['gold']==initial[0xdd] and state['reward_flag']==initial[0xf7])
+ report=dict(conditional=a.conditional,conditional_variant=variant,conditional_effects_verified=effects_ok if a.conditional else None,passed=effects_ok and done is not None and len(visited)==len(targets) and not failure,failure=failure or (None if done else 'frame_limit'),source_sha256=cap['rom_sha256'],rom_sha256=cap['rom_sha256'],prefix=a.prefix,prefix_end=start,room=a.room,outside=a.outside,visited=visited,required_targets=targets,last_state={k:v for k,v in state.items() if k!='tilemap'},primary_ram_writes=len(writes),new_assistance_writes=0,assisted_route=bool(writes),sram_imports=0,progression_imports=0,scope='Unmodified SMS from cold boot with original text-entry/completion observations and ordinary walking/acknowledgment. Inherited approach protection, if any, is fully recorded; no new writes during this NPC stage. Current-state conditional-house variant only.' if a.conditional else 'Unmodified SMS, original text-entry/completion observation and normal acknowledgment/exit. Inherited approach protection; no new writes during this NPC stage. Plain-house current-state variants only.')
  if writes:
   assist=json.loads((prefix/'assistance.json').read_bytes());(out/'assistance.json').write_text(json.dumps(assist,indent=2)+'\n');recording(out,actual)
  for name,data in [('report',report),('controls',controls)]:(out/(name+'.json')).write_text(json.dumps(data,indent=2)+'\n')

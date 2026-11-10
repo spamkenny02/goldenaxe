@@ -222,3 +222,16 @@ au générique. Les quêtes, dialogues conditionnels et autres services restent 
 L'enregistreur SMS produit une vidéo avec le son réel du cœur officiel. L'essai
 de 600 frames passe (600 images, 441568 échantillons stéréo à 44100 Hz, écart
 audio/vidéo inférieur à 0,001 seconde). Il ne constitue pas une preuve 100 %.
+
+La capture intégrale de l'ancien parcours SMS est maintenant produite :
+436161 images à 59,92274340431231 Hz, soit 2 h 01 min 19 s avec le son.
+Le décodage complet des deux flux réussit et le contrôle de la RAM/capture brute
+finales passe. Le MP4 local est documenté dans `sms_campaign_video_report.json` ;
+sa couverture PNJ est explicitement partielle, sans les visites supplémentaires.
+Les intermédiaires WAV et vidéo muette sont supprimés après vérification.
+
+Deux branches antérieures sont également jouées et rejouées : le dialogue
+22/07 avant le quatrième cristal (pas de récompense) et les trois habitants
+CE/02 avant le neuvième cristal. Les réponses après progression et la récompense
+100 pièces de 22/07 restent à couvrir. Ces branches sont identifiées comme
+telles, sans prétendre qu'elles sont insérées dans le parcours principal.

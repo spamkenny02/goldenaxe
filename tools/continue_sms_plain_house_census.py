@@ -4,18 +4,36 @@ Continue before the palace, retain actual quest state, record each original
 dialogue entry/return and require independent whole-RAM/pixel replay. Static
 reachability is only a proposal; failed entrances never count as visits.
 """
-import json
+import argparse,json
 from run_core import ROOT
 from natural_dungeon_route import World
 from extract_title import rle_planes
+from natural_bell_world_route import project_persisted_cells
 from sms_campaign_runner import Campaign
 from continue_sms_npc_d4 import ROUTE,SERVICE,COMBAT
 
 
+class CensusWorld(World):
+    def render_cells(self,room,cells,meta=None):
+        return super().render_cells(room,project_persisted_cells(self,room,cells,self.persisted_flags),meta)
+
+
+def census_world(raw,outside,room):
+    world=CensusWorld(house_outside=outside,house_target=room)
+    world.persisted_flags=raw[0x100:0x200]
+    world.axe_terrain=world.rope_terrain=True
+    world.canoe_owned=bool(raw[0xec]);world.boots_owned=bool(raw[0xee]);world.ship_owned=bool(raw[0xf0])
+    world.crystal_bridge_open=bool(raw[0x149]&1)
+    world.remote_unlocked={n for n,b in enumerate(raw[0x100:0x200]) if b&1}
+    return world
+
+
 def main():
+    parser=argparse.ArgumentParser();parser.add_argument('--prefix',help='Verified continuation after an actual transport/service');args=parser.parse_args()
     groups={}
     reference=json.loads((ROOT/'analysis/plain_house_dialogue_reference.json').read_bytes())
     previous=json.loads((ROOT/'analysis/sms_npc_coverage_report.json').read_bytes())
+    room_clear={r['room']:r['kind'] for r in json.loads((ROOT/'analysis/room_clear_reference.json').read_bytes())['records']}
     known={(v['outside'],v['room'],v['coordinate']) for v in previous['visits']}
     for t in reference['contexts']:
         groups.setdefault((t['outside'],t['room']),[]).append(t)
@@ -25,8 +43,8 @@ def main():
     for house in visited:
         known.update((house['outside'],house['room'],v['coordinate']) for v in house['conversations'])
     pending={key:rows for key,rows in groups.items() if any((key[0],key[1],t['coordinate']) not in known for t in rows)}
-    initial=visited[-1]['trace'] if visited else COMBAT+'/sms-auto-sms-npc-d9-exit01'
-    c=Campaign(initial,0x15e,'npc-census');first=not visited;last_verified=initial
+    initial=args.prefix or (visited[-1]['trace'] if visited else COMBAT+'/sms-auto-sms-npc-d9-exit01')
+    c=Campaign(initial,0x15e,'npc-census');first=not visited and not args.prefix;last_verified=initial
     def save(status):
         output.write_bytes((json.dumps(dict(status=status,source_sha256=reference['source_sha256'],
             scope='Known static ordinary-house contexts only; services, conditional NPCs and undiscovered contacts remain separate.',
@@ -42,11 +60,7 @@ def main():
             ordered=sorted(pending,key=lambda k:abs((k[0]&15)-(start[0]&15))+abs((k[0]>>4)-(start[0]>>4)))
             chosen=None
             for outside,room in ordered:
-                world=World(house_outside=outside,house_target=room)
-                world.axe_terrain=world.rope_terrain=True
-                world.canoe_owned=bool(raw[0xec]);world.boots_owned=bool(raw[0xee]);world.ship_owned=bool(raw[0xf0])
-                world.crystal_bridge_open=bool(raw[0x149]&1)
-                world.remote_unlocked={n for n,b in enumerate(raw[0x100:0x200]) if b&1}
+                world=census_world(raw,outside,room)
                 path,nodes=world.route(start)
                 if path is not None:chosen=(outside,room);break
                 proposals.append(dict(from_room=start[0],outside=outside,room=room,visited_nodes=nodes))
@@ -55,8 +69,10 @@ def main():
                 print('STATIC COMPONENT EXHAUSTED; remaining houses need additional route proposals',flush=True)
                 return
             outside,room=chosen;suffix=f'{outside:02x}-{room:02x}'
-            attempt='06' if outside==0xfb and room==0x8f else '01'
+            attempt=1
+            while (ROOT/'validation'/ROUTE/f'sms-sms-npc-census-{suffix}-entry{attempt:02d}').exists():attempt+=1
             extra=['--house-outside',hex(outside),'--house-target',hex(room),'--persisted-only']
+            if room_clear.get(outside)==7 and not raw[0x100+outside]&1:extra+=['--fight-for-entrance']
             tool='natural_bell_world_route.py'
             world=World(house_outside=outside,house_target=room);meta=world.arrays['world_room_metadata']
             node=next((meta[i:i+4] for i in range(0,len(meta),4) if meta[i]==outside),None)
@@ -65,9 +81,11 @@ def main():
                 rle_planes(world.arrays['world_room_streams'],pointer,cells,0,1)
                 if cells[node[1]] in (0x13,0x38,0x3d,0x85,0x86):
                     tool='natural_earth_world_route.py';extra+=['--earth-world-cell',hex(node[1])]
-            c.route(suffix+'-entry'+attempt,extra,
+            c.route(suffix+f'-entry{attempt:02d}',extra,
                     new_episode=first,tool=tool);first=False
-            trial='sms-npc-census-'+suffix+'-visit01';name='sms-'+trial
+            attempt=1
+            while (ROOT/'validation'/SERVICE/f'sms-sms-npc-census-{suffix}-visit{attempt:02d}').exists():attempt+=1
+            trial='sms-npc-census-'+suffix+f'-visit{attempt:02d}';name='sms-'+trial
             c.invoke('run_sms_dialogue_observed.py',['sms_npc_visit','--dialogue-core',
                 str(ROOT.parents[1]/'work/genesis-plus-gx/genesis_plus_gx_sms_dialogue03_libretro.dll'),
                 '--sms','--assisted-prefix','--prefix',c.family+'/'+c.current,'--out',SERVICE+'/'+name,

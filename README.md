@@ -77,8 +77,13 @@ un nombre total de PNJ ni un pourcentage de validation.
 Une nouvelle [vidéo de la campagne V321](videos/v0321/README.md) est prête
 localement pour YouTube : introduction, nouvelle partie et générique,
 1 h 54 min en NTSC avec le son du jeu. La visite exhaustive des PNJ reste
-hors de ce parcours MD. La vidéo SMS avec notre parcours maison et les PNJ
-attend encore la fin de cette campagne ; aucun TAS externe n'est utilisé.
+hors de ce parcours MD. Une [capture SMS de la campagne](videos/sms/campagne-2026-11-10/LISEZ-MOI.txt)
+est aussi prête localement : 2 h 01 min 19 s avec le son, neuf cristaux,
+hache d'or, Death Adder et générique. Les flux audio/vidéo sont décodés en entier
+sans erreur ; la RAM et la capture brute finales sont identiques à la preuve
+indépendante. Ses PNJ restent partiels : les nouvelles visites et les branches
+conditionnelles ne sont pas dans cette vidéo. Le MP4 reste local, le rapport
+et l'aperçu sont versionnés. Aucun TAS externe n'est utilisé.
 
 La **V321** corrige le retard d’une image des portions de carte du titre :
 cape, apparition du logo et clignotement de l’invite. Les 198 images des
