@@ -2071,13 +2071,18 @@
         "Return after once-only flag is set",
         "Economic boundary branches if reachable; use an alternate cold-boot input branch"
       ],
-      "sms_status": "pending",
+      "sms_status": "initial_plus30_gold_replayed; return_and_other_checks_pending",
       "md_status": "pending",
       "sms_md_comparison_status": "pending",
       "guide_episode": null,
       "guide_timestamp": null,
       "static_basis": "analysis/house_gold_reference.json; megadrive/src/house_gold.inc",
-      "observations": []
+      "observations": [
+        {
+          "report": "analysis/sms_npc_campaign_progress_report.json",
+          "milestone": "sixth_crystal"
+        }
+      ]
     },
     {
       "id": "gold_house:a1",
@@ -2211,13 +2216,18 @@
         "Return after once-only flag is set",
         "Economic boundary branches if reachable; use an alternate cold-boot input branch"
       ],
-      "sms_status": "pending",
+      "sms_status": "initial_plus30_gold_replayed; return_and_other_checks_pending",
       "md_status": "pending",
       "sms_md_comparison_status": "pending",
       "guide_episode": null,
       "guide_timestamp": null,
       "static_basis": "analysis/house_gold_reference.json; megadrive/src/house_gold.inc",
-      "observations": []
+      "observations": [
+        {
+          "report": "analysis/sms_npc_campaign_progress_report.json",
+          "milestone": "sixth_crystal"
+        }
+      ]
     },
     {
       "id": "gold_house:60",
@@ -3626,7 +3636,7 @@
         "Upgrade with HP capacity at least 72",
         "Return at level 2"
       ],
-      "sms_status": "three_variants_observed_and_replayed; remaining_variants_pending",
+      "sms_status": "introduction_exchange_and_level2_upgrade_observed_and_replayed; other_variants_pending",
       "md_status": "pending",
       "sms_md_comparison_status": "pending",
       "guide_episode": null,
@@ -3640,6 +3650,10 @@
             "golden_apple_exchange",
             "return_below_72_hp_capacity"
           ]
+        },
+        {
+          "report": "analysis/sms_npc_campaign_progress_report.json",
+          "milestone": "sixth_crystal"
         }
       ]
     },
@@ -3662,7 +3676,7 @@
         "Upgrade offer: refuse, poor, pay 100",
         "Return at level 2"
       ],
-      "sms_status": "first_offer_and_level1_purchase_for50_gold_observed_and_replayed; remaining_variants_pending",
+      "sms_status": "level1_purchase_for50_and_level2_purchase_for100_observed_and_replayed; other_variants_pending",
       "md_status": "pending",
       "sms_md_comparison_status": "pending",
       "guide_episode": null,
@@ -3671,6 +3685,10 @@
       "observations": [
         {
           "report": "analysis/sms_npc_campaign_progress_report.json"
+        },
+        {
+          "report": "analysis/sms_npc_campaign_progress_report.json",
+          "milestone": "sixth_crystal"
         }
       ]
     },

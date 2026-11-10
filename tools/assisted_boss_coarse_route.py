@@ -21,6 +21,8 @@ def main():
     parser.add_argument('--moving-health-premium',type=int,choices=range(81),default=40)
     parser.add_argument('--enter-boss-up',action='store_true',help='Use ordinary UP to finish entering boss65 before starting search')
     parser.add_argument('--target-satellites',action='store_true',help='Include attackable type66 orbiters in boss65 input-search targets')
+    parser.add_argument('--entry-boss-kind',type=lambda s:int(s,0),default=0x65)
+    parser.add_argument('--short-stance-candidates',action='store_true',help='Forecast short movement followed by an ordinary right-facing swing for bosses63/64')
     args,remaining=parser.parse_known_args()
     assert '--planner' in remaining and remaining[remaining.index('--planner')+1]=='evasive'
     original=evasive.EvasivePlanner
@@ -39,12 +41,32 @@ def main():
                 self.entry_ready.add(self.current['room'])
         def choose(self,frame,fallback):
             if (args.enter_boss_up and frame>=self.until and self.active and
-                self.current['kind']==0x65 and (self.current['hero']==0 or self.current['y']>144)):
+                self.current['kind']==args.entry_boss_kind and (self.current['hero']==0 or self.current['y']>144)):
                 self.entry_inputs.append(dict(frame=frame,room=self.current['room'],
                                               x=self.current['x'],y=self.current['y'],
                                               health=self.current['health'],buttons=[4]))
                 return [4]
-            return super().choose(frame,fallback)
+            searching=(args.short_stance_candidates and frame>=self.until and self.active and
+                       self.state is not None and self.current['kind'] in (0x63,0x64))
+            buttons=super().choose(frame,fallback)
+            if not searching:return buttons
+            best=self.decisions[-1]
+            for direction in (4,5,6,7):
+                for delay in (4,8,12,16):
+                    schedule=[(direction,) if tick<delay else (7,8) if tick%3==1 else ()
+                              for tick in range(self.horizon)]
+                    self.secondary.restore(self.state);first_ram=None
+                    for tick,action in enumerate(schedule):
+                        self.secondary.advance(action,1)
+                        if tick==self.step-1:first_ram=self.secondary.ram()
+                    score=self.score(self.secondary.ram())
+                    if score<=best['score']:continue
+                    assert first_ram is not None
+                    self.schedule=schedule[:self.step];self.expected_ram=first_ram;self.expected=sha(first_ram)
+                    best.update(action=f'stance-{direction}-{delay}-then-right-pulse',
+                                path=[f'stance-{direction}-{delay}'],buttons=self.schedule,
+                                score=score,short_stance_candidate=True)
+            return list(self.schedule[0])
         def fields(self,ram):
             value=super().fields(ram)
             if args.target_satellites and value['kind']==0x65:
@@ -75,6 +97,7 @@ def main():
                   planning_step=args.planning_step,moving_health_premium=args.moving_health_premium,
                   target_satellites=args.target_satellites,
                   ordinary_entry_up_requested=args.enter_boss_up,
+                  entry_boss_kind=args.entry_boss_kind,short_stance_candidates=args.short_stance_candidates,
                   ordinary_entry_inputs=[row for instance in instances for row in instance.entry_inputs],
                   coarse_driver_sha256=sha(Path(__file__).read_bytes()))
     path.write_bytes((json.dumps(report,indent=2)+'\n').encode('utf-8'))

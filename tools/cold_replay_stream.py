@@ -17,10 +17,10 @@ def atomic(path,value):
 
 
 class ReplayStream:
-    def __init__(self,folder,suffix=''):
+    def __init__(self,folder,suffix='',sms=False):
         self.folder=folder.resolve();assert self.folder.is_relative_to(ROOT/'validation')
         assert all(c in string.ascii_letters+string.digits+'-_' for c in suffix)
-        self.folder.mkdir(exist_ok=False);self.suffix=suffix;self.process=None;self.number=0
+        self.folder.mkdir(exist_ok=False);self.suffix=suffix;self.sms=sms;self.process=None;self.number=0
         self.log=(self.folder/'worker.log').open('wb')
 
     def prove(self,trace):
@@ -31,7 +31,7 @@ class ReplayStream:
         atomic(self.folder/f'request-{self.number:04d}.json',dict(trace=trace))
         if self.process is None:
             self.process=subprocess.Popen([sys.executable,'-u',str(Path(__file__).resolve()),
-                '--worker',str(self.folder),'--suffix='+self.suffix],cwd=ROOT,
+                '--worker',str(self.folder),'--suffix='+self.suffix,*(['--sms'] if self.sms else [])],cwd=ROOT,
                 stdout=self.log,stderr=subprocess.STDOUT,
                 creationflags=subprocess.CREATE_NO_WINDOW if os.name=='nt' else 0)
         deadline=time.monotonic()+600
@@ -55,11 +55,11 @@ class ReplayStream:
         self.log.close()
 
 
-def worker(folder,suffix):
+def worker(folder,suffix,sms=False):
     folder=folder.resolve();assert folder.is_relative_to(ROOT/'validation')
     assert all(c in string.ascii_letters+string.digits+'-_' for c in suffix)
-    rom=ROOT/'gaw-megadrive.bin';digest=sha(rom.read_bytes())
-    sy=symbols(ROOT/'megadrive/out/release/symbol.txt')
+    rom=ROOT/('input/original.sms' if sms else 'gaw-megadrive.bin');digest=sha(rom.read_bytes())
+    sy=None if sms else symbols(ROOT/'megadrive/out/release/symbol.txt')
     writes=FrameWrites();masks=[];previous_frame=-1;request_number=0;target=None
     captures=set();options=None;stopped=False;rows=[];guard_frames=0
     core=ROOT.parents[1]/'work/libretro/genesis_plus_gx_libretro.dll'
@@ -76,7 +76,8 @@ def worker(folder,suffix):
         c=json.loads((source/'capture.json').read_bytes());a,w=recording(source,c)
         assert c['rom_sha256']==digest and c['sram_input'] is None
         assert not a['primary_state_imports'] and not a['health_refills'] and not a['boss_assistance']
-        assert all(addr==sy['hero_hurt'] and value in (b'\0\0',b'\0\x81')for _,addr,value in w)
+        assert all(addr==(0x305 if sms else sy['hero_hurt']) and value in
+                   ((b'\0',b'\x81') if sms else (b'\0\0',b'\0\x81'))for _,addr,value in w)
         assert c['frames']>previous_frame and w[:len(writes)]==list(writes)
         assert all(f>previous_frame for f,_,_ in w[len(writes):])
         controls=json.loads((source/'controls.json').read_bytes());presses=[tuple(row)for row in c['presses']]
@@ -102,11 +103,12 @@ def worker(folder,suffix):
     def observe(frame,raw):
         nonlocal previous_frame,guard_frames
         assert input_error is None,input_error
-        hurt=int.from_bytes(bytes(raw[(sy['hero_hurt']+i)^1]for i in range(2)),'big')
+        hurt=raw[0x305] if sms else int.from_bytes(bytes(raw[(sy['hero_hurt']+i)^1]for i in range(2)),'big')
         if hurt>128:
             guard_frames+=1
             for i in range(16):
-                at=sy['world_actor_state']+i*48;kind=raw[at^1];hp=raw[(at+24)^1]
+                at=(0x600 if sms else sy['world_actor_state'])+i*48
+                kind=raw[at if sms else at^1];hp=raw[at+24 if sms else (at+24)^1]
                 assert not (hp and (0x63<=kind<=0x6d or 0x78<=kind<=0x7c)),'Test guard overlaps live boss'
     def checkpoint(frame):
         nonlocal previous_frame
@@ -123,7 +125,7 @@ def worker(folder,suffix):
             ram_injections=True,injection_count=len(writes),last_injection_frame=writes[-1][0],
             release_write_frame=a['release_write_frame'],first_boss_combat=a['first_boss_combat'],
             boss_assistance=False,approach_only=a['first_boss_combat']is None,
-            whole_ram_bytes=65536,final_png_exact=True,primary_state_imports=0,
+            whole_ram_bytes=8192 if sms else 65536,final_png_exact=True,primary_state_imports=0,
             indexed_writes=True,cold_boot_count=1,shared_cold_stream=folder.relative_to(ROOT).as_posix(),
             shared_stream_checkpoint=request_number,new_emulated_frames=frame-max(previous_frame,0),
             guard_frames_checked=guard_frames,live_boss_guard_check=True,
@@ -144,8 +146,8 @@ def worker(folder,suffix):
 
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--worker',type=Path,required=True);p.add_argument('--suffix',default='')
+    p=argparse.ArgumentParser();p.add_argument('--worker',type=Path,required=True);p.add_argument('--suffix',default='');p.add_argument('--sms',action='store_true')
     a=p.parse_args()
-    try:worker(a.worker,a.suffix)
+    try:worker(a.worker,a.suffix,a.sms)
     except Exception:
         atomic(a.worker/'failure.json',dict(passed=False,error=traceback.format_exc()));raise

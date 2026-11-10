@@ -24,15 +24,16 @@ suivre/enregistrer une partie ; il ne contient pas de campagne SMS complète
 validée. [Résultats du kit](testkit/verification.json).
 
 Le [parcours SMS continu avec les PNJ](analysis/sms_npc_campaign_progress_report.json)
-a obtenu cinq cristaux et quitté les cinq premiers donjons. Les récompenses
+a obtenu six cristaux et quitté les six premiers donjons. Les récompenses
 et les retours à l'extérieur sont vérifiés par relecture indépendante des
 commandes depuis le démarrage sur la ROM originale. La capacité de vie est
-maintenant de 72 ; corde, canoë, bottes de course, cotte de mailles et épée longue
+maintenant de 80 ; corde, canoë, bottes de course, cloche de glace, cotte de mailles et épée longue
 ont été acquis par les actions du jeu. Le parcours poursuit sa route vers le
-sixième donjon. Aucune nouvelle ROM MD n'est publiée pour cette seule progression.
+septième donjon. Aucune nouvelle ROM MD n'est publiée pour cette seule progression.
 
 Neuf conversations ordinaires, la quête de Gillian/Foudre, la fée C9,
-plusieurs donneurs d'argent, les achats de clés C7/94, Battler/Terre,
+les améliorations de Foudre et de Terre au niveau 2, plusieurs donneurs
+d'argent, les achats de clés C7/94, Battler/Terre,
 les donneurs d'équipement 27/50 et le soigneur 94 sont parcourus.
 Les variantes et revisites encore manquantes restent explicitement ouvertes
 [dans le relevé de couverture](analysis/sms_npc_coverage_report.json).

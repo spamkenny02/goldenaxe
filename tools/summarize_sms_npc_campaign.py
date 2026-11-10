@@ -64,7 +64,24 @@ def main():
         ('natural-dungeon-combat/sms-auto-sms-npc-d5-boss01','fifth_crystal'),
         ('natural-dungeon-combat/sms-auto-sms-npc-d5-return-contact01','contact_passage'),
         ('natural-dungeon-combat/sms-auto-sms-npc-d5-exit01','fifth_dungeon_exit'),
+        ('natural-service-route/sms-npc-d6-equipaxe01','weapon_selection'),
+        ('natural-dungeon-route/sms-sms-npc-d6-gold7d-entry02','entry'),
+        ('natural-service-route/sms-npc-d6-gold7d-gift01','gold_gift'),
+        ('natural-dungeon-route/sms-sms-npc-d6-golde7-entry01','entry'),
+        ('natural-service-route/sms-npc-d6-golde7-gift01','gold_gift'),
+        ('natural-dungeon-route/sms-sms-npc-d6-gillian2-entry01','entry'),
+        ('natural-service-route/sms-npc-d6-gillian2-learn01','gillian_upgrade'),
+        ('natural-dungeon-route/sms-sms-npc-d6-battler2-entry01','entry'),
+        ('natural-service-route/sms-npc-d6-battler2-learn01','battler_upgrade'),
+        ('natural-dungeon-route/sms-sms-npc-d6-entry01','entry'),
     ]
+    kinds=['entry_combat','dungeon_key','earth_passage','dungeon_key','contact_passage',
+           'dungeon_key','contact_passage','dungeon_key','earth_passage','earth_passage',
+           'earth_passage','earth_passage','dungeon_key','ice_bell','earth_passage']
+    chain.extend((f'natural-dungeon-combat/sms-auto-sms-npc-d6-stage{i:02d}-01',kind)
+                 for i,kind in enumerate(kinds,1))
+    chain.extend([('natural-dungeon-combat/sms-auto-sms-npc-d6-boss02','sixth_crystal'),
+                  ('natural-dungeon-combat/sms-auto-sms-npc-d6-exit02','sixth_dungeon_exit')])
     stages=[]
     expected=hashlib.sha256((ROOT/'input/original.sms').read_bytes()).hexdigest()
     for relative,kind in chain:
@@ -112,6 +129,14 @@ def main():
         elif kind=='fourth_dungeon_exit':assert report['full_dungeon_cleared'] and raw[0xba]==raw[0x37]==0
         elif kind=='fifth_crystal':assert report['room_cleared'] and raw[0xd3]&128 and raw[0xda]==raw[0x318]==72
         elif kind=='fifth_dungeon_exit':assert report['full_dungeon_cleared'] and raw[0xba]==raw[0x37]==0
+        elif kind=='weapon_selection':assert report['passed'] and report['seen_menu'] and raw[0xdf]==report['selected_slot']
+        elif kind in ('gillian_upgrade','battler_upgrade'):
+            assert report['passed'] and report['first_state']['level']==1 and report['last_state']['level']==2
+            assert report['first_state']['gold']-report['last_state']['gold']==(100 if kind=='battler_upgrade' else 0)
+            assert raw[0xe4 if kind=='gillian_upgrade' else 0xe5]==2
+        elif kind=='ice_bell':assert report['item_acquisition_passed'] and raw[0xea]==1
+        elif kind=='sixth_crystal':assert report['room_cleared'] and raw[0xd4]&128 and raw[0xda]==raw[0x318]==80
+        elif kind=='sixth_dungeon_exit':assert report['full_dungeon_cleared'] and raw[0xba]==raw[0x37]==0
         elif kind=='armor2':assert report['passed'] and report['first_state']['armor']==1 and raw[0xf1]==2
         elif kind=='long_sword':assert report['passed'] and report['first_state']['basic']==1 and raw[0xe0]==2
         elif kind=='boots':assert report['item_acquisition_passed'] and raw[0xee]==1
@@ -131,6 +156,8 @@ def main():
                 third_crystal_reward_and_exit_verified=True,
                 fourth_crystal_reward_and_exit_verified=True,plate_mail_acquired=True,long_sword_acquired=True,
                 fifth_crystal_reward_and_exit_verified=True,
+                sixth_crystal_reward_and_exit_verified=True,ice_bell_acquired=True,
+                gillian_level=2,battler_level=2,battler_upgrade_price=100,
                 running_boots_acquired=True,a1_gold_gift=30,key94_purchase_price=60,free_healer94_refill_verified=True,
                 b4_gold_gift=30,earth_purchase_price=50,battler_dialogue_pcs=[0xb06f,0xb35d],canoe_acquired=True,
                 f4_gold_gift=50,c7_key_purchase_price=60,

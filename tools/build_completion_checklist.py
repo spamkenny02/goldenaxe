@@ -198,6 +198,18 @@ def main():
                     'equipment_quest:50/reward':'long_sword_reward_and_exit_replayed; other_variants_pending',
                 }[case['id']]
                 case['observations'].append(dict(report='analysis/sms_npc_campaign_progress_report.json'))
+        campaign_path=ROOT/'analysis/sms_npc_campaign_progress_report.json'
+        if campaign_path.exists():
+            report=json.loads(campaign_path.read_bytes())
+            if report.get('sixth_crystal_reward_and_exit_verified'):
+                upgrades={
+                    'teacher:e6':'introduction_exchange_and_level2_upgrade_observed_and_replayed; other_variants_pending',
+                    'teacher:a3':'level1_purchase_for50_and_level2_purchase_for100_observed_and_replayed; other_variants_pending',
+                    'gold_house:7d':'initial_plus30_gold_replayed; return_and_other_checks_pending',
+                    'gold_house:e7':'initial_plus30_gold_replayed; return_and_other_checks_pending'}
+                if case['id'] in upgrades:
+                    case['sms_status']=upgrades[case['id']]
+                    case['observations'].append(dict(report='analysis/sms_npc_campaign_progress_report.json',milestone='sixth_crystal'))
     result = dict(requirement='ALL NPCs and ALL side quests on SMS and MD, including relevant return visits and conditional text variants',
                   requirement_complete=False, census_proved_complete=False,
                   completion_percentage=None,

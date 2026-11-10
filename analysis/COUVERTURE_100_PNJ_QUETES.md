@@ -144,3 +144,17 @@ satellites compris, puis du mécanisme de retour et de la sortie du donjon.
 Les 55 étapes sélectionnées du relevé ont une relecture indépendante exacte
 de la RAM entière et de l'image finale. Ce jalon ne prouve pas toutes les
 pages, les timings, le son ni la couverture exhaustive des PNJ.
+
+## Dernier jalon SMS : sixième cristal
+
+Le parcours sélectionné rejoint maintenant l'extérieur 8B à la frame 225679,
+avec six cristaux, 70/80 points de vie, la cloche de glace et 31 pièces.
+Gillian a amélioré la Foudre au niveau 2 ; Battler a amélioré la Terre au
+niveau 2 contre 100 pièces possédées. Les dons de 7D et E7 sont observés.
+Les 82 étapes sélectionnées passent leur relecture indépendante. La relecture
+continue SMS avance depuis un seul démarrage entre les nouveaux checkpoints,
+sans importer d'état, et vérifie les 8192 octets de RAM et l'image finale.
+L'essai lent à l'épée et la sortie mortelle ne sont pas sélectionnés. Le combat
+réussi emploie la hache avec des positions de frappe prévues dans un cœur
+secondaire ; aucune protection ne couvre le boss. La sortie traverse les
+salles déjà ouvertes et subit les dommages normaux, sans aide ajoutée.
