@@ -8,13 +8,13 @@ from archive_lossless_evidence import sha
 from validate_playable_sprite_limit import symbols
 
 def main():
- p=argparse.ArgumentParser();p.add_argument('--trace',required=True);p.add_argument('--boss-room',type=lambda s:int(s,0),required=True);p.add_argument('--next-boss-room',type=lambda s:int(s,0));p.add_argument('--trial',required=True);p.add_argument('--controlled-sram-prefix',action='store_true');a=p.parse_args()
+ p=argparse.ArgumentParser();p.add_argument('--trace',required=True);p.add_argument('--boss-room',type=lambda s:int(s,0),required=True);p.add_argument('--next-boss-room',type=lambda s:int(s,0));p.add_argument('--trial',required=True);p.add_argument('--controlled-sram-prefix',action='store_true');p.add_argument('--sms',action='store_true');a=p.parse_args()
  source=(ROOT/'validation'/a.trace).resolve();assert source.is_relative_to(ROOT/'validation')
  c=json.loads((source/'capture.json').read_bytes());r=json.loads((source/'report.json').read_bytes());old,writes=recording(source,c)
  initial_sram=controlled_sram_input(source,c,a.controlled_sram_prefix)
- assert prefix_writes(source,c,True,controlled=a.controlled_sram_prefix)==writes and old.get('approach_closed_early') and r['room_cleared'] and r['failure'] is None and not r['deaths']
+ assert prefix_writes(source,c,True,controlled=a.controlled_sram_prefix)==writes and (old.get('approach_closed_early') or a.sms and old['first_boss_entry'] and old['first_boss_combat']) and r['room_cleared'] and r['failure'] is None and not r['deaths']
  assert old['boss_room']==a.boss_room
- intermediate=old['closed_before_room'];original=(ROOT/'input/original.sms').read_bytes();kinds=[k for k in original[0x3234e+intermediate*8:0x32356+intermediate*8] if k in (0x78,0x79,0x7a,0x7b,0x7c)];assert kinds
+ intermediate=old['closed_before_room'] if old.get('approach_closed_early') else a.boss_room;original=(ROOT/'input/original.sms').read_bytes();kinds=[k for k in original[0x3234e+intermediate*8:0x32356+intermediate*8] if k in (0x78,0x79,0x7a,0x7b,0x7c)];assert kinds
  if old['boss_room']==intermediate:
   assert old['first_boss_entry'] and old['first_boss_combat']
  else:
@@ -22,22 +22,30 @@ def main():
  next_boss=a.next_boss_room if a.next_boss_room is not None else a.boss_room
  assert next_boss!=intermediate,'The next approach must target a different fight'
  assert any(k>=0x20 and original[0x320ea+(k-0x20)*4+3]&0x60 for k in original[0x3234e+next_boss*8:0x32356+next_boss*8])
- rom=ROOT/'gaw-megadrive.bin';assert sha(rom.read_bytes())==c['rom_sha256']
- sy=symbols(ROOT/'megadrive/out/release/symbol.txt');start=c['frames'];end=start+1;expected=evidence(source/f'ram_{start:05d}.bin');controls=json.loads((source/'controls.json').read_bytes());timeline=[()]*(start+1)
+ rom=ROOT/('input/original.sms' if a.sms else 'gaw-megadrive.bin');assert sha(rom.read_bytes())==c['rom_sha256']
+ sy=None if a.sms else symbols(ROOT/'megadrive/out/release/symbol.txt');start=c['frames'];end=start+1;expected=evidence(source/f'ram_{start:05d}.bin');controls=json.loads((source/'controls.json').read_bytes());timeline=[()]*(start+1)
  for i,row in enumerate(controls):
   stop=controls[i+1]['frame']-1 if i+1<len(controls) else start;timeline[row['frame']:stop+1]=[tuple(row['buttons'])]*(stop-row['frame']+1)
- folder=ROOT/'validation/natural-dungeon-combat'/('md-auto-'+a.trial);assert not folder.exists()
- new_writes=FrameWrites(writes+[(end,sy['hero_hurt'],b'\x00\x81')]);entry=combat=damage=None;previous=None;states=[]
+ folder=ROOT/'validation/natural-dungeon-combat'/(('sms-' if a.sms else 'md-')+'auto-'+a.trial);assert not folder.exists()
+ new_writes=FrameWrites(writes+[(end,0x305 if a.sms else sy['hero_hurt'],b'\x81' if a.sms else b'\x00\x81')]);entry=combat=damage=None;previous=None;states=[]
  def observe(f,raw):
   nonlocal entry,combat,damage,previous
-  data=lambda n,k:bytes(raw[(sy[n]+i)^1] for i in range(k));word=lambda n:int.from_bytes(data(n,2),'big')
+  if a.sms:
+   areas={'world_actor_state':0x600,'hero_items':0xe0}
+   data=lambda n,k:raw[areas[n]:areas[n]+k] if n!='game_save_state' else bytes(0x1f)+raw[0xcf:0xd8]
+   word=lambda n:{'room_id':int.from_bytes(raw[0xb9:0xbb],'little'),'game_state':raw[0x1d],
+                  'hero_health':raw[0x318],'hero_hurt':raw[0x305],'hero_gold':raw[0xdd],
+                  'hero_keys':raw[0xde],'hero_magic':raw[0xdb]}[n]
+  else:
+   data=lambda n,k:bytes(raw[(sy[n]+i)^1] for i in range(k));word=lambda n:int.from_bytes(data(n,2),'big')
   state=dict(frame=f,room=word('room_id'),game=word('game_state'),health=word('hero_health'),hurt=word('hero_hurt'))
   if f<=start:assert state['room']!=next_boss,'No prior next-boss entry may be hidden'
   if f>old['activation_after_frame'] and f<=start:
    if a.boss_room!=intermediate:assert state['room']!=a.boss_room,'No prior pending-boss entry may be hidden'
    if f>old['release_write_frame']:assert state['hurt']<=128,'No held test guard after the declared release'
    if state['room']==intermediate:
-    assert f>old['release_write_frame']
+    if f<=old['release_write_frame']:
+     assert a.sms and old['boss_room']==intermediate and not old.get('approach_closed_early') and state['game']!=12
     if entry is None:
      assert state['game']!=12;entry=dict(state)
     if state['game']==12:
@@ -51,11 +59,14 @@ def main():
   if f>=start:
    state.update(gold=word('hero_gold'),keys=word('hero_keys'),magic=word('hero_magic'),items=list(data('hero_items',17)),crystals=list(data('game_save_state',592)[0x1f:0x28]));states.append(state)
  with contextlib.redirect_stdout(io.StringIO()):run(rom,end,folder,{start,end},c['presses'],ram_writes=new_writes,ram_observer=observe,input_provider=lambda f:timeline[f] if f<=start else [],core_options=c['core_options'],sram_in=initial_sram)
- assert entry and combat and entry['frame']<combat['frame'] and old['release_write_frame']<entry['frame']
+ assert entry and combat and entry['frame']<combat['frame'] and old['release_write_frame']<combat['frame']
+ if a.sms and not old.get('approach_closed_early'):
+  assert entry['frame']<old['release_write_frame']<combat['frame']
+ else:assert old['release_write_frame']<entry['frame']
  if old['boss_room']==intermediate:
   # A directly targeted intermediate fight already has completed metadata.
   # Check it against this cold replay before starting the next episode.
-  assert entry==old['first_boss_entry']
+  assert all(entry[k]==v for k,v in old['first_boss_entry'].items())
   assert all(combat[key]==old['first_boss_combat'][key] for key in ('frame','health','hurt'))
  assert states[-1]['hurt']==129 and all(states[0][k]==states[-1][k] for k in ['room','health','gold','keys','magic','items','crystals'])
  assist=json.loads(json.dumps(old));closed=assist['episodes'];closed[-1].update(boss_room=intermediate,first_boss_entry=entry,first_boss_combat=combat,first_boss_damage=damage,end_frame=start,natural_cooldown_observed=bool(combat['hurt']))

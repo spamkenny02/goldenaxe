@@ -82,6 +82,22 @@ def main():
                  for i,kind in enumerate(kinds,1))
     chain.extend([('natural-dungeon-combat/sms-auto-sms-npc-d6-boss02','sixth_crystal'),
                   ('natural-dungeon-combat/sms-auto-sms-npc-d6-exit02','sixth_dungeon_exit')])
+    chain.extend([
+        ('natural-dungeon-route/sms-sms-npc-d7-goldac-entry01','entry'),
+        ('natural-service-route/sms-npc-d7-goldac-gift01','gold_gift'),
+        ('natural-dungeon-route/sms-sms-npc-d7-key94-entry01','entry'),
+        ('natural-service-route/sms-npc-d7-key94-buy01','key_purchase'),
+        ('natural-dungeon-route/sms-sms-npc-d7-healer94-entry01','entry'),
+        ('natural-service-route/sms-npc-d7-healer94-rest01','free_rest'),
+        ('natural-dungeon-route/sms-sms-npc-d7-entry01','entry'),
+    ])
+    d7=[('key01','dungeon_key'),('key03','dungeon_key'),('earth01','earth_passage'),
+        ('earth02','earth_passage'),('contact01','contact_passage'),('midboss01','intermediate_victory'),
+        ('resume02','intermediate_resume'),('south01','entry_combat'),('remote01','contact_passage'),
+        ('ship01','ship'),('north01','entry_combat'),('warp01','earth_passage'),
+        ('approach01','entry_combat'),('boss01','seventh_crystal'),('return-earth01','earth_passage'),
+        ('exit01','seventh_dungeon_exit')]
+    chain.extend(('natural-dungeon-combat/sms-auto-sms-npc-d7-'+suffix,kind) for suffix,kind in d7)
     stages=[]
     expected=hashlib.sha256((ROOT/'input/original.sms').read_bytes()).hexdigest()
     for relative,kind in chain:
@@ -137,13 +153,18 @@ def main():
         elif kind=='ice_bell':assert report['item_acquisition_passed'] and raw[0xea]==1
         elif kind=='sixth_crystal':assert report['room_cleared'] and raw[0xd4]&128 and raw[0xda]==raw[0x318]==80
         elif kind=='sixth_dungeon_exit':assert report['full_dungeon_cleared'] and raw[0xba]==raw[0x37]==0
+        elif kind=='intermediate_victory':assert report['room_cleared'] and raw[0xd5]&128==0
+        elif kind=='intermediate_resume':assert report['resumed_after_verified_intermediate'] and report['new_assistance_writes']==1 and raw[0x305]==129
+        elif kind=='ship':assert report['item_acquisition_passed'] and raw[0xf0]==1
+        elif kind=='seventh_crystal':assert report['room_cleared'] and raw[0xd5]&128 and raw[0xda]==raw[0x318]==88
+        elif kind=='seventh_dungeon_exit':assert report['full_dungeon_cleared'] and raw[0xba]==raw[0x37]==0
         elif kind=='armor2':assert report['passed'] and report['first_state']['armor']==1 and raw[0xf1]==2
         elif kind=='long_sword':assert report['passed'] and report['first_state']['basic']==1 and raw[0xe0]==2
         elif kind=='boots':assert report['item_acquisition_passed'] and raw[0xee]==1
         elif kind=='supply_exit':assert report['dungeon_exit_verified'] and report['exit_before_crystal_requested'] and raw[0xba]==raw[0x37]==0
         elif kind=='contact_passage':assert report['contact_route_passed'] and report['contact_opened'] is not None
         elif kind=='free_rest':
-            assert report['passed'] and report['normal_health_refill'] and raw[0x318]==raw[0xda]==64
+            assert report['passed'] and report['normal_health_refill'] and raw[0x318]==raw[0xda]
             assert report['first_state']['gold']==report['last_state']['gold']
             assert report['first_state']['magic']==report['last_state']['magic']
         stages.append(dict(trace=relative,kind=kind,frame=cap['frames'],
@@ -157,6 +178,7 @@ def main():
                 fourth_crystal_reward_and_exit_verified=True,plate_mail_acquired=True,long_sword_acquired=True,
                 fifth_crystal_reward_and_exit_verified=True,
                 sixth_crystal_reward_and_exit_verified=True,ice_bell_acquired=True,
+                seventh_crystal_reward_and_exit_verified=True,ship_acquired=True,
                 gillian_level=2,battler_level=2,battler_upgrade_price=100,
                 running_boots_acquired=True,a1_gold_gift=30,key94_purchase_price=60,free_healer94_refill_verified=True,
                 b4_gold_gift=30,earth_purchase_price=50,battler_dialogue_pcs=[0xb06f,0xb35d],canoe_acquired=True,

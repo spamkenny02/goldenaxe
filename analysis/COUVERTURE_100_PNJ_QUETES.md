@@ -158,3 +158,14 @@ L'essai lent à l'épée et la sortie mortelle ne sont pas sélectionnés. Le co
 réussi emploie la hache avec des positions de frappe prévues dans un cœur
 secondaire ; aucune protection ne couvre le boss. La sortie traverse les
 salles déjà ouvertes et subit les dommages normaux, sans aide ajoutée.
+
+## Dernier jalon SMS : septième cristal
+
+Le parcours rejoint l'extérieur 1B à la frame 270823 avec sept cristaux,
+88/88 points de vie, 22 pièces, une clé et le bateau réellement acquis.
+Le don d'AC finance une clé achetée en 94 ; le soigneur remonte la vie à 80.
+Le gardien intermédiaire, le bateau, les mécanismes du nord, le boss principal
+et la sortie sont joués, puis rejoués exactement. Les 105 étapes sélectionnées
+sont vérifiées. La reprise de la protection d'approche après le gardien ne
+modifie ni ses dégâts déjà subis, ni les ressources, ni les quêtes ; elle est
+retirée avant le boss principal. L'accès raté au marchand A5 est exclu.

@@ -2124,13 +2124,18 @@
         "Return after once-only flag is set",
         "Economic boundary branches if reachable; use an alternate cold-boot input branch"
       ],
-      "sms_status": "pending",
+      "sms_status": "initial_plus30_gold_replayed; return_and_other_checks_pending",
       "md_status": "pending",
       "sms_md_comparison_status": "pending",
       "guide_episode": null,
       "guide_timestamp": null,
       "static_basis": "analysis/house_gold_reference.json; megadrive/src/house_gold.inc",
-      "observations": []
+      "observations": [
+        {
+          "report": "analysis/sms_npc_campaign_progress_report.json",
+          "milestone": "sixth_crystal"
+        }
+      ]
     },
     {
       "id": "gold_house:b4",

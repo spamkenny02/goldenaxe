@@ -207,6 +207,8 @@ def main():
                     'teacher:a3':'level1_purchase_for50_and_level2_purchase_for100_observed_and_replayed; other_variants_pending',
                     'gold_house:7d':'initial_plus30_gold_replayed; return_and_other_checks_pending',
                     'gold_house:e7':'initial_plus30_gold_replayed; return_and_other_checks_pending'}
+                if report.get('seventh_crystal_reward_and_exit_verified'):
+                    upgrades['gold_house:ac']='initial_plus30_gold_replayed; return_and_other_checks_pending'
                 if case['id'] in upgrades:
                     case['sms_status']=upgrades[case['id']]
                     case['observations'].append(dict(report='analysis/sms_npc_campaign_progress_report.json',milestone='sixth_crystal'))
