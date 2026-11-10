@@ -40,10 +40,12 @@ def main():
     parser.add_argument('--new-assistance-episode', action='store_true', help='Start the next approach after a verified dungeon exit')
     parser.add_argument('--preserve-floor-hurt', action=argparse.BooleanOptionalAction, default=True, help='Preserve ordinary floor-damage cooldown when no enemies are active (default). Use --no-preserve-floor-hurt only to reproduce older diagnostics.')
     parser.add_argument('--completed-exit-proof', help='Verified same-ROM exit before intervening service visits; no new assistance may have been added')
+    parser.add_argument('--stop-on-ending',action='store_true',help='SMS final boss only: capture its actual game14 victory handoff')
     args, remaining = parser.parse_known_args()
     assert not args.release_near_coins or args.world_route
     assert not args.completed_exit_proof or args.new_assistance_episode
     sms = '--sms' in remaining
+    assert not args.stop_on_ending or sms and args.boss_room==0x14c and not args.world_route
     assert not sms or args.planner in ('ordinary', 'beam', 'navigation', 'cautious', 'earth', 'side', 'escape', 'evasive', 'contact', 'item'), 'The selected wrapper does not support SMS report paths'
     assert '--lookahead-rooms' not in remaining, 'Planning is restricted to the unassisted boss'
     assert args.boss_frames is None or args.boss_frames > 0
@@ -151,9 +153,10 @@ def main():
         stop = kwargs.get('stop_when')
         boss_budget_done = False
         budget_deadline = None
+        ending_handoff=None
 
         def observe(frame, ram):
-            nonlocal previous_health, approach_active, boss_budget_done, budget_deadline, last_frame
+            nonlocal previous_health, approach_active, boss_budget_done, budget_deadline, last_frame,ending_handoff
             last_frame = frame
             if sms:
                 fields = dict(room_id=int.from_bytes(ram[0xb9:0xbb], 'little'), game_state=ram[0x1d],
@@ -196,6 +199,11 @@ def main():
                         result['first_boss_damage'] = dict(frame=frame, before=previous_health, after=health, hurt=hurt)
                 previous_health = health
             observer(frame, ram)
+            if args.stop_on_ending and frame>start and state==14 and ending_handoff is None:
+                assert room==0x14c and health>0 and hurt<=128 and ram[0xd8]==1
+                assert result['first_boss_combat'] and writes[-1][0]==result['release_write_frame']
+                ending_handoff=dict(frame=frame,room=room,game=state,health=health,hurt=hurt,final_dungeon_defeated=True)
+                result['ending_handoff']=ending_handoff;run_args[3].add(frame+1)
             first = result['first_boss_combat']
             if args.boss_frames and first and budget_deadline is None:
                 budget_deadline = max(start, first['frame']) + args.boss_frames
@@ -206,7 +214,8 @@ def main():
                 result['test_stop_reason'] = 'boss_frame_budget'
 
         kwargs.update(ram_writes=writes, ram_observer=observe,
-                      stop_when=lambda: boss_budget_done or bool(stop and stop()))
+                      stop_when=lambda: boss_budget_done or bool(stop and stop()) or
+                      ending_handoff is not None and last_frame>=ending_handoff['frame']+1)
         return original(*run_args, **kwargs)
 
     game.run = wrapped
@@ -271,6 +280,11 @@ def main():
                 report.update(assisted_route=True, ram_injections=True, boss_assistance=False,primary_state_imports=int(bool(initial_sram)),
                               primary_extra_state_writes=len(writes),
                               assistance_manifest='assistance.json', natural_campaign_proof=False)
+                if args.stop_on_ending:
+                    report.update(ending_handoff_passed='ending_handoff' in result,
+                                  ending_handoff=result.get('ending_handoff'),final_fight_assistance=False,
+                                  post_release_assistance_writes=0)
+                    if 'ending_handoff' in result:report.update(passed=True,failure=None)
                 path.write_text(json.dumps(report, indent=2) + '\n')
 
 

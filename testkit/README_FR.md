@@ -10,18 +10,24 @@ script ayant servi à valider les campagnes précédentes.
 | --- | --- |
 | `routes/md_ntsc.csv` | Parcours MD enregistré : 403488 images, neuf cristaux, fin, crédits, retour intro |
 | `routes/md_pal.csv` | Même objectif en PAL : 382208 images |
+| `routes/sms_full_ntsc.csv` | Campagne SMS NTSC : 436161 images, neuf cristaux, hache d’or, Death Adder, générique et retour intro |
 | `routes/sms_intro_ntsc.csv`, `sms_intro_pal.csv` | Intro/titre SMS, 7600 images ; **pas une campagne complète** |
 | `replay_libretro.py` | Relecture automatisée avec le moteur utilisé pour les tests |
 | `bizhawk/gaw_test.lua` | Suivi du jeu SMS/MD, enregistrement et relecture CSV dans BizHawk |
 
-Les parcours MD utilisent une protection de test pendant les approches,
-retirée avant les combats de boss : 190764 écritures NTSC et 196493 PAL sur
-le compteur de blessure uniquement. Aucun import de sauvegarde, inventaire,
-progression ou recharge de vie. Désactiver cette aide peut invalider le parcours.
+Les campagnes utilisent la protection autorisée pendant les approches,
+retirée avant chaque boss. La route SMS comporte 210005 écritures d'un seul
+octet sur le compteur de blessure (offset RAM 0x305). Les routes MD emploient
+190764 écritures NTSC et 196493 PAL sur leur compteur natif. Aucun import de
+sauvegarde, d'inventaire, de progression ou de recharge de vie. Le trajet peut
+se désynchroniser si cette aide est retirée.
 
-**Il n’existe pas dans ce kit de parcours SMS complet validé de A à Z.**
-Le mode suivi/enregistrement sert à réaliser ce parcours sur SMS, puis à
-le rejouer. Les trajets SMS et MD ne sont pas interchangeables.
+**La campagne SMS NTSC est terminée et rejouée sur Genesis Plus GX/libretro.**
+Le CSV exporté reproduit les 8192 octets de RAM et l'image finale de référence ;
+les 169 étapes de construction ont aussi leurs relectures indépendantes.
+La couverture de tous les PNJ et de toutes les quêtes reste ouverte. Cette
+route n'est pas validée en PAL ni dans BizHawk. Les anciens CSV SMS d'intro
+restent distincts ; les trajets SMS et MD ne sont pas interchangeables.
 
 ## BizHawk : lancement
 
@@ -33,6 +39,7 @@ le rejouer. Les trajets SMS et MD ne sont pas interchangeables.
 4. Ouvrir **Tools > Lua Console**, puis charger :
 
    - `bizhawk/lecture_md_ntsc.lua` ou `lecture_md_pal.lua` pour la campagne MD ;
+   - `bizhawk/lecture_sms_ntsc.lua` pour l’adaptation du parcours SMS complet, **non validée dans BizHawk** ;
    - `bizhawk/intro_sms_ntsc.lua` ou `intro_sms_pal.lua` pour l’introduction SMS ;
    - `bizhawk/gaw_test.lua` pour jouer librement avec suivi ;
    - `bizhawk/enregistrer_sms_md.lua` pour enregistrer ses propres entrées.
@@ -47,7 +54,7 @@ CSV enregistrent ces états ; **ils ne valident pas automatiquement les images
 ou le son**. Les relectures MD vérifient aussi la fin attendue. Un échec ou une
 désynchronisation n’est jamais présenté comme une campagne réussie.
 
-La protection est activée par les lanceurs MD avec `assistance=true`.
+La protection est activée par les lanceurs des campagnes MD et SMS avec `assistance=true`.
 Le mode suivi et l’enregistrement ne modifient aucune mémoire.
 Le script refuse les ROMs autres que la SMS fournie et les MD V320/V321.
 Le domaine RAM est détecté ; en cas d’ambiguïté, ajouter `domain="68K RAM"`
@@ -70,7 +77,7 @@ Windows 64 bits, Python et Pillow :
 python -m pip install -r requirements.txt
 python replay_libretro.py --rom "D:/chemin/gaw-megadrive-v0321.bin" --route md_ntsc --core "D:/chemin/genesis_plus_gx_libretro.dll" --out "D:/tests/gaw-ntsc-01"
 python replay_libretro.py --rom "D:/chemin/gaw-megadrive-v0321.bin" --route md_pal --core "D:/chemin/genesis_plus_gx_libretro.dll" --out "D:/tests/gaw-pal-01"
-python replay_libretro.py --rom "D:/chemin/Golden Axe Warrior.sms" --route sms_intro_ntsc --core "D:/chemin/genesis_plus_gx_libretro.dll" --out "D:/tests/gaw-sms-intro-01"
+python replay_libretro.py --rom "D:/chemin/Golden Axe Warrior.sms" --route sms_full_ntsc --core "D:/chemin/genesis_plus_gx_libretro.dll" --out "D:/tests/gaw-sms-complet-01"
 ```
 
 Dans le projet local, le coeur utilisé se trouve dans
@@ -88,7 +95,10 @@ pas une preuve que le trajet reste jouable sans aide.
 
 Les hashes de ROM et de CSV sont vérifiés. `manifest.json` contient la
 provenance des contrôles et de l’aide de test. `verification.json` indique
-quelles versions et régions ont effectivement terminé avec ce kit.
+quelles versions et régions ont effectivement terminé avec ce kit. La route
+SMS complète compare aussi la RAM et les pixels finaux avec les références
+du dossier `references`. Les deux trajets de campagne visitent certains PNJ,
+sans couvrir exhaustivement leurs variantes ou les quêtes secondaires.
 
 ## Contrôles visuels à faire pendant le parcours
 

@@ -16,27 +16,30 @@ def main():
     p.add_argument('--trial',required=True)
     p.add_argument('--controlled-sram-prefix',action='store_true')
     p.add_argument('--extra-frames',type=int,default=14000)
+    p.add_argument('--sms',action='store_true')
     a=p.parse_args()
     source=(ROOT/'validation'/a.trace).resolve()
     assert source.is_relative_to(ROOT/'validation')
     cap=json.loads((source/'capture.json').read_bytes())
-    rom=ROOT/'gaw-megadrive.bin'
+    rom=ROOT/('input/original.sms' if a.sms else 'gaw-megadrive.bin')
     assert sha(rom.read_bytes())==cap['rom_sha256']
     old=json.loads((source/'report.json').read_bytes())
-    assert old['ending_handoff_passed'] and old['unassisted_extension'] and old['new_assistance_writes']==0
+    assert old['ending_handoff_passed']
+    if a.sms:assert old['final_fight_assistance'] is False and old['post_release_assistance_writes']==0
+    else:assert old['unassisted_extension'] and old['new_assistance_writes']==0
     assist,writes=recording(source,cap)
     initial=controlled_sram_input(source,cap,a.controlled_sram_prefix)
     assert prefix_writes(source,cap,True,controlled=a.controlled_sram_prefix)==writes
     start=cap['frames']
-    assert writes[-1][0]==assist['release_write_frame']<start and writes[-1][2]==b'\0\0'
+    assert writes[-1][0]==assist['release_write_frame']<start and writes[-1][2]==(b'\0' if a.sms else b'\0\0')
     expected=evidence(source/f'ram_{start:05d}.bin')
-    sy=symbols(ROOT/'megadrive/out/release/symbol.txt')
+    sy=None if a.sms else symbols(ROOT/'megadrive/out/release/symbol.txt')
     controls=json.loads((source/'controls.json').read_bytes())
     timeline=[()]*(start+1)
     for i,row in enumerate(controls):
         stop=controls[i+1]['frame']-1 if i+1<len(controls) else start
         timeline[row['frame']:stop+1]=[tuple(row['buttons'])]*(stop-row['frame']+1)
-    folder=ROOT/'validation/natural-dungeon-combat'/('md-auto-'+a.trial)
+    folder=ROOT/'validation/natural-dungeon-combat'/(('sms-' if a.sms else 'md-')+'auto-'+a.trial)
     assert not folder.exists()
     end=start+a.extra_frames
     captures={start,end}
@@ -48,27 +51,38 @@ def main():
         observed=frame
         if frame<start:return
         if frame==start:assert raw==expected
-        data=lambda n,k:bytes(raw[(sy[n]+i)^1] for i in range(k))
-        word=lambda n:int.from_bytes(data(n,2),'big')
+        if a.sms:
+            areas={'ending_credits':0x1cc0,'world_actor_state':0x600}
+            data=lambda n,k:raw[areas[n]:areas[n]+k]
+            word=lambda n:{'room_id':int.from_bytes(raw[0xb9:0xbb],'little'),'game_state':raw[0x1d],
+                           'hero_health':raw[0x318],'hero_hurt':raw[0x305],
+                           'ending_hero_descriptor':int.from_bytes(raw[0x308:0x30a],'little'),
+                           'sound_request':raw[0x1e06]}[n]
+        else:
+            data=lambda n,k:bytes(raw[(sy[n]+i)^1] for i in range(k))
+            word=lambda n:int.from_bytes(data(n,2),'big')
         credit=data('ending_credits',9);actors=data('world_actor_state',768)
+        endian='little' if a.sms else 'big'
         state.update(frame=frame,room=word('room_id'),game=word('game_state'),health=word('hero_health'),
                      hurt=word('hero_hurt'),descriptor=word('ending_hero_descriptor'),
-                     credits_done=bool(credit[1]),credit_row=int.from_bytes(credit[4:6],'big'),
-                     credit_text=int.from_bytes(credit[6:8],'big'),credit_state_hex=credit.hex(),
+                     credits_done=bool(credit[1]),credit_row=int.from_bytes(credit[4:6],endian),
+                     credit_text=int.from_bytes(credit[6:8],endian),credit_state_hex=credit.hex(),
                      visible_gems=sum(actors[i*48]==6 and bool(actors[i*48+3]&1) for i in range(9)))
-        assert state['health']>0 and state['hurt']<=128
-        assert word('sound_unhandled_command')==0
-        if frame==start:assert state['game']==14 and data('game_save_state',592)[0x28]==1
+        if completed is None or state['game']==14:assert state['health']>0 and state['hurt']<=128
+        if not a.sms:assert word('sound_unhandled_command')==0
+        if frame==start:assert state['game']==14 and (raw[0xd8] if a.sms else data('game_save_state',592)[0x28])==1
         request=word('sound_request')&255
         if request and (not music or music[-1]['command']!=request):music.append(dict(frame=frame,command=request))
         if held is None and state['descriptor']==0x8495 and state['visible_gems']==9:
             held=frame;captures.add(frame+1)
-        if credits_started is None and state['descriptor']==0x84e1 and 0x7800<=state['credit_row']<0x7f00 and state['credit_text']:
+        text_pointer_valid=(0xc900<=state['credit_text']<0xce00) if a.sms else bool(state['credit_text'])
+        if credits_started is None and state['descriptor']==0x84e1 and 0x7800<=state['credit_row']<0x7f00 and text_pointer_valid:
             credits_started=frame;captures.add(frame+1)
         if credits_started is not None and completed is None:
             if (frame-credits_started)%1000==0:captures.add(frame+1)
             if state['credits_done']:completed=frame;captures.add(frame+1)
-        if completed is not None and state['game']==0 and state['descriptor']==0 and returned is None:
+        returned_to_flow=state['game']!=14 if a.sms else state['game']==0 and state['descriptor']==0
+        if completed is not None and returned_to_flow and returned is None:
             assert ack is not None
             returned=frame;captures.add(frame+100)
         key=(state['game'],state['descriptor'],state['credits_done'],state['visible_gems'])

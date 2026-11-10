@@ -78,6 +78,40 @@
       "full_campaign": false,
       "scope": "Cold boot intro/title only; not an SMS A-to-Z route.",
       "bizhawk_runtime_validated": false
+    },
+    "sms_full_ntsc": {
+      "system": "sms",
+      "region": "ntsc",
+      "frames": 436161,
+      "csv": "sms_full_ntsc.csv",
+      "csv_sha256": "e3e25a075834d37dd6b2ff1a7670b363de6cf23142f9f1c73f6d535daa9fcf8e",
+      "rows": 72784,
+      "approach_writes": 210005,
+      "boss_assistance": false,
+      "save_imports": 0,
+      "full_campaign": true,
+      "all_npcs_complete": false,
+      "bizhawk_runtime_validated": false,
+      "core_options": {
+        "genesis_plus_gx_region_detect": "auto"
+      },
+      "validated_core_sha256": "d17f2392115b3cd54258a1fa6c4195ddadc19b0805ebcca400db5162b1793516",
+      "historical_recording_rom_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+      "source_files": {
+        "capture.json": "20a535c4fff28754e08a9af4c9e92d15266c328602626ae0beba188985c674bf",
+        "controls.json": "9d5e381a8c0460180d5cb62974a7213d37260c2da5e43301834da560d3233aa4",
+        "assistance.json": "3fa0405fa8abd756c47fc63984848c9cb279dbcd31ae8200613f3ceba60631ec"
+      },
+      "expected_final": {
+        "game": 0,
+        "room": 332,
+        "health": 100,
+        "crystals": 9
+      },
+      "expected_final_ram_sha256": "85721540c8326dd2c38d68b14d16538663302d063b0506b797a400823137662f",
+      "expected_final_png_sha256": "ddba1c1e6f99729bf120b03db149f454c14e6ed41560947b9ca9c86371c35638",
+      "expected_final_pixels_sha256": "0fbd8b55a765e225448c541137f1b3bba08e0ad488e191585b783e06a359f2f9",
+      "scope": "Original supplied SMS ROM, nine crystals, Golden Axe, Death Adder, complete credits and return to intro. Partial NPC/side-quest coverage; NTSC libretro only."
     }
   },
   "roms": {

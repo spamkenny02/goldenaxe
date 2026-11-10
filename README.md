@@ -18,21 +18,21 @@ Les scripts et les entrées de campagne sont disponibles dans
 [le kit de tests SMS/MD](testkit/README_FR.md). Le lecteur Python/libretro
 rejoint la fin sur la V321 en PAL et NTSC avec les parcours enregistrés et
 la protection autorisée sur les approches, retirée avant les boss.
-Le Lua BizHawk fourni est une adaptation dont le fonctionnement complet
-dans BizHawk reste à vérifier. Le kit SMS couvre l’intro et permet de
-suivre/enregistrer une partie ; il ne contient pas de campagne SMS complète
-validée. [Résultats du kit](testkit/verification.json).
+Le kit contient désormais aussi le parcours SMS NTSC complet : 436161 images,
+neuf cristaux, hache d'or, Death Adder, générique terminé et retour à l'intro.
+Son CSV a été rejoué sur le cœur officiel : RAM complète et image finale
+identiques au parcours source. Le Lua BizHawk fourni reste une adaptation
+à vérifier dans BizHawk. [Résultats du kit](testkit/verification.json).
 
-Le [parcours SMS continu avec les PNJ](analysis/sms_npc_campaign_progress_report.json)
-a obtenu les neuf cristaux et quitté les neuf labyrinthes. Les récompenses
-et les retours à l'extérieur sont vérifiés par relecture indépendante des
-commandes depuis le démarrage sur la ROM originale. La capacité de vie est
-maintenant de 104 ; corde, canoë, bateau, bottes de course, cloche de glace,
-clé du voleur, armure de dragon et épée de feu
-ont été acquis par les actions du jeu. Le parcours poursuit sa route vers le
-palais final. Aucune nouvelle ROM MD n'est publiée pour cette seule progression.
+Le [parcours SMS continu](analysis/sms_npc_campaign_progress_report.json)
+a terminé les neuf labyrinthes et le palais final. Ses 169 étapes sélectionnées
+ont une relecture indépendante, depuis le démarrage de la ROM fournie.
+Les récompenses et les mécanismes sont réellement obtenus par les commandes
+du jeu. La capacité de vie est de 104 ; hache d'or, armure de dragon, épée de feu,
+clé du voleur, ballon, bateau, canoë, corde, bottes et cloche sont acquis.
+Aucune nouvelle ROM MD n'est publiée pour cette seule progression de validation.
 
-Neuf conversations ordinaires, la quête de Gillian/Foudre, la fée C9,
+La campagne achevée inclut neuf conversations ordinaires, la quête de Gillian/Foudre, la fée C9,
 les améliorations de Foudre et de Terre au niveau 2, plusieurs donneurs
 d'argent, les achats de clés C7/94, Battler/Terre,
 les donneurs d'équipement 27/50 et le soigneur 94 sont parcourus.
@@ -42,10 +42,20 @@ La protection autorisée sur les approches est enregistrée et retirée avant
 les boss ; aucun état de quête ni sauvegarde n'est importé. Les essais échoués
 ne sont pas ajoutés aux étapes accomplies.
 
+Une nouvelle branche reprend avant le palais pour visiter les maisons manquantes.
+L'accès caché FB est ouvert avec le vrai sort Terre ; son habitant et les trois
+habitants de la maison FE/00 sont visités, acquittés et rejoués indépendamment.
+Ces visites supplémentaires ne sont pas encore intégrées au CSV de la campagne
+achevée. Le [relevé de cette branche](analysis/sms_plain_house_census_campaign.json)
+conserve les étapes validées et les maisons encore à parcourir.
+L'enregistreur `tools/record_sms_gameplay.py` a un essai audio/vidéo de 600 frames
+validé ; aucune vidéo SMS 100 % n'est encore livrée.
+
 Les 65 contextes statiques des maisons ordinaires ne constituent pas le
 nombre total de PNJ ou de variantes. Marchands, dialogues conditionnels,
-quêtes et autres textes restent à couvrir. Le parcours SMS est encore partiel
-et n'est pas livré comme campagne complète dans l'archive du kit de tests.
+quêtes et autres textes restent à couvrir. Le parcours livré est une campagne
+complète avec une couverture partielle des PNJ ; il ne constitue pas un parcours
+100 % de toutes les quêtes secondaires.
 
 La même couverture exhaustive est requise sur Mega Drive, avec les mêmes
 conditions de quête : textes, pages, choix, récompenses, fermeture du dialogue,

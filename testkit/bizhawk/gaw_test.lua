@@ -47,7 +47,7 @@ local function state()
   return {
     room = word(md and 0x28b4 or 0xb9),
     health = md and word(0x2b16) or byte(0x318),
-    game = md and word(0x74c) or -1,
+    game = md and word(0x74c) or byte(0x1d),
     audio_error = md and word(0x2d12) or -1,
     crystals = crystals
   }
@@ -127,8 +127,9 @@ while not total or frame < total do
     local row = rows[position]
     apply(row[3]);guard = row[4]
     if guard ~= -1 and cfg.assistance then
-      assert(md, "Aucune injection SMS prevue par les routes fournies")
-      memory.write_u16_be(0x2b1a, guard, domain);guard_writes = guard_writes + 1
+      if md then memory.write_u16_be(0x2b1a, guard, domain)
+      else memory.write_u8(0x305, guard, domain) end
+      guard_writes = guard_writes + 1
     end
   elseif record then
     local mask = mask_from_input(joypad.getimmediate())
@@ -152,5 +153,9 @@ console.log(string.format("Fin : %d images, salle%03X, cristaux%d/9, credits obs
 if mode == "replay" and md and total == rows[#rows][2] and cfg.assistance then
   assert(seen_ending and final.room == 332 and final.game == 0 and final.crystals == 9,
     "Fin attendue non atteinte : route desynchronisee. Ce n'est pas un test reussi.")
+end
+if mode == "replay" and not md and cfg.route == "sms_full_ntsc" and total == rows[#rows][2] and cfg.assistance then
+  assert(seen_ending and final.room == 332 and final.game == 0 and final.crystals == 9,
+    "Fin SMS attendue non atteinte : adaptation desynchronisee, pas un test reussi.")
 end
 close();client.pause()

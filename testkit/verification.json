@@ -88,27 +88,59 @@
       "boss_assistance": false,
       "sram_imports": 0,
       "scope": "Recorded libretro route replay. SMS files cover intro only. Reaching the recorded ending is not exhaustive game or fidelity validation."
+    },
+    {
+      "route": "sms_full_ntsc",
+      "rom_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+      "core_sha256": "d17f2392115b3cd54258a1fa6c4195ddadc19b0805ebcca400db5162b1793516",
+      "frames": 436161,
+      "full_route_executed": true,
+      "ending_seen": true,
+      "expected_final_passed": true,
+      "final": {
+        "game": 0,
+        "room": 332,
+        "health": 100,
+        "crystals": 9,
+        "audio_error": null
+      },
+      "approach_writes": 210005,
+      "boss_assistance": false,
+      "sram_imports": 0,
+      "feedback_input_reads": false,
+      "guard_frames_checked": 208972,
+      "scope": "Recorded libretro route replay. Full SMS NTSC campaign and SMS intro-only routes are distinct. Reaching the ending does not certify every NPC/quest, PAL, paired graphics/audio or hardware fidelity.",
+      "whole_ram_bytes": 8192,
+      "whole_ram_exact": true,
+      "final_pixels_exact": true,
+      "csv_sha256": "e3e25a075834d37dd6b2ff1a7670b363de6cf23142f9f1c73f6d535daa9fcf8e"
     }
   ],
   "bizhawk": {
-    "lua_syntax_checked": true,
-    "lua_version": "5.3",
-    "api_mock_cases": [
-      "MD replay4422frames:libretro B input200..220 and3hurt writes4420..4422",
-      "SMS record8frames:recorded Up onframes2and3, no memory writes"
-    ],
-    "runtime_used_for_mocks": "Fengari; NOT EmuHawk",
-    "actual_bizhawk_full_campaign_tested": false
+    "actual_bizhawk_full_campaign_tested": false,
+    "previous_script_checks": {
+      "lua_syntax_checked": true,
+      "lua_version": "5.3",
+      "api_mock_cases": [
+        "MD replay4422frames:libretro B input200..220 and3hurt writes4420..4422",
+        "SMS record8frames:recorded Up onframes2and3, no memory writes"
+      ],
+      "runtime_used_for_mocks": "Fengari; NOT EmuHawk"
+    },
+    "current_script_runtime_tested": false,
+    "current_sms_campaign_runtime_tested": false
   },
   "export": {
     "all_md_input_masks_and_guard_writes_expanded_back_exactly": true,
     "rom_files_in_archive": false,
     "core_dll_in_archive": false,
-    "save_states_in_archive": false
+    "save_states_in_archive": false,
+    "all_sms_input_masks_and_guard_writes_expanded_back_exactly": true
   },
   "limits": [
-    "MD end-to-end routes are assisted on approaches; bosses unassisted.",
-    "SMS supplied automatic routes are intro/title only.",
-    "No claim of exact image/audio parity or complete optional-quest coverage."
+    "MD and SMS campaign routes are assisted on approaches, with ordinary boss damage and no save/progression imports.",
+    "SMS full campaign is validated on NTSC libretro only; complete NPC/quest coverage remains open.",
+    "BizHawk files are adaptations and have not been played end-to-end in BizHawk.",
+    "No claim of every-frame graphics, waveform, PAL SMS or hardware equivalence."
   ]
 }

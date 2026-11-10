@@ -20,7 +20,15 @@ def main():
     rom_sha = hashlib.sha256((ROOT / 'input/original.sms').read_bytes()).hexdigest()
     visits = []
     stages = []
-    for name in STAGES:
+    census_path=ROOT/'analysis/sms_plain_house_census_campaign.json'
+    census=read(census_path) if census_path.exists() else None
+    names=STAGES[:]
+    if census:
+        for house in census['completed_houses']:
+            family,name=house['trace'].split('/')
+            assert family=='natural-service-route'
+            if name not in names:names.append(name)
+    for name in names:
         folder = ROOT / 'validation/natural-service-route' / name
         report = read(folder / 'report.json')
         capture = read(folder / 'capture.json')
@@ -139,6 +147,11 @@ def main():
         result['played_campaign_continuation'] = campaign_path.relative_to(ROOT).as_posix()
         result['latest_selected_prefix'] = 'validation/' + campaign['latest_selected_prefix']
         result['current_campaign_checkpoint'] = campaign['current_sms_state']
+        result['full_campaign_complete'] = campaign['full_campaign_complete']
+    if census:
+        result['ordinary_house_census_branch']=census_path.relative_to(ROOT).as_posix()
+        result['current_npc_census_prefix']=census['last_verified_prefix']
+        result['known_ordinary_houses_pending']=len(census['remaining_houses'])
     out = ROOT / 'analysis/sms_npc_coverage_report.json'
     out.write_text(json.dumps(result, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
     print(json.dumps({k: result[k] for k in ('observed_acknowledged_conversations', 'static_plain_house_context_count', 'all_npcs_complete')}))

@@ -79,8 +79,11 @@ def main():
                                                  hit_box=actor[27],contact_box=actor[28]))
             return value
         def score(self,ram):
-            score=super().score(ram)
             value=self.fields(ram)
+            if ('--stop-on-ending' in remaining and self.sms and value['room']==0x14c and
+                value['game']==14 and value['health'] and ram[0xd8]==1):
+                return 1000000+value['health']*100
+            score=super().score(ram)
             if value['room']==self.current['room'] and value['health'] and value['foes'] and value['kind'] not in (0x63,0x64):
                 score-=(80-args.moving_health_premium)*value['health']
             return score

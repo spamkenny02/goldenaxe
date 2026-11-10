@@ -1,11 +1,13 @@
 """Package scripts and recorded controls only; no ROM, DLL or save import."""
-import hashlib,json,zipfile
+import argparse,hashlib,json,zipfile
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1];source=ROOT/'testkit'
-target=ROOT/'handoff/gaw-tests-bizhawk-libretro-v321.zip';assert not target.exists()
+p=argparse.ArgumentParser();p.add_argument('--output',default='handoff/gaw-tests-bizhawk-libretro-v321.zip');a=p.parse_args()
+target=(ROOT/a.output).resolve();assert target.is_relative_to(ROOT/'handoff') and not target.exists()
 files=[p for p in source.rglob('*') if p.is_file() and '__pycache__' not in p.parts
        and (not p.is_relative_to(source/'logs') or p.name=='.gitkeep')]
-assert all(p.suffix.lower() not in ['.sms','.bin','.dll','.state','.srm'] for p in files)
+assert all(p.suffix.lower() not in ['.sms','.bin','.dll','.state','.srm'] or
+           p.relative_to(source).as_posix()=='references/sms_full_ntsc_final_ram.bin' and p.stat().st_size==8192 for p in files)
 hashes={p.relative_to(source).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in files}
 with zipfile.ZipFile(target,'x',compression=zipfile.ZIP_DEFLATED,compresslevel=9) as z:
  for p in files:z.write(p,'gaw-test-kit/'+p.relative_to(source).as_posix())

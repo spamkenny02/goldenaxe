@@ -130,12 +130,23 @@ def main():
         ('post-giant-resume01','intermediate_resume'),('balloon01','balloon'),('main-approach01','contact_passage'),
         ('boss01','ninth_crystal'),('exit01','ninth_dungeon_exit')]
     chain.extend(('natural-dungeon-combat/sms-auto-sms-npc-d9-'+suffix,kind) for suffix,kind in d9)
+    chain.append(('natural-dungeon-route/sms-sms-npc-palace-entry01','palace_entry'))
+    palace=[('switch16d01','contact_passage'),('pregiant01','contact_passage'),
+        ('giant01','intermediate_victory'),('resume01','intermediate_resume'),
+        ('portal14e01','entry_combat'),('earth14e01','earth_passage'),('earth11a01','earth_passage'),
+        ('switch12901','contact_passage'),('switch12c01','contact_passage'),('preguardian01','entry_combat'),
+        ('guardian01','intermediate_victory'),('resume-final01','intermediate_resume'),('goldenaxe01','golden_axe'),
+        ('earth13e01','earth_passage'),('switch17c01','contact_passage'),('portal13c01','entry_combat'),
+        ('switch14b01','contact_passage'),('portal15a01','entry_combat'),('earth15b01','earth_passage'),
+        ('switch16c01','contact_passage'),('pre-final01','entry_combat'),('final01','death_adder'),
+        ('ending01','ending')]
+    chain.extend(('natural-dungeon-combat/sms-auto-sms-npc-palace-'+suffix,kind) for suffix,kind in palace)
     stages=[]
     expected=hashlib.sha256((ROOT/'input/original.sms').read_bytes()).hexdigest()
     for relative,kind in chain:
         folder=ROOT/'validation'/relative
         cap=read(folder/'capture.json')
-        report=read(folder/('route_report.json' if kind in ('entry','bell_entry') else 'report.json'))
+        report=read(folder/('route_report.json' if kind in ('entry','bell_entry','palace_entry') else 'report.json'))
         proof_path=folder.with_name(folder.name+f'-assisted-fixed-replay-{cap["frames"]}')/'replay_report.json'
         proof=read(proof_path)
         assert cap['rom_sha256']==proof['rom_sha256']==expected and cap['sram_input'] is None
@@ -145,11 +156,13 @@ def main():
         assert hashes==proof['evidence']
         assert report['failure'] in (None,'frame_limit')
         raw=(folder/f'ram_{cap["frames"]:05d}.bin').read_bytes()
-        assert raw[0x1d]==12 and raw[0x318]>0
+        assert raw[0x318]>0
+        assert raw[0x1d]==(14 if kind=='death_adder' else 0 if kind=='ending' else 12)
         if kind.startswith('partial_'):
             assert not report['room_cleared']
         elif kind=='entry':assert report['reached_entrance']
         elif kind=='bell_entry':assert report['reached_entrance'] and report['bell_passage_verified'] and raw[0x1cb]&1
+        elif kind=='palace_entry':assert report['reached_entrance'] and report['palace_gate_verified'] and raw[0xf8]==1
         elif kind=='boss_defeated_reward_pending':
             assert report['room_cleared'] and not report['last_actors'] and raw[0xd0]&128
             assert raw[0xda]==40,'This checkpoint is before the real capacity reward'
@@ -201,6 +214,12 @@ def main():
         elif kind=='balloon':assert report['item_acquisition_passed'] and raw[0xeb]==1
         elif kind=='ninth_crystal':assert report['room_cleared'] and raw[0xd7]&128 and raw[0xda]==raw[0x318]==104
         elif kind=='ninth_dungeon_exit':assert report['full_dungeon_cleared'] and raw[0xba]==raw[0x37]==0
+        elif kind=='golden_axe':assert report['item_acquisition_passed'] and raw[0xe1]==2
+        elif kind=='death_adder':assert report['ending_handoff_passed'] and raw[0xd8]==1 and raw[0xe1]==2
+        elif kind=='ending':
+            assert report['ending_complete'] and report['new_assistance_writes']==0 and raw[0xd8]==1
+            assert report['nine_gems_visible_frame']<report['credits_started_frame']<report['credits_finished_frame']<report['acknowledgement_frame']<=report['title_flow_return_frame']
+            assert all(b&128 for b in raw[0xcf:0xd8])
         elif kind=='armor2':assert report['passed'] and report['first_state']['armor']==1 and raw[0xf1]==2
         elif kind=='long_sword':assert report['passed'] and report['first_state']['basic']==1 and raw[0xe0]==2
         elif kind=='boots':assert report['item_acquisition_passed'] and raw[0xee]==1
@@ -212,7 +231,8 @@ def main():
             assert report['first_state']['magic']==report['last_state']['magic']
         stages.append(dict(trace=relative,kind=kind,frame=cap['frames'],
                            fixed_replay=proof_path.relative_to(ROOT).as_posix(),evidence_sha256=hashes))
-    state=dict(frame=cap['frames'],room=int.from_bytes(raw[0xb9:0xbb],'little'),health=raw[0x318],
+    ending_report=report
+    state=dict(frame=cap['frames'],game=raw[0x1d],room=int.from_bytes(raw[0xb9:0xbb],'little'),health=raw[0x318],
                max_health=raw[0xda],gold=raw[0xdd],keys=raw[0xde],rope=raw[0xed],
                crystals=sum(bool(b&128) for b in raw[0xcf:0xd8]),second_boss_defeated=True)
     state.update(armor=raw[0xf1],basic=raw[0xe0],axe=raw[0xe1],magic=raw[0xdb],max_magic=raw[0xdc],
@@ -233,13 +253,16 @@ def main():
                 f4_gold_gift=50,c7_key_purchase_price=60,
                 rope_acquired=True,d3_mechanism_activated=True,
                 latest_selected_prefix=chain[-1][0],current_sms_state=state,
-                full_campaign_complete=False,all_npcs_complete=False,completion_percentage=None,
+                golden_axe_acquired=True,death_adder_defeated=True,ending_complete=True,
+                ending_frames={k:ending_report[k] for k in ('nine_gems_visible_frame','credits_started_frame','credits_finished_frame','acknowledgement_frame','title_flow_return_frame')},
+                full_campaign_complete=True,all_npcs_complete=False,completion_percentage=None,
                 limits=['The successful type63 fight uses recorded approach protection, removed before combat. Its reward acknowledgment is a separate verified stage.',
                         'Partial live fight/exit checkpoints are included only as replayed continuations, never as completed objectives.',
                         'Failed controller experiments and the earlier D3 attempt without a key are not selected.',
                         'Source reward flags can precede modal completion. The second crystal is accepted only after real capacity48 and HP refill, followed by movement and exterior return.',
-                        'F4/B4 returns, teacher upgrade/refusals, equipment hints/returns, all merchant choices/pages, remaining NPCs/quests and paired MD checks remain open.',
-                        'Guide observations are sampled screenshots. Neither episode has been watched in full.'])
+                        'Remaining gold-house returns, teacher refusals/returns and Tyris/Linda visits, equipment hints/returns, all merchant choices/pages, remaining NPCs/quests and paired MD checks remain open.',
+                        'Guide observations are sampled screenshots. No episode has been watched in full.',
+                        'This original-SMS campaign is independently replayed on the tested NTSC core. It is not a full PAL, paired MD, all-frame, waveform or hardware fidelity audit.'])
     (ROOT/'analysis/sms_npc_campaign_progress_report.json').write_text(json.dumps(report,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
     print(json.dumps(dict(passed=True,stages=len(stages),current=state)))
 

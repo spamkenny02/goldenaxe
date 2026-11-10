@@ -66,7 +66,7 @@ def main():
   value=decide(frame)
   if frame>start and (not controls or controls[-1]['buttons']!=value):controls.append(dict(frame=frame,buttons=value))
   return value
- with contextlib.redirect_stdout(io.StringIO()):run(rom,max(a.frames,start+10000),out,captures,cap['presses'],skip_intro=False,input_provider=controller,ram_observer=observe,ram_writes=FrameWrites(writes),stop_when=lambda:bool(failure) or done is not None and observed>=done+30)
+ with contextlib.redirect_stdout(io.StringIO()):run(rom,max(a.frames,start+10000),out,captures,cap['presses'],skip_intro=False,input_provider=controller,ram_observer=observe,ram_writes=FrameWrites(writes),core_options=cap['core_options'],stop_when=lambda:bool(failure) or done is not None and observed>=done+30)
  # Preserve the exact prefix inputs as ordinary intervals in capture.json.
  actual=json.loads((out/'capture.json').read_bytes());actual['presses']=[list(x) for x in presses];(out/'capture.json').write_text(json.dumps(actual,indent=2)+'\n')
  report=dict(passed=done is not None and len(visited)==len(targets) and not failure,failure=failure or (None if done else 'frame_limit'),source_sha256=cap['rom_sha256'],rom_sha256=cap['rom_sha256'],prefix=a.prefix,prefix_end=start,room=a.room,outside=a.outside,visited=visited,required_targets=targets,last_state={k:v for k,v in state.items() if k!='tilemap'},primary_ram_writes=len(writes),new_assistance_writes=0,assisted_route=bool(writes),sram_imports=0,progression_imports=0,scope='Unmodified SMS from cold boot with original text-entry/completion observations and ordinary walking/acknowledgment. Inherited approach protection, if any, is fully recorded; no new writes during this NPC stage. Plain-house current-state variants only.')

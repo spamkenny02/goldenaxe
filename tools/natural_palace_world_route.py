@@ -12,12 +12,16 @@ from rebase_natural_campaign import evidence
 
 def main():
     assert '--world-route' in sys.argv and '--prefix-combat' in sys.argv
+    sms='--sms' in sys.argv
     name=sys.argv[sys.argv.index('--prefix-combat')+1]
     prefix=ROOT/'validation/natural-dungeon-combat'/name
     cap=json.loads((prefix/'capture.json').read_bytes());start=cap['frames']
-    sy=symbols(ROOT/'megadrive/out/release/symbol.txt');raw=evidence(prefix/f'ram_{start:05d}.bin')
-    save=bytes(raw[(sy['game_save_state']+i)^1] for i in range(592));assert all(v&128 for v in save[0x1f:0x28])
-    flags=save[0x50:0x150];original_render,original_run=game.World.render_cells,game.run
+    sy=None if sms else symbols(ROOT/'megadrive/out/release/symbol.txt');raw=evidence(prefix/f'ram_{start:05d}.bin')
+    if sms:
+        assert all(v&128 for v in raw[0xcf:0xd8]);flags=raw[0x100:0x200]
+    else:
+        save=bytes(raw[(sy['game_save_state']+i)^1] for i in range(592));assert all(v&128 for v in save[0x1f:0x28]);flags=save[0x50:0x150]
+    original_render,original_run=game.World.render_cells,game.run
     result={};events=[];first=None;opened=None;driver=Path(__file__).read_bytes()
 
     def render(world, room, cells, meta=None):
@@ -57,10 +61,15 @@ def main():
             nonlocal first,opened
             base(frame,ram)
             if frame<=start:return
-            data=lambda n,k:bytes(ram[(sy[n]+i)^1] for i in range(k));w=lambda n:int.from_bytes(data(n,2),'big')
-            if w('room_id')!=0x8b:return
-            save=data('game_save_state',592);cells=data('scratch',4096)[0x800:0x8a0]
-            state=dict(frame=frame,room=0x8b,game=w('game_state'),seen=save[0x48],flag=save[0xdb],cells=[cells[n] for n in [0x30,0x40,0x50]],health=w('hero_health'),magic=w('hero_magic'))
+            if sms:
+                if int.from_bytes(ram[0xb9:0xbb],'little')!=0x8b:return
+                state=dict(frame=frame,room=0x8b,game=ram[0x1d],seen=ram[0xf8],flag=ram[0x18b],
+                           cells=[ram[0x1c00+n] for n in [0x30,0x40,0x50]],health=ram[0x318],magic=ram[0xdb])
+            else:
+                data=lambda n,k:bytes(ram[(sy[n]+i)^1] for i in range(k));w=lambda n:int.from_bytes(data(n,2),'big')
+                if w('room_id')!=0x8b:return
+                save=data('game_save_state',592);cells=data('scratch',4096)[0x800:0x8a0]
+                state=dict(frame=frame,room=0x8b,game=w('game_state'),seen=save[0x48],flag=save[0xdb],cells=[cells[n] for n in [0x30,0x40,0x50]],health=w('hero_health'),magic=w('hero_magic'))
             if first is None and state['seen']:first=state
             if state['seen'] and state['cells']==[0x30,0x31,0x1f] and opened is None:opened=state
             if not events or any(state[k]!=events[-1][k] for k in ['game','seen','flag','cells']):events.append(state);args[3].add(frame+1)

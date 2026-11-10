@@ -192,3 +192,33 @@ La cloche a ouvert le passage CB. Les deux gardiens intermédiaires et le boss
 principal du neuvième labyrinthe sont vaincus avant la récompense et la sortie.
 Les 145 étapes sélectionnées sont vérifiées ; le palais et la fin restent
 à terminer. La couverture exhaustive des PNJ et des variantes reste ouverte.
+
+## Campagne SMS terminée, couverture PNJ toujours ouverte
+
+La hache d'or est acquise, les deux gardiens du palais et Death Adder sont
+vaincus. La scène des neuf gemmes est observée à la frame 427911, le générique
+débute à 428607 et se termine à 436031. Un appui normal l'acquitte à 436061 ;
+le parcours est conservé jusqu'à 436161, dans le retour à l'intro.
+Les 169 étapes sélectionnées sont rejouées. Le CSV portable SMS NTSC est
+également rejoué en entier : RAM de 8192 octets et pixels finaux identiques.
+
+Ce résultat ne valide **pas tous les PNJ** : neuf conversations ordinaires
+et plusieurs services/quêtes sont visités, mais des PNJ, des variantes et des
+revisites restent à faire. Le parcours sera repris avant le palais pour
+poursuivre ce travail. La vidéo 100 % PNJ/quête n'est pas prête. Les parties
+1, 2, 4, 5 et 6 du guide sont seulement échantillonnées, aucune visionnée en entier.
+
+## Branche de visites avant le palais
+
+Le parcours est repris à la sortie du neuvième labyrinthe. L'entrée cachée FB/8F
+est réellement ouverte avec Terre niveau 2 (8 points de magie consommés), puis
+son habitant est interrogé. Les trois conversations de FE/00 sont aussi terminées.
+Les entrées, fins de rendu, acquittements et sorties normales sont enregistrés ;
+chaque étape a sa relecture indépendante avec RAM et image finales identiques.
+Le relevé `sms_plain_house_census_campaign.json` distingue ces nouvelles visites
+des maisons restant à parcourir. Elles ne figurent pas dans l'ancien CSV allant
+au générique. Les quêtes, dialogues conditionnels et autres services restent ouverts.
+
+L'enregistreur SMS produit une vidéo avec le son réel du cœur officiel. L'essai
+de 600 frames passe (600 images, 441568 échantillons stéréo à 44100 Hz, écart
+audio/vidéo inférieur à 0,001 seconde). Il ne constitue pas une preuve 100 %.
