@@ -214,6 +214,10 @@ def main():
                         'equipment_quest:b1/reward':'dragon_mail_reward_and_exit_replayed; other_variants_pending',
                         'equipment_quest:6a/reward':'flame_sword_reward_and_exit_replayed; other_variants_pending',
                         'paid_passage:3c':'actual10_gold_payment_and_destination1a_replayed; other_variants_pending'})
+                if report.get('ninth_crystal_reward_and_exit_verified'):
+                    upgrades.update({
+                        'paid_passage:1a':'actual10_gold_return_payment_and_destination3c_replayed; other_variants_pending',
+                        'paid_passage:3c':'actual10_gold_payment_destination1a_and_reverse_trip_replayed; other_variants_pending'})
                 if case['id'] in upgrades:
                     case['sms_status']=upgrades[case['id']]
                     case['observations'].append(dict(report='analysis/sms_npc_campaign_progress_report.json',milestone='sixth_crystal'))

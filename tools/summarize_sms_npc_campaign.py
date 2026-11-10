@@ -117,12 +117,25 @@ def main():
                  for i,kind in enumerate(d8,1))
     chain.extend([('natural-dungeon-combat/sms-auto-sms-npc-d8-boss01','eighth_crystal'),
                   ('natural-dungeon-combat/sms-auto-sms-npc-d8-exit01','eighth_dungeon_exit')])
+    chain.extend([
+        ('natural-dungeon-route/sms-sms-npc-d9-returnpaid1a-entry01','entry'),
+        ('natural-service-route/sms-npc-d9-returnpaid1a-service01','paid_passage'),
+        ('natural-dungeon-route/sms-sms-npc-d9-healer94-entry01','entry'),
+        ('natural-service-route/sms-npc-d9-healer94-rest01','free_rest'),
+        ('natural-dungeon-route/sms-sms-npc-d9-entry01','bell_entry'),
+    ])
+    d9=[('switch1de01','earth_contact'),('earth1ce01','earth_passage'),('mini-ready01','entry_combat'),
+        ('midboss01','intermediate_victory'),('resume01','intermediate_resume'),('switch1ad01','contact_passage'),
+        ('portal19e-ready01','entry_combat'),('giant-ready01','reach_room'),('giant01','intermediate_victory'),
+        ('post-giant-resume01','intermediate_resume'),('balloon01','balloon'),('main-approach01','contact_passage'),
+        ('boss01','ninth_crystal'),('exit01','ninth_dungeon_exit')]
+    chain.extend(('natural-dungeon-combat/sms-auto-sms-npc-d9-'+suffix,kind) for suffix,kind in d9)
     stages=[]
     expected=hashlib.sha256((ROOT/'input/original.sms').read_bytes()).hexdigest()
     for relative,kind in chain:
         folder=ROOT/'validation'/relative
         cap=read(folder/'capture.json')
-        report=read(folder/('route_report.json' if kind=='entry' else 'report.json'))
+        report=read(folder/('route_report.json' if kind in ('entry','bell_entry') else 'report.json'))
         proof_path=folder.with_name(folder.name+f'-assisted-fixed-replay-{cap["frames"]}')/'replay_report.json'
         proof=read(proof_path)
         assert cap['rom_sha256']==proof['rom_sha256']==expected and cap['sram_input'] is None
@@ -136,6 +149,7 @@ def main():
         if kind.startswith('partial_'):
             assert not report['room_cleared']
         elif kind=='entry':assert report['reached_entrance']
+        elif kind=='bell_entry':assert report['reached_entrance'] and report['bell_passage_verified'] and raw[0x1cb]&1
         elif kind=='boss_defeated_reward_pending':
             assert report['room_cleared'] and not report['last_actors'] and raw[0xd0]&128
             assert raw[0xda]==40,'This checkpoint is before the real capacity reward'
@@ -183,6 +197,10 @@ def main():
         elif kind=='thief_key':assert report['item_acquisition_passed'] and raw[0xef]==1
         elif kind=='eighth_crystal':assert report['room_cleared'] and raw[0xd6]&128 and raw[0xda]==raw[0x318]==96
         elif kind=='eighth_dungeon_exit':assert report['full_dungeon_cleared'] and raw[0xba]==raw[0x37]==0
+        elif kind=='earth_contact':assert report['earth_route_passed'] and report['contact_route_passed'] and report['passed']
+        elif kind=='balloon':assert report['item_acquisition_passed'] and raw[0xeb]==1
+        elif kind=='ninth_crystal':assert report['room_cleared'] and raw[0xd7]&128 and raw[0xda]==raw[0x318]==104
+        elif kind=='ninth_dungeon_exit':assert report['full_dungeon_cleared'] and raw[0xba]==raw[0x37]==0
         elif kind=='armor2':assert report['passed'] and report['first_state']['armor']==1 and raw[0xf1]==2
         elif kind=='long_sword':assert report['passed'] and report['first_state']['basic']==1 and raw[0xe0]==2
         elif kind=='boots':assert report['item_acquisition_passed'] and raw[0xee]==1
@@ -197,6 +215,8 @@ def main():
     state=dict(frame=cap['frames'],room=int.from_bytes(raw[0xb9:0xbb],'little'),health=raw[0x318],
                max_health=raw[0xda],gold=raw[0xdd],keys=raw[0xde],rope=raw[0xed],
                crystals=sum(bool(b&128) for b in raw[0xcf:0xd8]),second_boss_defeated=True)
+    state.update(armor=raw[0xf1],basic=raw[0xe0],axe=raw[0xe1],magic=raw[0xdb],max_magic=raw[0xdc],
+                 ship=raw[0xf0],thief_key=raw[0xef],balloon=raw[0xeb])
     report=dict(passed=True,source_sha256=expected,stages=stages,
                 second_crystal_reward_and_exit_verified=True,
                 third_crystal_reward_and_exit_verified=True,
@@ -206,6 +226,7 @@ def main():
                 seventh_crystal_reward_and_exit_verified=True,ship_acquired=True,
                 eighth_crystal_reward_and_exit_verified=True,dragon_mail_acquired=True,flame_sword_acquired=True,
                 thief_key_acquired=True,paid3c_passage_price=10,
+                ninth_crystal_reward_and_exit_verified=True,balloon_acquired=True,paid1a_return_price=10,
                 gillian_level=2,battler_level=2,battler_upgrade_price=100,
                 running_boots_acquired=True,a1_gold_gift=30,key94_purchase_price=60,free_healer94_refill_verified=True,
                 b4_gold_gift=30,earth_purchase_price=50,battler_dialogue_pcs=[0xb06f,0xb35d],canoe_acquired=True,

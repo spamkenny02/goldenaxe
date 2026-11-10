@@ -181,3 +181,14 @@ Les 126 étapes sélectionnées sont vérifiées. L'essai du passage sans
 confirmation C et l'essai bloqué parmi les voleurs en 19A sont exclus ; le
 trajet retenu active le mécanisme avant le combat. Les refus, variantes de
 texte, revisites et comparaisons MD restent ouverts.
+
+## Dernier jalon SMS : neuf cristaux et ballon
+
+À la frame 363568, le parcours est revenu à l'extérieur EB : neuf cristaux,
+92/104 points de vie, 42 pièces, une clé, les deux équipements de niveau 3,
+le bateau, la clé du voleur et le ballon. Le trajet retour du passeur 1A vers
+3C a coûté dix pièces, puis le soigneur a réellement rétabli 96 points de vie.
+La cloche a ouvert le passage CB. Les deux gardiens intermédiaires et le boss
+principal du neuvième labyrinthe sont vaincus avant la récompense et la sortie.
+Les 145 étapes sélectionnées sont vérifiées ; le palais et la fin restent
+à terminer. La couverture exhaustive des PNJ et des variantes reste ouverte.

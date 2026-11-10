@@ -3768,13 +3768,18 @@
         "Payment and real destination",
         "Return trip"
       ],
-      "sms_status": "pending",
+      "sms_status": "actual10_gold_return_payment_and_destination3c_replayed; other_variants_pending",
       "md_status": "pending",
       "sms_md_comparison_status": "pending",
       "guide_episode": null,
       "guide_timestamp": null,
       "static_basis": "analysis/paid_passage_reference.json",
-      "observations": []
+      "observations": [
+        {
+          "report": "analysis/sms_npc_campaign_progress_report.json",
+          "milestone": "sixth_crystal"
+        }
+      ]
     },
     {
       "id": "paid_passage:3c",
@@ -3790,7 +3795,7 @@
         "Payment and real destination",
         "Return trip"
       ],
-      "sms_status": "actual10_gold_payment_and_destination1a_replayed; other_variants_pending",
+      "sms_status": "actual10_gold_payment_destination1a_and_reverse_trip_replayed; other_variants_pending",
       "md_status": "pending",
       "sms_md_comparison_status": "pending",
       "guide_episode": null,
