@@ -209,6 +209,11 @@ def main():
                     'gold_house:e7':'initial_plus30_gold_replayed; return_and_other_checks_pending'}
                 if report.get('seventh_crystal_reward_and_exit_verified'):
                     upgrades['gold_house:ac']='initial_plus30_gold_replayed; return_and_other_checks_pending'
+                if report.get('eighth_crystal_reward_and_exit_verified'):
+                    upgrades.update({
+                        'equipment_quest:b1/reward':'dragon_mail_reward_and_exit_replayed; other_variants_pending',
+                        'equipment_quest:6a/reward':'flame_sword_reward_and_exit_replayed; other_variants_pending',
+                        'paid_passage:3c':'actual10_gold_payment_and_destination1a_replayed; other_variants_pending'})
                 if case['id'] in upgrades:
                     case['sms_status']=upgrades[case['id']]
                     case['observations'].append(dict(report='analysis/sms_npc_campaign_progress_report.json',milestone='sixth_crystal'))

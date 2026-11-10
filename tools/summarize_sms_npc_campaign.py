@@ -98,6 +98,25 @@ def main():
         ('approach01','entry_combat'),('boss01','seventh_crystal'),('return-earth01','earth_passage'),
         ('exit01','seventh_dungeon_exit')]
     chain.extend(('natural-dungeon-combat/sms-auto-sms-npc-d7-'+suffix,kind) for suffix,kind in d7)
+    chain.extend([
+        ('natural-dungeon-route/sms-sms-npc-d8-dragonmail-entry01','entry'),
+        ('natural-service-route/sms-npc-d8-dragonmail-gift01','armor3'),
+        ('natural-dungeon-route/sms-sms-npc-d8-flamesword-entry01','entry'),
+        ('natural-service-route/sms-npc-d8-flamesword-gift01','flame_sword'),
+        ('natural-dungeon-route/sms-sms-npc-d8-healer94-entry01','entry'),
+        ('natural-service-route/sms-npc-d8-healer94-rest01','free_rest'),
+        ('natural-dungeon-route/sms-sms-npc-d8-paid3c-entry01','entry'),
+        ('natural-service-route/sms-npc-d8-paid3c-service02','paid_passage'),
+        ('natural-dungeon-route/sms-sms-npc-d8-entry01','entry'),
+        ('natural-dungeon-combat/sms-auto-sms-npc-d8-mini-ready01','entry_combat'),
+        ('natural-dungeon-combat/sms-auto-sms-npc-d8-midboss01','intermediate_victory'),
+        ('natural-dungeon-combat/sms-auto-sms-npc-d8-resume01','intermediate_resume'),
+    ])
+    d8=['entry_combat','contact_passage','contact_passage','earth_passage','thief_key','contact_passage','entry_combat']
+    chain.extend((f'natural-dungeon-combat/sms-auto-sms-npc-d8-stage{i:02d}-'+('02' if i==6 else '01'),kind)
+                 for i,kind in enumerate(d8,1))
+    chain.extend([('natural-dungeon-combat/sms-auto-sms-npc-d8-boss01','eighth_crystal'),
+                  ('natural-dungeon-combat/sms-auto-sms-npc-d8-exit01','eighth_dungeon_exit')])
     stages=[]
     expected=hashlib.sha256((ROOT/'input/original.sms').read_bytes()).hexdigest()
     for relative,kind in chain:
@@ -153,11 +172,17 @@ def main():
         elif kind=='ice_bell':assert report['item_acquisition_passed'] and raw[0xea]==1
         elif kind=='sixth_crystal':assert report['room_cleared'] and raw[0xd4]&128 and raw[0xda]==raw[0x318]==80
         elif kind=='sixth_dungeon_exit':assert report['full_dungeon_cleared'] and raw[0xba]==raw[0x37]==0
-        elif kind=='intermediate_victory':assert report['room_cleared'] and raw[0xd5]&128==0
+        elif kind=='intermediate_victory':assert report['room_cleared'] and raw[0xce+raw[0x37]]&128==0
         elif kind=='intermediate_resume':assert report['resumed_after_verified_intermediate'] and report['new_assistance_writes']==1 and raw[0x305]==129
         elif kind=='ship':assert report['item_acquisition_passed'] and raw[0xf0]==1
         elif kind=='seventh_crystal':assert report['room_cleared'] and raw[0xd5]&128 and raw[0xda]==raw[0x318]==88
         elif kind=='seventh_dungeon_exit':assert report['full_dungeon_cleared'] and raw[0xba]==raw[0x37]==0
+        elif kind=='armor3':assert report['passed'] and report['first_state']['armor']==2 and raw[0xf1]==3
+        elif kind=='flame_sword':assert report['passed'] and report['first_state']['basic']==2 and raw[0xe0]==3
+        elif kind=='paid_passage':assert report['passed'] and report['price']==10 and report['first_state']['gold']-report['last_state']['gold']==10
+        elif kind=='thief_key':assert report['item_acquisition_passed'] and raw[0xef]==1
+        elif kind=='eighth_crystal':assert report['room_cleared'] and raw[0xd6]&128 and raw[0xda]==raw[0x318]==96
+        elif kind=='eighth_dungeon_exit':assert report['full_dungeon_cleared'] and raw[0xba]==raw[0x37]==0
         elif kind=='armor2':assert report['passed'] and report['first_state']['armor']==1 and raw[0xf1]==2
         elif kind=='long_sword':assert report['passed'] and report['first_state']['basic']==1 and raw[0xe0]==2
         elif kind=='boots':assert report['item_acquisition_passed'] and raw[0xee]==1
@@ -179,6 +204,8 @@ def main():
                 fifth_crystal_reward_and_exit_verified=True,
                 sixth_crystal_reward_and_exit_verified=True,ice_bell_acquired=True,
                 seventh_crystal_reward_and_exit_verified=True,ship_acquired=True,
+                eighth_crystal_reward_and_exit_verified=True,dragon_mail_acquired=True,flame_sword_acquired=True,
+                thief_key_acquired=True,paid3c_passage_price=10,
                 gillian_level=2,battler_level=2,battler_upgrade_price=100,
                 running_boots_acquired=True,a1_gold_gift=30,key94_purchase_price=60,free_healer94_refill_verified=True,
                 b4_gold_gift=30,earth_purchase_price=50,battler_dialogue_pcs=[0xb06f,0xb35d],canoe_acquired=True,

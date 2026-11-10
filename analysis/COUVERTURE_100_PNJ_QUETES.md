@@ -169,3 +169,15 @@ et la sortie sont joués, puis rejoués exactement. Les 105 étapes sélectionn�
 sont vérifiées. La reprise de la protection d'approche après le gardien ne
 modifie ni ses dégâts déjà subis, ni les ressources, ni les quêtes ; elle est
 retirée avant le boss principal. L'accès raté au marchand A5 est exclu.
+
+## Dernier jalon SMS : huitième cristal
+
+Le parcours rejoint l'extérieur 29 à la frame 327106, avec huit cristaux,
+90/96 points de vie, 32 pièces et une clé. Les dons de l'armure de dragon en B1
+et de l'épée de feu en 6A sont obtenus par les trajets maritimes. Le passage
+3C vers 1A est payé avec dix pièces réelles. Le gardien intermédiaire, la clé
+du voleur, les mécanismes, le boss principal et la sortie sont rejoués.
+Les 126 étapes sélectionnées sont vérifiées. L'essai du passage sans
+confirmation C et l'essai bloqué parmi les voleurs en 19A sont exclus ; le
+trajet retenu active le mécanisme avant le combat. Les refus, variantes de
+texte, revisites et comparaisons MD restent ouverts.

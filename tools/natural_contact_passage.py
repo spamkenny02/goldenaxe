@@ -40,6 +40,7 @@ def main():
    if cached.get('frame')==f:return cached['buttons']
    active=f>start and state.get('room')==a.contact_room and (a.mechanism_during_combat or not state['enemies']) and opened is None
    if done is not None:value=[]
+   elif f>start and state.get('hero')==12:value=controller(f) # Preserve ordinary escape inputs during a thief grab.
    elif f>start and state.get('room')==a.contact_room and opened is None and not a.mechanism_during_combat and state['enemies'] and not state['active_enemies']:value=[] # Wait for actual spawn/contact activation before combat navigation.
    elif not active:value=controller(f)
    elif state['game']!=12 or state['hero'] not in [0,1]:value=[]

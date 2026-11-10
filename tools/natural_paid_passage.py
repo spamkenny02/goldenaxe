@@ -15,6 +15,7 @@ def main():
     p.add_argument('--outside', type=lambda s: int(s, 0), required=True)
     p.add_argument('--trial', required=True)
     p.add_argument('--assisted-prefix', action='store_true')
+    p.add_argument('--sms', action='store_true')
     a = p.parse_args()
     source = ROOT/'validation/natural-dungeon-route'/a.prefix
     c = json.loads((source/'capture.json').read_bytes())
@@ -22,7 +23,7 @@ def main():
     assert prior['reached_entrance'] and prior['failure'] is None
     assert prior['house_outside'] == a.outside and prior['house_target'] == 0x9f
     assert c['sram_input'] is None
-    rom = ROOT/'gaw-megadrive.bin'
+    rom = ROOT/('input/original.sms' if a.sms else 'gaw-megadrive.bin')
     assert c['rom_sha256'] == sha(rom.read_bytes())
     ref = json.loads((ROOT/'analysis/paid_passage_reference.json').read_bytes())
     assert ref['source_sha256'] == sha((ROOT/'input/original.sms').read_bytes())
@@ -36,9 +37,9 @@ def main():
     for i, row in enumerate(controls):
         end = controls[i+1]['frame']-1 if i+1 < len(controls) else start
         timeline[row['frame']:end+1] = [tuple(row['buttons'])]*(end-row['frame']+1)
-    folder = ROOT/'validation/natural-service-route'/('md-'+a.trial)
+    folder = ROOT/'validation/natural-service-route'/(('sms-' if a.sms else 'md-')+a.trial)
     assert not folder.exists()
-    sy = symbols(ROOT/'megadrive/out/release/symbol.txt')
+    sy = None if a.sms else symbols(ROOT/'megadrive/out/release/symbol.txt')
     state, events, captures = {}, [], {start}
     first = done = failure = previous = None
     observed = 0
@@ -48,6 +49,16 @@ def main():
         observed = f
         if f < start:
             return
+        if a.sms:
+            state.update(room=int.from_bytes(raw[0xb9:0xbb],'little'),game=raw[0x1d],hero=raw[0x301],
+                         counter=raw[0x304],x=raw[0x313],y=raw[0x311],health=raw[0x318],max_health=raw[0xda],
+                         gold=raw[0xdd],keys=raw[0xde],magic=raw[0xdb],modal=raw[0x1d]==22,audio_error=0,
+                         outside_flags=raw[0x100+target],inventory_hex=raw[0xe0:0xf1].hex(),
+                         crystals_hex=raw[0xcf:0xd8].hex())
+        else:observe_md(raw)
+        finish_observation(f)
+
+    def observe_md(raw):
         data = lambda n, k: bytes(raw[(sy[n]+i)^1] for i in range(k))
         word = lambda n: int.from_bytes(data(n, 2), 'big')
         state.update(room=word('room_id'), game=word('game_state'), hero=word('hero_state'),
@@ -58,6 +69,8 @@ def main():
                      outside_flags=data('game_save_state', 592)[0x50+target],
                      inventory_hex=data('hero_items', 17).hex(),
                      crystals_hex=data('game_save_state', 592)[0x1f:0x28].hex())
+    def finish_observation(f):
+        nonlocal first,done,failure,previous
         if first is None:
             first = dict(state)
             assert first['room'] == 0x9f and first['gold'] >= price and first['health']
@@ -87,7 +100,9 @@ def main():
             return []
         if state['x'] != 136:
             return [7 if state['x'] < 136 else 6]
-        return [4]
+        # The SMS passage uses an internal confirmation loop without always
+        # publishing game22. Send ordinary fresh C edges while facing the NPC.
+        return [4,8] if a.sms and f%40==0 else [4]
 
     def controller(f):
         value = choose(f)
