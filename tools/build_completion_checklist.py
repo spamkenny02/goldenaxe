@@ -177,6 +177,27 @@ def main():
                 case['sms_status']=('initial_plus50_gold_replayed; return_and_other_checks_pending' if case['id']=='gold_house:f4'
                                     else 'one_key_purchase_for60_gold_and_exit_replayed; other_variants_and_checks_pending')
                 case['observations'].append(dict(report='analysis/sms_npc_campaign_progress_report.json'))
+        if case['id'] in ('gold_house:a1','merchant:94','healer_inn:94'):
+            campaign_path=ROOT/'analysis/sms_npc_campaign_progress_report.json'
+            if campaign_path.exists():
+                report=json.loads(campaign_path.read_bytes());assert report['passed']
+                case['sms_status']={
+                    'gold_house:a1':'initial_plus30_gold_replayed; return_and_other_checks_pending',
+                    'merchant:94':'one_key_purchase_for60_gold_and_exit_replayed; other_variants_pending',
+                    'healer_inn:94':'free_health_refill_preserving_magic_currency_inventory_and_exit_replayed; other_variants_pending',
+                }[case['id']]
+                case['observations'].append(dict(report='analysis/sms_npc_campaign_progress_report.json'))
+        if case['id'] in ('teacher:a3','gold_house:b4','equipment_quest:27/reward','equipment_quest:50/reward'):
+            campaign_path=ROOT/'analysis/sms_npc_campaign_progress_report.json'
+            if campaign_path.exists():
+                report=json.loads(campaign_path.read_bytes());assert report['passed']
+                case['sms_status']={
+                    'teacher:a3':'first_offer_and_level1_purchase_for50_gold_observed_and_replayed; remaining_variants_pending',
+                    'gold_house:b4':'initial_plus30_gold_replayed; return_and_other_checks_pending',
+                    'equipment_quest:27/reward':'plate_mail_reward_and_exit_replayed; entrance_monsters_defeated; other_variants_pending',
+                    'equipment_quest:50/reward':'long_sword_reward_and_exit_replayed; other_variants_pending',
+                }[case['id']]
+                case['observations'].append(dict(report='analysis/sms_npc_campaign_progress_report.json'))
     result = dict(requirement='ALL NPCs and ALL side quests on SMS and MD, including relevant return visits and conditional text variants',
                   requirement_complete=False, census_proved_complete=False,
                   completion_percentage=None,

@@ -16,6 +16,7 @@ def main():
     p.add_argument('--slot', type=int, choices=[0, 1], required=True)
     p.add_argument('--trial', required=True)
     p.add_argument('--assisted-prefix', action='store_true')
+    p.add_argument('--sms', action='store_true')
     a = p.parse_args()
     source = (ROOT / 'validation' / a.trace).resolve()
     assert source.is_relative_to(ROOT / 'validation')
@@ -23,7 +24,7 @@ def main():
     r = json.loads((source / 'report.json').read_bytes())
     assert r['failure'] is None and (r.get('passed') or r.get('room_cleared'))
     assert c['sram_input'] is None
-    rom = ROOT / 'gaw-megadrive.bin'
+    rom = ROOT / ('input/original.sms' if a.sms else 'gaw-megadrive.bin')
     assert sha(rom.read_bytes()) == c['rom_sha256']
     writes = prefix_writes(source, c, a.assisted_prefix)
     controls = json.loads((source / 'controls.json').read_bytes())
@@ -32,9 +33,9 @@ def main():
     for i, row in enumerate(controls):
         end = controls[i + 1]['frame'] - 1 if i + 1 < len(controls) else start
         timeline[row['frame']:end + 1] = [tuple(row['buttons'])] * (end - row['frame'] + 1)
-    sy = symbols(ROOT / 'megadrive/out/release/symbol.txt')
+    sy = None if a.sms else symbols(ROOT / 'megadrive/out/release/symbol.txt')
     driver = Path(__file__).read_bytes()
-    folder = ROOT / 'validation/natural-service-route' / ('md-' + a.trial)
+    folder = ROOT / 'validation/natural-service-route' / (('sms-' if a.sms else 'md-') + a.trial)
     assert not folder.exists()
     state = {}
     first = done = failure = None
@@ -48,6 +49,17 @@ def main():
         observed = f
         if f < start:
             return
+        if a.sms:
+            state.update(room=int.from_bytes(raw[0xb9:0xbb], 'little'), game=raw[0x1d], hero=raw[0x301],
+                         x=raw[0x313], y=raw[0x311], health=raw[0x318], max_health=raw[0xda],
+                         selected=raw[0xdf], slot=raw[0xa0], basic=raw[0xe0], axe=raw[0xe1],
+                         gold=raw[0xdd], keys=raw[0xde], magic=raw[0xdb], items=list(raw[0xe0:0xf1]),
+                         crystals=list(raw[0xcf:0xd8]), audio_error=0)
+        else:
+            observe_md(raw)
+        finish_observation(f)
+
+    def observe_md(raw):
         data = lambda n, k: bytes(raw[(sy[n] + i) ^ 1] for i in range(k))
         word = lambda n: int.from_bytes(data(n, 2), 'big')
         state.update(room=word('room_id'), game=word('game_state'), hero=word('hero_state'),
@@ -57,6 +69,8 @@ def main():
                      gold=word('hero_gold'), keys=word('hero_keys'), magic=word('hero_magic'),
                      items=list(data('hero_items', 17)), crystals=list(data('game_save_state', 592)[0x1f:0x28]),
                      audio_error=word('sound_unhandled_command'))
+    def finish_observation(f):
+        nonlocal first, done, failure, seen_menu
         if first is None:
             first = dict(state)
             assert first['health'] and first['game'] == 12

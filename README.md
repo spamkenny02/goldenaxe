@@ -23,34 +23,27 @@ dans BizHawk reste à vérifier. Le kit SMS couvre l’intro et permet de
 suivre/enregistrer une partie ; il ne contient pas de campagne SMS complète
 validée. [Résultats du kit](testkit/verification.json).
 
-Un nouveau parcours SMS continu est en cours, avec visite des PNJ et
-revisites selon les étapes des quêtes. Il a terminé le premier donjon et
-validé neuf conversations dans deux villages : texte déclenché, rendu
-terminé, fermeture et déplacement, puis relecture indépendante des entrées.
-La protection autorisée sur certaines approches est enregistrée et retirée
-avant le boss ; aucun état de quête ni sauvegarde n'est importé.
-[Relevé des PNJ SMS](analysis/sms_npc_coverage_report.json).
-Le parcours a également acquis la hache, révélé Gillian et échangé la pomme
-d'or contre la magie de la Foudre, avec trois dialogues SMS observés et rejoués.
-Le [suivi de cette quête](analysis/gillian_quest_campaign_report.json) distingue
-les variantes restantes. La [fée de vie C9](analysis/npc_fairy_campaign_report.json)
-a été visitée puis revisitée sur SMS et MD : gain de capacité de 8, puis
-absence de second don. La comparaison complète des pages, du rendu et du son
-de ces services reste ouverte.
-La [maison d'argent D4](analysis/npc_gold_campaign_report.json) est aussi
-parcourue sur SMS : don de 10 pièces, puis retour sans nouveau don, avec
-relecture indépendante. Sa visite MD reste à faire.
-Le [parcours SMS avec les PNJ](analysis/sms_npc_campaign_progress_report.json)
-a depuis vaincu le deuxième boss, achevé la récompense du deuxième cristal et
-quitté son donjon. Le don de 50 pièces en F4 et l'achat réel d'une clé pour
-60 pièces en C7 sont rejoués. La corde du troisième donjon est acquise,
-son mécanisme activé, puis son boss vaincu : troisième cristal, capacité de
-vie 56 et sortie du donjon vérifiés. La campagne SMS et la couverture exhaustive restent
-en cours. Les essais échoués ne sont pas ajoutés aux étapes accomplies.
+Le [parcours SMS continu avec les PNJ](analysis/sms_npc_campaign_progress_report.json)
+a obtenu cinq cristaux et quitté les cinq premiers donjons. Les récompenses
+et les retours à l'extérieur sont vérifiés par relecture indépendante des
+commandes depuis le démarrage sur la ROM originale. La capacité de vie est
+maintenant de 72 ; corde, canoë, bottes de course, cotte de mailles et épée longue
+ont été acquis par les actions du jeu. Le parcours poursuit sa route vers le
+sixième donjon. Aucune nouvelle ROM MD n'est publiée pour cette seule progression.
+
+Neuf conversations ordinaires, la quête de Gillian/Foudre, la fée C9,
+plusieurs donneurs d'argent, les achats de clés C7/94, Battler/Terre,
+les donneurs d'équipement 27/50 et le soigneur 94 sont parcourus.
+Les variantes et revisites encore manquantes restent explicitement ouvertes
+[dans le relevé de couverture](analysis/sms_npc_coverage_report.json).
+La protection autorisée sur les approches est enregistrée et retirée avant
+les boss ; aucun état de quête ni sauvegarde n'est importé. Les essais échoués
+ne sont pas ajoutés aux étapes accomplies.
+
 Les 65 contextes statiques des maisons ordinaires ne constituent pas le
-nombre total de PNJ ou de variantes. Marchands, donneurs de quêtes,
-dialogues conditionnels et autres textes restent à couvrir. Ce parcours
-partiel n'est pas encore livré dans l'archive du kit de tests.
+nombre total de PNJ ou de variantes. Marchands, dialogues conditionnels,
+quêtes et autres textes restent à couvrir. Le parcours SMS est encore partiel
+et n'est pas livré comme campagne complète dans l'archive du kit de tests.
 
 La même couverture exhaustive est requise sur Mega Drive, avec les mêmes
 conditions de quête : textes, pages, choix, récompenses, fermeture du dialogue,

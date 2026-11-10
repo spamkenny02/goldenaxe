@@ -148,6 +148,10 @@ def main():
             if state['hero']==0:exit_reset_seen=True
             if any(e['type']>=0x20 for e in actors):seen_enemies=True
             gem_done=not args.collect_gem or state['progress']==128 and state['max_health']>=32 and state['health']==state['max_health'] and state['magic']==state['max_magic'] and not state['reward_active'] and (args.expected_gem_capacity is None or state['max_health']==args.expected_gem_capacity)
+            if args.sms and args.collect_gem:
+                # SMS has no native item_reward_active word. A progression
+                # flag/full pre-existing gauges can precede its reward modal.
+                gem_done=gem_done and gem_picked_at is not None and f-gem_picked_at>=300
             item_done=args.collect_item is None or item_picked_at is not None and f-item_picked_at>=300 and state['item_value']>=args.collect_item_value and not state['reward_active']
             if seen_enemies and state['health'] and state['game']==12 and not any(e['slot']<8 or e['hp'] for e in actors) and (not args.collect_key or state['keys']>target_entry_keys) and gem_done and item_done and cleared is None:cleared=f;captures.add(f+1)
             if args.exit_dungeon and exit_reset_seen and (args.exit_before_crystal or state.get('completed_dungeon_progress')==128) and state.get('dungeon')==0 and state['max_health']==exit_max_health and state['health'] and state['game']==12 and state['hero']==1 and not state.get('resume_phase',0) and not state.get('door_loading',0) and cleared is None:cleared=f;captures.add(f+1)

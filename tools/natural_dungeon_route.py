@@ -135,7 +135,7 @@ class World:
         return [step for segment in reversed(segments) for step in segment],len(parents)
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--plan',action='store_true');parser.add_argument('--door-entry-direction',type=int,choices=range(4),default=0,help='Final ordinary door entry direction:0 up,1 down,2 left,3 right');parser.add_argument('--live-room-replan',action='store_true',help='Replan a blocked static waypoint from the observed current room map');parser.add_argument('--rope-terrain',action='store_true',help='Propose vertical source-like climbs using the already acquired rope');parser.add_argument('--required-chop',help='ROOM:cell prerequisite to cut before routing to the final house');parser.add_argument('--axe-terrain',action='store_true',help='Plan destructible exterior cells and cut them using an already owned/equipped axe');parser.add_argument('--sms',action='store_true');parser.add_argument('--pal',action='store_true');parser.add_argument('--frames',type=int,default=12000);parser.add_argument('--trial',default='01');parser.add_argument('--door-index',type=int,default=1);parser.add_argument('--retry-deaths',type=int,default=0,help='Use normal Continue after death, at most this many times');parser.add_argument('--house-outside',type=lambda x:int(x,0),help='Route to a source unconditional house door in this exterior room');parser.add_argument('--house-target',type=lambda x:int(x,0),default=0xaf);parser.add_argument('--prefix-replay',help='Validated cold rebase trace, relative to validation/');parser.add_argument('--prefix-service',help='Completed natural NPC service trace');parser.add_argument('--prefix-combat',help='Natural completed combat trace, replayed from cold boot');parser.add_argument('--prefix-rope',help='Verified acquired-rope route in natural-rope-route/');parser.add_argument('--live-prefix-terrain',action='store_true',help='Use the verified current room map until leaving it');parser.add_argument('--prefix-completed-action',action='store_true',help='Explicitly continue a cold-verified assisted ordinary action; decode its exterior position from captured RAM');parser.add_argument('--assisted-prefix',action='store_true',help='Explicitly continue a verified assisted recording');parser.add_argument('--rom',type=Path);parser.add_argument('--symbols',type=Path);parser.add_argument('--out',type=Path);args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('--plan',action='store_true');parser.add_argument('--door-entry-direction',type=int,choices=range(4),default=0,help='Final ordinary door entry direction:0 up,1 down,2 left,3 right');parser.add_argument('--live-room-replan',action='store_true',help='Replan a blocked static waypoint from the observed current room map');parser.add_argument('--rope-terrain',action='store_true',help='Propose vertical source-like climbs using the already acquired rope');parser.add_argument('--required-chop',help='ROOM:cell prerequisite to cut before routing to the final house');parser.add_argument('--axe-terrain',action='store_true',help='Plan destructible exterior cells and cut them using an already owned/equipped axe');parser.add_argument('--sms',action='store_true');parser.add_argument('--pal',action='store_true');parser.add_argument('--frames',type=int,default=12000);parser.add_argument('--trial',default='01');parser.add_argument('--door-index',type=int,default=1);parser.add_argument('--retry-deaths',type=int,default=0,help='Use normal Continue after death, at most this many times');parser.add_argument('--house-outside',type=lambda x:int(x,0),help='Route to a source unconditional house door in this exterior room');parser.add_argument('--house-target',type=lambda x:int(x,0),default=0xaf);parser.add_argument('--prefix-replay',help='Validated cold rebase trace, relative to validation/');parser.add_argument('--prefix-service',help='Completed natural NPC service trace');parser.add_argument('--prefix-combat',help='Natural completed combat trace, replayed from cold boot');parser.add_argument('--prefix-rope',help='Verified acquired-rope route in natural-rope-route/');parser.add_argument('--live-prefix-terrain',action='store_true',help='Use the verified current room map until leaving it');parser.add_argument('--prefix-completed-action',action='store_true',help='Explicitly continue a cold-verified assisted ordinary action; decode its exterior position from captured RAM');parser.add_argument('--assisted-prefix',action='store_true',help='Explicitly continue a verified assisted recording');parser.add_argument('--rom',type=Path);parser.add_argument('--symbols',type=Path);parser.add_argument('--out',type=Path);parser.add_argument('--fight-for-entrance',action='store_true',help='Use ordinary combat input on the destination exterior before entering its revealed house');args=parser.parse_args()
     md_rom=args.rom or ROOT/'gaw-megadrive.bin';md_symbols=args.symbols or ROOT/'megadrive/out/release/symbol.txt'
     assert not args.live_room_replan or args.axe_terrain, 'Live replanning requires the existing tilemap observer'
     world=World(args.door_index,args.house_outside,args.house_target);world.axe_terrain=args.axe_terrain;world.rope_terrain=args.rope_terrain;start=(0x95,136,112);prefix_end=0;prefix_inputs=[];prefix_presses=[];inherited_writes=[];prefix_ram=None;live_initial_room=None
@@ -228,8 +228,21 @@ def main():
     live_replans=set()
     state={};events=[];samples=[];captures=set();controls=[];cursor=0;cached_frame=-1;cached_buttons=[];last_progress=route_start;reached_at=None;ready_at=None;room_entry_at=None;saw_target_reset=False;probe_before=None;probe_after=None;failure=None
     previous_key=None;observed_frame=0;death_active=False;deaths=0;menu_since=None
+    entrance_actors=[];entrance_combat=[];entrance_direction=0
+    assert not args.fight_for_entrance or args.axe_terrain and args.house_outside is not None
+    def combat_floor(point):
+        x,y=point;p=(((y-4)&248)*8)+(((x-4)>>2)&62)
+        if p+2>=len(live_tilemap):return False
+        left,right=live_tilemap[p],live_tilemap[p+2]
+        for n in range(5):
+            at=0x2544+n*4;address=int.from_bytes(world.rom[at:at+2],'little')
+            patterns=world.rom[address:address+world.rom[at+2]]
+            if left in patterns or n in (1,2) and right in patterns:
+                return world.rom[at+3] not in (3,5)
+        return True
     def observe(f,r):
         nonlocal previous_key,reached_at,ready_at,room_entry_at,saw_target_reset,probe_before,probe_after,failure,observed_frame,death_active,deaths,menu_since,live_cells,live_tilemap,chop_done,path,cursor,last_progress
+        nonlocal entrance_actors
         observed_frame=f
         if args.sms:
             state.update(room=int.from_bytes(r[0xb9:0xbb],'little'),game_state=r[0x1d],hero_state=r[0x301],counter=r[0x304],x=int.from_bytes(r[0x312:0x314],'little')>>8,y=int.from_bytes(r[0x310:0x312],'little')>>8,health=r[0x318],gold=r[0xdd],maze=r[0x6c])
@@ -243,6 +256,11 @@ def main():
                 data=lambda name,k:bytes(r[(sy[name]+i)^1] for i in range(k))
                 live_cells=data('scratch',4096)[0x800:0x8a0];live_tilemap=data('sms_vram',16384)[0x3800:0x3e00];state.update(selected=word('hero_selected_item'),weapon=word('hero_weapon_level'))
             if f==prefix_end:assert state['selected']==1 and state['weapon'],('Owned equipped axe required',state)
+        if args.fight_for_entrance and f>=prefix_end:
+            raw=r[0x600:0x900] if args.sms else data('world_actor_state',768)
+            entrance_actors=[dict(slot=n,type=raw[n*48],hp=raw[n*48+24],flags=raw[n*48+3],
+                                 x=raw[n*48+19],y=raw[n*48+17],hit_box=raw[n*48+27],contact_box=raw[n*48+28])
+                             for n in range(8) if raw[n*48]>=0x20 and raw[n*48+24] and raw[n*48+3]&2]
         # Room IDs/flags publish before the loader places the hero. Replan
         # only from a settled walking point inside the new playfield.
         chop_ready=(state['game_state']==12 and state['hero_state']==1 and not state['counter']
@@ -277,6 +295,7 @@ def main():
         if deaths>args.retry_deaths:failure='hero_died'
     def choose(f):
         nonlocal path,cursor,cached_frame,cached_buttons,last_progress,failure,last_chop
+        nonlocal entrance_direction
         if f<=prefix_end:return prefix_inputs[f]
         if f==cached_frame:return cached_buttons
         cached_frame=f;cached_buttons=[]
@@ -288,7 +307,38 @@ def main():
             return cached_buttons
         if state['game_state']!=12 or state['hero_state'] not in [0,1]:return cached_buttons
         point=(state['room'],state['x'],state['y'])
+        if args.fight_for_entrance and state['room']==world.goal['room'] and entrance_actors:
+            from natural_combat_aim import directions
+            from natural_dungeon_combat import walk
+            import natural_dungeon_combat as combat
+            combat.CANOE_OWNED=world.canoe_owned;combat.SHIP_OWNED=world.ship_owned
+            assert all(e['type']<0x63 for e in entrance_actors),'Do not substitute an exterior entrance fight for a boss'
+            last_progress=f
+            if state['counter']:
+                cached_buttons=[4+entrance_direction];return cached_buttons
+            p=point[1:];variant=state['weapon']+1
+            aimed=next(((e,directions(p,e,variant,safe=False)) for e in entrance_actors
+                        if combat_floor(p) and directions(p,e,variant,safe=False)),None)
+            if aimed:
+                entrance_direction=aimed[1][0]
+                cached_buttons=[4+entrance_direction,8] if f%3 else []
+            else:
+                target=lambda q:combat_floor(q) and any(directions(q,e,variant,safe=False) for e in entrance_actors)
+                route=walk(live_tilemap,p,target,entrance_actors,geometry=True)
+                if route:entrance_direction=route[0];cached_buttons=[4+entrance_direction]
+            if not entrance_combat or entrance_combat[-1]['foes']!=[(e['slot'],e['hp']) for e in entrance_actors]:
+                entrance_combat.append(dict(frame=f,foes=[(e['slot'],e['hp']) for e in entrance_actors]))
+            return cached_buttons
         while cursor<len(path) and point==tuple(path[cursor][2][:3]):cursor+=1;last_progress=f
+        if cursor==len(path) and args.fight_for_entrance and not state['counter'] and state['hero_state']==1:
+            mouth=(world.goal['room'],world.goal['x']-[0,0,-8,8][world.entry_direction],
+                   world.goal['y']-[-8,8,0,0][world.entry_direction])
+            if point!=mouth:
+                replacement,examined=world.route((*point,state['maze']))
+                if replacement:
+                    events.append(dict(frame=f,reason='return_to_entrance_after_combat',actual=point,
+                                       remaining_waypoints=len(replacement),visited_nodes=examined))
+                    path=replacement;cursor=0;last_progress=f
         if cursor==len(path):
             cut=required_chop and not chop_done
             if args.axe_terrain and state['hero_state']==1 and not state['counter']:
@@ -345,6 +395,7 @@ def main():
     if ready_at is None and failure is None:failure='frame_limit'
     if inherited_writes:(directory/'assistance.json').write_bytes((prefix/'assistance.json').read_bytes())
     (directory/'events.json').write_text(json.dumps(events,indent=2)+'\n');(directory/'samples.json').write_text(json.dumps(samples,indent=2)+'\n');(directory/'controls.json').write_text(json.dumps(controls,indent=2)+'\n')
+    if args.fight_for_entrance:(directory/'entrance_combat.json').write_text(json.dumps(entrance_combat,indent=2)+'\n')
     from PIL import Image
     visible=False
     if ready_at is not None:

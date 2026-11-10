@@ -17,6 +17,7 @@ from archive_lossless_evidence import sha
 def main():
     parser=argparse.ArgumentParser(add_help=False)
     parser.add_argument('--planning-step',type=int,choices=[8,16,24,32],default=16)
+    parser.add_argument('--planning-horizon',type=int,choices=[96,192,288],default=96)
     parser.add_argument('--moving-health-premium',type=int,choices=range(81),default=40)
     parser.add_argument('--enter-boss-up',action='store_true',help='Use ordinary UP to finish entering boss65 before starting search')
     parser.add_argument('--target-satellites',action='store_true',help='Include attackable type66 orbiters in boss65 input-search targets')
@@ -27,7 +28,9 @@ def main():
     class CoarsePlanner(original):
         def __init__(self,*values,**options):
             super().__init__(*values,**options)
-            assert self.horizon==96 and self.horizon%args.planning_step==0
+            assert self.horizon==96
+            self.horizon=args.planning_horizon
+            assert self.horizon%args.planning_step==0
             self.step=args.planning_step
             self.entry_ready=set();self.entry_inputs=[];instances.append(self)
         def observe(self,frame,ram):
@@ -36,7 +39,7 @@ def main():
                 self.entry_ready.add(self.current['room'])
         def choose(self,frame,fallback):
             if (args.enter_boss_up and frame>=self.until and self.active and
-                self.current['kind']==0x65 and self.current['room'] not in self.entry_ready):
+                self.current['kind']==0x65 and (self.current['hero']==0 or self.current['y']>144)):
                 self.entry_inputs.append(dict(frame=frame,room=self.current['room'],
                                               x=self.current['x'],y=self.current['y'],
                                               health=self.current['health'],buttons=[4]))
@@ -67,7 +70,8 @@ def main():
     tag='sms' if '--sms' in remaining else 'md'
     path=ROOT/f'validation/natural-dungeon-combat/{tag}-{region}-{trial}/report.json'
     report=json.loads(path.read_bytes())
-    report.update(planning_method=f'96-frame beam,width3,eleven retained paths,{args.planning_step}-frame whole-RAM-verified windows',
+    report.update(planning_method=f'{args.planning_horizon}-frame beam,width3,eleven retained paths,{args.planning_step}-frame whole-RAM-verified windows',
+                  planning_horizon=args.planning_horizon,
                   planning_step=args.planning_step,moving_health_premium=args.moving_health_premium,
                   target_satellites=args.target_satellites,
                   ordinary_entry_up_requested=args.enter_boss_up,

@@ -1644,13 +1644,17 @@
         "Prerequisites met",
         "Reward collected and return visit"
       ],
-      "sms_status": "pending",
+      "sms_status": "long_sword_reward_and_exit_replayed; other_variants_pending",
       "md_status": "pending",
       "sms_md_comparison_status": "pending",
       "guide_episode": null,
       "guide_timestamp": null,
       "static_basis": "analysis/house_quest_reference.json; megadrive/src/house_quest.inc",
-      "observations": []
+      "observations": [
+        {
+          "report": "analysis/sms_npc_campaign_progress_report.json"
+        }
+      ]
     },
     {
       "id": "equipment_quest:50/hint",
@@ -1686,13 +1690,17 @@
         "Prerequisites met",
         "Reward collected and return visit"
       ],
-      "sms_status": "pending",
+      "sms_status": "plate_mail_reward_and_exit_replayed; entrance_monsters_defeated; other_variants_pending",
       "md_status": "pending",
       "sms_md_comparison_status": "pending",
       "guide_episode": null,
       "guide_timestamp": null,
       "static_basis": "analysis/house_quest_reference.json; megadrive/src/house_quest.inc",
-      "observations": []
+      "observations": [
+        {
+          "report": "analysis/sms_npc_campaign_progress_report.json"
+        }
+      ]
     },
     {
       "id": "equipment_quest:27/hint",
@@ -2085,13 +2093,17 @@
         "Return after once-only flag is set",
         "Economic boundary branches if reachable; use an alternate cold-boot input branch"
       ],
-      "sms_status": "pending",
+      "sms_status": "initial_plus30_gold_replayed; return_and_other_checks_pending",
       "md_status": "pending",
       "sms_md_comparison_status": "pending",
       "guide_episode": null,
       "guide_timestamp": null,
       "static_basis": "analysis/house_gold_reference.json; megadrive/src/house_gold.inc",
-      "observations": []
+      "observations": [
+        {
+          "report": "analysis/sms_npc_campaign_progress_report.json"
+        }
+      ]
     },
     {
       "id": "gold_house:ac",
@@ -2129,13 +2141,17 @@
         "Return after once-only flag is set",
         "Economic boundary branches if reachable; use an alternate cold-boot input branch"
       ],
-      "sms_status": "pending",
+      "sms_status": "initial_plus30_gold_replayed; return_and_other_checks_pending",
       "md_status": "pending",
       "sms_md_comparison_status": "pending",
       "guide_episode": null,
       "guide_timestamp": null,
       "static_basis": "analysis/house_gold_reference.json; megadrive/src/house_gold.inc",
-      "observations": []
+      "observations": [
+        {
+          "report": "analysis/sms_npc_campaign_progress_report.json"
+        }
+      ]
     },
     {
       "id": "gold_house:dd",
@@ -2959,13 +2975,17 @@
         "Already owned, inferior equipment, full capacity: each applicable reachable message",
         "Return after equipment and quest changes"
       ],
-      "sms_status": "pending",
+      "sms_status": "one_key_purchase_for60_gold_and_exit_replayed; other_variants_pending",
       "md_status": "pending",
       "sms_md_comparison_status": "pending",
       "guide_episode": null,
       "guide_timestamp": null,
       "static_basis": "megadrive/src/merchant_data.c; megadrive/src/merchant.inc",
-      "observations": []
+      "observations": [
+        {
+          "report": "analysis/sms_npc_campaign_progress_report.json"
+        }
+      ]
     },
     {
       "id": "merchant:a5",
@@ -3438,13 +3458,17 @@
         "Restore health while preserving magic",
         "Night fade, wake-up dialogue and repeat visit"
       ],
-      "sms_status": "pending",
+      "sms_status": "free_health_refill_preserving_magic_currency_inventory_and_exit_replayed; other_variants_pending",
       "md_status": "pending",
       "sms_md_comparison_status": "pending",
       "guide_episode": null,
       "guide_timestamp": null,
       "static_basis": "megadrive/src/healer_data.c; megadrive/src/healer.inc",
-      "observations": []
+      "observations": [
+        {
+          "report": "analysis/sms_npc_campaign_progress_report.json"
+        }
+      ]
     },
     {
       "id": "healer_inn:ad",
@@ -3638,13 +3662,17 @@
         "Upgrade offer: refuse, poor, pay 100",
         "Return at level 2"
       ],
-      "sms_status": "pending",
+      "sms_status": "first_offer_and_level1_purchase_for50_gold_observed_and_replayed; remaining_variants_pending",
       "md_status": "pending",
       "sms_md_comparison_status": "pending",
       "guide_episode": null,
       "guide_timestamp": null,
       "static_basis": "megadrive/src/source_spell_teacher.c; megadrive/src/spell_teacher.inc",
-      "observations": []
+      "observations": [
+        {
+          "report": "analysis/sms_npc_campaign_progress_report.json"
+        }
+      ]
     },
     {
       "id": "teacher:2c",

@@ -21,6 +21,7 @@ def main():
     p.add_argument('--trial', required=True)
     p.add_argument('--outside', type=lambda s: int(s, 0), required=True)
     p.add_argument('--assisted-prefix', action='store_true')
+    p.add_argument('--sms', action='store_true')
     a = p.parse_args()
     gifts = {0x27: ('armor', 2), 0x50: ('basic', 2),
              0xb1: ('armor', 3), 0x6a: ('basic', 3)}
@@ -33,17 +34,17 @@ def main():
     assert prior['house_outside'] == a.outside and prior['house_target'] == 0x4f
     assert c['sram_input'] is None
     writes = prefix_writes(source, c, a.assisted_prefix)
-    rom = ROOT / 'gaw-megadrive.bin'
+    rom = ROOT / ('input/original.sms' if a.sms else 'gaw-megadrive.bin')
     assert sha(rom.read_bytes()) == c['rom_sha256']
     driver = Path(__file__).read_bytes()
-    sy = symbols(ROOT / 'megadrive/out/release/symbol.txt')
+    sy = None if a.sms else symbols(ROOT / 'megadrive/out/release/symbol.txt')
     start = c['frames']
     controls = json.loads((source / 'controls.json').read_bytes())
     timeline = [()] * (start + 1)
     for i, row in enumerate(controls):
         end = controls[i + 1]['frame'] - 1 if i + 1 < len(controls) else start
         timeline[row['frame']:end + 1] = [tuple(row['buttons'])] * (end - row['frame'] + 1)
-    folder = ROOT / 'validation/natural-service-route' / ('md-' + a.trial)
+    folder = ROOT / 'validation/natural-service-route' / (('sms-' if a.sms else 'md-') + a.trial)
     assert not folder.exists()
     state = {}
     events = []
@@ -53,20 +54,29 @@ def main():
     tilemap = b''
     last_direction = 0
     seen_reward = False
+    acquired = None
 
     def achieved():
         return state[field] == level and bool(state['flags'] & 2)
 
     def observe(f, raw):
-        nonlocal first, done, failure, previous, observed, tilemap, seen_reward
+        nonlocal first, done, failure, previous, observed, tilemap, seen_reward, acquired
         observed = f
         if f < start:
             return
-        data = lambda n, k: bytes(raw[(sy[n] + i) ^ 1] for i in range(k))
-        word = lambda n: int.from_bytes(data(n, 2), 'big')
-        tilemap = data('sms_vram', 16384)[0x3800:0x3e00]
-        items = data('hero_items', 17)
-        state.update(room=word('room_id'), game=word('game_state'),
+        if a.sms:
+            tilemap=bytes(raw[0x1600:0x1c00])
+            state.update(room=int.from_bytes(raw[0xb9:0xbb],'little'),game=raw[0x1d],hero=raw[0x301],
+                         counter=raw[0x304],x=raw[0x313],y=raw[0x311],health=raw[0x318],max_health=raw[0xda],
+                         gold=raw[0xdd],magic=raw[0xdb],max_magic=raw[0xdc],fire=raw[0xe4],oil=raw[0xe8],
+                         basic=raw[0xe0],armor=raw[0xf1],selected=raw[0xdf],outside=raw[0xbb],
+                         flags=raw[0x100+a.outside],modal=None,reward=None,audio_error=0)
+        else:
+            data = lambda n, k: bytes(raw[(sy[n] + i) ^ 1] for i in range(k))
+            word = lambda n: int.from_bytes(data(n, 2), 'big')
+            tilemap = data('sms_vram', 16384)[0x3800:0x3e00]
+            items = data('hero_items', 17)
+            state.update(room=word('room_id'), game=word('game_state'),
                      hero=word('hero_state'), counter=word('hero_counter'),
                      x=word('hero_x') >> 8, y=word('hero_y') >> 8,
                      health=word('hero_health'), max_health=word('hero_max_health'),
@@ -92,6 +102,9 @@ def main():
             failure = 'native_audio_error'
         if state['reward']:
             seen_reward = True
+        if a.sms and achieved() and acquired is None:
+            acquired=f
+            seen_reward=True
         key = tuple(state[n] for n in ['room', 'game', field, 'flags', 'modal', 'reward'])
         if key != previous:
             events.append(dict(frame=f, **state))
@@ -105,8 +118,12 @@ def main():
         nonlocal last_direction
         if f <= start:
             return list(timeline[f])
-        if failure or done is not None:
+        if failure:
             return []
+        if done is not None:
+            return [5] if f-done<=32 and state.get('room')==a.outside and state.get('game')==12 else []
+        if a.sms and acquired is not None and f-acquired<300:
+            return [8] if f-acquired>=200 and f%40==0 else []
         if state.get('modal') or state.get('reward') or state.get('game') == 22:
             return [8] if f % 40 == 0 else []
         if state.get('room') != 0x4f or state.get('game') != 12 or state.get('hero') != 1:
@@ -145,6 +162,7 @@ def main():
                   sram_checkpoint_injection=False, primary_state_imports=0,
                   driver_sha256=sha(driver),
                   scope='Cold replay, ordinary town NPC contact, actual equipment gift and normal exterior exit. Inherited approach guard only; no equipment, actor, health, currency or progression fixture.')
+    if a.sms:result['sms_observation_scope']='Reward effect/flag and ordinary acknowledgment/exit observed; native modal/reward words are unavailable. Historical fire/oil state keys mean Foudre/golden apple.'
     for name, value in [('report', result), ('events', events), ('controls', controls)]:
         (folder / (name + '.json')).write_bytes((json.dumps(value, indent=2) + '\n').encode())
     (folder / 'house_quest_driver.py').write_bytes(driver)

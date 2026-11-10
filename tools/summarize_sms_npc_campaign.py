@@ -27,6 +27,43 @@ def main():
         ('natural-dungeon-combat/sms-auto-sms-npc-d3-boss01','third_crystal'),
         ('natural-dungeon-combat/sms-auto-sms-npc-d3-exit01','partial_exit'),
         ('natural-dungeon-combat/sms-auto-sms-npc-d3-exit02','third_dungeon_exit'),
+        ('natural-dungeon-route/sms-sms-npc-gold-b4-entry01','entry'),
+        ('natural-service-route/sms-npc-gold-b4-gift01','gold_gift'),
+        ('natural-dungeon-route/sms-sms-npc-earth-entry01','entry'),
+        ('natural-service-route/sms-npc-earth-learn01','earth_teacher'),
+        ('natural-dungeon-route/sms-sms-npc-d4-entry01','entry'),
+        ('natural-dungeon-combat/sms-auto-sms-npc-d4-key01','dungeon_key'),
+        ('natural-dungeon-combat/sms-auto-sms-npc-d4-earth01','earth_passage'),
+        ('natural-dungeon-combat/sms-auto-sms-npc-d4-a1-key02','dungeon_key'),
+        ('natural-dungeon-combat/sms-auto-sms-npc-d4-canoe01','canoe'),
+        ('natural-dungeon-combat/sms-auto-sms-npc-d4-warp01','earth_passage'),
+        ('natural-dungeon-combat/sms-auto-sms-npc-d4-boss-key01','dungeon_key'),
+        ('natural-dungeon-combat/sms-auto-sms-npc-d4-pre-boss01','reach_room'),
+        ('natural-dungeon-combat/sms-auto-sms-npc-d4-boss01','partial_combat'),
+        ('natural-dungeon-combat/sms-auto-sms-npc-d4-boss02','fourth_crystal'),
+        ('natural-dungeon-combat/sms-auto-sms-npc-d4-exit03','fourth_dungeon_exit'),
+        ('natural-dungeon-route/sms-sms-npc-equipment-27-entry03','entry'),
+        ('natural-service-route/sms-npc-equipment-27-gift01','armor2'),
+        ('natural-dungeon-route/sms-sms-npc-equipment-50-entry01','entry'),
+        ('natural-service-route/sms-npc-equipment-50-gift01','long_sword'),
+        ('natural-dungeon-route/sms-sms-npc-d5-entry01','entry'),
+        ('natural-dungeon-combat/sms-auto-sms-npc-d5-key01','dungeon_key'),
+        ('natural-dungeon-combat/sms-auto-sms-npc-d5-earth01','earth_passage'),
+        ('natural-dungeon-combat/sms-auto-sms-npc-d5-boots01','boots'),
+        ('natural-dungeon-combat/sms-auto-sms-npc-d5-supply-exit01','supply_exit'),
+        ('natural-dungeon-route/sms-sms-npc-d5-golda1-entry01','entry'),
+        ('natural-service-route/sms-npc-gold-a1-gift01','gold_gift'),
+        ('natural-dungeon-route/sms-sms-npc-d5-merchant94-entry01','entry'),
+        ('natural-service-route/sms-npc-key94-buy01','key_purchase'),
+        ('natural-dungeon-route/sms-sms-npc-d5-healer94-entry01','entry'),
+        ('natural-service-route/sms-npc-healer94-rest01','free_rest'),
+        ('natural-dungeon-route/sms-sms-npc-d5-return-entry02','entry'),
+        ('natural-dungeon-combat/sms-auto-sms-npc-d5-warp02','earth_passage'),
+        ('natural-dungeon-combat/sms-auto-sms-npc-d5-contact02','contact_passage'),
+        ('natural-dungeon-combat/sms-auto-sms-npc-d5-approach01','entry_combat'),
+        ('natural-dungeon-combat/sms-auto-sms-npc-d5-boss01','fifth_crystal'),
+        ('natural-dungeon-combat/sms-auto-sms-npc-d5-return-contact01','contact_passage'),
+        ('natural-dungeon-combat/sms-auto-sms-npc-d5-exit01','fifth_dungeon_exit'),
     ]
     stages=[]
     expected=hashlib.sha256((ROOT/'input/original.sms').read_bytes()).hexdigest()
@@ -52,16 +89,38 @@ def main():
             assert raw[0xda]==40,'This checkpoint is before the real capacity reward'
         elif kind=='crystal_reward_finished':assert raw[0xd0]&128 and raw[0xda]==raw[0x318]==48
         elif kind=='dungeon_exit':assert report['full_dungeon_cleared'] and raw[0xba]==raw[0x37]==0
-        elif kind=='gold_gift':assert report['passed'] and report['last_state']['gold']-report['first_state']['gold']==50
+        elif kind=='gold_gift':assert report['passed'] and report['last_state']['gold']-report['first_state']['gold']==(50 if relative.endswith('sms-npc-gold-f4-gift01') else 30)
         elif kind=='key_purchase':
             assert report['passed'] and report['last_state']['keys']-report['first_state']['keys']==1
             assert report['first_state']['gold']-report['last_state']['gold']==60
         elif kind=='rope':assert report['item_acquisition_passed'] and raw[0xed]==1
         elif kind=='mechanism':assert report['contact_route_passed'] and report['contact_opened']['flags']&4
-        elif kind=='dungeon_key':assert report['new_key_verified'] and raw[0xde]==1
+        elif kind=='dungeon_key':assert report['new_key_verified'] and raw[0xde]>0
         elif kind=='entry_combat':assert report['room_cleared']
         elif kind=='third_crystal':assert report['room_cleared'] and raw[0xd1]&128 and raw[0xda]==raw[0x318]==56
         elif kind=='third_dungeon_exit':assert report['full_dungeon_cleared'] and raw[0xba]==raw[0x37]==0
+        elif kind=='earth_teacher':
+            assert report['passed'] and report['first_state']['level']==0 and report['last_state']['level']==1
+            assert report['first_state']['gold']-report['last_state']['gold']==50 and raw[0xe5]==1
+            texts=read(folder/'dialogue_observations.json')['events']
+            pcs={e['text_pc'] for e in texts if e['event_pc']==0x524 and e['outside']==0xa3 and e['room']==0xbf}
+            assert {0xb06f,0xb35d}<=pcs
+        elif kind=='earth_passage':assert report['earth_route_passed']
+        elif kind=='canoe':assert report['item_acquisition_passed'] and raw[0xec]==1
+        elif kind=='reach_room':assert report['target_room_reached']
+        elif kind=='fourth_crystal':assert report['room_cleared'] and raw[0xd2]&128 and raw[0xda]==raw[0x318]==64
+        elif kind=='fourth_dungeon_exit':assert report['full_dungeon_cleared'] and raw[0xba]==raw[0x37]==0
+        elif kind=='fifth_crystal':assert report['room_cleared'] and raw[0xd3]&128 and raw[0xda]==raw[0x318]==72
+        elif kind=='fifth_dungeon_exit':assert report['full_dungeon_cleared'] and raw[0xba]==raw[0x37]==0
+        elif kind=='armor2':assert report['passed'] and report['first_state']['armor']==1 and raw[0xf1]==2
+        elif kind=='long_sword':assert report['passed'] and report['first_state']['basic']==1 and raw[0xe0]==2
+        elif kind=='boots':assert report['item_acquisition_passed'] and raw[0xee]==1
+        elif kind=='supply_exit':assert report['dungeon_exit_verified'] and report['exit_before_crystal_requested'] and raw[0xba]==raw[0x37]==0
+        elif kind=='contact_passage':assert report['contact_route_passed'] and report['contact_opened'] is not None
+        elif kind=='free_rest':
+            assert report['passed'] and report['normal_health_refill'] and raw[0x318]==raw[0xda]==64
+            assert report['first_state']['gold']==report['last_state']['gold']
+            assert report['first_state']['magic']==report['last_state']['magic']
         stages.append(dict(trace=relative,kind=kind,frame=cap['frames'],
                            fixed_replay=proof_path.relative_to(ROOT).as_posix(),evidence_sha256=hashes))
     state=dict(frame=cap['frames'],room=int.from_bytes(raw[0xb9:0xbb],'little'),health=raw[0x318],
@@ -70,6 +129,10 @@ def main():
     report=dict(passed=True,source_sha256=expected,stages=stages,
                 second_crystal_reward_and_exit_verified=True,
                 third_crystal_reward_and_exit_verified=True,
+                fourth_crystal_reward_and_exit_verified=True,plate_mail_acquired=True,long_sword_acquired=True,
+                fifth_crystal_reward_and_exit_verified=True,
+                running_boots_acquired=True,a1_gold_gift=30,key94_purchase_price=60,free_healer94_refill_verified=True,
+                b4_gold_gift=30,earth_purchase_price=50,battler_dialogue_pcs=[0xb06f,0xb35d],canoe_acquired=True,
                 f4_gold_gift=50,c7_key_purchase_price=60,
                 rope_acquired=True,d3_mechanism_activated=True,
                 latest_selected_prefix=chain[-1][0],current_sms_state=state,
@@ -78,7 +141,7 @@ def main():
                         'Partial live fight/exit checkpoints are included only as replayed continuations, never as completed objectives.',
                         'Failed controller experiments and the earlier D3 attempt without a key are not selected.',
                         'Source reward flags can precede modal completion. The second crystal is accepted only after real capacity48 and HP refill, followed by movement and exterior return.',
-                        'F4 return, all merchant choices/refusals/pages, remaining NPCs/quests and paired MD checks remain open.',
+                        'F4/B4 returns, teacher upgrade/refusals, equipment hints/returns, all merchant choices/pages, remaining NPCs/quests and paired MD checks remain open.',
                         'Guide observations are sampled screenshots. Neither episode has been watched in full.'])
     (ROOT/'analysis/sms_npc_campaign_progress_report.json').write_text(json.dumps(report,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
     print(json.dumps(dict(passed=True,stages=len(stages),current=state)))

@@ -79,6 +79,17 @@ Voir `sms_npc_campaign_progress_report.json` : chaque étape sélectionnée est
 rejouée depuis le démarrage. Les retours/variantes de ces nouveaux services,
 le reste de la campagne et les comparaisons MD restent à faire.
 
+Le don de 30 pièces en B4 finance ensuite l'achat de la magie de la Terre chez
+Battler pour 50 pièces : offre B06F et réponse B35D observées. Le canoë est
+réellement obtenu, le quatrième boss vaincu et sa récompense terminée, avec
+capacité de vie 64, puis retour extérieur. L'armure de l'étang (27) et l'épée
+longue (50) sont acquises. Le premier escalier est révélé par la défaite des
+monstres de son écran ; leur combat et l'entrée réelle sont rejoués.
+La branche sélectionnée entre ensuite dans le cinquième donjon.
+L'armure supérieure B1 reste en attente de l'accès maritime ; elle n'est pas
+comptée comme acquise. Les indices et retours des deux premières récompenses,
+les autres réponses de Battler et la comparaison MD restent ouverts.
+
 Le parcours SMS a acquis et équipé la hache, coupé l'arbre qui révèle Gillian,
 puis observé son introduction, l'échange de la pomme d'or contre la magie de
 la Foudre et son dialogue de retour avant la capacité de vie de 72.
@@ -123,3 +134,13 @@ n'ont pas été remplacés par ce candidat.
 
 Les textes SMS DA58, DA7C et ED3C restent présents en ROM mais sans déclenchement
 en jeu établi. Ils ne sont pas comptés comme visités ou déclarés inutilisés.
+
+## Dernier jalon SMS : cinquième cristal
+
+Le parcours sélectionné se termine à la frame 176515, à l'extérieur 49,
+avec cinq cristaux, 44/72 points de vie et 41 pièces. Les bottes, les achats
+et le soin gratuit en 94 sont suivis du véritable combat du cinquième boss,
+satellites compris, puis du mécanisme de retour et de la sortie du donjon.
+Les 55 étapes sélectionnées du relevé ont une relecture indépendante exacte
+de la RAM entière et de l'image finale. Ce jalon ne prouve pas toutes les
+pages, les timings, le son ni la couverture exhaustive des PNJ.
