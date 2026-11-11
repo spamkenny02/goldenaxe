@@ -71,7 +71,7 @@ def main():
         outside=a.outside,house=house,price=cost,complete_frame=done,completed_text=completed_text,
         source_prefix=a.prefix,rom_sha256=cap['rom_sha256'],health_before=initial[0x318],health_after=state['health'],
         gold_before=initial[0xdd],gold_after=state['gold'],magic_before=initial[0xdb],magic_after=state['magic'],
-        text_entries=entries,primary_state_imports=0,new_assistance_writes=0,sram_checkpoint_injection=False,
+        text_entries=entries,last_state={k:v for k,v in state.items() if k!='tilemap'},primary_state_imports=0,new_assistance_writes=0,sram_checkpoint_injection=False,
         scope='Actual accepted inn, exact price, HP restoration, preserved MP/inventory and exterior exit; refusals and insufficient funds remain separate.')
     actual=json.loads((out/'capture.json').read_bytes());actual['presses']=[list(v) for v in presses]
     (out/'capture.json').write_text(json.dumps(actual,indent=2)+'\n')

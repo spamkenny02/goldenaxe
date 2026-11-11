@@ -11,10 +11,11 @@ from rebase_natural_campaign import evidence
 
 
 def main():
-    assert '--world-route' in sys.argv and '--prefix-combat' in sys.argv
+    assert '--world-route' in sys.argv and any(f in sys.argv for f in ('--prefix-combat','--prefix-service'))
     sms='--sms' in sys.argv
-    name=sys.argv[sys.argv.index('--prefix-combat')+1]
-    prefix=ROOT/'validation/natural-dungeon-combat'/name
+    flag='--prefix-combat' if '--prefix-combat' in sys.argv else '--prefix-service'
+    name=sys.argv[sys.argv.index(flag)+1]
+    prefix=ROOT/'validation'/('natural-dungeon-combat' if flag=='--prefix-combat' else 'natural-service-route')/name
     cap=json.loads((prefix/'capture.json').read_bytes());start=cap['frames']
     sy=None if sms else symbols(ROOT/'megadrive/out/release/symbol.txt');raw=evidence(prefix/f'ram_{start:05d}.bin')
     if sms:

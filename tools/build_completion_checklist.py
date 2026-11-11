@@ -274,7 +274,7 @@ def main():
     if shield.exists():
         data=json.loads(shield.read_bytes())
         if data.get('passed'):add_observation('house_item_quest:4c/09','dragon_shield_gift_and_exit_fixed_replayed; hint_and_return_variants_pending',data['last_verified_prefix'])
-    for outside in (0x27,0x50,0xb1,0x6a):
+    for outside in (0x27,0x50,0xb1,0x6a,0x92):
         trace=f'natural-service-route/sms-npc-quest-hint-{outside:02x}-01'
         folder=ROOT/'validation'/trace
         if (folder/'report.json').exists():
@@ -287,6 +287,48 @@ def main():
             identity=({'merchant':'merchant','healer':'healer_inn','save':'save_service'}[row['kind']]
                       +(':'+f'{row["outside"]:02x}' if row['kind']!='save' else ':audit'))
             add_observation(identity,'selected_service_refusal_and_exit_fixed_replayed; successful_transactions_and_other_contexts_pending',row['trace'])
+    for filename,key,category in [('sms_teacher_returns_campaign.json','completed_visits','teacher'),
+                                  ('sms_gold_house_census_campaign.json','completed_houses','gold_house')]:
+        path=ROOT/'analysis'/filename
+        if path.exists():
+            for row in json.loads(path.read_bytes()).get(key,[]):
+                add_observation(f'{category}:{row["outside"]:02x}',
+                    'selected_return_contact_fixed_replayed; remaining_variants_pending',row['trace'])
+    hidden=ROOT/'analysis/sms_hidden_rewards_campaign.json'
+    if hidden.exists():
+        for row in json.loads(hidden.read_bytes()).get('completed_rewards',[]):
+            identity='equipment_quest:92/reward' if row['outside']==0x92 else 'house_item_quest:55/0f'
+            add_observation(identity,'actual_hidden_reward_and_exit_fixed_replayed; return_variants_pending',row['trace'])
+    for path in sorted((ROOT/'analysis').glob('sms_minigame_*_campaign.json')):
+        data=json.loads(path.read_bytes())
+        if data.get('passed'):add_observation('minigame:audit',
+            'four_static_hosts_and_selected_play_poor_refusal_branches_replayed; remaining_variants_pending',data['last_verified_prefix'])
+    slots=ROOT/'analysis/sms_actual_save_slots_report.json'
+    if slots.exists():
+        data=json.loads(slots.read_bytes());assert data['passed']
+        for row in data['slots']:
+            add_observation('save_service:audit','three_real_slots_saved_and_loaded_at_eren; other_locations_and_variants_pending',row['source_recording'])
+    add_observation('curse_and_equipment:audit','real_curse_contact_curser_defeat_and_oil_cure_fixed_replayed; other_equipment_checks_pending',
+                    'natural-dungeon-combat/sms-auto-sms-npc-palace-extended-curse-remedy01')
+    add_observation('healer_inn:2e','actual_paid_health_refill_and_exit_fixed_replayed; other_variants_pending',
+                    'natural-service-route/sms-npc-paid-healer-2e-01')
+    for filename,key in [('sms_inn_locations_campaign.json','completed_locations'),
+                         ('sms_save_locations_campaign.json','completed_locations'),
+                         ('sms_passage_census_campaign.json','completed_passages')]:
+        path=ROOT/'analysis'/filename
+        if not path.exists():continue
+        for row in json.loads(path.read_bytes()).get(key,[]):
+            if filename=='sms_inn_locations_campaign.json':
+                identity=f'healer_inn:{row["outside"]:02x}';trace=row['trace']
+                status='actual_service_accepted_price_hp_mp_and_exit_fixed_replayed; other_variants_pending'
+            elif filename=='sms_save_locations_campaign.json':
+                identity='save_service:audit';trace=row['save_trace']
+                assert json.loads((ROOT/row['continue_report']).read_bytes())['passed']
+                status='selected_locations_written_fixed_replayed_and_normally_loaded; other_locations_or_variants_pending'
+            else:
+                identity=f'paid_passage:{row["outside"]:02x}';trace=row['trace']
+                status='actual_payment_and_destination_fixed_replayed; other_variants_pending'
+            add_observation(identity,status,trace)
     result = dict(requirement='ALL NPCs and ALL side quests on SMS and MD, including relevant return visits and conditional text variants',
                   requirement_complete=False, census_proved_complete=False,
                   completion_percentage=None,

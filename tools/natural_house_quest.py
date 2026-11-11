@@ -24,7 +24,7 @@ def main():
     p.add_argument('--sms', action='store_true')
     a = p.parse_args()
     gifts = {0x27: ('armor', 2), 0x50: ('basic', 2),
-             0xb1: ('armor', 3), 0x6a: ('basic', 3),0x4c:('shield',3)}
+             0xb1: ('armor', 3), 0x6a: ('basic', 3),0x4c:('shield',3),0x92:('apple',1)}
     assert a.outside in gifts
     field, level = gifts[a.outside]
     house=9 if a.outside==0x4c else 0x4f
@@ -71,7 +71,7 @@ def main():
             state.update(room=int.from_bytes(raw[0xb9:0xbb],'little'),game=raw[0x1d],hero=raw[0x301],
                          counter=raw[0x304],x=raw[0x313],y=raw[0x311],health=raw[0x318],max_health=raw[0xda],
                          gold=raw[0xdd],magic=raw[0xdb],max_magic=raw[0xdc],fire=raw[0xe4],oil=raw[0xe8],
-                         basic=raw[0xe0],armor=raw[0xf1],shield=raw[0xf2],selected=raw[0xdf],outside=raw[0xbb],
+                         basic=raw[0xe0],armor=raw[0xf1],shield=raw[0xf2],apple=raw[0xe8],selected=raw[0xdf],outside=raw[0xbb],
                          flags=raw[0x100+a.outside],modal=None,reward=None,audio_error=0)
         else:
             data = lambda n, k: bytes(raw[(sy[n] + i) ^ 1] for i in range(k))
@@ -84,7 +84,7 @@ def main():
                      health=word('hero_health'), max_health=word('hero_max_health'),
                      gold=word('hero_gold'), magic=word('hero_magic'),
                      max_magic=word('hero_max_magic'), fire=items[4], oil=items[8],
-                     basic=word('hero_basic_level'), armor=word('hero_armor_level'),shield=word('hero_shield_level'),
+                     basic=word('hero_basic_level'), armor=word('hero_armor_level'),shield=word('hero_shield_level'),apple=items[8],
                      selected=word('hero_selected_item'),
                      outside=word('house_return_room'),
                      flags=data('game_save_state', 592)[0x50 + a.outside],
@@ -154,7 +154,7 @@ def main():
             input_provider=controller, ram_observer=observe,
             stop_when=lambda: bool(failure) or done is not None and observed >= done + 150,
             core_options=c['core_options'], ram_writes=FrameWrites(writes))
-    unchanged = all(state[n] == first[n] for n in ['gold', 'magic', 'max_magic', 'fire', 'oil', 'max_health'])
+    unchanged = all(state[n] == first[n] for n in ['gold', 'magic', 'max_magic', 'fire', 'oil', 'max_health'] if not(field=='apple' and n=='oil'))
     passed = done is not None and not failure and unchanged
     result = dict(passed=passed, failure=failure or (None if passed else 'frame_limit_or_unexpected_change'),
                   rom_sha256=c['rom_sha256'], source_prefix=a.prefix, outside=a.outside,

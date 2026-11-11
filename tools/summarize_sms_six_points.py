@@ -37,14 +37,26 @@ def main():
     point3=dict(status='in_progress',refusal_tour=service,
         save_slots=read('sms_actual_save_slots_report.json'),
         limits='Refusal entries do not close successful purchases, paid nights, saves, passages, gambling or return variants.')
+    point2['fully_learned_teacher_returns']=read('sms_teacher_returns_campaign.json')
+    point3['gambling_branches']=[read(f'sms_minigame_{n}_{v}_campaign.json') for n,v in
+        [('13','play'),('5c','play'),('5c','poor'),('5c','refuse'),('a7','play'),('de','play')]]
+    point3['money_house_tour']=read('sms_gold_house_census_campaign.json')
+    point3['inn_acceptances']=read('sms_inn_locations_campaign.json')
+    point3['save_locations']=read('sms_save_locations_campaign.json')
+    point3['paid_passages']=read('sms_passage_census_campaign.json')
     shield=read('sms_dragon_shield_campaign.json')
     point4=dict(status='in_progress',complete=False,equipment_hint_branches=read('sms_equipment_hint_branches.json'))
     if shield and shield.get('passed'):point4['dragon_shield']=verified(shield['last_verified_prefix'])
+    point4['hidden_rewards']=read('sms_hidden_rewards_campaign.json')
+    point4['curse_and_oil_remedy']=verified('natural-dungeon-combat/sms-auto-sms-npc-palace-extended-curse-remedy01')
+    point4['curse_and_oil_remedy']['actual_contact_and_oil_consumption_verified']=True
     points={
         '1_o3':point1,'2_teachers_and_capacity':point2,'3_services':point3,
         '4_equipment_hints_hidden_rooms_curse':point4,
-        '5_reported_strings':dict(status='unresolved',offsets=['0xDA58','0xDA7C','0xED3C'],unused_proven=False),
-        '6_final_replay_and_video':dict(status='pending_final_route',complete_100_percent_video=False)}
+        '5_reported_strings':dict(status='adjacent_npc_dispatch_reconciled_global_reachability_open',offsets=['0xDA58','0xDA7C','0xED3C'],unused_proven=False,
+            reconciliation=read('reported_text_dispatch_reconciliation.json')),
+        '6_final_replay_and_video':dict(status='main_campaign_video_ready_annexes_pending',complete_100_percent_video=False,
+            main_campaign_video=read('sms_extended_campaign_video_report.json'))}
     report=dict(date='2026-11-11',source_sha256=hashlib.sha256((ROOT/'input/original.sms').read_bytes()).hexdigest(),
         all_npcs_complete=False,all_side_quests_complete=False,points=points)
     (ROOT/'analysis/sms_six_points_progress.json').write_text(json.dumps(report,indent=2)+'\n')

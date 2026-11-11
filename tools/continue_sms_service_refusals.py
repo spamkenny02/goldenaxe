@@ -16,7 +16,7 @@ def main():
     old=json.loads(output.read_bytes()) if output.exists() else {}
     completed=old.get('completed_visits',[])
     transports=old.get('completed_transports',[])
-    c=Campaign(completed[-1]['trace'] if completed else a.prefix,0x15e,'npc-service-refusals')
+    c=Campaign(old.get('last_verified_prefix',completed[-1]['trace'] if completed else a.prefix),0x15e,'npc-service-refusals')
     doors=json.loads((ROOT/'analysis/doors_reference.json').read_bytes())['direct_unconditional_doors']
     targets=[]
     for kind in ['merchant','healer','save']:
@@ -90,7 +90,7 @@ def main():
                 cells=bytearray(160);ptr=int.from_bytes(w.arrays['world_room_index'][outside*2:outside*2+2],'little')
                 rle_planes(w.arrays['world_room_streams'],ptr,cells,0,1)
                 if cells[node[1]] in (0x13,0x38,0x3d,0x85,0x86):
-                    assert raw[0xdb]>=8;tool='natural_frozen_earth_world_route.py' if cells[node[1]]==0x38 else 'natural_earth_world_route.py';extra+=['--earth-world-cell',hex(node[1])]
+                    assert raw[0xdb]>=8;tool='natural_frozen_earth_world_route.py' if raw[0xea] and (cells[node[1]]==0x38 or 0x3e in cells or 0x3f in cells) else 'natural_earth_world_route.py';extra+=['--earth-world-cell',hex(node[1])]
                 elif 0x80<=cells[node[1]]<=0x84 and node[1]!=node[2]:extra+=['--required-chop',f'{hex(outside)}:{hex(node[1])}']
             c.route(suffix+f'-entry{attempt:02d}',extra,tool=tool)
             c.service(suffix+f'-refuse{attempt:02d}','sms_service_refusal',['--outside',hex(outside),'--kind',t['kind']])

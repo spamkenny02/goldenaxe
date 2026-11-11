@@ -131,6 +131,8 @@ def main():
     if inherited and not args.new_assistance_episode:
         for key in ['activation_after_frame', 'first_boss_entry', 'release_write_frame', 'first_boss_combat', 'first_boss_damage']:
             result[key] = inherited[key]
+        early=inherited.get('early_guard_release')
+        if early and early['boss_room']==args.boss_room:result['early_guard_release']=early
     result['retarget_audit'] = inherited.get('retarget_audit') if inherited and not args.new_assistance_episode else None
     if args.retarget_pending_boss:
         source = (ROOT/'input/original.sms').read_bytes()
@@ -177,7 +179,7 @@ def main():
                     result['first_boss_entry'] = dict(frame=frame, game=state, health=health, hurt=hurt)
                     result['release_write_frame'] = frame + 1
                     writes.append((frame + 1, hurt_address, zero))
-                elif result['first_boss_entry'] is None:
+                elif result['first_boss_entry'] is None and not result.get('early_guard_release'):
                     # The contact pass also collects dropped keys. Release the
                     # guard after the last enemy/projectile so loot still works.
                     actor = (lambda slot, offset: ram[0x600 + slot * 48 + offset]) if sms else (
@@ -189,7 +191,7 @@ def main():
                     # held129 guard; leave natural0..128 counters untouched.
                     if danger or not args.preserve_floor_hurt or hurt > 128:
                         writes.append((frame + 1, hurt_address, guard if danger else zero))
-                approach_active = result['first_boss_entry'] is None
+                approach_active = result['first_boss_entry'] is None and not result.get('early_guard_release')
                 if room == args.boss_room and state == 12:
                     assert result['release_write_frame'] < frame
                     if result['first_boss_combat'] is None:

@@ -1,5 +1,5 @@
 """Append the actually completed SMS route to the existing portable test kit."""
-import json,shutil
+import argparse,json,re,shutil
 from PIL import Image
 from run_core import ROOT,compile_fixed_inputs
 from assisted_prefix import prefix_writes
@@ -7,9 +7,15 @@ from archive_lossless_evidence import sha
 
 
 def main():
-    summary=json.loads((ROOT/'analysis/sms_npc_campaign_progress_report.json').read_bytes())
-    assert summary['passed'] and summary['full_campaign_complete'] and not summary['all_npcs_complete']
-    source=ROOT/'validation'/summary['latest_selected_prefix']
+    parser=argparse.ArgumentParser();parser.add_argument('--trace');parser.add_argument('--name',default='sms_full_ntsc');args=parser.parse_args()
+    assert re.fullmatch(r'[a-z0-9_]+',args.name)
+    if args.trace:
+        source=(ROOT/'validation'/args.trace).resolve();assert source.is_relative_to(ROOT/'validation')
+        ending=json.loads((source/'report.json').read_bytes());assert ending['passed'] and ending['ending_complete']
+    else:
+        summary=json.loads((ROOT/'analysis/sms_npc_campaign_progress_report.json').read_bytes())
+        assert summary['passed'] and summary['full_campaign_complete'] and not summary['all_npcs_complete']
+        source=ROOT/'validation'/summary['latest_selected_prefix']
     cap=json.loads((source/'capture.json').read_bytes());end=cap['frames']
     assert cap['rom_sha256']==sha((ROOT/'input/original.sms').read_bytes()) and cap['sram_input'] is None
     writes=prefix_writes(source,cap,True);assert all(addr==0x305 for _,addr,_ in writes)
@@ -27,17 +33,17 @@ def main():
         recovered[first:last+1]=[mask]*(last-first+1)
         if guard!=-1:recovered_writes.extend((f,guard) for f in range(first,last+1))
     assert recovered==masks and recovered_writes==[(f,int.from_bytes(data,'big')) for f,_,data in writes]
-    kit=ROOT/'testkit';path=kit/'routes/sms_full_ntsc.csv'
+    kit=ROOT/'testkit';path=kit/'routes'/(args.name+'.csv')
     path.write_bytes(('start,end,mask,guard\n'+''.join(','.join(map(str,r))+'\n' for r in rows)).encode())
     references=kit/'references';references.mkdir(exist_ok=True)
     proof=source.with_name(source.name+f'-assisted-fixed-replay-{end}')
-    for name,destination in [(f'ram_{end:05d}.bin','sms_full_ntsc_final_ram.bin'),
-                             (f'frame_{end:05d}.png','sms_full_ntsc_final.png'),
-                             ('replay_report.json','sms_full_ntsc_fixed_replay.json')]:
+    for name,destination in [(f'ram_{end:05d}.bin',args.name+'_final_ram.bin'),
+                             (f'frame_{end:05d}.png',args.name+'_final.png'),
+                             ('replay_report.json',args.name+'_fixed_replay.json')]:
         shutil.copyfile(proof/name,references/destination)
     raw=(proof/f'ram_{end:05d}.bin').read_bytes();pr=json.loads((proof/'replay_report.json').read_bytes())
     manifest=json.loads((kit/'manifest.json').read_bytes())
-    manifest['routes']['sms_full_ntsc']=dict(system='sms',region='ntsc',frames=end,csv=path.name,
+    manifest['routes'][args.name]=dict(system='sms',region='ntsc',frames=end,csv=path.name,
         csv_sha256=sha(path.read_bytes()),rows=len(rows),approach_writes=len(writes),boss_assistance=False,
         save_imports=0,full_campaign=True,all_npcs_complete=False,bizhawk_runtime_validated=False,
         core_options=cap['core_options'],validated_core_sha256=pr['core_sha256'],
@@ -49,7 +55,7 @@ def main():
         expected_final_pixels_sha256=sha(Image.open(proof/f'frame_{end:05d}.png').convert('RGB').tobytes()),
         scope='Original supplied SMS ROM, nine crystals, Golden Axe, Death Adder, complete credits and return to intro. Partial NPC/side-quest coverage; NTSC libretro only.')
     (kit/'manifest.json').write_bytes((json.dumps(manifest,indent=2)+'\n').encode())
-    print(json.dumps(dict(route='sms_full_ntsc',frames=end,rows=len(rows),writes=len(writes))))
+    print(json.dumps(dict(route=args.name,frames=end,rows=len(rows),writes=len(writes))))
 
 
 if __name__=='__main__':main()

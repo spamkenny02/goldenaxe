@@ -58,11 +58,20 @@ huit récompenses de fées sont présentes et les capacités vie/magie atteignen
 [Suivi des six points SMS](analysis/sms_six_points_progress.json).
 L'accès caché FB est ouvert avec le vrai sort Terre ; son habitant et les trois
 habitants de la maison FE/00 sont visités, acquittés et rejoués indépendamment.
-Ces visites supplémentaires ne sont pas encore intégrées au CSV de la campagne
-achevée. Le [relevé de cette branche](analysis/sms_plain_house_census_campaign.json)
-conserve les étapes validées et les maisons encore à parcourir.
-L'enregistreur `tools/record_sms_gameplay.py` a un essai audio/vidéo de 600 frames
-validé ; aucune vidéo SMS 100 % n'est encore livrée.
+Ces visites sont maintenant intégrées à une campagne étendue jusqu'à la fin :
+564131 images, bouclier de dragon, pomme de J9, huile cachée à Kari-Kari,
+contact réel avec un ennemi corrupteur puis consommation de l'huile pour lever
+l'effet. Le [relevé des maisons](analysis/sms_plain_house_census_campaign.json)
+et le [rapport vidéo](analysis/sms_extended_campaign_video_report.json)
+conservent les preuves. Le CSV `sms_extended_ntsc` figure dans le kit de tests.
+Les quatre lieux de jeu et les retours chez les quatre maîtres sont aussi
+rejoués dans des branches distinctes. Les variantes des services et quelques
+accès restent ouverts ; aucune vidéo SMS 100 % n'est encore certifiée.
+
+Les [trois textes signalés](analysis/reported_text_dispatch_reconciliation.md)
+ne sont pas appelés par les dialogues voisins : les pointeurs observés au
+retour du formateur ne prouvent pas leur affichage. Ce résultat borne ces
+déclencheurs précis ; il ne prouve pas leur inaccessibilité dans toute la ROM.
 
 Les 65 contextes statiques des maisons ordinaires ne constituent pas le
 nombre total de PNJ ou de variantes. Marchands, dialogues conditionnels,
@@ -97,6 +106,14 @@ sans erreur ; la RAM et la capture brute finales sont identiques à la preuve
 indépendante. Ses PNJ restent partiels : les nouvelles visites et les branches
 conditionnelles ne sont pas dans cette vidéo. Le MP4 reste local, le rapport
 et l'aperçu sont versionnés. Aucun TAS externe n'est utilisé.
+
+La [nouvelle vidéo SMS étendue](videos/sms/campagne-etendue-2026-11-11/LISEZ-MOI.txt)
+dure **2 h 36 min 54 s**, avec le son du jeu. Elle reprend la campagne depuis
+le démarrage, ajoute les 65 contextes ordinaires connus et les acquisitions
+ci-dessus, puis rejoint le générique et le retour à l'intro. La RAM et les
+pixels finaux sont identiques à la relecture indépendante ; les flux audio
+et vidéo sont décodés entièrement sans erreur. Les branches annexes ne sont
+pas insérées dans cette vidéo continue. Le MP4 reste local.
 
 La **V321** corrige le retard d’une image des portions de carte du titre :
 cape, apparition du logo et clignotement de l’invite. Les 198 images des

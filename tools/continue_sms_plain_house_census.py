@@ -11,6 +11,7 @@ from extract_title import rle_planes
 from natural_bell_world_route import project_persisted_cells
 from sms_campaign_runner import Campaign
 from continue_sms_npc_d4 import ROUTE,SERVICE,COMBAT
+COMBAT_ENTRANCES={r['room'] for r in json.loads((ROOT/'analysis/room_clear_reference.json').read_bytes())['records'] if r['kind']==7}
 
 
 class CensusWorld(World):
@@ -35,6 +36,13 @@ def census_world(raw,outside,room,entry_direction=0):
         rle_planes(world.arrays['world_room_streams'],pointer,cells,0,1)
         if cells[row[1]] in (0x13,0x38,0x3d,0x85,0x86):
             proposed=bytearray(world.persisted_flags);proposed[outside]|=1;world.persisted_flags=proposed
+    if row and not raw[0x100+outside]&1 and row[1]!=row[2] and raw[0xe1]:
+        cells=world.base_cells(outside)
+        if 0x80<=cells[row[1]]<=0x84:
+            proposed=bytearray(world.persisted_flags);proposed[outside]|=1;world.persisted_flags=proposed
+            world.remote_unlocked.add(outside)
+    if row and outside in COMBAT_ENTRANCES and raw[0xe1] and not raw[0x100+outside]&1:
+        proposed=bytearray(world.persisted_flags);proposed[outside]|=1;world.persisted_flags=proposed
     current=int.from_bytes(raw[0xb9:0xbb],'little')
     if current<256:
         # Ice and other temporary terrain belong to the actually occupied map,

@@ -12,11 +12,23 @@ def main():
     traces.add(census['completed_houses'][-1]['trace'])
     for name,key in [('sms_remaining_magic_campaign.json','completed_visits'),
                      ('sms_fairy_census_campaign.json','completed_rewards'),
-                     ('sms_service_refusal_campaign.json','completed_visits')]:
+                     ('sms_service_refusal_campaign.json','completed_visits'),
+                     ('sms_gold_house_census_campaign.json','completed_houses'),
+                     ('sms_hidden_rewards_campaign.json','completed_rewards'),
+                     ('sms_teacher_returns_campaign.json','completed_visits'),
+                     ('sms_passage_census_campaign.json','completed_passages')]:
         path=ROOT/'analysis'/name
         if path.exists():
             rows=json.loads(path.read_bytes()).get(key,[])
             if rows:traces.add(rows[-1]['trace'])
+    for filename in ('sms_inn_locations_campaign.json','sms_save_locations_campaign.json'):
+        path=ROOT/'analysis'/filename
+        if path.exists():
+            for row in json.loads(path.read_bytes()).get('completed_locations',[]):
+                traces.add(row.get('trace',row.get('save_trace')))
+    for path in (ROOT/'analysis').glob('sms_minigame_*_campaign.json'):
+        data=json.loads(path.read_bytes())
+        if data.get('passed'):traces.add(data['last_verified_prefix'])
     for path in (ROOT/'analysis').glob('sms-conditional-*.json'):
         report=json.loads(path.read_bytes())
         if report.get('passed'):

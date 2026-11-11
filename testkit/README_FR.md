@@ -78,6 +78,7 @@ python -m pip install -r requirements.txt
 python replay_libretro.py --rom "D:/chemin/gaw-megadrive-v0321.bin" --route md_ntsc --core "D:/chemin/genesis_plus_gx_libretro.dll" --out "D:/tests/gaw-ntsc-01"
 python replay_libretro.py --rom "D:/chemin/gaw-megadrive-v0321.bin" --route md_pal --core "D:/chemin/genesis_plus_gx_libretro.dll" --out "D:/tests/gaw-pal-01"
 python replay_libretro.py --rom "D:/chemin/Golden Axe Warrior.sms" --route sms_full_ntsc --core "D:/chemin/genesis_plus_gx_libretro.dll" --out "D:/tests/gaw-sms-complet-01"
+python replay_libretro.py --rom "D:/chemin/Golden Axe Warrior.sms" --route sms_extended_ntsc --core "D:/chemin/genesis_plus_gx_libretro.dll" --out "D:/tests/gaw-sms-etendu-01"
 ```
 
 Dans le projet local, le coeur utilisé se trouve dans
@@ -110,3 +111,10 @@ sans couvrir exhaustivement leurs variantes ou les quêtes secondaires.
 
 Atteindre la fin ne prouve ni toutes les quêtes facultatives, ni une fidélité
 graphique/sonore à 100 %, ni le fonctionnement sur console réelle.
+
+`sms_extended_ntsc` contient 564131 images : 65 contextes ordinaires connus,
+enseignements 2/2/2/1, capacités vie/magie 128/128, bouclier de dragon,
+pomme de J9, huile cachée de Kari-Kari et corrosion/remède réels, puis la fin.
+Les branches séparées (autres variantes, services, jeux et revisites) restent
+hors de ce CSV. Le lanceur `bizhawk/lecture_sms_extended_ntsc.lua` est fourni
+avec la même réserve de validation BizHawk que les autres lanceurs.

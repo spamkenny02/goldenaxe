@@ -16,9 +16,19 @@ def main():
     slot=report['slot'];payload=block[0x400+slot*0x400:0x650+slot*0x400]
     out=ROOT/'validation/sms-save-continue'/a.trial;assert not out.exists()
     controls=[(200,220,0),(920,935,0),(1000,1005,5),(1050,1065,8),(1300,1310,8)]
+    captures=set();resumed=None;observed=0;first_raw=None
+    expected_room=int.from_bytes(payload[0x12:0x14],'little')
+    def observe(frame,raw):
+        nonlocal resumed,observed,first_raw
+        observed=frame
+        if resumed is None and frame>1000 and raw[0x1d]==12 and raw[0x301]==1 and int.from_bytes(raw[0xb9:0xbb],'little')==expected_room:
+            resumed=frame;first_raw=bytes(raw);captures.add(frame+1)
     with contextlib.redirect_stdout(io.StringIO()):
-        run(ROOT/'input/original.sms',1920,out,{1920},controls,skip_intro=False,sram_in=sram)
-    raw=(out/'ram_01920.bin').read_bytes()
+        run(ROOT/'input/original.sms',1920,out,captures,controls,skip_intro=False,sram_in=sram,
+            ram_observer=observe,stop_when=lambda:resumed is not None and observed>resumed)
+    assert resumed is not None,'Normal controllable Continue state was not reached'
+    # Check the restored state before live enemies can damage an idle hero.
+    raw=first_raw;(out/'first-controllable-ram.bin').write_bytes(raw)
     checks=dict(normal_game=raw[0x1d]==12,
         resume_room=int.from_bytes(raw[0xb9:0xbb],'little')==int.from_bytes(payload[0x12:0x14],'little'),
         health=raw[0x318]==payload[0x29],health_capacity=raw[0xda]==payload[0x2a],
@@ -26,6 +36,7 @@ def main():
         gold=raw[0xdd]==payload[0x2d],keys=raw[0xde]==payload[0x2e],
         inventory=raw[0xe0:0xf3]==payload[0x30:0x43],crystals=raw[0xcf:0xd8]==payload[0x1f:0x28])
     result=dict(passed=all(checks.values()),checks=checks,slot=slot,source_recording=a.trace,
+        first_controllable_frame=resumed,checked_before_idle_gameplay=True,
         source_sram_sha256=report['sram_sha256'],game_written_sram_input=True,synthetic_sram_fixture=False,
         source_save_fixed_replayed=True,ram_writes=0,continuous_campaign=False,
         final_room=int.from_bytes(raw[0xb9:0xbb],'little'),

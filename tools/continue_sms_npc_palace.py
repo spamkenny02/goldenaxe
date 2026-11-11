@@ -1,19 +1,30 @@
 """Play the actual SMS palace, obtain Golden Axe, defeat Death Adder and wait for credits."""
-import json
+import argparse,json
 from run_core import ROOT
 from sms_campaign_runner import Campaign
 from continue_sms_npc_d4 import COMBAT
 
 
 def main():
-    exit_trace=COMBAT+'/sms-auto-sms-npc-d9-exit01'
-    c=Campaign(exit_trace,0x15e,'npc-palace')
+    p=argparse.ArgumentParser();p.add_argument('--prefix');p.add_argument('--label',default='npc-palace');p.add_argument('--curse-remedy',action='store_true');a=p.parse_args()
+    assert not a.prefix or a.label!='npc-palace','Use a new label to preserve the historical palace recording'
+    exit_trace=a.prefix or COMBAT+'/sms-auto-sms-npc-d9-exit01'
+    c=Campaign(exit_trace,0x15e,a.label)
     try:
-        c.verify(lambda r:r['full_dungeon_cleared']);assert c.raw()[0xdf]==1
-        c.route('entry01',['--door-index','10'],new_episode=True,tool='natural_palace_world_route.py')
+        c.verify(lambda r:r.get('full_dungeon_cleared') or r.get('passed'));assert c.raw()[0xdf]==1
+        assert all(b&128 for b in c.raw()[0xcf:0xd8])
+        assist=json.loads((ROOT/'validation'/c.family/c.current/'assistance.json').read_bytes())
+        c.route('entry01',['--door-index','10'],new_episode=bool(assist.get('first_boss_combat')),tool='natural_palace_world_route.py')
         c.stage('switch16d01','contact','0x18d,0x17d,0x16d','0x16d',
                 ['--equip-basic','--mechanism-during-combat','--contact-room','0x16d','--contact-destination','0x16d'],gate='contact_route_passed')
-        c.stage('pregiant01','contact','0x16d,0x17d,0x18d,0x18e,0x17e,0x16e','0x16e',
+        if a.curse_remedy:
+            c.stage('curse-entry01','ordinary','0x16d,0x17d,0x18d,0x18e','0x18e',
+                ['--equip-basic','--reach-room','--allow-live-arrival','--arrival-x','128','--arrival-y','128',
+                 '--rush-rooms','0x18e'],gate='target_room_reached')
+            trial='sms-'+c.label+'-curse-remedy01'
+            c.invoke('sms_curse_remedy.py',['--sms','--trace',c.family+'/'+c.current,'--trial',trial],
+                COMBAT,'sms-auto-'+trial,lambda r:r['curse_remedy_passed'])
+        c.stage('pregiant01','contact','0x18e,0x17e,0x16e' if a.curse_remedy else '0x16d,0x17d,0x18d,0x18e,0x17e,0x16e','0x16e',
                 ['--equip-basic','--wake-sentinels','--rush-rooms','0x16d','--contact-room','0x16e','--contact-destination','0x16e'],gate='contact_route_passed')
         c.stage('giant01','evasive','0x16e,0x15e','0x15e',
                 ['--equip-basic','--planning-step','32','--planning-horizon','96','--entry-boss-kind','0x7b',
@@ -57,7 +68,7 @@ def main():
         c.stage('final01','evasive',e['rooms'],e['target'],
                 ['--equip-axe','--planning-step','32','--planning-horizon','96','--entry-boss-kind',
                  e['entry_boss_kind'],'--enter-boss-up','--stop-on-ending'],coarse=True,gate='ending_handoff_passed')
-        trial='sms-npc-palace-ending01'
+        trial='sms-'+c.label+'-ending01'
         c.invoke('continue_recorded_ending.py',['--sms','--trace',c.family+'/'+c.current,
                  '--trial',trial,'--extra-frames','18000'],COMBAT,'sms-auto-'+trial,lambda r:r['ending_complete'])
         print('SMS DEATH ADDER, COMPLETE CREDITS AND RETURN TO INTRO VERIFIED',flush=True)

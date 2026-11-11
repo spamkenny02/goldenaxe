@@ -1,0 +1,35 @@
+{
+  "passed": true,
+  "reference": "git HEAD:tools/natural_dungeon_route.py",
+  "reference_sha": "ddffd295756290071e66c1c081d0c15b00f59863",
+  "cases": [
+    {
+      "outside": 67,
+      "house": 63,
+      "visited": 3,
+      "path_edges": 1,
+      "old_seconds": 5.589999636868015e-05,
+      "new_seconds": 2.9599999834317714e-05,
+      "exact_path_and_node_count": true
+    },
+    {
+      "outside": 54,
+      "house": 159,
+      "visited": 5897,
+      "path_edges": 167,
+      "old_seconds": 0.16544119999889517,
+      "new_seconds": 0.03624329999729525,
+      "exact_path_and_node_count": true
+    },
+    {
+      "outside": 85,
+      "house": 31,
+      "visited": 3669,
+      "path_edges": 110,
+      "old_seconds": 0.10565350000251783,
+      "new_seconds": 0.02946959999826504,
+      "exact_path_and_node_count": true
+    }
+  ],
+  "scope": "Planning only; identical FIFO paths and visited-node counts. No emulation frames skipped."
+}

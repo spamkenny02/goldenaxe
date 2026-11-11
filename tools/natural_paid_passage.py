@@ -81,7 +81,7 @@ def main():
         key = tuple(state[n] for n in ['room', 'game', 'gold', 'modal', 'outside_flags'])
         if key != previous:
             events.append(dict(frame=f, **state)); captures.add(f+1); previous = key
-        if state['room'] == target and state['game'] == 12 and state['hero'] == 1 and not state['modal']:
+        if done is None and state['room'] == target and state['game'] == 12 and state['hero'] == 1 and not state['modal']:
             assert state['gold'] == first['gold']-price
             assert state['outside_flags']&1
             for key in ['health', 'max_health', 'keys', 'magic', 'inventory_hex', 'crystals_hex']:
