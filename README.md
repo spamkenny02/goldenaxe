@@ -3,6 +3,13 @@
 Reconstruction de la ROM Master System fournie, puis portage de sa logique
 Z80 en code natif 68000 avec SGDK. La fidélité précède les améliorations.
 
+Le [dossier de référence du jeu, daté du 11 novembre 2026](reports/gaw-reference-2026-11-11/RAPPORT_COMPLET_JEU.md)
+analyse le guide GameFAQs fourni et le recoupe avec les données de la ROM.
+Il comprend les 225 écrans extérieurs, les dix labyrinthes, objets, magies,
+équipements, dialogues, services et récompenses, avec des catalogues CSV.
+Il distingue données extraites, règles du modèle et interactions rejouées ;
+la couverture de tous les PNJ et de toutes les quêtes secondaires reste ouverte.
+
 <!-- ROM-RELEASE:START -->
 **Version courante : v0321 — 2048 Kio.**
 
