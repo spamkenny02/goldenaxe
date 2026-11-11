@@ -1,4 +1,4 @@
-"""Controller-only first life-fairy visit, dialogue, capacity reward and exit."""
+"""Controller-only life/magic fairy visit, capacity reward and normal exit."""
 import argparse,contextlib,io,json
 from run_core import ROOT,run,FrameWrites
 from validate_playable_sprite_limit import symbols
@@ -6,7 +6,7 @@ from archive_lossless_evidence import sha
 from assisted_prefix import prefix_writes,recording
 
 def main():
- p=argparse.ArgumentParser();p.add_argument('--assisted-prefix',action='store_true');p.add_argument('--sms',action='store_true');p.add_argument('--prefix',required=True);p.add_argument('--trial',required=True);p.add_argument('--outside',type=lambda v:int(v,0),default=0xc9);p.add_argument('--expected-initial-capacity',type=int,default=32);p.add_argument('--revisit',action='store_true');a=p.parse_args()
+ p=argparse.ArgumentParser();p.add_argument('--kind',choices=['life','magic'],default='life');p.add_argument('--assisted-prefix',action='store_true');p.add_argument('--sms',action='store_true');p.add_argument('--prefix',required=True);p.add_argument('--trial',required=True);p.add_argument('--outside',type=lambda v:int(v,0),default=0xc9);p.add_argument('--expected-initial-capacity',type=int,default=32);p.add_argument('--revisit',action='store_true');a=p.parse_args()
  source=ROOT/'validation/natural-dungeon-route'/a.prefix;c=json.loads((source/'capture.json').read_bytes());prior=json.loads((source/'route_report.json').read_bytes());recorded=json.loads((source/'controls.json').read_bytes())
  rom=ROOT/'input/original.sms' if a.sms else ROOT/'gaw-megadrive.bin';digest=sha(rom.read_bytes());assert c['rom_sha256']==digest and prior['reached_entrance'] and not prior['failure'] and c['sram_input'] is None
  writes=prefix_writes(source,c,a.assisted_prefix)
@@ -16,22 +16,23 @@ def main():
   timeline[row['frame']:min(stop,end)+1]=[tuple(row['buttons'])]*(min(stop,end)-row['frame']+1)
  tag='sms' if a.sms else 'md';folder=ROOT/'validation/natural-service-route'/(tag+'-'+a.trial);assert not folder.exists()
  sy=None if a.sms else symbols(ROOT/'megadrive/out/release/symbol.txt');state={};events=[];controls=list(recorded);captures={end};done=None;observed=0;failure=None;initial=None;previous=None;contact_start=None;contact_end=None
+ capacity_field='max_magic' if a.kind=='magic' else 'max_health'
  target_capacity=a.expected_initial_capacity if a.revisit else min(128,a.expected_initial_capacity+8)
  def observe(f,r):
   nonlocal done,observed,failure,initial,previous
   observed=f
-  if a.sms:state.update(room=int.from_bytes(r[0xb9:0xbb],'little'),game=r[0x1d],hero=r[0x301],counter=r[0x304],x=r[0x313],y=r[0x311],health=r[0x318],max_health=r[0xda],outside_flags=r[0x100+a.outside],first_crystal=r[0xcf],modal=0,audio_error=0)
+  if a.sms:state.update(room=int.from_bytes(r[0xb9:0xbb],'little'),game=r[0x1d],hero=r[0x301],counter=r[0x304],x=r[0x313],y=r[0x311],health=r[0x318],max_health=r[0xda],magic=r[0xdb],max_magic=r[0xdc],outside_flags=r[0x100+a.outside],first_crystal=r[0xcf],modal=0,audio_error=0)
   else:
    data=lambda n,k:bytes(r[(sy[n]+i)^1] for i in range(k));word=lambda n:int.from_bytes(data(n,2),'big')
-   state.update(room=word('room_id'),game=word('game_state'),hero=word('hero_state'),counter=word('hero_counter'),x=word('hero_x')>>8,y=word('hero_y')>>8,health=word('hero_health'),max_health=word('hero_max_health'),outside_flags=data('game_save_state',592)[0x50+a.outside],first_crystal=data('game_save_state',592)[0x1f],modal=word('house_dialogue_active') or word('item_reward_active'),audio_error=word('sound_unhandled_command'))
+   state.update(room=word('room_id'),game=word('game_state'),hero=word('hero_state'),counter=word('hero_counter'),x=word('hero_x')>>8,y=word('hero_y')>>8,health=word('hero_health'),max_health=word('hero_max_health'),magic=word('hero_magic'),max_magic=word('hero_max_magic'),outside_flags=data('game_save_state',592)[0x50+a.outside],first_crystal=data('game_save_state',592)[0x1f],modal=word('house_dialogue_active') or word('item_reward_active'),audio_error=word('sound_unhandled_command'))
   if f<end:return
-  if initial is None:initial=dict(state);assert initial['room']==0xaf and initial['max_health']==a.expected_initial_capacity and bool(initial['outside_flags']&2)==a.revisit
-  if a.revisit and (state['max_health']!=initial['max_health'] or state['outside_flags']!=initial['outside_flags'] or state['health']!=initial['health']):failure='repeat_visit_changed_reward_state'
+  if initial is None:initial=dict(state);assert initial['room']==0xaf and initial[capacity_field]==a.expected_initial_capacity and bool(initial['outside_flags']&2)==a.revisit
+  if a.revisit and (state['max_magic']!=initial['max_magic'] or state['magic']!=initial['magic'] or state['max_health']!=initial['max_health'] or state['outside_flags']!=initial['outside_flags'] or state['health']!=initial['health']):failure='repeat_visit_changed_reward_state'
   key=tuple(state[n] for n in ['room','health','max_health','outside_flags','modal','game'])
   if key!=previous:events.append(dict(frame=f,**state));captures.add(f+1);previous=key
   if not state['health']:failure='hero_died'
   if state['audio_error']:failure='native_audio_error'
-  if state['room']==a.outside and state['game']==12 and state['hero']==1 and state['health']==state['max_health']==target_capacity and state['outside_flags']&2 and not state['modal'] and (not a.revisit or contact_end is not None) and done is None:done=f;captures.add(f+150)
+  if state['room']==a.outside and state['game']==12 and state['hero']==1 and (state['max_health']==target_capacity and state['health']==(initial['health'] if a.revisit else target_capacity) if a.kind=='life' else state['magic']==state['max_magic']==target_capacity and state['health']==initial['health'] and state['max_health']==initial['max_health']) and state['outside_flags']&2 and not state['modal'] and (not a.revisit or contact_end is not None) and done is None:done=f;captures.add(f+150)
  def choose(f):
   nonlocal contact_start,contact_end
   if f<=end:return list(timeline[f])
@@ -42,13 +43,20 @@ def main():
    if contact_start is None:
     if state['y']>72:return [4]
     contact_start=f
-   if f-contact_start<80:return [4]
+    if f-contact_start<80:return [4]
    contact_end=f
-  if state['max_health']<target_capacity:
+  if a.sms and not a.revisit and a.expected_initial_capacity==128 and state['outside_flags']&2:
+   # A capped reward has no capacity transition to signal that its dialogue
+   # ended. Keep ordinary acknowledgments while trying to leave; the actual
+   # exterior flag, unchanged capped capacity and exit remain mandatory.
+   if f%20==0:return [8]
+   if state['x']!=136:return [7 if state['x']<136 else 6]
+   return [5]
+  if state[capacity_field]<target_capacity or not state['outside_flags']&2:
    if state['outside_flags']&2:return [8] if f%20==0 else []
    if state['x']!=136:return [7 if state['x']<136 else 6]
    return [4] if state['y']>=72 else []
-  if state['health']<state['max_health']:return []
+  if a.kind=='life' and not a.revisit and state['health']<state['max_health']:return []
   if state['modal']:return [8] if f%20==0 else []
   if state['x']!=136:return [7 if state['x']<136 else 6]
   return [5]
@@ -57,7 +65,7 @@ def main():
   if f>end and (not controls or controls[-1]['buttons']!=buttons):controls.append(dict(frame=f,buttons=list(buttons)))
   return buttons
  with contextlib.redirect_stdout(io.StringIO()):run(rom,end+5000,folder,captures,c['presses'],skip_intro=False,input_provider=controller,ram_observer=observe,stop_when=lambda:bool(failure) or done is not None and observed>=done+150,core_options=c['core_options'],ram_writes=FrameWrites(writes))
- result=dict(passed=done is not None and failure is None,rom_sha256=digest,source_prefix=a.prefix,prefix_end=end,outside=a.outside,complete_frame=done,failure=failure or (None if done else 'frame_limit'),initial_state=initial,last_state=state,revisit=a.revisit,contact_start=contact_start,contact_end=contact_end,ram_injections=bool(writes),assisted_route=bool(writes),new_assistance_writes=0,sram_checkpoint_injection=False,scope='Ordinary cold boot/controller prefix then life-fairy reward or explicit return/contact attempt and normal house exit. No complete campaign or source raster/audio claim.')
+ result=dict(reward_kind=a.kind,passed=done is not None and failure is None,rom_sha256=digest,source_prefix=a.prefix,prefix_end=end,outside=a.outside,complete_frame=done,failure=failure or (None if done else 'frame_limit'),initial_state=initial,last_state=state,revisit=a.revisit,contact_start=contact_start,contact_end=contact_end,ram_injections=bool(writes),assisted_route=bool(writes),new_assistance_writes=0,sram_checkpoint_injection=False,scope='Ordinary cold boot/controller prefix then fairy capacity reward or explicit return/contact attempt and normal house exit. No complete campaign or source raster/audio claim.')
  for name,obj in [('report',result),('events',events),('controls',controls)]:(folder/(name+'.json')).write_bytes((json.dumps(obj,indent=2)+'\n').encode())
  if writes:
   assist=json.loads((source/'assistance.json').read_bytes());assist['writes']=[dict(frame=f,address=address,data_hex=value.hex()) for f,address,value in writes];(folder/'assistance.json').write_bytes((json.dumps(assist,indent=2)+'\n').encode());recording(folder,json.loads((folder/'capture.json').read_bytes()))

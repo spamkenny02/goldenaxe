@@ -1,0 +1,345 @@
+{
+  "source_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+  "selected_recordings": [
+    {
+      "trace": "natural-service-route/sms-npc-d9-healer94-rest01",
+      "frames": 332840,
+      "proof": "validation/natural-service-route/sms-npc-d9-healer94-rest01-assisted-fixed-replay-332840/replay_report.json",
+      "observations_sha256": "38c891e7fa0e8e32d5e579a7a2fa2b8ee63e6f5dd2c06a24175b11d02c8f80a1"
+    },
+    {
+      "trace": "natural-service-route/sms-npc-earth-learn01",
+      "frames": 105915,
+      "proof": "validation/natural-service-route/sms-npc-earth-learn01-assisted-fixed-replay-105915/replay_report.json",
+      "observations_sha256": "ec0f5eb34f1164b762161066bd86988431baabdffab5554de08de4f0c54d34dc"
+    },
+    {
+      "trace": "natural-service-route/sms-npc-extra-magic-aa-level1-learn02",
+      "frames": 444290,
+      "proof": "validation/natural-service-route/sms-npc-extra-magic-aa-level1-learn02-assisted-fixed-replay-444290/replay_report.json",
+      "observations_sha256": "88b82cf0ccbe5663b2b6396f625c9d2597f562e8e52edcc62cb87ee7a1fe9053"
+    },
+    {
+      "trace": "natural-service-route/sms-npc-fairies-1d-reward01",
+      "frames": 467127,
+      "proof": "validation/natural-service-route/sms-npc-fairies-1d-reward01-assisted-fixed-replay-467127/replay_report.json",
+      "observations_sha256": "4c78895b4abde76a3b4e9e91c1a0338288ae74778a04ac85edd12df71102548c"
+    },
+    {
+      "trace": "natural-service-route/sms-npc-service-refusals-5e-merchant-refuse03",
+      "frames": 446933,
+      "proof": "validation/natural-service-route/sms-npc-service-refusals-5e-merchant-refuse03-assisted-fixed-replay-446933/replay_report.json",
+      "observations_sha256": "028bfe5b1948db515a69ca7b284bbb6febd4ee843561bb46a083d0386a352f41"
+    },
+    {
+      "trace": "natural-service-route/sms-sms-npc-census-3e-8f-visit01",
+      "frames": 434397,
+      "proof": "validation/natural-service-route/sms-sms-npc-census-3e-8f-visit01-assisted-fixed-replay-434397/replay_report.json",
+      "observations_sha256": "b74500a7dc8f6395013c9864c4729a65bf2b060c040854be33a41698c1e40fe7"
+    },
+    {
+      "trace": "natural-service-route/sms-sms-npc-census-82-8f-visit01",
+      "frames": 418597,
+      "proof": "validation/natural-service-route/sms-sms-npc-census-82-8f-visit01-assisted-fixed-replay-418597/replay_report.json",
+      "observations_sha256": "7c2185aaae428f3de5546d46bc777994a44ef3e0cae9e1a6482d945f043fb977"
+    },
+    {
+      "trace": "natural-service-route/sms-sms-npc-post9-22-main-visit01",
+      "frames": 422159,
+      "proof": "validation/natural-service-route/sms-sms-npc-post9-22-main-visit01-assisted-fixed-replay-422159/replay_report.json",
+      "observations_sha256": "5862696dd0b2398efaed3ceecb79ef841767e8fb7437e43770834cf0677ed2fc"
+    },
+    {
+      "trace": "natural-service-route/sms-sms-npc-post9-22-return-main-visit01",
+      "frames": 422618,
+      "proof": "validation/natural-service-route/sms-sms-npc-post9-22-return-main-visit01-assisted-fixed-replay-422618/replay_report.json",
+      "observations_sha256": "09f40025d41e3f5bcc2f4ef78c3cef882c513af42a434649918961dcc4896f19"
+    },
+    {
+      "trace": "natural-service-route/sms-sms-npc-post9-ce-main-visit01",
+      "frames": 427835,
+      "proof": "validation/natural-service-route/sms-sms-npc-post9-ce-main-visit01-assisted-fixed-replay-427835/replay_report.json",
+      "observations_sha256": "c6872601ce82f8f77221d2a45985861cb24009813954f578de9f0d07b920c674"
+    },
+    {
+      "trace": "natural-service-route/sms-sms-npc-pre4-22-earth-visit01",
+      "frames": 110922,
+      "proof": "validation/natural-service-route/sms-sms-npc-pre4-22-earth-visit01-assisted-fixed-replay-110922/replay_report.json",
+      "observations_sha256": "3bacfe71f05cdb10556973cf9af7fbe00419609c6b6f7436b37ce2b9cdae766f"
+    },
+    {
+      "trace": "natural-service-route/sms-sms-npc-pre9-ce-mainland-visit01",
+      "frames": 337080,
+      "proof": "validation/natural-service-route/sms-sms-npc-pre9-ce-mainland-visit01-assisted-fixed-replay-337080/replay_report.json",
+      "observations_sha256": "2ea95942eb8a877fbf0e1392f27f7edc7ad5c187bfcfe92362787a63bd2bdc31"
+    }
+  ],
+  "entry_event_count": 1758,
+  "unique_text_entry_pcs": 100,
+  "findings": [
+    {
+      "sms_offset": "0xDA58",
+      "entry_or_displayed_string_range_hits": [],
+      "unused_in_sms_proven": false,
+      "classification": "still_unresolved_after_selected_runtime_observations",
+      "return_pointer_matches_not_display_proof": [
+        {
+          "trace": "natural-service-route/sms-npc-extra-magic-aa-level1-learn02",
+          "frame": 364293,
+          "event_pc": 1763,
+          "text_pc": 39512,
+          "outside": 251,
+          "room": 143,
+          "caller": 25210
+        },
+        {
+          "trace": "natural-service-route/sms-npc-extra-magic-aa-level1-learn02",
+          "frame": 364293,
+          "event_pc": 25210,
+          "text_pc": 39512,
+          "outside": 251,
+          "room": 143,
+          "caller": 9474
+        },
+        {
+          "trace": "natural-service-route/sms-npc-fairies-1d-reward01",
+          "frame": 364293,
+          "event_pc": 1763,
+          "text_pc": 39512,
+          "outside": 251,
+          "room": 143,
+          "caller": 25210
+        },
+        {
+          "trace": "natural-service-route/sms-npc-fairies-1d-reward01",
+          "frame": 364293,
+          "event_pc": 25210,
+          "text_pc": 39512,
+          "outside": 251,
+          "room": 143,
+          "caller": 9474
+        },
+        {
+          "trace": "natural-service-route/sms-npc-service-refusals-5e-merchant-refuse03",
+          "frame": 364293,
+          "event_pc": 1763,
+          "text_pc": 39512,
+          "outside": 251,
+          "room": 143,
+          "caller": 25210
+        },
+        {
+          "trace": "natural-service-route/sms-npc-service-refusals-5e-merchant-refuse03",
+          "frame": 364293,
+          "event_pc": 25210,
+          "text_pc": 39512,
+          "outside": 251,
+          "room": 143,
+          "caller": 9474
+        },
+        {
+          "trace": "natural-service-route/sms-sms-npc-census-3e-8f-visit01",
+          "frame": 364293,
+          "event_pc": 1763,
+          "text_pc": 39512,
+          "outside": 251,
+          "room": 143,
+          "caller": 25210
+        },
+        {
+          "trace": "natural-service-route/sms-sms-npc-census-3e-8f-visit01",
+          "frame": 364293,
+          "event_pc": 25210,
+          "text_pc": 39512,
+          "outside": 251,
+          "room": 143,
+          "caller": 9474
+        },
+        {
+          "trace": "natural-service-route/sms-sms-npc-census-82-8f-visit01",
+          "frame": 364293,
+          "event_pc": 1763,
+          "text_pc": 39512,
+          "outside": 251,
+          "room": 143,
+          "caller": 25210
+        },
+        {
+          "trace": "natural-service-route/sms-sms-npc-census-82-8f-visit01",
+          "frame": 364293,
+          "event_pc": 25210,
+          "text_pc": 39512,
+          "outside": 251,
+          "room": 143,
+          "caller": 9474
+        },
+        {
+          "trace": "natural-service-route/sms-sms-npc-post9-22-main-visit01",
+          "frame": 364293,
+          "event_pc": 1763,
+          "text_pc": 39512,
+          "outside": 251,
+          "room": 143,
+          "caller": 25210
+        },
+        {
+          "trace": "natural-service-route/sms-sms-npc-post9-22-main-visit01",
+          "frame": 364293,
+          "event_pc": 25210,
+          "text_pc": 39512,
+          "outside": 251,
+          "room": 143,
+          "caller": 9474
+        },
+        {
+          "trace": "natural-service-route/sms-sms-npc-post9-22-return-main-visit01",
+          "frame": 364293,
+          "event_pc": 1763,
+          "text_pc": 39512,
+          "outside": 251,
+          "room": 143,
+          "caller": 25210
+        },
+        {
+          "trace": "natural-service-route/sms-sms-npc-post9-22-return-main-visit01",
+          "frame": 364293,
+          "event_pc": 25210,
+          "text_pc": 39512,
+          "outside": 251,
+          "room": 143,
+          "caller": 9474
+        },
+        {
+          "trace": "natural-service-route/sms-sms-npc-post9-ce-main-visit01",
+          "frame": 364293,
+          "event_pc": 1763,
+          "text_pc": 39512,
+          "outside": 251,
+          "room": 143,
+          "caller": 25210
+        },
+        {
+          "trace": "natural-service-route/sms-sms-npc-post9-ce-main-visit01",
+          "frame": 364293,
+          "event_pc": 25210,
+          "text_pc": 39512,
+          "outside": 251,
+          "room": 143,
+          "caller": 9474
+        }
+      ]
+    },
+    {
+      "sms_offset": "0xDA7C",
+      "entry_or_displayed_string_range_hits": [],
+      "unused_in_sms_proven": false,
+      "classification": "still_unresolved_after_selected_runtime_observations",
+      "return_pointer_matches_not_display_proof": []
+    },
+    {
+      "sms_offset": "0xED3C",
+      "entry_or_displayed_string_range_hits": [],
+      "unused_in_sms_proven": false,
+      "classification": "still_unresolved_after_selected_runtime_observations",
+      "return_pointer_matches_not_display_proof": [
+        {
+          "trace": "natural-service-route/sms-npc-extra-magic-aa-level1-learn02",
+          "frame": 427626,
+          "event_pc": 1763,
+          "text_pc": 44348,
+          "outside": 206,
+          "room": 2,
+          "caller": 25210
+        },
+        {
+          "trace": "natural-service-route/sms-npc-extra-magic-aa-level1-learn02",
+          "frame": 427626,
+          "event_pc": 25210,
+          "text_pc": 44348,
+          "outside": 206,
+          "room": 2,
+          "caller": 9474
+        },
+        {
+          "trace": "natural-service-route/sms-npc-fairies-1d-reward01",
+          "frame": 427626,
+          "event_pc": 1763,
+          "text_pc": 44348,
+          "outside": 206,
+          "room": 2,
+          "caller": 25210
+        },
+        {
+          "trace": "natural-service-route/sms-npc-fairies-1d-reward01",
+          "frame": 427626,
+          "event_pc": 25210,
+          "text_pc": 44348,
+          "outside": 206,
+          "room": 2,
+          "caller": 9474
+        },
+        {
+          "trace": "natural-service-route/sms-npc-service-refusals-5e-merchant-refuse03",
+          "frame": 427626,
+          "event_pc": 1763,
+          "text_pc": 44348,
+          "outside": 206,
+          "room": 2,
+          "caller": 25210
+        },
+        {
+          "trace": "natural-service-route/sms-npc-service-refusals-5e-merchant-refuse03",
+          "frame": 427626,
+          "event_pc": 25210,
+          "text_pc": 44348,
+          "outside": 206,
+          "room": 2,
+          "caller": 9474
+        },
+        {
+          "trace": "natural-service-route/sms-sms-npc-census-3e-8f-visit01",
+          "frame": 427626,
+          "event_pc": 1763,
+          "text_pc": 44348,
+          "outside": 206,
+          "room": 2,
+          "caller": 25210
+        },
+        {
+          "trace": "natural-service-route/sms-sms-npc-census-3e-8f-visit01",
+          "frame": 427626,
+          "event_pc": 25210,
+          "text_pc": 44348,
+          "outside": 206,
+          "room": 2,
+          "caller": 9474
+        },
+        {
+          "trace": "natural-service-route/sms-sms-npc-post9-ce-main-visit01",
+          "frame": 427626,
+          "event_pc": 1763,
+          "text_pc": 44348,
+          "outside": 206,
+          "room": 2,
+          "caller": 25210
+        },
+        {
+          "trace": "natural-service-route/sms-sms-npc-post9-ce-main-visit01",
+          "frame": 427626,
+          "event_pc": 25210,
+          "text_pc": 44348,
+          "outside": 206,
+          "room": 2,
+          "caller": 9474
+        }
+      ]
+    }
+  ],
+  "complete_call_data_flow_proof": false,
+  "all_npcs_and_side_quests_complete": false,
+  "limits": [
+    "Only selected recordings with an independent fixed replay are admitted.",
+    "Formatter/wrapper return pointers do not identify displayed strings.",
+    "Not observing a string cannot prove it unreachable. No quest trigger or ROM change is invented."
+  ]
+}

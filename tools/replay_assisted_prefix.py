@@ -65,8 +65,10 @@ def main():
             else:flags=(raw[(sy['sms_vram']+0x3801+off)^1]|raw[(sy['sms_vram']+0x3803+off)^1])&32
             if flags:water.append(dict(frame=frame,room=room,owned=owned,terrain=terrain,water_flag=flags,hero=hero,x=x,y=y))
     started=time.perf_counter()
+    written_sram=folder/'game-written.srm'
+    replay_sram=out/'game-written.srm' if written_sram.exists() else None
     with contextlib.redirect_stdout(io.StringIO()):
-        run(rom, end, out, {end}, presses, ram_writes=FrameWrites(writes), skip_intro=False, core_options=capture['core_options'],sram_in=initial,ram_observer=observe_water if args.observe_water or args.observe_grabs else None)
+        run(rom, end, out, {end}, presses, ram_writes=FrameWrites(writes), skip_intro=False, core_options=capture['core_options'],sram_in=initial,sram_out=replay_sram,ram_observer=observe_water if args.observe_water or args.observe_grabs else None)
     filename = f'ram_{end:05d}.bin'
     assert (folder / filename).read_bytes() == (out / filename).read_bytes(), filename
     filename = f'frame_{end:05d}.png'
@@ -86,6 +88,10 @@ def main():
                   evidence={name: sha((folder / name).read_bytes()) for name in
                             ['capture.json', 'controls.json', 'assistance.json']})
     if initial:report.update(controlled_sram_fixture=True,sram_sha256=sha(initial.read_bytes()),game_written_save=False,primary_state_imports=1)
+    if replay_sram is not None:
+        assert written_sram.read_bytes()==replay_sram.read_bytes(),'Independent written SRAM differs'
+        report.update(game_written_sram_exact=True,written_sram_bytes=written_sram.stat().st_size,
+                      written_sram_sha256=sha(written_sram.read_bytes()))
     if args.observe_water:
         moving=[b for a,b in zip(water,water[1:]) if b['frame']==a['frame']+1 and a['room']==b['room'] and a['hero']==b['hero']==1 and (a['x'],a['y'])!=(b['x'],b['y']) and max(abs(a['x']-b['x']),abs(a['y']-b['y']))<=1024]
         assert moving,'No actual canoe-water walking observed'

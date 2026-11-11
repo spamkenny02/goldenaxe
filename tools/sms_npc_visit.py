@@ -12,7 +12,7 @@ from run_core import FrameWrites
 
 dialogue_events=[]
 def main():
- p=argparse.ArgumentParser();p.add_argument('--conditional',action='store_true');p.add_argument('--sms',action='store_true',required=True);p.add_argument('--prefix',required=True);p.add_argument('--out',required=True);p.add_argument('--room',type=lambda x:int(x,0),required=True);p.add_argument('--outside',type=lambda x:int(x,0),required=True);p.add_argument('--frames',type=int,default=18000);p.add_argument('--assisted-prefix',action='store_true');a=p.parse_args()
+ p=argparse.ArgumentParser();p.add_argument('--conditional',action='store_true');p.add_argument('--sms',action='store_true',required=True);p.add_argument('--prefix',required=True);p.add_argument('--out',required=True);p.add_argument('--room',type=lambda x:int(x,0),required=True);p.add_argument('--outside',type=lambda x:int(x,0),required=True);p.add_argument('--frames',type=int,default=18000);p.add_argument('--assisted-prefix',action='store_true');p.add_argument('--quest-hint',action='store_true');a=p.parse_args()
  prefix=(ROOT/'validation'/a.prefix).resolve();out=(ROOT/'validation'/a.out).resolve();assert prefix.is_relative_to(ROOT/'validation') and out.is_relative_to(ROOT/'validation') and not out.exists()
  cap=json.loads((prefix/'capture.json').read_bytes());assert cap['sram_input'] is None
  writes=prefix_writes(prefix,cap,a.assisted_prefix)
@@ -23,7 +23,18 @@ def main():
   presses.extend((row['frame'],min(last,start),key) for key in row['buttons'])
  masks=compile_fixed_inputs(presses,start)
  initial=(prefix/f'ram_{start:05d}.bin').read_bytes();variant=None
- if a.conditional:
+ if a.quest_hint:
+  assert not a.conditional and a.room==0x4f and a.outside in (0x92,0x50,0x27,0xb1,0x6a)
+  assert not initial[0x100+a.outside]&2,'Use a pre-reward branch for the giver/hint pair'
+  if not initial[0xe4]:pc=0x8e5c
+  elif a.outside==0x92:pc=0x8bea if initial[0xe8] else 0x8fe3
+  elif a.outside==0x50:pc=0x8e94 if initial[0xda]>=56 else 0x8ed9
+  else:
+   field,level={0x27:(0xf1,2),0xb1:(0xf1,3),0x6a:(0xe0,3)}[a.outside]
+   assert initial[field]<level,'This hint variant needs the earlier equipment state'
+   pc=0x8e94
+  targets=[dict(room=a.room,outside=a.outside,coordinate=0x25c,text_pc=pc)]
+ elif a.conditional:
   reference=json.loads((ROOT/'analysis/conditional_house_reference.json').read_bytes())
   if a.outside==0xce:
    variant='ninth_crystal_present' if initial[0xd7]&128 else 'ninth_crystal_absent'
@@ -85,9 +96,10 @@ def main():
  # Preserve the exact prefix inputs as ordinary intervals in capture.json.
  actual=json.loads((out/'capture.json').read_bytes());actual['presses']=[list(x) for x in presses];(out/'capture.json').write_text(json.dumps(actual,indent=2)+'\n')
  effects_ok=not a.conditional or (state['gold']==min(255,initial[0xdd]+100) and state['reward_flag']==1 if variant=='collect_actual_100_gold_reward' else state['gold']==initial[0xdd] and state['reward_flag']==initial[0xf7])
- report=dict(conditional=a.conditional,conditional_variant=variant,conditional_effects_verified=effects_ok if a.conditional else None,passed=effects_ok and done is not None and len(visited)==len(targets) and not failure,failure=failure or (None if done else 'frame_limit'),source_sha256=cap['rom_sha256'],rom_sha256=cap['rom_sha256'],prefix=a.prefix,prefix_end=start,room=a.room,outside=a.outside,visited=visited,required_targets=targets,last_state={k:v for k,v in state.items() if k!='tilemap'},primary_ram_writes=len(writes),new_assistance_writes=0,assisted_route=bool(writes),sram_imports=0,progression_imports=0,scope='Unmodified SMS from cold boot with original text-entry/completion observations and ordinary walking/acknowledgment. Inherited approach protection, if any, is fully recorded; no new writes during this NPC stage. Current-state conditional-house variant only.' if a.conditional else 'Unmodified SMS, original text-entry/completion observation and normal acknowledgment/exit. Inherited approach protection; no new writes during this NPC stage. Plain-house current-state variants only.')
+ report=dict(quest_hint=a.quest_hint,conditional=a.conditional,conditional_variant=variant,conditional_effects_verified=effects_ok if a.conditional else None,passed=effects_ok and done is not None and len(visited)==len(targets) and not failure,failure=failure or (None if done else 'frame_limit'),source_sha256=cap['rom_sha256'],rom_sha256=cap['rom_sha256'],prefix=a.prefix,prefix_end=start,room=a.room,outside=a.outside,visited=visited,required_targets=targets,last_state={k:v for k,v in state.items() if k!='tilemap'},primary_ram_writes=len(writes),new_assistance_writes=0,assisted_route=bool(writes),sram_imports=0,progression_imports=0,scope='Unmodified SMS from cold boot with original text-entry/completion observations and ordinary walking/acknowledgment. Inherited approach protection, if any, is fully recorded; no new writes during this NPC stage. Current-state conditional-house variant only.' if a.conditional else 'Unmodified SMS, original text-entry/completion observation and normal acknowledgment/exit. Inherited approach protection; no new writes during this NPC stage. Plain-house current-state variants only.')
  if writes:
   assist=json.loads((prefix/'assistance.json').read_bytes());(out/'assistance.json').write_text(json.dumps(assist,indent=2)+'\n');recording(out,actual)
+ if a.quest_hint:report['scope']='Original quest hint in a genuine pre-reward state, rendered, acknowledged and exited. No gift, inventory edit or other hint variant claimed.'
  for name,data in [('report',report),('controls',controls)]:(out/(name+'.json')).write_text(json.dumps(data,indent=2)+'\n')
  print(json.dumps(report),flush=True)
  if not report['passed']:raise SystemExit(1)

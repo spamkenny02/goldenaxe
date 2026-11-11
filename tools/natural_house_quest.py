@@ -24,14 +24,16 @@ def main():
     p.add_argument('--sms', action='store_true')
     a = p.parse_args()
     gifts = {0x27: ('armor', 2), 0x50: ('basic', 2),
-             0xb1: ('armor', 3), 0x6a: ('basic', 3)}
+             0xb1: ('armor', 3), 0x6a: ('basic', 3),0x4c:('shield',3)}
     assert a.outside in gifts
     field, level = gifts[a.outside]
+    house=9 if a.outside==0x4c else 0x4f
+    contact=(168,56) if a.outside==0x4c else (120,72)
     source = ROOT / 'validation/natural-dungeon-route' / a.prefix
     c = json.loads((source / 'capture.json').read_bytes())
     prior = json.loads((source / 'route_report.json').read_bytes())
     assert prior['reached_entrance'] and prior['failure'] is None
-    assert prior['house_outside'] == a.outside and prior['house_target'] == 0x4f
+    assert prior['house_outside'] == a.outside and prior['house_target'] == house
     assert c['sram_input'] is None
     writes = prefix_writes(source, c, a.assisted_prefix)
     rom = ROOT / ('input/original.sms' if a.sms else 'gaw-megadrive.bin')
@@ -69,7 +71,7 @@ def main():
             state.update(room=int.from_bytes(raw[0xb9:0xbb],'little'),game=raw[0x1d],hero=raw[0x301],
                          counter=raw[0x304],x=raw[0x313],y=raw[0x311],health=raw[0x318],max_health=raw[0xda],
                          gold=raw[0xdd],magic=raw[0xdb],max_magic=raw[0xdc],fire=raw[0xe4],oil=raw[0xe8],
-                         basic=raw[0xe0],armor=raw[0xf1],selected=raw[0xdf],outside=raw[0xbb],
+                         basic=raw[0xe0],armor=raw[0xf1],shield=raw[0xf2],selected=raw[0xdf],outside=raw[0xbb],
                          flags=raw[0x100+a.outside],modal=None,reward=None,audio_error=0)
         else:
             data = lambda n, k: bytes(raw[(sy[n] + i) ^ 1] for i in range(k))
@@ -82,7 +84,7 @@ def main():
                      health=word('hero_health'), max_health=word('hero_max_health'),
                      gold=word('hero_gold'), magic=word('hero_magic'),
                      max_magic=word('hero_max_magic'), fire=items[4], oil=items[8],
-                     basic=word('hero_basic_level'), armor=word('hero_armor_level'),
+                     basic=word('hero_basic_level'), armor=word('hero_armor_level'),shield=word('hero_shield_level'),
                      selected=word('hero_selected_item'),
                      outside=word('house_return_room'),
                      flags=data('game_save_state', 592)[0x50 + a.outside],
@@ -90,7 +92,7 @@ def main():
                      audio_error=word('sound_unhandled_command'))
         if first is None:
             first = dict(state)
-            assert first['room'] == 0x4f and first['outside'] == a.outside
+            assert first['room'] == house and first['outside'] == a.outside
             assert first['health'] and first['fire'] and first[field] < level
             assert not first['flags'] & 2
             assert a.outside != 0x50 or first['max_health'] >= 56
@@ -126,12 +128,12 @@ def main():
             return [8] if f-acquired>=200 and f%40==0 else []
         if state.get('modal') or state.get('reward') or state.get('game') == 22:
             return [8] if f % 40 == 0 else []
-        if state.get('room') != 0x4f or state.get('game') != 12 or state.get('hero') != 1:
+        if state.get('room') != house or state.get('game') != 12 or state.get('hero') != 1:
             return []
         if state['counter']:
             return [4 + last_direction]
         point = state['x'], state['y']
-        goal = (136, 152) if achieved() else (120, 72)
+        goal = (136, 152) if achieved() else contact
         if point == goal:
             last_direction = 1 if achieved() else 0
             return [4 + last_direction]

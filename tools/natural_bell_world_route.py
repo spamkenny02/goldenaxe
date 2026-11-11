@@ -14,11 +14,11 @@ from validate_playable_sprite_limit import symbols
 from rebase_natural_campaign import evidence
 
 
-def project_persisted_cells(world, room, cells, flags, activate_bell=False):
+def project_persisted_cells(world, room, cells, flags, activate_bell=False, bell_room=0xcb):
     cells = bytearray(cells)
     rows = world.arrays['world_room_metadata']
     row = next((rows[i:i+4] for i in range(0, len(rows), 4) if rows[i] == room), None)
-    if row and (flags[room] & 1 or room == 0xcb and activate_bell):
+    if row and (flags[room] & 1 or room == bell_room and activate_bell):
         _, source, index, kind = row
         if room == 0xcb:
             assert bytes(row) == bytes([0xcb, 0x86, 0x39, 1])
@@ -50,6 +50,11 @@ def project_persisted_cells(world, room, cells, flags, activate_bell=False):
 
 def main():
     assert '--world-route' in sys.argv
+    bell_room=0xcb
+    if '--bell-room' in sys.argv:
+        n=sys.argv.index('--bell-room');bell_room=int(sys.argv[n+1],0);del sys.argv[n:n+2]
+    assert bell_room in (0x96,0xaa,0xcb)
+    bell_index,bell_value=(0x86,0x39) if bell_room==0xcb else (0x48 if bell_room==0x96 else 0x69,4)
     passive='--persisted-only' in sys.argv
     if passive:sys.argv.remove('--persisted-only')
     sms='--sms' in sys.argv
@@ -69,7 +74,7 @@ def main():
     sequence = False
 
     def render(world, room, cells, meta=None):
-        return original_render(world, room, project_persisted_cells(world, room, cells, flags, not passive), meta)
+        return original_render(world, room, project_persisted_cells(world, room, cells, flags, not passive, bell_room), meta)
 
     def wrapped(*args, **kwargs):
         result['folder'] = Path(args[2])
@@ -83,7 +88,7 @@ def main():
                 state.update(room=int.from_bytes(ram[0xb9:0xbb],'little'),game=ram[0x1d],hero=ram[0x301],
                              counter=ram[0x304],selected=ram[0xdf],slot=ram[0xa0],health=ram[0x318],
                              magic=ram[0xdb],gold=ram[0xdd],keys=ram[0xde],owned=ram[0xea],
-                             flag=ram[0x1cb],cell=ram[0x1c86],bell=ram[0xac])
+                             flag=ram[0x100+bell_room],cell=ram[0x1c00+bell_index],bell=ram[0xac],terrain=ram[0x41])
             else:observe_md(ram)
             finish_observation(frame)
         def observe_md(ram):
@@ -93,24 +98,24 @@ def main():
                          counter=word('hero_counter'), selected=word('hero_selected_item'),
                          slot=word('inventory_slot'), health=word('hero_health'),
                          magic=word('hero_magic'), gold=word('hero_gold'), keys=word('hero_keys'),
-                         owned=data('hero_items', 17)[10], flag=data('game_save_state', 592)[0x50+0xcb],
-                         cell=data('scratch', 4096)[0x800+0x86], bell=word('ice_bell_state'))
+                         owned=data('hero_items', 17)[10], flag=data('game_save_state', 592)[0x50+bell_room],
+                         cell=data('scratch', 4096)[0x800+bell_index], bell=word('ice_bell_state'),terrain=word('hero_terrain_context'))
         def finish_observation(frame):
             nonlocal first,opened,sequence
-            if frame > start and state['room'] == 0xcb and state['game'] == 12 and first is None:
+            if frame > start and state['room'] == bell_room and state['game'] == 12 and first is None:
                 first = dict(frame=frame, **state)
                 assert state['owned'] and not state['flag'] & 1
-            if first and state['room'] == 0xcb:
+            if first and state['room'] == bell_room:
                 if not events or any(state[k] != events[-1][k] for k in ['game','selected','slot','flag','cell','bell']):
                     events.append(dict(frame=frame, **state)); args[3].add(frame+1)
                 if state['flag'] & 1 and opened is None:
                     opened = dict(frame=frame, **state)
-                    assert state['cell'] == 0x39 and state['bell'] == 1
+                    assert state['cell'] == bell_value and state['bell'] == 1
             if sequence and opened and state['game'] == 12 and state['hero'] == 1 and state['selected'] == 1:
                 sequence = False
         def control(frame):
             nonlocal sequence
-            if frame > start and first and opened is None:
+            if frame > start and first and opened is None and state['terrain'] not in (3,5):
                 sequence = True
             if frame <= start or not sequence:
                 buttons = list(control_base(frame))
@@ -141,13 +146,13 @@ def main():
     (folder/'bell_events.json').write_bytes((json.dumps(events, indent=2)+'\n').encode())
     (folder/'bell_world_driver.py').write_bytes(driver)
     report = json.loads((folder/'route_report.json').read_bytes())
-    report.update(bell_world_driver_sha256=sha(driver), bell_first=first, bell_opened=opened,
+    report.update(bell_world_activation_room=bell_room,bell_world_driver_sha256=sha(driver), bell_first=first, bell_opened=opened,
                   bell_passage_verified=opened is not None if not passive else None,
                   persisted_flags_only=passive,bell_new_resource_or_terrain_writes=0)
     assert passive or not report['reached_entrance'] or opened is not None
     (folder/'route_report.json').write_bytes((json.dumps(report, indent=2)+'\n').encode())
     print('Persisted-terrain route only; no Bell activation claimed' if passive else
-          'CB Bell passage verified: '+str(opened is not None))
+          f'{bell_room:02X} Bell passage verified: '+str(opened is not None))
 
 if __name__ == '__main__':
     main()

@@ -18,13 +18,29 @@ class CensusWorld(World):
         return super().render_cells(room,project_persisted_cells(self,room,cells,self.persisted_flags),meta)
 
 
-def census_world(raw,outside,room):
+def census_world(raw,outside,room,entry_direction=0):
     world=CensusWorld(house_outside=outside,house_target=room)
     world.persisted_flags=raw[0x100:0x200]
     world.axe_terrain=world.rope_terrain=True
     world.canoe_owned=bool(raw[0xec]);world.boots_owned=bool(raw[0xee]);world.ship_owned=bool(raw[0xf0])
     world.crystal_bridge_open=bool(raw[0x149]&1)
     world.remote_unlocked={n for n,b in enumerate(raw[0x100:0x200]) if b&1}
+    world.entry_direction=entry_direction
+    # Propose the future doorway geometry only for a spell the hero owns.
+    # The controller must actually cast it and prove the flag before entry.
+    metadata=world.arrays['world_room_metadata']
+    row=next((metadata[i:i+4] for i in range(0,len(metadata)-3,4) if metadata[i]==outside),None)
+    if row and not raw[0x100+outside]&1 and raw[0xe5] and raw[0xdb]>=8:
+        cells=bytearray(160);pointer=int.from_bytes(world.arrays['world_room_index'][outside*2:outside*2+2],'little')
+        rle_planes(world.arrays['world_room_streams'],pointer,cells,0,1)
+        if cells[row[1]] in (0x13,0x38,0x3d,0x85,0x86):
+            proposed=bytearray(world.persisted_flags);proposed[outside]|=1;world.persisted_flags=proposed
+    current=int.from_bytes(raw[0xb9:0xbb],'little')
+    if current<256:
+        # Ice and other temporary terrain belong to the actually occupied map,
+        # even when there is no permanent outside flag for that transformation.
+        world.live_room=current
+        world.live_map=world.render_cells(current,raw[0x1c00:0x1ca0],raw[0x900:0x1100])
     return world
 
 
@@ -43,7 +59,7 @@ def main():
     for house in visited:
         known.update((house['outside'],house['room'],v['coordinate']) for v in house['conversations'])
     pending={key:rows for key,rows in groups.items() if any((key[0],key[1],t['coordinate']) not in known for t in rows)}
-    initial=args.prefix or (visited[-1]['trace'] if visited else COMBAT+'/sms-auto-sms-npc-d9-exit01')
+    initial=args.prefix or saved.get('last_verified_prefix') or (visited[-1]['trace'] if visited else COMBAT+'/sms-auto-sms-npc-d9-exit01')
     c=Campaign(initial,0x15e,'npc-census');first=not visited and not args.prefix;last_verified=initial
     def save(status):
         output.write_bytes((json.dumps(dict(status=status,source_sha256=reference['source_sha256'],
@@ -58,11 +74,13 @@ def main():
         while pending:
             raw=c.raw();start=(int.from_bytes(raw[0xb9:0xbb],'little'),raw[0x313],raw[0x311])
             ordered=sorted(pending,key=lambda k:abs((k[0]&15)-(start[0]&15))+abs((k[0]>>4)-(start[0]>>4)))
-            chosen=None
+            chosen=None;chosen_direction=0
             for outside,room in ordered:
-                world=census_world(raw,outside,room)
-                path,nodes=world.route(start)
-                if path is not None:chosen=(outside,room);break
+                for direction in range(4):
+                    world=census_world(raw,outside,room,direction)
+                    path,nodes=world.route(start)
+                    if path is not None:chosen=(outside,room);chosen_direction=direction;break
+                if chosen is not None:break
                 proposals.append(dict(from_room=start[0],outside=outside,room=room,visited_nodes=nodes))
             if chosen is None:
                 save('needs_additional_transport_or_terrain_route')
@@ -72,6 +90,7 @@ def main():
             attempt=1
             while (ROOT/'validation'/ROUTE/f'sms-sms-npc-census-{suffix}-entry{attempt:02d}').exists():attempt+=1
             extra=['--house-outside',hex(outside),'--house-target',hex(room),'--persisted-only']
+            extra+=['--door-entry-direction',str(chosen_direction)]
             if room_clear.get(outside)==7 and not raw[0x100+outside]&1:extra+=['--fight-for-entrance']
             tool='natural_bell_world_route.py'
             world=World(house_outside=outside,house_target=room);meta=world.arrays['world_room_metadata']
@@ -81,6 +100,8 @@ def main():
                 rle_planes(world.arrays['world_room_streams'],pointer,cells,0,1)
                 if cells[node[1]] in (0x13,0x38,0x3d,0x85,0x86):
                     tool='natural_earth_world_route.py';extra+=['--earth-world-cell',hex(node[1])]
+                elif 0x80<=cells[node[1]]<=0x84 and node[1]!=node[2]:
+                    extra+=['--required-chop',f'{hex(outside)}:{hex(node[1])}']
             c.route(suffix+f'-entry{attempt:02d}',extra,
                     new_episode=first,tool=tool);first=False
             attempt=1

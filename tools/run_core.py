@@ -136,10 +136,19 @@ def run(rom,frames,out,captures,presses,core=None,ram_writes=(),skip_intro=True,
         return count
     @POLL
     def poll(): pass
+    provider_frame=-1
+    provider_mask=0
     @INPUT
     def input_state(port,device,index,button):
-        return int(port==0 and (bool(fixed_inputs[frame] & (1<<button))
-                   or (input_provider is not None and button in input_provider(frame))))
+        nonlocal provider_frame,provider_mask
+        if port!=0:return 0
+        if input_provider is not None and provider_frame!=frame:
+            # A controller chooses one complete set of buttons for a frame.
+            # Libretro queries individual buttons repeatedly; re-running the
+            # planner per query wastes work and can advance its state mid-frame.
+            provider_mask=sum(1<<key for key in set(input_provider(frame)))
+            provider_frame=frame
+        return int(bool((fixed_inputs[frame] | provider_mask) & (1<<button)))
     callbacks=[environment,video,audio,batch,poll,input_state]
     for name,typ,cb in zip(('environment','video_refresh','audio_sample','audio_sample_batch','input_poll','input_state'),(ENV,VIDEO,AUDIO,BATCH,POLL,INPUT),callbacks):
         f=getattr(dll,'retro_set_'+name); f.argtypes=[typ]; f(cb)

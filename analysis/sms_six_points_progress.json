@@ -1,0 +1,468 @@
+{
+  "date": "2026-11-11",
+  "source_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+  "all_npcs_complete": false,
+  "all_side_quests_complete": false,
+  "points": {
+    "1_o3": {
+      "status": "complete",
+      "scope": "O3 ordinary context, not all NPC/service branches",
+      "evidence": {
+        "trace": "natural-service-route/sms-sms-npc-census-3e-8f-visit01",
+        "frame": 434397,
+        "proof": "validation/natural-service-route/sms-sms-npc-census-3e-8f-visit01-assisted-fixed-replay-434397/replay_report.json",
+        "ram_sha256": "85f78f28c941f73c0851e300e37548e426f20e4315687db9f8888840034a6f37",
+        "health_capacity": 104,
+        "magic_capacity": 72,
+        "magic_levels": [
+          2,
+          2,
+          0,
+          0
+        ]
+      }
+    },
+    "2_teachers_and_capacity": {
+      "status": "complete_acquisitions_revisits_separate",
+      "teachers": {
+        "trace": "natural-service-route/sms-npc-extra-magic-aa-level1-learn02",
+        "frame": 444290,
+        "proof": "validation/natural-service-route/sms-npc-extra-magic-aa-level1-learn02-assisted-fixed-replay-444290/replay_report.json",
+        "ram_sha256": "e35d6792977fe5807ae8b43d645e4a09e126183d9b6aec10a017caa6c2d6d89e",
+        "health_capacity": 104,
+        "magic_capacity": 120,
+        "magic_levels": [
+          2,
+          2,
+          2,
+          1
+        ]
+      },
+      "fairies": {
+        "trace": "natural-service-route/sms-npc-fairies-1d-reward01",
+        "frame": 467127,
+        "proof": "validation/natural-service-route/sms-npc-fairies-1d-reward01-assisted-fixed-replay-467127/replay_report.json",
+        "ram_sha256": "cde42921728a16f2ebe4d24f5fe556584e0d624de141d65f7ba1c85491d5adf5",
+        "health_capacity": 128,
+        "magic_capacity": 128,
+        "magic_levels": [
+          2,
+          2,
+          2,
+          1
+        ]
+      }
+    },
+    "3_services": {
+      "status": "in_progress",
+      "refusal_tour": {
+        "status": "running",
+        "initial_prefix": "natural-service-route/sms-npc-extra-magic-2c-level2-learn01",
+        "last_verified_prefix": "natural-service-route/sms-npc-service-refusals-ad-healer-refuse01",
+        "completed_visits": [
+          {
+            "kind": "merchant",
+            "outside": 46,
+            "room": 0,
+            "trace": "natural-service-route/sms-npc-service-refusals-2e-merchant-refuse02",
+            "frame": 442480,
+            "variant": "refusal"
+          },
+          {
+            "kind": "healer",
+            "outside": 46,
+            "room": 0,
+            "trace": "natural-service-route/sms-npc-service-refusals-2e-healer-refuse03",
+            "frame": 443250,
+            "variant": "refusal"
+          },
+          {
+            "kind": "save",
+            "outside": 46,
+            "room": 0,
+            "trace": "natural-service-route/sms-npc-service-refusals-2e-save-refuse01",
+            "frame": 443941,
+            "variant": "refusal"
+          },
+          {
+            "kind": "merchant",
+            "outside": 78,
+            "room": 47,
+            "trace": "natural-service-route/sms-npc-service-refusals-4e-merchant-refuse01",
+            "frame": 445476,
+            "variant": "refusal"
+          },
+          {
+            "kind": "merchant",
+            "outside": 94,
+            "room": 47,
+            "trace": "natural-service-route/sms-npc-service-refusals-5e-merchant-refuse03",
+            "frame": 446933,
+            "variant": "refusal"
+          },
+          {
+            "kind": "merchant",
+            "outside": 123,
+            "room": 47,
+            "trace": "natural-service-route/sms-npc-service-refusals-7b-merchant-refuse01",
+            "frame": 448404,
+            "variant": "refusal"
+          },
+          {
+            "kind": "save",
+            "outside": 156,
+            "room": 111,
+            "trace": "natural-service-route/sms-npc-service-refusals-9c-save-refuse02",
+            "frame": 449743,
+            "variant": "refusal"
+          },
+          {
+            "kind": "healer",
+            "outside": 173,
+            "room": 127,
+            "trace": "natural-service-route/sms-npc-service-refusals-ad-healer-refuse01",
+            "frame": 450984,
+            "variant": "refusal"
+          }
+        ],
+        "completed_transports": [],
+        "pending": [
+          {
+            "kind": "merchant",
+            "outside": 35,
+            "room": 47
+          },
+          {
+            "kind": "merchant",
+            "outside": 52,
+            "room": 47
+          },
+          {
+            "kind": "merchant",
+            "outside": 83,
+            "room": 47
+          },
+          {
+            "kind": "merchant",
+            "outside": 85,
+            "room": 1
+          },
+          {
+            "kind": "merchant",
+            "outside": 87,
+            "room": 1
+          },
+          {
+            "kind": "merchant",
+            "outside": 113,
+            "room": 47
+          },
+          {
+            "kind": "merchant",
+            "outside": 114,
+            "room": 47
+          },
+          {
+            "kind": "merchant",
+            "outside": 141,
+            "room": 47
+          },
+          {
+            "kind": "merchant",
+            "outside": 148,
+            "room": 0
+          },
+          {
+            "kind": "merchant",
+            "outside": 165,
+            "room": 47
+          },
+          {
+            "kind": "merchant",
+            "outside": 195,
+            "room": 47
+          },
+          {
+            "kind": "merchant",
+            "outside": 199,
+            "room": 1
+          },
+          {
+            "kind": "merchant",
+            "outside": 215,
+            "room": 47
+          },
+          {
+            "kind": "merchant",
+            "outside": 220,
+            "room": 47
+          },
+          {
+            "kind": "merchant",
+            "outside": 240,
+            "room": 47
+          },
+          {
+            "kind": "merchant",
+            "outside": 242,
+            "room": 47
+          },
+          {
+            "kind": "merchant",
+            "outside": 249,
+            "room": 47
+          },
+          {
+            "kind": "merchant",
+            "outside": 252,
+            "room": 47
+          },
+          {
+            "kind": "merchant",
+            "outside": 254,
+            "room": 0
+          },
+          {
+            "kind": "healer",
+            "outside": 20,
+            "room": 127
+          },
+          {
+            "kind": "healer",
+            "outside": 85,
+            "room": 1
+          },
+          {
+            "kind": "healer",
+            "outside": 87,
+            "room": 1
+          },
+          {
+            "kind": "healer",
+            "outside": 148,
+            "room": 0
+          },
+          {
+            "kind": "healer",
+            "outside": 199,
+            "room": 1
+          },
+          {
+            "kind": "healer",
+            "outside": 206,
+            "room": 4
+          },
+          {
+            "kind": "healer",
+            "outside": 240,
+            "room": 4
+          },
+          {
+            "kind": "healer",
+            "outside": 245,
+            "room": 127
+          },
+          {
+            "kind": "healer",
+            "outside": 254,
+            "room": 0
+          },
+          {
+            "kind": "save",
+            "outside": 33,
+            "room": 111
+          },
+          {
+            "kind": "save",
+            "outside": 82,
+            "room": 111
+          },
+          {
+            "kind": "save",
+            "outside": 85,
+            "room": 1
+          },
+          {
+            "kind": "save",
+            "outside": 87,
+            "room": 1
+          },
+          {
+            "kind": "save",
+            "outside": 148,
+            "room": 0
+          },
+          {
+            "kind": "save",
+            "outside": 184,
+            "room": 111
+          },
+          {
+            "kind": "save",
+            "outside": 199,
+            "room": 1
+          },
+          {
+            "kind": "save",
+            "outside": 206,
+            "room": 4
+          },
+          {
+            "kind": "save",
+            "outside": 213,
+            "room": 111
+          },
+          {
+            "kind": "save",
+            "outside": 240,
+            "room": 4
+          },
+          {
+            "kind": "save",
+            "outside": 250,
+            "room": 111
+          },
+          {
+            "kind": "save",
+            "outside": 254,
+            "room": 0
+          }
+        ],
+        "all_npcs_complete": false,
+        "all_service_variants_complete": false,
+        "scope": "48 static merchant/healer/save contexts, refusal and exterior return only. No successful transaction or complete side-quest claim."
+      },
+      "save_slots": {
+        "passed": true,
+        "outside": 46,
+        "all_three_slots_written_replayed_and_loaded": true,
+        "separate_persistence_branches": true,
+        "synthetic_fixtures": false,
+        "slots": [
+          {
+            "slot": 0,
+            "report": "validation/sms-save-continue/2e-slot0-01/report.json",
+            "source_recording": "natural-service-route/sms-npc-save-2e-slot0-01",
+            "checks": {
+              "normal_game": true,
+              "resume_room": true,
+              "health": true,
+              "health_capacity": true,
+              "magic": true,
+              "magic_capacity": true,
+              "gold": true,
+              "keys": true,
+              "inventory": true,
+              "crystals": true
+            },
+            "sram_sha256": "6aef83f0ab8110e0e844ae37d051d1f26303a57f05668c6b2cd40652ad0cb7ed"
+          },
+          {
+            "slot": 1,
+            "report": "validation/sms-save-continue/2e-slot1-01/report.json",
+            "source_recording": "natural-service-route/sms-npc-save-2e-slot1-01",
+            "checks": {
+              "normal_game": true,
+              "resume_room": true,
+              "health": true,
+              "health_capacity": true,
+              "magic": true,
+              "magic_capacity": true,
+              "gold": true,
+              "keys": true,
+              "inventory": true,
+              "crystals": true
+            },
+            "sram_sha256": "6db1712eded2682c62c6de73a1e8159e5970d946542e3e0f65c8121970e21500"
+          },
+          {
+            "slot": 2,
+            "report": "validation/sms-save-continue/2e-slot2-01/report.json",
+            "source_recording": "natural-service-route/sms-npc-save-2e-slot2-01",
+            "checks": {
+              "normal_game": true,
+              "resume_room": true,
+              "health": true,
+              "health_capacity": true,
+              "magic": true,
+              "magic_capacity": true,
+              "gold": true,
+              "keys": true,
+              "inventory": true,
+              "crystals": true
+            },
+            "sram_sha256": "3e4974db09ec72e4f62b1bda730a53416e8407b393f36c107be72043015614d1"
+          }
+        ],
+        "all_save_locations_complete": false
+      },
+      "limits": "Refusal entries do not close successful purchases, paid nights, saves, passages, gambling or return variants."
+    },
+    "4_equipment_hints_hidden_rooms_curse": {
+      "status": "in_progress",
+      "complete": false,
+      "equipment_hint_branches": {
+        "passed": true,
+        "separate_branches": true,
+        "contexts": [
+          {
+            "outside": 39,
+            "trace": "natural-service-route/sms-npc-quest-hint-27-01",
+            "proof": "validation/natural-service-route/sms-npc-quest-hint-27-01-assisted-fixed-replay-138877/replay_report.json",
+            "frame": 138877,
+            "text_pc": 36500
+          },
+          {
+            "outside": 80,
+            "trace": "natural-service-route/sms-npc-quest-hint-50-01",
+            "proof": "validation/natural-service-route/sms-npc-quest-hint-50-01-assisted-fixed-replay-144741/replay_report.json",
+            "frame": 144741,
+            "text_pc": 36500
+          },
+          {
+            "outside": 177,
+            "trace": "natural-service-route/sms-npc-quest-hint-b1-01",
+            "proof": "validation/natural-service-route/sms-npc-quest-hint-b1-01-assisted-fixed-replay-277676/replay_report.json",
+            "frame": 277676,
+            "text_pc": 36500
+          },
+          {
+            "outside": 106,
+            "trace": "natural-service-route/sms-npc-quest-hint-6a-01",
+            "proof": "validation/natural-service-route/sms-npc-quest-hint-6a-01-assisted-fixed-replay-283277/replay_report.json",
+            "frame": 283277,
+            "text_pc": 36500
+          }
+        ],
+        "all_hint_variants_complete": false
+      },
+      "dragon_shield": {
+        "trace": "natural-service-route/sms-npc-dragon-shield-gift02",
+        "frame": 485422,
+        "proof": "validation/natural-service-route/sms-npc-dragon-shield-gift02-assisted-fixed-replay-485422/replay_report.json",
+        "ram_sha256": "9c187c6c4fb4813ef29d501778c9f46995ba71a5601019f9f05404f96e3dcd8d",
+        "health_capacity": 128,
+        "magic_capacity": 128,
+        "magic_levels": [
+          2,
+          2,
+          2,
+          1
+        ]
+      }
+    },
+    "5_reported_strings": {
+      "status": "unresolved",
+      "offsets": [
+        "0xDA58",
+        "0xDA7C",
+        "0xED3C"
+      ],
+      "unused_proven": false
+    },
+    "6_final_replay_and_video": {
+      "status": "pending_final_route",
+      "complete_100_percent_video": false
+    }
+  }
+}

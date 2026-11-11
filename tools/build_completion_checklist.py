@@ -245,6 +245,48 @@ def main():
             case['sms_status']='selected_conditional_variants_observed_and_replayed; remaining_variants_pending'
             case['observations'].append(dict(report=branch_path.relative_to(ROOT).as_posix(),
                 separate_branch=True,variant=branch['variant'],**visit))
+    for case in cases:
+        if case['category']=='conditional_house':
+            required=({'ninth_crystal_absent','ninth_crystal_present'} if case['context']['outside']==0xce else
+                      {'prerequisite_absent','collect_actual_100_gold_reward','reward_already_collected'})
+            case['sms_required_variants_complete']=required.issubset(set(case.get('sms_variants_observed',[])))
+            if case['sms_required_variants_complete']:
+                case['sms_status']='all_required_conditional_variants_observed_and_fixed_replayed'
+    def receipt(trace):
+        folder=ROOT/'validation'/trace
+        capture=json.loads((folder/'capture.json').read_bytes())
+        assert json.loads((folder/'report.json').read_bytes())['passed']
+        proof=folder.with_name(folder.name+f'-assisted-fixed-replay-{capture["frames"]}')/'replay_report.json'
+        assert json.loads(proof.read_bytes())['passed']
+        return dict(trace=trace,frame=capture['frames'],proof=proof.relative_to(ROOT).as_posix())
+    def add_observation(identity,status,trace):
+        case=next(c for c in cases if c['id']==identity)
+        case['observations'].append(receipt(trace));case['sms_status']=status
+    for filename,key,category in [('sms_remaining_magic_campaign.json','completed_visits','teacher'),
+                                  ('sms_fairy_census_campaign.json','completed_rewards','fairy'),
+                                  ('sms_gold_funding_campaign.json','completed_gifts','gold_house')]:
+        path=ROOT/'analysis'/filename
+        if path.exists():
+            for row in json.loads(path.read_bytes()).get(key,[]):
+                add_observation(f'{category}:{row["outside"]:02x}',
+                    'selected_acquisition_and_exit_observed_and_fixed_replayed; other_variants_pending',row['trace'])
+    shield=ROOT/'analysis/sms_dragon_shield_campaign.json'
+    if shield.exists():
+        data=json.loads(shield.read_bytes())
+        if data.get('passed'):add_observation('house_item_quest:4c/09','dragon_shield_gift_and_exit_fixed_replayed; hint_and_return_variants_pending',data['last_verified_prefix'])
+    for outside in (0x27,0x50,0xb1,0x6a):
+        trace=f'natural-service-route/sms-npc-quest-hint-{outside:02x}-01'
+        folder=ROOT/'validation'/trace
+        if (folder/'report.json').exists():
+            capture=json.loads((folder/'capture.json').read_bytes())
+            if folder.with_name(folder.name+f'-assisted-fixed-replay-{capture["frames"]}').exists():
+                add_observation(f'equipment_quest:{outside:02x}/hint','pre_reward_hint_rendered_acknowledged_and_fixed_replayed; other_variants_pending',trace)
+    service=ROOT/'analysis/sms_service_refusal_campaign.json'
+    if service.exists():
+        for row in json.loads(service.read_bytes()).get('completed_visits',[]):
+            identity=({'merchant':'merchant','healer':'healer_inn','save':'save_service'}[row['kind']]
+                      +(':'+f'{row["outside"]:02x}' if row['kind']!='save' else ':audit'))
+            add_observation(identity,'selected_service_refusal_and_exit_fixed_replayed; successful_transactions_and_other_contexts_pending',row['trace'])
     result = dict(requirement='ALL NPCs and ALL side quests on SMS and MD, including relevant return visits and conditional text variants',
                   requirement_complete=False, census_proved_complete=False,
                   completion_percentage=None,

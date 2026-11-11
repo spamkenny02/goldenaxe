@@ -50,6 +50,12 @@ les boss ; aucun état de quête ni sauvegarde n'est importé. Les essais échou
 ne sont pas ajoutés aux étapes accomplies.
 
 Une nouvelle branche reprend avant le palais pour visiter les maisons manquantes.
+Le relevé du 11 novembre atteint maintenant **65/65 contextes ordinaires connus** :
+O3 est réellement ouvert avec Terre, son texte est affiché et acquitté, puis la
+sortie est rejouée indépendamment. Les enseignements atteignent 2/2/2/1 ; les
+huit récompenses de fées sont présentes et les capacités vie/magie atteignent
+128/128. Les autres variantes et services restent ouverts.
+[Suivi des six points SMS](analysis/sms_six_points_progress.json).
 L'accès caché FB est ouvert avec le vrai sort Terre ; son habitant et les trois
 habitants de la maison FE/00 sont visités, acquittés et rejoués indépendamment.
 Ces visites supplémentaires ne sont pas encore intégrées au CSV de la campagne
