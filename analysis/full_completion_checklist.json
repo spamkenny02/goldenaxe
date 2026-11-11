@@ -3923,13 +3923,19 @@
         "Already owned, inferior equipment, full capacity: each applicable reachable message",
         "Return after equipment and quest changes"
       ],
-      "sms_status": "pending",
+      "sms_status": "selected_service_refusal_and_exit_fixed_replayed; successful_transactions_and_other_contexts_pending",
       "md_status": "pending",
       "sms_md_comparison_status": "pending",
       "guide_episode": null,
       "guide_timestamp": null,
       "static_basis": "megadrive/src/merchant_data.c; megadrive/src/merchant.inc",
-      "observations": []
+      "observations": [
+        {
+          "trace": "natural-service-route/sms-npc-service-refusals-8d-merchant-refuse04",
+          "frame": 512512,
+          "proof": "validation/natural-service-route/sms-npc-service-refusals-8d-merchant-refuse04-assisted-fixed-replay-512512/replay_report.json"
+        }
+      ]
     },
     {
       "id": "merchant:94",
@@ -4971,7 +4977,7 @@
         "Payment and real destination",
         "Return trip"
       ],
-      "sms_status": "actual10_gold_return_payment_and_destination3c_replayed; other_variants_pending",
+      "sms_status": "actual_payment_and_destination_fixed_replayed; other_variants_pending",
       "md_status": "pending",
       "sms_md_comparison_status": "pending",
       "guide_episode": null,
@@ -4981,6 +4987,11 @@
         {
           "report": "analysis/sms_npc_campaign_progress_report.json",
           "milestone": "sixth_crystal"
+        },
+        {
+          "trace": "natural-service-route/sms-npc-passage-census-1a-pay01",
+          "frame": 546285,
+          "proof": "validation/natural-service-route/sms-npc-passage-census-1a-pay01-assisted-fixed-replay-546285/replay_report.json"
         }
       ]
     },
@@ -5086,13 +5097,19 @@
         "Payment and real destination",
         "Return trip"
       ],
-      "sms_status": "pending",
+      "sms_status": "actual_payment_and_destination_fixed_replayed; other_variants_pending",
       "md_status": "pending",
       "sms_md_comparison_status": "pending",
       "guide_episode": null,
       "guide_timestamp": null,
       "static_basis": "analysis/paid_passage_reference.json",
-      "observations": []
+      "observations": [
+        {
+          "trace": "natural-service-route/sms-npc-passage-census-6d-pay01",
+          "frame": 548073,
+          "proof": "validation/natural-service-route/sms-npc-passage-census-6d-pay01-assisted-fixed-replay-548073/replay_report.json"
+        }
+      ]
     },
     {
       "id": "paid_passage:96",
@@ -5108,13 +5125,19 @@
         "Payment and real destination",
         "Return trip"
       ],
-      "sms_status": "pending",
+      "sms_status": "actual_payment_and_destination_fixed_replayed; other_variants_pending",
       "md_status": "pending",
       "sms_md_comparison_status": "pending",
       "guide_episode": null,
       "guide_timestamp": null,
       "static_basis": "analysis/paid_passage_reference.json",
-      "observations": []
+      "observations": [
+        {
+          "trace": "natural-service-route/sms-npc-passage-census-96-pay01",
+          "frame": 548730,
+          "proof": "validation/natural-service-route/sms-npc-passage-census-96-pay01-assisted-fixed-replay-548730/replay_report.json"
+        }
+      ]
     },
     {
       "id": "minigame:audit",
@@ -5324,6 +5347,21 @@
           "trace": "natural-service-route/sms-npc-save-location-21-slot0-01",
           "frame": 490762,
           "proof": "validation/natural-service-route/sms-npc-save-location-21-slot0-01-assisted-fixed-replay-490762/replay_report.json"
+        },
+        {
+          "trace": "natural-service-route/sms-npc-save-location-f0-slot0-01",
+          "frame": 497254,
+          "proof": "validation/natural-service-route/sms-npc-save-location-f0-slot0-01-assisted-fixed-replay-497254/replay_report.json"
+        },
+        {
+          "trace": "natural-service-route/sms-npc-save-location-c7-slot0-01",
+          "frame": 502423,
+          "proof": "validation/natural-service-route/sms-npc-save-location-c7-slot0-01-assisted-fixed-replay-502423/replay_report.json"
+        },
+        {
+          "trace": "natural-service-route/sms-npc-save-location-b8-slot0-01",
+          "frame": 503839,
+          "proof": "validation/natural-service-route/sms-npc-save-location-b8-slot0-01-assisted-fixed-replay-503839/replay_report.json"
         }
       ],
       "guide_observation": {

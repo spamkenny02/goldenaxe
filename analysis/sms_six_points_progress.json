@@ -92,9 +92,9 @@
     "3_services": {
       "status": "in_progress",
       "refusal_tour": {
-        "status": "running",
+        "status": "all_48_static_service_refusals_and_exits_replayed",
         "initial_prefix": "natural-service-route/sms-npc-extra-magic-2c-level2-learn01",
-        "last_verified_prefix": "natural-service-route/sms-npc-service-refusals-c3-merchant-refuse01",
+        "last_verified_prefix": "natural-service-route/sms-npc-service-refusals-8d-merchant-refuse04",
         "completed_visits": [
           {
             "kind": "merchant",
@@ -471,16 +471,18 @@
             "trace": "natural-service-route/sms-npc-service-refusals-c3-merchant-refuse01",
             "frame": 508108,
             "variant": "refusal"
-          }
-        ],
-        "completed_transports": [],
-        "pending": [
+          },
           {
             "kind": "merchant",
             "outside": 141,
-            "room": 47
+            "room": 47,
+            "trace": "natural-service-route/sms-npc-service-refusals-8d-merchant-refuse04",
+            "frame": 512512,
+            "variant": "refusal"
           }
         ],
+        "completed_transports": [],
+        "pending": [],
         "all_npcs_complete": false,
         "all_service_variants_complete": false,
         "scope": "48 static merchant/healer/save contexts, refusal and exterior return only. No successful transaction or complete side-quest claim."
@@ -1039,7 +1041,7 @@
         "all_inn_variants_complete": false
       },
       "save_locations": {
-        "status": "partial_locations_verified",
+        "status": "all_fourteen_save_locations_written_replayed_and_loaded",
         "completed_locations": [
           {
             "outside": 46,
@@ -1249,6 +1251,63 @@
               "crystals": true
             },
             "sram_sha256": "2bfc2e5cbce297f65fbf19dd35209e8eb9cc3d3251aab0afc5448004dfa14e55"
+          },
+          {
+            "outside": 240,
+            "save_trace": "natural-service-route/sms-npc-save-location-f0-slot0-01",
+            "continue_report": "validation/sms-save-continue/location-f0-slot0-01/report.json",
+            "slot": 0,
+            "all_reload_checks": {
+              "normal_game": true,
+              "resume_room": true,
+              "health": true,
+              "health_capacity": true,
+              "magic": true,
+              "magic_capacity": true,
+              "gold": true,
+              "keys": true,
+              "inventory": true,
+              "crystals": true
+            },
+            "sram_sha256": "5dc1f45f6466357410b7e13de71c2c6e669025308f622f5bde01814f02744170"
+          },
+          {
+            "outside": 199,
+            "save_trace": "natural-service-route/sms-npc-save-location-c7-slot0-01",
+            "continue_report": "validation/sms-save-continue/location-c7-slot0-01/report.json",
+            "slot": 0,
+            "all_reload_checks": {
+              "normal_game": true,
+              "resume_room": true,
+              "health": true,
+              "health_capacity": true,
+              "magic": true,
+              "magic_capacity": true,
+              "gold": true,
+              "keys": true,
+              "inventory": true,
+              "crystals": true
+            },
+            "sram_sha256": "f794604382ce140d046837930cd1ae9fc779f77ab15feb5863774fd0d2e67e97"
+          },
+          {
+            "outside": 184,
+            "save_trace": "natural-service-route/sms-npc-save-location-b8-slot0-01",
+            "continue_report": "validation/sms-save-continue/location-b8-slot0-01/report.json",
+            "slot": 0,
+            "all_reload_checks": {
+              "normal_game": true,
+              "resume_room": true,
+              "health": true,
+              "health_capacity": true,
+              "magic": true,
+              "magic_capacity": true,
+              "gold": true,
+              "keys": true,
+              "inventory": true,
+              "crystals": true
+            },
+            "sram_sha256": "272673e5ba8d92de6cde438a857d74ffe4c69a1f7b21f6673d2ec7db47b5b7be"
           }
         ],
         "expected_locations": 14,
@@ -1257,8 +1316,8 @@
         "all_npcs_complete": false
       },
       "paid_passages": {
-        "status": "running",
-        "last_verified_prefix": "natural-service-route/sms-npc-passage-census-3c-pay01",
+        "status": "all_six_paid_passage_directions_and_destinations_replayed",
+        "last_verified_prefix": "natural-service-route/sms-npc-passage-census-96-pay01",
         "completed_passages": [
           {
             "outside": 54,
@@ -1277,28 +1336,27 @@
             "destination": 26,
             "trace": "natural-service-route/sms-npc-passage-census-3c-pay01",
             "frame": 545660
+          },
+          {
+            "outside": 26,
+            "destination": 60,
+            "trace": "natural-service-route/sms-npc-passage-census-1a-pay01",
+            "frame": 546285
+          },
+          {
+            "outside": 109,
+            "destination": 150,
+            "trace": "natural-service-route/sms-npc-passage-census-6d-pay01",
+            "frame": 548073
+          },
+          {
+            "outside": 150,
+            "destination": 109,
+            "trace": "natural-service-route/sms-npc-passage-census-96-pay01",
+            "frame": 548730
           }
         ],
-        "pending": [
-          [
-            26,
-            60,
-            144,
-            24
-          ],
-          [
-            109,
-            150,
-            80,
-            136
-          ],
-          [
-            150,
-            109,
-            144,
-            104
-          ]
-        ],
+        "pending": [],
         "all_passage_variants_complete": false
       }
     },
@@ -1502,10 +1560,22 @@
               "observations_sha256": "3dee926a9557dd3539bd0e3686904fd8eb5c83f5e4e11f93c25324ffcb57f709"
             },
             {
+              "trace": "natural-service-route/sms-npc-inn-location-c7-accept01",
+              "frames": 501880,
+              "proof": "validation/natural-service-route/sms-npc-inn-location-c7-accept01-assisted-fixed-replay-501880/replay_report.json",
+              "observations_sha256": "18810c7fdebaa2af56526d1b9e04d8f518d22c86366f3aab08f430cda146b6da"
+            },
+            {
               "trace": "natural-service-route/sms-npc-inn-location-ce-accept01",
               "frames": 453248,
               "proof": "validation/natural-service-route/sms-npc-inn-location-ce-accept01-assisted-fixed-replay-453248/replay_report.json",
               "observations_sha256": "3af86d36610b5557f08c352cf0619a286e5adfdb3f1927cfb68508277d9ac7d7"
+            },
+            {
+              "trace": "natural-service-route/sms-npc-inn-location-f0-accept01",
+              "frames": 496727,
+              "proof": "validation/natural-service-route/sms-npc-inn-location-f0-accept01-assisted-fixed-replay-496727/replay_report.json",
+              "observations_sha256": "a5314ac99d217fcf36f04387a940479d09fd82027d56e94eb2aae926598960f1"
             },
             {
               "trace": "natural-service-route/sms-npc-inn-location-f5-accept01",
@@ -1562,16 +1632,22 @@
               "observations_sha256": "009b6afc1460bce63aac9355b7836103251e85edd71bdd4b1228e1613bd5667b"
             },
             {
-              "trace": "natural-service-route/sms-npc-passage-census-87-pay01",
-              "frames": 542214,
-              "proof": "validation/natural-service-route/sms-npc-passage-census-87-pay01-assisted-fixed-replay-542214/replay_report.json",
-              "observations_sha256": "573d0f67ebc74eb2028d21346808de92376d8f06c15cca385b9c0bf258dfa935"
+              "trace": "natural-service-route/sms-npc-passage-census-96-pay01",
+              "frames": 548730,
+              "proof": "validation/natural-service-route/sms-npc-passage-census-96-pay01-assisted-fixed-replay-548730/replay_report.json",
+              "observations_sha256": "7df5519085115f19a2bb64d8bd85aed4c52539003fb0b91fedc221b2e5099560"
             },
             {
               "trace": "natural-service-route/sms-npc-save-2e-slot0-01",
               "frames": 408757,
               "proof": "validation/natural-service-route/sms-npc-save-2e-slot0-01-assisted-fixed-replay-408757/replay_report.json",
               "observations_sha256": "5ef1f56053d28c32bae31e4a86040517f6793b7f8db6f604a9bd14ca8c801e99"
+            },
+            {
+              "trace": "natural-service-route/sms-npc-save-location-21-slot0-01",
+              "frames": 490762,
+              "proof": "validation/natural-service-route/sms-npc-save-location-21-slot0-01-assisted-fixed-replay-490762/replay_report.json",
+              "observations_sha256": "0f092040c324b8772d2e59270605bafef149a93123eed58c52aedee3a4979343"
             },
             {
               "trace": "natural-service-route/sms-npc-save-location-52-slot0-01",
@@ -1586,6 +1662,12 @@
               "observations_sha256": "524bbee1c96d02c997e891b79d49a4974a3f18b335ee75af1b56f16c9e5b1d72"
             },
             {
+              "trace": "natural-service-route/sms-npc-save-location-57-slot0-01",
+              "frames": 483504,
+              "proof": "validation/natural-service-route/sms-npc-save-location-57-slot0-01-assisted-fixed-replay-483504/replay_report.json",
+              "observations_sha256": "71605447041a56110590e407d510fb79f562856707f56048a33a4a1415934839"
+            },
+            {
               "trace": "natural-service-route/sms-npc-save-location-94-slot0-01",
               "frames": 471359,
               "proof": "validation/natural-service-route/sms-npc-save-location-94-slot0-01-assisted-fixed-replay-471359/replay_report.json",
@@ -1596,6 +1678,18 @@
               "frames": 449642,
               "proof": "validation/natural-service-route/sms-npc-save-location-9c-slot0-01-assisted-fixed-replay-449642/replay_report.json",
               "observations_sha256": "d616cde09ed2b7b77df534eb069c389f19ff7b193dc2092e06f89d50890de4b6"
+            },
+            {
+              "trace": "natural-service-route/sms-npc-save-location-b8-slot0-01",
+              "frames": 503839,
+              "proof": "validation/natural-service-route/sms-npc-save-location-b8-slot0-01-assisted-fixed-replay-503839/replay_report.json",
+              "observations_sha256": "1b85f0328fc05e92eb80a1083ce3ae0f245abf9da43332332e0e3c7343a9888a"
+            },
+            {
+              "trace": "natural-service-route/sms-npc-save-location-c7-slot0-01",
+              "frames": 502423,
+              "proof": "validation/natural-service-route/sms-npc-save-location-c7-slot0-01-assisted-fixed-replay-502423/replay_report.json",
+              "observations_sha256": "ac00d58b6631f8275ba2dc608ce1df4224242d628a47579354b58c513f1a1ea2"
             },
             {
               "trace": "natural-service-route/sms-npc-save-location-ce-slot0-01",
@@ -1610,6 +1704,12 @@
               "observations_sha256": "0a3deb269778719950e0b5ffa7885b5d6031d967a4b5faadaccedb89e5eb66ed"
             },
             {
+              "trace": "natural-service-route/sms-npc-save-location-f0-slot0-01",
+              "frames": 497254,
+              "proof": "validation/natural-service-route/sms-npc-save-location-f0-slot0-01-assisted-fixed-replay-497254/replay_report.json",
+              "observations_sha256": "c1d665c3f34ed751ebaf186d7783e355ae1edd8073fad6c64143e70d7076b458"
+            },
+            {
               "trace": "natural-service-route/sms-npc-save-location-fa-slot0-01",
               "frames": 461580,
               "proof": "validation/natural-service-route/sms-npc-save-location-fa-slot0-01-assisted-fixed-replay-461580/replay_report.json",
@@ -1622,10 +1722,10 @@
               "observations_sha256": "158329b10a81a2405262c03ac37989f4d40b511ded561cc2fd12de0863db4782"
             },
             {
-              "trace": "natural-service-route/sms-npc-service-refusals-b8-save-refuse01",
-              "frames": 503941,
-              "proof": "validation/natural-service-route/sms-npc-service-refusals-b8-save-refuse01-assisted-fixed-replay-503941/replay_report.json",
-              "observations_sha256": "56281acc56c921919918ed8348c9b832f4c815471bb3d5823478913768d6d394"
+              "trace": "natural-service-route/sms-npc-service-refusals-8d-merchant-refuse04",
+              "frames": 512512,
+              "proof": "validation/natural-service-route/sms-npc-service-refusals-8d-merchant-refuse04-assisted-fixed-replay-512512/replay_report.json",
+              "observations_sha256": "317cdf482b5ac09e4f67809d132e72a375cb9568f6a3cde2ccf3c94ee887db6c"
             },
             {
               "trace": "natural-service-route/sms-npc-teacher-returns-2c-visit01",
@@ -1676,7 +1776,7 @@
               "observations_sha256": "2ea95942eb8a877fbf0e1392f27f7edc7ad5c187bfcfe92362787a63bd2bdc31"
             }
           ],
-          "entry_event_count": 8264,
+          "entry_event_count": 10122,
           "unique_text_entry_pcs": 117,
           "findings": [
             {
@@ -1848,6 +1948,24 @@
                   "caller": 9474
                 },
                 {
+                  "trace": "natural-service-route/sms-npc-inn-location-c7-accept01",
+                  "frame": 364293,
+                  "event_pc": 1763,
+                  "text_pc": 39512,
+                  "outside": 251,
+                  "room": 143,
+                  "caller": 25210
+                },
+                {
+                  "trace": "natural-service-route/sms-npc-inn-location-c7-accept01",
+                  "frame": 364293,
+                  "event_pc": 25210,
+                  "text_pc": 39512,
+                  "outside": 251,
+                  "room": 143,
+                  "caller": 9474
+                },
+                {
                   "trace": "natural-service-route/sms-npc-inn-location-ce-accept01",
                   "frame": 364293,
                   "event_pc": 1763,
@@ -1858,6 +1976,24 @@
                 },
                 {
                   "trace": "natural-service-route/sms-npc-inn-location-ce-accept01",
+                  "frame": 364293,
+                  "event_pc": 25210,
+                  "text_pc": 39512,
+                  "outside": 251,
+                  "room": 143,
+                  "caller": 9474
+                },
+                {
+                  "trace": "natural-service-route/sms-npc-inn-location-f0-accept01",
+                  "frame": 364293,
+                  "event_pc": 1763,
+                  "text_pc": 39512,
+                  "outside": 251,
+                  "room": 143,
+                  "caller": 25210
+                },
+                {
+                  "trace": "natural-service-route/sms-npc-inn-location-f0-accept01",
                   "frame": 364293,
                   "event_pc": 25210,
                   "text_pc": 39512,
@@ -2028,7 +2164,7 @@
                   "caller": 9474
                 },
                 {
-                  "trace": "natural-service-route/sms-npc-passage-census-87-pay01",
+                  "trace": "natural-service-route/sms-npc-passage-census-96-pay01",
                   "frame": 364293,
                   "event_pc": 1763,
                   "text_pc": 39512,
@@ -2037,7 +2173,7 @@
                   "caller": 25210
                 },
                 {
-                  "trace": "natural-service-route/sms-npc-passage-census-87-pay01",
+                  "trace": "natural-service-route/sms-npc-passage-census-96-pay01",
                   "frame": 364293,
                   "event_pc": 25210,
                   "text_pc": 39512,
@@ -2056,6 +2192,24 @@
                 },
                 {
                   "trace": "natural-service-route/sms-npc-save-2e-slot0-01",
+                  "frame": 364293,
+                  "event_pc": 25210,
+                  "text_pc": 39512,
+                  "outside": 251,
+                  "room": 143,
+                  "caller": 9474
+                },
+                {
+                  "trace": "natural-service-route/sms-npc-save-location-21-slot0-01",
+                  "frame": 364293,
+                  "event_pc": 1763,
+                  "text_pc": 39512,
+                  "outside": 251,
+                  "room": 143,
+                  "caller": 25210
+                },
+                {
+                  "trace": "natural-service-route/sms-npc-save-location-21-slot0-01",
                   "frame": 364293,
                   "event_pc": 25210,
                   "text_pc": 39512,
@@ -2100,6 +2254,24 @@
                   "caller": 9474
                 },
                 {
+                  "trace": "natural-service-route/sms-npc-save-location-57-slot0-01",
+                  "frame": 364293,
+                  "event_pc": 1763,
+                  "text_pc": 39512,
+                  "outside": 251,
+                  "room": 143,
+                  "caller": 25210
+                },
+                {
+                  "trace": "natural-service-route/sms-npc-save-location-57-slot0-01",
+                  "frame": 364293,
+                  "event_pc": 25210,
+                  "text_pc": 39512,
+                  "outside": 251,
+                  "room": 143,
+                  "caller": 9474
+                },
+                {
                   "trace": "natural-service-route/sms-npc-save-location-94-slot0-01",
                   "frame": 364293,
                   "event_pc": 1763,
@@ -2128,6 +2300,42 @@
                 },
                 {
                   "trace": "natural-service-route/sms-npc-save-location-9c-slot0-01",
+                  "frame": 364293,
+                  "event_pc": 25210,
+                  "text_pc": 39512,
+                  "outside": 251,
+                  "room": 143,
+                  "caller": 9474
+                },
+                {
+                  "trace": "natural-service-route/sms-npc-save-location-b8-slot0-01",
+                  "frame": 364293,
+                  "event_pc": 1763,
+                  "text_pc": 39512,
+                  "outside": 251,
+                  "room": 143,
+                  "caller": 25210
+                },
+                {
+                  "trace": "natural-service-route/sms-npc-save-location-b8-slot0-01",
+                  "frame": 364293,
+                  "event_pc": 25210,
+                  "text_pc": 39512,
+                  "outside": 251,
+                  "room": 143,
+                  "caller": 9474
+                },
+                {
+                  "trace": "natural-service-route/sms-npc-save-location-c7-slot0-01",
+                  "frame": 364293,
+                  "event_pc": 1763,
+                  "text_pc": 39512,
+                  "outside": 251,
+                  "room": 143,
+                  "caller": 25210
+                },
+                {
+                  "trace": "natural-service-route/sms-npc-save-location-c7-slot0-01",
                   "frame": 364293,
                   "event_pc": 25210,
                   "text_pc": 39512,
@@ -2172,6 +2380,24 @@
                   "caller": 9474
                 },
                 {
+                  "trace": "natural-service-route/sms-npc-save-location-f0-slot0-01",
+                  "frame": 364293,
+                  "event_pc": 1763,
+                  "text_pc": 39512,
+                  "outside": 251,
+                  "room": 143,
+                  "caller": 25210
+                },
+                {
+                  "trace": "natural-service-route/sms-npc-save-location-f0-slot0-01",
+                  "frame": 364293,
+                  "event_pc": 25210,
+                  "text_pc": 39512,
+                  "outside": 251,
+                  "room": 143,
+                  "caller": 9474
+                },
+                {
                   "trace": "natural-service-route/sms-npc-save-location-fa-slot0-01",
                   "frame": 364293,
                   "event_pc": 1763,
@@ -2208,7 +2434,7 @@
                   "caller": 9474
                 },
                 {
-                  "trace": "natural-service-route/sms-npc-service-refusals-b8-save-refuse01",
+                  "trace": "natural-service-route/sms-npc-service-refusals-8d-merchant-refuse04",
                   "frame": 364293,
                   "event_pc": 1763,
                   "text_pc": 39512,
@@ -2217,7 +2443,7 @@
                   "caller": 25210
                 },
                 {
-                  "trace": "natural-service-route/sms-npc-service-refusals-b8-save-refuse01",
+                  "trace": "natural-service-route/sms-npc-service-refusals-8d-merchant-refuse04",
                   "frame": 364293,
                   "event_pc": 25210,
                   "text_pc": 39512,
@@ -2511,6 +2737,24 @@
                   "caller": 9474
                 },
                 {
+                  "trace": "natural-service-route/sms-npc-inn-location-c7-accept01",
+                  "frame": 427626,
+                  "event_pc": 1763,
+                  "text_pc": 44348,
+                  "outside": 206,
+                  "room": 2,
+                  "caller": 25210
+                },
+                {
+                  "trace": "natural-service-route/sms-npc-inn-location-c7-accept01",
+                  "frame": 427626,
+                  "event_pc": 25210,
+                  "text_pc": 44348,
+                  "outside": 206,
+                  "room": 2,
+                  "caller": 9474
+                },
+                {
                   "trace": "natural-service-route/sms-npc-inn-location-ce-accept01",
                   "frame": 427626,
                   "event_pc": 1763,
@@ -2521,6 +2765,24 @@
                 },
                 {
                   "trace": "natural-service-route/sms-npc-inn-location-ce-accept01",
+                  "frame": 427626,
+                  "event_pc": 25210,
+                  "text_pc": 44348,
+                  "outside": 206,
+                  "room": 2,
+                  "caller": 9474
+                },
+                {
+                  "trace": "natural-service-route/sms-npc-inn-location-f0-accept01",
+                  "frame": 427626,
+                  "event_pc": 1763,
+                  "text_pc": 44348,
+                  "outside": 206,
+                  "room": 2,
+                  "caller": 25210
+                },
+                {
+                  "trace": "natural-service-route/sms-npc-inn-location-f0-accept01",
                   "frame": 427626,
                   "event_pc": 25210,
                   "text_pc": 44348,
@@ -2691,7 +2953,7 @@
                   "caller": 9474
                 },
                 {
-                  "trace": "natural-service-route/sms-npc-passage-census-87-pay01",
+                  "trace": "natural-service-route/sms-npc-passage-census-96-pay01",
                   "frame": 427626,
                   "event_pc": 1763,
                   "text_pc": 44348,
@@ -2700,7 +2962,25 @@
                   "caller": 25210
                 },
                 {
-                  "trace": "natural-service-route/sms-npc-passage-census-87-pay01",
+                  "trace": "natural-service-route/sms-npc-passage-census-96-pay01",
+                  "frame": 427626,
+                  "event_pc": 25210,
+                  "text_pc": 44348,
+                  "outside": 206,
+                  "room": 2,
+                  "caller": 9474
+                },
+                {
+                  "trace": "natural-service-route/sms-npc-save-location-21-slot0-01",
+                  "frame": 427626,
+                  "event_pc": 1763,
+                  "text_pc": 44348,
+                  "outside": 206,
+                  "room": 2,
+                  "caller": 25210
+                },
+                {
+                  "trace": "natural-service-route/sms-npc-save-location-21-slot0-01",
                   "frame": 427626,
                   "event_pc": 25210,
                   "text_pc": 44348,
@@ -2745,6 +3025,24 @@
                   "caller": 9474
                 },
                 {
+                  "trace": "natural-service-route/sms-npc-save-location-57-slot0-01",
+                  "frame": 427626,
+                  "event_pc": 1763,
+                  "text_pc": 44348,
+                  "outside": 206,
+                  "room": 2,
+                  "caller": 25210
+                },
+                {
+                  "trace": "natural-service-route/sms-npc-save-location-57-slot0-01",
+                  "frame": 427626,
+                  "event_pc": 25210,
+                  "text_pc": 44348,
+                  "outside": 206,
+                  "room": 2,
+                  "caller": 9474
+                },
+                {
                   "trace": "natural-service-route/sms-npc-save-location-94-slot0-01",
                   "frame": 427626,
                   "event_pc": 1763,
@@ -2773,6 +3071,42 @@
                 },
                 {
                   "trace": "natural-service-route/sms-npc-save-location-9c-slot0-01",
+                  "frame": 427626,
+                  "event_pc": 25210,
+                  "text_pc": 44348,
+                  "outside": 206,
+                  "room": 2,
+                  "caller": 9474
+                },
+                {
+                  "trace": "natural-service-route/sms-npc-save-location-b8-slot0-01",
+                  "frame": 427626,
+                  "event_pc": 1763,
+                  "text_pc": 44348,
+                  "outside": 206,
+                  "room": 2,
+                  "caller": 25210
+                },
+                {
+                  "trace": "natural-service-route/sms-npc-save-location-b8-slot0-01",
+                  "frame": 427626,
+                  "event_pc": 25210,
+                  "text_pc": 44348,
+                  "outside": 206,
+                  "room": 2,
+                  "caller": 9474
+                },
+                {
+                  "trace": "natural-service-route/sms-npc-save-location-c7-slot0-01",
+                  "frame": 427626,
+                  "event_pc": 1763,
+                  "text_pc": 44348,
+                  "outside": 206,
+                  "room": 2,
+                  "caller": 25210
+                },
+                {
+                  "trace": "natural-service-route/sms-npc-save-location-c7-slot0-01",
                   "frame": 427626,
                   "event_pc": 25210,
                   "text_pc": 44348,
@@ -2817,6 +3151,24 @@
                   "caller": 9474
                 },
                 {
+                  "trace": "natural-service-route/sms-npc-save-location-f0-slot0-01",
+                  "frame": 427626,
+                  "event_pc": 1763,
+                  "text_pc": 44348,
+                  "outside": 206,
+                  "room": 2,
+                  "caller": 25210
+                },
+                {
+                  "trace": "natural-service-route/sms-npc-save-location-f0-slot0-01",
+                  "frame": 427626,
+                  "event_pc": 25210,
+                  "text_pc": 44348,
+                  "outside": 206,
+                  "room": 2,
+                  "caller": 9474
+                },
+                {
                   "trace": "natural-service-route/sms-npc-save-location-fa-slot0-01",
                   "frame": 427626,
                   "event_pc": 1763,
@@ -2853,7 +3205,7 @@
                   "caller": 9474
                 },
                 {
-                  "trace": "natural-service-route/sms-npc-service-refusals-b8-save-refuse01",
+                  "trace": "natural-service-route/sms-npc-service-refusals-8d-merchant-refuse04",
                   "frame": 427626,
                   "event_pc": 1763,
                   "text_pc": 44348,
@@ -2862,7 +3214,7 @@
                   "caller": 25210
                 },
                 {
-                  "trace": "natural-service-route/sms-npc-service-refusals-b8-save-refuse01",
+                  "trace": "natural-service-route/sms-npc-service-refusals-8d-merchant-refuse04",
                   "frame": 427626,
                   "event_pc": 25210,
                   "text_pc": 44348,

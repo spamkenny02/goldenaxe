@@ -19,6 +19,8 @@ Les flux audio/vidéo sont décodés entièrement avant l'archivage. La RAM et
 les pixels finaux sont comparés à la relecture indépendante.
 
 Les annexes ne sont pas présentées comme une seule partie continue.
+Les [autres clips des jeux et revisites](annexes-2026-11-11/README.md)
+sont identifiés séparément, avec leurs durées et leurs rapports.
 La certification de tous les PNJ, de toutes les variantes et de toutes les
 quêtes secondaires reste ouverte. Ces vidéos ne constituent pas encore
 une preuve globale à 100 %.

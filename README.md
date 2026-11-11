@@ -56,6 +56,13 @@ sortie est rejouée indépendamment. Les enseignements atteignent 2/2/2/1 ; les
 huit récompenses de fées sont présentes et les capacités vie/magie atteignent
 128/128. Les autres variantes et services restent ouverts.
 [Suivi des six points SMS](analysis/sms_six_points_progress.json).
+[État synthétique des six points](analysis/ETAT_SIX_POINTS_SMS.md).
+La tournée des services atteint **48/48 contextes connus** pour le refus et
+la sortie, **11/11 auberges acceptées**, **14/14 lieux de sauvegarde avec
+redémarrage normal par Continuer**, et **6/6 directions de passage payant**.
+Les 31 maisons d'argent à entrée directe et leurs retours sont aussi rejoués ;
+deux autres lignes de la table ROM restent à clarifier. Les variantes
+économiques et de quêtes manquantes restent ouvertes.
 L'accès caché FB est ouvert avec le vrai sort Terre ; son habitant et les trois
 habitants de la maison FE/00 sont visités, acquittés et rejoués indépendamment.
 Ces visites sont maintenant intégrées à une campagne étendue jusqu'à la fin :

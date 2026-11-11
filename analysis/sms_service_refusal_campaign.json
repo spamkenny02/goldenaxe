@@ -1,7 +1,7 @@
 {
-  "status": "running",
+  "status": "all_48_static_service_refusals_and_exits_replayed",
   "initial_prefix": "natural-service-route/sms-npc-extra-magic-2c-level2-learn01",
-  "last_verified_prefix": "natural-service-route/sms-npc-service-refusals-c3-merchant-refuse01",
+  "last_verified_prefix": "natural-service-route/sms-npc-service-refusals-8d-merchant-refuse04",
   "completed_visits": [
     {
       "kind": "merchant",
@@ -378,16 +378,18 @@
       "trace": "natural-service-route/sms-npc-service-refusals-c3-merchant-refuse01",
       "frame": 508108,
       "variant": "refusal"
-    }
-  ],
-  "completed_transports": [],
-  "pending": [
+    },
     {
       "kind": "merchant",
       "outside": 141,
-      "room": 47
+      "room": 47,
+      "trace": "natural-service-route/sms-npc-service-refusals-8d-merchant-refuse04",
+      "frame": 512512,
+      "variant": "refusal"
     }
   ],
+  "completed_transports": [],
+  "pending": [],
   "all_npcs_complete": false,
   "all_service_variants_complete": false,
   "scope": "48 static merchant/healer/save contexts, refusal and exterior return only. No successful transaction or complete side-quest claim."

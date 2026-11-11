@@ -267,10 +267,11 @@ def main():
                 live_cells=data('scratch',4096)[0x800:0x8a0];live_tilemap=data('sms_vram',16384)[0x3800:0x3e00];state.update(selected=word('hero_selected_item'),weapon=word('hero_weapon_level'))
             if f==prefix_end:assert state['selected']==1 and state['weapon'],('Owned equipped axe required',state)
         if args.fight_for_entrance and f>=prefix_end:
+            state['entrance_open']=bool(r[0x100+args.house_outside]&1) if args.sms else bool(data('game_save_state',592)[0x50+args.house_outside]&1)
             raw=r[0x600:0x900] if args.sms else data('world_actor_state',768)
             entrance_actors=[dict(slot=n,type=raw[n*48],hp=raw[n*48+24],flags=raw[n*48+3],
                                  x=raw[n*48+19],y=raw[n*48+17],hit_box=raw[n*48+27],contact_box=raw[n*48+28])
-                             for n in range(8) if raw[n*48]>=0x20 and raw[n*48+24] and raw[n*48+3]&2]
+                             for n in range(16) if raw[n*48]>=0x20 and raw[n*48+24] and raw[n*48+3]&2]
         # Room IDs/flags publish before the loader places the hero. Replan
         # only from a settled walking point inside the new playfield.
         chop_ready=(state['game_state']==12 and state['hero_state']==1 and not state['counter']
@@ -339,6 +340,16 @@ def main():
             if not entrance_combat or entrance_combat[-1]['foes']!=[(e['slot'],e['hp']) for e in entrance_actors]:
                 entrance_combat.append(dict(frame=f,foes=[(e['slot'],e['hp']) for e in entrance_actors]))
             return cached_buttons
+        if args.fight_for_entrance and point[0]==world.goal['room'] and not state.get('entrance_open'):
+            # Dead/inactive actors can precede the actual room-clear update.
+            # Wait for the source game to reveal the entrance; do not drift
+            # away using the final doorway direction during this interval.
+            last_progress=f;return cached_buttons
+        if args.fight_for_entrance and point[0]==world.goal['room'] and state.get('entrance_open'):
+            # Combat may displace the hero before the final planned arrival
+            # step. Replan against the genuinely revealed live map even when
+            # that old path cursor has not reached its last waypoint.
+            world.live_room=point[0];world.live_map=live_tilemap
         while cursor<len(path) and point==tuple(path[cursor][2][:3]):cursor+=1;last_progress=f
         if cursor==len(path) and args.fight_for_entrance and not state['counter'] and state['hero_state']==1:
             world.live_room=point[0];world.live_map=live_tilemap
@@ -346,6 +357,8 @@ def main():
                    world.goal['y']-[-8,8,0,0][world.entry_direction])
             if point!=mouth:
                 replacement,examined=world.route((*point,state['maze']))
+                if replacement is None and point[0]!=world.goal['room']:
+                    replacement,examined=world.route((*point,state['maze']),arrive_in_room=True)
                 if replacement:
                     events.append(dict(frame=f,reason='return_to_entrance_after_combat',actual=point,
                                        remaining_waypoints=len(replacement),visited_nodes=examined))
