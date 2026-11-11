@@ -302,7 +302,7 @@ def main():
     for path in sorted((ROOT/'analysis').glob('sms_minigame_*_campaign.json')):
         data=json.loads(path.read_bytes())
         if data.get('passed'):add_observation('minigame:audit',
-            'four_static_hosts_and_selected_play_poor_refusal_branches_replayed; remaining_variants_pending',data['last_verified_prefix'])
+            'four_static_hosts_and_selected_play_poor_refusal_branches_replayed; remaining_variants_pending',data.get('last_verified_prefix') or data['trace'])
     slots=ROOT/'analysis/sms_actual_save_slots_report.json'
     if slots.exists():
         data=json.loads(slots.read_bytes());assert data['passed']
@@ -329,8 +329,28 @@ def main():
                 identity=f'paid_passage:{row["outside"]:02x}';trace=row['trace']
                 status='actual_payment_and_destination_fixed_replayed; other_variants_pending'
             add_observation(identity,status,trace)
+    point34_path=ROOT/'analysis/sms_points_3_4_closure.json'
+    closed_sms_points=[]
+    if point34_path.exists():
+        closed=json.loads(point34_path.read_bytes())
+        assert closed['passed'] and closed['source_sha256']==hashlib.sha256((ROOT/'input/original.sms').read_bytes()).hexdigest()
+        closed_sms_points=[3,4]
+        for case in cases:
+            if case['category'] in ('merchant','healer_inn','save_service','paid_passage','minigame'):
+                case['sms_status']='user_point3_complete: known location visits plus distinct shared ROM handler classes verified'
+                case['sms_user_point3_complete']=True
+                case['observations'].append(dict(report='analysis/sms_points_3_4_closure.json',section='point3',
+                    method='Individual location visit and equivalent ROM handler/group coverage; not all location/inventory cross-products',
+                    currency_assisted_keys_capacity_test_declared_separately=True))
+            if case['category'] in ('equipment_quest','house_item_quest','curse_and_equipment'):
+                case['sms_status']='user_point4_complete: actual rewards, returns, original quest dialogue classes and corrosion/remedy verified'
+                case['sms_user_point4_complete']=True
+                case['observations'].append(dict(report='analysis/sms_points_3_4_closure.json',section='point4',
+                    original_quest_dialogues_observed=9,post_reward_contexts_revisited=8,
+                    currency_assisted_saylun_owned_apple_test_declared_separately=True))
     result = dict(requirement='ALL NPCs and ALL side quests on SMS and MD, including relevant return visits and conditional text variants',
                   requirement_complete=False, census_proved_complete=False,
+                  closed_user_sms_points=closed_sms_points,point34_closure_report='analysis/sms_points_3_4_closure.json' if closed_sms_points else None,
                   completion_percentage=None,
                   cases=cases, category_counts=dict(collections.Counter(c['category'] for c in cases)),
                   reference_guide='analysis/lord_paddle_guide_reference.json',

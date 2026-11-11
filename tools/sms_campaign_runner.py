@@ -33,7 +33,8 @@ class Campaign:
         trial='sms-'+self.label+'-'+suffix
         args=['--sms','--world-route','--boss-room',hex(self.boss),'--assisted-prefix',
               '--prefix-combat' if self.family==base.COMBAT else '--prefix-service',self.current,
-              '--axe-terrain','--rope-terrain','--live-room-replan','--frames',str(self.cap()['frames']+18000),
+              *(['--axe-terrain','--live-room-replan'] if self.raw()[0xe1] else []),
+              *(['--rope-terrain'] if self.raw()[0xed] else []),'--frames',str(self.cap()['frames']+18000),
               '--trial',trial,*extra]
         if new_episode:args+=['--new-assistance-episode']
         if exit_proof:args+=['--completed-exit-proof',exit_proof]

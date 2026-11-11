@@ -1,0 +1,2205 @@
+{
+  "date": "2026-11-11",
+  "source_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+  "passed": true,
+  "point3": {
+    "status": "complete",
+    "known_service_contexts": {
+      "merchants": 23,
+      "inns": 11,
+      "saves": 14,
+      "passages": 6,
+      "gambling_hosts": 4
+    },
+    "merchant_tables_checked_against_rom": true,
+    "merchant_transactions_by_shared_goods_group": true,
+    "successful_distinct_item_price_offers": 18,
+    "merchant_variants": [
+      {
+        "case": "g0",
+        "trace": "natural-service-route/sms-npc-merchant-variant-g0-g0-choices01"
+      },
+      {
+        "case": "g1",
+        "trace": "natural-service-route/sms-npc-merchant-variant-g1-g1-choices01"
+      },
+      {
+        "case": "g2",
+        "trace": "natural-service-route/sms-npc-merchant-variant-g2-g2-choices01"
+      },
+      {
+        "case": "g3",
+        "trace": "natural-service-route/sms-npc-merchant-variant-g3-g3-choices02"
+      },
+      {
+        "case": "g4",
+        "trace": "natural-service-route/sms-npc-merchant-variant-g4-g4-choices01"
+      },
+      {
+        "case": "g5",
+        "trace": "natural-service-route/sms-npc-merchant-variant-g5-g5-choices01"
+      },
+      {
+        "case": "g2oil",
+        "trace": "natural-service-route/sms-npc-merchant-variant-g2oil-g2oil-choices01"
+      },
+      {
+        "case": "shield-owned",
+        "trace": "natural-service-route/sms-npc-merchant-variant-shield-owned-shield-owned-choices01"
+      },
+      {
+        "case": "shield-better",
+        "trace": "natural-service-route/sms-npc-merchant-variant-shield-better-shield-better-choices01"
+      },
+      {
+        "case": "apple-only",
+        "trace": "natural-service-route/sms-npc-merchant-variant-apple-only-apple-only-choices01"
+      },
+      {
+        "case": "apple-poor",
+        "trace": "natural-service-route/sms-npc-merchant-variant-apple-poor-apple-poor-choices01"
+      },
+      {
+        "case": "magic64",
+        "trace": "natural-service-route/sms-npc-merchant-variant-magic64-magic64-choices01"
+      },
+      {
+        "case": "magic32-poor",
+        "trace": "natural-service-route/sms-npc-merchant-variant-magic32-poor-magic32-poor-choices01"
+      },
+      {
+        "case": "magic-clamp",
+        "trace": "natural-service-route/sms-npc-merchant-variant-magic-clamp-magic-clamp-choices01"
+      },
+      {
+        "case": "magic-poor",
+        "trace": "natural-service-route/sms-npc-merchant-variant-magic-poor-magic-poor-choices01"
+      }
+    ],
+    "all_shared_merchant_result_classes": [
+      "better",
+      "buy",
+      "full",
+      "owned",
+      "poor"
+    ],
+    "all_inns_accepted": true,
+    "all_save_locations_written_and_normally_loaded": true,
+    "save_slots": [
+      0,
+      1,
+      2
+    ],
+    "real_save_overwrite": {
+      "passed": true,
+      "slot": 0,
+      "first_save_trace": "natural-service-route/sms-npc-save-2e-slot0-01",
+      "second_save_trace": "natural-service-route/sms-npc-save-overwrite-2e-slot0-01",
+      "original_payload_sha256": "0080b87f1ee9c085ba8741064ffd1d4b1cc0a5223c0270f44e920b54236bbf02",
+      "replacement_payload_sha256": "0317e041edf6572026a1b72bc053453a8cfc71b95055ed8b84cb4afaccda8901",
+      "old_gold": 13,
+      "new_gold": 23,
+      "continue_report": "validation/sms-save-continue/overwrite-2e-slot0-01/report.json",
+      "synthetic_fixtures": false,
+      "progression_changed_by_actual_gold_gift": true
+    },
+    "all_six_passage_directions_paid_and_refused": true,
+    "poor_service_cases": [
+      "inn20-poor",
+      "inn40-poor",
+      "passage-poor"
+    ],
+    "gambling_traces": [
+      "natural-service-route/sms-npc-minigame-13-play-visit01",
+      "natural-service-route/sms-npc-minigame-5c-play-visit01",
+      "natural-service-route/sms-npc-minigame-a7-play-visit01",
+      "natural-service-route/sms-npc-minigame-de-play-visit01",
+      "natural-service-route/sms-npc-minigame-5c-poor-visit01",
+      "natural-service-route/sms-npc-minigame-5c-refuse-visit01"
+    ],
+    "gambling_special_cards": {
+      "0x39": {
+        "trace": "natural-service-route/sms-npc-minigame-de-play-visit01",
+        "frame": 480972,
+        "snapshot_sha256": "5dd9227378fc3c9929b9b5f4c2c27fa8463f096d6345e239b642199bd5012cb9"
+      },
+      "0x38": {
+        "trace": "natural-service-route/sms-npc-minigame-lucky-wait217-play01",
+        "outcomes": [
+          {
+            "frame": 487218,
+            "round": 7,
+            "top_cards": [
+              53,
+              53,
+              53
+            ],
+            "amount": 30,
+            "expected_gold": 235,
+            "special_card": 56
+          }
+        ]
+      }
+    },
+    "limits": [
+      "Every known location is visited. Equivalent transaction handlers are covered by their identical ROM goods group, not every cross-product of place and inventory.",
+      "The keys-at-99 test uses explicitly authorized money assistance, with ordinary purchases and no key/item/quest writes.",
+      "The two unmatched money-table rows AD/F3 are a separate open reachability audit, not additional merchant/inn/save/passage/game locations."
+    ]
+  },
+  "point4": {
+    "status": "complete",
+    "reward_contexts": [
+      {
+        "outside": 39,
+        "trace": "natural-service-route/sms-npc-equipment-27-gift01",
+        "inventory_address": 241,
+        "value": 2
+      },
+      {
+        "outside": 80,
+        "trace": "natural-service-route/sms-npc-equipment-50-gift01",
+        "inventory_address": 224,
+        "value": 2
+      },
+      {
+        "outside": 177,
+        "trace": "natural-service-route/sms-npc-d8-dragonmail-gift01",
+        "inventory_address": 241,
+        "value": 3
+      },
+      {
+        "outside": 106,
+        "trace": "natural-service-route/sms-npc-d8-flamesword-gift01",
+        "inventory_address": 224,
+        "value": 3
+      },
+      {
+        "outside": 199,
+        "trace": "natural-service-route/sms-sms-npc-villagec7-oil02",
+        "inventory_address": 232,
+        "value": 1
+      },
+      {
+        "outside": 76,
+        "trace": "natural-service-route/sms-npc-dragon-shield-gift02",
+        "inventory_address": 242,
+        "value": 3
+      },
+      {
+        "outside": 146,
+        "trace": "natural-service-route/sms-npc-hidden-rewards-92-gift01",
+        "inventory_address": 232,
+        "value": 1
+      },
+      {
+        "outside": 85,
+        "trace": "natural-service-route/sms-npc-hidden-rewards-55-gift01",
+        "inventory_address": 226,
+        "value": 1
+      }
+    ],
+    "post_reward_returns": [
+      {
+        "outside": 85,
+        "trace": "natural-service-route/sms-npc-equipment-returns-55-return02",
+        "frame": 493135
+      },
+      {
+        "outside": 199,
+        "trace": "natural-service-route/sms-npc-equipment-returns-c7-return01",
+        "frame": 496045
+      },
+      {
+        "outside": 146,
+        "trace": "natural-service-route/sms-npc-equipment-returns-92-return01",
+        "frame": 498208
+      },
+      {
+        "outside": 76,
+        "trace": "natural-service-route/sms-npc-equipment-returns-4c-return01",
+        "frame": 502566
+      },
+      {
+        "outside": 106,
+        "trace": "natural-service-route/sms-npc-equipment-returns-6a-return01",
+        "frame": 505138
+      },
+      {
+        "outside": 177,
+        "trace": "natural-service-route/sms-npc-equipment-returns-b1-return01",
+        "frame": 510106
+      },
+      {
+        "outside": 80,
+        "trace": "natural-service-route/sms-npc-equipment-returns-50-return01",
+        "frame": 513394
+      },
+      {
+        "outside": 39,
+        "trace": "natural-service-route/sms-npc-equipment-returns-27-return01",
+        "frame": 517890
+      }
+    ],
+    "original_quest_dialogue_count": 9,
+    "observed_quest_dialogues": {
+      "0x8BEA": [
+        "natural-service-route/sms-npc-owned-quest-j9-owned-apple-contact01"
+      ],
+      "0x8E5C": [
+        "natural-service-route/sms-npc-equipment-no-lightning-hint01"
+      ],
+      "0x8E94": [
+        "natural-service-route/sms-npc-quest-hint-27-01",
+        "natural-service-route/sms-npc-quest-hint-50-01",
+        "natural-service-route/sms-npc-quest-hint-6a-01",
+        "natural-service-route/sms-npc-quest-hint-b1-01"
+      ],
+      "0x8ED9": [
+        "natural-service-route/sms-npc-equipment-low-capacity-hint01"
+      ],
+      "0x8FE3": [
+        "natural-service-route/sms-npc-quest-hint-92-01"
+      ],
+      "0x905B": [
+        "natural-service-route/sms-npc-saylun-owned-apple-return03"
+      ],
+      "0x90BF": [
+        "natural-service-route/sms-npc-owned-quest-kari-owned-oil-contact01"
+      ],
+      "0xA52F": [
+        "natural-service-route/sms-npc-equipment-prerequisite-shield-before-crystal-case04"
+      ],
+      "0xAC1E": [
+        "natural-service-route/sms-npc-equipment-prerequisite-shield-after-crystal-hint-case01"
+      ]
+    },
+    "all_nine_original_quest_dialogues_displayed_and_acknowledged": true,
+    "both_hidden_stair_interiors_entered_and_exited_before_and_after_reward": true,
+    "prerequisites_checked": [
+      "No Lightning",
+      "Health capacity below 56 with rope obtained before third crystal",
+      "Sixth crystal absent and present",
+      "Already carrying genuinely obtained apple/oil"
+    ],
+    "real_corrosion_and_oil_cure_trace": "natural-dungeon-combat/sms-auto-sms-npc-palace-extended-curse-remedy01",
+    "limits": [
+      "The Saylun already-owned-apple branch uses one explicitly declared money refill for a real purchase, plus declared approach protection. No item or quest flag is injected.",
+      "These receipts close the requested SMS equipment/hint/chimney/corrosion checks. They do not certify every possible inventory permutation or the paired MD graphics/audio behavior."
+    ]
+  },
+  "selected_receipts": {
+    "natural-service-route/sms-npc-service-refusals-2e-merchant-refuse02": {
+      "frame": 442480,
+      "proof": "validation/natural-service-route/sms-npc-service-refusals-2e-merchant-refuse02-assisted-fixed-replay-442480/replay_report.json",
+      "proof_sha256": "2dfbce45556a33267b63a66cdfba15dfae5a3cb3d001b63f0ace0ef7a2ca75b1",
+      "report_sha256": "ec92c531a2b28a2142d2618f78e01b8aa85887ae34be544cac4bf6f20650a60e",
+      "final_ram_sha256": "6ba36804dd44fa6797197f41664e709b554f9e82e875222fbeb8543e107267f9",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "cb0305ecf6f3ed9159f8ed0e3ad8e75d3d86f47cfd3100325ce88dcab9435291",
+        "controls.json": "6e4715e4daa6a94073a3eeadedfc617bbc47d74a0a93dd95dd5164889fe3a780",
+        "assistance.json": "7910ceb4a49d0117cde5adb37f49e38ae053afd3090b6dedecb3c850e8c3ae2e"
+      }
+    },
+    "natural-service-route/sms-npc-service-refusals-2e-healer-refuse03": {
+      "frame": 443250,
+      "proof": "validation/natural-service-route/sms-npc-service-refusals-2e-healer-refuse03-assisted-fixed-replay-443250/replay_report.json",
+      "proof_sha256": "c88ab888ed07bb6140d72a1eb88bb497423cc1f1921feaeb39bf445f4abbb9fd",
+      "report_sha256": "533252a50f8820337358060c9cf4f6100a0575691065524590eb8014acaf2f78",
+      "final_ram_sha256": "bd82a66b736ac2dc9cac565c8a6a1cc8ddda1f7cc72e04688b417f3726b2edd4",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "2d48fe36f8c75d0dba47bfddfb7d1fa7892a3dd3c5e68210c670f995eda28513",
+        "controls.json": "a57c4c8cfa33ec4c31a55d5576ab8ef0ccdb6670e9cbd9899787e1c933c4cf50",
+        "assistance.json": "0633b815d9fbe638d87b168573bb057488a8a921dd724a016919a8ec9ad2d92e"
+      }
+    },
+    "natural-service-route/sms-npc-service-refusals-2e-save-refuse01": {
+      "frame": 443941,
+      "proof": "validation/natural-service-route/sms-npc-service-refusals-2e-save-refuse01-assisted-fixed-replay-443941/replay_report.json",
+      "proof_sha256": "ea23fe38ec927a720cce4341503a8e8b04fd81081d07f15ee4d1ef37032c1b82",
+      "report_sha256": "ffd16e27c43daf0f57ee3fae1422fa17edafc7ea8616899db8918916e1177933",
+      "final_ram_sha256": "4ff90dd76b22a9b30a0996f39309bb1afec85c65133f18fd63e875fbc7963e05",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "53e509a4b71a27e17a5e7942be530c5a4f3a4df88a1bb13a79b26b1b332347fa",
+        "controls.json": "064f5d9c13deb553ba5ec7e3215cf7c442144ab71396c503a5f4b2e4c6cc2fd7",
+        "assistance.json": "fe30ec4331e214941ed39ef9f9be4904fc35aa16c178310ed770e67dc0b14bcd"
+      }
+    },
+    "natural-service-route/sms-npc-service-refusals-4e-merchant-refuse01": {
+      "frame": 445476,
+      "proof": "validation/natural-service-route/sms-npc-service-refusals-4e-merchant-refuse01-assisted-fixed-replay-445476/replay_report.json",
+      "proof_sha256": "89a368f516e416291dfed63dad9a34131d2db72cd456b312b108bd4fd2abd62d",
+      "report_sha256": "a037d7410d1e2a6cc8f7fb60f1e6e3d2d61c07ae0c499f853a74a7b749222687",
+      "final_ram_sha256": "c67338c257237a89403ec228717e42367b098e1105b7fd39172a61b0aa266e10",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "ca3788125c3071ffcc4923c3928c198d44ba6a0be86b11842bbe9b5b32504dae",
+        "controls.json": "b63ec3a77712c092b3c65a54c0b2cc6711bc77d0b84e73d87abb1fe9e9757270",
+        "assistance.json": "f9d11958dbd1cf51c64021cb871084518fdc6179e05e7932fd6f762e17f72dc8"
+      }
+    },
+    "natural-service-route/sms-npc-service-refusals-5e-merchant-refuse03": {
+      "frame": 446933,
+      "proof": "validation/natural-service-route/sms-npc-service-refusals-5e-merchant-refuse03-assisted-fixed-replay-446933/replay_report.json",
+      "proof_sha256": "03bdcfef9f812c04ec5356c85ecb8728c6dfa9b64eec7b744a8f48804c685996",
+      "report_sha256": "e29f6a30f8a4ebe1aafef08dd872c01c6fb4111223571dca4dfb73a00a87e555",
+      "final_ram_sha256": "4d1a0def64b8494d25bba949e8396e47752334a773debc22bf3a0b123bcca900",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "8f86ee123e43b4a9385fe0f43059a61c8f057be74e0cab3e742e83225865845f",
+        "controls.json": "46022758ccde89dc35ee68049df862fee03679e55c13c53eabe07459611c71b0",
+        "assistance.json": "d0b9107cef04a9f1af8015ddf1535259803d6c2dbf4793249fac18979e85fe00"
+      }
+    },
+    "natural-service-route/sms-npc-service-refusals-7b-merchant-refuse01": {
+      "frame": 448404,
+      "proof": "validation/natural-service-route/sms-npc-service-refusals-7b-merchant-refuse01-assisted-fixed-replay-448404/replay_report.json",
+      "proof_sha256": "f404ec2781c36b24fc30bc40e08dda70bf9c76907fe194ba8d08b4a31808295d",
+      "report_sha256": "9ab6a79070b1e66189c81e3209acf96eac819d9bec1316f8f46c80df01e7d44c",
+      "final_ram_sha256": "d05f8e60a75ba106259f9138989aa8670d768d79271ac0f5fe25cdd275ea3465",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "5eca26a5ce25ddd1f80e475ff7ee20ff43e58da0fb09ebdcc1c52b9161c32397",
+        "controls.json": "a7a63068c9b90e65f19592cbc8f4eadba685287cbf740e464f7c5de28689fdae",
+        "assistance.json": "6434964ddfc86006221af1083867c480c6605ae65e32a49084fa57df21c2f299"
+      }
+    },
+    "natural-service-route/sms-npc-service-refusals-9c-save-refuse02": {
+      "frame": 449743,
+      "proof": "validation/natural-service-route/sms-npc-service-refusals-9c-save-refuse02-assisted-fixed-replay-449743/replay_report.json",
+      "proof_sha256": "aa1af733b9939f2409a4a9b16b7e11ca8c27d3b20baa85f6964a8ad7122a4016",
+      "report_sha256": "3e1d76222f2582891a59e7d67a023787cb8e62cb545cd2a1485d6edf7ccc82f1",
+      "final_ram_sha256": "bc86928eb3accc151bc443282f083cb48554168dec52720f8309b88696629705",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "033422b63ce8a99f0ad9fe85bdd4609d4e300f092bddf3b98fd271ba8427fc0d",
+        "controls.json": "1a059d4f17035e4b2d0983e1c9fd87ac6afbb515c219278c70a14e92572b403b",
+        "assistance.json": "0c1d512e044eec33780b0ba53ac98b22c4629352b370d70beec988d3d820c265"
+      }
+    },
+    "natural-service-route/sms-npc-service-refusals-ad-healer-refuse01": {
+      "frame": 450984,
+      "proof": "validation/natural-service-route/sms-npc-service-refusals-ad-healer-refuse01-assisted-fixed-replay-450984/replay_report.json",
+      "proof_sha256": "d90ebd5e556d40dedc4e96aec1311ad603d38acd2824bd1d49eaa8090e3c0894",
+      "report_sha256": "9a6ee4881d3a1eb866ffce3f68ff79229caf72dd47335f29116d70f46098e2b4",
+      "final_ram_sha256": "df87d5facf49f179b02864f9d2a7c240c06ac25f40cba8827331c650554ebfe5",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "9686f38d1b96a33f7f6975afeb700d543dc379c7d2dc09636478530d2d8501f3",
+        "controls.json": "83ae1cc910a43dd0a60cd0e3cf5ea3cecb1903f5b440598fd066b35b5e7c4511",
+        "assistance.json": "5f0553fec4a75ddd0e98d0dffbae4045bffe31706b7bc4586af804e403ac7cbf"
+      }
+    },
+    "natural-service-route/sms-npc-service-refusals-ce-healer-refuse01": {
+      "frame": 453027,
+      "proof": "validation/natural-service-route/sms-npc-service-refusals-ce-healer-refuse01-assisted-fixed-replay-453027/replay_report.json",
+      "proof_sha256": "1f9525449055ff875c45e56034d37b51f8ad9f5005966886a1ed42b20715d652",
+      "report_sha256": "ced33bb6003a715220560142492c2f3e35854e5e2aa812bd7edd7a3b6fce5ce8",
+      "final_ram_sha256": "28526ef2074ad31317419aee98e251e3f67abcb80d80a6ff2fe0965bc62d0401",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "d00bca474845d38b8d9cd9c5cbf347fd7c0f5a1a56f30d2569227a814b9a817c",
+        "controls.json": "582b69ec7fd6e156ae9ef75e7d5d4b5b5056a819f5d136602e2e1ef78df473ae",
+        "assistance.json": "939b7fab1390e1abc34d19411e7abb5a3b002624361074ede1f01b70326ce235"
+      }
+    },
+    "natural-service-route/sms-npc-service-refusals-ce-save-refuse01": {
+      "frame": 453756,
+      "proof": "validation/natural-service-route/sms-npc-service-refusals-ce-save-refuse01-assisted-fixed-replay-453756/replay_report.json",
+      "proof_sha256": "4ddc366aa0c48914927e4dca24124c1cf65b2395fa1fe280603e0a406efc7c04",
+      "report_sha256": "67eeb405378d2118b9974ee23730b3687427eb9c072cb779f52dc01354edce27",
+      "final_ram_sha256": "416298da92d480df2b3033cf93b8e2006d713b1bc9147380c594a422c1367c5c",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "e1157f8bddc9b2950154b88ece5921ed9404ea23e293a54794cfc3215f7a661e",
+        "controls.json": "afed2373dd0ff02ce556aa3a20e0e9c0ba934d386b000ccdfd8249f8f4b4ff91",
+        "assistance.json": "90e801433d2c1a7ec5660bf26c462bc6435f87dbdff69e633c3939c64d19f4a2"
+      }
+    },
+    "natural-service-route/sms-npc-service-refusals-dc-merchant-refuse01": {
+      "frame": 456215,
+      "proof": "validation/natural-service-route/sms-npc-service-refusals-dc-merchant-refuse01-assisted-fixed-replay-456215/replay_report.json",
+      "proof_sha256": "73d37682a283a3026d0d140abafac9d7dc31d5bf6f4ddd6e175f171d473d8786",
+      "report_sha256": "2daf25fc48324b88f209e0e27b9c3064bc64c99e46e796a25ee1daf9f4204674",
+      "final_ram_sha256": "c250bc3db48142b2c2bf6f3eb2ac0da22f8aad375459b57c039fefdae55dc3ad",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "02dddf7516dfaaee7480d9564697071aba884a1b4c1473136dbeda5c6f621c0c",
+        "controls.json": "b736e666b22ce89e7cdc330c92f7a0d913c8b587845722d2c794fb7f7617ea1e",
+        "assistance.json": "786e1d9c2442b706a57311522256f55a93d14e206f4e6658ff936ad2c69bfd40"
+      }
+    },
+    "natural-service-route/sms-npc-service-refusals-fc-merchant-refuse01": {
+      "frame": 457353,
+      "proof": "validation/natural-service-route/sms-npc-service-refusals-fc-merchant-refuse01-assisted-fixed-replay-457353/replay_report.json",
+      "proof_sha256": "66429d81aba5c56bc745bd40d26260acca753ce37a52f30f1da58875a8d69564",
+      "report_sha256": "6d166775faa6bb9676fc3f67b632c9fcbe2b35718994c9e9b64257f08320e3cd",
+      "final_ram_sha256": "87dee81900e65861f205e566cfe4fe7eaaf130eb8476d334cf9bb519f260e030",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "4bf97a0b4f30d231fa8150a6a3f57d29ba61ffade050d25248657c4e7c11da41",
+        "controls.json": "7aa57b320266cb541b458a9ca6f2fe684b11f267494e6f1ec37769a03a0f65d0",
+        "assistance.json": "0fa29790a847c86f217c8aacf7b8a0252a348160dd3020e68c01b2270bd7ca0c"
+      }
+    },
+    "natural-service-route/sms-npc-service-refusals-fe-merchant-refuse01": {
+      "frame": 458641,
+      "proof": "validation/natural-service-route/sms-npc-service-refusals-fe-merchant-refuse01-assisted-fixed-replay-458641/replay_report.json",
+      "proof_sha256": "9c6e53680a81b0863e00258a538d2e2ab0d6a29ebdcc79f1b89a41c5db3f021b",
+      "report_sha256": "9b17574d0a5d9eb59b4e6008694910509069e25735e03c33d7e41197ce568f20",
+      "final_ram_sha256": "979667daf6cfa61c7b463f4a26ad26e94950a8f24dc3e2081fc63e66ef99a474",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "f55f51e455873039fb6099e3e28ecc07e59a0882463421708a60c1fa8d35f384",
+        "controls.json": "c36fbd0cc7a9cdc8eededd1d55ba085953d1362780c20d9be692c06e9b001adc",
+        "assistance.json": "5078aebc79ab7a2a992633b0534afe5540866c589833b01dd97d0df3388d0a39"
+      }
+    },
+    "natural-service-route/sms-npc-service-refusals-fe-healer-refuse01": {
+      "frame": 459412,
+      "proof": "validation/natural-service-route/sms-npc-service-refusals-fe-healer-refuse01-assisted-fixed-replay-459412/replay_report.json",
+      "proof_sha256": "98763de2798984bfafd366abf4dc284906490fd36fb720f0370548270ad895cb",
+      "report_sha256": "3ea37dbc1860be0f6b2cfb2719f7374fcfb4d6a457d2dc659afdbe0878e1a698",
+      "final_ram_sha256": "6706f7d830a23dbec51b7fc9e5640e3036d46f2ed64964e2281a9bf0e982b5b0",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "eb659982119051a861e4b9bddda4e333d0712b7d24300da316c0d81ca3a94b2f",
+        "controls.json": "c19dbc2829b32a7a5c4760fc6e174a3524ea4a9d8a83b2bd1098def44fca0443",
+        "assistance.json": "bcbc019b95ac85361dc3ac4d017d08ab83b98b2ba0c00da50ebe626d8e57e9fb"
+      }
+    },
+    "natural-service-route/sms-npc-service-refusals-fe-save-refuse01": {
+      "frame": 460100,
+      "proof": "validation/natural-service-route/sms-npc-service-refusals-fe-save-refuse01-assisted-fixed-replay-460100/replay_report.json",
+      "proof_sha256": "d6faf62b2211cbde3713b81c10553ee616f5a8e4c42821b6b08825867b5a943e",
+      "report_sha256": "9fdf259a43ca970489d6f3ca5e349f733d1f2aa892422672b3de9c7652f6256f",
+      "final_ram_sha256": "88c3c37a51ebbf2f212ad6a39715a48e078d477cb79a75d3db44f4ed579e6149",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "76ba9bdcb4ef93efb3d0632cadb0c54f47fc43c3c1d59385f70a0a785939aa94",
+        "controls.json": "3d3632868c2646c48ed7a57f2b17c1107bfa1a58503e1eb26670f1608d23968c",
+        "assistance.json": "4e1dc0e15a373a30c0d9d3a89cb46fa7592bc84d07ad8756ac889cda2a38d575"
+      }
+    },
+    "natural-service-route/sms-npc-service-refusals-fa-save-refuse01": {
+      "frame": 461682,
+      "proof": "validation/natural-service-route/sms-npc-service-refusals-fa-save-refuse01-assisted-fixed-replay-461682/replay_report.json",
+      "proof_sha256": "796f73d16a0cefd10db3500cf8cee032036292bd0c2e7fc08f2a6a637a897b69",
+      "report_sha256": "6ddacf0a12195ad0cf691de7e8c986fccd3e8f168b1f614e7a1424d803163e39",
+      "final_ram_sha256": "519bfacf588b7c49f4b7355a5677b1f41dfda89d76901f7a54965281c75578bb",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "75f5d4d94e5c761f53e5d4922eeede24003f75201a5141312e4dc49d9b3bb48f",
+        "controls.json": "6e53f23f1faa8ae7d658f78e65a8d4935e7273533db85562143c4c045a0c8a2f",
+        "assistance.json": "eadb3d8143577a78b38173bab9c203b976e06f62da323d99d30ba29a847363bd"
+      }
+    },
+    "natural-service-route/sms-npc-service-refusals-f9-merchant-refuse01": {
+      "frame": 464123,
+      "proof": "validation/natural-service-route/sms-npc-service-refusals-f9-merchant-refuse01-assisted-fixed-replay-464123/replay_report.json",
+      "proof_sha256": "2e6de490dcef43a5eb507523ca6b31725cd54da9c72ae0f5190cb12a9726e3b3",
+      "report_sha256": "f6bdc4c06a019510b03d19e483d19188f46f405a80e0ebd7e6a45d39e3c2f990",
+      "final_ram_sha256": "0c23aa92530490dc60eb775c4edd0af4936c41a9808fa7d4586f497489a5f0fc",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "b978624ecc0f5516016a28cbf2ed4d53c83192e8d016b5560fbbdb950abdce44",
+        "controls.json": "83c7102d5962aea22c72e772ecfd95f2c6b7489ee9d3ac5b1ed258ae58515fd0",
+        "assistance.json": "7a38410a4654a9bf03ac68b74dc1a40929c18a5f389d0d078debb000d169719e"
+      }
+    },
+    "natural-service-route/sms-npc-service-refusals-f5-healer-refuse01": {
+      "frame": 465694,
+      "proof": "validation/natural-service-route/sms-npc-service-refusals-f5-healer-refuse01-assisted-fixed-replay-465694/replay_report.json",
+      "proof_sha256": "5b2d41e3f4c724caf4a78c7634d2dc46c96f9fa58fb60e83e22025b5f03bcc1d",
+      "report_sha256": "0ce8ab0878bcbe11c3ff4a8643e6a716c922e7115bfa0e48b7a7efb5fe68fee4",
+      "final_ram_sha256": "e4e9571cc40a9ba4ef5aa1da1ba88dd431967d6ff34e434d54e75efd0c73ea72",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "d3ba40da0395dd1f27e093b699416e244431a3cc3cacfc5acdfe4bdc99b67c1c",
+        "controls.json": "03e64bd95e69c00ba94e62d1422d606eadce3973e5cc50bd78280c6e0d474e8d",
+        "assistance.json": "db93d950375c26463cfc3be90cd28b54d78ab3082a84c689cfebb4d99d8c7f56"
+      }
+    },
+    "natural-service-route/sms-npc-service-refusals-d5-save-refuse01": {
+      "frame": 466968,
+      "proof": "validation/natural-service-route/sms-npc-service-refusals-d5-save-refuse01-assisted-fixed-replay-466968/replay_report.json",
+      "proof_sha256": "1a4d2baec182d4535232eb24efc39b6801b5af78181535cb3bd5434de363f2d2",
+      "report_sha256": "c6c8aab840c0f757a5ab148dc21caee8efbdda6cccbd7eeafd7599f572c5cc70",
+      "final_ram_sha256": "42a7d88197f24bd89c42b2a8f003dc7c4d7197663f8b0c12c13323205cbd3b97",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "5eb7a1321135b597515e5b85e4c017cdae8a2b163ac3e9a1a248e9fe5c1a7b60",
+        "controls.json": "352067d61907aaa736d7d39648eb4f5d6b17282c5228eec32723ca3f25c3646e",
+        "assistance.json": "b6320cba14acbaf93e82b312eabef9cf76e184f21313c2bdb744d23304950b2f"
+      }
+    },
+    "natural-service-route/sms-npc-service-refusals-a5-merchant-refuse01": {
+      "frame": 468792,
+      "proof": "validation/natural-service-route/sms-npc-service-refusals-a5-merchant-refuse01-assisted-fixed-replay-468792/replay_report.json",
+      "proof_sha256": "99ec540e3ba4eaa71f9a78e06104a845a6b7d6a57b34d7aa913b85f5e781366c",
+      "report_sha256": "12b1bf55de3bc890a9021c4f0a0e74e4e2e201642f4d3c8d18532211adcf4bd4",
+      "final_ram_sha256": "199e4f1a560899b223e339521046e8a7bf70118135bf0280f938f3e225b989f3",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "02def22eb24738ae12c78303c51615aa959b395913a0b481d18b681542de7ece",
+        "controls.json": "883db821a0e3fc6a407f077408e1fbfa931bda7d27cf0c5a79b51a1c972db076",
+        "assistance.json": "f67323d2417bfb182207f42d21fa73fa09783fd90282be17c5160debadcfb8db"
+      }
+    },
+    "natural-service-route/sms-npc-service-refusals-94-merchant-refuse01": {
+      "frame": 469960,
+      "proof": "validation/natural-service-route/sms-npc-service-refusals-94-merchant-refuse01-assisted-fixed-replay-469960/replay_report.json",
+      "proof_sha256": "7caefa082bdc43c02b4739e8ff2a6ac982fae8db7c1e8689b06daf698d8e757c",
+      "report_sha256": "5b5db49b739e719cf7554752673a0f51d58770fab08d94a94e44dfc13e2b4b95",
+      "final_ram_sha256": "c80556827e69cec877bc80e01094e8eb7f5d192c91929e2130009ef4ffd95517",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "d3195fd85b0ab6cae03b1e1476b49e57990ab0e30ae29be3c010938f56d387c9",
+        "controls.json": "79d7b0ff1d95ff4bd2738e0ed5bf12295aa8f6b4e3eebd08b0d7e05ba8ac1de7",
+        "assistance.json": "e8aa46b12fc6107bb06e9c64233f261f5e0c81c9c08541747c45c258325f92a5"
+      }
+    },
+    "natural-service-route/sms-npc-service-refusals-94-healer-refuse01": {
+      "frame": 470732,
+      "proof": "validation/natural-service-route/sms-npc-service-refusals-94-healer-refuse01-assisted-fixed-replay-470732/replay_report.json",
+      "proof_sha256": "9376e798b17401860fa27e3c13fa963235ec59bc2c7ede5103a2092a090ffa33",
+      "report_sha256": "17146e1ae14883eea46f7e48e6b0da122c8436cc28470e7dd28e843070e4eeba",
+      "final_ram_sha256": "a0ff56f9c92c1bbf93c92a42c31277004c1c9142005c9ad1aa71de6e4efdc81f",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "fcd0f3d98aec01acde69783f3b28c206b5500c491a5a7a50a71cbbeeabc4dbd5",
+        "controls.json": "9fbf01add577b44fa38619deb5191e664c7e25811c850b01054c9eed55a7d898",
+        "assistance.json": "f61775b1ce7db5d17eb8c8b12822c6ecd91d493d2f0cd176f67796bc97e0af6b"
+      }
+    },
+    "natural-service-route/sms-npc-service-refusals-94-save-refuse01": {
+      "frame": 471420,
+      "proof": "validation/natural-service-route/sms-npc-service-refusals-94-save-refuse01-assisted-fixed-replay-471420/replay_report.json",
+      "proof_sha256": "ecd231cfaa06a535b843beaa761896ab435c9c714c4d809c0e3c8f5e0d4088a6",
+      "report_sha256": "e751f748b7a73445ca35ecf31f149b81d7e86c13829839df58915267e9bc72d7",
+      "final_ram_sha256": "a14704c5a8094a87a65fe6fd1266959c0ca1da3337197afbb0bba05061d7f0ea",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "ea313f711a06f00ab0d2f5e473011ef8abc35d6a7d8d6bc8c6a1e5cf5417423e",
+        "controls.json": "299703d12316fcf361a0582cda39496f02536a0c8bd760634dd4750dd03bcc82",
+        "assistance.json": "748228c51f7dd94e2fe233bec8b94112be6f2238cdbeed38e1f0a31ea75f8d03"
+      }
+    },
+    "natural-service-route/sms-npc-service-refusals-72-merchant-refuse01": {
+      "frame": 472775,
+      "proof": "validation/natural-service-route/sms-npc-service-refusals-72-merchant-refuse01-assisted-fixed-replay-472775/replay_report.json",
+      "proof_sha256": "1f4bc2c67ce15f2f42139c986938696f08919211dee7f0be02842acc534e3423",
+      "report_sha256": "8d6323c754110130b52647c1a1bb2569e8ab25058c73ec104fb6638f7bb59996",
+      "final_ram_sha256": "94c7433c391feaaa3bb2bcd52aa2a55ae7f96713297a68b6d2c439a5f5ef2cab",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "2cb6ca3892c5da054bef61679c1e22085687a7dca3ebe48d7f87d309c2b56a8c",
+        "controls.json": "98b34586408d62a82a095948452dfd539f617499600dbfe40fe40c5f3f6ec127",
+        "assistance.json": "dd03cc8ac840e0a53c7dfa97acf0a90a2087b7d30b62465e0054b56bf9dc822c"
+      }
+    },
+    "natural-service-route/sms-npc-service-refusals-71-merchant-refuse01": {
+      "frame": 474192,
+      "proof": "validation/natural-service-route/sms-npc-service-refusals-71-merchant-refuse01-assisted-fixed-replay-474192/replay_report.json",
+      "proof_sha256": "39510ce050c7a691af7df1d6bd5987200bfae5e220630bb411b570bbeaa477b4",
+      "report_sha256": "d53cc53a3acc77a0a4329545ebb6eb2fc352aae35a9b336e6cca8f71ae5b0118",
+      "final_ram_sha256": "f665db1c6cd7c3b5d5dac8f5a7cb7e1d7d96dabc3c033f754ccd7c2f28ca87af",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "744396da6c433a6789436a6964822d2125650df6fa615ea7da504f9bddec31bb",
+        "controls.json": "c458cf9fad8b414fc54eb71a1626d5ba570241464ad2ed863260db0a997c38ac",
+        "assistance.json": "76920fb983b2068f0886dd4af36753b4d30d63b2d28fc66069af84e39f001e49"
+      }
+    },
+    "natural-service-route/sms-npc-service-refusals-52-save-refuse01": {
+      "frame": 475318,
+      "proof": "validation/natural-service-route/sms-npc-service-refusals-52-save-refuse01-assisted-fixed-replay-475318/replay_report.json",
+      "proof_sha256": "926dd5e27ae6f6ddec14df7b58ea43029e2849071a1f55f822cdeb8f07e3df06",
+      "report_sha256": "05f7a8119453d55679ddbac1bdbd97445a8cc319d89fb2dcfd821c32a0925368",
+      "final_ram_sha256": "2f2645257afce1b889a506538c5df8dcd95bbcb2de85290b33077f251dfb22b7",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "0e2392aa2bcb76a978818f77a8c6df667a8967f6ca286f0e8bd32569e2d3969b",
+        "controls.json": "04a05418606052abaf6ba04626f0f2bea012294704ab71c8f426283593d51b70",
+        "assistance.json": "506e8bc78d09bfeb52591b69e313a04e0466018928e3d6835248aef7b4eb549f"
+      }
+    },
+    "natural-service-route/sms-npc-service-refusals-53-merchant-refuse01": {
+      "frame": 476592,
+      "proof": "validation/natural-service-route/sms-npc-service-refusals-53-merchant-refuse01-assisted-fixed-replay-476592/replay_report.json",
+      "proof_sha256": "466de6a3e58b9583de5e216dc64e515ddcf43b6db9870c8c77c21eaddc03114e",
+      "report_sha256": "8a41c0de3cd24f098685cbed03f7f0e21c1095e0b2ff4617ad3b3e20cd097e5a",
+      "final_ram_sha256": "f149a5c1fa1b38060377bc6979bb246dda030069daad6e9fc2a1b467883bd08f",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "c93b61af1ec728f209ebd6424807a108c55dbc89ae4837cb57590cfb01cda4d5",
+        "controls.json": "8d8d0e13b7dfed72f6f65c2eebc7261de438e2addaf5e1e645d7e3eb5718266d",
+        "assistance.json": "b59ebe553d367be8114e4cac1921ccbb84a209d29e09121d6ec89f56bda4bdeb"
+      }
+    },
+    "natural-service-route/sms-npc-service-refusals-55-merchant-refuse01": {
+      "frame": 477968,
+      "proof": "validation/natural-service-route/sms-npc-service-refusals-55-merchant-refuse01-assisted-fixed-replay-477968/replay_report.json",
+      "proof_sha256": "fb9ad3dd2dd1bd1c92ca5d440e276bdb0bcf7e6764b7d70c5e6e8f7b98859091",
+      "report_sha256": "d8ab8e64654938befa2ae307a9f4c60b083f22f58b21cc57db8e8df8030b74a7",
+      "final_ram_sha256": "7a863fddb47ec67407ddba9a56d48cc5d50bc7c894a38fc27427e179e521332a",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "c0153e413d40376154899d1796531da93a983b7bddf9b6a2cee5d3685e62c705",
+        "controls.json": "e1f7ca01b4086246b7dc3666613362a6c78e6097764b1750ef13545d5bd421ca",
+        "assistance.json": "84259f7f92f8e6109f5b632c4c86dd698be67d36ab65416904c607dd41860b94"
+      }
+    },
+    "natural-service-route/sms-npc-service-refusals-55-healer-refuse01": {
+      "frame": 478780,
+      "proof": "validation/natural-service-route/sms-npc-service-refusals-55-healer-refuse01-assisted-fixed-replay-478780/replay_report.json",
+      "proof_sha256": "ecc68ed95150bac0e6ed36cb0c5835c7a53a3f9b7fb9196efcfbb97c9ca24669",
+      "report_sha256": "8a1363eeaeec89a4746790f4b13b38f710635fdbea655cece856d328466a0bf0",
+      "final_ram_sha256": "cb91a238e41f8d51b1ed9044f37a4179034cac4c8c4fe61b90a074fe8b79507e",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "df41dfa510c4c53b85d17c600f22f5dc5a6be658c0795ee013be98cf3e2c3b14",
+        "controls.json": "a0e6e8e19bdb16a980271dd78803fccac91d78a94eaaad89af9ddf853d08dd34",
+        "assistance.json": "630dd9747d79d16631254e3004eeebbfee34054233bbf1d1733aa84ecda0e7e2"
+      }
+    },
+    "natural-service-route/sms-npc-service-refusals-55-save-refuse01": {
+      "frame": 479523,
+      "proof": "validation/natural-service-route/sms-npc-service-refusals-55-save-refuse01-assisted-fixed-replay-479523/replay_report.json",
+      "proof_sha256": "34373b2c5c6d87af6a0f12afca48cb844fd2f179938e82358d94fcfbd4acde32",
+      "report_sha256": "d034911fce3e2be7a8d60b62602df8b020d4d7b2f41a9ab51a443a9afa54fec3",
+      "final_ram_sha256": "31bd92e88a090ac5f0e1ab5d4ccb8936faff86ae6c10812214c81aaf39cb71fe",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "bd0a2d860300ad4f56c26dc1a4e61e75df9e4808f87405e05bfc7f23587ac4d8",
+        "controls.json": "64a48578db8c6f972a373cffc0d90a63592c2323b02d7f45c3573df049559ae6",
+        "assistance.json": "16f10970a64c288940ebc345133387c6ace4726e768171c6ed8641e42ebddcf7"
+      }
+    },
+    "natural-service-route/sms-npc-service-refusals-57-merchant-refuse01": {
+      "frame": 482008,
+      "proof": "validation/natural-service-route/sms-npc-service-refusals-57-merchant-refuse01-assisted-fixed-replay-482008/replay_report.json",
+      "proof_sha256": "42291051387dbc2156714c8d293db9ae8796607df89144f2a9b3c82ae2969a52",
+      "report_sha256": "ee50c065c95ebd2d68d35544b76e92c1e004b9e2d5ef49af15f505468d9f7266",
+      "final_ram_sha256": "da7e685a78ca745bac40d1d657f2a1eb00330677c8d1968f63f5423cc656afa3",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "e932ede251880d1dd36cd5db62dc6847c71987901e89e194e0ba2fa178325c8c",
+        "controls.json": "ea4aad433391cda5ca0f8bb55f4809c55a84171056ea8406cebede22fa56eb57",
+        "assistance.json": "faa52f7c1c666d2a0d204847f037702015d932ec76cada333faebcec6f5baf8e"
+      }
+    },
+    "natural-service-route/sms-npc-service-refusals-57-healer-refuse01": {
+      "frame": 482820,
+      "proof": "validation/natural-service-route/sms-npc-service-refusals-57-healer-refuse01-assisted-fixed-replay-482820/replay_report.json",
+      "proof_sha256": "2317f3e1b9765f4c45018e9c5d7103206d5b114045e696971a0c28002f60e74e",
+      "report_sha256": "7d4672d27107923751bd1a8a75ba07c4ed8e1e778d9ecf7afff668e5911e9706",
+      "final_ram_sha256": "21f8eeaa3abb27bb3ad47f4859d4f794ca43b2247dc5048b6ebb477f3fbbe8a0",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "f87c46420bdb3be3e86ef4ad9c0991713d3a41c1f46062ccde1b57609b16e0b4",
+        "controls.json": "adb96168e1338acbcd00944468741e3155febaa62112cf57500dbd610edccb3d",
+        "assistance.json": "ae7e0cb43f46db8f33f321a63ffe5da368136f173c38cc14538d53c1599c7d69"
+      }
+    },
+    "natural-service-route/sms-npc-service-refusals-57-save-refuse01": {
+      "frame": 483563,
+      "proof": "validation/natural-service-route/sms-npc-service-refusals-57-save-refuse01-assisted-fixed-replay-483563/replay_report.json",
+      "proof_sha256": "c4403d3cfd9b0dd4c44ee82a436594ab58a3d816412e58c69714fa77ca1bd3a0",
+      "report_sha256": "2a8fdb69db0616a74214580204ea730086909bd141642b586dbdf01ba1276897",
+      "final_ram_sha256": "f2a8f525d20d00cedb16d1458a1b03b70a57c3374688d230137053dbbd63f57f",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "954cd8aa4491544388a78f5c3708bb65db0842164151d7430ef0b27cf557a0f4",
+        "controls.json": "4f5ffbe92c9b551f2aad2f7ba807fd9c8e21ec7eb9db6da1dd4b28cfae493cfe",
+        "assistance.json": "ded34871549e0ad877857076c14ed4054022dc1a759df969526950a235ca198d"
+      }
+    },
+    "natural-service-route/sms-npc-service-refusals-34-merchant-refuse01": {
+      "frame": 485617,
+      "proof": "validation/natural-service-route/sms-npc-service-refusals-34-merchant-refuse01-assisted-fixed-replay-485617/replay_report.json",
+      "proof_sha256": "3988cd3d48dac85e7d40cee63fb073209cae7a52c8812b5bad895dd1c032d7e7",
+      "report_sha256": "441e8a6ed9b685d09bef5455e08380b8b83f9b31d7fee75aa346a42667d36eb8",
+      "final_ram_sha256": "bd6ee6bf19fd91f085da3f0839c6ef5d03f7986a76d72fbae4d66f1356a8ac5c",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "9fc85ea25704a34d32adfbc224db00456bb2d49529424135f6676575992980c7",
+        "controls.json": "f773469c8fe9305f3e141c33a77560265c7c678c20a48058fa3602ab873cd6dd",
+        "assistance.json": "fc181eb92b285984d68a15ee1912ea1450ca280db6c55e7c41f6cc94faf5c715"
+      }
+    },
+    "natural-service-route/sms-npc-service-refusals-23-merchant-refuse01": {
+      "frame": 486835,
+      "proof": "validation/natural-service-route/sms-npc-service-refusals-23-merchant-refuse01-assisted-fixed-replay-486835/replay_report.json",
+      "proof_sha256": "89e707613228dcf4f4e2b703199cc13fe731a7a0e16a180a94e660ce77745938",
+      "report_sha256": "2d071ded97024423dcbe733989d2e674133f1b7d6a96a9d838ee117e25e41f0b",
+      "final_ram_sha256": "95ccc53a4912b5c070f7bdc20952f0d00ee1498ac70b1326208cee0ab8de145c",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "95fa71cccab500d2f640df92151f28d4b5e9767e4c465e7e025a4ab499525890",
+        "controls.json": "b428625080f454047b7b4e8c8c5db89e0dddd1d608cff4071861c80f7e456e3d",
+        "assistance.json": "2aa2e7015eb0bd62c847363e015a5e8d586c34764d3d82bbedb1746bdcf96dc1"
+      }
+    },
+    "natural-service-route/sms-npc-service-refusals-14-healer-refuse05": {
+      "frame": 488966,
+      "proof": "validation/natural-service-route/sms-npc-service-refusals-14-healer-refuse05-assisted-fixed-replay-488966/replay_report.json",
+      "proof_sha256": "4b79a3b29ea069e8e5644b7ef7fd66d94d3474792e5a39291998bf528a9d8b24",
+      "report_sha256": "a490baa81c2050512d2843d675b573cac167f4daf04883855ecb56b4dd089b80",
+      "final_ram_sha256": "9c0c5df435e7b15cbb6ae128efea35a6d57b886e1793c3ce6422840c3ded0855",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "384bb89ee3865c1ce10e1b9362b981e158a9ca098301603af9fcdae38ed0be66",
+        "controls.json": "54422947c2662f5655eb1670ff18b1376a2c2fa6268d72214e87a90df7257ea4",
+        "assistance.json": "e00c6b094a4b5417c282d7e13f09cbd4c52a3147c9e01a623bd814dd1cf3fe17"
+      }
+    },
+    "natural-service-route/sms-npc-service-refusals-21-save-refuse01": {
+      "frame": 490822,
+      "proof": "validation/natural-service-route/sms-npc-service-refusals-21-save-refuse01-assisted-fixed-replay-490822/replay_report.json",
+      "proof_sha256": "1e7e577692058fa78f2aff2db02017ffaeb43950e13fff726fcccd6e74c1fad6",
+      "report_sha256": "aa29ad186e384a29d8bd35deb5f53c5a075c3630fc1e66716904479694ae13f1",
+      "final_ram_sha256": "bf52156fe42f4cf9528718b41f41adf174b03619a51bb560282c9d4b99c622c4",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "12a5e4c1c2f8e69dc11a3c2fa5abe3edd381c18fdc1c27facb33a1441ffc7820",
+        "controls.json": "0111133892f3f4fa5b9eceab9684c644e781e611b5e7651e47fcaec99ed22e19",
+        "assistance.json": "4d07ef62f74a4b1c36f02bf2d42adc362fa3eab3ebd4b1325444a8d8c267d3d6"
+      }
+    },
+    "natural-service-route/sms-npc-service-refusals-f0-merchant-refuse01": {
+      "frame": 495753,
+      "proof": "validation/natural-service-route/sms-npc-service-refusals-f0-merchant-refuse01-assisted-fixed-replay-495753/replay_report.json",
+      "proof_sha256": "e93f239f433e9f96ddc9618576ef54721b3c0cada7e326ab1209895e0c812394",
+      "report_sha256": "0fad03c2d2a4dfb17f6cb88f5e0ac7779fab4f8eae55c0b2995d88d7ce9612b6",
+      "final_ram_sha256": "1dee5459592a70e59b27520425d9deb0080e6048fff15568cd067ac22eb7d38d",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "b7cff6e59225fd67d38f2d8d2fa651e8720a845579401075867fe8876e808138",
+        "controls.json": "541d6d2d6e777d9dfcf50ab1b8423ccce208944301c86c83d10983f000b748c2",
+        "assistance.json": "86168dae6e70943b9e845c01c0c7a9709a5e4ee4e5811e09f9938a2850a371e0"
+      }
+    },
+    "natural-service-route/sms-npc-service-refusals-f0-healer-refuse01": {
+      "frame": 496588,
+      "proof": "validation/natural-service-route/sms-npc-service-refusals-f0-healer-refuse01-assisted-fixed-replay-496588/replay_report.json",
+      "proof_sha256": "5d37045b0f1226bb4a1bb984830d617fb3a97be2467ab6e46d9804d68671a616",
+      "report_sha256": "07b5cdc7183ab68ab5eaeb88809e89c63913ecd89962f9aa3fcdc920441ea00c",
+      "final_ram_sha256": "b9932bfc3fb956c0a12d1272f409ae62b578859946e96be4381e68af2d68f486",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "0790add906ff929ccda328f435147dca793fb020c7863176b73753b32b128c72",
+        "controls.json": "adb6c01c03c76646c271d889598a407c01b6d270b11a20353c8bc772fd6fb0bc",
+        "assistance.json": "f34e1e4d08b6bc1900730f8d83be7dcae67d1f994de7217e23f7ed4fb97472b5"
+      }
+    },
+    "natural-service-route/sms-npc-service-refusals-f0-save-refuse01": {
+      "frame": 497315,
+      "proof": "validation/natural-service-route/sms-npc-service-refusals-f0-save-refuse01-assisted-fixed-replay-497315/replay_report.json",
+      "proof_sha256": "b2cd43c45b6648cd599c7613ce6ff66453a61cd05a340cb7736ff819d58851c2",
+      "report_sha256": "9f6a11e6363871de3860edb669984819e1d17070222155fee1c3cfd56523d945",
+      "final_ram_sha256": "703871c03b23bc565a9a1217b33ccdaff946b2ea7427c7dbee3a3dcf25ac7d9d",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "c555c61d61ef3286d4efd8cba41d1e1efa82afa55bffcf5d43a37a66de8a2865",
+        "controls.json": "ecb6ce2d93df9790de05c0e9e7a117858e098ad2c2dc1d1ceca975d167677a5e",
+        "assistance.json": "98169f7c719353bf89d2375e0df65c2b03cc9600438c65addcefa2f7d1785e75"
+      }
+    },
+    "natural-service-route/sms-npc-service-refusals-f2-merchant-refuse01": {
+      "frame": 498443,
+      "proof": "validation/natural-service-route/sms-npc-service-refusals-f2-merchant-refuse01-assisted-fixed-replay-498443/replay_report.json",
+      "proof_sha256": "09ad2be60e549f4b3fbb5d067275b5b9da6919e72fe3f06b324054e544a248c6",
+      "report_sha256": "2bed084cebd2895e8684d4cc4ca807f7012c7054451f39df6a2da9c28678f65a",
+      "final_ram_sha256": "d18f7522287ea1e8e9b558b44bcee38eadf9840da246f1602f46ad253eee0909",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "452e35dd02a20cc2ab27b90e3c0748474c9e7af83897460a302b7edac0505989",
+        "controls.json": "10e8410b3db7211029205adeef7fde50b4b8d1610784a24070f081acbfcda47b",
+        "assistance.json": "1cb7b6cf7033716040651e78a989bf998476595973d86300cfde44a6ad18019f"
+      }
+    },
+    "natural-service-route/sms-npc-service-refusals-c7-merchant-refuse01": {
+      "frame": 500969,
+      "proof": "validation/natural-service-route/sms-npc-service-refusals-c7-merchant-refuse01-assisted-fixed-replay-500969/replay_report.json",
+      "proof_sha256": "848140b13f6837319bbc65849b86da83c4b2632c0835a1cd415e37281b1ac6e8",
+      "report_sha256": "53fdfda2b31fbc71a291a52833711469a3e69561b633059c5f267cf7bd1e4ab2",
+      "final_ram_sha256": "2d3de299e59c457ba095c9d9260b41a331d6b7b8effbbb471c152e5f2a2b75ca",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "fbbf346202fc7704429c2105e090e5730ec8296174da88f616f6f2bbd14d1887",
+        "controls.json": "64105da9ed1320e3888f42be22bdeb6dbcf03fd94dd22285a6841e355ca7b5cf",
+        "assistance.json": "e1f11e2a08c6a031ac9b859608f6be18a821a845269f9dc14366c89d5c847cda"
+      }
+    },
+    "natural-service-route/sms-npc-service-refusals-c7-healer-refuse01": {
+      "frame": 501739,
+      "proof": "validation/natural-service-route/sms-npc-service-refusals-c7-healer-refuse01-assisted-fixed-replay-501739/replay_report.json",
+      "proof_sha256": "8bd1f4c05b6cab196abcb8a0943146be94356403f9b6b4c3b395b59738cd68ed",
+      "report_sha256": "7d6368b7b0ebbbaff09dc3913e93e56f6b5dd15ca758a81f9c51371429d0ce4b",
+      "final_ram_sha256": "9713e2b31553d89a8ebf09c8a3fa90966d5fc8afbb18174c29067af4e514b6d0",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "4efce794b3821f362ebd9f5394ac20fa6cae1c99bf95e6ec9d34ab549da12573",
+        "controls.json": "ba981d1b2f35ba1024eda9638a80ffb8beba59cbe8ee10feadbbe347a94dbefe",
+        "assistance.json": "55e67a78bfb1de160e410875912b1ec3716ed3e472725a49591f18f7ad261eca"
+      }
+    },
+    "natural-service-route/sms-npc-service-refusals-c7-save-refuse01": {
+      "frame": 502483,
+      "proof": "validation/natural-service-route/sms-npc-service-refusals-c7-save-refuse01-assisted-fixed-replay-502483/replay_report.json",
+      "proof_sha256": "f74961308ce800abfeaafe1a61ef12e61537741a37fda548e588d69e6fcecbc5",
+      "report_sha256": "1e96ab566c9ef2b671f27eaad612ab0645584aa7f60d28a1893df07354ee9573",
+      "final_ram_sha256": "686ee3d5d062138d0b537de9d37d202ad59770c8cc644f8860f47d75568f5b20",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "2e3051d6b12c2bec310182f40dd3fffaa1c63ad5c60a2602ce9786dcb4da90d4",
+        "controls.json": "391d61d7951772bf6de99b425ab1edd7e6ee7465319bdd455c33d08e6cb730fe",
+        "assistance.json": "da8f2b0f5c8b517dae8b53c065f2cc75eb64d9859a141b38b8ffdf8d6e711217"
+      }
+    },
+    "natural-service-route/sms-npc-service-refusals-b8-save-refuse01": {
+      "frame": 503941,
+      "proof": "validation/natural-service-route/sms-npc-service-refusals-b8-save-refuse01-assisted-fixed-replay-503941/replay_report.json",
+      "proof_sha256": "b35b172b3b6595d4942a103c3e4bd0c8e2f80b814af8fc23e6c1a35e93990f36",
+      "report_sha256": "cfa898d83107053c0f3abd4612e093568163e70a89527ca42a88e9ad2abda81a",
+      "final_ram_sha256": "6e8b4b05049ecb3e249beb109c2e0519176921e3ec977bc497858d470ac66ebb",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "d3910e2912f3a386dfe2df518d4d1591e55041eb16f8c42be88ef3fce9f47b37",
+        "controls.json": "d6b4e84a5d4cad373216780fe751fc3488a7f23ac822e26e3cd68cf1469c10c4",
+        "assistance.json": "8f3fa23e2012f786f3b63aca0f9b3c8eaa608b341569293171b22b26280673f0"
+      }
+    },
+    "natural-service-route/sms-npc-service-refusals-d7-merchant-refuse03": {
+      "frame": 505552,
+      "proof": "validation/natural-service-route/sms-npc-service-refusals-d7-merchant-refuse03-assisted-fixed-replay-505552/replay_report.json",
+      "proof_sha256": "612598912ce33544f69b4808244c0d47b71ba5295aace560c383bfb387b259f4",
+      "report_sha256": "21f7837316d705beedd9fbcd232bc0ec5d9377368952c2bdd9f14628d1bb26d9",
+      "final_ram_sha256": "7b0c2c8ca6c84b57b784d9a450ca8a6999e436ec3732aead953bc36b3feefbd7",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "6a02b952fbd55f8572be6d87a1ad7d9cf3adc988451172f06bdb7eff40f46afd",
+        "controls.json": "9662a000555aaf91473b8ca5665fae5f9b2be624bdced2f265d0bd7bb37b88e1",
+        "assistance.json": "207bb338c8fb89bc5563193720ed4a0c97698b22d67db5144cd541a8869194ed"
+      }
+    },
+    "natural-service-route/sms-npc-service-refusals-c3-merchant-refuse01": {
+      "frame": 508108,
+      "proof": "validation/natural-service-route/sms-npc-service-refusals-c3-merchant-refuse01-assisted-fixed-replay-508108/replay_report.json",
+      "proof_sha256": "591602ec7edca43d19dfdced5f1a3685e6b9ed8970d063993925258f9860afbd",
+      "report_sha256": "71d516cbb40ff5f50ea3cf9416e31639a71919bda53d29ad34afc9a5c480342d",
+      "final_ram_sha256": "55aa5f3502e896454649781f26e1a389a71876d0170815b7ecfe1b42c425bd5c",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "0d36b770221392a841582f521a647f276a7e577f2d25be110f71382c5a537c3c",
+        "controls.json": "3f7837a6e407e97667b26df656f216bf76bf9cdf691dd66c3e8a3d2fd47d3fd3",
+        "assistance.json": "5aef0155468d8ad10a9f5a2764c6deb7ca6f8811d5abe4de89413ed977334e5c"
+      }
+    },
+    "natural-service-route/sms-npc-service-refusals-8d-merchant-refuse04": {
+      "frame": 512512,
+      "proof": "validation/natural-service-route/sms-npc-service-refusals-8d-merchant-refuse04-assisted-fixed-replay-512512/replay_report.json",
+      "proof_sha256": "6a0f7381ad29131182107da2d4cc4a9566e9ec0b06a4cac08fd6f8228a82acac",
+      "report_sha256": "8ceb3a420c1bc099aea5659c845d0e04a05aac72c1b0017aedbbef804ebe5b90",
+      "final_ram_sha256": "1a6ac89e6979109172aae84faacffbcd3c8b718d711ad37dbe5764549dbc9196",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "ffbba7765d3c18dd472bdc1835922839d5351e04d3f83d1a47e60be8c643bdbe",
+        "controls.json": "2ee07074c4cd9cbfefad70459cfbd51b68d5d3deeed7fe52b9909bcc6f9117f1",
+        "assistance.json": "7b4ea954bb4a33de2f93b463204841e52fef41aac2ee35b66f397b516ea25b5b"
+      }
+    },
+    "natural-service-route/sms-npc-merchant-variant-g0-g0-choices01": {
+      "frame": 484612,
+      "proof": "validation/natural-service-route/sms-npc-merchant-variant-g0-g0-choices01-assisted-fixed-replay-484612/replay_report.json",
+      "proof_sha256": "3c2bf57349e7ce022e402ce6dfc7d93f2831a6db51e84bbf2bb07bd9927ab309",
+      "report_sha256": "c9e9018683657693c21b8d5601269b41f7595be7886d76d101fe293d66187236",
+      "final_ram_sha256": "107e615d9b2154a2af999d17a4438e4b4f3d3a7aae7b2ae4e7788d268afa499b",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "601d9e92e4069c77306797f5964ab29f469982cdaadf8fa389b8778bb246d1fb",
+        "controls.json": "9bd30b8738f491e5395fb2aeb94bb09ed429fed0d270a30d3d94a9940e933a14",
+        "assistance.json": "596d7de6a0b2b1ce956dc736f38ed27c52a3c9e5325841081d4b072a0ee1fe9f"
+      }
+    },
+    "natural-service-route/sms-npc-merchant-variant-g1-g1-choices01": {
+      "frame": 485444,
+      "proof": "validation/natural-service-route/sms-npc-merchant-variant-g1-g1-choices01-assisted-fixed-replay-485444/replay_report.json",
+      "proof_sha256": "0713f69430a37371953d61a791011e8ff7d5561c94fe337ea17e66269c70561e",
+      "report_sha256": "053d49d6407397e3f3c2d6705cc1689a2ba4a64aa9566225b5f1ef8e8f7754b2",
+      "final_ram_sha256": "1a482713ee6cca078b6a6642231dcc7a61f06eb69da069026a2213d5f84f7156",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "1c7b0e20a88157b43690c91d28f6a3aef6e3e98f1baf3fe9a488624439b331e1",
+        "controls.json": "ae3b147983ddcaf44899b4d04fab36e2df05241af7ef7e3c378dc32964fb28dd",
+        "assistance.json": "8f513b53598ee94db736317b42ba31189ba4ddc989d7ed7d356ef63bb6fa1e12"
+      }
+    },
+    "natural-service-route/sms-npc-merchant-variant-g2-g2-choices01": {
+      "frame": 484528,
+      "proof": "validation/natural-service-route/sms-npc-merchant-variant-g2-g2-choices01-assisted-fixed-replay-484528/replay_report.json",
+      "proof_sha256": "58aca964c2d04f860a0e8d8b0c2b9e4c39d2bd2ca08685eecb94cff6242a3aa9",
+      "report_sha256": "6660cbf862473205a98071c2310e7c10d24a6ddd65405f54d4f88b398589745b",
+      "final_ram_sha256": "4a855de88c26e98a231bdcd756fdbfb7e31dd9b5b4eae272404dbcc7d4ead243",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "28227bf045e3adaace6b5102296a391b63015a9e49f8fa99f70260771bc9d885",
+        "controls.json": "e50815b8bb78c159cb4a33fd30f3184f7150bebb0de73cfbb1e52709056642aa",
+        "assistance.json": "3bf158ef121b4cade9979f35c5764a7380a01e74fc3468cce97cbef4fb69eed9"
+      }
+    },
+    "natural-service-route/sms-npc-merchant-variant-g3-g3-choices02": {
+      "frame": 485159,
+      "proof": "validation/natural-service-route/sms-npc-merchant-variant-g3-g3-choices02-assisted-fixed-replay-485159/replay_report.json",
+      "proof_sha256": "e6fbe02bf5ba40718e0b6b641bed7b65eda66401b5725a73e0bd99a94677b30b",
+      "report_sha256": "4128006147ff56a0f45e2e73cd3d08b48be2a4904cf4b81c0da5334a7491f7c7",
+      "final_ram_sha256": "555eb2a71b07c4a14db67049ed568c2728bcf324bb280294ae6cb0bc9c2ea4f5",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "29f9c5a23bcc297dc6f53c77e789022c9b43d932ef916e3549e7667969ddb33b",
+        "controls.json": "c3894e3e502f9fff72f5644e3d1188f7f139e27ab998a924327a892b2ea9b35f",
+        "assistance.json": "ae7bc90d545a95581c2059220b7d6e55e2ddb370f3071936699b1c7c4c8d1bdf"
+      }
+    },
+    "natural-service-route/sms-npc-merchant-variant-g4-g4-choices01": {
+      "frame": 485929,
+      "proof": "validation/natural-service-route/sms-npc-merchant-variant-g4-g4-choices01-assisted-fixed-replay-485929/replay_report.json",
+      "proof_sha256": "42a6219faf84a98470ba792c8e949cea52022abea41269dfe2f59ee34793e5a2",
+      "report_sha256": "86c92e96dc0cc551d8e2e7f9d382c8b034bed6f789b5adf2373b4901415da16b",
+      "final_ram_sha256": "d041fa4defac0d3041d7156904ef9bf61bc02b19d2ddd3f40206f7331744813a",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "f6102f7333be587e7bd3af41598889e61bfddf455da3fbd6a85bae309c7e6250",
+        "controls.json": "29797a58c2c70f976ab01928c9b9c00e599a9f76a9ae006cce573a964f487927",
+        "assistance.json": "c72f1b8f1757cd6b9c51b1021bf09003ed7de18dacb081af2ace854bc7dc289b"
+      }
+    },
+    "natural-service-route/sms-npc-merchant-variant-g5-g5-choices01": {
+      "frame": 485088,
+      "proof": "validation/natural-service-route/sms-npc-merchant-variant-g5-g5-choices01-assisted-fixed-replay-485088/replay_report.json",
+      "proof_sha256": "87dc83688cfdae64b12cc6c31d5b349b5c7f6462952680a1314b6f75ea9d4a32",
+      "report_sha256": "a3b82fca4b40a5fd547c5bb39d4f425085079b6c0e9a6b3ba242737d2dd151c1",
+      "final_ram_sha256": "22079bb198a44a6fc73763d86a4a09f7b4883f32d26315542aa68fa3fbb8b717",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "20a8ffdc9550b7f02a2b1f8b5d65f5550c7770c3171a18609c303b01fcd7aaef",
+        "controls.json": "d5ddbd0424f224f2132721e23431a23ef0cfcb2330c2ba4eaa8606b2e682ca89",
+        "assistance.json": "81751a13a2ace17de8ca9fba616e2f433f4227388bc79d7b8a7ba5464ab69b32"
+      }
+    },
+    "natural-service-route/sms-npc-merchant-variant-g2oil-g2oil-choices01": {
+      "frame": 484567,
+      "proof": "validation/natural-service-route/sms-npc-merchant-variant-g2oil-g2oil-choices01-assisted-fixed-replay-484567/replay_report.json",
+      "proof_sha256": "6734767094920eb2cdf27df85b38288c08f4bca7fa015bde3d4c241685f4e949",
+      "report_sha256": "c349669820bc293c81eb050f84a5dcc724bdb802b88c3851c7d5539765338573",
+      "final_ram_sha256": "4423601e7e1a46f1e4747dd0ea7431c14b85c0394fa425f0abbb2d9c3a6e0213",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "de0f802b58dd4b452fd2f3739e2b5d134daad3eb448a667e74936f432177edff",
+        "controls.json": "bfb3e8692160ba57c8227ddc7094ededef4ab454626712da644c804ed4564283",
+        "assistance.json": "3bf158ef121b4cade9979f35c5764a7380a01e74fc3468cce97cbef4fb69eed9"
+      }
+    },
+    "natural-service-route/sms-npc-merchant-variant-shield-owned-shield-owned-choices01": {
+      "frame": 483851,
+      "proof": "validation/natural-service-route/sms-npc-merchant-variant-shield-owned-shield-owned-choices01-assisted-fixed-replay-483851/replay_report.json",
+      "proof_sha256": "c8b5be726ce571526ac863611105905e4cdb17ae610d809eeb64f4344d77a1dc",
+      "report_sha256": "7452e76d695f0bac5896e1ea1599106034fd975f5b1a9f22a02a0a07d54f7e21",
+      "final_ram_sha256": "03fc30ebefc1828d3d42cab035f085e7f51dd2a745786e599766314efbd4594e",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "bc92c7610ce8a0223b80f819978a94ffd23359b6b617e1de806cafa3e89e2995",
+        "controls.json": "802b2066e4e6360b91ab0f2c53a1c78e5bf07283313d71fe968a29db1641fa70",
+        "assistance.json": "e4003b5a9b22cdd2b604e20cba41dc35f443bbbfa21acf5110f4bd19913d5581"
+      }
+    },
+    "natural-service-route/sms-npc-merchant-variant-shield-better-shield-better-choices01": {
+      "frame": 496931,
+      "proof": "validation/natural-service-route/sms-npc-merchant-variant-shield-better-shield-better-choices01-assisted-fixed-replay-496931/replay_report.json",
+      "proof_sha256": "79f1d44ec434498b45c093bc06d1b1a0fdcd7073c8b031fc100b771107dd6247",
+      "report_sha256": "c6883450547386cafb88c8ae27f90c765f74b1e11c2793941f4cec45eb73fd0b",
+      "final_ram_sha256": "3b5d020cb198ae3651c21b13cb2c4714db13d5b3391a0d986e3f98ed57bf3c47",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "84674c22551631e34ea9bfb50d49d3884bc3c71fb8cb82dee70c206bc972a7c7",
+        "controls.json": "664b05e1d4ad29e4e62f6ba92928fa5b4e50928ac5e3492a45ba8b9888d0ea99",
+        "assistance.json": "2743f7ab5888153b0e114b4f249cb6cb740bd0f77032f29285aba43476be2cdc"
+      }
+    },
+    "natural-service-route/sms-npc-merchant-variant-apple-only-apple-only-choices01": {
+      "frame": 485040,
+      "proof": "validation/natural-service-route/sms-npc-merchant-variant-apple-only-apple-only-choices01-assisted-fixed-replay-485040/replay_report.json",
+      "proof_sha256": "7bf1d68c0cfb4391b26cee8d421e3d5b3e63f4f2734001d6895424276848a3b2",
+      "report_sha256": "86ca95add51c7632fb2fc94650d5d5ee51a7582b69507d7a8833a9ebf10c664d",
+      "final_ram_sha256": "01ee569bdb93400dc59de1eae6623ad5cf75275d31485c81003e9ab1f080080b",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "52311c6b25925f5280503736f22a4898c2c74b14b448c372c6580069eb2a520d",
+        "controls.json": "7c1c88bbecc3036dfda160b5d5f455114adb908c535d8eb1645105dc6319af23",
+        "assistance.json": "11f73824476d76d0cba0077a909c7f35c4d8a0f0da146f564a84bd6114333da7"
+      }
+    },
+    "natural-service-route/sms-npc-merchant-variant-apple-poor-apple-poor-choices01": {
+      "frame": 485920,
+      "proof": "validation/natural-service-route/sms-npc-merchant-variant-apple-poor-apple-poor-choices01-assisted-fixed-replay-485920/replay_report.json",
+      "proof_sha256": "e39cd7a869435899abd611ccda4848f82000a17b9cab8c57c5b0620395cff666",
+      "report_sha256": "0ce12f1e327ffbab53d0c35d875e8acb42397cc22493a8cb0d981859af1ee35f",
+      "final_ram_sha256": "783c21c6bacb4daf093f5e82f7d11f518bf6287189d3cc269b3dd20e7fb05836",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "ae6e9bc65ca749528f5d2cddb1e4e24a6bcbcff5d4fe37e167e10dcabfec30f8",
+        "controls.json": "f9185b0e580288be7b113bdff867ab0db317cc6e4a3c7e8d96ef56bbbd1ec4f8",
+        "assistance.json": "0c3e940d958de1fc7e4ea33876a3c272b6d5fe0a050ca35ae8f3a0de78f7dcc9"
+      }
+    },
+    "natural-service-route/sms-npc-merchant-variant-magic64-magic64-choices01": {
+      "frame": 515130,
+      "proof": "validation/natural-service-route/sms-npc-merchant-variant-magic64-magic64-choices01-assisted-fixed-replay-515130/replay_report.json",
+      "proof_sha256": "b297560ba0562ca30f2848e6cb122b619897adb8a6719715eb3f236e8389cd20",
+      "report_sha256": "f631600263bbc846d4e2e082bddb4261dec981507ec415b4a9424efbba1695de",
+      "final_ram_sha256": "2def2736b8da102f3855cdc53a9c84f389375a5027e3c454368288c0a9f09f26",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "6d0a323ad4fa751c44ebef810ea3c761b65f47ab5874064ddbd3906ef210a0b7",
+        "controls.json": "7e6e052acce541498079f0365c3ab0a95ef1273c3f865c47dc2c2bda58a51550",
+        "assistance.json": "b088df79d441b447d5d587bc1aa9cab62188b1a7769e4a495744925e54e4ac55"
+      }
+    },
+    "natural-service-route/sms-npc-merchant-variant-magic32-poor-magic32-poor-choices01": {
+      "frame": 515051,
+      "proof": "validation/natural-service-route/sms-npc-merchant-variant-magic32-poor-magic32-poor-choices01-assisted-fixed-replay-515051/replay_report.json",
+      "proof_sha256": "6dada23e698474a2182fcf5aca28a84d6640d6ba3dac4706f98e0d61ceed68f1",
+      "report_sha256": "65ab2899fed7a7c0139baa33df81d66ef34941b2ea40faf6e9ccdca87979421c",
+      "final_ram_sha256": "ebb6159d2c92d1988ca04597d287e4e4b847e13179fe4b5fb65eec6214df3a39",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "452939e9985c134c1efc184f3762a38af5164d8e32087cf919486f97aa4fa92f",
+        "controls.json": "5626d6383b6d737062d66dec7a750b60d54c88fad4c22afb817181d430dfc26b",
+        "assistance.json": "b088df79d441b447d5d587bc1aa9cab62188b1a7769e4a495744925e54e4ac55"
+      }
+    },
+    "natural-service-route/sms-npc-merchant-variant-magic-clamp-magic-clamp-choices01": {
+      "frame": 482971,
+      "proof": "validation/natural-service-route/sms-npc-merchant-variant-magic-clamp-magic-clamp-choices01-assisted-fixed-replay-482971/replay_report.json",
+      "proof_sha256": "ba00862d50c166697c6b514c16303794711dc2ef13aab88f7a3833f4e4d62083",
+      "report_sha256": "4e9f0a874fbb3665a34470c8d5bade53968847d32a80a2ac8b4bfd17c3c5c2ca",
+      "final_ram_sha256": "57c797a80b460306697a5e61a272944aff741596652e9dfd43f132eac1fe0b79",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "af93f96582cdfae0feecc091d2a2032b0893805441c795995e329f8e5a07776a",
+        "controls.json": "cb81efbb56abb4266a8db875aa5fb4762c6ce743bd1f036a51e1811b785889ed",
+        "assistance.json": "784fba21e197d4b19000dd1622f79e1f469464b3cc8c588e807cc11b281d9810"
+      }
+    },
+    "natural-service-route/sms-npc-merchant-variant-magic-poor-magic-poor-choices01": {
+      "frame": 485411,
+      "proof": "validation/natural-service-route/sms-npc-merchant-variant-magic-poor-magic-poor-choices01-assisted-fixed-replay-485411/replay_report.json",
+      "proof_sha256": "c9486b93211ebb28279c098de6d2661a9cc55a894c90c27d92fde92461494257",
+      "report_sha256": "0b288b6caea6653876b6b10aa5d90e03c4c88408f8b7f031e65487a3dcb369d9",
+      "final_ram_sha256": "5c224ca8580de23c91c31662de4ffc00a37d30956bd47fdf068323ae52c838d4",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "9d1330780fab304069ffd65abe53604bae6425255d2873dabbf879d7b7b6d4d3",
+        "controls.json": "be464a1ca581fdd3d569b8e66360e1f900645b5d0517b596c69685580b35257f",
+        "assistance.json": "b92e06f0c44ba2ed1a0c147613ab539824df826cfe20a689892f2dcb2715d6ab"
+      }
+    },
+    "natural-service-route/sms-npc-knight-shield-f9-buy01": {
+      "frame": 482311,
+      "proof": "validation/natural-service-route/sms-npc-knight-shield-f9-buy01-assisted-fixed-replay-482311/replay_report.json",
+      "proof_sha256": "241afd1c5f46a86a520a8637c1df664058bb81ed27f88f971dd65ad734d41069",
+      "report_sha256": "c962cb84661d1a139c77af8f269f03d446edc3516bc761aa5ff2395c8ba5c9de",
+      "final_ram_sha256": "4aa8808a65dbd8edbcdfe653550b7cf235ee2cb8966998b604c80a9d334bf27f",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "a5c46fabbd061baf35f71fed2331a5326419cdefd8bafc16d94fffb2c0fda705",
+        "controls.json": "07d89605e0d41e74f4a5cda50203c86fc98a293f514af17b02d6496103b6b6fa",
+        "assistance.json": "79d933b744d70b5668c9bea7432f1ccda47174bcff0285564a3a62833bf89549"
+      }
+    },
+    "natural-service-route/sms-npc-key-capacity99-01": {
+      "frame": 532968,
+      "proof": "validation/natural-service-route/sms-npc-key-capacity99-01-economic-fixed-replay/replay_report.json",
+      "proof_sha256": "8c3c6a1ba387e070f560dd87b48b177e0920535569d75a3ea3346f53637d6b61",
+      "report_sha256": "a19bd676ae41579a24335438975aa639b7a27238c976216e7c3d194ae23ff15b",
+      "final_ram_sha256": "8ff678328116886d7f110fe89949543f0d80544ad063fba40c42df8156c78358",
+      "currency_assisted_component_test": true,
+      "input_evidence": {
+        "capture.json": "55f4ee514ae06421d43618f1f3e7fb0c9c9167d4c9ec5bf5da44e40198517fbd",
+        "controls.json": "5dc8cc302fabaa832c5654ec289d5345aa288faca52f101ff7149b1b4b0a040a",
+        "controlled_economic_assistance.json": "e9ef344cd1588e9d7c71194c61f71ca974f0f7bf0831dae7c5190f5e0d4ccc80"
+      }
+    },
+    "natural-service-route/sms-npc-paid-healer-2e-01": {
+      "frame": 443431,
+      "proof": "validation/natural-service-route/sms-npc-paid-healer-2e-01-assisted-fixed-replay-443431/replay_report.json",
+      "proof_sha256": "2e244b588940c1e8ad960849fab5970f65b8b8aee889ed4c63ab11b9d4997cab",
+      "report_sha256": "479f551840819dee424e34ddbc46c15bc6f525b34e2c0e1291c7405b011caeed",
+      "final_ram_sha256": "338a7b6641f3a6f6174f218ab6effe227bb5d1e79b46ec1df3059c83caedc330",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "1e6d9abf24106951677e5d7f00a44620cd62ce5206536b817ec184bdc22df6ff",
+        "controls.json": "e176ee99045e479a0ee6515c40ae0173ad049e8557cafb9125395ca94912791a",
+        "assistance.json": "0633b815d9fbe638d87b168573bb057488a8a921dd724a016919a8ec9ad2d92e"
+      }
+    },
+    "natural-service-route/sms-npc-inn-location-ad-accept01": {
+      "frame": 451124,
+      "proof": "validation/natural-service-route/sms-npc-inn-location-ad-accept01-assisted-fixed-replay-451124/replay_report.json",
+      "proof_sha256": "ef0caf8b700430a4116a7af2723ee0e9447d26f85c6432e7603a45e46347d63d",
+      "report_sha256": "40c0e2a7e355b7c445aea4380e85efb00c64bb5690baa68dd71df93e3d3fe781",
+      "final_ram_sha256": "18e7a770805fa7f8e33576d2d8b3482e6bdd8f3bc4de6bd704c34c8e47e9f27d",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "05b1f89e9a2c6feb8e46c9a00861a01013eb8b737fd581aa1c9bfc1d0ea90504",
+        "controls.json": "fb508650fc6a3a62e69dd2a6626b5734a4e0ccb29ccc03730922bc82ac2c9198",
+        "assistance.json": "5f0553fec4a75ddd0e98d0dffbae4045bffe31706b7bc4586af804e403ac7cbf"
+      }
+    },
+    "natural-service-route/sms-npc-inn-location-ce-accept01": {
+      "frame": 453248,
+      "proof": "validation/natural-service-route/sms-npc-inn-location-ce-accept01-assisted-fixed-replay-453248/replay_report.json",
+      "proof_sha256": "c605d6fdf022d02d0a63b36634f01bebcbb8057782563d9be7f2efb9a5424f76",
+      "report_sha256": "3ebf5b9a38d7ab64266f5441ae65fb0610608502beaf4442d2e17aacaa5c7799",
+      "final_ram_sha256": "8fe2b5b9278972aadcf60dbf84db2786c87d47ea234fc9cbf0b530b68bb5f020",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "d9c3c0f1b2d925c11cad9e7e980e86392968547e679c37ce4c9303a7558a2b40",
+        "controls.json": "5d9b59c183edd16e8bb271bc8feceff286141ec5a8849796cfe374908dde3f60",
+        "assistance.json": "939b7fab1390e1abc34d19411e7abb5a3b002624361074ede1f01b70326ce235"
+      }
+    },
+    "natural-service-route/sms-npc-inn-location-fe-accept01": {
+      "frame": 459591,
+      "proof": "validation/natural-service-route/sms-npc-inn-location-fe-accept01-assisted-fixed-replay-459591/replay_report.json",
+      "proof_sha256": "c44b07f86ab0c9eecf29b826c4e0c327ed1469918fce0a31d2c1c4e8e7c852d6",
+      "report_sha256": "41b1925b1264add153592f5075b9886186bdf90ff821ae454d99e6d4deb5fb13",
+      "final_ram_sha256": "05e4377e65e6ebee01cdeeecc1bc070e8917476e99204fdc2472bb11fb48e949",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "7c0c2ea4689331218e050b02f423f294e0a1f5ee1d22aff6f13aa7d250ca5ef4",
+        "controls.json": "cbdfb7e2f55d29a3b5c71d0c5ba2ab1e3060df1ad245cf77f3013442e5c5406d",
+        "assistance.json": "bcbc019b95ac85361dc3ac4d017d08ab83b98b2ba0c00da50ebe626d8e57e9fb"
+      }
+    },
+    "natural-service-route/sms-npc-inn-location-f5-accept01": {
+      "frame": 465794,
+      "proof": "validation/natural-service-route/sms-npc-inn-location-f5-accept01-assisted-fixed-replay-465794/replay_report.json",
+      "proof_sha256": "9aca0691b369335dae396b2eb96cb7a681e070b6fb2b18977b31c15f7694b9b6",
+      "report_sha256": "6d738f5d486dbbf12541f48813567234f08b7af3a0604377f2e77704d1c76bb9",
+      "final_ram_sha256": "4586fee03c1303bfd0bf9eeeb5fb8f4bd9c54ec0b45cc9f505a69d865afc3a4e",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "0c340a161ae952322d4f91464d9a590232c94f3f4ebbbd90c6dd9cdf177d1d95",
+        "controls.json": "76f917c4e6c61ef50d2f0a24463c1dd130810b39bfd27f97d7c1c9f2e5f2088b",
+        "assistance.json": "db93d950375c26463cfc3be90cd28b54d78ab3082a84c689cfebb4d99d8c7f56"
+      }
+    },
+    "natural-service-route/sms-npc-inn-location-94-accept01": {
+      "frame": 470831,
+      "proof": "validation/natural-service-route/sms-npc-inn-location-94-accept01-assisted-fixed-replay-470831/replay_report.json",
+      "proof_sha256": "09656af7a820c4091235d4f0bacd9ab3e1b4e9c6b3e079571a3e03dd936f83c4",
+      "report_sha256": "8b2807763d311b8e589cbb394ed9c4c2aaaa3008a37c5991d30d56d370ee6c3d",
+      "final_ram_sha256": "55dab8a8e3f7929da80a92c0e5ec87b9ecfec523c0b04c5e06fe49e6790bf122",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "dfbbfdff82b6e734e6084821fc5766055bcc4821b8f0c338c0702148f659a13e",
+        "controls.json": "e4ea98301f058c5feff066b3128aef9accf7c1625b94563a8aa94a27881512db",
+        "assistance.json": "f61775b1ce7db5d17eb8c8b12822c6ecd91d493d2f0cd176f67796bc97e0af6b"
+      }
+    },
+    "natural-service-route/sms-npc-inn-location-55-accept01": {
+      "frame": 478919,
+      "proof": "validation/natural-service-route/sms-npc-inn-location-55-accept01-assisted-fixed-replay-478919/replay_report.json",
+      "proof_sha256": "48f7f6688f36b7ff4b72ca2be3289288051f8b6bf45e276cc5ca696546cb705b",
+      "report_sha256": "69fd6fd40981403589c080932b658ee15c93afbbc29c674781cc1157513af873",
+      "final_ram_sha256": "9f1fadceba3d129513d8420e5fea5d0952c2467d3e1ef6a100521b18dd408dc7",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "9ca3705192e98008763ad5affdcd983bbe3e9c8fff21efa0ca56342cb2f0869d",
+        "controls.json": "8ac6f7918307f494ae5af6ad56d6b90ec0f18c4eda7d577e8bbaab478a808e37",
+        "assistance.json": "630dd9747d79d16631254e3004eeebbfee34054233bbf1d1733aa84ecda0e7e2"
+      }
+    },
+    "natural-service-route/sms-npc-inn-location-57-accept01": {
+      "frame": 482959,
+      "proof": "validation/natural-service-route/sms-npc-inn-location-57-accept01-assisted-fixed-replay-482959/replay_report.json",
+      "proof_sha256": "3969116b7660acffaabee644da21acc63e05e3fae995480e195d37edca3170a3",
+      "report_sha256": "7f64c15fb71d41ead789d2a209add74b504a52528506c9212c53d66f04550cbc",
+      "final_ram_sha256": "231b99a0250e2a7b11e0447b88768c5b6399b715c93ec0c367ba546dc56bf793",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "330ff5c0a594f8a55ac4ae3fdecfe16e8f93e00eab12540305f0e0d571222be8",
+        "controls.json": "07efb3a908bfe2a9c08f27d22af89f0f9cde9c47a6f71306c1854ab7eb674bf7",
+        "assistance.json": "ae7e0cb43f46db8f33f321a63ffe5da368136f173c38cc14538d53c1599c7d69"
+      }
+    },
+    "natural-service-route/sms-npc-inn-location-14-accept01": {
+      "frame": 489066,
+      "proof": "validation/natural-service-route/sms-npc-inn-location-14-accept01-assisted-fixed-replay-489066/replay_report.json",
+      "proof_sha256": "cfa5bc77161dc08423be1dab5753fc9a3170bd9c6976dc17b7452ade13ce5683",
+      "report_sha256": "c17692d4dab2bbbd9c8255d20d166a731d6b338c164c3def5b848f5f0e724deb",
+      "final_ram_sha256": "87e1fabb5a96e8100b8687a1ea86dd5eaf29fa938dad6b128948886630b1aa2d",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "f224b7d87b135dda88507bc0bf124f832384ce60b9099a816b51df327b548c0c",
+        "controls.json": "ae4ec6baaf563d08be5a83eb28a0566f454a94d99d231d96e9343c56a2849204",
+        "assistance.json": "e00c6b094a4b5417c282d7e13f09cbd4c52a3147c9e01a623bd814dd1cf3fe17"
+      }
+    },
+    "natural-service-route/sms-npc-inn-location-f0-accept01": {
+      "frame": 496727,
+      "proof": "validation/natural-service-route/sms-npc-inn-location-f0-accept01-assisted-fixed-replay-496727/replay_report.json",
+      "proof_sha256": "d229deeb06c645c4f40dad2bab0a878bc0df5bbdec5c0a34f92f92b033e09fd5",
+      "report_sha256": "81dffba2d038b4f33f15b9927bda925ce9bd03a3190a7673397c1e8b792178c5",
+      "final_ram_sha256": "4539731c9eec201367dc92fc17ff5e20476a715827191c23ac3fda99aacf49ce",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "ba7dcad969bbdfb33b0ba633123ba6e0f786de601bd8c98e7f9aabadc3698beb",
+        "controls.json": "27740ff176c5b26e1a1c71be52b1445cab7a05669b5f0a0d897dbf79f6a17525",
+        "assistance.json": "f34e1e4d08b6bc1900730f8d83be7dcae67d1f994de7217e23f7ed4fb97472b5"
+      }
+    },
+    "natural-service-route/sms-npc-inn-location-c7-accept01": {
+      "frame": 501880,
+      "proof": "validation/natural-service-route/sms-npc-inn-location-c7-accept01-assisted-fixed-replay-501880/replay_report.json",
+      "proof_sha256": "49492573cec6ff4d2d4b2eaf7a40cda0a2196c8655163afa26d6570c8d77e16f",
+      "report_sha256": "58c763d421549d7e1659dc8ce6fb4207a175a4a2bc451436e77eb98439857ac4",
+      "final_ram_sha256": "988d1815fe948d4c55d74fc7716e49ae7af62dfb6e84b964802867e72d89631d",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "3b1533b65b24c921c82bad596a5d12da4df4c3b145f622a650c4b3fdc54df766",
+        "controls.json": "b36e82db0b0dc8e46f998f12576dc697d79dbcfcde73b803381860a69d94d4f7",
+        "assistance.json": "55e67a78bfb1de160e410875912b1ec3716ed3e472725a49591f18f7ad261eca"
+      }
+    },
+    "natural-service-route/sms-npc-inn-repeat-rest01": {
+      "frame": 479839,
+      "proof": "validation/natural-service-route/sms-npc-inn-repeat-rest01-assisted-fixed-replay-479839/replay_report.json",
+      "proof_sha256": "9d98b3326065f13a0360bf8ce0318adc3498ccf453141d93420254354ab904ee",
+      "report_sha256": "46ee8a77e96c40189cee5d67c513f1669a3cadc3c0d1ea8133486cca2a23e00a",
+      "final_ram_sha256": "e0d5fbeb8320796a5aa69de57b22b0789c82b86f872c94c7bf52697d8a28f17c",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "f74376b13f03569c90cdaf2ceb1ae659965c779b9e4477edbfb43b4d97c90de6",
+        "controls.json": "68492787b8d308147f199df03ed77509851dd3daf2bf84404629ff416c14c558",
+        "assistance.json": "a63c3a02d80e9b04f3d16c0bfdea0c4128a3b34a412dabfaa6b1869f6d191649"
+      }
+    },
+    "natural-service-route/sms-npc-save-2e-slot0-01": {
+      "frame": 408757,
+      "proof": "validation/natural-service-route/sms-npc-save-2e-slot0-01-assisted-fixed-replay-408757/replay_report.json",
+      "proof_sha256": "853c8df19e28712f2871c22a447d74cfa2d6fe702ec204d51355aafbd4c20f41",
+      "report_sha256": "373660da80be8a8a2aaee7288a006ad0b7b9f5d68e06ae38a0156587071ae995",
+      "final_ram_sha256": "60c0084abdbf689c148cff9ec08fee85c0e75207497a448ca1dcf08f916c1136",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "ceb0cfc929b8db9edb914052694c9cd04c11d1d553fb13aa9cd517929f00e042",
+        "controls.json": "b825f81a4f3d839b1c8d15f03d95f13780684fa48c103954fd09b7eb9abdef14",
+        "assistance.json": "8969fb0bc76adde1ed075162314b8896ff3c2dea9e9adb2d5010c6afcbf0be62"
+      }
+    },
+    "natural-service-route/sms-npc-save-location-9c-slot0-01": {
+      "frame": 449642,
+      "proof": "validation/natural-service-route/sms-npc-save-location-9c-slot0-01-assisted-fixed-replay-449642/replay_report.json",
+      "proof_sha256": "48c9a0142286014a01dd9e6ec2f59051b5328d0feb48eb8c3d80560072ec534b",
+      "report_sha256": "bc4022747ca0d4718a2bbf0599139febc76577e72c9de2d34e1bad82ea3319a2",
+      "final_ram_sha256": "475d0009429e2f9dab2a5d7e0eee9d888b374fde7e03e7809b75a6f73f390df9",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "3ece9657958f055baef81e69f8fefe0ab60dbf278513981391ed1619b846e213",
+        "controls.json": "21ee51eb4ca78b1f4f366689c9a779a54f0cfcc20385183b33731fbd3481c555",
+        "assistance.json": "0c1d512e044eec33780b0ba53ac98b22c4629352b370d70beec988d3d820c265"
+      }
+    },
+    "natural-service-route/sms-npc-save-location-ce-slot0-01": {
+      "frame": 453694,
+      "proof": "validation/natural-service-route/sms-npc-save-location-ce-slot0-01-assisted-fixed-replay-453694/replay_report.json",
+      "proof_sha256": "c0b61f41a4df5a3b2ea363ee24eb3999ed394213a18edc17928416bf83855888",
+      "report_sha256": "d7608962f18149730811821d30befb7c27993be76f50740d436835a77bd88906",
+      "final_ram_sha256": "3f52453510279b6870bbe116c09842046707ec9f7791d92ef2f8126a5f81a5ba",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "8c6e9eff5779c41ef2838a27411790eca0137afc218a7f567fdc0527fc61cef4",
+        "controls.json": "4747cfdc37c13ae4ba7f72facb0ace25cff101d73e2964423f472847a8ef6fbf",
+        "assistance.json": "90e801433d2c1a7ec5660bf26c462bc6435f87dbdff69e633c3939c64d19f4a2"
+      }
+    },
+    "natural-service-route/sms-npc-save-location-fe-slot0-01": {
+      "frame": 460039,
+      "proof": "validation/natural-service-route/sms-npc-save-location-fe-slot0-01-assisted-fixed-replay-460039/replay_report.json",
+      "proof_sha256": "c61185f6f62253921dd5974a9431075e22dc9d126dc8f8cb908f0fce0553e0e1",
+      "report_sha256": "7360fc9f79803bdd795117b6c39b1ff035602b342f696a0f1c78a5b011f27ad6",
+      "final_ram_sha256": "714ef06f877c7f741ae4c410d72cddd5d87afae8b96eb5d7671635b138887019",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "076e8fc534f0e656bc49c0de0b587e70ac7b9977824d37fdeaa7f6cd3f301fcc",
+        "controls.json": "90f198dd92d75090e527166c534ce897b695ea5872e94cf8497242c3428bfe9f",
+        "assistance.json": "4e1dc0e15a373a30c0d9d3a89cb46fa7592bc84d07ad8756ac889cda2a38d575"
+      }
+    },
+    "natural-service-route/sms-npc-save-location-fa-slot0-01": {
+      "frame": 461580,
+      "proof": "validation/natural-service-route/sms-npc-save-location-fa-slot0-01-assisted-fixed-replay-461580/replay_report.json",
+      "proof_sha256": "c2c8c444a6744e461fabd46db58a9713f869ed261fee67b15e12e6828fafee1c",
+      "report_sha256": "979acdf849ce4c900d690b70fa180ee358a7c659cf95a236ad3e677c0c79d0f5",
+      "final_ram_sha256": "43697f7688e9c15ce02799ddb0279e7ecfbe2d02f04c7329aeefaedd87bffc71",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "e2ae6f841c0d4735a78a883c3d4745e7772137ef4084b63ef6b66bfef2dd7a86",
+        "controls.json": "d1d56e3e7706c650f5185e273be1c21349cecc3eacde953a95c9c398f4b6fd34",
+        "assistance.json": "eadb3d8143577a78b38173bab9c203b976e06f62da323d99d30ba29a847363bd"
+      }
+    },
+    "natural-service-route/sms-npc-save-location-d5-slot0-01": {
+      "frame": 466867,
+      "proof": "validation/natural-service-route/sms-npc-save-location-d5-slot0-01-assisted-fixed-replay-466867/replay_report.json",
+      "proof_sha256": "6751253bc8a7a53bd34d8e0220687bd50854c7e23a72af0d2f5df1178de4126d",
+      "report_sha256": "e376fc402dec320da9ce49cc40450722dc25ccc7d28e9dbd2f7d6cc263a56c19",
+      "final_ram_sha256": "ebf8886990360eaaf8bb6d29f5d51ef577956c874a4bfb19926db3f33911b5e7",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "b775e412d5f9c083e6b34813c8fbe9f53390f595d7122239b5dbe6008778ff64",
+        "controls.json": "05fda29fb6c6e8eff14fe46cd7fbe4281c4270b8cb685f6c297586cf109e1ed2",
+        "assistance.json": "b6320cba14acbaf93e82b312eabef9cf76e184f21313c2bdb744d23304950b2f"
+      }
+    },
+    "natural-service-route/sms-npc-save-location-94-slot0-01": {
+      "frame": 471359,
+      "proof": "validation/natural-service-route/sms-npc-save-location-94-slot0-01-assisted-fixed-replay-471359/replay_report.json",
+      "proof_sha256": "23bb071e0d5d3e5469944cba3caf1de1f045827430c3b1abebd4a53a270ee071",
+      "report_sha256": "38b9acda4c06f400bad8ccb21ae3575d024501a1f8254e0ff03f428aca84df2e",
+      "final_ram_sha256": "2968269552b694fcf0e88aca77db4024143b39b7ffe27e9b1ee36c273bbdbcc6",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "af3ed3f8be9a7a9cea73a8e79fa034d448a04629dad217d72d201f79bba2184c",
+        "controls.json": "c62ea9557c2af43aeff355103ed125f4ecc0eaa26024595a6cb28babb160bf53",
+        "assistance.json": "748228c51f7dd94e2fe233bec8b94112be6f2238cdbeed38e1f0a31ea75f8d03"
+      }
+    },
+    "natural-service-route/sms-npc-save-location-52-slot0-01": {
+      "frame": 475218,
+      "proof": "validation/natural-service-route/sms-npc-save-location-52-slot0-01-assisted-fixed-replay-475218/replay_report.json",
+      "proof_sha256": "0bdd751b2d6f8a087dc3606ac7322b9a07ed30039c8d84838f5bc2624cab7db4",
+      "report_sha256": "cbef551406ab51dce7496e1ba76804ce400ca2a8859ba64157a00c5478d1c6e7",
+      "final_ram_sha256": "1c2b50fa48e316b1deb5344ce0754ceff009d23dfb8f46254b65ab4f9992ffe2",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "41fa4bdd08f74554834652b4d3032b841a7870577840e179476201425f2d96e4",
+        "controls.json": "f35ad00375565852191de1ba6d3062703f29d71bfb652d13939ffe3cdb679afa",
+        "assistance.json": "506e8bc78d09bfeb52591b69e313a04e0466018928e3d6835248aef7b4eb549f"
+      }
+    },
+    "natural-service-route/sms-npc-save-location-55-slot0-01": {
+      "frame": 479463,
+      "proof": "validation/natural-service-route/sms-npc-save-location-55-slot0-01-assisted-fixed-replay-479463/replay_report.json",
+      "proof_sha256": "c5501ee83a1e421052e9ca74ebe56f8f6020a2c83da8dbe5eca2da622dce4073",
+      "report_sha256": "899b57b7e99c0258e0e23c275bc74cc8897ff2bd02b2adeae9814683fd9019bb",
+      "final_ram_sha256": "0846721a76e99b2cf97f3415f733a6ca04400d5792621afd7d468bb0e8eec553",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "c4d6bb366b99fb587e751cf2ad0ce610d0356c974f97b51dcf5ff0316e617698",
+        "controls.json": "59f6c917244aa01e8a4e130c36147b861b99943377ac45205951847a8e15d211",
+        "assistance.json": "16f10970a64c288940ebc345133387c6ace4726e768171c6ed8641e42ebddcf7"
+      }
+    },
+    "natural-service-route/sms-npc-save-location-57-slot0-01": {
+      "frame": 483504,
+      "proof": "validation/natural-service-route/sms-npc-save-location-57-slot0-01-assisted-fixed-replay-483504/replay_report.json",
+      "proof_sha256": "8a32bb8872b7672b62b9255d56290ee9ccbbea9e89af1ce18448d3853aa174d5",
+      "report_sha256": "1e9df8e59405a74982e3189a2c8ffa8c96bb4687900d37f3b7f5f62f9c813719",
+      "final_ram_sha256": "6e9b130282d4d0d2380127f6578120b56856df93a058a48c792c30356a2cd7c1",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "524d8e48a7939433acd641ad26214644567b6d7b518ca2dad8ded9f3f4bbeb3f",
+        "controls.json": "9b610dd0a6a9e53cd49ee7e3bc50177a5ca1e82e00b902a55ea8f8aa21334150",
+        "assistance.json": "ded34871549e0ad877857076c14ed4054022dc1a759df969526950a235ca198d"
+      }
+    },
+    "natural-service-route/sms-npc-save-location-21-slot0-01": {
+      "frame": 490762,
+      "proof": "validation/natural-service-route/sms-npc-save-location-21-slot0-01-assisted-fixed-replay-490762/replay_report.json",
+      "proof_sha256": "194fcb1c030f5e38bd151f091df2d0ea7919548e1951e9f46dde8bfc63ac3a72",
+      "report_sha256": "1a06289ec6d666f23ed6bac91ff92a5f81fd4031a7f82a7ba2347ef11e89a14e",
+      "final_ram_sha256": "870432e9c05f3bf140f44dacadfda99a16be68d49c9baef995ef67b40d4965c2",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "4f51ba905e2f2f1a4495a8aaab657e6aaba429fea5170c4a2f2dab6c9b2bbd2b",
+        "controls.json": "25055d5a7f07f22b251e8be814704a9c7c8cd0a9f4bd756b252bedea19db3177",
+        "assistance.json": "4d07ef62f74a4b1c36f02bf2d42adc362fa3eab3ebd4b1325444a8d8c267d3d6"
+      }
+    },
+    "natural-service-route/sms-npc-save-location-f0-slot0-01": {
+      "frame": 497254,
+      "proof": "validation/natural-service-route/sms-npc-save-location-f0-slot0-01-assisted-fixed-replay-497254/replay_report.json",
+      "proof_sha256": "b34b88212e15da7c2ecd88409db9fb20fa092742f16b41630a027732bb0b458a",
+      "report_sha256": "417eb01ed2582ebb6139ffb06ab57ae84d04e887b1d4f9bb03a82878acb0f6e6",
+      "final_ram_sha256": "f95db049ba848007d00bba8993d08dd69b804178b48de467b5e99751002b8c77",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "64059683662abc284cd0b7ddb222da666b2b25ca884b85bf91cc99d0a9a41bc8",
+        "controls.json": "77ea705243f489c04c747d3962dc040c5a0a949a9712db054be4fe7989584575",
+        "assistance.json": "98169f7c719353bf89d2375e0df65c2b03cc9600438c65addcefa2f7d1785e75"
+      }
+    },
+    "natural-service-route/sms-npc-save-location-c7-slot0-01": {
+      "frame": 502423,
+      "proof": "validation/natural-service-route/sms-npc-save-location-c7-slot0-01-assisted-fixed-replay-502423/replay_report.json",
+      "proof_sha256": "e7426259eaad8f03b606a828bb46675e79c7752e226adeb24029620d4d45d167",
+      "report_sha256": "a5a40f937eabf50fc3f33270d7301a6e7bd2bf9f50b4efedd53893e9bbeb138e",
+      "final_ram_sha256": "ef899a206ff1e921f2fed68b09bfdaa52960705e28ae48542466991cab9aee44",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "772aaafd565cc9599d1509c1d1530114d87c8454c2448eb85b191fe0337fb676",
+        "controls.json": "9fdec6b754c822904ac9885091d8402def34760db885606a3774823f76a55c92",
+        "assistance.json": "da8f2b0f5c8b517dae8b53c065f2cc75eb64d9859a141b38b8ffdf8d6e711217"
+      }
+    },
+    "natural-service-route/sms-npc-save-location-b8-slot0-01": {
+      "frame": 503839,
+      "proof": "validation/natural-service-route/sms-npc-save-location-b8-slot0-01-assisted-fixed-replay-503839/replay_report.json",
+      "proof_sha256": "f84b4c3854245df35c36a89df36e7bbad7defdf5ccaa38b353f99cc00b9f6f40",
+      "report_sha256": "5e1c387e25f0d666738d22e8a8483eb93d36a9501ea94d8bc33ec7800b53d3e1",
+      "final_ram_sha256": "18b981392588509ae3b95673b2021d8302af5511e0d00b139fd8edf25b8ceb63",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "720366f34872410de8837e9f336a58ac595906829dd2d8e87603b724162b8ed6",
+        "controls.json": "8612c4f482d6f41e983727294b4f61097326e0a0e255b72f7aa95b0bca68356d",
+        "assistance.json": "8f3fa23e2012f786f3b63aca0f9b3c8eaa608b341569293171b22b26280673f0"
+      }
+    },
+    "natural-service-route/sms-npc-save-2e-slot1-01": {
+      "frame": 408200,
+      "proof": "validation/natural-service-route/sms-npc-save-2e-slot1-01-assisted-fixed-replay-408200/replay_report.json",
+      "proof_sha256": "289d3c0a719aca9aad65eee8feddd9054f9544f66294fd98df0c0854c8867748",
+      "report_sha256": "f5058a5441dbb4ddd1e701a45db623ca35a5d2b3580e8b1a0b7156192b76c795",
+      "final_ram_sha256": "d986e66d6fe0719b84f97bb905bf6d291ccb0b33409669eff8eb53e31879059b",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "54da84107ca36d993fc63e1cb4dbb9a200e3c02a3a867fe745c15303397b8ed8",
+        "controls.json": "aefdf533334b5fdf7c7aaaa889638f88c26662c30b40c1dc7f5b1c02562b582f",
+        "assistance.json": "8969fb0bc76adde1ed075162314b8896ff3c2dea9e9adb2d5010c6afcbf0be62"
+      }
+    },
+    "natural-service-route/sms-npc-save-2e-slot2-01": {
+      "frame": 408241,
+      "proof": "validation/natural-service-route/sms-npc-save-2e-slot2-01-assisted-fixed-replay-408241/replay_report.json",
+      "proof_sha256": "b1f882e3ced46318c43a66d82183470907b94a9c76da55e3f3fbced00f72507a",
+      "report_sha256": "524f2a644fa8bf72f6efe3666415de666a286fdb16340a90053328b53c953ee2",
+      "final_ram_sha256": "7e72d35ac9df549f19b1587520245e34e1da04e5d651ce5fc6d722e67b7bd1a0",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "441153a5868b49bcdbd1a2451bf74c042c3334b6cab82990217dc293286a6c4b",
+        "controls.json": "ebcd4c84250a921cc04366a78e227b2154d7bdb16ecd0cad1959b3543283ab91",
+        "assistance.json": "8969fb0bc76adde1ed075162314b8896ff3c2dea9e9adb2d5010c6afcbf0be62"
+      }
+    },
+    "natural-service-route/sms-npc-save-overwrite-2e-slot0-01": {
+      "frame": 412159,
+      "proof": "validation/natural-service-route/sms-npc-save-overwrite-2e-slot0-01-assisted-fixed-replay-412159/replay_report.json",
+      "proof_sha256": "a7920949004287a081cd54cc7b2902a36b3d1ed8d620f7082dedc2969a3ff4cd",
+      "report_sha256": "2d561b9513a159eb6696f29864c8783431df0593fb175c6ecafb110d01c08991",
+      "final_ram_sha256": "1b99a4843b7aad2d2b34421fe2117e16a6dc92b57f03f9567be240a09753b5d6",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "ec95965f72d6721d710e6df6e15200e1bdb8938a06255a97db7ccb03b6fabecf",
+        "controls.json": "e0e08f3eef15c25b4ebf3aef47b09982f9d19353a3cb49b99a35e6dec7447eda",
+        "assistance.json": "ea9f92b84c11cd25a4e132d9a4f044b7e1b31917f07c2499e11c1160f34e80df"
+      }
+    },
+    "natural-service-route/sms-npc-passage-census-36-pay02": {
+      "frame": 541556,
+      "proof": "validation/natural-service-route/sms-npc-passage-census-36-pay02-assisted-fixed-replay-541556/replay_report.json",
+      "proof_sha256": "8dec8737d8d65d3533705f50d5f626debff3b128e03530efbd25996d5d6059c7",
+      "report_sha256": "5ca8363f7f1a4677fb22ba6069d96daa9047211b20b524091b49567a6e275427",
+      "final_ram_sha256": "d11ebd68ffc6f45b375e48ecce780fe65667f7c45ac12f399980e222db309a5f",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "f17776d895ffa76869326c8f11318d523bacb3baac763da38b353d1a5f7ca62f",
+        "controls.json": "e8b3c0b710ae335064dd22a4212445f5e108f1707cdfdc5d7af9f12bcbdcf858",
+        "assistance.json": "7f3c3a061d279eaee351b61dd37b07ff054b611b07040a5c1169417a34c9ea91"
+      }
+    },
+    "natural-service-route/sms-npc-passage-census-87-pay01": {
+      "frame": 542214,
+      "proof": "validation/natural-service-route/sms-npc-passage-census-87-pay01-assisted-fixed-replay-542214/replay_report.json",
+      "proof_sha256": "a252646afc30dfa783ffba42b53b8b1f325812f14bed67fabb7407567d76fc34",
+      "report_sha256": "833b5da41759cb1c6f2ab64d9496751067495d8c3764698c800d24d64110aaaa",
+      "final_ram_sha256": "b7e4be8abea189b4ed1d9339a52434363e874a9830eebe771a69f34a60afd7f5",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "009bb40cadc252b0393cef53241c5f83c0e09a11613d570f807d5cfffc654629",
+        "controls.json": "e2f73aefd951223a242b159a0c4c0aab7835cef5efe14fe8bbea48734c232106",
+        "assistance.json": "0e0c0be7f233ad4ae4aeaece4e157bfca8a375329177f43c305108defad0f547"
+      }
+    },
+    "natural-service-route/sms-npc-passage-census-3c-pay01": {
+      "frame": 545660,
+      "proof": "validation/natural-service-route/sms-npc-passage-census-3c-pay01-assisted-fixed-replay-545660/replay_report.json",
+      "proof_sha256": "99e97ff0af26f6069bae63dda6218a112fbe09f7ef0fa8ab26fc7948e1ea0b01",
+      "report_sha256": "61ab858b3d9675f2416459daf37df818f56e0719b527342e7b0e58c08ad75442",
+      "final_ram_sha256": "8d8296047245892ead0c752beebf36c56d311141f3b822e3c79744367395f66d",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "25ffa605085a0ffe6a88314f7783dc459c2665af012216972088cb711e1318d4",
+        "controls.json": "b5bfbcf8c676224d0858f26a7d5fedb61a4e1b45c4e15b6c195b46853d41341a",
+        "assistance.json": "9e84f93d899188cc8535cf3f07d381b8dc4c95225df820497508368928f3fd68"
+      }
+    },
+    "natural-service-route/sms-npc-passage-census-1a-pay01": {
+      "frame": 546285,
+      "proof": "validation/natural-service-route/sms-npc-passage-census-1a-pay01-assisted-fixed-replay-546285/replay_report.json",
+      "proof_sha256": "03e1f0044d03cce1fcebe29cabd3c605a2b9c08b3b936f53bbc0e4c236f19213",
+      "report_sha256": "9128bc83d37bc462fddca0f8b23db53cb54fb4ef8869906ef616ec10cb1bc8c4",
+      "final_ram_sha256": "cc3500573f8a4ac7621beb79b2f7f55114732acf8f0b492d1752f9025a43577f",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "1efdf75fdb47bf999ced3930ede97e272cb18e0ca0afb0b4ba0ceb04b077b132",
+        "controls.json": "ff16579921ad9516a1d290e3713da7a00dd0eafda3da32d579091a3faddc69d7",
+        "assistance.json": "f82501d163e5bf5634f3b5a6831fc69d3ad1993d53fac512aed0bc2f4d999643"
+      }
+    },
+    "natural-service-route/sms-npc-passage-census-6d-pay01": {
+      "frame": 548073,
+      "proof": "validation/natural-service-route/sms-npc-passage-census-6d-pay01-assisted-fixed-replay-548073/replay_report.json",
+      "proof_sha256": "e3d4ef6905b3e6cd2f0465b9dfbbb33095d6f3143c603ae7f0900a4476768caf",
+      "report_sha256": "0fda72cf1d9bd9c555a210e030c829f3dd72b9bcd15c17a75741b696b43320b1",
+      "final_ram_sha256": "45c282fe87fb72aca6267b9ea090c75c858bcc5c1fe43c62f1cb8590cbbacbaa",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "d44263f87c869d8d94f8fcc995d3c0d55f127b2885f74a839d3a1be4d456a680",
+        "controls.json": "5823704c96704da4857b3045175e7d95a515f66dc7fa10c7b7adcbcd3928ccb7",
+        "assistance.json": "2ae1f8030b0a197534ebdd451fd8c548291eeca37a59e99be301a27ce59baffd"
+      }
+    },
+    "natural-service-route/sms-npc-passage-census-96-pay01": {
+      "frame": 548730,
+      "proof": "validation/natural-service-route/sms-npc-passage-census-96-pay01-assisted-fixed-replay-548730/replay_report.json",
+      "proof_sha256": "4307e13294a33645db427f904d691a94e4f84cb6d5a4e55d93cf96400c60ce87",
+      "report_sha256": "e95a2a636c1cd8866430369397ac5352e6b4d962993adcc77a9e9a532c127409",
+      "final_ram_sha256": "70506176b4b83f1e979cafc7180cb2e6355e4498caf1c36e8b3efccfe850b072",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "a35a31f685eda02ed8203f61ff491444e3eb8009df2fef7be19171cf36b1a3d2",
+        "controls.json": "41240dfa45bd6c8119c941bc5cc904fa728a4fed426fe1cf9ad9ba41346f6f9e",
+        "assistance.json": "468a4bc8c6b2a4f5050958eef07ed5df6133eac1f1808bdc659f52a04fe5f49c"
+      }
+    },
+    "natural-service-route/sms-npc-service-alt-inn20-poor-case01": {
+      "frame": 486089,
+      "proof": "validation/natural-service-route/sms-npc-service-alt-inn20-poor-case01-assisted-fixed-replay-486089/replay_report.json",
+      "proof_sha256": "5d346428d1234c6fc058845552cf71e5879fa2d0e7ce44c1c2b2aab6ac74dbec",
+      "report_sha256": "712e755abfd78ac9bec059c82ba16256661f0943998ae8476c15208883c2bab6",
+      "final_ram_sha256": "cc3e946e48858c4940420b682e7ceed8975ee719d099341696b8b9ee18918634",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "f6be9c447cb3f852b879d2bb2eec582b24bbbeccd3fc910736348083144223e8",
+        "controls.json": "c1df422bac6507f57320193622c7263902bbfda857f47a281b063103389bad04",
+        "assistance.json": "0708eb9a9a7d254ce01aa087885f2c8f2c1288972e23dd2ad0f1fb2911e9a267"
+      }
+    },
+    "natural-service-route/sms-npc-service-alt-inn40-poor-case01": {
+      "frame": 485921,
+      "proof": "validation/natural-service-route/sms-npc-service-alt-inn40-poor-case01-assisted-fixed-replay-485921/replay_report.json",
+      "proof_sha256": "f41cf000286eaafe5a45c94b745f1a3986d31613bd3ccd96a709b689d3dc4e37",
+      "report_sha256": "eb0a74d80bb366c8d11dd71f1ca6221493e13219c0ab51dd1281e6851eea3d27",
+      "final_ram_sha256": "5939a57486145a71604b4528f41d20ab485ba2a77ecb5e82d6dd2831b5bf1c80",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "07e7c4b3efdeafec5588b6719498122a79654218eccc1c346f21b4d35e68a216",
+        "controls.json": "4249a16ad5fa2ee2cd51a3113720618d3053ef1f288362e2d5bef5e0376b8c2f",
+        "assistance.json": "a5a77e00879cfa331b782099278a26b33a757fdb34c5142eef8f7ae1ab4b3db2"
+      }
+    },
+    "natural-service-route/sms-npc-service-alt-passage-poor-case02": {
+      "frame": 484882,
+      "proof": "validation/natural-service-route/sms-npc-service-alt-passage-poor-case02-assisted-fixed-replay-484882/replay_report.json",
+      "proof_sha256": "dadc3db0058ca58246c74771df5e34ee9254edfa5f04da3a0005399d7581c6df",
+      "report_sha256": "3980debd5308fc3091a14620ba579a3b52c1291891d1111f0ddf3823d156c2fc",
+      "final_ram_sha256": "8187267ba5af91eb53b194277d25f7e414f3d9c573ffa541ee9d89727c052f82",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "bb5a981087953a79b276a830c14aa44ab94146723d9efbea08348cf5506acd6a",
+        "controls.json": "5458ac0e505dc64f7bd26e4fde8d0999898fdfad54a39e80e1a86dc5223c9bce",
+        "assistance.json": "d05f418762ceb1c718f5a7816392a8a3ebbe48e0b798060f56110bf0754153b9"
+      }
+    },
+    "natural-service-route/sms-npc-service-alt-passage-refuse-1a-case02": {
+      "frame": 546352,
+      "proof": "validation/natural-service-route/sms-npc-service-alt-passage-refuse-1a-case02-assisted-fixed-replay-546352/replay_report.json",
+      "proof_sha256": "8b5e0fd0b3d047cd5a4957f547f7a124d1ec9622c7cacf5d1e9e6352d997f355",
+      "report_sha256": "dc82c8b80484f5b93793eef7af58115a859dd6adbfaabb2d3188f495cfc6479e",
+      "final_ram_sha256": "6e365e62bb87e6e746afd89ed14eb1550e8254d1dd46815e09233b64cf42da46",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "05439379a98ca310e03a7969256e6c8e31d398c931e18fedf0932c2316ba9d18",
+        "controls.json": "21bbd964c702e6f8502c975b70600b5aad67ef74786c6c76d3c44423090a73a1",
+        "assistance.json": "f82501d163e5bf5634f3b5a6831fc69d3ad1993d53fac512aed0bc2f4d999643"
+      }
+    },
+    "natural-service-route/sms-npc-service-alt-passage-refuse-3c-case01": {
+      "frame": 545677,
+      "proof": "validation/natural-service-route/sms-npc-service-alt-passage-refuse-3c-case01-assisted-fixed-replay-545677/replay_report.json",
+      "proof_sha256": "e0f7273f197849e8ef74c75a2e6d77aa5246dbed23ab0f7220cd5e7e588edd5d",
+      "report_sha256": "b060de0ca297fdcd8a5d6a0297cd57e96e6e29e08a9212d59ec272e1c6d63e0f",
+      "final_ram_sha256": "b40caca7f474d73990d8e122764f6463ad0d307ac83e76a466f017af1919bbd5",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "f4c1dee85e11d23f37adc7304a2aa6f3764fb160cc92f81e8f5bdd0719d5eac3",
+        "controls.json": "0afa4ee2530da440a6b3a40ab89e224a3d4fa21068875d07a51241d22f943a08",
+        "assistance.json": "9e84f93d899188cc8535cf3f07d381b8dc4c95225df820497508368928f3fd68"
+      }
+    },
+    "natural-service-route/sms-npc-service-alt-passage-refuse-36-case01": {
+      "frame": 541586,
+      "proof": "validation/natural-service-route/sms-npc-service-alt-passage-refuse-36-case01-assisted-fixed-replay-541586/replay_report.json",
+      "proof_sha256": "5642360d74cd134d62785d6c9b0bf9514025c0f1394ce70c3576c3ed5a131c8b",
+      "report_sha256": "6d7830801650ee4153de1b67c55221d0d0d550948aaf9c13cd9d6893add7ef7a",
+      "final_ram_sha256": "6eb103e4152a1d047cc5069f55143f9201cadabf16c1c58dd6787546c35273d5",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "4b3dff0dddc1ddab0f75f1b725fa81f9df6836cba2aa43fb4f55107f7c1b4800",
+        "controls.json": "789de472429bfffb29f60f09f501f892889b4a5f92c6c09e9f4b72cedb8aed29",
+        "assistance.json": "7f3c3a061d279eaee351b61dd37b07ff054b611b07040a5c1169417a34c9ea91"
+      }
+    },
+    "natural-service-route/sms-npc-service-alt-passage-refuse-87-case02": {
+      "frame": 542287,
+      "proof": "validation/natural-service-route/sms-npc-service-alt-passage-refuse-87-case02-assisted-fixed-replay-542287/replay_report.json",
+      "proof_sha256": "69f6a80a3a0b571e530849d1af21e8bc0a08b2d11d85fc051c18d7594bdc814b",
+      "report_sha256": "5b8e6788231c40b4d2b46d996d789e97ae3afd0a87789861a531ccb4c3e4aba6",
+      "final_ram_sha256": "fc5af596e90c9ecba9a39244bfea7a938018ffb399b83cb9889bf64ea2da6915",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "409a9fe4ba5b974192253417835858b1d5fdc9563b83a6c59114ed2f26188daa",
+        "controls.json": "28861a0f1c624e347c563811a21877014f6d17e3a158c09f3c08ba565b609089",
+        "assistance.json": "0e0c0be7f233ad4ae4aeaece4e157bfca8a375329177f43c305108defad0f547"
+      }
+    },
+    "natural-service-route/sms-npc-service-alt-passage-refuse-6d-case01": {
+      "frame": 548101,
+      "proof": "validation/natural-service-route/sms-npc-service-alt-passage-refuse-6d-case01-assisted-fixed-replay-548101/replay_report.json",
+      "proof_sha256": "16863a587b6392ca270ddd2eec6af7dbf7f50eb07bfe0bd667a9454313a93dfe",
+      "report_sha256": "a789675ac317d4b06b67ec082ebfc3bae8b3a3a73060536f4ef3948b8a07f8d0",
+      "final_ram_sha256": "ca2e68faafe7b0ed646aa44efca961309abd096a5a8d59ba754efdaabfc2af02",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "935a1108a39ffcafae60439f813c053aea8abc37fc9e1400e05441e33af59933",
+        "controls.json": "da7d39d1b75567d395d0cab68354293707421ccfccc5937eba3a4dc445a779f0",
+        "assistance.json": "2ae1f8030b0a197534ebdd451fd8c548291eeca37a59e99be301a27ce59baffd"
+      }
+    },
+    "natural-service-route/sms-npc-service-alt-passage-refuse-96-case01": {
+      "frame": 548783,
+      "proof": "validation/natural-service-route/sms-npc-service-alt-passage-refuse-96-case01-assisted-fixed-replay-548783/replay_report.json",
+      "proof_sha256": "25f8c936a6fc8f7031ff45591923273745b820fc91aa37881f5d853a59086e3c",
+      "report_sha256": "ff9a74610d1f4bc19e41aa8762e4fd67d2bf9f1e304b9c6ae6e3156b262f3368",
+      "final_ram_sha256": "33221955ee3cd2348c97dd30d26f3c98751d6d6eb1debffb21c765201218a729",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "d5d7d83a5c09ed942421d1687127a31879f7f3b2ca225de12c6d7e5981eb0c95",
+        "controls.json": "9173a66427484e8ac50af99cb37699204fe81e837dd53b659fb6d30cfb998863",
+        "assistance.json": "468a4bc8c6b2a4f5050958eef07ed5df6133eac1f1808bdc659f52a04fe5f49c"
+      }
+    },
+    "natural-service-route/sms-npc-minigame-13-play-visit01": {
+      "frame": 485319,
+      "proof": "validation/natural-service-route/sms-npc-minigame-13-play-visit01-assisted-fixed-replay-485319/replay_report.json",
+      "proof_sha256": "4110b0706af5e2542c2f5beca36a5a6ce2328496a2674b7d3bff089eec6e7146",
+      "report_sha256": "cd21be744ce755e49f4d99b3205fb02e75923f8da76d44c2c6c9a15fd01eeff5",
+      "final_ram_sha256": "de8f6cff81a101cffd4b7ea144218ed42e173ecb5b5b11eeb26ea5291d6f5985",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "3c2ac0c64a9a27e1f258576b8ed1f0da4c8cb3163cfe384a2a0bc1f4f60b954a",
+        "controls.json": "f11e500aa7c71d4b27c110f3c4cad69240886c153b27fbac829e195ffce6486d",
+        "assistance.json": "231bd1d6df4dd882544317219869eabcff21e578d8a872f4e72a69a0b632f5a6"
+      }
+    },
+    "natural-service-route/sms-npc-minigame-5c-play-visit01": {
+      "frame": 443394,
+      "proof": "validation/natural-service-route/sms-npc-minigame-5c-play-visit01-assisted-fixed-replay-443394/replay_report.json",
+      "proof_sha256": "c4d8c35137d229a6587a813690906995bceb9c0544cbdc5cc801d39bde0ba0d0",
+      "report_sha256": "44d83c28a11212b7aa57b0af1ff370bf03cbbb138275be03536168889d3ab515",
+      "final_ram_sha256": "8d6d436856d673827c8857837189c51d2dc154d6ce97ea2ab2c26fed730f91bc",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "af8ab4c65293c75cb32efcd301076697e06dd256ea88f6410bb56fee5359cd48",
+        "controls.json": "252046adfa1e30c166a65bb56cb8cf309c382228bfc6031275494ccf6cc6371d",
+        "assistance.json": "784f3a095fada2e32219311bd32bded37eeb578d7cd80cf1c8fa88b37ce4b5f6"
+      }
+    },
+    "natural-service-route/sms-npc-minigame-a7-play-visit01": {
+      "frame": 484260,
+      "proof": "validation/natural-service-route/sms-npc-minigame-a7-play-visit01-assisted-fixed-replay-484260/replay_report.json",
+      "proof_sha256": "7fdc6cc77a4bed8c7ad5941b078b9114833e0cd9012322f77f816b9d72111061",
+      "report_sha256": "10bfd6ffac7efb47bd113207ee7527c40a08a3f8157683528157ea8deba426a2",
+      "final_ram_sha256": "24a06b83384bf186edf2f7ce042d7742b76f7ef8e735dcc5fc7b343228efeef5",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "6ede34951c2b1ecaeb53c86c89fd8fe8b3c4f7aac52df607136f6a604f622c03",
+        "controls.json": "a04d6b353adc2cdc128ed9cab89cb1a9663fc04fd88cc97f70102561d49f7b33",
+        "assistance.json": "e22486725baee24e886a704df440b14851eab2c4b26478f50c63552567abbda5"
+      }
+    },
+    "natural-service-route/sms-npc-minigame-de-play-visit01": {
+      "frame": 481600,
+      "proof": "validation/natural-service-route/sms-npc-minigame-de-play-visit01-assisted-fixed-replay-481600/replay_report.json",
+      "proof_sha256": "9755b37cdc406b2dc18264dd50e3eb72a3746fde9eb383aadad0dfb12d684092",
+      "report_sha256": "7437a2d17317e24885d88488ea6c824abfe128b1a04c14631a8a19cf62f071ee",
+      "final_ram_sha256": "2ce67129cf5860951b50a264381bc3b5e02745aaf48d5cf1d85c383bd55dd416",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "26e30be0eb4edb0fee83989b345197e4d5ac7600cb66eafbf312978e2671ca4c",
+        "controls.json": "bce38cc082bf68466cdaa46320f8e86e8b990bfac785be805f481260e60aa875",
+        "assistance.json": "ca37aa58a7453982e1269453edeb8673ee3beca5c6cc5c959ddaacc211e50b66"
+      }
+    },
+    "natural-service-route/sms-npc-minigame-5c-poor-visit01": {
+      "frame": 486579,
+      "proof": "validation/natural-service-route/sms-npc-minigame-5c-poor-visit01-assisted-fixed-replay-486579/replay_report.json",
+      "proof_sha256": "54a595a783919f16556da5724161afd41ae6e6e4c0dba6b29619e6e638e6d97c",
+      "report_sha256": "c5fe299aec7956a1073fbd43dcd307f23d3c4d3bda78b06a1cc0c04f4c1e6c34",
+      "final_ram_sha256": "6bda168e1834a02ff0d6f8de3ec84ab8885049e82916fa8193931ee4bd04033f",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "0e716e2b552e83e8f03de9289579c9585ca9864f97281ac8fb564f6aeb4666c7",
+        "controls.json": "269bef0c536f1fe73415a7050053db481ce21baabb625466e43fe3d61b642421",
+        "assistance.json": "5fb720838ae3f0c137304b3352d06ce0089d4863545fdc60ccf48f23163f18e0"
+      }
+    },
+    "natural-service-route/sms-npc-minigame-5c-refuse-visit01": {
+      "frame": 442739,
+      "proof": "validation/natural-service-route/sms-npc-minigame-5c-refuse-visit01-assisted-fixed-replay-442739/replay_report.json",
+      "proof_sha256": "eeaf40b48b15bbffd1d3fa73d6afad278ea10a8703cb076d49d4ff90c099d1cc",
+      "report_sha256": "d2c66f1d250c83d3a7f8bc8fb6ec3ba21cdc3cddddb17dedd476efe6c9510b17",
+      "final_ram_sha256": "2870a373940754fc0213288982f0b0719b97e007003e440733d6c5b1dc3c19f8",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "8bfdb02feb620110f1d19456b7574a9dea9a406f2f1013db49701ee1866fd8f9",
+        "controls.json": "504d272334358fb439365b1e6d746c6fb95c07aed8af055ec15c4ec5a58770dc",
+        "assistance.json": "c2167382ef0494bc05202fbcd3b525848bf4209cea2006845d2a6c37fdd45df1"
+      }
+    },
+    "natural-service-route/sms-npc-minigame-lucky-wait217-play01": {
+      "frame": 487860,
+      "proof": "validation/natural-service-route/sms-npc-minigame-lucky-wait217-play01-assisted-fixed-replay-487860/replay_report.json",
+      "proof_sha256": "87f5bde472d87b89cae8436aec0a8dd4b81cb0dcbc05af91e78668fc2ee12975",
+      "report_sha256": "473974d85956231ee8157dcf9306c7b352477f40288720fc0629eefa9f62fab1",
+      "final_ram_sha256": "77a3e27b1395ac2cdb6d0bce3c5f9a81a76456df245c8782a0524b7313352af3",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "0a99151cc16fb5e3328c768434c6f28965af38a47b3318f9f8a7947a8d00210f",
+        "controls.json": "58948b2054bcd49cdecb8298dea7133cae7d0e041091dd2b25127edf4d5f882f",
+        "assistance.json": "e22486725baee24e886a704df440b14851eab2c4b26478f50c63552567abbda5"
+      }
+    },
+    "natural-service-route/sms-npc-equipment-27-gift01": {
+      "frame": 139249,
+      "proof": "validation/natural-service-route/sms-npc-equipment-27-gift01-assisted-fixed-replay-139249/replay_report.json",
+      "proof_sha256": "2edfbdaf8eedf1f010d8d131fd9734d8e37e5f8daaa3cc8aae1a89ffab6ae292",
+      "report_sha256": "3a29868fbf575481d6afcaa496a768d9793a33d738a22da0d720ff63591c48c2",
+      "final_ram_sha256": "7073de66d41f548480532b2d5f10b5f8e68c05e7339eacd0782f057a644f52d5",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "105a6dc229d7359abb5b65773172beac194472d177f42aee9320b7d2e88453f4",
+        "controls.json": "9bf6afc935351ec7756a7f6d8cb05ae1268ccda57acbe3e12638eeae54f40b36",
+        "assistance.json": "904480718187a039bc3d5b5028ea5f8b1ebd384cb3a4279162fd67894c4f90d6"
+      }
+    },
+    "natural-service-route/sms-npc-equipment-50-gift01": {
+      "frame": 145123,
+      "proof": "validation/natural-service-route/sms-npc-equipment-50-gift01-assisted-fixed-replay-145123/replay_report.json",
+      "proof_sha256": "60519bad2af6c2b19379946c52a21d139e15d2d2d47d6d40cb4c31b0f55c44fb",
+      "report_sha256": "4fffc6e84f88aca607c123736138c971a12c75319cb337cba8bc7f15e0836d2c",
+      "final_ram_sha256": "ff6ef7b77a900099ffd8450df0f65657993d555c3fe6c9a21a78216d515c733b",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "97949f242de57885fd0e9d92e95330ef2a12263202ced13354af4410a680ba0d",
+        "controls.json": "10ec83d0683ffa2935ea813cc0666a22c4ac949731348a9acdfea05d94bf22be",
+        "assistance.json": "512f3fc134c5b03f4d5d722d417795d77000b77bb8d2fc4de5413ee15561d3c5"
+      }
+    },
+    "natural-service-route/sms-npc-d8-dragonmail-gift01": {
+      "frame": 278043,
+      "proof": "validation/natural-service-route/sms-npc-d8-dragonmail-gift01-assisted-fixed-replay-278043/replay_report.json",
+      "proof_sha256": "168d9597ea6aefe6b41ad917989afd3ecc1b0aba4aa4ff1c99cffe7181614854",
+      "report_sha256": "d0920129736e7e42459fcdf0310d373b1fdc38eb7ded1d490c1df658cfc41f43",
+      "final_ram_sha256": "dd418a6c5763daaa38423992504a4c44f33d4a2af821012bd1c8dcde566cc59a",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "63e6e64d75dfa757073d000a4510631e41b2b96af5c8280ebaa475fc3faf7395",
+        "controls.json": "6f415e9870307fa243d5366cc0c16887862d46f3545d35ab747304a48b4c4602",
+        "assistance.json": "7be82c4138c72c92d5b34f57b934c6fd9a265abd1c39dcbecf1729b777d2565a"
+      }
+    },
+    "natural-service-route/sms-npc-d8-flamesword-gift01": {
+      "frame": 283642,
+      "proof": "validation/natural-service-route/sms-npc-d8-flamesword-gift01-assisted-fixed-replay-283642/replay_report.json",
+      "proof_sha256": "92fc192d7a896537adb19345ffc59ba64e69618f117351129d8f031602464519",
+      "report_sha256": "97d14580499c5b559877b5182b54f2e92453536a38114a67d7a5c13f96acdc10",
+      "final_ram_sha256": "dbfeb921b2a06be22b340bfd56ee7a576d9332b6b65cf639719476b695a88247",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "750a3b968569f9bfc94c61989a11806fda346812077529cc8f89ed573e4f33a9",
+        "controls.json": "1f74f696e6284c7c2b4025c5884dfbb9a749a5aa4a09813d616cb6766ac4595d",
+        "assistance.json": "20cacaef80d17bc823b016b11d83416206076495c32fef586609bcb933f0c56b"
+      }
+    },
+    "natural-service-route/sms-sms-npc-villagec7-oil02": {
+      "frame": 21973,
+      "proof": "validation/natural-service-route/sms-sms-npc-villagec7-oil02-assisted-fixed-replay-21973/replay_report.json",
+      "proof_sha256": "8280aaf40e0645e29fabee6cb83a310b52f81b7a5187d563f9061c67542f5167",
+      "report_sha256": "d291b2a27f6597411d965abef8f3119c7d2c4933bcd714f71129f6711d747298",
+      "final_ram_sha256": "fdfe06ea7fa0b066f168f944246536351b3f17f5ffd7489f69c6e06c65ae92d3",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "e7d92fe8364ecd09a5bd3bd5cf32cf8c38812718bd70719e80288e3533cb1892",
+        "controls.json": "0e392f1820b2151aa1c0d74d20bd7ec8f644f0c346c99b985e0af92a9921e4ba",
+        "assistance.json": "cf83e9aba1c90b3781164b4ef38fec7b0cfe9f0371a78ec2e82f534c1d1d6a4a"
+      }
+    },
+    "natural-service-route/sms-npc-dragon-shield-gift02": {
+      "frame": 485422,
+      "proof": "validation/natural-service-route/sms-npc-dragon-shield-gift02-assisted-fixed-replay-485422/replay_report.json",
+      "proof_sha256": "aaf510cd920a8a69155b8bb678b99bedf853ef7ad4ad786ae98b7b1ec27d5449",
+      "report_sha256": "dfdc2e7242badf15f4438a43b3e003a145bc4d78efd6ac1c6970c606ee40ae6f",
+      "final_ram_sha256": "9c187c6c4fb4813ef29d501778c9f46995ba71a5601019f9f05404f96e3dcd8d",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "65d6f57dc178d68868c6762c63b0450842f339df87afd164d191f78cb27975cd",
+        "controls.json": "b3038aeefa13039ee6633ae579b59889361e1c4ba3e8c71a89de391bfb0f8d63",
+        "assistance.json": "a0998fc0a88424a0f25fe23a0212e3aac3e742b0f4a3b4bb83a999adb382135d"
+      }
+    },
+    "natural-service-route/sms-npc-hidden-rewards-92-gift01": {
+      "frame": 490265,
+      "proof": "validation/natural-service-route/sms-npc-hidden-rewards-92-gift01-assisted-fixed-replay-490265/replay_report.json",
+      "proof_sha256": "96cd8494cdba3d92e44319c74bb1f96c4f7432c2c9ddf8d62d81c1d765ef4707",
+      "report_sha256": "e8a3fe8d55bc15ba2635ca67321170900f7b461d4bea853123b5d5489ec351b5",
+      "final_ram_sha256": "d52b6da7a21eaee18e4e422dd347763c55cf7c0f01e990970aef89f9d99d868a",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "5ab0ccacc12da44558d213ec0902289fbdfcad42c5467872622f4619607ee359",
+        "controls.json": "ce97e3e9c4926f0c533fe2f3bc00520c417fe786351b6ca226e7adc998ce044a",
+        "assistance.json": "1f01088769d4cbbdadda47e19f343e6575dc629649f1983c4678e8dff2865ca8"
+      }
+    },
+    "natural-service-route/sms-npc-hidden-rewards-55-gift01": {
+      "frame": 492417,
+      "proof": "validation/natural-service-route/sms-npc-hidden-rewards-55-gift01-assisted-fixed-replay-492417/replay_report.json",
+      "proof_sha256": "7c4fe0f12b7d4a9f5dfdf5b9f4957dadf41a249524a732ebdd01bb3c345ffc16",
+      "report_sha256": "537ffb370b59d0f617e5aceab78192aba13fff64658a0c7eb63a9875c53f1792",
+      "final_ram_sha256": "1f1e48d7967a074562353a9cc210b4c159987bb786ed34a81bcf583775d5477d",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "eda73710489e84369ab3f2f056290d23a3a7e4490b8251a70f2992548f588a7f",
+        "controls.json": "8578a0f8da453916b795c605444bdeda7340ea23e19334ead1fa12f9a9f20839",
+        "assistance.json": "d44045057bca3c41716425ce7f3816b38b8b718eb3edfacf1fd2fbeb31b8a21f"
+      }
+    },
+    "natural-service-route/sms-npc-equipment-returns-55-return02": {
+      "frame": 493135,
+      "proof": "validation/natural-service-route/sms-npc-equipment-returns-55-return02-assisted-fixed-replay-493135/replay_report.json",
+      "proof_sha256": "2fe0891b56b2583cd08de66d56fe66ef21ca7fe7004df4aa600c0376505425bb",
+      "report_sha256": "eeab61645d45485f97c45e8af6705f60de4065be4b548cb3c36974282650af1c",
+      "final_ram_sha256": "f8294ef9ae2a474c9f441e510e2ff2bc3cd3c92df4b75c4475153dfa16e13678",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "90bc5bd4bd0ceb1be4de8ab66b53ec157533795706fb4349aaef653a28158ac4",
+        "controls.json": "c99500f98bfe3a4c342f6eaac78a373dff4acb767b048c72a356d78d4a19cabd",
+        "assistance.json": "3e29177b1b38f15cb5eda475418c5062c6d00655ade14ad70aac888e631b0796"
+      }
+    },
+    "natural-service-route/sms-npc-equipment-returns-c7-return01": {
+      "frame": 496045,
+      "proof": "validation/natural-service-route/sms-npc-equipment-returns-c7-return01-assisted-fixed-replay-496045/replay_report.json",
+      "proof_sha256": "14a0c8d48edad930de1b776b9803742a6ea0d803dc9a7c89283553ce48788516",
+      "report_sha256": "beb2a4271f2712cead9581197834a787eadabba03e451b74bbfc17251e155356",
+      "final_ram_sha256": "54ac4c2cef3e063c645655a828b384cb1129b5c6ad61adeb299aeb415503cd8f",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "817f5564fb30bf734bce44e78a663bf80898636a3343304706ceda63ba79f805",
+        "controls.json": "67be55a65c412ac8e75fbcccfe2a5d195bd6516841ab9e8a890859751478dc2a",
+        "assistance.json": "97229739ad87dc5f25aa9972fad0675de92ce3777d7f58a9148c98fed9ec9d1f"
+      }
+    },
+    "natural-service-route/sms-npc-equipment-returns-92-return01": {
+      "frame": 498208,
+      "proof": "validation/natural-service-route/sms-npc-equipment-returns-92-return01-assisted-fixed-replay-498208/replay_report.json",
+      "proof_sha256": "37fe166f2bb79a73c4900fbd63f4928b290bc80af5647f37efd572bcf03fe050",
+      "report_sha256": "7f686f07382545f93afde2a255921144c22103f5f0a026f87f2f0bb54e89963c",
+      "final_ram_sha256": "41860c9a115ead09872c580c30757012ef691624d056e63fc173d00840c6fe40",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "9e2ebcc82ec3210ac393f025be63bd894eedf2cd7a013554b19ade331b37c88e",
+        "controls.json": "cfe2a2c12639644eca73cf8c8e68330612374d4be0b25ebf2bf146d9ba7dbc2e",
+        "assistance.json": "87d9b74eeaddb11fbc6dbf18c6482d7d73995353ef2ed2e069504b5aeb059caf"
+      }
+    },
+    "natural-service-route/sms-npc-equipment-returns-4c-return01": {
+      "frame": 502566,
+      "proof": "validation/natural-service-route/sms-npc-equipment-returns-4c-return01-assisted-fixed-replay-502566/replay_report.json",
+      "proof_sha256": "90532ba82263113be1df5b462ddccd68656e0d06e39e32670e7c0cd8a0a1a913",
+      "report_sha256": "9a1f4140fec87ed5fbe3719615f47c0687b6d36dc3b88b1262b82d8974233da4",
+      "final_ram_sha256": "2a1f5f77c5e114ede8674115b028d6b85c1672fabd6c0ae8327266d56e8964bc",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "83c8f17e2cbd785a95d7534b9fe323f6c0257a50bd8e5bf5476e04708d3272b3",
+        "controls.json": "952f0882a91592ba62cd1a56484e6b45961e07bbe52afff1f10caa517ee89bdc",
+        "assistance.json": "93a644e19acdd60e2c3e0d62adbcc171858f71d9fc7e1d6b3df82b587db3eec4"
+      }
+    },
+    "natural-service-route/sms-npc-equipment-returns-6a-return01": {
+      "frame": 505138,
+      "proof": "validation/natural-service-route/sms-npc-equipment-returns-6a-return01-assisted-fixed-replay-505138/replay_report.json",
+      "proof_sha256": "c8fe7ecab3a35bb2c18a41ed7401b6237de7979a2b2412cfe38fdbfc9ed10f59",
+      "report_sha256": "b4d7daba7b8258a18a465745d493609b4424e8fb91dfd47c17d8f3f07437c169",
+      "final_ram_sha256": "0b2c7009f0e8774188f0e8357ac76e3efff8f304ae12a8662708b9a4ab6827b6",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "8ae36c73c9f79c0950b169fce2d7314d41b818cc467d8c408735e7f24d747e89",
+        "controls.json": "9ef3f361e831505ef24652ca8fd3c58b7009301d1de4b2ace0c57e7b4e36a5ee",
+        "assistance.json": "b545e686dd6ca83cfe41431a0cae64fa33d3da11bb6c871e551cdd7f9a7a4470"
+      }
+    },
+    "natural-service-route/sms-npc-equipment-returns-b1-return01": {
+      "frame": 510106,
+      "proof": "validation/natural-service-route/sms-npc-equipment-returns-b1-return01-assisted-fixed-replay-510106/replay_report.json",
+      "proof_sha256": "34ed6de5b4548a3a726fe7b2169359c873cd4a4e2d6919309424e16ba3be15bc",
+      "report_sha256": "ea173a4cef41d0cbadb31683ce95dca07b78abc0451ea10d756ac9b16b2057cc",
+      "final_ram_sha256": "0bd6e0b0f2691da438cd196c653f92150caa5199a84f4d320d4e1bd7afb919f0",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "25fdc184e9246928d6f7448585cc540cc044f51fbccf30c54fed4b0129d349c0",
+        "controls.json": "73c8744779254abedcae827c6facf307fbd56f84eb648f3e8f307dfa5876dc6d",
+        "assistance.json": "ec3e91a97a7cf58335ed6689be022b4b43b5ad4a312322c7c17f3e4844756b40"
+      }
+    },
+    "natural-service-route/sms-npc-equipment-returns-50-return01": {
+      "frame": 513394,
+      "proof": "validation/natural-service-route/sms-npc-equipment-returns-50-return01-assisted-fixed-replay-513394/replay_report.json",
+      "proof_sha256": "2de099a30ec1fd60bab667a9c7ac2b711dd31d11f380709abefead96ed92d54f",
+      "report_sha256": "834ba206590e1f0e7d38ebdb23488e776e2c51b0fc54c40096b04c4fb03afe43",
+      "final_ram_sha256": "2e0886f4f3fd3eaf77a33e43522683acde52ff04a55bb5a04e908f607dffc511",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "81bb27582eaf8c3d2a0c624729159f7ac4e056b5f11a5cefd5ef51c51087bb5d",
+        "controls.json": "31f404f51965ce9617e193c49a2d0935f724a45ba6522f7a2bd1abd828da336f",
+        "assistance.json": "ec640463cb31ec845602e089c0c03c08e89dd16dc83b2d8b0ab0b6f7c5b3ff76"
+      }
+    },
+    "natural-service-route/sms-npc-equipment-returns-27-return01": {
+      "frame": 517890,
+      "proof": "validation/natural-service-route/sms-npc-equipment-returns-27-return01-assisted-fixed-replay-517890/replay_report.json",
+      "proof_sha256": "847e927a491705410c9e8c9f71d6f46dfae005db95159ec7e18c53b8b4c4ef07",
+      "report_sha256": "eddd51c3dadb7b09aa15415059e2f338fc24101af7eaf6dd4151368121cefffc",
+      "final_ram_sha256": "8ae9a60bf0ce7bcc2fd419cff7083b9e0d4c793a1b99f65771e1e069284ae7d4",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "868b41dc566b9809d023137d49a10628a2c38498de4bec3bb380ccbc4341fc37",
+        "controls.json": "c89b3ca512ee9d97cd0ea8d032709e6f8caabd0afc05676e81316edf0625e8ad",
+        "assistance.json": "46e54838b6ac86b16483e002232229b5be22d2b5d07ffd111109767176137096"
+      }
+    },
+    "natural-service-route/sms-npc-quest-hint-27-01": {
+      "frame": 138877,
+      "proof": "validation/natural-service-route/sms-npc-quest-hint-27-01-assisted-fixed-replay-138877/replay_report.json",
+      "proof_sha256": "531ed5dbd5a6b7fc1745ddff29a13905a1df2abcd1abe288c08ec2b9b5fd7111",
+      "report_sha256": "ef09c0665543609adc76360538eef77ec8492c600bfc63271398d9a8d0acadc8",
+      "final_ram_sha256": "660266aff5f452ea78765c82fea9c087cdc811517d887ee699cfdb3abceb343d",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "7fc7999028ff826674d7676af31f8b728b9b994fcbef31b78498f736929cd927",
+        "controls.json": "6d2e07d1f9407c04d1dd7a3e93d03e5f6058de8029ed5a41007097a0811a9ad9",
+        "assistance.json": "9b46284fa428469fdfd1ac6dce317ec55c73563a4f84b63b47dfc34e2ed2600a"
+      }
+    },
+    "natural-service-route/sms-npc-quest-hint-50-01": {
+      "frame": 144741,
+      "proof": "validation/natural-service-route/sms-npc-quest-hint-50-01-assisted-fixed-replay-144741/replay_report.json",
+      "proof_sha256": "82cb4d193083fd08a864e1c64c2d12be1719a844043539b76bbd3f51af427330",
+      "report_sha256": "73abda848ec8cd64dec6f3dd8089c4808b966f00984f68307d36d92d6dbc32fb",
+      "final_ram_sha256": "29468143141fd154a6b3af692ebc0c3400d9169a0c1a82b83fd57ad1b94a48f8",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "6e0ec52bb80e5bae61c1ddeef685a5ae93592e2503499abb2016ea6543b67499",
+        "controls.json": "f03f672ea63e65cb4c649c48751395d31943e23df5a88d714f52e0e6e5eaf836",
+        "assistance.json": "aec692d92af1099dd6782831b13a38f0fcf8f04b5d282e0da4880c729233a3c0"
+      }
+    },
+    "natural-service-route/sms-npc-quest-hint-b1-01": {
+      "frame": 277676,
+      "proof": "validation/natural-service-route/sms-npc-quest-hint-b1-01-assisted-fixed-replay-277676/replay_report.json",
+      "proof_sha256": "5d368d529f41392ac2a4a70c3eb7f70508b6ad05282cd5d7be79563aa07cb2bf",
+      "report_sha256": "908c6b817acb6ae47e90fa8c3af620dba4e5dafe6d4e58afd463f3c2cf674b0a",
+      "final_ram_sha256": "5d75aed8f2ce0e77160a7856f4f328e8ef9282356ddf2185abd66b231e4bcca7",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "56e6bdfd911a66b8031196eb20855f71bc719b4e09330e657ab237c5c93a61ed",
+        "controls.json": "27643886388cbe5cc60ea04c47b878c0c03317e1b24e83037f7b2c3ff4bebf80",
+        "assistance.json": "f52c43c7d9622b06dd08a70df1308c0eac6df600b8b5798cafd14f33d78f1399"
+      }
+    },
+    "natural-service-route/sms-npc-quest-hint-6a-01": {
+      "frame": 283277,
+      "proof": "validation/natural-service-route/sms-npc-quest-hint-6a-01-assisted-fixed-replay-283277/replay_report.json",
+      "proof_sha256": "00ebfbdcc020ab0c5feb01831b4fbef0535e3923932d84e4d4d641d4d7b7e570",
+      "report_sha256": "1fabd0a4a684ce91977a342e2db3445f9938a5d624ae933603cd0473c9d2ccf9",
+      "final_ram_sha256": "7f53b36c3a6a17077000f63593d9ed1be00926cd3f7be13ee7948acf6a1a8a61",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "566553ab9fe224545ea71c4ed1e3678708300cd3e8d6c55a3876853367cb0800",
+        "controls.json": "3053b919cb615481937b02df2393fac035190b66714973db7bb5b311890d9e0a",
+        "assistance.json": "22eaa5ad5fe4968b3a28783044d3d1fa29e80eb175bdb084b2aedeb82220dabf"
+      }
+    },
+    "natural-service-route/sms-npc-quest-hint-92-01": {
+      "frame": 489867,
+      "proof": "validation/natural-service-route/sms-npc-quest-hint-92-01-assisted-fixed-replay-489867/replay_report.json",
+      "proof_sha256": "bd5391746de58584f973b0760013ca7add98e0c0b82f90e70ab508c06a3ff1b0",
+      "report_sha256": "cdefb6b3a53c63a0be997ad4372baa7022487bfd000beff474c81c3cdcda3475",
+      "final_ram_sha256": "f6c973edad6fbbc70b935e28b9a8acaa707dc1613692216773b7bab9c65ae146",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "006dbc401597481d32dca280bdec17dc9feadcef209afce8c015e22a67164e23",
+        "controls.json": "bf75a2298206991a4a6a964104bb3c47684d05fb47e7aa1bc8d479c8da51095b",
+        "assistance.json": "3058bae531aaf87e73acf9257929897e69e3c3f7eaf6b8cbb30dfb65b1c235bc"
+      }
+    },
+    "natural-service-route/sms-npc-equipment-no-lightning-hint01": {
+      "frame": 52752,
+      "proof": "validation/natural-service-route/sms-npc-equipment-no-lightning-hint01-assisted-fixed-replay-52752/replay_report.json",
+      "proof_sha256": "19ee7d4eea813a940e8e96fa512827be515df2b78e244b1c02510198e6b0d3c7",
+      "report_sha256": "e9af7cf32f0d97e7b7da559231e686462179c756ae34a7db461d3304b505f24f",
+      "final_ram_sha256": "73390c400358fb919df9822064f67e721ca58f81f8b8d20d58ba6a2a435d8e36",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "8827e052c58f09632a1553ec671c010f21d76f2249e4cf0c38d1228e6022871e",
+        "controls.json": "aed0816dc6158c5773ae0564ec8b117b4ef208ca42d4b0d26da65e44c8ba5a8d",
+        "assistance.json": "d75d26e2f0650600b4ee75a2adb6dfcd3d85f814e4063ca923309937d78d23e7"
+      }
+    },
+    "natural-service-route/sms-npc-equipment-low-capacity-hint01": {
+      "frame": 86783,
+      "proof": "validation/natural-service-route/sms-npc-equipment-low-capacity-hint01-assisted-fixed-replay-86783/replay_report.json",
+      "proof_sha256": "5342b2fa7e4e84b5505aa7b6c9658d1c58f101ec289c2379a04abbc8db948edd",
+      "report_sha256": "ae4e41b007cf74b735b13d34af9f3f092aa4e00b40433052a98ff5266be0e6d5",
+      "final_ram_sha256": "9dadd84d355c2e1b33030611a862a3c58ede0f14217107c1a896503d3ac0316e",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "6fcf2b77e0d9980bc751555685c5b95be96602f6243261da74b68e05e2d244bf",
+        "controls.json": "261b72b1cd281860cd085802ca65fbbe25d243e7ef5a283e7903f46bb2ab5736",
+        "assistance.json": "4cf1027a263e275fc701a716072c602a8c4c7e5fea897bab1908d84c4fd88fb7"
+      }
+    },
+    "natural-service-route/sms-npc-equipment-prerequisite-shield-before-crystal-case04": {
+      "frame": 178533,
+      "proof": "validation/natural-service-route/sms-npc-equipment-prerequisite-shield-before-crystal-case04-assisted-fixed-replay-178533/replay_report.json",
+      "proof_sha256": "0ad2775ba98d6babb8eec1dad7433fd0801a9dd787e971d52dfa41878c765cc5",
+      "report_sha256": "351bee82f82d2423c99dbaaf3febd5052dda057b8a20b982ec63251a19f258ec",
+      "final_ram_sha256": "aeaa974505471f5a9e6cd0d1adc2c0dc036d0184220a83338fa0b54fe02ec343",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "f2dbd43a5a16b1369459308de50e15f83a531e804aaf22047b883cfd6b1cb9da",
+        "controls.json": "e09c88f343bb827ec78d0f54d75a7b5b3598c4b46ef53955b1ec90b473daa573",
+        "assistance.json": "027d75d5157d33d7c268fad018b94f275965fae91dd67b9d2fc567a9aeb8950d"
+      }
+    },
+    "natural-service-route/sms-npc-equipment-prerequisite-shield-after-crystal-hint-case01": {
+      "frame": 227374,
+      "proof": "validation/natural-service-route/sms-npc-equipment-prerequisite-shield-after-crystal-hint-case01-assisted-fixed-replay-227374/replay_report.json",
+      "proof_sha256": "9cb007a17d05622796fea422da441b2b99fcf55a0e512805f5c675c98d1b035f",
+      "report_sha256": "18592400a7a0cd300ee778714e51e426f93d6155dbbbbae018474223a28c1871",
+      "final_ram_sha256": "b90ef85a059f04394f78b2bfbef87b4bc4266c11b3bc90c33bcf5e310520e61d",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "9c3a4c02ca5aa519f49f48c5ce811a30d03e60d780f0f98e7d3d95b227c5dd05",
+        "controls.json": "04a1064ad30c75e159c125d5a7b3bc6b7f623923ba00dd60da50efb7d27fc03b",
+        "assistance.json": "28e36a46ecddcafbff961abc5b199d8418effb7a736ecf6a860baf1c851eb308"
+      }
+    },
+    "natural-service-route/sms-npc-owned-quest-j9-owned-apple-contact01": {
+      "frame": 489381,
+      "proof": "validation/natural-service-route/sms-npc-owned-quest-j9-owned-apple-contact01-assisted-fixed-replay-489381/replay_report.json",
+      "proof_sha256": "2c504ecd3cf35ecae371714b190ba6081cecae20f9ed9efff7505b3bc3243f80",
+      "report_sha256": "a45e1e1e65369da04b39be48784d6852ffc33e9e270e26fe72b03baafa271c43",
+      "final_ram_sha256": "5bc2d34cda75b671c527480a2bdcbe4b1dabe4b491faff50d94adb1d19837d91",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "7c56237ff4fa47d2496bc96efbeb260e0f66566152d4af9a77ea3a9fb2cb91e7",
+        "controls.json": "6a6dd1d297a734cc3c947469338c7c7ef676150866f0b1383c3353d6548757d6",
+        "assistance.json": "159cb23a969089620ba713010f6b39f0c08d6591269fd96f05bf43f30174e27a"
+      }
+    },
+    "natural-service-route/sms-npc-owned-quest-kari-owned-oil-contact01": {
+      "frame": 487070,
+      "proof": "validation/natural-service-route/sms-npc-owned-quest-kari-owned-oil-contact01-assisted-fixed-replay-487070/replay_report.json",
+      "proof_sha256": "2c87b90fce93e2e304031b102847ece3a827451cf4e05db7ff98d1d1c6a53540",
+      "report_sha256": "6934f02c3a79818fc88b18e50f38358a8e14539caecf3134460c4b690ba6e60e",
+      "final_ram_sha256": "81ac876fdde077f4ace297ddaa3e78b4ac950a5351095738ee132fd7ebca9891",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "1117c8403f67a6965a8b105497cb0923bd6e31a769c037385b3dd68fa08c9600",
+        "controls.json": "8a70d82dfbb11053fca7dcd39c10b65176f4a133df525a9de29635298feb5522",
+        "assistance.json": "a15ab52a36821ce4c9454faa48fe21453795264c3789c476f9e210a17f61db88"
+      }
+    },
+    "natural-service-route/sms-npc-saylun-owned-apple-return03": {
+      "frame": 30835,
+      "proof": "validation/natural-service-route/sms-npc-saylun-owned-apple-return03-economic-fixed-replay/replay_report.json",
+      "proof_sha256": "b7e980ae8505fd792ac6cc232f8aac6d265c0dcd0aee4deff39756e9c6e4cb20",
+      "report_sha256": "d2ecccc5cd29949eab88629dafce134c07967db18ba30e28ba59542bc54e28be",
+      "final_ram_sha256": "f46bbf938051bd559711662711aa9292c9f56d6f8d73a345572a79973fdd68a0",
+      "currency_assisted_component_test": true,
+      "input_evidence": {
+        "capture.json": "ec550cd9c06ee7079af30926c97c4dd7227b93bc13752473180e6bddd020ca5a",
+        "controls.json": "55b17e8aac316b459ce85926ae54f326d11aa171bce3363fd6c8480c6bf3d3ed",
+        "controlled_economic_assistance.json": "4d0535c46fb882c6425764eb23b529725f6902666c358e36415587886239e12e"
+      }
+    },
+    "natural-dungeon-combat/sms-auto-sms-npc-palace-extended-curse-remedy01": {
+      "frame": 500386,
+      "proof": "validation/natural-dungeon-combat/sms-auto-sms-npc-palace-extended-curse-remedy01-assisted-fixed-replay-500386/replay_report.json",
+      "proof_sha256": "564e545662efbd82784b7152309e8aaade0cfad3a3404dd7e9c1fd99f0c22b1e",
+      "report_sha256": "95b9b404b39891b0f2248d32b8f6e35d7049d303dea82d28b5fa056b1c11b213",
+      "final_ram_sha256": "01950d72c9c32d92c3adf6c72d826aee46c32c9723654b6c7c7bc62cf0ecc8d8",
+      "currency_assisted_component_test": false,
+      "input_evidence": {
+        "capture.json": "0895a3614735782c19820bf12d223deff216e29279e95a431b5c7cfedc5baf1b",
+        "controls.json": "b3c87beec2353a87ac6ba3eae934ce3e7a48dc944c275072f4cb884d2a1dd2b4",
+        "assistance.json": "7694ae638723e71ec4ae909c595570bab5d1d9b93e130f774a6abdbd2d93983e"
+      }
+    }
+  },
+  "all_npcs_complete": false,
+  "all_side_quests_complete": false,
+  "point5_and_point6_complete": false,
+  "currency_assisted_tests": [
+    {
+      "passed": true,
+      "trace": "natural-service-route/sms-npc-key-capacity99-01",
+      "proof": "validation/natural-service-route/sms-npc-key-capacity99-01-economic-fixed-replay/replay_report.json",
+      "ordinary_key_purchases": 98,
+      "final_keys": 99,
+      "full_refusal_text": 35909,
+      "currency_assisted_component_test": true,
+      "natural_campaign_proof": false,
+      "inventory_actor_health_and_quest_writes": 0
+    },
+    {
+      "passed": true,
+      "trace": "natural-service-route/sms-npc-saylun-owned-apple-return03",
+      "purchase_trace": "natural-service-route/sms-npc-saylun-owned-apple-buy03",
+      "proof": "validation/natural-service-route/sms-npc-saylun-owned-apple-return03-economic-fixed-replay/replay_report.json",
+      "currency_assisted_component_test": true,
+      "natural_campaign_proof": false,
+      "inventory_actor_health_and_quest_writes": 0,
+      "text_pc": 36955,
+      "free_gift_unclaimed_before_and_after": true
+    }
+  ]
+}

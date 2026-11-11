@@ -22,7 +22,7 @@ class CensusWorld(World):
 def census_world(raw,outside,room,entry_direction=0):
     world=CensusWorld(house_outside=outside,house_target=room)
     world.persisted_flags=raw[0x100:0x200]
-    world.axe_terrain=world.rope_terrain=True
+    world.axe_terrain=bool(raw[0xe1]);world.rope_terrain=bool(raw[0xed])
     world.canoe_owned=bool(raw[0xec]);world.boots_owned=bool(raw[0xee]);world.ship_owned=bool(raw[0xf0])
     world.crystal_bridge_open=bool(raw[0x149]&1)
     world.remote_unlocked={n for n,b in enumerate(raw[0x100:0x200]) if b&1}

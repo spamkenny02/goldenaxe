@@ -172,7 +172,14 @@ def main():
             assert action_word('game_state')==12 and action_word('hero_health')>0 and action_word('world_graphics_class')==0
             start=(action_word('room_id'),action_word('hero_x')>>8,action_word('hero_y')>>8)
         else:
-            st=prior['last_state'];start=(st['room'],st['x'],st['y'])
+            if 'last_state' not in prior and args.sms:
+                # Some verified service reports store their result without a
+                # redundant position. Read the authoritative captured RAM.
+                position_raw=evidence(prefix/f"ram_{capture['frames']:05d}.bin")
+                assert position_raw[0x1d]==12 and position_raw[0x318]>0
+                start=(int.from_bytes(position_raw[0xb9:0xbb],'little'),position_raw[0x313],position_raw[0x311])
+            else:
+                st=prior['last_state'];start=(st['room'],st['x'],st['y'])
         assert start[0]<256
         prefix_end=capture['frames'];prefix_presses=list(map(tuple,capture['presses']));prefix_inputs=[()]*(prefix_end+1)
         for i,row in enumerate(recorded):

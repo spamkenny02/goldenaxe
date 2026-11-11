@@ -50,6 +50,13 @@ def main():
     point4['hidden_rewards']=read('sms_hidden_rewards_campaign.json')
     point4['curse_and_oil_remedy']=verified('natural-dungeon-combat/sms-auto-sms-npc-palace-extended-curse-remedy01')
     point4['curse_and_oil_remedy']['actual_contact_and_oil_consumption_verified']=True
+    closure=read('sms_points_3_4_closure.json')
+    if closure and closure.get('passed'):
+        assert closure['source_sha256']==hashlib.sha256((ROOT/'input/original.sms').read_bytes()).hexdigest()
+        assert closure['point3']['status']==closure['point4']['status']=='complete'
+        point3.update(status='complete',closure=closure['point3'],
+            limits='Known SMS service locations and distinct shared handler branches verified. Currency-assisted capacity test declared separately; MD and exhaustive video remain distinct.')
+        point4.update(status='complete',complete=True,closure=closure['point4'])
     points={
         '1_o3':point1,'2_teachers_and_capacity':point2,'3_services':point3,
         '4_equipment_hints_hidden_rooms_curse':point4,
@@ -65,12 +72,14 @@ def main():
 
 1. **O3 terminé.** Accès réel, conversation, acquittement et sortie rejoués indépendamment.
 2. **Acquisitions terminées.** Enseignements 2/2/2/1, huit récompenses de fées présentes, capacités vie/magie 128/128. Retours chez les quatre maîtres vérifiés dans une branche distincte ; cela ne clôt pas toutes leurs variantes précoces.
-3. **Services en cours.** {count(service,'completed_visits')}/48 contextes marchand/soigneur/sauvegarde avec refus et sortie rejoués ; {count(point3['inn_acceptances'],'completed_locations')}/11 auberges acceptées ; {count(point3['save_locations'],'completed_locations')}/14 lieux avec sauvegarde effective puis Continuer normal ; {count(point3['paid_passages'],'completed_passages')}/6 directions de passage payant. Quatre lieux de jeu parcourus, pertes/gains/rejouer/refus et manque d'argent sélectionnés. Trois slots de sauvegarde vérifiés à Eren. {count(point3['money_house_tour'],'completed_houses')}/31 maisons d'argent à entrée directe et retours vérifiés ; deux autres lignes de table restent à clarifier. Les transactions et variantes économiques restantes ne sont pas réputées couvertes.
-4. **Équipements et annexes en cours.** Récompenses principales, cinq indices avant récompense, pomme de J9, huile cachée à Kari-Kari, corrosion réelle et consommation de l'huile vérifiées. Des variantes et retours restent ouverts.
+3. **Services {"validés" if point3['status']=='complete' else "en cours"}.** {count(service,'completed_visits')}/48 contextes marchand/soigneur/sauvegarde avec refus et sortie rejoués ; {count(point3['inn_acceptances'],'completed_locations')}/11 auberges acceptées ; {count(point3['save_locations'],'completed_locations')}/14 lieux avec sauvegarde effective puis Continuer normal ; {count(point3['paid_passages'],'completed_passages')}/6 directions de passage payant. Quatre lieux de jeu parcourus ; gains, pertes, cartes spéciales, rejouer, refus et manque d'argent vérifiés. Les 18 offres distinctes objet/prix sont achetées ; les refus possédé/inférieur/capacité pleine sont contrôlés. Trois slots et un véritable écrasement de sauvegarde sont vérifiés à Eren. L'argent infini autorisé est déclaré séparément pour la limite de 99 clés.
+4. **Équipements et annexes {"validés" if point4['status']=='complete' else "en cours"}.** Huit récompenses et huit retours, neuf dialogues du catalogue de ces quêtes, prérequis absents/présents, possession préalable d'objet, deux cheminées, corrosion réelle et consommation de l'huile vérifiés. L'achat préalable de la pomme de Saylun utilise une aide monétaire déclarée, sans injection d'objet ni de quête.
 5. **Trois textes non résolus globalement.** Les dialogues voisins de DA58/DA7C/ED3C et les retours du formateur ne sont pas leurs déclencheurs. Leur inaccessibilité dans toute la ROM n'est pas prouvée.
 6. **Campagne vidéo prête, preuve exhaustive en cours.** Parcours continu étendu de 564131 images jusqu'à la fin, 2 h 36 min 54 s, audio/vidéo décodés et RAM/pixels finaux exacts. Des annexes séparées sont enregistrées ; elles ne sont pas présentées comme une seule partie continue.
 
-Deux points sont clos dans le périmètre demandé (1 et 2). Les points 3, 4 et 5 restent ouverts ; le point 6 est partiel. Aucun pourcentage global ni certificat tous PNJ/toutes quêtes n'est déduit du nombre de lignes de cette liste. La couverture correspondante sur Mega Drive et les comparaisons PAL/NTSC restent distinctes.
+Les points {"1 à 4 sont clos" if closure and closure.get('passed') else "1 et 2 sont clos"} dans le périmètre SMS demandé. Le point 5 reste ouvert et le point 6 est partiel. Aucun pourcentage global ni certificat tous PNJ/toutes quêtes n'est déduit du nombre de lignes de cette liste. La couverture correspondante sur Mega Drive et les comparaisons PAL/NTSC restent distinctes. Les deux lignes d'argent AD/F3 sans entrée directe restent un audit distinct, sans conclusion d'inutilisation globale.
+
+[Rapport des points 3 et 4](../reports/gaw-sms-points-3-4-2026-11-11/RAPPORT.md).
 
 Les traces et preuves figurent dans [le relevé JSON](sms_six_points_progress.json) ; les vidéos sont indexées [ici](../videos/sms/README.md).
 '''

@@ -54,15 +54,22 @@ Le relevé du 11 novembre atteint maintenant **65/65 contextes ordinaires connus
 O3 est réellement ouvert avec Terre, son texte est affiché et acquitté, puis la
 sortie est rejouée indépendamment. Les enseignements atteignent 2/2/2/1 ; les
 huit récompenses de fées sont présentes et les capacités vie/magie atteignent
-128/128. Les autres variantes et services restent ouverts.
+128/128. La certification globale des PNJ reste ouverte.
 [Suivi des six points SMS](analysis/sms_six_points_progress.json).
 [État synthétique des six points](analysis/ETAT_SIX_POINTS_SMS.md).
 La tournée des services atteint **48/48 contextes connus** pour le refus et
 la sortie, **11/11 auberges acceptées**, **14/14 lieux de sauvegarde avec
 redémarrage normal par Continuer**, et **6/6 directions de passage payant**.
 Les 31 maisons d'argent à entrée directe et leurs retours sont aussi rejoués ;
-deux autres lignes de la table ROM restent à clarifier. Les variantes
-économiques et de quêtes manquantes restent ouvertes.
+deux autres lignes de la table ROM restent à clarifier.
+Les **points 3 et 4 SMS sont validés** dans leur périmètre : 18 offres
+distinctes réellement achetées, refus et retours pertinents, écrasement d'une
+vraie sauvegarde, huit récompenses et huit revisites, neuf dialogues de
+quêtes d'équipement, cheminées et corrosion/remède.
+Le [rapport et ses 145 enregistrements sélectionnés](reports/gaw-sms-points-3-4-2026-11-11/RAPPORT.md)
+distinguent les parcours et les deux essais monétaires assistés autorisés
+(99 clés et pomme achetée avant le don de Saylun). Aucune clé, pomme ou étape
+de quête n'est injectée.
 L'accès caché FB est ouvert avec le vrai sort Terre ; son habitant et les trois
 habitants de la maison FE/00 sont visités, acquittés et rejoués indépendamment.
 Ces visites sont maintenant intégrées à une campagne étendue jusqu'à la fin :
@@ -72,8 +79,8 @@ l'effet. Le [relevé des maisons](analysis/sms_plain_house_census_campaign.json)
 et le [rapport vidéo](analysis/sms_extended_campaign_video_report.json)
 conservent les preuves. Le CSV `sms_extended_ntsc` figure dans le kit de tests.
 Les quatre lieux de jeu et les retours chez les quatre maîtres sont aussi
-rejoués dans des branches distinctes. Les variantes des services et quelques
-accès restent ouverts ; aucune vidéo SMS 100 % n'est encore certifiée.
+rejoués dans des branches distinctes. Les points 5 et 6 restent ouverts ;
+aucune vidéo SMS 100 % n'est encore certifiée.
 
 Les [trois textes signalés](analysis/reported_text_dispatch_reconciliation.md)
 ne sont pas appelés par les dialogues voisins : les pointeurs observés au
@@ -81,8 +88,9 @@ retour du formateur ne prouvent pas leur affichage. Ce résultat borne ces
 déclencheurs précis ; il ne prouve pas leur inaccessibilité dans toute la ROM.
 
 Les 65 contextes statiques des maisons ordinaires ne constituent pas le
-nombre total de PNJ ou de variantes. Marchands, dialogues conditionnels,
-quêtes et autres textes restent à couvrir. Le parcours livré est une campagne
+nombre total de PNJ ou de variantes. Les services et quêtes d'équipement
+ci-dessus sont couverts ; d'autres textes et la preuve globale restent à
+réconcilier. Le parcours livré est une campagne
 complète avec une couverture partielle des PNJ ; il ne constitue pas un parcours
 100 % de toutes les quêtes secondaires.
 

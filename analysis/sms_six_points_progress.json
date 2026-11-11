@@ -90,7 +90,7 @@
       }
     },
     "3_services": {
-      "status": "in_progress",
+      "status": "complete",
       "refusal_tour": {
         "status": "all_48_static_service_refusals_and_exits_replayed",
         "initial_prefix": "natural-service-route/sms-npc-extra-magic-2c-level2-learn01",
@@ -551,7 +551,7 @@
         ],
         "all_save_locations_complete": false
       },
-      "limits": "Refusal entries do not close successful purchases, paid nights, saves, passages, gambling or return variants.",
+      "limits": "Known SMS service locations and distinct shared handler branches verified. Currency-assisted capacity test declared separately; MD and exhaustive video remain distinct.",
       "gambling_branches": [
         {
           "passed": true,
@@ -1358,11 +1358,156 @@
         ],
         "pending": [],
         "all_passage_variants_complete": false
+      },
+      "closure": {
+        "status": "complete",
+        "known_service_contexts": {
+          "merchants": 23,
+          "inns": 11,
+          "saves": 14,
+          "passages": 6,
+          "gambling_hosts": 4
+        },
+        "merchant_tables_checked_against_rom": true,
+        "merchant_transactions_by_shared_goods_group": true,
+        "successful_distinct_item_price_offers": 18,
+        "merchant_variants": [
+          {
+            "case": "g0",
+            "trace": "natural-service-route/sms-npc-merchant-variant-g0-g0-choices01"
+          },
+          {
+            "case": "g1",
+            "trace": "natural-service-route/sms-npc-merchant-variant-g1-g1-choices01"
+          },
+          {
+            "case": "g2",
+            "trace": "natural-service-route/sms-npc-merchant-variant-g2-g2-choices01"
+          },
+          {
+            "case": "g3",
+            "trace": "natural-service-route/sms-npc-merchant-variant-g3-g3-choices02"
+          },
+          {
+            "case": "g4",
+            "trace": "natural-service-route/sms-npc-merchant-variant-g4-g4-choices01"
+          },
+          {
+            "case": "g5",
+            "trace": "natural-service-route/sms-npc-merchant-variant-g5-g5-choices01"
+          },
+          {
+            "case": "g2oil",
+            "trace": "natural-service-route/sms-npc-merchant-variant-g2oil-g2oil-choices01"
+          },
+          {
+            "case": "shield-owned",
+            "trace": "natural-service-route/sms-npc-merchant-variant-shield-owned-shield-owned-choices01"
+          },
+          {
+            "case": "shield-better",
+            "trace": "natural-service-route/sms-npc-merchant-variant-shield-better-shield-better-choices01"
+          },
+          {
+            "case": "apple-only",
+            "trace": "natural-service-route/sms-npc-merchant-variant-apple-only-apple-only-choices01"
+          },
+          {
+            "case": "apple-poor",
+            "trace": "natural-service-route/sms-npc-merchant-variant-apple-poor-apple-poor-choices01"
+          },
+          {
+            "case": "magic64",
+            "trace": "natural-service-route/sms-npc-merchant-variant-magic64-magic64-choices01"
+          },
+          {
+            "case": "magic32-poor",
+            "trace": "natural-service-route/sms-npc-merchant-variant-magic32-poor-magic32-poor-choices01"
+          },
+          {
+            "case": "magic-clamp",
+            "trace": "natural-service-route/sms-npc-merchant-variant-magic-clamp-magic-clamp-choices01"
+          },
+          {
+            "case": "magic-poor",
+            "trace": "natural-service-route/sms-npc-merchant-variant-magic-poor-magic-poor-choices01"
+          }
+        ],
+        "all_shared_merchant_result_classes": [
+          "better",
+          "buy",
+          "full",
+          "owned",
+          "poor"
+        ],
+        "all_inns_accepted": true,
+        "all_save_locations_written_and_normally_loaded": true,
+        "save_slots": [
+          0,
+          1,
+          2
+        ],
+        "real_save_overwrite": {
+          "passed": true,
+          "slot": 0,
+          "first_save_trace": "natural-service-route/sms-npc-save-2e-slot0-01",
+          "second_save_trace": "natural-service-route/sms-npc-save-overwrite-2e-slot0-01",
+          "original_payload_sha256": "0080b87f1ee9c085ba8741064ffd1d4b1cc0a5223c0270f44e920b54236bbf02",
+          "replacement_payload_sha256": "0317e041edf6572026a1b72bc053453a8cfc71b95055ed8b84cb4afaccda8901",
+          "old_gold": 13,
+          "new_gold": 23,
+          "continue_report": "validation/sms-save-continue/overwrite-2e-slot0-01/report.json",
+          "synthetic_fixtures": false,
+          "progression_changed_by_actual_gold_gift": true
+        },
+        "all_six_passage_directions_paid_and_refused": true,
+        "poor_service_cases": [
+          "inn20-poor",
+          "inn40-poor",
+          "passage-poor"
+        ],
+        "gambling_traces": [
+          "natural-service-route/sms-npc-minigame-13-play-visit01",
+          "natural-service-route/sms-npc-minigame-5c-play-visit01",
+          "natural-service-route/sms-npc-minigame-a7-play-visit01",
+          "natural-service-route/sms-npc-minigame-de-play-visit01",
+          "natural-service-route/sms-npc-minigame-5c-poor-visit01",
+          "natural-service-route/sms-npc-minigame-5c-refuse-visit01"
+        ],
+        "gambling_special_cards": {
+          "0x39": {
+            "trace": "natural-service-route/sms-npc-minigame-de-play-visit01",
+            "frame": 480972,
+            "snapshot_sha256": "5dd9227378fc3c9929b9b5f4c2c27fa8463f096d6345e239b642199bd5012cb9"
+          },
+          "0x38": {
+            "trace": "natural-service-route/sms-npc-minigame-lucky-wait217-play01",
+            "outcomes": [
+              {
+                "frame": 487218,
+                "round": 7,
+                "top_cards": [
+                  53,
+                  53,
+                  53
+                ],
+                "amount": 30,
+                "expected_gold": 235,
+                "special_card": 56
+              }
+            ]
+          }
+        },
+        "limits": [
+          "Every known location is visited. Equivalent transaction handlers are covered by their identical ROM goods group, not every cross-product of place and inventory.",
+          "The keys-at-99 test uses explicitly authorized money assistance, with ordinary purchases and no key/item/quest writes.",
+          "The two unmatched money-table rows AD/F3 are a separate open reachability audit, not additional merchant/inn/save/passage/game locations."
+        ]
       }
     },
     "4_equipment_hints_hidden_rooms_curse": {
-      "status": "in_progress",
-      "complete": false,
+      "status": "complete",
+      "complete": true,
       "equipment_hint_branches": {
         "passed": true,
         "separate_branches": true,
@@ -1453,6 +1598,147 @@
           1
         ],
         "actual_contact_and_oil_consumption_verified": true
+      },
+      "closure": {
+        "status": "complete",
+        "reward_contexts": [
+          {
+            "outside": 39,
+            "trace": "natural-service-route/sms-npc-equipment-27-gift01",
+            "inventory_address": 241,
+            "value": 2
+          },
+          {
+            "outside": 80,
+            "trace": "natural-service-route/sms-npc-equipment-50-gift01",
+            "inventory_address": 224,
+            "value": 2
+          },
+          {
+            "outside": 177,
+            "trace": "natural-service-route/sms-npc-d8-dragonmail-gift01",
+            "inventory_address": 241,
+            "value": 3
+          },
+          {
+            "outside": 106,
+            "trace": "natural-service-route/sms-npc-d8-flamesword-gift01",
+            "inventory_address": 224,
+            "value": 3
+          },
+          {
+            "outside": 199,
+            "trace": "natural-service-route/sms-sms-npc-villagec7-oil02",
+            "inventory_address": 232,
+            "value": 1
+          },
+          {
+            "outside": 76,
+            "trace": "natural-service-route/sms-npc-dragon-shield-gift02",
+            "inventory_address": 242,
+            "value": 3
+          },
+          {
+            "outside": 146,
+            "trace": "natural-service-route/sms-npc-hidden-rewards-92-gift01",
+            "inventory_address": 232,
+            "value": 1
+          },
+          {
+            "outside": 85,
+            "trace": "natural-service-route/sms-npc-hidden-rewards-55-gift01",
+            "inventory_address": 226,
+            "value": 1
+          }
+        ],
+        "post_reward_returns": [
+          {
+            "outside": 85,
+            "trace": "natural-service-route/sms-npc-equipment-returns-55-return02",
+            "frame": 493135
+          },
+          {
+            "outside": 199,
+            "trace": "natural-service-route/sms-npc-equipment-returns-c7-return01",
+            "frame": 496045
+          },
+          {
+            "outside": 146,
+            "trace": "natural-service-route/sms-npc-equipment-returns-92-return01",
+            "frame": 498208
+          },
+          {
+            "outside": 76,
+            "trace": "natural-service-route/sms-npc-equipment-returns-4c-return01",
+            "frame": 502566
+          },
+          {
+            "outside": 106,
+            "trace": "natural-service-route/sms-npc-equipment-returns-6a-return01",
+            "frame": 505138
+          },
+          {
+            "outside": 177,
+            "trace": "natural-service-route/sms-npc-equipment-returns-b1-return01",
+            "frame": 510106
+          },
+          {
+            "outside": 80,
+            "trace": "natural-service-route/sms-npc-equipment-returns-50-return01",
+            "frame": 513394
+          },
+          {
+            "outside": 39,
+            "trace": "natural-service-route/sms-npc-equipment-returns-27-return01",
+            "frame": 517890
+          }
+        ],
+        "original_quest_dialogue_count": 9,
+        "observed_quest_dialogues": {
+          "0x8BEA": [
+            "natural-service-route/sms-npc-owned-quest-j9-owned-apple-contact01"
+          ],
+          "0x8E5C": [
+            "natural-service-route/sms-npc-equipment-no-lightning-hint01"
+          ],
+          "0x8E94": [
+            "natural-service-route/sms-npc-quest-hint-27-01",
+            "natural-service-route/sms-npc-quest-hint-50-01",
+            "natural-service-route/sms-npc-quest-hint-6a-01",
+            "natural-service-route/sms-npc-quest-hint-b1-01"
+          ],
+          "0x8ED9": [
+            "natural-service-route/sms-npc-equipment-low-capacity-hint01"
+          ],
+          "0x8FE3": [
+            "natural-service-route/sms-npc-quest-hint-92-01"
+          ],
+          "0x905B": [
+            "natural-service-route/sms-npc-saylun-owned-apple-return03"
+          ],
+          "0x90BF": [
+            "natural-service-route/sms-npc-owned-quest-kari-owned-oil-contact01"
+          ],
+          "0xA52F": [
+            "natural-service-route/sms-npc-equipment-prerequisite-shield-before-crystal-case04"
+          ],
+          "0xAC1E": [
+            "natural-service-route/sms-npc-equipment-prerequisite-shield-after-crystal-hint-case01"
+          ]
+        },
+        "all_nine_original_quest_dialogues_displayed_and_acknowledged": true,
+        "both_hidden_stair_interiors_entered_and_exited_before_and_after_reward": true,
+        "prerequisites_checked": [
+          "No Lightning",
+          "Health capacity below 56 with rope obtained before third crystal",
+          "Sixth crystal absent and present",
+          "Already carrying genuinely obtained apple/oil"
+        ],
+        "real_corrosion_and_oil_cure_trace": "natural-dungeon-combat/sms-auto-sms-npc-palace-extended-curse-remedy01",
+        "limits": [
+          "The Saylun already-owned-apple branch uses one explicitly declared money refill for a real purchase, plus declared approach protection. No item or quest flag is injected.",
+          "These receipts close the requested SMS equipment/hint/chimney/corrosion checks. They do not certify every possible inventory permutation or the paired MD graphics/audio behavior."
+        ]
       }
     },
     "5_reported_strings": {
