@@ -28,7 +28,7 @@ def main():
                 traces.add(row.get('trace',row.get('save_trace')))
     for path in (ROOT/'analysis').glob('sms_minigame_*_campaign.json'):
         data=json.loads(path.read_bytes())
-        if data.get('passed'):traces.add(data['last_verified_prefix'])
+        if data.get('passed'):traces.add(data.get('last_verified_prefix') or data['trace'])
     for path in (ROOT/'analysis').glob('sms-conditional-*.json'):
         report=json.loads(path.read_bytes())
         if report.get('passed'):
@@ -36,17 +36,30 @@ def main():
             for value in report.values():
                 if isinstance(value,str) and value.startswith('natural-service-route/'):
                     traces.add(value)
-    selected=[];entries=[];returns=[]
+    closure_path=ROOT/'analysis/sms_points_3_4_closure.json'
+    receipts={}
+    if closure_path.exists():
+        closure=json.loads(closure_path.read_bytes())
+        assert closure['passed'] and closure['source_sha256']==hashlib.sha256(rom).hexdigest()
+        receipts=closure['selected_receipts'];traces.update(receipts)
+    selected=[];entries=[];returns=[];without_observer=[]
     for trace in sorted(traces):
         folder=ROOT/'validation'/trace
         observation=folder/'dialogue_observations.json'
-        if not observation.exists():continue
+        if not observation.exists():
+            without_observer.append(trace);continue
         cap=json.loads((folder/'capture.json').read_bytes())
-        proof=folder.with_name(folder.name+f'-assisted-fixed-replay-{cap["frames"]}')/'replay_report.json'
-        assert json.loads(proof.read_bytes())['passed']
+        receipt=receipts.get(trace)
+        proof=(ROOT/receipt['proof'] if receipt else
+               folder.with_name(folder.name+f'-assisted-fixed-replay-{cap["frames"]}')/'replay_report.json')
+        witness=json.loads(proof.read_bytes());assert witness['passed']
+        if receipt:
+            assert hashlib.sha256(proof.read_bytes()).hexdigest()==receipt['proof_sha256']
+            assert all(hashlib.sha256((folder/n).read_bytes()).hexdigest()==v for n,v in receipt['input_evidence'].items())
         source=json.loads(observation.read_bytes());assert source['read_only'] and source['source_sha256']==hashlib.sha256(rom).hexdigest()
         selected.append(dict(trace=trace,frames=cap['frames'],proof=proof.relative_to(ROOT).as_posix(),
-            observations_sha256=hashlib.sha256(observation.read_bytes()).hexdigest()))
+            observations_sha256=hashlib.sha256(observation.read_bytes()).hexdigest(),
+            currency_assisted_component_test=bool(receipt and receipt['currency_assisted_component_test'])))
         for e in source['events']:
             item=dict(trace=trace,frame=e['frame'],event_pc=e['event_pc'],text_pc=e['text_pc'],
                 outside=e['outside'],room=e['room'],caller=e['caller'])
@@ -65,6 +78,7 @@ def main():
             return_pointer_matches_not_display_proof=[e for e in returns if e['text_pc']==0x8000+(target&0x3fff)]))
     result=dict(source_sha256=hashlib.sha256(rom).hexdigest(),selected_recordings=selected,
         entry_event_count=len(entries),unique_text_entry_pcs=len({e['text_pc'] for e in entries}),findings=findings,
+        selected_recordings_without_dialogue_observer=without_observer,
         complete_call_data_flow_proof=False,all_npcs_and_side_quests_complete=False,
         limits=['Only selected recordings with an independent fixed replay are admitted.',
                 'Formatter/wrapper return pointers do not identify displayed strings.',

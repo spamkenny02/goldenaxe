@@ -1,0 +1,933 @@
+{
+  "source_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+  "passed": true,
+  "scope": "Known literal fixed-bank house frontend calls, literal/relative wrapper edges and inventoried ordinary-context tables.",
+  "fixed_bank_050c_call_sites": 11,
+  "nonwrapper_immediate_sites": {
+    "6061": {
+      "load": 24670,
+      "text_pc": 37150
+    },
+    "61DF": {
+      "load": 25052,
+      "text_pc": 35789
+    },
+    "64CD": {
+      "load": 25802,
+      "text_pc": 36400
+    },
+    "6502": {
+      "load": 25855,
+      "text_pc": 36342
+    },
+    "6660": {
+      "load": 26204,
+      "text_pc": 41190
+    },
+    "66CA": {
+      "load": 26311,
+      "text_pc": 47374
+    },
+    "683B": {
+      "load": 26680,
+      "text_pc": 47455
+    },
+    "685B": {
+      "load": 26712,
+      "text_pc": 47490
+    },
+    "6880": {
+      "load": 26749,
+      "text_pc": 47551
+    },
+    "6890": {
+      "load": 26765,
+      "text_pc": 47758
+    }
+  },
+  "direct_wrapper_sites": {
+    "5FE9": [
+      36917
+    ],
+    "6006": [
+      36897
+    ],
+    "621B": [
+      42287,
+      44062
+    ],
+    "6290": [
+      36835
+    ],
+    "6296": [
+      35818
+    ],
+    "647F": [
+      37055
+    ],
+    "6494": [
+      36955
+    ],
+    "6631": [
+      42958,
+      43090,
+      43143,
+      44133,
+      44213,
+      44259
+    ],
+    "6675": [
+      41079
+    ],
+    "667B": [
+      41343
+    ],
+    "669A": [
+      37249,
+      37311,
+      37347,
+      37447,
+      37544,
+      37574,
+      37642,
+      37719,
+      37816,
+      37915,
+      37995,
+      38110,
+      38174,
+      38348,
+      38417,
+      38557,
+      38636,
+      38720,
+      38984,
+      39057,
+      39201,
+      39237,
+      39337,
+      39409,
+      39628,
+      39741,
+      39794,
+      39877,
+      39934,
+      39945,
+      40026,
+      40164,
+      40244,
+      40410,
+      40460,
+      40568,
+      40732,
+      40853,
+      40926,
+      41023,
+      41379,
+      41474,
+      41540,
+      41678,
+      41820,
+      41930,
+      42065,
+      42145,
+      42158,
+      42177,
+      42344,
+      42432,
+      42529,
+      42608,
+      42661,
+      42751,
+      42908,
+      43260,
+      43319,
+      43414,
+      43503,
+      43561,
+      43617,
+      43715,
+      43789
+    ],
+    "66D5": [
+      47408
+    ],
+    "670E": [
+      47437
+    ],
+    "6772": [
+      47575,
+      47648
+    ],
+    "68A4": [
+      47408
+    ]
+  },
+  "wrapper_relative_or_fallthrough_arguments": [
+    36569,
+    36500,
+    36444
+  ],
+  "ordinary_table_rows": [
+    {
+      "outside": 148,
+      "room": 0,
+      "coordinate": 592,
+      "text_pc": 39628,
+      "table": 44126,
+      "matching_rom_rows": [
+        44126
+      ]
+    },
+    {
+      "outside": 46,
+      "room": 0,
+      "coordinate": 592,
+      "text_pc": 42344,
+      "table": 44126,
+      "matching_rom_rows": [
+        44129
+      ]
+    },
+    {
+      "outside": 254,
+      "room": 0,
+      "coordinate": 592,
+      "text_pc": 43414,
+      "table": 44126,
+      "matching_rom_rows": [
+        44132
+      ]
+    },
+    {
+      "outside": 148,
+      "room": 0,
+      "coordinate": 724,
+      "text_pc": 39741,
+      "table": 44135,
+      "matching_rom_rows": [
+        44135
+      ]
+    },
+    {
+      "outside": 46,
+      "room": 0,
+      "coordinate": 724,
+      "text_pc": 42432,
+      "table": 44135,
+      "matching_rom_rows": [
+        44138
+      ]
+    },
+    {
+      "outside": 254,
+      "room": 0,
+      "coordinate": 724,
+      "text_pc": 43503,
+      "table": 44135,
+      "matching_rom_rows": [
+        44141
+      ]
+    },
+    {
+      "outside": 148,
+      "room": 0,
+      "coordinate": 744,
+      "text_pc": 39794,
+      "table": 44144,
+      "matching_rom_rows": [
+        44144
+      ]
+    },
+    {
+      "outside": 46,
+      "room": 0,
+      "coordinate": 744,
+      "text_pc": 42529,
+      "table": 44144,
+      "matching_rom_rows": [
+        44147
+      ]
+    },
+    {
+      "outside": 254,
+      "room": 0,
+      "coordinate": 744,
+      "text_pc": 43561,
+      "table": 44144,
+      "matching_rom_rows": [
+        44150
+      ]
+    },
+    {
+      "outside": 199,
+      "room": 1,
+      "coordinate": 592,
+      "text_pc": 40026,
+      "table": 44199,
+      "matching_rom_rows": [
+        44199
+      ]
+    },
+    {
+      "outside": 85,
+      "room": 1,
+      "coordinate": 592,
+      "text_pc": 40732,
+      "table": 44199,
+      "matching_rom_rows": [
+        44202
+      ]
+    },
+    {
+      "outside": 87,
+      "room": 1,
+      "coordinate": 592,
+      "text_pc": 41379,
+      "table": 44199,
+      "matching_rom_rows": [
+        44205
+      ]
+    },
+    {
+      "outside": 199,
+      "room": 1,
+      "coordinate": 712,
+      "text_pc": 40164,
+      "table": 44208,
+      "matching_rom_rows": [
+        44208
+      ]
+    },
+    {
+      "outside": 85,
+      "room": 1,
+      "coordinate": 712,
+      "text_pc": 40853,
+      "table": 44208,
+      "matching_rom_rows": [
+        44211
+      ]
+    },
+    {
+      "outside": 87,
+      "room": 1,
+      "coordinate": 712,
+      "text_pc": 41474,
+      "table": 44208,
+      "matching_rom_rows": [
+        44214
+      ]
+    },
+    {
+      "outside": 148,
+      "room": 2,
+      "coordinate": 604,
+      "text_pc": 39877,
+      "table": 44255,
+      "matching_rom_rows": [
+        44255
+      ]
+    },
+    {
+      "outside": 76,
+      "room": 2,
+      "coordinate": 604,
+      "text_pc": 42145,
+      "table": 44255,
+      "matching_rom_rows": [
+        44258
+      ]
+    },
+    {
+      "outside": 254,
+      "room": 2,
+      "coordinate": 604,
+      "text_pc": 43617,
+      "table": 44255,
+      "matching_rom_rows": [
+        44261
+      ]
+    },
+    {
+      "outside": 148,
+      "room": 2,
+      "coordinate": 736,
+      "text_pc": 39934,
+      "table": 44264,
+      "matching_rom_rows": [
+        44264
+      ]
+    },
+    {
+      "outside": 76,
+      "room": 2,
+      "coordinate": 736,
+      "text_pc": 42158,
+      "table": 44264,
+      "matching_rom_rows": [
+        44267
+      ]
+    },
+    {
+      "outside": 254,
+      "room": 2,
+      "coordinate": 736,
+      "text_pc": 43715,
+      "table": 44264,
+      "matching_rom_rows": [
+        44270
+      ]
+    },
+    {
+      "outside": 148,
+      "room": 2,
+      "coordinate": 836,
+      "text_pc": 39945,
+      "table": 44273,
+      "matching_rom_rows": [
+        44273
+      ]
+    },
+    {
+      "outside": 76,
+      "room": 2,
+      "coordinate": 836,
+      "text_pc": 42177,
+      "table": 44273,
+      "matching_rom_rows": [
+        44276
+      ]
+    },
+    {
+      "outside": 254,
+      "room": 2,
+      "coordinate": 836,
+      "text_pc": 43789,
+      "table": 44273,
+      "matching_rom_rows": [
+        44279
+      ]
+    },
+    {
+      "outside": 240,
+      "room": 3,
+      "coordinate": 748,
+      "text_pc": 40460,
+      "table": 44335,
+      "matching_rom_rows": [
+        44335
+      ]
+    },
+    {
+      "outside": 85,
+      "room": 3,
+      "coordinate": 748,
+      "text_pc": 40926,
+      "table": 44335,
+      "matching_rom_rows": [
+        44338
+      ]
+    },
+    {
+      "outside": 254,
+      "room": 3,
+      "coordinate": 748,
+      "text_pc": 43260,
+      "table": 44335,
+      "matching_rom_rows": [
+        44341
+      ]
+    },
+    {
+      "outside": 240,
+      "room": 3,
+      "coordinate": 584,
+      "text_pc": 40568,
+      "table": 44344,
+      "matching_rom_rows": [
+        44344
+      ]
+    },
+    {
+      "outside": 85,
+      "room": 3,
+      "coordinate": 584,
+      "text_pc": 41023,
+      "table": 44344,
+      "matching_rom_rows": [
+        44347
+      ]
+    },
+    {
+      "outside": 254,
+      "room": 3,
+      "coordinate": 584,
+      "text_pc": 43319,
+      "table": 44344,
+      "matching_rom_rows": [
+        44350
+      ]
+    },
+    {
+      "outside": 46,
+      "room": 7,
+      "coordinate": 724,
+      "text_pc": 42908,
+      "table": 44393,
+      "matching_rom_rows": [
+        44393
+      ]
+    },
+    {
+      "outside": 46,
+      "room": 8,
+      "coordinate": 724,
+      "text_pc": 42608,
+      "table": 44440,
+      "matching_rom_rows": [
+        44440
+      ]
+    },
+    {
+      "outside": 46,
+      "room": 8,
+      "coordinate": 836,
+      "text_pc": 42661,
+      "table": 44443,
+      "matching_rom_rows": [
+        44443
+      ]
+    },
+    {
+      "outside": 46,
+      "room": 8,
+      "coordinate": 844,
+      "text_pc": 42751,
+      "table": 44446,
+      "matching_rom_rows": [
+        44446
+      ]
+    },
+    {
+      "outside": 87,
+      "room": 10,
+      "coordinate": 712,
+      "text_pc": 41540,
+      "table": 44511,
+      "matching_rom_rows": [
+        44511
+      ]
+    },
+    {
+      "outside": 87,
+      "room": 10,
+      "coordinate": 596,
+      "text_pc": 41678,
+      "table": 44514,
+      "matching_rom_rows": [
+        44514
+      ]
+    },
+    {
+      "outside": 87,
+      "room": 10,
+      "coordinate": 600,
+      "text_pc": 41820,
+      "table": 44517,
+      "matching_rom_rows": [
+        44517
+      ]
+    },
+    {
+      "outside": 87,
+      "room": 10,
+      "coordinate": 748,
+      "text_pc": 41930,
+      "table": 44520,
+      "matching_rom_rows": [
+        44520
+      ]
+    },
+    {
+      "outside": 87,
+      "room": 10,
+      "coordinate": 1000,
+      "text_pc": 42065,
+      "table": 44523,
+      "matching_rom_rows": [
+        44523
+      ]
+    },
+    {
+      "outside": 199,
+      "room": 31,
+      "coordinate": 360,
+      "text_pc": 40244,
+      "table": 44631,
+      "matching_rom_rows": [
+        44631
+      ]
+    },
+    {
+      "outside": 85,
+      "room": 31,
+      "coordinate": 360,
+      "text_pc": 40410,
+      "table": 44631,
+      "matching_rom_rows": [
+        44634
+      ]
+    },
+    {
+      "outside": 17,
+      "room": 143,
+      "coordinate": 604,
+      "text_pc": 37249,
+      "table": 45327,
+      "matching_rom_rows": [
+        45327
+      ]
+    },
+    {
+      "outside": 37,
+      "room": 143,
+      "coordinate": 604,
+      "text_pc": 37311,
+      "table": 45327,
+      "matching_rom_rows": [
+        45330
+      ]
+    },
+    {
+      "outside": 43,
+      "room": 143,
+      "coordinate": 604,
+      "text_pc": 37347,
+      "table": 45327,
+      "matching_rom_rows": [
+        45333
+      ]
+    },
+    {
+      "outside": 48,
+      "room": 143,
+      "coordinate": 604,
+      "text_pc": 37447,
+      "table": 45327,
+      "matching_rom_rows": [
+        45336
+      ]
+    },
+    {
+      "outside": 59,
+      "room": 143,
+      "coordinate": 604,
+      "text_pc": 37574,
+      "table": 45327,
+      "matching_rom_rows": [
+        45339
+      ]
+    },
+    {
+      "outside": 62,
+      "room": 143,
+      "coordinate": 604,
+      "text_pc": 37642,
+      "table": 45327,
+      "matching_rom_rows": [
+        45342
+      ]
+    },
+    {
+      "outside": 65,
+      "room": 143,
+      "coordinate": 604,
+      "text_pc": 37719,
+      "table": 45327,
+      "matching_rom_rows": [
+        45345
+      ]
+    },
+    {
+      "outside": 74,
+      "room": 143,
+      "coordinate": 604,
+      "text_pc": 37816,
+      "table": 45327,
+      "matching_rom_rows": [
+        45348
+      ]
+    },
+    {
+      "outside": 100,
+      "room": 143,
+      "coordinate": 604,
+      "text_pc": 37915,
+      "table": 45327,
+      "matching_rom_rows": [
+        45351
+      ]
+    },
+    {
+      "outside": 117,
+      "room": 143,
+      "coordinate": 604,
+      "text_pc": 37995,
+      "table": 45327,
+      "matching_rom_rows": [
+        45354
+      ]
+    },
+    {
+      "outside": 118,
+      "room": 143,
+      "coordinate": 604,
+      "text_pc": 38110,
+      "table": 45327,
+      "matching_rom_rows": [
+        45357
+      ]
+    },
+    {
+      "outside": 130,
+      "room": 143,
+      "coordinate": 604,
+      "text_pc": 38174,
+      "table": 45327,
+      "matching_rom_rows": [
+        45360
+      ]
+    },
+    {
+      "outside": 134,
+      "room": 143,
+      "coordinate": 604,
+      "text_pc": 38348,
+      "table": 45327,
+      "matching_rom_rows": [
+        45363
+      ]
+    },
+    {
+      "outside": 140,
+      "room": 143,
+      "coordinate": 604,
+      "text_pc": 38417,
+      "table": 45327,
+      "matching_rom_rows": [
+        45366
+      ]
+    },
+    {
+      "outside": 145,
+      "room": 143,
+      "coordinate": 604,
+      "text_pc": 38557,
+      "table": 45327,
+      "matching_rom_rows": [
+        45369
+      ]
+    },
+    {
+      "outside": 171,
+      "room": 143,
+      "coordinate": 604,
+      "text_pc": 38636,
+      "table": 45327,
+      "matching_rom_rows": [
+        45372
+      ]
+    },
+    {
+      "outside": 179,
+      "room": 143,
+      "coordinate": 604,
+      "text_pc": 38720,
+      "table": 45327,
+      "matching_rom_rows": [
+        45375
+      ]
+    },
+    {
+      "outside": 182,
+      "room": 143,
+      "coordinate": 604,
+      "text_pc": 38984,
+      "table": 45327,
+      "matching_rom_rows": [
+        45378
+      ]
+    },
+    {
+      "outside": 187,
+      "room": 143,
+      "coordinate": 604,
+      "text_pc": 39057,
+      "table": 45327,
+      "matching_rom_rows": [
+        45381
+      ]
+    },
+    {
+      "outside": 197,
+      "room": 143,
+      "coordinate": 604,
+      "text_pc": 39201,
+      "table": 45327,
+      "matching_rom_rows": [
+        45384
+      ]
+    },
+    {
+      "outside": 205,
+      "room": 143,
+      "coordinate": 604,
+      "text_pc": 39237,
+      "table": 45327,
+      "matching_rom_rows": [
+        45387
+      ]
+    },
+    {
+      "outside": 218,
+      "room": 143,
+      "coordinate": 604,
+      "text_pc": 39337,
+      "table": 45327,
+      "matching_rom_rows": [
+        45390
+      ]
+    },
+    {
+      "outside": 251,
+      "room": 143,
+      "coordinate": 604,
+      "text_pc": 39409,
+      "table": 45327,
+      "matching_rom_rows": [
+        45393
+      ]
+    },
+    {
+      "outside": 51,
+      "room": 143,
+      "coordinate": 604,
+      "text_pc": 37544,
+      "table": 45327,
+      "matching_rom_rows": [
+        45396
+      ]
+    }
+  ],
+  "known_house_argument_domain": [
+    35789,
+    35818,
+    36342,
+    36400,
+    36444,
+    36500,
+    36569,
+    36835,
+    36897,
+    36917,
+    36955,
+    37055,
+    37150,
+    37249,
+    37311,
+    37347,
+    37447,
+    37544,
+    37574,
+    37642,
+    37719,
+    37816,
+    37915,
+    37995,
+    38110,
+    38174,
+    38348,
+    38417,
+    38557,
+    38636,
+    38720,
+    38984,
+    39057,
+    39201,
+    39237,
+    39337,
+    39409,
+    39628,
+    39741,
+    39794,
+    39877,
+    39934,
+    39945,
+    40026,
+    40164,
+    40244,
+    40410,
+    40460,
+    40568,
+    40732,
+    40853,
+    40926,
+    41023,
+    41079,
+    41190,
+    41343,
+    41379,
+    41474,
+    41540,
+    41678,
+    41820,
+    41930,
+    42065,
+    42145,
+    42158,
+    42177,
+    42287,
+    42344,
+    42432,
+    42529,
+    42608,
+    42661,
+    42751,
+    42908,
+    42958,
+    43090,
+    43143,
+    43260,
+    43319,
+    43414,
+    43503,
+    43561,
+    43617,
+    43715,
+    43789,
+    44062,
+    44133,
+    44213,
+    44259,
+    47374,
+    47408,
+    47437,
+    47455,
+    47490,
+    47551,
+    47575,
+    47648,
+    47758
+  ],
+  "reported_targets_selected": false,
+  "global_unused_in_sms_proven": false,
+  "complete_call_data_flow_proof": false,
+  "assumptions_and_limits": [
+    "The 65 ordinary contexts are the existing independently checked inventory, not a new proof of all reachable contexts.",
+    "Immediate sites are checked byte for byte; the two selector blocks and ordinary wrapper are preserved verbatim.",
+    "All literal edges into6277 and all literal050C calls in fixed banks are accounted for. This does not rule out an unclassified indirect edge or alternate argument construction outside those paths.",
+    "7444/779B service and teaching paths are inventoried separately in sms_text_frontend_sources.json; they are not certified by this house-domain audit."
+  ],
+  "rom_modified": false
+}

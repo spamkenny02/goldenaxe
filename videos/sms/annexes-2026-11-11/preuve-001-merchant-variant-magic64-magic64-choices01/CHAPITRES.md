@@ -1,0 +1,55 @@
+# Repères de cette branche
+
+Les repères marquent la fin de chaque interaction vérifiée. Revenir quelques secondes en arrière pour son début.
+
+| Temps vidéo | Preuve |
+| --- | --- |
+| 00:00:23 | natural-service-route/sms-npc-service-refusals-2e-merchant-refuse02 |
+| 00:00:36 | natural-service-route/sms-npc-service-refusals-2e-healer-refuse03 |
+| 00:00:47 | natural-service-route/sms-npc-service-refusals-2e-save-refuse01 |
+| 00:01:13 | natural-service-route/sms-npc-service-refusals-4e-merchant-refuse01 |
+| 00:01:37 | natural-service-route/sms-npc-service-refusals-5e-merchant-refuse03 |
+| 00:02:02 | natural-service-route/sms-npc-service-refusals-7b-merchant-refuse01 |
+| 00:02:24 | natural-service-route/sms-npc-service-refusals-9c-save-refuse02 |
+| 00:02:45 | natural-service-route/sms-npc-service-refusals-ad-healer-refuse01 |
+| 00:03:19 | natural-service-route/sms-npc-service-refusals-ce-healer-refuse01 |
+| 00:03:31 | natural-service-route/sms-npc-service-refusals-ce-save-refuse01 |
+| 00:04:12 | natural-service-route/sms-npc-service-refusals-dc-merchant-refuse01 |
+| 00:04:31 | natural-service-route/sms-npc-service-refusals-fc-merchant-refuse01 |
+| 00:04:53 | natural-service-route/sms-npc-service-refusals-fe-merchant-refuse01 |
+| 00:05:05 | natural-service-route/sms-npc-service-refusals-fe-healer-refuse01 |
+| 00:05:17 | natural-service-route/sms-npc-service-refusals-fe-save-refuse01 |
+| 00:05:43 | natural-service-route/sms-npc-service-refusals-fa-save-refuse01 |
+| 00:06:24 | natural-service-route/sms-npc-service-refusals-f9-merchant-refuse01 |
+| 00:06:50 | natural-service-route/sms-npc-service-refusals-f5-healer-refuse01 |
+| 00:07:12 | natural-service-route/sms-npc-service-refusals-d5-save-refuse01 |
+| 00:07:42 | natural-service-route/sms-npc-service-refusals-a5-merchant-refuse01 |
+| 00:08:02 | natural-service-route/sms-npc-service-refusals-94-merchant-refuse01 |
+| 00:08:14 | natural-service-route/sms-npc-service-refusals-94-healer-refuse01 |
+| 00:08:26 | natural-service-route/sms-npc-service-refusals-94-save-refuse01 |
+| 00:08:48 | natural-service-route/sms-npc-service-refusals-72-merchant-refuse01 |
+| 00:09:12 | natural-service-route/sms-npc-service-refusals-71-merchant-refuse01 |
+| 00:09:31 | natural-service-route/sms-npc-service-refusals-52-save-refuse01 |
+| 00:09:52 | natural-service-route/sms-npc-service-refusals-53-merchant-refuse01 |
+| 00:10:15 | natural-service-route/sms-npc-service-refusals-55-merchant-refuse01 |
+| 00:10:29 | natural-service-route/sms-npc-service-refusals-55-healer-refuse01 |
+| 00:10:41 | natural-service-route/sms-npc-service-refusals-55-save-refuse01 |
+| 00:11:23 | natural-service-route/sms-npc-service-refusals-57-merchant-refuse01 |
+| 00:11:36 | natural-service-route/sms-npc-service-refusals-57-healer-refuse01 |
+| 00:11:49 | natural-service-route/sms-npc-service-refusals-57-save-refuse01 |
+| 00:12:23 | natural-service-route/sms-npc-service-refusals-34-merchant-refuse01 |
+| 00:12:43 | natural-service-route/sms-npc-service-refusals-23-merchant-refuse01 |
+| 00:13:19 | natural-service-route/sms-npc-service-refusals-14-healer-refuse05 |
+| 00:13:50 | natural-service-route/sms-npc-service-refusals-21-save-refuse01 |
+| 00:15:12 | natural-service-route/sms-npc-service-refusals-f0-merchant-refuse01 |
+| 00:15:26 | natural-service-route/sms-npc-service-refusals-f0-healer-refuse01 |
+| 00:15:38 | natural-service-route/sms-npc-service-refusals-f0-save-refuse01 |
+| 00:15:57 | natural-service-route/sms-npc-service-refusals-f2-merchant-refuse01 |
+| 00:16:39 | natural-service-route/sms-npc-service-refusals-c7-merchant-refuse01 |
+| 00:16:52 | natural-service-route/sms-npc-service-refusals-c7-healer-refuse01 |
+| 00:17:04 | natural-service-route/sms-npc-service-refusals-c7-save-refuse01 |
+| 00:17:29 | natural-service-route/sms-npc-service-refusals-b8-save-refuse01 |
+| 00:17:55 | natural-service-route/sms-npc-service-refusals-d7-merchant-refuse03 |
+| 00:18:38 | natural-service-route/sms-npc-service-refusals-c3-merchant-refuse01 |
+| 00:19:52 | natural-service-route/sms-npc-service-refusals-8d-merchant-refuse04 |
+| 00:20:35 | natural-service-route/sms-npc-merchant-variant-magic64-magic64-choices01 |

@@ -1,0 +1,2148 @@
+{
+  "source_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+  "direct_operand_candidates": [
+    {
+      "offset": 4532,
+      "bank": 0,
+      "target": 29764,
+      "cpu_address": 4532,
+      "raw_context_hex": "1228f0cd480bcdeb1d214ca711005e3e04cd2703cda40a21b0c022e0dc2168abcd4474",
+      "candidate_context": [
+        {
+          "offset": "0x011B1",
+          "bytes": "2168ab",
+          "instruction": "LD HL,0xab68"
+        },
+        {
+          "offset": "0x011B4",
+          "bytes": "cd4474",
+          "instruction": "CALL 0x7444"
+        }
+      ],
+      "boundary_proven": false,
+      "executable_proven": false
+    },
+    {
+      "offset": 24553,
+      "bank": 1,
+      "target": 25207,
+      "cpu_address": 24553,
+      "raw_context_hex": "c0e677fe14c82a60c0015c02ed42c0cd3d19c0f1212a60cdc36187301d213590cd7762",
+      "candidate_context": [
+        {
+          "offset": "0x05FE6",
+          "bytes": "213590",
+          "instruction": "LD HL,0x9035"
+        },
+        {
+          "offset": "0x05FE9",
+          "bytes": "cd7762",
+          "instruction": "CALL 0x6277"
+        }
+      ],
+      "boundary_proven": false,
+      "executable_proven": false
+    },
+    {
+      "offset": 24582,
+      "bank": 1,
+      "target": 25207,
+      "cpu_address": 24582,
+      "raw_context_hex": "213590cd77623e1ccd17633adcc0c608fe8038023e8032dcc032dbc0c9212190cd7762",
+      "candidate_context": [
+        {
+          "offset": "0x06004",
+          "bytes": "2190cd",
+          "instruction": "LD HL,0xcd90"
+        }
+      ],
+      "boundary_proven": false,
+      "executable_proven": false
+    },
+    {
+      "offset": 24673,
+      "bank": 1,
+      "target": 1292,
+      "cpu_address": 24673,
+      "raw_context_hex": "015c02ed42c03a38dcfe01c8f1218760cdc36121e4dc22e0dc77233600211e91cd0c05",
+      "candidate_context": [
+        {
+          "offset": "0x0605E",
+          "bytes": "211e91",
+          "instruction": "LD HL,0x911e"
+        },
+        {
+          "offset": "0x06061",
+          "bytes": "cd0c05",
+          "instruction": "CALL 0x050c"
+        }
+      ],
+      "boundary_proven": false,
+      "executable_proven": false
+    },
+    {
+      "offset": 25055,
+      "bank": 1,
+      "target": 1292,
+      "cpu_address": 25055,
+      "raw_context_hex": "786d9068ed5bbbc07eb72004234e237e23bb20f479c9473addc090300b21cd8bcd0c05",
+      "candidate_context": [
+        {
+          "offset": "0x061DC",
+          "bytes": "21cd8b",
+          "instruction": "LD HL,0x8bcd"
+        },
+        {
+          "offset": "0x061DF",
+          "bytes": "cd0c05",
+          "instruction": "CALL 0x050c"
+        }
+      ],
+      "boundary_proven": false,
+      "executable_proven": false
+    },
+    {
+      "offset": 25115,
+      "bank": 1,
+      "target": 25207,
+      "cpu_address": 25115,
+      "raw_context_hex": "c02a60c001e001ed42c03a2adcfe31c8f13ad4c0b7fa1862212fa51803211eacc37762",
+      "candidate_context": [
+        {
+          "offset": "0x06218",
+          "bytes": "211eac",
+          "instruction": "LD HL,0xac1e"
+        },
+        {
+          "offset": "0x0621B",
+          "bytes": "c37762",
+          "instruction": "JP 0x6277"
+        }
+      ],
+      "boundary_proven": false,
+      "executable_proven": false
+    },
+    {
+      "offset": 25207,
+      "bank": 1,
+      "target": 1292,
+      "cpu_address": 25207,
+      "raw_context_hex": "626aa1623af1c0fe02380dc93adac0fe38300521d98e180821948e1803215c8ecd0c05",
+      "candidate_context": [
+        {
+          "offset": "0x06274",
+          "bytes": "215c8e",
+          "instruction": "LD HL,0x8e5c"
+        },
+        {
+          "offset": "0x06277",
+          "bytes": "cd0c05",
+          "instruction": "CALL 0x050c"
+        }
+      ],
+      "boundary_proven": false,
+      "executable_proven": false
+    },
+    {
+      "offset": 25232,
+      "bank": 1,
+      "target": 25207,
+      "cpu_address": 25232,
+      "raw_context_hex": "948e1803215c8ecd0c05cd950b3a21c0e63f28f6c3e21d3ae8c0b7200621e38fc37762",
+      "candidate_context": [
+        {
+          "offset": "0x0628D",
+          "bytes": "21e38f",
+          "instruction": "LD HL,0x8fe3"
+        },
+        {
+          "offset": "0x06290",
+          "bytes": "c37762",
+          "instruction": "JP 0x6277"
+        }
+      ],
+      "boundary_proven": false,
+      "executable_proven": false
+    },
+    {
+      "offset": 25238,
+      "bank": 1,
+      "target": 25207,
+      "cpu_address": 25238,
+      "raw_context_hex": "8ecd0c05cd950b3a21c0e63f28f6c3e21d3ae8c0b7200621e38fc3776221ea8bc37762",
+      "candidate_context": [
+        {
+          "offset": "0x06293",
+          "bytes": "21ea8b",
+          "instruction": "LD HL,0x8bea"
+        },
+        {
+          "offset": "0x06296",
+          "bytes": "c37762",
+          "instruction": "JP 0x6277"
+        }
+      ],
+      "boundary_proven": false,
+      "executable_proven": false
+    },
+    {
+      "offset": 25727,
+      "bank": 1,
+      "target": 25207,
+      "cpu_address": 25727,
+      "raw_context_hex": "d4c0b7f03e0332f2c03e1ac317633ae2c0b720093c32e2c03e06c3176321bf90c37762",
+      "candidate_context": [
+        {
+          "offset": "0x0647C",
+          "bytes": "21bf90",
+          "instruction": "LD HL,0x90bf"
+        },
+        {
+          "offset": "0x0647F",
+          "bytes": "c37762",
+          "instruction": "JP 0x6277"
+        }
+      ],
+      "boundary_proven": false,
+      "executable_proven": false
+    },
+    {
+      "offset": 25748,
+      "bank": 1,
+      "target": 25207,
+      "cpu_address": 25748,
+      "raw_context_hex": "32e2c03e06c3176321bf90c377623ae8c0b720093c32e8c03e0cc31763215b90c37762",
+      "candidate_context": [
+        {
+          "offset": "0x06491",
+          "bytes": "215b90",
+          "instruction": "LD HL,0x905b"
+        },
+        {
+          "offset": "0x06494",
+          "bytes": "c37762",
+          "instruction": "JP 0x6277"
+        }
+      ],
+      "boundary_proven": false,
+      "executable_proven": false
+    },
+    {
+      "offset": 25805,
+      "bank": 1,
+      "target": 1292,
+      "cpu_address": 25805,
+      "raw_context_hex": "cdc361b7fae7644721ddc08630043eff96477821e4dc22e2dc7723360021308ecd0c05",
+      "candidate_context": [
+        {
+          "offset": "0x064CA",
+          "bytes": "21308e",
+          "instruction": "LD HL,0x8e30"
+        },
+        {
+          "offset": "0x064CD",
+          "bytes": "cd0c05",
+          "instruction": "CALL 0x050c"
+        }
+      ],
+      "boundary_proven": false,
+      "executable_proven": false
+    },
+    {
+      "offset": 25858,
+      "bank": 1,
+      "target": 1292,
+      "cpu_address": 25858,
+      "raw_context_hex": "cd411e18e94721ddc08638047eed444778ed4421e4dc22e2dc7723360021f68dcd0c05",
+      "candidate_context": [
+        {
+          "offset": "0x064FF",
+          "bytes": "21f68d",
+          "instruction": "LD HL,0x8df6"
+        },
+        {
+          "offset": "0x06502",
+          "bytes": "cd0c05",
+          "instruction": "CALL 0x050c"
+        }
+      ],
+      "boundary_proven": false,
+      "executable_proven": false
+    },
+    {
+      "offset": 26161,
+      "bank": 1,
+      "target": 25207,
+      "cpu_address": 26161,
+      "raw_context_hex": "f1ebe921cea71165ac180e2152a811b5ac18062187a811e3ac3ad7c0873001ebc37762",
+      "candidate_context": [
+        {
+          "offset": "0x06624",
+          "bytes": "2187a8",
+          "instruction": "LD HL,0xa887"
+        },
+        {
+          "offset": "0x06627",
+          "bytes": "11e3ac",
+          "instruction": "LD DE,0xace3"
+        },
+        {
+          "offset": "0x0662A",
+          "bytes": "3ad7c0",
+          "instruction": "LD A,(0xc0d7)"
+        },
+        {
+          "offset": "0x0662D",
+          "bytes": "87",
+          "instruction": "ADD A,A"
+        },
+        {
+          "offset": "0x0662E",
+          "bytes": "3001",
+          "instruction": "JR nc,0x6631"
+        },
+        {
+          "offset": "0x06630",
+          "bytes": "eb",
+          "instruction": "EX DE,HL"
+        },
+        {
+          "offset": "0x06631",
+          "bytes": "c37762",
+          "instruction": "JP 0x6277"
+        }
+      ],
+      "boundary_proven": false,
+      "executable_proven": false
+    },
+    {
+      "offset": 26208,
+      "bank": 1,
+      "target": 1292,
+      "cpu_address": 26208,
+      "raw_context_hex": "3c32f7c021ddc07e06648030043eff96477821e4dc22e2dc7723360021e6a0c5cd0c05",
+      "candidate_context": [
+        {
+          "offset": "0x0665C",
+          "bytes": "21e6a0",
+          "instruction": "LD HL,0xa0e6"
+        },
+        {
+          "offset": "0x0665F",
+          "bytes": "c5",
+          "instruction": "PUSH BC"
+        },
+        {
+          "offset": "0x06660",
+          "bytes": "cd0c05",
+          "instruction": "CALL 0x050c"
+        }
+      ],
+      "boundary_proven": false,
+      "executable_proven": false
+    },
+    {
+      "offset": 26229,
+      "bank": 1,
+      "target": 25207,
+      "cpu_address": 26229,
+      "raw_context_hex": "22e2dc7723360021e6a0c5cd0c05c1c521ddc034cd411ec110f5c37a622177a0c37762",
+      "candidate_context": [
+        {
+          "offset": "0x06672",
+          "bytes": "2177a0",
+          "instruction": "LD HL,0xa077"
+        },
+        {
+          "offset": "0x06675",
+          "bytes": "c37762",
+          "instruction": "JP 0x6277"
+        }
+      ],
+      "boundary_proven": false,
+      "executable_proven": false
+    },
+    {
+      "offset": 26235,
+      "bank": 1,
+      "target": 25207,
+      "cpu_address": 26235,
+      "raw_context_hex": "0021e6a0c5cd0c05c1c521ddc034cd411ec110f5c37a622177a0c37762217fa1c37762",
+      "candidate_context": [
+        {
+          "offset": "0x06678",
+          "bytes": "217fa1",
+          "instruction": "LD HL,0xa17f"
+        },
+        {
+          "offset": "0x0667B",
+          "bytes": "c37762",
+          "instruction": "JP 0x6277"
+        }
+      ],
+      "boundary_proven": false,
+      "executable_proven": false
+    },
+    {
+      "offset": 26266,
+      "bank": 1,
+      "target": 25207,
+      "cpu_address": 26266,
+      "raw_context_hex": "a1c377623aa6c0e677fe14c02a60c0ed42c0f1eb3abbc0be235e23562320f8ebc37762",
+      "candidate_context": [
+        {
+          "offset": "0x0669A",
+          "bytes": "c37762",
+          "instruction": "JP 0x6277"
+        }
+      ],
+      "boundary_proven": false,
+      "executable_proven": false
+    },
+    {
+      "offset": 26314,
+      "bank": 1,
+      "target": 1292,
+      "cpu_address": 26314,
+      "raw_context_hex": "c07b32a7c03e16321dc0c93aa6c0e677fe14c02a60c001dc02ed42c0f1210eb9cd0c05",
+      "candidate_context": [
+        {
+          "offset": "0x066C7",
+          "bytes": "210eb9",
+          "instruction": "LD HL,0xb90e"
+        },
+        {
+          "offset": "0x066CA",
+          "bytes": "cd0c05",
+          "instruction": "CALL 0x050c"
+        }
+      ],
+      "boundary_proven": false,
+      "executable_proven": false
+    },
+    {
+      "offset": 26325,
+      "bank": 1,
+      "target": 25207,
+      "cpu_address": 26325,
+      "raw_context_hex": "3aa6c0e677fe14c02a60c001dc02ed42c0f1210eb9cd0c05cdbc602130b9fe00ca7762",
+      "candidate_context": [
+        {
+          "offset": "0x066D0",
+          "bytes": "2130b9",
+          "instruction": "LD HL,0xb930"
+        },
+        {
+          "offset": "0x066D3",
+          "bytes": "fe00",
+          "instruction": "CP 0"
+        },
+        {
+          "offset": "0x066D5",
+          "bytes": "ca7762",
+          "instruction": "JP z,0x6277"
+        }
+      ],
+      "boundary_proven": false,
+      "executable_proven": false
+    },
+    {
+      "offset": 26382,
+      "bank": 1,
+      "target": 25207,
+      "cpu_address": 26382,
+      "raw_context_hex": "73c03e08321dc0c93a73c087210067c3180008671967a2670a68cd0b19214db9cd7762",
+      "candidate_context": [
+        {
+          "offset": "0x0670B",
+          "bytes": "214db9",
+          "instruction": "LD HL,0xb94d"
+        },
+        {
+          "offset": "0x0670E",
+          "bytes": "cd7762",
+          "instruction": "CALL 0x6277"
+        }
+      ],
+      "boundary_proven": false,
+      "executable_proven": false
+    },
+    {
+      "offset": 26482,
+      "bank": 1,
+      "target": 25207,
+      "cpu_address": 26482,
+      "raw_context_hex": "1167c300693a0cdcb720c073ed530cdccd00693a0cdcfe3821d7b928032120bacd7762",
+      "candidate_context": [
+        {
+          "offset": "0x0676F",
+          "bytes": "2120ba",
+          "instruction": "LD HL,0xba20"
+        },
+        {
+          "offset": "0x06772",
+          "bytes": "cd7762",
+          "instruction": "CALL 0x6277"
+        }
+      ],
+      "boundary_proven": false,
+      "executable_proven": false
+    },
+    {
+      "offset": 26683,
+      "bank": 1,
+      "target": 1292,
+      "cpu_address": 26683,
+      "raw_context_hex": "1310f221ddc0b7fa43688630043eff964f7921e4dc22e0dc77233600f5215fb9cd0c05",
+      "candidate_context": [
+        {
+          "offset": "0x06838",
+          "bytes": "215fb9",
+          "instruction": "LD HL,0xb95f"
+        },
+        {
+          "offset": "0x0683B",
+          "bytes": "cd0c05",
+          "instruction": "CALL 0x050c"
+        }
+      ],
+      "boundary_proven": false,
+      "executable_proven": false
+    },
+    {
+      "offset": 26715,
+      "bank": 1,
+      "target": 1292,
+      "cpu_address": 26715,
+      "raw_context_hex": "cd0c05c10e0118228638047eed444f79ed4421e4dc22e0dc77233600f52182b9cd0c05",
+      "candidate_context": [
+        {
+          "offset": "0x06858",
+          "bytes": "2182b9",
+          "instruction": "LD HL,0xb982"
+        },
+        {
+          "offset": "0x0685B",
+          "bytes": "cd0c05",
+          "instruction": "CALL 0x050c"
+        }
+      ],
+      "boundary_proven": false,
+      "executable_proven": false
+    },
+    {
+      "offset": 26752,
+      "bank": 1,
+      "target": 1292,
+      "cpu_address": 26752,
+      "raw_context_hex": "28110eff47c53addc08132ddc0cd411ec110f2cd7a623addc0fe0a382421bfb9cd0c05",
+      "candidate_context": [
+        {
+          "offset": "0x0687D",
+          "bytes": "21bfb9",
+          "instruction": "LD HL,0xb9bf"
+        },
+        {
+          "offset": "0x06880",
+          "bytes": "cd0c05",
+          "instruction": "CALL 0x050c"
+        }
+      ],
+      "boundary_proven": false,
+      "executable_proven": false
+    },
+    {
+      "offset": 26768,
+      "bank": 1,
+      "target": 1292,
+      "cpu_address": 26768,
+      "raw_context_hex": "c110f2cd7a623addc0fe0a382421bfb9cd0c05cdb160fe002817cd0b19218ebacd0c05",
+      "candidate_context": [
+        {
+          "offset": "0x0688D",
+          "bytes": "218eba",
+          "instruction": "LD HL,0xba8e"
+        },
+        {
+          "offset": "0x06890",
+          "bytes": "cd0c05",
+          "instruction": "CALL 0x050c"
+        }
+      ],
+      "boundary_proven": false,
+      "executable_proven": false
+    },
+    {
+      "offset": 26788,
+      "bank": 1,
+      "target": 25207,
+      "cpu_address": 26788,
+      "raw_context_hex": "b160fe002817cd0b19218ebacd0c053e0acdd561cd7a623e013273c0c92130b9cd7762",
+      "candidate_context": [
+        {
+          "offset": "0x068A1",
+          "bytes": "2130b9",
+          "instruction": "LD HL,0xb930"
+        },
+        {
+          "offset": "0x068A4",
+          "bytes": "cd7762",
+          "instruction": "CALL 0x6277"
+        }
+      ],
+      "boundary_proven": false,
+      "executable_proven": false
+    },
+    {
+      "offset": 29678,
+      "bank": 1,
+      "target": 30619,
+      "cpu_address": 29678,
+      "raw_context_hex": "1d3e0c321dc0c900152a3f00000000e57352748576da79cdb777cd2c7821708dcd9b77",
+      "candidate_context": [
+        {
+          "offset": "0x073EB",
+          "bytes": "21708d",
+          "instruction": "LD HL,0x8d70"
+        },
+        {
+          "offset": "0x073EE",
+          "bytes": "cd9b77",
+          "instruction": "CALL 0x779b"
+        }
+      ],
+      "boundary_proven": false,
+      "executable_proven": false
+    },
+    {
+      "offset": 29689,
+      "bank": 1,
+      "target": 29764,
+      "cpu_address": 29689,
+      "raw_context_hex": "00000000e57352748576da79cdb777cd2c7821708dcd9b77cdb177280621b68dc34474",
+      "candidate_context": [
+        {
+          "offset": "0x073F6",
+          "bytes": "21b68d",
+          "instruction": "LD HL,0x8db6"
+        },
+        {
+          "offset": "0x073F9",
+          "bytes": "c34474",
+          "instruction": "JP 0x7444"
+        }
+      ],
+      "boundary_proven": false,
+      "executable_proven": false
+    },
+    {
+      "offset": 29695,
+      "bank": 1,
+      "target": 30619,
+      "cpu_address": 29695,
+      "raw_context_hex": "52748576da79cdb777cd2c7821708dcd9b77cdb177280621b68dc3447421a78dcd9b77",
+      "candidate_context": [
+        {
+          "offset": "0x073FC",
+          "bytes": "21a78d",
+          "instruction": "LD HL,0x8da7"
+        },
+        {
+          "offset": "0x073FF",
+          "bytes": "cd9b77",
+          "instruction": "CALL 0x779b"
+        }
+      ],
+      "boundary_proven": false,
+      "executable_proven": false
+    },
+    {
+      "offset": 29764,
+      "bank": 1,
+      "target": 30619,
+      "cpu_address": 29764,
+      "raw_context_hex": "8721c278cfeb21b0c0015002cd4404edb03a36c0323080cd3a04cd2c7821dd8dcd9b77",
+      "candidate_context": [
+        {
+          "offset": "0x07441",
+          "bytes": "21dd8d",
+          "instruction": "LD HL,0x8ddd"
+        },
+        {
+          "offset": "0x07444",
+          "bytes": "cd9b77",
+          "instruction": "CALL 0x779b"
+        }
+      ],
+      "boundary_proven": false,
+      "executable_proven": false
+    },
+    {
+      "offset": 29850,
+      "bank": 1,
+      "target": 30619,
+      "cpu_address": 29850,
+      "raw_context_hex": "00edb97987218b74df18e3191b060d1e0cc674d974ea74fa740a751d7521ea8bc39b77",
+      "candidate_context": [
+        {
+          "offset": "0x07497",
+          "bytes": "21ea8b",
+          "instruction": "LD HL,0x8bea"
+        },
+        {
+          "offset": "0x0749A",
+          "bytes": "c39b77",
+          "instruction": "JP 0x779b"
+        }
+      ],
+      "boundary_proven": false,
+      "executable_proven": false
+    },
+    {
+      "offset": 29877,
+      "bank": 1,
+      "target": 30619,
+      "cpu_address": 29877,
+      "raw_context_hex": "1d7521ea8bc39b7721018c18f821458c18f37ab7c8473addc090380dc521c28bcd9b77",
+      "candidate_context": [
+        {
+          "offset": "0x074B2",
+          "bytes": "21c28b",
+          "instruction": "LD HL,0x8bc2"
+        },
+        {
+          "offset": "0x074B5",
+          "bytes": "cd9b77",
+          "instruction": "CALL 0x779b"
+        }
+      ],
+      "boundary_proven": false,
+      "executable_proven": false
+    },
+    {
+      "offset": 29889,
+      "bank": 1,
+      "target": 30619,
+      "cpu_address": 29889,
+      "raw_context_hex": "f821458c18f37ab7c8473addc090380dc521c28bcd9b77c1cde761b7c921cd8bcd9b77",
+      "candidate_context": [
+        {
+          "offset": "0x074BE",
+          "bytes": "21cd8b",
+          "instruction": "LD HL,0x8bcd"
+        },
+        {
+          "offset": "0x074C1",
+          "bytes": "cd9b77",
+          "instruction": "CALL 0x779b"
+        }
+      ],
+      "boundary_proven": false,
+      "executable_proven": false
+    },
+    {
+      "offset": 30066,
+      "bank": 1,
+      "target": 30619,
+      "cpu_address": 30066,
+      "raw_context_hex": "cd1677c83ae8c0b72805cd977418efcd3875cda87438e73e0132e8c0c921e38fcd9b77",
+      "candidate_context": [
+        {
+          "offset": "0x0756F",
+          "bytes": "21e38f",
+          "instruction": "LD HL,0x8fe3"
+        },
+        {
+          "offset": "0x07572",
+          "bytes": "cd9b77",
+          "instruction": "CALL 0x779b"
+        }
+      ],
+      "boundary_proven": false,
+      "executable_proven": false
+    },
+    {
+      "offset": 30226,
+      "bank": 1,
+      "target": 30619,
+      "cpu_address": 30226,
+      "raw_context_hex": "8330023effba38017a77cd4e1e18c4cda274cd950b3a21c0e63028f6c921fd8fcd9b77",
+      "candidate_context": [
+        {
+          "offset": "0x0760F",
+          "bytes": "21fd8f",
+          "instruction": "LD HL,0x8ffd"
+        },
+        {
+          "offset": "0x07612",
+          "bytes": "cd9b77",
+          "instruction": "CALL 0x779b"
+        }
+      ],
+      "boundary_proven": false,
+      "executable_proven": false
+    },
+    {
+      "offset": 30376,
+      "bank": 1,
+      "target": 30619,
+      "cpu_address": 30376,
+      "raw_context_hex": "3abbc0210077be235e2320fa21e4dc22e0dc73233600217b8c7bb32003213f8dcd9b77",
+      "candidate_context": [
+        {
+          "offset": "0x076A5",
+          "bytes": "213f8d",
+          "instruction": "LD HL,0x8d3f"
+        },
+        {
+          "offset": "0x076A8",
+          "bytes": "cd9b77",
+          "instruction": "CALL 0x779b"
+        }
+      ],
+      "boundary_proven": false,
+      "executable_proven": false
+    },
+    {
+      "offset": 30461,
+      "bank": 1,
+      "target": 29764,
+      "cpu_address": 30461,
+      "raw_context_hex": "2000edb02140d91142d901be01edb0cd9c22cda40a21f58c1806cd477421c78cc34474",
+      "candidate_context": [
+        {
+          "offset": "0x076FA",
+          "bytes": "21c78c",
+          "instruction": "LD HL,0x8cc7"
+        },
+        {
+          "offset": "0x076FD",
+          "bytes": "c34474",
+          "instruction": "JP 0x7444"
+        }
+      ],
+      "boundary_proven": false,
+      "executable_proven": false
+    },
+    {
+      "offset": 30638,
+      "bank": 1,
+      "target": 1316,
+      "cpu_address": 30638,
+      "raw_context_hex": "c5d5dde5cd1808dde1d1c1f1c9e521ff182240d92140d91142d901be01edb0e1c32405",
+      "candidate_context": [
+        {
+          "offset": "0x077A2",
+          "bytes": "2140d9",
+          "instruction": "LD HL,0xd940"
+        },
+        {
+          "offset": "0x077A5",
+          "bytes": "1142d9",
+          "instruction": "LD DE,0xd942"
+        },
+        {
+          "offset": "0x077A8",
+          "bytes": "01be01",
+          "instruction": "LD BC,0x1be"
+        },
+        {
+          "offset": "0x077AB",
+          "bytes": "edb0",
+          "instruction": "LDIR"
+        },
+        {
+          "offset": "0x077AD",
+          "bytes": "e1",
+          "instruction": "POP HL"
+        },
+        {
+          "offset": "0x077AE",
+          "bytes": "c32405",
+          "instruction": "JP 0x0524"
+        }
+      ],
+      "boundary_proven": false,
+      "executable_proven": false
+    },
+    {
+      "offset": 30931,
+      "bank": 1,
+      "target": 30619,
+      "cpu_address": 30931,
+      "raw_context_hex": "20004a4555204e4f2e20332000430000840088008cacd66cd72cd83e06cd4a79cd9b77",
+      "candidate_context": [
+        {
+          "offset": "0x078D3",
+          "bytes": "cd9b77",
+          "instruction": "CALL 0x779b"
+        }
+      ],
+      "boundary_proven": false,
+      "executable_proven": false
+    },
+    {
+      "offset": 31264,
+      "bank": 1,
+      "target": 29764,
+      "cpu_address": 31264,
+      "raw_context_hex": "aa097a567ac87a097b3ae4c0fe01282c303e3af3c0b7200b3e0132f3c02189adc34474",
+      "candidate_context": [
+        {
+          "offset": "0x07A1D",
+          "bytes": "2189ad",
+          "instruction": "LD HL,0xad89"
+        },
+        {
+          "offset": "0x07A20",
+          "bytes": "c34474",
+          "instruction": "JP 0x7444"
+        }
+      ],
+      "boundary_proven": false,
+      "executable_proven": false
+    },
+    {
+      "offset": 31276,
+      "bank": 1,
+      "target": 29764,
+      "cpu_address": 31276,
+      "raw_context_hex": "fe01282c303e3af3c0b7200b3e0132f3c02189adc344743ae8c0b7200621daadc34474",
+      "candidate_context": [
+        {
+          "offset": "0x07A29",
+          "bytes": "21daad",
+          "instruction": "LD HL,0xadda"
+        },
+        {
+          "offset": "0x07A2C",
+          "bytes": "c34474",
+          "instruction": "JP 0x7444"
+        }
+      ],
+      "boundary_proven": false,
+      "executable_proven": false
+    },
+    {
+      "offset": 31344,
+      "bank": 1,
+      "target": 30619,
+      "cpu_address": 31344,
+      "raw_context_hex": "214ab0c32a7b3ae5c0fe01283030583af4c0b7216fb028032165b13e0132f4c0cd9b77",
+      "candidate_context": [
+        {
+          "offset": "0x07A68",
+          "bytes": "2165b1",
+          "instruction": "LD HL,0xb165"
+        },
+        {
+          "offset": "0x07A6B",
+          "bytes": "3e01",
+          "instruction": "LD A,1"
+        },
+        {
+          "offset": "0x07A6D",
+          "bytes": "32f4c0",
+          "instruction": "LD (0xc0f4),A"
+        },
+        {
+          "offset": "0x07A70",
+          "bytes": "cd9b77",
+          "instruction": "CALL 0x779b"
+        }
+      ],
+      "boundary_proven": false,
+      "executable_proven": false
+    },
+    {
+      "offset": 31387,
+      "bank": 1,
+      "target": 30619,
+      "cpu_address": 31387,
+      "raw_context_hex": "fe3238430632cde761215db311e5c0c3187b3adac0fe482125b2da2a7b2133b2cd9b77",
+      "candidate_context": [
+        {
+          "offset": "0x07A98",
+          "bytes": "2133b2",
+          "instruction": "LD HL,0xb233"
+        },
+        {
+          "offset": "0x07A9B",
+          "bytes": "cd9b77",
+          "instruction": "CALL 0x779b"
+        }
+      ],
+      "boundary_proven": false,
+      "executable_proven": false
+    },
+    {
+      "offset": 31423,
+      "bank": 1,
+      "target": 29764,
+      "cpu_address": 31423,
+      "raw_context_hex": "b17720193addc0fe6438180664cde76121e5b311e5c018612133b3186e21a0b3c34474",
+      "candidate_context": [
+        {
+          "offset": "0x07ABC",
+          "bytes": "21a0b3",
+          "instruction": "LD HL,0xb3a0"
+        },
+        {
+          "offset": "0x07ABF",
+          "bytes": "c34474",
+          "instruction": "JP 0x7444"
+        }
+      ],
+      "boundary_proven": false,
+      "executable_proven": false
+    },
+    {
+      "offset": 31429,
+      "bank": 1,
+      "target": 29764,
+      "cpu_address": 31429,
+      "raw_context_hex": "c0fe6438180664cde76121e5b311e5c018612133b3186e21a0b3c3447421cd8bc34474",
+      "candidate_context": [
+        {
+          "offset": "0x07AC2",
+          "bytes": "21cd8b",
+          "instruction": "LD HL,0x8bcd"
+        },
+        {
+          "offset": "0x07AC5",
+          "bytes": "c34474",
+          "instruction": "JP 0x7444"
+        }
+      ],
+      "boundary_proven": false,
+      "executable_proven": false
+    },
+    {
+      "offset": 31494,
+      "bank": 1,
+      "target": 29764,
+      "cpu_address": 31494,
+      "raw_context_hex": "7e28152310f93e0132f5c02121b611e6c0181f2147b7182c21ebb518272131b4c34474",
+      "candidate_context": [
+        {
+          "offset": "0x07B03",
+          "bytes": "2131b4",
+          "instruction": "LD HL,0xb431"
+        },
+        {
+          "offset": "0x07B06",
+          "bytes": "c34474",
+          "instruction": "JP 0x7444"
+        }
+      ],
+      "boundary_proven": false,
+      "executable_proven": false
+    },
+    {
+      "offset": 31536,
+      "bank": 1,
+      "target": 29764,
+      "cpu_address": 31536,
+      "raw_context_hex": "21cab81815217eb71a3c123d200c3adcc0c618fe80300332dcc03adcc032dbc0c34474",
+      "candidate_context": [
+        {
+          "offset": "0x07B15",
+          "bytes": "217eb7",
+          "instruction": "LD HL,0xb77e"
+        },
+        {
+          "offset": "0x07B18",
+          "bytes": "1a",
+          "instruction": "LD A,(DE)"
+        },
+        {
+          "offset": "0x07B19",
+          "bytes": "3c",
+          "instruction": "INC A"
+        },
+        {
+          "offset": "0x07B1A",
+          "bytes": "12",
+          "instruction": "LD (DE),A"
+        },
+        {
+          "offset": "0x07B1B",
+          "bytes": "3d",
+          "instruction": "DEC A"
+        },
+        {
+          "offset": "0x07B1C",
+          "bytes": "200c",
+          "instruction": "JR nz,0x7b2a"
+        },
+        {
+          "offset": "0x07B1E",
+          "bytes": "3adcc0",
+          "instruction": "LD A,(0xc0dc)"
+        },
+        {
+          "offset": "0x07B21",
+          "bytes": "c618",
+          "instruction": "ADD A,0x18"
+        },
+        {
+          "offset": "0x07B23",
+          "bytes": "fe80",
+          "instruction": "CP 0x80"
+        },
+        {
+          "offset": "0x07B25",
+          "bytes": "3003",
+          "instruction": "JR nc,0x7b2a"
+        },
+        {
+          "offset": "0x07B27",
+          "bytes": "32dcc0",
+          "instruction": "LD (0xc0dc),A"
+        },
+        {
+          "offset": "0x07B2A",
+          "bytes": "3adcc0",
+          "instruction": "LD A,(0xc0dc)"
+        },
+        {
+          "offset": "0x07B2D",
+          "bytes": "32dbc0",
+          "instruction": "LD (0xc0db),A"
+        },
+        {
+          "offset": "0x07B30",
+          "bytes": "c34474",
+          "instruction": "JP 0x7444"
+        }
+      ],
+      "boundary_proven": false,
+      "executable_proven": false
+    },
+    {
+      "offset": 145842,
+      "bank": 8,
+      "target": 1316,
+      "cpu_address": 47538,
+      "raw_context_hex": "1f07030000c3c3a5e7ef870100fefcfecef8f0c0001058c8c8d8e97207060082c32405",
+      "candidate_context": [
+        {
+          "offset": "0x239B2",
+          "bytes": "c32405",
+          "instruction": "JP 0x0524"
+        }
+      ],
+      "boundary_proven": false,
+      "executable_proven": false
+    }
+  ],
+  "verified_runtime_callers": [
+    {
+      "frontend": 1292,
+      "stack_return": 24676,
+      "possible_call_site": 24673,
+      "selected_text_pcs": [
+        37150
+      ],
+      "event_occurrences": 587,
+      "example": {
+        "trace": "natural-service-route/sms-npc-d9-healer94-rest01",
+        "frame": 291314,
+        "outside": 60,
+        "room": 159
+      }
+    },
+    {
+      "frontend": 1292,
+      "stack_return": 25058,
+      "possible_call_site": 25055,
+      "selected_text_pcs": [
+        35789
+      ],
+      "event_occurrences": 15,
+      "example": {
+        "trace": "natural-service-route/sms-npc-equipment-returns-27-return01",
+        "frame": 486240,
+        "outside": 92,
+        "room": 95
+      }
+    },
+    {
+      "frontend": 1292,
+      "stack_return": 25210,
+      "possible_call_site": 25207,
+      "selected_text_pcs": [
+        35818,
+        36444,
+        36500,
+        36569,
+        36835,
+        36897,
+        36917,
+        36955,
+        37055,
+        37249,
+        37311,
+        37347,
+        37447,
+        37544,
+        37574,
+        37642,
+        37719,
+        37816,
+        37915,
+        37995,
+        38110,
+        38174,
+        38348,
+        38417,
+        38557,
+        38636,
+        38720,
+        38984,
+        39057,
+        39201,
+        39237,
+        39337,
+        39409,
+        39628,
+        39741,
+        39794,
+        39877,
+        39934,
+        39945,
+        40026,
+        40164,
+        40244,
+        40410,
+        40460,
+        40568,
+        40732,
+        40853,
+        40926,
+        41023,
+        41079,
+        41343,
+        41379,
+        41474,
+        41540,
+        41678,
+        41820,
+        41930,
+        42065,
+        42145,
+        42158,
+        42177,
+        42287,
+        42344,
+        42432,
+        42529,
+        42608,
+        42661,
+        42751,
+        42908,
+        42958,
+        43090,
+        43143,
+        43260,
+        43319,
+        43414,
+        43503,
+        43561,
+        43617,
+        43715,
+        43789,
+        44062,
+        44133,
+        44213,
+        44259,
+        47408,
+        47437,
+        47575,
+        47648
+      ],
+      "event_occurrences": 10217,
+      "example": {
+        "trace": "natural-service-route/sms-npc-d8-dragonmail-gift01",
+        "frame": 2979,
+        "outside": 148,
+        "room": 0
+      }
+    },
+    {
+      "frontend": 1292,
+      "stack_return": 25808,
+      "possible_call_site": 25805,
+      "selected_text_pcs": [
+        36400
+      ],
+      "event_occurrences": 1304,
+      "example": {
+        "trace": "natural-service-route/sms-npc-d8-dragonmail-gift01",
+        "frame": 49461,
+        "outside": 212,
+        "room": 63
+      }
+    },
+    {
+      "frontend": 1292,
+      "stack_return": 25861,
+      "possible_call_site": 25858,
+      "selected_text_pcs": [
+        36342
+      ],
+      "event_occurrences": 156,
+      "example": {
+        "trace": "natural-service-route/sms-npc-gold-census-f4-contact01",
+        "frame": 480858,
+        "outside": 219,
+        "room": 63
+      }
+    },
+    {
+      "frontend": 1292,
+      "stack_return": 26211,
+      "possible_call_site": 26208,
+      "selected_text_pcs": [
+        41190
+      ],
+      "event_occurrences": 134,
+      "example": {
+        "trace": "natural-service-route/sms-npc-dragon-shield-gift02",
+        "frame": 421562,
+        "outside": 34,
+        "room": 7
+      }
+    },
+    {
+      "frontend": 1292,
+      "stack_return": 26317,
+      "possible_call_site": 26314,
+      "selected_text_pcs": [
+        47374
+      ],
+      "event_occurrences": 20,
+      "example": {
+        "trace": "natural-service-route/sms-npc-equipment-returns-27-return01",
+        "frame": 486076,
+        "outside": 92,
+        "room": 95
+      }
+    },
+    {
+      "frontend": 1292,
+      "stack_return": 26686,
+      "possible_call_site": 26683,
+      "selected_text_pcs": [
+        47455
+      ],
+      "event_occurrences": 8,
+      "example": {
+        "trace": "natural-service-route/sms-npc-minigame-13-play-visit01",
+        "frame": 484748,
+        "outside": 19,
+        "room": 11
+      }
+    },
+    {
+      "frontend": 1292,
+      "stack_return": 26718,
+      "possible_call_site": 26715,
+      "selected_text_pcs": [
+        47490
+      ],
+      "event_occurrences": 6,
+      "example": {
+        "trace": "natural-service-route/sms-npc-minigame-13-play-visit01",
+        "frame": 484220,
+        "outside": 19,
+        "room": 11
+      }
+    },
+    {
+      "frontend": 1292,
+      "stack_return": 26755,
+      "possible_call_site": 26752,
+      "selected_text_pcs": [
+        47551
+      ],
+      "event_occurrences": 14,
+      "example": {
+        "trace": "natural-service-route/sms-npc-minigame-13-play-visit01",
+        "frame": 484365,
+        "outside": 19,
+        "room": 11
+      }
+    },
+    {
+      "frontend": 1292,
+      "stack_return": 26771,
+      "possible_call_site": 26768,
+      "selected_text_pcs": [
+        47758
+      ],
+      "event_occurrences": 9,
+      "example": {
+        "trace": "natural-service-route/sms-npc-minigame-13-play-visit01",
+        "frame": 484521,
+        "outside": 19,
+        "room": 11
+      }
+    },
+    {
+      "frontend": 1316,
+      "stack_return": 24676,
+      "possible_call_site": 24673,
+      "selected_text_pcs": [
+        37150
+      ],
+      "event_occurrences": 587,
+      "example": {
+        "trace": "natural-service-route/sms-npc-d9-healer94-rest01",
+        "frame": 291316,
+        "outside": 60,
+        "room": 159
+      }
+    },
+    {
+      "frontend": 1316,
+      "stack_return": 25058,
+      "possible_call_site": 25055,
+      "selected_text_pcs": [
+        35789
+      ],
+      "event_occurrences": 15,
+      "example": {
+        "trace": "natural-service-route/sms-npc-equipment-returns-27-return01",
+        "frame": 486242,
+        "outside": 92,
+        "room": 95
+      }
+    },
+    {
+      "frontend": 1316,
+      "stack_return": 25210,
+      "possible_call_site": 25207,
+      "selected_text_pcs": [
+        35818,
+        36444,
+        36500,
+        36569,
+        36835,
+        36897,
+        36917,
+        36955,
+        37055,
+        37249,
+        37311,
+        37347,
+        37447,
+        37544,
+        37574,
+        37642,
+        37719,
+        37816,
+        37915,
+        37995,
+        38110,
+        38174,
+        38348,
+        38417,
+        38557,
+        38636,
+        38720,
+        38984,
+        39057,
+        39201,
+        39237,
+        39337,
+        39409,
+        39628,
+        39741,
+        39794,
+        39877,
+        39934,
+        39945,
+        40026,
+        40164,
+        40244,
+        40410,
+        40460,
+        40568,
+        40732,
+        40853,
+        40926,
+        41023,
+        41079,
+        41343,
+        41379,
+        41474,
+        41540,
+        41678,
+        41820,
+        41930,
+        42065,
+        42145,
+        42158,
+        42177,
+        42287,
+        42344,
+        42432,
+        42529,
+        42608,
+        42661,
+        42751,
+        42908,
+        42958,
+        43090,
+        43143,
+        43260,
+        43319,
+        43414,
+        43503,
+        43561,
+        43617,
+        43715,
+        43789,
+        44062,
+        44133,
+        44213,
+        44259,
+        47408,
+        47437,
+        47575,
+        47648
+      ],
+      "event_occurrences": 10208,
+      "example": {
+        "trace": "natural-service-route/sms-npc-d8-dragonmail-gift01",
+        "frame": 2981,
+        "outside": 148,
+        "room": 0
+      }
+    },
+    {
+      "frontend": 1316,
+      "stack_return": 25808,
+      "possible_call_site": 25805,
+      "selected_text_pcs": [
+        36400
+      ],
+      "event_occurrences": 1304,
+      "example": {
+        "trace": "natural-service-route/sms-npc-d8-dragonmail-gift01",
+        "frame": 49463,
+        "outside": 212,
+        "room": 63
+      }
+    },
+    {
+      "frontend": 1316,
+      "stack_return": 25861,
+      "possible_call_site": 25858,
+      "selected_text_pcs": [
+        36342
+      ],
+      "event_occurrences": 156,
+      "example": {
+        "trace": "natural-service-route/sms-npc-gold-census-f4-contact01",
+        "frame": 480860,
+        "outside": 219,
+        "room": 63
+      }
+    },
+    {
+      "frontend": 1316,
+      "stack_return": 26211,
+      "possible_call_site": 26208,
+      "selected_text_pcs": [
+        41190
+      ],
+      "event_occurrences": 134,
+      "example": {
+        "trace": "natural-service-route/sms-npc-dragon-shield-gift02",
+        "frame": 421564,
+        "outside": 34,
+        "room": 7
+      }
+    },
+    {
+      "frontend": 1316,
+      "stack_return": 26317,
+      "possible_call_site": 26314,
+      "selected_text_pcs": [
+        47374
+      ],
+      "event_occurrences": 20,
+      "example": {
+        "trace": "natural-service-route/sms-npc-equipment-returns-27-return01",
+        "frame": 486078,
+        "outside": 92,
+        "room": 95
+      }
+    },
+    {
+      "frontend": 1316,
+      "stack_return": 26686,
+      "possible_call_site": 26683,
+      "selected_text_pcs": [
+        47455
+      ],
+      "event_occurrences": 8,
+      "example": {
+        "trace": "natural-service-route/sms-npc-minigame-13-play-visit01",
+        "frame": 484750,
+        "outside": 19,
+        "room": 11
+      }
+    },
+    {
+      "frontend": 1316,
+      "stack_return": 26718,
+      "possible_call_site": 26715,
+      "selected_text_pcs": [
+        47490
+      ],
+      "event_occurrences": 6,
+      "example": {
+        "trace": "natural-service-route/sms-npc-minigame-13-play-visit01",
+        "frame": 484222,
+        "outside": 19,
+        "room": 11
+      }
+    },
+    {
+      "frontend": 1316,
+      "stack_return": 26755,
+      "possible_call_site": 26752,
+      "selected_text_pcs": [
+        47551
+      ],
+      "event_occurrences": 14,
+      "example": {
+        "trace": "natural-service-route/sms-npc-minigame-13-play-visit01",
+        "frame": 484367,
+        "outside": 19,
+        "room": 11
+      }
+    },
+    {
+      "frontend": 1316,
+      "stack_return": 26771,
+      "possible_call_site": 26768,
+      "selected_text_pcs": [
+        47758
+      ],
+      "event_occurrences": 9,
+      "example": {
+        "trace": "natural-service-route/sms-npc-minigame-13-play-visit01",
+        "frame": 484523,
+        "outside": 19,
+        "room": 11
+      }
+    },
+    {
+      "frontend": 1316,
+      "stack_return": 29681,
+      "possible_call_site": 29678,
+      "selected_text_pcs": [
+        36208
+      ],
+      "event_occurrences": 557,
+      "example": {
+        "trace": "natural-service-route/sms-npc-inn-location-14-accept01",
+        "frame": 443511,
+        "outside": 46,
+        "room": 0
+      }
+    },
+    {
+      "frontend": 1316,
+      "stack_return": 29698,
+      "possible_call_site": 29695,
+      "selected_text_pcs": [
+        36263
+      ],
+      "event_occurrences": 24,
+      "example": {
+        "trace": "natural-service-route/sms-npc-save-2e-slot0-01",
+        "frame": 407881,
+        "outside": 46,
+        "room": 0
+      }
+    },
+    {
+      "frontend": 1316,
+      "stack_return": 29767,
+      "possible_call_site": 29764,
+      "selected_text_pcs": [
+        36039,
+        36085,
+        36278,
+        36317,
+        43880,
+        44425,
+        44601,
+        44949,
+        45014,
+        45130,
+        45875,
+        45917,
+        46053,
+        46167,
+        46625,
+        46919,
+        46974,
+        47306
+      ],
+      "event_occurrences": 2981,
+      "example": {
+        "trace": "natural-service-route/sms-npc-d8-dragonmail-gift01",
+        "frame": 1490,
+        "outside": 0,
+        "room": 0
+      }
+    },
+    {
+      "frontend": 1316,
+      "stack_return": 29827,
+      "possible_call_site": 29824,
+      "selected_text_pcs": [
+        35818,
+        35841,
+        35909
+      ],
+      "event_occurrences": 12,
+      "example": {
+        "trace": "natural-service-route/sms-npc-key-capacity99-01",
+        "frame": 532280,
+        "outside": 148,
+        "room": 0
+      }
+    },
+    {
+      "frontend": 1316,
+      "stack_return": 29880,
+      "possible_call_site": 29877,
+      "selected_text_pcs": [
+        35778
+      ],
+      "event_occurrences": 733,
+      "example": {
+        "trace": "natural-service-route/sms-npc-d8-dragonmail-gift01",
+        "frame": 73480,
+        "outside": 199,
+        "room": 1
+      }
+    },
+    {
+      "frontend": 1316,
+      "stack_return": 29892,
+      "possible_call_site": 29889,
+      "selected_text_pcs": [
+        35789
+      ],
+      "event_occurrences": 10,
+      "example": {
+        "trace": "natural-service-route/sms-npc-merchant-variant-apple-poor-apple-poor-choices01",
+        "frame": 485260,
+        "outside": 240,
+        "room": 47
+      }
+    },
+    {
+      "frontend": 1316,
+      "stack_return": 30047,
+      "possible_call_site": 30044,
+      "selected_text_pcs": [
+        35818
+      ],
+      "event_occurrences": 1,
+      "example": {
+        "trace": "natural-service-route/sms-npc-merchant-variant-apple-only-apple-only-choices01",
+        "frame": 484360,
+        "outside": 240,
+        "room": 47
+      }
+    },
+    {
+      "frontend": 1316,
+      "stack_return": 30069,
+      "possible_call_site": 30066,
+      "selected_text_pcs": [
+        36835
+      ],
+      "event_occurrences": 220,
+      "example": {
+        "trace": "natural-service-route/sms-npc-inn-location-14-accept01",
+        "frame": 446513,
+        "outside": 94,
+        "room": 47
+      }
+    },
+    {
+      "frontend": 1316,
+      "stack_return": 30212,
+      "possible_call_site": 30209,
+      "selected_text_pcs": [
+        35909
+      ],
+      "event_occurrences": 2,
+      "example": {
+        "trace": "natural-service-route/sms-npc-merchant-variant-magic-clamp-magic-clamp-choices01",
+        "frame": 482280,
+        "outside": 123,
+        "room": 47
+      }
+    },
+    {
+      "frontend": 1316,
+      "stack_return": 30229,
+      "possible_call_site": 30226,
+      "selected_text_pcs": [
+        36861
+      ],
+      "event_occurrences": 692,
+      "example": {
+        "trace": "natural-service-route/sms-npc-dragon-shield-gift02",
+        "frame": 435633,
+        "outside": 123,
+        "room": 47
+      }
+    },
+    {
+      "frontend": 1316,
+      "stack_return": 30379,
+      "possible_call_site": 30376,
+      "selected_text_pcs": [
+        35963,
+        36159
+      ],
+      "event_occurrences": 1044,
+      "example": {
+        "trace": "natural-service-route/sms-npc-d8-dragonmail-gift01",
+        "frame": 159945,
+        "outside": 148,
+        "room": 0
+      }
+    },
+    {
+      "frontend": 1316,
+      "stack_return": 30934,
+      "possible_call_site": 30931,
+      "selected_text_pcs": [
+        35736,
+        35756
+      ],
+      "event_occurrences": 2145,
+      "example": {
+        "trace": "natural-service-route/sms-npc-d8-dragonmail-gift01",
+        "frame": 73455,
+        "outside": 199,
+        "room": 1
+      }
+    },
+    {
+      "frontend": 1316,
+      "stack_return": 31347,
+      "possible_call_site": 31344,
+      "selected_text_pcs": [
+        45167
+      ],
+      "event_occurrences": 153,
+      "example": {
+        "trace": "natural-service-route/sms-npc-d8-dragonmail-gift01",
+        "frame": 104842,
+        "outside": 163,
+        "room": 191
+      }
+    },
+    {
+      "frontend": 1316,
+      "stack_return": 31390,
+      "possible_call_site": 31387,
+      "selected_text_pcs": [
+        45619
+      ],
+      "event_occurrences": 146,
+      "example": {
+        "trace": "natural-service-route/sms-npc-d8-dragonmail-gift01",
+        "frame": 188055,
+        "outside": 163,
+        "room": 191
+      }
+    }
+  ],
+  "selected_recordings": 157,
+  "all_literal_fixed_bank_050c_call_sites_observed": true,
+  "literal_fixed_bank_050c_call_site_count": 11,
+  "house_entry_call_sites": [
+    {
+      "call_site": 24673,
+      "return_pc": 24676,
+      "example": {
+        "trace": "natural-service-route/sms-npc-d9-healer94-rest01",
+        "frame": 291314,
+        "outside": 60,
+        "room": 159
+      },
+      "selected_text_pcs": [
+        37150
+      ],
+      "observed": true
+    },
+    {
+      "call_site": 25055,
+      "return_pc": 25058,
+      "example": {
+        "trace": "natural-service-route/sms-npc-equipment-returns-27-return01",
+        "frame": 486240,
+        "outside": 92,
+        "room": 95
+      },
+      "selected_text_pcs": [
+        35789
+      ],
+      "observed": true
+    },
+    {
+      "call_site": 25207,
+      "return_pc": 25210,
+      "example": {
+        "trace": "natural-service-route/sms-npc-d8-dragonmail-gift01",
+        "frame": 2979,
+        "outside": 148,
+        "room": 0
+      },
+      "selected_text_pcs": [
+        35818,
+        36444,
+        36500,
+        36569,
+        36835,
+        36897,
+        36917,
+        36955,
+        37055,
+        37249,
+        37311,
+        37347,
+        37447,
+        37544,
+        37574,
+        37642,
+        37719,
+        37816,
+        37915,
+        37995,
+        38110,
+        38174,
+        38348,
+        38417,
+        38557,
+        38636,
+        38720,
+        38984,
+        39057,
+        39201,
+        39237,
+        39337,
+        39409,
+        39628,
+        39741,
+        39794,
+        39877,
+        39934,
+        39945,
+        40026,
+        40164,
+        40244,
+        40410,
+        40460,
+        40568,
+        40732,
+        40853,
+        40926,
+        41023,
+        41079,
+        41343,
+        41379,
+        41474,
+        41540,
+        41678,
+        41820,
+        41930,
+        42065,
+        42145,
+        42158,
+        42177,
+        42287,
+        42344,
+        42432,
+        42529,
+        42608,
+        42661,
+        42751,
+        42908,
+        42958,
+        43090,
+        43143,
+        43260,
+        43319,
+        43414,
+        43503,
+        43561,
+        43617,
+        43715,
+        43789,
+        44062,
+        44133,
+        44213,
+        44259,
+        47408,
+        47437,
+        47575,
+        47648
+      ],
+      "observed": true
+    },
+    {
+      "call_site": 25805,
+      "return_pc": 25808,
+      "example": {
+        "trace": "natural-service-route/sms-npc-d8-dragonmail-gift01",
+        "frame": 49461,
+        "outside": 212,
+        "room": 63
+      },
+      "selected_text_pcs": [
+        36400
+      ],
+      "observed": true
+    },
+    {
+      "call_site": 25858,
+      "return_pc": 25861,
+      "example": {
+        "trace": "natural-service-route/sms-npc-gold-census-f4-contact01",
+        "frame": 480858,
+        "outside": 219,
+        "room": 63
+      },
+      "selected_text_pcs": [
+        36342
+      ],
+      "observed": true
+    },
+    {
+      "call_site": 26208,
+      "return_pc": 26211,
+      "example": {
+        "trace": "natural-service-route/sms-npc-dragon-shield-gift02",
+        "frame": 421562,
+        "outside": 34,
+        "room": 7
+      },
+      "selected_text_pcs": [
+        41190
+      ],
+      "observed": true
+    },
+    {
+      "call_site": 26314,
+      "return_pc": 26317,
+      "example": {
+        "trace": "natural-service-route/sms-npc-equipment-returns-27-return01",
+        "frame": 486076,
+        "outside": 92,
+        "room": 95
+      },
+      "selected_text_pcs": [
+        47374
+      ],
+      "observed": true
+    },
+    {
+      "call_site": 26683,
+      "return_pc": 26686,
+      "example": {
+        "trace": "natural-service-route/sms-npc-minigame-13-play-visit01",
+        "frame": 484748,
+        "outside": 19,
+        "room": 11
+      },
+      "selected_text_pcs": [
+        47455
+      ],
+      "observed": true
+    },
+    {
+      "call_site": 26715,
+      "return_pc": 26718,
+      "example": {
+        "trace": "natural-service-route/sms-npc-minigame-13-play-visit01",
+        "frame": 484220,
+        "outside": 19,
+        "room": 11
+      },
+      "selected_text_pcs": [
+        47490
+      ],
+      "observed": true
+    },
+    {
+      "call_site": 26752,
+      "return_pc": 26755,
+      "example": {
+        "trace": "natural-service-route/sms-npc-minigame-13-play-visit01",
+        "frame": 484365,
+        "outside": 19,
+        "room": 11
+      },
+      "selected_text_pcs": [
+        47551
+      ],
+      "observed": true
+    },
+    {
+      "call_site": 26768,
+      "return_pc": 26771,
+      "example": {
+        "trace": "natural-service-route/sms-npc-minigame-13-play-visit01",
+        "frame": 484521,
+        "outside": 19,
+        "room": 11
+      },
+      "selected_text_pcs": [
+        47758
+      ],
+      "observed": true
+    }
+  ],
+  "target_strings": [
+    {
+      "offset": 55896,
+      "pc": 39512,
+      "bytes_hex": "41732d7475206c6520706170696572206465206c612054657272653f2020202020202000"
+    },
+    {
+      "offset": 55932,
+      "pc": 39548,
+      "bytes_hex": "54752061732066696e616c656d656e74206f6274656e75206c65207365636f6e6420706170696572206465206c612054657272652e204269656e2e20436f6e74656e7420706f757220746f6921202000"
+    },
+    {
+      "offset": 60732,
+      "pc": 44348,
+      "bytes_hex": "4f6821204a65206d6520736f757669656e7321205175616e64206c6120636c6f63686520736f6e6e652c20756e20706173736167652073266f75767265212045737361696520bc612120202000"
+    }
+  ],
+  "global_unused_proven": false,
+  "complete_call_data_flow_proof": false,
+  "remaining": [
+    "Prove code boundaries and eliminate data/overlapping byte candidates.",
+    "Resolve computed and indirect control flow, argument origins and all formatter re-entry paths.",
+    "Do not infer global unreachability from direct operands or repeated runtime prefixes."
+  ],
+  "observations_include_shared_boot_prefixes": true,
+  "rom_modified": false
+}

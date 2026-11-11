@@ -1,0 +1,8 @@
+# Repères de cette branche
+
+Les repères marquent la fin de chaque interaction vérifiée. Revenir quelques secondes en arrière pour son début.
+
+| Temps vidéo | Preuve |
+| --- | --- |
+| 00:00:10 | natural-service-route/sms-npc-inn-location-55-accept01 |
+| 00:00:25 | natural-service-route/sms-npc-inn-repeat-rest01 |

@@ -12,7 +12,7 @@ def main():
     assert a.name and all(c in 'abcdefghijklmnopqrstuvwxyz0123456789-' for c in a.name)
     source=(ROOT/'validation'/a.source).resolve();assert source.is_relative_to(ROOT/'validation')
     r=json.loads((source/'report.json').read_bytes())
-    assert r['passed'] and r['final_ram_and_pixels_exact'] and r['first_emulated_video_frame']>1
+    assert r['passed'] and r['final_ram_and_pixels_exact'] and (r['first_emulated_video_frame']>1 or r.get('separate_persistence_branch'))
     folder=ROOT/'videos/sms/annexes-2026-11-11'/a.name;folder.mkdir(parents=True,exist_ok=True)
     movie=folder/(a.name+'.mp4')
     if not movie.exists():
@@ -35,8 +35,9 @@ def main():
         duration_seconds=r['duration_seconds'],full_audio_video_decoded=True,separate_branch=True,
         all_npcs_complete=False,all_side_quests_complete=False,source_capture_report=r)
     (folder/'report.json').write_text(json.dumps(report,indent=2)+'\n')
-    (folder/'LISEZ-MOI.txt').write_text(a.description+'\n\nBranche annexe distincte de la campagne continue.\n'
-        'Toutes les images précédentes sont rejouées depuis le démarrage, sans import de progression ; seul cet extrait est encodé.\n'
+    (folder/'LISEZ-MOI.txt').write_text(a.description+'\n\nBranche annexe distincte de la campagne continue.\n'+
+        ('Redémarrage puis Continuer normal depuis la SRAM réellement écrite par le jeu et reproduite indépendamment. Aucun état synthétique ni savestate.\n' if r.get('separate_persistence_branch') else
+         'Toutes les images précédentes sont rejouées depuis le démarrage, sans import de progression ; seul cet extrait est encodé.\n')+
         'La couverture globale de tous les PNJ et de toutes les variantes reste ouverte.\n'
         f'Durée : {r["duration_seconds"]:.3f} secondes.\nSHA-256 : {r["movie_sha256"]}\n',encoding='utf-8')
     # These two files are generated intermediates, never source evidence.

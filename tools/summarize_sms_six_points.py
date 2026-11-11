@@ -1,5 +1,6 @@
 """Evidence-bound status of the user's six open SMS completion tasks."""
 import json,hashlib
+from datetime import datetime
 from run_core import ROOT
 
 
@@ -61,23 +62,32 @@ def main():
         '1_o3':point1,'2_teachers_and_capacity':point2,'3_services':point3,
         '4_equipment_hints_hidden_rooms_curse':point4,
         '5_reported_strings':dict(status='adjacent_npc_dispatch_reconciled_global_reachability_open',offsets=['0xDA58','0xDA7C','0xED3C'],unused_proven=False,
-            reconciliation=read('reported_text_dispatch_reconciliation.json')),
+            reconciliation=read('reported_text_dispatch_reconciliation.json'),frontend_sources=read('sms_text_frontend_sources.json'),
+            standard_house_argument_domains='analysis/sms_standard_house_text_domains.json',
+            related_quest_asset_crosscheck='analysis/sms_reported_text_quest_crosscheck.json'),
         '6_final_replay_and_video':dict(status='main_campaign_video_ready_annexes_pending',complete_100_percent_video=False,
-            main_campaign_video=read('sms_extended_campaign_video_report.json'))}
-    report=dict(date='2026-11-11',source_sha256=hashlib.sha256((ROOT/'input/original.sms').read_bytes()).hexdigest(),
+            main_campaign_video=read('sms_extended_campaign_video_report.json'),montage_report=read('sms_proof_montage_report.json'),
+            selected_proof_video_collection=read('sms_selected_proof_video_collection.json'),
+            persistence_video_collection=read('sms_persistence_video_collection.json'))}
+    video=points['6_final_replay_and_video'];collection=video['selected_proof_video_collection'];persistence=video['persistence_video_collection']
+    if collection and collection.get('all_selected_receipts_video_covered') and persistence and persistence.get('complete'):
+        video['status']='selected_route_and_annex_videos_ready_global_100_percent_open'
+        video['selected_route_and_point34_annexes_ready']=True
+    today=datetime.now().date().isoformat()
+    report=dict(date=today,source_sha256=hashlib.sha256((ROOT/'input/original.sms').read_bytes()).hexdigest(),
         all_npcs_complete=False,all_side_quests_complete=False,points=points)
     (ROOT/'analysis/sms_six_points_progress.json').write_text(json.dumps(report,indent=2)+'\n')
     def count(data,key):return len((data or {}).get(key,[]))
-    text=f'''# État des six points SMS — 11 novembre 2026
+    text=f'''# État des six points SMS — {today}
 
 1. **O3 terminé.** Accès réel, conversation, acquittement et sortie rejoués indépendamment.
 2. **Acquisitions terminées.** Enseignements 2/2/2/1, huit récompenses de fées présentes, capacités vie/magie 128/128. Retours chez les quatre maîtres vérifiés dans une branche distincte ; cela ne clôt pas toutes leurs variantes précoces.
 3. **Services {"validés" if point3['status']=='complete' else "en cours"}.** {count(service,'completed_visits')}/48 contextes marchand/soigneur/sauvegarde avec refus et sortie rejoués ; {count(point3['inn_acceptances'],'completed_locations')}/11 auberges acceptées ; {count(point3['save_locations'],'completed_locations')}/14 lieux avec sauvegarde effective puis Continuer normal ; {count(point3['paid_passages'],'completed_passages')}/6 directions de passage payant. Quatre lieux de jeu parcourus ; gains, pertes, cartes spéciales, rejouer, refus et manque d'argent vérifiés. Les 18 offres distinctes objet/prix sont achetées ; les refus possédé/inférieur/capacité pleine sont contrôlés. Trois slots et un véritable écrasement de sauvegarde sont vérifiés à Eren. L'argent infini autorisé est déclaré séparément pour la limite de 99 clés.
 4. **Équipements et annexes {"validés" if point4['status']=='complete' else "en cours"}.** Huit récompenses et huit retours, neuf dialogues du catalogue de ces quêtes, prérequis absents/présents, possession préalable d'objet, deux cheminées, corrosion réelle et consommation de l'huile vérifiés. L'achat préalable de la pomme de Saylun utilise une aide monétaire déclarée, sans injection d'objet ni de quête.
-5. **Trois textes non résolus globalement.** Les dialogues voisins de DA58/DA7C/ED3C et les retours du formateur ne sont pas leurs déclencheurs. Leur inaccessibilité dans toute la ROM n'est pas prouvée.
-6. **Campagne vidéo prête, preuve exhaustive en cours.** Parcours continu étendu de 564131 images jusqu'à la fin, 2 h 36 min 54 s, audio/vidéo décodés et RAM/pixels finaux exacts. Des annexes séparées sont enregistrées ; elles ne sont pas présentées comme une seule partie continue.
+5. **Trois textes non résolus globalement.** Les dialogues voisins de DA58/DA7C/ED3C et les retours du formateur ne sont pas leurs déclencheurs. Les onze appels littéraux à 050C dans les banques fixes sont tous observés ; l'audit regroupe maintenant 157 enregistrements vérifiés, avec préfixes communs répétés. Leur inaccessibilité dans toute la ROM n'est pas prouvée.
+6. **Campagne vidéo prête ; annexes sélectionnées {"terminées" if video.get('selected_route_and_point34_annexes_ready') else "en cours"}.** Parcours continu étendu de 564131 images jusqu'à la fin, 2 h 36 min 54 s, audio/vidéo décodés et RAM/pixels finaux exacts. {len((collection or {}).get('completed_clips',[]))}/70 extraits couvrent, avec la campagne, {(collection or {}).get('covered_selected_receipts',0)}/145 preuves sélectionnées des points 3/4. {len((persistence or {}).get('completed_branches',[]))}/17 redémarrages depuis de vraies sauvegardes sont filmés séparément. Les annexes ne sont pas présentées comme une seule partie continue ; la certification globale 100 % reste ouverte.
 
-Les points {"1 à 4 sont clos" if closure and closure.get('passed') else "1 et 2 sont clos"} dans le périmètre SMS demandé. Le point 5 reste ouvert et le point 6 est partiel. Aucun pourcentage global ni certificat tous PNJ/toutes quêtes n'est déduit du nombre de lignes de cette liste. La couverture correspondante sur Mega Drive et les comparaisons PAL/NTSC restent distinctes. Les deux lignes d'argent AD/F3 sans entrée directe restent un audit distinct, sans conclusion d'inutilisation globale.
+Les points {"1 à 4 sont clos" if closure and closure.get('passed') else "1 et 2 sont clos"} dans le périmètre SMS demandé. Le point 5 reste ouvert. {"Le parcours filmé retenu et ses annexes sont prêts ; la certification globale 100 % reste ouverte." if video.get('selected_route_and_point34_annexes_ready') else "Le point 6 est partiel."} Aucun pourcentage global ni certificat tous PNJ/toutes quêtes n'est déduit du nombre de lignes de cette liste. La couverture correspondante sur Mega Drive et les comparaisons PAL/NTSC restent distinctes. Les deux lignes d'argent AD/F3 sans entrée directe restent un audit distinct, sans conclusion d'inutilisation globale.
 
 [Rapport des points 3 et 4](../reports/gaw-sms-points-3-4-2026-11-11/RAPPORT.md).
 

@@ -28,16 +28,52 @@ def main():
     parser.add_argument('--out',required=True)
     parser.add_argument('--frames',type=int,help='Short encoder probe only; not a completed run')
     parser.add_argument('--require-100',action='store_true')
+    parser.add_argument('--economic-component',action='store_true',help='Explicitly record an independently verified money-assisted component branch')
+    parser.add_argument('--persistence-source',help='Verified sms-save-continue recording; fresh boot with its genuine game-written SRAM')
     args=parser.parse_args()
-    trace_presses=None;trace_writes=None
-    if args.trace:
+    trace_presses=None;trace_writes=None;sram_input=None;persistence=None
+    assert not (args.trace and args.persistence_source)
+    if args.persistence_source:
+        assert not args.economic_component
+        source=(ROOT/'validation'/args.persistence_source).resolve();assert source.is_relative_to(ROOT/'validation/sms-save-continue')
+        persistence=json.loads((source/'report.json').read_bytes());capture=json.loads((source/'capture.json').read_bytes())
+        assert persistence['passed'] and persistence['game_written_sram_input'] and not persistence['synthetic_sram_fixture'] and persistence['ram_writes']==0
+        saved=ROOT/'validation'/persistence['source_recording'];saved_cap=json.loads((saved/'capture.json').read_bytes())
+        saved_report=json.loads((saved/'report.json').read_bytes())
+        saved_proof=saved.with_name(saved.name+f'-assisted-fixed-replay-{saved_cap["frames"]}')/'replay_report.json'
+        witness=json.loads(saved_proof.read_bytes());assert witness['passed'] and witness['game_written_sram_exact']
+        assert witness['evidence']=={n:digest(saved/n) for n in ('capture.json','controls.json','assistance.json')}
+        sram_input=saved/'game-written.srm'
+        assert digest(sram_input)==persistence['source_sram_sha256']==saved_report['sram_sha256']
+        assert digest(sram_input)==witness['written_sram_sha256']
+        assert saved_report['game_written_save'] and saved_report['passed']
+        stop=capture['frames'];trace_presses=list(map(tuple,capture['presses']));trace_writes=[]
+        raw=(source/f'ram_{stop:05d}.bin').read_bytes();assert len(raw)==8192
+        route=dict(system='sms',region='ntsc',frames=stop,full_campaign=False,all_npcs_complete=False,
+            approach_writes=0,core_options=capture['core_options'],historical_recording_rom_sha256=capture['rom_sha256'],
+            validated_core_sha256='d17f2392115b3cd54258a1fa6c4195ddadc19b0805ebcca400db5162b1793516',
+            expected_final=dict(game=raw[0x1d],room=int.from_bytes(raw[0xb9:0xbb],'little'),health=raw[0x318],crystals=sum(bool(b&128) for b in raw[0xcf:0xd8])),
+            expected_final_ram_sha256=hashlib.sha256(raw).hexdigest(),
+            expected_final_pixels_sha256=hashlib.sha256(Image.open(source/f'frame_{stop:05d}.png').convert('RGB').tobytes()).hexdigest())
+        route_hash=digest(source/'report.json')
+    elif args.trace:
         source=(ROOT/'validation'/args.trace).resolve();assert source.is_relative_to((ROOT/'validation').resolve())
         capture=json.loads((source/'capture.json').read_bytes());assert capture['sram_input'] is None
-        stop=capture['frames'];proof=source.with_name(source.name+f'-assisted-fixed-replay-{stop}')
-        witness=json.loads((proof/'replay_report.json').read_bytes());assert witness['passed'] and not witness['primary_state_imports']
-        evidence={n:digest(source/n) for n in ('capture.json','controls.json','assistance.json')}
+        stop=capture['frames'];proof=source.with_name(source.name+('-economic-fixed-replay' if args.economic_component else f'-assisted-fixed-replay-{stop}'))
+        witness=json.loads((proof/'replay_report.json').read_bytes());assert witness['passed'] and witness.get('primary_state_imports',witness.get('sram_imports',0))==0
+        evidence={n:digest(source/n) for n in ('capture.json','controls.json','controlled_economic_assistance.json' if args.economic_component else 'assistance.json')}
         assert evidence==witness['evidence']
-        trace_writes=prefix_writes(source,capture,True);assert all(a==0x305 and d in (b'\0',b'\x81') for _,a,d in trace_writes)
+        if args.economic_component:
+            assert witness['currency_assisted_component_test'] and not witness['natural_campaign_proof'] and witness['sram_imports']==0
+            aid=json.loads((source/'controlled_economic_assistance.json').read_bytes())
+            trace_writes=[(r['frame'],r['address'],bytes.fromhex(r['data_hex'])) for r in aid['writes']]
+            assert all(a==0x305 and d in (b'\0',b'\x81') or a==0xdd and d==b'\xff' for _,a,d in trace_writes)
+            closure=json.loads((ROOT/'analysis/sms_points_3_4_closure.json').read_bytes())
+            receipt=closure['selected_receipts'][args.trace]
+            assert receipt['currency_assisted_component_test'] and receipt['input_evidence']==evidence
+            assert receipt['proof_sha256']==digest(proof/'replay_report.json')
+        else:
+            trace_writes=prefix_writes(source,capture,True);assert all(a==0x305 and d in (b'\0',b'\x81') for _,a,d in trace_writes)
         trace_presses=list(map(tuple,capture['presses']));controls=json.loads((source/'controls.json').read_bytes())
         for i,row in enumerate(controls):
             last=controls[i+1]['frame']-1 if i+1<len(controls) else stop
@@ -45,12 +81,13 @@ def main():
         raw=(proof/f'ram_{stop:05d}.bin').read_bytes();assert len(raw)==8192
         route=dict(system='sms',region='ntsc',frames=stop,full_campaign=False,all_npcs_complete=False,
             approach_writes=len(trace_writes),core_options=capture['core_options'],
-            historical_recording_rom_sha256=capture['rom_sha256'],validated_core_sha256=witness['core_sha256'],
+            historical_recording_rom_sha256=capture['rom_sha256'],validated_core_sha256=witness.get('core_sha256','d17f2392115b3cd54258a1fa6c4195ddadc19b0805ebcca400db5162b1793516'),
             expected_final=dict(game=raw[0x1d],room=int.from_bytes(raw[0xb9:0xbb],'little'),health=raw[0x318],crystals=sum(bool(b&128) for b in raw[0xcf:0xd8])),
             expected_final_ram_sha256=hashlib.sha256(raw).hexdigest(),
             expected_final_pixels_sha256=hashlib.sha256(Image.open(proof/f'frame_{stop:05d}.png').convert('RGB').tobytes()).hexdigest())
         route_hash=hashlib.sha256(json.dumps(evidence,sort_keys=True).encode()).hexdigest()
     else:
+        assert not args.economic_component,'Economic components require an explicit trace'
         route=json.loads((ROOT/'testkit/manifest.json').read_bytes())['routes'][args.route]
         csvpath=ROOT/'testkit/routes'/route['csv'];route_hash=digest(csvpath);assert route_hash==route['csv_sha256']
     assert route['system']=='sms' and route['region']=='ntsc'
@@ -64,7 +101,7 @@ def main():
     end=args.frames or route['frames'];assert 0<end<=route['frames']
     first=args.from_frame;assert 1<=first<=end
     complete=end==route['frames'];presses=[];writes=FrameWrites()
-    if args.trace:
+    if args.trace or args.persistence_source:
         presses=trace_presses;writes=FrameWrites([w for w in trace_writes if w[0]<=end])
     else:
       with csvpath.open(newline='') as stream:
@@ -109,6 +146,8 @@ def main():
     def observe(frame,raw):
         nonlocal ending,observed
         observed=frame
+        if persistence and frame==persistence.get('first_controllable_frame'):
+            assert bytes(raw)==(source/'first-controllable-ram.bin').read_bytes()
         state.update(game=raw[0x1d],room=int.from_bytes(raw[0xb9:0xbb],'little'),health=raw[0x318],crystals=sum(bool(b&128) for b in raw[0xcf:0xd8]))
         ending|=state['game']==14
         if raw[0x305]>128:
@@ -116,7 +155,7 @@ def main():
     try:
         with contextlib.redirect_stdout(io.StringIO()):
             run(rom,end,out/'capture',{end},presses,core=core,skip_intro=False,ram_writes=writes,
-                video_observer=video,audio_observer=audio,ram_observer=observe,core_options=route['core_options'])
+                video_observer=video,audio_observer=audio,ram_observer=observe,core_options=route['core_options'],sram_in=sram_input)
     finally:
         audio_file.close()
         if process:
@@ -131,23 +170,29 @@ def main():
         assert digest(out/f'capture/ram_{end:05d}.bin')==route['expected_final_ram_sha256']
         pixels=Image.open(out/f'capture/frame_{end:05d}.png').convert('RGB').tobytes()
         assert hashlib.sha256(pixels).hexdigest()==route['expected_final_pixels_sha256']
-    scope='All NPCs and side quests' if args.require_100 else ('Recorded NPC route excerpt; global NPC and side-quest coverage incomplete' if args.trace else 'Campaign recording; NPC and side-quest coverage incomplete')
+    scope='Currency-assisted isolated component; genuine purchases, no inventory or quest injections' if args.economic_component else ('All NPCs and side quests' if args.require_100 else ('Recorded NPC route excerpt; global NPC and side-quest coverage incomplete' if args.trace else 'Campaign recording; NPC and side-quest coverage incomplete'))
+    if persistence:scope='Separate persistence branch: fresh boot and normal Continue from genuine game-written SRAM; no synthetic state or RAM edits'
     command=[ffmpeg,'-hide_banner','-nostdin','-i',str(silent),'-i',str(wav),'-map','0:v:0','-map','1:a:0',
         '-c:v','copy','-c:a','aac','-b:a','192k','-movflags','+faststart','-metadata','title=Golden Axe Warrior - Master System',
-        '-metadata','comment='+scope+'. Recorded approach-only protection, removed before bosses. No save imports.',str(movie)]
+        '-metadata','comment='+scope+('. No RAM edits or emulator savestate.' if persistence else '. Recorded approach protection, removed before bosses. No save imports.'),str(movie)]
     with (out/'mux.log').open('w') as log:subprocess.run(command,stdout=log,stderr=subprocess.STDOUT,check=True)
     cap=cv2.VideoCapture(str(movie));assert cap.isOpened()
     assert int(cap.get(cv2.CAP_PROP_FRAME_COUNT))==sent
     assert (int(cap.get(cv2.CAP_PROP_FRAME_WIDTH)),int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT)))==(768,576)
     cap.release()
     report=dict(passed=True,movie=str(movie),movie_sha256=digest(movie),movie_bytes=movie.stat().st_size,
-        route=args.trace or args.route,route_sha256=route_hash,rom_sha256=digest(rom),core_sha256=digest(core),frames=sent,fps=fps,
+        route=args.trace or args.persistence_source or args.route,route_sha256=route_hash,rom_sha256=digest(rom),core_sha256=digest(core),frames=sent,fps=fps,
         first_emulated_video_frame=first,emulated_frames_from_boot=end,recorder_sha256=digest(Path(__file__)),
         duration_seconds=sent/fps,audio_samples=audio_bytes//4,audio_rate=rate,audio_video_delta_seconds=av_delta,
         full_campaign_replayed=bool(complete and route.get('full_campaign')),all_npcs_complete=bool(complete and route['all_npcs_complete']),
         all_side_quests_complete=bool(complete and route.get('all_side_quests_complete',False)),
-        scope=scope,ending_seen=ending,final=state,approach_guard_writes=len(writes),boss_assistance=False,
-        save_imports=0,final_ram_and_pixels_exact=complete,wall_seconds=time.monotonic()-start)
+        scope=scope,ending_seen=ending,final=state,approach_guard_writes=sum(a==0x305 for _,a,_ in writes),boss_assistance=False,
+        currency_assisted_component_test=args.economic_component,currency_refills=sum(a==0xdd for _,a,_ in writes),
+        save_imports=int(bool(persistence)),separate_persistence_branch=bool(persistence),
+        game_written_sram_sha256=digest(sram_input) if persistence else None,
+        synthetic_sram_fixture=False,emulator_savestate_imports=0,
+        first_controllable_state_checked=bool(persistence and 'first_controllable_frame' in persistence),
+        final_ram_and_pixels_exact=complete,wall_seconds=time.monotonic()-start)
     (out/'report.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report),flush=True)
 
 

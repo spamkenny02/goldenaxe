@@ -31,7 +31,7 @@ Son CSV a été rejoué sur le cœur officiel : RAM complète et image finale
 identiques au parcours source. Le Lua BizHawk fourni reste une adaptation
 à vérifier dans BizHawk. [Résultats du kit](testkit/verification.json).
 
-Le [parcours SMS continu](analysis/sms_npc_campaign_progress_report.json)
+Le [premier parcours SMS continu](analysis/sms_npc_campaign_progress_report.json)
 a terminé les neuf labyrinthes et le palais final. Ses 169 étapes sélectionnées
 ont une relecture indépendante, depuis le démarrage de la ROM fournie.
 Les récompenses et les mécanismes sont réellement obtenus par les commandes
@@ -39,7 +39,7 @@ du jeu. La capacité de vie est de 104 ; hache d'or, armure de dragon, épée de
 clé du voleur, ballon, bateau, canoë, corde, bottes et cloche sont acquis.
 Aucune nouvelle ROM MD n'est publiée pour cette seule progression de validation.
 
-La campagne achevée inclut neuf conversations ordinaires, la quête de Gillian/Foudre, la fée C9,
+Cette première campagne inclut neuf conversations ordinaires, la quête de Gillian/Foudre, la fée C9,
 les améliorations de Foudre et de Terre au niveau 2, plusieurs donneurs
 d'argent, les achats de clés C7/94, Battler/Terre,
 les donneurs d'équipement 27/50 et le soigneur 94 sont parcourus.
@@ -70,6 +70,19 @@ Le [rapport et ses 145 enregistrements sélectionnés](reports/gaw-sms-points-3-
 distinguent les parcours et les deux essais monétaires assistés autorisés
 (99 clés et pomme achetée avant le don de Saylun). Aucune clé, pomme ou étape
 de quête n'est injectée.
+La suite est engagée sur les points 5 et 6 : l'[audit des entrées de texte](analysis/sms_text_frontend_sources.md)
+recoupe 157 enregistrements vérifiés et les onze appels littéraux au dialogue
+de maison. Les trois textes restent sans déclencheur démontré ; ils ne sont
+pas déclarés inutilisés globalement. Les [annexes vidéo effectivement terminées](videos/sms/annexes-2026-11-11/README.md)
+et leur [relevé de couverture](analysis/sms_selected_proof_video_collection.json)
+distinguent les preuves filmées des extraits prévus. Les
+[17 redémarrages Continuer](analysis/sms_persistence_video_collection.json)
+utilisent uniquement les sauvegardes réellement écrites par le jeu ; ce sont
+des branches de persistance séparées, sans état synthétique ni savestate.
+Le [recoupement des quêtes liées aux trois textes](analysis/sms_reported_text_quest_crosscheck.md)
+vérifie neuf dialogues Terre/Cloche réellement observés sur SMS et leurs
+octets exacts dans la ROM V321. Les acquisitions de Terre et les indices de
+la cloche sont présents ; cela ne résout pas le déclencheur des trois phrases.
 L'accès caché FB est ouvert avec le vrai sort Terre ; son habitant et les trois
 habitants de la maison FE/00 sont visités, acquittés et rejoués indépendamment.
 Ces visites sont maintenant intégrées à une campagne étendue jusqu'à la fin :
@@ -129,6 +142,14 @@ ci-dessus, puis rejoint le générique et le retour à l'intro. La RAM et les
 pixels finaux sont identiques à la relecture indépendante ; les flux audio
 et vidéo sont décodés entièrement sans erreur. Les branches annexes ne sont
 pas insérées dans cette vidéo continue. Le MP4 reste local.
+
+Le [montage SMS de la campagne et des annexes](videos/sms/parcours-et-annexes-2026-11-12/README.md)
+est prêt localement : **4 h 26 min 57 s**, 70 branches de parcours et
+17 redémarrages après la campagne, avec cartons et repères de lecture.
+Les 145 preuves sélectionnées des points 3/4 sont couvertes. Le décodage
+audio/vidéo complet, la synchronisation et les 350 images aux raccords
+sont vérifiés. Les deux tests monétaires assistés sont indiqués à l'écran.
+Le point 5 et la certification globale de tous les PNJ restent ouverts.
 
 La **V321** corrige le retard d’une image des portions de carte du titre :
 cape, apparition du logo et clignotement de l’invite. Les 198 images des
