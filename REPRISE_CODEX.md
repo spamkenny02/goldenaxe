@@ -11,10 +11,50 @@ Le candidat `validation/dialogue-empty-width03/candidate.bin` (SHA1421abe4…)
 corrige Saylun et passe les campagnes complètes PAL/NTSC, les Continue de vraies
 sauvegardes, les deux dialogues C7 et leurs relectures. Deux reconstructions
 propres sont identiques, dont le paquet autonome en préparation. La vidéo
-`videos/v0322-rc1` est celle d'un candidat non publié, pas une certification de
-toutes les branches. V321 reste le binaire publié. Les nouveaux outils RC et
+`videos/v0322-rc1` porte sur ce binaire, pas une certification de
+toutes les branches. V322 est publiée en développement, SHA1421abe4 ; elle ne constitue pas une RC qualifiée. Les nouveaux outils RC et
 le rapport dans `reports/gaw-v0322-rc1-2026-11-12` sont préparatoires.
 Lire `analysis/md_annex_replay_coverage.json` pour les cas MD réellement prouvés.
+
+
+### Relectures MD en cours
+
+- `analysis/md_before_apple_campaign.json` : introduction Gillian, pomme absente,
+  vraie pomme derrière la cheminée C7, consommation pour Foudre I, filmés/rejoués.
+- `analysis/md_early_equipment_campaign.json` : armure27/épée50 et deux retours.
+  Le retour27 corrigé est `md-early-equipment-27-return-settled02` : canoë détenu
+  réellement utilisé, sortie complète puis mouvement. Ancienne sortie partielle
+  gardée comme historique, pas comme preuve d'un retour terminé.
+- `analysis/md_magic_fairy_campaign.json` : 2/2/2/1 acquis, vie128 atteinte ;
+  fées de magie encore en cours. Reprise avec `tools/continue_md_magic_fairies.py`
+  et le préfixe mémorisé. Le premier essai32 a épuisé sa magie à cause du
+  contrôleur d'orientation ; il n'est pas compté. Le contrôleur MD préfère
+  désormais une position avec recul réel ou une approche déjà bien orientée.
+- `analysis/md_plain_house_census_campaign.json` : visites ordinaires/vidéos en
+  cours via `tools/continue_md_plain_house_census.py`, préfixe conservé.
+- `analysis/md_service_refusal_campaign.json` : 48 refus visés ; marchand72 est
+  validé après diagnostic d'un vrai projectile extérieur et protection
+  d'approche déclarée. Le contrôleur utilise maintenant canoë/bateau possédés,
+  déplacement réel après `resume0/loading0/class0`, et hache détenue pour les
+  buissons. Retry limité aux erreurs de proposition de trajet, pas aux morts
+  ou erreurs sonores. `tools/continue_md_service_refusals.py` reprend le préfixe.
+- `analysis/md_late_equipment_campaign.json` : branche distincte des cadeaux
+  tardifs B1/6A/4C/92/55, commencée depuis le préfixe neuf cristaux/C9 ci-dessus.
+
+**Ne pas qualifier une ancienne capture de sortie pendant `resume_phase!=0`,
+chargement actif ou classe maison.** `tools/summarize_md_annex_replay.py` exclut
+ces captures ; `tools/repair_md_exit_proofs.py` prolonge les entrées exactes,
+rejoue à froid et filme la sortie complète. Une première passe tourne ; elle
+avait sélectionné les anciens PNJ/retour27 avant l'ajout des refus au filtre.
+Une seconde passe devra reprendre les refus historiques non encore prolongés.
+Les clips d'origine gardent leur preuve de texte/encodage, pas de sortie terminée.
+L'audit marchand72 est `analysis/md_merchant72_damage_audit.json`.
+
+Les scripts de campagne conservent les erreurs et s'arrêtent sur un objectif
+raté. Lire les dernières lignes des journaux `validation/md-*.log` et les
+préfixes dans les JSON, ne pas relancer une ancienne branche à l'aveugle.
+Les relectures partagées restent des cœurs indépendants démarrés à froid,
+pausés entre étapes, sans import d'état. V322 reste développement, point6 ouvert.
 
 
 État courant au 8 novembre 2026. Les notes historiques conservées

@@ -4,10 +4,12 @@ Chaque MP4 est une branche réellement rejouée, avec son du jeu. Les chargement
 
 | Extrait | Durée | Preuve |
 | --- | --- | --- |
+| [equipment-27-retour-sortie-complete02](equipment-27-retour-sortie-complete02/equipment-27-retour-sortie-complete02.mp4) | 7.06 s | [Rapport](equipment-27-retour-sortie-complete02/report.json) |
 | [eren-continuer-slot0-02](eren-continuer-slot0-02/eren-continuer-slot0-02.mp4) | 9.95 s | [Rapport](eren-continuer-slot0-02/report.json) |
 | [eren-continuer-slot1-02](eren-continuer-slot1-02/eren-continuer-slot1-02.mp4) | 9.95 s | [Rapport](eren-continuer-slot1-02/report.json) |
 | [eren-continuer-slot2-02](eren-continuer-slot2-02/eren-continuer-slot2-02.mp4) | 9.95 s | [Rapport](eren-continuer-slot2-02/report.json) |
 | [eren-maison00-dialogue01](eren-maison00-dialogue01/eren-maison00-dialogue01.mp4) | 9.11 s | [Rapport](eren-maison00-dialogue01/report.json) |
+| [eren-maison00-sortie-complete01](eren-maison00-sortie-complete01/eren-maison00-sortie-complete01.mp4) | 10.65 s | [Rapport](eren-maison00-sortie-complete01/report.json) |
 | [eren-maison02-dialogues01](eren-maison02-dialogues01/eren-maison02-dialogues01.mp4) | 8.14 s | [Rapport](eren-maison02-dialogues01/report.json) |
 | [eren-marchand-refus01](eren-marchand-refus01/eren-marchand-refus01.mp4) | 7.28 s | [Rapport](eren-marchand-refus01/report.json) |
 | [eren-sauvegarde-refus01](eren-sauvegarde-refus01/eren-sauvegarde-refus01.mp4) | 8.44 s | [Rapport](eren-sauvegarde-refus01/report.json) |
@@ -15,19 +17,64 @@ Chaque MP4 est une branche réellement rejouée, avec son du jeu. Les chargement
 | [eren-sauvegarde-slot1-01](eren-sauvegarde-slot1-01/eren-sauvegarde-slot1-01.mp4) | 8.54 s | [Rapport](eren-sauvegarde-slot1-01/report.json) |
 | [eren-sauvegarde-slot2-01](eren-sauvegarde-slot2-01/eren-sauvegarde-slot2-01.mp4) | 8.54 s | [Rapport](eren-sauvegarde-slot2-01/report.json) |
 | [eren-soins-refus01](eren-soins-refus01/eren-soins-refus01.mp4) | 10.48 s | [Rapport](eren-soins-refus01/report.json) |
+| [maison-55-01-ntsc01](maison-55-01-ntsc01/maison-55-01-ntsc01.mp4) | 6.64 s | [Rapport](maison-55-01-ntsc01/report.json) |
+| [maison-55-03-ntsc01](maison-55-03-ntsc01/maison-55-03-ntsc01.mp4) | 7.39 s | [Rapport](maison-55-03-ntsc01/report.json) |
+| [maison-55-1f-ntsc01](maison-55-1f-ntsc01/maison-55-1f-ntsc01.mp4) | 5.74 s | [Rapport](maison-55-1f-ntsc01/report.json) |
+| [maison-57-01-ntsc01](maison-57-01-ntsc01/maison-57-01-ntsc01.mp4) | 7.86 s | [Rapport](maison-57-01-ntsc01/report.json) |
+| [maison-57-0a-ntsc01](maison-57-0a-ntsc01/maison-57-0a-ntsc01.mp4) | 15.52 s | [Rapport](maison-57-0a-ntsc01/report.json) |
 | [maison-64-8f-ntsc01](maison-64-8f-ntsc01/maison-64-8f-ntsc01.mp4) | 3.49 s | [Rapport](maison-64-8f-ntsc01/report.json) |
+| [maison-75-8f-ntsc01](maison-75-8f-ntsc01/maison-75-8f-ntsc01.mp4) | 5.29 s | [Rapport](maison-75-8f-ntsc01/report.json) |
+| [maison-76-8f-ntsc01](maison-76-8f-ntsc01/maison-76-8f-ntsc01.mp4) | 4.67 s | [Rapport](maison-76-8f-ntsc01/report.json) |
+| [maison-86-8f-ntsc01](maison-86-8f-ntsc01/maison-86-8f-ntsc01.mp4) | 4.62 s | [Rapport](maison-86-8f-ntsc01/report.json) |
 | [maison-94-00-ntsc01](maison-94-00-ntsc01/maison-94-00-ntsc01.mp4) | 8.24 s | [Rapport](maison-94-00-ntsc01/report.json) |
 | [maison-94-02-ntsc01](maison-94-02-ntsc01/maison-94-02-ntsc01.mp4) | 7.26 s | [Rapport](maison-94-02-ntsc01/report.json) |
 | [maison-b3-8f-ntsc01](maison-b3-8f-ntsc01/maison-b3-8f-ntsc01.mp4) | 7.68 s | [Rapport](maison-b3-8f-ntsc01/report.json) |
+| [maison-b6-8f-ntsc01](maison-b6-8f-ntsc01/maison-b6-8f-ntsc01.mp4) | 4.61 s | [Rapport](maison-b6-8f-ntsc01/report.json) |
+| [maison-c7-01-ntsc01](maison-c7-01-ntsc01/maison-c7-01-ntsc01.mp4) | 8.79 s | [Rapport](maison-c7-01-ntsc01/report.json) |
 | [md-argent-80-cadeau01](md-argent-80-cadeau01/md-argent-80-cadeau01.mp4) | 8.46 s | [Rapport](md-argent-80-cadeau01/report.json) |
 | [md-battler-terre2-achat01](md-battler-terre2-achat01/md-battler-terre2-achat01.mp4) | 14.15 s | [Rapport](md-battler-terre2-achat01/report.json) |
+| [md-equipment-27-cadeau01](md-equipment-27-cadeau01/md-equipment-27-cadeau01.mp4) | 8.13 s | [Rapport](md-equipment-27-cadeau01/report.json) |
+| [md-equipment-27-retour01](md-equipment-27-retour01/md-equipment-27-retour01.mp4) | 5.22 s | [Rapport](md-equipment-27-retour01/report.json) |
+| [md-equipment-50-cadeau01](md-equipment-50-cadeau01/md-equipment-50-cadeau01.mp4) | 8.09 s | [Rapport](md-equipment-50-cadeau01/report.json) |
+| [md-equipment-50-retour01](md-equipment-50-retour01/md-equipment-50-retour01.mp4) | 6.66 s | [Rapport](md-equipment-50-retour01/report.json) |
+| [md-fairy-18-contact01](md-fairy-18-contact01/md-fairy-18-contact01.mp4) | 8.89 s | [Rapport](md-fairy-18-contact01/report.json) |
+| [md-fairy-1d-contact01](md-fairy-1d-contact01/md-fairy-1d-contact01.mp4) | 8.24 s | [Rapport](md-fairy-1d-contact01/report.json) |
+| [md-fairy-82-contact01](md-fairy-82-contact01/md-fairy-82-contact01.mp4) | 8.29 s | [Rapport](md-fairy-82-contact01/report.json) |
+| [md-fairy-c9-contact01](md-fairy-c9-contact01/md-fairy-c9-contact01.mp4) | 5.37 s | [Rapport](md-fairy-c9-contact01/report.json) |
+| [md-gillian-apple-absent01-before-apple](md-gillian-apple-absent01-before-apple/md-gillian-apple-absent01-before-apple.mp4) | 7.16 s | [Rapport](md-gillian-apple-absent01-before-apple/report.json) |
 | [md-gillian-foudre1-pomme-consommee01](md-gillian-foudre1-pomme-consommee01/md-gillian-foudre1-pomme-consommee01.mp4) | 11.23 s | [Rapport](md-gillian-foudre1-pomme-consommee01/report.json) |
+| [md-gillian-foudre1-pomme-consommee01-before-apple](md-gillian-foudre1-pomme-consommee01-before-apple/md-gillian-foudre1-pomme-consommee01-before-apple.mp4) | 11.11 s | [Rapport](md-gillian-foudre1-pomme-consommee01-before-apple/report.json) |
 | [md-gillian-introduction01](md-gillian-introduction01/md-gillian-introduction01.mp4) | 9.60 s | [Rapport](md-gillian-introduction01/report.json) |
+| [md-gillian-introduction01-before-apple](md-gillian-introduction01-before-apple/md-gillian-introduction01-before-apple.mp4) | 9.73 s | [Rapport](md-gillian-introduction01-before-apple/report.json) |
+| [md-saylun-cheminee-pomme01-before-apple](md-saylun-cheminee-pomme01-before-apple/md-saylun-cheminee-pomme01-before-apple.mp4) | 12.18 s | [Rapport](md-saylun-cheminee-pomme01-before-apple/report.json) |
+| [md-teacher-2c-level1-learn01](md-teacher-2c-level1-learn01/md-teacher-2c-level1-learn01.mp4) | 11.92 s | [Rapport](md-teacher-2c-level1-learn01/report.json) |
+| [md-teacher-2c-level2-learn01](md-teacher-2c-level2-learn01/md-teacher-2c-level2-learn01.mp4) | 10.61 s | [Rapport](md-teacher-2c-level2-learn01/report.json) |
+| [md-teacher-aa-level1-learn01](md-teacher-aa-level1-learn01/md-teacher-aa-level1-learn01.mp4) | 10.40 s | [Rapport](md-teacher-aa-level1-learn01/report.json) |
 | [md-teacher-e6-level2-learn01](md-teacher-e6-level2-learn01/md-teacher-e6-level2-learn01.mp4) | 6.84 s | [Rapport](md-teacher-e6-level2-learn01/report.json) |
 | [saylun-indice-mur-ntsc01](saylun-indice-mur-ntsc01/saylun-indice-mur-ntsc01.mp4) | 7.64 s | [Rapport](saylun-indice-mur-ntsc01/report.json) |
 | [saylun-indice-mur-pal01](saylun-indice-mur-pal01/saylun-indice-mur-pal01.mp4) | 8.23 s | [Rapport](saylun-indice-mur-pal01/report.json) |
+| [service-52-save-refus-ntsc01](service-52-save-refus-ntsc01/service-52-save-refus-ntsc01.mp4) | 8.38 s | [Rapport](service-52-save-refus-ntsc01/report.json) |
+| [service-53-merchant-refus-ntsc01](service-53-merchant-refus-ntsc01/service-53-merchant-refus-ntsc01.mp4) | 5.01 s | [Rapport](service-53-merchant-refus-ntsc01/report.json) |
+| [service-55-merchant-refus-ntsc01](service-55-merchant-refus-ntsc01/service-55-merchant-refus-ntsc01.mp4) | 5.07 s | [Rapport](service-55-merchant-refus-ntsc01/report.json) |
+| [service-71-merchant-refus-ntsc03](service-71-merchant-refus-ntsc03/service-71-merchant-refus-ntsc03.mp4) | 5.02 s | [Rapport](service-71-merchant-refus-ntsc03/report.json) |
+| [service-72-merchant-refus-ntsc03](service-72-merchant-refus-ntsc03/service-72-merchant-refus-ntsc03.mp4) | 5.29 s | [Rapport](service-72-merchant-refus-ntsc03/report.json) |
 | [service-94-healer-refus-ntsc01](service-94-healer-refus-ntsc01/service-94-healer-refus-ntsc01.mp4) | 9.36 s | [Rapport](service-94-healer-refus-ntsc01/report.json) |
 | [service-94-merchant-refus-ntsc01](service-94-merchant-refus-ntsc01/service-94-merchant-refus-ntsc01.mp4) | 6.42 s | [Rapport](service-94-merchant-refus-ntsc01/report.json) |
+| [service-94-save-refus-ntsc01](service-94-save-refus-ntsc01/service-94-save-refus-ntsc01.mp4) | 8.33 s | [Rapport](service-94-save-refus-ntsc01/report.json) |
 | [service-a5-merchant-refus-ntsc01](service-a5-merchant-refus-ntsc01/service-a5-merchant-refus-ntsc01.mp4) | 4.92 s | [Rapport](service-a5-merchant-refus-ntsc01/report.json) |
+| [settled-eren-maison00-dialogue01](settled-eren-maison00-dialogue01/settled-eren-maison00-dialogue01.mp4) | 10.65 s | [Rapport](settled-eren-maison00-dialogue01/report.json) |
+| [settled-eren-maison02-dialogues01](settled-eren-maison02-dialogues01/settled-eren-maison02-dialogues01.mp4) | 9.68 s | [Rapport](settled-eren-maison02-dialogues01/report.json) |
+| [settled-eren-marchand-refus01](settled-eren-marchand-refus01/settled-eren-marchand-refus01.mp4) | 7.88 s | [Rapport](settled-eren-marchand-refus01/report.json) |
+| [settled-eren-sauvegarde-refus01](settled-eren-sauvegarde-refus01/settled-eren-sauvegarde-refus01.mp4) | 9.04 s | [Rapport](settled-eren-sauvegarde-refus01/report.json) |
+| [settled-eren-soins-refus01](settled-eren-soins-refus01/settled-eren-soins-refus01.mp4) | 11.08 s | [Rapport](settled-eren-soins-refus01/report.json) |
+| [settled-maison-55-01-ntsc01](settled-maison-55-01-ntsc01/settled-maison-55-01-ntsc01.mp4) | 8.16 s | [Rapport](settled-maison-55-01-ntsc01/report.json) |
+| [settled-maison-55-03-ntsc01](settled-maison-55-03-ntsc01/settled-maison-55-03-ntsc01.mp4) | 8.89 s | [Rapport](settled-maison-55-03-ntsc01/report.json) |
+| [settled-maison-64-8f-ntsc01](settled-maison-64-8f-ntsc01/settled-maison-64-8f-ntsc01.mp4) | 5.01 s | [Rapport](settled-maison-64-8f-ntsc01/report.json) |
+| [settled-maison-94-00-ntsc01](settled-maison-94-00-ntsc01/settled-maison-94-00-ntsc01.mp4) | 9.76 s | [Rapport](settled-maison-94-00-ntsc01/report.json) |
+| [settled-maison-94-02-ntsc01](settled-maison-94-02-ntsc01/settled-maison-94-02-ntsc01.mp4) | 8.78 s | [Rapport](settled-maison-94-02-ntsc01/report.json) |
+| [settled-maison-b3-8f-ntsc01](settled-maison-b3-8f-ntsc01/settled-maison-b3-8f-ntsc01.mp4) | 9.20 s | [Rapport](settled-maison-b3-8f-ntsc01/report.json) |
+| [settled-md-equipment-27-retour01](settled-md-equipment-27-retour01/settled-md-equipment-27-retour01.mp4) | 7.06 s | [Rapport](settled-md-equipment-27-retour01/report.json) |
+| [settled-saylun-indice-mur-ntsc01](settled-saylun-indice-mur-ntsc01/settled-saylun-indice-mur-ntsc01.mp4) | 9.18 s | [Rapport](settled-saylun-indice-mur-ntsc01/report.json) |
+| [settled-saylun-indice-mur-pal01](settled-saylun-indice-mur-pal01/settled-saylun-indice-mur-pal01.mp4) | 10.02 s | [Rapport](settled-saylun-indice-mur-pal01/report.json) |
 
 Les MP4 restent locaux. Les rapports réussis vérifient le décodage audio/vidéo intégral, la synchronisation, la RAM et les pixels finaux identiques au rejeu. [Suivi des cas](../../analysis/md_annex_replay_coverage.json).

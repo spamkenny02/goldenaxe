@@ -5,6 +5,7 @@ import cv2,numpy as np
 from run_core import ROOT,run,FrameWrites
 from assisted_prefix import prefix_writes
 from validate_playable_sprite_limit import symbols
+from write_atomic_report import write_bytes
 sys.path.insert(0,str(ROOT.parents[1]/'work/video-tools'))
 import imageio_ffmpeg
 def sha(p):
@@ -72,7 +73,7 @@ def main():
     reader=cv2.VideoCapture(str(movie));assert reader.isOpened() and round(reader.get(cv2.CAP_PROP_FRAME_COUNT))==sent;reader.release()
     result=dict(passed=True,trace=a.trace,rom_sha256=cap['rom_sha256'],movie=movie.relative_to(ROOT).as_posix(),movie_sha256=sha(movie),frames=sent,first_emulated_frame=a.from_frame,last_emulated_frame=end,fps=fps,duration_seconds=sent/fps,audio_video_delta_seconds=delta,full_audio_video_decoded=True,final_ram_and_pixels_exact=True,ram_writes=len(writes),boss_assistance=False,sram_imports=int(initial is not None),genuine_game_written_continue=initial is not None,all_npcs_complete=False,proof_sha256=sha(proof/'replay_report.json'))
     result.update(core_sha256=core_sha,recorder_sha256=sha(Path(__file__)))
-    (out/'report.json').write_bytes((json.dumps(result,indent=2)+'\n').encode());print(json.dumps(result),flush=True)
+    write_bytes(out/'report.json',(json.dumps(result,indent=2)+'\n').encode());print(json.dumps(result),flush=True)
     # Only this successful encode's known intermediates; preserve all traces.
     for file in (wav,silent):assert file.resolve().is_relative_to(temp.resolve());file.unlink()
 if __name__=='__main__':main()

@@ -9,7 +9,7 @@ from validate_playable_sprite_limit import symbols
 from assisted_prefix import recording
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--rom',required=True);p.add_argument('--trial',required=True);p.add_argument('--crystals',type=int,choices=range(1,10),default=9);a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--rom',required=True);p.add_argument('--trial',required=True);p.add_argument('--crystals',type=int,choices=range(1,10),default=9);p.add_argument('--axe-before-apple',action='store_true');a=p.parse_args()
     rom=ROOT/a.rom;digest=hashlib.sha256(rom.read_bytes()).hexdigest();assert digest=='1421abe47de95ac104a03e2fb1be7001f70aeca1fbb6a9b35669aa6e98b7d9a4'
     route=json.loads((ROOT/'testkit/manifest.json').read_bytes())['routes']['md_ntsc']
     csvpath=ROOT/'testkit/routes'/route['csv'];assert hashlib.sha256(csvpath.read_bytes()).hexdigest()==route['csv_sha256']
@@ -29,7 +29,8 @@ def main():
             assert not any(actors[n+24] and (0x63<=actors[n]<=0x6d or 0x78<=actors[n]<=0x7c) for n in range(0,768,48)),('guard overlaps live boss',frame)
         assert not word('sound_unhandled_command') and word('game_state')!=20
         gems=data('game_save_state',592)[0x1f:0x28]
-        if frame>2500 and sum(bool(v&128) for v in gems)==a.crystals:
+        eligible=not a.axe_before_apple or (word('hero_weapon_level') and not data('hero_items',17)[8])
+        if frame>2500 and sum(bool(v&128) for v in gems)==a.crystals and eligible:
             state.update(room=word('room_id'),game=word('game_state'),hero=word('hero_state'),counter=word('hero_counter'),x=word('hero_x')>>8,y=word('hero_y')>>8,health=word('hero_health'),max_health=word('hero_max_health'),magic=word('hero_magic'),max_magic=word('hero_max_magic'),gold=word('hero_gold'),keys=word('hero_keys'),dungeon=word('world_dungeon_number'),crystals=list(gems),audio_error=word('sound_unhandled_command'))
             if complete is None and state['room']<256 and state['game']==12 and state['hero']==1 and not state['counter'] and not state['dungeon'] and not word('resume_phase') and not data('door_transition_loading',1)[0]:
                 complete=frame+1;captures.add(complete)

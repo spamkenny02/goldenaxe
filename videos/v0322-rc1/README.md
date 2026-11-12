@@ -1,8 +1,8 @@
-# Vidéo MD du candidat privé SHA1421abe4 — RC non validée
+# Vidéo MD du binaire de développement V322 SHA1421abe4 — RC non validée
 
 Cette vidéo montre l’introduction puis une campagne continue jusqu’au générique.
 Elle ne couvre pas toutes les branches PNJ, objets et quêtes du parcours SMS.
-Le candidat n’est pas publié comme RC validée ; le point 6 reste ouvert jusqu’à
+La V322 est publiée en développement et ne constitue pas une RC validée ; le point 6 reste ouvert jusqu’à
 la relecture MD des annexes et leur preuve vidéo.
 
 Fichier local : `golden-axe-warrior-md-v0322-rc1-gameplay-complet-ntsc.mp4`.

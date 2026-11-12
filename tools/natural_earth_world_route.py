@@ -40,10 +40,11 @@ def main():
     initial=(ROOT/'validation'/family/remaining[remaining.index(flag)+1]/f'ram_{cap["frames"]:05d}.bin').read_bytes()
     if not sms:initial=md_to_sms_view(initial,sy)
     preexisting=bool(initial[0x100+outside]&1)
+    aim_step=16 if not sms and initial[0xee] else 8
     start=cap['frames'];original=game.run;original_render=game.World.render_cells;state={};actual=[];events=[];result={};opened=None;approached=False;direction=0;sequence=False
     entry_direction=int(remaining[remaining.index('--door-entry-direction')+1]) if '--door-entry-direction' in remaining else 0
     cast=((index&15)*16+8+[0,0,16,-16][entry_direction],(index&240)+[24,8,16,16][entry_direction])
-    behind=(cast[0]+[0,0,8,-8][entry_direction],cast[1]+[8,-8,0,0][entry_direction])
+    behind=(cast[0]+[0,0,aim_step,-aim_step][entry_direction],cast[1]+[aim_step,-aim_step,0,0][entry_direction])
     house=int(remaining[remaining.index('--house-target')+1],0)
     goal=game.World(house_outside=outside,house_target=house).goal
     mouth=(goal['x']-[0,0,-8,8][entry_direction],goal['y']-[-8,8,0,0][entry_direction])
@@ -52,7 +53,7 @@ def main():
     for facing in [entry_direction]+[d for d in range(4) if d!=entry_direction]:
         origin=((index&15)*16+8+[0,0,16,-16][facing],(index&240)+[24,8,16,16][facing])
         for n in range(5):
-            candidates.append((origin[0]+[0,0,8,-8][facing]*n,origin[1]+[8,-8,0,0][facing]*n,facing))
+            candidates.append((origin[0]+[0,0,aim_step,-aim_step][facing]*n,origin[1]+[aim_step,-aim_step,0,0][facing]*n,facing))
     def proposed_render(world,room,cells,meta=None):
         if room==outside:
             flags=bytearray(256);flags[outside]=1
@@ -90,19 +91,26 @@ def main():
                 for rock in rocks:
                     for facing in range(4):
                         origin=((rock&15)*16+8+[0,0,16,-16][facing],(rock&240)+[24,8,16,16][facing])
-                        for n in range(5):candidates.append((origin[0]+[0,0,8,-8][facing]*n,origin[1]+[8,-8,0,0][facing]*n,facing))
+                        for n in range(5):candidates.append((origin[0]+[0,0,aim_step,-aim_step][facing]*n,origin[1]+[aim_step,-aim_step,0,0][facing]*n,facing))
                 terrain_candidates_generated=True
             if f>start and state.get('room')==outside and state['terrain'] not in (3,5) and not sequence and opened is None:
                 for allow_blocker,cx,cy,facing in [(allow,*q) for allow in (False,True) for q in candidates]:
                     candidate=(cx,cy)
                     if not (8<=candidate[0]<=248 and 8<=candidate[1]<=160):continue
                     if reaches_target(state['tilemap'],state['cells'],candidate,facing,index,state['level'],allow_blocker):
-                        if combat.walk(state['tilemap'],(state['x'],state['y']),lambda q:q==candidate) is not None:
-                            back=(candidate[0]+[0,0,8,-8][facing],candidate[1]+[8,-8,0,0][facing])
+                        approach=combat.walk(state['tilemap'],(state['x'],state['y']),lambda q:q==candidate)
+                        if approach is not None:
+                            back=(candidate[0]+[0,0,aim_step,-aim_step][facing],candidate[1]+[aim_step,-aim_step,0,0][facing])
                             # Collision can be asymmetric at rocks: being able
                             # to back away does not guarantee a return step.
                             back_reachable=(combat.walk(state['tilemap'],candidate,lambda q:q==back) is not None
                                 and combat.walk(state['tilemap'],back,lambda q:q==candidate) is not None)
+                            if not sms and not back_reachable and not (approach and approach[-1]==facing or not approach and state['direction']==facing):
+                                # Never repeatedly spend MP trying to turn
+                                # against a blocked corner while pressing C.
+                                # Use a stance whose approach already faces
+                                # the shot, or one with a real retreat step.
+                                continue
                             cast=candidate;cast_direction=facing;behind=back;sequence=True;turning=False;break
             active=f>start and sequence and state.get('room')==outside
             if not active:value=base_control(f)
@@ -160,7 +168,7 @@ def main():
     folder=result['folder'];report=json.loads((folder/'route_report.json').read_bytes())
     assert not report['reached_entrance'] or opened is not None
     report.update(earth_exterior_opened=opened,earth_exterior_cell=index,earth_exterior_preexisting_in_prefix=preexisting,earth_exterior_new_resource_writes=0,
-                  earth_exterior_driver_sha256=sha(Path(__file__).read_bytes()),earth_cast_position=cast,earth_cast_direction=cast_direction)
+                  earth_controller_aim_step=aim_step,earth_exterior_driver_sha256=sha(Path(__file__).read_bytes()),earth_cast_position=cast,earth_cast_direction=cast_direction)
     for name,value in [('controls',actual),('earth_world_events',events),('route_report',report)]:
         (folder/(name+'.json')).write_bytes((json.dumps(value,indent=2)+'\n').encode())
 

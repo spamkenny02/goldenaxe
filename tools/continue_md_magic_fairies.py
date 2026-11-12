@@ -20,7 +20,9 @@ def main():
                 tool,extra=options
                 if outside==0xaa and not raw[0x1aa]&1:
                     extra=[x for x in extra if x!='--persisted-only'];extra+=['--bell-room','0xaa']
-                c.route(tag+'-entry01',extra,tool);return
+                attempt=1
+                while (ROOT/f'validation/natural-dungeon-route/md-annex-magic-fairies-{tag}-entry{attempt:02d}').exists():attempt+=1
+                c.route(tag+f'-entry{attempt:02d}',extra,tool);return
         raise AssertionError(('No reachable teacher/fairy proposal',outside,house))
     def film(tag,first):
         with (ROOT/'validation'/(tag+'-video.log')).open('w') as log:subprocess.run([sys.executable,str(ROOT/'tools/record_md_annex.py'),'--trace',c.trace,'--rom',str(c.rom),'--from-frame',str(first),'--name',tag],cwd=ROOT,stdout=log,stderr=subprocess.STDOUT,check=True)

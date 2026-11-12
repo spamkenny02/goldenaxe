@@ -43,7 +43,7 @@ def main():
    if contact_start is None:
     if state['y']>72:return [4]
     contact_start=f
-    if f-contact_start<80:return [4]
+   if f-contact_start<80:return [4]
    contact_end=f
   if a.sms and not a.revisit and a.expected_initial_capacity==128 and state['outside_flags']&2:
    # A capped reward has no capacity transition to signal that its dialogue

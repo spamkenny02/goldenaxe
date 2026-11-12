@@ -37,14 +37,14 @@ def main():
     rom = a.candidate.resolve() if a.candidate else ROOT / 'gaw-megadrive.bin'
     digest = hashlib.sha256(rom.read_bytes()).hexdigest()
     published = '89c5833351312ffaa591efb1939161910a298af06437080e2cf84fb3fb8ac86e'
-    assert cap['rom_sha256'] in ({published,digest} if a.candidate else {published})
+    assert cap['rom_sha256'] in ({published,digest} if a.candidate else {digest})
     if a.candidate:
         assert rom.is_relative_to(ROOT / 'validation')
         build = load(rom.parent / 'build-report.json')
         assert build['private_candidate'] and build['base_sha256'] == published and build['md_sha256'] == digest
         assert build['all_other_bytes_identical']
     else:
-        assert digest == published
+        assert digest in (published,'1421abe47de95ac104a03e2fb1be7001f70aeca1fbb6a9b35669aa6e98b7d9a4'), 'Unvalidated native layout'
     writes = prefix_writes(prefix, cap, a.assisted_prefix)
     targets = reference['required_targets']
     data_source = (ROOT / 'megadrive/src/plain_house_data.c').read_text().split('plain_house_dialogues[][5]=', 1)[1]
@@ -87,6 +87,7 @@ def main():
         state.update(room=word('room_id'), game=word('game_state'), hero=word('hero_state'),
                      counter=word('hero_counter'), x=word('hero_x') >> 8, y=word('hero_y') >> 8,
                      health=word('hero_health'), modal=word('house_dialogue_active'),
+                     resume_phase=word('resume_phase'),door_loading=data('door_transition_loading',1)[0],graphics_class=word('world_graphics_class'),
                      dialogue_index=word('house_quest_text_pc' if a.quest_hint else 'house_dialogue_index'), audio_error=word('sound_unhandled_command'))
         state['tilemap'] = data('sms_vram', 0x4000)[0x3800:0x3e00]
         if not state['health'] or state['audio_error']:
@@ -106,7 +107,7 @@ def main():
                 matched = frame
                 captures.add(frame + 1)
                 events.append(dict(frame=frame, text_pc=target['text_pc'], event='final_bitmap_exact_sms', bytes=1040))
-        if index == len(targets) and state['room'] == reference['outside'] and state['game'] == 12 and state['hero'] == 1 and done is None:
+        if index == len(targets) and state['room'] == reference['outside'] and state['game'] == 12 and state['hero'] == 1 and not state['resume_phase'] and not state['door_loading'] and state['graphics_class']==0 and done is None:
             done = frame
             captures.add(frame + 30)
 

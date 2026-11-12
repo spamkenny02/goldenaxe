@@ -1,6 +1,6 @@
 # Relecture MD des parcours SMS — en cours
 
-Le candidat privé SHA1421abe4 corrige Saylun. La V321 reste la version publiée.
+La V322 de développement SHA1421abe4 corrige Saylun ; elle n’est pas une RC qualifiée.
 Le point 6 reste ouvert : toutes les branches retenues doivent être réellement
 jouées, vérifiées et filmées sur MD avant qualification de la RC.
 
@@ -27,3 +27,21 @@ pas encore toutes les pages intermédiaires ou le timing physique SMS/MD.
 La campagne MD complète en PAL/NTSC et sa vidéo ne remplacent pas les annexes.
 Aucun pourcentage global ni certificat tous PNJ/tous objets/tous monstres
 n’est déduit du nombre d’enregistrements contrôlés.
+
+## Correction du critère de sortie
+
+Un retour de maison peut publier le numéro de l’écran extérieur et le héros
+avant la fin réelle du fondu. Les anciens clips arrêtés à cet instant conservent
+leur preuve de dialogue et de rejeu, mais ne sont plus qualifiés comme une
+sortie complète. Le relevé général les liste dans `partial_exits_not_credited`.
+Les nouvelles preuves attendent `resume_phase=0`, chargement terminé, classe
+extérieure, puis une commande de déplacement effectivement exécutée. Les
+prolongements rejouent tout le préfixe à l’identique, sans importer de RAM.
+
+Le cas marchand72 a aussi montré un projectile frappant le héros sur la carte
+extérieure déjà restaurée : [diagnostic](../../analysis/md_merchant72_damage_audit.json).
+Les refus peuvent désormais déclarer explicitement la protection d’approche
+autorisée, avec audit de l’absence de boss vivant ; aucun point de vie, objet
+ou état de quête n’est injecté pour faire réussir le test.
+
+Impact marchand72 : [image avant](marchand72-avant.png), [image de l’impact](marchand72-impact.png). Le numéro de frame et les états exacts figurent dans le diagnostic.

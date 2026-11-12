@@ -11,21 +11,21 @@ Il distingue données extraites, règles du modèle et interactions rejouées ;
 la couverture de tous les PNJ et de toutes les quêtes secondaires reste ouverte.
 
 <!-- ROM-RELEASE:START -->
-**Version courante : v0321 — 2048 Kio.**
+**Version courante : v0322 — 2048 Kio.**
 
-[Télécharger la ROM v0321](versions/v0321-89c58333/gaw-megadrive-v0321.bin) · [Toutes les versions](versions/README.md)
+[Télécharger la ROM v0322](versions/v0322-1421abe4/gaw-megadrive-v0322.bin) · [Toutes les versions](versions/README.md)
 
 Version de développement ; contrôles ciblés réussis, écarts visuels et validation complète encore ouverts.
 
-SHA-256 : `89c5833351312ffaa591efb1939161910a298af06437080e2cf84fb3fb8ac86e`
-Checksum Mega Drive : `CB3C`
+SHA-256 : `1421abe47de95ac104a03e2fb1be7001f70aeca1fbb6a9b35669aa6e98b7d9a4`
+Checksum Mega Drive : `ECB3`
 <!-- ROM-RELEASE:END -->
 
 **Reprise du 12 novembre : toutes les branches retenues sur SMS doivent être
 rejouées et filmées sur MD avant la publication d'une RC.** La campagne MD
 PAL/NTSC et sa vidéo sont terminées sur un candidat corrigeant Saylun, mais
 elles ne remplacent pas les annexes. Le point 6 reste ouvert pour la couverture
-SMS/MD demandée. Le binaire publié reste V321 ; le candidat V322 n'est pas
+SMS/MD demandée. La V322 corrige le dialogue de Saylun ; [contrôles et limites](analysis/dialogue_empty_width_v0322_development_report.json). Le binaire V322 est publié en développement ; ce n'est pas
 une RC validée. [Suivi des branches MD](analysis/md_annex_replay_coverage.json).
 
 Les scripts et les entrées de campagne sont disponibles dans

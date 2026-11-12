@@ -1,6 +1,6 @@
 # Golden Axe Warrior — préparation V322 RC1, NON VALIDÉE
 
-**Publication suspendue : les branches SMS doivent encore être rejouées et filmées sur MD. Le point 6 reste ouvert.** Les contrôles ci-dessous portent sur le candidat privé SHA1421abe4 ; ils ne suffisent pas à qualifier la RC demandée. Ce document est préparatoire.
+**Publication suspendue : les branches SMS doivent encore être rejouées et filmées sur MD. Le point 6 reste ouvert.** Les contrôles ci-dessous portent sur le binaire de développement V322 SHA1421abe4 ; ils ne suffisent pas à qualifier la RC demandée. Ce document est préparatoire.
 
 ## Changement par rapport à la V321
 

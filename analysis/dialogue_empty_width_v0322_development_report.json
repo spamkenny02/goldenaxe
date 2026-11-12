@@ -1,0 +1,90 @@
+{
+  "passed": true,
+  "md_sha256": "1421abe47de95ac104a03e2fb1be7001f70aeca1fbb6a9b35669aa6e98b7d9a4",
+  "date": "2026-11-12",
+  "development": true,
+  "release_candidate": false,
+  "change": "Scoped native Saylun room31 empty-word wrap correction; first phrase preserved in selected SMS-matching dialogue.",
+  "overlay_bytes": 76,
+  "base_sha256": "89c5833351312ffaa591efb1939161910a298af06437080e2cf84fb3fb8ac86e",
+  "all_other_bytes_identical": true,
+  "title_and_credits_overlays_unchanged": true,
+  "source_builds_bit_identical": 2,
+  "campaigns": {
+    "ntsc": {
+      "file": "validation/rc1-campaign-ntsc01/report.json",
+      "sha256": "1dee54b0c309c031d0b2aae7826161ced567869de4dda10a63764d05f0c7a1fa",
+      "frames": 403488,
+      "ending_seen": true,
+      "final": {
+        "game": 0,
+        "room": 332,
+        "health": 60,
+        "crystals": 9,
+        "audio_error": 0
+      },
+      "deaths": 0,
+      "boss_assistance": false
+    },
+    "pal": {
+      "file": "validation/rc1-campaign-pal01/report.json",
+      "sha256": "c75274032131f2140c2503ecebc25c598c3ee738911885703d8cf843f87401fe",
+      "frames": 382208,
+      "ending_seen": true,
+      "final": {
+        "game": 0,
+        "room": 332,
+        "health": 92,
+        "crystals": 9,
+        "audio_error": 0
+      },
+      "deaths": 0,
+      "boss_assistance": false
+    }
+  },
+  "saylun_bitmap_tests": {
+    "ntsc": {
+      "file": "validation/natural-service-route/md-ntsc-rc1-c7-dialogue01/report.json",
+      "sha256": "3aa12a3ed1fb69e6af9a6b0df58f5f89a6b25cc44f774a5e2b06ee020e9ba0e6",
+      "visits": [
+        {
+          "text_pc": 40244,
+          "coordinate": 360,
+          "md_index": 45,
+          "entry_frame": 6539,
+          "bitmap_exact_frame": 6676,
+          "bitmap_exact_bytes": 1040,
+          "sms_bitmap_sha256": "4b5c53a91d1e743fa397cf2ede3453ce8fe5fb21221bb7427f6be1b53275de3f",
+          "acknowledged_and_walked_away_frame": 6727
+        }
+      ],
+      "scope": "SMS-selected text and final bitmap only; original exit endpoints are superseded by separate settled-exit proofs. This does not certify restoration/timing."
+    },
+    "pal": {
+      "file": "validation/natural-service-route/md-pal-rc1-c7-dialogue01/report.json",
+      "sha256": "c55711c77f017153cc0f3934609a9ad8bc1abb12bf30f96890fae476b06568c6",
+      "visits": [
+        {
+          "text_pc": 40244,
+          "coordinate": 360,
+          "md_index": 45,
+          "entry_frame": 4031,
+          "bitmap_exact_frame": 4166,
+          "bitmap_exact_bytes": 1040,
+          "sms_bitmap_sha256": "4b5c53a91d1e743fa397cf2ede3453ce8fe5fb21221bb7427f6be1b53275de3f",
+          "acknowledged_and_walked_away_frame": 4214
+        }
+      ],
+      "scope": "SMS-selected text and final bitmap only; original exit endpoints are superseded by separate settled-exit proofs. This does not certify restoration/timing."
+    }
+  },
+  "all_npcs_complete": false,
+  "all_side_quests_complete": false,
+  "point6_complete": false,
+  "limits": [
+    "Development build, not a qualified RC. MD annex replay/filming is ongoing.",
+    "Several historical NPC exit endpoints stopped during reveal; they are excluded by the current coverage auditor and replaced by longer proofs.",
+    "Full physical pixels/pages/audio timing, source RNG/global phase and hardware fidelity remain outside these targeted checks.",
+    "SMS strings DA58/DA7C/ED3C remain without a demonstrated legitimate trigger; no artificial trigger is added."
+  ]
+}
