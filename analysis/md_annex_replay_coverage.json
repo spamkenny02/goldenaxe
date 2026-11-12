@@ -5,7 +5,7 @@
   "rom_status": "development_not_qualified_as_release_candidate",
   "all_selected_sms_cases_verified_on_md": false,
   "retained_sms_recording_cases": 409,
-  "md_ntsc_played_replayed_and_filmed_cases": 25,
+  "md_ntsc_played_replayed_and_filmed_cases": 31,
   "all_npcs_complete": false,
   "all_items_or_monsters_globally_certified": false,
   "point6_status": "open_until_md_counterparts_and_video_complete",
@@ -1887,10 +1887,19 @@
         "sms_six_points_progress.json",
         "sms_equipment_returns_campaign.json"
       ],
-      "md_passed": false,
-      "fixed_replay_passed": false,
-      "video_verified": false,
-      "md_evidence": []
+      "md_passed": true,
+      "fixed_replay_passed": true,
+      "video_verified": true,
+      "md_evidence": [
+        {
+          "trace": "natural-service-route/md-annex-late-equipment-equipment-b1-return01",
+          "region": "ntsc",
+          "report": "videos/md-annexes-2026-11-12/md-late-equipment-b1-retour01/report.json",
+          "report_sha256": "1ee73f106a28d32cd0c96e27167a7b90de5d5c1e3d04cdba18ec1873148fd230",
+          "conversations": 0,
+          "scope": "Actual contacts and room transitions, silent contact with no native dialogue or item-reward state, ordinary exit. No new resource, actor or quest writes."
+        }
+      ]
     },
     {
       "sms_trace": "natural-service-route/sms-npc-equipment-returns-c7-return01",
@@ -3429,10 +3438,19 @@
         "sms_points_3_4_closure.json",
         "sms_six_points_progress.json"
       ],
-      "md_passed": false,
-      "fixed_replay_passed": false,
-      "video_verified": false,
-      "md_evidence": []
+      "md_passed": true,
+      "fixed_replay_passed": true,
+      "video_verified": true,
+      "md_evidence": [
+        {
+          "trace": "natural-service-route/md-annex-services-55-healer-refuse01",
+          "region": "ntsc",
+          "report": "videos/md-annexes-2026-11-12/service-55-healer-refus-ntsc01/report.json",
+          "report_sha256": "bfd62bbfcdcfe1aa5dbf28e7f207efe61773325410acfc6a7d02291c29ad651b",
+          "conversations": 0,
+          "scope": "Actual native refusal and moving exterior return. Healer/save require explicit visible No and exact final SMS refusal bitmap; merchant proves Cancel and unchanged resources, not every panel/timing pixel."
+        }
+      ]
     },
     {
       "sms_trace": "natural-service-route/sms-npc-service-refusals-55-merchant-refuse01",
@@ -3460,10 +3478,19 @@
         "sms_points_3_4_closure.json",
         "sms_six_points_progress.json"
       ],
-      "md_passed": false,
-      "fixed_replay_passed": false,
-      "video_verified": false,
-      "md_evidence": []
+      "md_passed": true,
+      "fixed_replay_passed": true,
+      "video_verified": true,
+      "md_evidence": [
+        {
+          "trace": "natural-service-route/md-annex-services-55-save-refuse01",
+          "region": "ntsc",
+          "report": "videos/md-annexes-2026-11-12/service-55-save-refus-ntsc01/report.json",
+          "report_sha256": "2e98b35f3fc3d2d7cf054fd75410d1856d1c7fd153b72a323428df9c07fb748d",
+          "conversations": 0,
+          "scope": "Actual native refusal and moving exterior return. Healer/save require explicit visible No and exact final SMS refusal bitmap; merchant proves Cancel and unchanged resources, not every panel/timing pixel."
+        }
+      ]
     },
     {
       "sms_trace": "natural-service-route/sms-npc-service-refusals-57-healer-refuse01",
@@ -3482,10 +3509,19 @@
         "sms_points_3_4_closure.json",
         "sms_six_points_progress.json"
       ],
-      "md_passed": false,
-      "fixed_replay_passed": false,
-      "video_verified": false,
-      "md_evidence": []
+      "md_passed": true,
+      "fixed_replay_passed": true,
+      "video_verified": true,
+      "md_evidence": [
+        {
+          "trace": "natural-service-route/md-annex-services-57-merchant-refuse01",
+          "region": "ntsc",
+          "report": "videos/md-annexes-2026-11-12/service-57-merchant-refus-ntsc01/report.json",
+          "report_sha256": "27ada223cc7d751ca800cefd9d16681032c3f431c69934feb65d833536096aad",
+          "conversations": 0,
+          "scope": "Actual native refusal and moving exterior return. Healer/save require explicit visible No and exact final SMS refusal bitmap; merchant proves Cancel and unchanged resources, not every panel/timing pixel."
+        }
+      ]
     },
     {
       "sms_trace": "natural-service-route/sms-npc-service-refusals-57-save-refuse01",
@@ -3588,6 +3624,14 @@
           "report_sha256": "4d48c335cb422bc86a1ef249fc5a194b985115f5a96f91e0f3960e34f70ade35",
           "conversations": 0,
           "scope": "Actual native refusal and moving exterior return. Healer/save require explicit visible No and exact final SMS refusal bitmap; merchant proves Cancel and unchanged resources, not every panel/timing pixel. Extended with an exact-prefix check until resume0/loading0/class0, then real exterior movement and a quiet capture tail. The health delta of this separate exterior-control tail is reported explicitly; no health refill is applied."
+        },
+        {
+          "trace": "natural-service-route/md-settled-md-annex-services-94-healer-refuse01",
+          "region": "ntsc",
+          "report": "videos/md-annexes-2026-11-12/settled-service-94-healer-refus-ntsc01/report.json",
+          "report_sha256": "a9e5f73c975e287f7f120eb3a95542673a7ff968b6009053990373354b91f08f",
+          "conversations": 0,
+          "scope": "Actual native refusal and moving exterior return. Healer/save require explicit visible No and exact final SMS refusal bitmap; merchant proves Cancel and unchanged resources, not every panel/timing pixel. Extended with an exact-prefix check until resume0/loading0/class0, then real exterior movement and a quiet capture tail. The health delta of this separate exterior-control tail is reported explicitly; no health refill is applied."
         }
       ]
     },
@@ -3608,6 +3652,14 @@
           "report_sha256": "38c75d29471eb7c224b347ea8afe470e62a0dca5131c3355931e020e9ffa0130",
           "conversations": 0,
           "scope": "Actual native refusal and moving exterior return. Healer/save require explicit visible No and exact final SMS refusal bitmap; merchant proves Cancel and unchanged resources, not every panel/timing pixel. Extended with an exact-prefix check until resume0/loading0/class0, then real exterior movement and a quiet capture tail. The health delta of this separate exterior-control tail is reported explicitly; no health refill is applied."
+        },
+        {
+          "trace": "natural-service-route/md-settled-md-annex-services-94-merchant-refuse01",
+          "region": "ntsc",
+          "report": "videos/md-annexes-2026-11-12/settled-service-94-merchant-refus-ntsc01/report.json",
+          "report_sha256": "1dbd907637a5bdf23b23ef0abb86ad05615a866ee83c4800a4a1a498ad43be46",
+          "conversations": 0,
+          "scope": "Actual native refusal and moving exterior return. Healer/save require explicit visible No and exact final SMS refusal bitmap; merchant proves Cancel and unchanged resources, not every panel/timing pixel. Extended with an exact-prefix check until resume0/loading0/class0, then real exterior movement and a quiet capture tail. The health delta of this separate exterior-control tail is reported explicitly; no health refill is applied."
         }
       ]
     },
@@ -3626,6 +3678,14 @@
           "region": "ntsc",
           "report": "videos/md-annexes-2026-11-12/settled-eren-sauvegarde-refus01/report.json",
           "report_sha256": "5b9c0a8083abd1916fa7980019ff3c9452a2acf8206111964a3a16879a1bfc6b",
+          "conversations": 0,
+          "scope": "Actual native refusal and moving exterior return. Healer/save require explicit visible No and exact final SMS refusal bitmap; merchant proves Cancel and unchanged resources, not every panel/timing pixel. Extended with an exact-prefix check until resume0/loading0/class0, then real exterior movement and a quiet capture tail. The health delta of this separate exterior-control tail is reported explicitly; no health refill is applied."
+        },
+        {
+          "trace": "natural-service-route/md-settled-md-annex-services-94-save-refuse01",
+          "region": "ntsc",
+          "report": "videos/md-annexes-2026-11-12/settled-service-94-save-refus-ntsc01/report.json",
+          "report_sha256": "53253abb008b2f4be18e695455388a0974b6626f68e8a8fe0faab3913206f3b0",
           "conversations": 0,
           "scope": "Actual native refusal and moving exterior return. Healer/save require explicit visible No and exact final SMS refusal bitmap; merchant proves Cancel and unchanged resources, not every panel/timing pixel. Extended with an exact-prefix check until resume0/loading0/class0, then real exterior movement and a quiet capture tail. The health delta of this separate exterior-control tail is reported explicitly; no health refill is applied."
         }
@@ -4029,6 +4089,14 @@
       "fixed_replay_passed": true,
       "video_verified": true,
       "md_evidence": [
+        {
+          "trace": "natural-service-route/md-annex-plain-c7-1f-visit01",
+          "region": "ntsc",
+          "report": "videos/md-annexes-2026-11-12/maison-c7-1f-ntsc01/report.json",
+          "report_sha256": "0fc5cc72dda59afe36c6d915c441b882374e19f6a8ec05940ea12b9d13e27470",
+          "conversations": 1,
+          "scope": "Ordinary cold-boot walking and acknowledgment. Native selected dialogue and final 1040-byte bitmap match the played SMS reference. Intermediate pages, full physical pixels/audio/timing and conditional variants are not certified."
+        },
         {
           "trace": "natural-service-route/md-settled-md-ntsc-rc1-c7-dialogue01",
           "region": "ntsc",
@@ -4473,10 +4541,19 @@
         "sms_plain_house_census_campaign.json",
         "sms_npc_coverage_report.json"
       ],
-      "md_passed": false,
-      "fixed_replay_passed": false,
-      "video_verified": false,
-      "md_evidence": []
+      "md_passed": true,
+      "fixed_replay_passed": true,
+      "video_verified": true,
+      "md_evidence": [
+        {
+          "trace": "natural-service-route/md-annex-plain-c5-8f-visit01",
+          "region": "ntsc",
+          "report": "videos/md-annexes-2026-11-12/maison-c5-8f-ntsc01/report.json",
+          "report_sha256": "825cd214013d9c409728524515f0b5d631eb40dfb98ff90b901f6a18ed70859e",
+          "conversations": 1,
+          "scope": "Ordinary cold-boot walking and acknowledgment. Native selected dialogue and final 1040-byte bitmap match the played SMS reference. Intermediate pages, full physical pixels/audio/timing and conditional variants are not certified."
+        }
+      ]
     },
     {
       "sms_trace": "natural-service-route/sms-sms-npc-census-cd-8f-visit01",
@@ -4495,10 +4572,19 @@
         "sms_plain_house_census_campaign.json",
         "sms_npc_coverage_report.json"
       ],
-      "md_passed": false,
-      "fixed_replay_passed": false,
-      "video_verified": false,
-      "md_evidence": []
+      "md_passed": true,
+      "fixed_replay_passed": true,
+      "video_verified": true,
+      "md_evidence": [
+        {
+          "trace": "natural-service-route/md-annex-plain-da-8f-visit01",
+          "region": "ntsc",
+          "report": "videos/md-annexes-2026-11-12/maison-da-8f-ntsc01/report.json",
+          "report_sha256": "9ff13a08f5ac456ba28988fc919df18b0dce4e3233a7221688442fa4c03de67e",
+          "conversations": 1,
+          "scope": "Ordinary cold-boot walking and acknowledgment. Native selected dialogue and final 1040-byte bitmap match the played SMS reference. Intermediate pages, full physical pixels/audio/timing and conditional variants are not certified."
+        }
+      ]
     },
     {
       "sms_trace": "natural-service-route/sms-sms-npc-census-f0-03-visit01",

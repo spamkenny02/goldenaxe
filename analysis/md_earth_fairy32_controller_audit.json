@@ -1,0 +1,88 @@
+{
+  "passed": true,
+  "scope": "Actual MD Earth entrance opening, independently replayed house arrival, genuine fairy reward and decoded video. This is one side branch; no global NPC or RC qualification.",
+  "rom_sha256": "1421abe47de95ac104a03e2fb1be7001f70aeca1fbb6a9b35669aa6e98b7d9a4",
+  "trace": "natural-dungeon-route/md-annex-magic-fairies-fairy-32-entry04",
+  "previous_failed_controller_trials": [
+    "natural-dungeon-route/md-annex-magic-fairies-fairy-32-entry01",
+    "natural-dungeon-route/md-annex-magic-fairies-fairy-32-entry02",
+    "natural-dungeon-route/md-annex-magic-fairies-fairy-32-entry03"
+  ],
+  "cause": "Earth stance chosen from an unsettled map, then ordinary axe-route inputs could cast Earth while a bush still blocked the approach.",
+  "correction": "Choose a stance only after room loading and reveal finish; use the owned axe for ordinary bush routing and select Earth only for a real reachable shot; boot-aware retreat stance.",
+  "cast": [
+    {
+      "frame": 344807,
+      "cast": [
+        184,
+        72
+      ],
+      "facing": 1,
+      "behind": [
+        184,
+        56
+      ],
+      "back_reachable": true,
+      "allow_blocker": false
+    }
+  ],
+  "actual_magic_before_cast": 104,
+  "actual_magic_after_opening": 96,
+  "spell_magic_spent": 8,
+  "opened": {
+    "frame": 344974,
+    "resume_phase": 0,
+    "door_loading": 0,
+    "room": 50,
+    "game": 12,
+    "hero": 1,
+    "counter": 0,
+    "x": 184,
+    "y": 72,
+    "direction": 1,
+    "selected": 5,
+    "slot": 5,
+    "level": 2,
+    "magic": 96,
+    "flags": 81,
+    "cell": 0,
+    "spell": 0,
+    "terrain": 0
+  },
+  "controllable_inside": {
+    "room": 175,
+    "game_state": 12,
+    "hero_state": 1,
+    "counter": 0,
+    "x": 136,
+    "y": 136,
+    "health": 128,
+    "gold": 21,
+    "maze": 0,
+    "reveal_phase": 0,
+    "door_loading": 0,
+    "selected": 1,
+    "weapon": 1
+  },
+  "independent_replay": "validation/natural-dungeon-route/md-annex-magic-fairies-fairy-32-entry04-assisted-fixed-replay-345281/replay_report.json",
+  "independent_replay_sha256": "e0c83db442fc4f5a9729b7743b22b009d0ea3c9ca84424b05c59cec8f688a487",
+  "evidence": {
+    "capture.json": "cb881af697b14e9b9e9a024f1b37c70716fdffec7148309ad41e41e54d836868",
+    "controls.json": "935b3abdd8095a262245fa80b4bd18b35a861329d18ae976257b7f7e3f36d188",
+    "route_report.json": "1421447d70bb1d27c266309c07a7d709794fe608a24f2b435c66afba577cc56e",
+    "earth_controller_decisions.json": "415b6a56a40839ac590e764d7c565ebd6223524d557feff5c0f1224eaac769d6",
+    "earth_world_events.json": "7844e29385e4c4f009a5b2e82a5ace817ba0e589a2333cb0ca27846892cee7a5"
+  },
+  "all_npcs_complete": false,
+  "release_candidate_qualified": false,
+  "fairy_reward": {
+    "report": "validation/natural-service-route/md-annex-magic-fairies-fairy-32-contact01/report.json",
+    "report_sha256": "6b9874277d98d3bf6f23d6f604888b82c5b2c2b2980d51a8015c911448616a99",
+    "max_magic_before": 120,
+    "max_magic_after": 128,
+    "video_report": "videos/md-annexes-2026-11-12/md-fairy-32-contact01/report.json",
+    "video_report_sha256": "d417bc0ff8d898382f43d2f5aa18c238f5527e35e92f86097c5c8e66529b3777",
+    "movie_sha256": "3ee8dba07e104fecf03598376fd8aca03192788a7df7deca6b340f683d03196c",
+    "fixed_replay_sha256": "f4919d921a61951ff69c3803b9fe528d03ca5d41a1eafbfa975c19b4e6df3140"
+  }
+}

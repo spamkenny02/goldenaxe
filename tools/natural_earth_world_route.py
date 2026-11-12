@@ -41,7 +41,7 @@ def main():
     if not sms:initial=md_to_sms_view(initial,sy)
     preexisting=bool(initial[0x100+outside]&1)
     aim_step=16 if not sms and initial[0xee] else 8
-    start=cap['frames'];original=game.run;original_render=game.World.render_cells;state={};actual=[];events=[];result={};opened=None;approached=False;direction=0;sequence=False
+    start=cap['frames'];original=game.run;original_render=game.World.render_cells;state={};actual=[];events=[];decisions=[];result={};opened=None;approached=False;direction=0;sequence=False
     entry_direction=int(remaining[remaining.index('--door-entry-direction')+1]) if '--door-entry-direction' in remaining else 0
     cast=((index&15)*16+8+[0,0,16,-16][entry_direction],(index&240)+[24,8,16,16][entry_direction])
     behind=(cast[0]+[0,0,aim_step,-aim_step][entry_direction],cast[1]+[aim_step,-aim_step,0,0][entry_direction])
@@ -65,7 +65,10 @@ def main():
             nonlocal opened,sequence,approached
             base_observe(f,r)
             if f<start:return
-            if not sms:r=md_to_sms_view(r,sy)
+            if not sms:
+                word=lambda n:int.from_bytes(bytes(r[(sy[n]+i)^1] for i in range(2)),'big')
+                state.update(resume_phase=word('resume_phase'),door_loading=r[sy['door_transition_loading']^1])
+                r=md_to_sms_view(r,sy)
             old_cells=state.get('cells')
             state.update(room=int.from_bytes(r[0xb9:0xbb],'little'),game=r[0x1d],hero=r[0x301],counter=r[0x304],
                 x=r[0x313],y=r[0x311],direction=r[0x30a],selected=r[0xdf],slot=r[0xa0],level=r[0xe5],magic=r[0xdb],
@@ -82,7 +85,9 @@ def main():
                     if not turning:sequence=False;approached=False
         def control(f):
             nonlocal approached,direction,sequence,cast,behind,cast_direction,terrain_candidates_generated,back_reachable,turning,turn_shot_started
-            if f>start and state.get('room')==outside and not terrain_candidates_generated:
+            settled=(state.get('game')==12 and state.get('hero')==1 and not state.get('counter')
+                     and not state.get('resume_phase',0) and not state.get('door_loading',0))
+            if f>start and state.get('room')==outside and settled and not terrain_candidates_generated:
                 # Some entrances require opening an approach through several
                 # breakable rocks, rather than shooting the marked rock along
                 # a single straight ray (notably E1).
@@ -93,7 +98,7 @@ def main():
                         origin=((rock&15)*16+8+[0,0,16,-16][facing],(rock&240)+[24,8,16,16][facing])
                         for n in range(5):candidates.append((origin[0]+[0,0,aim_step,-aim_step][facing]*n,origin[1]+[aim_step,-aim_step,0,0][facing]*n,facing))
                 terrain_candidates_generated=True
-            if f>start and state.get('room')==outside and state['terrain'] not in (3,5) and not sequence and opened is None:
+            if f>start and state.get('room')==outside and settled and state['terrain'] not in (3,5) and not sequence and opened is None:
                 for allow_blocker,cx,cy,facing in [(allow,*q) for allow in (False,True) for q in candidates]:
                     candidate=(cx,cy)
                     if not (8<=candidate[0]<=248 and 8<=candidate[1]<=160):continue
@@ -111,11 +116,15 @@ def main():
                                 # Use a stance whose approach already faces
                                 # the shot, or one with a real retreat step.
                                 continue
-                            cast=candidate;cast_direction=facing;behind=back;sequence=True;turning=False;break
+                            cast=candidate;cast_direction=facing;behind=back;sequence=True;turning=False
+                            decisions.append(dict(frame=f,cast=cast,facing=facing,behind=behind,back_reachable=back_reachable,allow_blocker=allow_blocker))
+                            break
             active=f>start and sequence and state.get('room')==outside
-            if not active:value=base_control(f)
-            elif state['selected']!=(1 if opened else 5) or state['game']==16:
-                value=[];wanted=1 if opened else 5
+            wanted=5 if sequence and not opened else 1
+            if f>start and state.get('room')==outside and (state['selected']!=wanted or state['game']==16):
+                # The ordinary route may still need to chop a path through
+                # bushes. Never let its axe inputs cast Earth repeatedly.
+                value=[]
                 if f%20==0:
                     if state['game']==12 and state['hero']==1:value=[0]
                     elif state['game']==16:
@@ -123,6 +132,7 @@ def main():
                         elif state['slot']//4!=wanted//4:value=[5 if state['slot']//4<wanted//4 else 4]
                         elif state['slot']%4!=wanted%4:value=[7 if state['slot']%4<wanted%4 else 6]
                         else:value=[8]
+            elif not active:value=base_control(f)
             elif turning:
                 # A held attack button lets the original move routine change
                 # facing without walking after the casting animation. This
@@ -169,7 +179,7 @@ def main():
     assert not report['reached_entrance'] or opened is not None
     report.update(earth_exterior_opened=opened,earth_exterior_cell=index,earth_exterior_preexisting_in_prefix=preexisting,earth_exterior_new_resource_writes=0,
                   earth_controller_aim_step=aim_step,earth_exterior_driver_sha256=sha(Path(__file__).read_bytes()),earth_cast_position=cast,earth_cast_direction=cast_direction)
-    for name,value in [('controls',actual),('earth_world_events',events),('route_report',report)]:
+    for name,value in [('controls',actual),('earth_world_events',events),('earth_controller_decisions',decisions),('route_report',report)]:
         (folder/(name+'.json')).write_bytes((json.dumps(value,indent=2)+'\n').encode())
 
 
