@@ -12,7 +12,9 @@ from run_core import FrameWrites
 
 dialogue_events=[]
 def main():
- p=argparse.ArgumentParser();p.add_argument('--conditional',action='store_true');p.add_argument('--sms',action='store_true',required=True);p.add_argument('--prefix',required=True);p.add_argument('--out',required=True);p.add_argument('--room',type=lambda x:int(x,0),required=True);p.add_argument('--outside',type=lambda x:int(x,0),required=True);p.add_argument('--frames',type=int,default=18000);p.add_argument('--assisted-prefix',action='store_true');p.add_argument('--quest-hint',action='store_true');a=p.parse_args()
+ p=argparse.ArgumentParser();p.add_argument('--conditional',action='store_true');p.add_argument('--sms',action='store_true',required=True);p.add_argument('--prefix',required=True);p.add_argument('--out',required=True);p.add_argument('--room',type=lambda x:int(x,0),required=True);p.add_argument('--outside',type=lambda x:int(x,0),required=True);p.add_argument('--frames',type=int,default=18000);p.add_argument('--assisted-prefix',action='store_true');p.add_argument('--quest-hint',action='store_true')
+ p.add_argument('--probe-text-variants',action='store_true',help='Accept the actually observed text at each NPC coordinate, including an unknown variant')
+ a=p.parse_args()
  prefix=(ROOT/'validation'/a.prefix).resolve();out=(ROOT/'validation'/a.out).resolve();assert prefix.is_relative_to(ROOT/'validation') and out.is_relative_to(ROOT/'validation') and not out.exists()
  cap=json.loads((prefix/'capture.json').read_bytes());assert cap['sram_input'] is None
  writes=prefix_writes(prefix,cap,a.assisted_prefix)
@@ -71,9 +73,9 @@ def main():
   if phase=='talk':
    if rendered:
     if state['room']==a.room and state['counter']==0 and entry is not None and (state['x'],state['y'])!=(entry['x'],entry['y']):
-     match=next((t for t in targets if t['text_pc']==active and t['coordinate']==(((entry['y']-12)&248)<<3)+(((entry['x']-12)&255)>>2&62)+126),None)
-     if match and not any(v['text_pc']==active for v in visited):visited.append(dict(text_pc=active,coordinate=match['coordinate'],entry_frame=entry['frame'],render_completed=True,acknowledged_and_walked_away_frame=frame))
-     while current<len(targets) and any(v['text_pc']==targets[current]['text_pc'] for v in visited):current+=1
+     match=next((t for t in targets if (a.probe_text_variants or t['text_pc']==active) and t['coordinate']==(((entry['y']-12)&248)<<3)+(((entry['x']-12)&255)>>2&62)+126),None)
+     if match and not any(v['coordinate']==match['coordinate'] if a.probe_text_variants else v['text_pc']==active for v in visited):visited.append(dict(text_pc=active,coordinate=match['coordinate'],entry_frame=entry['frame'],render_completed=True,acknowledged_and_walked_away_frame=frame))
+     while current<len(targets) and any(v['coordinate']==targets[current]['coordinate'] if a.probe_text_variants else v['text_pc']==targets[current]['text_pc'] for v in visited):current+=1
      active=None;entry=None;phase='walk';return []
     return [5]
    return [8] if frame-talk_started>=140 and (frame-talk_started)%60==0 else []
@@ -99,6 +101,7 @@ def main():
  report=dict(quest_hint=a.quest_hint,conditional=a.conditional,conditional_variant=variant,conditional_effects_verified=effects_ok if a.conditional else None,passed=effects_ok and done is not None and len(visited)==len(targets) and not failure,failure=failure or (None if done else 'frame_limit'),source_sha256=cap['rom_sha256'],rom_sha256=cap['rom_sha256'],prefix=a.prefix,prefix_end=start,room=a.room,outside=a.outside,visited=visited,required_targets=targets,last_state={k:v for k,v in state.items() if k!='tilemap'},primary_ram_writes=len(writes),new_assistance_writes=0,assisted_route=bool(writes),sram_imports=0,progression_imports=0,scope='Unmodified SMS from cold boot with original text-entry/completion observations and ordinary walking/acknowledgment. Inherited approach protection, if any, is fully recorded; no new writes during this NPC stage. Current-state conditional-house variant only.' if a.conditional else 'Unmodified SMS, original text-entry/completion observation and normal acknowledgment/exit. Inherited approach protection; no new writes during this NPC stage. Plain-house current-state variants only.')
  if writes:
   assist=json.loads((prefix/'assistance.json').read_bytes());(out/'assistance.json').write_text(json.dumps(assist,indent=2)+'\n');recording(out,actual)
+ report['probe_text_variants']=a.probe_text_variants
  if a.quest_hint:report['scope']='Original quest hint in a genuine pre-reward state, rendered, acknowledged and exited. No gift, inventory edit or other hint variant claimed.'
  for name,data in [('report',report),('controls',controls)]:(out/(name+'.json')).write_text(json.dumps(data,indent=2)+'\n')
  print(json.dumps(report),flush=True)

@@ -101,6 +101,8 @@ def main():
             elif state.get('game') == 16:
                 if state['selected'] == a.slot:
                     buttons = [0]
+                elif state['slot']//4 != a.slot//4:
+                    buttons = [5 if state['slot']//4 < a.slot//4 else 4]
                 elif state['slot'] != a.slot:
                     buttons = [7 if state['slot'] < a.slot else 6]
                 else:

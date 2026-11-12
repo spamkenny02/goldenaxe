@@ -70,6 +70,12 @@ def main():
             selected_proof_video_collection=read('sms_selected_proof_video_collection.json'),
             persistence_video_collection=read('sms_persistence_video_collection.json'))}
     video=points['6_final_replay_and_video'];collection=video['selected_proof_video_collection'];persistence=video['persistence_video_collection']
+    investigation=read('sms_guide_text_investigation.json')
+    if investigation and investigation.get('passed'):
+        points['5_reported_strings'].update(status='guide_npc_candidates_tested_source_trigger_unresolved',
+            guide_and_game_report='reports/gaw-textes-guide-2026-11-12/RAPPORT.md',
+            new_targeted_gameplay_scenarios=investigation['new_scenarios_played'],
+            source_trigger_found=investigation['source_trigger_found'])
     if collection and collection.get('all_selected_receipts_video_covered') and persistence and persistence.get('complete'):
         video['status']='selected_route_and_annex_videos_ready_global_100_percent_open'
         video['selected_route_and_point34_annexes_ready']=True
@@ -90,6 +96,7 @@ def main():
 Les points {"1 à 4 sont clos" if closure and closure.get('passed') else "1 et 2 sont clos"} dans le périmètre SMS demandé. Le point 5 reste ouvert. {"Le parcours filmé retenu et ses annexes sont prêts ; la certification globale 100 % reste ouverte." if video.get('selected_route_and_point34_annexes_ready') else "Le point 6 est partiel."} Aucun pourcentage global ni certificat tous PNJ/toutes quêtes n'est déduit du nombre de lignes de cette liste. La couverture correspondante sur Mega Drive et les comparaisons PAL/NTSC restent distinctes. Les deux lignes d'argent AD/F3 sans entrée directe restent un audit distinct, sans conclusion d'inutilisation globale.
 
 [Rapport des points 3 et 4](../reports/gaw-sms-points-3-4-2026-11-11/RAPPORT.md).
+[Enquête code, guide et huit scénarios joués pour les trois textes](../reports/gaw-textes-guide-2026-11-12/RAPPORT.md).
 
 Les traces et preuves figurent dans [le relevé JSON](sms_six_points_progress.json) ; les vidéos sont indexées [ici](../videos/sms/README.md).
 '''

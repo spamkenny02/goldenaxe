@@ -83,6 +83,12 @@ Le [recoupement des quêtes liées aux trois textes](analysis/sms_reported_text_
 vérifie neuf dialogues Terre/Cloche réellement observés sur SMS et leurs
 octets exacts dans la ROM V321. Les acquisitions de Terre et les indices de
 la cloche sont présents ; cela ne résout pas le déclencheur des trois phrases.
+L'[enquête code/guide/jeu du 12 novembre](reports/gaw-textes-guide-2026-11-12/RAPPORT.md)
+ajoute huit scénarios SMS ciblés : Battler avant et après les achats de Terre,
+retour après Terre 2, informateur L10 avec Terre 1/2, L15, habitant d'Aires
+après sonnerie réelle de cloche puis après Linda/Eau. Les captures et les
+sélecteurs originaux confirment des répliques différentes ; aucun locuteur
+des trois phrases exactes n'est encore démontré.
 L'accès caché FB est ouvert avec le vrai sort Terre ; son habitant et les trois
 habitants de la maison FE/00 sont visités, acquittés et rejoués indépendamment.
 Ces visites sont maintenant intégrées à une campagne étendue jusqu'à la fin :

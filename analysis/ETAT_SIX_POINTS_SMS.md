@@ -10,5 +10,6 @@
 Les points 1 à 4 sont clos dans le périmètre SMS demandé. Le point 5 reste ouvert. Le parcours filmé retenu et ses annexes sont prêts ; la certification globale 100 % reste ouverte. Aucun pourcentage global ni certificat tous PNJ/toutes quêtes n'est déduit du nombre de lignes de cette liste. La couverture correspondante sur Mega Drive et les comparaisons PAL/NTSC restent distinctes. Les deux lignes d'argent AD/F3 sans entrée directe restent un audit distinct, sans conclusion d'inutilisation globale.
 
 [Rapport des points 3 et 4](../reports/gaw-sms-points-3-4-2026-11-11/RAPPORT.md).
+[Enquête code, guide et huit scénarios joués pour les trois textes](../reports/gaw-textes-guide-2026-11-12/RAPPORT.md).
 
 Les traces et preuves figurent dans [le relevé JSON](sms_six_points_progress.json) ; les vidéos sont indexées [ici](../videos/sms/README.md).

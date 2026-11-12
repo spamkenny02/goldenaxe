@@ -1,0 +1,1174 @@
+{
+  "date": "2026-11-12",
+  "source_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+  "md_v321_sha256": "89c5833351312ffaa591efb1939161910a298af06437080e2cf84fb3fb8ac86e",
+  "passed": true,
+  "guide": {
+    "url": "https://gamefaqs.gamespot.com/sms/588075-golden-axe-warrior/faqs/64050",
+    "numbered_source_sha256": "a280984598af274a8a1126df34aff50cf421785276acfb76691838bba6c6f351",
+    "locations": [
+      {
+        "location": "D10",
+        "speaker": "Battler",
+        "lines": [
+          1491,
+          1499
+        ],
+        "role": "Earth teacher; upgrade also described at2380"
+      },
+      {
+        "location": "L10",
+        "speaker": "unnamed informant",
+        "lines": [
+          1860,
+          1863
+        ],
+        "role": "Advice about Earth level2"
+      },
+      {
+        "location": "L15",
+        "speaker": "unnamed informant",
+        "lines": [
+          1879,
+          1882
+        ],
+        "role": "Death Adder rumour, preceding the first target physically in ROM"
+      },
+      {
+        "location": "Aires O15, right house",
+        "speaker": "unnamed resident on the left",
+        "lines": [
+          607,
+          617
+        ],
+        "role": "Remembers being told the Bell has a mysterious power, but cannot recall it"
+      }
+    ],
+    "exact_three_target_replies_attributed_by_guide": false
+  },
+  "reported_strings": [
+    {
+      "sms_offset": "0xDA58",
+      "cpu_pointer": 39512,
+      "original_bytes_hex": "41732d7475206c6520706170696572206465206c612054657272653f2020202020202000",
+      "present_in_sms": true,
+      "present_verbatim_in_v321": false,
+      "attributed_speaker_proven": false,
+      "unused_in_sms_proven": false
+    },
+    {
+      "sms_offset": "0xDA7C",
+      "cpu_pointer": 39548,
+      "original_bytes_hex": "54752061732066696e616c656d656e74206f6274656e75206c65207365636f6e6420706170696572206465206c612054657272652e204269656e2e20436f6e74656e7420706f757220746f6921202000",
+      "present_in_sms": true,
+      "present_verbatim_in_v321": false,
+      "attributed_speaker_proven": false,
+      "unused_in_sms_proven": false
+    },
+    {
+      "sms_offset": "0xED3C",
+      "cpu_pointer": 44348,
+      "original_bytes_hex": "4f6821204a65206d6520736f757669656e7321205175616e64206c6120636c6f63686520736f6e6e652c20756e20706173736167652073266f75767265212045737361696520bc612120202000",
+      "present_in_sms": true,
+      "present_verbatim_in_v321": false,
+      "attributed_speaker_proven": false,
+      "unused_in_sms_proven": false
+    }
+  ],
+  "ordinary_gameplay_checks": [
+    {
+      "case": "l10-earth1",
+      "selected_test": {
+        "passed": true,
+        "case": "l10-earth1",
+        "initial_prefix": "natural-dungeon-combat/sms-auto-sms-npc-d5-exit01",
+        "bell_action_trace": null,
+        "trace": "natural-service-route/sms-guide-text-l10-earth1-probe01",
+        "outside": 171,
+        "room": 143,
+        "earth_level": 1,
+        "bell_owned": 0,
+        "actual_visits": [
+          {
+            "text_pc": 38636,
+            "coordinate": 604,
+            "entry_frame": 178726,
+            "render_completed": true,
+            "acknowledged_and_walked_away_frame": 178801
+          }
+        ],
+        "unknown_variants_accepted_by_controller": true,
+        "no_inventory_currency_or_quest_injections": true,
+        "reported_strings_triggered": []
+      },
+      "interaction_report": {
+        "quest_hint": false,
+        "conditional": false,
+        "conditional_variant": null,
+        "conditional_effects_verified": null,
+        "passed": true,
+        "failure": null,
+        "source_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+        "rom_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+        "prefix": "natural-dungeon-route/sms-sms-guide-text-l10-earth1-entry-entry01",
+        "prefix_end": 178693,
+        "room": 143,
+        "outside": 171,
+        "visited": [
+          {
+            "text_pc": 38636,
+            "coordinate": 604,
+            "entry_frame": 178726,
+            "render_completed": true,
+            "acknowledged_and_walked_away_frame": 178801
+          }
+        ],
+        "required_targets": [
+          {
+            "room": 143,
+            "coordinate": 604,
+            "outside": 171,
+            "text_pc": 38636,
+            "text_bytes": 83,
+            "table": 45327,
+            "call_site": 45320,
+            "point": [
+              136,
+              72
+            ]
+          }
+        ],
+        "last_state": {
+          "room": 171,
+          "game": 12,
+          "hero": 1,
+          "counter": 0,
+          "x": 56,
+          "y": 32,
+          "health": 44,
+          "gold": 41,
+          "reward_flag": 0,
+          "ninth_crystal": 0
+        },
+        "primary_ram_writes": 73464,
+        "new_assistance_writes": 0,
+        "assisted_route": true,
+        "sram_imports": 0,
+        "progression_imports": 0,
+        "scope": "Unmodified SMS, original text-entry/completion observation and normal acknowledgment/exit. Inherited approach protection; no new writes during this NPC stage. Plain-house current-state variants only."
+      },
+      "replay_report": {
+        "passed": true,
+        "assisted_route": true,
+        "natural_campaign_proof": false,
+        "rom_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+        "core_sha256": "d17f2392115b3cd54258a1fa6c4195ddadc19b0805ebcca400db5162b1793516",
+        "frames": 178987,
+        "feedback_reads": false,
+        "ram_injections": true,
+        "injection_count": 73464,
+        "last_injection_frame": 178541,
+        "release_write_frame": null,
+        "first_boss_combat": null,
+        "boss_assistance": false,
+        "approach_only": true,
+        "whole_ram_bytes": 8192,
+        "final_png_exact": true,
+        "primary_state_imports": 0,
+        "indexed_writes": true,
+        "cold_boot_count": 1,
+        "shared_cold_stream": "validation/guide-text-l10-earth1-cold-stream02",
+        "shared_stream_checkpoint": 2,
+        "new_emulated_frames": 294,
+        "guard_frames_checked": 73139,
+        "live_boss_guard_check": true,
+        "driver_sha256": "45fb5cb0cbf394926a7320141c0a380de356a9b8aa907165ddd8bc5a9bf90471",
+        "elapsed_seconds": 43.01570800000627,
+        "evidence": {
+          "capture.json": "d5a1590f08c1d734a81486afcd7bdabf24e5dec6fbe9c4a278593e26b561ff5c",
+          "controls.json": "88dd4cc03db68d35e3e6e89d92998285becdec699504f4400892d310228a7e7f",
+          "assistance.json": "77e5ebde1d21aa46df5afcbefa31c7a37f6484640d55fe7c0803533542a86872"
+        },
+        "scope": "One cold core advances recorded input between checkpoints and pauses while waiting for the next recording. No save-state import or feedback-based input."
+      },
+      "actual_formatter_entries": [
+        {
+          "frame": 178726,
+          "text_pc": 38636,
+          "caller": 25210,
+          "room": 143
+        },
+        {
+          "frame": 178728,
+          "text_pc": 38636,
+          "caller": 25210,
+          "room": 143
+        }
+      ],
+      "replay_path": "validation/natural-service-route/sms-guide-text-l10-earth1-probe01-assisted-fixed-replay-178987/replay_report.json",
+      "observer_sha256": "82429ddd20f6bfbc9a19dcc86ad25f28fba5914e835c5c2a2b4eb06c5dbbc9dc"
+    },
+    {
+      "case": "l10-earth2",
+      "selected_test": {
+        "passed": true,
+        "case": "l10-earth2",
+        "initial_prefix": "natural-service-route/sms-sms-npc-census-ab-8f-visit01",
+        "bell_action_trace": null,
+        "trace": "natural-service-route/sms-guide-text-l10-earth2-probe01",
+        "outside": 171,
+        "room": 143,
+        "earth_level": 2,
+        "bell_owned": 1,
+        "actual_visits": [
+          {
+            "text_pc": 38636,
+            "coordinate": 604,
+            "entry_frame": 371808,
+            "render_completed": true,
+            "acknowledged_and_walked_away_frame": 371882
+          }
+        ],
+        "unknown_variants_accepted_by_controller": true,
+        "no_inventory_currency_or_quest_injections": true,
+        "reported_strings_triggered": []
+      },
+      "interaction_report": {
+        "quest_hint": false,
+        "conditional": false,
+        "conditional_variant": null,
+        "conditional_effects_verified": null,
+        "passed": true,
+        "failure": null,
+        "source_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+        "rom_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+        "prefix": "natural-dungeon-route/sms-sms-guide-text-l10-earth2-entry-entry01",
+        "prefix_end": 371775,
+        "room": 143,
+        "outside": 171,
+        "visited": [
+          {
+            "text_pc": 38636,
+            "coordinate": 604,
+            "entry_frame": 371808,
+            "render_completed": true,
+            "acknowledged_and_walked_away_frame": 371882
+          }
+        ],
+        "required_targets": [
+          {
+            "room": 143,
+            "coordinate": 604,
+            "outside": 171,
+            "text_pc": 38636,
+            "text_bytes": 83,
+            "table": 45327,
+            "call_site": 45320,
+            "point": [
+              136,
+              72
+            ]
+          }
+        ],
+        "last_state": {
+          "room": 171,
+          "game": 12,
+          "hero": 1,
+          "counter": 0,
+          "x": 56,
+          "y": 32,
+          "health": 92,
+          "gold": 42,
+          "reward_flag": 0,
+          "ninth_crystal": 128
+        },
+        "primary_ram_writes": 176981,
+        "new_assistance_writes": 0,
+        "assisted_route": true,
+        "sram_imports": 0,
+        "progression_imports": 0,
+        "scope": "Unmodified SMS, original text-entry/completion observation and normal acknowledgment/exit. Inherited approach protection; no new writes during this NPC stage. Plain-house current-state variants only."
+      },
+      "replay_report": {
+        "passed": true,
+        "assisted_route": true,
+        "natural_campaign_proof": false,
+        "rom_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+        "core_sha256": "d17f2392115b3cd54258a1fa6c4195ddadc19b0805ebcca400db5162b1793516",
+        "frames": 372068,
+        "feedback_reads": false,
+        "ram_injections": true,
+        "injection_count": 176981,
+        "last_injection_frame": 371622,
+        "release_write_frame": null,
+        "first_boss_combat": null,
+        "boss_assistance": false,
+        "approach_only": true,
+        "whole_ram_bytes": 8192,
+        "final_png_exact": true,
+        "primary_state_imports": 0,
+        "indexed_writes": true,
+        "cold_boot_count": 1,
+        "shared_cold_stream": "validation/guide-text-l10-earth2-cold-stream01",
+        "shared_stream_checkpoint": 2,
+        "new_emulated_frames": 293,
+        "guard_frames_checked": 176136,
+        "live_boss_guard_check": true,
+        "driver_sha256": "45fb5cb0cbf394926a7320141c0a380de356a9b8aa907165ddd8bc5a9bf90471",
+        "elapsed_seconds": 88.76764730000286,
+        "evidence": {
+          "capture.json": "34806aad56b8eacb36f8f429ce7a4946f55bff1962d4b111631a8aacbf580933",
+          "controls.json": "4b23420f1678b75bdffacaf03bd0b3ebdf4e51f411345fd6442af0f91748c45e",
+          "assistance.json": "7257ea696371bcaa2efbdabf41287c63e659c00b1ad0e8a0edb5546f2700bf9a"
+        },
+        "scope": "One cold core advances recorded input between checkpoints and pauses while waiting for the next recording. No save-state import or feedback-based input."
+      },
+      "actual_formatter_entries": [
+        {
+          "frame": 371808,
+          "text_pc": 38636,
+          "caller": 25210,
+          "room": 143
+        },
+        {
+          "frame": 371810,
+          "text_pc": 38636,
+          "caller": 25210,
+          "room": 143
+        }
+      ],
+      "replay_path": "validation/natural-service-route/sms-guide-text-l10-earth2-probe01-assisted-fixed-replay-372068/replay_report.json",
+      "observer_sha256": "fcc2cf8a194181c6a574c54162e657452170e96807efb4474e2c941e7f89b4e7"
+    },
+    {
+      "case": "l15-earth2",
+      "selected_test": {
+        "passed": true,
+        "case": "l15-earth2",
+        "initial_prefix": "natural-service-route/sms-sms-npc-census-fb-8f-visit01",
+        "bell_action_trace": null,
+        "trace": "natural-service-route/sms-guide-text-l15-earth2-probe01",
+        "outside": 251,
+        "room": 143,
+        "earth_level": 2,
+        "bell_owned": 1,
+        "water_level": 0,
+        "linda_bell_passage_open": false,
+        "ninth_crystal": true,
+        "actual_visits": [
+          {
+            "text_pc": 39409,
+            "coordinate": 604,
+            "entry_frame": 364705,
+            "render_completed": true,
+            "acknowledged_and_walked_away_frame": 364799
+          }
+        ],
+        "unknown_variants_accepted_by_controller": true,
+        "no_inventory_currency_or_quest_injections": true,
+        "reported_strings_triggered": []
+      },
+      "interaction_report": {
+        "quest_hint": false,
+        "conditional": false,
+        "conditional_variant": null,
+        "conditional_effects_verified": null,
+        "passed": true,
+        "failure": null,
+        "source_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+        "rom_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+        "prefix": "natural-dungeon-route/sms-sms-guide-text-l15-earth2-entry-entry01",
+        "prefix_end": 364672,
+        "room": 143,
+        "outside": 251,
+        "visited": [
+          {
+            "text_pc": 39409,
+            "coordinate": 604,
+            "entry_frame": 364705,
+            "render_completed": true,
+            "acknowledged_and_walked_away_frame": 364799
+          }
+        ],
+        "required_targets": [
+          {
+            "room": 143,
+            "coordinate": 604,
+            "outside": 251,
+            "text_pc": 39409,
+            "text_bytes": 102,
+            "table": 45327,
+            "call_site": 45320,
+            "point": [
+              136,
+              72
+            ]
+          }
+        ],
+        "last_state": {
+          "room": 251,
+          "game": 12,
+          "hero": 1,
+          "counter": 0,
+          "x": 104,
+          "y": 128,
+          "health": 92,
+          "gold": 42,
+          "reward_flag": 0,
+          "ninth_crystal": 128
+        },
+        "primary_ram_writes": 174790,
+        "new_assistance_writes": 0,
+        "assisted_route": true,
+        "sram_imports": 0,
+        "progression_imports": 0,
+        "scope": "Unmodified SMS, original text-entry/completion observation and normal acknowledgment/exit. Inherited approach protection; no new writes during this NPC stage. Plain-house current-state variants only."
+      },
+      "replay_report": {
+        "passed": true,
+        "assisted_route": true,
+        "natural_campaign_proof": false,
+        "rom_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+        "core_sha256": "d17f2392115b3cd54258a1fa6c4195ddadc19b0805ebcca400db5162b1793516",
+        "frames": 364968,
+        "feedback_reads": false,
+        "ram_injections": true,
+        "injection_count": 174790,
+        "last_injection_frame": 364520,
+        "release_write_frame": null,
+        "first_boss_combat": null,
+        "boss_assistance": false,
+        "approach_only": true,
+        "whole_ram_bytes": 8192,
+        "final_png_exact": true,
+        "primary_state_imports": 0,
+        "indexed_writes": true,
+        "cold_boot_count": 1,
+        "shared_cold_stream": "validation/guide-text-l15-earth2-cold-stream01",
+        "shared_stream_checkpoint": 2,
+        "new_emulated_frames": 296,
+        "guard_frames_checked": 173963,
+        "live_boss_guard_check": true,
+        "driver_sha256": "45fb5cb0cbf394926a7320141c0a380de356a9b8aa907165ddd8bc5a9bf90471",
+        "elapsed_seconds": 85.97415690000344,
+        "evidence": {
+          "capture.json": "7d1dff4193cb97805fc3836b981b633a37ca23c538dfefb7fb987e66821173ec",
+          "controls.json": "d7f3784fc8996301595b5bf685248b2f72c602d97d5b14903b6005e06bb35fe6",
+          "assistance.json": "977ff1124d8ec895c8603b4378be33c560306c1be591be11f3d24b804459b32c"
+        },
+        "scope": "One cold core advances recorded input between checkpoints and pauses while waiting for the next recording. No save-state import or feedback-based input."
+      },
+      "actual_formatter_entries": [
+        {
+          "frame": 364705,
+          "text_pc": 39409,
+          "caller": 25210,
+          "room": 143
+        },
+        {
+          "frame": 364707,
+          "text_pc": 39409,
+          "caller": 25210,
+          "room": 143
+        }
+      ],
+      "replay_path": "validation/natural-service-route/sms-guide-text-l15-earth2-probe01-assisted-fixed-replay-364968/replay_report.json",
+      "observer_sha256": "2f6d7b9444570b89961f3a13de3062d2e46093ddd52fdbed355dd05a72f202e3"
+    },
+    {
+      "case": "aires-bell",
+      "selected_test": {
+        "passed": true,
+        "case": "aires-bell",
+        "initial_prefix": "natural-service-route/sms-sms-npc-census-fe-03-visit01",
+        "bell_action_trace": "natural-service-route/sms-guide-text-aires-bell-ring02",
+        "trace": "natural-service-route/sms-guide-text-aires-bell-probe01",
+        "outside": 254,
+        "room": 3,
+        "earth_level": 2,
+        "bell_owned": 1,
+        "water_level": 0,
+        "linda_bell_passage_open": false,
+        "ninth_crystal": true,
+        "actual_visits": [
+          {
+            "text_pc": 43260,
+            "coordinate": 748,
+            "entry_frame": 368343,
+            "render_completed": true,
+            "acknowledged_and_walked_away_frame": 368403
+          },
+          {
+            "text_pc": 43319,
+            "coordinate": 584,
+            "entry_frame": 368497,
+            "render_completed": true,
+            "acknowledged_and_walked_away_frame": 368582
+          }
+        ],
+        "unknown_variants_accepted_by_controller": true,
+        "no_inventory_currency_or_quest_injections": true,
+        "reported_strings_triggered": []
+      },
+      "interaction_report": {
+        "quest_hint": false,
+        "conditional": false,
+        "conditional_variant": null,
+        "conditional_effects_verified": null,
+        "passed": true,
+        "failure": null,
+        "source_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+        "rom_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+        "prefix": "natural-dungeon-route/sms-sms-guide-text-aires-bell-entry-entry01",
+        "prefix_end": 368285,
+        "room": 3,
+        "outside": 254,
+        "visited": [
+          {
+            "text_pc": 43260,
+            "coordinate": 748,
+            "entry_frame": 368343,
+            "render_completed": true,
+            "acknowledged_and_walked_away_frame": 368403
+          },
+          {
+            "text_pc": 43319,
+            "coordinate": 584,
+            "entry_frame": 368497,
+            "render_completed": true,
+            "acknowledged_and_walked_away_frame": 368582
+          }
+        ],
+        "required_targets": [
+          {
+            "room": 3,
+            "coordinate": 748,
+            "outside": 254,
+            "text_pc": 43260,
+            "text_bytes": 58,
+            "table": 44335,
+            "call_site": 44319,
+            "point": [
+              200,
+              88
+            ]
+          },
+          {
+            "room": 3,
+            "coordinate": 584,
+            "outside": 254,
+            "text_pc": 43319,
+            "text_bytes": 94,
+            "table": 44344,
+            "call_site": 44328,
+            "point": [
+              56,
+              72
+            ]
+          }
+        ],
+        "last_state": {
+          "room": 254,
+          "game": 12,
+          "hero": 1,
+          "counter": 0,
+          "x": 216,
+          "y": 48,
+          "health": 92,
+          "gold": 42,
+          "reward_flag": 0,
+          "ninth_crystal": 128
+        },
+        "primary_ram_writes": 175131,
+        "new_assistance_writes": 0,
+        "assisted_route": true,
+        "sram_imports": 0,
+        "progression_imports": 0,
+        "scope": "Unmodified SMS, original text-entry/completion observation and normal acknowledgment/exit. Inherited approach protection; no new writes during this NPC stage. Plain-house current-state variants only."
+      },
+      "replay_report": {
+        "passed": true,
+        "assisted_route": true,
+        "natural_campaign_proof": false,
+        "rom_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+        "core_sha256": "d17f2392115b3cd54258a1fa6c4195ddadc19b0805ebcca400db5162b1793516",
+        "frames": 368787,
+        "feedback_reads": false,
+        "ram_injections": true,
+        "injection_count": 175131,
+        "last_injection_frame": 365102,
+        "release_write_frame": null,
+        "first_boss_combat": null,
+        "boss_assistance": false,
+        "approach_only": true,
+        "whole_ram_bytes": 8192,
+        "final_png_exact": true,
+        "primary_state_imports": 0,
+        "indexed_writes": true,
+        "cold_boot_count": 1,
+        "shared_cold_stream": "validation/guide-text-aires-bell-cold-stream03",
+        "shared_stream_checkpoint": 3,
+        "new_emulated_frames": 502,
+        "guard_frames_checked": 174300,
+        "live_boss_guard_check": true,
+        "driver_sha256": "45fb5cb0cbf394926a7320141c0a380de356a9b8aa907165ddd8bc5a9bf90471",
+        "elapsed_seconds": 132.03436370000418,
+        "evidence": {
+          "capture.json": "4397ae00607ba9e2140fc500d9a5329072b2d25e9dc5906683033d358fdb3ad9",
+          "controls.json": "d3abe0ebde3c5b6635d05049e8530e07364559a2d30fbcf4ae8f2dcb33b29851",
+          "assistance.json": "417cad0ce90745e87282a32786869c9201707a58d9225ccbdc3b4d7df8e94a35"
+        },
+        "scope": "One cold core advances recorded input between checkpoints and pauses while waiting for the next recording. No save-state import or feedback-based input."
+      },
+      "actual_formatter_entries": [
+        {
+          "frame": 368343,
+          "text_pc": 43260,
+          "caller": 25210,
+          "room": 3
+        },
+        {
+          "frame": 368345,
+          "text_pc": 43260,
+          "caller": 25210,
+          "room": 3
+        },
+        {
+          "frame": 368497,
+          "text_pc": 43319,
+          "caller": 25210,
+          "room": 3
+        },
+        {
+          "frame": 368499,
+          "text_pc": 43319,
+          "caller": 25210,
+          "room": 3
+        }
+      ],
+      "replay_path": "validation/natural-service-route/sms-guide-text-aires-bell-probe01-assisted-fixed-replay-368787/replay_report.json",
+      "observer_sha256": "e8d0195f39e50ee9c2c646cad090855aa9c175bac00cf20ec3acafd3c5befe40"
+    },
+    {
+      "case": "aires-after-linda",
+      "selected_test": {
+        "passed": true,
+        "case": "aires-after-linda",
+        "initial_prefix": "natural-service-route/sms-npc-extra-magic-aa-level1-learn02",
+        "bell_action_trace": null,
+        "trace": "natural-service-route/sms-guide-text-aires-after-linda-probe01",
+        "outside": 254,
+        "room": 3,
+        "earth_level": 2,
+        "bell_owned": 1,
+        "water_level": 1,
+        "linda_bell_passage_open": true,
+        "ninth_crystal": true,
+        "actual_visits": [
+          {
+            "text_pc": 43260,
+            "coordinate": 748,
+            "entry_frame": 446171,
+            "render_completed": true,
+            "acknowledged_and_walked_away_frame": 446231
+          },
+          {
+            "text_pc": 43319,
+            "coordinate": 584,
+            "entry_frame": 446325,
+            "render_completed": true,
+            "acknowledged_and_walked_away_frame": 446411
+          }
+        ],
+        "unknown_variants_accepted_by_controller": true,
+        "no_inventory_currency_or_quest_injections": true,
+        "reported_strings_triggered": []
+      },
+      "interaction_report": {
+        "quest_hint": false,
+        "conditional": false,
+        "conditional_variant": null,
+        "conditional_effects_verified": null,
+        "passed": true,
+        "failure": null,
+        "source_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+        "rom_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+        "prefix": "natural-dungeon-route/sms-sms-guide-text-aires-after-linda-entry-entry01",
+        "prefix_end": 446113,
+        "room": 3,
+        "outside": 254,
+        "visited": [
+          {
+            "text_pc": 43260,
+            "coordinate": 748,
+            "entry_frame": 446171,
+            "render_completed": true,
+            "acknowledged_and_walked_away_frame": 446231
+          },
+          {
+            "text_pc": 43319,
+            "coordinate": 584,
+            "entry_frame": 446325,
+            "render_completed": true,
+            "acknowledged_and_walked_away_frame": 446411
+          }
+        ],
+        "required_targets": [
+          {
+            "room": 3,
+            "coordinate": 748,
+            "outside": 254,
+            "text_pc": 43260,
+            "text_bytes": 58,
+            "table": 44335,
+            "call_site": 44319,
+            "point": [
+              200,
+              88
+            ]
+          },
+          {
+            "room": 3,
+            "coordinate": 584,
+            "outside": 254,
+            "text_pc": 43319,
+            "text_bytes": 94,
+            "table": 44344,
+            "call_site": 44328,
+            "point": [
+              56,
+              72
+            ]
+          }
+        ],
+        "last_state": {
+          "room": 254,
+          "game": 12,
+          "hero": 1,
+          "counter": 0,
+          "x": 216,
+          "y": 48,
+          "health": 42,
+          "gold": 73,
+          "reward_flag": 1,
+          "ninth_crystal": 128
+        },
+        "primary_ram_writes": 206746,
+        "new_assistance_writes": 0,
+        "assisted_route": true,
+        "sram_imports": 0,
+        "progression_imports": 0,
+        "scope": "Unmodified SMS, original text-entry/completion observation and normal acknowledgment/exit. Inherited approach protection; no new writes during this NPC stage. Plain-house current-state variants only."
+      },
+      "replay_report": {
+        "passed": true,
+        "assisted_route": true,
+        "natural_campaign_proof": false,
+        "rom_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+        "core_sha256": "d17f2392115b3cd54258a1fa6c4195ddadc19b0805ebcca400db5162b1793516",
+        "frames": 446616,
+        "feedback_reads": false,
+        "ram_injections": true,
+        "injection_count": 206746,
+        "last_injection_frame": 445819,
+        "release_write_frame": null,
+        "first_boss_combat": null,
+        "boss_assistance": false,
+        "approach_only": true,
+        "whole_ram_bytes": 8192,
+        "final_png_exact": true,
+        "primary_state_imports": 0,
+        "indexed_writes": true,
+        "cold_boot_count": 1,
+        "shared_cold_stream": "validation/guide-text-aires-after-linda-cold-stream01",
+        "shared_stream_checkpoint": 2,
+        "new_emulated_frames": 503,
+        "guard_frames_checked": 205596,
+        "live_boss_guard_check": true,
+        "driver_sha256": "45fb5cb0cbf394926a7320141c0a380de356a9b8aa907165ddd8bc5a9bf90471",
+        "elapsed_seconds": 103.15456549999362,
+        "evidence": {
+          "capture.json": "0ca43f85f7a6873e2f784183281078a64dfe1d6155934844fd4c7d2aa68ad6e1",
+          "controls.json": "f7655c02d9e8e3e6ecdf412f73bafb71b49a7e49fe5aabd544a2b7201baefd2c",
+          "assistance.json": "daa4645a9a4e2ed4cf59883944b2f2c89ef00a6b460d46d42a170227cf460225"
+        },
+        "scope": "One cold core advances recorded input between checkpoints and pauses while waiting for the next recording. No save-state import or feedback-based input."
+      },
+      "actual_formatter_entries": [
+        {
+          "frame": 446171,
+          "text_pc": 43260,
+          "caller": 25210,
+          "room": 3
+        },
+        {
+          "frame": 446173,
+          "text_pc": 43260,
+          "caller": 25210,
+          "room": 3
+        },
+        {
+          "frame": 446325,
+          "text_pc": 43319,
+          "caller": 25210,
+          "room": 3
+        },
+        {
+          "frame": 446327,
+          "text_pc": 43319,
+          "caller": 25210,
+          "room": 3
+        }
+      ],
+      "replay_path": "validation/natural-service-route/sms-guide-text-aires-after-linda-probe01-assisted-fixed-replay-446616/replay_report.json",
+      "observer_sha256": "ecbfbf1f9e2c42e4a8e969ad84f4fb7ebe531bc492247bb29a334ee0ea642eb7"
+    }
+  ],
+  "fixed_gameplay_checks": [
+    {
+      "case": "battler-terre1-outer02",
+      "report": {
+        "passed": true,
+        "source_trace": "natural-service-route/sms-npc-earth-learn01",
+        "stage_start": 104757,
+        "frames": 105915,
+        "actual_entries": [
+          {
+            "text_pc": 45167,
+            "entry_frame": 104842,
+            "earth_level": 0,
+            "gold": 75,
+            "room": 191,
+            "outside": 163,
+            "caller": 31347,
+            "stack_pointer": 57322
+          },
+          {
+            "text_pc": 45917,
+            "entry_frame": 105420,
+            "earth_level": 1,
+            "gold": 25,
+            "room": 191,
+            "outside": 163,
+            "caller": 29767,
+            "stack_pointer": 57322
+          }
+        ],
+        "completed_renderings": [
+          {
+            "text_pc": 45167,
+            "entry_frame": 104842,
+            "earth_level": 0,
+            "gold": 75,
+            "room": 191,
+            "outside": 163,
+            "caller": 31347,
+            "stack_pointer": 57322,
+            "render_return_frame": 105302,
+            "capture_frame": 105304
+          },
+          {
+            "text_pc": 45917,
+            "entry_frame": 105420,
+            "earth_level": 1,
+            "gold": 25,
+            "room": 191,
+            "outside": 163,
+            "caller": 29767,
+            "stack_pointer": 57322,
+            "render_return_frame": 105528,
+            "capture_frame": 105530
+          }
+        ],
+        "whole_ram_bytes": 8192,
+        "whole_ram_exact": true,
+        "final_pixels_exact": true,
+        "source_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+        "new_primary_writes": 0,
+        "primary_state_imports": 0,
+        "source_evidence": {
+          "capture.json": "1136708fea8672cad4fb05a40b82ecf50e11826b3d8a62ac7b68c1d06cbd1840",
+          "controls.json": "4f2d9697be8463bbd72ee02b508caf56d638aae2bdb1ab5619ce0fd406052205",
+          "assistance.json": "630beccadb8e12b649bc1282e0f33ab1ae9524833a747d6a5ba94fc949f6af4d"
+        },
+        "scope": "Original SMS cold boot, fixed ordinary recorded inputs, inherited approach protection; read-only observer. Actual Battler messages rendered; no whitelist of expected text IDs."
+      },
+      "observer_sha256": "ec0f5eb34f1164b762161066bd86988431baabdffab5554de08de4f0c54d34dc"
+    },
+    {
+      "case": "battler-terre2-outer02",
+      "report": {
+        "passed": true,
+        "source_trace": "natural-service-route/sms-npc-d6-battler2-learn01",
+        "stage_start": 187985,
+        "frames": 188968,
+        "actual_entries": [
+          {
+            "text_pc": 45619,
+            "entry_frame": 188055,
+            "earth_level": 1,
+            "gold": 102,
+            "room": 191,
+            "outside": 163,
+            "caller": 31390,
+            "stack_pointer": 57322
+          },
+          {
+            "text_pc": 46053,
+            "entry_frame": 188560,
+            "earth_level": 2,
+            "gold": 2,
+            "room": 191,
+            "outside": 163,
+            "caller": 29767,
+            "stack_pointer": 57322
+          }
+        ],
+        "completed_renderings": [
+          {
+            "text_pc": 45619,
+            "entry_frame": 188055,
+            "earth_level": 1,
+            "gold": 102,
+            "room": 191,
+            "outside": 163,
+            "caller": 31390,
+            "stack_pointer": 57322,
+            "render_return_frame": 188321,
+            "capture_frame": 188323
+          },
+          {
+            "text_pc": 46053,
+            "entry_frame": 188560,
+            "earth_level": 2,
+            "gold": 2,
+            "room": 191,
+            "outside": 163,
+            "caller": 29767,
+            "stack_pointer": 57322,
+            "render_return_frame": 188623,
+            "capture_frame": 188625
+          }
+        ],
+        "whole_ram_bytes": 8192,
+        "whole_ram_exact": true,
+        "final_pixels_exact": true,
+        "source_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+        "new_primary_writes": 0,
+        "primary_state_imports": 0,
+        "source_evidence": {
+          "capture.json": "8ab412f3de4a178490525bbb24c2a05e0bfa6eaadaa078608e72f8e20378323c",
+          "controls.json": "9d400e85926bf19b0f77fdbbd5c0e027fc6d7b9b00eb1538c67d29ec89674e8a",
+          "assistance.json": "6cca21e0a4942f14198ffad47dd6b45411d0580e943e92ba6829de2f2e97a748"
+        },
+        "scope": "Original SMS cold boot, fixed ordinary recorded inputs, inherited approach protection; read-only observer. Actual Battler messages rendered; no whitelist of expected text IDs."
+      },
+      "observer_sha256": "eb6a5dc3ce183c0535ad13525b42c69a3692eaad0279d2256d773e7f37c12b11"
+    },
+    {
+      "case": "battler-retour-outer02",
+      "report": {
+        "passed": true,
+        "source_trace": "natural-service-route/sms-npc-teacher-returns-a3-visit01",
+        "stage_start": 494646,
+        "frames": 495089,
+        "actual_entries": [
+          {
+            "text_pc": 45875,
+            "entry_frame": 494716,
+            "earth_level": 2,
+            "gold": 5,
+            "room": 191,
+            "outside": 163,
+            "caller": 29767,
+            "stack_pointer": 57322
+          }
+        ],
+        "completed_renderings": [
+          {
+            "text_pc": 45875,
+            "entry_frame": 494716,
+            "earth_level": 2,
+            "gold": 5,
+            "room": 191,
+            "outside": 163,
+            "caller": 29767,
+            "stack_pointer": 57322,
+            "render_return_frame": 494758,
+            "capture_frame": 494760
+          }
+        ],
+        "whole_ram_bytes": 8192,
+        "whole_ram_exact": true,
+        "final_pixels_exact": true,
+        "source_sha256": "852e068e331dbfb01b9c38a62eecf81ce5b9f0f1bd10fff497117bd885c716c9",
+        "new_primary_writes": 0,
+        "primary_state_imports": 0,
+        "source_evidence": {
+          "capture.json": "1948b92dd5e276408e83aa2142961cd59c50fe09abd517416be828b960f8d6f6",
+          "controls.json": "1a78d878dc4d647c521b7b5693bdea0ee92bb7ff6cadbfcf5a9b84433e22430c",
+          "assistance.json": "f6464a673e445a511a430c34eda0002c9b682e47a26375f3579db1dcd1e9b63c"
+        },
+        "scope": "Original SMS cold boot, fixed ordinary recorded inputs, inherited approach protection; read-only observer. Actual Battler messages rendered; no whitelist of expected text IDs."
+      },
+      "observer_sha256": "2f5a61053999de1287a7d7518672515cf2e85ba41bf0c8c0e80a1a8709252bd0"
+    }
+  ],
+  "pictures": [
+    {
+      "case": "l10-earth1",
+      "file": "l10-earth1.png",
+      "source": "C:\\Users\\UniKennY\\Documents\\Codex\\2026-10-07\\hel\\outputs\\gaw-md\\validation\\natural-service-route\\sms-guide-text-l10-earth1-probe01\\frame_178787.png",
+      "sha256": "d688943826b206d7dd3e3b5ba0cd4527e04bcc400c4bb1a6006f3d3ef4680359",
+      "frame": 178787,
+      "text_pc": 38636
+    },
+    {
+      "case": "l10-earth2",
+      "file": "l10-earth2.png",
+      "source": "C:\\Users\\UniKennY\\Documents\\Codex\\2026-10-07\\hel\\outputs\\gaw-md\\validation\\natural-service-route\\sms-guide-text-l10-earth2-probe01\\frame_371869.png",
+      "sha256": "b1ca34c50e631ed41bcbb15e61d88599b6496f4bb793cd5e0f122e1a934d4012",
+      "frame": 371869,
+      "text_pc": 38636
+    },
+    {
+      "case": "l15-earth2",
+      "file": "l15-earth2.png",
+      "source": "C:\\Users\\UniKennY\\Documents\\Codex\\2026-10-07\\hel\\outputs\\gaw-md\\validation\\natural-service-route\\sms-guide-text-l15-earth2-probe01\\frame_364786.png",
+      "sha256": "d533a5d070972dcd11b853bdb0c3bb2fabd4d433756037715787ac307ec0bb55",
+      "frame": 364786,
+      "text_pc": 39409
+    },
+    {
+      "case": "aires-bell",
+      "file": "aires-bell.png",
+      "source": "C:\\Users\\UniKennY\\Documents\\Codex\\2026-10-07\\hel\\outputs\\gaw-md\\validation\\natural-service-route\\sms-guide-text-aires-bell-probe01\\frame_368569.png",
+      "sha256": "ae438114924934d84b3b7e888674fa675705ca14ce1a71a94186053813671376",
+      "frame": 368569,
+      "text_pc": 43319
+    },
+    {
+      "case": "aires-after-linda",
+      "file": "aires-after-linda.png",
+      "source": "C:\\Users\\UniKennY\\Documents\\Codex\\2026-10-07\\hel\\outputs\\gaw-md\\validation\\natural-service-route\\sms-guide-text-aires-after-linda-probe01\\frame_446398.png",
+      "sha256": "fff7491ce4ff59c491f3ad2aa0a33629247835c3b4e5fd3135dd2fa3973f0287",
+      "frame": 446398,
+      "text_pc": 43319
+    },
+    {
+      "case": "battler-terre1-outer02",
+      "file": "battler-terre1-outer02-0.png",
+      "source": "C:\\Users\\UniKennY\\Documents\\Codex\\2026-10-07\\hel\\outputs\\gaw-md\\validation\\sms-guide-fixed-dialogues\\battler-terre1-outer02\\frame_105304.png",
+      "sha256": "54da223290b916bd46baae078759b55161d1664f1636a161aa3bad5278482843",
+      "frame": 105304,
+      "text_pc": 45167
+    },
+    {
+      "case": "battler-terre1-outer02",
+      "file": "battler-terre1-outer02-1.png",
+      "source": "C:\\Users\\UniKennY\\Documents\\Codex\\2026-10-07\\hel\\outputs\\gaw-md\\validation\\sms-guide-fixed-dialogues\\battler-terre1-outer02\\frame_105530.png",
+      "sha256": "4e041d5fc954b3cc0390b18eeb89579b21da0a14d0eed7d9067a7bab616f0a1e",
+      "frame": 105530,
+      "text_pc": 45917
+    },
+    {
+      "case": "battler-terre2-outer02",
+      "file": "battler-terre2-outer02-0.png",
+      "source": "C:\\Users\\UniKennY\\Documents\\Codex\\2026-10-07\\hel\\outputs\\gaw-md\\validation\\sms-guide-fixed-dialogues\\battler-terre2-outer02\\frame_188323.png",
+      "sha256": "f1d4d9e070aea9528745727a39fa3d392e5858af421691f3ffbad87fae239026",
+      "frame": 188323,
+      "text_pc": 45619
+    },
+    {
+      "case": "battler-terre2-outer02",
+      "file": "battler-terre2-outer02-1.png",
+      "source": "C:\\Users\\UniKennY\\Documents\\Codex\\2026-10-07\\hel\\outputs\\gaw-md\\validation\\sms-guide-fixed-dialogues\\battler-terre2-outer02\\frame_188625.png",
+      "sha256": "9304fdc6ce2f1209e75280eab40c70fc3e403bf9820b9e9b12db26a683c7af32",
+      "frame": 188625,
+      "text_pc": 46053
+    },
+    {
+      "case": "battler-retour-outer02",
+      "file": "battler-retour-outer02-0.png",
+      "source": "C:\\Users\\UniKennY\\Documents\\Codex\\2026-10-07\\hel\\outputs\\gaw-md\\validation\\sms-guide-fixed-dialogues\\battler-retour-outer02\\frame_494760.png",
+      "sha256": "d99826bcd6f66cd3f035cc3d0bda3f000d1dc8533a3cce3e0c7bd170cf883a02",
+      "frame": 494760,
+      "text_pc": 45875
+    }
+  ],
+  "new_scenarios_played": 8,
+  "source_argument_checks": {
+    "aires_room3_script": "0xAD19..0xAD2E",
+    "aires_script_bytes": "01ec02112fadcd7e660148021138adcd7e66cdd065c9",
+    "aires_left_npc_table": "base0xAD38, row0xAD3E: FE 37 A9",
+    "aires_selected_text": "0xA937",
+    "aires_selection_inputs": [
+      "stationary Up",
+      "NPC coordinate",
+      "previous exterior room"
+    ],
+    "aires_bell_or_water_condition": false,
+    "battler_handler": "0x7A56..0x7AC7 plus common7B18..7B32",
+    "battler_possible_text_pcs": [
+      45167,
+      45413,
+      45605,
+      45619,
+      45875,
+      45917,
+      46053,
+      45984,
+      35789
+    ],
+    "battler_verified_immediate_load_sites": [
+      {
+        "address": 31331,
+        "text_pc": 45167
+      },
+      {
+        "address": 31336,
+        "text_pc": 45413
+      },
+      {
+        "address": 31364,
+        "text_pc": 45917
+      },
+      {
+        "address": 31378,
+        "text_pc": 45605
+      },
+      {
+        "address": 31384,
+        "text_pc": 45619
+      },
+      {
+        "address": 31407,
+        "text_pc": 46053
+      },
+      {
+        "address": 31415,
+        "text_pc": 45875
+      },
+      {
+        "address": 31420,
+        "text_pc": 45984
+      },
+      {
+        "address": 31426,
+        "text_pc": 35789
+      }
+    ],
+    "earth_level_address": "0xC0E5",
+    "original_handler_hex": "3ae5c0fe01283030583af4c0b7216fb028032165b13e0132f4c0cd9b77cdb17720443addc0fe3238430632cde761215db311e5c0c3187b3adac0fe482125b2da2a7b2133b2cd9b77cdb17720193addc0fe6438180664cde76121e5b311e5c018612133b3186e21a0b3c3447421cd8bc34474"
+  },
+  "source_trigger_found": false,
+  "global_unused_proven": false,
+  "point5_complete": false,
+  "rom_modified": false,
+  "limits": [
+    "Guide contexts identify candidates, not a confirmed speaker for any of the three target replies.",
+    "Aires without Bell ownership was not naturally reached by these tests; the candidate handler is statically unconditional on Bell ownership.",
+    "Initial failed controller trials and the Water-zero extra baseline are retained only as diagnostics, not admitted as the after-Linda case.",
+    "This excludes the checked source NPC routes, not every possible unclassified indirect route in the whole ROM."
+  ]
+}
