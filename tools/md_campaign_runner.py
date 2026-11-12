@@ -43,6 +43,13 @@ class Campaign:
             *(['--axe-terrain','--live-room-replan'] if view[0xe1] else []),*(['--rope-terrain'] if view[0xed] else []),
             '--frames',str(self.cap()['frames']+18000),'--trial',trial,*extra]
         self.invoke(tool,args,'natural-dungeon-route','md-'+trial,lambda r:r['reached_entrance'])
+    def equip(self,slot,suffix):
+        if self.sms_view()[0xdf]==slot:return
+        trial=self.label+'-'+suffix;n=1
+        while (ROOT/f'validation/natural-service-route/md-{trial}-{n:02d}').exists():n+=1
+        trial+=f'-{n:02d}'
+        self.invoke('natural_weapon_selection.py',['--rom',str(self.rom),'--assisted-prefix','--trace',self.trace,'--slot',str(slot),'--trial',trial],
+                    'natural-service-route','md-'+trial,lambda r:r['passed'])
     def service(self,suffix,tool,extra):
         trial=self.label+'-'+suffix
         if not tool.endswith('.py'):tool+='.py'

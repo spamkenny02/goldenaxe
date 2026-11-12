@@ -17,6 +17,7 @@ Chaque MP4 est une branche réellement rejouée, avec son du jeu. Les chargement
 | [eren-sauvegarde-slot1-01](eren-sauvegarde-slot1-01/eren-sauvegarde-slot1-01.mp4) | 8.54 s | [Rapport](eren-sauvegarde-slot1-01/report.json) |
 | [eren-sauvegarde-slot2-01](eren-sauvegarde-slot2-01/eren-sauvegarde-slot2-01.mp4) | 8.54 s | [Rapport](eren-sauvegarde-slot2-01/report.json) |
 | [eren-soins-refus01](eren-soins-refus01/eren-soins-refus01.mp4) | 10.48 s | [Rapport](eren-soins-refus01/report.json) |
+| [maison-4c-02-ntsc01](maison-4c-02-ntsc01/maison-4c-02-ntsc01.mp4) | 8.74 s | [Rapport](maison-4c-02-ntsc01/report.json) |
 | [maison-55-01-ntsc01](maison-55-01-ntsc01/maison-55-01-ntsc01.mp4) | 6.64 s | [Rapport](maison-55-01-ntsc01/report.json) |
 | [maison-55-03-ntsc01](maison-55-03-ntsc01/maison-55-03-ntsc01.mp4) | 7.39 s | [Rapport](maison-55-03-ntsc01/report.json) |
 | [maison-55-1f-ntsc01](maison-55-1f-ntsc01/maison-55-1f-ntsc01.mp4) | 5.74 s | [Rapport](maison-55-1f-ntsc01/report.json) |
@@ -26,14 +27,18 @@ Chaque MP4 est une branche réellement rejouée, avec son du jeu. Les chargement
 | [maison-75-8f-ntsc01](maison-75-8f-ntsc01/maison-75-8f-ntsc01.mp4) | 5.29 s | [Rapport](maison-75-8f-ntsc01/report.json) |
 | [maison-76-8f-ntsc01](maison-76-8f-ntsc01/maison-76-8f-ntsc01.mp4) | 4.67 s | [Rapport](maison-76-8f-ntsc01/report.json) |
 | [maison-86-8f-ntsc01](maison-86-8f-ntsc01/maison-86-8f-ntsc01.mp4) | 4.62 s | [Rapport](maison-86-8f-ntsc01/report.json) |
+| [maison-8c-8f-ntsc01](maison-8c-8f-ntsc01/maison-8c-8f-ntsc01.mp4) | 5.31 s | [Rapport](maison-8c-8f-ntsc01/report.json) |
 | [maison-94-00-ntsc01](maison-94-00-ntsc01/maison-94-00-ntsc01.mp4) | 8.24 s | [Rapport](maison-94-00-ntsc01/report.json) |
 | [maison-94-02-ntsc01](maison-94-02-ntsc01/maison-94-02-ntsc01.mp4) | 7.26 s | [Rapport](maison-94-02-ntsc01/report.json) |
+| [maison-ab-8f-ntsc01](maison-ab-8f-ntsc01/maison-ab-8f-ntsc01.mp4) | 4.79 s | [Rapport](maison-ab-8f-ntsc01/report.json) |
 | [maison-b3-8f-ntsc01](maison-b3-8f-ntsc01/maison-b3-8f-ntsc01.mp4) | 7.68 s | [Rapport](maison-b3-8f-ntsc01/report.json) |
 | [maison-b6-8f-ntsc01](maison-b6-8f-ntsc01/maison-b6-8f-ntsc01.mp4) | 4.61 s | [Rapport](maison-b6-8f-ntsc01/report.json) |
+| [maison-bb-8f-ntsc01](maison-bb-8f-ntsc01/maison-bb-8f-ntsc01.mp4) | 5.57 s | [Rapport](maison-bb-8f-ntsc01/report.json) |
 | [maison-c5-8f-ntsc01](maison-c5-8f-ntsc01/maison-c5-8f-ntsc01.mp4) | 4.21 s | [Rapport](maison-c5-8f-ntsc01/report.json) |
 | [maison-c7-01-ntsc01](maison-c7-01-ntsc01/maison-c7-01-ntsc01.mp4) | 8.79 s | [Rapport](maison-c7-01-ntsc01/report.json) |
 | [maison-c7-1f-ntsc01](maison-c7-1f-ntsc01/maison-c7-1f-ntsc01.mp4) | 7.61 s | [Rapport](maison-c7-1f-ntsc01/report.json) |
 | [maison-da-8f-ntsc01](maison-da-8f-ntsc01/maison-da-8f-ntsc01.mp4) | 4.64 s | [Rapport](maison-da-8f-ntsc01/report.json) |
+| [md-annex-plain-magic-refill-7b-buy02](md-annex-plain-magic-refill-7b-buy02/md-annex-plain-magic-refill-7b-buy02.mp4) | 7.91 s | [Rapport](md-annex-plain-magic-refill-7b-buy02/report.json) |
 | [md-argent-80-cadeau01](md-argent-80-cadeau01/md-argent-80-cadeau01.mp4) | 8.46 s | [Rapport](md-argent-80-cadeau01/report.json) |
 | [md-battler-terre2-achat01](md-battler-terre2-achat01/md-battler-terre2-achat01.mp4) | 14.15 s | [Rapport](md-battler-terre2-achat01/report.json) |
 | [md-equipment-27-cadeau01](md-equipment-27-cadeau01/md-equipment-27-cadeau01.mp4) | 8.13 s | [Rapport](md-equipment-27-cadeau01/report.json) |
@@ -44,13 +49,19 @@ Chaque MP4 est une branche réellement rejouée, avec son du jeu. Les chargement
 | [md-fairy-1d-contact01](md-fairy-1d-contact01/md-fairy-1d-contact01.mp4) | 8.24 s | [Rapport](md-fairy-1d-contact01/report.json) |
 | [md-fairy-32-contact01](md-fairy-32-contact01/md-fairy-32-contact01.mp4) | 8.08 s | [Rapport](md-fairy-32-contact01/report.json) |
 | [md-fairy-82-contact01](md-fairy-82-contact01/md-fairy-82-contact01.mp4) | 8.29 s | [Rapport](md-fairy-82-contact01/report.json) |
+| [md-fairy-c0-contact01](md-fairy-c0-contact01/md-fairy-c0-contact01.mp4) | 7.86 s | [Rapport](md-fairy-c0-contact01/report.json) |
 | [md-fairy-c9-contact01](md-fairy-c9-contact01/md-fairy-c9-contact01.mp4) | 5.37 s | [Rapport](md-fairy-c9-contact01/report.json) |
+| [md-fairy-e5-contact01](md-fairy-e5-contact01/md-fairy-e5-contact01.mp4) | 7.98 s | [Rapport](md-fairy-e5-contact01/report.json) |
+| [md-fairy-ec-contact01](md-fairy-ec-contact01/md-fairy-ec-contact01.mp4) | 8.09 s | [Rapport](md-fairy-ec-contact01/report.json) |
 | [md-gillian-apple-absent01-before-apple](md-gillian-apple-absent01-before-apple/md-gillian-apple-absent01-before-apple.mp4) | 7.16 s | [Rapport](md-gillian-apple-absent01-before-apple/report.json) |
 | [md-gillian-foudre1-pomme-consommee01](md-gillian-foudre1-pomme-consommee01/md-gillian-foudre1-pomme-consommee01.mp4) | 11.23 s | [Rapport](md-gillian-foudre1-pomme-consommee01/report.json) |
 | [md-gillian-foudre1-pomme-consommee01-before-apple](md-gillian-foudre1-pomme-consommee01-before-apple/md-gillian-foudre1-pomme-consommee01-before-apple.mp4) | 11.11 s | [Rapport](md-gillian-foudre1-pomme-consommee01-before-apple/report.json) |
 | [md-gillian-introduction01](md-gillian-introduction01/md-gillian-introduction01.mp4) | 9.60 s | [Rapport](md-gillian-introduction01/report.json) |
 | [md-gillian-introduction01-before-apple](md-gillian-introduction01-before-apple/md-gillian-introduction01-before-apple.mp4) | 9.73 s | [Rapport](md-gillian-introduction01-before-apple/report.json) |
+| [md-late-equipment-4c-cadeau01](md-late-equipment-4c-cadeau01/md-late-equipment-4c-cadeau01.mp4) | 7.93 s | [Rapport](md-late-equipment-4c-cadeau01/report.json) |
+| [md-late-equipment-4c-retour01](md-late-equipment-4c-retour01/md-late-equipment-4c-retour01.mp4) | 6.76 s | [Rapport](md-late-equipment-4c-retour01/report.json) |
 | [md-late-equipment-6a-cadeau01](md-late-equipment-6a-cadeau01/md-late-equipment-6a-cadeau01.mp4) | 7.99 s | [Rapport](md-late-equipment-6a-cadeau01/report.json) |
+| [md-late-equipment-6a-retour01](md-late-equipment-6a-retour01/md-late-equipment-6a-retour01.mp4) | 6.22 s | [Rapport](md-late-equipment-6a-retour01/report.json) |
 | [md-late-equipment-b1-cadeau01](md-late-equipment-b1-cadeau01/md-late-equipment-b1-cadeau01.mp4) | 7.98 s | [Rapport](md-late-equipment-b1-cadeau01/report.json) |
 | [md-late-equipment-b1-retour01](md-late-equipment-b1-retour01/md-late-equipment-b1-retour01.mp4) | 6.22 s | [Rapport](md-late-equipment-b1-retour01/report.json) |
 | [md-saylun-cheminee-pomme01-before-apple](md-saylun-cheminee-pomme01-before-apple/md-saylun-cheminee-pomme01-before-apple.mp4) | 12.18 s | [Rapport](md-saylun-cheminee-pomme01-before-apple/report.json) |
@@ -60,12 +71,17 @@ Chaque MP4 est une branche réellement rejouée, avec son du jeu. Les chargement
 | [md-teacher-e6-level2-learn01](md-teacher-e6-level2-learn01/md-teacher-e6-level2-learn01.mp4) | 6.84 s | [Rapport](md-teacher-e6-level2-learn01/report.json) |
 | [saylun-indice-mur-ntsc01](saylun-indice-mur-ntsc01/saylun-indice-mur-ntsc01.mp4) | 7.64 s | [Rapport](saylun-indice-mur-ntsc01/report.json) |
 | [saylun-indice-mur-pal01](saylun-indice-mur-pal01/saylun-indice-mur-pal01.mp4) | 8.23 s | [Rapport](saylun-indice-mur-pal01/report.json) |
+| [service-14-healer-refus-ntsc03](service-14-healer-refus-ntsc03/service-14-healer-refus-ntsc03.mp4) | 8.26 s | [Rapport](service-14-healer-refus-ntsc03/report.json) |
+| [service-23-merchant-refus-ntsc01](service-23-merchant-refus-ntsc01/service-23-merchant-refus-ntsc01.mp4) | 4.66 s | [Rapport](service-23-merchant-refus-ntsc01/report.json) |
+| [service-34-merchant-refus-ntsc01](service-34-merchant-refus-ntsc01/service-34-merchant-refus-ntsc01.mp4) | 4.86 s | [Rapport](service-34-merchant-refus-ntsc01/report.json) |
 | [service-52-save-refus-ntsc01](service-52-save-refus-ntsc01/service-52-save-refus-ntsc01.mp4) | 8.38 s | [Rapport](service-52-save-refus-ntsc01/report.json) |
 | [service-53-merchant-refus-ntsc01](service-53-merchant-refus-ntsc01/service-53-merchant-refus-ntsc01.mp4) | 5.01 s | [Rapport](service-53-merchant-refus-ntsc01/report.json) |
 | [service-55-healer-refus-ntsc01](service-55-healer-refus-ntsc01/service-55-healer-refus-ntsc01.mp4) | 10.05 s | [Rapport](service-55-healer-refus-ntsc01/report.json) |
 | [service-55-merchant-refus-ntsc01](service-55-merchant-refus-ntsc01/service-55-merchant-refus-ntsc01.mp4) | 5.07 s | [Rapport](service-55-merchant-refus-ntsc01/report.json) |
 | [service-55-save-refus-ntsc01](service-55-save-refus-ntsc01/service-55-save-refus-ntsc01.mp4) | 9.28 s | [Rapport](service-55-save-refus-ntsc01/report.json) |
+| [service-57-healer-refus-ntsc01](service-57-healer-refus-ntsc01/service-57-healer-refus-ntsc01.mp4) | 10.05 s | [Rapport](service-57-healer-refus-ntsc01/report.json) |
 | [service-57-merchant-refus-ntsc01](service-57-merchant-refus-ntsc01/service-57-merchant-refus-ntsc01.mp4) | 5.29 s | [Rapport](service-57-merchant-refus-ntsc01/report.json) |
+| [service-57-save-refus-ntsc01](service-57-save-refus-ntsc01/service-57-save-refus-ntsc01.mp4) | 9.28 s | [Rapport](service-57-save-refus-ntsc01/report.json) |
 | [service-71-merchant-refus-ntsc03](service-71-merchant-refus-ntsc03/service-71-merchant-refus-ntsc03.mp4) | 5.02 s | [Rapport](service-71-merchant-refus-ntsc03/report.json) |
 | [service-72-merchant-refus-ntsc03](service-72-merchant-refus-ntsc03/service-72-merchant-refus-ntsc03.mp4) | 5.29 s | [Rapport](service-72-merchant-refus-ntsc03/report.json) |
 | [service-94-healer-refus-ntsc01](service-94-healer-refus-ntsc01/service-94-healer-refus-ntsc01.mp4) | 9.36 s | [Rapport](service-94-healer-refus-ntsc01/report.json) |
@@ -89,5 +105,6 @@ Chaque MP4 est une branche réellement rejouée, avec son du jeu. Les chargement
 | [settled-service-94-healer-refus-ntsc01](settled-service-94-healer-refus-ntsc01/settled-service-94-healer-refus-ntsc01.mp4) | 9.95 s | [Rapport](settled-service-94-healer-refus-ntsc01/report.json) |
 | [settled-service-94-merchant-refus-ntsc01](settled-service-94-merchant-refus-ntsc01/settled-service-94-merchant-refus-ntsc01.mp4) | 7.01 s | [Rapport](settled-service-94-merchant-refus-ntsc01/report.json) |
 | [settled-service-94-save-refus-ntsc01](settled-service-94-save-refus-ntsc01/settled-service-94-save-refus-ntsc01.mp4) | 8.91 s | [Rapport](settled-service-94-save-refus-ntsc01/report.json) |
+| [settled-service-a5-merchant-refus-ntsc01](settled-service-a5-merchant-refus-ntsc01/settled-service-a5-merchant-refus-ntsc01.mp4) | 5.51 s | [Rapport](settled-service-a5-merchant-refus-ntsc01/report.json) |
 
 Les MP4 restent locaux. Les rapports réussis vérifient le décodage audio/vidéo intégral, la synchronisation, la RAM et les pixels finaux identiques au rejeu. [Suivi des cas](../../analysis/md_annex_replay_coverage.json).

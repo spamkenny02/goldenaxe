@@ -17,6 +17,7 @@ def main():
     p.add_argument('--trial', required=True)
     p.add_argument('--assisted-prefix', action='store_true')
     p.add_argument('--sms', action='store_true')
+    p.add_argument('--rom')
     a = p.parse_args()
     source = (ROOT / 'validation' / a.trace).resolve()
     assert source.is_relative_to(ROOT / 'validation')
@@ -24,7 +25,7 @@ def main():
     r = json.loads((source / 'report.json').read_bytes())
     assert r['failure'] is None and (r.get('passed') or r.get('room_cleared'))
     assert c['sram_input'] is None
-    rom = ROOT / ('input/original.sms' if a.sms else 'gaw-megadrive.bin')
+    rom = ROOT / ('input/original.sms' if a.sms else (a.rom or 'gaw-megadrive.bin'))
     assert sha(rom.read_bytes()) == c['rom_sha256']
     writes = prefix_writes(source, c, a.assisted_prefix)
     controls = json.loads((source / 'controls.json').read_bytes())

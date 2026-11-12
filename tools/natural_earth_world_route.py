@@ -28,6 +28,7 @@ def reaches_target(tilemap,cells,point,facing,target,level,allow_blocker=False):
 
 
 def main():
+    driver=Path(__file__).read_bytes()
     p=argparse.ArgumentParser(add_help=False);p.add_argument('--earth-world-cell',type=lambda v:int(v,0),required=True)
     a,remaining=p.parse_known_args();sms='--sms' in remaining
     from md_readonly_view import md_to_sms_view
@@ -48,8 +49,9 @@ def main():
     house=int(remaining[remaining.index('--house-target')+1],0)
     goal=game.World(house_outside=outside,house_target=house).goal
     mouth=(goal['x']-[0,0,-8,8][entry_direction],goal['y']-[-8,8,0,0][entry_direction])
+    destination=mouth if sms else (goal['x'],goal['y'])
     assert 8<=cast[0]<=248 and 8<=cast[1]<=160
-    candidates=[];cast_direction=entry_direction;terrain_candidates_generated=False;back_reachable=True;turning=False;turn_shot_started=False
+    candidates=[];cast_direction=entry_direction;terrain_candidates_generated=False;back_reachable=True;turning=False;turn_shot_started=False;aim_with_axe=False
     for facing in [entry_direction]+[d for d in range(4) if d!=entry_direction]:
         origin=((index&15)*16+8+[0,0,16,-16][facing],(index&240)+[24,8,16,16][facing])
         for n in range(5):
@@ -84,7 +86,7 @@ def main():
                     args[3].add(f+1)
                     if not turning:sequence=False;approached=False
         def control(f):
-            nonlocal approached,direction,sequence,cast,behind,cast_direction,terrain_candidates_generated,back_reachable,turning,turn_shot_started
+            nonlocal approached,direction,sequence,cast,behind,cast_direction,terrain_candidates_generated,back_reachable,turning,turn_shot_started,aim_with_axe
             settled=(state.get('game')==12 and state.get('hero')==1 and not state.get('counter')
                      and not state.get('resume_phase',0) and not state.get('door_loading',0))
             if f>start and state.get('room')==outside and settled and not terrain_candidates_generated:
@@ -110,17 +112,14 @@ def main():
                             # to back away does not guarantee a return step.
                             back_reachable=(combat.walk(state['tilemap'],candidate,lambda q:q==back) is not None
                                 and combat.walk(state['tilemap'],back,lambda q:q==candidate) is not None)
-                            if not sms and not back_reachable and not (approach and approach[-1]==facing or not approach and state['direction']==facing):
-                                # Never repeatedly spend MP trying to turn
-                                # against a blocked corner while pressing C.
-                                # Use a stance whose approach already faces
-                                # the shot, or one with a real retreat step.
-                                continue
                             cast=candidate;cast_direction=facing;behind=back;sequence=True;turning=False
                             decisions.append(dict(frame=f,cast=cast,facing=facing,behind=behind,back_reachable=back_reachable,allow_blocker=allow_blocker))
                             break
             active=f>start and sequence and state.get('room')==outside
-            wanted=5 if sequence and not opened else 1
+            if not sms and active and not opened and (state['x'],state['y'])==cast:
+                if state['direction']!=cast_direction:aim_with_axe=True
+                elif aim_with_axe and state['selected']==1 and state['hero']==1:aim_with_axe=False
+            wanted=5 if sequence and not opened and not aim_with_axe else 1
             if f>start and state.get('room')==outside and (state['selected']!=wanted or state['game']==16):
                 # The ordinary route may still need to chop a path through
                 # bushes. Never let its axe inputs cast Earth repeatedly.
@@ -133,6 +132,12 @@ def main():
                         elif state['slot']%4!=wanted%4:value=[7 if state['slot']%4<wanted%4 else 6]
                         else:value=[8]
             elif not active:value=base_control(f)
+            elif aim_with_axe:
+                # A real axe swing changes facing without moving or spending
+                # magic. Then select Earth through the ordinary inventory.
+                if state['hero'] in (4,5):value=[4+cast_direction]
+                elif state['hero']==1 and not state['counter']:value=[8,4+cast_direction] if f%3 else []
+                else:value=[]
             elif turning:
                 # A held attack button lets the original move routine change
                 # facing without walking after the casting animation. This
@@ -146,9 +151,9 @@ def main():
             elif opened:
                 point=(state['x'],state['y']);value=[]
                 if state['counter']:value=[4+direction]
-                elif point==mouth:direction=entry_direction;value=[4+direction]
+                elif point==destination:direction=entry_direction;value=[4+direction]
                 else:
-                    path=combat.walk(state['tilemap'],point,lambda q:q==mouth)
+                    path=combat.walk(state['tilemap'],point,lambda q:q==destination)
                     if path:direction=path[0];value=[4+direction]
             elif (state['x'],state['y'])==cast and state['direction']==cast_direction:value=[] if state['counter'] or f%3==0 else [8]
             elif state['counter']:value=[4+direction]
@@ -178,7 +183,7 @@ def main():
     folder=result['folder'];report=json.loads((folder/'route_report.json').read_bytes())
     assert not report['reached_entrance'] or opened is not None
     report.update(earth_exterior_opened=opened,earth_exterior_cell=index,earth_exterior_preexisting_in_prefix=preexisting,earth_exterior_new_resource_writes=0,
-                  earth_controller_aim_step=aim_step,earth_exterior_driver_sha256=sha(Path(__file__).read_bytes()),earth_cast_position=cast,earth_cast_direction=cast_direction)
+                  earth_controller_aim_step=aim_step,earth_controller_native_axe_turn=True if not sms else False,earth_exterior_driver_sha256=sha(driver),earth_cast_position=cast,earth_cast_direction=cast_direction)
     for name,value in [('controls',actual),('earth_world_events',events),('earth_controller_decisions',decisions),('route_report',report)]:
         (folder/(name+'.json')).write_bytes((json.dumps(value,indent=2)+'\n').encode())
 

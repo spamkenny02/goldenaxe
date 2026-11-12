@@ -5,6 +5,7 @@ from md_campaign_runner import Campaign
 from continue_sms_plain_house_census import census_world,COMBAT_ENTRANCES
 from natural_dungeon_route import World
 from extract_title import rle_planes
+from md_campaign_navigation import entry_options,enter,refill_magic
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--prefix',required=True);p.add_argument('--rom',required=True);p.add_argument('--limit',type=int,default=0);a=p.parse_args()
@@ -25,25 +26,20 @@ def main():
     try:
         c.verify(lambda r:r['passed'])
         while pending:
+            if c.sms_view()[0xdb]<8:
+                refill_magic(c);verified=c.trace;save('real_magic_refill_played_replayed_filmed')
             raw=c.sms_view();start=(int.from_bytes(raw[0xb9:0xbb],'little'),raw[0x313],raw[0x311]);chosen=None
             ordered=sorted(pending,key=lambda k:abs((k[0]&15)-(start[0]&15))+abs((k[0]>>4)-(start[0]>>4)))
             for key in ordered:
                 for direction in range(4):
                     world=census_world(raw,*key,direction);path,_=world.route(start)
-                    if path is not None:chosen=key,direction,world;break
+                    if path is not None and entry_options(raw,*key,direction,world):chosen=key,direction,world;break
                 if chosen:break
             assert chosen is not None,'No reachable pending house; transport/terrain needs a separate played branch'
             (outside,room),direction,world=chosen;tag=f'{outside:02x}-{room:02x}';attempt=1
             while (ROOT/f'validation/natural-dungeon-route/md-annex-plain-{tag}-entry{attempt:02d}').exists():attempt+=1
-            extra=['--house-outside',hex(outside),'--house-target',hex(room),'--persisted-only','--live-prefix-terrain','--door-entry-direction',str(direction)]
-            if outside in COMBAT_ENTRANCES and not raw[0x100+outside]&1:extra+=['--fight-for-entrance']
-            tool='natural_bell_world_route.py';meta=world.arrays['world_room_metadata'];node=next((meta[i:i+4] for i in range(0,len(meta)-3,4) if meta[i]==outside),None)
-            if node and not raw[0x100+outside]&1:
-                cells=bytearray(160);ptr=int.from_bytes(world.arrays['world_room_index'][outside*2:outside*2+2],'little');rle_planes(world.arrays['world_room_streams'],ptr,cells,0,1)
-                if cells[node[1]] in (0x13,0x38,0x3d,0x85,0x86):tool='natural_frozen_earth_world_route.py' if cells[node[1]]==0x38 else 'natural_earth_world_route.py';extra+=['--earth-world-cell',hex(node[1])]
-                elif 0x80<=cells[node[1]]<=0x84 and node[1]!=node[2]:extra+=['--required-chop',f'{hex(outside)}:{hex(node[1])}']
             print('MD HOUSE START',tag,'remaining',len(pending),flush=True)
-            c.route(tag+f'-entry{attempt:02d}',extra,tool);entry_end=c.cap()['frames']
+            attempt=enter(c,outside,room,tag);entry_end=c.cap()['frames']
             reference=refs[outside,room];source=ROOT/'validation'/reference
             if not (source/'report.json').exists():subprocess.run([sys.executable,str(ROOT/'tools/restore_validation_cache.py'),'--prefix','validation/'+reference],cwd=ROOT,check=True)
             c.npc(tag+f'-visit{attempt:02d}',reference);verified=c.trace

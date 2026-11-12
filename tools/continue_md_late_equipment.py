@@ -2,7 +2,7 @@
 import argparse,json,subprocess,sys
 from run_core import ROOT
 from md_campaign_runner import Campaign
-from md_campaign_navigation import entry_options
+from md_campaign_navigation import enter as enter_house
 from continue_sms_plain_house_census import census_world
 def main():
     p=argparse.ArgumentParser();p.add_argument('--prefix',required=True);p.add_argument('--rom',required=True);a=p.parse_args()
@@ -10,14 +10,7 @@ def main():
     c=Campaign(old.get('last_verified_prefix',a.prefix),a.rom,'annex-late-equipment');verified=c.trace
     def save(status):output.write_bytes((json.dumps(dict(status=status,last_verified_prefix=verified,completed_visits=done,all_npcs_complete=False,scope='Separate actual New Game branch for the late gifts; early Plate Mail/Long Sword and absent-prerequisite branches have their own recordings.'),indent=2)+'\n').encode())
     def enter(outside,house,tag):
-        raw=c.sms_view();start=(int.from_bytes(raw[0xb9:0xbb],'little'),raw[0x313],raw[0x311])
-        for direction in range(4):
-            w=census_world(raw,outside,house,direction);options=entry_options(raw,outside,house,direction,w)
-            if not options or w.route(start)[0] is None:continue
-            tool,extra=options;n=1
-            while (ROOT/f'validation/natural-dungeon-route/md-annex-late-equipment-{tag}-entry{n:02d}').exists():n+=1
-            c.route(tag+f'-entry{n:02d}',extra,tool);return
-        raise AssertionError(('No actual late gift approach',outside,house))
+        return enter_house(c,outside,house,tag)
     def film(tag,first,kind,**fields):
         nonlocal verified
         with (ROOT/'validation'/(tag+'-video.log')).open('w') as log:subprocess.run([sys.executable,str(ROOT/'tools/record_md_annex.py'),'--trace',c.trace,'--rom',str(c.rom),'--from-frame',str(first),'--name',tag],cwd=ROOT,stdout=log,stderr=subprocess.STDOUT,check=True)

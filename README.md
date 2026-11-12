@@ -36,6 +36,16 @@ pouvait lancer Terre avec les commandes prévues pour la hache.
 La récompense et sa vidéo sont suivies séparément dans
 [la tournée des enseignements et des fées MD](analysis/md_magic_fairy_campaign.json).
 
+Cette tournée MD est maintenant terminée : les enseignements atteignent
+`2/2/2/1`, les huit contextes de fées sont contactés, rejoués indépendamment
+et filmés, et les capacités vie/magie atteignent `128/128`. La récompense C9
+avait été obtenue pendant la campagne ; sa visite dans cette tournée est un
+retour sans seconde récompense. Les retours chez les autres fées et les
+enseignants, ainsi que les services et équipements restants, continuent.
+Les [corrections des parcours MD](analysis/md_annex_navigation_corrections.json)
+documentent les accès réellement franchis et un achat de magie avec l'argent
+du jeu ; elles ne modifient pas le binaire V322 et ne ferment pas le point 6.
+
 Les scripts et les entrées de campagne sont disponibles dans
 [le kit de tests SMS/MD](testkit/README_FR.md). Le lecteur Python/libretro
 rejoint la fin sur la V322 en PAL et NTSC avec les parcours enregistrés et
