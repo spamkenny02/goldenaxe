@@ -1,5 +1,5 @@
 """Independently replay a real save including SRAM,then cold-load it normally."""
-import argparse,contextlib,io,json
+import argparse,contextlib,io,json,subprocess,sys
 from pathlib import Path
 from run_core import ROOT,run,FrameWrites
 from assisted_prefix import recording,prefix_writes
@@ -9,27 +9,33 @@ from validate_reward_hud_restore import translated
 from natural_dungeon_combat import walk
 
 def main():
- p=argparse.ArgumentParser();p.add_argument('--trace',required=True);p.add_argument('--trial',required=True);p.add_argument('--release-report-name');a=p.parse_args()
+ p=argparse.ArgumentParser();p.add_argument('--trace',required=True);p.add_argument('--trial',required=True);p.add_argument('--release-report-name');p.add_argument('--rom');a=p.parse_args()
  if a.release_report_name:assert Path(a.release_report_name).name==a.release_report_name and a.release_report_name.endswith('.json')
  source=(ROOT/'validation'/a.trace).resolve();assert source.is_relative_to(ROOT/'validation')
  c=json.loads((source/'capture.json').read_bytes());r=json.loads((source/'report.json').read_bytes());assert r['passed'] and r['game_written_save'] and r['payload_source_ram_exact'] and not r['primary_state_imports'] and not r['new_assistance_writes'] and c['sram_input'] is None
- rom=ROOT/'gaw-megadrive.bin';digest=sha(rom.read_bytes());assert c['rom_sha256']==r['rom_sha256']==digest
- sy=symbols(ROOT/'megadrive/out/release/symbol.txt');assist,writes=recording(source,c)
+ rom=ROOT/(a.rom or 'gaw-megadrive.bin');digest=sha(rom.read_bytes());assert c['rom_sha256']==r['rom_sha256']==digest
+ sy=symbols(ROOT/'megadrive/out/release/symbol.txt');assist,writes=recording(source,c) if c['test_ram_writes'] else (None,[])
  # This tool creates the service replay,so require the canonical parent
  # rather than circularly requiring the not-yet-created service proof.
  parent=(ROOT/'validation'/r['source_prefix']).resolve();assert parent.is_relative_to(ROOT/'validation')
- pc=json.loads((parent/'capture.json').read_bytes());pa,pw=recording(parent,pc)
- assert prefix_writes(parent,pc,True)==pw==writes and assist==pa and r['prefix_end']==pc['frames']
+ pc=json.loads((parent/'capture.json').read_bytes());pa,pw=recording(parent,pc) if pc['test_ram_writes'] else (None,[])
+ assert prefix_writes(parent,pc,bool(pw))==pw==writes and assist==pa and r['prefix_end']==pc['frames']
  parent_controls=json.loads((parent/'controls.json').read_bytes());service_controls=json.loads((source/'controls.json').read_bytes())
  assert service_controls[:len(parent_controls)]==parent_controls and all(row['frame']>pc['frames']for row in service_controls[len(parent_controls):])
  assert all(address==sy['hero_hurt']for _,address,_ in writes)
  sram=(ROOT/r['sram_file']).resolve();assert sram.is_relative_to(source);raw_sram=sram.read_bytes();assert sha(raw_sram)==r['sram_sha256']
- payload=(source/'serialized-payload.bin').read_bytes();assert len(payload)==592 and raw_sram[1::2].ljust(8192,b'\xff')[0x400:0x650]==payload and sha(payload)==r['serialized_payload_sha256']
+ slot=r.get('slot',0);offset=0x400+slot*0x400
+ payload=(source/'serialized-payload.bin').read_bytes();assert len(payload)==592 and raw_sram[1::2].ljust(8192,b'\xff')[offset:offset+592]==payload and sha(payload)==r['serialized_payload_sha256']
  fixed=ROOT/'validation/game-written-save-replay'/a.trial;assert not fixed.exists();fixed_sram=fixed/'replayed.srm';end=c['frames'];presses=[tuple(v)for v in c['presses']];controls=json.loads((source/'controls.json').read_bytes())
  for i,row in enumerate(controls):
   stop=controls[i+1]['frame']-1 if i+1<len(controls)else end
   presses.extend((row['frame'],min(stop,end),key)for key in row['buttons']if row['frame']<=end)
- with contextlib.redirect_stdout(io.StringIO()):run(rom,end,fixed,{end},presses,skip_intro=False,ram_writes=FrameWrites(writes),sram_out=fixed_sram,core_options=c['core_options'])
+ # GX deinit does not clear every inactive RAM/stack byte. Keep the write
+ # replay in a separate process so normal Continue starts in a fresh core.
+ recipe=source/('save-replay-recipe-'+a.trial+'.json')
+ recipe.write_bytes((json.dumps(dict(rom=str(rom),end=end,out=str(fixed),sram=str(fixed_sram),presses=presses,writes=[(f,n,v.hex()) for f,n,v in writes],options=c['core_options']))+'\n').encode())
+ code="import json,sys;from pathlib import Path;sys.path.insert(0,'tools');from run_core import run,FrameWrites;r=json.loads(Path(sys.argv[1]).read_bytes());run(Path(r['rom']),r['end'],Path(r['out']),{r['end']},r['presses'],skip_intro=False,ram_writes=FrameWrites((f,n,bytes.fromhex(v)) for f,n,v in r['writes']),sram_out=Path(r['sram']),core_options=r['options'])"
+ subprocess.run([sys.executable,'-c',code,str(recipe)],cwd=ROOT,capture_output=True,check=True)
  assert fixed_sram.read_bytes()==raw_sram
  for stem,ext in [('ram','bin'),('frame','png')]:assert(fixed/f'{stem}_{end:05d}.{ext}').read_bytes()==(source/f'{stem}_{end:05d}.{ext}').read_bytes()
  proof=dict(passed=True,rom_sha256=digest,feedback_reads=False,whole_ram_bytes=65536,final_png_exact=True,raw_sram_exact=True,sram_sha256=sha(raw_sram),initial_sram=False,source_trace=a.trace,frames=end,driver_sha256=sha(Path(__file__).read_bytes()))
@@ -90,7 +96,7 @@ def main():
   if payload[0x1f+n]&128:
    tile,off=original[0x1edc+n*2:0x1ede+n*2];assert sms[0x3d00+off:0x3d02+off]==bytes([tile,0x59]);markers+=1
  for name,value in [('controls',inputs),('events',events)]:(reload/(name+'.json')).write_bytes((json.dumps(value,indent=2)+'\n').encode())
- result=dict(passed=True,rom_sha256=digest,game_written_save=True,synthetic_sram_fixture=False,source_trace=a.trace,source_sram_sha256=sha(raw_sram),serialized_payload_bytes=592,raw_sram_fixed_replay_exact=True,save_whole_ram_png_exact=True,fixed_replay_trace=fixed.relative_to(ROOT).as_posix(),reload_trace=reload.relative_to(ROOT).as_posix(),reload_primary_sram_imports=1,reload_ram_writes=0,reload_actor_records_cleared=False,reload_ready_frame=ready,restored_source_fields=fields,checkpoint_room=target,movement_verified_frame=moved,physical_hud_words_exact=128,source_crystal_markers_exact=markers,last_state={k:v for k,v in state.items()if k!='tilemap'},full_game_validated=False,driver_sha256=sha(Path(__file__).read_bytes()),limits=['Real game-written SRAM from a separate canonical New Game branch;no initial save fixture or test resource writes. Reload necessarily imports that exact game-written SRAM and is not labelled a cold New Game campaign.','This checks slot0 write/reload and actual control/HUD,not all slot/refusal combinations,global source timing or console hardware.'])
+ result=dict(passed=True,rom_sha256=digest,game_written_save=True,slot=slot,synthetic_sram_fixture=False,source_trace=a.trace,source_sram_sha256=sha(raw_sram),serialized_payload_bytes=592,raw_sram_fixed_replay_exact=True,save_whole_ram_png_exact=True,fixed_replay_trace=fixed.relative_to(ROOT).as_posix(),reload_trace=reload.relative_to(ROOT).as_posix(),reload_primary_sram_imports=1,reload_ram_writes=0,reload_actor_records_cleared=False,reload_ready_frame=ready,restored_source_fields=fields,checkpoint_room=target,movement_verified_frame=moved,physical_hud_words_exact=128,source_crystal_markers_exact=markers,last_state={k:v for k,v in state.items()if k!='tilemap'},full_game_validated=False,driver_sha256=sha(Path(__file__).read_bytes()),limits=['Real game-written SRAM from a separate canonical New Game branch;no initial save fixture or test resource writes. Reload necessarily imports that exact game-written SRAM and is not labelled a cold New Game campaign.','This checks selected-slot write/reload and actual control/HUD,not all slot/refusal combinations,global source timing or console hardware.'])
  report_bytes=(json.dumps(result,indent=2)+'\n').encode()
  (reload/'report.json').write_bytes(report_bytes)
  versions=json.loads((ROOT/'versions/index.json').read_bytes())

@@ -22,7 +22,7 @@ def main():
     p.add_argument('--outside', type=lambda s: int(s, 0), required=True)
     p.add_argument('--assisted-prefix', action='store_true')
     p.add_argument('--sms', action='store_true')
-    a = p.parse_args()
+    p.add_argument('--rom');a = p.parse_args()
     gifts = {0x27: ('armor', 2), 0x50: ('basic', 2),
              0xb1: ('armor', 3), 0x6a: ('basic', 3),0x4c:('shield',3),0x92:('apple',1)}
     assert a.outside in gifts
@@ -36,7 +36,7 @@ def main():
     assert prior['house_outside'] == a.outside and prior['house_target'] == house
     assert c['sram_input'] is None
     writes = prefix_writes(source, c, a.assisted_prefix)
-    rom = ROOT / ('input/original.sms' if a.sms else 'gaw-megadrive.bin')
+    rom = ROOT / ('input/original.sms' if a.sms else (a.rom or 'gaw-megadrive.bin'))
     assert sha(rom.read_bytes()) == c['rom_sha256']
     driver = Path(__file__).read_bytes()
     sy = None if a.sms else symbols(ROOT / 'megadrive/out/release/symbol.txt')

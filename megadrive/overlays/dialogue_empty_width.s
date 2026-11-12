@@ -16,8 +16,8 @@ old_compare:
     jmp 0x29626
 no_wrap:
     jmp 0x2939c
-/* Limit this private trial to active house/service text. Opening-story
- * retiming is a separate investigation and is not changed by this trial.
+/* Scoped Saylun room31 correction for active house/service text.
+ * Opening-story timing and other rooms retain the published behavior.
  */
 dialogue_empty_terminator:
     cmpi.w #31,0xe0ff28b4

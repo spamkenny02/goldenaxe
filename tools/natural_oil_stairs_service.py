@@ -17,7 +17,7 @@ from archive_lossless_evidence import sha
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--sms',action='store_true');p.add_argument('--prefix',required=True);p.add_argument('--trial',required=True);p.add_argument('--assisted-prefix',action='store_true');p.add_argument('--outside',type=lambda v:int(v,0),default=0xc7)
-    a=p.parse_args();assert a.outside in (0xc7,0x55);inventory_offset=8 if a.outside==0xc7 else 2;source=ROOT/'validation/natural-dungeon-route'/a.prefix
+    p.add_argument('--rom');a=p.parse_args();assert a.outside in (0xc7,0x55);inventory_offset=8 if a.outside==0xc7 else 2;source=ROOT/'validation/natural-dungeon-route'/a.prefix
     driver=Path(__file__).read_bytes()
     c=json.loads((source/'capture.json').read_bytes());prior=json.loads((source/'route_report.json').read_bytes())
     assert prior['reached_entrance'] and prior['failure'] is None and prior['house_outside']==a.outside and prior['house_target']==0x1f
@@ -25,7 +25,7 @@ def main():
     writes=prefix_writes(source,c,a.assisted_prefix)
     proof=source.with_name(source.name+(f"-assisted-fixed-replay-{c['frames']}" if writes else '-fixed-replay'))/'replay_report.json'
     assert json.loads(proof.read_bytes())['passed']
-    rom=ROOT/'input/original.sms' if a.sms else ROOT/'gaw-megadrive.bin';assert sha(rom.read_bytes())==c['rom_sha256']
+    rom=ROOT/'input/original.sms' if a.sms else ROOT/(a.rom or 'gaw-megadrive.bin');assert sha(rom.read_bytes())==c['rom_sha256']
     sy=symbols(ROOT/'megadrive/out/release/symbol.txt');start=c['frames']
     controls=json.loads((source/'controls.json').read_bytes());timeline=[()]*(start+1)
     for i,row in enumerate(controls):

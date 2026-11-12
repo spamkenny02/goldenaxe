@@ -7,9 +7,9 @@ from assisted_prefix import prefix_writes,recording
 from archive_lossless_evidence import sha
 
 def main():
- p=argparse.ArgumentParser();p.add_argument('--prefix',required=True);p.add_argument('--outside',type=lambda x:int(x,0),required=True);p.add_argument('--count',type=int,default=2);p.add_argument('--trial',required=True);p.add_argument('--heal-after',action='store_true');p.add_argument('--assisted-prefix',action='store_true');a=p.parse_args();assert 1<=a.count<=10
+ p=argparse.ArgumentParser();p.add_argument('--prefix',required=True);p.add_argument('--outside',type=lambda x:int(x,0),required=True);p.add_argument('--count',type=int,default=2);p.add_argument('--trial',required=True);p.add_argument('--heal-after',action='store_true');p.add_argument('--assisted-prefix',action='store_true');p.add_argument('--rom');a=p.parse_args();assert 1<=a.count<=10
  source=ROOT/'validation/natural-dungeon-route'/a.prefix;c=json.loads((source/'capture.json').read_bytes());prior=json.loads((source/'route_report.json').read_bytes());assert prior['reached_entrance'] and prior['failure'] is None and prior['house_outside']==a.outside and prior['house_target'] in [0,1,0x2f] and c['sram_input'] is None
- assert not str(c['rom']).endswith('.sms');rom=ROOT/'gaw-megadrive.bin';assert c['rom_sha256']==sha(rom.read_bytes());sy=symbols(ROOT/'megadrive/out/release/symbol.txt');house=prior['house_target'];assert not a.heal_after or a.outside==0x94 and house==0
+ assert not str(c['rom']).endswith('.sms');rom=ROOT/(a.rom or 'gaw-megadrive.bin');assert c['rom_sha256']==sha(rom.read_bytes());sy=symbols(ROOT/'megadrive/out/release/symbol.txt');house=prior['house_target'];assert not a.heal_after or a.outside==0x94 and house==0
  assets=json.loads((ROOT/'analysis/merchant_assets.json').read_bytes());town=next(r for r in assets['towns'] if r[0]==a.outside);assert town[1]==0;selection=next(i for i,v in enumerate(assets['goods'][town[2]]) if v[0]==30);price=assets['goods'][town[2]][selection][1];node=next(r for r in assets['nodes'] if r[0]==house);nx,ny=node[1:]
  writes=prefix_writes(source,c,a.assisted_prefix);recorded=json.loads((source/'controls.json').read_bytes());start=c['frames'];timeline=[()]*(start+1)
  for i,row in enumerate(recorded):

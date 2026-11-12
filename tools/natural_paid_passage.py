@@ -16,14 +16,14 @@ def main():
     p.add_argument('--trial', required=True)
     p.add_argument('--assisted-prefix', action='store_true')
     p.add_argument('--sms', action='store_true')
-    a = p.parse_args()
+    p.add_argument('--rom');a = p.parse_args()
     source = ROOT/'validation/natural-dungeon-route'/a.prefix
     c = json.loads((source/'capture.json').read_bytes())
     prior = json.loads((source/'route_report.json').read_bytes())
     assert prior['reached_entrance'] and prior['failure'] is None
     assert prior['house_outside'] == a.outside and prior['house_target'] == 0x9f
     assert c['sram_input'] is None
-    rom = ROOT/('input/original.sms' if a.sms else 'gaw-megadrive.bin')
+    rom = ROOT/('input/original.sms' if a.sms else (a.rom or 'gaw-megadrive.bin'))
     assert c['rom_sha256'] == sha(rom.read_bytes())
     ref = json.loads((ROOT/'analysis/paid_passage_reference.json').read_bytes())
     assert ref['source_sha256'] == sha((ROOT/'input/original.sms').read_bytes())

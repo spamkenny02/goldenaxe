@@ -15,8 +15,10 @@ if (Test-Path -LiteralPath "$candidateRoot/out/release/rom.bin") { throw 'Preser
 $sdkPath = (Resolve-Path -LiteralPath $Sgdk).Path.Replace('\','/')
 $sdkUnix = '/' + $sdkPath.Substring(0,1).ToLower() + $sdkPath.Substring(2)
 $previousPath = $env:Path
+$previousTmp = $env:TMP; $previousTemp = $env:TEMP; $previousTmpDir = $env:TMPDIR
 Push-Location -LiteralPath $candidateRoot
 try {
+    $env:TMP='.'; $env:TEMP='.'; $env:TMPDIR='.'
     $env:Path = "$sdkPath/bin;$previousPath"
     # Windows PowerShell represents native stderr warnings as ErrorRecords.
     # The compiler exit code determines success; warnings stay in the log.
@@ -44,4 +46,4 @@ try {
         finalBytes = (Get-Item -LiteralPath $candidateRomPath).Length
         paddingByte = $PaddingByte
     } | ConvertTo-Json | Set-Content -LiteralPath (Join-Path $candidateRoot 'packaging-build.json') -Encoding UTF8
-} finally { $env:Path = $previousPath; Pop-Location }
+} finally { $env:Path = $previousPath; $env:TMP=$previousTmp; $env:TEMP=$previousTemp; $env:TMPDIR=$previousTmpDir; Pop-Location }

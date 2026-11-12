@@ -56,7 +56,7 @@ désynchronisation n’est jamais présenté comme une campagne réussie.
 
 La protection est activée par les lanceurs des campagnes MD et SMS avec `assistance=true`.
 Le mode suivi et l’enregistrement ne modifient aucune mémoire.
-Le script refuse les ROMs autres que la SMS fournie et les MD V320/V321.
+Le script refuse les ROMs autres que la SMS fournie et les MD V320/V321 et le candidat privé SHA1421abe4.
 Le domaine RAM est détecté ; en cas d’ambiguïté, ajouter `domain="68K RAM"`
 ou le nom exact de la RAM SMS dans `GAW_CONFIG` du lanceur.
 
@@ -118,3 +118,7 @@ pomme de J9, huile cachée de Kari-Kari et corrosion/remède réels, puis la fin
 Les branches séparées (autres variantes, services, jeux et revisites) restent
 hors de ce CSV. Le lanceur `bizhawk/lecture_sms_extended_ntsc.lua` est fourni
 avec la même réserve de validation BizHawk que les autres lanceurs.
+
+## Candidat privé V322, pas une RC validée — 12 novembre 2026
+
+Les deux campagnes ont été rejouées jusqu’au générique sur le SHA candidat1421 du manifeste. Le compteur de protection a été contrôlé sur chaque image : aucune superposition avec un boss vivant. Les limites BizHawk et tous PNJ ci-dessus restent applicables. Rapports locaux : `../validation/rc1-campaign-ntsc01/report.json` et `../validation/rc1-campaign-pal01/report.json`. Les annexes SMS restent à rejouer sur MD avant RC.

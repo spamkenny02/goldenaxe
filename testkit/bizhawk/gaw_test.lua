@@ -13,7 +13,8 @@ assert(mode == "monitor" or mode == "record" or mode == "replay", "Mode inconnu"
 local sha = gameinfo.getromhash():lower():gsub("^sha1:", "")
 local known = md and {
   ["65dbbd5c318a5dc8fad9cfcd369a051a48fa39eb"] = true, -- V320
-  ["9a42e3283d7b10035924636f56dbb9ad67b4303c"] = true  -- V321
+  ["9a42e3283d7b10035924636f56dbb9ad67b4303c"] = true, -- V321
+  ["a9daebc210c3a1177446e614c0736f48b149872b"] = true -- V322 private candidate (layout unchanged; BizHawk run not certified)
 } or { ["5dc6988b6592a61c8a66f744e9701bfc1494d5b1"] = true }
 assert(known[sha], "ROM inconnue : adresses RAM du kit non garanties. Ne pas reutiliser sur une autre compilation.")
 local domain = cfg.domain

@@ -2,16 +2,17 @@
 import argparse,subprocess,json,hashlib,shutil
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
-p=argparse.ArgumentParser();p.add_argument('--out',required=True);p.add_argument('--base-from-git',action='store_true');options=p.parse_args()
+p=argparse.ArgumentParser();p.add_argument('--out',required=True);p.add_argument('--base-from-git',action='store_true');p.add_argument('--base',type=Path);p.add_argument('--sdk-bin',type=Path);options=p.parse_args()
 out=(ROOT/options.out).resolve();assert out.is_relative_to(ROOT/'validation') and not out.exists();out.mkdir(parents=True)
-base=ROOT/'versions/v0319-d3ea2a83/gaw-megadrive-v0319.bin'
+base=options.base or ROOT/'versions/v0319-d3ea2a83/gaw-megadrive-v0319.bin'
 base_source='local V319'
 if base.exists() and not options.base_from_git:base_bytes=base.read_bytes()
 else:
+ assert options.base is None,'Requested rebuilt base does not exist'
  reference='95935a2db8331394f3b0889b4630258f412a5f31:versions/v0319-d3ea2a83/gaw-megadrive-v0319.bin'
  base_bytes=subprocess.check_output(['git','show',reference],cwd=ROOT);base_source='git:'+reference
 raw=bytearray(base_bytes);assert hashlib.sha256(raw).hexdigest()=='d3ea2a83ea24ed8a0d3c9857f9fbe70d000a4f73358452c1887f40e78966c56e'
-sdk=ROOT.parents[1]/'work/sgdk/bin';source=ROOT/'megadrive/overlays/credits_border.s';shutil.copyfile(source,out/source.name)
+sdk=options.sdk_bin or ROOT.parents[1]/'work/sgdk/bin';source=ROOT/'megadrive/overlays/credits_border.s';shutil.copyfile(source,out/source.name)
 subprocess.run([str(sdk/'as.exe'),'-m68000','-o',str(out/'overlay.o'),str(out/source.name)],check=True)
 subprocess.run([str(sdk/'ld.exe'),'-Ttext=0x1f0000','-e','credits_border_enter','-o',str(out/'overlay.out'),str(out/'overlay.o')],check=True)
 subprocess.run([str(sdk/'objcopy.exe'),'-O','binary',str(out/'overlay.out'),str(out/'overlay.bin')],check=True)

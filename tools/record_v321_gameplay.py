@@ -24,13 +24,17 @@ def main():
     parser.add_argument('part', choices=['intro', 'gameplay'])
     parser.add_argument('--out', required=True)
     parser.add_argument('--frames', type=int)
+    parser.add_argument('--rom', type=Path)
+    parser.add_argument('--label', default='v0321')
     args = parser.parse_args()
     out = (ROOT / 'validation' / args.out).resolve()
     assert out.is_relative_to(ROOT / 'validation') and not out.exists()
     out.mkdir()
-    rom = ROOT / 'versions/v0321-89c58333/gaw-megadrive-v0321.bin'
+    rom = args.rom or ROOT / 'versions/v0321-89c58333/gaw-megadrive-v0321.bin'
     digest = hashlib.sha256(rom.read_bytes()).hexdigest()
-    assert digest == '89c5833351312ffaa591efb1939161910a298af06437080e2cf84fb3fb8ac86e'
+    assert digest in ('89c5833351312ffaa591efb1939161910a298af06437080e2cf84fb3fb8ac86e',
+                      '1421abe47de95ac104a03e2fb1be7001f70aeca1fbb6a9b35669aa6e98b7d9a4')
+    assert args.label.replace('-', '').isalnum()
     core = ROOT.parents[1] / 'work/libretro/genesis_plus_gx_libretro.dll'
     core_sha = hashlib.sha256(core.read_bytes()).hexdigest()
     assert core_sha == 'd17f2392115b3cd54258a1fa6c4195ddadc19b0805ebcca400db5162b1793516'
@@ -59,7 +63,7 @@ def main():
     ffmpeg = imageio_ffmpeg.get_ffmpeg_exe()
     silent = out / 'video-silent.mp4'
     wav = out / 'audio.wav'
-    movie = out / ('gaw-v0321-' + args.part + '.mp4')
+    movie = out / ('gaw-' + args.label + '-' + args.part + '.mp4')
     video_log = (out / 'video-encode.log').open('w')
     progress_log = (out / 'video-encode-progress.txt').open('w')
     process = None
@@ -148,8 +152,8 @@ def main():
         assert len(writes) == route['approach_writes']
     command = [ffmpeg, '-hide_banner', '-nostdin', '-i', str(silent), '-i', str(wav),
                '-map', '0:v:0', '-map', '1:a:0', '-c:v', 'copy', '-c:a', 'aac', '-b:a', '192k',
-               '-movflags', '+faststart', '-metadata', 'title=Golden Axe Warrior - Mega Drive native port V321',
-               '-metadata', 'comment=Development build. Recorded approach-only protection, removed before boss combat. No save or progression imports.', str(movie)]
+               '-movflags', '+faststart', '-metadata', 'title=Golden Axe Warrior - Mega Drive native port ' + args.label,
+               '-metadata', 'comment=Recorded approach-only protection, removed before boss combat. No save or progression imports.', str(movie)]
     with (out / 'mux.log').open('w') as log:
         subprocess.run(command, stdout=log, stderr=subprocess.STDOUT, check=True)
     report = dict(passed=True, part=args.part, movie=str(movie), movie_bytes=movie.stat().st_size,

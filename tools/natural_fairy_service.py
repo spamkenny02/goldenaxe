@@ -6,9 +6,9 @@ from archive_lossless_evidence import sha
 from assisted_prefix import prefix_writes,recording
 
 def main():
- p=argparse.ArgumentParser();p.add_argument('--kind',choices=['life','magic'],default='life');p.add_argument('--assisted-prefix',action='store_true');p.add_argument('--sms',action='store_true');p.add_argument('--prefix',required=True);p.add_argument('--trial',required=True);p.add_argument('--outside',type=lambda v:int(v,0),default=0xc9);p.add_argument('--expected-initial-capacity',type=int,default=32);p.add_argument('--revisit',action='store_true');a=p.parse_args()
+ p=argparse.ArgumentParser();p.add_argument('--kind',choices=['life','magic'],default='life');p.add_argument('--assisted-prefix',action='store_true');p.add_argument('--sms',action='store_true');p.add_argument('--prefix',required=True);p.add_argument('--trial',required=True);p.add_argument('--outside',type=lambda v:int(v,0),default=0xc9);p.add_argument('--expected-initial-capacity',type=int,default=32);p.add_argument('--revisit',action='store_true');p.add_argument('--rom');a=p.parse_args()
  source=ROOT/'validation/natural-dungeon-route'/a.prefix;c=json.loads((source/'capture.json').read_bytes());prior=json.loads((source/'route_report.json').read_bytes());recorded=json.loads((source/'controls.json').read_bytes())
- rom=ROOT/'input/original.sms' if a.sms else ROOT/'gaw-megadrive.bin';digest=sha(rom.read_bytes());assert c['rom_sha256']==digest and prior['reached_entrance'] and not prior['failure'] and c['sram_input'] is None
+ rom=ROOT/'input/original.sms' if a.sms else ROOT/(a.rom or 'gaw-megadrive.bin');digest=sha(rom.read_bytes());assert c['rom_sha256']==digest and prior['reached_entrance'] and not prior['failure'] and c['sram_input'] is None
  writes=prefix_writes(source,c,a.assisted_prefix)
  end=c['frames'];timeline=[()]*(end+1)
  for n,row in enumerate(recorded):
@@ -21,11 +21,11 @@ def main():
  def observe(f,r):
   nonlocal done,observed,failure,initial,previous
   observed=f
+  if f<end:return
   if a.sms:state.update(room=int.from_bytes(r[0xb9:0xbb],'little'),game=r[0x1d],hero=r[0x301],counter=r[0x304],x=r[0x313],y=r[0x311],health=r[0x318],max_health=r[0xda],magic=r[0xdb],max_magic=r[0xdc],outside_flags=r[0x100+a.outside],first_crystal=r[0xcf],modal=0,audio_error=0)
   else:
    data=lambda n,k:bytes(r[(sy[n]+i)^1] for i in range(k));word=lambda n:int.from_bytes(data(n,2),'big')
    state.update(room=word('room_id'),game=word('game_state'),hero=word('hero_state'),counter=word('hero_counter'),x=word('hero_x')>>8,y=word('hero_y')>>8,health=word('hero_health'),max_health=word('hero_max_health'),magic=word('hero_magic'),max_magic=word('hero_max_magic'),outside_flags=data('game_save_state',592)[0x50+a.outside],first_crystal=data('game_save_state',592)[0x1f],modal=word('house_dialogue_active') or word('item_reward_active'),audio_error=word('sound_unhandled_command'))
-  if f<end:return
   if initial is None:initial=dict(state);assert initial['room']==0xaf and initial[capacity_field]==a.expected_initial_capacity and bool(initial['outside_flags']&2)==a.revisit
   if a.revisit and (state['max_magic']!=initial['max_magic'] or state['magic']!=initial['magic'] or state['max_health']!=initial['max_health'] or state['outside_flags']!=initial['outside_flags'] or state['health']!=initial['health']):failure='repeat_visit_changed_reward_state'
   key=tuple(state[n] for n in ['room','health','max_health','outside_flags','modal','game'])

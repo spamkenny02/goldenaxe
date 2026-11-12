@@ -18,6 +18,7 @@ def main():
     p = argparse.ArgumentParser()
     p.add_argument('--out', required=True)
     p.add_argument('--base', type=Path, help='Exact rebuilt V320; checked by SHA-256')
+    p.add_argument('--sdk-bin',type=Path)
     options = p.parse_args()
     out = (ROOT / options.out).resolve()
     assert out.is_relative_to(ROOT / 'validation') and not out.exists()
@@ -30,7 +31,7 @@ def main():
         base = subprocess.check_output(['git', 'show', '1c7d39cfcfd2fcc2a7fff3de6feb159e49f3d24b:versions/v0320-9e5b0abe/gaw-megadrive-v0320.bin'], cwd=ROOT)
     assert hashlib.sha256(base).hexdigest() == '9e5b0abed80678ce864a0bb796c17e97047d1d34e5227a5275bf9336129ceaff'
     raw = bytearray(base)
-    sdk = ROOT.parents[1] / 'work/sgdk/bin'
+    sdk = options.sdk_bin or ROOT.parents[1] / 'work/sgdk/bin'
     source = ROOT / 'megadrive/overlays/title_publication.s'
     shutil.copyfile(source, out / source.name)
     subprocess.run([str(sdk/'as.exe'), '-m68000', '-o', str(out/'overlay.o'), str(source)], check=True)

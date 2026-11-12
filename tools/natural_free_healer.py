@@ -18,13 +18,13 @@ def main():
     p.add_argument('--assisted-prefix', action='store_true')
     p.add_argument('--sms', action='store_true')
     p.add_argument('--allow-full-health', action='store_true')
-    a = p.parse_args()
+    p.add_argument('--rom');a = p.parse_args()
     source = ROOT/'validation/natural-dungeon-route'/a.prefix
     cap = json.loads((source/'capture.json').read_bytes())
     prior = json.loads((source/'route_report.json').read_bytes())
     assert prior['failure'] is None and prior['reached_entrance']
     assert prior['house_outside'] == 0x94 and prior['house_target'] == 0 and cap['sram_input'] is None
-    rom = ROOT/('input/original.sms' if a.sms else 'gaw-megadrive.bin')
+    rom = ROOT/('input/original.sms' if a.sms else (a.rom or 'gaw-megadrive.bin'))
     assert cap['rom_sha256'] == sha(rom.read_bytes())
     writes = prefix_writes(source, cap, a.assisted_prefix)
     sy = None if a.sms else symbols(ROOT/'megadrive/out/release/symbol.txt')

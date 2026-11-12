@@ -1,5 +1,22 @@
 # Reprise du portage dans un autre compte Codex
 
+## Reprise prioritaire — 12 novembre 2026
+
+L'utilisateur demande explicitement de rejouer sur MD toutes les branches SMS
+retenues : PNJ, objets, récompenses, services et conditions de quêtes, puis de
+filmer les preuves. Ne pas fermer le point 6 avec la seule campagne MD et les
+annexes SMS. Pas de publication RC avant cette couverture MD.
+
+Le candidat `validation/dialogue-empty-width03/candidate.bin` (SHA1421abe4…)
+corrige Saylun et passe les campagnes complètes PAL/NTSC, les Continue de vraies
+sauvegardes, les deux dialogues C7 et leurs relectures. Deux reconstructions
+propres sont identiques, dont le paquet autonome en préparation. La vidéo
+`videos/v0322-rc1` est celle d'un candidat non publié, pas une certification de
+toutes les branches. V321 reste le binaire publié. Les nouveaux outils RC et
+le rapport dans `reports/gaw-v0322-rc1-2026-11-12` sont préparatoires.
+Lire `analysis/md_annex_replay_coverage.json` pour les cas MD réellement prouvés.
+
+
 État courant au 8 novembre 2026. Les notes historiques conservées
 plus bas décrivent des versions antérieures. Lire d’abord cette section,
 le README et les rapports cités.

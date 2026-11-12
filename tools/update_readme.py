@@ -13,12 +13,14 @@ def refresh_readme_release(root,entry):
  assert text.count(START)==text.count(END)==1,'Ambiguous README release block'
  rom=root/'versions'/entry['rom'];data=rom.read_bytes()
  assert hashlib.sha256(data).hexdigest()==entry['sha256']
- if entry.get('development'):
+ if entry.get('release_candidate'):
+  status='Release candidate RC1 : campagnes PAL/NTSC terminées et contrôles de publication réussis. Limites de fidélité et de couverture documentées dans le rapport RC.'
+ elif entry.get('development'):
   status='Version de développement ; contrôles ciblés réussis, écarts visuels et validation complète encore ouverts.' if entry['validation']=='development_targeted_checks' else 'Version de développement ; validation en attente.'
  else:
   status='Contrôles ciblés réussis ; portage complet encore non validé.' if entry['validation']=='targeted_checks_passed' else 'Compilation disponible ; validation de cette version en attente.'
  block=f'''{START}
-**Version courante : v{entry['version']:04d} — {len(data)//1024} Kio.**
+**Version courante : v{entry['version']:04d}{' RC1' if entry.get('release_candidate') else ''} — {len(data)//1024} Kio.**
 
 [Télécharger la ROM v{entry['version']:04d}](versions/{entry['rom']}) · [Toutes les versions](versions/README.md)
 
@@ -29,7 +31,7 @@ Checksum Mega Drive : `{int.from_bytes(data[0x18e:0x190],'big'):04X}`
 {END}'''
  begin=text.index(START);end=text.index(END,begin)+len(END)
  updated=text[:begin]+block+text[end:]
- if updated!=text:path.write_text(updated,encoding='utf-8')
+ if updated!=text:path.write_text(updated,encoding='utf-8',newline='\n')
 
 def main():
  entries=json.loads((ROOT/'versions/index.json').read_text(encoding='utf-8'))

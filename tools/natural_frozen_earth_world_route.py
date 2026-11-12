@@ -8,13 +8,18 @@ from archive_lossless_evidence import sha
 
 
 def main():
-    assert '--sms' in sys.argv
+    sms='--sms' in sys.argv
+    from md_readonly_view import md_to_sms_view
+    from validate_playable_sprite_limit import symbols
+    sy=None if sms else symbols(ROOT/'megadrive/out/release/symbol.txt')
     outside=int(sys.argv[sys.argv.index('--house-outside')+1],0);assert 0x10<=outside<0xff
     flag='--prefix-combat' if '--prefix-combat' in sys.argv else '--prefix-service'
     family='natural-dungeon-combat' if flag=='--prefix-combat' else 'natural-service-route'
     p=ROOT/'validation'/family/sys.argv[sys.argv.index(flag)+1]
     cap=json.loads((p/'capture.json').read_bytes());start=cap['frames']
-    raw=(p/f'ram_{start:05d}.bin').read_bytes();assert raw[0xea] and raw[0xe5]
+    raw=(p/f'ram_{start:05d}.bin').read_bytes()
+    if not sms:raw=md_to_sms_view(raw,sy)
+    assert raw[0xea] and raw[0xe5]
     original_run,original_render=game.run,game.World.render_cells
     state={};events=[];controls=[];result={};finished=False
     def render(world,room,cells,meta=None):
@@ -26,6 +31,7 @@ def main():
         def observe(f,r):
             observe_base(f,r)
             if f<start:return
+            if not sms:r=md_to_sms_view(r,sy)
             state.update(room=int.from_bytes(r[0xb9:0xbb],'little'),game=r[0x1d],hero=r[0x301],counter=r[0x304],
                 selected=r[0xdf],slot=r[0xa0],bell=r[0xac],lava=bytes(r[0x1c00:0x1ca0]).count(0x3f),terrain=r[0x41])
             if state['room']==outside and (not events or any(state[k]!=events[-1][k] for k in ['bell','lava','selected'])):

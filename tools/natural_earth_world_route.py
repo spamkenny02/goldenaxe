@@ -29,12 +29,16 @@ def reaches_target(tilemap,cells,point,facing,target,level,allow_blocker=False):
 
 def main():
     p=argparse.ArgumentParser(add_help=False);p.add_argument('--earth-world-cell',type=lambda v:int(v,0),required=True)
-    a,remaining=p.parse_known_args();assert '--sms' in remaining
+    a,remaining=p.parse_known_args();sms='--sms' in remaining
+    from md_readonly_view import md_to_sms_view
+    from validate_playable_sprite_limit import symbols
+    sy=None if sms else symbols(ROOT/'megadrive/out/release/symbol.txt')
     outside=int(remaining[remaining.index('--house-outside')+1],0);index=a.earth_world_cell
     flag='--prefix-combat' if '--prefix-combat' in remaining else '--prefix-service'
     family='natural-dungeon-combat' if flag=='--prefix-combat' else 'natural-service-route'
     cap=json.loads((ROOT/'validation'/family/remaining[remaining.index(flag)+1]/'capture.json').read_bytes())
     initial=(ROOT/'validation'/family/remaining[remaining.index(flag)+1]/f'ram_{cap["frames"]:05d}.bin').read_bytes()
+    if not sms:initial=md_to_sms_view(initial,sy)
     preexisting=bool(initial[0x100+outside]&1)
     start=cap['frames'];original=game.run;original_render=game.World.render_cells;state={};actual=[];events=[];result={};opened=None;approached=False;direction=0;sequence=False
     entry_direction=int(remaining[remaining.index('--door-entry-direction')+1]) if '--door-entry-direction' in remaining else 0
@@ -60,6 +64,7 @@ def main():
             nonlocal opened,sequence,approached
             base_observe(f,r)
             if f<start:return
+            if not sms:r=md_to_sms_view(r,sy)
             old_cells=state.get('cells')
             state.update(room=int.from_bytes(r[0xb9:0xbb],'little'),game=r[0x1d],hero=r[0x301],counter=r[0x304],
                 x=r[0x313],y=r[0x311],direction=r[0x30a],selected=r[0xdf],slot=r[0xa0],level=r[0xe5],magic=r[0xdb],

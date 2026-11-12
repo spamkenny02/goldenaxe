@@ -5,18 +5,18 @@ import json
 import re
 import subprocess
 from pathlib import Path
-from run_core import ROOT
+ROOT = Path(__file__).resolve().parents[1]
 from finalize_md_rom import md_checksum
 
 
 def main():
-    p = argparse.ArgumentParser(); p.add_argument('--out', required=True); a = p.parse_args()
+    p = argparse.ArgumentParser(); p.add_argument('--out', required=True);p.add_argument('--base',type=Path);p.add_argument('--sdk-bin',type=Path);a = p.parse_args()
     out = (ROOT / 'validation' / a.out).resolve()
     assert out.is_relative_to(ROOT / 'validation') and not out.exists(); out.mkdir()
-    base = (ROOT / 'versions/v0321-89c58333/gaw-megadrive-v0321.bin').read_bytes()
+    base = (a.base or ROOT / 'versions/v0321-89c58333/gaw-megadrive-v0321.bin').read_bytes()
     digest = hashlib.sha256(base).hexdigest()
     assert digest == '89c5833351312ffaa591efb1939161910a298af06437080e2cf84fb3fb8ac86e'
-    sdk = ROOT.parents[1] / 'work/sgdk/bin'
+    sdk = a.sdk_bin or ROOT.parents[1] / 'work/sgdk/bin'
     source = ROOT / 'megadrive/overlays/dialogue_empty_width.s'
     subprocess.run([str(sdk/'as.exe'), '-m68000', '-o', str(out/'overlay.o'), str(source)], check=True)
     subprocess.run([str(sdk/'ld.exe'), '-Ttext=0x1f0200', '-e', 'dialogue_empty_width', '-o', str(out/'overlay.out'), str(out/'overlay.o')], check=True)

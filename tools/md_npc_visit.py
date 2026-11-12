@@ -24,6 +24,7 @@ def main():
     p.add_argument('--out', required=True)
     p.add_argument('--assisted-prefix', action='store_true')
     p.add_argument('--candidate', type=Path, help='Explicit private overlay ROM with verified sibling build-report.json')
+    p.add_argument('--quest-hint',action='store_true',help='Compare the original quest-hint PC, rather than the ordinary-house table index')
     a = p.parse_args()
     prefix = (ROOT / 'validation' / a.prefix).resolve()
     source = (ROOT / 'validation' / a.sms_reference).resolve()
@@ -36,7 +37,7 @@ def main():
     rom = a.candidate.resolve() if a.candidate else ROOT / 'gaw-megadrive.bin'
     digest = hashlib.sha256(rom.read_bytes()).hexdigest()
     published = '89c5833351312ffaa591efb1939161910a298af06437080e2cf84fb3fb8ac86e'
-    assert cap['rom_sha256'] == published
+    assert cap['rom_sha256'] in ({published,digest} if a.candidate else {published})
     if a.candidate:
         assert rom.is_relative_to(ROOT / 'validation')
         build = load(rom.parent / 'build-report.json')
@@ -49,7 +50,7 @@ def main():
     data_source = (ROOT / 'megadrive/src/plain_house_data.c').read_text().split('plain_house_dialogues[][5]=', 1)[1]
     table = [tuple(map(int, row.split(','))) for row in re.findall(r'\{([\d,]+)\}', data_source)]
     for t in targets:
-        t['md_index'] = next(row[4] for row in table if row[:3] == (t['room'], t['coordinate'], t['outside']))
+        t['md_index'] = t['text_pc'] if a.quest_hint else next(row[4] for row in table if row[:3] == (t['room'], t['coordinate'], t['outside']))
         visit = next(v for v in reference['visited'] if v['text_pc'] == t['text_pc'])
         completion = next(e for e in observations if e['event_pc'] == 0x627a and visit['entry_frame'] < e['frame'] < visit['acknowledged_and_walked_away_frame'])
         raw = (source / f'ram_{completion["frame"] + 1:05d}.bin').read_bytes()
@@ -86,7 +87,7 @@ def main():
         state.update(room=word('room_id'), game=word('game_state'), hero=word('hero_state'),
                      counter=word('hero_counter'), x=word('hero_x') >> 8, y=word('hero_y') >> 8,
                      health=word('hero_health'), modal=word('house_dialogue_active'),
-                     dialogue_index=word('house_dialogue_index'), audio_error=word('sound_unhandled_command'))
+                     dialogue_index=word('house_quest_text_pc' if a.quest_hint else 'house_dialogue_index'), audio_error=word('sound_unhandled_command'))
         state['tilemap'] = data('sms_vram', 0x4000)[0x3800:0x3e00]
         if not state['health'] or state['audio_error']:
             failure = 'hero_died_or_audio_error'
@@ -168,7 +169,7 @@ def main():
     result = dict(passed=done is not None and len(visits) == len(targets) and not failure,
                   failure=failure or (None if done is not None else 'frame_limit'),
                   rom_sha256=digest, sms_reference=a.sms_reference, prefix=a.prefix,
-                  room=reference['room'], outside=reference['outside'], visited=visits,
+                  room=reference['room'], outside=reference['outside'], quest_hint=a.quest_hint,visited=visits,
                   events=events, last_state={k: v for k, v in state.items() if k != 'tilemap'},
                   ram_injections=bool(writes), new_assistance_writes=0,
                   sram_checkpoint_injection=False, primary_state_imports=0,

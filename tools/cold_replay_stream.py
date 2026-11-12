@@ -17,10 +17,10 @@ def atomic(path,value):
 
 
 class ReplayStream:
-    def __init__(self,folder,suffix='',sms=False):
+    def __init__(self,folder,suffix='',sms=False,rom=None):
         self.folder=folder.resolve();assert self.folder.is_relative_to(ROOT/'validation')
         assert all(c in string.ascii_letters+string.digits+'-_' for c in suffix)
-        self.folder.mkdir(exist_ok=False);self.suffix=suffix;self.sms=sms;self.process=None;self.number=0
+        self.folder.mkdir(exist_ok=False);self.suffix=suffix;self.sms=sms;self.rom=rom;self.process=None;self.number=0
         self.log=(self.folder/'worker.log').open('wb')
 
     def prove(self,trace):
@@ -31,7 +31,7 @@ class ReplayStream:
         atomic(self.folder/f'request-{self.number:04d}.json',dict(trace=trace))
         if self.process is None:
             self.process=subprocess.Popen([sys.executable,'-u',str(Path(__file__).resolve()),
-                '--worker',str(self.folder),'--suffix='+self.suffix,*(['--sms'] if self.sms else [])],cwd=ROOT,
+                '--worker',str(self.folder),'--suffix='+self.suffix,*(['--sms'] if self.sms else []),*(['--rom',str(self.rom)] if self.rom else [])],cwd=ROOT,
                 stdout=self.log,stderr=subprocess.STDOUT,
                 creationflags=subprocess.CREATE_NO_WINDOW if os.name=='nt' else 0)
         deadline=time.monotonic()+600
@@ -55,10 +55,10 @@ class ReplayStream:
         self.log.close()
 
 
-def worker(folder,suffix,sms=False):
+def worker(folder,suffix,sms=False,rom=None):
     folder=folder.resolve();assert folder.is_relative_to(ROOT/'validation')
     assert all(c in string.ascii_letters+string.digits+'-_' for c in suffix)
-    rom=ROOT/('input/original.sms' if sms else 'gaw-megadrive.bin');digest=sha(rom.read_bytes())
+    rom=Path(rom) if rom else ROOT/('input/original.sms' if sms else 'gaw-megadrive.bin');digest=sha(rom.read_bytes())
     sy=None if sms else symbols(ROOT/'megadrive/out/release/symbol.txt')
     writes=FrameWrites();masks=[];previous_frame=-1;request_number=0;target=None
     captures=set();options=None;stopped=False;rows=[];guard_frames=0
@@ -146,8 +146,8 @@ def worker(folder,suffix,sms=False):
 
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--worker',type=Path,required=True);p.add_argument('--suffix',default='');p.add_argument('--sms',action='store_true')
+    p=argparse.ArgumentParser();p.add_argument('--worker',type=Path,required=True);p.add_argument('--suffix',default='');p.add_argument('--sms',action='store_true');p.add_argument('--rom',type=Path)
     a=p.parse_args()
-    try:worker(a.worker,a.suffix,a.sms)
+    try:worker(a.worker,a.suffix,a.sms,a.rom)
     except Exception:
         atomic(a.worker/'failure.json',dict(passed=False,error=traceback.format_exc()));raise

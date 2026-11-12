@@ -1,5 +1,6 @@
 """Join the actual V321 intro and continuous campaign; verify the MP4 deliverable."""
 import hashlib
+import argparse
 import json
 import re
 import subprocess
@@ -26,26 +27,30 @@ def stamp(seconds):
 
 
 def main():
-    reports = [json.loads((ROOT / f'validation/v321-video-{part}01/report.json').read_bytes()) for part in ['intro', 'gameplay']]
+    parser=argparse.ArgumentParser();parser.add_argument('--rc1',action='store_true');args=parser.parse_args()
+    label='v0322-rc1' if args.rc1 else 'v0321'
+    report_prefix='rc1' if args.rc1 else 'v321'
+    expected='1421abe47de95ac104a03e2fb1be7001f70aeca1fbb6a9b35669aa6e98b7d9a4' if args.rc1 else '89c5833351312ffaa591efb1939161910a298af06437080e2cf84fb3fb8ac86e'
+    reports = [json.loads((ROOT / f'validation/{report_prefix}-video-{part}01/report.json').read_bytes()) for part in ['intro', 'gameplay']]
     intro, game = reports
-    assert all(r['passed'] and r['rom_sha256'] == '89c5833351312ffaa591efb1939161910a298af06437080e2cf84fb3fb8ac86e' for r in reports)
+    assert all(r['passed'] and r['rom_sha256'] == expected for r in reports)
     assert game['complete_campaign'] and game['ending_seen'] and game['frames'] == 403488
     assert game['final'] == dict(game=0, room=332, health=60, crystals=9, audio_error=0)
     assert game['approach_guard_writes'] == 190764 and not game['boss_assistance']
-    out = ROOT / 'videos/v0321'
+    out = ROOT / ('videos/'+label)
     assert not out.exists()
     out.mkdir()
-    movie = out / 'golden-axe-warrior-md-v0321-gameplay-complet-ntsc.mp4'
+    movie = out / ('golden-axe-warrior-md-'+label+'-gameplay-complet-ntsc.mp4')
     for report in reports:
         assert sha(Path(report['movie'])) == report['movie_sha256']
     segments = out / 'segments.txt'
     segments.write_text(''.join("file '" + Path(r['movie']).as_posix().replace("'", "'\\''") + "'\n" for r in reports))
     ffmpeg = imageio_ffmpeg.get_ffmpeg_exe()
-    title = 'Golden Axe Warrior sur Mega Drive — Gameplay complet + intro | Portage natif V321'
+    title = 'Golden Axe Warrior sur Mega Drive — Gameplay complet + intro | '+label.upper()
     command = [ffmpeg, '-hide_banner', '-nostdin', '-f', 'concat', '-safe', '0', '-i', str(segments),
-               '-map', '0:v:0', '-map', '0:a:0', '-c', 'copy', '-movflags', '+faststart',
+               '-map', '0:v:0', '-map', '0:a:0', '-map_chapters', '-1', '-c', 'copy', '-movflags', '+faststart',
                '-metadata', 'title=' + title, '-metadata',
-               'comment=Development V321. Complete intro plus uncut New Game-to-credits campaign. Approach-only test protection removed before bosses. Exhaustive NPC coverage remains in progress.', str(movie)]
+               'comment='+label+'. Complete intro plus uncut New Game-to-credits campaign. Approach-only test protection removed before bosses. Exhaustive NPC coverage remains in progress.', str(movie)]
     with (out / 'assembly.log').open('w') as log:
         subprocess.run(command, stdout=log, stderr=subprocess.STDOUT, check=True)
     cap = cv2.VideoCapture(str(movie))
@@ -79,7 +84,9 @@ Chapitres :
 Golden Axe Warrior et ses éléments originaux appartiennent à leurs ayants droit respectifs. Portage non officiel.
 '''
     (out / 'youtube-title.txt').write_text(title + '\n', encoding='utf-8')
+    description=description.replace('V321, version de développement', label.upper()).replace('Capture de la V321', 'Capture de la '+label.upper())
     (out / 'youtube-description.txt').write_text(description, encoding='utf-8')
+    (out / 'chapitres.txt').write_text(''.join(stamp(t)+' '+label+'\n' for t,label in chapters),encoding='utf-8')
     samples = [12, 55, 105, offset - 1, offset + 1, offset + 150,
                offset + 1800, offset + 3600, chapters[-2][0] + 10,
                chapters[-1][0] + 30, duration - 20, duration - 2]
@@ -94,8 +101,8 @@ Golden Axe Warrior et ses éléments originaux appartiennent à leurs ayants dro
         draw.text(((i % 3) * 320 + 5, (i // 3) * 260 + 242), stamp(seconds), fill='white')
     cap.release()
     sheet.save(out / 'apercu-gameplay.jpg', quality=94)
-    scan = subprocess.run([ffmpeg, '-hide_banner', '-nostdin', '-i', str(movie), '-map', '0:v:0',
-                           '-c', 'copy', '-f', 'null', '-', '-progress', 'pipe:1'], capture_output=True, text=True)
+    scan = subprocess.run([ffmpeg, '-hide_banner', '-nostdin', '-v', 'error', '-xerror', '-threads', '4', '-i', str(movie), '-map', '0:v:0',
+                           '-an', '-f', 'null', '-', '-progress', 'pipe:1'], capture_output=True, text=True)
     (out / 'video-packet-check.log').write_text(scan.stderr)
     assert scan.returncode == 0 and int(re.findall(r'^frame=(\d+)', scan.stdout, re.M)[-1]) == frames
     audio = subprocess.run([ffmpeg, '-hide_banner', '-nostdin', '-i', str(movie), '-vn', '-af',
@@ -104,7 +111,7 @@ Golden Axe Warrior et ses éléments originaux appartiennent à leurs ayants dro
     assert audio.returncode == 0 and 'RMS level dB: -inf' not in audio.stderr
     report = dict(passed=True, movie=str(movie), bytes=movie.stat().st_size, sha256=sha(movie),
                   rom_sha256=game['rom_sha256'], frames=frames, fps=fps, duration_seconds=duration,
-                  width=size[0], height=size[1], full_audio_decoded=True, all_video_packets_read=True,
+                  width=size[0], height=size[1], full_audio_decoded=True, all_video_packets_read=True, full_video_decoded=True,
                   campaign_completed=True, all_npcs_covered=False, approach_protection_disclosed=True,
                   boss_assistance=False, uploaded=False, segments=reports,
                   chapters=[dict(seconds=t, label=label) for t, label in chapters])

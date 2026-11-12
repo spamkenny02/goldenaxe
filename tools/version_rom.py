@@ -15,13 +15,17 @@ def main():
     parser.add_argument('--notes', default='Compilation ; validation en attente.')
     parser.add_argument('--report', type=Path, action='append', default=[])
     parser.add_argument('--development', action='store_true', help='Label this ROM as a development build with scoped checks.')
+    parser.add_argument('--release-candidate', choices=['rc1'])
     args = parser.parse_args()
+    assert not (args.development and args.release_candidate)
     data = args.source.read_bytes()
     digest = hashlib.sha256(data).hexdigest()
     reports = []
     for path in args.report:
         raw = path.read_bytes()
-        assert json.loads(raw)['md_sha256'] == digest, f'Report belongs to another ROM: {path}'
+        parsed=json.loads(raw)
+        assert parsed['md_sha256'] == digest, f'Report belongs to another ROM: {path}'
+        if args.release_candidate: assert parsed.get('passed') is True, f'RC requires passing evidence: {path}'
         reports.append((path.name, raw))
     archive = ROOT / 'versions'
     archive.mkdir(exist_ok=True)
@@ -58,8 +62,11 @@ def main():
     if args.development:
         entry['development'] = True
         if not reports: entry['validation'] = 'development_build_only'
+    if args.release_candidate:
+        assert reports, 'RC requires a matching passing validation report'
+        entry.update(release_candidate=args.release_candidate,development=False,validation='release_candidate_checks_passed')
     temp = archive / 'index.json.tmp'
-    temp.write_text(json.dumps(entries, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
+    temp.write_text(json.dumps(entries, indent=2, ensure_ascii=False) + '\n', encoding='utf-8', newline='\n')
     temp.replace(index)
     lines = ['# Versions des ROMs', '',
              'Chaque binaire est conserve sans ecrasement. Les controles cibles ne prouvent pas un portage complet.', '',
@@ -68,7 +75,7 @@ def main():
     for e in reversed(entries):
         notes = e['notes'].replace('|', '/').replace('\n', ' ')
         lines.append(f"| v{e['version']:04d} | [Telecharger]({e['rom']}) | {e['validation']} | {notes} | `{e['sha256']}` |")
-    (archive / 'README.md').write_text('\n'.join(lines) + '\n', encoding='utf-8')
+    (archive / 'README.md').write_text('\n'.join(lines) + '\n', encoding='utf-8', newline='\n')
     refresh_readme_release(ROOT, entry)
     print(f"ROM v{entry['version']:04d}: {target} ({entry['validation']})")
 
