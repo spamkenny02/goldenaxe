@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "source_manifest": {
+    "megadrive\\overlays\\konami_menu.c": "bd42738a5b73630921f9f3cebe46cddcef61652dec94b6aad58b77bad4ab457a",
+    "megadrive\\overlays\\konami_hooks.s": "e55e1a660d464f1f4d6eb4a190ac71944034879cf8e54565e46878b3e4291f0e",
+    "megadrive\\overlays\\konami_font.inc": "95efc852f1a08f9bd2e20ba3999c5b5ede6e6195297f89e6f82b52e7e8c6d25f"
+  },
+  "unmodified_game_engine": true,
+  "title_only_input_hooks": true,
+  "md_sha256": "9fcee16dc12028138712564ebd7123d99a25d1ef8f6e54d9799f02ceddaacd99",
+  "base_sha256": "1421abe47de95ac104a03e2fb1be7001f70aeca1fbb6a9b35669aa6e98b7d9a4",
+  "native_68000": true,
+  "overlay_bytes": 3728,
+  "hooks": [
+    {
+      "address": 7788,
+      "before": "223ce0ffe4b1",
+      "after": "4eb9001f0400",
+      "entry": "konami_boot"
+    },
+    {
+      "address": 297334,
+      "before": "45faf63c13fc0001e0ff447d",
+      "after": "4ef9001f044e4e714e714e71",
+      "entry": "konami_title_pointer"
+    },
+    {
+      "address": 307560,
+      "before": "4ebace4a3015",
+      "after": "4ef9001f0460",
+      "entry": "konami_title_flash"
+    }
+  ],
+  "reserved_ram_start": 16770224,
+  "reserved_ram_bytes": 32,
+  "heap_start": 16770256,
+  "existing_game_symbols_unchanged": true,
+  "existing_rc1_corrections_unchanged": true,
+  "sram_format_unchanged": true,
+  "cheats_default_off": true,
+  "session_only": true,
+  "runtime_validation_required": true
+}

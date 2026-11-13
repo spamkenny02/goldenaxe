@@ -1,0 +1,72 @@
+{
+  "passed": true,
+  "md_sha256": "9fcee16dc12028138712564ebd7123d99a25d1ef8f6e54d9799f02ceddaacd99",
+  "base_sha256": "1421abe47de95ac104a03e2fb1be7001f70aeca1fbb6a9b35669aa6e98b7d9a4",
+  "version": 323,
+  "bytes": 2097152,
+  "checksum": "F0C3",
+  "feature": "Konami title options",
+  "sequence": [
+    "UP",
+    "UP",
+    "DOWN",
+    "DOWN",
+    "LEFT",
+    "RIGHT",
+    "LEFT",
+    "RIGHT",
+    "B",
+    "A",
+    "START"
+  ],
+  "life_infinite": true,
+  "gold_refilled_to": 255,
+  "default_off": true,
+  "session_only": true,
+  "source_rebuild_exact": true,
+  "sram_format_unchanged": true,
+  "original_rc1_preserved": true,
+  "normal_campaigns_pal_ntsc_completed": true,
+  "ui_cases": 12,
+  "continue_cases": 4,
+  "real_enemy_contact_and_real_six_purchases": true,
+  "proofs": {
+    "build": {
+      "file": "reports/konami-v0323-2026-11-13/build.json",
+      "sha256": "1a6ba3f6fcddcdf35706d4a3d619880999aba933e1352de05ec7c7cfa57cf22f"
+    },
+    "ui": {
+      "file": "reports/konami-v0323-2026-11-13/ui.json",
+      "sha256": "39ce9d74fcb338ed37e8c819a2d808803fe9f970464cc0f8c6b066669828a367"
+    },
+    "life-contact": {
+      "file": "reports/konami-v0323-2026-11-13/life-contact.json",
+      "sha256": "16bc3c9241efab27a1f58caef1b27fe0e8999cae4eda43397372134113d6a7e7"
+    },
+    "continue": {
+      "file": "reports/konami-v0323-2026-11-13/continue.json",
+      "sha256": "691c22913ca865221203f9d232d6e282703a1d39f9b96772a9f8e297bb36f84c"
+    },
+    "campaign-ntsc": {
+      "file": "reports/konami-v0323-2026-11-13/campaign-ntsc.json",
+      "sha256": "bd75bd4d38ba5f4c3a8f9e023f450f87cf32018ec9fa4083bb93f1cf1f79d5b7"
+    },
+    "campaign-pal": {
+      "file": "reports/konami-v0323-2026-11-13/campaign-pal.json",
+      "sha256": "94c104c639f55fab707cfed97409c7949d7cc4b020c8816b25c5cc58cc14b29a"
+    },
+    "six-purchases": {
+      "file": "reports/konami-v0323-2026-11-13/six-purchases.json",
+      "sha256": "e0ad99f81c5ec85b8e545f1d533e8de27a055faefb2df0b2641fde776fc70a0f"
+    },
+    "six-purchases-fixed": {
+      "file": "reports/konami-v0323-2026-11-13/six-purchases-fixed.json",
+      "sha256": "db4dab290a7b8248217e35a49396800914fc2d7f38c8ea34132203961057eb40"
+    },
+    "boot-fixed": {
+      "file": "reports/konami-v0323-2026-11-13/boot-fixed.json",
+      "sha256": "ca3312a2c2669fb7de804498eb01fce27a33ab742cfbc17de57a33c13e689926"
+    }
+  },
+  "scope": "Optional native68000 extension toV322RC1, with original game engine and existing corrections unchanged. Normal campaigns replayed with the same declared approach guard and no live boss guard. UI/cheat/contact/purchase cases use actual controller input with no external RAM fixtures. Not a new qualification of every329RC1annex or console hardware."
+}

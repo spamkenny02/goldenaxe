@@ -11,15 +11,26 @@ Il distingue données extraites, règles du modèle et interactions rejouées ;
 la couverture de tous les PNJ et de toutes les quêtes secondaires reste ouverte.
 
 <!-- ROM-RELEASE:START -->
-**Version courante : v0322 RC1 — 2048 Kio.**
+**Version courante : v0323 — 2048 Kio.**
 
-[Télécharger la ROM v0322](versions/v0322-1421abe4/gaw-megadrive-v0322.bin) · [Toutes les versions](versions/README.md)
+[Télécharger la ROM v0323](versions/v0323-9fcee16d/gaw-megadrive-v0323.bin) · [Toutes les versions](versions/README.md)
 
-Release candidate RC1 : campagnes PAL/NTSC terminées et contrôles de publication réussis. Limites de fidélité et de couverture documentées dans le rapport RC.
+Version de développement ; contrôles ciblés réussis, écarts visuels et validation complète encore ouverts.
 
-SHA-256 : `1421abe47de95ac104a03e2fb1be7001f70aeca1fbb6a9b35669aa6e98b7d9a4`
-Checksum Mega Drive : `ECB3`
+SHA-256 : `9fcee16dc12028138712564ebd7123d99a25d1ef8f6e54d9799f02ceddaacd99`
+Checksum Mega Drive : `F0C3`
 <!-- ROM-RELEASE:END -->
+
+**V323 — menu secret Konami.** À l'écran titre : **↑ ↑ ↓ ↓ ← → ← → B A Start**.
+Le menu reprend le logo du jeu et un cadre doré. Haut/Bas choisit une option,
+A/C la bascule, Start valide vers Nouveau jeu / Continuer. Vie infinie et argent
+infini sont indépendants, désactivés par défaut et remis à zéro au Reset.
+L'argent est maintenu à 255, plafond du jeu.
+[Mode d'emploi, aperçu et validations](reports/konami-v0323-2026-11-13/README.md).
+La V322 RC1 reste conservée ; ses vidéos et sa qualification ci-dessous portent
+sur ce binaire de référence. La V323 a ses propres campagnes PAL/NTSC et tests
+du menu, des contacts, des achats et de Continuer.
+
 
 **Point 6 terminé pour le parcours retenu et ses annexes identifiées — 13 novembre 2026.**
 Les campagnes MD PAL/NTSC rejoignent la fin et le générique. Les 145 objectifs

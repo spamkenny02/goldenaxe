@@ -4,6 +4,7 @@ Chaque binaire est conserve sans ecrasement. Les controles cibles ne prouvent pa
 
 | Version | ROM | Validation | Changements | SHA-256 |
 | --- | --- | --- | --- | --- |
+| v0323 | [Telecharger](v0323-9fcee16d/gaw-megadrive-v0323.bin) | development_targeted_checks | Menu secret Konami au titre : vie infinie et argent infini independants. Logo original, cadre dore, options de session. Campagnes PAL/NTSC normales terminees ; RC1 V322 conservee. | `9fcee16dc12028138712564ebd7123d99a25d1ef8f6e54d9799f02ceddaacd99` |
 | v0322 | [Telecharger](v0322-1421abe4/gaw-megadrive-v0322.bin) | release_candidate_checks_passed | RC1 : parcours PAL/NTSC et 145 objectifs retenus rejoues ; montages SMS/MD livres. Limites de couverture et fidelite documentees. Binaire V322 identique. | `1421abe47de95ac104a03e2fb1be7001f70aeca1fbb6a9b35669aa6e98b7d9a4` |
 | v0321 | [Telecharger](v0321-89c58333/gaw-megadrive-v0321.bin) | development_targeted_checks | Titre : cape, logo et clignotement avances d'une image pour suivre la SMS ; controles PAL/NTSC reussis. Ecarts raster/intro encore ouverts. | `89c5833351312ffaa591efb1939161910a298af06437080e2cf84fb3fb8ac86e` |
 | v0320 | [Telecharger](v0320-9e5b0abe/gaw-megadrive-v0320.bin) | development_targeted_checks | Générique : masque natif 68000 de la bordure basse MD. 7424 états exacts PAL/NTSC, parcours complets enregistrés NTSC et PAL jusqu'au retour intro, puis nouvelle partie après générique testée dans les deux régions. | `9e5b0abed80678ce864a0bb796c17e97047d1d34e5227a5275bf9336129ceaff` |
