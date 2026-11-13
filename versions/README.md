@@ -4,6 +4,7 @@ Chaque binaire est conserve sans ecrasement. Les controles cibles ne prouvent pa
 
 | Version | ROM | Validation | Changements | SHA-256 |
 | --- | --- | --- | --- | --- |
+| v0325 | [Telecharger](v0325-c3f9b130/gaw-megadrive-v0325.bin) | development_targeted_checks | Sortie du splash : correction de lecture hors cache VDP et initialisation DMA. 2 Mo ; campagnes PAL/NTSC, menu et Continuer valides en emulation. Essai flashkit encore attendu. | `c3f9b130a811290d1602587cd9435d8556252069617bb8bd373babadb93eaa22` |
 | v0324 | [Telecharger](v0324-f25581d6/gaw-megadrive-v0324.bin) | development_targeted_checks | Presentation de demarrage 5Customs et DokPepper : image fournie, voix DAC et fondus, puis intro originale. ROM maintenue a 2 Mio ; Konami conserve. Campagnes PAL/NTSC, Continuer et menu testes. | `f25581d62e0654fc85729affe9405b64a51603fc5ddce5965a89a6fdb27e3c31` |
 | v0323 | [Telecharger](v0323-9fcee16d/gaw-megadrive-v0323.bin) | development_targeted_checks | Menu secret Konami au titre : vie infinie et argent infini independants. Logo original, cadre dore, options de session. Campagnes PAL/NTSC normales terminees ; RC1 V322 conservee. | `9fcee16dc12028138712564ebd7123d99a25d1ef8f6e54d9799f02ceddaacd99` |
 | v0322 | [Telecharger](v0322-1421abe4/gaw-megadrive-v0322.bin) | release_candidate_checks_passed | RC1 : parcours PAL/NTSC et 145 objectifs retenus rejoues ; montages SMS/MD livres. Limites de couverture et fidelite documentees. Binaire V322 identique. | `1421abe47de95ac104a03e2fb1be7001f70aeca1fbb6a9b35669aa6e98b7d9a4` |

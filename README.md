@@ -11,17 +11,27 @@ Il distingue données extraites, règles du modèle et interactions rejouées ;
 la couverture de tous les PNJ et de toutes les quêtes secondaires reste ouverte.
 
 <!-- ROM-RELEASE:START -->
-**Version courante : v0324 — 2048 Kio.**
+**Version courante : v0325 — 2048 Kio.**
 
-[Télécharger la ROM v0324](versions/v0324-f25581d6/gaw-megadrive-v0324.bin) · [Toutes les versions](versions/README.md)
+[Télécharger la ROM v0325](versions/v0325-c3f9b130/gaw-megadrive-v0325.bin) · [Toutes les versions](versions/README.md)
 
 Version de développement ; contrôles ciblés réussis, écarts visuels et validation complète encore ouverts.
 
-SHA-256 : `f25581d62e0654fc85729affe9405b64a51603fc5ddce5965a89a6fdb27e3c31`
-Checksum Mega Drive : `93E3`
+SHA-256 : `c3f9b130a811290d1602587cd9435d8556252069617bb8bd373babadb93eaa22`
+Checksum Mega Drive : `24F4`
 <!-- ROM-RELEASE:END -->
 
-**V324 — présentation au démarrage, toujours 2 Mo.** L'image 5Customs / DokPepper
+**V325 — correction de la sortie du splash, toujours 2 Mo.** La restauration
+vidéo lisait cinq octets au-delà du cache SGDK et les écrivait dans les
+registres DMA. La lecture est bornée et ces registres sont initialisés
+explicitement, après vidage du FIFO. Image, voix, fondus et Konami sont conservés.
+Les campagnes PAL/NTSC rejoignent la fin en émulation ; menu et Continuer passent.
+**Essai sur flashkit encore attendu** : la cause du blocage matériel n'est pas
+confirmée. La V324 reste archivée, avec un écran noir signalé après le fondu sur
+Mega Drive 1 / flashkit 2 Mo + SRAM 32 Ko ; la V322 RC1 fonctionne sur ce matériel
+selon le retour utilisateur. [Correction et preuves](reports/handoff-v0325-2026-11-13/README.md).
+
+**V324 — présentation au démarrage, problème matériel signalé.** L'image 5Customs / DokPepper
 et la voix fournies apparaissent avant l'introduction originale, avec fondus
 d'entrée et de sortie. Le menu Konami est conservé. Les ressources occupent
 l'espace inutilisé de la V323 ; le moteur et le format des sauvegardes restent

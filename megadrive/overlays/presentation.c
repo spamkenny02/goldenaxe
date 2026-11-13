@@ -45,8 +45,13 @@ void presentation_show(void){
  address(a);for(i=0;i<2048;i++)W(0xc00000)=0;
  address(b);for(i=0;i<2048;i++)W(0xc00000)=0;
  W(0xa11100)=0;
- /* Restore cached SGDK register values in hardware before returning to main. */
- for(i=0;i<24;i++)if(i!=1)reg(i,old[i]);
+ /* Drain CPU VRAM writes before restoring the VDP configuration.
+  * SGDK regValues is 19 bytes (0..18); DMA registers19..23 are NOT cached.
+  * Reading past that cache wrote unrelated RAM into the DMA configuration. */
+ while(!(W(0xc00004)&0x200));
+ for(i=0;i<19;i++)if(i!=1)reg(i,old[i]);
+ /* Leave DMA idle with a defined source/mode, independent of adjacent RAM. */
+ for(i=19;i<24;i++)reg(i,0);
  W(0xc00004);reg(1,old[1]);
  /* Restore the original virtual game epoch: the handoff otherwise contributes
   * one extra NTSC VInt or two PAL VInts before the original intro starts.

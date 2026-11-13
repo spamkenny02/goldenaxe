@@ -1,0 +1,135 @@
+{
+  "passed": true,
+  "md_sha256": "c3f9b130a811290d1602587cd9435d8556252069617bb8bd373babadb93eaa22",
+  "cases": [
+    {
+      "passed": true,
+      "region": "ntsc",
+      "frame_offset": 274,
+      "original_intro_start": 22,
+      "new_intro_start": 296,
+      "phase_events": [
+        {
+          "frame": 1,
+          "phase": 0
+        },
+        {
+          "frame": 20,
+          "phase": 1
+        },
+        {
+          "frame": 25,
+          "phase": 2
+        },
+        {
+          "frame": 52,
+          "phase": 3
+        },
+        {
+          "frame": 269,
+          "phase": 4
+        },
+        {
+          "frame": 294,
+          "phase": 5
+        }
+      ],
+      "tiles_and_map_exact": true,
+      "palettes_used": 4,
+      "colors_at_most64": true,
+      "fade_in_luminance": [
+        0.0,
+        17.039829799107142,
+        27.272350492931547,
+        43.61689685639881,
+        65.95202055431548,
+        65.95202055431548
+      ],
+      "fade_out_luminance": [
+        52.069463820684526,
+        52.069463820684526,
+        43.61689685639881,
+        34.096627371651785,
+        34.096627371651785,
+        27.272350492931547,
+        17.039829799107142,
+        17.039829799107142,
+        8.708147321428571
+      ],
+      "external_ram_writes": 0,
+      "sram_imports": 0,
+      "waveform_correlation": 0.9913703436704886,
+      "measured_sample_rate": 15772.0,
+      "expected_sample_rate": 15772,
+      "audio_start_seconds": 0.8514999999999999,
+      "voice_seconds": 3.63105503423789,
+      "output_peak": 7355,
+      "no_digital_clipping": true
+    },
+    {
+      "passed": true,
+      "region": "pal",
+      "frame_offset": 228,
+      "original_intro_start": 19,
+      "new_intro_start": 247,
+      "phase_events": [
+        {
+          "frame": 1,
+          "phase": 0
+        },
+        {
+          "frame": 18,
+          "phase": 1
+        },
+        {
+          "frame": 22,
+          "phase": 2
+        },
+        {
+          "frame": 45,
+          "phase": 3
+        },
+        {
+          "frame": 225,
+          "phase": 4
+        },
+        {
+          "frame": 245,
+          "phase": 5
+        }
+      ],
+      "tiles_and_map_exact": true,
+      "palettes_used": 4,
+      "colors_at_most64": true,
+      "fade_in_luminance": [
+        8.708147321428571,
+        27.272350492931547,
+        43.61689685639881,
+        65.95202055431548,
+        65.95202055431548,
+        65.95202055431548
+      ],
+      "fade_out_luminance": [
+        52.069463820684526,
+        52.069463820684526,
+        43.61689685639881,
+        34.096627371651785,
+        27.272350492931547,
+        17.039829799107142,
+        17.039829799107142,
+        8.708147321428571,
+        0.0
+      ],
+      "external_ram_writes": 0,
+      "sram_imports": 0,
+      "waveform_correlation": 0.9785690032970816,
+      "measured_sample_rate": 15627.75,
+      "expected_sample_rate": 15628,
+      "audio_start_seconds": 0.885625,
+      "voice_seconds": 3.6311049255331063,
+      "output_peak": 7327,
+      "no_digital_clipping": true
+    }
+  ],
+  "scope": "Actual native boot, original supplied picture converted into four MD palettes, actual DAC voice matched to converted source waveform, fade and original intro handoff. No injected resource or game state."
+}

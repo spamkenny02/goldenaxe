@@ -1,0 +1,49 @@
+{
+  "passed": true,
+  "version": 325,
+  "md_sha256": "c3f9b130a811290d1602587cd9435d8556252069617bb8bd373babadb93eaa22",
+  "bytes": 2097152,
+  "checksum": "24F4",
+  "reproducible_build": true,
+  "rom_size_limit_respected": 2097152,
+  "source_fix": "Only read the 19 cached SGDK VDP registers; drain FIFO and explicitly initialize DMA registers19..23 instead of reading beyond the cache.",
+  "reported_hardware": {
+    "console": "Mega Drive1",
+    "flashkit": "2MiB ROM +32KiB SRAM",
+    "v322_rc1_working": true,
+    "v324_voice_then_black_screen": true
+  },
+  "hardware_validation_pending": true,
+  "hardware_root_cause_confirmed": false,
+  "original_intro_after_presentation": true,
+  "image_voice_fades_preserved": true,
+  "pal_ntsc_campaigns_to_ending": true,
+  "konami_and_continue_preserved": true,
+  "proofs": {
+    "build": {
+      "file": "reports/handoff-v0325-2026-11-13/build.json",
+      "sha256": "191e84dfbbe497119c2ed05fc9c024a4f1f0cd64c5c2d3183dd7eb0db91f2d35"
+    },
+    "boot": {
+      "file": "reports/handoff-v0325-2026-11-13/boot.json",
+      "sha256": "15d843b97fb11b03b91296d1e0b56eb11fc74d39b4b7c1ab904faa09ba5f643d"
+    },
+    "campaign-ntsc": {
+      "file": "reports/handoff-v0325-2026-11-13/campaign-ntsc.json",
+      "sha256": "f427064300fd2332470d2f54c116bd442f1c53fb8de99086c8d61ab4ec71256b"
+    },
+    "campaign-pal": {
+      "file": "reports/handoff-v0325-2026-11-13/campaign-pal.json",
+      "sha256": "45361d2123d2c8ecdb4e8b473262f460cfaedb601b45518224abe50f649cc4c7"
+    },
+    "konami": {
+      "file": "reports/handoff-v0325-2026-11-13/konami.json",
+      "sha256": "7b6b99f1c84b5c597c30e4fd0e320cad59f91e89ca7bd6dfdd247bd2c2f64299"
+    },
+    "continue": {
+      "file": "reports/handoff-v0325-2026-11-13/continue.json",
+      "sha256": "7a90847b3d9fe84044b7077c082903691877f4d64e02120221222108b710e504"
+    }
+  },
+  "scope": "Software regression gates only. The out-of-bounds VDP cache read is confirmed in source; whether this fixes the reported real-console failure requires a new flashkit test. Campaign approach protection remains declared and is removed before live bosses. No new global100percent fidelity certification."
+}
