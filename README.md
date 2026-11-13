@@ -26,7 +26,10 @@ de diagnostic sont retirés ; la réinitialisation vidéo SGDK est conservée.
 Les marges ne réutilisent plus la tuile temporaire. Les noms SRAM invalides,
 qui pouvaient s'afficher « FFFFFFFF », sont masqués et leur chargement refusé,
 sans effacer les données. Campagnes PAL/NTSC, Continuer et Konami passent ;
-**confirmation V328 sur console encore attendue**. La V327 démarre sur le
+**V328 validée par l'utilisateur sur Mega Drive 1 / flashkit 2 Mo + SRAM 32 Ko
+le 13 novembre 2026**, pour le démarrage, les noms de sauvegarde et les bordures.
+[Confirmation matérielle](reports/clean-presentation-v0328-2026-11-13/HARDWARE_ACCEPTANCE.json).
+La V327 démarre sur le
 matériel utilisateur, mais présente les défauts d'affichage documentés.
 Les alias à la racine sont maintenant en V328.
 [Explications, captures et preuves](reports/clean-presentation-v0328-2026-11-13/README.md).

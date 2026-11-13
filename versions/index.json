@@ -9206,14 +9206,19 @@
     "bytes": 2097152,
     "archived_utc": "2026-11-13T12:34:29.323882+00:00",
     "rom": "v0328-368c003f/gaw-megadrive-v0328.bin",
-    "notes": "2 Mo, retour sans marqueurs de diagnostic ; reinitialisation video SGDK, bordures noires et validation des noms SRAM a affichage/chargement sans effacement. Campagnes PAL/NTSC, sauvegardes et Konami controles ; essai console V328 attendu.",
+    "notes": "2 Mo : sortie du splash SGDK, marges et noms SRAM corriges sans effacement. Campagnes PAL/NTSC, Continuer et Konami controles. Demarrage et corrections affichage valides par utilisateur sur Mega Drive 1 / flashkit 2 Mo + SRAM 32 Ko le 13 novembre 2026.",
     "validation": "development_targeted_checks",
     "reports": [
       {
         "file": "clean_presentation_v0328_report.json",
         "sha256": "b4ed992334e15a0c6d53286f0069f8a1c7dea9a7e01c743353df31e7289c6a7e"
+      },
+      {
+        "file": "hardware_acceptance_v0328_report.json",
+        "sha256": "6afcb5c46b5c8a103e732e8179d264b7621be2842929b80cb47e71f20d6bfe83"
       }
     ],
-    "development": true
+    "development": true,
+    "hardware_validation": "user_accepted_boot_save_display_and_margins"
   }
 ]

@@ -40,9 +40,13 @@ Les campagnes utilisent la protection d'approche déclarée, retirée avant les
 combats contre les boss. Ces résultats ne constituent pas une nouvelle
 certification à 100 % de la fidélité ou de tous les PNJ.
 
-**Essai V328 sur console encore attendu.** Vérifier le démarrage à froid,
-les trois emplacements de Continuer puis les marges en se déplaçant entre
-les premiers écrans. Les deux alias ROM à la racine sont maintenant en V328.
+**V328 validée par l'utilisateur sur console le 13 novembre 2026.**
+Cette acceptation fait suite à la demande de vérification du démarrage,
+des emplacements de Continuer et des marges sur Mega Drive 1 avec flashkit
+2 Mo + SRAM 32 Ko. [Confirmation matérielle](HARDWARE_ACCEPTANCE.json).
+Elle ne constitue pas un parcours complet sur console ni une validation
+matérielle des deux régions. Les rapports logiciels antérieurs sont conservés.
+Le binaire est inchangé. Les deux alias ROM à la racine sont en V328.
 Il n'y a plus d'écrans numérotés ni de pauses de diagnostic.
 
 [Télécharger la V328](../../versions/v0328-368c003f/gaw-megadrive-v0328.bin)
