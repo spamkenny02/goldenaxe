@@ -11,21 +11,31 @@ Il distingue données extraites, règles du modèle et interactions rejouées ;
 la couverture de tous les PNJ et de toutes les quêtes secondaires reste ouverte.
 
 <!-- ROM-RELEASE:START -->
-**Dernière ROM de diagnostic : v0326 — 2048 Kio.**
+**Dernière ROM de diagnostic : v0327 — 2048 Kio.**
 
-[Télécharger la ROM v0326](versions/v0326-ed2ca443/gaw-megadrive-v0326.bin) · [Toutes les versions](versions/README.md)
+[Télécharger la ROM v0327](versions/v0327-781abfa9/gaw-megadrive-v0327.bin) · [Toutes les versions](versions/README.md)
 
-Diagnostic du blocage après le splash sur flashkit ; ce binaire n'est pas une RC ni une correction confirmée.
+Diagnostic expérimental du blocage après le splash sur flashkit ; ce binaire n'est pas une RC ni une correction matérielle confirmée.
 
-SHA-256 : `ed2ca443797244f1bf1bf214f894150f588cc9dbf3deadebbdeeb015103407d3`
-Checksum Mega Drive : `A57D`
+SHA-256 : `781abfa9ec2806221c5e43948f9775c5f690e9fcd4b7012ee0b8a0d9a2832bbd`
+Checksum Mega Drive : `F8DD`
 <!-- ROM-RELEASE:END -->
+
+**V327 — diagnostic après analyse de la vidéo console, 2 Mo.** La V326
+affiche les étapes 1, 2 et 3, puis l'image devient noire sans étape 4 visible.
+La V327 corrige l'affichage laissé allumé par les marqueurs et utilise la
+réinitialisation vidéo SGDK d'origine pour la sortie du splash. Les neuf étapes
+et l'introduction passent en émulation PAL/NTSC ; essai matériel encore attendu.
+[Analyse et mode d'emploi](reports/diagnostic-v0327-2026-11-13/README.md).
+Les alias à la racine restent en V325 ; utiliser le fichier numéroté V327.
 
 **V326 — diagnostic matériel, 2 Mo.** La V325 présente toujours l'écran noir
 sur Mega Drive 1 / flashkit 2 Mo + SRAM 32 Ko selon le nouveau retour utilisateur.
 La V326 affiche neuf étapes après le fondu pour localiser le blocage : relever
 le dernier numéro vu, ou l'absence de tout numéro. Les neuf étapes et le retour
-à l'introduction passent en émulation PAL/NTSC ; résultat console encore attendu.
+à l'introduction passent en émulation PAL/NTSC ; la vidéo console montre la
+perte d'affichage après l'étape 3. Le diagnostic a aussi un défaut de gestion
+de l'affichage avant restauration, corrigé dans la V327.
 [Mode d'emploi et étapes](reports/diagnostic-v0326-2026-11-13/README.md).
 La V322 RC1 reste la référence qui démarre sur ce matériel. Les deux alias ROM
 à la racine restent en V325 ; utiliser le fichier numéroté V326 pour le diagnostic.

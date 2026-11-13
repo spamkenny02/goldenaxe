@@ -9,7 +9,7 @@ static void reg(u16 n,u16 v){W(0xc00004)=0x8000|(n<<8)|v;}
 static void address(u16 v){L(0xc00004)=0x40000000UL|((u32)(v&0x3fff)<<16)|(v>>14);}
 static void text(u16 y,const char*s){address(0xe000+y*128+4);while(*s)W(0xc00000)=512+(u8)*s++-32;}
 void presentation_diag(u16 stage){
- static const char*const names[]={"", "FADE FINISHED", "PLANES CLEARED", "FIFO DRAINED", "VDP RESTORED", "RETURNED TO MAIN", "AUDIO INIT OK", "VBLANK WAIT OK", "BEFORE SRAM READ", "SRAM READ OK"};
+ static const char*const names[]={"", "FADE FINISHED", "PLANES CLEARED", "FIFO DRAINED", "VDP INIT OK", "RETURNED TO MAIN", "AUDIO INIT OK", "VBLANK WAIT OK", "BEFORE SRAM READ", "SRAM READ OK"};
  u16 sr,i;
  __asm__ volatile("move.w %%sr,%0\n\tori.w #0x0700,%%sr":"=d"(sr)::"cc","memory");
  W(0xffe4c4)=stage;
@@ -22,10 +22,18 @@ void presentation_diag(u16 stage){
  address(0xc000);for(i=0;i<2048;i++)W(0xc00000)=512;
  address(0xf400);for(i=0;i<4;i++)W(0xc00000)=0;
 
- text(7,"GAW HARDWARE DIAGNOSTIC");text(10,"V326 - STAGE");address(0xe000+10*128+28);W(0xc00000)=512+16+stage;text(13,names[stage]);
+ text(7,"GAW HARDWARE DIAGNOSTIC");text(10,"V327 - STAGE");address(0xe000+10*128+28);W(0xc00000)=512+16+stage;text(13,names[stage]);
  text(17,"REPORT THE LAST STAGE");text(20,"TEST ROM - NOT A RELEASE");
  reg(1,0x74);
  /* Poll the VDP, so even a broken CPU VInt cannot hide the last stage. */
  for(i=0;i<90;i++){while(W(0xc00004)&8);while(!(W(0xc00004)&8));}
+ /* Never return to a video-mode reconfiguration with diagnostic display on.
+  * V326 inadvertently left it enabled for the register-restoration loop.
+  * Later hooks also restore the original cached width before resuming main. */
+ reg(1,0x34);
+ if(stage>=4){
+  const volatile u8*cached=(const volatile u8*)0xff2b66;
+  reg(12,cached[12]);reg(1,cached[1]);
+ }
  __asm__ volatile("move.w %0,%%sr"::"d"(sr):"cc","memory");
 }

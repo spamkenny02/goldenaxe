@@ -9172,12 +9172,29 @@
     "bytes": 2097152,
     "archived_utc": "2026-11-13T12:00:39.970440+00:00",
     "rom": "v0326-ed2ca443/gaw-megadrive-v0326.bin",
-    "notes": "DIAGNOSTIC MATERIEL uniquement : neuf etapes visibles apres le splash pour localiser le blocage MD1/flashkit. 2 Mo. Pas une correction ni une RC ; resultat console attendu.",
+    "notes": "DIAGNOSTIC MATERIEL uniquement : neuf etapes visibles apres le splash pour localiser le blocage MD1/flashkit. 2 Mo. Pas une correction ni une RC ; resultat console attendu. Video console : etapes1,2,3 puis noir ; aucune etape4 visible. Le diagnostic laissait aussi affichage allume avant restauration, corrige en V327.",
     "validation": "development_targeted_checks",
     "reports": [
       {
         "file": "hardware_diagnostic_v0326_report.json",
         "sha256": "faf93a7a6401eea346f1e43d995f2fff78a3b79ad2d35fd6adc8f34d5614445d"
+      }
+    ],
+    "development": true,
+    "hardware_validation": "video_stage3_then_black"
+  },
+  {
+    "version": 327,
+    "sha256": "781abfa9ec2806221c5e43948f9775c5f690e9fcd4b7012ee0b8a0d9a2832bbd",
+    "bytes": 2097152,
+    "archived_utc": "2026-11-13T12:15:14.798191+00:00",
+    "rom": "v0327-781abfa9/gaw-megadrive-v0327.bin",
+    "notes": "DIAGNOSTIC 2 Mo : suite video V326 bloquee visuellement apres etape3. Affichage coupe avant changements de mode et handoff experimental via VDP_init SGDK. Confirmation console attendue ; pas une RC.",
+    "validation": "development_targeted_checks",
+    "reports": [
+      {
+        "file": "hardware_diagnostic_v0327_report.json",
+        "sha256": "6bf9182b28da258286d7fa2a475c66d568872802e4f82b04b79aba9d93ef7abd"
       }
     ],
     "development": true

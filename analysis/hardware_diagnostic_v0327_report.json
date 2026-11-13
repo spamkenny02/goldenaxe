@@ -1,0 +1,137 @@
+{
+  "passed": true,
+  "md_sha256": "781abfa9ec2806221c5e43948f9775c5f690e9fcd4b7012ee0b8a0d9a2832bbd",
+  "bytes": 2097152,
+  "diagnostic": true,
+  "hardware_validation_pending": true,
+  "known_v325_hardware_failure": true,
+  "cases": [
+    {
+      "region": "ntsc",
+      "passed": true,
+      "events": [
+        {
+          "frame": 1,
+          "stage": 0
+        },
+        {
+          "frame": 293,
+          "stage": 1
+        },
+        {
+          "frame": 385,
+          "stage": 2
+        },
+        {
+          "frame": 476,
+          "stage": 3
+        },
+        {
+          "frame": 570,
+          "stage": 4
+        },
+        {
+          "frame": 662,
+          "stage": 5
+        },
+        {
+          "frame": 753,
+          "stage": 6
+        },
+        {
+          "frame": 846,
+          "stage": 7
+        },
+        {
+          "frame": 937,
+          "stage": 8
+        },
+        {
+          "frame": 1028,
+          "stage": 9
+        }
+      ],
+      "all_nine_stage_digits_verified_in_rendered_tilemap": true,
+      "original_intro_reached": true,
+      "audio_engine_errors": 0
+    },
+    {
+      "region": "pal",
+      "passed": true,
+      "events": [
+        {
+          "frame": 1,
+          "stage": 0
+        },
+        {
+          "frame": 245,
+          "stage": 1
+        },
+        {
+          "frame": 336,
+          "stage": 2
+        },
+        {
+          "frame": 428,
+          "stage": 3
+        },
+        {
+          "frame": 522,
+          "stage": 4
+        },
+        {
+          "frame": 613,
+          "stage": 5
+        },
+        {
+          "frame": 704,
+          "stage": 6
+        },
+        {
+          "frame": 796,
+          "stage": 7
+        },
+        {
+          "frame": 887,
+          "stage": 8
+        },
+        {
+          "frame": 978,
+          "stage": 9
+        }
+      ],
+      "all_nine_stage_digits_verified_in_rendered_tilemap": true,
+      "original_intro_reached": true,
+      "audio_engine_errors": 0
+    }
+  ],
+  "scope": "Experimental instrumented hardware boot, not a release candidate. Emulator boot and all nine markers checked PAL/NTSC. No claim to have resolved the physical failure; full campaigns not qualified for these deliberately altered timings.",
+  "version": 327,
+  "reproducible_build": true,
+  "non_diagnostic_build_remains_exact_v325": true,
+  "hardware_fix_claimed": false,
+  "video_evidence": {
+    "sha256": "df51e02c860d1cd6ed22af2536d5e6f5dbe98db910caf6b4bd0239b19739da39",
+    "duration_seconds": 21.63747777777778,
+    "rom_label_seen": "V326",
+    "visible_stages": [
+      1,
+      2,
+      3
+    ],
+    "last_visible_stage": 3,
+    "next_stage4_not_visible": true,
+    "stage3_visible_at_seconds": [
+      14.0,
+      15.4
+    ],
+    "black_at_seconds": 15.6,
+    "cpu_stall_confirmed": false,
+    "interpretation": "Loss of display between the stage3 and stage4 markers; this alone does not distinguish a CPU hang from a video/sync failure."
+  },
+  "changes": [
+    "Diagnostic display explicitly disabled before video reconfiguration; V326 left diagnostic display enabled.",
+    "Experimental VDP handoff now invokes the original linked SGDK VDP_init at0x3271c instead of the manual cached-register restoration.",
+    "Diagnostic stages4..9 restore the cached display width with display off before returning to game code."
+  ]
+}
