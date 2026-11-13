@@ -1,7 +1,7 @@
 {
-  "status": "running_verified_and_filmed",
+  "status": "all_known_ordinary_contexts_played_replayed_and_filmed",
   "rom_sha256": "1421abe47de95ac104a03e2fb1be7001f70aeca1fbb6a9b35669aa6e98b7d9a4",
-  "last_verified_prefix": "natural-service-route/md-annex-plain-11-8f-visit01",
+  "last_verified_prefix": "natural-service-route/md-annex-plain-2b-8f-visit01",
   "completed_houses": [
     {
       "outside": 179,
@@ -1012,22 +1012,59 @@
         }
       ],
       "video_report": "videos/md-annexes-2026-11-12/maison-11-8f-ntsc01/report.json"
-    }
-  ],
-  "pending": [
+    },
     {
       "outside": 240,
       "room": 3,
-      "npc_contexts": 2,
-      "sms_reference": "natural-service-route/sms-sms-npc-census-f0-03-visit01"
+      "sms_reference": "natural-service-route/sms-sms-npc-census-f0-03-visit01",
+      "trace": "natural-service-route/md-annex-plain-f0-03-visit01",
+      "frame": 393639,
+      "conversations": [
+        {
+          "text_pc": 40460,
+          "coordinate": 748,
+          "md_index": 30,
+          "entry_frame": 393054,
+          "bitmap_exact_frame": 393131,
+          "bitmap_exact_bytes": 1040,
+          "sms_bitmap_sha256": "ed7cd33d76cb4166fd222225baf2abceed9caef21ea861981727f9b720974bc8",
+          "acknowledged_and_walked_away_frame": 393175
+        },
+        {
+          "text_pc": 40568,
+          "coordinate": 584,
+          "md_index": 33,
+          "entry_frame": 393269,
+          "bitmap_exact_frame": 393370,
+          "bitmap_exact_bytes": 1040,
+          "sms_bitmap_sha256": "f0c69b1812a8890b520e3e4c6d1df810a41298eb671591f5a261789cf851ccee",
+          "acknowledged_and_walked_away_frame": 393443
+        }
+      ],
+      "video_report": "videos/md-annexes-2026-11-12/maison-f0-03-ntsc01/report.json"
     },
     {
       "outside": 43,
       "room": 143,
-      "npc_contexts": 1,
-      "sms_reference": "natural-service-route/sms-sms-npc-census-2b-8f-visit01"
+      "sms_reference": "natural-service-route/sms-sms-npc-census-2b-8f-visit01",
+      "trace": "natural-service-route/md-annex-plain-2b-8f-visit01",
+      "frame": 400774,
+      "conversations": [
+        {
+          "text_pc": 37347,
+          "coordinate": 604,
+          "md_index": 49,
+          "entry_frame": 400497,
+          "bitmap_exact_frame": 400565,
+          "bitmap_exact_bytes": 1040,
+          "sms_bitmap_sha256": "d7ca1252005044296e9ddcc1291e83f48bbc07c188ea2f35b0c978d748afc7ac",
+          "acknowledged_and_walked_away_frame": 400617
+        }
+      ],
+      "video_report": "videos/md-annexes-2026-11-12/maison-2b-8f-ntsc01/report.json"
     }
   ],
-  "all_known_ordinary_contexts_complete": false,
+  "pending": [],
+  "all_known_ordinary_contexts_complete": true,
   "all_npcs_complete": false
 }

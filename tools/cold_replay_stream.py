@@ -16,12 +16,52 @@ def atomic(path,value):
     tmp.write_text(json.dumps(value,indent=2)+'\n',encoding='utf-8');tmp.replace(path)
 
 
+class ExistingWindowsProcess:
+    """Observe an owned worker after its coordinator has exited; never inject state."""
+    def __init__(self,pid):
+        import ctypes
+        assert os.name=='nt'
+        self.pid=pid;self.returncode=None;self.ctypes=ctypes;self.api=ctypes.WinDLL('kernel32',use_last_error=True)
+        self.api.OpenProcess.argtypes=[ctypes.c_uint32,ctypes.c_int,ctypes.c_uint32];self.api.OpenProcess.restype=ctypes.c_void_p
+        self.api.GetExitCodeProcess.argtypes=[ctypes.c_void_p,ctypes.POINTER(ctypes.c_uint32)];self.api.GetExitCodeProcess.restype=ctypes.c_int
+        self.api.WaitForSingleObject.argtypes=[ctypes.c_void_p,ctypes.c_uint32];self.api.WaitForSingleObject.restype=ctypes.c_uint32
+        self.api.CloseHandle.argtypes=[ctypes.c_void_p]
+        self.handle=self.api.OpenProcess(0x100000|0x1000,False,pid)
+        if not self.handle:raise ctypes.WinError(ctypes.get_last_error())
+        assert self.poll() is None,'Worker has already exited'
+    def poll(self):
+        value=self.ctypes.c_uint32()
+        if not self.api.GetExitCodeProcess(self.handle,self.ctypes.byref(value)):raise self.ctypes.WinError(self.ctypes.get_last_error())
+        self.returncode=None if value.value==259 else value.value
+        return self.returncode
+    def wait(self,timeout=None):
+        result=self.api.WaitForSingleObject(self.handle,0xffffffff if timeout is None else int(timeout*1000))
+        if result==258:raise subprocess.TimeoutExpired(self.pid,timeout)
+        assert result==0
+        return self.poll()
+    def __del__(self):
+        if getattr(self,'handle',None):self.api.CloseHandle(self.handle)
+
+
 class ReplayStream:
     def __init__(self,folder,suffix='',sms=False,rom=None):
         self.folder=folder.resolve();assert self.folder.is_relative_to(ROOT/'validation')
         assert all(c in string.ascii_letters+string.digits+'-_' for c in suffix)
         self.folder.mkdir(exist_ok=False);self.suffix=suffix;self.sms=sms;self.rom=rom;self.process=None;self.number=0
         self.log=(self.folder/'worker.log').open('wb')
+
+    @classmethod
+    def attach(cls,folder,pid,rom):
+        folder=folder.resolve();assert folder.is_relative_to(ROOT/'validation') and not (folder/'stop.json').exists() and not (folder/'completed.json').exists()
+        requests=sorted(folder.glob('request-*.json'));assert requests
+        checkpoints=json.loads((folder/'checkpoints.json').read_bytes())['checkpoints'];assert len(requests)==len(checkpoints)
+        latest=json.loads(requests[-1].read_bytes());last=checkpoints[-1];assert latest['trace']==last['trace'] and last['whole_ram_png_exact']
+        source=ROOT/'validation'/last['trace'];cap=json.loads((source/'capture.json').read_bytes());assert cap['rom_sha256']==sha(Path(rom).read_bytes()) and cap['frames']==last['frames']
+        proof=source.with_name(source.name+f'-assisted-fixed-replay-{cap["frames"]}')/'replay_report.json';assert json.loads(proof.read_bytes())['passed']
+        obj=cls.__new__(cls);obj.folder=folder;obj.suffix='';obj.sms=False;obj.rom=rom;obj.process=ExistingWindowsProcess(pid);obj.number=len(requests);obj.log=(folder/'worker.log').open('ab')
+        record=folder/'reconnections.json';history=json.loads(record.read_bytes()) if record.exists() else []
+        history.append(dict(worker_pid=pid,trace=last['trace'],emulated_frame=last['frames'],core_reinitialized=False,state_imports=0,emulated_frames_skipped=0))
+        atomic(record,history);return obj
 
     def prove(self,trace,record_from=None):
         source=(ROOT/'validation'/trace).resolve();assert source.is_relative_to(ROOT/'validation')

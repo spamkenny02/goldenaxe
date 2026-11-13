@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "rom_sha256": "1421abe47de95ac104a03e2fb1be7001f70aeca1fbb6a9b35669aa6e98b7d9a4",
+  "one_continuous_independent_cold_core": true,
+  "cold_boot_count": 1,
+  "coordinator_reconnections": [
+    {
+      "worker_pid": 4800,
+      "trace": "natural-service-route/md-annex-minigame-5c-play-fund-wallet-54-gift01",
+      "emulated_frame": 366633,
+      "core_reinitialized": false,
+      "state_imports": 0,
+      "emulated_frames_skipped": 0
+    }
+  ],
+  "final_emulated_frame": 371388,
+  "checkpoint_count": 13,
+  "final_checkpoint": {
+    "trace": "natural-service-route/md-annex-minigame-5c-play-visit01",
+    "frames": 371388,
+    "whole_ram_png_exact": true
+  },
+  "state_imports": 0,
+  "emulated_frames_skipped": 0,
+  "scope": "The owned paused independent worker was reattached after stopping an overlong funding plan at a verified checkpoint. Existing real core state continued; no save-state, RAM import or skipped emulated frames. Subsequent host entry and two-round video passed full-RAM/PNG replay."
+}

@@ -70,6 +70,7 @@ def main():
             assert state['gold']==(expected_gold if a.variant=='play' else initial[0xdd])
             if a.variant=='play':assert len(outcomes)==a.rounds or a.stop_on_lucky and (lucky_seen or state['gold']<10)
             assert state['magic']==initial[0xdb] and state['health']==initial[0x318]
+            assert r[0xcf:0xdd]==initial[0xcf:0xdd] and r[0xde:0xf3]==initial[0xde:0xf3],'Minigame changed non-currency resources'
             if done is None:done=frame;captures.add(frame+40)
     def choose(frame):
         nonlocal cursor,direction,phase,phase_started,ack_until,outcome,expected_gold,decline,poor,round_start_gold,round_number,lucky_seen,board_wait_started

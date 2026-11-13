@@ -10,9 +10,12 @@ from cold_replay_stream import ReplayStream
 from validate_playable_sprite_limit import symbols
 
 class Campaign:
-    def __init__(self,prefix,rom,label):
+    def __init__(self,prefix,rom,label,attach=None):
         self.family,self.current=prefix.split('/');self.rom=(ROOT/rom).resolve();self.label=label;self.sy=symbols(ROOT/'megadrive/out/release/symbol.txt')
-        self.stream_options=None;self.new_stream()
+        self.stream_options=None
+        if attach:
+            self.stream=ReplayStream.attach(ROOT/'validation'/attach[0],attach[1],self.rom);self.stream_options=self.cap()['core_options']
+        else:self.new_stream()
     def new_stream(self):
         n=1
         while (ROOT/f'validation/{self.label}-cold-stream{n:02d}').exists():n+=1

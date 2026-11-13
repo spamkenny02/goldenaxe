@@ -1,5 +1,6 @@
 """Account for retained SMS cases and their actually played/filmed MD counterparts."""
 import hashlib,json
+from datetime import date
 from pathlib import Path
 from validate_playable_sprite_limit import symbols
 from write_atomic_report import write_bytes
@@ -44,6 +45,13 @@ def main():
     for trace,(video_path,video) in filmed.items():
         folder=ROOT/'validation'/trace;r=load(folder/'report.json');cap=load(folder/'capture.json')
         reference=r.get('sms_reference')
+        if reference is None and 'outcomes' in r and r.get('variant') in ('play','refuse','poor'):
+            from rebase_natural_campaign import evidence
+            candidate=f"natural-service-route/sms-npc-minigame-{r['outside']:02x}-{r['variant']}-visit01"
+            if candidate in cases:
+                sr=__import__('json').loads(evidence(ROOT/'validation'/candidate/'report.json'))
+                assert sr['passed'] and sr['outside']==r['outside'] and sr['variant']==r['variant']
+                reference=candidate
         if reference not in cases:continue
         assert r['passed'] and r['rom_sha256']==SHA and not r.get('sram_checkpoint_injection',False)
         raw=(folder/f'ram_{cap["frames"]:05d}.bin').read_bytes();word=lambda n:raw[sy[n]]|(raw[sy[n]+1]<<8)
@@ -59,6 +67,16 @@ def main():
         elif r.get('variant')=='quest_hint_contact':
             assert r['resources_and_flags_unchanged'] and r['complete_frame'] is not None
             assert all(v['bitmap_exact_bytes']==1040 for v in r['completed'] if 'text_pc' in v)
+        elif 'outcomes' in r and r.get('variant') in ('play','refuse','poor'):
+            assert r['complete_frame'] is not None and not r['new_assistance_writes'] and r['primary_state_imports']==0
+            if r['variant']=='play':
+                assert r['admission_frame'] and len(r['outcomes'])==r['requested_rounds']
+                assert r['gold_after']==r['outcomes'][-1]['expected_gold']
+            elif r['variant']=='refuse':assert r['decline_frame'] and r['gold_after']==r['gold_before']
+            else:assert r['poor_text_observed'] and r['poor_sms_bitmap_exact_frame'] and r['gold_before']<10 and r['gold_after']==r['gold_before']
+            from md_readonly_view import md_to_sms_view
+            prefix=ROOT/'validation/natural-dungeon-route'/r['source_prefix'];pc=load(prefix/'capture.json');before=md_to_sms_view((prefix/f'ram_{pc["frames"]:05d}.bin').read_bytes(),sy);after=md_to_sms_view(raw,sy)
+            assert before[0xcf:0xdd]==after[0xcf:0xdd] and before[0xde:0xf3]==after[0xde:0xf3]
         elif 'choices' in r and 'completed' in r and r.get('sms_reference'):
             assert len(r['completed'])==len(r['choices']) and r['complete_frame'] is not None
             assert not r.get('currency_assisted_component_test') and not r['new_assistance_writes']
@@ -71,10 +89,10 @@ def main():
         end=cap['frames'];proof=folder.with_name(folder.name+(f'-assisted-fixed-replay-{end}' if cap['test_ram_writes'] else '-fixed-replay'))/'replay_report.json';w=load(proof)
         assert w['passed'] and w['final_png_exact'] and w['rom_sha256']==SHA and sha(proof)==video['proof_sha256']
         region='pal' if cap['core_options'].get('genesis_plus_gx_region_detect')=='pal' else 'ntsc'
-        row=cases[reference];row['md_evidence'].append(dict(trace=trace,region=region,report=video_path.relative_to(ROOT).as_posix(),report_sha256=sha(video_path),conversations=len(r.get('visited',[])),scope=r['scope']))
+        row=cases[reference];row['md_evidence'].append(dict(trace=trace,region=region,report=video_path.relative_to(ROOT).as_posix(),report_sha256=sha(video_path),conversations=len(r.get('visited',[])),sms_reference_bitmap_boundaries=r.get('sms_reference_bitmap_boundaries',{}),scope=r['scope']))
         if region=='ntsc':row.update(md_passed=True,fixed_replay_passed=True,video_verified=True)
     rows=[cases[k] for k in sorted(cases)];done=sum(r['md_passed'] and r['fixed_replay_passed'] and r['video_verified'] for r in rows)
-    report=dict(date='2026-11-12',md_sha256=SHA,md_version=322,rom_status='development_not_qualified_as_release_candidate',
+    report=dict(date=date.today().isoformat(),md_sha256=SHA,md_version=322,rom_status='development_not_qualified_as_release_candidate',
         all_selected_sms_cases_verified_on_md=bool(rows) and done==len(rows),retained_sms_recording_cases=len(rows),md_ntsc_played_replayed_and_filmed_cases=done,
         all_npcs_complete=False,all_items_or_monsters_globally_certified=False,point6_status='open_until_md_counterparts_and_video_complete',
         scope='Inventory of selected SMS recordings, not a count of NPCs or a global completion percentage. Each trace can contain multiple interactions. Coverage is credited only to its exact SMS reference, actual MD result, fixed replay and decoded video. PAL counterpart evidence is recorded separately.',

@@ -61,7 +61,7 @@ def fund_wallet(c,minimum):
         for outside,gain in json.loads((ROOT/'analysis/house_gold_reference.json').read_bytes())['records']:
             if not 0<gain<128 or raw[0x100+outside]&2:continue
             world=census_world(raw,outside,0x3f,0);proposal=entry_options(raw,outside,0x3f,0,world)
-            if not proposal or '--earth-world-cell' in proposal[1]:continue
+            if not proposal or '--earth-world-cell' in proposal[1] and raw[0xdb]<8:continue
             path,_=world.route(start)
             if path is not None:options.append(((minimum-raw[0xdd]+gain-1)//gain,len(path),outside,gain))
         assert options,'No reachable unclaimed gold gift for actual refill'

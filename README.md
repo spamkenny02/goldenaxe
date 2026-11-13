@@ -55,6 +55,24 @@ Les refus d’achat par manque d’argent et l’achat réel d’une pomme suivi
 refus de double achat ont également leur rejeu MD, leur vidéo et une
 comparaison exacte des 1040 octets du texte SMS.
 [Manque d’argent](analysis/md_merchant_variant_apple-poor.json) · [Achat et possession](analysis/md_merchant_variant_apple-only.json).
+Les **65/65 contextes ordinaires connus** sont désormais parlés, acquittés,
+rejoués et filmés sur MD dans 41 maisons ; les cinq indices ordinaires
+associés aux équipements sont également vérifiés.
+[Maisons MD](analysis/md_plain_house_census_campaign.json) · [Indices](analysis/md_equipment_hints_campaign.json).
+Le premier jeu de hasard est filmé sur deux parties réelles, avec perte,
+gain, accord pour rejouer puis refus. Les autres hôtes restent suivis séparément.
+[Premier jeu](analysis/md_minigame_5c_play_campaign.json).
+Les onze lieux de soins et les quatorze lieux de sauvegarde sont aussi terminés
+sur MD. Chaque sauvegarde est écrite par le jeu puis chargée par Continuer.
+[Soins](analysis/md_inn_campaign.json) · [Sauvegardes](analysis/md_save_locations_campaign.json).
+Les refus sans Foudre et à capacité de vie insuffisante ont été vérifiés avec
+la corde obtenue réellement avant le troisième cristal.
+[Sans Foudre](analysis/md_equipment_prerequisite_no-lightning.json) · [Capacité insuffisante](analysis/md_equipment_prerequisite_low-health-capacity.json).
+L’apport d’une pomme achetée à Saylun conserve le cadeau non réclamé. Le texte
+MD correspond exactement au texte SMS complet, avant une répétition du suffixe
+observée dans l’attente finale de la ROM SMS fournie ; cette dernière image
+n’est donc pas déclarée identique.
+[Différence et preuve](analysis/md_saylun_owned_apple_sms_suffix_difference.json).
 Les autres tournées continuent ; ces résultats ne ferment pas encore le point 6.
 Le nouvel enregistrement durant le rejeu indépendant évite un troisième
 redémarrage pour chaque extrait, sans saut d’images ni import d’état.

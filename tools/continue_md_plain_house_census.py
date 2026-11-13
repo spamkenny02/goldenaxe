@@ -5,7 +5,7 @@ from md_campaign_runner import Campaign
 from continue_sms_plain_house_census import census_world,COMBAT_ENTRANCES
 from natural_dungeon_route import World
 from extract_title import rle_planes
-from md_campaign_navigation import entry_options,enter,refill_magic
+from md_campaign_navigation import entry_options,enter,refill_magic,fund_wallet,film
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--prefix',required=True);p.add_argument('--rom',required=True);p.add_argument('--limit',type=int,default=0);a=p.parse_args()
@@ -35,7 +35,25 @@ def main():
                     world=census_world(raw,*key,direction);path,_=world.route(start)
                     if path is not None and entry_options(raw,*key,direction,world):chosen=key,direction,world;break
                 if chosen:break
-            assert chosen is not None,'No reachable pending house; transport/terrain needs a separate played branch'
+            if chosen is None:
+                transports=[]
+                for outside,destination,y,x in json.loads((ROOT/'analysis/paid_passage_reference.json').read_bytes())['routes']:
+                    for d in range(4):
+                        world=census_world(raw,outside,0x9f,d)
+                        if not entry_options(raw,outside,0x9f,d,world):continue
+                        path,_=world.route(start)
+                        if path is None:continue
+                        for goal in pending:
+                            for arrival_direction in range(4):
+                                arrival=census_world(raw,*goal,arrival_direction);arrival.live_room=None;arrival.live_map=None
+                                if arrival.route((destination,x,y))[0] is not None:transports.append((len(path),outside,destination));break
+                            if transports:break
+                        break
+                assert transports,'No reachable pending house through a genuine paid passage'
+                _,outside,destination=min(transports);fund_wallet(c,10);attempt=enter(c,outside,0x9f,f'transport-{outside:02x}');first=c.cap()['frames']+1
+                c.service(f'transport-{outside:02x}-pay{attempt:02d}','natural_paid_passage',['--outside',hex(outside)]);film(c,f'md-plain-transport-{outside:02x}-pay{attempt:02d}',first)
+                assert int.from_bytes(c.sms_view()[0xb9:0xbb],'little')==destination
+                verified=c.trace;save('actual_paid_transport_played_replayed_filmed');continue
             (outside,room),direction,world=chosen;tag=f'{outside:02x}-{room:02x}';attempt=1
             while (ROOT/f'validation/natural-dungeon-route/md-annex-plain-{tag}-entry{attempt:02d}').exists():attempt+=1
             print('MD HOUSE START',tag,'remaining',len(pending),flush=True)
