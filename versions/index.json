@@ -9189,12 +9189,29 @@
     "bytes": 2097152,
     "archived_utc": "2026-11-13T12:15:14.798191+00:00",
     "rom": "v0327-781abfa9/gaw-megadrive-v0327.bin",
-    "notes": "DIAGNOSTIC 2 Mo : suite video V326 bloquee visuellement apres etape3. Affichage coupe avant changements de mode et handoff experimental via VDP_init SGDK. Confirmation console attendue ; pas une RC.",
+    "notes": "DIAGNOSTIC 2 Mo : suite video V326 bloquee visuellement apres etape3. Affichage coupe avant changements de mode et handoff experimental via VDP_init SGDK. Confirmation console attendue ; pas une RC. Retour utilisateur : demarrage jusqu au jeu confirme ; FFFFFFFF dans les noms et motifs parasites dans les marges signales ensuite.",
     "validation": "development_targeted_checks",
     "reports": [
       {
         "file": "hardware_diagnostic_v0327_report.json",
         "sha256": "6bf9182b28da258286d7fa2a475c66d568872802e4f82b04b79aba9d93ef7abd"
+      }
+    ],
+    "development": true,
+    "hardware_validation": "boot_reported_working_graphical_issues_reported"
+  },
+  {
+    "version": 328,
+    "sha256": "368c003f92e0860336c919005ec19f0ae620d6876b4bca8f436f83e682b59dcc",
+    "bytes": 2097152,
+    "archived_utc": "2026-11-13T12:34:29.323882+00:00",
+    "rom": "v0328-368c003f/gaw-megadrive-v0328.bin",
+    "notes": "2 Mo, retour sans marqueurs de diagnostic ; reinitialisation video SGDK, bordures noires et validation des noms SRAM a affichage/chargement sans effacement. Campagnes PAL/NTSC, sauvegardes et Konami controles ; essai console V328 attendu.",
+    "validation": "development_targeted_checks",
+    "reports": [
+      {
+        "file": "clean_presentation_v0328_report.json",
+        "sha256": "b4ed992334e15a0c6d53286f0069f8a1c7dea9a7e01c743353df31e7289c6a7e"
       }
     ],
     "development": true

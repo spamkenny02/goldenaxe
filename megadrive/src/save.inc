@@ -5,6 +5,18 @@ extern const u8 save_text_charset[],save_cursor_frame[],save_colors[];
 extern const u8 save_prompt[],save_select_text[],save_done_text[],save_continue_text[],save_decline_text[];
 static u16 save_last_slot,save_checkpoint_room,save_runtime_checkpoint;
 static volatile u16 save_slot_selection,save_yes;
+static bool save_name_valid(const u8 *name)
+{
+    u16 n;
+    if(!name[0]) return FALSE;
+    for(n=0;n<8 && name[n];n++)
+    {
+        u8 c=name[n];
+        if(!((c>='A' && c<='Z') || (c>='0' && c<='9') ||
+             c=='&' || c=='.' || c=='-' || c==' ')) return FALSE;
+    }
+    return TRUE;
+}
 
 static void save_init(void)
 {
@@ -98,7 +110,7 @@ static void save_draw_slots(u16 icon)
         for(n=0;n<8;n++) name[n]=SRAM_readByte(0x400+slot*0x400+n);
         SRAM_disable();name[8]=0;
         /* Empty slots (00 or erased FF) remain blank; valid names use the font. */
-        if(name[0] && name[0]!=255)
+        if(save_name_valid(name))
         {
             for(length=0;length<8 && name[length];length++) {}
             memset(aligned,' ',8-length);memcpy(aligned+8-length,name,length);aligned[8]=0;
@@ -257,9 +269,9 @@ static void check_house_service(u16 old_x,u16 old_y)
 /* 15F6: restore the source-layout record; gameplay loads its checkpoint room. */
 static bool save_load_slot(u16 slot)
 {
-    u16 n;u32 base=0x400+slot*0x400;u8 first;
-    SRAM_enableRO();first=SRAM_readByte(base);
-    if(!first || first==255) { SRAM_disable();return FALSE; }
+    u16 n;u32 base=0x400+slot*0x400;u8 name[8];
+    SRAM_enableRO();for(n=0;n<8;n++) name[n]=SRAM_readByte(base+n);
+    if(!save_name_valid(name)) { SRAM_disable();return FALSE; }
     for(n=0;n<sizeof(game_save_state);n++) game_save_state[n]=SRAM_readByte(base+n);
     SRAM_disable();
     for(n=0;n<8;n++) character_name[n]=game_save_state[n];character_name[8]=0;

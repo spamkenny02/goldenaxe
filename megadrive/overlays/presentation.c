@@ -58,20 +58,14 @@ void presentation_show(void){
   * Reading past that cache wrote unrelated RAM into the DMA configuration. */
  while(!(W(0xc00004)&0x200));
  DIAG(3);
-#ifdef PRESENTATION_DIAGNOSTIC
- /* Experimental hardware handoff: reuse the original V322 SDK video boot.
-  * The diagnostic renderer returns with display disabled before this call. */
+ /* Reset VRAM, planes and SDK video state before entering the native game.
+  * In particular, never retain the diagnostic tile512 in transparent areas
+  * or the top/bottom margins: later game uploads reuse that pattern. */
  ((void(*)(void))0x3271c)(); /* Original linked SGDK VDP_init. */
-#else
- for(i=0;i<19;i++)if(i!=1)reg(i,old[i]);
- /* Leave DMA idle with a defined source/mode, independent of adjacent RAM. */
- for(i=19;i<24;i++)reg(i,0);
- W(0xc00004);reg(1,old[1]);
-#endif
  DIAG(4);
  /* Restore the original virtual game epoch: the handoff otherwise contributes
-  * one extra NTSC VInt or two PAL VInts before the original intro starts.
+  * one extra VInt in either region after the SDK video reinitialization.
   * This keeps world_clock/RNG and existing fixed controller routes aligned. */
- L(0xffcb72)-=pal?2:1;
+ L(0xffcb72)-=1;
  W(0xffe4c0)=5;
 }

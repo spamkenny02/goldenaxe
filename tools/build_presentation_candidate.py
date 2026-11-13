@@ -16,6 +16,8 @@ def main():
  subprocess.run([str(sdk/'gcc.exe'),'-B'+str(sdk)+'/', *(['-DPRESENTATION_DIAGNOSTIC']if a.diagnostic else []),'-m68000','-Os','-fomit-frame-pointer','-fno-builtin','-fno-common','-c',str(src/'presentation.c'),'-o',str(out/'screen.o')],check=True)
  for name,file in [('hooks',src/'presentation_hooks.s'),('assets',out/'assets.s')]:subprocess.run([str(sdk/'as.exe'),*(['--defsym','PRESENTATION_DIAGNOSTIC=1']if a.diagnostic else []),'-m68000','-o',str(out/(name+'.o')),str(file)],check=True)
  extra=[]
+ for source,compiler,flags in [('save_name_guard.c','gcc.exe',['-B'+str(sdk)+'/','-m68000','-Os','-fomit-frame-pointer','-fno-builtin','-c']),('save_name_guard.s','as.exe',['-m68000'])]:
+  target=out/(source+'.o');subprocess.run([str(sdk/compiler),*flags,str(src/source),'-o',str(target)],check=True);extra.append(str(target))
  if a.diagnostic:
   for source,compiler,flags in [('presentation_diagnostic.c','gcc.exe',['-B'+str(sdk)+'/','-m68000','-Os','-fomit-frame-pointer','-fno-builtin','-c']),('presentation_diagnostic.s','as.exe',['-m68000'])]:
    target=out/(source+'.o');subprocess.run([str(sdk/compiler),*flags,str(src/source),'-o',str(target)],check=True);extra.append(str(target))
@@ -24,15 +26,18 @@ def main():
  names={m[2]:int(m[1],16) for line in subprocess.check_output([str(sdk/'nm.exe'),str(out/'overlay.out')],text=True).splitlines()if(m:=re.match(r'([0-9a-fA-F]+)\s+\w\s+(\S+)',line))}
  raw=bytearray(original);assert raw[0x4876a:0x48772].hex()=='4e56ff4048e73f3c';raw[0x4876a:0x48772]=bytes.fromhex('4ef9')+names['presentation_entry'].to_bytes(4,'big')+bytes.fromhex('4e71')
  assert raw[0x120000:0x120000+len(code)]==b'\xff'*len(code)
- raw[0x120000:0x120000+len(code)]=code;raw[0x18e:0x190]=md_checksum(raw).to_bytes(2,'big');(out/'candidate.bin').write_bytes(raw)
+ raw[0x120000:0x120000+len(code)]=code
+ save_sites={0x254b4:('422efff4102effec','save_name_draw_guard'),0x49c60:('101053000c00fffd','save_name_load_guard')}
+ for site,(expected,name) in save_sites.items():
+  assert original[site:site+8].hex()==expected
+  raw[site:site+8]=bytes.fromhex('4ef9')+names[name].to_bytes(4,'big')+bytes.fromhex('4e71')
  diagnostic_sites={0x4881e:('301008000000','presentation_diag_audio'),0x491b0:('301008000000','presentation_diag_audio'),0x4883a:('4eb900004bfc','presentation_diag_irq'),0x4891a:('4eb900032054','presentation_diag_sram'),0x48988:('4eb900009b6e','presentation_diag_intro')} if a.diagnostic else {}
  for site,(expected,name) in diagnostic_sites.items():
   assert original[site:site+6].hex()==expected
   raw[site:site+6]=bytes.fromhex('4eb9')+names[name].to_bytes(4,'big')
- if a.diagnostic:
-  raw[0x18e:0x190]=md_checksum(raw).to_bytes(2,'big');(out/'candidate.bin').write_bytes(raw)
- allowed={site+j for site in diagnostic_sites for j in range(6)}|{0x18e,0x18f}|set(range(0x4876a,0x48772))|set(range(0x120000,0x120000+len(code)))
+ raw[0x18e:0x190]=md_checksum(raw).to_bytes(2,'big');(out/'candidate.bin').write_bytes(raw)
+ allowed={site+j for site in save_sites for j in range(8)}|{site+j for site in diagnostic_sites for j in range(6)}|{0x18e,0x18f}|set(range(0x4876a,0x48772))|set(range(0x120000,0x120000+len(code)))
  assert all(i in allowed for i,(x,y)in enumerate(zip(original,raw))if x!=y)
- r=dict(passed=True,md_sha256=hashlib.sha256(raw).hexdigest(),base_sha256=hashlib.sha256(original).hexdigest(),bytes=len(raw),overlay_bytes=len(code),diagnostic=a.diagnostic,new_boot_only=not a.diagnostic,existing_game_and_konami_bytes_preserved=not a.diagnostic,sram_header_preserved=raw[0x1b0:0x1bc]==original[0x1b0:0x1bc],rom_resource_base=0x120000,unused_rom_bytes_before=0xd0000,unused_rom_bytes_after=0xd0000-len(code),quality_reduction_for_size=False,checksum=f'{md_checksum(raw):04X}',assets=json.loads((assets/'assets.json').read_bytes()),source_manifest={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest()for p in [src/'presentation.c',src/'presentation_hooks.s',*([src/'presentation_diagnostic.c',src/'presentation_diagnostic.s']if a.diagnostic else []),*assets.glob('*.bin'),*assets.glob('*.pcm')]},runtime_validation_required=True)
+ r=dict(passed=True,md_sha256=hashlib.sha256(raw).hexdigest(),base_sha256=hashlib.sha256(original).hexdigest(),bytes=len(raw),overlay_bytes=len(code),diagnostic=a.diagnostic,new_boot_only=False,save_name_validation=True,konami_bytes_preserved=True,sram_header_preserved=raw[0x1b0:0x1bc]==original[0x1b0:0x1bc],rom_resource_base=0x120000,unused_rom_bytes_before=0xd0000,unused_rom_bytes_after=0xd0000-len(code),quality_reduction_for_size=False,checksum=f'{md_checksum(raw):04X}',assets=json.loads((assets/'assets.json').read_bytes()),source_manifest={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest()for p in [src/'presentation.c',src/'presentation_hooks.s',src/'save_name_guard.c',src/'save_name_guard.s',*([src/'presentation_diagnostic.c',src/'presentation_diagnostic.s']if a.diagnostic else []),*assets.glob('*.bin'),*assets.glob('*.pcm')]},runtime_validation_required=True)
  (out/'build-report.json').write_text(json.dumps(r,indent=2)+'\n',newline='\n');print(json.dumps({k:v for k,v in r.items()if k not in ['source_manifest','assets']}),flush=True)
 if __name__=='__main__':main()

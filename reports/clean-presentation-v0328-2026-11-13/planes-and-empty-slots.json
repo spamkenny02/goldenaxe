@@ -1,0 +1,85 @@
+{
+  "passed": true,
+  "md_sha256": "368c003f92e0860336c919005ec19f0ae620d6876b4bca8f436f83e682b59dcc",
+  "cases": [
+    {
+      "region": "ntsc",
+      "sram_fill": 0,
+      "empty_names": true,
+      "invalid_slot_load_refused": true,
+      "diagnostic_background_tile_absent": true
+    },
+    {
+      "region": "ntsc",
+      "sram_fill": 255,
+      "empty_names": true,
+      "invalid_slot_load_refused": true,
+      "diagnostic_background_tile_absent": true
+    },
+    {
+      "region": "ntsc",
+      "sram_fill": 254,
+      "empty_names": true,
+      "invalid_slot_load_refused": true,
+      "diagnostic_background_tile_absent": true
+    },
+    {
+      "region": "ntsc",
+      "sram_fill": "mixed",
+      "empty_names": true,
+      "invalid_slot_load_refused": true,
+      "diagnostic_background_tile_absent": true
+    },
+    {
+      "region": "ntsc",
+      "gameplay_margin_frames": [
+        2977,
+        4277,
+        6277,
+        8277
+      ],
+      "upper_and_lower_margins_black": true,
+      "margin_tilemaps_zero": true
+    },
+    {
+      "region": "pal",
+      "sram_fill": 0,
+      "empty_names": true,
+      "invalid_slot_load_refused": true,
+      "diagnostic_background_tile_absent": true
+    },
+    {
+      "region": "pal",
+      "sram_fill": 255,
+      "empty_names": true,
+      "invalid_slot_load_refused": true,
+      "diagnostic_background_tile_absent": true
+    },
+    {
+      "region": "pal",
+      "sram_fill": 254,
+      "empty_names": true,
+      "invalid_slot_load_refused": true,
+      "diagnostic_background_tile_absent": true
+    },
+    {
+      "region": "pal",
+      "sram_fill": "mixed",
+      "empty_names": true,
+      "invalid_slot_load_refused": true,
+      "diagnostic_background_tile_absent": true
+    },
+    {
+      "region": "pal",
+      "gameplay_margin_frames": [
+        2931,
+        4231,
+        6231,
+        8231
+      ],
+      "upper_and_lower_margins_black": true,
+      "margin_tilemaps_zero": true
+    }
+  ],
+  "scope": "Actual boot and recorded controls: erased00/FF, nonuniform and invalidFE SRAM name rows and B-plane backgrounds; four early gameplay frames per region with black16-pixel margins and empty margin tilemaps. Existing declared approach protection only. No physical-console confirmation."
+}

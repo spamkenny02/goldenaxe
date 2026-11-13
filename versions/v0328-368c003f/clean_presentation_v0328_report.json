@@ -1,0 +1,58 @@
+{
+  "passed": true,
+  "version": 328,
+  "md_sha256": "368c003f92e0860336c919005ec19f0ae620d6876b4bca8f436f83e682b59dcc",
+  "bytes": 2097152,
+  "checksum": "44F2",
+  "hardware_validation_pending": true,
+  "prior_v327_boot_reported_working": true,
+  "diagnostic_markers_removed": true,
+  "sdk_vdp_init_preserved": true,
+  "black_margins_checked_pal_ntsc": true,
+  "invalid_sram_names_hidden_and_load_refused": true,
+  "save_data_not_erased_or_reformatted": true,
+  "legitimate_save_continue_preserved": true,
+  "source_bug_reproduction": "V327 with syntheticFE SRAM shows FFFFFFFF through the unsupported-character fallback. This is a reproduction, not a dump of the user flashkit.",
+  "margin_bug": "Diagnostic tile512 remained in the outer plane rows, then was reused by normal gameplay graphics.",
+  "private_video_evidence": [
+    {
+      "sha256": "fef791194c9c4cd718562a55fbdf686b2054bb95c50672cdc2e0c1393e4ce88c",
+      "private_original_published": false
+    },
+    {
+      "sha256": "7f39bac2a2745689078b96915301fc96fff8e54e2633b0f34b8722095b74ce90",
+      "private_original_published": false
+    }
+  ],
+  "proofs": {
+    "build": {
+      "file": "reports/clean-presentation-v0328-2026-11-13/build.json",
+      "sha256": "36feb45ae83b76c267125df05e8b7262e68bf31281788c373245376727c55a17"
+    },
+    "boot": {
+      "file": "reports/clean-presentation-v0328-2026-11-13/boot.json",
+      "sha256": "14a00d5d376896aeab750abbd64b1e5df9aaec55958df726cba2050debac1f99"
+    },
+    "planes-and-empty-slots": {
+      "file": "reports/clean-presentation-v0328-2026-11-13/planes-and-empty-slots.json",
+      "sha256": "a952d6b9df117fc53860737567a12c599a9cd0fb95f0c9bc56105267e611523c"
+    },
+    "campaign-ntsc": {
+      "file": "reports/clean-presentation-v0328-2026-11-13/campaign-ntsc.json",
+      "sha256": "31a06a1231dbad6641500da34634e61d77eff5ac109fc24600d06233b1ccd18c"
+    },
+    "campaign-pal": {
+      "file": "reports/clean-presentation-v0328-2026-11-13/campaign-pal.json",
+      "sha256": "ce008b8d6438cb8a2f1250cf79bdcf6d711ce1be64b8041c8f77571b2d340d0a"
+    },
+    "konami": {
+      "file": "reports/clean-presentation-v0328-2026-11-13/konami.json",
+      "sha256": "d8c254b4a6ab37ba3e3b3b90fe038a5471f78624880ac91576296472d75e30a1"
+    },
+    "continue": {
+      "file": "reports/clean-presentation-v0328-2026-11-13/continue.json",
+      "sha256": "685bc4ddc8b571ad3c73d9abc4fa1454fd3745e097649159c4cb54e00eed4f00"
+    }
+  },
+  "scope": "Software checks for splash, save names/loading and black margins, plus recorded PAL/NTSC campaigns with declared approach protection removed before live bosses. Full SRAM payload integrity is not certified merely by a valid name. V328 physical console confirmation remains pending; not a new global100percent release certification."
+}

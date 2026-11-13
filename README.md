@@ -11,23 +11,35 @@ Il distingue données extraites, règles du modèle et interactions rejouées ;
 la couverture de tous les PNJ et de toutes les quêtes secondaires reste ouverte.
 
 <!-- ROM-RELEASE:START -->
-**Dernière ROM de diagnostic : v0327 — 2048 Kio.**
+**Version courante : v0328 — 2048 Kio.**
 
-[Télécharger la ROM v0327](versions/v0327-781abfa9/gaw-megadrive-v0327.bin) · [Toutes les versions](versions/README.md)
+[Télécharger la ROM v0328](versions/v0328-368c003f/gaw-megadrive-v0328.bin) · [Toutes les versions](versions/README.md)
 
-Diagnostic expérimental du blocage après le splash sur flashkit ; ce binaire n'est pas une RC ni une correction matérielle confirmée.
+Version de développement ; contrôles ciblés réussis, écarts visuels et validation complète encore ouverts.
 
-SHA-256 : `781abfa9ec2806221c5e43948f9775c5f690e9fcd4b7012ee0b8a0d9a2832bbd`
-Checksum Mega Drive : `F8DD`
+SHA-256 : `368c003f92e0860336c919005ec19f0ae620d6876b4bca8f436f83e682b59dcc`
+Checksum Mega Drive : `44F2`
 <!-- ROM-RELEASE:END -->
+
+**V328 — noms de sauvegarde et bordures corrigés, toujours 2 Mo.** Les marqueurs
+de diagnostic sont retirés ; la réinitialisation vidéo SGDK est conservée.
+Les marges ne réutilisent plus la tuile temporaire. Les noms SRAM invalides,
+qui pouvaient s'afficher « FFFFFFFF », sont masqués et leur chargement refusé,
+sans effacer les données. Campagnes PAL/NTSC, Continuer et Konami passent ;
+**confirmation V328 sur console encore attendue**. La V327 démarre sur le
+matériel utilisateur, mais présente les défauts d'affichage documentés.
+Les alias à la racine sont maintenant en V328.
+[Explications, captures et preuves](reports/clean-presentation-v0328-2026-11-13/README.md).
 
 **V327 — diagnostic après analyse de la vidéo console, 2 Mo.** La V326
 affiche les étapes 1, 2 et 3, puis l'image devient noire sans étape 4 visible.
 La V327 corrige l'affichage laissé allumé par les marqueurs et utilise la
 réinitialisation vidéo SGDK d'origine pour la sortie du splash. Les neuf étapes
-et l'introduction passent en émulation PAL/NTSC ; essai matériel encore attendu.
+et l'introduction passent en émulation PAL/NTSC ; le démarrage jusqu'au jeu
+est confirmé par l'utilisateur, avec des défauts de noms et de bordures
+traités dans la V328.
 [Analyse et mode d'emploi](reports/diagnostic-v0327-2026-11-13/README.md).
-Les alias à la racine restent en V325 ; utiliser le fichier numéroté V327.
+Lors de sa publication, les alias étaient restés en V325 ; ils sont désormais en V328.
 
 **V326 — diagnostic matériel, 2 Mo.** La V325 présente toujours l'écran noir
 sur Mega Drive 1 / flashkit 2 Mo + SRAM 32 Ko selon le nouveau retour utilisateur.
@@ -37,8 +49,8 @@ le dernier numéro vu, ou l'absence de tout numéro. Les neuf étapes et le reto
 perte d'affichage après l'étape 3. Le diagnostic a aussi un défaut de gestion
 de l'affichage avant restauration, corrigé dans la V327.
 [Mode d'emploi et étapes](reports/diagnostic-v0326-2026-11-13/README.md).
-La V322 RC1 reste la référence qui démarre sur ce matériel. Les deux alias ROM
-à la racine restent en V325 ; utiliser le fichier numéroté V326 pour le diagnostic.
+La V322 RC1 reste conservée comme référence antérieure fonctionnant sur ce matériel.
+La V326 reste archivée comme diagnostic historique.
 
 **V325 — correction VDP insuffisante sur console, toujours 2 Mo.** La restauration
 vidéo lisait cinq octets au-delà du cache SGDK et les écrivait dans les
