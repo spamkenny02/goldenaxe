@@ -1,5 +1,12 @@
 # Scripts de test Golden Axe Warrior — SMS et Mega Drive
 
+**Livraison finale V328 :** le lecteur Python accepte son empreinte et applique
+automatiquement les décalages du splash (NTSC 277, PAL 231). Le cœur Windows x64,
+sa licence et une sauvegarde de test valide sont inclus. Voir les commandes
+autonomes dans [BUILD_AND_DEBUG.md](../BUILD_AND_DEBUG.md). Les parcours V328
+PAL/NTSC sont vérifiés avec le lecteur portable ; BizHawk reste une adaptation
+à valider dans l'émulateur. Les descriptions historiques ci-dessous sont conservées.
+
 Les tests historiques utilisent **Genesis Plus GX/libretro avec Python**.
 `bizhawk/gaw_test.lua` est une adaptation fournie pour BizHawk, et non le
 script ayant servi à valider les campagnes précédentes.

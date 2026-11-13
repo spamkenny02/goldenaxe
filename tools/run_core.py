@@ -67,8 +67,10 @@ def run(rom,frames,out,captures,presses,core=None,ram_writes=(),skip_intro=True,
     # thousands of intervals. Keep inclusive endpoints and overlapping holds.
     fixed_inputs=compile_fixed_inputs(presses,frames)
     out=Path(out); out.mkdir(parents=True,exist_ok=True)
-    dll=c.CDLL(str(Path(core).resolve() if core else ROOT.parents[1]/'work/libretro/genesis_plus_gx_libretro.dll'))
-    system_dir=str(ROOT.parents[1]/'work/libretro').encode()
+    core_path=Path(core).resolve() if core else ROOT/'testkit/runtime/genesis_plus_gx_libretro.dll'
+    if not core_path.exists():core_path=ROOT.parents[1]/'work/libretro/genesis_plus_gx_libretro.dll'
+    dll=c.CDLL(str(core_path))
+    system_dir=str(core_path.parent).encode()
     options={str(k).encode():str(v).encode() for k,v in (core_options or {}).items()}
     variables={}; mode=0; frame=0; captured={};audio_pcm=bytearray();video_error=None
     @ENV

@@ -4,8 +4,8 @@ from pathlib import Path
 from finalize_md_rom import md_checksum
 ROOT=Path(__file__).resolve().parents[1]
 def main():
- p=argparse.ArgumentParser();p.add_argument('--out',required=True);p.add_argument('--diagnostic',action='store_true');p.add_argument('--sdk-bin',type=Path);a=p.parse_args();out=(ROOT/a.out).resolve();assert out.is_relative_to(ROOT/'validation') and not out.exists();out.mkdir(parents=True)
- sdk=(a.sdk_bin or ROOT/'../../work/sgdk/bin').resolve();src=ROOT/'megadrive/overlays';assets=ROOT/'megadrive/presentation';base=ROOT/'versions/v0323-9fcee16d/gaw-megadrive-v0323.bin';original=base.read_bytes();assert hashlib.sha256(original).hexdigest()=='9fcee16dc12028138712564ebd7123d99a25d1ef8f6e54d9799f02ceddaacd99'
+ p=argparse.ArgumentParser();p.add_argument('--out',required=True);p.add_argument('--base',type=Path);p.add_argument('--diagnostic',action='store_true');p.add_argument('--sdk-bin',type=Path);a=p.parse_args();out=(ROOT/a.out).resolve();assert out.is_relative_to(ROOT/'validation') and not out.exists();out.mkdir(parents=True)
+ sdk=(a.sdk_bin or ROOT/'../../work/sgdk/bin').resolve();src=ROOT/'megadrive/overlays';assets=ROOT/'megadrive/presentation';base=a.base or ROOT/'versions/v0323-9fcee16d/gaw-megadrive-v0323.bin';original=base.read_bytes();assert hashlib.sha256(original).hexdigest()=='9fcee16dc12028138712564ebd7123d99a25d1ef8f6e54d9799f02ceddaacd99'
  lines=['.section .rodata','.balign 4']
  for name,file in [('tiles','tiles.bin'),('map','map.bin'),('palette','palette.bin'),('ntsc','voice-ntsc.pcm'),('pal','voice-pal.pcm')]:
   lines += ['.balign 4',f'.global presentation_{name},presentation_{name}_end',f'presentation_{name}:',f'.incbin "{(assets/file).as_posix()}"',f'presentation_{name}_end:']

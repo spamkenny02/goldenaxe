@@ -11,7 +11,9 @@ assert(md or system == "SMS", "Charger une ROM SMS ou Mega Drive avant le script
 local mode = cfg.mode or "monitor"
 assert(mode == "monitor" or mode == "record" or mode == "replay", "Mode inconnu")
 local sha = gameinfo.getromhash():lower():gsub("^sha1:", "")
+local v328_sha = "90a97e3c2681f29d9b43a68b009ecd0f26375b1d"
 local known = md and {
+  [v328_sha] = true, -- V328 (libretro validated; BizHawk adaptation unverified)
   ["65dbbd5c318a5dc8fad9cfcd369a051a48fa39eb"] = true, -- V320
   ["9a42e3283d7b10035924636f56dbb9ad67b4303c"] = true, -- V321
   ["a9daebc210c3a1177446e614c0736f48b149872b"] = true -- V322 private candidate (layout unchanged; BizHawk run not certified)
@@ -95,6 +97,12 @@ if mode == "replay" then
     end
   end
   assert(#rows > 0, "Route vide")
+  if md and sha == v328_sha then
+    local shift = want_pal and 231 or 277
+    for _, row in ipairs(rows) do row[1]=row[1]+shift;row[2]=row[2]+shift end
+    table.insert(rows,1,{1,shift,0,-1})
+    if total then total=total+shift end
+  end
   total = math.min(total or rows[#rows][2], rows[#rows][2])
 end
 local suffix = os.date("%Y%m%d-%H%M%S") .. "-" .. system .. "-" .. mode

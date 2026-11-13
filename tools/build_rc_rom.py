@@ -9,6 +9,10 @@ def main():
     out=(ROOT/a.out).resolve();assert out.is_relative_to(ROOT/'validation') and not out.exists()
     out.mkdir(parents=True);project=out/'project';project.mkdir()
     for name in ('src','research','z80'):shutil.copytree(ROOT/'megadrive'/name,project/name)
+    # Preserve the audited base layout; the updated save-name logic is applied
+    # from source by the final V328 overlay rather than moving linked symbols.
+    frozen_save=ROOT/'megadrive/rebuild-base/save.inc'
+    if frozen_save.exists():shutil.copyfile(frozen_save,project/'src/save.inc')
     with (out/'compile.log').open('wb') as log:
         subprocess.run(['powershell','-NoProfile','-ExecutionPolicy','Bypass','-File',str(ROOT/'tools/build_private_candidate.ps1'),
             '-Project',str(project),'-Sgdk',a.sgdk.resolve().as_posix(),'-Java',a.java.resolve().as_posix(),'-PaddingByte','255'],cwd=ROOT,stdout=log,stderr=subprocess.STDOUT,check=True)

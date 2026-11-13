@@ -3,6 +3,12 @@
 Reconstruction de la ROM Master System fournie, puis portage de sa logique
 Z80 en code natif 68000 avec SGDK. La fidélité précède les améliorations.
 
+**Projet clôturé le 13 novembre 2026 à la demande de l'utilisateur — V328.**
+[Recompiler la ROM finale et rejouer les runs de débogage](BUILD_AND_DEBUG.md).
+La commande de livraison est `BUILD_FINAL.ps1` ; les procédures historiques
+plus bas décrivent aussi d'anciennes versions. Aucune nouvelle ROM n'est créée
+pour la clôture.
+
 Le [dossier de référence du jeu, daté du 11 novembre 2026](reports/gaw-reference-2026-11-11/RAPPORT_COMPLET_JEU.md)
 analyse le guide GameFAQs fourni et le recoupe avec les données de la ROM.
 Il comprend les 225 écrans extérieurs, les dix labyrinthes, objets, magies,

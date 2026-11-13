@@ -6,7 +6,9 @@ from validate_actor_tick import PRESSES
 from validate_sprite_scene_timed import sha
 from validate_md_game_sprite_frame import physical_plane
 
-def symbols(path):return {m[2].split('.lto_priv.')[0]:int(m[1],16)&65535 for line in path.read_text().splitlines() if(m:=re.match(r'([0-9a-fA-F]+)\s+\w\s+(\S+)',line))}
+def symbols(path):
+ if not path.exists() and path.name=='symbol.txt':path=ROOT/'megadrive/debug/symbol.txt'
+ return {m[2].split('.lto_priv.')[0]:int(m[1],16)&65535 for line in path.read_text().splitlines() if(m:=re.match(r'([0-9a-fA-F]+)\s+\w\s+(\S+)',line))}
 def reference(v,base,limit):
  raw=bytes(v[n^1] for n in range(65536));entries=[];index=0;seen=set()
  while index not in seen:

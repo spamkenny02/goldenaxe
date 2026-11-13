@@ -1,5 +1,14 @@
 # Reprise du portage dans un autre compte Codex
 
+## Clôture — 13 novembre 2026
+
+Le projet est clôturé à la demande explicite de l'utilisateur. Ne pas poursuivre
+les travaux listés plus bas automatiquement : ce sont des notes historiques.
+La livraison acceptée est la V328 (SHA368c003f…), 2 Mo. Les fichiers nécessaires
+à sa reconstruction et aux runs sont décrits dans [BUILD_AND_DEBUG.md](BUILD_AND_DEBUG.md).
+Les vidéos et captures locales volumineuses sont abandonnées à la demande
+de l'utilisateur ; la ROM et ses sources restent conservées dans Git.
+
 ## Reprise prioritaire — 12 novembre 2026
 
 L'utilisateur demande explicitement de rejouer sur MD toutes les branches SMS
