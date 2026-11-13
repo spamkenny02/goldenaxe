@@ -1,4 +1,4 @@
-"""Select independently proved MD movies with completed exits for the delivery."""
+"""Select independently proved MD movies with completed selected actions for the delivery."""
 import hashlib,json
 from pathlib import Path
 from run_core import ROOT
@@ -18,7 +18,12 @@ def main():
   folder=ROOT/'validation'/trace
   if reason:excluded.append(dict(trace=trace,reason=reason));continue
   r=load(folder/'report.json');cap=load(folder/'capture.json');raw=(folder/f'ram_{cap["frames"]:05d}.bin').read_bytes();word=lambda n:raw[sy[n]]|(raw[sy[n]+1]<<8)
-  if word('resume_phase') or word('world_graphics_class') or raw[sy['door_transition_loading']^1]:reason='exit_or_reveal_not_finished'
+  if not r.get('passed'):reason='approach_only_driver_without_selected_goal'
+  remedy=trace=='natural-dungeon-combat/md-auto-annex-curse-remedy-contact-and-cure03' and r.get('curse_remedy_passed')
+  if remedy:assert r['first_curse']['frame']<r['first_cure']['frame'] and not r['resource_or_actor_writes']
+  interior_save=r.get('game_written_save') and r.get('payload_source_ram_exact') and not r.get('normal_exterior_exit_requested')
+  if interior_save:assert r['save_written_frame'] and r['complete_frame'] and r['last_state']['phase']==0 and r['last_state']['room']==r['first_state']['room']
+  if word('resume_phase') or (word('world_graphics_class') and not (remedy or interior_save)) or raw[sy['door_transition_loading']^1]:reason='exit_or_reveal_not_finished'
   if r.get('stop_on_lucky_requested') and not r.get('lucky_card_observed'):reason='unsuccessful_lucky_search_not_needed'
   if reason:excluded.append(dict(trace=trace,reason=reason));continue
   assert v['full_audio_video_decoded'] and v['final_ram_and_pixels_exact'] and not v['boss_assistance'];assert sha(ROOT/v['movie'])==v['movie_sha256'] and r['passed']
@@ -44,6 +49,6 @@ def main():
   if not row['verified']:missing.append(row['sms_trace']);continue
   paths={e.get('video_report',e.get('report')) for e in row['evidence']}
   if not paths&included:missing.append(row['sms_trace'])
- result=dict(passed=goals['passed'] and not missing,md_sha256=SHA,completed_clips=clips,excluded=excluded,missing_selected_goal_movies=missing,all_npcs_complete=False,scope='Finished actual native excerpts, each cold replayed and fully AV-decoded. Failed searches, technical recorder clips, unfinished reveals and PAL clips are excluded from NTSC delivery.')
+ result=dict(passed=goals['passed'] and not missing,md_sha256=SHA,completed_clips=clips,excluded=excluded,missing_selected_goal_movies=missing,all_npcs_complete=False,scope='Finished actual native actions (stable interior save services need not leave the house), each cold replayed and fully AV-decoded. Failed searches, technical recorder clips, unfinished reveals and PAL clips are excluded from NTSC delivery.')
  (ROOT/'analysis/md_selected_proof_video_collection.json').write_bytes((json.dumps(result,indent=2)+'\n').encode());print(json.dumps(dict(passed=result['passed'],clips=len(clips),excluded=len(excluded),missing=missing)),flush=True)
 if __name__=='__main__':main()

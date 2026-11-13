@@ -99,9 +99,9 @@ def main():
         row=cases[reference];row['md_evidence'].append(dict(trace=trace,region=region,report=video_path.relative_to(ROOT).as_posix(),report_sha256=sha(video_path),conversations=len(r.get('visited',[])),sms_reference_bitmap_boundaries=r.get('sms_reference_bitmap_boundaries',{}),scope=r['scope']))
         if region=='ntsc':row.update(md_passed=True,fixed_replay_passed=True,video_verified=True)
     rows=[cases[k] for k in sorted(cases)];done=sum(r['md_passed'] and r['fixed_replay_passed'] and r['video_verified'] for r in rows)
-    report=dict(date=date.today().isoformat(),md_sha256=SHA,md_version=322,rom_status='development_not_qualified_as_release_candidate',
+    report=dict(date=date.today().isoformat(),md_sha256=SHA,md_version=322,rom_status='publication_status_in_versions_index',
         all_selected_sms_cases_verified_on_md=bool(rows) and done==len(rows),retained_sms_recording_cases=len(rows),md_ntsc_played_replayed_and_filmed_cases=done,
-        all_npcs_complete=False,all_items_or_monsters_globally_certified=False,point6_status='open_until_md_counterparts_and_video_complete',
+        all_npcs_complete=False,all_items_or_monsters_globally_certified=False,point6_status='diagnostic_trace_matching_separate_from_selected_gameplay_goals',selected_gameplay_goal_register='analysis/md_selected_gameplay_goal_closure.json',
         scope='Inventory of selected SMS recordings, not a count of NPCs or a global completion percentage. Each trace can contain multiple interactions. Coverage is credited only to its exact SMS reference, actual MD result, fixed replay and decoded video. PAL counterpart evidence is recorded separately.',
         sources=sources,cases=rows)
     report['partial_exits_not_credited']=partial_exits
@@ -112,7 +112,7 @@ def main():
         r=load(path)
         if r.get('passed'):
             movie_rows.append(f'| [{path.parent.name}]({path.parent.name}/{Path(r["movie"]).name}) | {r["duration_seconds"]:.2f} s | [Rapport]({path.parent.name}/report.json) |')
-    text='# Annexes MD — relecture en cours\n\nChaque MP4 est une branche réellement rejouée, avec son du jeu. Les chargements Continuer utilisent seulement une SRAM écrite par le jeu et restent séparés des campagnes depuis Nouvelle partie. Aucune couverture globale tous PNJ/tous objets/toutes quêtes n’est déduite de cette liste.\n\n| Extrait | Durée | Preuve |\n| --- | --- | --- |\n'+'\n'.join(movie_rows)+'\n\nLes MP4 restent locaux. Les rapports réussis vérifient le décodage audio/vidéo intégral, la synchronisation, la RAM et les pixels finaux identiques au rejeu. [Suivi des cas](../../analysis/md_annex_replay_coverage.json).\n'
+    text='# Annexes MD — preuves de rejeu\n\nChaque MP4 est une branche réellement rejouée, avec son du jeu. Les chargements Continuer utilisent seulement une SRAM écrite par le jeu et restent séparés des campagnes depuis Nouvelle partie. Aucune couverture globale tous PNJ/tous objets/toutes quêtes n’est déduite de cette liste.\n\n| Extrait | Durée | Preuve |\n| --- | --- | --- |\n'+'\n'.join(movie_rows)+'\n\nLes MP4 restent locaux. Les rapports réussis vérifient le décodage audio/vidéo intégral, la synchronisation, la RAM et les pixels finaux identiques au rejeu. [Suivi des cas](../../analysis/md_annex_replay_coverage.json).\n'
     write_bytes(ROOT/'videos/md-annexes-2026-11-12/README.md',text.encode())
     print(json.dumps({k:v for k,v in report.items() if k not in ('sources','cases','partial_exits_not_credited')},ensure_ascii=False),flush=True)
 if __name__=='__main__':main()

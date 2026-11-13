@@ -2,13 +2,14 @@
   "date": "2026-11-13",
   "md_sha256": "1421abe47de95ac104a03e2fb1be7001f70aeca1fbb6a9b35669aa6e98b7d9a4",
   "md_version": 322,
-  "rom_status": "development_not_qualified_as_release_candidate",
+  "rom_status": "publication_status_in_versions_index",
   "all_selected_sms_cases_verified_on_md": false,
   "retained_sms_recording_cases": 409,
-  "md_ntsc_played_replayed_and_filmed_cases": 161,
+  "md_ntsc_played_replayed_and_filmed_cases": 163,
   "all_npcs_complete": false,
   "all_items_or_monsters_globally_certified": false,
-  "point6_status": "open_until_md_counterparts_and_video_complete",
+  "point6_status": "diagnostic_trace_matching_separate_from_selected_gameplay_goals",
+  "selected_gameplay_goal_register": "analysis/md_selected_gameplay_goal_closure.json",
   "scope": "Inventory of selected SMS recordings, not a count of NPCs or a global completion percentage. Each trace can contain multiple interactions. Coverage is credited only to its exact SMS reference, actual MD result, fixed replay and decoded video. PAL counterpart evidence is recorded separately.",
   "sources": {
     "sms_points_3_4_closure.json": "b66532358f2e0fc7de4fdb69f23ec40d8847ffe6201d21289ad8b94db30c440a",
@@ -3241,10 +3242,20 @@
         "sms_points_3_4_closure.json",
         "sms_six_points_progress.json"
       ],
-      "md_passed": false,
-      "fixed_replay_passed": false,
-      "video_verified": false,
-      "md_evidence": []
+      "md_passed": true,
+      "fixed_replay_passed": true,
+      "video_verified": true,
+      "md_evidence": [
+        {
+          "trace": "natural-service-route/md-annex-knight-low-magic-magic-poor-choices01",
+          "region": "ntsc",
+          "report": "videos/md-annexes-2026-11-12/md-annex-knight-low-magic-magic-poor-choices01/report.json",
+          "report_sha256": "cd8fbfbe142be2c387ff98d1a58bd44a98dfeeb678db1160b221e149598e32a3",
+          "conversations": 0,
+          "sms_reference_bitmap_boundaries": {},
+          "scope": "Actual native goods, exact 1040-byte played SMS result bitmap, exact currency/resources and fully settled normal exit. No resource, quest or actor fixture."
+        }
+      ]
     },
     {
       "sms_trace": "natural-service-route/sms-npc-merchant-variant-magic32-poor-magic32-poor-choices01",
@@ -3252,10 +3263,20 @@
         "sms_points_3_4_closure.json",
         "sms_six_points_progress.json"
       ],
-      "md_passed": false,
-      "fixed_replay_passed": false,
-      "video_verified": false,
-      "md_evidence": []
+      "md_passed": true,
+      "fixed_replay_passed": true,
+      "video_verified": true,
+      "md_evidence": [
+        {
+          "trace": "natural-service-route/md-annex-magic32-earned-budget-magic32-poor-choices01",
+          "region": "ntsc",
+          "report": "videos/md-annexes-2026-11-12/md-annex-magic32-earned-budget-magic32-poor-choices01/report.json",
+          "report_sha256": "3435b6cc0678b5c2723c4e7a5767068bb11bfaf5ed68b9cf09cf74ecf3f7fbd4",
+          "conversations": 0,
+          "sms_reference_bitmap_boundaries": {},
+          "scope": "Actual native goods, exact 1040-byte played SMS result bitmap, exact currency/resources and fully settled normal exit. No resource, quest or actor fixture."
+        }
+      ]
     },
     {
       "sms_trace": "natural-service-route/sms-npc-merchant-variant-magic64-magic64-choices01",

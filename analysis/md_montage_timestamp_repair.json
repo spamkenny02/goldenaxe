@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "status": "repaired_full_av_decode_and_all_segment_boundaries_exact",
+  "original_unqualified_movie_sha256": "cb7a68077a89d8b30ed59ea6dea0c269ca559c1d28f4bd03cb8cce9203ca1637",
+  "frames": 727755,
+  "detected_issue": "Concat retained the main recording AAC/video initial offset, producing one repaired DTS at the first card and a duplicate frame timestamp at410213 in the null decoder mux.",
+  "fix": "Normalize video packet DTS by packet index at152024/2537fps and preserve rounded native PTS-DTS reordering offsets. Copy compressed gameplay payloads without video reencoding. Full decoded boundary comparison remains mandatory.",
+  "source_gameplay_or_rom_changes": false,
+  "movie_sha256": "45cae59fc5ff682d970d818fca145851655ce0ce81a7fe67ef7450f7b4e8b290",
+  "full_audio_video_decoded": true,
+  "boundary_report": "analysis/md_montage_boundary_pixels_report.json"
+}

@@ -1,8 +1,8 @@
 {
-  "passed": false,
+  "passed": true,
   "md_sha256": "1421abe47de95ac104a03e2fb1be7001f70aeca1fbb6a9b35669aa6e98b7d9a4",
   "required_selected_gameplay_goals": 145,
-  "verified_selected_gameplay_goals": 140,
+  "verified_selected_gameplay_goals": 145,
   "cases": [
     {
       "sms_trace": "natural-service-route/sms-npc-service-refusals-2e-merchant-refuse02",
@@ -993,7 +993,19 @@
     },
     {
       "sms_trace": "natural-service-route/sms-npc-merchant-variant-magic32-poor-magic32-poor-choices01",
-      "verified": false
+      "verified": true,
+      "method": "exact_source_reference",
+      "evidence": [
+        {
+          "trace": "natural-service-route/md-annex-magic32-earned-budget-magic32-poor-choices01",
+          "region": "ntsc",
+          "report": "videos/md-annexes-2026-11-12/md-annex-magic32-earned-budget-magic32-poor-choices01/report.json",
+          "report_sha256": "3435b6cc0678b5c2723c4e7a5767068bb11bfaf5ed68b9cf09cf74ecf3f7fbd4",
+          "conversations": 0,
+          "sms_reference_bitmap_boundaries": {},
+          "scope": "Actual native goods, exact 1040-byte played SMS result bitmap, exact currency/resources and fully settled normal exit. No resource, quest or actor fixture."
+        }
+      ]
     },
     {
       "sms_trace": "natural-service-route/sms-npc-merchant-variant-magic-clamp-magic-clamp-choices01",
@@ -1014,22 +1026,18 @@
     {
       "sms_trace": "natural-service-route/sms-npc-merchant-variant-magic-poor-magic-poor-choices01",
       "verified": true,
-      "method": "typed_gameplay_predicates",
-      "predicate": "merchant",
+      "method": "exact_source_reference",
       "evidence": [
         {
           "trace": "natural-service-route/md-annex-knight-low-magic-magic-poor-choices01",
-          "video_report": "videos/md-annexes-2026-11-12/md-annex-knight-low-magic-magic-poor-choices01/report.json",
-          "video_report_sha256": "cd8fbfbe142be2c387ff98d1a58bd44a98dfeeb678db1160b221e149598e32a3",
-          "movie_sha256": "3ab74fc22aff5d24947edc42144ee7103fa59f2806968a87af47b99593e717ca",
-          "producer_report_sha256": "b6ea654049684a3a5f2cb41bc571cd211dce29b09e3b45e52fef3b7bd9606605",
-          "cold_replay_report": "validation/natural-service-route/md-annex-knight-low-magic-magic-poor-choices01-assisted-fixed-replay-421755/replay_report.json",
-          "cold_replay_sha256": "ac173b381ed7aebc06daaaa6b3d24689bf07ab7e34730eb888472dfef86c6d41",
-          "source_capture_sha256": "a63f23cb7034ceac1b8c65005a2005fbd65ebecc9c46e665b7319d8045452c2e"
+          "region": "ntsc",
+          "report": "videos/md-annexes-2026-11-12/md-annex-knight-low-magic-magic-poor-choices01/report.json",
+          "report_sha256": "cd8fbfbe142be2c387ff98d1a58bd44a98dfeeb678db1160b221e149598e32a3",
+          "conversations": 0,
+          "sms_reference_bitmap_boundaries": {},
+          "scope": "Actual native goods, exact 1040-byte played SMS result bitmap, exact currency/resources and fully settled normal exit. No resource, quest or actor fixture."
         }
-      ],
-      "details": {},
-      "sms_producer_sha256": "0b288b6caea6653876b6b10aa5d90e03c4c88408f8b7f031e65487a3dcb369d9"
+      ]
     },
     {
       "sms_trace": "natural-service-route/sms-npc-knight-shield-f9-buy01",
@@ -1393,7 +1401,32 @@
     },
     {
       "sms_trace": "natural-service-route/sms-npc-save-2e-slot0-01",
-      "verified": false
+      "verified": true,
+      "method": "typed_gameplay_predicates",
+      "predicate": "save",
+      "evidence": [
+        {
+          "trace": "natural-service-route/md-annex-fresh-save-2e-slot0-write01",
+          "video_report": "videos/md-annexes-2026-11-12/md-annex-fresh-save-2e-slot0-write01/report.json",
+          "video_report_sha256": "bfefe7f157a0b6b5d3ff3ddaa21bff7fac03b641f822dbd97fd9e6f0aebf23f9",
+          "movie_sha256": "43394c2334f4e98a62e09e12279873fe449730c5bf1622c0552dc3838a147393",
+          "producer_report_sha256": "5f0c108b2a7ae2266b57e2cbe4dce15b931104fa91517508822b81999e832a40",
+          "cold_replay_report": "validation/natural-service-route/md-annex-fresh-save-2e-slot0-write01-assisted-fixed-replay-385022/replay_report.json",
+          "cold_replay_sha256": "86c691839087ce1d43b091741a2efe05d36f723642776fbc4749546e20334095",
+          "source_capture_sha256": "180241c635fb7f4259c1ecc08f0e7f72075c605e43ec965e7af0cf5d525c6586"
+        }
+      ],
+      "details": {
+        "slot": 0,
+        "normal_continue_videos": [
+          "videos/md-annexes-2026-11-12/md-fresh-save-2e-slot0-continue01/report.json"
+        ],
+        "sram_sha256": "c96257cce92eb507cf505879e9ffb40b201cf94488580618c9da52b0192b304c",
+        "sms_save_list_already_populated": false,
+        "native_save_list_already_populated": false,
+        "frame_or_full_state_identity_claimed": false
+      },
+      "sms_producer_sha256": "373660da80be8a8a2aaee7288a006ad0b7b9f5d68e06ae38a0156587071ae995"
     },
     {
       "sms_trace": "natural-service-route/sms-npc-save-location-9c-slot0-01",
@@ -1417,7 +1450,23 @@
         "normal_continue_videos": [
           "videos/md-annexes-2026-11-12/md-save-9c-continue01/report.json"
         ],
-        "sram_sha256": "8e01e575200763ebff6325439864c49b6f63c969d14a918c7684a0f632b8c27a"
+        "sram_sha256": "8e01e575200763ebff6325439864c49b6f63c969d14a918c7684a0f632b8c27a",
+        "sms_save_list_already_populated": false,
+        "native_save_list_already_populated": true,
+        "frame_or_full_state_identity_claimed": false,
+        "empty_save_list_shared_handler_support": {
+          "trace": "natural-service-route/md-annex-eren-save-slot0-01",
+          "video_report": "videos/md-annexes-2026-11-12/eren-sauvegarde-slot0-01/report.json",
+          "video_report_sha256": "01be29ff588ec1ec65940418b95a56ae7f401cd895e7edefb62edc58144850c3",
+          "movie_sha256": "8f6a557066861e8da5c7dd46779aa66805818c3431f4369d53b00f7303417984",
+          "producer_report_sha256": "908786a93616a9b88214521e098f01b29607743583c2266045dd777ba6337e7a",
+          "cold_replay_report": "validation/natural-service-route/md-annex-eren-save-slot0-01-fixed-replay/replay_report.json",
+          "cold_replay_sha256": "44c52babb385afe1b2c7910338b6ca5cce58f6a8d030804b81d039d99419519b",
+          "source_capture_sha256": "e3c36c397974ea32cd229c26507f7e6601a128cc63c2159744f53c3a6ce75df6"
+        },
+        "shared_handler_support_outside": 148,
+        "native_selected_goal_outside": 46,
+        "exact_combined_source_precondition_claimed": false
       },
       "sms_producer_sha256": "bc4022747ca0d4718a2bbf0599139febc76577e72c9de2d34e1bad82ea3319a2"
     },
@@ -1443,7 +1492,23 @@
         "normal_continue_videos": [
           "videos/md-annexes-2026-11-12/md-save-ce-continue01/report.json"
         ],
-        "sram_sha256": "645c72a5919ced0fa9ea730441ec9aaa9de0f3af58a096dee6112bbed3ab9a1a"
+        "sram_sha256": "645c72a5919ced0fa9ea730441ec9aaa9de0f3af58a096dee6112bbed3ab9a1a",
+        "sms_save_list_already_populated": false,
+        "native_save_list_already_populated": true,
+        "frame_or_full_state_identity_claimed": false,
+        "empty_save_list_shared_handler_support": {
+          "trace": "natural-service-route/md-annex-eren-save-slot0-01",
+          "video_report": "videos/md-annexes-2026-11-12/eren-sauvegarde-slot0-01/report.json",
+          "video_report_sha256": "01be29ff588ec1ec65940418b95a56ae7f401cd895e7edefb62edc58144850c3",
+          "movie_sha256": "8f6a557066861e8da5c7dd46779aa66805818c3431f4369d53b00f7303417984",
+          "producer_report_sha256": "908786a93616a9b88214521e098f01b29607743583c2266045dd777ba6337e7a",
+          "cold_replay_report": "validation/natural-service-route/md-annex-eren-save-slot0-01-fixed-replay/replay_report.json",
+          "cold_replay_sha256": "44c52babb385afe1b2c7910338b6ca5cce58f6a8d030804b81d039d99419519b",
+          "source_capture_sha256": "e3c36c397974ea32cd229c26507f7e6601a128cc63c2159744f53c3a6ce75df6"
+        },
+        "shared_handler_support_outside": 148,
+        "native_selected_goal_outside": 46,
+        "exact_combined_source_precondition_claimed": false
       },
       "sms_producer_sha256": "d7608962f18149730811821d30befb7c27993be76f50740d436835a77bd88906"
     },
@@ -1469,7 +1534,23 @@
         "normal_continue_videos": [
           "videos/md-annexes-2026-11-12/md-save-fe-continue01/report.json"
         ],
-        "sram_sha256": "d1b36f5eaabc47b7a9443dbbb7f6ff8cd00a9e99fa8661dee23c13eda9e12221"
+        "sram_sha256": "d1b36f5eaabc47b7a9443dbbb7f6ff8cd00a9e99fa8661dee23c13eda9e12221",
+        "sms_save_list_already_populated": false,
+        "native_save_list_already_populated": true,
+        "frame_or_full_state_identity_claimed": false,
+        "empty_save_list_shared_handler_support": {
+          "trace": "natural-service-route/md-annex-eren-save-slot0-01",
+          "video_report": "videos/md-annexes-2026-11-12/eren-sauvegarde-slot0-01/report.json",
+          "video_report_sha256": "01be29ff588ec1ec65940418b95a56ae7f401cd895e7edefb62edc58144850c3",
+          "movie_sha256": "8f6a557066861e8da5c7dd46779aa66805818c3431f4369d53b00f7303417984",
+          "producer_report_sha256": "908786a93616a9b88214521e098f01b29607743583c2266045dd777ba6337e7a",
+          "cold_replay_report": "validation/natural-service-route/md-annex-eren-save-slot0-01-fixed-replay/replay_report.json",
+          "cold_replay_sha256": "44c52babb385afe1b2c7910338b6ca5cce58f6a8d030804b81d039d99419519b",
+          "source_capture_sha256": "e3c36c397974ea32cd229c26507f7e6601a128cc63c2159744f53c3a6ce75df6"
+        },
+        "shared_handler_support_outside": 148,
+        "native_selected_goal_outside": 46,
+        "exact_combined_source_precondition_claimed": false
       },
       "sms_producer_sha256": "7360fc9f79803bdd795117b6c39b1ff035602b342f696a0f1c78a5b011f27ad6"
     },
@@ -1495,7 +1576,10 @@
         "normal_continue_videos": [
           "videos/md-annexes-2026-11-12/md-save-fa-continue01/report.json"
         ],
-        "sram_sha256": "00ae2f4bcd2583a2512b446b1ac4605a923a468a6c46b476bb0141faa1965545"
+        "sram_sha256": "00ae2f4bcd2583a2512b446b1ac4605a923a468a6c46b476bb0141faa1965545",
+        "sms_save_list_already_populated": false,
+        "native_save_list_already_populated": false,
+        "frame_or_full_state_identity_claimed": false
       },
       "sms_producer_sha256": "979acdf849ce4c900d690b70fa180ee358a7c659cf95a236ad3e677c0c79d0f5"
     },
@@ -1521,7 +1605,23 @@
         "normal_continue_videos": [
           "videos/md-annexes-2026-11-12/md-save-d5-continue01/report.json"
         ],
-        "sram_sha256": "6fd28e09517fdb0679b00410b2d9e9ad43980006fb2b4d0435f3bb8a4efe1c46"
+        "sram_sha256": "6fd28e09517fdb0679b00410b2d9e9ad43980006fb2b4d0435f3bb8a4efe1c46",
+        "sms_save_list_already_populated": false,
+        "native_save_list_already_populated": true,
+        "frame_or_full_state_identity_claimed": false,
+        "empty_save_list_shared_handler_support": {
+          "trace": "natural-service-route/md-annex-eren-save-slot0-01",
+          "video_report": "videos/md-annexes-2026-11-12/eren-sauvegarde-slot0-01/report.json",
+          "video_report_sha256": "01be29ff588ec1ec65940418b95a56ae7f401cd895e7edefb62edc58144850c3",
+          "movie_sha256": "8f6a557066861e8da5c7dd46779aa66805818c3431f4369d53b00f7303417984",
+          "producer_report_sha256": "908786a93616a9b88214521e098f01b29607743583c2266045dd777ba6337e7a",
+          "cold_replay_report": "validation/natural-service-route/md-annex-eren-save-slot0-01-fixed-replay/replay_report.json",
+          "cold_replay_sha256": "44c52babb385afe1b2c7910338b6ca5cce58f6a8d030804b81d039d99419519b",
+          "source_capture_sha256": "e3c36c397974ea32cd229c26507f7e6601a128cc63c2159744f53c3a6ce75df6"
+        },
+        "shared_handler_support_outside": 148,
+        "native_selected_goal_outside": 46,
+        "exact_combined_source_precondition_claimed": false
       },
       "sms_producer_sha256": "e376fc402dec320da9ce49cc40450722dc25ccc7d28e9dbd2f7d6cc263a56c19"
     },
@@ -1547,7 +1647,23 @@
         "normal_continue_videos": [
           "videos/md-annexes-2026-11-12/md-save-94-continue01/report.json"
         ],
-        "sram_sha256": "eb9bfc9c91a8a6443629d6cbc13eb58a42d3e9196d6eaf96434c30e15806ab03"
+        "sram_sha256": "eb9bfc9c91a8a6443629d6cbc13eb58a42d3e9196d6eaf96434c30e15806ab03",
+        "sms_save_list_already_populated": false,
+        "native_save_list_already_populated": true,
+        "frame_or_full_state_identity_claimed": false,
+        "empty_save_list_shared_handler_support": {
+          "trace": "natural-service-route/md-annex-eren-save-slot0-01",
+          "video_report": "videos/md-annexes-2026-11-12/eren-sauvegarde-slot0-01/report.json",
+          "video_report_sha256": "01be29ff588ec1ec65940418b95a56ae7f401cd895e7edefb62edc58144850c3",
+          "movie_sha256": "8f6a557066861e8da5c7dd46779aa66805818c3431f4369d53b00f7303417984",
+          "producer_report_sha256": "908786a93616a9b88214521e098f01b29607743583c2266045dd777ba6337e7a",
+          "cold_replay_report": "validation/natural-service-route/md-annex-eren-save-slot0-01-fixed-replay/replay_report.json",
+          "cold_replay_sha256": "44c52babb385afe1b2c7910338b6ca5cce58f6a8d030804b81d039d99419519b",
+          "source_capture_sha256": "e3c36c397974ea32cd229c26507f7e6601a128cc63c2159744f53c3a6ce75df6"
+        },
+        "shared_handler_support_outside": 148,
+        "native_selected_goal_outside": 46,
+        "exact_combined_source_precondition_claimed": false
       },
       "sms_producer_sha256": "38b9acda4c06f400bad8ccb21ae3575d024501a1f8254e0ff03f428aca84df2e"
     },
@@ -1573,7 +1689,23 @@
         "normal_continue_videos": [
           "videos/md-annexes-2026-11-12/md-save-52-continue01/report.json"
         ],
-        "sram_sha256": "ccc8a8192475c44cc4c8d12321dbfdc2351765a0496c3094e592d4c0649c8da1"
+        "sram_sha256": "ccc8a8192475c44cc4c8d12321dbfdc2351765a0496c3094e592d4c0649c8da1",
+        "sms_save_list_already_populated": false,
+        "native_save_list_already_populated": true,
+        "frame_or_full_state_identity_claimed": false,
+        "empty_save_list_shared_handler_support": {
+          "trace": "natural-service-route/md-annex-eren-save-slot0-01",
+          "video_report": "videos/md-annexes-2026-11-12/eren-sauvegarde-slot0-01/report.json",
+          "video_report_sha256": "01be29ff588ec1ec65940418b95a56ae7f401cd895e7edefb62edc58144850c3",
+          "movie_sha256": "8f6a557066861e8da5c7dd46779aa66805818c3431f4369d53b00f7303417984",
+          "producer_report_sha256": "908786a93616a9b88214521e098f01b29607743583c2266045dd777ba6337e7a",
+          "cold_replay_report": "validation/natural-service-route/md-annex-eren-save-slot0-01-fixed-replay/replay_report.json",
+          "cold_replay_sha256": "44c52babb385afe1b2c7910338b6ca5cce58f6a8d030804b81d039d99419519b",
+          "source_capture_sha256": "e3c36c397974ea32cd229c26507f7e6601a128cc63c2159744f53c3a6ce75df6"
+        },
+        "shared_handler_support_outside": 148,
+        "native_selected_goal_outside": 46,
+        "exact_combined_source_precondition_claimed": false
       },
       "sms_producer_sha256": "cbef551406ab51dce7496e1ba76804ce400ca2a8859ba64157a00c5478d1c6e7"
     },
@@ -1599,7 +1731,23 @@
         "normal_continue_videos": [
           "videos/md-annexes-2026-11-12/md-save-55-continue01/report.json"
         ],
-        "sram_sha256": "81534a8cdb37bbf08648556167c59e9513820a9dd38661df7fd692cf676bb5dc"
+        "sram_sha256": "81534a8cdb37bbf08648556167c59e9513820a9dd38661df7fd692cf676bb5dc",
+        "sms_save_list_already_populated": false,
+        "native_save_list_already_populated": true,
+        "frame_or_full_state_identity_claimed": false,
+        "empty_save_list_shared_handler_support": {
+          "trace": "natural-service-route/md-annex-eren-save-slot0-01",
+          "video_report": "videos/md-annexes-2026-11-12/eren-sauvegarde-slot0-01/report.json",
+          "video_report_sha256": "01be29ff588ec1ec65940418b95a56ae7f401cd895e7edefb62edc58144850c3",
+          "movie_sha256": "8f6a557066861e8da5c7dd46779aa66805818c3431f4369d53b00f7303417984",
+          "producer_report_sha256": "908786a93616a9b88214521e098f01b29607743583c2266045dd777ba6337e7a",
+          "cold_replay_report": "validation/natural-service-route/md-annex-eren-save-slot0-01-fixed-replay/replay_report.json",
+          "cold_replay_sha256": "44c52babb385afe1b2c7910338b6ca5cce58f6a8d030804b81d039d99419519b",
+          "source_capture_sha256": "e3c36c397974ea32cd229c26507f7e6601a128cc63c2159744f53c3a6ce75df6"
+        },
+        "shared_handler_support_outside": 148,
+        "native_selected_goal_outside": 46,
+        "exact_combined_source_precondition_claimed": false
       },
       "sms_producer_sha256": "899b57b7e99c0258e0e23c275bc74cc8897ff2bd02b2adeae9814683fd9019bb"
     },
@@ -1625,7 +1773,23 @@
         "normal_continue_videos": [
           "videos/md-annexes-2026-11-12/md-save-57-continue01/report.json"
         ],
-        "sram_sha256": "c38a3f19e2e764a8b7bc373c9f2b2f5e509505f5e33c1730571262435770f901"
+        "sram_sha256": "c38a3f19e2e764a8b7bc373c9f2b2f5e509505f5e33c1730571262435770f901",
+        "sms_save_list_already_populated": false,
+        "native_save_list_already_populated": true,
+        "frame_or_full_state_identity_claimed": false,
+        "empty_save_list_shared_handler_support": {
+          "trace": "natural-service-route/md-annex-eren-save-slot0-01",
+          "video_report": "videos/md-annexes-2026-11-12/eren-sauvegarde-slot0-01/report.json",
+          "video_report_sha256": "01be29ff588ec1ec65940418b95a56ae7f401cd895e7edefb62edc58144850c3",
+          "movie_sha256": "8f6a557066861e8da5c7dd46779aa66805818c3431f4369d53b00f7303417984",
+          "producer_report_sha256": "908786a93616a9b88214521e098f01b29607743583c2266045dd777ba6337e7a",
+          "cold_replay_report": "validation/natural-service-route/md-annex-eren-save-slot0-01-fixed-replay/replay_report.json",
+          "cold_replay_sha256": "44c52babb385afe1b2c7910338b6ca5cce58f6a8d030804b81d039d99419519b",
+          "source_capture_sha256": "e3c36c397974ea32cd229c26507f7e6601a128cc63c2159744f53c3a6ce75df6"
+        },
+        "shared_handler_support_outside": 148,
+        "native_selected_goal_outside": 46,
+        "exact_combined_source_precondition_claimed": false
       },
       "sms_producer_sha256": "1e9df8e59405a74982e3189a2c8ffa8c96bb4687900d37f3b7f5f62f9c813719"
     },
@@ -1651,7 +1815,23 @@
         "normal_continue_videos": [
           "videos/md-annexes-2026-11-12/md-save-21-continue01/report.json"
         ],
-        "sram_sha256": "fd706e22d8c8618002e653ac6bafeb1d5c8f49a155950dc015cdb84324266114"
+        "sram_sha256": "fd706e22d8c8618002e653ac6bafeb1d5c8f49a155950dc015cdb84324266114",
+        "sms_save_list_already_populated": false,
+        "native_save_list_already_populated": true,
+        "frame_or_full_state_identity_claimed": false,
+        "empty_save_list_shared_handler_support": {
+          "trace": "natural-service-route/md-annex-eren-save-slot0-01",
+          "video_report": "videos/md-annexes-2026-11-12/eren-sauvegarde-slot0-01/report.json",
+          "video_report_sha256": "01be29ff588ec1ec65940418b95a56ae7f401cd895e7edefb62edc58144850c3",
+          "movie_sha256": "8f6a557066861e8da5c7dd46779aa66805818c3431f4369d53b00f7303417984",
+          "producer_report_sha256": "908786a93616a9b88214521e098f01b29607743583c2266045dd777ba6337e7a",
+          "cold_replay_report": "validation/natural-service-route/md-annex-eren-save-slot0-01-fixed-replay/replay_report.json",
+          "cold_replay_sha256": "44c52babb385afe1b2c7910338b6ca5cce58f6a8d030804b81d039d99419519b",
+          "source_capture_sha256": "e3c36c397974ea32cd229c26507f7e6601a128cc63c2159744f53c3a6ce75df6"
+        },
+        "shared_handler_support_outside": 148,
+        "native_selected_goal_outside": 46,
+        "exact_combined_source_precondition_claimed": false
       },
       "sms_producer_sha256": "1a06289ec6d666f23ed6bac91ff92a5f81fd4031a7f82a7ba2347ef11e89a14e"
     },
@@ -1677,7 +1857,23 @@
         "normal_continue_videos": [
           "videos/md-annexes-2026-11-12/md-save-f0-continue01/report.json"
         ],
-        "sram_sha256": "1d102b465d0f66d9a1f801637649881f67fe17137439355dc95a5a08491a981c"
+        "sram_sha256": "1d102b465d0f66d9a1f801637649881f67fe17137439355dc95a5a08491a981c",
+        "sms_save_list_already_populated": false,
+        "native_save_list_already_populated": true,
+        "frame_or_full_state_identity_claimed": false,
+        "empty_save_list_shared_handler_support": {
+          "trace": "natural-service-route/md-annex-eren-save-slot0-01",
+          "video_report": "videos/md-annexes-2026-11-12/eren-sauvegarde-slot0-01/report.json",
+          "video_report_sha256": "01be29ff588ec1ec65940418b95a56ae7f401cd895e7edefb62edc58144850c3",
+          "movie_sha256": "8f6a557066861e8da5c7dd46779aa66805818c3431f4369d53b00f7303417984",
+          "producer_report_sha256": "908786a93616a9b88214521e098f01b29607743583c2266045dd777ba6337e7a",
+          "cold_replay_report": "validation/natural-service-route/md-annex-eren-save-slot0-01-fixed-replay/replay_report.json",
+          "cold_replay_sha256": "44c52babb385afe1b2c7910338b6ca5cce58f6a8d030804b81d039d99419519b",
+          "source_capture_sha256": "e3c36c397974ea32cd229c26507f7e6601a128cc63c2159744f53c3a6ce75df6"
+        },
+        "shared_handler_support_outside": 148,
+        "native_selected_goal_outside": 46,
+        "exact_combined_source_precondition_claimed": false
       },
       "sms_producer_sha256": "417eb01ed2582ebb6139ffb06ab57ae84d04e887b1d4f9bb03a82878acb0f6e6"
     },
@@ -1703,7 +1899,23 @@
         "normal_continue_videos": [
           "videos/md-annexes-2026-11-12/md-save-c7-continue01/report.json"
         ],
-        "sram_sha256": "dc83569707f0f60a64350fed96f0d43263867945d031bbe4ea2a53a1559ccf2f"
+        "sram_sha256": "dc83569707f0f60a64350fed96f0d43263867945d031bbe4ea2a53a1559ccf2f",
+        "sms_save_list_already_populated": false,
+        "native_save_list_already_populated": true,
+        "frame_or_full_state_identity_claimed": false,
+        "empty_save_list_shared_handler_support": {
+          "trace": "natural-service-route/md-annex-eren-save-slot0-01",
+          "video_report": "videos/md-annexes-2026-11-12/eren-sauvegarde-slot0-01/report.json",
+          "video_report_sha256": "01be29ff588ec1ec65940418b95a56ae7f401cd895e7edefb62edc58144850c3",
+          "movie_sha256": "8f6a557066861e8da5c7dd46779aa66805818c3431f4369d53b00f7303417984",
+          "producer_report_sha256": "908786a93616a9b88214521e098f01b29607743583c2266045dd777ba6337e7a",
+          "cold_replay_report": "validation/natural-service-route/md-annex-eren-save-slot0-01-fixed-replay/replay_report.json",
+          "cold_replay_sha256": "44c52babb385afe1b2c7910338b6ca5cce58f6a8d030804b81d039d99419519b",
+          "source_capture_sha256": "e3c36c397974ea32cd229c26507f7e6601a128cc63c2159744f53c3a6ce75df6"
+        },
+        "shared_handler_support_outside": 148,
+        "native_selected_goal_outside": 46,
+        "exact_combined_source_precondition_claimed": false
       },
       "sms_producer_sha256": "a5a40f937eabf50fc3f33270d7301a6e7bd2bf9f50b4efedd53893e9bbeb138e"
     },
@@ -1729,21 +1941,151 @@
         "normal_continue_videos": [
           "videos/md-annexes-2026-11-12/md-save-b8-continue01/report.json"
         ],
-        "sram_sha256": "9f6169675aeafed91bfe3e9e476e88b79dab20446fe9ed9c85d3f8cea5e34969"
+        "sram_sha256": "9f6169675aeafed91bfe3e9e476e88b79dab20446fe9ed9c85d3f8cea5e34969",
+        "sms_save_list_already_populated": false,
+        "native_save_list_already_populated": true,
+        "frame_or_full_state_identity_claimed": false,
+        "empty_save_list_shared_handler_support": {
+          "trace": "natural-service-route/md-annex-eren-save-slot0-01",
+          "video_report": "videos/md-annexes-2026-11-12/eren-sauvegarde-slot0-01/report.json",
+          "video_report_sha256": "01be29ff588ec1ec65940418b95a56ae7f401cd895e7edefb62edc58144850c3",
+          "movie_sha256": "8f6a557066861e8da5c7dd46779aa66805818c3431f4369d53b00f7303417984",
+          "producer_report_sha256": "908786a93616a9b88214521e098f01b29607743583c2266045dd777ba6337e7a",
+          "cold_replay_report": "validation/natural-service-route/md-annex-eren-save-slot0-01-fixed-replay/replay_report.json",
+          "cold_replay_sha256": "44c52babb385afe1b2c7910338b6ca5cce58f6a8d030804b81d039d99419519b",
+          "source_capture_sha256": "e3c36c397974ea32cd229c26507f7e6601a128cc63c2159744f53c3a6ce75df6"
+        },
+        "shared_handler_support_outside": 148,
+        "native_selected_goal_outside": 46,
+        "exact_combined_source_precondition_claimed": false
       },
       "sms_producer_sha256": "5e1c387e25f0d666738d22e8a8483eb93d36a9501ea94d8bc33ec7800b53d3e1"
     },
     {
       "sms_trace": "natural-service-route/sms-npc-save-2e-slot1-01",
-      "verified": false
+      "verified": true,
+      "method": "typed_gameplay_predicates",
+      "predicate": "save",
+      "evidence": [
+        {
+          "trace": "natural-service-route/md-annex-save-slots-2e-slot1-write01",
+          "video_report": "videos/md-annexes-2026-11-12/md-annex-save-slots-2e-slot1-write01/report.json",
+          "video_report_sha256": "82cf36baa9bf0d34751f619abaf2389b48fb547e050341f3782f25f93a734e9c",
+          "movie_sha256": "bd0382c869edf45ff305f29c46e42cfcec9bb3550e242c7e35c94cfa3027d026",
+          "producer_report_sha256": "422b627bce7f1c6cbe994e174210e7412a67f485adb174d804ce263547aeb0e5",
+          "cold_replay_report": "validation/natural-service-route/md-annex-save-slots-2e-slot1-write01-assisted-fixed-replay-368261/replay_report.json",
+          "cold_replay_sha256": "ddc60ec2e2994e8cb948f0bed136a2fe0a4a496c67ac63689ac343ebb09715c0",
+          "source_capture_sha256": "c50a0e79fa10d0636bcd2adfb3f617a36275adee75ad3022f18596dd16d09e4a"
+        }
+      ],
+      "details": {
+        "slot": 1,
+        "normal_continue_videos": [
+          "videos/md-annexes-2026-11-12/md-save-2e-slot1-continue01/report.json"
+        ],
+        "sram_sha256": "ac0e905e083f313398a16ee49c44beb6aaf1ea918e1d0e0a5d8d83962fc7cf47",
+        "sms_save_list_already_populated": false,
+        "native_save_list_already_populated": true,
+        "frame_or_full_state_identity_claimed": false,
+        "empty_save_list_shared_handler_support": {
+          "trace": "natural-service-route/md-annex-eren-save-slot0-01",
+          "video_report": "videos/md-annexes-2026-11-12/eren-sauvegarde-slot0-01/report.json",
+          "video_report_sha256": "01be29ff588ec1ec65940418b95a56ae7f401cd895e7edefb62edc58144850c3",
+          "movie_sha256": "8f6a557066861e8da5c7dd46779aa66805818c3431f4369d53b00f7303417984",
+          "producer_report_sha256": "908786a93616a9b88214521e098f01b29607743583c2266045dd777ba6337e7a",
+          "cold_replay_report": "validation/natural-service-route/md-annex-eren-save-slot0-01-fixed-replay/replay_report.json",
+          "cold_replay_sha256": "44c52babb385afe1b2c7910338b6ca5cce58f6a8d030804b81d039d99419519b",
+          "source_capture_sha256": "e3c36c397974ea32cd229c26507f7e6601a128cc63c2159744f53c3a6ce75df6"
+        },
+        "shared_handler_support_outside": 148,
+        "native_selected_goal_outside": 46,
+        "exact_combined_source_precondition_claimed": false
+      },
+      "sms_producer_sha256": "f5058a5441dbb4ddd1e701a45db623ca35a5d2b3580e8b1a0b7156192b76c795"
     },
     {
       "sms_trace": "natural-service-route/sms-npc-save-2e-slot2-01",
-      "verified": false
+      "verified": true,
+      "method": "typed_gameplay_predicates",
+      "predicate": "save",
+      "evidence": [
+        {
+          "trace": "natural-service-route/md-annex-save-slots-2e-slot2-write01",
+          "video_report": "videos/md-annexes-2026-11-12/md-annex-save-slots-2e-slot2-write01/report.json",
+          "video_report_sha256": "a319d7961b9e188b7a2c7ea814442de00597a17f308b2c7db6a1cf37dbd569a0",
+          "movie_sha256": "99c94139218cdc56a6a9dcc2e07a24e51c8336af2f7ed57844735ec30e14c87b",
+          "producer_report_sha256": "0d077c76097eb32c8dedaa0cba4ff438f788c34641e92609b7689c8afeee2979",
+          "cold_replay_report": "validation/natural-service-route/md-annex-save-slots-2e-slot2-write01-assisted-fixed-replay-369101/replay_report.json",
+          "cold_replay_sha256": "cf92b0b3ea579f50c20572492f079468d8c1ad7e0014be360720119d7cf812fb",
+          "source_capture_sha256": "88b3b434ca0cd629950f00e4aaf24fbb17e114c4880c07678e5bbc68a18b3628"
+        }
+      ],
+      "details": {
+        "slot": 2,
+        "normal_continue_videos": [
+          "videos/md-annexes-2026-11-12/md-save-2e-slot2-continue01/report.json"
+        ],
+        "sram_sha256": "115645b894be6e373f7420568abc5bffa5db4f17bf86e21fc9f3fc696bb4fd0e",
+        "sms_save_list_already_populated": false,
+        "native_save_list_already_populated": true,
+        "frame_or_full_state_identity_claimed": false,
+        "empty_save_list_shared_handler_support": {
+          "trace": "natural-service-route/md-annex-eren-save-slot0-01",
+          "video_report": "videos/md-annexes-2026-11-12/eren-sauvegarde-slot0-01/report.json",
+          "video_report_sha256": "01be29ff588ec1ec65940418b95a56ae7f401cd895e7edefb62edc58144850c3",
+          "movie_sha256": "8f6a557066861e8da5c7dd46779aa66805818c3431f4369d53b00f7303417984",
+          "producer_report_sha256": "908786a93616a9b88214521e098f01b29607743583c2266045dd777ba6337e7a",
+          "cold_replay_report": "validation/natural-service-route/md-annex-eren-save-slot0-01-fixed-replay/replay_report.json",
+          "cold_replay_sha256": "44c52babb385afe1b2c7910338b6ca5cce58f6a8d030804b81d039d99419519b",
+          "source_capture_sha256": "e3c36c397974ea32cd229c26507f7e6601a128cc63c2159744f53c3a6ce75df6"
+        },
+        "shared_handler_support_outside": 148,
+        "native_selected_goal_outside": 46,
+        "exact_combined_source_precondition_claimed": false
+      },
+      "sms_producer_sha256": "524f2a644fa8bf72f6efe3666415de666a286fdb16340a90053328b53c953ee2"
     },
     {
       "sms_trace": "natural-service-route/sms-npc-save-overwrite-2e-slot0-01",
-      "verified": false
+      "verified": true,
+      "method": "typed_gameplay_predicates",
+      "predicate": "save",
+      "evidence": [
+        {
+          "trace": "natural-service-route/md-annex-save-slots-2e-slot0-write03",
+          "video_report": "videos/md-annexes-2026-11-12/md-annex-save-slots-2e-slot0-write03/report.json",
+          "video_report_sha256": "2ed90c762747119bb9ea8184446939c651bd39af4219d196d0e0aad38b48f112",
+          "movie_sha256": "8413a76ddc5f126510303229f712091c82367d44fd0b05cc9a2f7e40bb06ce1e",
+          "producer_report_sha256": "d9fcf718f4d3a5c37f6429fb35a08842713dbf1267600d50ff1a9e6940f78495",
+          "cold_replay_report": "validation/natural-service-route/md-annex-save-slots-2e-slot0-write03-assisted-fixed-replay-367422/replay_report.json",
+          "cold_replay_sha256": "f4e72e606aef77410779f30fd4a8c4c121c1da29b0a938d2ee3e91894ba17729",
+          "source_capture_sha256": "bba520a660f6bfe2c52815fc84ad4612fdeb95dda989ec62c1d69308274cf9fb"
+        }
+      ],
+      "details": {
+        "slot": 0,
+        "normal_continue_videos": [
+          "videos/md-annexes-2026-11-12/md-save-2e-slot0-continue01/report.json"
+        ],
+        "sram_sha256": "9f52be24b3cce4b19d5f2de3df0820cc34da0ba5c7ee31611461cbad42308ad6",
+        "sms_save_list_already_populated": false,
+        "native_save_list_already_populated": true,
+        "frame_or_full_state_identity_claimed": false,
+        "empty_save_list_shared_handler_support": {
+          "trace": "natural-service-route/md-annex-eren-save-slot0-01",
+          "video_report": "videos/md-annexes-2026-11-12/eren-sauvegarde-slot0-01/report.json",
+          "video_report_sha256": "01be29ff588ec1ec65940418b95a56ae7f401cd895e7edefb62edc58144850c3",
+          "movie_sha256": "8f6a557066861e8da5c7dd46779aa66805818c3431f4369d53b00f7303417984",
+          "producer_report_sha256": "908786a93616a9b88214521e098f01b29607743583c2266045dd777ba6337e7a",
+          "cold_replay_report": "validation/natural-service-route/md-annex-eren-save-slot0-01-fixed-replay/replay_report.json",
+          "cold_replay_sha256": "44c52babb385afe1b2c7910338b6ca5cce58f6a8d030804b81d039d99419519b",
+          "source_capture_sha256": "e3c36c397974ea32cd229c26507f7e6601a128cc63c2159744f53c3a6ce75df6"
+        },
+        "shared_handler_support_outside": 148,
+        "native_selected_goal_outside": 46,
+        "exact_combined_source_precondition_claimed": false
+      },
+      "sms_producer_sha256": "2d561b9513a159eb6696f29864c8783431df0593fb175c6ecafb110d01c08991"
     },
     {
       "sms_trace": "natural-service-route/sms-npc-passage-census-36-pay02",

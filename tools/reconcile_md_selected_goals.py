@@ -54,6 +54,9 @@ def main():
   for row in load(p)['completed']:
    add(ns+f"sms-npc-save-2e-slot{row['slot']}-01",row['trace'],'save')
    if row['slot']==0:add(ns+'sms-npc-save-overwrite-2e-slot0-01',row['trace'],'save')
+ p=ROOT/'analysis/md_fresh_save_2e_campaign.json'
+ if p.exists():
+  for row in load(p)['completed']:add(ns+'sms-npc-save-2e-slot0-01',row['trace'],'save')
  for p in (ROOT/'analysis').glob('md_merchant_variant_*.json'):
   j=load(p)
   if j.get('passed'):add(j['sms_reference'],j['trace'],'merchant')
@@ -93,7 +96,9 @@ def main():
        assert cr['passed'] and cr['raw_sram_fixed_replay_exact'] and cr['save_whole_ram_png_exact'] and cr['source_sram_sha256']==r['sram_sha256'] and cr['reload_ram_writes']==0
        assert v['passed'] and v['full_audio_video_decoded'] and v['final_ram_and_pixels_exact'] and sha(ROOT/v['movie'])==v['movie_sha256'];related.append(p.relative_to(ROOT).as_posix())
     assert related,'Every mapped save requires its own genuine normal Continue video'
-    detail.update(slot=r['slot'],normal_continue_videos=related,sram_sha256=r['sram_sha256'])
+    detail.update(slot=r['slot'],normal_continue_videos=related,sram_sha256=r['sram_sha256'],sms_save_list_already_populated=bool(sr.get('first_state',{}).get('last_slot',sr.get('overwrite_requested',False))),native_save_list_already_populated=bool(r['first_state']['last_slot']),frame_or_full_state_identity_claimed=False)
+    if not detail['sms_save_list_already_populated'] and detail['native_save_list_already_populated']:
+     empty,er=verified('natural-service-route/md-annex-eren-save-slot0-01',False);assert er['first_state']['last_slot']==0 and er['game_written_save'] and er['payload_source_ram_exact'];detail.update(empty_save_list_shared_handler_support=empty,shared_handler_support_outside=0x94,native_selected_goal_outside=0x2e,exact_combined_source_precondition_claimed=False)
    elif kind=='poor':assert r['resources_and_flags_unchanged'] and r['poor_sms_bitmap_exact_frame'] and r['gold']<r['cost'] and not r['new_assistance_writes']
    elif kind=='shield':assert r['first_state']['shield']==1 and r['last_state']['shield']==2 and r['first_state']['gold']-r['last_state']['gold']==250 and not r['new_assistance_writes']
    elif kind=='merchant':assert r['choices']==sr['choices'] and len(r['completed'])==len(sr['choices']) and all(v['bitmap_exact_bytes']==1040 for v in r['completed']) and not r['new_assistance_writes']

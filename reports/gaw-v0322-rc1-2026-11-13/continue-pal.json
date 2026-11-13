@@ -1,0 +1,41 @@
+{
+  "passed": true,
+  "md_sha256": "1421abe47de95ac104a03e2fb1be7001f70aeca1fbb6a9b35669aa6e98b7d9a4",
+  "donor_rom_sha256": "b9e1f0a0543f191e24ffd6d2740a0d717501e0fcd986f8b8953a37a1b3c416a4",
+  "source_report": "analysis/game_written_save_pal_v0318_nine_crystals_report.json",
+  "source_report_sha256": "090e9ad58e06c2327baa33d7a9d641a62bda3b1a7e89b4cd242bd0975709262c",
+  "source_sram_sha256": "39491ad6c4cfbc29f46708b346504c23cf8674a59f8e1637bfdc358563ee415f",
+  "synthetic_sram_fixture": false,
+  "region": "pal",
+  "source_payload_bytes": 592,
+  "restored_source_fields": {
+    "hero_health": 41,
+    "hero_max_health": 42,
+    "hero_magic": 43,
+    "hero_max_magic": 44,
+    "hero_gold": 45,
+    "hero_keys": 46,
+    "hero_selected_item": 47,
+    "hero_basic_level": 48,
+    "hero_weapon_level": 49,
+    "hero_armor_level": 65,
+    "hero_shield_level": 66
+  },
+  "items_and_crystals_restored": true,
+  "normal_continue": true,
+  "initial_sram_imports": 1,
+  "ram_writes": 0,
+  "actors_cleared": false,
+  "ready_frame": 1384,
+  "movement_frame": 1388,
+  "checkpoint_room": 250,
+  "physical_hud_words_exact": 128,
+  "source_crystal_markers_exact": 9,
+  "core_sha256": "d17f2392115b3cd54258a1fa6c4195ddadc19b0805ebcca400db5162b1793516",
+  "driver_sha256": "38dac7acb72e557e6f63eb514b8be7c2b4c0a6a107510241f0e8aa8c1c0926c3",
+  "full_game_validated": false,
+  "limits": [
+    "This is normal Continue from an actual earlier-build save, not a new-game campaign or proof of save writing on the receiving build.",
+    "Slot0 compatibility, restored fields, inventory, crystal markers, physical HUD and movement only; other slots and hardware remain outside this proof."
+  ]
+}

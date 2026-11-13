@@ -11,72 +11,36 @@ Il distingue données extraites, règles du modèle et interactions rejouées ;
 la couverture de tous les PNJ et de toutes les quêtes secondaires reste ouverte.
 
 <!-- ROM-RELEASE:START -->
-**Version courante : v0322 — 2048 Kio.**
+**Version courante : v0322 RC1 — 2048 Kio.**
 
 [Télécharger la ROM v0322](versions/v0322-1421abe4/gaw-megadrive-v0322.bin) · [Toutes les versions](versions/README.md)
 
-Version de développement ; contrôles ciblés réussis, écarts visuels et validation complète encore ouverts.
+Release candidate RC1 : campagnes PAL/NTSC terminées et contrôles de publication réussis. Limites de fidélité et de couverture documentées dans le rapport RC.
 
 SHA-256 : `1421abe47de95ac104a03e2fb1be7001f70aeca1fbb6a9b35669aa6e98b7d9a4`
 Checksum Mega Drive : `ECB3`
 <!-- ROM-RELEASE:END -->
 
-**Reprise du 12 novembre : toutes les branches retenues sur SMS doivent être
-rejouées et filmées sur MD avant la publication d'une RC.** La campagne MD
-PAL/NTSC et sa vidéo sont terminées sur le binaire V322 corrigeant Saylun, mais
-elles ne remplacent pas les annexes. Le point 6 reste ouvert pour la couverture
-SMS/MD demandée. La V322 corrige le dialogue de Saylun ; [contrôles et limites](analysis/dialogue_empty_width_v0322_development_report.json). Le binaire V322 est publié en développement ; ce n'est pas
-une RC validée. [Suivi des branches MD](analysis/md_annex_replay_coverage.json).
+**Point 6 terminé pour le parcours retenu et ses annexes identifiées — 13 novembre 2026.**
+Les campagnes MD PAL/NTSC rejoignent la fin et le générique. Les 145 objectifs
+SMS sélectionnés ont leurs preuves de jeu, rejeu indépendant et vidéo MD.
+Le montage MD NTSC comporte la campagne complète puis des branches annoncées,
+avec chapitres, son du jeu, décodage intégral et frontières d'images vérifiées.
+[Livraison, vidéos locales et limites](reports/gaw-v0322-rc1-2026-11-13/POINT6.md).
 
-L'accès caché de la fée en `0x32` est ouvert sur MD avec Terre, puis l'entrée
-est vérifiée par un rejeu indépendant. Le blocage provenait du contrôleur de
-test, qui choisissait sa position avant la fin du chargement de la carte et
-pouvait lancer Terre avec les commandes prévues pour la hache.
-[Diagnostic et preuve d'accès](analysis/md_earth_fairy32_controller_audit.json).
-La récompense et sa vidéo sont suivies séparément dans
-[la tournée des enseignements et des fées MD](analysis/md_magic_fairy_campaign.json).
+La V322 est qualifiée RC1 pour essais externes ; son binaire n'a pas changé.
+Les 65 conversations ordinaires connues, 48 refus, 31 maisons d'argent, 11 soins,
+14 sauvegardes/Continuer, transports, jeux, équipements, enseignements et fées
+sont suivis dans [le rapprochement des objectifs](analysis/md_selected_gameplay_goal_closure.json).
+Le registre de 409 enregistrements techniques reste conservé séparément ; il
+n'est pas transformé en 409 objectifs de jeu validés.
 
-Cette tournée MD est maintenant terminée : les enseignements atteignent
-`2/2/2/1`, les huit contextes de fées sont contactés, rejoués indépendamment
-et filmés, et les capacités vie/magie atteignent `128/128`. La récompense C9
-avait été obtenue pendant la campagne ; sa visite dans cette tournée est un
-retour sans seconde récompense. Les retours chez les autres fées et les
-enseignants, ainsi que les services et équipements restants, continuent.
-Les [corrections des parcours MD](analysis/md_annex_navigation_corrections.json)
-documentent les accès réellement franchis et un achat de magie avec l'argent
-du jeu ; elles ne modifient pas le binaire V322 et ne ferment pas le point 6.
-
-La reprise du 13 novembre a terminé et filmé les douze retours chez les
-enseignants et les fées, les cinq derniers cadeaux d’équipement et leurs
-retours, les six directions de passage payant, les deux indices conditionnés
-par le sixième cristal et le retour derrière la cheminée de Saylun.
-[Retours](analysis/md_reward_returns_campaign.json) · [Équipements](analysis/md_late_equipment_campaign.json) · [Passages](analysis/md_passage_campaign.json) · [Bouclier et cheminée](analysis/md_shield_and_c7_branches.json).
-Les refus d’achat par manque d’argent et l’achat réel d’une pomme suivi du
-refus de double achat ont également leur rejeu MD, leur vidéo et une
-comparaison exacte des 1040 octets du texte SMS.
-[Manque d’argent](analysis/md_merchant_variant_apple-poor.json) · [Achat et possession](analysis/md_merchant_variant_apple-only.json).
-Les **65/65 contextes ordinaires connus** sont désormais parlés, acquittés,
-rejoués et filmés sur MD dans 41 maisons ; les cinq indices ordinaires
-associés aux équipements sont également vérifiés.
-[Maisons MD](analysis/md_plain_house_census_campaign.json) · [Indices](analysis/md_equipment_hints_campaign.json).
-Le premier jeu de hasard est filmé sur deux parties réelles, avec perte,
-gain, accord pour rejouer puis refus. Les autres hôtes restent suivis séparément.
-[Premier jeu](analysis/md_minigame_5c_play_campaign.json).
-Les onze lieux de soins et les quatorze lieux de sauvegarde sont aussi terminés
-sur MD. Chaque sauvegarde est écrite par le jeu puis chargée par Continuer.
-[Soins](analysis/md_inn_campaign.json) · [Sauvegardes](analysis/md_save_locations_campaign.json).
-Les refus sans Foudre et à capacité de vie insuffisante ont été vérifiés avec
-la corde obtenue réellement avant le troisième cristal.
-[Sans Foudre](analysis/md_equipment_prerequisite_no-lightning.json) · [Capacité insuffisante](analysis/md_equipment_prerequisite_low-health-capacity.json).
-L’apport d’une pomme achetée à Saylun conserve le cadeau non réclamé. Le texte
-MD correspond exactement au texte SMS complet, avant une répétition du suffixe
-observée dans l’attente finale de la ROM SMS fournie ; cette dernière image
-n’est donc pas déclarée identique.
-[Différence et preuve](analysis/md_saylun_owned_apple_sms_suffix_difference.json).
-Les autres tournées continuent ; ces résultats ne ferment pas encore le point 6.
-Le nouvel enregistrement durant le rejeu indépendant évite un troisième
-redémarrage pour chaque extrait, sans saut d’images ni import d’état.
-[Contrôle de l’enregistrement](analysis/md_stream_video_validation.json).
+La qualification ne vaut pas certification 100 % de tous les PNJ ou de la fidélité
+physique : trois textes SMS sans déclencheur démontré, deux entrées monétaires
+sans accès démontré, une duplication de suffixe propre à l'attente finale SMS
+de Saylun et des écarts raster/fondu restent documentés. Les approches protégées
+et le seul composant MD 99 clés avec aide monétaire sont annoncés dans les vidéos.
+[Rapport RC](analysis/rc1_release_report.json) · [Différence Saylun](analysis/md_saylun_owned_apple_sms_suffix_difference.json).
 
 Les scripts et les entrées de campagne sont disponibles dans
 [le kit de tests SMS/MD](testkit/README_FR.md). Le lecteur Python/libretro

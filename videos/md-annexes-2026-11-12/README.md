@@ -1,4 +1,4 @@
-# Annexes MD — relecture en cours
+# Annexes MD — preuves de rejeu
 
 Chaque MP4 est une branche réellement rejouée, avec son du jeu. Les chargements Continuer utilisent seulement une SRAM écrite par le jeu et restent séparés des campagnes depuis Nouvelle partie. Aucune couverture globale tous PNJ/tous objets/toutes quêtes n’est déduite de cette liste.
 
@@ -63,6 +63,7 @@ Chaque MP4 est une branche réellement rejouée, avec son du jeu. Les chargement
 | [md-annex-equipment-hints-late-6a-hint01](md-annex-equipment-hints-late-6a-hint01/md-annex-equipment-hints-late-6a-hint01.mp4) | 4.79 s | [Rapport](md-annex-equipment-hints-late-6a-hint01/report.json) |
 | [md-annex-equipment-hints-late-92-hint01](md-annex-equipment-hints-late-92-hint01/md-annex-equipment-hints-late-92-hint01.mp4) | 4.17 s | [Rapport](md-annex-equipment-hints-late-92-hint01/report.json) |
 | [md-annex-equipment-hints-late-b1-hint01](md-annex-equipment-hints-late-b1-hint01/md-annex-equipment-hints-late-b1-hint01.mp4) | 4.81 s | [Rapport](md-annex-equipment-hints-late-b1-hint01/report.json) |
+| [md-annex-fresh-save-2e-slot0-write01](md-annex-fresh-save-2e-slot0-write01/md-annex-fresh-save-2e-slot0-write01.mp4) | 9.98 s | [Rapport](md-annex-fresh-save-2e-slot0-write01/report.json) |
 | [md-annex-inn-14-pay01](md-annex-inn-14-pay01/md-annex-inn-14-pay01.mp4) | 11.85 s | [Rapport](md-annex-inn-14-pay01/report.json) |
 | [md-annex-inn-2e-pay01](md-annex-inn-2e-pay01/md-annex-inn-2e-pay01.mp4) | 14.74 s | [Rapport](md-annex-inn-2e-pay01/report.json) |
 | [md-annex-inn-55-pay01](md-annex-inn-55-pay01/md-annex-inn-55-pay01.mp4) | 13.77 s | [Rapport](md-annex-inn-55-pay01/report.json) |
@@ -82,11 +83,17 @@ Chaque MP4 est une branche réellement rejouée, avec son du jeu. Les chargement
 | [md-annex-inn-fund-wallet-d4-gift01](md-annex-inn-fund-wallet-d4-gift01/md-annex-inn-fund-wallet-d4-gift01.mp4) | 5.72 s | [Rapport](md-annex-inn-fund-wallet-d4-gift01/report.json) |
 | [md-annex-inn-fund-wallet-dd-gift01](md-annex-inn-fund-wallet-dd-gift01/md-annex-inn-fund-wallet-dd-gift01.mp4) | 6.73 s | [Rapport](md-annex-inn-fund-wallet-dd-gift01/report.json) |
 | [md-annex-inn-fund-wallet-e7-gift01](md-annex-inn-fund-wallet-e7-gift01/md-annex-inn-fund-wallet-e7-gift01.mp4) | 6.46 s | [Rapport](md-annex-inn-fund-wallet-e7-gift01/report.json) |
+| [md-annex-inn-repeat-55-rest01](md-annex-inn-repeat-55-rest01/md-annex-inn-repeat-55-rest01.mp4) | 14.15 s | [Rapport](md-annex-inn-repeat-55-rest01/report.json) |
 | [md-annex-key-capacity99-buy01](md-annex-key-capacity99-buy01/md-annex-key-capacity99-buy01.mp4) | 831.84 s | [Rapport](md-annex-key-capacity99-buy01/report.json) |
+| [md-annex-knight-low-magic-magic-poor-choices01](md-annex-knight-low-magic-magic-poor-choices01/md-annex-knight-low-magic-magic-poor-choices01.mp4) | 10.81 s | [Rapport](md-annex-knight-low-magic-magic-poor-choices01/report.json) |
+| [md-annex-knight-low-magic-real-budget-gift-01-gift01](md-annex-knight-low-magic-real-budget-gift-01-gift01/md-annex-knight-low-magic-real-budget-gift-01-gift01.mp4) | 6.17 s | [Rapport](md-annex-knight-low-magic-real-budget-gift-01-gift01/report.json) |
+| [md-annex-knight-low-magic-real-budget-gift-02-gift01](md-annex-knight-low-magic-real-budget-gift-02-gift01/md-annex-knight-low-magic-real-budget-gift-02-gift01.mp4) | 6.81 s | [Rapport](md-annex-knight-low-magic-real-budget-gift-02-gift01/report.json) |
 | [md-annex-knight-low-magic-shield-buy01](md-annex-knight-low-magic-shield-buy01/md-annex-knight-low-magic-shield-buy01.mp4) | 15.64 s | [Rapport](md-annex-knight-low-magic-shield-buy01/report.json) |
 | [md-annex-knight-low-magic-shield-owned-choices01](md-annex-knight-low-magic-shield-owned-choices01/md-annex-knight-low-magic-shield-owned-choices01.mp4) | 17.82 s | [Rapport](md-annex-knight-low-magic-shield-owned-choices01/report.json) |
 | [md-annex-magic-clamp-actual-mp-spending01](md-annex-magic-clamp-actual-mp-spending01/md-annex-magic-clamp-actual-mp-spending01.mp4) | 2.64 s | [Rapport](md-annex-magic-clamp-actual-mp-spending01/report.json) |
 | [md-annex-magic-clamp-magic-clamp-choices01](md-annex-magic-clamp-magic-clamp-choices01/md-annex-magic-clamp-magic-clamp-choices01.mp4) | 20.19 s | [Rapport](md-annex-magic-clamp-magic-clamp-choices01/report.json) |
+| [md-annex-magic32-earned-budget-actual-mp-to32](md-annex-magic32-earned-budget-actual-mp-to32/md-annex-magic32-earned-budget-actual-mp-to32.mp4) | 8.03 s | [Rapport](md-annex-magic32-earned-budget-actual-mp-to32/report.json) |
+| [md-annex-magic32-earned-budget-magic32-poor-choices01](md-annex-magic32-earned-budget-magic32-poor-choices01/md-annex-magic32-earned-budget-magic32-poor-choices01.mp4) | 25.88 s | [Rapport](md-annex-magic32-earned-budget-magic32-poor-choices01/report.json) |
 | [md-annex-magic64-actual-mp-spending02](md-annex-magic64-actual-mp-spending02/md-annex-magic64-actual-mp-spending02.mp4) | 6.64 s | [Rapport](md-annex-magic64-actual-mp-spending02/report.json) |
 | [md-annex-magic64-magic64-choices01](md-annex-magic64-magic64-choices01/md-annex-magic64-magic64-choices01.mp4) | 28.19 s | [Rapport](md-annex-magic64-magic64-choices01/report.json) |
 | [md-annex-merchant-apple-only-choices01](md-annex-merchant-apple-only-choices01/md-annex-merchant-apple-only-choices01.mp4) | 18.07 s | [Rapport](md-annex-merchant-apple-only-choices01/report.json) |
@@ -187,6 +194,9 @@ Chaque MP4 est une branche réellement rejouée, avec son du jeu. Les chargement
 | [md-annex-save-locations-f0-write01](md-annex-save-locations-f0-write01/md-annex-save-locations-f0-write01.mp4) | 10.36 s | [Rapport](md-annex-save-locations-f0-write01/report.json) |
 | [md-annex-save-locations-fa-write01](md-annex-save-locations-fa-write01/md-annex-save-locations-fa-write01.mp4) | 10.23 s | [Rapport](md-annex-save-locations-fa-write01/report.json) |
 | [md-annex-save-locations-fe-write01](md-annex-save-locations-fe-write01/md-annex-save-locations-fe-write01.mp4) | 10.33 s | [Rapport](md-annex-save-locations-fe-write01/report.json) |
+| [md-annex-save-slots-2e-slot0-write03](md-annex-save-slots-2e-slot0-write03/md-annex-save-slots-2e-slot0-write03.mp4) | 10.13 s | [Rapport](md-annex-save-slots-2e-slot0-write03/report.json) |
+| [md-annex-save-slots-2e-slot1-write01](md-annex-save-slots-2e-slot1-write01/md-annex-save-slots-2e-slot1-write01.mp4) | 10.78 s | [Rapport](md-annex-save-slots-2e-slot1-write01/report.json) |
+| [md-annex-save-slots-2e-slot2-write01](md-annex-save-slots-2e-slot2-write01/md-annex-save-slots-2e-slot2-write01.mp4) | 10.80 s | [Rapport](md-annex-save-slots-2e-slot2-write01/report.json) |
 | [md-annex-saylun-owned-apple-hint-formatter03](md-annex-saylun-owned-apple-hint-formatter03/md-annex-saylun-owned-apple-hint-formatter03.mp4) | 10.23 s | [Rapport](md-annex-saylun-owned-apple-hint-formatter03/report.json) |
 | [md-annex-services-magic-refill-7b-buy01](md-annex-services-magic-refill-7b-buy01/md-annex-services-magic-refill-7b-buy01.mp4) | 8.11 s | [Rapport](md-annex-services-magic-refill-7b-buy01/report.json) |
 | [md-argent-80-cadeau01](md-argent-80-cadeau01/md-argent-80-cadeau01.mp4) | 8.46 s | [Rapport](md-argent-80-cadeau01/report.json) |
@@ -205,6 +215,7 @@ Chaque MP4 est une branche réellement rejouée, avec son du jeu. Les chargement
 | [md-fairy-c9-contact01](md-fairy-c9-contact01/md-fairy-c9-contact01.mp4) | 5.37 s | [Rapport](md-fairy-c9-contact01/report.json) |
 | [md-fairy-e5-contact01](md-fairy-e5-contact01/md-fairy-e5-contact01.mp4) | 7.98 s | [Rapport](md-fairy-e5-contact01/report.json) |
 | [md-fairy-ec-contact01](md-fairy-ec-contact01/md-fairy-ec-contact01.mp4) | 8.09 s | [Rapport](md-fairy-ec-contact01/report.json) |
+| [md-fresh-save-2e-slot0-continue01](md-fresh-save-2e-slot0-continue01/md-fresh-save-2e-slot0-continue01.mp4) | 24.93 s | [Rapport](md-fresh-save-2e-slot0-continue01/report.json) |
 | [md-gillian-apple-absent01-before-apple](md-gillian-apple-absent01-before-apple/md-gillian-apple-absent01-before-apple.mp4) | 7.16 s | [Rapport](md-gillian-apple-absent01-before-apple/report.json) |
 | [md-gillian-foudre1-pomme-consommee01](md-gillian-foudre1-pomme-consommee01/md-gillian-foudre1-pomme-consommee01.mp4) | 11.23 s | [Rapport](md-gillian-foudre1-pomme-consommee01/report.json) |
 | [md-gillian-foudre1-pomme-consommee01-before-apple](md-gillian-foudre1-pomme-consommee01-before-apple/md-gillian-foudre1-pomme-consommee01-before-apple.mp4) | 11.11 s | [Rapport](md-gillian-foudre1-pomme-consommee01-before-apple/report.json) |
@@ -254,6 +265,9 @@ Chaque MP4 est une branche réellement rejouée, avec son du jeu. Les chargement
 | [md-plain-transport-3c-pay01](md-plain-transport-3c-pay01/md-plain-transport-3c-pay01.mp4) | 6.09 s | [Rapport](md-plain-transport-3c-pay01/report.json) |
 | [md-save-21-continue01](md-save-21-continue01/md-save-21-continue01.mp4) | 24.93 s | [Rapport](md-save-21-continue01/report.json) |
 | [md-save-2e-continue01](md-save-2e-continue01/md-save-2e-continue01.mp4) | 24.93 s | [Rapport](md-save-2e-continue01/report.json) |
+| [md-save-2e-slot0-continue01](md-save-2e-slot0-continue01/md-save-2e-slot0-continue01.mp4) | 24.93 s | [Rapport](md-save-2e-slot0-continue01/report.json) |
+| [md-save-2e-slot1-continue01](md-save-2e-slot1-continue01/md-save-2e-slot1-continue01.mp4) | 24.93 s | [Rapport](md-save-2e-slot1-continue01/report.json) |
+| [md-save-2e-slot2-continue01](md-save-2e-slot2-continue01/md-save-2e-slot2-continue01.mp4) | 24.93 s | [Rapport](md-save-2e-slot2-continue01/report.json) |
 | [md-save-52-continue01](md-save-52-continue01/md-save-52-continue01.mp4) | 24.93 s | [Rapport](md-save-52-continue01/report.json) |
 | [md-save-55-continue01](md-save-55-continue01/md-save-55-continue01.mp4) | 24.93 s | [Rapport](md-save-55-continue01/report.json) |
 | [md-save-57-continue01](md-save-57-continue01/md-save-57-continue01.mp4) | 24.95 s | [Rapport](md-save-57-continue01/report.json) |

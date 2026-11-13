@@ -1,0 +1,52 @@
+{
+  "passed": true,
+  "failure": null,
+  "rom_sha256": "1421abe47de95ac104a03e2fb1be7001f70aeca1fbb6a9b35669aa6e98b7d9a4",
+  "sms_reference": "natural-service-route/sms-npc-villagec7-house1f-01",
+  "prefix": "natural-dungeon-route/md-pal-rc1-c7-pal01",
+  "room": 31,
+  "outside": 199,
+  "visited": [
+    {
+      "text_pc": 40244,
+      "coordinate": 360,
+      "md_index": 45,
+      "entry_frame": 4031,
+      "bitmap_exact_frame": 4166,
+      "bitmap_exact_bytes": 1040,
+      "sms_bitmap_sha256": "4b5c53a91d1e743fa397cf2ede3453ce8fe5fb21221bb7427f6be1b53275de3f",
+      "acknowledged_and_walked_away_frame": 4214
+    }
+  ],
+  "events": [
+    {
+      "frame": 4031,
+      "text_pc": 40244,
+      "md_index": 45,
+      "event": "opened"
+    },
+    {
+      "frame": 4166,
+      "text_pc": 40244,
+      "event": "final_bitmap_exact_sms",
+      "bytes": 1040
+    }
+  ],
+  "last_state": {
+    "room": 199,
+    "game": 12,
+    "hero": 0,
+    "counter": 0,
+    "x": 168,
+    "y": 128,
+    "health": 14,
+    "modal": 0,
+    "dialogue_index": 45,
+    "audio_error": 0
+  },
+  "ram_injections": false,
+  "new_assistance_writes": 0,
+  "sram_checkpoint_injection": false,
+  "primary_state_imports": 0,
+  "scope": "Ordinary cold-boot walking and acknowledgment. Native selected dialogue and final 1040-byte bitmap match the played SMS reference. Intermediate pages, full physical pixels/audio/timing and conditional variants are not certified."
+}

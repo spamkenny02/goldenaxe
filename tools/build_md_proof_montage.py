@@ -111,11 +111,12 @@ def main():
     final_movie=folder/'gaw-md-campagne-et-annexes.mp4'
     movie=final_movie if final_movie.exists() else folder/'gaw-md-campagne-et-annexes.partial.mp4'
     if args.reuse_mux:assert movie.exists()
+    assert abs(fps-152024/2537)<1e-10,'Packet timebase is specific to the verified native NTSC recordings'
     if not final_movie.exists() and not args.reuse_mux:
         with (work/'mux.log').open('wb') as log:
             subprocess.run([ffmpeg,'-hide_banner','-nostdin','-y','-f','concat','-safe','0','-i',str(concat),
                 '-i',str(metadata),'-map','0:v:0','-map','0:a:0','-map_metadata','1','-map_chapters','-1',
-                '-c:v','copy','-af','aresample=async=1:first_pts=0','-c:a','aac','-b:a','192k',
+                '-c:v','copy','-bsf:v','setts=dts=(N-2)*2537:pts=(N-2)*2537+floor((PTS-DTS)/2537+0.5)*2537:duration=2537:time_base=1/152024','-af','aresample=async=1:first_pts=0','-c:a','aac','-b:a','192k',
                 '-t',f'{cursor:.12f}','-movflags','+faststart','-progress',str(work/'mux-progress.txt'),str(movie)],stdout=log,stderr=subprocess.STDOUT,check=True)
     expected_frames=sum(r['frames'] for r in segments)
     cap=cv2.VideoCapture(str(movie));assert cap.isOpened()
@@ -139,7 +140,7 @@ def main():
     report=dict(passed=True,movie=str(movie),movie_sha256=sha(movie),movie_bytes=movie.stat().st_size,
         frames=expected_frames,fps=fps,duration_seconds=cursor,audio_samples=audio_bytes//4,
         audio_rate=rate,audio_video_delta_seconds=delta,full_audio_video_decoded=True,
-        gameplay_video_packets_copied=True,branch_title_cards=len(items),chapters=chapters,
+        gameplay_video_packets_copied=True,packet_timestamps_normalized_to_native_fps=True,packet_timestamp_timebase='1/152024',packet_timestamp_ticks_per_frame=2537,branch_title_cards=len(items),chapters=chapters,
         embedded_chapters=False,external_chapters_file='LISEZ-MOI-ET-CHAPITRES.txt',
         selected_receipts_covered=145,separate_persistence_branches=sum(r['persistence_branch'] for r in items),
         all_npcs_complete=False,all_side_quests_complete=False,global_unused_strings_proven=False,
