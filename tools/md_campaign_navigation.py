@@ -53,21 +53,26 @@ def film(c,name,first):
     with (ROOT/'validation'/(name+'-video.log')).open('w') as log:
         subprocess.run([sys.executable,str(ROOT/'tools/record_md_annex.py'),'--trace',c.trace,'--rom',str(c.rom),'--from-frame',str(first),'--name',name],cwd=ROOT,stdout=log,stderr=subprocess.STDOUT,check=True)
 
-def refill_magic(c):
-    """Buy a real refill with earned gold; fund it with a real gift if necessary."""
-    if c.sms_view()[0xdd]<20:
+def fund_wallet(c,minimum):
+    """Receive unclaimed positive gifts; never write currency."""
+    assert 0<minimum<=255
+    while c.sms_view()[0xdd]<minimum:
         raw=c.sms_view();start=(int.from_bytes(raw[0xb9:0xbb],'little'),raw[0x313],raw[0x311]);options=[]
         for outside,gain in json.loads((ROOT/'analysis/house_gold_reference.json').read_bytes())['records']:
             if not 0<gain<128 or raw[0x100+outside]&2:continue
             world=census_world(raw,outside,0x3f,0);proposal=entry_options(raw,outside,0x3f,0,world)
             if not proposal or '--earth-world-cell' in proposal[1]:continue
             path,_=world.route(start)
-            if path is not None:options.append((len(path),outside,gain))
+            if path is not None:options.append(((minimum-raw[0xdd]+gain-1)//gain,len(path),outside,gain))
         assert options,'No reachable unclaimed gold gift for actual refill'
-        _,outside,gain=min(options);tag=f'fund-magic-{outside:02x}'
+        _,_,outside,gain=min(options);tag=f'fund-wallet-{outside:02x}'
         attempt=enter(c,outside,0x3f,tag);first=c.cap()['frames']+1
         c.service(tag+f'-gift{attempt:02d}','natural_house_service',['--outside',hex(outside),'--kind','gold','--gold-gain',str(gain)])
         film(c,f'md-{c.label}-{tag}-gift{attempt:02d}',first)
+
+def refill_magic(c):
+    """Buy a real refill with earned gold."""
+    fund_wallet(c,20)
     raw=c.sms_view();assert raw[0xdb]<raw[0xdc] and raw[0xdd]>=20
     start=(int.from_bytes(raw[0xb9:0xbb],'little'),raw[0x313],raw[0x311]);options=[]
     for outside,mode,_ in json.loads((ROOT/'analysis/merchant_assets.json').read_bytes())['towns']:

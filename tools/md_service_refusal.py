@@ -24,9 +24,9 @@ def main():
         stop=prior_controls[i+1]['frame']-1 if i+1<len(prior_controls) else start
         presses.extend((row['frame'],min(stop,start),k) for k in row['buttons'])
     masks=compile_fixed_inputs(presses,start);writes=FrameWrites(prefix_writes(source,cap,a.assisted_prefix));inherited_writes=len(writes);house=prior['house_target'];_,nx,ny=next(n for n in json.loads((ROOT/f'analysis/{a.kind}_assets.json').read_bytes())['nodes'] if n[0]==house)
-    out=ROOT/'validation/natural-service-route'/('md-'+a.trial);assert not out.exists();state={};first=None;contact=None;confirm_no=None;cancel=None;matched=None;declined=None;departure=False;origin=None;done=None;failure=None;observed=0;direction=0;controls=[];events=[];captures=set()
+    out=ROOT/'validation/natural-service-route'/('md-'+a.trial);assert not out.exists();state={};first=None;contact=None;confirm_no=None;cancel=None;matched=None;declined=None;departure=False;origin=None;done=None;failure=None;observed=0;direction=0;controls=[];events=[];captures=set();menu_requested=False;menu_seen=None;menu_restored=None;movement_frame=None
     def observe(frame,raw):
-        nonlocal observed,first,contact,matched,declined,origin,done,failure
+        nonlocal observed,first,contact,matched,declined,origin,done,failure,menu_seen,menu_restored,movement_frame
         observed=frame
         if frame<start:return
         data=lambda n,k,off=0:bytes(raw[(sy[n]+off+i)^1] for i in range(k));word=lambda n:int.from_bytes(data(n,2),'big')
@@ -43,26 +43,33 @@ def main():
         if state['game']==22 and contact is None:contact=frame;events.append(dict(frame=frame,event='service_contact'));captures.add(frame+1)
         if contact and expected_bitmap and matched is None and hashlib.sha256(data('scratch',1040)).hexdigest()==expected_bitmap:matched=frame;events.append(dict(frame=frame,event='sms_decline_bitmap_exact'));captures.add(frame+1)
         if confirm_no is not None and state['phase']==(3 if a.kind=='healer' else 5) and declined is None:declined=frame
+        if menu_requested and state['room']==a.outside and state['game']==16 and menu_seen is None:menu_seen=frame;captures.add(frame+1)
         if state['room']==a.outside and state['game']==12 and state['hero']==1 and not state['counter'] and not state['resume_phase'] and not state['door_loading'] and state['graphics_class']==0 and contact:
             if origin is None:origin=(state['x'],state['y'])
-            if abs(state['x']-origin[0])+abs(state['y']-origin[1])>=8 and done is None:done=frame;captures.add(frame+40)
+            if abs(state['x']-origin[0])+abs(state['y']-origin[1])>=8 and done is None:movement_frame=done=frame;captures.add(frame+40)
+            elif menu_seen is not None and done is None:menu_restored=done=frame;captures.add(frame+40)
     def choose(frame):
-        nonlocal confirm_no,cancel,departure,direction
+        nonlocal confirm_no,cancel,departure,direction,menu_requested
         if frame<=start:return [k for k in range(16) if masks[frame]&(1<<k)]
         if failure or done is not None:return []
         if state.get('room')==a.outside:
+            if menu_requested:return [0] if frame%40==0 and state['game'] in (12,16) else []
             if origin is None or state['game']!=12 or state['hero'] not in (0,1) or state['resume_phase'] or state['door_loading']:return []
             if state['counter']:return [4+direction]
             point=state['x'],state['y']
-            for d,(dx,dy) in enumerate([(0,-8),(0,8),(-8,0),(8,0)]):
-                if d==0:continue
+            for d in (1,2,3,0):
+                dx,dy=[(0,-8),(0,8),(-8,0),(8,0)][d]
                 target=point[0]+dx,point[1]+dy
                 if 16<=target[0]<=240 and 16<=target[1]<=160:
                     path=walk(state['tilemap'],point,lambda q:q==target)
                     if path and len(path)==1:direction=path[0];return [4+direction]
             if state['weapon'] and state['selected']==1:
-                nearby=[n for n,b in enumerate(state['cells']) if 0x80<=b<=0x84 and abs((n&15)*16+8-state['x'])<=32 and abs((n>>4)*16+8-state['y'])<=40]
-                if nearby:return [5,8] if frame%3 else []
+                from md_exit_navigation import axe_direction
+                cut_direction=axe_direction(state['cells'],state['x'],state['y'])
+                if cut_direction is not None:return [4+cut_direction,8] if frame%3 else []
+            # If every actual direction is blocked, verify real controls
+            # with Start/open/close without modifying surrounding terrain.
+            menu_requested=True
             return []
         if contact is not None and state['game']==22:
             if a.kind=='merchant':
@@ -87,7 +94,7 @@ def main():
         return buttons
     with contextlib.redirect_stdout(io.StringIO()):run(rom,start+6000,out,captures,cap['presses'],skip_intro=False,input_provider=controller,ram_observer=observe,ram_writes=writes,core_options=cap['core_options'],stop_when=lambda:bool(failure) or done is not None and observed>=done+40)
     passed=done is not None and not failure and (cancel is not None if a.kind=='merchant' else confirm_no is not None and declined is not None and matched is not None)
-    result=dict(passed=passed,failure=failure or (None if passed else 'missing_refusal_text_or_movement'),rom_sha256=digest,sms_reference=a.sms_reference,source_prefix=a.prefix,outside=a.outside,house=house,kind=a.kind,variant='refusal',initial_resources=first,resources_unchanged=not failure,service_contact_frame=contact,confirm_no_frame=confirm_no,cancel_frame=cancel,sms_decline_bitmap_sha256=expected_bitmap,sms_decline_bitmap_exact_frame=matched,complete_frame=done,last_state={k:v for k,v in state.items() if k not in ('tilemap','cells')},new_assistance_writes=len(writes)-inherited_writes,declared_approach_guard=a.approach_guard,actual_exterior_movement_verified=done is not None,primary_state_imports=0,sram_checkpoint_injection=False,scope='Actual native refusal and moving exterior return. Healer/save require explicit visible No and exact final SMS refusal bitmap; merchant proves Cancel and unchanged resources, not every panel/timing pixel.')
+    result=dict(passed=passed,failure=failure or (None if passed else 'missing_refusal_text_or_movement'),rom_sha256=digest,sms_reference=a.sms_reference,source_prefix=a.prefix,outside=a.outside,house=house,kind=a.kind,variant='refusal',initial_resources=first,resources_unchanged=not failure,service_contact_frame=contact,confirm_no_frame=confirm_no,cancel_frame=cancel,sms_decline_bitmap_sha256=expected_bitmap,sms_decline_bitmap_exact_frame=matched,complete_frame=done,last_state={k:v for k,v in state.items() if k not in ('tilemap','cells')},new_assistance_writes=len(writes)-inherited_writes,declared_approach_guard=a.approach_guard,actual_exterior_movement_verified=movement_frame is not None,actual_exterior_movement_frame=movement_frame,actual_exterior_menu_roundtrip_verified=menu_restored is not None,exterior_menu_open_frame=menu_seen,exterior_menu_restored_frame=menu_restored,primary_state_imports=0,sram_checkpoint_injection=False,scope='Actual native refusal and fully restored exterior, followed by movement or a real exterior inventory round trip. Healer/save require explicit visible No and exact final SMS refusal bitmap; merchant proves Cancel and unchanged resources, not every panel/timing pixel.')
     actual=json.loads((out/'capture.json').read_bytes());actual['presses']=presses;(out/'capture.json').write_bytes((json.dumps(actual,indent=2)+'\n').encode())
     for name,value in [('report',result),('controls',controls),('events',events)]:(out/(name+'.json')).write_bytes((json.dumps(value,indent=2)+'\n').encode())
     if writes:

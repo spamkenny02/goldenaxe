@@ -1,5 +1,5 @@
 """Film one independently replayed MD branch, with real game audio and provenance."""
-import argparse,contextlib,hashlib,io,json,subprocess,sys,wave
+import argparse,contextlib,hashlib,io,json,subprocess,sys,wave,shutil
 from pathlib import Path
 import cv2,numpy as np
 from run_core import ROOT,run,FrameWrites
@@ -25,6 +25,21 @@ def main():
     assisted=bool(cap['test_ram_writes']);proof=source.with_name(source.name+(f'-assisted-fixed-replay-{end}' if assisted else '-fixed-replay'))
     witness=json.loads((proof/'replay_report.json').read_bytes());assert witness['passed'] and witness['rom_sha256']==cap['rom_sha256'] and witness['final_png_exact']
     assert witness['evidence']=={n:sha(source/n) for n in (['capture.json','controls.json','assistance.json'] if assisted else ['capture.json','controls.json'])}
+    cached=ROOT/'validation/md-stream-videos'/source.name/'report.json'
+    if cached.exists():
+        ready=json.loads(cached.read_bytes())
+        if ready.get('passed') and ready['first_emulated_frame']==a.from_frame:
+            assert initial is None and ready['trace']==a.trace and ready['rom_sha256']==cap['rom_sha256']
+            assert ready['proof_sha256']==sha(proof/'replay_report.json') and ready['core_sha256']==core_sha
+            assert ready['full_audio_video_decoded'] and ready['final_ram_and_pixels_exact'] and not ready['boss_assistance']
+            original=(ROOT/ready['movie']).resolve();assert sha(original)==ready['movie_sha256']
+            out=(ROOT/'videos/md-annexes-2026-11-12'/a.name).resolve();assert out.is_relative_to(ROOT/'videos/md-annexes-2026-11-12') and not out.exists();out.mkdir(parents=True)
+            movie=out/(a.name+'.mp4');shutil.copyfile(original,movie);assert sha(movie)==ready['movie_sha256']
+            ready['movie']=movie.relative_to(ROOT).as_posix();write_bytes(out/'report.json',(json.dumps(ready,indent=2)+'\n').encode())
+            # Keep the cache receipt pointing to the adopted, verified media.
+            write_bytes(cached,(json.dumps(ready,indent=2)+'\n').encode())
+            if original.is_relative_to(cached.parent.resolve()):original.unlink()
+            print(json.dumps(ready),flush=True);return
     writes=[] if initial is not None else prefix_writes(source,cap,assisted);controls=json.loads((source/'controls.json').read_bytes());presses=list(map(tuple,cap['presses']))
     for i,row in enumerate(controls):
         stop=controls[i+1]['frame']-1 if i+1<len(controls) else end

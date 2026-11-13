@@ -46,6 +46,20 @@ Les [corrections des parcours MD](analysis/md_annex_navigation_corrections.json)
 documentent les accès réellement franchis et un achat de magie avec l'argent
 du jeu ; elles ne modifient pas le binaire V322 et ne ferment pas le point 6.
 
+La reprise du 13 novembre a terminé et filmé les douze retours chez les
+enseignants et les fées, les cinq derniers cadeaux d’équipement et leurs
+retours, les six directions de passage payant, les deux indices conditionnés
+par le sixième cristal et le retour derrière la cheminée de Saylun.
+[Retours](analysis/md_reward_returns_campaign.json) · [Équipements](analysis/md_late_equipment_campaign.json) · [Passages](analysis/md_passage_campaign.json) · [Bouclier et cheminée](analysis/md_shield_and_c7_branches.json).
+Les refus d’achat par manque d’argent et l’achat réel d’une pomme suivi du
+refus de double achat ont également leur rejeu MD, leur vidéo et une
+comparaison exacte des 1040 octets du texte SMS.
+[Manque d’argent](analysis/md_merchant_variant_apple-poor.json) · [Achat et possession](analysis/md_merchant_variant_apple-only.json).
+Les autres tournées continuent ; ces résultats ne ferment pas encore le point 6.
+Le nouvel enregistrement durant le rejeu indépendant évite un troisième
+redémarrage pour chaque extrait, sans saut d’images ni import d’état.
+[Contrôle de l’enregistrement](analysis/md_stream_video_validation.json).
+
 Les scripts et les entrées de campagne sont disponibles dans
 [le kit de tests SMS/MD](testkit/README_FR.md). Le lecteur Python/libretro
 rejoint la fin sur la V322 en PAL et NTSC avec les parcours enregistrés et

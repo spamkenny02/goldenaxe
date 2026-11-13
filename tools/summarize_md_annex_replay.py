@@ -47,7 +47,7 @@ def main():
         if reference not in cases:continue
         assert r['passed'] and r['rom_sha256']==SHA and not r.get('sram_checkpoint_injection',False)
         raw=(folder/f'ram_{cap["frames"]:05d}.bin').read_bytes();word=lambda n:raw[sy[n]]|(raw[sy[n]+1]<<8)
-        if word('resume_phase') or word('world_graphics_class') or raw[sy['door_transition_loading']^1] or (r.get('variant')=='refusal' and not (r.get('actual_exterior_movement_verified') or r.get('actual_exterior_movement_frame'))):
+        if word('resume_phase') or word('world_graphics_class') or raw[sy['door_transition_loading']^1] or (r.get('variant')=='refusal' and not (r.get('actual_exterior_movement_verified') or r.get('actual_exterior_movement_frame') or r.get('actual_exterior_menu_roundtrip_verified'))):
             partial_exits.append(dict(trace=trace,reason='Endpoint still in house exit/reveal; dialogue evidence retained but not a completed exit',resume_phase=word('resume_phase'),graphics_class=word('world_graphics_class')));continue
         if 'visited' in r:assert all(v['bitmap_exact_bytes']==1040 for v in r['visited'])
         elif r.get('variant')=='refusal':
@@ -56,6 +56,17 @@ def main():
             else:assert r['cancel_frame']
         elif r.get('variant')=='post_reward_silent_return':
             assert r['resources_and_flags_unchanged'] and r['complete_frame'] is not None and not r['text_entries']
+        elif r.get('variant')=='quest_hint_contact':
+            assert r['resources_and_flags_unchanged'] and r['complete_frame'] is not None
+            assert all(v['bitmap_exact_bytes']==1040 for v in r['completed'] if 'text_pc' in v)
+        elif 'choices' in r and 'completed' in r and r.get('sms_reference'):
+            assert len(r['completed'])==len(r['choices']) and r['complete_frame'] is not None
+            assert not r.get('currency_assisted_component_test') and not r['new_assistance_writes']
+            assert all(v['bitmap_exact_bytes']==1040 and v['expect']==choice['expect'] and v['selection']==choice['selection'] for v,choice in zip(r['completed'],r['choices']))
+        elif r.get('variant')=='gold_house_and_return':
+            assert r['return_contact_end']-r['return_contact_start']>=80 and r['complete_frame'] is not None
+            assert r['last_state']['gold']==r['expected_final_gold'] and r['last_state']['outside_flags']&2
+            if not r['previously_collected']:assert r['first_exterior_exit_frame'] and r['reentered_frame'] and r['first_text_pc']
         else:continue
         end=cap['frames'];proof=folder.with_name(folder.name+(f'-assisted-fixed-replay-{end}' if cap['test_ram_writes'] else '-fixed-replay'))/'replay_report.json';w=load(proof)
         assert w['passed'] and w['final_png_exact'] and w['rom_sha256']==SHA and sha(proof)==video['proof_sha256']

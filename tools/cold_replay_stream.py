@@ -23,24 +23,26 @@ class ReplayStream:
         self.folder.mkdir(exist_ok=False);self.suffix=suffix;self.sms=sms;self.rom=rom;self.process=None;self.number=0
         self.log=(self.folder/'worker.log').open('wb')
 
-    def prove(self,trace):
+    def prove(self,trace,record_from=None):
         source=(ROOT/'validation'/trace).resolve();assert source.is_relative_to(ROOT/'validation')
         capture=json.loads((source/'capture.json').read_bytes());self.number+=1
         proof=source.with_name(source.name+f'-assisted-fixed-replay-{capture["frames"]}'+self.suffix)
         assert not proof.exists()
-        atomic(self.folder/f'request-{self.number:04d}.json',dict(trace=trace))
+        atomic(self.folder/f'request-{self.number:04d}.json',dict(trace=trace,record_from=record_from))
         if self.process is None:
             self.process=subprocess.Popen([sys.executable,'-u',str(Path(__file__).resolve()),
                 '--worker',str(self.folder),'--suffix='+self.suffix,*(['--sms'] if self.sms else []),*(['--rom',str(self.rom)] if self.rom else [])],cwd=ROOT,
                 stdout=self.log,stderr=subprocess.STDOUT,
                 creationflags=subprocess.CREATE_NO_WINDOW if os.name=='nt' else 0)
-        deadline=time.monotonic()+600
-        while not (proof/'replay_report.json').exists():
+        deadline=time.monotonic()+1800
+        video=ROOT/'validation/md-stream-videos'/source.name/'report.json'
+        def complete():return (proof/'replay_report.json').exists() and (record_from is None or video.exists())
+        while not complete():
             if self.process.poll() is not None:
-                if (proof/'replay_report.json').exists():break
+                if complete():break
                 raise RuntimeError('Cold replay worker stopped; inspect '+str(self.folder/'worker.log'))
             if time.monotonic()>=deadline:
-                if (proof/'replay_report.json').exists():break
+                if complete():break
                 raise TimeoutError('Cold replay checkpoint timed out; inspect worker state before resuming')
             time.sleep(.05)
         result=json.loads((proof/'replay_report.json').read_bytes())
@@ -61,12 +63,12 @@ def worker(folder,suffix,sms=False,rom=None):
     rom=Path(rom) if rom else ROOT/('input/original.sms' if sms else 'gaw-megadrive.bin');digest=sha(rom.read_bytes())
     sy=None if sms else symbols(ROOT/'megadrive/out/release/symbol.txt')
     writes=FrameWrites();masks=[];previous_frame=-1;request_number=0;target=None
-    captures=set();options=None;stopped=False;rows=[];guard_frames=0
+    captures=set();options=None;stopped=False;rows=[];guard_frames=0;movie=None;observed=0
     core=ROOT.parents[1]/'work/libretro/genesis_plus_gx_libretro.dll'
     core_digest=sha(core.read_bytes());driver_digest=sha(Path(__file__).read_bytes())
     out=folder/'cold-core';started=time.perf_counter();input_error=None
     def next_request():
-        nonlocal request_number,target,masks,previous_frame,options,stopped
+        nonlocal request_number,target,masks,previous_frame,options,stopped,movie
         path=folder/f'request-{request_number+1:04d}.json'
         while not path.exists():
             if (folder/'stop.json').exists():stopped=True;return
@@ -90,6 +92,10 @@ def worker(folder,suffix,sms=False,rom=None):
         else:assert options==c['core_options']
         writes.extend(w[len(writes):]);masks=new_masks
         target=dict(source=source,capture=c,assist=a,trace=request['trace'])
+        if request.get('record_from') is not None:
+            assert not sms and previous_frame<request['record_from']<=c['frames']
+            from md_stream_video import Movie
+            movie=Movie(request['trace'],c,request['record_from'],core_digest)
         captures.add(c['frames'])
     next_request();assert target is not None
     cached_frame=-1;cached_buttons=[]
@@ -101,7 +107,9 @@ def worker(folder,suffix,sms=False,rom=None):
             cached_frame=frame;cached_buttons=[b for b in range(16)if masks[frame]&(1<<b)]
         return cached_buttons
     def observe(frame,raw):
-        nonlocal previous_frame,guard_frames
+        nonlocal previous_frame,guard_frames,observed
+        observed=frame
+        if frame%50000==0:atomic(folder/'progress.json',dict(frame=frame,target=target['capture']['frames'],trace=target['trace'],elapsed_seconds=time.perf_counter()-started))
         assert input_error is None,input_error
         hurt=raw[0x305] if sms else int.from_bytes(bytes(raw[(sy['hero_hurt']+i)^1]for i in range(2)),'big')
         if hurt>128:
@@ -111,7 +119,7 @@ def worker(folder,suffix,sms=False,rom=None):
                 kind=raw[at if sms else at^1];hp=raw[at+24 if sms else (at+24)^1]
                 assert not (hp and (0x63<=kind<=0x6d or 0x78<=kind<=0x7c)),'Test guard overlaps live boss'
     def checkpoint(frame):
-        nonlocal previous_frame
+        nonlocal previous_frame,movie
         if frame!=target['capture']['frames']:return
         source=target['source'];c=target['capture'];a=target['assist']
         for stem,ext in [('ram','bin'),('frame','png')]:
@@ -133,13 +141,17 @@ def worker(folder,suffix,sms=False,rom=None):
             evidence={name:sha((source/name).read_bytes())for name in ('capture.json','controls.json','assistance.json')},
             scope='One cold core advances recorded input between checkpoints and pauses while waiting for the next recording. No save-state import or feedback-based input.')
         atomic(proof/'replay_report.json',result)
+        if movie is not None:
+            movie.finish(proof/'replay_report.json',writes);movie=None
         rows.append(dict(trace=target['trace'],frames=frame,whole_ram_png_exact=True))
         atomic(folder/'checkpoints.json',dict(rom_sha256=digest,cold_boot_count=1,checkpoints=rows))
         print('COLD STREAM CHECKPOINT',request_number,frame,target['trace'],flush=True)
         previous_frame=frame;next_request()
     with contextlib.redirect_stdout(io.StringIO()):
         run(rom,1000000,out,captures,[],skip_intro=False,core=core,core_options=options,
-            input_provider=inputs,ram_writes=writes,ram_observer=observe,stop_when=lambda:stopped,post_frame_observer=checkpoint)
+            input_provider=inputs,ram_writes=writes,ram_observer=observe,stop_when=lambda:stopped,post_frame_observer=checkpoint,
+            video_observer=lambda *args:movie.video(*args) if movie is not None else None,
+            audio_observer=lambda data:movie.sound(observed+1,data) if movie is not None else None)
     assert stopped,'Cold stream reached its frame limit'
     atomic(folder/'completed.json',dict(passed=True,rom_sha256=digest,cold_boot_count=1,
         primary_state_imports=0,checkpoints=rows,emulated_frames=previous_frame))

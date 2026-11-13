@@ -9,7 +9,7 @@ def main():
         v=json.loads(p.read_bytes());folder=ROOT/'validation'/v['trace'];r=json.loads((folder/'report.json').read_bytes());cap=json.loads((folder/'capture.json').read_bytes())
         if not v.get('passed') or not r.get('passed') or not ('visited' in r or r.get('variant') in ('post_reward_silent_return','refusal')):continue
         raw=(folder/f'ram_{cap["frames"]:05d}.bin').read_bytes();w=lambda n:raw[sy[n]]|(raw[sy[n]+1]<<8)
-        if not(w('resume_phase') or w('world_graphics_class') or raw[sy['door_transition_loading']^1] or (r.get('variant')=='refusal' and not(r.get('actual_exterior_movement_verified') or r.get('actual_exterior_movement_frame')))):continue
+        if not(w('resume_phase') or w('world_graphics_class') or raw[sy['door_transition_loading']^1] or (r.get('variant')=='refusal' and not(r.get('actual_exterior_movement_verified') or r.get('actual_exterior_movement_frame') or r.get('actual_exterior_menu_roundtrip_verified')))):continue
         jobs.append((v,p.parent.name))
     for v,name in jobs:
         trial='settled-'+v['trace'].split('/')[-1];trace='natural-service-route/md-'+trial;folder=ROOT/'validation'/trace;movie_name='settled-'+name

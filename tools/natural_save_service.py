@@ -9,7 +9,7 @@ from validate_playable_sprite_limit import symbols
 from natural_dungeon_combat import walk
 
 def main():
- p=argparse.ArgumentParser();p.add_argument('--prefix',required=True);p.add_argument('--trial',required=True);p.add_argument('--assisted-prefix',action='store_true');p.add_argument('--frames-after',type=int,default=6000);p.add_argument('--rom');p.add_argument('--slot',type=int,choices=range(3),default=0);a=p.parse_args()
+ p=argparse.ArgumentParser();p.add_argument('--prefix',required=True);p.add_argument('--trial',required=True);p.add_argument('--assisted-prefix',action='store_true');p.add_argument('--frames-after',type=int,default=6000);p.add_argument('--rom');p.add_argument('--slot',type=int,choices=range(3),default=0);p.add_argument('--overwrite',action='store_true');p.add_argument('--exit-after',action='store_true');a=p.parse_args()
  source=ROOT/'validation/natural-dungeon-route'/a.prefix;c=json.loads((source/'capture.json').read_bytes());prior=json.loads((source/'route_report.json').read_bytes())
  assert c['sram_input'] is None and prior['reached_entrance'] and not prior['failure']
  rom=ROOT/(a.rom or 'gaw-megadrive.bin');digest=sha(rom.read_bytes());assert c['rom_sha256']==digest
@@ -27,18 +27,19 @@ def main():
   if f==start:assert raw==expected
   data=lambda n,k:bytes(raw[(sy[n]+i)^1]for i in range(k));word=lambda n:int.from_bytes(data(n,2),'big')
   state.update(room=word('room_id'),game=word('game_state'),hero=word('hero_state'),counter=word('hero_counter'),x=word('hero_x')>>8,y=word('hero_y')>>8,health=word('hero_health'),magic=word('hero_magic'),gold=word('hero_gold'),keys=word('hero_keys'),selected=word('hero_selected_item'),phase=word('save_service_phase'),slot=word('save_slot_selection'),last_slot=word('save_last_slot'),modal=word('house_dialogue_active'),audio_error=word('sound_unhandled_command'),tilemap=data('sms_vram',16384)[0x3800:0x3e00])
+  state.update(resume_phase=word('resume_phase'),graphics_class=word('world_graphics_class'),door_loading=data('door_transition_loading',1)[0])
   if first is None:
-   first={k:v for k,v in state.items()if k!='tilemap'};house=state['room'];assert house in nodes and state['game']==12 and state['health'];point=nodes[house];assert state['last_slot']==0,'This test requires a genuinely fresh save list'
+   first={k:v for k,v in state.items()if k!='tilemap'};house=state['room'];assert house in nodes and state['game']==12 and state['health'];point=nodes[house];assert (state['last_slot']>0 if a.overwrite else state['last_slot']==0),'Save-list precondition mismatch'
   if not state['health'] or state['game']==20:failure='hero_died'
   if state['audio_error']:failure='native_audio_error'
-  if state['room']!=house:failure='unexpected_house_exit'
+  if state['room']!=house and not (a.exit_after and written is not None and state['room']==prior['house_outside']):failure='unexpected_house_exit'
   if state['phase']==3 and written is None:
    written=f;payload=data('game_save_state',592);captures.add(f+1)
    assert state['last_slot']==a.slot+1 and state['slot']==a.slot and payload[0] not in (0,255)
   key=tuple(state[k]for k in ['room','game','phase','slot','last_slot','modal','health','magic','gold','keys'])
   if key!=last_key:
    events.append(dict(frame=f,**{k:v for k,v in state.items()if k!='tilemap'}));captures.add(f+1);last_key=key
-  if written is not None and complete is None and state['phase']==0 and state['game']==12 and state['hero']==1 and not state['modal']:
+  if written is not None and complete is None and state['phase']==0 and state['game']==12 and state['hero']==1 and not state['modal'] and (not a.exit_after or state['room']==prior['house_outside'] and not state['resume_phase'] and not state['graphics_class'] and not state['door_loading']):
    complete=f;captures.add(f+150)
  def choose(f):
   nonlocal last_direction,selection_since
@@ -51,7 +52,14 @@ def main():
   if state.get('game')==22 or state.get('modal'):return [8]if f%40<4 else []
   # The restored room first publishes hero0. Do not press UP again
   # while waiting for hero1,or the NPC service immediately reopens.
-  if written is not None and state.get('game')==12 and state.get('phase')==0:return []
+  if written is not None and state.get('game')==12 and state.get('phase')==0:
+   if not a.exit_after or state['room']!=house:return []
+   if state['counter']:return [4+last_direction]
+   at=state['x'],state['y'];target=(136,160)
+   if at==target:last_direction=1;return [5]
+   route=walk(state['tilemap'],at,lambda q:q==target)
+   if route:last_direction=route[0];return [4+last_direction]
+   return []
   if state.get('game')!=12 or state.get('hero')not in (0,1):return []
   if state['counter']:return [4+last_direction]
   at=state['x'],state['y']
@@ -68,7 +76,7 @@ def main():
  raw_sram=sram.read_bytes();logical=raw_sram[1::2].ljust(8192,b'\xff');valid=written is not None and payload is not None and logical[0x400+a.slot*0x400:0x650+a.slot*0x400]==payload and logical[0x30]==a.slot+1
  passed=complete is not None and not failure and valid
  if payload is not None:(folder/'serialized-payload.bin').write_bytes(payload)
- report=dict(passed=passed,failure=failure or(None if passed else 'save_service_or_payload_incomplete'),rom_sha256=digest,source_prefix='natural-dungeon-route/'+a.prefix,prefix_end=start,first_state=first,last_state={k:v for k,v in state.items()if k!='tilemap'},save_written_frame=written,complete_frame=complete,game_written_save=True,initial_sram=False,primary_state_imports=0,sram_checkpoint_injection=False,new_assistance_writes=0,ram_injections=bool(writes),assisted_route=bool(writes),natural_campaign_proof=False,sram_file=sram.relative_to(ROOT).as_posix(),sram_sha256=sha(raw_sram),sram_bytes=len(raw_sram),slot=a.slot,logical_payload_offset=0x400+a.slot*0x400,logical_payload_bytes=592,serialized_payload_sha256=sha(payload)if payload is not None else None,payload_source_ram_exact=valid,rom_modifications=False,driver_sha256=sha(Path(__file__).read_bytes()),scope='Actual normal NPC Yes/selected-slot transaction after a canonical cold house route. Exported SRAM matches the592-byte serialized live RAM. No resource,actor,progression or SRAM fixture. Separate fixed-input SRAM replay and fresh Continue load remain required.')
+ report=dict(passed=passed,failure=failure or(None if passed else 'save_service_or_payload_incomplete'),rom_sha256=digest,source_prefix='natural-dungeon-route/'+a.prefix,prefix_end=start,first_state=first,last_state={k:v for k,v in state.items()if k!='tilemap'},save_written_frame=written,complete_frame=complete,game_written_save=True,overwrite_requested=a.overwrite,normal_exterior_exit_requested=a.exit_after,initial_sram=False,primary_state_imports=0,sram_checkpoint_injection=False,new_assistance_writes=0,ram_injections=bool(writes),assisted_route=bool(writes),natural_campaign_proof=False,sram_file=sram.relative_to(ROOT).as_posix(),sram_sha256=sha(raw_sram),sram_bytes=len(raw_sram),slot=a.slot,logical_payload_offset=0x400+a.slot*0x400,logical_payload_bytes=592,serialized_payload_sha256=sha(payload)if payload is not None else None,payload_source_ram_exact=valid,rom_modifications=False,driver_sha256=sha(Path(__file__).read_bytes()),scope='Actual normal NPC Yes/selected-slot transaction after a canonical cold house route. Exported SRAM matches the592-byte serialized live RAM. No resource,actor,progression or SRAM fixture. Separate fixed-input SRAM replay and fresh Continue load remain required.')
  for name,value in [('report',report),('events',events),('controls',controls)]:(folder/(name+'.json')).write_bytes((json.dumps(value,indent=2)+'\n').encode())
  if writes:
   assist=json.loads((source/'assistance.json').read_bytes());assist['writes']=[dict(frame=f,address=addr,data_hex=data.hex())for f,addr,data in writes];(folder/'assistance.json').write_bytes((json.dumps(assist,indent=2)+'\n').encode());recording(folder,json.loads((folder/'capture.json').read_bytes()))
