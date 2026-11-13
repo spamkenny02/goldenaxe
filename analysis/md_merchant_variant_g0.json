@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "key": "g0",
+  "outside": 249,
+  "initial_prefix": "natural-service-route/md-annex-early-equipment-gillian-lightning1-learn01",
+  "trace": "natural-service-route/md-annex-merchant-g0-choices01",
+  "sms_reference": "natural-service-route/sms-npc-merchant-variant-g0-g0-choices01",
+  "choices": [
+    {
+      "selection": 1,
+      "expect": "buy"
+    },
+    {
+      "selection": 1,
+      "expect": "full"
+    },
+    {
+      "selection": 2,
+      "expect": "buy"
+    },
+    {
+      "selection": 2,
+      "expect": "owned"
+    },
+    {
+      "selection": 0,
+      "expect": "poor"
+    }
+  ],
+  "video_report": "videos/md-annexes-2026-11-12/md-annex-merchant-g0-choices01/report.json",
+  "separate_actual_branch": true
+}

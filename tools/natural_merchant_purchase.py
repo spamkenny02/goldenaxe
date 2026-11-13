@@ -7,7 +7,7 @@ from assisted_prefix import prefix_writes,recording
 from archive_lossless_evidence import sha
 
 def main():
- p=argparse.ArgumentParser();p.add_argument('--prefix',required=True);p.add_argument('--outside',type=lambda x:int(x,0),required=True);p.add_argument('--count',type=int,default=2);p.add_argument('--kind',choices=['key','magic'],default='key');p.add_argument('--trial',required=True);p.add_argument('--heal-after',action='store_true');p.add_argument('--assisted-prefix',action='store_true');p.add_argument('--rom');a=p.parse_args();assert 1<=a.count<=10
+ p=argparse.ArgumentParser();p.add_argument('--prefix',required=True);p.add_argument('--outside',type=lambda x:int(x,0),required=True);p.add_argument('--count',type=int,default=2);p.add_argument('--kind',choices=['key','magic','shield'],default='key');p.add_argument('--trial',required=True);p.add_argument('--heal-after',action='store_true');p.add_argument('--assisted-prefix',action='store_true');p.add_argument('--rom');a=p.parse_args();assert 1<=a.count<=10
  source=ROOT/'validation/natural-dungeon-route'/a.prefix;c=json.loads((source/'capture.json').read_bytes());prior=json.loads((source/'route_report.json').read_bytes());assert prior['reached_entrance'] and prior['failure'] is None and prior['house_outside']==a.outside and prior['house_target'] in [0,1,0x2f] and c['sram_input'] is None
  assert not str(c['rom']).endswith('.sms');rom=ROOT/(a.rom or 'gaw-megadrive.bin');assert c['rom_sha256']==sha(rom.read_bytes());sy=symbols(ROOT/'megadrive/out/release/symbol.txt');house=prior['house_target'];assert not a.heal_after or a.outside==0x94 and house==0
  assets=json.loads((ROOT/'analysis/merchant_assets.json').read_bytes());town=next(r for r in assets['towns'] if r[0]==a.outside)
@@ -16,13 +16,13 @@ def main():
   assert town[1]==2 and a.count==1 and not a.heal_after
   original=(ROOT/'input/original.sms').read_bytes();price=original[0x75af];magic_gain=original[0x75ac]*8;selection=0
  else:
-  assert town[1]==0;selection=next(i for i,v in enumerate(assets['goods'][town[2]]) if v[0]==30);price=assets['goods'][town[2]][selection][1]
+  assert town[1]==0 and (a.kind!='shield' or a.count==1 and not a.heal_after);selection=next(i for i,v in enumerate(assets['goods'][town[2]]) if v[0]==(25 if a.kind=='shield' else 30));price=assets['goods'][town[2]][selection][1]
  node=next(r for r in assets['nodes'] if r[0]==house);nx,ny=node[1:]
  writes=prefix_writes(source,c,a.assisted_prefix);recorded=json.loads((source/'controls.json').read_bytes());start=c['frames'];timeline=[()]*(start+1)
  for i,row in enumerate(recorded):
   end=recorded[i+1]['frame']-1 if i+1<len(recorded) else start;timeline[row['frame']:end+1]=[tuple(row['buttons'])]*(end-row['frame']+1)
  folder=ROOT/'validation/natural-service-route'/('md-'+a.trial);assert not folder.exists();state={};first=None;done=None;failure=None;observed=0;controls=list(recorded);events=[];captures={start,start+6000};last=None;tilemap=b'';last_direction=0
- def trade_complete():return first is not None and state['keys']==first['keys']+(a.count if a.kind=='key' else 0) and state['gold']==first['gold']-price*a.count and (a.kind!='magic' or state['magic']==min(first['max_magic'],first['magic']+magic_gain))
+ def trade_complete():return first is not None and state['keys']==first['keys']+(a.count if a.kind=='key' else 0) and state['gold']==first['gold']-price*a.count and (a.kind!='magic' or state['magic']==min(first['max_magic'],first['magic']+magic_gain)) and (a.kind!='shield' or state['shield']==2)
  def achieved():return trade_complete() and (not a.heal_after or state['health']==state['max_health'])
  def observe(f,r):
   nonlocal first,done,failure,observed,last,tilemap
@@ -30,11 +30,11 @@ def main():
   if f<start:return
   word=lambda n:int.from_bytes(bytes(r[(sy[n]+i)^1] for i in range(2)),'big')
   tilemap=bytes(r[(sy['sms_vram']+0x3800+i)^1] for i in range(1536))
-  state.update(room=word('room_id'),game=word('game_state'),hero=word('hero_state'),counter=word('hero_counter'),x=word('hero_x')>>8,y=word('hero_y')>>8,health=word('hero_health'),max_health=word('hero_max_health'),gold=word('hero_gold'),keys=word('hero_keys'),magic=word('hero_magic'),max_magic=word('hero_max_magic'),phase=word('merchant_phase'),selection=word('merchant_selection'),audio_error=word('sound_unhandled_command'))
+  state.update(room=word('room_id'),game=word('game_state'),hero=word('hero_state'),counter=word('hero_counter'),x=word('hero_x')>>8,y=word('hero_y')>>8,health=word('hero_health'),max_health=word('hero_max_health'),gold=word('hero_gold'),keys=word('hero_keys'),magic=word('hero_magic'),max_magic=word('hero_max_magic'),shield=word('hero_shield_level'),phase=word('merchant_phase'),selection=word('merchant_selection'),audio_error=word('sound_unhandled_command'))
   state.update(resume_phase=word('resume_phase'),graphics_class=word('world_graphics_class'),door_loading=r[sy['door_transition_loading']^1])
   if first is None:
    first=dict(state);assert first['room']==house and first['gold']>=price*a.count
-   assert first['keys']+a.count<=99 if a.kind=='key' else first['magic']<first['max_magic']
+   assert first['keys']+a.count<=99 if a.kind=='key' else first['shield']<2 if a.kind=='shield' else first['magic']<first['max_magic']
   if not state['health'] or state['game']==20:failure='hero_died'
   if state['audio_error']:failure='native_audio_error'
   k=tuple(state[n] for n in ['room','game','gold','keys','phase','selection'])

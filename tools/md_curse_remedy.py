@@ -22,12 +22,11 @@ def main():
     for i,row in enumerate(controls):
         last=controls[i+1]['frame']-1 if i+1<len(controls) else start
         presses.extend((row['frame'],last,k) for k in row['buttons'])
-    masks=compile_fixed_inputs(presses,start);writes=list(prefix_writes(source,cap,True))
-    writes.append((start+1,sy['hero_hurt'],b'\0\0'))
+    masks=compile_fixed_inputs(presses,start);writes=FrameWrites(prefix_writes(source,cap,True));release=None
     out=ROOT/'validation/natural-dungeon-combat'/('md-auto-'+a.trial);assert not out.exists()
     state={};cursers=[];first_curse=None;first_cure=None;done=None;failure=None;observed=0;direction=0;captures={start};events=[]
     def observe(frame,raw):
-        nonlocal observed,first_curse,first_cure,done,failure,cursers
+        nonlocal observed,first_curse,first_cure,done,failure,cursers,release
         observed=frame
         if frame<start:return
         r=bytearray(md_to_sms_view(raw,sy));r[0x600:0x900]=bytes(raw[(sy['world_actor_state']+i)^1] for i in range(768))
@@ -35,16 +34,17 @@ def main():
         state.update(room=int.from_bytes(r[0xb9:0xbb],'little'),game=r[0x1d],hero=r[0x301],counter=r[0x304],
             x=r[0x313],y=r[0x311],health=r[0x318],hurt=r[0x305],curse=r[0xbf],oil=r[0xe2],selected=r[0xdf],slot=r[0xa0],
             gold=r[0xdd],magic=r[0xdb],tilemap=bytes(r[0x1600:0x1c00]))
-        cursers=[dict(slot=i,x=r[0x600+i*48+19],y=r[0x600+i*48+17],hp=r[0x600+i*48+24])
+        cursers=[dict(slot=i,x=r[0x600+i*48+19],y=r[0x600+i*48+17],hp=r[0x600+i*48+24],flags=r[0x600+i*48+3])
             for i in range(16) if r[0x600+i*48]==0x53 and r[0x600+i*48+24]]
-        if frame==start:assert cursers
+        if release is None and any(e['flags']&2 for e in cursers):
+            release=frame+1;writes.append((release,sy['hero_hurt'],b'\0\0'));captures.add(frame+1)
         if state['curse'] and first_curse is None:
             assert state['hurt']<=128 and state['oil']==initial[0xe2]
             first_curse=dict(frame=frame,health=state['health']);captures.add(frame+1)
         if first_curse and not state['curse'] and not state['oil'] and first_cure is None:
             assert not cursers;first_cure=dict(frame=frame,health=state['health']);captures.add(frame+1)
         if not state['health']:failure='hero_died'
-        if frame>start and state['hurt']>128:failure='guard_not_released'
+        if release is not None and frame>=release and state['hurt']>128:failure='guard_not_released'
         if state['gold']!=initial[0xdd] or state['magic']!=initial[0xdb]:failure='unexpected_currency_or_magic_change'
         if first_cure and not state['curse'] and state['selected']==1 and state['game']==12 and state['hero']==1 and not state['counter'] and frame-first_cure['frame']>100 and done is None:
             done=frame;captures.add(frame+1)
@@ -69,7 +69,7 @@ def main():
         if first_cure:return []
         if first_curse and not cursers:return [8] if frame%3 else []
         if not cursers:return []
-        target=min(cursers,key=lambda e:abs(e['x']-state['x'])+abs(e['y']-state['y']))
+        target=min([e for e in cursers if e['flags']&2] or cursers,key=lambda e:abs(e['x']-state['x'])+abs(e['y']-state['y']))
         x,y=state['x'],state['y'];dx,dy=target['x']-x,target['y']-y
         if first_curse and ((abs(dx)<=24 and abs(dy)<=8) or (abs(dy)<=24 and abs(dx)<=8)):
             direction=(2 if dx<0 else 3) if abs(dx)>abs(dy) else (0 if dy<0 else 1)
@@ -85,17 +85,18 @@ def main():
         return value
     with contextlib.redirect_stdout(io.StringIO()):
         run(rom,start+9000,out,captures,cap['presses'],skip_intro=False,
-            input_provider=control,ram_observer=observe,ram_writes=FrameWrites(writes),core_options=cap['core_options'],
+            input_provider=control,ram_observer=observe,ram_writes=writes,core_options=cap['core_options'],
             stop_when=lambda:bool(failure) or done is not None and observed>done)
     result=dict(passed=done is not None and not failure,failure=failure or (None if done else 'frame_limit'),
         curse_remedy_passed=done is not None and not failure,source_prefix=a.trace,rom_sha256=cap['rom_sha256'],
-        first_curse=first_curse,first_cure=first_cure,complete_frame=done,room_cleared=False,
+        guard_release_frame=release,curser_spawn_wait_frames=release-start if release is not None else None,first_curse=first_curse,first_cure=first_cure,complete_frame=done,room_cleared=False,
         last_state={k:v for k,v in state.items() if k!='tilemap'},primary_state_imports=0,new_assistance_writes=1,
         resource_or_actor_writes=0,sram_checkpoint_injection=False,
         scope='Actual curser contact with protection released, curser defeated and owned oil consumed; no HP/item/actor fixture.')
     assist=json.loads((source/'assistance.json').read_bytes());assert assist['first_boss_combat'] is None
-    assist['release_write_frame']=start+1
-    assist['early_guard_release']=dict(frame=start+1,boss_room=assist['boss_room'],reason='ordinary_curse_contact_and_real_oil')
+    assert release is not None,'No active curser appeared before the frame limit'
+    assist['release_write_frame']=release
+    assist['early_guard_release']=dict(frame=release,boss_room=assist['boss_room'],reason='ordinary_curse_contact_and_real_oil')
     assist['writes']=[dict(frame=f,address=addr,data_hex=data.hex()) for f,addr,data in writes]
     actual=json.loads((out/'capture.json').read_bytes())
     if 'episodes' in assist:

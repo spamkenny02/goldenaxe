@@ -20,9 +20,9 @@ def main():
      if not entry_options(raw,outside,0x9f,d,world):continue
      path,_=world.route(start)
      if path is not None:choices.append((len(path),outside));break
-   assert choices,'No remaining actual passage approach';_,outside=min(choices);fund_wallet(c,20);n=enter(c,outside,0x9f,f'{outside:02x}');first=c.cap()['frames']+1
+   assert choices,'No remaining actual passage approach';_,outside=min(choices);fund_wallet(c,20);n=enter(c,outside,0x9f,f'{outside:02x}',bell_room=0x96 if outside==0x96 else None);first=c.cap()['frames']+1
    ref=json.loads((ROOT/f'analysis/sms_service_alternative_passage-refuse-{outside:02x}.json').read_bytes())['trace']
-   c.service(f'{outside:02x}-decline-pay{n:02d}','md_passage_decline_then_pay',['--outside',hex(outside),'--sms-reference',ref]);name=f'md-{c.label}-{outside:02x}-decline-pay{n:02d}';film(c,name,first);verified=c.trace;done.append(dict(outside=outside,trace=c.trace,sms_reference=ref,video_report=f'videos/md-annexes-2026-11-12/{name}/report.json'));save()
+   c.service(f'{outside:02x}-decline-pay-v3-{n:02d}','md_passage_decline_then_pay',['--outside',hex(outside),'--sms-reference',ref]);name=f'md-{c.label}-{outside:02x}-decline-pay-v3-{n:02d}';film(c,name,first);verified=c.trace;done.append(dict(outside=outside,trace=c.trace,sms_reference=ref,video_report=f'videos/md-annexes-2026-11-12/{name}/report.json'));save()
  finally:c.close()
 
 if __name__=='__main__':main()

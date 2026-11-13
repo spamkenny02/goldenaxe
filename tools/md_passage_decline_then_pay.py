@@ -25,7 +25,11 @@ def main():
    if phase=='refuse' and state['modal'] and modal_start is None:modal_start=frame;args[3].add(frame+1)
    if confirmation is not None and refused is None and not state['modal']:
     r=md_to_sms_view(raw,sy);assert r[0xcf:0xf3]==initial[0xcf:0xf3] and r[0x100:0x200]==initial[0x100:0x200]
-    assert r[0x1c00:0x1ca0]==initial[0x1c00:0x1ca0],'No changed the passage cells'
+    changed=[dict(cell=i,before=initial[0x1c00+i],after=r[0x1c00+i]) for i in range(160) if r[0x1c00+i]!=initial[0x1c00+i]]
+    (folder/'no-cell-observation.json').write_bytes((json.dumps(dict(frame=frame,changes=changed,gold=r[0xdd]),indent=2)+'\n').encode())
+    # 38 is the animated closed NPC (28/29), replaced by floor1 on payment.
+    assert all(change['cell']==0x38 and {change['before'],change['after']}=={0x28,0x29} for change in changed),'No changed more than the ordinary NPC animation pose'
+    assert r[0x1c38] in (0x28,0x29) and r[0x1c38]!=1,'No opened the passage'
     refused=frame;phase='walk_away';args[3].add(frame+1)
   def control(frame):
    nonlocal confirmation,phase,returned
@@ -48,7 +52,7 @@ def main():
  finally:game.run=original
  assert folder is not None and confirmation is not None and refused is not None and returned is not None
  report=json.loads((folder/'report.json').read_bytes());assert report['passed']
- report.update(variant='passage_refuse_then_pay',sms_reference=a.sms_reference,no_confirmation_frame=confirmation,no_completed_frame=refused,walked_away_before_return_frame=returned,no_resources_flags_and_passage_cells_unchanged=True,scope='Actual visible No, unchanged resources, permanent flags and passage cells; walk away, return, then actual payment and traversal to the real destination. No resource/quest/RNG fixtures.')
+ report.update(variant='passage_refuse_then_pay',sms_reference=a.sms_reference,no_confirmation_frame=confirmation,no_completed_frame=refused,walked_away_before_return_frame=returned,no_resources_flags_and_passage_blocking_unchanged=True,npc_animation_pose_excluded_from_cell_equality=True,scope='Actual visible No, unchanged resources and permanent flags, passage remains blocked (NPC animation pose may advance); walk away, return, then actual payment and traversal to the real destination. No resource/quest/RNG fixtures.')
  (folder/'controls.json').write_bytes((json.dumps(actual,indent=2)+'\n').encode());(folder/'report.json').write_bytes((json.dumps(report,indent=2)+'\n').encode());recording(folder,json.loads((folder/'capture.json').read_bytes()));print('Actual No then paid traversal:',refused,report['complete_frame'],flush=True)
 
 if __name__=='__main__':main()

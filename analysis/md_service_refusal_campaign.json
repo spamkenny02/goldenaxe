@@ -1,6 +1,6 @@
 {
-  "status": "running_played_replayed_filmed",
-  "last_verified_prefix": "natural-service-route/md-annex-services-2e-merchant-refuse01",
+  "status": "all_48_refusals_played_replayed_filmed",
+  "last_verified_prefix": "natural-service-route/md-annex-services-2e-save-refuse01",
   "completed_visits": [
     {
       "outside": 165,
@@ -369,26 +369,25 @@
       "sms_reference": "natural-service-route/sms-npc-service-refusals-2e-merchant-refuse02",
       "trace": "natural-service-route/md-annex-services-2e-merchant-refuse01",
       "video_report": "videos/md-annexes-2026-11-12/service-2e-merchant-refus-ntsc01/report.json"
-    }
-  ],
-  "pending": [
-    {
-      "kind": "healer",
-      "outside": 46,
-      "room": 0,
-      "trace": "natural-service-route/sms-npc-service-refusals-2e-healer-refuse03",
-      "frame": 443250,
-      "variant": "refusal"
     },
     {
-      "kind": "save",
       "outside": 46,
       "room": 0,
-      "trace": "natural-service-route/sms-npc-service-refusals-2e-save-refuse01",
-      "frame": 443941,
-      "variant": "refusal"
+      "kind": "healer",
+      "sms_reference": "natural-service-route/sms-npc-service-refusals-2e-healer-refuse03",
+      "trace": "natural-service-route/md-annex-services-2e-healer-refuse01",
+      "video_report": "videos/md-annexes-2026-11-12/service-2e-healer-refus-ntsc01/report.json"
+    },
+    {
+      "outside": 46,
+      "room": 0,
+      "kind": "save",
+      "sms_reference": "natural-service-route/sms-npc-service-refusals-2e-save-refuse01",
+      "trace": "natural-service-route/md-annex-services-2e-save-refuse01",
+      "video_report": "videos/md-annexes-2026-11-12/service-2e-save-refus-ntsc01/report.json"
     }
   ],
-  "all_48_refusals_verified_and_filmed": false,
+  "pending": [],
+  "all_48_refusals_verified_and_filmed": true,
   "all_npcs_complete": false
 }

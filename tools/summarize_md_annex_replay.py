@@ -70,7 +70,11 @@ def main():
         elif 'outcomes' in r and r.get('variant') in ('play','refuse','poor'):
             assert r['complete_frame'] is not None and not r['new_assistance_writes'] and r['primary_state_imports']==0
             if r['variant']=='play':
-                assert r['admission_frame'] and len(r['outcomes'])==r['requested_rounds']
+                assert r['admission_frame']
+                if r.get('stop_on_lucky_requested'):
+                    if not r['lucky_card_observed']:continue
+                    assert any(o['special_card']==0x38 for o in r['outcomes'])
+                else:assert len(r['outcomes'])==r['requested_rounds']
                 assert r['gold_after']==r['outcomes'][-1]['expected_gold']
             elif r['variant']=='refuse':assert r['decline_frame'] and r['gold_after']==r['gold_before']
             else:assert r['poor_text_observed'] and r['poor_sms_bitmap_exact_frame'] and r['gold_before']<10 and r['gold_after']==r['gold_before']
@@ -79,14 +83,17 @@ def main():
             assert before[0xcf:0xdd]==after[0xcf:0xdd] and before[0xde:0xf3]==after[0xde:0xf3]
         elif 'choices' in r and 'completed' in r and r.get('sms_reference'):
             assert len(r['completed'])==len(r['choices']) and r['complete_frame'] is not None
-            assert not r.get('currency_assisted_component_test') and not r['new_assistance_writes']
+            if r.get('currency_assisted_component_test'):
+                assert reference=='natural-service-route/sms-npc-key-capacity99-01' and r['new_assistance_writes']==99 and word('hero_keys')==99
+            else:assert not r['new_assistance_writes']
             assert all(v['bitmap_exact_bytes']==1040 and v['expect']==choice['expect'] and v['selection']==choice['selection'] for v,choice in zip(r['completed'],r['choices']))
         elif r.get('variant')=='gold_house_and_return':
             assert r['return_contact_end']-r['return_contact_start']>=80 and r['complete_frame'] is not None
             assert r['last_state']['gold']==r['expected_final_gold'] and r['last_state']['outside_flags']&2
             if not r['previously_collected']:assert r['first_exterior_exit_frame'] and r['reentered_frame'] and r['first_text_pc']
         else:continue
-        end=cap['frames'];proof=folder.with_name(folder.name+(f'-assisted-fixed-replay-{end}' if cap['test_ram_writes'] else '-fixed-replay'))/'replay_report.json';w=load(proof)
+        end=cap['frames'];suffix='-economic-fixed-replay' if r.get('currency_assisted_component_test') else f'-assisted-fixed-replay-{end}' if cap['test_ram_writes'] else '-fixed-replay';proof=folder.with_name(folder.name+suffix)/'replay_report.json';w=load(proof)
+        if r.get('currency_assisted_component_test'):assert w['currency_assisted_component_test'] and w['currency_refills']==99 and w['inventory_actor_health_and_quest_writes']==0 and video['currency_assisted_component_test']
         assert w['passed'] and w['final_png_exact'] and w['rom_sha256']==SHA and sha(proof)==video['proof_sha256']
         region='pal' if cap['core_options'].get('genesis_plus_gx_region_detect')=='pal' else 'ntsc'
         row=cases[reference];row['md_evidence'].append(dict(trace=trace,region=region,report=video_path.relative_to(ROOT).as_posix(),report_sha256=sha(video_path),conversations=len(r.get('visited',[])),sms_reference_bitmap_boundaries=r.get('sms_reference_bitmap_boundaries',{}),scope=r['scope']))

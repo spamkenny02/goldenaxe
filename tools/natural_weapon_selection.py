@@ -1,4 +1,4 @@
-"""Select an owned sword/axe using the real menu after a verified recording."""
+"""Select an owned weapon or spell using the real menu after a verified recording."""
 import argparse
 import contextlib
 import io
@@ -13,7 +13,7 @@ from validate_playable_sprite_limit import symbols
 def main():
     p = argparse.ArgumentParser()
     p.add_argument('--trace', required=True)
-    p.add_argument('--slot', type=int, choices=[0, 1], required=True)
+    p.add_argument('--slot', type=int, choices=[0, 1, 4, 5, 6, 7], required=True)
     p.add_argument('--trial', required=True)
     p.add_argument('--assisted-prefix', action='store_true')
     p.add_argument('--sms', action='store_true')
@@ -75,7 +75,7 @@ def main():
         if first is None:
             first = dict(state)
             assert first['health'] and first['game'] == 12
-            assert first['basic' if a.slot == 0 else 'axe'] > 0
+            assert first['items'][a.slot] > 0
             assert first['selected'] != a.slot
         if state['game'] == 16:
             seen_menu = True
@@ -123,7 +123,7 @@ def main():
                   first_state=first, last_state=state, seen_menu=seen_menu, new_assistance_writes=0,
                   ram_injections=bool(writes), assisted_route=bool(writes), sram_checkpoint_injection=False,
                   primary_state_imports=0, driver_sha256=sha(driver),
-                  scope='Cold recording, ordinary Start/direction/C menu selection of an already owned weapon. Only inherited approach guard writes; no ownership, actor, HP, money or progression fixture.')
+                  scope='Cold recording, ordinary Start/direction/C menu selection of an already owned weapon or spell. Only inherited approach guard writes; no ownership, actor, HP, money or progression fixture.')
     for name, value in [('report', result), ('controls', controls), ('events', events)]:
         (folder / (name + '.json')).write_bytes((json.dumps(value, indent=2) + '\n').encode())
     (folder / 'weapon_selection_driver.py').write_bytes(driver)

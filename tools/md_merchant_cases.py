@@ -17,7 +17,7 @@ def main():
     p.add_argument('--trial',required=True);p.add_argument('--choices',required=True)
     p.add_argument('--refill-gold',action='store_true',help='Explicit user-authorized currency-assisted component test, never a campaign proof')
     p.add_argument('--budget',type=int,default=18000);a=p.parse_args()
-    assert not a.refill_gold,'Currency components require their own independent verifier'
+    assert not a.refill_gold or a.sms_reference=='natural-service-route/sms-npc-key-capacity99-01','Only the explicitly isolated99-key currency component is supported'
     rom=ROOT/a.rom;sy=symbols(ROOT/'megadrive/out/release/symbol.txt')
     ref=ROOT/'validation'/a.sms_reference;sr=json.loads(evidence(ref/'report.json'));assert sr['passed']
     se=json.loads(evidence(ref/'dialogue_observations.json'))['events'];bitmaps={}
@@ -110,7 +110,7 @@ def main():
             if index==len(choices):phase='exit';return [0]
             if wanted is None:
                 if a.refill_gold and refilled_index!=index:
-                    writes.append((frame+1,0xdd,b'\xff'));gold_refills.append(frame+1)
+                    writes.append((frame+1,sy['hero_gold'],b'\0\xff'));gold_refills.append(frame+1)
                     expected[0xdd]=255;refilled_index=index;return []
                 prepare()
             if state['selection']!=wanted['selection']:return [5 if state['selection']<wanted['selection'] else 4]
@@ -132,7 +132,8 @@ def main():
             input_provider=control,ram_observer=observe,ram_writes=writes,core_options=cap['core_options'],
             stop_when=lambda:bool(failure) or done is not None and observed>=done+10)
     actual=json.loads((out/'capture.json').read_bytes());actual['presses']=[list(v) for v in presses]
-    (out/'capture.json').write_text(json.dumps(actual,indent=2)+'\n')
+    if a.refill_gold:actual['currency_assisted_component_test']=True
+    (out/'capture.json').write_bytes((json.dumps(actual,indent=2)+'\n').encode())
     report=dict(passed=done is not None and not failure,failure=failure or (None if done else 'frame_limit'),
         rom_sha256=cap['rom_sha256'],sms_reference=a.sms_reference,source_prefix=a.prefix,outside=outside,mode=mode,parameter=parameter,choices=choices,completed=completed,
         text_entries=entries,complete_frame=done,new_assistance_writes=len(gold_refills),primary_state_imports=0,

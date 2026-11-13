@@ -136,7 +136,7 @@ def main():
             stop_when=lambda:bool(failure) or done is not None and observed>=done+40)
     result=dict(passed=done is not None and not failure,failure=failure or (None if done else 'frame_limit'),
         outside=a.outside,variant=a.variant,sms_reference=a.sms_reference,poor_sms_bitmap_exact_frame=poor_matched,poor_sms_bitmap_sha256=poor_bitmap,source_prefix=a.prefix,rom_sha256=cap['rom_sha256'],complete_frame=done,
-        admission_frame=admission,admission_cost=10*round_number if admission else 0,outcome=outcome,outcomes=outcomes,requested_rounds=a.rounds,decline_frame=decline,
+        admission_frame=admission,admission_cost=10*round_number if admission else 0,outcome=outcome,outcomes=outcomes,requested_rounds=a.rounds,stop_on_lucky_requested=a.stop_on_lucky,decline_frame=decline,
         lucky_card_observed=lucky_seen,initial_wait=a.initial_wait,
         poor_text_observed=poor,gold_before=initial[0xdd],gold_after=state['gold'],text_entries=entries,draws=draws,last_state={k:v for k,v in state.items() if k not in ('tilemap','cells')},
         primary_state_imports=0,new_assistance_writes=0,sram_checkpoint_injection=False,
