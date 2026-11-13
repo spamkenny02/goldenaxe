@@ -11,15 +11,23 @@ Il distingue données extraites, règles du modèle et interactions rejouées ;
 la couverture de tous les PNJ et de toutes les quêtes secondaires reste ouverte.
 
 <!-- ROM-RELEASE:START -->
-**Version courante : v0323 — 2048 Kio.**
+**Version courante : v0324 — 2048 Kio.**
 
-[Télécharger la ROM v0323](versions/v0323-9fcee16d/gaw-megadrive-v0323.bin) · [Toutes les versions](versions/README.md)
+[Télécharger la ROM v0324](versions/v0324-f25581d6/gaw-megadrive-v0324.bin) · [Toutes les versions](versions/README.md)
 
 Version de développement ; contrôles ciblés réussis, écarts visuels et validation complète encore ouverts.
 
-SHA-256 : `9fcee16dc12028138712564ebd7123d99a25d1ef8f6e54d9799f02ceddaacd99`
-Checksum Mega Drive : `F0C3`
+SHA-256 : `f25581d62e0654fc85729affe9405b64a51603fc5ddce5965a89a6fdb27e3c31`
+Checksum Mega Drive : `93E3`
 <!-- ROM-RELEASE:END -->
+
+**V324 — présentation au démarrage, toujours 2 Mo.** L'image 5Customs / DokPepper
+et la voix fournies apparaissent avant l'introduction originale, avec fondus
+d'entrée et de sortie. Le menu Konami est conservé. Les ressources occupent
+l'espace inutilisé de la V323 ; le moteur et le format des sauvegardes restent
+conservés. Les campagnes normales PAL/NTSC, Continuer et le menu ont été rejoués.
+[Capture, aperçu vidéo et preuves](reports/presentation-v0324-2026-11-13/README.md).
+
 
 **V323 — menu secret Konami.** À l'écran titre : **↑ ↑ ↓ ↓ ← → ← → B A Start**.
 Le menu reprend le logo du jeu et un cadre doré. Haut/Bas choisit une option,

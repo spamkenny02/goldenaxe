@@ -5,14 +5,14 @@ from validate_playable_sprite_limit import symbols
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--region',choices=['ntsc','pal'],required=True);p.add_argument('--rom',required=True);p.add_argument('--out',required=True);p.add_argument('--expected-sha',default='1421abe47de95ac104a03e2fb1be7001f70aeca1fbb6a9b35669aa6e98b7d9a4');p.add_argument('--expect-cheats-off',action='store_true');a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--region',choices=['ntsc','pal'],required=True);p.add_argument('--rom',required=True);p.add_argument('--out',required=True);p.add_argument('--expected-sha',default='1421abe47de95ac104a03e2fb1be7001f70aeca1fbb6a9b35669aa6e98b7d9a4');p.add_argument('--expect-cheats-off',action='store_true');p.add_argument('--frame-offset',type=int,default=0);a=p.parse_args()
     rom=ROOT/a.rom;digest=hashlib.sha256(rom.read_bytes()).hexdigest();assert digest==a.expected_sha
     manifest=json.loads((ROOT/'testkit/manifest.json').read_bytes());route=manifest['routes']['md_'+a.region]
     csvpath=ROOT/'testkit/routes'/route['csv'];assert hashlib.sha256(csvpath.read_bytes()).hexdigest()==route['csv_sha256']
-    sy=symbols(ROOT/'megadrive/out/release/symbol.txt');presses=[];writes=FrameWrites();end=route['frames']
+    sy=symbols(ROOT/'megadrive/out/release/symbol.txt');presses=[];writes=FrameWrites();end=route['frames']+a.frame_offset
     with csvpath.open(newline='') as stream:
         for row in csv.DictReader(stream):
-            first,last,mask,guard=(int(row[k]) for k in ('start','end','mask','guard'))
+            first,last,mask,guard=(int(row[k]) for k in ('start','end','mask','guard'));first+=a.frame_offset;last+=a.frame_offset
             presses.extend((first,last,k) for k in range(16) if mask&(1<<k))
             if guard!=-1:writes.extend((f,sy['hero_hurt'],guard.to_bytes(2,'big')) for f in range(first,last+1))
     out=ROOT/a.out;assert out.resolve().is_relative_to(ROOT/'validation') and not out.exists()
@@ -35,7 +35,7 @@ def main():
     run(rom,end,out,{end},presses,skip_intro=False,ram_writes=writes,ram_observer=observe,
         core_options={'genesis_plus_gx_region_detect':'pal' if a.region=='pal' else 'auto'})
     passed=ending and not deaths and not overlaps and all(state[k]==v for k,v in route['expected_final'].items())
-    result=dict(passed=passed,cheats_disabled_every_frame_checked=a.expect_cheats_off,md_sha256=digest,region=a.region,frames=end,ending_seen=ending,final=state,
+    result=dict(passed=passed,cheats_disabled_every_frame_checked=a.expect_cheats_off,md_sha256=digest,region=a.region,frames=end,startup_frame_offset=a.frame_offset,ending_seen=ending,final=state,
         normal_deaths=deaths,approach_guard_writes=len(writes),live_boss_guard_overlap_frames=len({v['frame'] for v in overlaps}),
         overlap_examples=overlaps[:20],boss_assistance=bool(overlaps),sram_imports=0,
         route_csv_sha256=route['csv_sha256'],visited_rooms=sorted(rooms),seconds=time.monotonic()-started,

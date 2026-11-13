@@ -16,20 +16,22 @@ def inputs(kind):
  return rows
 
 def main():
- p=argparse.ArgumentParser();p.add_argument('--rom',required=True);p.add_argument('--out',required=True);a=p.parse_args();rom=ROOT/a.rom;out=ROOT/a.out;out.mkdir();results=[];sy=symbols(ROOT/'megadrive/out/release/symbol.txt')
+ p=argparse.ArgumentParser();p.add_argument('--rom',required=True);p.add_argument('--out',required=True);p.add_argument('--offset-ntsc',type=int,default=0);p.add_argument('--offset-pal',type=int,default=0);p.add_argument('--trace-label',default='konami-boot-on01');a=p.parse_args();rom=ROOT/a.rom;out=ROOT/a.out;out.mkdir();results=[];sy=symbols(ROOT/'megadrive/out/release/symbol.txt')
  for region in ['ntsc','pal']:
+  offset=a.offset_pal if region=='pal' else a.offset_ntsc
   for kind in ['both','life','gold','off','wrong','held']:
-   folder=(ROOT/'validation/natural-service-route/md-konami-boot-on01') if region=='ntsc' and kind=='both' else out/(region+'-'+kind)
+   folder=(ROOT/'validation/natural-service-route'/('md-'+a.trace_label)) if region=='ntsc' and kind=='both' else out/(region+'-'+kind)
    events=[];states={};last=None;audio_errors=[]
    def observe(f,r):
     nonlocal last
+    f-=offset
     w=lambda n:int.from_bytes(r[n:n+2],'little');b=lambda n:r[n^1]
     state=dict(life=b(0xe4b0),gold=b(0xe4b1),sequence=w(0xe4b2),open=w(0xe4b6),selection=w(0xe4b8),activations=w(0xe4ba),game=w(0x074c),health=w(0x2b16),max_health=w(0x28b8),money=w(0xda0e),hurt=w(0x2b1a),audio_error=w(0x2d12))
     if state['audio_error']:audio_errors.append(f)
     if f in [790,920,1000,1080,1150,1300,4000]:states[f]=state.copy()
     key=tuple(state.values())
     if key!=last:events.append(dict(frame=f,**state));last=key
-   run(rom,4000,folder,{790,1000,1080,1150,1300,4000},inputs(kind),skip_intro=False,ram_observer=observe,core_options={'genesis_plus_gx_region_detect':'pal' if region=='pal' else 'auto'})
+   run(rom,4000+offset,folder,{n+offset for n in [790,1000,1080,1150,1300,4000]},[(f+offset,t+offset,b) for f,t,b in inputs(kind)],skip_intro=False,ram_observer=observe,core_options={'genesis_plus_gx_region_detect':'pal' if region=='pal' else 'auto'})
    expected=(kind in ['both','life'],kind in ['both','gold']);final=states[4000]
    assert not audio_errors and (final['life'],final['gold'])==expected
    if kind in ['wrong','held']:assert final['activations']==0
@@ -40,7 +42,7 @@ def main():
     if expected[1]:assert final['money']==255
     else:assert final['money']==0
     if kind=='both':assert states[1080]['life']==0 and states[1080]['gold']==1 and states[1150]['life']==states[1150]['gold']==1
-   report=dict(passed=True,failure=None,rom_sha256=hashlib.sha256(rom.read_bytes()).hexdigest(),case=kind,region=region,states=states,primary_state_imports=0,external_ram_writes=0,last_state=dict(room=int.from_bytes((folder/'ram_04000.bin').read_bytes()[sy['room_id']:sy['room_id']+2],'little'),x=int.from_bytes((folder/'ram_04000.bin').read_bytes()[sy['hero_x']:sy['hero_x']+2],'little')>>8,y=int.from_bytes((folder/'ram_04000.bin').read_bytes()[sy['hero_y']:sy['hero_y']+2],'little')>>8),source='Real Konami inputs and menu navigation from cold boot, followed by ordinary New Game/name/story controls.')
+   report=dict(passed=True,failure=None,rom_sha256=hashlib.sha256(rom.read_bytes()).hexdigest(),case=kind,region=region,states=states,primary_state_imports=0,external_ram_writes=0,last_state=dict(room=int.from_bytes((folder/f'ram_{4000+offset:05d}.bin').read_bytes()[sy['room_id']:sy['room_id']+2],'little'),x=int.from_bytes((folder/f'ram_{4000+offset:05d}.bin').read_bytes()[sy['hero_x']:sy['hero_x']+2],'little')>>8,y=int.from_bytes((folder/f'ram_{4000+offset:05d}.bin').read_bytes()[sy['hero_y']:sy['hero_y']+2],'little')>>8),source='Real Konami inputs and menu navigation from cold boot, followed by ordinary New Game/name/story controls.')
    (folder/'report.json').write_bytes((json.dumps(report,indent=2)+'\n').encode());(folder/'controls.json').write_bytes(b'[]\n');(folder/'events.json').write_bytes((json.dumps(events,indent=2)+'\n').encode());results.append(dict(case=kind,region=region,report=folder.relative_to(ROOT).as_posix()+'/report.json'));print('KONAMI CASE PASSED',region,kind,flush=True)
  report=dict(passed=True,md_sha256=hashlib.sha256(rom.read_bytes()).hexdigest(),cases=results,case_count=len(results),default_off=True,separate_toggles=True,wrong_sequence_rejected=True,held_direction_not_counted_twice=True,new_game_return_tested=True,no_external_ram_or_sram_writes=True)
  (out/'report.json').write_bytes((json.dumps(report,indent=2)+'\n').encode())

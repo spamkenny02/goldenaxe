@@ -1,0 +1,51 @@
+{
+  "passed": true,
+  "version": 324,
+  "md_sha256": "f25581d62e0654fc85729affe9405b64a51603fc5ddce5965a89a6fdb27e3c31",
+  "base_sha256": "9fcee16dc12028138712564ebd7123d99a25d1ef8f6e54d9799f02ceddaacd99",
+  "bytes": 2097152,
+  "checksum": "93E3",
+  "image_and_voice_in_rom": true,
+  "source_image_sha256": "7c0571678fbe6d8457b9b75299392220953e5cacbfb45414916bdda87145d8ea",
+  "source_audio_sha256": "83936a576abf96979d6a281589e4daa445d15dcddc7e9c19dc26179f9f81f459",
+  "fades_in_and_out": true,
+  "once_per_boot": true,
+  "original_intro_after_presentation": true,
+  "pal_ntsc_normal_campaigns_to_ending": true,
+  "konami_preserved": true,
+  "real_save_continue_verified": true,
+  "rom_size_limit_respected": 2097152,
+  "uses_existing_unused_rom_padding": true,
+  "additional_quality_loss_for_2mib": false,
+  "proofs": {
+    "build": {
+      "file": "reports/presentation-v0324-2026-11-13/build.json",
+      "sha256": "14493be6a4f3ef79c1cba0e7da8507bd0f159cff3686ed531c0be475a1c95a1a"
+    },
+    "boot": {
+      "file": "reports/presentation-v0324-2026-11-13/boot.json",
+      "sha256": "4666b85e5f8a7c0d14bd2c6e1d22b73e04a9ee6672821b0758eb1a0604f1ed68"
+    },
+    "campaign-ntsc": {
+      "file": "reports/presentation-v0324-2026-11-13/campaign-ntsc.json",
+      "sha256": "81ed8a563a39a0779119a32f9dc675e4360bbc100df005bfc9e8e04da085d6d4"
+    },
+    "campaign-pal": {
+      "file": "reports/presentation-v0324-2026-11-13/campaign-pal.json",
+      "sha256": "41fba8516f81abae9c319b2f5350bc162a21bd724bb6611f61b3874fc7af9656"
+    },
+    "konami": {
+      "file": "reports/presentation-v0324-2026-11-13/konami.json",
+      "sha256": "3dfc4632a78f1a92add5adcb3ee8fbc55c7299c817da6b562ec85459dd3513eb"
+    },
+    "continue": {
+      "file": "reports/presentation-v0324-2026-11-13/continue.json",
+      "sha256": "4ef7b4202c411380b54a015ece91c3707110942ed8e3c6c3e4ef72df5ab1b9ed"
+    },
+    "video": {
+      "file": "reports/presentation-v0324-2026-11-13/video.json",
+      "sha256": "a7e7db00a5c21ad40958de3116ca464500269bb0995d8502d107b5f47c6dfa6c"
+    }
+  },
+  "scope": "Boot-only native68000 bitmap and YM2612DAC voice, with region-correct playback and a preserved virtual game epoch. Game and Konami logic remain byte-identical outside the displaced main prologue. Normal campaigns retain the previously declared approach guard, removed before live bosses. Not a new global100percent NPC/visual/hardware certification."
+}

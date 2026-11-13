@@ -1,0 +1,51 @@
+{
+  "passed": true,
+  "md_sha256": "f25581d62e0654fc85729affe9405b64a51603fc5ddce5965a89a6fdb27e3c31",
+  "base_sha256": "9fcee16dc12028138712564ebd7123d99a25d1ef8f6e54d9799f02ceddaacd99",
+  "bytes": 2097152,
+  "overlay_bytes": 145822,
+  "new_boot_only": true,
+  "existing_game_and_konami_bytes_preserved": true,
+  "sram_header_preserved": true,
+  "rom_resource_base": 1179648,
+  "unused_rom_bytes_before": 851968,
+  "unused_rom_bytes_after": 706146,
+  "quality_reduction_for_size": false,
+  "checksum": "93E3",
+  "assets": {
+    "source_image_sha256": "7c0571678fbe6d8457b9b75299392220953e5cacbfb45414916bdda87145d8ea",
+    "source_audio_sha256": "83936a576abf96979d6a281589e4daa445d15dcddc7e9c19dc26179f9f81f459",
+    "width": 256,
+    "height": 224,
+    "tile_count": 896,
+    "palettes": 4,
+    "colors_per_palette": 16,
+    "audio": {
+      "ntsc": {
+        "rate": 15772,
+        "samples": 57269,
+        "seconds": 3.63105503423789,
+        "source_peak": 0.407670795917511,
+        "normalization_gain": 2.20766365658949
+      },
+      "pal": {
+        "rate": 15628,
+        "samples": 56746,
+        "seconds": 3.6310468390069106,
+        "source_peak": 0.41328948736190796,
+        "normalization_gain": 2.1776503577307085
+      }
+    },
+    "transparent_background_composited_black": true
+  },
+  "source_manifest": {
+    "megadrive\\overlays\\presentation.c": "46aa21d10aa51515ba145442139a563fc75f8fbcb2e56e550f5957cdf91b3acf",
+    "megadrive\\overlays\\presentation_hooks.s": "6d4f1dc0e497542690655f38611d87a674d33717f85d76eeed5c812e7d112b7c",
+    "megadrive\\presentation\\map.bin": "5eecba1bdb18972c6d90d975cc4fa4f8efdee1806f61ef6dd27d8600419c309e",
+    "megadrive\\presentation\\palette.bin": "cb83d98965228b2427326498e3b5715e1b0fed562f14fb8b893525a185f05d04",
+    "megadrive\\presentation\\tiles.bin": "3e6ec9a946c1f515f60cbfb97c8a21c1b923d26cbd31555667661d85c73dcdf0",
+    "megadrive\\presentation\\voice-ntsc.pcm": "4a2209fafb88c5d2576bf4b5fcb890807d1939157c6f008ea9e74abdc647adcf",
+    "megadrive\\presentation\\voice-pal.pcm": "433b4179f74f9ad0504c0adde40dd933acffaecef1297558ff3ecaf3e1578590"
+  },
+  "runtime_validation_required": true
+}
