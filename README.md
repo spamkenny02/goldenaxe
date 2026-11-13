@@ -11,23 +11,32 @@ Il distingue données extraites, règles du modèle et interactions rejouées ;
 la couverture de tous les PNJ et de toutes les quêtes secondaires reste ouverte.
 
 <!-- ROM-RELEASE:START -->
-**Version courante : v0325 — 2048 Kio.**
+**Dernière ROM de diagnostic : v0326 — 2048 Kio.**
 
-[Télécharger la ROM v0325](versions/v0325-c3f9b130/gaw-megadrive-v0325.bin) · [Toutes les versions](versions/README.md)
+[Télécharger la ROM v0326](versions/v0326-ed2ca443/gaw-megadrive-v0326.bin) · [Toutes les versions](versions/README.md)
 
-Version de développement ; contrôles ciblés réussis, écarts visuels et validation complète encore ouverts.
+Diagnostic du blocage après le splash sur flashkit ; ce binaire n'est pas une RC ni une correction confirmée.
 
-SHA-256 : `c3f9b130a811290d1602587cd9435d8556252069617bb8bd373babadb93eaa22`
-Checksum Mega Drive : `24F4`
+SHA-256 : `ed2ca443797244f1bf1bf214f894150f588cc9dbf3deadebbdeeb015103407d3`
+Checksum Mega Drive : `A57D`
 <!-- ROM-RELEASE:END -->
 
-**V325 — correction de la sortie du splash, toujours 2 Mo.** La restauration
+**V326 — diagnostic matériel, 2 Mo.** La V325 présente toujours l'écran noir
+sur Mega Drive 1 / flashkit 2 Mo + SRAM 32 Ko selon le nouveau retour utilisateur.
+La V326 affiche neuf étapes après le fondu pour localiser le blocage : relever
+le dernier numéro vu, ou l'absence de tout numéro. Les neuf étapes et le retour
+à l'introduction passent en émulation PAL/NTSC ; résultat console encore attendu.
+[Mode d'emploi et étapes](reports/diagnostic-v0326-2026-11-13/README.md).
+La V322 RC1 reste la référence qui démarre sur ce matériel. Les deux alias ROM
+à la racine restent en V325 ; utiliser le fichier numéroté V326 pour le diagnostic.
+
+**V325 — correction VDP insuffisante sur console, toujours 2 Mo.** La restauration
 vidéo lisait cinq octets au-delà du cache SGDK et les écrivait dans les
 registres DMA. La lecture est bornée et ces registres sont initialisés
 explicitement, après vidage du FIFO. Image, voix, fondus et Konami sont conservés.
 Les campagnes PAL/NTSC rejoignent la fin en émulation ; menu et Continuer passent.
-**Essai sur flashkit encore attendu** : la cause du blocage matériel n'est pas
-confirmée. La V324 reste archivée, avec un écran noir signalé après le fondu sur
+**Échec confirmé par le retour utilisateur sur flashkit** : la cause du blocage matériel reste
+ouverte. La V324 reste archivée, avec un écran noir signalé après le fondu sur
 Mega Drive 1 / flashkit 2 Mo + SRAM 32 Ko ; la V322 RC1 fonctionne sur ce matériel
 selon le retour utilisateur. [Correction et preuves](reports/handoff-v0325-2026-11-13/README.md).
 

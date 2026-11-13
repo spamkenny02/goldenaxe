@@ -9,6 +9,12 @@ extern const u32 presentation_tiles[];
 extern const u16 presentation_map[],presentation_palette[];
 extern const u8 presentation_ntsc[],presentation_ntsc_end[],presentation_pal[],presentation_pal_end[];
 extern void presentation_pcm(const u8*,u32);
+#ifdef PRESENTATION_DIAGNOSTIC
+extern void presentation_diag(u16);
+#define DIAG(n) presentation_diag(n)
+#else
+#define DIAG(n) ((void)0)
+#endif
 static void reg(u16 n,u16 value){W(0xc00004)=0x8000|(n<<8)|value;}
 static void address(u16 value){L(0xc00004)=0x40000000UL|((u32)(value&0x3fff)<<16)|(value>>14);}
 static void black(void){u16 i;L(0xc00004)=0xc0000000UL;for(i=0;i<64;i++)W(0xc00000)=0;}
@@ -42,17 +48,21 @@ void presentation_show(void){
  W(0xffe4c0)=4;
  for(i=8;i>0;i--){blank();palette(i-1);wait(pal?(i&1?1:2):2);}
  black();reg(1,old[1]&~64);
+ DIAG(1);
  address(a);for(i=0;i<2048;i++)W(0xc00000)=0;
  address(b);for(i=0;i<2048;i++)W(0xc00000)=0;
+ DIAG(2);
  W(0xa11100)=0;
  /* Drain CPU VRAM writes before restoring the VDP configuration.
   * SGDK regValues is 19 bytes (0..18); DMA registers19..23 are NOT cached.
   * Reading past that cache wrote unrelated RAM into the DMA configuration. */
  while(!(W(0xc00004)&0x200));
+ DIAG(3);
  for(i=0;i<19;i++)if(i!=1)reg(i,old[i]);
  /* Leave DMA idle with a defined source/mode, independent of adjacent RAM. */
  for(i=19;i<24;i++)reg(i,0);
  W(0xc00004);reg(1,old[1]);
+ DIAG(4);
  /* Restore the original virtual game epoch: the handoff otherwise contributes
   * one extra NTSC VInt or two PAL VInts before the original intro starts.
   * This keeps world_clock/RNG and existing fixed controller routes aligned. */

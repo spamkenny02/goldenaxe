@@ -1,0 +1,117 @@
+{
+  "passed": true,
+  "md_sha256": "ed2ca443797244f1bf1bf214f894150f588cc9dbf3deadebbdeeb015103407d3",
+  "bytes": 2097152,
+  "diagnostic": true,
+  "hardware_validation_pending": true,
+  "known_v325_hardware_failure": true,
+  "cases": [
+    {
+      "region": "ntsc",
+      "passed": true,
+      "events": [
+        {
+          "frame": 1,
+          "stage": 0
+        },
+        {
+          "frame": 293,
+          "stage": 1
+        },
+        {
+          "frame": 385,
+          "stage": 2
+        },
+        {
+          "frame": 477,
+          "stage": 3
+        },
+        {
+          "frame": 568,
+          "stage": 4
+        },
+        {
+          "frame": 659,
+          "stage": 5
+        },
+        {
+          "frame": 750,
+          "stage": 6
+        },
+        {
+          "frame": 843,
+          "stage": 7
+        },
+        {
+          "frame": 934,
+          "stage": 8
+        },
+        {
+          "frame": 1025,
+          "stage": 9
+        }
+      ],
+      "all_nine_stage_digits_verified_in_rendered_tilemap": true,
+      "original_intro_reached": true,
+      "audio_engine_errors": 0
+    },
+    {
+      "region": "pal",
+      "passed": true,
+      "events": [
+        {
+          "frame": 1,
+          "stage": 0
+        },
+        {
+          "frame": 245,
+          "stage": 1
+        },
+        {
+          "frame": 337,
+          "stage": 2
+        },
+        {
+          "frame": 428,
+          "stage": 3
+        },
+        {
+          "frame": 519,
+          "stage": 4
+        },
+        {
+          "frame": 610,
+          "stage": 5
+        },
+        {
+          "frame": 701,
+          "stage": 6
+        },
+        {
+          "frame": 793,
+          "stage": 7
+        },
+        {
+          "frame": 884,
+          "stage": 8
+        },
+        {
+          "frame": 975,
+          "stage": 9
+        }
+      ],
+      "all_nine_stage_digits_verified_in_rendered_tilemap": true,
+      "original_intro_reached": true,
+      "audio_engine_errors": 0
+    }
+  ],
+  "scope": "Instrumented boot diagnosis only. Each stage intentionally pauses90 frames. No full-campaign qualification and no claim to fix the reported physical black screen. No injected SRAM or game state.",
+  "version": 326,
+  "reproducible_build": true,
+  "non_diagnostic_build_remains_exact_v325": true,
+  "hardware_fix_claimed": false,
+  "reported_hardware": "Mega Drive 1, flashkit2MiB + SRAM32KiB",
+  "user_report": "V325 still displays splash and voice followed by black screen; V322 RC1 boots successfully on same hardware.",
+  "hardware_outcome": "unknown_until_external_test",
+  "diagnostic_stage_duration_frames": 90
+}

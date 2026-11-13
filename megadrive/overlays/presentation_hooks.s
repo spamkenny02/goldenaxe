@@ -8,6 +8,13 @@ presentation_entry:
  jsr presentation_show
  movem.l (%sp)+,%d0-%d7/%a0-%a6
  move.w (%sp)+,%sr
+ .ifdef PRESENTATION_DIAGNOSTIC
+ movem.l %d0-%d7/%a0-%a6,-(%sp)
+ move.l #5,-(%sp)
+ jsr presentation_diag
+ addq.l #4,%sp
+ movem.l (%sp)+,%d0-%d7/%a0-%a6
+ .endif
  /* Displaced original main prologue, with its exact stack layout. */
  link.w %a6,#-192
  movem.l %d2-%d7/%a2-%a5,-(%sp)
